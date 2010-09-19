@@ -56,14 +56,14 @@ public:
   /// !!! if this file already exists, then all blocks are reused
   /// and all contents will be overwritten.
   /// after writing closeTrunc has to be called
-  void    create(uint8_t i_fileId, uint8_t typ, uint8_t maxTme10ms);
+  void    create(uint8_t i_fileId, uint8_t typ);
   /// close file and truncate the blockchain if to long.
   void    closeTrunc();
 
   ///open file, write to file and close it. 
   ///If file existed before, then contents is overwritten. 
   ///If file was larger before, then unused blocks are freed
-  uint16_t writeRlc(uint8_t i_fileId, uint8_t typ,uint8_t*buf,uint16_t i_len, uint8_t maxTme10ms); 
+  uint16_t writeRlc(uint8_t i_fileId, uint8_t typ,uint8_t*buf,uint16_t i_len);
 
   uint8_t read(uint8_t*buf,uint16_t i_len);
   uint8_t write(uint8_t*buf,uint8_t i_len);

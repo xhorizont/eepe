@@ -21,38 +21,27 @@
 #include "pers.h"
 
 
-// bs=16  128 blocks    verlust link:128  16files:16*8  128     sum 256
-// bs=32   64 blocks    verlust link: 64  16files:16*16 256     sum 320
-//
-#  define EESIZE   2048
-#  define BS       16
-#  define RESV     64  //reserv for eeprom header with directory (eeFs)
-#define FIRSTBLK (RESV/BS)
-#define BLOCKS   (EESIZE/BS)
 
-#define EEFS_VERS 4
-struct DirEnt{
-  uint8_t  startBlk;
-  uint16_t size:12;
-  uint16_t typ:4;
-}__attribute__((packed));
-#define MAXFILES (1+MAX_MODELS+3)
-struct EeFs{
-  uint8_t  version;
-  uint8_t  mySize;
-  uint8_t  freeList;
-  uint8_t  bs;
-  DirEnt   files[MAXFILES];
-}__attribute__((packed)) eeFs;
+
+
+
+void eeprom_read_block (void *pointer_ram, uint16_t pointer_eeprom, size_t size)
+{
+  memcpy(pointer_ram,&eeprom[pointer_eeprom],size);
+}
+void eeWriteBlockCmp(void *i_pointer_ram, uint16_t i_pointer_eeprom, size_t size)
+{
+  memcpy(&eeprom[i_pointer_eeprom],i_pointer_ram,size);
+}
 
 
 static uint8_t EeFsRead(uint8_t blk,uint8_t ofs){
   uint8_t ret;
-  eeprom_read_block(&ret,(const void*)(blk*BS+ofs),1);
+  eeprom_read_block(&ret,(uint16_t)(blk*BS+ofs),1);
   return ret;
 }
 static void EeFsWrite(uint8_t blk,uint8_t ofs,uint8_t val){
-  eeWriteBlockCmp(&val, (void*)(blk*BS+ofs), 1);
+  eeWriteBlockCmp(&val, (uint16_t)(blk*BS+ofs), 1);
 }
 
 static uint8_t EeFsGetLink(uint8_t blk){
@@ -66,11 +55,11 @@ static uint8_t EeFsGetDat(uint8_t blk,uint8_t ofs){
 }
 static void EeFsSetDat(uint8_t blk,uint8_t ofs,uint8_t*buf,uint8_t len){
   //EeFsWrite( blk,ofs+1,val);
-  eeWriteBlockCmp(buf, (void*)(blk*BS+ofs+1), len);
+  eeWriteBlockCmp(buf, (uint16_t)(blk*BS+ofs+1), len);
 }
 static void EeFsFlushFreelist()
 {
-  eeWriteBlockCmp(&eeFs.freeList,&((EeFs*)0)->freeList ,sizeof(eeFs.freeList));
+  eeWriteBlockCmp(&eeFs.freeList,eeFs.freeList ,sizeof(eeFs.freeList));
 }
 static void EeFsFlush()
 {
@@ -234,7 +223,7 @@ uint16_t EFile::readRlc(uint8_t*buf,uint16_t i_len){
     if((m_bRlc&0x7f) == 0) {
       if(read(&m_bRlc,1)!=1) break; //read how many bytes to read
     }
-    assert(m_bRlc & 0x7f);
+    //assert(m_bRlc & 0x7f);
     uint8_t l=m_bRlc&0x7f;
     if((uint16_t)l>(i_len-i)) l = (uint8_t)(i_len-i);
     if(m_bRlc&0x80){       // if contains high byte
@@ -256,11 +245,6 @@ uint8_t EFile::write(uint8_t*buf,uint8_t i_len){
   }
   while(len)
   {
-    if( (int16_t)(m_stopTime10ms - g_tmr10ms) < 0)
-    {
-      m_err = ERR_TMO;
-      break;
-    }
     if(!m_currBlk) {
       m_err = ERR_FULL;
       break;
@@ -285,11 +269,10 @@ uint8_t EFile::write(uint8_t*buf,uint8_t i_len){
   m_pos += i_len - len;
   return   i_len - len;
 }
-void EFile::create(uint8_t i_fileId, uint8_t typ, uint8_t maxTme10ms){
+void EFile::create(uint8_t i_fileId, uint8_t typ){
   openRd(i_fileId); //internal use
   eeFs.files[i_fileId].typ      = typ;
   eeFs.files[i_fileId].size     = 0;
-  m_stopTime10ms = g_tmr10ms + maxTme10ms;
 }
 void EFile::closeTrunc()
 {
@@ -301,8 +284,8 @@ void EFile::closeTrunc()
   if(fri) EeFsFree( fri );  //chain in
 }
 
-uint16_t EFile::writeRlc(uint8_t i_fileId, uint8_t typ,uint8_t*buf,uint16_t i_len, uint8_t maxTme10ms){
-  create(i_fileId,typ,maxTme10ms);
+uint16_t EFile::writeRlc(uint8_t i_fileId, uint8_t typ,uint8_t*buf,uint16_t i_len){
+  create(i_fileId,typ);
   bool    state0 = true;
   uint8_t cnt    = 0;
   uint16_t i;
