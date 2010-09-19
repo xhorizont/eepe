@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created: Sun Sep 19 19:12:11 2010
+** Created: Mon Sep 20 00:43:15 2010
 **      by: Qt User Interface Compiler version 4.6.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -16,12 +16,12 @@
 #include <QtGui/QButtonGroup>
 #include <QtGui/QGridLayout>
 #include <QtGui/QHeaderView>
+#include <QtGui/QListWidget>
 #include <QtGui/QMainWindow>
 #include <QtGui/QMenu>
 #include <QtGui/QMenuBar>
 #include <QtGui/QStatusBar>
 #include <QtGui/QToolBar>
-#include <QtGui/QTreeView>
 #include <QtGui/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -36,7 +36,7 @@ public:
     QAction *actionOpen;
     QWidget *centralWidget;
     QGridLayout *gridLayout;
-    QTreeView *treeView;
+    QListWidget *listWidget;
     QMenuBar *menuBar;
     QMenu *menuFile;
     QToolBar *mainToolBar;
@@ -63,10 +63,10 @@ public:
         gridLayout->setSpacing(6);
         gridLayout->setContentsMargins(11, 11, 11, 11);
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
-        treeView = new QTreeView(centralWidget);
-        treeView->setObjectName(QString::fromUtf8("treeView"));
+        listWidget = new QListWidget(centralWidget);
+        listWidget->setObjectName(QString::fromUtf8("listWidget"));
 
-        gridLayout->addWidget(treeView, 0, 0, 1, 1);
+        gridLayout->addWidget(listWidget, 0, 0, 1, 1);
 
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
