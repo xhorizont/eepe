@@ -326,5 +326,8 @@ uint16_t EFile::writeRlc(uint8_t i_fileId, uint8_t typ,uint8_t*buf,uint16_t i_le
 }
 
 
-
+uint8_t EFile::errno()
+{
+    return m_err;
+}
 
