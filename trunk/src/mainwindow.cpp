@@ -4,6 +4,7 @@
 #include "pers.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <fstream>
 #include <QListWidget>
 #include <QListWidgetItem>
 
@@ -40,40 +41,29 @@ void MainWindow::on_actionOpen_activated()
 {
     QString fileName = QFileDialog::getOpenFileName(this, tr("Open EEPROM"), ".", tr("EEPROM Files (*.bin)"));
 
-
-    FILE * pFile;
-    pFile = fopen ( (const char*)fileName.data() , "rb" );
-    if (pFile==NULL) return;
-
-    // obtain file size:
-    fseek (pFile , 0 , SEEK_END);
-    long lSize = ftell (pFile)/2;
-    rewind (pFile);
-
-    if(lSize==EESIZE)
+    QFile file(fileName);
+         if (!file.open(QIODevice::ReadOnly)) //assume binary file
+             return;
+    if(file.size()!=EESIZE)
     {
-
-        // copy the file into the buffer:
-        long result = fread (&eeprom,1,lSize,pFile);
-        if (result != lSize) lSize=0;
-
-        /* the whole file is now loaded in the memory buffer. */
+        file.close();
+        return;
     }
-    // terminate
-    fclose (pFile);
 
-    if(lSize==EESIZE)
+    long result = file.read((char*)&eeprom,EESIZE);
+    file.close();
+
+    if (result!=EESIZE) return;
+
+
+    ui->listWidget->clear();
+
+    for(uint8_t i; i<MAX_MODELS; i++)
     {
-        ui->listWidget->clear();
-
-        for(uint8_t i; i<MAX_MODELS; i++)
-        {
-            static char buf[sizeof(g_model.name)+5];
-            eeLoadModelName(i,buf,sizeof(buf));
-            QString str = buf;
-            ui->listWidget->addItem(str);
-
-        }
+        static char buf[sizeof(g_model.name)+5];
+        eeLoadModelName(i,buf,sizeof(buf));
+        QString str = QString(buf);
+        ui->listWidget->addItem(str);
     }
 
 }
