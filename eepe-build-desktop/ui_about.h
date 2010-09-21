@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'about.ui'
 **
-** Created: Tue 21. Sep 14:40:31 2010
+** Created: Tue 21. Sep 16:58:20 2010
 **      by: Qt User Interface Compiler version 4.6.3
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -37,6 +37,7 @@ public:
         pushButton = new QPushButton(About);
         pushButton->setObjectName(QString::fromUtf8("pushButton"));
         pushButton->setGeometry(QRect(80, 280, 75, 23));
+        pushButton->setDefault(true);
         label = new QLabel(About);
         label->setObjectName(QString::fromUtf8("label"));
         label->setGeometry(QRect(60, 20, 111, 71));
@@ -51,6 +52,7 @@ public:
         label_3 = new QLabel(About);
         label_3->setObjectName(QString::fromUtf8("label_3"));
         label_3->setGeometry(QRect(20, 180, 191, 16));
+        label_3->setTextFormat(Qt::RichText);
         label_3->setAlignment(Qt::AlignCenter);
         label_3->setTextInteractionFlags(Qt::LinksAccessibleByKeyboard|Qt::LinksAccessibleByMouse);
 
