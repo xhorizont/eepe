@@ -8,6 +8,11 @@
 #include <QListWidget>
 #include <QListWidgetItem>
 #include "about.h"
+#include <QTableWidget>
+#include <QTableWidgetItem>
+#include <QHeaderView>
+
+
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -59,14 +64,14 @@ void MainWindow::on_actionOpen_activated()
     memcpy(&eeFs,&eeprom,sizeof(eeFs));
 
 
-    ui->listWidget->clear();
+    ui->tableWidget->clear();
 
     for(uint8_t i=0; i<MAX_MODELS; i++)
     {
         static char buf[sizeof(g_model.name)+5];
         eeLoadModelName(i,buf,sizeof(buf));
         QString str = QString(buf);
-        ui->listWidget->addItem(str);
+        //ui->tableWidget->insertRow();
     }
 
 }
@@ -82,5 +87,5 @@ void MainWindow::on_actionSave_activated()
 void MainWindow::on_actionAbout_activated()
 {
     About a;
-    a.show();
+    a.exec();
 }
