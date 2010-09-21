@@ -86,7 +86,8 @@ void eeLoadModelName(uint8_t id,char*buf,uint8_t len)
     //eeprom_read_block(buf,(void*)modelEeOfs(id),sizeof(g_model.name));
     theFile.openRd(FILE_MODEL(id));
     memset(buf,' ',len);
-    if(theFile.readRlc((uint8_t*)buf,sizeof(g_model.name)) == sizeof(g_model.name) )
+    uint16_t res = theFile.readRlc((uint8_t*)buf,sizeof(g_model.name));
+    if(res == sizeof(g_model.name) )
     {
       uint16_t sz=theFile.size();
       buf+=len;
