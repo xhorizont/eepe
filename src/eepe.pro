@@ -6,9 +6,12 @@ TEMPLATE = app
 SOURCES += main.cpp \
     mainwindow.cpp \
     pers.cpp \
-    file.cpp
+    file.cpp \
+    about.cpp
 HEADERS += mainwindow.h \
     pers.h \
     myeeprom.h \
-    file.h
-FORMS += mainwindow.ui
+    file.h \
+    about.h
+FORMS += mainwindow.ui \
+    about.ui

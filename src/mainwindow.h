@@ -20,6 +20,7 @@ private:
     Ui::MainWindow *ui;
 
 private slots:
+    void on_actionAbout_activated();
     void on_actionSave_activated();
     void on_actionOpen_activated();
     void on_actionQuit_activated();
