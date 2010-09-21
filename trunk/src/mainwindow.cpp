@@ -7,6 +7,7 @@
 #include <fstream>
 #include <QListWidget>
 #include <QListWidgetItem>
+#include "about.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -60,7 +61,7 @@ void MainWindow::on_actionOpen_activated()
 
     ui->listWidget->clear();
 
-    for(uint8_t i; i<MAX_MODELS; i++)
+    for(uint8_t i=0; i<MAX_MODELS; i++)
     {
         static char buf[sizeof(g_model.name)+5];
         eeLoadModelName(i,buf,sizeof(buf));
@@ -73,6 +74,13 @@ void MainWindow::on_actionOpen_activated()
 void MainWindow::on_actionSave_activated()
 {
     //QString QFileDialog::getSaveFileName();
+
 }
 
 
+
+void MainWindow::on_actionAbout_activated()
+{
+    About a;
+    a.show();
+}
