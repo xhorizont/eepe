@@ -68,9 +68,10 @@ void MainWindow::on_actionOpen_activated()
 
     for(uint8_t i=0; i<MAX_MODELS; i++)
     {
-        static char buf[sizeof(g_model.name)+5];
+        static char buf[sizeof(g_model.name)];
         eeLoadModelName(i,buf,sizeof(buf));
         QString str = QString(buf);
+        //eeLoadModelSize
         //ui->tableWidget->insertRow();
     }
 
