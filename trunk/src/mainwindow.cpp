@@ -55,6 +55,8 @@ void MainWindow::on_actionOpen_activated()
 
     if (result!=EESIZE) return;
 
+    memcpy(&eeFs,&eeprom,sizeof(eeFs));
+
 
     ui->listWidget->clear();
 
