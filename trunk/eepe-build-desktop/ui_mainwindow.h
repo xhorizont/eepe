@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created: Mon 20. Sep 14:34:45 2010
+** Created: Tue 21. Sep 09:54:16 2010
 **      by: Qt User Interface Compiler version 4.6.3
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -24,7 +24,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class Ui_MainWindow
+class Ui_eePe
 {
 public:
     QAction *actionNew;
@@ -38,22 +38,22 @@ public:
     QMenuBar *menuBar;
     QMenu *menuFile;
 
-    void setupUi(QMainWindow *MainWindow)
+    void setupUi(QMainWindow *eePe)
     {
-        if (MainWindow->objectName().isEmpty())
-            MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(596, 491);
-        actionNew = new QAction(MainWindow);
+        if (eePe->objectName().isEmpty())
+            eePe->setObjectName(QString::fromUtf8("eePe"));
+        eePe->resize(596, 491);
+        actionNew = new QAction(eePe);
         actionNew->setObjectName(QString::fromUtf8("actionNew"));
-        actionSave = new QAction(MainWindow);
+        actionSave = new QAction(eePe);
         actionSave->setObjectName(QString::fromUtf8("actionSave"));
-        actionSave_As = new QAction(MainWindow);
+        actionSave_As = new QAction(eePe);
         actionSave_As->setObjectName(QString::fromUtf8("actionSave_As"));
-        actionQuit = new QAction(MainWindow);
+        actionQuit = new QAction(eePe);
         actionQuit->setObjectName(QString::fromUtf8("actionQuit"));
-        actionOpen = new QAction(MainWindow);
+        actionOpen = new QAction(eePe);
         actionOpen->setObjectName(QString::fromUtf8("actionOpen"));
-        centralWidget = new QWidget(MainWindow);
+        centralWidget = new QWidget(eePe);
         centralWidget->setObjectName(QString::fromUtf8("centralWidget"));
         gridLayout = new QGridLayout(centralWidget);
         gridLayout->setSpacing(6);
@@ -64,13 +64,13 @@ public:
 
         gridLayout->addWidget(listWidget, 0, 0, 1, 1);
 
-        MainWindow->setCentralWidget(centralWidget);
-        menuBar = new QMenuBar(MainWindow);
+        eePe->setCentralWidget(centralWidget);
+        menuBar = new QMenuBar(eePe);
         menuBar->setObjectName(QString::fromUtf8("menuBar"));
         menuBar->setGeometry(QRect(0, 0, 596, 20));
         menuFile = new QMenu(menuBar);
         menuFile->setObjectName(QString::fromUtf8("menuFile"));
-        MainWindow->setMenuBar(menuBar);
+        eePe->setMenuBar(menuBar);
 
         menuBar->addAction(menuFile->menuAction());
         menuFile->addAction(actionNew);
@@ -80,40 +80,40 @@ public:
         menuFile->addSeparator();
         menuFile->addAction(actionQuit);
 
-        retranslateUi(MainWindow);
+        retranslateUi(eePe);
 
-        QMetaObject::connectSlotsByName(MainWindow);
+        QMetaObject::connectSlotsByName(eePe);
     } // setupUi
 
-    void retranslateUi(QMainWindow *MainWindow)
+    void retranslateUi(QMainWindow *eePe)
     {
-        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", 0, QApplication::UnicodeUTF8));
-        actionNew->setText(QApplication::translate("MainWindow", "New", 0, QApplication::UnicodeUTF8));
+        eePe->setWindowTitle(QApplication::translate("eePe", "MainWindow", 0, QApplication::UnicodeUTF8));
+        actionNew->setText(QApplication::translate("eePe", "New", 0, QApplication::UnicodeUTF8));
 #ifndef QT_NO_TOOLTIP
-        actionNew->setToolTip(QApplication::translate("MainWindow", "Create New EEPROM", 0, QApplication::UnicodeUTF8));
+        actionNew->setToolTip(QApplication::translate("eePe", "Create New EEPROM", 0, QApplication::UnicodeUTF8));
 #endif // QT_NO_TOOLTIP
-        actionNew->setShortcut(QApplication::translate("MainWindow", "Ctrl+N", 0, QApplication::UnicodeUTF8));
-        actionSave->setText(QApplication::translate("MainWindow", "Save", 0, QApplication::UnicodeUTF8));
+        actionNew->setShortcut(QApplication::translate("eePe", "Ctrl+N", 0, QApplication::UnicodeUTF8));
+        actionSave->setText(QApplication::translate("eePe", "Save", 0, QApplication::UnicodeUTF8));
 #ifndef QT_NO_TOOLTIP
-        actionSave->setToolTip(QApplication::translate("MainWindow", "Save EEPROM", 0, QApplication::UnicodeUTF8));
+        actionSave->setToolTip(QApplication::translate("eePe", "Save EEPROM", 0, QApplication::UnicodeUTF8));
 #endif // QT_NO_TOOLTIP
-        actionSave->setShortcut(QApplication::translate("MainWindow", "Ctrl+S", 0, QApplication::UnicodeUTF8));
-        actionSave_As->setText(QApplication::translate("MainWindow", "Save As", 0, QApplication::UnicodeUTF8));
-        actionSave_As->setShortcut(QApplication::translate("MainWindow", "Ctrl+Shift+S", 0, QApplication::UnicodeUTF8));
-        actionQuit->setText(QApplication::translate("MainWindow", "Quit", 0, QApplication::UnicodeUTF8));
-        actionQuit->setShortcut(QApplication::translate("MainWindow", "Ctrl+Q", 0, QApplication::UnicodeUTF8));
-        actionOpen->setText(QApplication::translate("MainWindow", "Open", 0, QApplication::UnicodeUTF8));
+        actionSave->setShortcut(QApplication::translate("eePe", "Ctrl+S", 0, QApplication::UnicodeUTF8));
+        actionSave_As->setText(QApplication::translate("eePe", "Save As", 0, QApplication::UnicodeUTF8));
+        actionSave_As->setShortcut(QApplication::translate("eePe", "Ctrl+Shift+S", 0, QApplication::UnicodeUTF8));
+        actionQuit->setText(QApplication::translate("eePe", "Quit", 0, QApplication::UnicodeUTF8));
+        actionQuit->setShortcut(QApplication::translate("eePe", "Ctrl+Q", 0, QApplication::UnicodeUTF8));
+        actionOpen->setText(QApplication::translate("eePe", "Open", 0, QApplication::UnicodeUTF8));
 #ifndef QT_NO_TOOLTIP
-        actionOpen->setToolTip(QApplication::translate("MainWindow", "Open EEPROM", 0, QApplication::UnicodeUTF8));
+        actionOpen->setToolTip(QApplication::translate("eePe", "Open EEPROM", 0, QApplication::UnicodeUTF8));
 #endif // QT_NO_TOOLTIP
-        actionOpen->setShortcut(QApplication::translate("MainWindow", "Ctrl+O", 0, QApplication::UnicodeUTF8));
-        menuFile->setTitle(QApplication::translate("MainWindow", "File", 0, QApplication::UnicodeUTF8));
+        actionOpen->setShortcut(QApplication::translate("eePe", "Ctrl+O", 0, QApplication::UnicodeUTF8));
+        menuFile->setTitle(QApplication::translate("eePe", "File", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 
 };
 
 namespace Ui {
-    class MainWindow: public Ui_MainWindow {};
+    class eePe: public Ui_eePe {};
 } // namespace Ui
 
 QT_END_NAMESPACE
