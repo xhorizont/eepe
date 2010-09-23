@@ -2,6 +2,8 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QListWidgetItem>
+
 
 namespace Ui {
     class MainWindow;
@@ -20,6 +22,7 @@ private:
     Ui::MainWindow *ui;
 
 private slots:
+    void on_listWidget_itemDoubleClicked(QListWidgetItem* item);
     void on_actionAbout_activated();
     void on_actionSave_activated();
     void on_actionOpen_activated();

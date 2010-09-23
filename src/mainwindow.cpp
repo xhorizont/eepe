@@ -6,11 +6,11 @@
 #include <stdlib.h>
 #include <fstream>
 #include <QListWidget>
-#include <QListWidgetItem>
+//#include <QListWidgetItem>
 #include "about.h"
-#include <QTableWidget>
-#include <QTableWidgetItem>
+#include <QTabWidget>
 #include <QHeaderView>
+
 
 
 
@@ -63,16 +63,15 @@ void MainWindow::on_actionOpen_activated()
 
     memcpy(&eeFs,&eeprom,sizeof(eeFs));
 
-
-    ui->tableWidget->clear();
+    ui->listWidget->clear();
+    ui->listWidget->addItem("General Radio Settings");
 
     for(uint8_t i=0; i<MAX_MODELS; i++)
     {
-        static char buf[sizeof(g_model.name)];
+        static char buf[sizeof(g_model.name)+10];
         eeLoadModelName(i,buf,sizeof(buf));
         QString str = QString(buf);
-        //eeLoadModelSize
-        //ui->tableWidget->insertRow();
+        ui->listWidget->addItem(str);
     }
 
 }
@@ -89,4 +88,12 @@ void MainWindow::on_actionAbout_activated()
 {
     About a;
     a.exec();
+}
+
+
+void MainWindow::on_listWidget_itemDoubleClicked(QListWidgetItem* item)
+{
+    TabWidget t;
+    t.show();
+
 }

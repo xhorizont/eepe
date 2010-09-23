@@ -86,13 +86,16 @@ void eeLoadModelName(uint8_t id,char*buf,uint8_t len)
     //eeprom_read_block(buf,(void*)modelEeOfs(id),sizeof(g_model.name));
     theFile.openRd(FILE_MODEL(id));
     memset(buf,' ',len);
+    *buf='0'+(id+1)/10; buf++;
+    *buf='0'+(id+1)%10; buf++;
+    *buf=':';           buf++;buf++;
     uint16_t res = theFile.readRlc((uint8_t*)buf,sizeof(g_model.name));
-//    if(res == sizeof(g_model.name) )
-//    {
-//      uint16_t sz=theFile.size();
-//      buf+=len;
-//      while(sz){ --buf; *buf='0'+sz%10; sz/=10;}
-//    }
+    if(res == sizeof(g_model.name) )
+    {
+      uint16_t sz=theFile.size();
+      buf+=len-4;
+      while(sz){ --buf; *buf='0'+sz%10; sz/=10;}
+    }
   }
 }
 
@@ -104,6 +107,7 @@ uint16_t eeLoadModelSize(uint8_t id)
     theFile.openRd(FILE_MODEL(id));
     return theFile.size();
   }
+  return 0;
 }
 
 void eeLoadModel(uint8_t id)
