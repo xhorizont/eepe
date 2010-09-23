@@ -14,4 +14,6 @@ HEADERS += mainwindow.h \
     file.h \
     about.h
 FORMS += mainwindow.ui \
-    about.ui
+    about.ui \
+    generaleditwindow.ui \
+    modeleditwindow.ui
