@@ -6,7 +6,6 @@
 #include <stdlib.h>
 #include <fstream>
 #include <QListWidget>
-//#include <QListWidgetItem>
 #include "about.h"
 #include <QTabWidget>
 #include <QHeaderView>
@@ -91,9 +90,11 @@ void MainWindow::on_actionAbout_activated()
 }
 
 
-void MainWindow::on_listWidget_itemDoubleClicked(QListWidgetItem* item)
+void MainWindow::on_listWidget_doubleClicked(QModelIndex index)
 {
-    TabWidget t;
-    t.show();
+
+    //int i = index.data();
+
+
 
 }

@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'mainwindow.h'
 **
-** Created: Thu Sep 23 08:18:10 2010
+** Created: Thu Sep 23 08:41:58 2010
 **      by: The Qt Meta Object Compiler version 62 (Qt 4.6.2)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -31,18 +31,18 @@ static const uint qt_meta_data_MainWindow[] = {
        0,       // signalCount
 
  // slots: signature, parameters, type, tag, flags
-      17,   12,   11,   11, 0x08,
-      67,   11,   11,   11, 0x08,
-      94,   11,   11,   11, 0x08,
-     120,   11,   11,   11, 0x08,
-     146,   11,   11,   11, 0x08,
+      18,   12,   11,   11, 0x08,
+      59,   11,   11,   11, 0x08,
+      86,   11,   11,   11, 0x08,
+     112,   11,   11,   11, 0x08,
+     138,   11,   11,   11, 0x08,
 
        0        // eod
 };
 
 static const char qt_meta_stringdata_MainWindow[] = {
-    "MainWindow\0\0item\0"
-    "on_listWidget_itemDoubleClicked(QListWidgetItem*)\0"
+    "MainWindow\0\0index\0"
+    "on_listWidget_doubleClicked(QModelIndex)\0"
     "on_actionAbout_activated()\0"
     "on_actionSave_activated()\0"
     "on_actionOpen_activated()\0"
@@ -78,7 +78,7 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
         switch (_id) {
-        case 0: on_listWidget_itemDoubleClicked((*reinterpret_cast< QListWidgetItem*(*)>(_a[1]))); break;
+        case 0: on_listWidget_doubleClicked((*reinterpret_cast< QModelIndex(*)>(_a[1]))); break;
         case 1: on_actionAbout_activated(); break;
         case 2: on_actionSave_activated(); break;
         case 3: on_actionOpen_activated(); break;
