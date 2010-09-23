@@ -30,12 +30,7 @@ EFile theFile2; //sometimes we need two files
 
 #define FILE_TYP_GENERAL 1
 #define FILE_TYP_MODEL   2
-#define partCopy(sizeDst,sizeSrc)                         \
-      pSrc -= (sizeSrc);                                  \
-      pDst -= (sizeDst);                                  \
-      memmove(pDst, pSrc, (sizeSrc));                     \
-      memset (pDst+(sizeSrc), 0,  (sizeDst)-(sizeSrc));
-#define fullCopy(size) partCopy(size,size)
+
 void generalDefault()
 {
   memset(&g_eeGeneral,0,sizeof(g_eeGeneral));
@@ -53,6 +48,7 @@ void generalDefault()
   for(int i=0; i<12;i++) sum+=g_eeGeneral.calibMid[i];
   g_eeGeneral.chkSum = sum;
 }
+
 bool eeLoadGeneral()
 {
   theFile.openRd(FILE_GENERAL);
@@ -79,6 +75,7 @@ void modelDefault(uint8_t id)
     g_model.mixData[i].weight = 100;
   }
 }
+
 void eeLoadModelName(uint8_t id,char*buf,uint8_t len)
 {
   if(id<MAX_MODELS)
@@ -99,16 +96,6 @@ void eeLoadModelName(uint8_t id,char*buf,uint8_t len)
   }
 }
 
-uint16_t eeLoadModelSize(uint8_t id)
-{
-  if(id<MAX_MODELS)
-  {
-    //eeprom_read_block(buf,(void*)modelEeOfs(id),sizeof(g_model.name));
-    theFile.openRd(FILE_MODEL(id));
-    return theFile.size();
-  }
-  return 0;
-}
 
 void eeLoadModel(uint8_t id)
 {
@@ -151,73 +138,27 @@ bool eeDuplicateModel(uint8_t id)
   //todo error handling
   return true;
 }
-void eeReadAll()
-{
-  if(!EeFsOpen()  ||
-     EeFsck() < 0 ||
-     !eeLoadGeneral()
-  )
-  {
-    //alert(PSTR("Bad EEprom Data"));
-    EeFsFormat();
-    //alert(PSTR("format ok"));
-    generalDefault();
-    // alert(PSTR("default ok"));
-
-    uint16_t sz = theFile.writeRlc(FILE_GENERAL,FILE_TYP_GENERAL,(uint8_t*)&g_eeGeneral,sizeof(EEGeneral));
-    if(sz!=sizeof(EEGeneral))  generalDefault();//alert(PSTR("genwrite error"));
-
-    modelDefault(0);
-    //alert(PSTR("modef ok"));
-    theFile.writeRlc(FILE_MODEL(0),FILE_TYP_MODEL,(uint8_t*)&g_model,sizeof(g_model));
-    //alert(PSTR("modwrite ok"));
-
-  }
-  eeLoadModel(g_eeGeneral.currModel);
-}
 
 
-static uint8_t  s_eeDirtyMsk;
-//static uint16_t s_eeDirtyTime10ms;
-void eeDirty(uint8_t msk)
+void eeCheck(uint8_t msk)
 {
   if(!msk) return;
-  s_eeDirtyMsk      |= msk;
-  //s_eeDirtyTime10ms  = g_tmr10ms;
-}
-#define WRITE_DELAY_10MS 100
-void eeCheck()
-{
-  uint8_t msk  = s_eeDirtyMsk;
-  if(!msk) return;
-  //if( !immediately && ((g_tmr10ms - s_eeDirtyTime10ms) < WRITE_DELAY_10MS)) return;
-  s_eeDirtyMsk = 0;
+
   if(msk & EE_GENERAL){
     if(theFile.writeRlc(FILE_TMP, FILE_TYP_GENERAL, (uint8_t*)&g_eeGeneral,sizeof(EEGeneral)) == sizeof(EEGeneral))
     {
-      EFile::swap(FILE_GENERAL,FILE_TMP);
+        EFile::swap(FILE_GENERAL,FILE_TMP);
     }else{
-      if(theFile.errno()==ERR_TMO){
-        s_eeDirtyMsk |= EE_GENERAL; //try again
-        //s_eeDirtyTime10ms = g_tmr10ms - WRITE_DELAY_10MS;
-      }else{
-        //alert(PSTR("EEPROM overflow"));
-      }
+        //do some error stuff
     }
-    //first finish GENERAL, then MODEL !!avoid Toggle effect
   }
+    //first finish GENERAL, then MODEL !!avoid Toggle effect
   else if(msk & EE_MODEL){
     if(theFile.writeRlc(FILE_TMP, FILE_TYP_MODEL, (uint8_t*)&g_model,sizeof(g_model)) == sizeof(g_model))
     {
       EFile::swap(FILE_MODEL(g_eeGeneral.currModel),FILE_TMP);
     }else{
-      if(theFile.errno()==ERR_TMO){
-        s_eeDirtyMsk |= EE_MODEL; //try again
-        //s_eeDirtyTime10ms = g_tmr10ms - WRITE_DELAY_10MS;
-      }else{
-        //alert(PSTR("EEPROM overflow"));
-      }
+      //do some error stuff
     }
   }
-  //beepWarn1();
 }

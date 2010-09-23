@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created: Thu Sep 23 08:41:54 2010
+** Created: Fri Sep 24 00:43:14 2010
 **      by: Qt User Interface Compiler version 4.6.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -69,6 +69,7 @@ public:
         font.setFamily(QString::fromUtf8("Courier New"));
         font.setPointSize(14);
         listWidget->setFont(font);
+        listWidget->setContextMenuPolicy(Qt::CustomContextMenu);
 
         gridLayout->addWidget(listWidget, 0, 0, 1, 1);
 

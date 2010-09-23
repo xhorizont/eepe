@@ -20,6 +20,7 @@ protected:
 
 private:
     Ui::MainWindow *ui;
+    void RefreshList();
 
 private slots:
     void on_listWidget_doubleClicked(QModelIndex index);
@@ -27,6 +28,8 @@ private slots:
     void on_actionSave_activated();
     void on_actionOpen_activated();
     void on_actionQuit_activated();
+    void ShowContextMenu(const QPoint& pos);
+
 };
 
 #endif // MAINWINDOW_H
