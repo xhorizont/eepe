@@ -7,13 +7,17 @@ SOURCES += main.cpp \
     mainwindow.cpp \
     pers.cpp \
     file.cpp \
-    about.cpp
+    about.cpp \
+    modeledit.cpp \
+    generaledit.cpp
 HEADERS += mainwindow.h \
     pers.h \
     myeeprom.h \
     file.h \
-    about.h
+    about.h \
+    modeledit.h \
+    generaledit.h 
 FORMS += mainwindow.ui \
     about.ui \
-    generaleditwindow.ui \
-    modeleditwindow.ui
+    generaledit.ui \
+    modeledit.ui

@@ -163,15 +163,13 @@ enum EnumKeys {
 #define EE_MODEL   2
 /// Markiert einen EEPROM-Bereich als dirty. der Bereich wird dann in
 /// eeCheck ins EEPROM zurueckgeschrieben.
-void eeWriteBlockCmp(const void *i_pointer_ram, void *i_pointer_eeprom, size_t size);
-void eeDirty(uint8_t msk);
-void eeCheck(bool immediately=false);
+void eeCheck(uint8_t msk);
 //void eeWriteGeneral();
-void eeReadAll();
 void eeLoadModelName(uint8_t id,char*buf,uint8_t len);
 void eeLoadModel(uint8_t id);
 //void eeSaveModel(uint8_t id);
 bool eeDuplicateModel(uint8_t id);
+bool eeLoadGeneral();
 
 #define NUM_PPM     8
 //number of real outputchannels CH1-CH8

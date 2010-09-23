@@ -23,6 +23,9 @@
         <pointsize>14</pointsize>
        </font>
       </property>
+      <property name="contextMenuPolicy">
+       <enum>Qt::CustomContextMenu</enum>
+      </property>
      </widget>
     </item>
    </layout>
