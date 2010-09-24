@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'mainwindow.h'
 **
-** Created: Fri Sep 24 01:02:23 2010
+** Created: Sat Sep 25 01:06:00 2010
 **      by: The Qt Meta Object Compiler version 62 (Qt 4.6.2)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,7 +23,7 @@ static const uint qt_meta_data_MainWindow[] = {
        4,       // revision
        0,       // classname
        0,    0, // classinfo
-       6,   14, // methods
+      12,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -31,24 +31,32 @@ static const uint qt_meta_data_MainWindow[] = {
        0,       // signalCount
 
  // slots: signature, parameters, type, tag, flags
-      18,   12,   11,   11, 0x08,
-      59,   11,   11,   11, 0x08,
-      86,   11,   11,   11, 0x08,
-     112,   11,   11,   11, 0x08,
-     138,   11,   11,   11, 0x08,
-     168,  164,   11,   11, 0x08,
+      12,   11,   11,   11, 0x08,
+      47,   41,   11,   11, 0x08,
+      88,   11,   11,   11, 0x08,
+     115,   11,   11,   11, 0x08,
+     141,   11,   11,   11, 0x08,
+     167,   11,   11,   11, 0x08,
+     197,  193,   11,   11, 0x08,
+     221,   11,   11,   11, 0x08,
+     235,   11,   11,   11, 0x08,
+     257,   11,   11,   11, 0x08,
+     282,   11,   11,   11, 0x08,
+     301,   11,   11,   11, 0x08,
 
        0        // eod
 };
 
 static const char qt_meta_stringdata_MainWindow[] = {
-    "MainWindow\0\0index\0"
-    "on_listWidget_doubleClicked(QModelIndex)\0"
+    "MainWindow\0\0on_actionSave_As_activated()\0"
+    "index\0on_listWidget_doubleClicked(QModelIndex)\0"
     "on_actionAbout_activated()\0"
     "on_actionSave_activated()\0"
     "on_actionOpen_activated()\0"
     "on_actionQuit_activated()\0pos\0"
-    "ShowContextMenu(QPoint)\0"
+    "ShowContextMenu(QPoint)\0RefreshList()\0"
+    "DeleteSelectedModel()\0DuplicateSelectedModel()\0"
+    "CutSelectedModel()\0PasteSelectedModel()\0"
 };
 
 const QMetaObject MainWindow::staticMetaObject = {
@@ -80,15 +88,21 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
         switch (_id) {
-        case 0: on_listWidget_doubleClicked((*reinterpret_cast< QModelIndex(*)>(_a[1]))); break;
-        case 1: on_actionAbout_activated(); break;
-        case 2: on_actionSave_activated(); break;
-        case 3: on_actionOpen_activated(); break;
-        case 4: on_actionQuit_activated(); break;
-        case 5: ShowContextMenu((*reinterpret_cast< const QPoint(*)>(_a[1]))); break;
+        case 0: on_actionSave_As_activated(); break;
+        case 1: on_listWidget_doubleClicked((*reinterpret_cast< QModelIndex(*)>(_a[1]))); break;
+        case 2: on_actionAbout_activated(); break;
+        case 3: on_actionSave_activated(); break;
+        case 4: on_actionOpen_activated(); break;
+        case 5: on_actionQuit_activated(); break;
+        case 6: ShowContextMenu((*reinterpret_cast< const QPoint(*)>(_a[1]))); break;
+        case 7: RefreshList(); break;
+        case 8: DeleteSelectedModel(); break;
+        case 9: DuplicateSelectedModel(); break;
+        case 10: CutSelectedModel(); break;
+        case 11: PasteSelectedModel(); break;
         default: ;
         }
-        _id -= 6;
+        _id -= 12;
     }
     return _id;
 }

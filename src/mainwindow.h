@@ -21,10 +21,14 @@ protected:
 private:
     Ui::MainWindow *ui;
     bool unSaved;
-    int askSave();
+    bool question(QString msg);
+    void alert(QString msg);
+    void setupContextMenu();
+    QString currentFileName;
 
 
 private slots:
+    void on_actionSave_As_activated();
     void on_listWidget_doubleClicked(QModelIndex index);
     void on_actionAbout_activated();
     void on_actionSave_activated();
@@ -32,7 +36,10 @@ private slots:
     void on_actionQuit_activated();
     void ShowContextMenu(const QPoint& pos);
     void RefreshList();
-    void DeleteModel(uint8_t id);
+    void DeleteSelectedModel();
+    void DuplicateSelectedModel();
+    void CutSelectedModel();
+    void PasteSelectedModel();
 
 };
 
