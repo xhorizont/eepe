@@ -20,6 +20,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
+
     unSaved = false;
 
     ui->listWidget->setContextMenuPolicy(Qt::CustomContextMenu);
@@ -30,8 +31,13 @@ MainWindow::MainWindow(QWidget *parent) :
 
 MainWindow::~MainWindow()
 {
+    if(unSaved)
+    {
+         if(question("EEPROM Not Saved, Save now?")) on_actionSave_activated();
+    }
     delete ui;
 }
+
 
 void MainWindow::changeEvent(QEvent *e)
 {
@@ -52,16 +58,22 @@ void MainWindow::on_actionQuit_activated()
 
 void MainWindow::on_actionOpen_activated()
 {
-    if(unSaved) if (!askSave()) return;
+    if(unSaved)
+    {
+         if(question("EEPROM Not Saved, Save now?")) on_actionSave_activated();
+    }
 
-    unSaved = false;
     QString fileName = QFileDialog::getOpenFileName(this, tr("Open EEPROM"), ".", tr("EEPROM Files (*.bin)"));
 
     QFile file(fileName);
-         if (!file.open(QIODevice::ReadOnly)) //assume binary file
-             return;
+    if (!file.open(QIODevice::ReadOnly)) //assume binary file
+    {
+        alert("Could not open " + fileName);
+        return;
+    }
     if(file.size()!=EESIZE)
     {
+        alert("File size is incorrect");
         file.close();
         return;
     }
@@ -69,34 +81,82 @@ void MainWindow::on_actionOpen_activated()
     long result = file.read((char*)&eeprom,EESIZE);
     file.close();
 
-    if (result!=EESIZE) return;
+    if (result!=EESIZE)
+    {
+        alert("Error reading file");
+        return;
+    }
 
+    currentFileName = fileName;
+    unSaved = false;
     memcpy(&eeFs,&eeprom,sizeof(eeFs));
 
     RefreshList();
 
+    //TODO
+    //File not opened
+    //result != EESIZE
+    //format wrong
+
 }
 
-int MainWindow::askSave()
+
+bool MainWindow::question(QString msg)
 {
     QMessageBox msgBox;
-    msgBox.setInformativeText("EEPROM not saved - Save now?");
+    msgBox.setText(msg);
     msgBox.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
     msgBox.setEscapeButton(QMessageBox::No);
-    msgBox.setWindowTitle("Save EEPROM");
-    int ret = msgBox.exec();
-    if(ret) on_actionSave_activated();
-    return ret;
+    msgBox.setWindowTitle("Question");
+    msgBox.setIcon(QMessageBox::Question);
+    return (msgBox.exec() == QMessageBox::Yes);
+}
+
+void MainWindow::alert(QString msg)
+{
+    QMessageBox msgBox;
+    msgBox.setText(msg);
+    msgBox.setStandardButtons(QMessageBox::Close);
+    msgBox.setEscapeButton(QMessageBox::Close);
+    msgBox.setIcon(QMessageBox::Warning);
+    msgBox.setWindowTitle("alert");
 }
 
 void MainWindow::on_actionSave_activated()
 {
-    //QString QFileDialog::getSaveFileName();
+    QString tstr = currentFileName;
+    if(currentFileName.isEmpty()) on_actionSave_As_activated();
+
+    QFile file(currentFileName);
+    if(file.exists() && (tstr!=currentFileName))  // ask confirmation only if overwriting different file
+    {
+        if(!question("File " + currentFileName + " exists, overwrite?")) return;
+    }
+    if(!file.open(QIODevice::WriteOnly))  //assume binary file
+    {
+        alert("Unable to open file for writing.");
+        return;
+    }
+
+    //TODO
+    //File exists
+    //Unable to open file
+    //result!=EESIZE
+    long result = file.write((char*)&eeprom,EESIZE);
+    file.close();
+
+    if(result!=EESIZE) alert("Error saving file");
 
     unSaved = false;
 
 }
 
+
+void MainWindow::on_actionSave_As_activated()
+{
+    currentFileName = QFileDialog::getSaveFileName(this, tr("Open EEPROM"), ".", tr("EEPROM Files (*.bin)"));
+    if(!currentFileName.isEmpty()) on_actionSave_activated();
+}
 
 void MainWindow::RefreshList()
 {
@@ -113,23 +173,38 @@ void MainWindow::RefreshList()
 }
 
 
-void MainWindow::DeleteModel(uint8_t id)
+void MainWindow::DeleteSelectedModel()
 {
-    QMessageBox msgBox;
+    int id=ui->listWidget->currentIndex().row();
+    if(!id) return;
+    id--;
     static char buf[sizeof(g_model.name)+10];
     eeLoadModelName(id,buf,sizeof(buf));
-    QString str = QString(buf);
-    msgBox.setInformativeText("Really Delete Model " + str);
-    msgBox.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
-    msgBox.setEscapeButton(QMessageBox::No);
-    msgBox.setWindowTitle("Delete Model");
-    int ret = msgBox.exec();
-    if(ret)
+    QString str = QString(buf).mid(4,10);
+    if(question("Delete model " + str + "?"))
     {
-        //delete model
+        EFile::rm(FILE_MODEL(id)); //delete file
         RefreshList();
+        unSaved=true;
     }
 }
+
+
+void MainWindow::DuplicateSelectedModel()
+{
+    //duplicate
+}
+
+void MainWindow::CutSelectedModel()
+{
+    //duplicate
+}
+
+void MainWindow::PasteSelectedModel()
+{
+    //duplicate
+}
+
 
 
 void MainWindow::on_actionAbout_activated()
@@ -146,6 +221,8 @@ void MainWindow::on_listWidget_doubleClicked(QModelIndex index)
 
     if(i)
     {
+        //TODO error checking
+        unSaved=true;
         eeLoadModel((uint8_t)i-1);
         ModelEdit t;
         uint8_t temp = g_model.mdVers;
@@ -156,8 +233,10 @@ void MainWindow::on_listWidget_doubleClicked(QModelIndex index)
     }
     else
     {
+        //TODO error checking
         if(eeLoadGeneral())
         {
+            unSaved=true;
             GeneralEdit t;
             t.exec();
         }
@@ -167,22 +246,23 @@ void MainWindow::on_listWidget_doubleClicked(QModelIndex index)
 
 void MainWindow::ShowContextMenu(const QPoint& pos)
 {
-    // for most widgets
     QPoint globalPos = ui->listWidget->mapToGlobal(pos);
-    // for QAbstractScrollArea and derived classes you would use:
-    // QPoint globalPos = myWidget->viewport()->mapToGlobal(pos);
 
-    QMenu myMenu;
-    myMenu.addAction("Delete");
-    myMenu.addAction("Duplicate");
-    myMenu.addAction("Move");
-    // ...
+    QMenu contextMenu;
+    contextMenu.addAction(tr("&Delete"),this,SLOT(DeleteSelectedModel()),tr("Delete"));
+    contextMenu.addAction(tr("D&uplicate"),this,SLOT(DuplicateSelectedModel()),tr("Ctrl+D"));
+    contextMenu.addAction(tr("&Cut"),this,SLOT(CutSelectedModel()),tr("Ctrl+X"));
+    contextMenu.addAction(tr("&Paste"),this,SLOT(PasteSelectedModel()),tr("Ctrl+V"));
 
-    QAction* selectedItem = myMenu.exec(globalPos);
+
+    QAction* selectedItem = contextMenu.exec(globalPos);
     if (selectedItem)
     {
         //something was chosen - do something
+        //if(int i=ui->listWidget->currentIndex().row()) DeleteModel(i-1);
+
     }
 }
+
 
 
