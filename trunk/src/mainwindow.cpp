@@ -11,8 +11,7 @@
 #include "generaledit.h"
 #include <QTabWidget>
 #include <QHeaderView>
-
-
+#include <QMessageBox>
 
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -21,11 +20,12 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    unSaved = false;
+
     ui->listWidget->setContextMenuPolicy(Qt::CustomContextMenu);
 
     connect(ui->listWidget, SIGNAL(customContextMenuRequested(const QPoint&)),
         this, SLOT(ShowContextMenu(const QPoint&)));
-
 }
 
 MainWindow::~MainWindow()
@@ -52,6 +52,9 @@ void MainWindow::on_actionQuit_activated()
 
 void MainWindow::on_actionOpen_activated()
 {
+    if(unSaved) if (!askSave()) return;
+
+    unSaved = false;
     QString fileName = QFileDialog::getOpenFileName(this, tr("Open EEPROM"), ".", tr("EEPROM Files (*.bin)"));
 
     QFile file(fileName);
@@ -74,9 +77,23 @@ void MainWindow::on_actionOpen_activated()
 
 }
 
+int MainWindow::askSave()
+{
+    QMessageBox msgBox;
+    msgBox.setInformativeText("EEPROM not saved - Save now?");
+    msgBox.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
+    msgBox.setEscapeButton(QMessageBox::No);
+    msgBox.setWindowTitle("Save EEPROM");
+    int ret = msgBox.exec();
+    if(ret) on_actionSave_activated();
+    return ret;
+}
+
 void MainWindow::on_actionSave_activated()
 {
     //QString QFileDialog::getSaveFileName();
+
+    unSaved = false;
 
 }
 
@@ -95,6 +112,24 @@ void MainWindow::RefreshList()
     }
 }
 
+
+void MainWindow::DeleteModel(uint8_t id)
+{
+    QMessageBox msgBox;
+    static char buf[sizeof(g_model.name)+10];
+    eeLoadModelName(id,buf,sizeof(buf));
+    QString str = QString(buf);
+    msgBox.setInformativeText("Really Delete Model " + str);
+    msgBox.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
+    msgBox.setEscapeButton(QMessageBox::No);
+    msgBox.setWindowTitle("Delete Model");
+    int ret = msgBox.exec();
+    if(ret)
+    {
+        //delete model
+        RefreshList();
+    }
+}
 
 
 void MainWindow::on_actionAbout_activated()
@@ -146,11 +181,7 @@ void MainWindow::ShowContextMenu(const QPoint& pos)
     QAction* selectedItem = myMenu.exec(globalPos);
     if (selectedItem)
     {
-        // something was chosen, do stuff
-    }
-    else
-    {
-        // nothing was chosen
+        //something was chosen - do something
     }
 }
 
