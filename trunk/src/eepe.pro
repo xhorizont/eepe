@@ -6,8 +6,10 @@ SOURCES       = main.cpp \
 RESOURCES     = eepe.qrc
 
 # install
-target.path = eepe
-sources.files = $$SOURCES $$HEADERS $$RESOURCES $$FORMS eepe.pro images
-sources.path = eepe
-INSTALLS += target sources
+#target.path = $$[QT_INSTALL_EXAMPLES]/mainwindows/eepe
+#sources.files = $$SOURCES $$HEADERS $$RESOURCES $$FORMS eepe.pro images
+#sources.path = $$[QT_INSTALL_EXAMPLES]/mainwindows/eepe
+#INSTALLS += target sources
+
+TARGET = eepe
 
