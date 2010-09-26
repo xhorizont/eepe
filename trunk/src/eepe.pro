@@ -3,13 +3,15 @@ HEADERS += mainwindow.h \
     pers.h \
     myeeprom.h \
     modeledit.h \
-    generaledit.h
+    generaledit.h \
+    mdichild.h
 SOURCES += main.cpp \
     mainwindow.cpp \
     file.cpp \
     pers.cpp \
     modeledit.cpp \
-    generaledit.cpp
+    generaledit.cpp \
+    mdichild.cpp
 RESOURCES += eepe.qrc
 
 # install

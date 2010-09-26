@@ -56,8 +56,7 @@ struct EeFs{
 
 
 
-extern uint8_t eeprom[EESIZE];
-extern EeFs eeFs;
+
 
 
 const uint8_t modn12x3[4][4]= {
