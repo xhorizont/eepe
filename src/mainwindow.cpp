@@ -42,7 +42,7 @@
 #include <QtGui>
 
 #include "mainwindow.h"
-#include "mdichild.h"
+#include "EEPEchild.h"
 
 MainWindow::MainWindow()
 {
