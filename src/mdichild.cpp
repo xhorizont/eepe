@@ -55,7 +55,7 @@ void MdiChild::newFile()
     static int sequenceNumber = 1;
 
     isUntitled = true;
-    curFile = tr("document%1.txt").arg(sequenceNumber++);
+    curFile = tr("document%1.bin").arg(sequenceNumber++);
     setWindowTitle(curFile + "[*]");
 
     connect(document(), SIGNAL(contentsChanged()),
@@ -65,18 +65,31 @@ void MdiChild::newFile()
 bool MdiChild::loadFile(const QString &fileName)
 {
     QFile file(fileName);
-    if (!file.open(QFile::ReadOnly | QFile::Text)) {
-        QMessageBox::warning(this, tr("MDI"),
+    if (!file.open(QFile::ReadOnly)) {  //reading binary file   - TODO HEX support
+        QMessageBox::warning(this, tr("eePe"),
                              tr("Cannot read file %1:\n%2.")
                              .arg(fileName)
                              .arg(file.errorString()));
         return false;
     }
 
-    QTextStream in(&file);
-    QApplication::setOverrideCursor(Qt::WaitCursor);
-    setPlainText(in.readAll());
-    QApplication::restoreOverrideCursor();
+    uint8_t tempbuf[EESIZE];
+
+    long result = file.read((char*)&tempbuf,EESIZE);
+    if (result!=EESIZE)
+    {
+        QMessageBox::warning(this, tr("eePe"),
+                             tr("Error reading file %1:\n%2.")
+                             .arg(fileName)
+                             .arg(file.errorString()));
+        return false;
+    }
+
+    memcpy(&eeprom,&tempbuf,EESIZE);
+    memcpy(&eeFs,&tempbuf,sizeof(eeFs));
+
+    //RefreshList();
+
 
     setCurrentFile(fileName);
 
@@ -108,18 +121,23 @@ bool MdiChild::saveAs()
 bool MdiChild::saveFile(const QString &fileName)
 {
     QFile file(fileName);
-    if (!file.open(QFile::WriteOnly | QFile::Text)) {
-        QMessageBox::warning(this, tr("MDI"),
+    if (!file.open(QFile::WriteOnly)) {
+        QMessageBox::warning(this, tr("eePe"),
                              tr("Cannot write file %1:\n%2.")
                              .arg(fileName)
                              .arg(file.errorString()));
         return false;
     }
 
-    QTextStream out(&file);
-    QApplication::setOverrideCursor(Qt::WaitCursor);
-    out << toPlainText();
-    QApplication::restoreOverrideCursor();
+    long result = file.write((char*)&eeprom,EESIZE);
+    if(result!=EESIZE)
+    {
+        QMessageBox::warning(this, tr("eePe"),
+                             tr("Error writing file %1:\n%2.")
+                             .arg(fileName)
+                             .arg(file.errorString()));
+        return false;
+    }
 
     setCurrentFile(fileName);
     return true;
@@ -148,7 +166,7 @@ bool MdiChild::maybeSave()
 {
     if (document()->isModified()) {
 	QMessageBox::StandardButton ret;
-        ret = QMessageBox::warning(this, tr("MDI"),
+        ret = QMessageBox::warning(this, tr("eePe"),
                      tr("'%1' has been modified.\n"
                         "Do you want to save your changes?")
                      .arg(userFriendlyCurrentFile()),
