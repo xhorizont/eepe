@@ -1,11 +1,15 @@
 HEADERS += mainwindow.h \
     file.h \
     pers.h \
-    myeeprom.h
+    myeeprom.h \
+    modeledit.h \
+    generaledit.h
 SOURCES += main.cpp \
     mainwindow.cpp \
     file.cpp \
-    pers.cpp
+    pers.cpp \
+    modeledit.cpp \
+    generaledit.cpp
 RESOURCES += eepe.qrc
 
 # install
@@ -15,3 +19,5 @@ RESOURCES += eepe.qrc
 # INSTALLS += target sources
 TARGET = eepe
 TEMPLATE = app
+FORMS += modeledit.ui \
+    generaledit.ui
