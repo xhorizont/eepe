@@ -1,15 +1,21 @@
-HEADERS       = mainwindow.h \
-                mdichild.h
-SOURCES       = main.cpp \
+HEADERS       += mainwindow.h \
+                mdichild.h   \
+				file.h       \
+				pers.h       \
+				myeeprom.h   
+SOURCES       += main.cpp \
                 mainwindow.cpp \
-                mdichild.cpp
-RESOURCES     = eepe.qrc
+                mdichild.cpp   \
+				file.cpp       \
+				pers.cpp
+RESOURCES     += eepe.qrc
 
 # install
-#target.path = $$[QT_INSTALL_EXAMPLES]/mainwindows/eepe
+#target.path = eepe
 #sources.files = $$SOURCES $$HEADERS $$RESOURCES $$FORMS eepe.pro images
-#sources.path = $$[QT_INSTALL_EXAMPLES]/mainwindows/eepe
+#sources.path = eepe
 #INSTALLS += target sources
 
 TARGET = eepe
+TEMPLATE = app
 

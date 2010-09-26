@@ -42,6 +42,7 @@
 #include <QtGui>
 
 #include "mdichild.h"
+#include "pers.h"
 
 MdiChild::MdiChild()
 {
