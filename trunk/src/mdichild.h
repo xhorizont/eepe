@@ -39,81 +39,39 @@
 **
 ****************************************************************************/
 
-#ifndef MAINWINDOW_H
-#define MAINWINDOW_H
+#ifndef MDICHILD_H
+#define MDICHILD_H
 
-#include <QMainWindow>
+#include <QTextEdit>
 
-class MdiChild;
-QT_BEGIN_NAMESPACE
-class QAction;
-class QMenu;
-class QMdiArea;
-class QMdiSubWindow;
-class QSignalMapper;
-QT_END_NAMESPACE
-
-class MainWindow : public QMainWindow
+class MdiChild : public QTextEdit
 {
     Q_OBJECT
 
 public:
-    MainWindow();
+    MdiChild();
+
+    void newFile();
+    bool loadFile(const QString &fileName);
+    bool save();
+    bool saveAs();
+    bool saveFile(const QString &fileName);
+    QString userFriendlyCurrentFile();
+    QString currentFile() { return curFile; }
 
 protected:
     void closeEvent(QCloseEvent *event);
 
 private slots:
-    void newFile();
-    void open();
-    void save();
-    void saveAs();
-    void cut();
-    void copy();
-    void paste();
-    void about();
-    void updateMenus();
-    void updateWindowMenu();
-    MdiChild *createMdiChild();
-    void switchLayoutDirection();
-    void setActiveSubWindow(QWidget *window);
+    void documentWasModified();
 
 private:
-    void createActions();
-    void createMenus();
-    void createToolBars();
-    void createStatusBar();
-    void readSettings();
-    void writeSettings();
-    MdiChild *activeMdiChild();
-    QMdiSubWindow *findMdiChild(const QString &fileName);
+    bool maybeSave();
+    void setCurrentFile(const QString &fileName);
+    QString strippedName(const QString &fullFileName);
 
-    QMdiArea *mdiArea;
-    QSignalMapper *windowMapper;
-
-    QMenu *fileMenu;
-    QMenu *editMenu;
-    QMenu *windowMenu;
-    QMenu *helpMenu;
-    QToolBar *fileToolBar;
-    QToolBar *editToolBar;
-    QAction *newAct;
-    QAction *openAct;
-    QAction *saveAct;
-    QAction *saveAsAct;
-    QAction *exitAct;
-    QAction *cutAct;
-    QAction *copyAct;
-    QAction *pasteAct;
-    QAction *closeAct;
-    QAction *closeAllAct;
-    QAction *tileAct;
-    QAction *cascadeAct;
-    QAction *nextAct;
-    QAction *previousAct;
-    QAction *separatorAct;
-    QAction *aboutAct;
-    QAction *aboutQtAct;
+    QString curFile;
+    bool isUntitled;
 };
 
 #endif
