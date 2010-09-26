@@ -64,7 +64,7 @@ MainWindow::MainWindow()
 
     readSettings();
 
-    setWindowTitle(tr("MDI"));
+    setWindowTitle(tr("eePe - EEPROM Editor"));
     setUnifiedTitleAndToolBarOnMac(true);
 }
 
@@ -138,9 +138,8 @@ void MainWindow::paste()
 
 void MainWindow::about()
 {
-   QMessageBox::about(this, tr("About MDI"),
-            tr("The <b>MDI</b> example demonstrates how to write multiple "
-               "document interface applications using Qt."));
+   QMessageBox::about(this, tr("About eePe"),
+                      tr("<center><b>eePe</b> - EEPROM Editor<br><br><a href='http://code.google.com/p/eepe/'>http://code.google.com/p/eepe/</a></center>"));
 }
 
 void MainWindow::updateMenus()
@@ -296,9 +295,9 @@ void MainWindow::createActions()
     aboutAct->setStatusTip(tr("Show the application's About box"));
     connect(aboutAct, SIGNAL(triggered()), this, SLOT(about()));
 
-    aboutQtAct = new QAction(tr("About &Qt"), this);
-    aboutQtAct->setStatusTip(tr("Show the Qt library's About box"));
-    connect(aboutQtAct, SIGNAL(triggered()), qApp, SLOT(aboutQt()));
+    //aboutQtAct = new QAction(tr("About &Qt"), this);
+    //aboutQtAct->setStatusTip(tr("Show the Qt library's About box"));
+    //connect(aboutQtAct, SIGNAL(triggered()), qApp, SLOT(aboutQt()));
 }
 
 void MainWindow::createMenus()
@@ -326,7 +325,7 @@ void MainWindow::createMenus()
 
     helpMenu = menuBar()->addMenu(tr("&Help"));
     helpMenu->addAction(aboutAct);
-    helpMenu->addAction(aboutQtAct);
+    //helpMenu->addAction(aboutQtAct);
 }
 
 void MainWindow::createToolBars()
@@ -349,7 +348,7 @@ void MainWindow::createStatusBar()
 
 void MainWindow::readSettings()
 {
-    QSettings settings("Trolltech", "MDI Example");
+    QSettings settings("er9x-eePe", "eePe");
     QPoint pos = settings.value("pos", QPoint(200, 200)).toPoint();
     QSize size = settings.value("size", QSize(400, 400)).toSize();
     move(pos);
@@ -358,7 +357,7 @@ void MainWindow::readSettings()
 
 void MainWindow::writeSettings()
 {
-    QSettings settings("Trolltech", "MDI Example");
+    QSettings settings("er9x-eePe", "eePe");
     settings.setValue("pos", pos());
     settings.setValue("size", size());
 }
