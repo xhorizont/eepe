@@ -42,11 +42,15 @@
 #ifndef MDICHILD_H
 #define MDICHILD_H
 
-#include <QTextEdit>
+#include <QtGui>
+#include "pers.h"
 
-class MdiChild : public QTextEdit
+class MdiChild : public QListWidget//QMdiSubWindow
 {
     Q_OBJECT
+
+private:
+    EEPFILE eeFile;
 
 public:
     MdiChild();
@@ -56,8 +60,13 @@ public:
     bool save();
     bool saveAs();
     bool saveFile(const QString &fileName);
+    void cut();
+    void copy();
+    void paste();
+    int  selectionIndex();
     QString userFriendlyCurrentFile();
     QString currentFile() { return curFile; }
+    QSize sizeHint();
 
 protected:
     void closeEvent(QCloseEvent *event);
@@ -74,8 +83,6 @@ private:
     QString curFile;
     bool isUntitled;
 
-    uint8_t eeprom[EESIZE];
-    EeFs eeFs;
 };
 
 #endif

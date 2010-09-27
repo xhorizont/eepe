@@ -15,23 +15,42 @@
  */
 
 #include "pers.h"
-
-
-
-EeFs eeFs;
-uint8_t eeprom[EESIZE];
-
-EEGeneral g_eeGeneral;
-ModelData g_model;
-
-
-EFile theFile;  //used for any file operation
-EFile theFile2; //sometimes we need two files
+#include "file.h"
 
 #define FILE_TYP_GENERAL 1
 #define FILE_TYP_MODEL   2
 
-void generalDefault()
+
+EEPFILE::EEPFILE()
+{
+    //EFile *theFile = new EFile();
+    fileChanged = false;
+    memset(&g_eeGeneral,0,sizeof(g_eeGeneral));
+    memset(&g_model,0,sizeof(g_model));
+}
+
+bool EEPFILE::Changed()
+{
+    return fileChanged;
+}
+
+void EEPFILE::loadFile(void* buf)
+{
+    theFile.load(buf);
+}
+
+
+void EEPFILE::saveFile(void* buf)
+{
+    theFile.save(buf);
+}
+
+void EEPFILE::setChanged(bool v)
+{
+    fileChanged = v;
+}
+
+void EEPFILE::generalDefault()
 {
   memset(&g_eeGeneral,0,sizeof(g_eeGeneral));
   g_eeGeneral.myVers   =  GENERAL_MYVER;
@@ -49,7 +68,7 @@ void generalDefault()
   g_eeGeneral.chkSum = sum;
 }
 
-bool eeLoadGeneral()
+bool EEPFILE::eeLoadGeneral()
 {
   theFile.openRd(FILE_GENERAL);
   uint8_t sz = theFile.readRlc((uint8_t*)&g_eeGeneral, sizeof(EEGeneral));
@@ -61,7 +80,7 @@ bool eeLoadGeneral()
   return false;
 }
 
-void modelDefault(uint8_t id)
+void EEPFILE::modelDefault(uint8_t id)
 {
   memset(&g_model, 0, sizeof(g_model));
   //strcpy_P(g_model.name,PSTR("MODEL     "));
@@ -76,7 +95,7 @@ void modelDefault(uint8_t id)
   }
 }
 
-void eeLoadModelName(uint8_t id,char*buf,uint8_t len)
+void EEPFILE::eeLoadModelName(uint8_t id,char*buf,uint8_t len)
 {
   if(id<MAX_MODELS)
   {
@@ -97,7 +116,7 @@ void eeLoadModelName(uint8_t id,char*buf,uint8_t len)
 }
 
 
-void eeLoadModel(uint8_t id)
+void EEPFILE::eeLoadModel(uint8_t id)
 {
   if(id<MAX_MODELS)
   {
@@ -116,47 +135,47 @@ void eeLoadModel(uint8_t id)
   }
 }
 
-bool eeDuplicateModel(uint8_t id)
+bool EEPFILE::eeDuplicateModel(uint8_t id)
 {
-  uint8_t i;
-  for( i=id+1; i<MAX_MODELS; i++)
-  {
-    if(! EFile::exists(FILE_MODEL(i))) break;
-  }
-  if(i==MAX_MODELS) return false; //no free space in directory left
+//  uint8_t i;
+//  for( i=id+1; i<MAX_MODELS; i++)
+//  {
+//    if(! EFile::exists(FILE_MODEL(i))) break;
+//  }
+//  if(i==MAX_MODELS) return false; //no free space in directory left
 
-  theFile.openRd(FILE_MODEL(id));
-  theFile2.create(FILE_MODEL(i),FILE_TYP_MODEL);
-  uint8_t buf[15];
-  uint8_t l;
-  while((l=theFile.read(buf,15)))
-  {
-    theFile2.write(buf,l);
-    //wdt_reset();
-  }
-  theFile2.closeTrunc();
-  //todo error handling
+//  theFile.openRd(FILE_MODEL(id));
+//  theFile2.create(FILE_MODEL(i),FILE_TYP_MODEL);
+//  uint8_t buf[15];
+//  uint8_t l;
+//  while((l=theFile.read(buf,15)))
+//  {
+//    theFile2.write(buf,l);
+//    //wdt_reset();
+//  }
+//  theFile2.closeTrunc();
+//  //todo error handling
   return true;
 }
 
 
-void eeCheck(uint8_t msk)
+void EEPFILE::eeCheck(uint8_t msk)
 {
   if(!msk) return;
 
   if(msk & EE_GENERAL){
-    if(theFile.writeRlc(FILE_TMP, FILE_TYP_GENERAL, (uint8_t*)&g_eeGeneral,sizeof(EEGeneral)) == sizeof(EEGeneral))
+    if(theFile.writeRlc(FILE_GENERAL, FILE_TYP_GENERAL, (uint8_t*)&g_eeGeneral,sizeof(EEGeneral)) == sizeof(EEGeneral))
     {
-        EFile::swap(FILE_GENERAL,FILE_TMP);
+        //swap(FILE_GENERAL,FILE_TMP);
     }else{
         //do some error stuff
     }
   }
     //first finish GENERAL, then MODEL !!avoid Toggle effect
   else if(msk & EE_MODEL){
-    if(theFile.writeRlc(FILE_TMP, FILE_TYP_MODEL, (uint8_t*)&g_model,sizeof(g_model)) == sizeof(g_model))
+    if(theFile.writeRlc(FILE_MODEL(g_eeGeneral.currModel), FILE_TYP_MODEL, (uint8_t*)&g_model,sizeof(g_model)) == sizeof(g_model))
     {
-      EFile::swap(FILE_MODEL(g_eeGeneral.currModel),FILE_TMP);
+      //swap(FILE_MODEL(g_eeGeneral.currModel),FILE_TMP);
     }else{
       //do some error stuff
     }
