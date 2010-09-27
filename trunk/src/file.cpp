@@ -22,78 +22,91 @@
 
 
 
+EFile::EFile()
+{
+    memset(&eeprom,0,sizeof(eeprom));
+    eeFs = (EeFs*)&eeprom;
+}
 
+void EFile::load(void* buf)
+{
+    memcpy(&eeprom,buf,EESIZE);
+}
 
+void EFile::save(void* buf)
+{
+    memcpy(buf,&eeprom,EESIZE);
+}
 
-void eeprom_read_block (void *pointer_ram, uint16_t pointer_eeprom, size_t size)
+void EFile::eeprom_read_block (void *pointer_ram, uint16_t pointer_eeprom, size_t size)
 {
   memcpy(pointer_ram,&eeprom[pointer_eeprom],size);
 }
-void eeWriteBlockCmp(void *i_pointer_ram, uint16_t i_pointer_eeprom, size_t size)
+void EFile::eeWriteBlockCmp(void *i_pointer_ram, uint16_t i_pointer_eeprom, size_t size)
 {
   memcpy(&eeprom[i_pointer_eeprom],i_pointer_ram,size);
 }
 
 
-static uint8_t EeFsRead(uint8_t blk,uint8_t ofs){
+uint8_t EFile::EeFsRead(uint8_t blk,uint8_t ofs){
   uint8_t ret;
   eeprom_read_block(&ret,(uint16_t)(blk*BS+ofs),1);
   return ret;
 }
-static void EeFsWrite(uint8_t blk,uint8_t ofs,uint8_t val){
+void EFile::EeFsWrite(uint8_t blk,uint8_t ofs,uint8_t val){
   eeWriteBlockCmp(&val, (uint16_t)(blk*BS+ofs), 1);
 }
 
-static uint8_t EeFsGetLink(uint8_t blk){
+uint8_t EFile::EeFsGetLink(uint8_t blk){
   return EeFsRead( blk,0);
 }
-static void EeFsSetLink(uint8_t blk,uint8_t val){
+void EFile::EeFsSetLink(uint8_t blk,uint8_t val){
   EeFsWrite( blk,0,val);
 }
-static uint8_t EeFsGetDat(uint8_t blk,uint8_t ofs){
+uint8_t EFile::EeFsGetDat(uint8_t blk,uint8_t ofs){
   return EeFsRead( blk,ofs+1);
 }
-static void EeFsSetDat(uint8_t blk,uint8_t ofs,uint8_t*buf,uint8_t len){
+void EFile::EeFsSetDat(uint8_t blk,uint8_t ofs,uint8_t*buf,uint8_t len){
   //EeFsWrite( blk,ofs+1,val);
   eeWriteBlockCmp(buf, (uint16_t)(blk*BS+ofs+1), len);
 }
-static void EeFsFlushFreelist()
+void EFile::EeFsFlushFreelist()
 {
-  eeWriteBlockCmp(&eeFs.freeList,eeFs.freeList ,sizeof(eeFs.freeList));
+  //eeWriteBlockCmp(eeFs->freeList,eeFs->freeList ,sizeof(eeFs->freeList));
 }
-static void EeFsFlush()
+void EFile::EeFsFlush()
 {
-  eeWriteBlockCmp(&eeFs, 0,sizeof(eeFs));
+  eeWriteBlockCmp(eeFs, 0,sizeof(eeFs));
 }
 
-uint16_t EeFsGetFree()
+uint16_t EFile::EeFsGetFree()
 {
   uint16_t  ret = 0;
-  uint8_t i = eeFs.freeList;
+  uint8_t i = eeFs->freeList;
   while( i ){
     ret += BS-1;
     i = EeFsGetLink(i);
   }
   return ret;
 }
-static void EeFsFree(uint8_t blk){///free one or more blocks
+void EFile::EeFsFree(uint8_t blk){///free one or more blocks
   uint8_t i = blk;
   while( EeFsGetLink(i)) i = EeFsGetLink(i);
-  EeFsSetLink(i,eeFs.freeList);
-  eeFs.freeList = blk; //chain in front
+  EeFsSetLink(i,eeFs->freeList);
+  eeFs->freeList = blk; //chain in front
   EeFsFlushFreelist();
 }
-static uint8_t EeFsAlloc(){ ///alloc one block from freelist
-  uint8_t ret=eeFs.freeList;
+uint8_t EFile::EeFsAlloc(){ ///alloc one block from freelist
+  uint8_t ret=eeFs->freeList;
   if(ret){
-    eeFs.freeList = EeFsGetLink(ret);
+    eeFs->freeList = EeFsGetLink(ret);
     EeFsFlushFreelist();
     EeFsSetLink(ret,0);
   }
   return ret;
 }
 
-int8_t EeFsck()
+int8_t EFile::EeFsck()
 {
   uint8_t *bufp;
   static uint8_t buffer[BLOCKS];
@@ -102,11 +115,11 @@ int8_t EeFsck()
   uint8_t blk ;
   int8_t ret=0;
   for(uint8_t i = 0; i <= MAXFILES; i++){
-    uint8_t *startP = i==MAXFILES ? &eeFs.freeList : &eeFs.files[i].startBlk;
+    uint8_t *startP = i==MAXFILES ? &(eeFs->freeList) : &(eeFs->files[i].startBlk);
     uint8_t lastBlk = 0;
     blk = *startP;
-      //if(i == MAXFILES) blk = eeFs.freeList;
-      //    else              blk = eeFs.files[i].startBlk;
+      //if(i == MAXFILES) blk = eeFs->freeList;
+      //    else              blk = eeFs->files[i].startBlk;
     while(blk){
       //      if(blk <  FIRSTBLK ) goto err_1; //bad blk index
       //      if(blk >= BLOCKS   ) goto err_2; //bad blk index
@@ -131,8 +144,8 @@ int8_t EeFsck()
   }
   for(blk = FIRSTBLK; blk < BLOCKS; blk++){
     if(bufp[blk]==0) {       //goto err_4; //unused block
-      EeFsSetLink(blk,eeFs.freeList);
-      eeFs.freeList = blk; //chain in front
+      EeFsSetLink(blk,eeFs->freeList);
+      eeFs->freeList = blk; //chain in front
       EeFsFlushFreelist();
     }
   }
@@ -144,64 +157,64 @@ int8_t EeFsck()
   //  }
   return ret;
 }
-void EeFsFormat()
+void EFile::EeFsFormat()
 {
-  if(sizeof(eeFs) != RESV){
-    extern void eeprom_RESV_mismatch();
-    eeprom_RESV_mismatch();
-  }
-  memset(&eeFs,0, sizeof(eeFs));
-  eeFs.version  = EEFS_VERS;
-  eeFs.mySize   = sizeof(eeFs);
-  eeFs.freeList = 0;
-  eeFs.bs       = BS;
+//  if(sizeof(eeFs) != RESV){
+//    extern void eeprom_RESV_mismatch();
+//    eeprom_RESV_mismatch();
+//  }
+  memset(eeFs,0, sizeof(EeFs));
+  eeFs->version  = EEFS_VERS;
+  eeFs->mySize   = sizeof(eeFs);
+  eeFs->freeList = 0;
+  eeFs->bs       = BS;
   for(uint8_t i = FIRSTBLK; i < BLOCKS; i++) EeFsSetLink(i,i+1);
   EeFsSetLink(BLOCKS-1, 0);
-  eeFs.freeList = FIRSTBLK;
+  eeFs->freeList = FIRSTBLK;
   EeFsFlush();
 }
-bool EeFsOpen()
+bool EFile::EeFsOpen()
 {
   eeprom_read_block(&eeFs,0,sizeof(eeFs));
 
-  return eeFs.version == EEFS_VERS && eeFs.mySize  == sizeof(eeFs);
+  return eeFs->version == EEFS_VERS && eeFs->mySize  == sizeof(eeFs);
 }
 
 bool EFile::exists(uint8_t i_fileId)
 {
-  return eeFs.files[i_fileId].startBlk;
+  return eeFs->files[i_fileId].startBlk;
 }
 
 void EFile::swap(uint8_t i_fileId1,uint8_t i_fileId2)
 {
-  DirEnt            tmp = eeFs.files[i_fileId1];
-  eeFs.files[i_fileId1] = eeFs.files[i_fileId2];
-  eeFs.files[i_fileId2] = tmp;;
+  DirEnt            tmp = eeFs->files[i_fileId1];
+  eeFs->files[i_fileId1] = eeFs->files[i_fileId2];
+  eeFs->files[i_fileId2] = tmp;;
   EeFsFlush();
 }
 
 void EFile::rm(uint8_t i_fileId){
-  uint8_t i = eeFs.files[i_fileId].startBlk;
-  memset(&eeFs.files[i_fileId], 0, sizeof(eeFs.files[i_fileId]));
+  uint8_t i = eeFs->files[i_fileId].startBlk;
+  memset(&(eeFs->files[i_fileId]), 0, sizeof(eeFs->files[i_fileId]));
   EeFsFlush(); //chained out
 
   if(i) EeFsFree( i ); //chain in
 }
 
 uint16_t EFile::size(){
-  return eeFs.files[m_fileId].size;
+  return eeFs->files[m_fileId].size;
 }
 uint8_t EFile::openRd(uint8_t i_fileId){
   m_fileId = i_fileId;
   m_pos      = 0;
-  m_currBlk  = eeFs.files[m_fileId].startBlk;
+  m_currBlk  = eeFs->files[m_fileId].startBlk;
   m_ofs      = 0;
   m_bRlc     = 0;
   m_err      = ERR_NONE;       //error reasons
-  return  eeFs.files[m_fileId].typ;
+  return  eeFs->files[m_fileId].typ;
 }
 uint8_t EFile::read(uint8_t*buf,uint16_t i_len){
-  uint16_t len = eeFs.files[m_fileId].size - m_pos;
+  uint16_t len = eeFs->files[m_fileId].size - m_pos;
   if(len < i_len) i_len = len;
   len = i_len;
   while(len)
@@ -241,7 +254,7 @@ uint8_t EFile::write(uint8_t*buf,uint8_t i_len){
   uint8_t len=i_len;
   if(!m_currBlk && m_pos==0)
   {
-    eeFs.files[m_fileId].startBlk = m_currBlk = EeFsAlloc();
+    eeFs->files[m_fileId].startBlk = m_currBlk = EeFsAlloc();
   }
   while(len)
   {
@@ -271,13 +284,13 @@ uint8_t EFile::write(uint8_t*buf,uint8_t i_len){
 }
 void EFile::create(uint8_t i_fileId, uint8_t typ){
   openRd(i_fileId); //internal use
-  eeFs.files[i_fileId].typ      = typ;
-  eeFs.files[i_fileId].size     = 0;
+  eeFs->files[i_fileId].typ      = typ;
+  eeFs->files[i_fileId].size     = 0;
 }
 void EFile::closeTrunc()
 {
   uint8_t fri=0;
-  eeFs.files[m_fileId].size     = m_pos;
+  eeFs->files[m_fileId].size     = m_pos;
   if(m_currBlk && ( fri = EeFsGetLink(m_currBlk)))    EeFsSetLink(m_currBlk, 0);
   EeFsFlush(); //chained out
 
@@ -326,8 +339,4 @@ uint16_t EFile::writeRlc(uint8_t i_fileId, uint8_t typ,uint8_t*buf,uint16_t i_le
 }
 
 
-uint8_t EFile::errno()
-{
-    return m_err;
-}
 

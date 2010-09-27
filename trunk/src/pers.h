@@ -14,11 +14,14 @@
  *
  */
 
+
+#ifndef pers_h
+#define pers_h
+
 #define VERS 1
 
 #include <inttypes.h>
 #include <string.h>
-
 
 
 
@@ -52,7 +55,7 @@ struct EeFs{
 
 
 
-#include "file.h"
+
 
 
 
@@ -148,12 +151,6 @@ enum EnumKeys {
 #define GETADC_FILT = 2
 
 
-
-
-
-
-
-
 /// liefert Dimension eines Arrays
 #define DIM(arr) (sizeof((arr))/sizeof((arr)[0]))
 
@@ -189,6 +186,44 @@ bool eeLoadGeneral();
 
 
 
+
+#include "file.h"
 #include "myeeprom.h"
+
+
+class EEPFILE
+{
+
+    EEGeneral g_eeGeneral;
+    ModelData g_model;
+    EFile theFile;
+    bool fileChanged;
+
+
+
+
+public:
+    EEPFILE();
+
+    bool Changed();
+    void setChanged(bool v);
+    void loadFile(void* buf);
+    void saveFile(void* buf);
+
+
+    void eeCheck(uint8_t msk);
+    bool eeDuplicateModel(uint8_t id);
+    void eeLoadModel(uint8_t id);
+    void eeLoadModelName(uint8_t id,char*buf,uint8_t len);
+    void modelDefault(uint8_t id);
+    bool eeLoadGeneral();
+    void generalDefault();
+
+};
+
+
+
+
+#endif //pers_h
 
 

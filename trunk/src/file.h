@@ -23,13 +23,12 @@
 #define FILE_MODEL(n) (1+n)
 #define FILE_TMP      (1+16)
 
-bool EeFsOpen();
-int8_t EeFsck();
-void EeFsFormat();
-uint16_t EeFsGetFree();
+
 #define ERR_NONE 0
 #define ERR_FULL 1
 #define ERR_TMO  2
+
+
 class EFile
 {
   uint8_t  m_fileId;    //index of file in directory = filename
@@ -38,16 +37,55 @@ class EFile
   uint8_t  m_ofs;       //offset inside of the current block
   uint8_t  m_bRlc;      //control byte for run length decoder
   uint8_t  m_err;       //error reasons
-  uint16_t m_stopTime10ms; //maximum point of time for writing
+  //uint16_t m_stopTime10ms; //maximum point of time for writing
+
+
+  uint8_t eeprom[EESIZE];
+  EeFs    *eeFs;
+
+  //bool EeFsOpen();
+  //int8_t EeFsck();
+  //void EeFsFormat();
+  //uint16_t EeFsGetFree();
+
+
+
+
+
+  void eeprom_read_block (void *pointer_ram, uint16_t pointer_eeprom, size_t size);
+  void eeWriteBlockCmp(void *i_pointer_ram, uint16_t i_pointer_eeprom, size_t size);
+  uint8_t EeFsRead(uint8_t blk,uint8_t ofs);
+  void EeFsWrite(uint8_t blk,uint8_t ofs,uint8_t val);
+  uint8_t EeFsGetLink(uint8_t blk);
+  void EeFsSetLink(uint8_t blk,uint8_t val);
+  uint8_t EeFsGetDat(uint8_t blk,uint8_t ofs);
+  void EeFsSetDat(uint8_t blk,uint8_t ofs,uint8_t*buf,uint8_t len);
+  void EeFsFlushFreelist();
+  void EeFsFlush();
+  uint16_t EeFsGetFree();
+  void EeFsFree(uint8_t blk);///free one or more blocks
+  uint8_t EeFsAlloc(); ///alloc one block from freelist
+  int8_t EeFsck();
+  void EeFsFormat();
+  bool EeFsOpen();
+
+
+
+
 public:
+
+  EFile();
+
+  void load(void* buf);
+  void save(void* buf);
   ///remove contents of given file
-  static void rm(uint8_t i_fileId); 
+  void rm(uint8_t i_fileId);
 
   ///swap contents of file1 with them of file2
-  static void swap(uint8_t i_fileId1,uint8_t i_fileId2); 
+  void swap(uint8_t i_fileId1,uint8_t i_fileId2);
 
   ///return true if the file with given fileid exists
-  static bool exists(uint8_t i_fileId); 
+  bool exists(uint8_t i_fileId);
 
   ///open file for reading, no close necessary
   ///for writing use writeRlc() or create()
@@ -72,8 +110,11 @@ public:
   uint16_t size(); 
   ///read from opened file and decode rlc-coded data
   uint16_t readRlc(uint8_t*buf,uint16_t i_len);
-  ///deliver current errno, this is reset in open
-  uint8_t errno();
+
+
+
+
+
 };
 
 #endif

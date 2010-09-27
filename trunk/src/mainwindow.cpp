@@ -157,7 +157,7 @@ void MainWindow::updateMenus()
     separatorAct->setVisible(hasMdiChild);
 
     bool hasSelection = (activeMdiChild() &&
-                         activeMdiChild()->textCursor().hasSelection());
+                         activeMdiChild()->selectionIndex());
     cutAct->setEnabled(hasSelection);
     copyAct->setEnabled(hasSelection);
 }
@@ -202,10 +202,11 @@ MdiChild *MainWindow::createMdiChild()
     MdiChild *child = new MdiChild;
     mdiArea->addSubWindow(child);
 
-    connect(child, SIGNAL(copyAvailable(bool)),
-            cutAct, SLOT(setEnabled(bool)));
-    connect(child, SIGNAL(copyAvailable(bool)),
-            copyAct, SLOT(setEnabled(bool)));
+    //connect(child, SIGNAL(copyAvailable(bool)),
+    //        cutAct, SLOT(setEnabled(bool)));
+    //connect(child, SIGNAL(copyAvailable(bool)),
+    //        copyAct, SLOT(setEnabled(bool)));
+    // TODO - Define these signals -> copyAvailable
 
     return child;
 }

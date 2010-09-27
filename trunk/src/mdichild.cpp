@@ -47,25 +47,55 @@
 MdiChild::MdiChild()
 {
     setAttribute(Qt::WA_DeleteOnClose);
-    setReadOnly(true);
+
+
+    this->setFont(QFont("Courier New",12));
     refreshList();
+    if(!(this->isMaximized() || this->isMinimized())) this->adjustSize();
     isUntitled = true;
+}
+
+
+QSize MdiChild::sizeHint()
+{
+    return QSize(300,400);
 }
 
 void MdiChild::refreshList()
 {
-//    ui->listWidget->clear();
-//    ui->listWidget->addItem("General Settings");
-//
-//    for(uint8_t i=0; i<MAX_MODELS; i++)
-//    {
-//        static char buf[sizeof(g_model.name)+10];
-//        eeLoadModelName(i,buf,sizeof(buf));
-//        QString str = QString(buf);
-//        ui->listWidget->addItem(str);
-//    }
+    clear();
+    addItem("General Settings");
+
+    for(uint8_t i=0; i<MAX_MODELS; i++)
+    {
+        static char buf[sizeof(g_model.name)+10];
+        eeFile.eeLoadModelName(i,buf,sizeof(buf));
+        QString str = QString(buf);
+        addItem(str);
+    }
+
 }
 
+
+void MdiChild::cut()
+{
+    //cut
+}
+
+void MdiChild::copy()
+{
+    //copy
+}
+
+void MdiChild::paste()
+{
+    //paste
+}
+
+int  MdiChild::selectionIndex()
+{
+    return 1;
+}
 
 void MdiChild::newFile()
 {
@@ -75,8 +105,8 @@ void MdiChild::newFile()
     curFile = tr("document%1.bin").arg(sequenceNumber++);
     setWindowTitle(curFile + "[*]");
 
-    connect(document(), SIGNAL(contentsChanged()),
-            this, SLOT(documentWasModified()));
+    //connect(eeFile, SIGNAL(contentsChanged()),
+    //        this, SLOT(documentWasModified()));
 }
 
 bool MdiChild::loadFile(const QString &fileName)
@@ -90,9 +120,10 @@ bool MdiChild::loadFile(const QString &fileName)
         return false;
     }
 
-    uint8_t tempbuf[EESIZE];
 
-    long result = file.read((char*)&tempbuf,EESIZE);
+    uint8_t temp[EESIZE];
+
+    long result = file.read((char*)&temp,EESIZE);
     if (result!=EESIZE)
     {
         QMessageBox::warning(this, tr("eePe"),
@@ -102,16 +133,12 @@ bool MdiChild::loadFile(const QString &fileName)
         return false;
     }
 
-    memcpy(&eeprom,&tempbuf,EESIZE);
-    memcpy(&eeFs,&tempbuf,sizeof(eeFs));
-
-    //RefreshList();
-
-
+    eeFile.loadFile(&temp);
+    refreshList();
     setCurrentFile(fileName);
 
-    connect(document(), SIGNAL(contentsChanged()),
-            this, SLOT(documentWasModified()));
+    //connect(eeFile(), SIGNAL(contentsChanged()),
+    //        this, SLOT(documentWasModified()));
 
     return true;
 }
@@ -146,7 +173,10 @@ bool MdiChild::saveFile(const QString &fileName)
         return false;
     }
 
-    long result = file.write((char*)&eeprom,EESIZE);
+    uint8_t temp[EESIZE];
+    eeFile.saveFile(&temp);
+
+    long result = file.write((char*)&temp,EESIZE);
     if(result!=EESIZE)
     {
         QMessageBox::warning(this, tr("eePe"),
@@ -176,12 +206,12 @@ void MdiChild::closeEvent(QCloseEvent *event)
 
 void MdiChild::documentWasModified()
 {
-    setWindowModified(document()->isModified());
+    setWindowModified(eeFile.Changed());
 }
 
 bool MdiChild::maybeSave()
 {
-    if (document()->isModified()) {
+    if (eeFile.Changed()) {
 	QMessageBox::StandardButton ret;
         ret = QMessageBox::warning(this, tr("eePe"),
                      tr("'%1' has been modified.\n"
@@ -202,7 +232,7 @@ void MdiChild::setCurrentFile(const QString &fileName)
 {
     curFile = QFileInfo(fileName).canonicalFilePath();
     isUntitled = false;
-    document()->setModified(false);
+    eeFile.setChanged(false);
     setWindowModified(false);
     setWindowTitle(userFriendlyCurrentFile() + "[*]");
 }
