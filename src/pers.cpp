@@ -70,8 +70,10 @@ void EEPFILE::generalDefault()
 
 bool EEPFILE::eeLoadGeneral()
 {
-  theFile.openRd(FILE_GENERAL);
-  uint8_t sz = theFile.readRlc((uint8_t*)&g_eeGeneral, sizeof(EEGeneral));
+  bool ret = getGeneralSettings(&g_eeGeneral);
+
+  if (!ret) return false;
+
   uint16_t sum=0;
   if(sz == sizeof(EEGeneral)  && g_eeGeneral.myVers==GENERAL_MYVER){
     for(int i=0; i<12;i++) sum+=g_eeGeneral.calibMid[i];
@@ -127,68 +129,52 @@ void EEPFILE::curmodelName(char* buf)
     memcpy(buf,&g_model.name,sizeof(g_model.name));
 }
 
-void EEPFILE::eeLoadModel(uint8_t id)
+bool EEPFILE::eeLoadModel(uint8_t id)
 {
-  if(id<MAX_MODELS)
-  {
-    theFile.openRd(FILE_MODEL(id));
-    uint16_t sz = theFile.readRlc((uint8_t*)&g_model, sizeof(g_model));
-
-    switch (g_model.mdVers){
-
-      default:
-        if(sz != sizeof(ModelData)) {
-          //alert("Error Loading Model");
-          modelDefault(id);
-        }
-        break;
-    }
-  }
-}
-
-bool EEPFILE::eeDuplicateModel(uint8_t id)
-{
-//  uint8_t i;
-//  for( i=id+1; i<MAX_MODELS; i++)
-//  {
-//    if(! EFile::exists(FILE_MODEL(i))) break;
-//  }
-//  if(i==MAX_MODELS) return false; //no free space in directory left
-
-//  theFile.openRd(FILE_MODEL(id));
-//  theFile2.create(FILE_MODEL(i),FILE_TYP_MODEL);
-//  uint8_t buf[15];
-//  uint8_t l;
-//  while((l=theFile.read(buf,15)))
-//  {
-//    theFile2.write(buf,l);
-//    //wdt_reset();
-//  }
-//  theFile2.closeTrunc();
-//  //todo error handling
-  return true;
+  return getModel(&g_model, id);
 }
 
 
-void EEPFILE::eeCheck(uint8_t msk)
-{
-  if(!msk) return;
 
-  if(msk & EE_GENERAL){
-    if(theFile.writeRlc(FILE_GENERAL, FILE_TYP_GENERAL, (uint8_t*)&g_eeGeneral,sizeof(EEGeneral)) == sizeof(EEGeneral))
+bool EEPFILE::getModel(ModelData* model, uint8_t id)
+{
+    uint16_t sz = 0;
+
+    if(id<MAX_MODELS)
     {
-        //swap(FILE_GENERAL,FILE_TMP);
-    }else{
-        //do some error stuff
+      theFile.openRd(FILE_MODEL(id));
+      sz = theFile.readRlc((uint8_t*)model, sizeof(g_model));
     }
-  }
-    //first finish GENERAL, then MODEL !!avoid Toggle effect
-  else if(msk & EE_MODEL){
-    if(theFile.writeRlc(FILE_MODEL(g_eeGeneral.currModel), FILE_TYP_MODEL, (uint8_t*)&g_model,sizeof(g_model)) == sizeof(g_model))
+
+    return (sz == sizeof(ModelData));
+}
+
+bool EEPFILE::putModel(ModelData* model, uint8_t id)
+{
+    uint16_t sz = 0;
+
+    if(id<MAX_MODELS)
     {
-      //swap(FILE_MODEL(g_eeGeneral.currModel),FILE_TMP);
-    }else{
-      //do some error stuff
+        sz = theFile.writeRlc(FILE_TMP, FILE_TYP_MODEL, (uint8_t*)model, sizeof(ModelData));
+        if(sz == sizeof(ModelData)) theFile.swap(FILE_MODEL(id),FILE_TMP);
     }
-  }
+
+    return (sz == sizeof(ModelData));
+}
+
+bool EEPFILE::getGeneralSettings(EEGeneral* setData)
+{
+    theFile.openRd(FILE_GENERAL);
+    uint8_t sz = theFile.readRlc((uint8_t*)setData, sizeof(EEGeneral));
+
+}
+
+bool EEPFILE::putGeneralSettings(EEGeneral* setData)
+{
+    uint16_t sz = 0;
+
+    sz = theFile.writeRlc(FILE_TMP, FILE_TYP_GENERAL, (uint8_t*)setData, sizeof(EEGeneral));
+    if(sz == sizeof(EEGeneral)) theFile.swap(FILE_GENERAL,FILE_TMP);
+
+    return (sz == sizeof(EEGeneral));
 }

@@ -57,7 +57,6 @@ MdiChild::MdiChild()
 
     connect(this, SIGNAL(itemActivated(QListWidgetItem*)), this, SLOT(OpenEditWindow()));
     this->setSelectionMode(QAbstractItemView::MultiSelection);
-
 }
 
 
@@ -112,12 +111,20 @@ void MdiChild::deleteSelected(bool ask=true)
 
 void MdiChild::copy()
 {
-    QMessageBox::warning(this, tr("eePe"),tr("Copy"));
+    //do copy
+
 }
 
 void MdiChild::paste()
 {
-    QMessageBox::warning(this, tr("eePe"),tr("Paste"));
+//    if(clipboard info available)
+//    {
+
+//        refreshList();
+//        eeFile.setChanged(true);
+//        documentWasModified();
+//    }
+
 }
 
 bool MdiChild::hasSelection()
@@ -165,12 +172,16 @@ void MdiChild::OpenEditWindow()
         //TODO error checking
         eeFile.setChanged(true);
         documentWasModified();
-        eeFile.eeLoadModel((uint8_t)i-1);
-        char buf[11];
-        eeFile.curmodelName((char*)&buf);
-        ModelEdit t;
-        t.setWindowTitle(tr("Editing model %1: ").arg(i) + QString(buf));
-        t.exec();
+        if(eeFile.eeLoadModel((uint8_t)i-1))
+        {
+            char buf[11];
+            eeFile.curmodelName((char*)&buf);
+            ModelEdit t;
+            t.setWindowTitle(tr("Editing model %1: ").arg(i) + QString(buf));
+            t.exec();
+        }
+        else
+            QMessageBox::critical(this, tr("eePe"),tr("Unable to read model data!"));
     }
     else
     {
@@ -182,6 +193,9 @@ void MdiChild::OpenEditWindow()
             GeneralEdit t;
             t.exec();
         }
+        else
+            QMessageBox::critical(this, tr("eePe"),tr("Unable to read settings!"));
+
     }
 
 }
@@ -210,15 +224,24 @@ bool MdiChild::loadFile(const QString &fileName)
     }
 
 
-    uint8_t temp[EESIZE];
+    if(file.size()!=EESIZE)
+    {
+        QMessageBox::critical(this, tr("eePe"),tr("Unable to read file %1!").arg(fileName));
+        file.close();
+        return false;
+    }
 
+    uint8_t temp[EESIZE];
     long result = file.read((char*)&temp,EESIZE);
+    file.close();
+
     if (result!=EESIZE)
     {
         QMessageBox::warning(this, tr("eePe"),
                              tr("Error reading file %1:\n%2.")
                              .arg(fileName)
                              .arg(file.errorString()));
+
         return false;
     }
 
