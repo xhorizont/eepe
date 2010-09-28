@@ -27,6 +27,11 @@ EEPFILE::EEPFILE()
     fileChanged = false;
     memset(&g_eeGeneral,0,sizeof(g_eeGeneral));
     memset(&g_model,0,sizeof(g_model));
+
+
+    generalDefault();
+    putGeneralSettings(&g_eeGeneral);
+
 }
 
 bool EEPFILE::Changed()
@@ -75,7 +80,7 @@ bool EEPFILE::eeLoadGeneral()
   if (!ret) return false;
 
   uint16_t sum=0;
-  if(sz == sizeof(EEGeneral)  && g_eeGeneral.myVers==GENERAL_MYVER){
+  if(g_eeGeneral.myVers==GENERAL_MYVER){
     for(int i=0; i<12;i++) sum+=g_eeGeneral.calibMid[i];
     return g_eeGeneral.chkSum == sum;
   }
@@ -156,7 +161,8 @@ bool EEPFILE::putModel(ModelData* model, uint8_t id)
     if(id<MAX_MODELS)
     {
         sz = theFile.writeRlc(FILE_TMP, FILE_TYP_MODEL, (uint8_t*)model, sizeof(ModelData));
-        if(sz == sizeof(ModelData)) theFile.swap(FILE_MODEL(id),FILE_TMP);
+        if(sz == sizeof(ModelData))
+            theFile.swap(FILE_MODEL(id),FILE_TMP);
     }
 
     return (sz == sizeof(ModelData));
@@ -167,6 +173,7 @@ bool EEPFILE::getGeneralSettings(EEGeneral* setData)
     theFile.openRd(FILE_GENERAL);
     uint8_t sz = theFile.readRlc((uint8_t*)setData, sizeof(EEGeneral));
 
+    return (sz == sizeof(EEGeneral));
 }
 
 bool EEPFILE::putGeneralSettings(EEGeneral* setData)

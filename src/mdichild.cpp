@@ -111,19 +111,78 @@ void MdiChild::deleteSelected(bool ask=true)
 
 void MdiChild::copy()
 {
-    //do copy
+    QByteArray gmData;
+    bool hasGeneral = false;
 
+    foreach(QModelIndex index, this->selectionModel()->selectedIndexes())
+    {
+        if(!index.row())
+        {
+            EEGeneral tgen;
+            eeFile.getGeneralSettings(&tgen);
+            hasGeneral = false;
+            gmData.append('G');
+            gmData.append((char*)&tgen,sizeof(tgen));
+        }
+        else
+        {
+            ModelData tmod;
+            eeFile.getModel(&tmod,index.row()-1);
+            gmData.append('M');
+            gmData.append((char*)&tmod,sizeof(tmod));
+        }
+    }
+
+    QMimeData *mimeData = new QMimeData;
+    mimeData->setData("bin/eepe", gmData);
+
+    QClipboard *clipboard = QApplication::clipboard();
+    clipboard->setMimeData(mimeData,QClipboard::Clipboard);
 }
 
 void MdiChild::paste()
 {
-//    if(clipboard info available)
-//    {
+    const QClipboard *clipboard = QApplication::clipboard();
+    const QMimeData *mimeData = clipboard->mimeData();
 
-//        refreshList();
-//        eeFile.setChanged(true);
-//        documentWasModified();
-//    }
+
+    if(mimeData->hasFormat("bin/eepe"))
+    {
+        QByteArray gmData = mimeData->data("bin/eepe");
+        char* gData = gmData.data();
+        int i = 0;
+        int id = this->currentRow();
+        if(!id) id++;
+        this->clearSelection();
+
+        while((i<gmData.size()) && (id<=MAX_MODELS))
+        {
+            char c = *gData;
+            i++;
+            gData++;
+            if(c=='G')  //general settings
+            {
+                eeFile.putGeneralSettings((EEGeneral*)&gData);
+                gData += sizeof(EEGeneral);
+                i     += sizeof(EEGeneral);
+                this->setCurrentRow(0,QItemSelectionModel::Select);
+            }
+            else //model data
+            {
+                //ModelData md;
+                //memcpy(&md,gData,sizeof(ModelData));
+                eeFile.putModel((ModelData*)gData,id-1);
+                this->setCurrentRow(id,QItemSelectionModel::Select);
+                gData += sizeof(ModelData);
+                i     += sizeof(ModelData);
+                id++;
+            }
+        }
+
+        refreshList();
+        eeFile.setChanged(true);
+        documentWasModified();
+    }
 
 }
 
