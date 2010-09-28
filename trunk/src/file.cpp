@@ -26,6 +26,8 @@ EFile::EFile()
 {
     memset(&eeprom,0,sizeof(eeprom));
     eeFs = (EeFs*)&eeprom;
+
+    EeFsFormat();
 }
 
 void EFile::load(void* buf)
@@ -337,6 +339,4 @@ uint16_t EFile::writeRlc(uint8_t i_fileId, uint8_t typ,uint8_t*buf,uint16_t i_le
   closeTrunc();
   return i_len;
 }
-
-
 
