@@ -215,7 +215,9 @@ public:
     bool eeDuplicateModel(uint8_t id);
     void eeLoadModel(uint8_t id);
     void eeLoadModelName(uint8_t id,char*buf,uint8_t len);
+    void curmodelName(char* buf);
     void modelDefault(uint8_t id);
+    void DeleteModel(uint8_t id);
     bool eeLoadGeneral();
     void generalDefault();
 

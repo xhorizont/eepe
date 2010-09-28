@@ -157,7 +157,7 @@ void MainWindow::updateMenus()
     separatorAct->setVisible(hasMdiChild);
 
     bool hasSelection = (activeMdiChild() &&
-                         activeMdiChild()->selectionIndex());
+                         activeMdiChild()->hasSelection());
     cutAct->setEnabled(hasSelection);
     copyAct->setEnabled(hasSelection);
 }

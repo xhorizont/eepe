@@ -43,16 +43,21 @@
 
 #include "mdichild.h"
 #include "pers.h"
+#include "modeledit.h"
+#include "generaledit.h"
 
 MdiChild::MdiChild()
 {
     setAttribute(Qt::WA_DeleteOnClose);
 
-
     this->setFont(QFont("Courier New",12));
     refreshList();
     if(!(this->isMaximized() || this->isMinimized())) this->adjustSize();
     isUntitled = true;
+
+    connect(this, SIGNAL(itemActivated(QListWidgetItem*)), this, SLOT(OpenEditWindow()));
+    this->setSelectionMode(QAbstractItemView::MultiSelection);
+
 }
 
 
@@ -79,22 +84,106 @@ void MdiChild::refreshList()
 
 void MdiChild::cut()
 {
-    //cut
+    copy();
+    deleteSelected(false);
+}
+
+void MdiChild::deleteSelected(bool ask=true)
+{
+    QMessageBox::StandardButton ret = QMessageBox::No;
+
+    if(ask)
+        ret = QMessageBox::warning(this, tr("eePe"),
+                 tr("Delete Selected Models?"),
+                 QMessageBox::Yes | QMessageBox::No);
+
+
+    if ((ret == QMessageBox::Yes) || (!ask))
+    {
+           foreach(QModelIndex index, this->selectionModel()->selectedIndexes())
+           {
+               if(index.row()>0)eeFile.DeleteModel(index.row());
+           }
+           refreshList();
+           eeFile.setChanged(true);
+           documentWasModified();
+    }
 }
 
 void MdiChild::copy()
 {
-    //copy
+    QMessageBox::warning(this, tr("eePe"),tr("Copy"));
 }
 
 void MdiChild::paste()
 {
-    //paste
+    QMessageBox::warning(this, tr("eePe"),tr("Paste"));
 }
 
-int  MdiChild::selectionIndex()
+bool MdiChild::hasSelection()
 {
-    return 1;
+    return (this->selectedIndexes().count()>0);
+}
+
+void MdiChild::keyPressEvent(QKeyEvent *event)
+{
+    if(event->matches(QKeySequence::Delete))
+    {
+        deleteSelected();
+        return;
+    }
+
+    if(event->matches(QKeySequence::Cut))
+    {
+        cut();
+        return;
+    }
+
+    if(event->matches(QKeySequence::Copy))
+    {
+        copy();
+        return;
+    }
+
+    if(event->matches(QKeySequence::Paste))
+    {
+        paste();
+        return;
+    }
+
+
+    QListWidget::keyPressEvent(event);
+}
+
+
+void MdiChild::OpenEditWindow()
+{
+    int i = this->currentRow();
+
+    if(i)
+    {
+        //TODO error checking
+        eeFile.setChanged(true);
+        documentWasModified();
+        eeFile.eeLoadModel((uint8_t)i-1);
+        char buf[11];
+        eeFile.curmodelName((char*)&buf);
+        ModelEdit t;
+        t.setWindowTitle(tr("Editing model %1: ").arg(i) + QString(buf));
+        t.exec();
+    }
+    else
+    {
+        //TODO error checking
+        if(eeFile.eeLoadGeneral())
+        {
+            eeFile.setChanged(true);
+            documentWasModified();
+            GeneralEdit t;
+            t.exec();
+        }
+    }
+
 }
 
 void MdiChild::newFile()
