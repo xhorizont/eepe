@@ -95,6 +95,12 @@ void EEPFILE::modelDefault(uint8_t id)
   }
 }
 
+void EEPFILE::DeleteModel(uint8_t id)
+{
+    theFile.rm(id);
+}
+
+
 void EEPFILE::eeLoadModelName(uint8_t id,char*buf,uint8_t len)
 {
   if(id<MAX_MODELS)
@@ -115,6 +121,11 @@ void EEPFILE::eeLoadModelName(uint8_t id,char*buf,uint8_t len)
   }
 }
 
+void EEPFILE::curmodelName(char* buf)
+{
+    memset(buf,0,sizeof(g_model.name)+1);
+    memcpy(buf,&g_model.name,sizeof(g_model.name));
+}
 
 void EEPFILE::eeLoadModel(uint8_t id)
 {

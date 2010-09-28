@@ -63,10 +63,12 @@ public:
     void cut();
     void copy();
     void paste();
-    int  selectionIndex();
+    void deleteSelected(bool ask);
+    bool hasSelection();
     QString userFriendlyCurrentFile();
     QString currentFile() { return curFile; }
     QSize sizeHint();
+    void keyPressEvent(QKeyEvent *event);
 
 protected:
     void closeEvent(QCloseEvent *event);
@@ -74,6 +76,9 @@ protected:
 private slots:
     void documentWasModified();
     void refreshList();
+
+public slots:
+    void OpenEditWindow();
 
 private:
     bool maybeSave();
