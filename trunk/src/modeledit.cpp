@@ -6,6 +6,7 @@ ModelEdit::ModelEdit(QWidget *parent) :
     ui(new Ui::ModelEdit)
 {
     ui->setupUi(this);
+    this->setWindowIcon(QIcon(":/icon.ico"));
 }
 
 ModelEdit::~ModelEdit()
