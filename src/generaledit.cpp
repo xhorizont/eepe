@@ -6,6 +6,7 @@ GeneralEdit::GeneralEdit(QWidget *parent) :
     ui(new Ui::GeneralEdit)
 {
     ui->setupUi(this);
+    this->setWindowIcon(QIcon(":/icon.ico"));
 }
 
 GeneralEdit::~GeneralEdit()
