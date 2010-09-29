@@ -188,7 +188,7 @@ void MdiChild::paste()
 
 bool MdiChild::hasSelection()
 {
-    return (this->selectedIndexes().count()>0);
+    return (this->selectionModel()->hasSelection());
 }
 
 void MdiChild::keyPressEvent(QKeyEvent *event)
@@ -412,3 +412,4 @@ QString MdiChild::strippedName(const QString &fullFileName)
 {
     return QFileInfo(fullFileName).fileName();
 }
+
