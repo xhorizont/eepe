@@ -66,6 +66,7 @@ MainWindow::MainWindow()
 
     setWindowTitle(tr("eePe - EEPROM Editor"));
     setUnifiedTitleAndToolBarOnMac(true);
+    this->setWindowIcon(QIcon(":/icon.ico"));
 }
 
 void MainWindow::closeEvent(QCloseEvent *event)
