@@ -56,7 +56,7 @@ MdiChild::MdiChild()
     isUntitled = true;
 
     connect(this, SIGNAL(itemActivated(QListWidgetItem*)), this, SLOT(OpenEditWindow()));
-    this->setSelectionMode(QAbstractItemView::MultiSelection);
+    this->setSelectionMode(QAbstractItemView::ExtendedSelection);
 }
 
 
@@ -112,24 +112,26 @@ void MdiChild::deleteSelected(bool ask=true)
 void MdiChild::copy()
 {
     QByteArray gmData;
-    bool hasGeneral = false;
 
     foreach(QModelIndex index, this->selectionModel()->selectedIndexes())
     {
         if(!index.row())
         {
             EEGeneral tgen;
-            eeFile.getGeneralSettings(&tgen);
-            hasGeneral = false;
-            gmData.append('G');
-            gmData.append((char*)&tgen,sizeof(tgen));
+            if(eeFile.getGeneralSettings(&tgen))
+            {
+                gmData.append('G');
+                gmData.append((char*)&tgen,sizeof(tgen));
+            }
         }
         else
         {
             ModelData tmod;
-            eeFile.getModel(&tmod,index.row()-1);
-            gmData.append('M');
-            gmData.append((char*)&tmod,sizeof(tmod));
+            if(eeFile.getModel(&tmod,index.row()-1))
+            {
+                gmData.append('M');
+                gmData.append((char*)&tmod,sizeof(tmod));
+            }
         }
     }
 
@@ -162,16 +164,22 @@ void MdiChild::paste()
             gData++;
             if(c=='G')  //general settings
             {
-                eeFile.putGeneralSettings((EEGeneral*)&gData);
+                if(!eeFile.putGeneralSettings((EEGeneral*)&gData))
+                {
+                    QMessageBox::critical(this, tr("eePe"),tr("Unable set data!"));
+                    break;
+                }
                 gData += sizeof(EEGeneral);
                 i     += sizeof(EEGeneral);
                 this->setCurrentRow(0,QItemSelectionModel::Select);
             }
             else //model data
             {
-                //ModelData md;
-                //memcpy(&md,gData,sizeof(ModelData));
-                eeFile.putModel((ModelData*)gData,id-1);
+                if(!eeFile.putModel((ModelData*)gData,id-1))
+                {
+                    QMessageBox::critical(this, tr("eePe"),tr("Unable set model!"));
+                    break;
+                }
                 this->setCurrentRow(id,QItemSelectionModel::Select);
                 gData += sizeof(ModelData);
                 i     += sizeof(ModelData);
@@ -231,16 +239,20 @@ void MdiChild::OpenEditWindow()
         //TODO error checking
         eeFile.setChanged(true);
         documentWasModified();
-        if(eeFile.eeLoadModel((uint8_t)i-1))
+        if(!eeFile.eeLoadModel((uint8_t)i-1))
         {
-            char buf[11];
-            eeFile.curmodelName((char*)&buf);
-            ModelEdit t;
-            t.setWindowTitle(tr("Editing model %1: ").arg(i) + QString(buf));
-            t.exec();
+            eeFile.modelDefault(i-1);
+            eeFile.setChanged(true);
+            documentWasModified();
+            refreshList();
         }
-        else
-            QMessageBox::critical(this, tr("eePe"),tr("Unable to read model data!"));
+
+        char buf[11];
+        eeFile.curmodelName((char*)&buf);
+        ModelEdit t;
+        t.setWindowTitle(tr("Editing model %1: ").arg(i) + QString(buf));
+        t.exec();
+
     }
     else
     {
