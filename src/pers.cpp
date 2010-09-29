@@ -90,7 +90,7 @@ bool EEPFILE::eeLoadGeneral()
 void EEPFILE::modelDefault(uint8_t id)
 {
   memset(&g_model, 0, sizeof(g_model));
-  //strcpy_P(g_model.name,PSTR("MODEL     "));
+  strcpy(g_model.name,"MODEL");
   g_model.name[5]='0'+(id+1)/10;
   g_model.name[6]='0'+(id+1)%10;
   g_model.mdVers = MDVERS;
@@ -100,6 +100,8 @@ void EEPFILE::modelDefault(uint8_t id)
     g_model.mixData[i].srcRaw = i+1;
     g_model.mixData[i].weight = 100;
   }
+
+  putModel(&g_model,id);
 }
 
 void EEPFILE::DeleteModel(uint8_t id)
