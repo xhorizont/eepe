@@ -60,10 +60,6 @@ public:
     bool save();
     bool saveAs();
     bool saveFile(const QString &fileName);
-    void cut();
-    void copy();
-    void paste();
-    void deleteSelected(bool ask);
     bool hasSelection();
     QString userFriendlyCurrentFile();
     QString currentFile() { return curFile; }
@@ -79,11 +75,18 @@ private slots:
 
 public slots:
     void OpenEditWindow();
+    void ShowContextMenu(const QPoint& pos);
+    void cut();
+    void copy();
+    void paste();
+    void duplicate();
+    void deleteSelected(bool ask);
 
 private:
     bool maybeSave();
     void setCurrentFile(const QString &fileName);
     QString strippedName(const QString &fullFileName);
+    void setModified();
 
     QString curFile;
     bool isUntitled;
