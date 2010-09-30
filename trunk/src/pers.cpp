@@ -71,6 +71,8 @@ void EEPFILE::generalDefault()
   int16_t sum=0;
   for(int i=0; i<12;i++) sum+=g_eeGeneral.calibMid[i];
   g_eeGeneral.chkSum = sum;
+
+  putGeneralSettings(&g_eeGeneral);
 }
 
 bool EEPFILE::eeLoadGeneral()

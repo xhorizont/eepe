@@ -56,6 +56,8 @@ MdiChild::MdiChild()
     isUntitled = true;
 
     connect(this, SIGNAL(itemActivated(QListWidgetItem*)), this, SLOT(OpenEditWindow()));
+    connect(this, SIGNAL(customContextMenuRequested(const QPoint&)),this, SLOT(ShowContextMenu(const QPoint&)));
+    this->setContextMenuPolicy(Qt::CustomContextMenu);
     this->setSelectionMode(QAbstractItemView::ExtendedSelection);
 }
 
@@ -103,9 +105,7 @@ void MdiChild::deleteSelected(bool ask=true)
            {
                if(index.row()>0)eeFile.DeleteModel(index.row());
            }
-           refreshList();
-           eeFile.setChanged(true);
-           documentWasModified();
+           setModified();
     }
 }
 
@@ -187,11 +187,20 @@ void MdiChild::paste()
             }
         }
 
-        refreshList();
-        eeFile.setChanged(true);
-        documentWasModified();
+        setModified();
     }
 
+}
+
+void MdiChild::duplicate()
+{
+    int i = this->currentRow();
+    if(i && i<MAX_MODELS)
+    {
+        ModelData gmodel;
+        if(eeFile.getModel(&gmodel,--i)) eeFile.putModel(&gmodel,i+1);
+        setModified();
+    }
 }
 
 bool MdiChild::hasSelection()
@@ -225,8 +234,13 @@ void MdiChild::keyPressEvent(QKeyEvent *event)
         return;
     }
 
+    if(event->matches(QKeySequence::Underline))
+    {
+        duplicate();
+        return;
+    }
 
-    QListWidget::keyPressEvent(event);
+    QListWidget::keyPressEvent(event);//run the standard event in case we didn't catch an action
 }
 
 
@@ -237,16 +251,8 @@ void MdiChild::OpenEditWindow()
     if(i)
     {
         //TODO error checking
-        eeFile.setChanged(true);
-        documentWasModified();
-        if(!eeFile.eeLoadModel((uint8_t)i-1))
-        {
-            eeFile.modelDefault(i-1);
-            eeFile.setChanged(true);
-            documentWasModified();
-            refreshList();
-        }
-
+        if(!eeFile.eeLoadModel((uint8_t)i-1)) eeFile.modelDefault(i-1);
+        setModified();
         char buf[11];
         eeFile.curmodelName((char*)&buf);
         ModelEdit t;
@@ -259,8 +265,7 @@ void MdiChild::OpenEditWindow()
         //TODO error checking
         if(eeFile.eeLoadGeneral())
         {
-            eeFile.setChanged(true);
-            documentWasModified();
+            setModified();
             GeneralEdit t;
             t.exec();
         }
@@ -279,8 +284,6 @@ void MdiChild::newFile()
     curFile = tr("document%1.bin").arg(sequenceNumber++);
     setWindowTitle(curFile + "[*]");
 
-    //connect(eeFile, SIGNAL(contentsChanged()),
-    //        this, SLOT(documentWasModified()));
 }
 
 bool MdiChild::loadFile(const QString &fileName)
@@ -319,9 +322,6 @@ bool MdiChild::loadFile(const QString &fileName)
     eeFile.loadFile(&temp);
     refreshList();
     setCurrentFile(fileName);
-
-    //connect(eeFile(), SIGNAL(contentsChanged()),
-    //        this, SLOT(documentWasModified()));
 
     return true;
 }
@@ -425,3 +425,26 @@ QString MdiChild::strippedName(const QString &fullFileName)
     return QFileInfo(fullFileName).fileName();
 }
 
+
+void MdiChild::ShowContextMenu(const QPoint& pos)
+{
+    QPoint globalPos = this->mapToGlobal(pos);
+
+    QMenu contextMenu;
+    contextMenu.addAction(tr("&Edit"),this,SLOT(OpenEditWindow()));
+    contextMenu.addSeparator();
+    contextMenu.addAction(tr("&Delete"),this,SLOT(deleteSelected(bool)),tr("Delete"));
+    contextMenu.addAction(tr("&Copy"),this,SLOT(copy()),tr("Ctrl+C"));
+    contextMenu.addAction(tr("&Cut"),this,SLOT(cut()),tr("Ctrl+X"));
+    contextMenu.addAction(tr("&Paste"),this,SLOT(paste()),tr("Ctrl+V"));
+    contextMenu.addAction(tr("D&uplicate"),this,SLOT(duplicate()),tr("Ctrl+U"));
+
+    contextMenu.exec(globalPos);
+}
+
+void MdiChild::setModified()
+{
+    refreshList();
+    eeFile.setChanged(true);
+    documentWasModified();
+}
