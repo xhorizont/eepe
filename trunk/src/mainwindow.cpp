@@ -89,8 +89,11 @@ void MainWindow::newFile()
 
 void MainWindow::open()
 {
-    QString fileName = QFileDialog::getOpenFileName(this);
+    QSettings settings("er9x-eePe", "eePe");
+    QString fileName = QFileDialog::getOpenFileName(this,"Open",settings.value("lastDir").toString());
     if (!fileName.isEmpty()) {
+        settings.setValue("lastDir",QFileInfo(fileName).dir().absolutePath());
+
         QMdiSubWindow *existing = findMdiChild(fileName);
         if (existing) {
             mdiArea->setActiveSubWindow(existing);

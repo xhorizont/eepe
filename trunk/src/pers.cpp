@@ -25,12 +25,12 @@ EEPFILE::EEPFILE()
 {
     //EFile *theFile = new EFile();
     fileChanged = false;
-    memset(&g_eeGeneral,0,sizeof(g_eeGeneral));
-    memset(&g_model,0,sizeof(g_model));
+    //memset(&g_eeGeneral,0,sizeof(g_eeGeneral));
+    //memset(&g_model,0,sizeof(g_model));
 
 
     generalDefault();
-    putGeneralSettings(&g_eeGeneral);
+    //putGeneralSettings(&g_eeGeneral);
 
 }
 
@@ -57,6 +57,7 @@ void EEPFILE::setChanged(bool v)
 
 void EEPFILE::generalDefault()
 {
+  EEGeneral g_eeGeneral;
   memset(&g_eeGeneral,0,sizeof(g_eeGeneral));
   g_eeGeneral.myVers   =  GENERAL_MYVER;
   g_eeGeneral.currModel=  0;
@@ -77,13 +78,16 @@ void EEPFILE::generalDefault()
 
 bool EEPFILE::eeLoadGeneral()
 {
+  EEGeneral g_eeGeneral;
   bool ret = getGeneralSettings(&g_eeGeneral);
 
   if (!ret) return false;
 
   uint16_t sum=0;
-  if(g_eeGeneral.myVers==GENERAL_MYVER){
+  if(g_eeGeneral.myVers==GENERAL_MYVER)
+  {
     for(int i=0; i<12;i++) sum+=g_eeGeneral.calibMid[i];
+    putGeneralSettings(&g_eeGeneral);
     return g_eeGeneral.chkSum == sum;
   }
   return false;
@@ -91,6 +95,7 @@ bool EEPFILE::eeLoadGeneral()
 
 void EEPFILE::modelDefault(uint8_t id)
 {
+  ModelData g_model;
   memset(&g_model, 0, sizeof(g_model));
   strcpy(g_model.name,"MODEL");
   g_model.name[5]='0'+(id+1)/10;
@@ -132,17 +137,19 @@ void EEPFILE::eeLoadModelName(uint8_t id,char*buf,uint8_t len)
   }
 }
 
-void EEPFILE::curmodelName(char* buf)
+void EEPFILE::getModelName(uint8_t id, char* buf)
 {
+    ModelData g_model;
     memset(buf,0,sizeof(g_model.name)+1);
-    memcpy(buf,&g_model.name,sizeof(g_model.name));
+    if(getModel(&g_model,id))
+        memcpy(buf,&g_model.name,sizeof(g_model.name));
 }
 
-bool EEPFILE::eeLoadModel(uint8_t id)
+bool EEPFILE::eeModelExists(uint8_t id)
 {
+  ModelData g_model;
   return getModel(&g_model, id);
 }
-
 
 
 bool EEPFILE::getModel(ModelData* model, uint8_t id)

@@ -193,9 +193,6 @@ bool eeLoadGeneral();
 
 class EEPFILE
 {
-
-    EEGeneral g_eeGeneral;
-    ModelData g_model;
     EFile theFile;
     bool fileChanged;
 
@@ -210,9 +207,10 @@ public:
     void loadFile(void* buf);
     void saveFile(void* buf);
 
-    bool eeLoadModel(uint8_t id);
+    //bool eeLoadModel(uint8_t id);
+    bool eeModelExists(uint8_t id);
     void eeLoadModelName(uint8_t id,char*buf,uint8_t len);
-    void curmodelName(char* buf);
+    void getModelName(uint8_t id, char* buf);
     void modelDefault(uint8_t id);
     void DeleteModel(uint8_t id);
     bool eeLoadGeneral();
