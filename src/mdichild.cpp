@@ -151,7 +151,7 @@ void MdiChild::paste()
     if(mimeData->hasFormat("bin/eepe"))
     {
         QByteArray gmData = mimeData->data("bin/eepe");
-        char* gData = gmData.data();
+        char *gData = gmData.data();//new char[gmData.size() + 1];
         int i = 0;
         int id = this->currentRow();
         if(!id) id++;
@@ -164,9 +164,9 @@ void MdiChild::paste()
             gData++;
             if(c=='G')  //general settings
             {
-                if(!eeFile.putGeneralSettings((EEGeneral*)&gData))
+                if(!eeFile.putGeneralSettings((EEGeneral*)gData))
                 {
-                    QMessageBox::critical(this, tr("eePe"),tr("Unable set data!"));
+                    QMessageBox::critical(this, tr("Error"),tr("Unable set data!"));
                     break;
                 }
                 gData += sizeof(EEGeneral);
@@ -177,7 +177,7 @@ void MdiChild::paste()
             {
                 if(!eeFile.putModel((ModelData*)gData,id-1))
                 {
-                    QMessageBox::critical(this, tr("eePe"),tr("Unable set model!"));
+                    QMessageBox::critical(this, tr("Error"),tr("Unable set model!"));
                     break;
                 }
                 this->setCurrentRow(id,QItemSelectionModel::Select);
@@ -186,6 +186,7 @@ void MdiChild::paste()
                 id++;
             }
         }
+
 
         setModified();
     }
@@ -251,10 +252,11 @@ void MdiChild::OpenEditWindow()
     if(i)
     {
         //TODO error checking
-        if(!eeFile.eeLoadModel((uint8_t)i-1)) eeFile.modelDefault(i-1);
+
+        if(!eeFile.eeModelExists((uint8_t)i-1)) eeFile.modelDefault(i-1);
         setModified();
         char buf[11];
-        eeFile.curmodelName((char*)&buf);
+        eeFile.getModelName((i-1),(char*)&buf);
         ModelEdit t;
         t.setWindowTitle(tr("Editing model %1: ").arg(i) + QString(buf));
         t.exec();
@@ -266,11 +268,11 @@ void MdiChild::OpenEditWindow()
         if(eeFile.eeLoadGeneral())
         {
             setModified();
-            GeneralEdit t;
+            GeneralEdit t(&eeFile, this);
             t.exec();
         }
         else
-            QMessageBox::critical(this, tr("eePe"),tr("Unable to read settings!"));
+            QMessageBox::critical(this, tr("Error"),tr("Unable to read settings!"));
 
     }
 
@@ -290,7 +292,7 @@ bool MdiChild::loadFile(const QString &fileName)
 {
     QFile file(fileName);
     if (!file.open(QFile::ReadOnly)) {  //reading binary file   - TODO HEX support
-        QMessageBox::warning(this, tr("eePe"),
+        QMessageBox::warning(this, tr("Error"),
                              tr("Cannot read file %1:\n%2.")
                              .arg(fileName)
                              .arg(file.errorString()));
@@ -300,7 +302,7 @@ bool MdiChild::loadFile(const QString &fileName)
 
     if(file.size()!=EESIZE)
     {
-        QMessageBox::critical(this, tr("eePe"),tr("Unable to read file %1!").arg(fileName));
+        QMessageBox::critical(this, tr("Error"),tr("Unable to read file %1!").arg(fileName));
         file.close();
         return false;
     }
@@ -311,7 +313,7 @@ bool MdiChild::loadFile(const QString &fileName)
 
     if (result!=EESIZE)
     {
-        QMessageBox::warning(this, tr("eePe"),
+        QMessageBox::warning(this, tr("Error"),
                              tr("Error reading file %1:\n%2.")
                              .arg(fileName)
                              .arg(file.errorString()));
@@ -337,11 +339,12 @@ bool MdiChild::save()
 
 bool MdiChild::saveAs()
 {
-    QString fileName = QFileDialog::getSaveFileName(this, tr("Save As"),
-                                                    curFile);
+    QString fileName = QFileDialog::getSaveFileName(this, tr("Save As"),curFile);
     if (fileName.isEmpty())
         return false;
 
+    QSettings settings("er9x-eePe", "eePe");
+    settings.setValue("lastDir",QFileInfo(fileName).dir().absolutePath());
     return saveFile(fileName);
 }
 
@@ -349,7 +352,7 @@ bool MdiChild::saveFile(const QString &fileName)
 {
     QFile file(fileName);
     if (!file.open(QFile::WriteOnly)) {
-        QMessageBox::warning(this, tr("eePe"),
+        QMessageBox::warning(this, tr("Error"),
                              tr("Cannot write file %1:\n%2.")
                              .arg(fileName)
                              .arg(file.errorString()));
@@ -362,7 +365,7 @@ bool MdiChild::saveFile(const QString &fileName)
     long result = file.write((char*)&temp,EESIZE);
     if(result!=EESIZE)
     {
-        QMessageBox::warning(this, tr("eePe"),
+        QMessageBox::warning(this, tr("Error"),
                              tr("Error writing file %1:\n%2.")
                              .arg(fileName)
                              .arg(file.errorString()));
