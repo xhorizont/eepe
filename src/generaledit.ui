@@ -39,7 +39,7 @@
         </widget>
        </item>
        <item row="0" column="1">
-        <widget class="QSpinBox" name="spinBox"/>
+        <widget class="QSpinBox" name="contrastSB"/>
        </item>
        <item row="1" column="0">
         <widget class="QLabel" name="label_2">
@@ -52,7 +52,7 @@
         </widget>
        </item>
        <item row="1" column="1">
-        <widget class="QSpinBox" name="spinBox_2"/>
+        <widget class="QSpinBox" name="battwarningSB"/>
        </item>
        <item row="2" column="0">
         <widget class="QLabel" name="label_3">
@@ -62,7 +62,7 @@
         </widget>
        </item>
        <item row="2" column="1">
-        <widget class="QSpinBox" name="spinBox_3"/>
+        <widget class="QSpinBox" name="battcalibSB"/>
        </item>
        <item row="3" column="0">
         <widget class="QLabel" name="label_4">
@@ -72,7 +72,7 @@
         </widget>
        </item>
        <item row="3" column="1">
-        <widget class="QComboBox" name="comboBox"/>
+        <widget class="QComboBox" name="backlightswCB"/>
        </item>
        <item row="4" column="0">
         <widget class="QLabel" name="label_5">
@@ -82,7 +82,7 @@
         </widget>
        </item>
        <item row="4" column="1">
-        <widget class="QSpinBox" name="spinBox_4"/>
+        <widget class="QSpinBox" name="backlightautoSB"/>
        </item>
        <item row="5" column="0">
         <widget class="QLabel" name="label_6">
@@ -92,7 +92,7 @@
         </widget>
        </item>
        <item row="5" column="1">
-        <widget class="QSpinBox" name="spinBox_5"/>
+        <widget class="QSpinBox" name="inactimerSB"/>
        </item>
        <item row="6" column="0">
         <widget class="QLabel" name="label_7">
@@ -102,7 +102,7 @@
         </widget>
        </item>
        <item row="6" column="1">
-        <widget class="QCheckBox" name="checkBox">
+        <widget class="QCheckBox" name="thrrevChkB">
          <property name="text">
           <string/>
          </property>
@@ -116,7 +116,7 @@
         </widget>
        </item>
        <item row="7" column="1">
-        <widget class="QComboBox" name="comboBox_2"/>
+        <widget class="QComboBox" name="inputfilterCB"/>
        </item>
        <item row="8" column="0">
         <spacer name="horizontalSpacer_2">
@@ -139,7 +139,7 @@
         </widget>
        </item>
        <item row="9" column="1">
-        <widget class="QCheckBox" name="checkBox_2">
+        <widget class="QCheckBox" name="thrwarnChkB">
          <property name="text">
           <string/>
          </property>
@@ -153,7 +153,7 @@
         </widget>
        </item>
        <item row="10" column="1">
-        <widget class="QCheckBox" name="checkBox_3">
+        <widget class="QCheckBox" name="switchwarnChkB">
          <property name="text">
           <string/>
          </property>
@@ -167,7 +167,7 @@
         </widget>
        </item>
        <item row="11" column="1">
-        <widget class="QCheckBox" name="checkBox_4">
+        <widget class="QCheckBox" name="memwarnChkB">
          <property name="text">
           <string/>
          </property>
@@ -181,7 +181,7 @@
         </widget>
        </item>
        <item row="12" column="1">
-        <widget class="QComboBox" name="comboBox_3"/>
+        <widget class="QComboBox" name="beeperCB"/>
        </item>
        <item row="13" column="0">
         <spacer name="horizontalSpacer">
@@ -196,15 +196,25 @@
          </property>
         </spacer>
        </item>
-       <item row="14" column="0">
+	   <item row="14" column="0">
         <widget class="QLabel" name="label_13">
+         <property name="text">
+          <string>Channel Order</string>
+         </property>
+        </widget>
+       </item>
+       <item row="14" column="1">
+        <widget class="QComboBox" name="channelorderCB"/>
+       </item>
+       <item row="15" column="0">
+        <widget class="QLabel" name="label_14">
          <property name="text">
           <string>Stick Mode</string>
          </property>
         </widget>
        </item>
-       <item row="14" column="1">
-        <widget class="QComboBox" name="comboBox_4"/>
+       <item row="15" column="1">
+        <widget class="QComboBox" name="stickmodeCB"/>
        </item>
       </layout>
      </widget>
