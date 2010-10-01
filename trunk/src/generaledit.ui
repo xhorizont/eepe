@@ -39,7 +39,17 @@
         </widget>
        </item>
        <item row="0" column="1">
-        <widget class="QSpinBox" name="contrastSB"/>
+        <widget class="QSpinBox" name="contrastSB">
+         <property name="minimum">
+          <number>20</number>
+         </property>
+         <property name="maximum">
+          <number>45</number>
+         </property>
+         <property name="value">
+          <number>25</number>
+         </property>
+        </widget>
        </item>
        <item row="1" column="0">
         <widget class="QLabel" name="label_2">
@@ -52,7 +62,26 @@
         </widget>
        </item>
        <item row="1" column="1">
-        <widget class="QSpinBox" name="battwarningSB"/>
+        <widget class="QDoubleSpinBox" name="battwarningDSB">
+         <property name="suffix">
+          <string>v</string>
+         </property>
+         <property name="decimals">
+          <number>1</number>
+         </property>
+         <property name="minimum">
+          <double>5.000000000000000</double>
+         </property>
+         <property name="maximum">
+          <double>10.000000000000000</double>
+         </property>
+         <property name="singleStep">
+          <double>0.100000000000000</double>
+         </property>
+         <property name="value">
+          <double>9.600000000000000</double>
+         </property>
+        </widget>
        </item>
        <item row="2" column="0">
         <widget class="QLabel" name="label_3">
@@ -62,7 +91,14 @@
         </widget>
        </item>
        <item row="2" column="1">
-        <widget class="QSpinBox" name="battcalibSB"/>
+        <widget class="QDoubleSpinBox" name="battcalibDSB">
+         <property name="suffix">
+          <string>v</string>
+         </property>
+         <property name="decimals">
+          <number>1</number>
+         </property>
+        </widget>
        </item>
        <item row="3" column="0">
         <widget class="QLabel" name="label_4">
@@ -72,7 +108,166 @@
         </widget>
        </item>
        <item row="3" column="1">
-        <widget class="QComboBox" name="backlightswCB"/>
+        <widget class="QComboBox" name="backlightswCB">
+         <property name="currentIndex">
+          <number>15</number>
+         </property>
+         <item>
+          <property name="text">
+           <string>!SW6</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>!SW5</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>!SW4</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>!SW3</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>!SW2</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>!SW1</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>!TRN</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>!GEA</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>!AIL</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>!ID2</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>!ID1</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>!ID0</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>!ELE</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>!RUD</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>!THR</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>----</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>THR</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>RUD</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>ELE</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>ID0</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>ID1</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>ID2</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>AIL</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>GEA</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>TRN</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>SW1</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>SW2</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>SW3</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>SW4</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>SW5</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>SW6</string>
+          </property>
+         </item>
+        </widget>
        </item>
        <item row="4" column="0">
         <widget class="QLabel" name="label_5">
@@ -82,7 +277,17 @@
         </widget>
        </item>
        <item row="4" column="1">
-        <widget class="QSpinBox" name="backlightautoSB"/>
+        <widget class="QSpinBox" name="backlightautoSB">
+         <property name="suffix">
+          <string> sec</string>
+         </property>
+         <property name="maximum">
+          <number>600</number>
+         </property>
+         <property name="singleStep">
+          <number>5</number>
+         </property>
+        </widget>
        </item>
        <item row="5" column="0">
         <widget class="QLabel" name="label_6">
@@ -92,7 +297,14 @@
         </widget>
        </item>
        <item row="5" column="1">
-        <widget class="QSpinBox" name="inactimerSB"/>
+        <widget class="QSpinBox" name="inactimerSB">
+         <property name="suffix">
+          <string> min</string>
+         </property>
+         <property name="maximum">
+          <number>250</number>
+         </property>
+        </widget>
        </item>
        <item row="6" column="0">
         <widget class="QLabel" name="label_7">
@@ -116,7 +328,23 @@
         </widget>
        </item>
        <item row="7" column="1">
-        <widget class="QComboBox" name="inputfilterCB"/>
+        <widget class="QComboBox" name="inputfilterCB">
+         <item>
+          <property name="text">
+           <string>Single</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Oversapmle</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Filter</string>
+          </property>
+         </item>
+        </widget>
        </item>
        <item row="8" column="0">
         <spacer name="horizontalSpacer_2">
@@ -143,6 +371,12 @@
          <property name="text">
           <string/>
          </property>
+         <property name="checked">
+          <bool>true</bool>
+         </property>
+         <property name="tristate">
+          <bool>false</bool>
+         </property>
         </widget>
        </item>
        <item row="10" column="0">
@@ -156,6 +390,9 @@
         <widget class="QCheckBox" name="switchwarnChkB">
          <property name="text">
           <string/>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
          </property>
         </widget>
        </item>
@@ -171,6 +408,9 @@
          <property name="text">
           <string/>
          </property>
+         <property name="checked">
+          <bool>true</bool>
+         </property>
         </widget>
        </item>
        <item row="12" column="0">
@@ -181,7 +421,33 @@
         </widget>
        </item>
        <item row="12" column="1">
-        <widget class="QComboBox" name="beeperCB"/>
+        <widget class="QComboBox" name="beeperCB">
+         <item>
+          <property name="text">
+           <string>0 - Quiet</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>1 - No Keys</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2 - Normal</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>3 - Long</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>4 - Extra Long</string>
+          </property>
+         </item>
+        </widget>
        </item>
        <item row="13" column="0">
         <spacer name="horizontalSpacer">
@@ -196,7 +462,7 @@
          </property>
         </spacer>
        </item>
-	   <item row="14" column="0">
+       <item row="14" column="0">
         <widget class="QLabel" name="label_13">
          <property name="text">
           <string>Channel Order</string>
@@ -204,7 +470,131 @@
         </widget>
        </item>
        <item row="14" column="1">
-        <widget class="QComboBox" name="channelorderCB"/>
+        <widget class="QComboBox" name="channelorderCB">
+         <property name="currentIndex">
+          <number>0</number>
+         </property>
+         <item>
+          <property name="text">
+           <string>R E T A</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>R E A T</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>R T E A</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>R T A E</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>R A E T</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>R A T E</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>E R T A</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>E R A T</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>E T R A</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>E T A R</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>E A R T</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>E A T R</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>T R E A</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>T R A E</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>T E R A</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>T E A R</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>T A R E</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>T A E R</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>A R E T</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>A R T E</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>A E R T</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>A E T R</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>A T R E</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>A T E R</string>
+          </property>
+         </item>
+        </widget>
        </item>
        <item row="15" column="0">
         <widget class="QLabel" name="label_14">
@@ -214,7 +604,31 @@
         </widget>
        </item>
        <item row="15" column="1">
-        <widget class="QComboBox" name="stickmodeCB"/>
+        <widget class="QComboBox" name="stickmodeCB">
+         <property name="currentIndex">
+          <number>1</number>
+         </property>
+         <item>
+          <property name="text">
+           <string>Mode 1 (RUD ELE THR AIL)</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Mode 2 (RUD THR ELE AIL)</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Mode 3 (AIL ELE THR RUD)</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Mode 4 (AIL THR ELE RUD)</string>
+          </property>
+         </item>
+        </widget>
        </item>
       </layout>
      </widget>
@@ -222,6 +636,22 @@
       <attribute name="title">
        <string>Calibration</string>
       </attribute>
+      <widget class="QDoubleSpinBox" name="doubleSpinBox">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>250</y>
+         <width>62</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="suffix">
+        <string>v</string>
+       </property>
+       <property name="decimals">
+        <number>1</number>
+       </property>
+      </widget>
      </widget>
     </widget>
    </item>
