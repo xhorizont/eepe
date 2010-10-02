@@ -57,15 +57,10 @@ MdiChild::MdiChild()
 
     connect(this, SIGNAL(itemActivated(QListWidgetItem*)), this, SLOT(OpenEditWindow()));
     connect(this, SIGNAL(customContextMenuRequested(const QPoint&)),this, SLOT(ShowContextMenu(const QPoint&)));
-    this->setContextMenuPolicy(Qt::CustomContextMenu);
-    this->setSelectionMode(QAbstractItemView::ExtendedSelection);
+    setContextMenuPolicy(Qt::CustomContextMenu);
+    setSelectionMode(QAbstractItemView::ExtendedSelection);
 }
 
-
-QSize MdiChild::sizeHint()
-{
-    return QSize(300,400);
-}
 
 void MdiChild::refreshList()
 {
@@ -257,7 +252,7 @@ void MdiChild::OpenEditWindow()
         setModified();
         char buf[11];
         eeFile.getModelName((i-1),(char*)&buf);
-        ModelEdit t;
+        ModelEdit t(&eeFile,(i-1),this);
         t.setWindowTitle(tr("Editing model %1: ").arg(i) + QString(buf));
         t.exec();
 

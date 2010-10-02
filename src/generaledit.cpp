@@ -1,6 +1,7 @@
 #include "generaledit.h"
 #include "ui_generaledit.h"
 #include "pers.h"
+#include "helpers.h"
 #include <QtGui>
 
 #define BIT_WARN_THR     ( 0x01 )
@@ -18,21 +19,18 @@ GeneralEdit::GeneralEdit(EEPFILE *eFile, QWidget *parent) :
     this->setWindowIcon(QIcon(":/icon.ico"));
     eeFile = eFile;
 
-    if(!eeFile->eeLoadGeneral())
-    {
-        eeFile->generalDefault();
-
-    }
+    if(!eeFile->eeLoadGeneral())  eeFile->generalDefault();
     eeFile->getGeneralSettings(&g_eeGeneral);
 
     QSettings settings("er9x-eePe", "eePe");
     ui->tabWidget->setCurrentIndex(settings.value("generalEditTab", 0).toInt());
 
+    populateSwitchCB(ui->backlightswCB,g_eeGeneral.lightSw);
+
     ui->contrastSB->setValue(g_eeGeneral.contrast);
-    ui->battwarningDSB->setValue(g_eeGeneral.vBatWarn/10);
-    ui->battcalibDSB->setValue(g_eeGeneral.vBatCalib/10);
-    ui->battCalib->setValue(g_eeGeneral.vBatCalib/10);
-    ui->backlightswCB->setCurrentIndex(15+g_eeGeneral.lightSw);
+    ui->battwarningDSB->setValue((double)g_eeGeneral.vBatWarn/10);
+    ui->battcalibDSB->setValue((double)g_eeGeneral.vBatCalib/10);
+    ui->battCalib->setValue((double)g_eeGeneral.vBatCalib/10);
     ui->backlightautoSB->setValue(g_eeGeneral.lightAutoOff*5);
     ui->inactimerSB->setValue(g_eeGeneral.inactivityTimer);
     ui->thrrevChkB->setChecked(g_eeGeneral.throttleReversed);
@@ -100,19 +98,20 @@ void GeneralEdit::on_contrastSB_editingFinished()
 
 void GeneralEdit::on_battwarningDSB_editingFinished()
 {
-    g_eeGeneral.vBatWarn = ui->battwarningDSB->value()*10;
+    g_eeGeneral.vBatWarn = (int)(ui->battwarningDSB->value()*10);
     updateSettings();
 }
 
 void GeneralEdit::on_battcalibDSB_editingFinished()
 {
     g_eeGeneral.vBatCalib = ui->battcalibDSB->value()*10;
+    ui->battCalib->setValue(ui->battcalibDSB->value());
     updateSettings();
 }
 
 void GeneralEdit::on_backlightswCB_currentIndexChanged(int index)
 {
-    g_eeGeneral.lightSw = index-15;
+    g_eeGeneral.lightSw = index-MAX_DRSWITCH;
     updateSettings();
 }
 
@@ -328,7 +327,8 @@ void GeneralEdit::on_ana7Pos_editingFinished()
 
 void GeneralEdit::on_battCalib_editingFinished()
 {
-    g_eeGeneral.vBatCalib = ui->battcalibDSB->value()*10;
+    g_eeGeneral.vBatCalib = ui->battCalib->value()*10;
+    ui->battcalibDSB->setValue(ui->battCalib->value());
     updateSettings();
 }
 
@@ -383,5 +383,5 @@ void GeneralEdit::on_PPM8_editingFinished()
 void GeneralEdit::on_tabWidget_currentChanged(int index)
 {
     QSettings settings("er9x-eePe", "eePe");
-    settings.setValue("generalEditTab",ui->tabWidget->currentIndex());
+    settings.setValue("generalEditTab",index);//ui->tabWidget->currentIndex());
 }
