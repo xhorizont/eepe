@@ -22,7 +22,6 @@ private:
     EEPFILE *eeFile;
 
     EEGeneral g_eeGeneral;
-    ModelData g_model;
 
 private slots:
     void on_tabWidget_currentChanged(int index);

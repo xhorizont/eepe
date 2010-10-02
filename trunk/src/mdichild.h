@@ -63,7 +63,6 @@ public:
     bool hasSelection();
     QString userFriendlyCurrentFile();
     QString currentFile() { return curFile; }
-    QSize sizeHint();
     void keyPressEvent(QKeyEvent *event);
 
 protected:
