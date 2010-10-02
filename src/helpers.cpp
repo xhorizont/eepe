@@ -55,3 +55,15 @@ void populateTimerSwitchCB(QComboBox *b, int value=0)
     b->setCurrentIndex(value+TMR_NUM_OPTION);
     b->setMaxVisibleItems(10);
 }
+
+void populateSourceCB(QComboBox *b, int stickMode=1, int value=0)
+{
+    QString modi = "RUD ELE THR AIL RUD THR ELE AIL AIL ELE THR RUD AIL THR ELE RUD ";
+    QString str = "P1  P2  P3  MAX FULLPPM1PPM2PPM3PPM4PPM5PPM6PPM7PPM8CH1 CH2 CH3 CH4 CH5 CH6 CH7 CH8 CH9 CH10CH11CH12CH13CH14CH15CH16CH17CH18CH19CH20CH21CH22CH23CH24CH25CH26CH27CH28CH29CH30";
+    b->clear();
+    b->addItem("----");
+    for(int i=0; i<4; i++)  b->addItem(modi.mid(i*4+stickMode*16,4));
+    for(int i=0; i<29; i++) b->addItem(str.mid(i*4,4));
+    b->setCurrentIndex(value);
+    b->setMaxVisibleItems(10);
+}
