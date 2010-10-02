@@ -9,6 +9,7 @@
 
 void populateSwitchCB(QComboBox *b, int value);
 void populateTimerSwitchCB(QComboBox *b, int value);
+void populateSourceCB(QComboBox *b, int stickMode, int value);
 
 
 #endif // HELPERS_H
