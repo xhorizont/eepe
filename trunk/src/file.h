@@ -107,7 +107,7 @@ public:
   uint8_t write(uint8_t*buf,uint8_t i_len);
 
   ///return size of compressed file without block overhead
-  uint16_t size(); 
+  uint16_t size(uint8_t id);
   ///read from opened file and decode rlc-coded data
   uint16_t readRlc(uint8_t*buf,uint16_t i_len);
 

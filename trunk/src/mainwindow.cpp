@@ -145,8 +145,10 @@ void MainWindow::paste()
 
 void MainWindow::about()
 {
-   QMessageBox::about(this, tr("About eePe"),
-                      tr("<center><b>eePe</b> - EEPROM Editor<br><br><a href='http://code.google.com/p/eepe/'>http://code.google.com/p/eepe/</a></center>"));
+    QMessageBox::about(this, tr("About eePe"),
+                      "<center><img src=\":/images/eepe-title.png\"><br>"
+                      "Copyright Erez Raviv &copy;2010<br>"
+                      "<a href='http://code.google.com/p/eepe/'>http://code.google.com/p/eepe/</a></center>");
 }
 
 void MainWindow::updateMenus()
