@@ -43,6 +43,7 @@
 
 #include "mainwindow.h"
 #include "mdichild.h"
+#include "svn_tags.h"
 
 MainWindow::MainWindow()
 {
@@ -145,10 +146,11 @@ void MainWindow::paste()
 
 void MainWindow::about()
 {
+    QString str = SVN_TAGS_STR;
     QMessageBox::about(this, tr("About eePe"),
-                      "<center><img src=\":/images/eepe-title.png\"><br>"
+                      tr("<center><img src=\":/images/eepe-title.png\"><br>"
                       "Copyright Erez Raviv &copy;2010<br>"
-                      "<a href='http://code.google.com/p/eepe/'>http://code.google.com/p/eepe/</a></center>");
+                      "<a href='http://code.google.com/p/eepe/'>http://code.google.com/p/eepe/</a><br>Revision: %1</center>").arg(str.mid(16,3)));
 }
 
 void MainWindow::updateMenus()
