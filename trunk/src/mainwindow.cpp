@@ -150,7 +150,7 @@ void MainWindow::about()
     QMessageBox::about(this, tr("About eePe"),
                       tr("<center><img src=\":/images/eepe-title.png\"><br>"
                       "Copyright Erez Raviv &copy;2010<br>"
-                      "<a href='http://code.google.com/p/eepe/'>http://code.google.com/p/eepe/</a><br>Revision: %1, %2</center>").arg(str.mid(16,3).toInt()+1).arg(__DATE__));
+                      "<a href='http://code.google.com/p/eepe/'>http://code.google.com/p/eepe/</a><br>Revision: %1, %2</center>").arg(str.mid(5,3).toInt()+1).arg(__DATE__));
 }
 
 void MainWindow::updateMenus()
