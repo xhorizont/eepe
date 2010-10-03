@@ -5,7 +5,8 @@ HEADERS += mainwindow.h \
     modeledit.h \
     generaledit.h \
     mdichild.h \
-    helpers.h
+    helpers.h \
+    svn_tags.h
 SOURCES += main.cpp \
     mainwindow.cpp \
     file.cpp \
