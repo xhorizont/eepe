@@ -88,6 +88,8 @@ void GeneralEdit::updateSettings()
     for(int i=0; i<12;i++) sum+=g_eeGeneral.calibMid[i];
     g_eeGeneral.chkSum = sum;
     eeFile->putGeneralSettings(&g_eeGeneral);
+
+    emit modelValuesChanged();
 }
 
 void GeneralEdit::on_contrastSB_editingFinished()

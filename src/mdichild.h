@@ -71,6 +71,7 @@ protected:
 private slots:
     void documentWasModified();
     void refreshList();
+    void setModified();
 
 public slots:
     void OpenEditWindow();
@@ -85,7 +86,7 @@ private:
     bool maybeSave();
     void setCurrentFile(const QString &fileName);
     QString strippedName(const QString &fullFileName);
-    void setModified();
+
 
     QString curFile;
     bool isUntitled;

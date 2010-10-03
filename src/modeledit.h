@@ -26,15 +26,21 @@ private:
 
     void updateSettings();
     void tabModelEditSetup();
+    void tabExpo();
     void tabLimits();
     void tabCurves();
     void tabSwitches();
     void tabTrims();
 
+signals:
+    void modelValuesChanged();
+
+
 private slots:
     void curvePointEdited();
     void limitEdited();
     void switchesEdited();
+    void expoEdited();
 
     void on_spinBox_S1_valueChanged(int value);
     void on_spinBox_S2_valueChanged(int value);

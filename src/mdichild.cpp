@@ -248,12 +248,17 @@ void MdiChild::OpenEditWindow()
     {
         //TODO error checking
 
-        if(!eeFile.eeModelExists((uint8_t)i-1)) eeFile.modelDefault(i-1);
-        setModified();
+        if(!eeFile.eeModelExists((uint8_t)i-1))
+        {
+            eeFile.modelDefault(i-1);
+            setModified();
+        }
+
         char buf[11];
         eeFile.getModelName((i-1),(char*)&buf);
         ModelEdit t(&eeFile,(i-1),this);
         t.setWindowTitle(tr("Editing model %1: ").arg(i) + QString(buf));
+        connect(&t,SIGNAL(modelValuesChanged()),this,SLOT(setModified()));
         t.exec();
 
     }
@@ -262,8 +267,9 @@ void MdiChild::OpenEditWindow()
         //TODO error checking
         if(eeFile.eeLoadGeneral())
         {
-            setModified();
+            //setModified();
             GeneralEdit t(&eeFile, this);
+            connect(&t,SIGNAL(modelValuesChanged()),this,SLOT(setModified()));
             t.exec();
         }
         else

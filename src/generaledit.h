@@ -23,6 +23,9 @@ private:
 
     EEGeneral g_eeGeneral;
 
+signals:
+    void modelValuesChanged();
+
 private slots:
     void on_tabWidget_currentChanged(int index);
     void on_PPM1_editingFinished();

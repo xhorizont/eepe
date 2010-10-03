@@ -97,6 +97,7 @@ void EEPFILE::modelDefault(uint8_t id)
 {
   ModelData g_model;
   memset(&g_model, 0, sizeof(g_model));
+  memset(&g_model.name, ' ', sizeof(g_model.name));
   strcpy(g_model.name,"MODEL");
   g_model.name[5]='0'+(id+1)/10;
   g_model.name[6]='0'+(id+1)%10;
@@ -130,10 +131,17 @@ void EEPFILE::eeLoadModelName(uint8_t id,char*buf,uint8_t len)
     uint16_t res = theFile.readRlc((uint8_t*)buf,sizeof(g_model.name));
     if(res == sizeof(g_model.name) )
     {
-      uint16_t sz=theFile.size();
-      buf+=len-4;
+      //buf+=len-5;
+      for(int i=0; i<(len-5); i++)
+      {
+          if(*buf==0) *buf=' ';
+          buf++;
+      }
+      uint16_t sz=theFile.size(FILE_MODEL(id));
       while(sz){ --buf; *buf='0'+sz%10; sz/=10;}
     }
+    buf++;buf++;
+    *buf=0;
   }
 }
 
