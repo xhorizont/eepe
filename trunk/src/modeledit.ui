@@ -1507,6 +1507,12 @@ Right</string>
            <pointsize>12</pointsize>
           </font>
          </property>
+         <property name="dragEnabled">
+          <bool>true</bool>
+         </property>
+         <property name="selectionMode">
+          <enum>QAbstractItemView::ExtendedSelection</enum>
+         </property>
         </widget>
        </item>
       </layout>

@@ -67,6 +67,12 @@ public:
 
 protected:
     void closeEvent(QCloseEvent *event);
+    void dropEvent(QDropEvent *event);
+    void mousePressEvent(QMouseEvent *event);
+    void mouseMoveEvent(QMouseEvent *event);
+    void dragEnterEvent(QDragEnterEvent *event);
+    void dragMoveEvent(QDragMoveEvent *event);
+
 
 private slots:
     void documentWasModified();
@@ -85,8 +91,11 @@ public slots:
 private:
     bool maybeSave();
     void setCurrentFile(const QString &fileName);
+    void doPaste(QByteArray *gmData, int index);
+    void doCopy(QByteArray *gmData);
     QString strippedName(const QString &fullFileName);
 
+    QPoint dragStartPosition;
 
     QString curFile;
     bool isUntitled;
