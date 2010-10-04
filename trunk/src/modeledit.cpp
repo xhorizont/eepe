@@ -18,6 +18,8 @@
 #define THR  (3)
 #define AIL  (4)
 
+#define SRC_STR "----RUD ELE THR AIL RUD P1  P2  P3  MAX FULLPPM1PPM2PPM3PPM4PPM5PPM6PPM7PPM8CH1 CH2 CH3 CH4 CH5 CH6 CH7 CH8 CH9 CH10CH11CH12CH13CH14CH15CH16CH17CH18CH19CH20CH21CH22CH23CH24CH25CH26CH27CH28CH29CH30";
+
 ModelEdit::ModelEdit(EEPFILE *eFile, uint8_t id, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::ModelEdit)
@@ -37,6 +39,7 @@ ModelEdit::ModelEdit(EEPFILE *eFile, uint8_t id, QWidget *parent) :
 
     tabModelEditSetup();
     tabExpo();
+    tabMixes();
     tabLimits();
     tabCurves();
     tabSwitches();
@@ -298,6 +301,80 @@ void ModelEdit::expoEdited()
     g_model.expoData[CONVERT_MODE(AIL)-1].expo[DR_LOW][DR_EXPO][DR_RIGHT]    = ui->AIL_ExpoRLow->value();
     g_model.expoData[CONVERT_MODE(AIL)-1].expo[DR_MID][DR_EXPO][DR_RIGHT]    = ui->AIL_ExpoRMid->value();
 
+    updateSettings();
+}
+
+
+void ModelEdit::tabMixes()
+{
+    int curDest = 0;
+    for(int i=0; i<MAX_MIXERS; i++)
+    {
+        MixData *md = &g_model.mixData[i];
+        if(!md->destCh) break;
+        QString str = "";
+        while(curDest<(md->destCh-1))
+        {
+            curDest++;
+            str = tr("CH%1%2").arg(curDest/10).arg(curDest%10);
+            ui->MixerlistWidget->addItem(str);
+        }
+
+        if(curDest!=md->destCh)
+        {
+            str = tr("CH%1%2").arg(md->destCh/10).arg(md->destCh%10);
+            curDest=md->destCh;
+        }
+        else
+            str = "    ";
+
+        switch(md->mltpx)
+        {
+        case (1): str += " *"; break;
+        case (2): str += " R"; break;
+        default:  str += "  "; break;
+        };
+
+        str += md->weight<0 ? tr(" %1\%").arg(md->weight).rightJustified(6,' ') :
+                              tr(" +%1\%").arg(md->weight).rightJustified(6, ' ');
+
+
+        QString srcStr = SRC_STR;
+        str += " " + srcStr.mid(CONVERT_MODE(md->srcRaw+1)*4,4);
+
+        if(md->swtch)
+        {
+            QString swtStr = SWITCHES_STR;
+            str += tr("Switch(%1%2)").arg(md->swtch<0 ? "!" : "").arg(swtStr.mid((abs(md->swtch)-1)*3,3));
+        }
+
+        if(md->carryTrim) str += " noTrim";
+        if(md->sOffset)  str += tr(" Offset(%1\%)").arg(md->sOffset);
+        if(md->curve)
+        {
+            QString crvStr = CURV_STR;
+            str += tr(" Curve(%1)").arg(crvStr.mid(md->curve*3,3).remove(' '));
+        }
+
+        if(md->delayDown || md->delayUp) str += tr(" Delay(u%1:d%2)").arg(md->delayUp).arg(md->delayDown);
+        if(md->speedDown || md->speedUp) str += tr(" Slow(u%1:d%2)").arg(md->speedUp).arg(md->speedDown);
+
+        if(md->mixWarn)  str += tr(" Warn(%1)").arg(md->mixWarn);
+
+        ui->MixerlistWidget->addItem(str);
+    }
+
+    while(curDest<NUM_XCHNOUT)
+    {
+        curDest++;
+        QString str = tr("CH%1%2").arg(curDest/10).arg(curDest%10);
+        ui->MixerlistWidget->addItem(str);
+    }
+
+}
+
+void ModelEdit::mixesEdited()
+{
     updateSettings();
 }
 

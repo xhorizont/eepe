@@ -67,3 +67,6 @@ void populateSourceCB(QComboBox *b, int stickMode=1, int value=0)
     b->setCurrentIndex(value);
     b->setMaxVisibleItems(10);
 }
+
+
+

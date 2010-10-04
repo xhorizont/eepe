@@ -132,16 +132,15 @@ void EEPFILE::eeLoadModelName(uint8_t id,char*buf,uint8_t len)
     if(res == sizeof(g_model.name) )
     {
       //buf+=len-5;
-      for(int i=0; i<(len-5); i++)
+      for(int i=0; i<(len-4); i++)
       {
           if(*buf==0) *buf=' ';
           buf++;
       }
+      *buf=0;buf--;
       uint16_t sz=theFile.size(FILE_MODEL(id));
       while(sz){ --buf; *buf='0'+sz%10; sz/=10;}
     }
-    buf++;buf++;
-    *buf=0;
   }
 }
 
