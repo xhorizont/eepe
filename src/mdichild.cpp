@@ -59,8 +59,77 @@ MdiChild::MdiChild()
     connect(this, SIGNAL(customContextMenuRequested(const QPoint&)),this, SLOT(ShowContextMenu(const QPoint&)));
     setContextMenuPolicy(Qt::CustomContextMenu);
     setSelectionMode(QAbstractItemView::ExtendedSelection);
+    setDragEnabled(true);
+    setAcceptDrops(true);
+    setDropIndicatorShown(true);
+
 }
 
+void MdiChild::mousePressEvent(QMouseEvent *event)
+{
+    if (event->button() == Qt::LeftButton)
+        dragStartPosition = event->pos();
+
+    QListWidget::mousePressEvent(event);
+}
+
+void MdiChild::mouseMoveEvent(QMouseEvent *event)
+{
+    if (!(event->buttons() & Qt::LeftButton))
+        return;
+    if ((event->pos() - dragStartPosition).manhattanLength()
+         < QApplication::startDragDistance())
+        return;
+
+    QDrag *drag = new QDrag(this);
+
+    QByteArray gmData;
+    doCopy(&gmData);
+
+    QMimeData *mimeData = new QMimeData;
+    mimeData->setData("application/x-eepe", gmData);
+
+    drag->setMimeData(mimeData);
+
+    //Qt::DropAction dropAction =
+            drag->exec(Qt::CopyAction);// | Qt::MoveAction);
+
+    //if(dropAction==Qt::MoveAction)
+
+    QListWidget::mouseMoveEvent(event);
+}
+
+void MdiChild::dragEnterEvent(QDragEnterEvent *event)
+{
+    if (event->mimeData()->hasFormat("application/x-eepe"))
+    {
+         event->acceptProposedAction();
+         clearSelection();
+         itemAt(event->pos())->setSelected(true);
+    }
+}
+
+void MdiChild::dragMoveEvent(QDragMoveEvent *event)
+{
+    if (event->mimeData()->hasFormat("application/x-eepe"))
+    {
+         event->acceptProposedAction();
+         clearSelection();
+         itemAt(event->pos())->setSelected(true);
+    }
+}
+
+void MdiChild::dropEvent(QDropEvent *event)
+{
+    int i = this->indexAt(event->pos()).row();
+    //QMessageBox::warning(this, tr("eePe"),tr("Index :%1").arg(i));
+    if(event->mimeData()->hasFormat("application/x-eepe"))
+    {
+        QByteArray gmData = event->mimeData()->data("application/x-eepe");
+        doPaste(&gmData,i);
+    }
+    event->acceptProposedAction();
+}
 
 void MdiChild::refreshList()
 {
@@ -104,10 +173,9 @@ void MdiChild::deleteSelected(bool ask=true)
     }
 }
 
-void MdiChild::copy()
-{
-    QByteArray gmData;
 
+void MdiChild::doCopy(QByteArray *gmData)
+{
     foreach(QModelIndex index, this->selectionModel()->selectedIndexes())
     {
         if(!index.row())
@@ -115,8 +183,8 @@ void MdiChild::copy()
             EEGeneral tgen;
             if(eeFile.getGeneralSettings(&tgen))
             {
-                gmData.append('G');
-                gmData.append((char*)&tgen,sizeof(tgen));
+                gmData->append('G');
+                gmData->append((char*)&tgen,sizeof(tgen));
             }
         }
         else
@@ -124,17 +192,61 @@ void MdiChild::copy()
             ModelData tmod;
             if(eeFile.getModel(&tmod,index.row()-1))
             {
-                gmData.append('M');
-                gmData.append((char*)&tmod,sizeof(tmod));
+                gmData->append('M');
+                gmData->append((char*)&tmod,sizeof(tmod));
             }
         }
     }
+}
+
+void MdiChild::copy()
+{
+    QByteArray gmData;
+    doCopy(&gmData);
 
     QMimeData *mimeData = new QMimeData;
-    mimeData->setData("bin/eepe", gmData);
+    mimeData->setData("application/x-eepe", gmData);
 
     QClipboard *clipboard = QApplication::clipboard();
     clipboard->setMimeData(mimeData,QClipboard::Clipboard);
+}
+
+void MdiChild::doPaste(QByteArray *gmData, int index)
+{
+    //QByteArray gmData = mimeD->data("application/x-eepe");
+    char *gData = gmData->data();//new char[gmData.size() + 1];
+    int i = 0;
+    int id = index;
+    if(!id) id++;
+
+    while((i<gmData->size()) && (id<=MAX_MODELS))
+    {
+        char c = *gData;
+        i++;
+        gData++;
+        if(c=='G')  //general settings
+        {
+            if(!eeFile.putGeneralSettings((EEGeneral*)gData))
+            {
+                QMessageBox::critical(this, tr("Error"),tr("Unable set data!"));
+                break;
+            }
+            gData += sizeof(EEGeneral);
+            i     += sizeof(EEGeneral);
+        }
+        else //model data
+        {
+            if(!eeFile.putModel((ModelData*)gData,id-1))
+            {
+                QMessageBox::critical(this, tr("Error"),tr("Unable set model!"));
+                break;
+            }
+            gData += sizeof(ModelData);
+            i     += sizeof(ModelData);
+            id++;
+        }
+    }
+    setModified();
 }
 
 void MdiChild::paste()
@@ -143,47 +255,10 @@ void MdiChild::paste()
     const QMimeData *mimeData = clipboard->mimeData();
 
 
-    if(mimeData->hasFormat("bin/eepe"))
+    if(mimeData->hasFormat("application/x-eepe"))
     {
-        QByteArray gmData = mimeData->data("bin/eepe");
-        char *gData = gmData.data();//new char[gmData.size() + 1];
-        int i = 0;
-        int id = this->currentRow();
-        if(!id) id++;
-        this->clearSelection();
-
-        while((i<gmData.size()) && (id<=MAX_MODELS))
-        {
-            char c = *gData;
-            i++;
-            gData++;
-            if(c=='G')  //general settings
-            {
-                if(!eeFile.putGeneralSettings((EEGeneral*)gData))
-                {
-                    QMessageBox::critical(this, tr("Error"),tr("Unable set data!"));
-                    break;
-                }
-                gData += sizeof(EEGeneral);
-                i     += sizeof(EEGeneral);
-                this->setCurrentRow(0,QItemSelectionModel::Select);
-            }
-            else //model data
-            {
-                if(!eeFile.putModel((ModelData*)gData,id-1))
-                {
-                    QMessageBox::critical(this, tr("Error"),tr("Unable set model!"));
-                    break;
-                }
-                this->setCurrentRow(id,QItemSelectionModel::Select);
-                gData += sizeof(ModelData);
-                i     += sizeof(ModelData);
-                id++;
-            }
-        }
-
-
-        setModified();
+        QByteArray gmData = mimeData->data("application/x-eepe");
+        doPaste(&gmData,this->currentRow());
     }
 
 }

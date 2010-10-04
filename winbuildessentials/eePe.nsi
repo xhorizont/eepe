@@ -19,6 +19,10 @@
   
   ;Get installation folder from registry if available
   InstallDirRegKey HKCU "Software\er9x-eePe" ""
+  
+  ;Compressor options
+  SetCompressor /FINAL /SOLID lzma
+  SetCompressorDictSize 64
 
   ;Request application privileges for Windows Vista
   RequestExecutionLevel user
