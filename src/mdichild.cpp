@@ -415,7 +415,7 @@ bool MdiChild::save()
 
 bool MdiChild::saveAs()
 {
-    QString fileName = QFileDialog::getSaveFileName(this, tr("Save As"),curFile);
+    QString fileName = QFileDialog::getSaveFileName(this, tr("Save As"),curFile,tr("EEPROM files (*.bin)"));
     if (fileName.isEmpty())
         return false;
 
