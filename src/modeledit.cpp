@@ -2,7 +2,8 @@
 #include "ui_modeledit.h"
 #include "pers.h"
 #include "helpers.h"
-#include "curvedialog.h"
+#include "edge.h"
+#include "node.h"
 
 #include <QtGui>
 
@@ -45,11 +46,21 @@ ModelEdit::ModelEdit(EEPFILE *eFile, uint8_t id, QWidget *parent) :
     tabCurves();
     tabSwitches();
     tabTrims();
+
+    ui->curvePreview->setMinimumWidth(260);
+    ui->curvePreview->setMinimumHeight(260);
+
 }
 
 ModelEdit::~ModelEdit()
 {
     delete ui;
+}
+
+void ModelEdit::resizeEvent(QResizeEvent *event)
+{
+    if(event->oldSize().isValid())
+        ui->curvePreview->scale((qreal)event->size().width()/event->oldSize().width(),(qreal)event->size().height()/event->oldSize().height());
 }
 
 void ModelEdit::updateSettings()
@@ -585,6 +596,16 @@ void ModelEdit::updateTabCurves()
 void ModelEdit::tabCurves()
 {
    updateTabCurves();
+
+   QGraphicsScene *scene = new QGraphicsScene(ui->curvePreview);
+   scene->setItemIndexMethod(QGraphicsScene::NoIndex);
+   QSize gs = ui->curvePreview->size();
+   scene->setSceneRect(-gs.width()/2, -gs.height()/2, gs.width(), gs.height());
+   ui->curvePreview->setScene(scene);
+   curveEdit_clicked(1);
+
+
+
    connect(ui->curvePt1_1,SIGNAL(editingFinished()),this,SLOT(curvePointEdited()));
    connect(ui->curvePt2_1,SIGNAL(editingFinished()),this,SLOT(curvePointEdited()));
    connect(ui->curvePt3_1,SIGNAL(editingFinished()),this,SLOT(curvePointEdited()));
@@ -1217,26 +1238,43 @@ void ModelEdit::on_spinBox_S4_valueChanged(int value)
 
 void ModelEdit::curveEdit_clicked(int crv)
 {
-    QList<int> vals;
+    if(crv<1 || crv>16) return;
+
+    Node *nodel = 0;
+    Node *nodex = 0;
+
+    QGraphicsScene *scene = ui->curvePreview->scene();
+    scene->clear();
+
+    //scene->addRect(-125,-125,250,250);
+
+
+    QGraphicsSimpleTextItem *ti;
+    ti = scene->addSimpleText(tr("Curve %1").arg(crv));
+    ti->setPos(0,0);
+
+
 
     if(crv<=8)
-        for(int i=0; i<5; i++) vals << g_model.curves5[crv-1][i];
+        for(int i=0; i<5; i++)
+        {
+            nodel = nodex;
+            nodex = new Node(ui->curvePreview);
+
+            nodex->setPos(i*30,g_model.curves5[crv-1][i]);
+            scene->addItem(nodex);
+            if(i>0) scene->addItem(new Edge(nodel, nodex));
+        }
     else
-        for(int i=0; i<9; i++) vals << g_model.curves9[crv-9][i];
+        for(int i=0; i<9; i++)
+        {
+            nodel = nodex;
+            nodex = new Node(ui->curvePreview);
 
-    curveDialog cd;
-    cd.setWindowTitle(tr("Editing curve #%1").arg(crv));
-    cd.setCurve(&vals);
-    cd.exec();
-
-    QList<int> nvals = cd.getCurve();
-    if(crv<=8)
-        for(int i=0; i<5; i++) g_model.curves5[crv-1][i] = nvals.at(i);
-    else
-        for(int i=0; i<9; i++) g_model.curves9[crv-9][i] = nvals.at(i);
-
-    updateTabCurves();
-    updateSettings();
+            nodex->setPos(i*30,g_model.curves9[crv-9][i]);
+            scene->addItem(nodex);
+            if(i>0) scene->addItem(new Edge(nodel, nodex));
+        }
 }
 
 
