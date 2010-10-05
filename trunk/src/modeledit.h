@@ -35,6 +35,7 @@ private:
 
     void updateTabCurves();
     void curveEdit_clicked(int crv);
+    void resizeEvent(QResizeEvent *event);
 
 signals:
     void modelValuesChanged();

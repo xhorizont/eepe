@@ -7,8 +7,7 @@ HEADERS += mainwindow.h \
     mdichild.h \
     helpers.h \
     edge.h \
-    node.h \
-    curvedialog.h
+    node.h
 SOURCES += main.cpp \
     mainwindow.cpp \
     file.cpp \
@@ -18,14 +17,12 @@ SOURCES += main.cpp \
     mdichild.cpp \
     helpers.cpp \
     node.cpp \
-    edge.cpp \
-    curvedialog.cpp
+    edge.cpp
 RESOURCES += eepe.qrc
 TARGET = eepe
 TEMPLATE = app
 FORMS += modeledit.ui \
-    generaledit.ui \
-    curvedialog.ui
+    generaledit.ui
 
 win32:RC_FILE += icon.rc
 
