@@ -33,11 +33,31 @@ private:
     void tabSwitches();
     void tabTrims();
 
+    void updateTabCurves();
+    void curveEdit_clicked(int crv);
+
 signals:
     void modelValuesChanged();
 
 
 private slots:
+    void on_curveEdit_1_clicked();
+    void on_curveEdit_2_clicked();
+    void on_curveEdit_3_clicked();
+    void on_curveEdit_4_clicked();
+    void on_curveEdit_5_clicked();
+    void on_curveEdit_6_clicked();
+    void on_curveEdit_7_clicked();
+    void on_curveEdit_8_clicked();
+    void on_curveEdit_9_clicked();
+    void on_curveEdit_10_clicked();
+    void on_curveEdit_11_clicked();
+    void on_curveEdit_12_clicked();
+    void on_curveEdit_13_clicked();
+    void on_curveEdit_14_clicked();
+    void on_curveEdit_15_clicked();
+    void on_curveEdit_16_clicked();
+
     void curvePointEdited();
     void limitEdited();
     void switchesEdited();

@@ -92,7 +92,7 @@ void MainWindow::newFile()
 void MainWindow::open()
 {
     QSettings settings("er9x-eePe", "eePe");
-    QString fileName = QFileDialog::getOpenFileName(this,"Open",settings.value("lastDir").toString());
+    QString fileName = QFileDialog::getOpenFileName(this,"Open",settings.value("lastDir").toString(),tr("EEPROM files (*.bin)"));
     if (!fileName.isEmpty()) {
         settings.setValue("lastDir",QFileInfo(fileName).dir().absolutePath());
 
@@ -156,7 +156,7 @@ void MainWindow::about()
     QMessageBox::about(this, tr("About eePe"),
                       tr("<center><img src=\":/images/eepe-title.png\"><br>"
                       "Copyright Erez Raviv &copy;2010<br>"
-                      "<a href='http://code.google.com/p/eepe/'>http://code.google.com/p/eepe/</a><br>Revision: %1, %2</center>").arg(str).arg(__DATE__));
+                      "<a href='http://code.google.com/p/eepe/'>http://code.google.com/p/eepe/</a><br>Revision: %1, %2</center>").arg(str.toInt()+1).arg(__DATE__));
 }
 
 void MainWindow::updateMenus()

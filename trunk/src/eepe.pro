@@ -5,7 +5,10 @@ HEADERS += mainwindow.h \
     modeledit.h \
     generaledit.h \
     mdichild.h \
-    helpers.h
+    helpers.h \
+    edge.h \
+    node.h \
+    curvedialog.h
 SOURCES += main.cpp \
     mainwindow.cpp \
     file.cpp \
@@ -13,12 +16,16 @@ SOURCES += main.cpp \
     modeledit.cpp \
     generaledit.cpp \
     mdichild.cpp \
-    helpers.cpp
+    helpers.cpp \
+    node.cpp \
+    edge.cpp \
+    curvedialog.cpp
 RESOURCES += eepe.qrc
 TARGET = eepe
 TEMPLATE = app
 FORMS += modeledit.ui \
-    generaledit.ui
+    generaledit.ui \
+    curvedialog.ui
 
 win32:RC_FILE += icon.rc
 
@@ -29,4 +36,3 @@ win32:RC_FILE += icon.rc
 
     VERSTR = '\\"$${VERSION}\\"'  # place quotes around the version string
     DEFINES += VER=\"$${VERSTR}\" # create a VER macro containing the version string
-
