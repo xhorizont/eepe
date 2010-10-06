@@ -2,6 +2,7 @@
 #define MODELEDIT_H
 
 #include <QDialog>
+#include <QtGui>
 #include "pers.h"
 
 namespace Ui {
@@ -15,6 +16,7 @@ class ModelEdit : public QDialog
 public:
     explicit ModelEdit(EEPFILE *eFile, uint8_t id, QWidget *parent = 0);
     ~ModelEdit();
+
 
 private:
     Ui::ModelEdit *ui;
@@ -32,14 +34,17 @@ private:
     void tabCurves();
     void tabSwitches();
     void tabTrims();
-
     void updateTabCurves();
-    void curveEdit_clicked(int crv);
+
     void resizeEvent(QResizeEvent *event);
 
-signals:
-    void modelValuesChanged();
+    void drawCurve();
+    int currentCurve;
 
+    QSpinBox *getNodeSB(int i);
+
+signals:
+    void modelValuesChanged();    
 
 private slots:
     void on_curveEdit_1_clicked();
@@ -59,7 +64,7 @@ private slots:
     void on_curveEdit_15_clicked();
     void on_curveEdit_16_clicked();
 
-    void curvePointEdited();
+    void curvePointEdited(bool redraw);
     void limitEdited();
     void switchesEdited();
     void expoEdited();

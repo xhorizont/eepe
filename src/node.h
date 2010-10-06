@@ -42,9 +42,7 @@
 #ifndef NODE_H
 #define NODE_H
 
-#include <QGraphicsItem>
-#include <QList>
-#include <QGraphicsView>
+#include <QtGui>
 
 #define BALL_SIZE 14
 #define BALL_HEIGHT 2
@@ -56,8 +54,9 @@ QT_END_NAMESPACE
 
 class Node : public QGraphicsItem
 {
+
 public:
-    Node(QGraphicsView *graphWidget);
+    Node(QSpinBox *sb);
 
     void addEdge(Edge *edge);
     QList<Edge *> edges() const;
@@ -76,9 +75,9 @@ protected:
     void mouseReleaseEvent(QGraphicsSceneMouseEvent *event);
     
 private:
+    QSpinBox *qsb;
     QList<Edge *> edgeList;
     QPointF newPos;
-    QGraphicsView *graph;
 };
 
 #endif

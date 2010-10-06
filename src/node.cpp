@@ -47,13 +47,14 @@
 #include "edge.h"
 #include "node.h"
 
-Node::Node(QGraphicsView *graphWidget)
-    : graph(graphWidget)
+Node::Node(QSpinBox *sb)
 {
     setFlag(ItemIsMovable);
     setFlag(ItemSendsGeometryChanges);
     setCacheMode(DeviceCoordinateCache);
     setZValue(-1);
+
+    qsb = sb;
 }
 
 void Node::addEdge(Edge *edge)
@@ -106,10 +107,22 @@ void Node::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWid
 QVariant Node::itemChange(GraphicsItemChange change, const QVariant &value)
 {
     switch (change) {
+    case ItemPositionChange:
+        if (scene())
+        {
+             // value is the new position.
+             QPointF newPos = value.toPointF();
+             QRectF rect = scene()->sceneRect();
+             newPos.setX(x());//make sure x doesn't change
+             newPos.setY(qMin(rect.bottom(), qMax(newPos.y(), rect.top())));// bound Y
+             qsb->setValue(125+(rect.top()-y())*250/rect.height());
+             return newPos;
+         }
+        break;
     case ItemPositionHasChanged:
+
         foreach (Edge *edge, edgeList)
             edge->adjust();
-        //graph->itemMoved();
         break;
     default:
         break;
@@ -127,5 +140,10 @@ void Node::mousePressEvent(QGraphicsSceneMouseEvent *event)
 void Node::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 {
     update();
+    if(scene())
+    {
+
+        //need to tell SB that it needs to write the value
+    }
     QGraphicsItem::mouseReleaseEvent(event);
 }

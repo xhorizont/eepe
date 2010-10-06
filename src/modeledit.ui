@@ -4672,6 +4672,308 @@ Right</string>
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>tabWidget</tabstop>
+  <tabstop>curveEdit_1</tabstop>
+  <tabstop>curvePt1_1</tabstop>
+  <tabstop>curvePt2_1</tabstop>
+  <tabstop>curvePt3_1</tabstop>
+  <tabstop>curvePt4_1</tabstop>
+  <tabstop>curvePt5_1</tabstop>
+  <tabstop>curveEdit_2</tabstop>
+  <tabstop>curvePt1_2</tabstop>
+  <tabstop>curvePt2_2</tabstop>
+  <tabstop>curvePt3_2</tabstop>
+  <tabstop>curvePt4_2</tabstop>
+  <tabstop>curvePt5_2</tabstop>
+  <tabstop>curveEdit_3</tabstop>
+  <tabstop>curvePt1_3</tabstop>
+  <tabstop>curvePt2_3</tabstop>
+  <tabstop>curvePt3_3</tabstop>
+  <tabstop>curvePt4_3</tabstop>
+  <tabstop>curvePt5_3</tabstop>
+  <tabstop>curveEdit_4</tabstop>
+  <tabstop>curvePt1_4</tabstop>
+  <tabstop>curvePt2_4</tabstop>
+  <tabstop>curvePt3_4</tabstop>
+  <tabstop>curvePt4_4</tabstop>
+  <tabstop>curvePt5_4</tabstop>
+  <tabstop>curveEdit_5</tabstop>
+  <tabstop>curvePt1_5</tabstop>
+  <tabstop>curvePt2_5</tabstop>
+  <tabstop>curvePt3_5</tabstop>
+  <tabstop>curvePt4_5</tabstop>
+  <tabstop>curvePt5_5</tabstop>
+  <tabstop>curveEdit_6</tabstop>
+  <tabstop>curvePt1_6</tabstop>
+  <tabstop>curvePt2_6</tabstop>
+  <tabstop>curvePt3_6</tabstop>
+  <tabstop>curvePt4_6</tabstop>
+  <tabstop>curvePt5_6</tabstop>
+  <tabstop>curveEdit_7</tabstop>
+  <tabstop>curvePt1_7</tabstop>
+  <tabstop>curvePt2_7</tabstop>
+  <tabstop>curvePt3_7</tabstop>
+  <tabstop>curvePt4_7</tabstop>
+  <tabstop>curvePt5_7</tabstop>
+  <tabstop>curveEdit_8</tabstop>
+  <tabstop>curvePt1_8</tabstop>
+  <tabstop>curvePt2_8</tabstop>
+  <tabstop>curvePt3_8</tabstop>
+  <tabstop>curvePt4_8</tabstop>
+  <tabstop>curvePt5_8</tabstop>
+  <tabstop>curveEdit_9</tabstop>
+  <tabstop>curvePt1_9</tabstop>
+  <tabstop>curvePt2_9</tabstop>
+  <tabstop>curvePt3_9</tabstop>
+  <tabstop>curvePt4_9</tabstop>
+  <tabstop>curvePt5_9</tabstop>
+  <tabstop>curvePt6_9</tabstop>
+  <tabstop>curvePt7_9</tabstop>
+  <tabstop>curvePt8_9</tabstop>
+  <tabstop>curvePt9_9</tabstop>
+  <tabstop>curveEdit_10</tabstop>
+  <tabstop>curvePt1_10</tabstop>
+  <tabstop>curvePt2_10</tabstop>
+  <tabstop>curvePt3_10</tabstop>
+  <tabstop>curvePt4_10</tabstop>
+  <tabstop>curvePt5_10</tabstop>
+  <tabstop>curvePt6_10</tabstop>
+  <tabstop>curvePt7_10</tabstop>
+  <tabstop>curvePt8_10</tabstop>
+  <tabstop>curvePt9_10</tabstop>
+  <tabstop>curveEdit_11</tabstop>
+  <tabstop>curvePt1_11</tabstop>
+  <tabstop>curvePt2_11</tabstop>
+  <tabstop>curvePt3_11</tabstop>
+  <tabstop>curvePt4_11</tabstop>
+  <tabstop>curvePt5_11</tabstop>
+  <tabstop>curvePt6_11</tabstop>
+  <tabstop>curvePt7_11</tabstop>
+  <tabstop>curvePt8_11</tabstop>
+  <tabstop>curvePt9_11</tabstop>
+  <tabstop>curveEdit_12</tabstop>
+  <tabstop>curvePt1_12</tabstop>
+  <tabstop>curvePt2_12</tabstop>
+  <tabstop>curvePt3_12</tabstop>
+  <tabstop>curvePt4_12</tabstop>
+  <tabstop>curvePt5_12</tabstop>
+  <tabstop>curvePt6_12</tabstop>
+  <tabstop>curvePt7_12</tabstop>
+  <tabstop>curvePt8_12</tabstop>
+  <tabstop>curvePt9_12</tabstop>
+  <tabstop>curveEdit_13</tabstop>
+  <tabstop>curvePt1_13</tabstop>
+  <tabstop>curvePt2_13</tabstop>
+  <tabstop>curvePt3_13</tabstop>
+  <tabstop>curvePt4_13</tabstop>
+  <tabstop>curvePt5_13</tabstop>
+  <tabstop>curvePt6_13</tabstop>
+  <tabstop>curvePt7_13</tabstop>
+  <tabstop>curvePt8_13</tabstop>
+  <tabstop>curvePt9_13</tabstop>
+  <tabstop>curveEdit_14</tabstop>
+  <tabstop>curvePt1_14</tabstop>
+  <tabstop>curvePt2_14</tabstop>
+  <tabstop>curvePt3_14</tabstop>
+  <tabstop>curvePt4_14</tabstop>
+  <tabstop>curvePt5_14</tabstop>
+  <tabstop>curvePt6_14</tabstop>
+  <tabstop>curvePt7_14</tabstop>
+  <tabstop>curvePt8_14</tabstop>
+  <tabstop>curvePt9_14</tabstop>
+  <tabstop>curveEdit_15</tabstop>
+  <tabstop>curvePt1_15</tabstop>
+  <tabstop>curvePt2_15</tabstop>
+  <tabstop>curvePt3_15</tabstop>
+  <tabstop>curvePt4_15</tabstop>
+  <tabstop>curvePt5_15</tabstop>
+  <tabstop>curvePt6_15</tabstop>
+  <tabstop>curvePt7_15</tabstop>
+  <tabstop>curvePt8_15</tabstop>
+  <tabstop>curvePt9_15</tabstop>
+  <tabstop>curveEdit_16</tabstop>
+  <tabstop>curvePt1_16</tabstop>
+  <tabstop>curvePt2_16</tabstop>
+  <tabstop>curvePt3_16</tabstop>
+  <tabstop>curvePt4_16</tabstop>
+  <tabstop>curvePt5_16</tabstop>
+  <tabstop>curvePt6_16</tabstop>
+  <tabstop>curvePt7_16</tabstop>
+  <tabstop>curvePt8_16</tabstop>
+  <tabstop>curvePt9_16</tabstop>
+  <tabstop>curvePreview</tabstop>
+  <tabstop>minSB_13</tabstop>
+  <tabstop>maxSB_13</tabstop>
+  <tabstop>chInvCB_13</tabstop>
+  <tabstop>offsetDSB_14</tabstop>
+  <tabstop>minSB_14</tabstop>
+  <tabstop>maxSB_14</tabstop>
+  <tabstop>chInvCB_14</tabstop>
+  <tabstop>offsetDSB_15</tabstop>
+  <tabstop>minSB_15</tabstop>
+  <tabstop>maxSB_15</tabstop>
+  <tabstop>chInvCB_15</tabstop>
+  <tabstop>offsetDSB_16</tabstop>
+  <tabstop>minSB_16</tabstop>
+  <tabstop>maxSB_16</tabstop>
+  <tabstop>chInvCB_16</tabstop>
+  <tabstop>modelNameLE</tabstop>
+  <tabstop>timerModeCB</tabstop>
+  <tabstop>timerDirCB</tabstop>
+  <tabstop>timerValTE</tabstop>
+  <tabstop>trimIncCB</tabstop>
+  <tabstop>thrTrimChkB</tabstop>
+  <tabstop>thrExpoChkB</tabstop>
+  <tabstop>trimSWCB</tabstop>
+  <tabstop>bcRUDChkB</tabstop>
+  <tabstop>bcELEChkB</tabstop>
+  <tabstop>bcTHRChkB</tabstop>
+  <tabstop>bcAILChkB</tabstop>
+  <tabstop>bcP1ChkB</tabstop>
+  <tabstop>bcP2ChkB</tabstop>
+  <tabstop>bcP3ChkB</tabstop>
+  <tabstop>pulsePolCB</tabstop>
+  <tabstop>protocolCB</tabstop>
+  <tabstop>numChannelsSB</tabstop>
+  <tabstop>ppmDelaySB</tabstop>
+  <tabstop>RUD_edrSw1</tabstop>
+  <tabstop>RUD_edrSw2</tabstop>
+  <tabstop>RUD_ExpoLHi</tabstop>
+  <tabstop>RUD_DrLHi</tabstop>
+  <tabstop>RUD_DrRHi</tabstop>
+  <tabstop>RUD_ExpoRHi</tabstop>
+  <tabstop>RUD_ExpoLMid</tabstop>
+  <tabstop>RUD_DrLMid</tabstop>
+  <tabstop>RUD_DrRMid</tabstop>
+  <tabstop>RUD_ExpoRMid</tabstop>
+  <tabstop>RUD_ExpoLLow</tabstop>
+  <tabstop>RUD_DrLLow</tabstop>
+  <tabstop>RUD_DrRLow</tabstop>
+  <tabstop>RUD_ExpoRLow</tabstop>
+  <tabstop>pushButton_3</tabstop>
+  <tabstop>AIL_edrSw1</tabstop>
+  <tabstop>AIL_edrSw2</tabstop>
+  <tabstop>AIL_ExpoLHi</tabstop>
+  <tabstop>AIL_DrLHi</tabstop>
+  <tabstop>AIL_DrRHi</tabstop>
+  <tabstop>AIL_ExpoRHi</tabstop>
+  <tabstop>AIL_ExpoLMid</tabstop>
+  <tabstop>AIL_DrLMid</tabstop>
+  <tabstop>AIL_DrRMid</tabstop>
+  <tabstop>AIL_ExpoRMid</tabstop>
+  <tabstop>AIL_ExpoLLow</tabstop>
+  <tabstop>AIL_DrLLow</tabstop>
+  <tabstop>AIL_DrRLow</tabstop>
+  <tabstop>AIL_ExpoRLow</tabstop>
+  <tabstop>pushButton_4</tabstop>
+  <tabstop>THR_edrSw1</tabstop>
+  <tabstop>THR_edrSw2</tabstop>
+  <tabstop>THR_ExpoLHi</tabstop>
+  <tabstop>THR_DrLHi</tabstop>
+  <tabstop>THR_DrRHi</tabstop>
+  <tabstop>THR_ExpoRHi</tabstop>
+  <tabstop>THR_ExpoLMid</tabstop>
+  <tabstop>THR_DrLMid</tabstop>
+  <tabstop>THR_DrRMid</tabstop>
+  <tabstop>THR_ExpoRMid</tabstop>
+  <tabstop>THR_ExpoLLow</tabstop>
+  <tabstop>THR_DrLLow</tabstop>
+  <tabstop>THR_DrRLow</tabstop>
+  <tabstop>THR_ExpoRLow</tabstop>
+  <tabstop>pushButton</tabstop>
+  <tabstop>ELE_edrSw1</tabstop>
+  <tabstop>ELE_edrSw2</tabstop>
+  <tabstop>ELE_ExpoLHi</tabstop>
+  <tabstop>ELE_DrLHi</tabstop>
+  <tabstop>ELE_DrRHi</tabstop>
+  <tabstop>ELE_ExpoRHi</tabstop>
+  <tabstop>ELE_ExpoLMid</tabstop>
+  <tabstop>ELE_DrLMid</tabstop>
+  <tabstop>ELE_DrRMid</tabstop>
+  <tabstop>ELE_ExpoRMid</tabstop>
+  <tabstop>ELE_ExpoLLow</tabstop>
+  <tabstop>ELE_DrLLow</tabstop>
+  <tabstop>ELE_DrRLow</tabstop>
+  <tabstop>ELE_ExpoRLow</tabstop>
+  <tabstop>pushButton_2</tabstop>
+  <tabstop>MixerlistWidget</tabstop>
+  <tabstop>offsetDSB_1</tabstop>
+  <tabstop>minSB_1</tabstop>
+  <tabstop>maxSB_1</tabstop>
+  <tabstop>chInvCB_1</tabstop>
+  <tabstop>offsetDSB_2</tabstop>
+  <tabstop>minSB_2</tabstop>
+  <tabstop>maxSB_2</tabstop>
+  <tabstop>chInvCB_2</tabstop>
+  <tabstop>offsetDSB_3</tabstop>
+  <tabstop>minSB_3</tabstop>
+  <tabstop>maxSB_3</tabstop>
+  <tabstop>chInvCB_3</tabstop>
+  <tabstop>offsetDSB_4</tabstop>
+  <tabstop>minSB_4</tabstop>
+  <tabstop>maxSB_4</tabstop>
+  <tabstop>chInvCB_4</tabstop>
+  <tabstop>offsetDSB_5</tabstop>
+  <tabstop>minSB_5</tabstop>
+  <tabstop>maxSB_5</tabstop>
+  <tabstop>chInvCB_5</tabstop>
+  <tabstop>offsetDSB_6</tabstop>
+  <tabstop>minSB_6</tabstop>
+  <tabstop>maxSB_6</tabstop>
+  <tabstop>chInvCB_6</tabstop>
+  <tabstop>offsetDSB_7</tabstop>
+  <tabstop>minSB_7</tabstop>
+  <tabstop>maxSB_7</tabstop>
+  <tabstop>chInvCB_7</tabstop>
+  <tabstop>offsetDSB_8</tabstop>
+  <tabstop>minSB_8</tabstop>
+  <tabstop>maxSB_8</tabstop>
+  <tabstop>chInvCB_8</tabstop>
+  <tabstop>offsetDSB_9</tabstop>
+  <tabstop>minSB_9</tabstop>
+  <tabstop>maxSB_9</tabstop>
+  <tabstop>chInvCB_9</tabstop>
+  <tabstop>offsetDSB_10</tabstop>
+  <tabstop>minSB_10</tabstop>
+  <tabstop>maxSB_10</tabstop>
+  <tabstop>chInvCB_10</tabstop>
+  <tabstop>offsetDSB_11</tabstop>
+  <tabstop>minSB_11</tabstop>
+  <tabstop>maxSB_11</tabstop>
+  <tabstop>chInvCB_11</tabstop>
+  <tabstop>offsetDSB_12</tabstop>
+  <tabstop>minSB_12</tabstop>
+  <tabstop>maxSB_12</tabstop>
+  <tabstop>chInvCB_12</tabstop>
+  <tabstop>offsetDSB_13</tabstop>
+  <tabstop>cswitchCB_1</tabstop>
+  <tabstop>cswitchOfs_1</tabstop>
+  <tabstop>cswitchFunc_1</tabstop>
+  <tabstop>cswitchCB_2</tabstop>
+  <tabstop>cswitchOfs_2</tabstop>
+  <tabstop>cswitchFunc_2</tabstop>
+  <tabstop>cswitchCB_3</tabstop>
+  <tabstop>cswitchOfs_3</tabstop>
+  <tabstop>cswitchFunc_3</tabstop>
+  <tabstop>cswitchCB_4</tabstop>
+  <tabstop>cswitchOfs_4</tabstop>
+  <tabstop>cswitchFunc_4</tabstop>
+  <tabstop>cswitchCB_5</tabstop>
+  <tabstop>cswitchOfs_5</tabstop>
+  <tabstop>cswitchFunc_5</tabstop>
+  <tabstop>cswitchCB_6</tabstop>
+  <tabstop>cswitchOfs_6</tabstop>
+  <tabstop>cswitchFunc_6</tabstop>
+  <tabstop>slider_S2</tabstop>
+  <tabstop>spinBox_S2</tabstop>
+  <tabstop>spinBox_S1</tabstop>
+  <tabstop>spinBox_S3</tabstop>
+  <tabstop>spinBox_S4</tabstop>
+  <tabstop>slider_S3</tabstop>
+  <tabstop>slider_S1</tabstop>
+  <tabstop>slider_S4</tabstop>
+ </tabstops>
  <resources/>
  <connections>
   <connection>
@@ -4681,12 +4983,12 @@ Right</string>
    <slot>setValue(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>690</x>
-     <y>329</y>
+     <x>101</x>
+     <y>42</y>
     </hint>
     <hint type="destinationlabel">
-     <x>652</x>
-     <y>239</y>
+     <x>163</x>
+     <y>69</y>
     </hint>
    </hints>
   </connection>
@@ -4697,12 +4999,12 @@ Right</string>
    <slot>setValue(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>653</x>
-     <y>631</y>
+     <x>79</x>
+     <y>51</y>
     </hint>
     <hint type="destinationlabel">
-     <x>652</x>
-     <y>443</y>
+     <x>163</x>
+     <y>69</y>
     </hint>
    </hints>
   </connection>
@@ -4713,12 +5015,12 @@ Right</string>
    <slot>setValue(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>206</x>
-     <y>631</y>
+     <x>57</x>
+     <y>51</y>
     </hint>
     <hint type="destinationlabel">
-     <x>211</x>
-     <y>443</y>
+     <x>141</x>
+     <y>69</y>
     </hint>
    </hints>
   </connection>
@@ -4729,12 +5031,12 @@ Right</string>
    <slot>setValue(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>37</x>
-     <y>291</y>
+     <x>35</x>
+     <y>42</y>
     </hint>
     <hint type="destinationlabel">
-     <x>147</x>
-     <y>239</y>
+     <x>141</x>
+     <y>69</y>
     </hint>
    </hints>
   </connection>
@@ -4745,12 +5047,12 @@ Right</string>
    <slot>setValue(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>222</x>
-     <y>239</y>
+     <x>141</x>
+     <y>69</y>
     </hint>
     <hint type="destinationlabel">
-     <x>37</x>
-     <y>164</y>
+     <x>35</x>
+     <y>42</y>
     </hint>
    </hints>
   </connection>
@@ -4761,12 +5063,12 @@ Right</string>
    <slot>setValue(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>652</x>
-     <y>239</y>
+     <x>163</x>
+     <y>69</y>
     </hint>
     <hint type="destinationlabel">
-     <x>690</x>
-     <y>174</y>
+     <x>101</x>
+     <y>42</y>
     </hint>
    </hints>
   </connection>
@@ -4777,12 +5079,12 @@ Right</string>
    <slot>setValue(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>652</x>
-     <y>443</y>
+     <x>163</x>
+     <y>69</y>
     </hint>
     <hint type="destinationlabel">
-     <x>653</x>
-     <y>631</y>
+     <x>79</x>
+     <y>51</y>
     </hint>
    </hints>
   </connection>
@@ -4793,12 +5095,12 @@ Right</string>
    <slot>setValue(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>274</x>
-     <y>443</y>
+     <x>141</x>
+     <y>69</y>
     </hint>
     <hint type="destinationlabel">
-     <x>269</x>
-     <y>631</y>
+     <x>57</x>
+     <y>51</y>
     </hint>
    </hints>
   </connection>
