@@ -20,6 +20,8 @@
 #define THR  (3)
 #define AIL  (4)
 
+#define GFX_MARGIN 16
+
 #define SRC_STR "----RUD ELE THR AIL RUD P1  P2  P3  MAX FULLPPM1PPM2PPM3PPM4PPM5PPM6PPM7PPM8CH1 CH2 CH3 CH4 CH5 CH6 CH7 CH8 CH9 CH10CH11CH12CH13CH14CH15CH16CH17CH18CH19CH20CH21CH22CH23CH24CH25CH26CH27CH28CH29CH30";
 
 ModelEdit::ModelEdit(EEPFILE *eFile, uint8_t id, QWidget *parent) :
@@ -57,10 +59,18 @@ ModelEdit::~ModelEdit()
     delete ui;
 }
 
-void ModelEdit::resizeEvent(QResizeEvent *event)
+void ModelEdit::resizeEvent(QResizeEvent *event = 0)
 {
-    if(event->oldSize().isValid())
-        ui->curvePreview->scale((qreal)event->size().width()/event->oldSize().width(),(qreal)event->size().height()/event->oldSize().height());
+
+    if(ui->curvePreview->scene())
+    {
+        QSize gs = ui->curvePreview->size();
+        ui->curvePreview->scene()->setSceneRect(GFX_MARGIN, GFX_MARGIN, gs.width()-GFX_MARGIN*2, gs.height()-GFX_MARGIN*2);
+        drawCurve();
+    }
+
+    QDialog::resizeEvent(event);
+
 }
 
 void ModelEdit::updateSettings()
@@ -599,10 +609,10 @@ void ModelEdit::tabCurves()
 
    QGraphicsScene *scene = new QGraphicsScene(ui->curvePreview);
    scene->setItemIndexMethod(QGraphicsScene::NoIndex);
-   QSize gs = ui->curvePreview->size();
-   scene->setSceneRect(-gs.width()/2, -gs.height()/2, gs.width(), gs.height());
    ui->curvePreview->setScene(scene);
-   curveEdit_clicked(1);
+   currentCurve = 0;
+
+   resizeEvent();  // draws the curve
 
 
 
@@ -809,7 +819,7 @@ void ModelEdit::limitEdited()
     updateSettings();
 }
 
-void ModelEdit::curvePointEdited()
+void ModelEdit::curvePointEdited(bool redraw = true)
 {            
     g_model.curves5[0][0] = ui->curvePt1_1->value();
     g_model.curves5[0][1] = ui->curvePt2_1->value();
@@ -940,6 +950,7 @@ void ModelEdit::curvePointEdited()
     g_model.curves9[7][7] = ui->curvePt8_16->value();
     g_model.curves9[7][8] = ui->curvePt9_16->value();
 
+    if(redraw) drawCurve();
     updateSettings();
 }
 
@@ -1233,12 +1244,143 @@ void ModelEdit::on_spinBox_S4_valueChanged(int value)
         updateSettings();
 }
 
-
-
-
-void ModelEdit::curveEdit_clicked(int crv)
+QSpinBox *ModelEdit::getNodeSB(int i)   // get the SpinBox that corresponds to the selected node
 {
-    if(crv<1 || crv>16) return;
+    if(currentCurve==0 && i==0) return ui->curvePt1_1;
+    if(currentCurve==0 && i==1) return ui->curvePt2_1;
+    if(currentCurve==0 && i==2) return ui->curvePt3_1;
+    if(currentCurve==0 && i==3) return ui->curvePt4_1;
+    if(currentCurve==0 && i==4) return ui->curvePt5_1;
+                                                    
+    if(currentCurve==1 && i==0) return ui->curvePt1_2;
+    if(currentCurve==1 && i==1) return ui->curvePt2_2;
+    if(currentCurve==1 && i==2) return ui->curvePt3_2;
+    if(currentCurve==1 && i==3) return ui->curvePt4_2;
+    if(currentCurve==1 && i==4) return ui->curvePt5_2;
+                                                    
+    if(currentCurve==2 && i==0) return ui->curvePt1_3;
+    if(currentCurve==2 && i==1) return ui->curvePt2_3;
+    if(currentCurve==2 && i==2) return ui->curvePt3_3;
+    if(currentCurve==2 && i==3) return ui->curvePt4_3;
+    if(currentCurve==2 && i==4) return ui->curvePt5_3;
+                                                    
+    if(currentCurve==3 && i==0) return ui->curvePt1_4;
+    if(currentCurve==3 && i==1) return ui->curvePt2_4;
+    if(currentCurve==3 && i==2) return ui->curvePt3_4;
+    if(currentCurve==3 && i==3) return ui->curvePt4_4;
+    if(currentCurve==3 && i==4) return ui->curvePt5_4;
+                                                    
+    if(currentCurve==4 && i==0) return ui->curvePt1_5;
+    if(currentCurve==4 && i==1) return ui->curvePt2_5;
+    if(currentCurve==4 && i==2) return ui->curvePt3_5;
+    if(currentCurve==4 && i==3) return ui->curvePt4_5;
+    if(currentCurve==4 && i==4) return ui->curvePt5_5;
+                                                    
+    if(currentCurve==5 && i==0) return ui->curvePt1_6;
+    if(currentCurve==5 && i==1) return ui->curvePt2_6;
+    if(currentCurve==5 && i==2) return ui->curvePt3_6;
+    if(currentCurve==5 && i==3) return ui->curvePt4_6;
+    if(currentCurve==5 && i==4) return ui->curvePt5_6;
+                                                    
+    if(currentCurve==6 && i==0) return ui->curvePt1_7;
+    if(currentCurve==6 && i==1) return ui->curvePt2_7;
+    if(currentCurve==6 && i==2) return ui->curvePt3_7;
+    if(currentCurve==6 && i==3) return ui->curvePt4_7;
+    if(currentCurve==6 && i==4) return ui->curvePt5_7;
+                                                    
+    if(currentCurve==7 && i==0) return ui->curvePt1_8;
+    if(currentCurve==7 && i==1) return ui->curvePt2_8;
+    if(currentCurve==7 && i==2) return ui->curvePt3_8;
+    if(currentCurve==7 && i==3) return ui->curvePt4_8;
+    if(currentCurve==7 && i==4) return ui->curvePt5_8;
+                                                    
+                                                    
+    if(currentCurve==8 && i==0) return ui->curvePt1_9;
+    if(currentCurve==8 && i==1) return ui->curvePt2_9;
+    if(currentCurve==8 && i==2) return ui->curvePt3_9;
+    if(currentCurve==8 && i==3) return ui->curvePt4_9;
+    if(currentCurve==8 && i==4) return ui->curvePt5_9;
+    if(currentCurve==8 && i==5) return ui->curvePt6_9;
+    if(currentCurve==8 && i==6) return ui->curvePt7_9;
+    if(currentCurve==8 && i==7) return ui->curvePt8_9;
+    if(currentCurve==8 && i==8) return ui->curvePt9_9;
+
+    if(currentCurve==9 && i==0) return ui->curvePt1_10;
+    if(currentCurve==9 && i==1) return ui->curvePt2_10;
+    if(currentCurve==9 && i==2) return ui->curvePt3_10;
+    if(currentCurve==9 && i==3) return ui->curvePt4_10;
+    if(currentCurve==9 && i==4) return ui->curvePt5_10;
+    if(currentCurve==9 && i==5) return ui->curvePt6_10;
+    if(currentCurve==9 && i==6) return ui->curvePt7_10;
+    if(currentCurve==9 && i==7) return ui->curvePt8_10;
+    if(currentCurve==9 && i==8) return ui->curvePt9_10;
+
+    if(currentCurve==10 && i==0) return ui->curvePt1_11;
+    if(currentCurve==10 && i==1) return ui->curvePt2_11;
+    if(currentCurve==10 && i==2) return ui->curvePt3_11;
+    if(currentCurve==10 && i==3) return ui->curvePt4_11;
+    if(currentCurve==10 && i==4) return ui->curvePt5_11;
+    if(currentCurve==10 && i==5) return ui->curvePt6_11;
+    if(currentCurve==10 && i==6) return ui->curvePt7_11;
+    if(currentCurve==10 && i==7) return ui->curvePt8_11;
+    if(currentCurve==10 && i==8) return ui->curvePt9_11;
+
+    if(currentCurve==11 && i==0) return ui->curvePt1_12;
+    if(currentCurve==11 && i==1) return ui->curvePt2_12;
+    if(currentCurve==11 && i==2) return ui->curvePt3_12;
+    if(currentCurve==11 && i==3) return ui->curvePt4_12;
+    if(currentCurve==11 && i==4) return ui->curvePt5_12;
+    if(currentCurve==11 && i==5) return ui->curvePt6_12;
+    if(currentCurve==11 && i==6) return ui->curvePt7_12;
+    if(currentCurve==11 && i==7) return ui->curvePt8_12;
+    if(currentCurve==11 && i==8) return ui->curvePt9_12;
+
+    if(currentCurve==12 && i==0) return ui->curvePt1_13;
+    if(currentCurve==12 && i==1) return ui->curvePt2_13;
+    if(currentCurve==12 && i==2) return ui->curvePt3_13;
+    if(currentCurve==12 && i==3) return ui->curvePt4_13;
+    if(currentCurve==12 && i==4) return ui->curvePt5_13;
+    if(currentCurve==12 && i==5) return ui->curvePt6_13;
+    if(currentCurve==12 && i==6) return ui->curvePt7_13;
+    if(currentCurve==12 && i==7) return ui->curvePt8_13;
+    if(currentCurve==12 && i==8) return ui->curvePt9_13;
+
+    if(currentCurve==13 && i==0) return ui->curvePt1_14;
+    if(currentCurve==13 && i==1) return ui->curvePt2_14;
+    if(currentCurve==13 && i==2) return ui->curvePt3_14;
+    if(currentCurve==13 && i==3) return ui->curvePt4_14;
+    if(currentCurve==13 && i==4) return ui->curvePt5_14;
+    if(currentCurve==13 && i==5) return ui->curvePt6_14;
+    if(currentCurve==13 && i==6) return ui->curvePt7_14;
+    if(currentCurve==13 && i==7) return ui->curvePt8_14;
+    if(currentCurve==13 && i==8) return ui->curvePt9_14;
+
+    if(currentCurve==14 && i==0) return ui->curvePt1_15;
+    if(currentCurve==14 && i==1) return ui->curvePt2_15;
+    if(currentCurve==14 && i==2) return ui->curvePt3_15;
+    if(currentCurve==14 && i==3) return ui->curvePt4_15;
+    if(currentCurve==14 && i==4) return ui->curvePt5_15;
+    if(currentCurve==14 && i==5) return ui->curvePt6_15;
+    if(currentCurve==14 && i==6) return ui->curvePt7_15;
+    if(currentCurve==14 && i==7) return ui->curvePt8_15;
+    if(currentCurve==14 && i==8) return ui->curvePt9_15;
+
+    if(currentCurve==15 && i==0) return ui->curvePt1_16;
+    if(currentCurve==15 && i==1) return ui->curvePt2_16;
+    if(currentCurve==15 && i==2) return ui->curvePt3_16;
+    if(currentCurve==15 && i==3) return ui->curvePt4_16;
+    if(currentCurve==15 && i==4) return ui->curvePt5_16;
+    if(currentCurve==15 && i==5) return ui->curvePt6_16;
+    if(currentCurve==15 && i==6) return ui->curvePt7_16;
+    if(currentCurve==15 && i==7) return ui->curvePt8_16;
+    if(currentCurve==15 && i==8) return ui->curvePt9_16;
+
+    return 0;
+}
+
+void ModelEdit::drawCurve()
+{
+    if(currentCurve<0 || currentCurve>15) return;
 
     Node *nodel = 0;
     Node *nodex = 0;
@@ -1246,22 +1388,27 @@ void ModelEdit::curveEdit_clicked(int crv)
     QGraphicsScene *scene = ui->curvePreview->scene();
     scene->clear();
 
-    //scene->addRect(-125,-125,250,250);
+    qreal width  = scene->sceneRect().width();
+    qreal height = scene->sceneRect().height();
 
+    qreal centerX = scene->sceneRect().left() + width/2; //center X
+    qreal centerY = scene->sceneRect().top() + height/2; //center Y
 
     QGraphicsSimpleTextItem *ti;
-    ti = scene->addSimpleText(tr("Curve %1").arg(crv));
-    ti->setPos(0,0);
+    ti = scene->addSimpleText(tr("Curve %1").arg(currentCurve+1));
+    ti->setPos(3,3);
+
+    scene->addLine(centerX,GFX_MARGIN,centerX,height+GFX_MARGIN);
+    scene->addLine(GFX_MARGIN,centerY,width+GFX_MARGIN,centerY);
 
 
-
-    if(crv<=8)
+    if(currentCurve<8)
         for(int i=0; i<5; i++)
         {
             nodel = nodex;
-            nodex = new Node(ui->curvePreview);
+            nodex = new Node(getNodeSB(i));
 
-            nodex->setPos(i*30,g_model.curves5[crv-1][i]);
+            nodex->setPos(GFX_MARGIN + i*width/(5-1),centerY - (qreal)g_model.curves5[currentCurve][i]*height/250);
             scene->addItem(nodex);
             if(i>0) scene->addItem(new Edge(nodel, nodex));
         }
@@ -1269,9 +1416,9 @@ void ModelEdit::curveEdit_clicked(int crv)
         for(int i=0; i<9; i++)
         {
             nodel = nodex;
-            nodex = new Node(ui->curvePreview);
+            nodex = new Node(getNodeSB(i));
 
-            nodex->setPos(i*30,g_model.curves9[crv-9][i]);
+            nodex->setPos(GFX_MARGIN + i*width/(9-1),centerY - (qreal)g_model.curves9[currentCurve-8][i]*height/250);
             scene->addItem(nodex);
             if(i>0) scene->addItem(new Edge(nodel, nodex));
         }
@@ -1282,80 +1429,96 @@ void ModelEdit::curveEdit_clicked(int crv)
 
 void ModelEdit::on_curveEdit_1_clicked()
 {
-    curveEdit_clicked(1);
+    currentCurve = 0;
+    drawCurve();
 }
 
 void ModelEdit::on_curveEdit_2_clicked()
 {
-    curveEdit_clicked(2);
+    currentCurve = 1;
+    drawCurve();
 }
 
 void ModelEdit::on_curveEdit_3_clicked()
 {
-    curveEdit_clicked(3);
+    currentCurve = 2;
+    drawCurve();
 }
 
 void ModelEdit::on_curveEdit_4_clicked()
 {
-    curveEdit_clicked(4);
+    currentCurve = 3;
+    drawCurve();
 }
 
 void ModelEdit::on_curveEdit_5_clicked()
 {
-    curveEdit_clicked(5);
+    currentCurve = 4;
+    drawCurve();
 }
 
 void ModelEdit::on_curveEdit_6_clicked()
 {
-    curveEdit_clicked(6);
+    currentCurve = 5;
+    drawCurve();
 }
 
 void ModelEdit::on_curveEdit_7_clicked()
 {
-    curveEdit_clicked(7);
+    currentCurve = 6;
+    drawCurve();
 }
 
 void ModelEdit::on_curveEdit_8_clicked()
 {
-    curveEdit_clicked(8);
+    currentCurve = 7;
+    drawCurve();
 }
 
 void ModelEdit::on_curveEdit_9_clicked()
 {
-    curveEdit_clicked(9);
+    currentCurve = 8;
+    drawCurve();
 }
 
 void ModelEdit::on_curveEdit_10_clicked()
 {
-    curveEdit_clicked(10);
+    currentCurve = 9;
+    drawCurve();
 }
 
 void ModelEdit::on_curveEdit_11_clicked()
 {
-    curveEdit_clicked(11);
+    currentCurve = 10;
+    drawCurve();
 }
 
 void ModelEdit::on_curveEdit_12_clicked()
 {
-    curveEdit_clicked(12);
+    currentCurve = 11;
+    drawCurve();
 }
 
 void ModelEdit::on_curveEdit_13_clicked()
 {
-    curveEdit_clicked(13);
+    currentCurve = 12;
+    drawCurve();
 }
 
 void ModelEdit::on_curveEdit_14_clicked()
 {
-    curveEdit_clicked(14);
+    currentCurve = 13;
+    drawCurve();
 }
 
 void ModelEdit::on_curveEdit_15_clicked()
 {
-    curveEdit_clicked(15);
+    currentCurve = 14;
+    drawCurve();
 }
 
 void ModelEdit::on_curveEdit_16_clicked()
 {
-    curveEdit_clicked(16);
+    currentCurve = 15;
+    drawCurve();
 }
