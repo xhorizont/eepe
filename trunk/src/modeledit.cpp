@@ -819,7 +819,7 @@ void ModelEdit::limitEdited()
     updateSettings();
 }
 
-void ModelEdit::curvePointEdited(bool redraw = true)
+void ModelEdit::curvePointEdited()
 {            
     g_model.curves5[0][0] = ui->curvePt1_1->value();
     g_model.curves5[0][1] = ui->curvePt2_1->value();
@@ -950,7 +950,7 @@ void ModelEdit::curvePointEdited(bool redraw = true)
     g_model.curves9[7][7] = ui->curvePt8_16->value();
     g_model.curves9[7][8] = ui->curvePt9_16->value();
 
-    if(redraw) drawCurve();
+    //drawCurve();
     updateSettings();
 }
 

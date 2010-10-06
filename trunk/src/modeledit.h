@@ -64,7 +64,7 @@ private slots:
     void on_curveEdit_15_clicked();
     void on_curveEdit_16_clicked();
 
-    void curvePointEdited(bool redraw);
+    void curvePointEdited();
     void limitEdited();
     void switchesEdited();
     void expoEdited();
