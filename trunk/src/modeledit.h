@@ -36,9 +36,11 @@ private:
     void tabTrims();
     void updateTabCurves();
 
-    void resizeEvent(QResizeEvent *event);
+    void resizeEvent(QResizeEvent *event  = 0);
 
+    void drawExpo();
     void drawCurve();
+    int currentExpo;
     int currentCurve;
 
     QSpinBox *getNodeSB(int i);
@@ -47,6 +49,11 @@ signals:
     void modelValuesChanged();    
 
 private slots:
+    void on_pushButton_4_clicked();
+    void on_pushButton_3_clicked();
+    void on_pushButton_2_clicked();
+    void on_pushButton_1_clicked();
+
     void on_curveEdit_1_clicked();
     void on_curveEdit_2_clicked();
     void on_curveEdit_3_clicked();

@@ -52,6 +52,9 @@ ModelEdit::ModelEdit(EEPFILE *eFile, uint8_t id, QWidget *parent) :
     ui->curvePreview->setMinimumWidth(260);
     ui->curvePreview->setMinimumHeight(260);
 
+
+    resizeEvent();  // draws the curves and Expo
+
 }
 
 ModelEdit::~ModelEdit()
@@ -59,13 +62,21 @@ ModelEdit::~ModelEdit()
     delete ui;
 }
 
-void ModelEdit::resizeEvent(QResizeEvent *event = 0)
+void ModelEdit::resizeEvent(QResizeEvent *event)
 {
 
     if(ui->curvePreview->scene())
     {
         QSize gs = ui->curvePreview->size();
         ui->curvePreview->scene()->setSceneRect(GFX_MARGIN, GFX_MARGIN, gs.width()-GFX_MARGIN*2, gs.height()-GFX_MARGIN*2);
+        drawCurve();
+    }
+
+    if(ui->expoPreview->scene())
+    {
+        QSize gs = ui->expoPreview->size();
+        qreal w = gs.width()>gs.height() ? gs.height() : gs.width();
+        ui->expoPreview->scene()->setSceneRect(GFX_MARGIN, GFX_MARGIN, w-GFX_MARGIN*2, w-GFX_MARGIN*2);
         drawCurve();
     }
 
@@ -196,6 +207,12 @@ void ModelEdit::tabExpo()
     ui->AIL_ExpoRLow->setValue(g_model.expoData[CONVERT_MODE(AIL)-1].expo[DR_LOW][DR_EXPO][DR_RIGHT]);
     ui->AIL_ExpoRMid->setValue(g_model.expoData[CONVERT_MODE(AIL)-1].expo[DR_MID][DR_EXPO][DR_RIGHT]);
 
+
+    QGraphicsScene *scene = new QGraphicsScene(ui->expoPreview);
+    scene->setItemIndexMethod(QGraphicsScene::NoIndex);
+    ui->expoPreview->setScene(scene);
+    currentExpo = 0;
+
     connect(ui->RUD_edrSw1,SIGNAL(currentIndexChanged(int)),this,SLOT(expoEdited()));
     connect(ui->RUD_edrSw2,SIGNAL(currentIndexChanged(int)),this,SLOT(expoEdited()));
     connect(ui->ELE_edrSw1,SIGNAL(currentIndexChanged(int)),this,SLOT(expoEdited()));
@@ -256,6 +273,7 @@ void ModelEdit::tabExpo()
     connect(ui->AIL_ExpoRHi,SIGNAL(editingFinished()),this,SLOT(expoEdited()));
     connect(ui->AIL_ExpoRLow,SIGNAL(editingFinished()),this,SLOT(expoEdited()));
     connect(ui->AIL_ExpoRMid,SIGNAL(editingFinished()),this,SLOT(expoEdited()));
+
 
 }
 
@@ -611,10 +629,6 @@ void ModelEdit::tabCurves()
    scene->setItemIndexMethod(QGraphicsScene::NoIndex);
    ui->curvePreview->setScene(scene);
    currentCurve = 0;
-
-   resizeEvent();  // draws the curve
-
-
 
    connect(ui->curvePt1_1,SIGNAL(editingFinished()),this,SLOT(curvePointEdited()));
    connect(ui->curvePt2_1,SIGNAL(editingFinished()),this,SLOT(curvePointEdited()));
@@ -1426,6 +1440,53 @@ void ModelEdit::drawCurve()
 
 
 
+void ModelEdit::drawExpo()
+{
+    if(currentExpo<1 || currentExpo>4) return;
+
+    QGraphicsScene *scene = ui->expoPreview->scene();
+    scene->clear();
+
+    qreal width  = scene->sceneRect().width();
+    qreal height = scene->sceneRect().height();
+    if(width>height) width = height;
+    if(height>width) height = width;
+
+    qreal centerX = scene->sceneRect().left() + width/2; //center X
+    qreal centerY = scene->sceneRect().top() + height/2; //center Y
+
+    QGraphicsSimpleTextItem *ti;
+    switch (currentExpo)
+    {
+        case (RUD): ti = scene->addSimpleText("RUD");break;
+        case (ELE): ti = scene->addSimpleText("ELE");break;
+        case (THR): ti = scene->addSimpleText("THR");break;
+        case (AIL): ti = scene->addSimpleText("AIL");break;
+        default: ti = scene->addSimpleText("INV");break;  //shouldn't reach this
+    }
+    ti->setPos(3,3);
+
+    scene->addLine(centerX,GFX_MARGIN,centerX,height+GFX_MARGIN);
+    scene->addLine(GFX_MARGIN,centerY,width+GFX_MARGIN,centerY);
+
+
+    int m = -40;
+    int n = -20;
+    int o = 40;
+    Node *nodeMin = new Node(getNodeSB(1)); // change this
+    Node *nodeMid = new Node(getNodeSB(1));
+    Node *nodeMax = new Node(getNodeSB(1));
+
+    nodeMin->setPos(GFX_MARGIN,centerY - (qreal)m*height/250);
+    nodeMid->setPos(centerX,centerY - (qreal)n*height/250);
+    nodeMax->setPos(GFX_MARGIN+width,centerY - (qreal)o*height/250);
+
+    scene->addItem(nodeMin);
+    scene->addItem(nodeMid);  scene->addItem(new Edge(nodeMin, nodeMid));
+    scene->addItem(nodeMax);  scene->addItem(new Edge(nodeMid, nodeMax));
+}
+
+
 
 void ModelEdit::on_curveEdit_1_clicked()
 {
@@ -1521,4 +1582,30 @@ void ModelEdit::on_curveEdit_16_clicked()
 {
     currentCurve = 15;
     drawCurve();
+}
+
+
+
+void ModelEdit::on_pushButton_1_clicked()
+{
+    currentExpo = RUD;
+    drawExpo();
+}
+
+void ModelEdit::on_pushButton_2_clicked()
+{
+    currentExpo = THR;
+    drawExpo();
+}
+
+void ModelEdit::on_pushButton_3_clicked()
+{
+    currentExpo = ELE;
+    drawExpo();
+}
+
+void ModelEdit::on_pushButton_4_clicked()
+{
+    currentExpo = AIL;
+    drawExpo();
 }

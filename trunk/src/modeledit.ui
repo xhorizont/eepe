@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>713</width>
-    <height>654</height>
+    <width>701</width>
+    <height>660</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -24,7 +24,7 @@
    <item row="0" column="1">
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
-      <number>4</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="tabModelSetup">
       <attribute name="title">
@@ -613,7 +613,7 @@ Right</string>
            </widget>
           </item>
           <item row="0" column="1" colspan="2">
-           <widget class="QPushButton" name="pushButton_3">
+           <widget class="QPushButton" name="pushButton_1">
             <property name="font">
              <font>
               <pointsize>14</pointsize>
@@ -1181,7 +1181,7 @@ Left</string>
            </widget>
           </item>
           <item row="0" column="1" colspan="2">
-           <widget class="QPushButton" name="pushButton">
+           <widget class="QPushButton" name="pushButton_2">
             <property name="font">
              <font>
               <pointsize>14</pointsize>
@@ -1465,7 +1465,7 @@ Right</string>
            </widget>
           </item>
           <item row="0" column="1" colspan="2">
-           <widget class="QPushButton" name="pushButton_2">
+           <widget class="QPushButton" name="pushButton_3">
             <property name="font">
              <font>
               <pointsize>14</pointsize>
@@ -1479,18 +1479,8 @@ Right</string>
          </layout>
         </widget>
        </item>
-       <item row="2" column="0">
-        <spacer name="verticalSpacer">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>40</height>
-          </size>
-         </property>
-        </spacer>
+       <item row="2" column="0" colspan="2">
+        <widget class="QGraphicsView" name="expoPreview"/>
        </item>
       </layout>
      </widget>
@@ -1521,15 +1511,15 @@ Right</string>
       <attribute name="title">
        <string>Limits</string>
       </attribute>
-      <layout class="QGridLayout" name="gridLayout_6">
-       <item row="0" column="0">
+      <layout class="QGridLayout" name="gridLayout_6" rowstretch="0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1" columnstretch="0,1,1,1,1">
+       <item row="1" column="0">
         <widget class="QLabel" name="label_14">
          <property name="text">
           <string>CH1</string>
          </property>
         </widget>
        </item>
-       <item row="0" column="1">
+       <item row="1" column="1">
         <widget class="QDoubleSpinBox" name="offsetDSB_1">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -1542,7 +1532,7 @@ Right</string>
          </property>
         </widget>
        </item>
-       <item row="0" column="2">
+       <item row="1" column="2">
         <widget class="QSpinBox" name="minSB_1">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -1555,7 +1545,7 @@ Right</string>
          </property>
         </widget>
        </item>
-       <item row="0" column="3">
+       <item row="1" column="3">
         <widget class="QSpinBox" name="maxSB_1">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -1568,7 +1558,7 @@ Right</string>
          </property>
         </widget>
        </item>
-       <item row="0" column="4">
+       <item row="1" column="4">
         <widget class="QComboBox" name="chInvCB_1">
          <item>
           <property name="text">
@@ -1582,14 +1572,14 @@ Right</string>
          </item>
         </widget>
        </item>
-       <item row="1" column="0">
+       <item row="2" column="0">
         <widget class="QLabel" name="label_15">
          <property name="text">
           <string>CH2</string>
          </property>
         </widget>
        </item>
-       <item row="1" column="1">
+       <item row="2" column="1">
         <widget class="QDoubleSpinBox" name="offsetDSB_2">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -1602,7 +1592,7 @@ Right</string>
          </property>
         </widget>
        </item>
-       <item row="1" column="2">
+       <item row="2" column="2">
         <widget class="QSpinBox" name="minSB_2">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -1615,7 +1605,7 @@ Right</string>
          </property>
         </widget>
        </item>
-       <item row="1" column="3">
+       <item row="2" column="3">
         <widget class="QSpinBox" name="maxSB_2">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -1628,7 +1618,7 @@ Right</string>
          </property>
         </widget>
        </item>
-       <item row="1" column="4">
+       <item row="2" column="4">
         <widget class="QComboBox" name="chInvCB_2">
          <item>
           <property name="text">
@@ -1642,14 +1632,14 @@ Right</string>
          </item>
         </widget>
        </item>
-       <item row="2" column="0">
+       <item row="3" column="0">
         <widget class="QLabel" name="label_16">
          <property name="text">
           <string>CH3</string>
          </property>
         </widget>
        </item>
-       <item row="2" column="1">
+       <item row="3" column="1">
         <widget class="QDoubleSpinBox" name="offsetDSB_3">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -1662,7 +1652,7 @@ Right</string>
          </property>
         </widget>
        </item>
-       <item row="2" column="2">
+       <item row="3" column="2">
         <widget class="QSpinBox" name="minSB_3">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -1675,7 +1665,7 @@ Right</string>
          </property>
         </widget>
        </item>
-       <item row="2" column="3">
+       <item row="3" column="3">
         <widget class="QSpinBox" name="maxSB_3">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -1688,7 +1678,7 @@ Right</string>
          </property>
         </widget>
        </item>
-       <item row="2" column="4">
+       <item row="3" column="4">
         <widget class="QComboBox" name="chInvCB_3">
          <item>
           <property name="text">
@@ -1702,14 +1692,14 @@ Right</string>
          </item>
         </widget>
        </item>
-       <item row="3" column="0">
+       <item row="4" column="0">
         <widget class="QLabel" name="label_17">
          <property name="text">
           <string>CH4</string>
          </property>
         </widget>
        </item>
-       <item row="3" column="1">
+       <item row="4" column="1">
         <widget class="QDoubleSpinBox" name="offsetDSB_4">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -1722,7 +1712,7 @@ Right</string>
          </property>
         </widget>
        </item>
-       <item row="3" column="2">
+       <item row="4" column="2">
         <widget class="QSpinBox" name="minSB_4">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -1735,7 +1725,7 @@ Right</string>
          </property>
         </widget>
        </item>
-       <item row="3" column="3">
+       <item row="4" column="3">
         <widget class="QSpinBox" name="maxSB_4">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -1748,7 +1738,7 @@ Right</string>
          </property>
         </widget>
        </item>
-       <item row="3" column="4">
+       <item row="4" column="4">
         <widget class="QComboBox" name="chInvCB_4">
          <item>
           <property name="text">
@@ -1762,14 +1752,14 @@ Right</string>
          </item>
         </widget>
        </item>
-       <item row="4" column="0">
+       <item row="5" column="0">
         <widget class="QLabel" name="label_18">
          <property name="text">
           <string>CH5</string>
          </property>
         </widget>
        </item>
-       <item row="4" column="1">
+       <item row="5" column="1">
         <widget class="QDoubleSpinBox" name="offsetDSB_5">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -1782,7 +1772,7 @@ Right</string>
          </property>
         </widget>
        </item>
-       <item row="4" column="2">
+       <item row="5" column="2">
         <widget class="QSpinBox" name="minSB_5">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -1795,7 +1785,7 @@ Right</string>
          </property>
         </widget>
        </item>
-       <item row="4" column="3">
+       <item row="5" column="3">
         <widget class="QSpinBox" name="maxSB_5">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -1808,7 +1798,7 @@ Right</string>
          </property>
         </widget>
        </item>
-       <item row="4" column="4">
+       <item row="5" column="4">
         <widget class="QComboBox" name="chInvCB_5">
          <item>
           <property name="text">
@@ -1822,14 +1812,14 @@ Right</string>
          </item>
         </widget>
        </item>
-       <item row="5" column="0">
+       <item row="6" column="0">
         <widget class="QLabel" name="label_19">
          <property name="text">
           <string>CH6</string>
          </property>
         </widget>
        </item>
-       <item row="5" column="1">
+       <item row="6" column="1">
         <widget class="QDoubleSpinBox" name="offsetDSB_6">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -1842,7 +1832,7 @@ Right</string>
          </property>
         </widget>
        </item>
-       <item row="5" column="2">
+       <item row="6" column="2">
         <widget class="QSpinBox" name="minSB_6">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -1855,7 +1845,7 @@ Right</string>
          </property>
         </widget>
        </item>
-       <item row="5" column="3">
+       <item row="6" column="3">
         <widget class="QSpinBox" name="maxSB_6">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -1868,7 +1858,7 @@ Right</string>
          </property>
         </widget>
        </item>
-       <item row="5" column="4">
+       <item row="6" column="4">
         <widget class="QComboBox" name="chInvCB_6">
          <item>
           <property name="text">
@@ -1882,14 +1872,14 @@ Right</string>
          </item>
         </widget>
        </item>
-       <item row="6" column="0">
+       <item row="7" column="0">
         <widget class="QLabel" name="label_20">
          <property name="text">
           <string>CH7</string>
          </property>
         </widget>
        </item>
-       <item row="6" column="1">
+       <item row="7" column="1">
         <widget class="QDoubleSpinBox" name="offsetDSB_7">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -1902,7 +1892,7 @@ Right</string>
          </property>
         </widget>
        </item>
-       <item row="6" column="2">
+       <item row="7" column="2">
         <widget class="QSpinBox" name="minSB_7">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -1915,7 +1905,7 @@ Right</string>
          </property>
         </widget>
        </item>
-       <item row="6" column="3">
+       <item row="7" column="3">
         <widget class="QSpinBox" name="maxSB_7">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -1928,7 +1918,7 @@ Right</string>
          </property>
         </widget>
        </item>
-       <item row="6" column="4">
+       <item row="7" column="4">
         <widget class="QComboBox" name="chInvCB_7">
          <item>
           <property name="text">
@@ -1942,14 +1932,14 @@ Right</string>
          </item>
         </widget>
        </item>
-       <item row="7" column="0">
+       <item row="8" column="0">
         <widget class="QLabel" name="label_21">
          <property name="text">
           <string>CH8</string>
          </property>
         </widget>
        </item>
-       <item row="7" column="1">
+       <item row="8" column="1">
         <widget class="QDoubleSpinBox" name="offsetDSB_8">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -1962,7 +1952,7 @@ Right</string>
          </property>
         </widget>
        </item>
-       <item row="7" column="2">
+       <item row="8" column="2">
         <widget class="QSpinBox" name="minSB_8">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -1975,7 +1965,7 @@ Right</string>
          </property>
         </widget>
        </item>
-       <item row="7" column="3">
+       <item row="8" column="3">
         <widget class="QSpinBox" name="maxSB_8">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -1988,7 +1978,7 @@ Right</string>
          </property>
         </widget>
        </item>
-       <item row="7" column="4">
+       <item row="8" column="4">
         <widget class="QComboBox" name="chInvCB_8">
          <item>
           <property name="text">
@@ -2002,14 +1992,14 @@ Right</string>
          </item>
         </widget>
        </item>
-       <item row="8" column="0">
+       <item row="9" column="0">
         <widget class="QLabel" name="label_22">
          <property name="text">
           <string>CH9</string>
          </property>
         </widget>
        </item>
-       <item row="8" column="1">
+       <item row="9" column="1">
         <widget class="QDoubleSpinBox" name="offsetDSB_9">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -2022,7 +2012,7 @@ Right</string>
          </property>
         </widget>
        </item>
-       <item row="8" column="2">
+       <item row="9" column="2">
         <widget class="QSpinBox" name="minSB_9">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -2035,7 +2025,7 @@ Right</string>
          </property>
         </widget>
        </item>
-       <item row="8" column="3">
+       <item row="9" column="3">
         <widget class="QSpinBox" name="maxSB_9">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -2048,7 +2038,7 @@ Right</string>
          </property>
         </widget>
        </item>
-       <item row="8" column="4">
+       <item row="9" column="4">
         <widget class="QComboBox" name="chInvCB_9">
          <item>
           <property name="text">
@@ -2062,14 +2052,14 @@ Right</string>
          </item>
         </widget>
        </item>
-       <item row="9" column="0">
+       <item row="10" column="0">
         <widget class="QLabel" name="label_23">
          <property name="text">
           <string>CH10</string>
          </property>
         </widget>
        </item>
-       <item row="9" column="1">
+       <item row="10" column="1">
         <widget class="QDoubleSpinBox" name="offsetDSB_10">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -2082,7 +2072,7 @@ Right</string>
          </property>
         </widget>
        </item>
-       <item row="9" column="2">
+       <item row="10" column="2">
         <widget class="QSpinBox" name="minSB_10">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -2095,7 +2085,7 @@ Right</string>
          </property>
         </widget>
        </item>
-       <item row="9" column="3">
+       <item row="10" column="3">
         <widget class="QSpinBox" name="maxSB_10">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -2108,7 +2098,7 @@ Right</string>
          </property>
         </widget>
        </item>
-       <item row="9" column="4">
+       <item row="10" column="4">
         <widget class="QComboBox" name="chInvCB_10">
          <item>
           <property name="text">
@@ -2122,14 +2112,14 @@ Right</string>
          </item>
         </widget>
        </item>
-       <item row="10" column="0">
+       <item row="11" column="0">
         <widget class="QLabel" name="label_24">
          <property name="text">
           <string>CH11</string>
          </property>
         </widget>
        </item>
-       <item row="10" column="1">
+       <item row="11" column="1">
         <widget class="QDoubleSpinBox" name="offsetDSB_11">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -2142,7 +2132,7 @@ Right</string>
          </property>
         </widget>
        </item>
-       <item row="10" column="2">
+       <item row="11" column="2">
         <widget class="QSpinBox" name="minSB_11">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -2155,7 +2145,7 @@ Right</string>
          </property>
         </widget>
        </item>
-       <item row="10" column="3">
+       <item row="11" column="3">
         <widget class="QSpinBox" name="maxSB_11">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -2168,7 +2158,7 @@ Right</string>
          </property>
         </widget>
        </item>
-       <item row="10" column="4">
+       <item row="11" column="4">
         <widget class="QComboBox" name="chInvCB_11">
          <item>
           <property name="text">
@@ -2182,14 +2172,14 @@ Right</string>
          </item>
         </widget>
        </item>
-       <item row="11" column="0">
+       <item row="12" column="0">
         <widget class="QLabel" name="label_25">
          <property name="text">
           <string>CH12</string>
          </property>
         </widget>
        </item>
-       <item row="11" column="1">
+       <item row="12" column="1">
         <widget class="QDoubleSpinBox" name="offsetDSB_12">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -2202,7 +2192,7 @@ Right</string>
          </property>
         </widget>
        </item>
-       <item row="11" column="2">
+       <item row="12" column="2">
         <widget class="QSpinBox" name="minSB_12">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -2215,7 +2205,7 @@ Right</string>
          </property>
         </widget>
        </item>
-       <item row="11" column="3">
+       <item row="12" column="3">
         <widget class="QSpinBox" name="maxSB_12">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -2228,7 +2218,7 @@ Right</string>
          </property>
         </widget>
        </item>
-       <item row="11" column="4">
+       <item row="12" column="4">
         <widget class="QComboBox" name="chInvCB_12">
          <item>
           <property name="text">
@@ -2242,14 +2232,14 @@ Right</string>
          </item>
         </widget>
        </item>
-       <item row="12" column="0">
+       <item row="13" column="0">
         <widget class="QLabel" name="label_26">
          <property name="text">
           <string>CH13</string>
          </property>
         </widget>
        </item>
-       <item row="12" column="1">
+       <item row="13" column="1">
         <widget class="QDoubleSpinBox" name="offsetDSB_13">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -2262,7 +2252,7 @@ Right</string>
          </property>
         </widget>
        </item>
-       <item row="12" column="2">
+       <item row="13" column="2">
         <widget class="QSpinBox" name="minSB_13">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -2275,7 +2265,7 @@ Right</string>
          </property>
         </widget>
        </item>
-       <item row="12" column="3">
+       <item row="13" column="3">
         <widget class="QSpinBox" name="maxSB_13">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -2288,7 +2278,7 @@ Right</string>
          </property>
         </widget>
        </item>
-       <item row="12" column="4">
+       <item row="13" column="4">
         <widget class="QComboBox" name="chInvCB_13">
          <item>
           <property name="text">
@@ -2302,14 +2292,14 @@ Right</string>
          </item>
         </widget>
        </item>
-       <item row="13" column="0">
+       <item row="14" column="0">
         <widget class="QLabel" name="label_27">
          <property name="text">
           <string>CH14</string>
          </property>
         </widget>
        </item>
-       <item row="13" column="1">
+       <item row="14" column="1">
         <widget class="QDoubleSpinBox" name="offsetDSB_14">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -2322,7 +2312,7 @@ Right</string>
          </property>
         </widget>
        </item>
-       <item row="13" column="2">
+       <item row="14" column="2">
         <widget class="QSpinBox" name="minSB_14">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -2335,7 +2325,7 @@ Right</string>
          </property>
         </widget>
        </item>
-       <item row="13" column="3">
+       <item row="14" column="3">
         <widget class="QSpinBox" name="maxSB_14">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -2348,7 +2338,7 @@ Right</string>
          </property>
         </widget>
        </item>
-       <item row="13" column="4">
+       <item row="14" column="4">
         <widget class="QComboBox" name="chInvCB_14">
          <item>
           <property name="text">
@@ -2362,14 +2352,14 @@ Right</string>
          </item>
         </widget>
        </item>
-       <item row="14" column="0">
+       <item row="15" column="0">
         <widget class="QLabel" name="label_28">
          <property name="text">
           <string>CH15</string>
          </property>
         </widget>
        </item>
-       <item row="14" column="1">
+       <item row="15" column="1">
         <widget class="QDoubleSpinBox" name="offsetDSB_15">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -2382,7 +2372,7 @@ Right</string>
          </property>
         </widget>
        </item>
-       <item row="14" column="2">
+       <item row="15" column="2">
         <widget class="QSpinBox" name="minSB_15">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -2395,7 +2385,7 @@ Right</string>
          </property>
         </widget>
        </item>
-       <item row="14" column="3">
+       <item row="15" column="3">
         <widget class="QSpinBox" name="maxSB_15">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -2408,7 +2398,7 @@ Right</string>
          </property>
         </widget>
        </item>
-       <item row="14" column="4">
+       <item row="15" column="4">
         <widget class="QComboBox" name="chInvCB_15">
          <item>
           <property name="text">
@@ -2422,14 +2412,14 @@ Right</string>
          </item>
         </widget>
        </item>
-       <item row="15" column="0">
+       <item row="16" column="0">
         <widget class="QLabel" name="label_29">
          <property name="text">
           <string>CH16</string>
          </property>
         </widget>
        </item>
-       <item row="15" column="1">
+       <item row="16" column="1">
         <widget class="QDoubleSpinBox" name="offsetDSB_16">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -2442,7 +2432,7 @@ Right</string>
          </property>
         </widget>
        </item>
-       <item row="15" column="2">
+       <item row="16" column="2">
         <widget class="QSpinBox" name="minSB_16">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -2455,7 +2445,7 @@ Right</string>
          </property>
         </widget>
        </item>
-       <item row="15" column="3">
+       <item row="16" column="3">
         <widget class="QSpinBox" name="maxSB_16">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -2468,7 +2458,7 @@ Right</string>
          </property>
         </widget>
        </item>
-       <item row="15" column="4">
+       <item row="16" column="4">
         <widget class="QComboBox" name="chInvCB_16">
          <item>
           <property name="text">
@@ -2480,6 +2470,116 @@ Right</string>
            <string>INV</string>
           </property>
          </item>
+        </widget>
+       </item>
+       <item row="0" column="0">
+        <widget class="QLabel" name="label_36">
+         <property name="frameShape">
+          <enum>QFrame::Box</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <property name="midLineWidth">
+          <number>0</number>
+         </property>
+         <property name="text">
+          <string>Channel</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+         <property name="margin">
+          <number>3</number>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QLabel" name="label_46">
+         <property name="frameShape">
+          <enum>QFrame::Box</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <property name="midLineWidth">
+          <number>0</number>
+         </property>
+         <property name="text">
+          <string>Offset</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+         <property name="margin">
+          <number>3</number>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="2">
+        <widget class="QLabel" name="label_49">
+         <property name="frameShape">
+          <enum>QFrame::Box</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <property name="midLineWidth">
+          <number>0</number>
+         </property>
+         <property name="text">
+          <string>Min</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+         <property name="margin">
+          <number>3</number>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="3">
+        <widget class="QLabel" name="label_50">
+         <property name="frameShape">
+          <enum>QFrame::Box</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <property name="midLineWidth">
+          <number>0</number>
+         </property>
+         <property name="text">
+          <string>Max</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+         <property name="margin">
+          <number>3</number>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="4">
+        <widget class="QLabel" name="label_54">
+         <property name="frameShape">
+          <enum>QFrame::Box</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <property name="midLineWidth">
+          <number>0</number>
+         </property>
+         <property name="text">
+          <string>Invert</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+         <property name="margin">
+          <number>3</number>
+         </property>
         </widget>
        </item>
       </layout>
@@ -4674,70 +4774,70 @@ Right</string>
  </widget>
  <tabstops>
   <tabstop>tabWidget</tabstop>
-  <tabstop>curveEdit_1</tabstop>
-  <tabstop>curvePt1_1</tabstop>
-  <tabstop>curvePt2_1</tabstop>
-  <tabstop>curvePt3_1</tabstop>
-  <tabstop>curvePt4_1</tabstop>
-  <tabstop>curvePt5_1</tabstop>
-  <tabstop>curveEdit_2</tabstop>
-  <tabstop>curvePt1_2</tabstop>
-  <tabstop>curvePt2_2</tabstop>
-  <tabstop>curvePt3_2</tabstop>
-  <tabstop>curvePt4_2</tabstop>
-  <tabstop>curvePt5_2</tabstop>
-  <tabstop>curveEdit_3</tabstop>
-  <tabstop>curvePt1_3</tabstop>
-  <tabstop>curvePt2_3</tabstop>
-  <tabstop>curvePt3_3</tabstop>
-  <tabstop>curvePt4_3</tabstop>
-  <tabstop>curvePt5_3</tabstop>
-  <tabstop>curveEdit_4</tabstop>
-  <tabstop>curvePt1_4</tabstop>
-  <tabstop>curvePt2_4</tabstop>
-  <tabstop>curvePt3_4</tabstop>
-  <tabstop>curvePt4_4</tabstop>
-  <tabstop>curvePt5_4</tabstop>
-  <tabstop>curveEdit_5</tabstop>
-  <tabstop>curvePt1_5</tabstop>
-  <tabstop>curvePt2_5</tabstop>
-  <tabstop>curvePt3_5</tabstop>
-  <tabstop>curvePt4_5</tabstop>
-  <tabstop>curvePt5_5</tabstop>
-  <tabstop>curveEdit_6</tabstop>
-  <tabstop>curvePt1_6</tabstop>
-  <tabstop>curvePt2_6</tabstop>
-  <tabstop>curvePt3_6</tabstop>
-  <tabstop>curvePt4_6</tabstop>
-  <tabstop>curvePt5_6</tabstop>
-  <tabstop>curveEdit_7</tabstop>
-  <tabstop>curvePt1_7</tabstop>
-  <tabstop>curvePt2_7</tabstop>
-  <tabstop>curvePt3_7</tabstop>
-  <tabstop>curvePt4_7</tabstop>
-  <tabstop>curvePt5_7</tabstop>
-  <tabstop>curveEdit_8</tabstop>
-  <tabstop>curvePt1_8</tabstop>
-  <tabstop>curvePt2_8</tabstop>
-  <tabstop>curvePt3_8</tabstop>
-  <tabstop>curvePt4_8</tabstop>
-  <tabstop>curvePt5_8</tabstop>
-  <tabstop>curveEdit_9</tabstop>
-  <tabstop>curvePt1_9</tabstop>
-  <tabstop>curvePt2_9</tabstop>
-  <tabstop>curvePt3_9</tabstop>
-  <tabstop>curvePt4_9</tabstop>
-  <tabstop>curvePt5_9</tabstop>
-  <tabstop>curvePt6_9</tabstop>
-  <tabstop>curvePt7_9</tabstop>
-  <tabstop>curvePt8_9</tabstop>
-  <tabstop>curvePt9_9</tabstop>
-  <tabstop>curveEdit_10</tabstop>
-  <tabstop>curvePt1_10</tabstop>
-  <tabstop>curvePt2_10</tabstop>
-  <tabstop>curvePt3_10</tabstop>
-  <tabstop>curvePt4_10</tabstop>
-  <tabstop>curvePt5_10</tabstop>
+  <tabstop>offsetDSB_1</tabstop>
+  <tabstop>minSB_1</tabstop>
+  <tabstop>maxSB_1</tabstop>
+  <tabstop>chInvCB_1</tabstop>
+  <tabstop>offsetDSB_2</tabstop>
+  <tabstop>minSB_2</tabstop>
+  <tabstop>maxSB_2</tabstop>
+  <tabstop>chInvCB_2</tabstop>
+  <tabstop>offsetDSB_3</tabstop>
+  <tabstop>minSB_3</tabstop>
+  <tabstop>maxSB_3</tabstop>
+  <tabstop>chInvCB_3</tabstop>
+  <tabstop>offsetDSB_4</tabstop>
+  <tabstop>minSB_4</tabstop>
+  <tabstop>maxSB_4</tabstop>
+  <tabstop>chInvCB_4</tabstop>
+  <tabstop>offsetDSB_5</tabstop>
+  <tabstop>minSB_5</tabstop>
+  <tabstop>maxSB_5</tabstop>
+  <tabstop>chInvCB_5</tabstop>
+  <tabstop>offsetDSB_6</tabstop>
+  <tabstop>minSB_6</tabstop>
+  <tabstop>maxSB_6</tabstop>
+  <tabstop>chInvCB_6</tabstop>
+  <tabstop>offsetDSB_7</tabstop>
+  <tabstop>minSB_7</tabstop>
+  <tabstop>maxSB_7</tabstop>
+  <tabstop>chInvCB_7</tabstop>
+  <tabstop>offsetDSB_8</tabstop>
+  <tabstop>minSB_8</tabstop>
+  <tabstop>maxSB_8</tabstop>
+  <tabstop>chInvCB_8</tabstop>
+  <tabstop>offsetDSB_9</tabstop>
+  <tabstop>minSB_9</tabstop>
+  <tabstop>maxSB_9</tabstop>
+  <tabstop>chInvCB_9</tabstop>
+  <tabstop>offsetDSB_10</tabstop>
+  <tabstop>minSB_10</tabstop>
+  <tabstop>maxSB_10</tabstop>
+  <tabstop>chInvCB_10</tabstop>
+  <tabstop>offsetDSB_11</tabstop>
+  <tabstop>minSB_11</tabstop>
+  <tabstop>maxSB_11</tabstop>
+  <tabstop>chInvCB_11</tabstop>
+  <tabstop>offsetDSB_12</tabstop>
+  <tabstop>minSB_12</tabstop>
+  <tabstop>maxSB_12</tabstop>
+  <tabstop>chInvCB_12</tabstop>
+  <tabstop>offsetDSB_13</tabstop>
+  <tabstop>minSB_13</tabstop>
+  <tabstop>maxSB_13</tabstop>
+  <tabstop>chInvCB_13</tabstop>
+  <tabstop>offsetDSB_14</tabstop>
+  <tabstop>minSB_14</tabstop>
+  <tabstop>maxSB_14</tabstop>
+  <tabstop>chInvCB_14</tabstop>
+  <tabstop>offsetDSB_15</tabstop>
+  <tabstop>minSB_15</tabstop>
+  <tabstop>maxSB_15</tabstop>
+  <tabstop>chInvCB_15</tabstop>
+  <tabstop>offsetDSB_16</tabstop>
+  <tabstop>minSB_16</tabstop>
+  <tabstop>maxSB_16</tabstop>
+  <tabstop>chInvCB_16</tabstop>
   <tabstop>curvePt6_10</tabstop>
   <tabstop>curvePt7_10</tabstop>
   <tabstop>curvePt8_10</tabstop>
@@ -4803,21 +4903,21 @@ Right</string>
   <tabstop>curvePt8_16</tabstop>
   <tabstop>curvePt9_16</tabstop>
   <tabstop>curvePreview</tabstop>
-  <tabstop>minSB_13</tabstop>
-  <tabstop>maxSB_13</tabstop>
-  <tabstop>chInvCB_13</tabstop>
-  <tabstop>offsetDSB_14</tabstop>
-  <tabstop>minSB_14</tabstop>
-  <tabstop>maxSB_14</tabstop>
-  <tabstop>chInvCB_14</tabstop>
-  <tabstop>offsetDSB_15</tabstop>
-  <tabstop>minSB_15</tabstop>
-  <tabstop>maxSB_15</tabstop>
-  <tabstop>chInvCB_15</tabstop>
-  <tabstop>offsetDSB_16</tabstop>
-  <tabstop>minSB_16</tabstop>
-  <tabstop>maxSB_16</tabstop>
-  <tabstop>chInvCB_16</tabstop>
+  <tabstop>curvePt1_9</tabstop>
+  <tabstop>curvePt2_9</tabstop>
+  <tabstop>curvePt3_9</tabstop>
+  <tabstop>curvePt4_9</tabstop>
+  <tabstop>curvePt5_9</tabstop>
+  <tabstop>curvePt6_9</tabstop>
+  <tabstop>curvePt7_9</tabstop>
+  <tabstop>curvePt8_9</tabstop>
+  <tabstop>curvePt9_9</tabstop>
+  <tabstop>curveEdit_10</tabstop>
+  <tabstop>curvePt1_10</tabstop>
+  <tabstop>curvePt2_10</tabstop>
+  <tabstop>curvePt3_10</tabstop>
+  <tabstop>curvePt4_10</tabstop>
+  <tabstop>curvePt5_10</tabstop>
   <tabstop>modelNameLE</tabstop>
   <tabstop>timerModeCB</tabstop>
   <tabstop>timerDirCB</tabstop>
@@ -4851,7 +4951,7 @@ Right</string>
   <tabstop>RUD_DrLLow</tabstop>
   <tabstop>RUD_DrRLow</tabstop>
   <tabstop>RUD_ExpoRLow</tabstop>
-  <tabstop>pushButton_3</tabstop>
+  <tabstop>pushButton_1</tabstop>
   <tabstop>AIL_edrSw1</tabstop>
   <tabstop>AIL_edrSw2</tabstop>
   <tabstop>AIL_ExpoLHi</tabstop>
@@ -4881,7 +4981,7 @@ Right</string>
   <tabstop>THR_DrLLow</tabstop>
   <tabstop>THR_DrRLow</tabstop>
   <tabstop>THR_ExpoRLow</tabstop>
-  <tabstop>pushButton</tabstop>
+  <tabstop>pushButton_2</tabstop>
   <tabstop>ELE_edrSw1</tabstop>
   <tabstop>ELE_edrSw2</tabstop>
   <tabstop>ELE_ExpoLHi</tabstop>
@@ -4896,57 +4996,57 @@ Right</string>
   <tabstop>ELE_DrLLow</tabstop>
   <tabstop>ELE_DrRLow</tabstop>
   <tabstop>ELE_ExpoRLow</tabstop>
-  <tabstop>pushButton_2</tabstop>
+  <tabstop>pushButton_3</tabstop>
   <tabstop>MixerlistWidget</tabstop>
-  <tabstop>offsetDSB_1</tabstop>
-  <tabstop>minSB_1</tabstop>
-  <tabstop>maxSB_1</tabstop>
-  <tabstop>chInvCB_1</tabstop>
-  <tabstop>offsetDSB_2</tabstop>
-  <tabstop>minSB_2</tabstop>
-  <tabstop>maxSB_2</tabstop>
-  <tabstop>chInvCB_2</tabstop>
-  <tabstop>offsetDSB_3</tabstop>
-  <tabstop>minSB_3</tabstop>
-  <tabstop>maxSB_3</tabstop>
-  <tabstop>chInvCB_3</tabstop>
-  <tabstop>offsetDSB_4</tabstop>
-  <tabstop>minSB_4</tabstop>
-  <tabstop>maxSB_4</tabstop>
-  <tabstop>chInvCB_4</tabstop>
-  <tabstop>offsetDSB_5</tabstop>
-  <tabstop>minSB_5</tabstop>
-  <tabstop>maxSB_5</tabstop>
-  <tabstop>chInvCB_5</tabstop>
-  <tabstop>offsetDSB_6</tabstop>
-  <tabstop>minSB_6</tabstop>
-  <tabstop>maxSB_6</tabstop>
-  <tabstop>chInvCB_6</tabstop>
-  <tabstop>offsetDSB_7</tabstop>
-  <tabstop>minSB_7</tabstop>
-  <tabstop>maxSB_7</tabstop>
-  <tabstop>chInvCB_7</tabstop>
-  <tabstop>offsetDSB_8</tabstop>
-  <tabstop>minSB_8</tabstop>
-  <tabstop>maxSB_8</tabstop>
-  <tabstop>chInvCB_8</tabstop>
-  <tabstop>offsetDSB_9</tabstop>
-  <tabstop>minSB_9</tabstop>
-  <tabstop>maxSB_9</tabstop>
-  <tabstop>chInvCB_9</tabstop>
-  <tabstop>offsetDSB_10</tabstop>
-  <tabstop>minSB_10</tabstop>
-  <tabstop>maxSB_10</tabstop>
-  <tabstop>chInvCB_10</tabstop>
-  <tabstop>offsetDSB_11</tabstop>
-  <tabstop>minSB_11</tabstop>
-  <tabstop>maxSB_11</tabstop>
-  <tabstop>chInvCB_11</tabstop>
-  <tabstop>offsetDSB_12</tabstop>
-  <tabstop>minSB_12</tabstop>
-  <tabstop>maxSB_12</tabstop>
-  <tabstop>chInvCB_12</tabstop>
-  <tabstop>offsetDSB_13</tabstop>
+  <tabstop>curveEdit_1</tabstop>
+  <tabstop>curvePt1_1</tabstop>
+  <tabstop>curvePt2_1</tabstop>
+  <tabstop>curvePt3_1</tabstop>
+  <tabstop>curvePt4_1</tabstop>
+  <tabstop>curvePt5_1</tabstop>
+  <tabstop>curveEdit_2</tabstop>
+  <tabstop>curvePt1_2</tabstop>
+  <tabstop>curvePt2_2</tabstop>
+  <tabstop>curvePt3_2</tabstop>
+  <tabstop>curvePt4_2</tabstop>
+  <tabstop>curvePt5_2</tabstop>
+  <tabstop>curveEdit_3</tabstop>
+  <tabstop>curvePt1_3</tabstop>
+  <tabstop>curvePt2_3</tabstop>
+  <tabstop>curvePt3_3</tabstop>
+  <tabstop>curvePt4_3</tabstop>
+  <tabstop>curvePt5_3</tabstop>
+  <tabstop>curveEdit_4</tabstop>
+  <tabstop>curvePt1_4</tabstop>
+  <tabstop>curvePt2_4</tabstop>
+  <tabstop>curvePt3_4</tabstop>
+  <tabstop>curvePt4_4</tabstop>
+  <tabstop>curvePt5_4</tabstop>
+  <tabstop>curveEdit_5</tabstop>
+  <tabstop>curvePt1_5</tabstop>
+  <tabstop>curvePt2_5</tabstop>
+  <tabstop>curvePt3_5</tabstop>
+  <tabstop>curvePt4_5</tabstop>
+  <tabstop>curvePt5_5</tabstop>
+  <tabstop>curveEdit_6</tabstop>
+  <tabstop>curvePt1_6</tabstop>
+  <tabstop>curvePt2_6</tabstop>
+  <tabstop>curvePt3_6</tabstop>
+  <tabstop>curvePt4_6</tabstop>
+  <tabstop>curvePt5_6</tabstop>
+  <tabstop>curveEdit_7</tabstop>
+  <tabstop>curvePt1_7</tabstop>
+  <tabstop>curvePt2_7</tabstop>
+  <tabstop>curvePt3_7</tabstop>
+  <tabstop>curvePt4_7</tabstop>
+  <tabstop>curvePt5_7</tabstop>
+  <tabstop>curveEdit_8</tabstop>
+  <tabstop>curvePt1_8</tabstop>
+  <tabstop>curvePt2_8</tabstop>
+  <tabstop>curvePt3_8</tabstop>
+  <tabstop>curvePt4_8</tabstop>
+  <tabstop>curvePt5_8</tabstop>
+  <tabstop>curveEdit_9</tabstop>
   <tabstop>cswitchCB_1</tabstop>
   <tabstop>cswitchOfs_1</tabstop>
   <tabstop>cswitchFunc_1</tabstop>
