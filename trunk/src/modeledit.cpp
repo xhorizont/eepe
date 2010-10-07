@@ -57,27 +57,29 @@ ModelEdit::ModelEdit(EEPFILE *eFile, uint8_t id, QWidget *parent) :
 
 }
 
+
 ModelEdit::~ModelEdit()
 {
     delete ui;
 }
+
 
 void ModelEdit::resizeEvent(QResizeEvent *event)
 {
 
     if(ui->curvePreview->scene())
     {
-        QSize gs = ui->curvePreview->size();
-        ui->curvePreview->scene()->setSceneRect(GFX_MARGIN, GFX_MARGIN, gs.width()-GFX_MARGIN*2, gs.height()-GFX_MARGIN*2);
+        QRect qr = ui->curvePreview->contentsRect();
+        ui->curvePreview->scene()->setSceneRect(GFX_MARGIN, GFX_MARGIN, qr.width()-GFX_MARGIN*2, qr.height()-GFX_MARGIN*2);
         drawCurve();
     }
 
     if(ui->expoPreview->scene())
     {
-        QSize gs = ui->expoPreview->size();
-        qreal w = gs.width()>gs.height() ? gs.height() : gs.width();
+        QRect qr = ui->expoPreview->contentsRect();
+        qreal w = qr.width()>qr.height() ? qr.height() : qr.width();
         ui->expoPreview->scene()->setSceneRect(GFX_MARGIN, GFX_MARGIN, w-GFX_MARGIN*2, w-GFX_MARGIN*2);
-        drawCurve();
+        drawExpo();
     }
 
     QDialog::resizeEvent(event);
@@ -208,10 +210,20 @@ void ModelEdit::tabExpo()
     ui->AIL_ExpoRMid->setValue(g_model.expoData[CONVERT_MODE(AIL)-1].expo[DR_MID][DR_EXPO][DR_RIGHT]);
 
 
+    if(g_model.thrExpo)
+    {
+        ui->THR_DrLHi->setEnabled(false);
+        ui->THR_DrLLow->setEnabled(false);
+        ui->THR_DrLMid->setEnabled(false);
+        ui->THR_ExpoLHi->setEnabled(false);
+        ui->THR_ExpoLLow->setEnabled(false);
+        ui->THR_ExpoLMid->setEnabled(false);
+    }
+
     QGraphicsScene *scene = new QGraphicsScene(ui->expoPreview);
     scene->setItemIndexMethod(QGraphicsScene::NoIndex);
     ui->expoPreview->setScene(scene);
-    currentExpo = 0;
+    currentExpo = RUD;
 
     connect(ui->RUD_edrSw1,SIGNAL(currentIndexChanged(int)),this,SLOT(expoEdited()));
     connect(ui->RUD_edrSw2,SIGNAL(currentIndexChanged(int)),this,SLOT(expoEdited()));
@@ -1167,6 +1179,15 @@ void ModelEdit::on_thrTrimChkB_toggled(bool checked)
 void ModelEdit::on_thrExpoChkB_toggled(bool checked)
 {
     g_model.thrExpo = checked;
+    if(g_model.thrExpo)
+    {
+        ui->THR_DrLHi->setEnabled(false);
+        ui->THR_DrLLow->setEnabled(false);
+        ui->THR_DrLMid->setEnabled(false);
+        ui->THR_ExpoLHi->setEnabled(false);
+        ui->THR_ExpoLLow->setEnabled(false);
+        ui->THR_ExpoLMid->setEnabled(false);
+    }
     updateSettings();
 }
 
@@ -1609,3 +1630,5 @@ void ModelEdit::on_pushButton_4_clicked()
     currentExpo = AIL;
     drawExpo();
 }
+
+
