@@ -56,7 +56,7 @@ class Node : public QGraphicsItem
 {
 
 public:
-    Node(QSpinBox *sb);
+    Node(QSpinBox *sb = 0, bool fixed = false);
 
     void addEdge(Edge *edge);
     QList<Edge *> edges() const;
@@ -75,6 +75,7 @@ protected:
     void mouseReleaseEvent(QGraphicsSceneMouseEvent *event);
     
 private:
+    bool vFixed;
     QSpinBox *qsb;
     QList<Edge *> edgeList;
     QPointF newPos;
