@@ -24,7 +24,7 @@
    <item row="0" column="1">
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
-      <number>0</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="tabModelSetup">
       <attribute name="title">
@@ -1478,9 +1478,6 @@ Right</string>
           </item>
          </layout>
         </widget>
-       </item>
-       <item row="2" column="0" colspan="2">
-        <widget class="QGraphicsView" name="expoPreview"/>
        </item>
       </layout>
      </widget>

@@ -47,7 +47,7 @@
 #include "edge.h"
 #include "node.h"
 
-Node::Node(QSpinBox *sb = 0)
+Node::Node(QSpinBox *sb, bool fixed)
 {
     setFlag(ItemIsMovable);
     setFlag(ItemSendsGeometryChanges);
@@ -55,6 +55,7 @@ Node::Node(QSpinBox *sb = 0)
     setZValue(-1);
 
     qsb = sb;
+    vFixed = fixed;
 }
 
 void Node::addEdge(Edge *edge)
@@ -114,7 +115,10 @@ QVariant Node::itemChange(GraphicsItemChange change, const QVariant &value)
              QPointF newPos = value.toPointF();
              QRectF rect = scene()->sceneRect();
              newPos.setX(x());//make sure x doesn't change
-             newPos.setY(qMin(rect.bottom(), qMax(newPos.y(), rect.top())));// bound Y
+             if(vFixed)
+                 newPos.setY(y());
+             else
+                 newPos.setY(qMin(rect.bottom(), qMax(newPos.y(), rect.top())));// bound Y
              if(qsb) qsb->setValue(125+(rect.top()-y())*250/rect.height());
              return newPos;
          }

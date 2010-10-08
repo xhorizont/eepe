@@ -74,14 +74,6 @@ void ModelEdit::resizeEvent(QResizeEvent *event)
         drawCurve();
     }
 
-    if(ui->expoPreview->scene())
-    {
-        QRect qr = ui->expoPreview->contentsRect();
-        qreal w = qr.width()>qr.height() ? qr.height() : qr.width();
-        ui->expoPreview->scene()->setSceneRect(GFX_MARGIN, GFX_MARGIN, w-GFX_MARGIN*2, w-GFX_MARGIN*2);
-        drawExpo();
-    }
-
     QDialog::resizeEvent(event);
 
 }
@@ -219,11 +211,6 @@ void ModelEdit::tabExpo()
         ui->THR_ExpoLLow->setEnabled(false);
         ui->THR_ExpoLMid->setEnabled(false);
     }
-
-    QGraphicsScene *scene = new QGraphicsScene(ui->expoPreview);
-    scene->setItemIndexMethod(QGraphicsScene::NoIndex);
-    ui->expoPreview->setScene(scene);
-    currentExpo = RUD;
 
     connect(ui->RUD_edrSw1,SIGNAL(currentIndexChanged(int)),this,SLOT(expoEdited()));
     connect(ui->RUD_edrSw2,SIGNAL(currentIndexChanged(int)),this,SLOT(expoEdited()));
@@ -1461,54 +1448,6 @@ void ModelEdit::drawCurve()
 
 
 
-void ModelEdit::drawExpo()
-{
-    if(currentExpo<1 || currentExpo>4) return;
-
-    QGraphicsScene *scene = ui->expoPreview->scene();
-    scene->clear();
-
-    qreal width  = scene->sceneRect().width();
-    qreal height = scene->sceneRect().height();
-    if(width>height) width = height;
-    if(height>width) height = width;
-
-    qreal centerX = scene->sceneRect().left() + width/2; //center X
-    qreal centerY = scene->sceneRect().top() + height/2; //center Y
-
-    QGraphicsSimpleTextItem *ti;
-    switch (currentExpo)
-    {
-        case (RUD): ti = scene->addSimpleText("RUD");break;
-        case (ELE): ti = scene->addSimpleText("ELE");break;
-        case (THR): ti = scene->addSimpleText("THR");break;
-        case (AIL): ti = scene->addSimpleText("AIL");break;
-        default: ti = scene->addSimpleText("INV");break;  //shouldn't reach this
-    }
-    ti->setPos(3,3);
-
-    scene->addLine(centerX,GFX_MARGIN,centerX,height+GFX_MARGIN);
-    scene->addLine(GFX_MARGIN,centerY,width+GFX_MARGIN,centerY);
-
-
-    int m = -40;
-    int n = -20;
-    int o = 40;
-    Node *nodeMin = new Node(getNodeSB(1)); // change this
-    Node *nodeMid = new Node(getNodeSB(1));
-    Node *nodeMax = new Node(getNodeSB(1));
-
-    nodeMin->setPos(GFX_MARGIN,centerY - (qreal)m*height/250);
-    nodeMid->setPos(centerX,centerY - (qreal)n*height/250);
-    nodeMax->setPos(GFX_MARGIN+width,centerY - (qreal)o*height/250);
-
-    scene->addItem(nodeMin);
-    scene->addItem(nodeMid);  scene->addItem(new Edge(nodeMin, nodeMid));
-    scene->addItem(nodeMax);  scene->addItem(new Edge(nodeMid, nodeMax));
-}
-
-
-
 void ModelEdit::on_curveEdit_1_clicked()
 {
     currentCurve = 0;
@@ -1606,29 +1545,5 @@ void ModelEdit::on_curveEdit_16_clicked()
 }
 
 
-
-void ModelEdit::on_pushButton_1_clicked()
-{
-    currentExpo = RUD;
-    drawExpo();
-}
-
-void ModelEdit::on_pushButton_2_clicked()
-{
-    currentExpo = THR;
-    drawExpo();
-}
-
-void ModelEdit::on_pushButton_3_clicked()
-{
-    currentExpo = ELE;
-    drawExpo();
-}
-
-void ModelEdit::on_pushButton_4_clicked()
-{
-    currentExpo = AIL;
-    drawExpo();
-}
 
 
