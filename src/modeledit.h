@@ -48,6 +48,7 @@ signals:
 
 private slots:
 
+    void on_MixerlistWidget_doubleClicked(QModelIndex index);
     void on_curveEdit_1_clicked();
     void on_curveEdit_2_clicked();
     void on_curveEdit_3_clicked();
