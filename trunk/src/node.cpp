@@ -119,7 +119,7 @@ QVariant Node::itemChange(GraphicsItemChange change, const QVariant &value)
                  newPos.setY(y());
              else
                  newPos.setY(qMin(rect.bottom(), qMax(newPos.y(), rect.top())));// bound Y
-             if(qsb) qsb->setValue(125+(rect.top()-y())*250/rect.height());
+             if(qsb) qsb->setValue(125+(rect.top()-y())*200/rect.height());
              return newPos;
          }
         break;

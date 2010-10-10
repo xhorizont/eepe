@@ -7,7 +7,8 @@ HEADERS += mainwindow.h \
     mdichild.h \
     helpers.h \
     edge.h \
-    node.h
+    node.h \
+    mixerdialog.h
 SOURCES += main.cpp \
     mainwindow.cpp \
     file.cpp \
@@ -17,19 +18,15 @@ SOURCES += main.cpp \
     mdichild.cpp \
     helpers.cpp \
     node.cpp \
-    edge.cpp
+    edge.cpp \
+    mixerdialog.cpp
 RESOURCES += eepe.qrc
 TARGET = eepe
 TEMPLATE = app
 FORMS += modeledit.ui \
-    generaledit.ui
-
+    generaledit.ui \
+    mixerdialog.ui
 win32:RC_FILE += icon.rc
-
-
-    VERSION = $$system(svnversion)
-
-
-
-    VERSTR = '\\"$${VERSION}\\"'  # place quotes around the version string
-    DEFINES += VER=\"$${VERSTR}\" # create a VER macro containing the version string
+VERSION = $$system(svnversion)
+VERSTR = '\\"$${VERSION}\\"' # place quotes around the version string
+DEFINES += VER=\"$${VERSTR}\" # create a VER macro containing the version string

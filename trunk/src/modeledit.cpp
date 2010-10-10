@@ -4,6 +4,7 @@
 #include "helpers.h"
 #include "edge.h"
 #include "node.h"
+#include "mixerdialog.h"
 
 #include <QtGui>
 
@@ -22,7 +23,6 @@
 
 #define GFX_MARGIN 16
 
-#define SRC_STR "----RUD ELE THR AIL RUD P1  P2  P3  MAX FULLPPM1PPM2PPM3PPM4PPM5PPM6PPM7PPM8CH1 CH2 CH3 CH4 CH5 CH6 CH7 CH8 CH9 CH10CH11CH12CH13CH14CH15CH16CH17CH18CH19CH20CH21CH22CH23CH24CH25CH26CH27CH28CH29CH30";
 
 ModelEdit::ModelEdit(EEPFILE *eFile, uint8_t id, QWidget *parent) :
     QDialog(parent),
@@ -346,6 +346,7 @@ void ModelEdit::expoEdited()
 
 void ModelEdit::tabMixes()
 {
+    ui->MixerlistWidget->clear();
     int curDest = 0;
     for(int i=0; i<MAX_MIXERS; i++)
     {
@@ -378,13 +379,14 @@ void ModelEdit::tabMixes()
                               tr(" +%1\%").arg(md->weight).rightJustified(6, ' ');
 
 
-        QString srcStr = SRC_STR;
-        str += " " + srcStr.mid(CONVERT_MODE(md->srcRaw+1)*4,4);
+        //QString srcStr = SRC_STR;
+        //str += " " + srcStr.mid(CONVERT_MODE(md->srcRaw+1)*4,4);
+        str += getSourceStr(g_eeGeneral.stickMode,md->srcRaw);
 
         if(md->swtch)
         {
             QString swtStr = SWITCHES_STR;
-            str += tr("Switch(%1%2)").arg(md->swtch<0 ? "!" : "").arg(swtStr.mid((abs(md->swtch)-1)*3,3));
+            str += tr(" Switch(%1%2)").arg(md->swtch<0 ? "!" : "").arg(swtStr.mid((abs(md->swtch)-1)*3,3));
         }
 
         if(md->carryTrim) str += " noTrim";
@@ -1430,7 +1432,7 @@ void ModelEdit::drawCurve()
             nodel = nodex;
             nodex = new Node(getNodeSB(i));
 
-            nodex->setPos(GFX_MARGIN + i*width/(5-1),centerY - (qreal)g_model.curves5[currentCurve][i]*height/250);
+            nodex->setPos(GFX_MARGIN + i*width/(5-1),centerY - (qreal)g_model.curves5[currentCurve][i]*height/200);
             scene->addItem(nodex);
             if(i>0) scene->addItem(new Edge(nodel, nodex));
         }
@@ -1440,7 +1442,7 @@ void ModelEdit::drawCurve()
             nodel = nodex;
             nodex = new Node(getNodeSB(i));
 
-            nodex->setPos(GFX_MARGIN + i*width/(9-1),centerY - (qreal)g_model.curves9[currentCurve-8][i]*height/250);
+            nodex->setPos(GFX_MARGIN + i*width/(9-1),centerY - (qreal)g_model.curves9[currentCurve-8][i]*height/200);
             scene->addItem(nodex);
             if(i>0) scene->addItem(new Edge(nodel, nodex));
         }
@@ -1545,5 +1547,16 @@ void ModelEdit::on_curveEdit_16_clicked()
 }
 
 
+void ModelEdit::on_MixerlistWidget_doubleClicked(QModelIndex index)
+{
+    MixData mixd;
+    memcpy(&mixd,&g_model.mixData[index.row()],sizeof(MixData));
+    MixerDialog g(this,&mixd,g_eeGeneral.stickMode);
 
-
+    if(g.exec())
+    {
+        memcpy(&g_model.mixData[index.row()],&mixd,sizeof(MixData));
+        updateSettings();
+        tabMixes();
+    }
+}
