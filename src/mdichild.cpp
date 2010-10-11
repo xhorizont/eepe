@@ -46,6 +46,7 @@
 #include "modeledit.h"
 #include "generaledit.h"
 
+
 MdiChild::MdiChild()
 {
     setAttribute(Qt::WA_DeleteOnClose);
@@ -364,44 +365,123 @@ void MdiChild::newFile()
 
 }
 
+int getValueFromLine(const QString &line, int pos, int len=2)
+{
+    bool ok;
+    int hex = line.mid(pos,len).toInt(&ok, 16);
+    return ok ? hex : -1;
+}
+
 bool MdiChild::loadFile(const QString &fileName)
 {
     QFile file(fileName);
-    if (!file.open(QFile::ReadOnly)) {  //reading binary file   - TODO HEX support
-        QMessageBox::warning(this, tr("Error"),
-                             tr("Cannot read file %1:\n%2.")
-                             .arg(fileName)
-                             .arg(file.errorString()));
+
+    if(!file.exists())
+    {
+        QMessageBox::critical(this, tr("Error"),tr("Unable to find file %1!").arg(fileName));
         return false;
     }
 
 
-    if(file.size()!=EESIZE)
+    int fileType = getFileType(fileName);
+
+    if(fileType==FILE_TYPE_HEX) //read HEX file
     {
-        QMessageBox::critical(this, tr("Error"),tr("Unable to read file %1!").arg(fileName));
+        if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {  //reading HEX TEXT file
+            QMessageBox::warning(this, tr("Error"),
+                                 tr("Cannot read file %1:\n%2.")
+                                 .arg(fileName)
+                                 .arg(file.errorString()));
+            return false;
+        }
+
+        uint8_t temp[EESIZE];
+        memset(&temp,0,EESIZE);
+
+        QTextStream in(&file);
+        while (!in.atEnd())
+        {
+            QString line = in.readLine();
+
+            if(line.left(1)!=":") continue;
+
+            int byteCount = getValueFromLine(line,1);
+            int address = getValueFromLine(line,3,4);
+            int recType = getValueFromLine(line,7);
+
+            if(byteCount<0 || address<0 || recType<0) {QMessageBox::critical(this, tr("Error"),tr("Error reading file %1!").arg(fileName));return false;}
+
+            QByteArray ba;
+            ba.clear();
+
+            quint8 chkSum = 0;
+            chkSum -= byteCount;
+            chkSum -= recType;
+            chkSum -= address & 0xFF;
+            chkSum -= address >> 8;
+            for(int i=0; i<byteCount; i++)
+            {
+                quint8 v = getValueFromLine(line,(i*2)+9) & 0xFF;
+                chkSum -= v;
+                ba.append(v);
+            }
+
+
+            quint8 retV = getValueFromLine(line,(byteCount*2)+9) & 0xFF;
+            if(chkSum!=retV) {QMessageBox::critical(this, tr("Error"),tr("Error reading file %1!").arg(fileName));return false;}
+
+            if((recType == 0x00) && ((address+byteCount)<=EESIZE)) //data record - ba holds record
+                memcpy(&temp[address],ba.data(),byteCount);
+
+        }
+
         file.close();
-        return false;
+        eeFile.loadFile(&temp);
+        refreshList();
+        setCurrentFile(fileName);
+
+        return true;
     }
 
-    uint8_t temp[EESIZE];
-    long result = file.read((char*)&temp,EESIZE);
-    file.close();
 
-    if (result!=EESIZE)
+    if(fileType==FILE_TYPE_BIN) //read binary
     {
-        QMessageBox::warning(this, tr("Error"),
-                             tr("Error reading file %1:\n%2.")
-                             .arg(fileName)
-                             .arg(file.errorString()));
+        if(file.size()!=EESIZE)
+        {
+            QMessageBox::critical(this, tr("Error"),tr("File wrong size - %1").arg(fileName));
+            return false;
+        }
 
-        return false;
+        if (!file.open(QFile::ReadOnly)) {  //reading binary file   - TODO HEX support
+            QMessageBox::warning(this, tr("Error"),
+                                 tr("Cannot read file %1:\n%2.")
+                                 .arg(fileName)
+                                 .arg(file.errorString()));
+            return false;
+        }
+
+        uint8_t temp[EESIZE];
+        long result = file.read((char*)&temp,EESIZE);
+        file.close();
+
+        if (result!=EESIZE)
+        {
+            QMessageBox::warning(this, tr("Error"),
+                                 tr("Error reading file %1:\n%2.")
+                                 .arg(fileName)
+                                 .arg(file.errorString()));
+
+            return false;
+        }
+
+        eeFile.loadFile(&temp);
+        refreshList();
+        setCurrentFile(fileName);
+
+        return true;
     }
 
-    eeFile.loadFile(&temp);
-    refreshList();
-    setCurrentFile(fileName);
-
-    return true;
+    return false;
 }
 
 bool MdiChild::save()
@@ -415,7 +495,7 @@ bool MdiChild::save()
 
 bool MdiChild::saveAs()
 {
-    QString fileName = QFileDialog::getSaveFileName(this, tr("Save As"),curFile,tr("EEPROM files (*.bin)"));
+    QString fileName = QFileDialog::getSaveFileName(this, tr("Save As"),curFile,tr("EEPROM bin files (*.bin);;EEPROM hex files (*.hex)"));
     if (fileName.isEmpty())
         return false;
 
@@ -427,29 +507,79 @@ bool MdiChild::saveAs()
 bool MdiChild::saveFile(const QString &fileName)
 {
     QFile file(fileName);
-    if (!file.open(QFile::WriteOnly)) {
-        QMessageBox::warning(this, tr("Error"),
-                             tr("Cannot write file %1:\n%2.")
-                             .arg(fileName)
-                             .arg(file.errorString()));
-        return false;
+
+    int fileType = getFileType(fileName);
+
+    if(fileType==FILE_TYPE_HEX) //write hex
+    {        
+        if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
+            QMessageBox::warning(this, tr("Error"),
+                                 tr("Cannot write file %1:\n%2.")
+                                 .arg(fileName)
+                                 .arg(file.errorString()));
+            return false;
+        }
+
+
+        quint8 temp[EESIZE];
+        eeFile.saveFile(&temp);
+
+        QTextStream out(&file);
+        for(int i=0; i<(EESIZE/32); i++)
+        {
+            QString str = tr(":20%1000").arg(i*32,4,16,QChar('0')); //write start, bytecount (32), address and record type
+            quint8 chkSum = 0;
+            chkSum = -32; //-bytecount; recordtype is zero
+            chkSum -= (i*32) & 0xFF;
+            chkSum -= (i*32) >> 8;
+            for(int j=0; j<32; j++)
+            {
+                str += tr("%1").arg(temp[i*32+j],2,16,QChar('0'));
+                chkSum -= temp[i*32+j];
+            }
+
+            str += tr("%1").arg(chkSum,2,16,QChar('0'));
+            out << str.toUpper() << "\n"; // output to file and lf;
+
+        }
+
+        out << ":00000001FF";  // write EOF
+        file.close();
+        setCurrentFile(fileName);
+        return true;
+
+
+        //             out << "The magic number is: " << 49 << "\n"
     }
 
-    uint8_t temp[EESIZE];
-    eeFile.saveFile(&temp);
-
-    long result = file.write((char*)&temp,EESIZE);
-    if(result!=EESIZE)
+    if(fileType==FILE_TYPE_BIN) //write binary
     {
-        QMessageBox::warning(this, tr("Error"),
-                             tr("Error writing file %1:\n%2.")
-                             .arg(fileName)
-                             .arg(file.errorString()));
-        return false;
+        if (!file.open(QFile::WriteOnly)) {
+            QMessageBox::warning(this, tr("Error"),
+                                 tr("Cannot write file %1:\n%2.")
+                                 .arg(fileName)
+                                 .arg(file.errorString()));
+            return false;
+        }
+
+        uint8_t temp[EESIZE];
+        eeFile.saveFile(&temp);
+
+        long result = file.write((char*)&temp,EESIZE);
+        if(result!=EESIZE)
+        {
+            QMessageBox::warning(this, tr("Error"),
+                                 tr("Error writing file %1:\n%2.")
+                                 .arg(fileName)
+                                 .arg(file.errorString()));
+            return false;
+        }
+
+        setCurrentFile(fileName);
+        return true;
     }
 
-    setCurrentFile(fileName);
-    return true;
+    return false;
 }
 
 QString MdiChild::userFriendlyCurrentFile()
@@ -504,6 +634,12 @@ QString MdiChild::strippedName(const QString &fullFileName)
     return QFileInfo(fullFileName).fileName();
 }
 
+int MdiChild::getFileType(const QString &fullFileName)
+{
+    if(QFileInfo(fullFileName).suffix().toUpper()=="HEX") return FILE_TYPE_HEX;
+    if(QFileInfo(fullFileName).suffix().toUpper()=="BIN") return FILE_TYPE_BIN;
+    return 0;
+}
 
 void MdiChild::ShowContextMenu(const QPoint& pos)
 {
