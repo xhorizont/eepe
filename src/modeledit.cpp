@@ -107,6 +107,7 @@ void ModelEdit::tabModelEditSetup()
     populateSwitchCB(ui->trimSWCB,g_model.trimSw);
     ui->thrExpoChkB->setChecked(g_model.thrExpo);
     ui->thrTrimChkB->setChecked(g_model.thrTrim);
+    ui->timerDirCB->setCurrentIndex(g_model.tmrDir);
 
     //center beep
     ui->bcRUDChkB->setChecked(g_model.beepANACenter & BC_BIT_RUD);

@@ -477,7 +477,7 @@
        <item row="14" column="0">
         <widget class="QLabel" name="label_13">
          <property name="text">
-          <string>Channel Order</string>
+          <string>Channel Order (For Templates)</string>
          </property>
         </widget>
        </item>
