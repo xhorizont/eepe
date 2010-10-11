@@ -88,6 +88,8 @@ public slots:
     void cut();
     void copy();
     void paste();
+    void burnTo();
+    void burnFrom();
     void duplicate();
     void deleteSelected(bool ask);
 

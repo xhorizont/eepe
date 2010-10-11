@@ -2,6 +2,13 @@
 #define BURNCONFIGDIALOG_H
 
 #include <QDialog>
+#include <QtGui>
+
+#define MEM_TYPE_EEPROM 1
+#define MEM_TYPE_FLASH  2
+
+#define OPR_TYPE_READ  1
+#define OPR_TYPE_WRITE 2
 
 namespace Ui {
     class burnConfigDialog;
@@ -13,11 +20,19 @@ public:
     burnConfigDialog(QWidget *parent = 0);
     ~burnConfigDialog();
 
+    QString getAVRLine(const QString &fileName, int memType = MEM_TYPE_EEPROM, int opr = OPR_TYPE_READ);
+
+
 protected:
     void changeEvent(QEvent *e);
 
 private:
     Ui::burnConfigDialog *ui;
+
+private slots:
+    void on_pushButton_clicked();
+    void on_avrdude_location_editingFinished();
+    void on_avrdude_programmer_currentIndexChanged(QString text);
 };
 
 #endif // BURNCONFIGDIALOG_H
