@@ -42,6 +42,9 @@
 #ifndef MDICHILD_H
 #define MDICHILD_H
 
+#define FILE_TYPE_BIN 1
+#define FILE_TYPE_HEX 2
+
 #include <QtGui>
 #include "pers.h"
 
@@ -94,6 +97,7 @@ private:
     void doPaste(QByteArray *gmData, int index);
     void doCopy(QByteArray *gmData);
     QString strippedName(const QString &fullFileName);
+    int getFileType(const QString &fullFileName);
 
     QPoint dragStartPosition;
 

@@ -92,7 +92,7 @@ void MainWindow::newFile()
 void MainWindow::open()
 {
     QSettings settings("er9x-eePe", "eePe");
-    QString fileName = QFileDialog::getOpenFileName(this,"Open",settings.value("lastDir").toString(),tr("EEPROM files (*.bin)"));
+    QString fileName = QFileDialog::getOpenFileName(this,"Open",settings.value("lastDir").toString(),tr("EEPROM files (*.bin *.hex)"));
     if (!fileName.isEmpty()) {
         settings.setValue("lastDir",QFileInfo(fileName).dir().absolutePath());
 
