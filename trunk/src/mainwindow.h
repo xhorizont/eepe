@@ -71,6 +71,9 @@ private slots:
     void cut();
     void copy();
     void paste();
+    void burnTo();
+    void burnFrom();
+    void burnConfig();
     void about();
     void updateMenus();
     void updateWindowMenu();
@@ -93,6 +96,7 @@ private:
 
     QMenu *fileMenu;
     QMenu *editMenu;
+    QMenu *burnMenu;
     QMenu *windowMenu;
     QMenu *helpMenu;
     QToolBar *fileToolBar;
@@ -105,6 +109,9 @@ private:
     QAction *cutAct;
     QAction *copyAct;
     QAction *pasteAct;
+    QAction *burnToAct;
+    QAction *burnFromAct;
+    QAction *burnConfigAct;
     QAction *closeAct;
     QAction *closeAllAct;
     QAction *tileAct;

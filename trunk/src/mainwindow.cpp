@@ -92,7 +92,7 @@ void MainWindow::newFile()
 void MainWindow::open()
 {
     QSettings settings("er9x-eePe", "eePe");
-    QString fileName = QFileDialog::getOpenFileName(this,"Open",settings.value("lastDir").toString(),tr("EEPROM files (*.bin *.hex)"));
+    QString fileName = QFileDialog::getOpenFileName(this,"Open",settings.value("lastDir").toString(),tr("EEPROM files (*.bin *.hex);;BIN files (*.bin);;HEX files (*.hex)"));
     if (!fileName.isEmpty()) {
         settings.setValue("lastDir",QFileInfo(fileName).dir().absolutePath());
 
@@ -141,6 +141,21 @@ void MainWindow::paste()
 {
     if (activeMdiChild())
         activeMdiChild()->paste();
+}
+
+void MainWindow::burnTo()
+{
+
+}
+
+void MainWindow::burnFrom()
+{
+
+}
+
+void MainWindow::burnConfig()
+{
+
 }
 
 void MainWindow::about()
@@ -275,6 +290,22 @@ void MainWindow::createActions()
                               "selection"));
     connect(pasteAct, SIGNAL(triggered()), this, SLOT(paste()));
 
+
+    burnToAct = new QAction(tr("Burn &To Tx"), this);
+    burnToAct->setShortcut(tr("Ctrl+W"));
+    burnToAct->setStatusTip("Burn current file to transmitter");
+    connect(burnToAct,SIGNAL(triggered()),this,SLOT(burnTo()));
+
+    burnFromAct = new QAction(tr("Read &From Tx"), this);
+    burnFromAct->setShortcut(tr("Ctrl+R"));
+    burnFromAct->setStatusTip("Read from transmitter");
+    connect(burnFromAct,SIGNAL(triggered()),this,SLOT(burnFrom()));
+
+    burnConfigAct = new QAction(tr("Configure..."), this);
+    burnConfigAct->setStatusTip("Configure burning software");
+    connect(burnConfigAct,SIGNAL(triggered()),this,SLOT(burnConfig()));
+
+
     closeAct = new QAction(tr("Cl&ose"), this);
     closeAct->setStatusTip(tr("Close the active window"));
     connect(closeAct, SIGNAL(triggered()),
@@ -334,6 +365,11 @@ void MainWindow::createMenus()
     editMenu->addAction(cutAct);
     editMenu->addAction(copyAct);
     editMenu->addAction(pasteAct);
+
+    burnMenu = menuBar()->addMenu("&Burn");
+    burnMenu->addAction(burnToAct);
+    burnMenu->addAction(burnFromAct);
+    burnMenu->addAction(burnConfigAct);
 
     windowMenu = menuBar()->addMenu(tr("&Window"));
     updateWindowMenu();

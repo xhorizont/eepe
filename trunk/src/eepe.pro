@@ -8,7 +8,8 @@ HEADERS += mainwindow.h \
     helpers.h \
     edge.h \
     node.h \
-    mixerdialog.h
+    mixerdialog.h \
+    burnconfigdialog.h
 SOURCES += main.cpp \
     mainwindow.cpp \
     file.cpp \
@@ -19,13 +20,15 @@ SOURCES += main.cpp \
     helpers.cpp \
     node.cpp \
     edge.cpp \
-    mixerdialog.cpp
+    mixerdialog.cpp \
+    burnconfigdialog.cpp
 RESOURCES += eepe.qrc
 TARGET = eepe
 TEMPLATE = app
 FORMS += modeledit.ui \
     generaledit.ui \
-    mixerdialog.ui
+    mixerdialog.ui \
+    burnconfigdialog.ui
 win32:RC_FILE += icon.rc
 VERSION = $$system(svnversion)
 VERSTR = '\\"$${VERSION}\\"' # place quotes around the version string
