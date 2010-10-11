@@ -348,7 +348,8 @@ void ModelEdit::tabMixes()
 {
     ui->MixerlistWidget->clear();
     int curDest = 0;
-    for(int i=0; i<MAX_MIXERS; i++)
+    int i;
+    for(i=0; i<MAX_MIXERS; i++)
     {
         MixData *md = &g_model.mixData[i];
         if(!md->destCh) break;
@@ -357,7 +358,9 @@ void ModelEdit::tabMixes()
         {
             curDest++;
             str = tr("CH%1%2").arg(curDest/10).arg(curDest%10);
-            ui->MixerlistWidget->addItem(str);
+            QListWidgetItem *itm = new QListWidgetItem(str);
+            itm->setData(Qt::UserRole,QVariant(curDest+MAX_MIXERS)); // add new mixer
+            ui->MixerlistWidget->addItem(itm);
         }
 
         if(curDest!=md->destCh)
@@ -386,7 +389,10 @@ void ModelEdit::tabMixes()
         if(md->swtch)
         {
             QString swtStr = SWITCHES_STR;
-            str += tr(" Switch(%1%2)").arg(md->swtch<0 ? "!" : "").arg(swtStr.mid((abs(md->swtch)-1)*3,3));
+            if(abs(md->swtch)==MAX_DRSWITCH)
+                str += md->swtch > 0 ? " Switch(ON)" : " Switch(OFF)";
+            else
+                str += tr(" Switch(%1%2)").arg(md->swtch<0 ? "!" : "").arg(swtStr.mid((abs(md->swtch)-1)*3,3));
         }
 
         if(md->carryTrim) str += " noTrim";
@@ -402,14 +408,18 @@ void ModelEdit::tabMixes()
 
         if(md->mixWarn)  str += tr(" Warn(%1)").arg(md->mixWarn);
 
-        ui->MixerlistWidget->addItem(str);
+        QListWidgetItem *itm = new QListWidgetItem(str);
+        itm->setData(Qt::UserRole,QVariant(i));  // mix number
+        ui->MixerlistWidget->addItem(itm);//(str);
     }
 
     while(curDest<NUM_XCHNOUT)
     {
         curDest++;
         QString str = tr("CH%1%2").arg(curDest/10).arg(curDest%10);
-        ui->MixerlistWidget->addItem(str);
+        QListWidgetItem *itm = new QListWidgetItem(str);
+        itm->setData(Qt::UserRole,QVariant(curDest+MAX_MIXERS)); // add new mixer
+        ui->MixerlistWidget->addItem(itm);
     }
 
 }
@@ -1547,16 +1557,198 @@ void ModelEdit::on_curveEdit_16_clicked()
 }
 
 
-void ModelEdit::on_MixerlistWidget_doubleClicked(QModelIndex index)
+MixData* ModelEdit::gm_addMix(uint8_t dch)
+{
+  uint8_t i = 0;
+  while ((g_model.mixData[i].destCh<=dch) && (g_model.mixData[i].destCh) && (i<MAX_MIXERS)) i++;
+  if(i==MAX_MIXERS) return &g_model.mixData[0];
+
+  memmove(&g_model.mixData[i+1],&g_model.mixData[i],
+         (MAX_MIXERS-(i+1))*sizeof(MixData) );
+  memset(&g_model.mixData[i],0,sizeof(MixData));
+  g_model.mixData[i].destCh = dch;
+  return &g_model.mixData[i];
+}
+
+void ModelEdit::gm_deleteMix(int index)
+{
+  memmove(&g_model.mixData[index],&g_model.mixData[index+1],
+            (MAX_MIXERS-(index+1))*sizeof(MixData));
+  memset(&g_model.mixData[MAX_MIXERS-1],0,sizeof(MixData));
+}
+
+#define ADD_NEW_MIX  (index>=MAX_MIXERS && index<(MAX_MIXERS+NUM_XCHNOUT+1))
+#define EDIT_EXT_MIX (index>=0 && index<MAX_MIXERS)
+
+
+void ModelEdit::gm_openMix(int index)
 {
     MixData mixd;
-    memcpy(&mixd,&g_model.mixData[index.row()],sizeof(MixData));
+    if(ADD_NEW_MIX)
+    {
+        memset(&mixd,0,sizeof(MixData));
+        mixd.destCh = index - MAX_MIXERS;
+        mixd.srcRaw = 1;
+        mixd.weight = 100;
+    };
+
+    if(EDIT_EXT_MIX) memcpy(&mixd,&g_model.mixData[index],sizeof(MixData));
+
+
     MixerDialog g(this,&mixd,g_eeGeneral.stickMode);
+
 
     if(g.exec())
     {
-        memcpy(&g_model.mixData[index.row()],&mixd,sizeof(MixData));
+        if(ADD_NEW_MIX)
+        {
+            MixData* md = gm_addMix(index - MAX_MIXERS);
+            memcpy(md,&mixd,sizeof(MixData));
+        };
+
+        if(EDIT_EXT_MIX) memcpy(&g_model.mixData[index],&mixd,sizeof(MixData));
+
         updateSettings();
         tabMixes();
     }
+}
+
+void ModelEdit::on_MixerlistWidget_doubleClicked(QModelIndex index)
+{
+    int mix = ui->MixerlistWidget->item(index.row())->data(Qt::UserRole).toInt();
+    gm_openMix(mix);
+}
+
+void ModelEdit::mixersDeleteList(QList<int> list)
+{
+    qSort(list.begin(), list.end());
+
+    int iDec = 0;
+    foreach(int idx, list)
+    {
+        gm_deleteMix(idx-iDec);
+        iDec++;
+    }
+}
+
+QList<int> ModelEdit::createListFromSelected()
+{
+    QList<int> list;
+    foreach(QListWidgetItem *item, ui->MixerlistWidget->selectedItems())
+    {
+        int idx = item->data(Qt::UserRole).toInt();
+        if(idx>=0 && idx<MAX_MIXERS) list << idx;
+    }
+    return list;
+}
+
+void ModelEdit::mixersDelete(bool ask)
+{
+    QMessageBox::StandardButton ret = QMessageBox::No;
+
+    if(ask)
+        ret = QMessageBox::warning(this, tr("eePe"),
+                 tr("Delete Selected Mixes?"),
+                 QMessageBox::Yes | QMessageBox::No);
+
+
+    if ((ret == QMessageBox::Yes) || (!ask))
+    {
+        mixersDeleteList(createListFromSelected());
+        updateSettings();
+        tabMixes();
+    }
+}
+
+void ModelEdit::mixersCut()
+{
+    mixersCopy();
+    mixersDelete(false);
+}
+
+void ModelEdit::mixersCopy()
+{
+    QList<int> list = createListFromSelected();
+
+    QByteArray mxData;
+    foreach(int idx, list)
+        mxData.append((char*)&g_model.mixData[idx],sizeof(MixData));
+
+    QMimeData *mimeData = new QMimeData;
+    mimeData->setData("application/x-eepe-mix", mxData);
+
+    QClipboard *clipboard = QApplication::clipboard();
+    clipboard->setMimeData(mimeData,QClipboard::Clipboard);
+}
+
+void ModelEdit::mixersPaste()
+{
+    const QClipboard *clipboard = QApplication::clipboard();
+    const QMimeData *mimeData = clipboard->mimeData();
+
+
+
+    if(mimeData->hasFormat("application/x-eepe-mix"))
+    {
+        int dch = ui->MixerlistWidget->currentItem()->data(Qt::UserRole).toInt();
+        if(dch>MAX_MIXERS)
+            dch -= MAX_MIXERS;
+        else
+            dch = g_model.mixData[dch].destCh;
+
+        QByteArray mxData = mimeData->data("application/x-eepe-mix");
+
+        int i = 0;
+        while(i<mxData.size())
+        {
+            MixData *md = gm_addMix(dch);
+            memcpy(md,mxData.mid(i,sizeof(MixData)).constData(),sizeof(MixData));
+            md->destCh = dch;
+
+            i     += sizeof(MixData);
+        }
+
+        updateSettings();
+        tabMixes();
+    }
+}
+
+void ModelEdit::mixersDuplicate()
+{
+    mixersCopy();
+    mixersPaste();
+}
+
+void ModelEdit::mixerOpen()
+{
+    gm_openMix(ui->MixerlistWidget->currentItem()->data(Qt::UserRole).toInt());
+}
+
+void ModelEdit::mixerAdd()
+{
+    int index = ui->MixerlistWidget->currentItem()->data(Qt::UserRole).toInt();
+    if(index<MAX_MIXERS) index=g_model.mixData[index].destCh+MAX_MIXERS;
+    gm_openMix(index);
+}
+
+void ModelEdit::on_MixerlistWidget_customContextMenuRequested(QPoint pos)
+{
+    QPoint globalPos = ui->MixerlistWidget->mapToGlobal(pos);
+
+    const QClipboard *clipboard = QApplication::clipboard();
+    const QMimeData *mimeData = clipboard->mimeData();
+    bool hasData = mimeData->hasFormat("application/x-eepe-mix");
+
+    QMenu contextMenu;
+    contextMenu.addAction(tr("&Add"),this,SLOT(mixerAdd()),tr("Ctrl+A"));
+    contextMenu.addAction(tr("&Edit"),this,SLOT(mixerOpen()),tr("Enter"));
+    contextMenu.addSeparator();
+    contextMenu.addAction(tr("&Delete"),this,SLOT(mixersDelete()),tr("Delete"));
+    contextMenu.addAction(tr("&Copy"),this,SLOT(mixersCopy()),tr("Ctrl+C"));
+    contextMenu.addAction(tr("&Cut"),this,SLOT(mixersCut()),tr("Ctrl+X"));
+    contextMenu.addAction(tr("&Paste"),this,SLOT(mixersPaste()),tr("Ctrl+V"))->setEnabled(hasData);
+    contextMenu.addAction(tr("D&uplicate"),this,SLOT(mixersDuplicate()),tr("Ctrl+U"));
+
+    contextMenu.exec(globalPos);
+
 }

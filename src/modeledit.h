@@ -43,11 +43,26 @@ private:
 
     QSpinBox *getNodeSB(int i);
 
+    MixData* gm_addMix(uint8_t dch);
+    void gm_deleteMix(int index);
+    void gm_openMix(int index);
+    void mixersDeleteList(QList<int> list);
+    QList<int> createListFromSelected();
+
 signals:
     void modelValuesChanged();    
 
 private slots:
+    void mixersDelete(bool ask=true);
+    void mixersCut();
+    void mixersCopy();
+    void mixersPaste();
+    void mixersDuplicate();
+    void mixerOpen();
+    void mixerAdd();
 
+
+    void on_MixerlistWidget_customContextMenuRequested(QPoint pos);
     void on_MixerlistWidget_doubleClicked(QModelIndex index);
     void on_curveEdit_1_clicked();
     void on_curveEdit_2_clicked();

@@ -17,6 +17,10 @@ public:
 protected:
     void changeEvent(QEvent *e);
 
+private slots:
+    void valuesChanged();
+
+
 private:
     MixData *md;
     Ui::MixerDialog *ui;

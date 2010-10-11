@@ -34,6 +34,16 @@ void populateSwitchCB(QComboBox *b, int value=0)
     b->setMaxVisibleItems(10);
 }
 
+void populateCurvesCB(QComboBox *b, int value)
+{
+    QString str = CURV_STR;
+    b->clear();
+    for(int i=0; i<(str.length()/3); i++)  b->addItem(str.mid(i*3,3).replace("c","Curve "));
+    b->setCurrentIndex(value);
+    b->setMaxVisibleItems(10);
+}
+
+
 void populateTimerSwitchCB(QComboBox *b, int value=0)
 {
 

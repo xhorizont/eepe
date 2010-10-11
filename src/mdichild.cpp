@@ -509,13 +509,17 @@ void MdiChild::ShowContextMenu(const QPoint& pos)
 {
     QPoint globalPos = this->mapToGlobal(pos);
 
+    const QClipboard *clipboard = QApplication::clipboard();
+    const QMimeData *mimeData = clipboard->mimeData();
+    bool hasData = mimeData->hasFormat("application/x-eepe");
+
     QMenu contextMenu;
     contextMenu.addAction(tr("&Edit"),this,SLOT(OpenEditWindow()));
     contextMenu.addSeparator();
     contextMenu.addAction(tr("&Delete"),this,SLOT(deleteSelected(bool)),tr("Delete"));
     contextMenu.addAction(tr("&Copy"),this,SLOT(copy()),tr("Ctrl+C"));
     contextMenu.addAction(tr("&Cut"),this,SLOT(cut()),tr("Ctrl+X"));
-    contextMenu.addAction(tr("&Paste"),this,SLOT(paste()),tr("Ctrl+V"));
+    contextMenu.addAction(tr("&Paste"),this,SLOT(paste()),tr("Ctrl+V"))->setEnabled(hasData);
     contextMenu.addAction(tr("D&uplicate"),this,SLOT(duplicate()),tr("Ctrl+U"));
 
     contextMenu.exec(globalPos);
