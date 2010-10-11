@@ -24,7 +24,7 @@
    <item row="0" column="1">
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
-      <number>6</number>
+      <number>2</number>
      </property>
      <widget class="QWidget" name="tabModelSetup">
       <attribute name="title">
@@ -1493,6 +1493,9 @@ Right</string>
            <family>Courier New</family>
            <pointsize>12</pointsize>
           </font>
+         </property>
+         <property name="contextMenuPolicy">
+          <enum>Qt::CustomContextMenu</enum>
          </property>
          <property name="dragEnabled">
           <bool>true</bool>
@@ -5080,12 +5083,12 @@ Right</string>
    <slot>setValue(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>101</x>
-     <y>42</y>
+     <x>674</x>
+     <y>73</y>
     </hint>
     <hint type="destinationlabel">
-     <x>163</x>
-     <y>69</y>
+     <x>464</x>
+     <y>242</y>
     </hint>
    </hints>
   </connection>
@@ -5096,12 +5099,12 @@ Right</string>
    <slot>setValue(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>79</x>
-     <y>51</y>
+     <x>379</x>
+     <y>641</y>
     </hint>
     <hint type="destinationlabel">
-     <x>163</x>
-     <y>69</y>
+     <x>464</x>
+     <y>450</y>
     </hint>
    </hints>
   </connection>
@@ -5112,12 +5115,12 @@ Right</string>
    <slot>setValue(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>57</x>
-     <y>51</y>
+     <x>83</x>
+     <y>641</y>
     </hint>
     <hint type="destinationlabel">
-     <x>141</x>
-     <y>69</y>
+     <x>168</x>
+     <y>450</y>
     </hint>
    </hints>
   </connection>
@@ -5132,8 +5135,8 @@ Right</string>
      <y>42</y>
     </hint>
     <hint type="destinationlabel">
-     <x>141</x>
-     <y>69</y>
+     <x>168</x>
+     <y>242</y>
     </hint>
    </hints>
   </connection>
@@ -5144,8 +5147,8 @@ Right</string>
    <slot>setValue(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>141</x>
-     <y>69</y>
+     <x>168</x>
+     <y>242</y>
     </hint>
     <hint type="destinationlabel">
      <x>35</x>
@@ -5160,12 +5163,12 @@ Right</string>
    <slot>setValue(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>163</x>
-     <y>69</y>
+     <x>464</x>
+     <y>242</y>
     </hint>
     <hint type="destinationlabel">
-     <x>101</x>
-     <y>42</y>
+     <x>674</x>
+     <y>73</y>
     </hint>
    </hints>
   </connection>
@@ -5176,12 +5179,12 @@ Right</string>
    <slot>setValue(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>163</x>
-     <y>69</y>
+     <x>464</x>
+     <y>450</y>
     </hint>
     <hint type="destinationlabel">
-     <x>79</x>
-     <y>51</y>
+     <x>379</x>
+     <y>641</y>
     </hint>
    </hints>
   </connection>
@@ -5192,12 +5195,12 @@ Right</string>
    <slot>setValue(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>141</x>
-     <y>69</y>
+     <x>168</x>
+     <y>450</y>
     </hint>
     <hint type="destinationlabel">
-     <x>57</x>
-     <y>51</y>
+     <x>83</x>
+     <y>641</y>
     </hint>
    </hints>
   </connection>
