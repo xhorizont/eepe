@@ -6,62 +6,413 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>493</width>
+    <height>254</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>AVR Configuration</string>
   </property>
-  <widget class="QDialogButtonBox" name="buttonBox">
-   <property name="geometry">
-    <rect>
-     <x>30</x>
-     <y>240</y>
-     <width>341</width>
-     <height>32</height>
-    </rect>
-   </property>
-   <property name="orientation">
-    <enum>Qt::Horizontal</enum>
-   </property>
-   <property name="standardButtons">
-    <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit">
-   <property name="geometry">
-    <rect>
-     <x>70</x>
-     <y>50</y>
-     <width>113</width>
-     <height>27</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="pushButton">
-   <property name="geometry">
-    <rect>
-     <x>230</x>
-     <y>50</y>
-     <width>93</width>
-     <height>27</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>PushButton</string>
-   </property>
-  </widget>
-  <widget class="QComboBox" name="comboBox">
-   <property name="geometry">
-    <rect>
-     <x>80</x>
-     <y>100</y>
-     <width>85</width>
-     <height>27</height>
-    </rect>
-   </property>
-  </widget>
+  <layout class="QGridLayout" name="gridLayout_2">
+   <item row="0" column="0">
+    <layout class="QGridLayout" name="gridLayout">
+     <item row="0" column="0" colspan="3">
+      <widget class="QLabel" name="label">
+       <property name="text">
+        <string>AVRDUDE Location</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0" colspan="2">
+      <widget class="QLineEdit" name="avrdude_location"/>
+     </item>
+     <item row="1" column="2">
+      <widget class="QPushButton" name="pushButton">
+       <property name="text">
+        <string>Browse...</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="0">
+      <widget class="QLabel" name="label_2">
+       <property name="text">
+        <string>Programmer</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1" colspan="2">
+      <widget class="QComboBox" name="avrdude_programmer">
+       <item>
+        <property name="text">
+         <string>c2n232i</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>dasa3</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>dasa</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>siprog</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>ponyser</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>89isp</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>frank-stk200</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>blaster</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>ere-isp-avr</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>atisp</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>dapa</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>xil</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>futurlec</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>abcmini</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>picoweb</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>sp12</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>alf</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>bascom</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>dt006</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>pony-stk200</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>stk200</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>bsd</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>pavr</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>dragon_pdi</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>dragon_dw</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>dragon_hvsp</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>dragon_pp</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>dragon_isp</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>dragon_jtag</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>jtag2pdi</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>jtag2avr32</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>jtagmkII_avr32</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>jtag2dw</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>jtag2isp</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>jtag2</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>jtag2fast</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>jtag2slow</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>jtagmkII</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>jtag1slow</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>jtag1</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>jtagmkI</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>avr911</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>avr109</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>butterfly</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>usbtiny</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>usbasp</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>avr910</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>stk600hvsp</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>stk600pp</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>stk600</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>stk500hvsp</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>stk500pp</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>stk500v2</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>mib510</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>stk500v1</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>stk500</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>buspirate</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>avrisp2</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>avrispmkII</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>avrispv2</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>avrisp</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>arduino</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+     <item row="6" column="0">
+      <spacer name="verticalSpacer">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>20</width>
+         <height>40</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item row="5" column="0" colspan="3">
+      <widget class="QLabel" name="avrdude_line">
+       <property name="text">
+        <string>TextLabel</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="0">
+      <spacer name="verticalSpacer_2">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>20</width>
+         <height>40</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item row="4" column="0">
+      <widget class="QLabel" name="label_3">
+       <property name="text">
+        <string>AVR Line</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="1" column="0">
+    <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Close</set>
+     </property>
+    </widget>
+   </item>
+  </layout>
  </widget>
  <resources/>
  <connections>

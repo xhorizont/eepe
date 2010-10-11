@@ -45,6 +45,7 @@
 #include "pers.h"
 #include "modeledit.h"
 #include "generaledit.h"
+#include "burnconfigdialog.h"
 
 
 MdiChild::MdiChild()
@@ -311,6 +312,8 @@ void MdiChild::keyPressEvent(QKeyEvent *event)
         duplicate();
         return;
     }
+
+
 
     QListWidget::keyPressEvent(event);//run the standard event in case we didn't catch an action
 }
@@ -641,6 +644,23 @@ int MdiChild::getFileType(const QString &fullFileName)
     return 0;
 }
 
+void MdiChild::burnTo()  // write to Tx
+{
+    burnConfigDialog bcd;
+    QString avrLine = bcd.getAVRLine(curFile, MEM_TYPE_EEPROM, OPR_TYPE_WRITE);
+
+
+    QMessageBox::warning(this, tr("eePe"),avrLine);
+
+
+}
+
+void MdiChild::burnFrom() // read from Tx
+{
+
+
+}
+
 void MdiChild::ShowContextMenu(const QPoint& pos)
 {
     QPoint globalPos = this->mapToGlobal(pos);
@@ -657,6 +677,9 @@ void MdiChild::ShowContextMenu(const QPoint& pos)
     contextMenu.addAction(tr("&Cut"),this,SLOT(cut()),tr("Ctrl+X"));
     contextMenu.addAction(tr("&Paste"),this,SLOT(paste()),tr("Ctrl+V"))->setEnabled(hasData);
     contextMenu.addAction(tr("D&uplicate"),this,SLOT(duplicate()),tr("Ctrl+U"));
+    contextMenu.addSeparator();
+    contextMenu.addAction(tr("&Write To Tx"),this,SLOT(burnTo()),tr("Ctrl+W"));
+    contextMenu.addAction(tr("&Read From Tx"),this,SLOT(burnFrom()),tr("Ctrl+R"));
 
     contextMenu.exec(globalPos);
 }

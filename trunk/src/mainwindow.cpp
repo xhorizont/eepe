@@ -43,6 +43,7 @@
 
 #include "mainwindow.h"
 #include "mdichild.h"
+#include "burnconfigdialog.h"
 
 MainWindow::MainWindow()
 {
@@ -145,16 +146,24 @@ void MainWindow::paste()
 
 void MainWindow::burnTo()
 {
-
+    if (activeMdiChild())
+        activeMdiChild()->burnTo();
 }
 
 void MainWindow::burnFrom()
 {
+    MdiChild *child = createMdiChild();
+    child->newFile();
+    child->burnFrom();
+    child->show();
 
+    if(!child->parentWidget()->isMaximized() && !child->parentWidget()->isMinimized()) child->parentWidget()->resize(400,500);
 }
 
 void MainWindow::burnConfig()
 {
+    burnConfigDialog bcd;
+    bcd.exec();
 
 }
 
@@ -291,12 +300,12 @@ void MainWindow::createActions()
     connect(pasteAct, SIGNAL(triggered()), this, SLOT(paste()));
 
 
-    burnToAct = new QAction(tr("Burn &To Tx"), this);
+    burnToAct = new QAction(tr("&Write To Tx"), this);
     burnToAct->setShortcut(tr("Ctrl+W"));
-    burnToAct->setStatusTip("Burn current file to transmitter");
+    burnToAct->setStatusTip("Write current file to transmitter");
     connect(burnToAct,SIGNAL(triggered()),this,SLOT(burnTo()));
 
-    burnFromAct = new QAction(tr("Read &From Tx"), this);
+    burnFromAct = new QAction(tr("&Read From Tx"), this);
     burnFromAct->setShortcut(tr("Ctrl+R"));
     burnFromAct->setStatusTip("Read from transmitter");
     connect(burnFromAct,SIGNAL(triggered()),this,SLOT(burnFrom()));
