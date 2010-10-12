@@ -178,8 +178,54 @@ void MainWindow::burnFrom()
     }
 }
 
-void MainWindow::burnFlash()
+void MainWindow::burnToFlash()
 {
+    QSettings settings("er9x-eePe", "eePe");
+    QString fileName = QFileDialog::getOpenFileName(this,"Open",settings.value("lastDir").toString(),tr("FLASH files (*.bin *.hex);;BIN files (*.bin);;HEX files (*.hex)"));
+    if (!fileName.isEmpty())
+    {
+        settings.setValue("lastDir",QFileInfo(fileName).dir().absolutePath());
+
+        burnConfigDialog bcd;
+        QString avrdudeLoc = bcd.getAVRDUDE();
+        QString programmer = bcd.getProgrammer();
+
+        QString str = "flash:w:" + fileName; // writing eeprom -> MEM:OPR:FILE:FTYPE"
+        if(QFileInfo(fileName).suffix().toUpper()=="HEX") str += ":i";
+        else if(QFileInfo(fileName).suffix().toUpper()=="BIN") str += ":r";
+        else str += ":a";
+
+        QStringList arguments;
+        arguments << "-c" << programmer << "-p" << "m64" << "-U" << str;
+
+        avrOutputDialog ad(this, avrdudeLoc, arguments);
+        ad.exec();
+    }
+}
+
+void MainWindow::burnFromFlash()
+{
+    QSettings settings("er9x-eePe", "eePe");
+    QString fileName = QFileDialog::getSaveFileName(this,"Open",settings.value("lastDir").toString(),tr("FLASH files (*.bin *.hex);;BIN files (*.bin);;HEX files (*.hex)"));
+    if (!fileName.isEmpty())
+    {
+        settings.setValue("lastDir",QFileInfo(fileName).dir().absolutePath());
+
+        burnConfigDialog bcd;
+        QString avrdudeLoc = bcd.getAVRDUDE();
+        QString programmer = bcd.getProgrammer();
+
+        QString str = "flash:r:" + fileName; // writing eeprom -> MEM:OPR:FILE:FTYPE"
+        if(QFileInfo(fileName).suffix().toUpper()=="HEX") str += ":i";
+        else if(QFileInfo(fileName).suffix().toUpper()=="BIN") str += ":r";
+        else str += ":a";
+
+        QStringList arguments;
+        arguments << "-c" << programmer << "-p" << "m64" << "-U" << str;
+
+        avrOutputDialog ad(this, avrdudeLoc, arguments);
+        ad.exec();
+    }
 
 }
 
@@ -335,19 +381,23 @@ void MainWindow::createActions()
     connect(pasteAct, SIGNAL(triggered()), this, SLOT(paste()));
 
 
-    burnToAct = new QAction(tr("&Write EEPROM To Tx"), this);
+    burnToAct = new QAction(QIcon(":/images/write_eeprom.png"), tr("&Write EEPROM To Tx"), this);
     burnToAct->setShortcut(tr("Ctrl+W"));
-    burnToAct->setStatusTip("Write current file to transmitter");
+    burnToAct->setStatusTip("Write EEPROM to transmitter");
     connect(burnToAct,SIGNAL(triggered()),this,SLOT(burnTo()));
 
-    burnFromAct = new QAction(tr("&Read EEPROM From Tx"), this);
+    burnFromAct = new QAction(QIcon(":/images/read_eeprom.png"), tr("&Read EEPROM From Tx"), this);
     burnFromAct->setShortcut(tr("Ctrl+R"));
-    burnFromAct->setStatusTip("Read from transmitter");
+    burnFromAct->setStatusTip("Read EEPROM from transmitter");
     connect(burnFromAct,SIGNAL(triggered()),this,SLOT(burnFrom()));
 
-    burnFlashAct = new QAction(tr("R/W Flash memory"), this);
-    burnFlashAct->setStatusTip("Read/Write flash from transmitter");
-    connect(burnFlashAct,SIGNAL(triggered()),this,SLOT(burnFlash()));
+    burnToFlashAct = new QAction(QIcon(":/images/write_flash.png"), tr("Write Flash memory"), this);
+    burnToFlashAct->setStatusTip("Write flash memory to transmitter");
+    connect(burnToFlashAct,SIGNAL(triggered()),this,SLOT(burnToFlash()));
+
+    burnFromFlashAct = new QAction(QIcon(":/images/read_flash.png"), tr("Read Flash memory"), this);
+    burnFromFlashAct->setStatusTip("Read flash memory to transmitter");
+    connect(burnFromFlashAct,SIGNAL(triggered()),this,SLOT(burnFromFlash()));
 
     burnConfigAct = new QAction(tr("&Configure..."), this);
     burnConfigAct->setStatusTip("Configure burning software");
@@ -422,7 +472,8 @@ void MainWindow::createMenus()
     burnMenu->addAction(burnToAct);
     burnMenu->addAction(burnFromAct);
     burnMenu->addSeparator();
-    burnMenu->addAction(burnFlashAct);
+    burnMenu->addAction(burnToFlashAct);
+    burnMenu->addAction(burnFromFlashAct);
     burnMenu->addSeparator();
     burnMenu->addAction(burnConfigAct);
     burnMenu->addAction(burnListAct);
@@ -449,6 +500,12 @@ void MainWindow::createToolBars()
     editToolBar->addAction(cutAct);
     editToolBar->addAction(copyAct);
     editToolBar->addAction(pasteAct);
+
+    burnToolBar = addToolBar(tr("Burn"));
+    burnToolBar->addAction(burnToAct);
+    burnToolBar->addAction(burnFromAct);
+    burnToolBar->addAction(burnToFlashAct);
+    burnToolBar->addAction(burnFromFlashAct);
 }
 
 void MainWindow::createStatusBar()
