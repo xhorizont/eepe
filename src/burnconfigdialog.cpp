@@ -19,7 +19,7 @@ burnConfigDialog::~burnConfigDialog()
 QString burnConfigDialog::getTempDir()
 {
     QSettings settings("er9x-eePe", "eePe");
-    return settings.value("temp_directory", QDir("avrdude.exe").absolutePath()).toString();
+    return settings.value("temp_directory", QDir("./").absolutePath()).toString();
 }
 
 QString burnConfigDialog::getAVRDUDE()
