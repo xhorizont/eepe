@@ -73,7 +73,8 @@ private slots:
     void paste();
     void burnTo();
     void burnFrom();
-    void burnFlash();
+    void burnToFlash();
+    void burnFromFlash();
     void burnConfig();
     void burnList();
     void about();
@@ -103,6 +104,7 @@ private:
     QMenu *helpMenu;
     QToolBar *fileToolBar;
     QToolBar *editToolBar;
+    QToolBar *burnToolBar;
     QAction *newAct;
     QAction *openAct;
     QAction *saveAct;
@@ -115,7 +117,8 @@ private:
     QAction *burnFromAct;
     QAction *burnConfigAct;
     QAction *burnListAct;
-    QAction *burnFlashAct;
+    QAction *burnToFlashAct;
+    QAction *burnFromFlashAct;
     QAction *closeAct;
     QAction *closeAllAct;
     QAction *tileAct;

@@ -29,7 +29,10 @@ avrOutputDialog::~avrOutputDialog()
 
 void avrOutputDialog::addText(const QString &text)
 {
+    int val = ui->plainTextEdit->verticalScrollBar()->maximum();
     ui->plainTextEdit->insertPlainText(text);
+    if(val!=ui->plainTextEdit->verticalScrollBar()->maximum())
+        ui->plainTextEdit->verticalScrollBar()->setValue(ui->plainTextEdit->verticalScrollBar()->maximum());
 }
 
 

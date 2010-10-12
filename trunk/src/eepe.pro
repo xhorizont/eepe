@@ -10,7 +10,7 @@ HEADERS += mainwindow.h \
     node.h \
     mixerdialog.h \
     burnconfigdialog.h \
-    avroutputdialog.h
+    avroutputdialog.h 
 SOURCES += main.cpp \
     mainwindow.cpp \
     file.cpp \
@@ -23,7 +23,7 @@ SOURCES += main.cpp \
     edge.cpp \
     mixerdialog.cpp \
     burnconfigdialog.cpp \
-    avroutputdialog.cpp
+    avroutputdialog.cpp 
 RESOURCES += eepe.qrc
 TARGET = eepe
 TEMPLATE = app
