@@ -20,8 +20,9 @@ public:
     burnConfigDialog(QWidget *parent = 0);
     ~burnConfigDialog();
 
-    QString getAVRLine(const QString &fileName, int memType = MEM_TYPE_EEPROM, int opr = OPR_TYPE_READ);
-
+    QString getTempDir();
+    QString getAVRDUDE();
+    QString getProgrammer();
 
 protected:
     void changeEvent(QEvent *e);
@@ -30,9 +31,15 @@ private:
     Ui::burnConfigDialog *ui;
 
 private slots:
+    void on_temp_location_editingFinished();
+    void on_pushButton_3_clicked();
+    void on_pushButton_2_clicked();
     void on_pushButton_clicked();
     void on_avrdude_location_editingFinished();
     void on_avrdude_programmer_currentIndexChanged(QString text);
+
+    void getSettings();
+    void putSettings();
 };
 
 #endif // BURNCONFIGDIALOG_H

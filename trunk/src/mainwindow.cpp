@@ -44,6 +44,7 @@
 #include "mainwindow.h"
 #include "mdichild.h"
 #include "burnconfigdialog.h"
+#include "avroutputdialog.h"
 
 MainWindow::MainWindow()
 {
@@ -164,7 +165,18 @@ void MainWindow::burnConfig()
 {
     burnConfigDialog bcd;
     bcd.exec();
+}
 
+void MainWindow::burnList()
+{
+    QSettings settings("er9x-eePe", "eePe");
+    QString avrdudeLoc = settings.value("avrdude_location", QString("avrdude")).toString();
+
+    QStringList arguments;
+    arguments << "-c" << "?";
+
+    avrOutputDialog ad(this, avrdudeLoc, arguments);
+    ad.exec();
 }
 
 void MainWindow::about()
@@ -310,9 +322,13 @@ void MainWindow::createActions()
     burnFromAct->setStatusTip("Read from transmitter");
     connect(burnFromAct,SIGNAL(triggered()),this,SLOT(burnFrom()));
 
-    burnConfigAct = new QAction(tr("Configure..."), this);
+    burnConfigAct = new QAction(tr("&Configure..."), this);
     burnConfigAct->setStatusTip("Configure burning software");
     connect(burnConfigAct,SIGNAL(triggered()),this,SLOT(burnConfig()));
+
+    burnListAct = new QAction(tr("&List programmers"), this);
+    burnListAct->setStatusTip("List available programmers");
+    connect(burnListAct,SIGNAL(triggered()),this,SLOT(burnList()));
 
 
     closeAct = new QAction(tr("Cl&ose"), this);
@@ -378,7 +394,9 @@ void MainWindow::createMenus()
     burnMenu = menuBar()->addMenu("&Burn");
     burnMenu->addAction(burnToAct);
     burnMenu->addAction(burnFromAct);
+    burnMenu->addSeparator();
     burnMenu->addAction(burnConfigAct);
+    burnMenu->addAction(burnListAct);
 
     windowMenu = menuBar()->addMenu(tr("&Window"));
     updateWindowMenu();

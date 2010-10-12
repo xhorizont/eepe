@@ -74,6 +74,7 @@ private slots:
     void burnTo();
     void burnFrom();
     void burnConfig();
+    void burnList();
     void about();
     void updateMenus();
     void updateWindowMenu();
@@ -112,6 +113,7 @@ private:
     QAction *burnToAct;
     QAction *burnFromAct;
     QAction *burnConfigAct;
+    QAction *burnListAct;
     QAction *closeAct;
     QAction *closeAllAct;
     QAction *tileAct;

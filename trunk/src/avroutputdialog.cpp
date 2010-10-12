@@ -9,11 +9,14 @@ avrOutputDialog::avrOutputDialog(QWidget *parent, QString prog, QStringList arg)
     ui->setupUi(this);
 
     this->setWindowTitle("AVRDUDE result");
+    cmdLine = prog;
+    foreach(QString str, arg) cmdLine.append(" " + str);
 
     process = new QProcess(this);
 
+    connect(process,SIGNAL(readyReadStandardError()), this, SLOT(doAddTextStdErr()));
     connect(process,SIGNAL(started()),this,SLOT(doProcessStarted()));
-    connect(process,SIGNAL(readyReadStandardOutput()),this,SLOT(doAddText()));
+    connect(process,SIGNAL(readyReadStandardOutput()),this,SLOT(doAddTextStdOut()));
     connect(process,SIGNAL(finished(int)),this,SLOT(doFinished(int)));
     process->start(prog,arg);
 }
@@ -30,20 +33,32 @@ void avrOutputDialog::addText(const QString &text)
 }
 
 
-void avrOutputDialog::doAddText()
+void avrOutputDialog::doAddTextStdOut()
 {
     QByteArray data = process->readAllStandardOutput();
     QString text = QString(data);
     addText(text);
+}
 
+void avrOutputDialog::doAddTextStdErr()
+{
+    QByteArray data = process->readAllStandardError();
+    QString text = QString(data);
+    addText(text);
 }
 
 void avrOutputDialog::doFinished(int code=0)
 {
-    addText(tr("\nAVRDUDE done - exit code: %1").arg(code));
+    addText("\n===============================================");
+    if(code)
+        addText(tr("AVRDUDE done - ERROR: exit code %1").arg(code));
+    else
+        addText(tr("AVRDUDE done - SUCCESSFUL"));
 }
 
 void avrOutputDialog::doProcessStarted()
 {
-    addText("Started AVRDUDE\n\n");
+    addText("Started AVRDUDE");
+    addText(cmdLine);
+    addText("===============================================\n");
 }

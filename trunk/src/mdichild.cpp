@@ -46,6 +46,7 @@
 #include "modeledit.h"
 #include "generaledit.h"
 #include "avroutputdialog.h"
+#include "burnconfigdialog.h"
 
 
 MdiChild::MdiChild()
@@ -507,7 +508,7 @@ bool MdiChild::saveAs()
     return saveFile(fileName);
 }
 
-bool MdiChild::saveFile(const QString &fileName)
+bool MdiChild::saveFile(const QString &fileName, bool setCurrent)
 {
     QFile file(fileName);
 
@@ -548,7 +549,7 @@ bool MdiChild::saveFile(const QString &fileName)
 
         out << ":00000001FF";  // write EOF
         file.close();
-        setCurrentFile(fileName);
+        if(setCurrent) setCurrentFile(fileName);
         return true;
 
 
@@ -578,7 +579,7 @@ bool MdiChild::saveFile(const QString &fileName)
             return false;
         }
 
-        setCurrentFile(fileName);
+        if(setCurrent) setCurrentFile(fileName);
         return true;
     }
 
@@ -646,26 +647,29 @@ int MdiChild::getFileType(const QString &fullFileName)
 
 void MdiChild::burnTo()  // write to Tx
 {
-    if(QFileInfo(curFile).exists())
+    burnConfigDialog bcd;
+    QString avrdudeLoc = bcd.getAVRDUDE();
+    QString tempDir    = bcd.getTempDir();
+    QString programmer = bcd.getProgrammer();
+
+    QString tempFile = tempDir + "/temp.hex";
+    saveFile(tempFile, false);
+    if(!QFileInfo(tempFile).exists())
     {
-        QSettings settings("er9x-eePe", "eePe");
-        QString avrdudeLoc = settings.value("avrdude_location", QString("avrdude")).toString();
-        QString programmer = settings.value("programmer", QString("usbasp")).toString();
-
-        QString str = "eeprom:w"; // writing eeprom -> MEM:OPR:FILE:FTYPE"
-        str += "\"" + curFile + "\":";
-        if(QFileInfo(curFile).suffix().toUpper()=="HEX") str += "i";
-        if(QFileInfo(curFile).suffix().toUpper()=="BIN") str += "r";
-
-        QStringList arguments;
-        arguments << "-c" << programmer << "-p" << "m64" << "-U" << str;
-
-
-        avrOutputDialog ad(this, avrdudeLoc, arguments);
-        ad.exec();
+        QMessageBox::critical(this,tr("Error"), tr("Cannot write temporary file!"));
+        return;
     }
 
+    QString str = "eeprom:w"; // writing eeprom -> MEM:OPR:FILE:FTYPE"
+    str += ":\"" + tempFile + "\":";
+    if(QFileInfo(curFile).suffix().toUpper()=="HEX") str += "i";
+    if(QFileInfo(curFile).suffix().toUpper()=="BIN") str += "r";
 
+    QStringList arguments;
+    arguments << "-c" << programmer << "-p" << "m64" << "-U" << str;
+
+    avrOutputDialog ad(this, avrdudeLoc, arguments);
+    ad.exec();
 }
 
 void MdiChild::burnFrom() // read from Tx
