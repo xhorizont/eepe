@@ -354,7 +354,6 @@ void MdiChild::OpenEditWindow()
         }
         else
             QMessageBox::critical(this, tr("Error"),tr("Unable to read settings!"));
-
     }
 
 }
@@ -364,7 +363,7 @@ void MdiChild::newFile()
     static int sequenceNumber = 1;
 
     isUntitled = true;
-    curFile = tr("document%1.bin").arg(sequenceNumber++);
+    curFile = tr("document%1.hex").arg(sequenceNumber++);
     setWindowTitle(curFile + "[*]");
 
 }
@@ -376,7 +375,7 @@ int getValueFromLine(const QString &line, int pos, int len=2)
     return ok ? hex : -1;
 }
 
-bool MdiChild::loadFile(const QString &fileName)
+bool MdiChild::loadFile(const QString &fileName, bool resetCurrentFile)
 {
     QFile file(fileName);
 
@@ -442,7 +441,7 @@ bool MdiChild::loadFile(const QString &fileName)
         file.close();
         eeFile.loadFile(&temp);
         refreshList();
-        setCurrentFile(fileName);
+        if(resetCurrentFile) setCurrentFile(fileName);
 
         return true;
     }
@@ -480,7 +479,7 @@ bool MdiChild::loadFile(const QString &fileName)
 
         eeFile.loadFile(&temp);
         refreshList();
-        setCurrentFile(fileName);
+        if(resetCurrentFile) setCurrentFile(fileName);
 
         return true;
     }
@@ -659,23 +658,13 @@ void MdiChild::burnTo()  // write to Tx
         QMessageBox::critical(this,tr("Error"), tr("Cannot write temporary file!"));
         return;
     }
-
-    QString str = "eeprom:w"; // writing eeprom -> MEM:OPR:FILE:FTYPE"
-    str += ":\"" + tempFile + "\":";
-    if(QFileInfo(curFile).suffix().toUpper()=="HEX") str += "i";
-    if(QFileInfo(curFile).suffix().toUpper()=="BIN") str += "r";
+    QString str = "eeprom:w:" + tempFile + ":i"; // writing eeprom -> MEM:OPR:FILE:FTYPE"
 
     QStringList arguments;
     arguments << "-c" << programmer << "-p" << "m64" << "-U" << str;
 
     avrOutputDialog ad(this, avrdudeLoc, arguments);
     ad.exec();
-}
-
-void MdiChild::burnFrom() // read from Tx
-{
-
-
 }
 
 void MdiChild::ShowContextMenu(const QPoint& pos)

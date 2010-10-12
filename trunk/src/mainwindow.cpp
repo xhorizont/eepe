@@ -153,12 +153,34 @@ void MainWindow::burnTo()
 
 void MainWindow::burnFrom()
 {
-    MdiChild *child = createMdiChild();
-    child->newFile();
-    child->burnFrom();
-    child->show();
+    burnConfigDialog bcd;
+    QString avrdudeLoc = bcd.getAVRDUDE();
+    QString tempDir    = bcd.getTempDir();
+    QString programmer = bcd.getProgrammer();
 
-    if(!child->parentWidget()->isMaximized() && !child->parentWidget()->isMinimized()) child->parentWidget()->resize(400,500);
+    QString tempFile = tempDir + "/temp.hex";
+    QString str = "eeprom:r:" + tempFile + ":i"; // writing eeprom -> MEM:OPR:FILE:FTYPE"
+
+    QStringList arguments;
+    arguments << "-c" << programmer << "-p" << "m64" << "-U" << str;
+
+    avrOutputDialog ad(this, avrdudeLoc, arguments);
+    ad.exec();
+
+    if(QFileInfo(tempFile).exists())
+    {
+        MdiChild *child = createMdiChild();
+        child->newFile();
+        child->loadFile(tempFile,false);
+        child->setModified();
+        child->show();
+        if(!child->parentWidget()->isMaximized() && !child->parentWidget()->isMinimized()) child->parentWidget()->resize(400,500);
+    }
+}
+
+void MainWindow::burnFlash()
+{
+
 }
 
 void MainWindow::burnConfig()
@@ -207,6 +229,7 @@ void MainWindow::updateMenus()
     cascadeAct->setEnabled(hasMdiChild);
     nextAct->setEnabled(hasMdiChild);
     previousAct->setEnabled(hasMdiChild);
+    burnToAct->setEnabled(hasMdiChild);
     separatorAct->setVisible(hasMdiChild);
 
     bool hasSelection = (activeMdiChild() &&
@@ -312,15 +335,19 @@ void MainWindow::createActions()
     connect(pasteAct, SIGNAL(triggered()), this, SLOT(paste()));
 
 
-    burnToAct = new QAction(tr("&Write To Tx"), this);
+    burnToAct = new QAction(tr("&Write EEPROM To Tx"), this);
     burnToAct->setShortcut(tr("Ctrl+W"));
     burnToAct->setStatusTip("Write current file to transmitter");
     connect(burnToAct,SIGNAL(triggered()),this,SLOT(burnTo()));
 
-    burnFromAct = new QAction(tr("&Read From Tx"), this);
+    burnFromAct = new QAction(tr("&Read EEPROM From Tx"), this);
     burnFromAct->setShortcut(tr("Ctrl+R"));
     burnFromAct->setStatusTip("Read from transmitter");
     connect(burnFromAct,SIGNAL(triggered()),this,SLOT(burnFrom()));
+
+    burnFlashAct = new QAction(tr("R/W Flash memory"), this);
+    burnFlashAct->setStatusTip("Read/Write flash from transmitter");
+    connect(burnFlashAct,SIGNAL(triggered()),this,SLOT(burnFlash()));
 
     burnConfigAct = new QAction(tr("&Configure..."), this);
     burnConfigAct->setStatusTip("Configure burning software");
@@ -394,6 +421,8 @@ void MainWindow::createMenus()
     burnMenu = menuBar()->addMenu("&Burn");
     burnMenu->addAction(burnToAct);
     burnMenu->addAction(burnFromAct);
+    burnMenu->addSeparator();
+    burnMenu->addAction(burnFlashAct);
     burnMenu->addSeparator();
     burnMenu->addAction(burnConfigAct);
     burnMenu->addAction(burnListAct);

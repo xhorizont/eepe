@@ -59,7 +59,7 @@ public:
     MdiChild();
 
     void newFile();
-    bool loadFile(const QString &fileName);
+    bool loadFile(const QString &fileName, bool resetCurrentFile=true);
     bool save();
     bool saveAs();
     bool saveFile(const QString &fileName, bool setCurrent=true);
@@ -80,7 +80,7 @@ protected:
 private slots:
     void documentWasModified();
     void refreshList();
-    void setModified();
+
 
 public slots:
     void OpenEditWindow();
@@ -89,9 +89,9 @@ public slots:
     void copy();
     void paste();
     void burnTo();
-    void burnFrom();
     void duplicate();
     void deleteSelected(bool ask);
+    void setModified();
 
 private:
     bool maybeSave();
