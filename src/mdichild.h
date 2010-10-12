@@ -62,7 +62,7 @@ public:
     bool loadFile(const QString &fileName);
     bool save();
     bool saveAs();
-    bool saveFile(const QString &fileName);
+    bool saveFile(const QString &fileName, bool setCurrent=true);
     bool hasSelection();
     QString userFriendlyCurrentFile();
     QString currentFile() { return curFile; }

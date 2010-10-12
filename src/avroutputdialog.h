@@ -19,7 +19,8 @@ public:
     void addText(const QString &text);
 
 protected slots:
-    void doAddText();
+    void doAddTextStdOut();
+    void doAddTextStdErr();
     void doProcessStarted();
     void doFinished(int code);
 
@@ -27,6 +28,7 @@ private:
     Ui::avrOutputDialog *ui;
 
     QProcess *process;
+    QString cmdLine;
 };
 
 #endif // AVROUTPUTDIALOG_H

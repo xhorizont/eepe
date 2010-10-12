@@ -1,5 +1,6 @@
 #include "burnconfigdialog.h"
 #include "ui_burnconfigdialog.h"
+#include "avroutputdialog.h"
 #include <QtGui>
 
 burnConfigDialog::burnConfigDialog(QWidget *parent) :
@@ -7,18 +8,7 @@ burnConfigDialog::burnConfigDialog(QWidget *parent) :
     ui(new Ui::burnConfigDialog)
 {
     ui->setupUi(this);
-
-    QSettings settings("er9x-eePe", "eePe");
-    QString avrdudeLoc = settings.value("avrdude_location", QString("avrdude")).toString();
-    QString programmer = settings.value("programmer", QString("usbasp")).toString();
-
-    ui->avrdude_location->setText(avrdudeLoc);
-    int idx = ui->avrdude_programmer->findText(programmer);
-    if(idx>=0) ui->avrdude_programmer->setCurrentIndex(idx);
-
-    //avrdude -c usbasp -p m64 -U flash:r:"backupflash.bin:r
-    ui->avrdude_line->setText(getAVRLine("efile.hex"));
-
+    getSettings();
 }
 
 burnConfigDialog::~burnConfigDialog()
@@ -26,25 +16,40 @@ burnConfigDialog::~burnConfigDialog()
     delete ui;
 }
 
-QString burnConfigDialog::getAVRLine(const QString &fileName, int memType, int opr)
+QString burnConfigDialog::getTempDir()
 {
     QSettings settings("er9x-eePe", "eePe");
-    QString avrdudeLoc = settings.value("avrdude_location", QString("avrdude")).toString();
-    QString programmer = settings.value("programmer", QString("usbasp")).toString();
-
-    QString str = avrdudeLoc + " -c " + programmer + " -p m64 -U "; //MEM:OPR:FILE:FTYPE"
-    if(memType==MEM_TYPE_EEPROM) str += "eeprom:";
-    if(memType==MEM_TYPE_FLASH)  str += "flash:";
-
-    if(opr==OPR_TYPE_READ) str += "r:";
-    if(opr==OPR_TYPE_READ) str += "w:";
-
-    str += "\"" + fileName + "\":";
-    if(QFileInfo(fileName).suffix().toUpper()=="HEX") str += "i";
-    if(QFileInfo(fileName).suffix().toUpper()=="BIN") str += "r";
-
-    return str;
+    return settings.value("temp_directory", QDir("avrdude.exe").absolutePath()).toString();
 }
+
+QString burnConfigDialog::getAVRDUDE()
+{
+    QSettings settings("er9x-eePe", "eePe");
+    return settings.value("avrdude_location", QFileInfo("avrdude.exe").absoluteFilePath()).toString();
+}
+
+QString burnConfigDialog::getProgrammer()
+{
+    QSettings settings("er9x-eePe", "eePe");
+    return settings.value("programmer", QString("usbasp")).toString();
+}
+
+void burnConfigDialog::getSettings()
+{
+    ui->avrdude_location->setText(getAVRDUDE());
+    ui->temp_location->setText(getTempDir());
+    int idx = ui->avrdude_programmer->findText(getProgrammer());
+    if(idx>=0) ui->avrdude_programmer->setCurrentIndex(idx);
+}
+
+void burnConfigDialog::putSettings()
+{
+    QSettings settings("er9x-eePe", "eePe");
+    settings.setValue("avrdude_location", ui->avrdude_location->text());
+    settings.setValue("temp_directory", ui->temp_location->text());
+    settings.setValue("programmer", ui->avrdude_programmer->currentText());
+}
+
 
 void burnConfigDialog::changeEvent(QEvent *e)
 {
@@ -60,29 +65,48 @@ void burnConfigDialog::changeEvent(QEvent *e)
 
 void burnConfigDialog::on_avrdude_programmer_currentIndexChanged(QString text)
 {
-    QSettings settings("er9x-eePe", "eePe");
-    settings.setValue("programmer", text);
-    ui->avrdude_line->setText(getAVRLine("efile.hex"));
+    putSettings();
 }
 
 void burnConfigDialog::on_avrdude_location_editingFinished()
 {
-    QSettings settings("er9x-eePe", "eePe");
-    settings.setValue("avrdude_location", ui->avrdude_location->text());
-    ui->avrdude_line->setText(getAVRLine("efile.hex"));
+    putSettings();
+}
+
+void burnConfigDialog::on_temp_location_editingFinished()
+{
+    putSettings();
 }
 
 void burnConfigDialog::on_pushButton_clicked()
 {
-    QSettings settings("er9x-eePe", "eePe");
-    QString avrdudeLoc = settings.value("avrdude_location", QString("avrdude")).toString();
-    QString fileName = QFileDialog::getOpenFileName(this, tr("Select Location"),avrdudeLoc);
+    QString fileName = QFileDialog::getOpenFileName(this, tr("Select Location"),ui->avrdude_location->text());
 
     if(!fileName.isEmpty())
     {
         ui->avrdude_location->setText(fileName);
-        settings.setValue("avrdude_location", fileName);
-        ui->avrdude_line->setText(getAVRLine("efile.hex"));
-
+        putSettings();
     }
 }
+
+void burnConfigDialog::on_pushButton_2_clicked()
+{
+    QString dirName = QFileDialog::getExistingDirectory(this, tr("Select Location"),ui->temp_location->text());
+
+    if(!dirName.isEmpty())
+    {
+        ui->temp_location->setText(dirName);
+        putSettings();
+    }
+}
+
+void burnConfigDialog::on_pushButton_3_clicked()
+{
+    QStringList arguments;
+    arguments << "-c" << "?";
+
+    avrOutputDialog ad(this, ui->avrdude_location->text(), arguments);
+    ad.exec();
+}
+
+
