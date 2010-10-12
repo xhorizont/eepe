@@ -36,7 +36,7 @@ private slots:
     void on_pushButton_2_clicked();
     void on_pushButton_clicked();
     void on_avrdude_location_editingFinished();
-    void on_avrdude_programmer_currentIndexChanged(QString text);
+    void on_avrdude_programmer_currentIndexChanged(QString );
 
     void getSettings();
     void putSettings();

@@ -8,5 +8,8 @@
         <file>images/save.png</file>
         <file>icon.ico</file>
         <file>images/eepe-title.png</file>
+        <file>images/flash.png</file>
+        <file>images/read_eeprom.png</file>
+        <file>images/write_eeprom.png</file>
     </qresource>
 </RCC>

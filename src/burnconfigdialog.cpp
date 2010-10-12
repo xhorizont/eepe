@@ -63,7 +63,7 @@ void burnConfigDialog::changeEvent(QEvent *e)
     }
 }
 
-void burnConfigDialog::on_avrdude_programmer_currentIndexChanged(QString text)
+void burnConfigDialog::on_avrdude_programmer_currentIndexChanged(QString )
 {
     putSettings();
 }

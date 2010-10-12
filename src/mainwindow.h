@@ -73,6 +73,7 @@ private slots:
     void paste();
     void burnTo();
     void burnFrom();
+    void burnFlash();
     void burnConfig();
     void burnList();
     void about();
@@ -114,6 +115,7 @@ private:
     QAction *burnFromAct;
     QAction *burnConfigAct;
     QAction *burnListAct;
+    QAction *burnFlashAct;
     QAction *closeAct;
     QAction *closeAllAct;
     QAction *tileAct;

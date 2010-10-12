@@ -29,7 +29,7 @@ avrOutputDialog::~avrOutputDialog()
 
 void avrOutputDialog::addText(const QString &text)
 {
-    ui->plainTextEdit->appendPlainText(text);
+    ui->plainTextEdit->insertPlainText(text);
 }
 
 
@@ -49,16 +49,19 @@ void avrOutputDialog::doAddTextStdErr()
 
 void avrOutputDialog::doFinished(int code=0)
 {
-    addText("\n===============================================");
+    addText("\n============================================================");
     if(code)
-        addText(tr("AVRDUDE done - ERROR: exit code %1").arg(code));
+        addText(tr("\nAVRDUDE done - ERROR: exit code %1").arg(code));
     else
-        addText(tr("AVRDUDE done - SUCCESSFUL"));
+    {
+        addText(tr("\nAVRDUDE done - SUCCESSFUL"));
+        accept();
+    }
 }
 
 void avrOutputDialog::doProcessStarted()
 {
-    addText("Started AVRDUDE");
+    addText("Started AVRDUDE\n");
     addText(cmdLine);
-    addText("===============================================\n");
+    addText("\n============================================================\n");
 }
