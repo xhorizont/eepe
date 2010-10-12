@@ -13,7 +13,7 @@ class avrOutputDialog : public QDialog
     Q_OBJECT
 
 public:
-    explicit avrOutputDialog(QWidget *parent = 0, QProcess *prc = 0);
+    explicit avrOutputDialog(QWidget *parent, QString prog, QStringList arg);
     ~avrOutputDialog();
 
     void addText(const QString &text);
@@ -21,6 +21,7 @@ public:
 protected slots:
     void doAddText();
     void doProcessStarted();
+    void doFinished(int code);
 
 private:
     Ui::avrOutputDialog *ui;
