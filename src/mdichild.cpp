@@ -660,15 +660,9 @@ void MdiChild::burnTo()  // write to Tx
         QStringList arguments;
         arguments << "-c" << programmer << "-p" << "m64" << "-U" << str;
 
-        QProcess avrProcess;
-        avrOutputDialog(this,&avrProcess);
-        avrProcess.start(avrdudeLoc, arguments);
 
-
-        if (!avrProcess.waitForFinished()) return;
-
-
-
+        avrOutputDialog ad(this, avrdudeLoc, arguments);
+        ad.exec();
     }
 
 
