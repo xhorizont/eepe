@@ -45,7 +45,7 @@
 #include "pers.h"
 #include "modeledit.h"
 #include "generaledit.h"
-#include "burnconfigdialog.h"
+#include "avroutputdialog.h"
 
 
 MdiChild::MdiChild()
@@ -646,11 +646,30 @@ int MdiChild::getFileType(const QString &fullFileName)
 
 void MdiChild::burnTo()  // write to Tx
 {
-    burnConfigDialog bcd;
-    QString avrLine = bcd.getAVRLine(curFile, MEM_TYPE_EEPROM, OPR_TYPE_WRITE);
+    if(QFileInfo(curFile).exists())
+    {
+        QSettings settings("er9x-eePe", "eePe");
+        QString avrdudeLoc = settings.value("avrdude_location", QString("avrdude")).toString();
+        QString programmer = settings.value("programmer", QString("usbasp")).toString();
+
+        QString str = "eeprom:w"; // writing eeprom -> MEM:OPR:FILE:FTYPE"
+        str += "\"" + curFile + "\":";
+        if(QFileInfo(curFile).suffix().toUpper()=="HEX") str += "i";
+        if(QFileInfo(curFile).suffix().toUpper()=="BIN") str += "r";
+
+        QStringList arguments;
+        arguments << "-c" << programmer << "-p" << "m64" << "-U" << str;
+
+        QProcess avrProcess;
+        avrOutputDialog(this,&avrProcess);
+        avrProcess.start(avrdudeLoc, arguments);
 
 
-    QMessageBox::warning(this, tr("eePe"),avrLine);
+        if (!avrProcess.waitForFinished()) return;
+
+
+
+    }
 
 
 }
