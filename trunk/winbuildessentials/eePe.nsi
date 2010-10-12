@@ -74,6 +74,8 @@ Section "eePe" SecDummy
   File "mingwm10.dll"
   File "QtCore4.dll"
   File "QtGui4.dll"
+  File "avrdude.exe"
+  File "avrdude.conf"
   
   ;Store installation folder
   WriteRegStr HKCU "Software\er9x-eePe" "" $INSTDIR
@@ -116,6 +118,8 @@ Section "Uninstall"
   Delete "$INSTDIR\mingwm10.dll"
   Delete "$INSTDIR\QtCore4.dll"
   Delete "$INSTDIR\QtGui4.dll"
+  Delete "$INSTDIR\avrdude.exe"
+  Delete "$INSTDIR\avrdude.conf"
   Delete "$INSTDIR\Uninstall.exe"
 
   RMDir "$INSTDIR"
