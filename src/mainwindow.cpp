@@ -157,12 +157,13 @@ void MainWindow::burnFrom()
     QString avrdudeLoc = bcd.getAVRDUDE();
     QString tempDir    = bcd.getTempDir();
     QString programmer = bcd.getProgrammer();
+    QString args       = bcd.getAVRArgs();
 
     QString tempFile = tempDir + "/temp.hex";
     QString str = "eeprom:r:" + tempFile + ":i"; // writing eeprom -> MEM:OPR:FILE:FTYPE"
 
     QStringList arguments;
-    arguments << "-c" << programmer << "-p" << "m64" << "-U" << str << bcd.getAVRArgs();
+    arguments << "-c" << programmer << "-p" << "m64" << args << "-U" << str;
 
     avrOutputDialog ad(this, avrdudeLoc, arguments);
     int res = ad.exec();
@@ -189,6 +190,7 @@ void MainWindow::burnToFlash()
         burnConfigDialog bcd;
         QString avrdudeLoc = bcd.getAVRDUDE();
         QString programmer = bcd.getProgrammer();
+        QString args       = bcd.getAVRArgs();
 
         QString str = "flash:w:" + fileName; // writing eeprom -> MEM:OPR:FILE:FTYPE"
         if(QFileInfo(fileName).suffix().toUpper()=="HEX") str += ":i";
@@ -196,7 +198,7 @@ void MainWindow::burnToFlash()
         else str += ":a";
 
         QStringList arguments;
-        arguments << "-c" << programmer << "-p" << "m64" << "-U" << str << bcd.getAVRArgs();
+        arguments << "-c" << programmer << "-p" << "m64" << args << "-U" << str;
 
         avrOutputDialog ad(this, avrdudeLoc, arguments);
         ad.exec();
@@ -214,6 +216,7 @@ void MainWindow::burnFromFlash()
         burnConfigDialog bcd;
         QString avrdudeLoc = bcd.getAVRDUDE();
         QString programmer = bcd.getProgrammer();
+        QString args       = bcd.getAVRArgs();
 
         QString str = "flash:r:" + fileName; // writing eeprom -> MEM:OPR:FILE:FTYPE"
         if(QFileInfo(fileName).suffix().toUpper()=="HEX") str += ":i";
@@ -221,7 +224,7 @@ void MainWindow::burnFromFlash()
         else str += ":a";
 
         QStringList arguments;
-        arguments << "-c" << programmer << "-p" << "m64" << "-U" << str << bcd.getAVRArgs();
+        arguments << "-c" << programmer << "-p" << "m64" << args << "-U" << str;
 
         avrOutputDialog ad(this, avrdudeLoc, arguments);
         ad.exec();
