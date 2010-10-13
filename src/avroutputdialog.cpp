@@ -2,17 +2,24 @@
 #include "ui_avroutputdialog.h"
 #include <QtGui>
 
-avrOutputDialog::avrOutputDialog(QWidget *parent, QString prog, QStringList arg, int closeBehaviour) :
+avrOutputDialog::avrOutputDialog(QWidget *parent, QString prog, QStringList arg, QString wTitle, int closeBehaviour) :
     QDialog(parent),
     ui(new Ui::avrOutputDialog)
 {
     ui->setupUi(this);
 
-    this->setWindowTitle("AVRDUDE result");
+    if(wTitle.isEmpty())
+        setWindowTitle("AVRDUDE result");
+    else
+        setWindowTitle("AVRDUDE - " + wTitle);
 
     cmdLine = prog;
     foreach(QString str, arg) cmdLine.append(" " + str);
     closeOpt = closeBehaviour;
+
+    lfuse = 0;
+    hfuse = 0;
+    efuse = 0;
 
     process = new QProcess(this);
 
@@ -54,8 +61,23 @@ void avrOutputDialog::doAddTextStdOut()
 {
     QByteArray data = process->readAllStandardOutput();
     QString text = QString(data);
-    addText(text);
+    //addText("\n=====\n" + text + "\n=====\n");
+
+    if(text.contains(":010000")) //contains fuse info
+    {
+        QStringList stl = text.split(":01000000");
+
+        foreach (QString t, stl)
+        {
+            bool ok = false;
+            if(!lfuse)        lfuse = t.left(2).toInt(&ok,16);
+            if(!hfuse && !ok) hfuse = t.left(2).toInt(&ok,16);
+            if(!efuse && !ok) efuse = t.left(2).toInt(&ok,16);
+        }
+    }
+
 }
+
 
 void avrOutputDialog::doAddTextStdErr()
 {
@@ -73,6 +95,8 @@ void avrOutputDialog::doFinished(int code=0)
     else
         addText(tr("\nAVRDUDE done - SUCCESSFUL"));
     addText("\n" HLINE_SEPARATOR "\n");
+
+    if(lfuse || hfuse || efuse) addReadFuses();
 
 
     switch(closeOpt)
@@ -94,4 +118,12 @@ void avrOutputDialog::doProcessStarted()
     addText("\n" HLINE_SEPARATOR "\n");
 }
 
+
+
+void avrOutputDialog::addReadFuses()
+{
+    addText(HLINE_SEPARATOR "\n");
+    addText(tr("FUSES: Low=%1 High=%2 Ext=%3").arg(lfuse,2,16,QChar('0')).arg(hfuse,2,16,QChar('0')).arg(efuse,2,16,QChar('0')));
+    addText("\n" HLINE_SEPARATOR "\n");
+}
 
