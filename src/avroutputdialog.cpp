@@ -2,16 +2,17 @@
 #include "ui_avroutputdialog.h"
 #include <QtGui>
 
-avrOutputDialog::avrOutputDialog(QWidget *parent, QString prog, QStringList arg, bool closeOnFinish) :
+avrOutputDialog::avrOutputDialog(QWidget *parent, QString prog, QStringList arg, int closeBehaviour) :
     QDialog(parent),
     ui(new Ui::avrOutputDialog)
 {
     ui->setupUi(this);
 
     this->setWindowTitle("AVRDUDE result");
+
     cmdLine = prog;
     foreach(QString str, arg) cmdLine.append(" " + str);
-    doCloseOnFinish = closeOnFinish;
+    closeOpt = closeBehaviour;
 
     process = new QProcess(this);
 
@@ -27,6 +28,18 @@ avrOutputDialog::~avrOutputDialog()
     delete ui;
 }
 
+void avrOutputDialog::runAgain(QString prog, QStringList arg, int closeBehaviour)
+{
+    cmdLine = prog;
+    foreach(QString str, arg) cmdLine.append(" " + str);
+    closeOpt = closeBehaviour;
+    process->start(prog,arg);
+}
+
+void avrOutputDialog::waitForFinish()
+{
+    process->waitForFinished();
+}
 
 void avrOutputDialog::addText(const QString &text)
 {
@@ -51,24 +64,34 @@ void avrOutputDialog::doAddTextStdErr()
     addText(text);
 }
 
+#define HLINE_SEPARATOR "================================================================================="
 void avrOutputDialog::doFinished(int code=0)
 {
-    addText("\n============================================================");
+    addText("\n" HLINE_SEPARATOR);
     if(code)
-    {
         addText(tr("\nAVRDUDE done - exit code %1").arg(code));
-        //if(doCloseOnFinish) reject();
-    }
     else
-    {
         addText(tr("\nAVRDUDE done - SUCCESSFUL"));
-        if(doCloseOnFinish) accept();
+    addText("\n" HLINE_SEPARATOR "\n");
+
+
+    switch(closeOpt)
+    {
+    case (AVR_DIALOG_CLOSE_IF_SUCCESSFUL): if(!code) accept();break;
+    case (AVR_DIALOG_FORCE_CLOSE): if(code) reject(); else accept(); break;
+    default: //AVR_DIALOG_KEEP_OPEN
+        break;
     }
+
+
 }
 
 void avrOutputDialog::doProcessStarted()
 {
+    addText(HLINE_SEPARATOR "\n");
     addText("Started AVRDUDE\n");
     addText(cmdLine);
-    addText("\n============================================================\n");
+    addText("\n" HLINE_SEPARATOR "\n");
 }
+
+

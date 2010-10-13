@@ -32,6 +32,7 @@ private:
     Ui::burnConfigDialog *ui;
 
 private slots:
+    void on_resetFuses_clicked();
     void on_avrArgs_editingFinished();
     void on_pushButton_4_clicked();
     void on_temp_location_editingFinished();

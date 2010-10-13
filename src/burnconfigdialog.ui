@@ -6,12 +6,12 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>671</width>
-    <height>209</height>
+    <width>716</width>
+    <height>221</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>AVR Configuration</string>
+   <string>AVRDUDE Configuration</string>
   </property>
   <property name="windowIcon">
    <iconset>
@@ -401,7 +401,7 @@
          </property>
         </widget>
        </item>
-       <item row="5" column="1">
+       <item row="6" column="1">
         <spacer name="verticalSpacer">
          <property name="orientation">
           <enum>Qt::Vertical</enum>
@@ -435,6 +435,13 @@
         <widget class="QPushButton" name="pushButton_4">
          <property name="text">
           <string>Show Help</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="2">
+        <widget class="QPushButton" name="resetFuses">
+         <property name="text">
+          <string>Reset Fuses</string>
          </property>
         </widget>
        </item>
