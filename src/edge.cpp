@@ -96,8 +96,9 @@ void Edge::adjust()
 
     prepareGeometryChange();
 
-    if (length > qreal(BALL_SIZE)) {
-        QPointF edgeOffset((line.dx() * BALL_SIZE/2) / length, (line.dy() * BALL_SIZE/2) / length);
+    int ballSize = source->getBallSize();
+    if (length > qreal(ballSize)) {
+        QPointF edgeOffset((line.dx() * ballSize/2) / length, (line.dy() * ballSize/2) / length);
         sourcePoint = line.p1() + edgeOffset;
         destPoint = line.p2() - edgeOffset;
     } else {

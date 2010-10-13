@@ -112,8 +112,14 @@ enum EnumKeys {
 
 #define CURV_STR "---x>0x<0|x|f>0f<0|f|c1 c2 c3 c4 c5 c6 c7 c8 c9 c10c11c12c13c14c15c16"
 
+#define MIX_P1    5
+#define MIX_P2    6
+#define MIX_P3    7
+#define MIX_MAX   8
+#define MIX_FULL  9
 
-
+#define PPM_BASE   (MIX_FULL)
+#define CHOUT_BASE (MIX_FULL+NUM_PPM)
 
 #define DSW_THR  1
 #define DSW_RUD  2
@@ -124,7 +130,12 @@ enum EnumKeys {
 #define DSW_AIL  7
 #define DSW_GEA  8
 #define DSW_TRN  9
-
+#define DSW_CS1  10
+#define DSW_CS2  11
+#define DSW_CS3  12
+#define DSW_CS4  13
+#define DSW_CS5  14
+#define DSW_CS6  15
 
 
 #define NUM_KEYS TRM_RH_UP+1
