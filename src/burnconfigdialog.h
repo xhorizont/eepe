@@ -25,11 +25,14 @@ public:
     QString getAVRArgs();
     QString getProgrammer();
 
+    void listProgrammers();
+
 protected:
     void changeEvent(QEvent *e);
 
 private:
     Ui::burnConfigDialog *ui;
+
 
 private slots:
     void on_resetFuses_clicked();

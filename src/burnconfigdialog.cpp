@@ -113,13 +113,20 @@ void burnConfigDialog::on_pushButton_2_clicked()
     }
 }
 
-void burnConfigDialog::on_pushButton_3_clicked()
+
+void burnConfigDialog::listProgrammers()
 {
     QStringList arguments;
     arguments << "-c?";
 
     avrOutputDialog ad(this, ui->avrdude_location->text(), arguments, AVR_DIALOG_KEEP_OPEN);
+    ad.setWindowTitle("AVRDUDE - List available programmers");
     ad.exec();
+}
+
+void burnConfigDialog::on_pushButton_3_clicked()
+{
+    listProgrammers();
 }
 
 
@@ -130,6 +137,7 @@ void burnConfigDialog::on_pushButton_4_clicked()
     arguments << "-?";
 
     avrOutputDialog ad(this, ui->avrdude_location->text(), arguments, AVR_DIALOG_KEEP_OPEN);
+    ad.setWindowTitle("AVRDUDE - Show help");
     ad.exec();
 }
 
@@ -162,6 +170,7 @@ void burnConfigDialog::on_resetFuses_clicked()
         arguments << "-c" << programmer << "-p" << "m64" << args << "-U" << str1;
 
         avrOutputDialog ad(this, avrdudeLoc, arguments, AVR_DIALOG_KEEP_OPEN);
+        ad.setWindowTitle("AVRDUDE - Reset Fuses");
         ad.show();
         ad.waitForFinish();
 

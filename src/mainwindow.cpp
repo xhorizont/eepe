@@ -151,6 +151,12 @@ void MainWindow::burnTo()
         activeMdiChild()->burnTo();
 }
 
+void MainWindow::simulate()
+{
+    if (activeMdiChild())
+        activeMdiChild()->simulate();
+}
+
 void MainWindow::burnFrom()
 {
     burnConfigDialog bcd;
@@ -166,6 +172,7 @@ void MainWindow::burnFrom()
     arguments << "-c" << programmer << "-p" << "m64" << args << "-U" << str;
 
     avrOutputDialog ad(this, avrdudeLoc, arguments);
+    ad.setWindowTitle("AVRDUDE - Read EEPROM From Tx");
     int res = ad.exec();
 
     if(QFileInfo(tempFile).exists() && res)
@@ -201,6 +208,7 @@ void MainWindow::burnToFlash()
         arguments << "-c" << programmer << "-p" << "m64" << args << "-U" << str;
 
         avrOutputDialog ad(this, avrdudeLoc, arguments);
+        ad.setWindowTitle("AVRDUDE - Write Flash To Tx");
         ad.exec();
     }
 }
@@ -227,6 +235,7 @@ void MainWindow::burnFromFlash()
         arguments << "-c" << programmer << "-p" << "m64" << args << "-U" << str;
 
         avrOutputDialog ad(this, avrdudeLoc, arguments);
+        ad.setWindowTitle("AVRDUDE - Read Flash From Tx");
         ad.exec();
     }
 
@@ -240,14 +249,8 @@ void MainWindow::burnConfig()
 
 void MainWindow::burnList()
 {
-    QSettings settings("er9x-eePe", "eePe");
-    QString avrdudeLoc = settings.value("avrdude_location", QString("avrdude")).toString();
-
-    QStringList arguments;
-    arguments << "-c?";
-
-    avrOutputDialog ad(this, avrdudeLoc, arguments,AVR_DIALOG_KEEP_OPEN);
-    ad.exec();
+    burnConfigDialog bcd;
+    bcd.listProgrammers();
 }
 
 void MainWindow::about()
@@ -280,6 +283,7 @@ void MainWindow::updateMenus()
     previousAct->setEnabled(hasMdiChild);
     burnToAct->setEnabled(hasMdiChild);
     separatorAct->setVisible(hasMdiChild);
+    simulateAct->setEnabled(hasMdiChild);
 
     bool hasSelection = (activeMdiChild() &&
                          activeMdiChild()->hasSelection());
@@ -385,12 +389,12 @@ void MainWindow::createActions()
 
 
     burnToAct = new QAction(QIcon(":/images/write_eeprom.png"), tr("&Write EEPROM To Tx"), this);
-    burnToAct->setShortcut(tr("Ctrl+W"));
+    burnToAct->setShortcut(tr("Ctrl+Alt+W"));
     burnToAct->setStatusTip("Write EEPROM to transmitter");
     connect(burnToAct,SIGNAL(triggered()),this,SLOT(burnTo()));
 
     burnFromAct = new QAction(QIcon(":/images/read_eeprom.png"), tr("&Read EEPROM From Tx"), this);
-    burnFromAct->setShortcut(tr("Ctrl+R"));
+    burnFromAct->setShortcut(tr("Ctrl+Alt+R"));
     burnFromAct->setStatusTip("Read EEPROM from transmitter");
     connect(burnFromAct,SIGNAL(triggered()),this,SLOT(burnFrom()));
 
@@ -402,7 +406,7 @@ void MainWindow::createActions()
     burnFromFlashAct->setStatusTip("Read flash memory to transmitter");
     connect(burnFromFlashAct,SIGNAL(triggered()),this,SLOT(burnFromFlash()));
 
-    burnConfigAct = new QAction(tr("&Configure..."), this);
+    burnConfigAct = new QAction(QIcon(":/images/configure.png"), tr("&Configure..."), this);
     burnConfigAct->setStatusTip("Configure burning software");
     connect(burnConfigAct,SIGNAL(triggered()),this,SLOT(burnConfig()));
 
@@ -410,6 +414,10 @@ void MainWindow::createActions()
     burnListAct->setStatusTip("List available programmers");
     connect(burnListAct,SIGNAL(triggered()),this,SLOT(burnList()));
 
+    simulateAct = new QAction(QIcon(":/images/simulate.png"), tr("&Simulate"), this);
+    simulateAct->setShortcut(tr("Alt+S"));
+    simulateAct->setStatusTip("Simulate selected model.");
+    connect(simulateAct,SIGNAL(triggered()),this,SLOT(simulate()));
 
     closeAct = new QAction(tr("Cl&ose"), this);
     closeAct->setStatusTip(tr("Close the active window"));
@@ -462,6 +470,8 @@ void MainWindow::createMenus()
     fileMenu->addAction(saveAct);
     fileMenu->addAction(saveAsAct);
     fileMenu->addSeparator();
+    fileMenu->addAction(simulateAct);
+    fileMenu->addSeparator();
     QAction *action = fileMenu->addAction(tr("Switch layout direction"));
     connect(action, SIGNAL(triggered()), this, SLOT(switchLayoutDirection()));
     fileMenu->addAction(exitAct);
@@ -498,6 +508,8 @@ void MainWindow::createToolBars()
     fileToolBar->addAction(newAct);
     fileToolBar->addAction(openAct);
     fileToolBar->addAction(saveAct);
+    fileToolBar->addSeparator();
+    fileToolBar->addAction(simulateAct);
 
     editToolBar = addToolBar(tr("Edit"));
     editToolBar->addAction(cutAct);
@@ -507,8 +519,11 @@ void MainWindow::createToolBars()
     burnToolBar = addToolBar(tr("Burn"));
     burnToolBar->addAction(burnToAct);
     burnToolBar->addAction(burnFromAct);
+    burnToolBar->addSeparator();
     burnToolBar->addAction(burnToFlashAct);
     burnToolBar->addAction(burnFromFlashAct);
+    burnToolBar->addSeparator();
+    burnToolBar->addAction(burnConfigAct);
 }
 
 void MainWindow::createStatusBar()

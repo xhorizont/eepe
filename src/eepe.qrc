@@ -12,5 +12,7 @@
         <file>images/write_eeprom.png</file>
         <file>images/write_flash.png</file>
         <file>images/read_flash.png</file>
+        <file>images/simulate.png</file>
+        <file>images/configure.png</file>
     </qresource>
 </RCC>
