@@ -2,7 +2,7 @@
 #include "ui_avroutputdialog.h"
 #include <QtGui>
 
-avrOutputDialog::avrOutputDialog(QWidget *parent, QString prog, QStringList arg) :
+avrOutputDialog::avrOutputDialog(QWidget *parent, QString prog, QStringList arg, bool closeOnFinish) :
     QDialog(parent),
     ui(new Ui::avrOutputDialog)
 {
@@ -11,6 +11,7 @@ avrOutputDialog::avrOutputDialog(QWidget *parent, QString prog, QStringList arg)
     this->setWindowTitle("AVRDUDE result");
     cmdLine = prog;
     foreach(QString str, arg) cmdLine.append(" " + str);
+    doCloseOnFinish = closeOnFinish;
 
     process = new QProcess(this);
 
@@ -54,11 +55,14 @@ void avrOutputDialog::doFinished(int code=0)
 {
     addText("\n============================================================");
     if(code)
-        addText(tr("\nAVRDUDE done - ERROR: exit code %1").arg(code));
+    {
+        addText(tr("\nAVRDUDE done - exit code %1").arg(code));
+        //if(doCloseOnFinish) reject();
+    }
     else
     {
         addText(tr("\nAVRDUDE done - SUCCESSFUL"));
-        accept();
+        if(doCloseOnFinish) accept();
     }
 }
 
