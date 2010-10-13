@@ -47,6 +47,7 @@
 #include "generaledit.h"
 #include "avroutputdialog.h"
 #include "burnconfigdialog.h"
+#include "simulatordialog.h"
 
 
 MdiChild::MdiChild()
@@ -665,6 +666,7 @@ void MdiChild::burnTo()  // write to Tx
     arguments << "-c" << programmer << "-p" << "m64" << args << "-U" << str;
 
     avrOutputDialog ad(this, avrdudeLoc, arguments);
+    ad.setWindowTitle("AVRDUDE - Write EEPROM To Tx");
     ad.exec();
 }
 
@@ -685,8 +687,10 @@ void MdiChild::ShowContextMenu(const QPoint& pos)
     contextMenu.addAction(tr("&Paste"),this,SLOT(paste()),tr("Ctrl+V"))->setEnabled(hasData);
     contextMenu.addAction(tr("D&uplicate"),this,SLOT(duplicate()),tr("Ctrl+U"));
     contextMenu.addSeparator();
-    contextMenu.addAction(tr("&Write To Tx"),this,SLOT(burnTo()),tr("Ctrl+W"));
-    contextMenu.addAction(tr("&Read From Tx"),this,SLOT(burnFrom()),tr("Ctrl+R"));
+    contextMenu.addAction(tr("&Simulate"),this,SLOT(simulate()),tr("Alt+S"));
+    contextMenu.addSeparator();
+    contextMenu.addAction(tr("&Write To Tx"),this,SLOT(burnTo()),tr("Ctrl+Alt+W"));
+    contextMenu.addAction(tr("&Read From Tx"),this,SLOT(burnFrom()),tr("Ctrl+Alt+R"));
 
     contextMenu.exec(globalPos);
 }
@@ -697,3 +701,12 @@ void MdiChild::setModified()
     eeFile.setChanged(true);
     documentWasModified();
 }
+
+void MdiChild::simulate()
+{
+    simulatorDialog sd;
+    sd.exec();
+}
+
+
+

@@ -89,6 +89,7 @@ public slots:
     void copy();
     void paste();
     void burnTo();
+    void simulate();
     void duplicate();
     void deleteSelected(bool ask);
     void setModified();

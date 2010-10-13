@@ -321,7 +321,7 @@
        <item row="6" column="0">
         <widget class="QLabel" name="label_7">
          <property name="text">
-          <string>Reversed Throttle Opearation</string>
+          <string>Reverse Throttle Operation</string>
          </property>
         </widget>
        </item>
@@ -348,7 +348,7 @@
          </item>
          <item>
           <property name="text">
-           <string>Oversapmle</string>
+           <string>Oversample</string>
           </property>
          </item>
          <item>

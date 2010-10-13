@@ -77,6 +77,7 @@ private slots:
     void burnFromFlash();
     void burnConfig();
     void burnList();
+    void simulate();
     void about();
     void updateMenus();
     void updateWindowMenu();
@@ -119,6 +120,7 @@ private:
     QAction *burnListAct;
     QAction *burnToFlashAct;
     QAction *burnFromFlashAct;
+    QAction *simulateAct;
     QAction *closeAct;
     QAction *closeAllAct;
     QAction *tileAct;
