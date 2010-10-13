@@ -22,7 +22,7 @@ public:
 
     QString getTempDir();
     QString getAVRDUDE();
-    QString getAVRArgs();
+    QStringList getAVRArgs();
     QString getProgrammer();
 
     void listProgrammers();

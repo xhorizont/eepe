@@ -28,10 +28,11 @@ QString burnConfigDialog::getAVRDUDE()
     return settings.value("avrdude_location", QFileInfo("avrdude.exe").absoluteFilePath()).toString();
 }
 
-QString burnConfigDialog::getAVRArgs()
+QStringList burnConfigDialog::getAVRArgs()
 {
     QSettings settings("er9x-eePe", "eePe");
-    return settings.value("avr_arguments").toString();
+    QString str = settings.value("avr_arguments").toString();
+    return str.split(" ", QString::SkipEmptyParts);
 }
 
 QString burnConfigDialog::getProgrammer()
@@ -44,7 +45,7 @@ void burnConfigDialog::getSettings()
 {
     ui->avrdude_location->setText(getAVRDUDE());
     ui->temp_location->setText(getTempDir());
-    ui->avrArgs->setText(getAVRArgs());
+    ui->avrArgs->setText(getAVRArgs().join(" "));
     int idx = ui->avrdude_programmer->findText(getProgrammer());
     if(idx>=0) ui->avrdude_programmer->setCurrentIndex(idx);
 }
@@ -160,7 +161,7 @@ void burnConfigDialog::on_resetFuses_clicked()
     {
         QString avrdudeLoc = ui->avrdude_location->text();
         QString programmer = ui->avrdude_programmer->currentText();
-        QString args = ui->avrArgs->text();
+        QStringList args = ui->avrArgs->text().split(" ", QString::SkipEmptyParts);
 
         QString str1 = "lfuse:w:<0x0E>:m";
         QString str2 = "hfuse:w:<0x89>:m";

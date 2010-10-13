@@ -163,7 +163,7 @@ void MainWindow::burnFrom()
     QString avrdudeLoc = bcd.getAVRDUDE();
     QString tempDir    = bcd.getTempDir();
     QString programmer = bcd.getProgrammer();
-    QString args       = bcd.getAVRArgs();
+    QStringList args   = bcd.getAVRArgs();
 
     QString tempFile = tempDir + "/temp.hex";
     QString str = "eeprom:r:" + tempFile + ":i"; // writing eeprom -> MEM:OPR:FILE:FTYPE"
@@ -171,7 +171,7 @@ void MainWindow::burnFrom()
     QStringList arguments;
     arguments << "-c" << programmer << "-p" << "m64" << args << "-U" << str;
 
-    avrOutputDialog ad(this, avrdudeLoc, arguments);
+    avrOutputDialog ad(this, avrdudeLoc, arguments); //, AVR_DIALOG_KEEP_OPEN);
     ad.setWindowTitle("AVRDUDE - Read EEPROM From Tx");
     int res = ad.exec();
 
@@ -197,7 +197,7 @@ void MainWindow::burnToFlash()
         burnConfigDialog bcd;
         QString avrdudeLoc = bcd.getAVRDUDE();
         QString programmer = bcd.getProgrammer();
-        QString args       = bcd.getAVRArgs();
+        QStringList args   = bcd.getAVRArgs();
 
         QString str = "flash:w:" + fileName; // writing eeprom -> MEM:OPR:FILE:FTYPE"
         if(QFileInfo(fileName).suffix().toUpper()=="HEX") str += ":i";
@@ -224,7 +224,7 @@ void MainWindow::burnFromFlash()
         burnConfigDialog bcd;
         QString avrdudeLoc = bcd.getAVRDUDE();
         QString programmer = bcd.getProgrammer();
-        QString args       = bcd.getAVRArgs();
+        QStringList args   = bcd.getAVRArgs();
 
         QString str = "flash:r:" + fileName; // writing eeprom -> MEM:OPR:FILE:FTYPE"
         if(QFileInfo(fileName).suffix().toUpper()=="HEX") str += ":i";

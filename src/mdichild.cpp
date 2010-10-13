@@ -651,7 +651,7 @@ void MdiChild::burnTo()  // write to Tx
     QString avrdudeLoc = bcd.getAVRDUDE();
     QString tempDir    = bcd.getTempDir();
     QString programmer = bcd.getProgrammer();
-    QString args       = bcd.getAVRArgs();
+    QStringList args   = bcd.getAVRArgs();
 
     QString tempFile = tempDir + "/temp.hex";
     saveFile(tempFile, false);
