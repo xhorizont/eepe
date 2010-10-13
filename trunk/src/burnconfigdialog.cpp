@@ -118,7 +118,7 @@ void burnConfigDialog::on_pushButton_3_clicked()
     QStringList arguments;
     arguments << "-c?";
 
-    avrOutputDialog ad(this, ui->avrdude_location->text(), arguments, false);
+    avrOutputDialog ad(this, ui->avrdude_location->text(), arguments, AVR_DIALOG_KEEP_OPEN);
     ad.exec();
 }
 
@@ -129,8 +129,53 @@ void burnConfigDialog::on_pushButton_4_clicked()
     QStringList arguments;
     arguments << "-?";
 
-    avrOutputDialog ad(this, ui->avrdude_location->text(), arguments, false);
+    avrOutputDialog ad(this, ui->avrdude_location->text(), arguments, AVR_DIALOG_KEEP_OPEN);
     ad.exec();
 }
 
 
+
+
+void burnConfigDialog::on_resetFuses_clicked()
+{
+    //fuses
+    //avrdude -c usbtiny -p attiny2313 -U lfuse:w:<0x0e>:m
+    //avrdude -c usbtiny -p attiny2313 -U hfuse:w:<0x89>:m
+    //avrdude -c usbtiny -p attiny2313 -U efuse:w:<0xFF>:m
+
+    QMessageBox::StandardButton ret = QMessageBox::No;
+
+    ret = QMessageBox::warning(this, tr("eePe"),
+                               tr("<b><u>WARNING!</u></b><br>Writing fuses can mess up your radio.<br>Do this only if you are sure they are wrong!<br>Are you sure you want to continue?"),
+                               QMessageBox::Yes | QMessageBox::No);
+    if (ret == QMessageBox::Yes)
+    {
+        QString avrdudeLoc = ui->avrdude_location->text();
+        QString programmer = ui->avrdude_programmer->currentText();
+        QString args = ui->avrArgs->text();
+
+        QString str1 = "lfuse:w:<0x0e>:m";
+        QString str2 = "hfuse:w:<0x89>:m";
+        QString str3 = "efuse:w:<0xFF>:m";
+
+        QStringList arguments;
+        arguments << "-c" << programmer << "-p" << "m64" << "-U" << str1 << args;
+
+        avrOutputDialog ad(this, avrdudeLoc, arguments, AVR_DIALOG_KEEP_OPEN);
+        ad.show();
+        ad.waitForFinish();
+
+        arguments.clear();
+        arguments << "-c" << programmer << "-p" << "m64" << "-U" << str2 << args;
+        ad.runAgain(avrdudeLoc, arguments, AVR_DIALOG_KEEP_OPEN);
+        ad.show();
+        ad.waitForFinish();
+
+        arguments.clear();
+        arguments << "-c" << programmer << "-p" << "m64" << "-U" << str3 << args;
+        ad.runAgain(avrdudeLoc, arguments, AVR_DIALOG_KEEP_OPEN);
+        ad.exec();
+
+    }
+
+}

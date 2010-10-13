@@ -243,7 +243,7 @@ void MainWindow::burnList()
     QStringList arguments;
     arguments << "-c?";
 
-    avrOutputDialog ad(this, avrdudeLoc, arguments,false);
+    avrOutputDialog ad(this, avrdudeLoc, arguments,AVR_DIALOG_KEEP_OPEN);
     ad.exec();
 }
 
