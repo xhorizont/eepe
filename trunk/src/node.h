@@ -44,7 +44,7 @@
 
 #include <QtGui>
 
-#define BALL_SIZE 14
+#define DEFAULT_BALL_SIZE 14
 #define BALL_HEIGHT 2
 
 class Edge;
@@ -56,7 +56,7 @@ class Node : public QGraphicsItem
 {
 
 public:
-    Node(QSpinBox *sb = 0, bool fixed = false);
+    Node(QSpinBox *sb = 0);
 
     void addEdge(Edge *edge);
     QList<Edge *> edges() const;
@@ -67,6 +67,15 @@ public:
     QRectF boundingRect() const;
     QPainterPath shape() const;
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
+    void setLimited(bool val);
+    void setBallSize(int size);
+    void stepToCenter(qreal step=10);
+    int  getBallSize();
+    qreal getX();
+    qreal getY();
+
+    void setCenteringX(bool val) {centerX = val;}
+    void setCenteringY(bool val) {centerY = val;}
 
 protected:
     QVariant itemChange(GraphicsItemChange change, const QVariant &value);
@@ -75,7 +84,12 @@ protected:
     void mouseReleaseEvent(QGraphicsSceneMouseEvent *event);
     
 private:
-    bool vFixed;
+
+    bool unLimited;
+    bool bPressed;
+    bool centerX;
+    bool centerY;
+    int  ballSize;
     QSpinBox *qsb;
     QList<Edge *> edgeList;
     QPointF newPos;

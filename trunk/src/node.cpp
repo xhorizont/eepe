@@ -47,7 +47,7 @@
 #include "edge.h"
 #include "node.h"
 
-Node::Node(QSpinBox *sb, bool fixed)
+Node::Node(QSpinBox *sb)
 {
     setFlag(ItemIsMovable);
     setFlag(ItemSendsGeometryChanges);
@@ -55,13 +55,83 @@ Node::Node(QSpinBox *sb, bool fixed)
     setZValue(-1);
 
     qsb = sb;
-    vFixed = fixed;
+    unLimited = false;
+    bPressed  = false;
+    centerX   = true;
+    centerY   = true;
+    ballSize = DEFAULT_BALL_SIZE;
 }
 
 void Node::addEdge(Edge *edge)
 {
     edgeList << edge;
     edge->adjust();
+}
+
+void Node::stepToCenter(qreal step)
+{
+    if(scene() && !bPressed)
+    {
+        QRectF qr = scene()->sceneRect();
+        qreal xStep = qr.width()/step;
+        qreal yStep = qr.height()/step;
+
+        QPointF p = pos();
+        if(centerX)
+        {
+            qreal x = qr.right() - qr.width()/2;
+            if(abs(x-p.x())>xStep)
+                p.rx() += p.x()>x ? -xStep : xStep;
+            else
+                p.rx() = x;
+        }
+
+        if(centerY)
+        {
+            qreal y = qr.bottom() - qr.height()/2;
+            if(abs(y-p.y())>yStep)
+                p.ry() += p.y()>y ? -yStep : yStep;
+            else
+                p.ry() = y;
+        }
+        setPos(p);
+    }
+
+}
+
+void Node::setBallSize(int size)
+{
+    if(size>2) ballSize = size;
+}
+
+int Node::getBallSize()
+{
+    return ballSize;
+}
+
+void Node::setLimited(bool val)
+{
+    unLimited = !val;
+}
+
+qreal Node::getX()
+{
+    if(scene())
+    {
+        QRectF rect = scene()->sceneRect();
+        return 1+((x()-rect.right())*2/rect.width());
+    }
+    return 0;
+}
+
+qreal Node::getY()
+{
+    if(scene())
+    {
+        QRectF rect = scene()->sceneRect();
+        return 1+((y()-rect.bottom())*2/rect.height());
+    }
+    return 0;
 }
 
 QList<Edge *> Node::edges() const
@@ -72,15 +142,15 @@ QList<Edge *> Node::edges() const
 QRectF Node::boundingRect() const
 {
     qreal adjust = 2;
-    return QRectF(-BALL_SIZE/2 - adjust, -BALL_SIZE/2 - adjust,
-                  BALL_SIZE+BALL_HEIGHT + adjust, BALL_SIZE+BALL_HEIGHT + adjust);
+    return QRectF(-ballSize/2 - adjust, -ballSize/2 - adjust,
+                  ballSize+BALL_HEIGHT + adjust, ballSize+BALL_HEIGHT + adjust);
 }
 
 
 QPainterPath Node::shape() const
 {
     QPainterPath path;
-    path.addEllipse(-BALL_SIZE/2, -BALL_SIZE/2, BALL_SIZE, BALL_SIZE);
+    path.addEllipse(-ballSize/2, -ballSize/2, ballSize, ballSize);
     return path;
 }
 
@@ -88,9 +158,9 @@ void Node::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWid
 {
     painter->setPen(Qt::NoPen);
     painter->setBrush(Qt::darkGray);
-    painter->drawEllipse(-BALL_SIZE/2 + BALL_HEIGHT, -BALL_SIZE/2 + BALL_HEIGHT, BALL_SIZE, BALL_SIZE);
+    painter->drawEllipse(-ballSize/2 + BALL_HEIGHT, -ballSize/2 + BALL_HEIGHT, ballSize, ballSize);
 
-    QRadialGradient gradient(-BALL_HEIGHT, -BALL_HEIGHT, BALL_SIZE/2);
+    QRadialGradient gradient(-BALL_HEIGHT, -BALL_HEIGHT, ballSize/2);
     if (option->state & QStyle::State_Sunken) {
         gradient.setCenter(BALL_HEIGHT, BALL_HEIGHT);
         gradient.setFocalPoint(BALL_HEIGHT, BALL_HEIGHT);
@@ -102,7 +172,7 @@ void Node::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWid
     }
     painter->setBrush(gradient);
     painter->setPen(QPen(Qt::black, 0));
-    painter->drawEllipse(-BALL_SIZE/2, -BALL_SIZE/2, BALL_SIZE, BALL_SIZE);
+    painter->drawEllipse(-ballSize/2, -ballSize/2, ballSize, ballSize);
 }
 
 QVariant Node::itemChange(GraphicsItemChange change, const QVariant &value)
@@ -114,11 +184,9 @@ QVariant Node::itemChange(GraphicsItemChange change, const QVariant &value)
              // value is the new position.
              QPointF newPos = value.toPointF();
              QRectF rect = scene()->sceneRect();
-             newPos.setX(x());//make sure x doesn't change
-             if(vFixed)
-                 newPos.setY(y());
-             else
-                 newPos.setY(qMin(rect.bottom(), qMax(newPos.y(), rect.top())));// bound Y
+             if(!unLimited) newPos.setX(x());//make sure x doesn't change
+             newPos.setX(qMin(rect.right(), qMax(newPos.x(), rect.left())));// bound X
+             newPos.setY(qMin(rect.bottom(), qMax(newPos.y(), rect.top())));// bound Y
              if(qsb) qsb->setValue(100+(rect.top()-y())*200/rect.height());
              return newPos;
          }
@@ -138,6 +206,7 @@ QVariant Node::itemChange(GraphicsItemChange change, const QVariant &value)
 void Node::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
     update();
+    bPressed = true;
     if(qsb) qsb->setFocus();
     QGraphicsItem::mousePressEvent(event);
 }
@@ -145,6 +214,7 @@ void Node::mousePressEvent(QGraphicsSceneMouseEvent *event)
 void Node::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 {
     update();
+    bPressed = false;
     if(scene())
     {
         if(qsb) qsb->clearFocus();

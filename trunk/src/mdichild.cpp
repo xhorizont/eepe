@@ -285,6 +285,8 @@ bool MdiChild::hasSelection()
 
 void MdiChild::keyPressEvent(QKeyEvent *event)
 {
+
+
     if(event->matches(QKeySequence::Delete))
     {
         deleteSelected();
@@ -703,7 +705,17 @@ void MdiChild::setModified()
 
 void MdiChild::simulate()
 {
+    if(currentRow()<1) return;
+
     simulatorDialog sd;
+
+    EEGeneral gg;
+    if(!eeFile.getGeneralSettings(&gg)) return;
+
+    ModelData gm;
+    if(!eeFile.getModel(&gm,currentRow()-1)) return;
+
+    sd.loadParams(&gg,&gm);
     sd.exec();
 }
 

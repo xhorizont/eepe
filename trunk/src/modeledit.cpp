@@ -5,6 +5,7 @@
 #include "edge.h"
 #include "node.h"
 #include "mixerdialog.h"
+#include "simulatordialog.h"
 
 #include <QtGui>
 
@@ -1752,4 +1753,16 @@ void ModelEdit::on_MixerlistWidget_customContextMenuRequested(QPoint pos)
 
     contextMenu.exec(globalPos);
 
+}
+
+void ModelEdit::launchSimulation()
+{
+    simulatorDialog sd;
+    sd.loadParams(&g_eeGeneral,&g_model);
+    sd.exec();
+}
+
+void ModelEdit::on_pushButton_clicked()
+{
+    launchSimulation();
 }

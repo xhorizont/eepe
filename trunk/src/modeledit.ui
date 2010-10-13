@@ -4770,10 +4770,16 @@ Right</string>
      </widget>
     </widget>
    </item>
+   <item row="1" column="1">
+    <widget class="QPushButton" name="pushButton">
+     <property name="text">
+      <string>Simulate</string>
+     </property>
+    </widget>
+   </item>
   </layout>
  </widget>
  <tabstops>
-  <tabstop>tabWidget</tabstop>
   <tabstop>offsetDSB_1</tabstop>
   <tabstop>minSB_1</tabstop>
   <tabstop>maxSB_1</tabstop>

@@ -36,6 +36,7 @@ private:
     void tabTrims();
     void updateTabCurves();
 
+    void launchSimulation();
     void resizeEvent(QResizeEvent *event  = 0);
 
     void drawCurve();
@@ -50,9 +51,11 @@ private:
     QList<int> createListFromSelected();
 
 signals:
-    void modelValuesChanged();    
+    void modelValuesChanged();
+
 
 private slots:
+    void on_pushButton_clicked();
     void mixersDelete(bool ask=true);
     void mixersCut();
     void mixersCopy();
