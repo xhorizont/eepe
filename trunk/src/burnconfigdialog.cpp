@@ -120,8 +120,7 @@ void burnConfigDialog::listProgrammers()
     QStringList arguments;
     arguments << "-c?";
 
-    avrOutputDialog ad(this, ui->avrdude_location->text(), arguments, AVR_DIALOG_KEEP_OPEN);
-    ad.setWindowTitle("AVRDUDE - List available programmers");
+    avrOutputDialog ad(this, ui->avrdude_location->text(), arguments, "List available programmers", AVR_DIALOG_KEEP_OPEN);
     ad.exec();
 }
 
@@ -137,8 +136,7 @@ void burnConfigDialog::on_pushButton_4_clicked()
     QStringList arguments;
     arguments << "-?";
 
-    avrOutputDialog ad(this, ui->avrdude_location->text(), arguments, AVR_DIALOG_KEEP_OPEN);
-    ad.setWindowTitle("AVRDUDE - Show help");
+    avrOutputDialog ad(this, ui->avrdude_location->text(), arguments, "Show help", AVR_DIALOG_KEEP_OPEN);
     ad.exec();
 }
 
@@ -161,31 +159,33 @@ void burnConfigDialog::on_resetFuses_clicked()
     {
         QString avrdudeLoc = ui->avrdude_location->text();
         QString programmer = ui->avrdude_programmer->currentText();
-        QStringList args = ui->avrArgs->text().split(" ", QString::SkipEmptyParts);
+        QStringList args   = ui->avrArgs->text().split(" ", QString::SkipEmptyParts);
 
-        QString str1 = "lfuse:w:<0x0E>:m";
-        QString str2 = "hfuse:w:<0x89>:m";
-        QString str3 = "efuse:w:<0xFF>:m";
+        QStringList str;
+        str << "-U" << "lfuse:w:0x0E:m" << "-U" << "hfuse:w:0x89:m" << "-U" << "efuse:w:0xFF:m";
+        //use hfuse = 0x81 to prevent eeprom being erased with every flashing
 
         QStringList arguments;
-        arguments << "-c" << programmer << "-p" << "m64" << args << "-U" << str1;
+        arguments << "-c" << programmer << "-p" << "m64" << args << "-u" << str;
 
-        avrOutputDialog ad(this, avrdudeLoc, arguments, AVR_DIALOG_KEEP_OPEN);
-        ad.setWindowTitle("AVRDUDE - Reset Fuses");
-        ad.show();
-        ad.waitForFinish();
-
-        arguments.clear();
-        arguments << "-c" << programmer << "-p" << "m64" << args << "-U" << str2;
-        ad.runAgain(avrdudeLoc, arguments, AVR_DIALOG_KEEP_OPEN);
-        ad.show();
-        ad.waitForFinish();
-
-        arguments.clear();
-        arguments << "-c" << programmer << "-p" << "m64" << args << "-U" << str3;
-        ad.runAgain(avrdudeLoc, arguments, AVR_DIALOG_KEEP_OPEN);
+        avrOutputDialog ad(this, avrdudeLoc, arguments, "Reset Fuses",AVR_DIALOG_KEEP_OPEN);
         ad.exec();
-
     }
 
+}
+
+void burnConfigDialog::on_readFuses_clicked()
+{
+    QString avrdudeLoc = ui->avrdude_location->text();
+    QString programmer = ui->avrdude_programmer->currentText();
+    QStringList args   = ui->avrArgs->text().split(" ", QString::SkipEmptyParts);
+
+    QStringList str;
+    str << "-U" << "lfuse:r:-:i" << "-U" << "hfuse:r:-:i" << "-U" << "efuse:r:-:i";
+
+    QStringList arguments;
+    arguments << "-c" << programmer << "-p" << "m64" << args << str;
+
+    avrOutputDialog ad(this, avrdudeLoc, arguments, "Read Fuses",AVR_DIALOG_KEEP_OPEN);
+    ad.exec();
 }

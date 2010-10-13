@@ -665,8 +665,7 @@ void MdiChild::burnTo()  // write to Tx
     QStringList arguments;
     arguments << "-c" << programmer << "-p" << "m64" << args << "-U" << str;
 
-    avrOutputDialog ad(this, avrdudeLoc, arguments);
-    ad.setWindowTitle("AVRDUDE - Write EEPROM To Tx");
+    avrOutputDialog ad(this, avrdudeLoc, arguments, "Write EEPROM To Tx");
     ad.exec();
 }
 

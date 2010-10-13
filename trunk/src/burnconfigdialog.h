@@ -35,6 +35,7 @@ private:
 
 
 private slots:
+    void on_readFuses_clicked();
     void on_resetFuses_clicked();
     void on_avrArgs_editingFinished();
     void on_pushButton_4_clicked();

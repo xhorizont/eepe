@@ -171,8 +171,7 @@ void MainWindow::burnFrom()
     QStringList arguments;
     arguments << "-c" << programmer << "-p" << "m64" << args << "-U" << str;
 
-    avrOutputDialog ad(this, avrdudeLoc, arguments); //, AVR_DIALOG_KEEP_OPEN);
-    ad.setWindowTitle("AVRDUDE - Read EEPROM From Tx");
+    avrOutputDialog ad(this, avrdudeLoc, arguments,"Read EEPROM From Tx"); //, AVR_DIALOG_KEEP_OPEN);
     int res = ad.exec();
 
     if(QFileInfo(tempFile).exists() && res)
@@ -207,8 +206,7 @@ void MainWindow::burnToFlash()
         QStringList arguments;
         arguments << "-c" << programmer << "-p" << "m64" << args << "-U" << str;
 
-        avrOutputDialog ad(this, avrdudeLoc, arguments);
-        ad.setWindowTitle("AVRDUDE - Write Flash To Tx");
+        avrOutputDialog ad(this, avrdudeLoc, arguments, "Write Flash To Tx");
         ad.exec();
     }
 }
@@ -234,8 +232,7 @@ void MainWindow::burnFromFlash()
         QStringList arguments;
         arguments << "-c" << programmer << "-p" << "m64" << args << "-U" << str;
 
-        avrOutputDialog ad(this, avrdudeLoc, arguments);
-        ad.setWindowTitle("AVRDUDE - Read Flash From Tx");
+        avrOutputDialog ad(this, avrdudeLoc, arguments, "Read Flash From Tx");
         ad.exec();
     }
 
