@@ -22,6 +22,7 @@ public:
 
     QString getTempDir();
     QString getAVRDUDE();
+    QString getAVRArgs();
     QString getProgrammer();
 
 protected:
@@ -31,6 +32,8 @@ private:
     Ui::burnConfigDialog *ui;
 
 private slots:
+    void on_avrArgs_editingFinished();
+    void on_pushButton_4_clicked();
     void on_temp_location_editingFinished();
     void on_pushButton_3_clicked();
     void on_pushButton_2_clicked();

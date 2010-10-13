@@ -13,7 +13,7 @@ class avrOutputDialog : public QDialog
     Q_OBJECT
 
 public:
-    explicit avrOutputDialog(QWidget *parent, QString prog, QStringList arg);
+    explicit avrOutputDialog(QWidget *parent, QString prog, QStringList arg, bool closeOnFinish=true);
     ~avrOutputDialog();
 
     void addText(const QString &text);
@@ -29,6 +29,7 @@ private:
 
     QProcess *process;
     QString cmdLine;
+    bool doCloseOnFinish;
 };
 
 #endif // AVROUTPUTDIALOG_H

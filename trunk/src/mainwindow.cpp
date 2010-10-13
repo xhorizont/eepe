@@ -162,12 +162,12 @@ void MainWindow::burnFrom()
     QString str = "eeprom:r:" + tempFile + ":i"; // writing eeprom -> MEM:OPR:FILE:FTYPE"
 
     QStringList arguments;
-    arguments << "-c" << programmer << "-p" << "m64" << "-U" << str;
+    arguments << "-c" << programmer << "-p" << "m64" << "-U" << str << bcd.getAVRArgs();
 
     avrOutputDialog ad(this, avrdudeLoc, arguments);
-    ad.exec();
+    int res = ad.exec();
 
-    if(QFileInfo(tempFile).exists())
+    if(QFileInfo(tempFile).exists() && res)
     {
         MdiChild *child = createMdiChild();
         child->newFile();
@@ -196,7 +196,7 @@ void MainWindow::burnToFlash()
         else str += ":a";
 
         QStringList arguments;
-        arguments << "-c" << programmer << "-p" << "m64" << "-U" << str;
+        arguments << "-c" << programmer << "-p" << "m64" << "-U" << str << bcd.getAVRArgs();
 
         avrOutputDialog ad(this, avrdudeLoc, arguments);
         ad.exec();
@@ -221,7 +221,7 @@ void MainWindow::burnFromFlash()
         else str += ":a";
 
         QStringList arguments;
-        arguments << "-c" << programmer << "-p" << "m64" << "-U" << str;
+        arguments << "-c" << programmer << "-p" << "m64" << "-U" << str << bcd.getAVRArgs();
 
         avrOutputDialog ad(this, avrdudeLoc, arguments);
         ad.exec();
@@ -241,9 +241,9 @@ void MainWindow::burnList()
     QString avrdudeLoc = settings.value("avrdude_location", QString("avrdude")).toString();
 
     QStringList arguments;
-    arguments << "-c" << "?";
+    arguments << "-c?";
 
-    avrOutputDialog ad(this, avrdudeLoc, arguments);
+    avrOutputDialog ad(this, avrdudeLoc, arguments,false);
     ad.exec();
 }
 
