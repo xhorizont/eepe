@@ -650,6 +650,7 @@ void MdiChild::burnTo()  // write to Tx
     QString avrdudeLoc = bcd.getAVRDUDE();
     QString tempDir    = bcd.getTempDir();
     QString programmer = bcd.getProgrammer();
+    QString args       = bcd.getAVRArgs();
 
     QString tempFile = tempDir + "/temp.hex";
     saveFile(tempFile, false);
@@ -661,7 +662,7 @@ void MdiChild::burnTo()  // write to Tx
     QString str = "eeprom:w:" + tempFile + ":i"; // writing eeprom -> MEM:OPR:FILE:FTYPE"
 
     QStringList arguments;
-    arguments << "-c" << programmer << "-p" << "m64" << "-U" << str << bcd.getAVRArgs();
+    arguments << "-c" << programmer << "-p" << "m64" << args << "-U" << str;
 
     avrOutputDialog ad(this, avrdudeLoc, arguments);
     ad.exec();

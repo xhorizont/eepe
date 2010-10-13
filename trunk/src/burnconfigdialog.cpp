@@ -139,9 +139,9 @@ void burnConfigDialog::on_pushButton_4_clicked()
 void burnConfigDialog::on_resetFuses_clicked()
 {
     //fuses
-    //avrdude -c usbtiny -p attiny2313 -U lfuse:w:<0x0e>:m
-    //avrdude -c usbtiny -p attiny2313 -U hfuse:w:<0x89>:m
-    //avrdude -c usbtiny -p attiny2313 -U efuse:w:<0xFF>:m
+    //avrdude -c usbasp -p m64 -U lfuse:w:<0x0E>:m
+    //avrdude -c usbasp -p m64 -U hfuse:w:<0x89>:m  0x81 for eeprom protection
+    //avrdude -c usbasp -p m64 -U efuse:w:<0xFF>:m
 
     QMessageBox::StandardButton ret = QMessageBox::No;
 
@@ -154,25 +154,25 @@ void burnConfigDialog::on_resetFuses_clicked()
         QString programmer = ui->avrdude_programmer->currentText();
         QString args = ui->avrArgs->text();
 
-        QString str1 = "lfuse:w:<0x0e>:m";
+        QString str1 = "lfuse:w:<0x0E>:m";
         QString str2 = "hfuse:w:<0x89>:m";
         QString str3 = "efuse:w:<0xFF>:m";
 
         QStringList arguments;
-        arguments << "-c" << programmer << "-p" << "m64" << "-U" << str1 << args;
+        arguments << "-c" << programmer << "-p" << "m64" << args << "-U" << str1;
 
         avrOutputDialog ad(this, avrdudeLoc, arguments, AVR_DIALOG_KEEP_OPEN);
         ad.show();
         ad.waitForFinish();
 
         arguments.clear();
-        arguments << "-c" << programmer << "-p" << "m64" << "-U" << str2 << args;
+        arguments << "-c" << programmer << "-p" << "m64" << args << "-U" << str2;
         ad.runAgain(avrdudeLoc, arguments, AVR_DIALOG_KEEP_OPEN);
         ad.show();
         ad.waitForFinish();
 
         arguments.clear();
-        arguments << "-c" << programmer << "-p" << "m64" << "-U" << str3 << args;
+        arguments << "-c" << programmer << "-p" << "m64" << args << "-U" << str3;
         ad.runAgain(avrdudeLoc, arguments, AVR_DIALOG_KEEP_OPEN);
         ad.exec();
 
