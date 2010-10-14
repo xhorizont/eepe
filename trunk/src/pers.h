@@ -210,8 +210,6 @@ class EEPFILE
     bool fileChanged;
 
 
-
-
 public:
     EEPFILE();
 

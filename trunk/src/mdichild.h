@@ -68,6 +68,9 @@ public:
     QString currentFile() { return curFile; }
     void keyPressEvent(QKeyEvent *event);
 
+signals:
+    void copyAvailable(bool val);
+
 protected:
     void closeEvent(QCloseEvent *event);
     void dropEvent(QDropEvent *event);
@@ -93,6 +96,7 @@ public slots:
     void duplicate();
     void deleteSelected(bool ask);
     void setModified();
+    void viableModelSelected(int idx);
 
 private:
     bool maybeSave();
