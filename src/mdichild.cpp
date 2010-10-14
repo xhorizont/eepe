@@ -61,6 +61,8 @@ MdiChild::MdiChild()
 
     connect(this, SIGNAL(itemActivated(QListWidgetItem*)), this, SLOT(OpenEditWindow()));
     connect(this, SIGNAL(customContextMenuRequested(const QPoint&)),this, SLOT(ShowContextMenu(const QPoint&)));
+    connect(this,SIGNAL(currentRowChanged(int)), this,SLOT(viableModelSelected(int)));
+
     setContextMenuPolicy(Qt::CustomContextMenu);
     setSelectionMode(QAbstractItemView::ExtendedSelection);
     setDragEnabled(true);
@@ -718,6 +720,17 @@ void MdiChild::simulate()
     sd.loadParams(&gg,&gm);
     sd.exec();
 }
+
+void MdiChild::viableModelSelected(int idx)
+{
+    if(!isVisible())
+        emit copyAvailable(false);
+    else if(idx<1)
+        emit copyAvailable(false);
+    else
+        emit copyAvailable(eeFile.eeModelExists(currentRow()-1));
+}
+
 
 
 

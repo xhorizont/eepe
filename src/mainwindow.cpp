@@ -280,7 +280,6 @@ void MainWindow::updateMenus()
     previousAct->setEnabled(hasMdiChild);
     burnToAct->setEnabled(hasMdiChild);
     separatorAct->setVisible(hasMdiChild);
-    simulateAct->setEnabled(hasMdiChild);
 
     bool hasSelection = (activeMdiChild() &&
                          activeMdiChild()->hasSelection());
@@ -328,11 +327,9 @@ MdiChild *MainWindow::createMdiChild()
     MdiChild *child = new MdiChild;
     mdiArea->addSubWindow(child);
 
-    //connect(child, SIGNAL(copyAvailable(bool)),
-    //        cutAct, SLOT(setEnabled(bool)));
-    //connect(child, SIGNAL(copyAvailable(bool)),
-    //        copyAct, SLOT(setEnabled(bool)));
-    // TODO - Define these signals -> copyAvailable
+    connect(child, SIGNAL(copyAvailable(bool)),cutAct, SLOT(setEnabled(bool)));
+    connect(child, SIGNAL(copyAvailable(bool)),copyAct, SLOT(setEnabled(bool)));
+    connect(child, SIGNAL(copyAvailable(bool)),simulateAct, SLOT(setEnabled(bool)));
 
     return child;
 }
@@ -414,6 +411,7 @@ void MainWindow::createActions()
     simulateAct = new QAction(QIcon(":/images/simulate.png"), tr("&Simulate"), this);
     simulateAct->setShortcut(tr("Alt+S"));
     simulateAct->setStatusTip("Simulate selected model.");
+    simulateAct->setEnabled(false);
     connect(simulateAct,SIGNAL(triggered()),this,SLOT(simulate()));
 
     closeAct = new QAction(tr("Cl&ose"), this);
