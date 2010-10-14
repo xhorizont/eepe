@@ -7,6 +7,7 @@
 
 #define GBALL_SIZE  20
 
+
 simulatorDialog::simulatorDialog(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::simulatorDialog)
@@ -58,9 +59,15 @@ void simulatorDialog::loadParams(EEGeneral *gg, ModelData *gm)
     this->setWindowTitle("Simulating " + QString(buf));
 
     if(g_eeGeneral.stickMode & 1)
+    {
         nodeLeft->setCenteringY(false);   //mode 1,3 -> THR on left
+        ui->holdLeftY->setChecked(true);
+    }
     else
+    {
         nodeRight->setCenteringY(false);   //mode 1,3 -> THR on right
+        ui->holdRightY->setChecked(true);
+    }
 
 
     ui->trimHLeft->setValue(g_model.trim[0]);
@@ -93,22 +100,39 @@ inline int chVal(int val)
 
 void simulatorDialog::setValues()
 {
-    ui->chout_1->setValue(chVal(chanOut[0]));
-    ui->chout_2->setValue(chVal(chanOut[1]));
-    ui->chout_3->setValue(chVal(chanOut[2]));
-    ui->chout_4->setValue(chVal(chanOut[3]));
-    ui->chout_5->setValue(chVal(chanOut[4]));
-    ui->chout_6->setValue(chVal(chanOut[5]));
-    ui->chout_7->setValue(chVal(chanOut[6]));
-    ui->chout_8->setValue(chVal(chanOut[7]));
-    ui->chout_9->setValue(chVal(chanOut[8]));
-    ui->chout_10->setValue(chVal(chanOut[9]));
-    ui->chout_11->setValue(chVal(chanOut[10]));
-    ui->chout_12->setValue(chVal(chanOut[11]));
-    ui->chout_13->setValue(chVal(chanOut[12]));
-    ui->chout_14->setValue(chVal(chanOut[13]));
-    ui->chout_15->setValue(chVal(chanOut[14]));
-    ui->chout_16->setValue(chVal(chanOut[15]));
+    ui->chnout_1->setValue(chVal(chanOut[0]));
+    ui->chnout_2->setValue(chVal(chanOut[1]));
+    ui->chnout_3->setValue(chVal(chanOut[2]));
+    ui->chnout_4->setValue(chVal(chanOut[3]));
+    ui->chnout_5->setValue(chVal(chanOut[4]));
+    ui->chnout_6->setValue(chVal(chanOut[5]));
+    ui->chnout_7->setValue(chVal(chanOut[6]));
+    ui->chnout_8->setValue(chVal(chanOut[7]));
+    ui->chnout_9->setValue(chVal(chanOut[8]));
+    ui->chnout_10->setValue(chVal(chanOut[9]));
+    ui->chnout_11->setValue(chVal(chanOut[10]));
+    ui->chnout_12->setValue(chVal(chanOut[11]));
+    ui->chnout_13->setValue(chVal(chanOut[12]));
+    ui->chnout_14->setValue(chVal(chanOut[13]));
+    ui->chnout_15->setValue(chVal(chanOut[14]));
+    ui->chnout_16->setValue(chVal(chanOut[15]));
+
+    ui->chnoutV_1->setText(tr("%1").arg((qreal)chanOut[0]*100/1024, 0, 'f', 1));
+    ui->chnoutV_2->setText(tr("%1").arg((qreal)chanOut[1]*100/1024, 0, 'f', 1));
+    ui->chnoutV_3->setText(tr("%1").arg((qreal)chanOut[2]*100/1024, 0, 'f', 1));
+    ui->chnoutV_4->setText(tr("%1").arg((qreal)chanOut[3]*100/1024, 0, 'f', 1));
+    ui->chnoutV_5->setText(tr("%1").arg((qreal)chanOut[4]*100/1024, 0, 'f', 1));
+    ui->chnoutV_6->setText(tr("%1").arg((qreal)chanOut[5]*100/1024, 0, 'f', 1));
+    ui->chnoutV_7->setText(tr("%1").arg((qreal)chanOut[6]*100/1024, 0, 'f', 1));
+    ui->chnoutV_8->setText(tr("%1").arg((qreal)chanOut[7]*100/1024, 0, 'f', 1));
+    ui->chnoutV_9->setText(tr("%1").arg((qreal)chanOut[8]*100/1024, 0, 'f', 1));
+    ui->chnoutV_10->setText(tr("%1").arg((qreal)chanOut[9]*100/1024, 0, 'f', 1));
+    ui->chnoutV_11->setText(tr("%1").arg((qreal)chanOut[10]*100/1024, 0, 'f', 1));
+    ui->chnoutV_12->setText(tr("%1").arg((qreal)chanOut[11]*100/1024, 0, 'f', 1));
+    ui->chnoutV_13->setText(tr("%1").arg((qreal)chanOut[12]*100/1024, 0, 'f', 1));
+    ui->chnoutV_14->setText(tr("%1").arg((qreal)chanOut[13]*100/1024, 0, 'f', 1));
+    ui->chnoutV_15->setText(tr("%1").arg((qreal)chanOut[14]*100/1024, 0, 'f', 1));
+    ui->chnoutV_16->setText(tr("%1").arg((qreal)chanOut[15]*100/1024, 0, 'f', 1));
 
 #define CSWITCH_ON  "QLabel { background-color: #4CC417 }"
 #define CSWITCH_OFF "QLabel { }"
@@ -532,3 +556,32 @@ void simulatorDialog::perOut(bool init)
   }
 }
 
+
+void simulatorDialog::on_holdLeftX_clicked(bool checked)
+{
+    nodeLeft->setCenteringX(!checked);
+}
+
+void simulatorDialog::on_holdLeftY_clicked(bool checked)
+{
+    nodeLeft->setCenteringY(!checked);
+}
+
+void simulatorDialog::on_holdRightX_clicked(bool checked)
+{
+    nodeRight->setCenteringX(!checked);
+}
+
+void simulatorDialog::on_holdRightY_clicked(bool checked)
+{
+    nodeRight->setCenteringY(!checked);
+}
+
+#define TSWITCH_ON  "QPushButton { background-color: #4CC417 }"
+#define TSWITCH_OFF "QPushButton { }"
+
+void simulatorDialog::on_switchTHR_clicked(bool checked)
+{
+
+    ui->switchTHR->setStyleSheet(checked ? TSWITCH_ON : TSWITCH_OFF);
+}
