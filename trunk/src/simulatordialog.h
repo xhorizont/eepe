@@ -50,7 +50,10 @@ private:
 
     int16_t intpol(int16_t x, uint8_t idx);
 private slots:
-    void on_switchTHR_clicked(bool checked);
+    void on_FixRightY_clicked(bool checked);
+    void on_FixRightX_clicked(bool checked);
+    void on_FixLeftY_clicked(bool checked);
+    void on_FixLeftX_clicked(bool checked);
     void on_holdRightY_clicked(bool checked);
     void on_holdRightX_clicked(bool checked);
     void on_holdLeftY_clicked(bool checked);

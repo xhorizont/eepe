@@ -55,10 +55,11 @@ Node::Node(QSpinBox *sb)
     setZValue(-1);
 
     qsb = sb;
-    unLimited = false;
     bPressed  = false;
     centerX   = true;
     centerY   = true;
+    fixedX    = false;
+    fixedY    = false;
     ballSize = DEFAULT_BALL_SIZE;
 }
 
@@ -102,16 +103,6 @@ void Node::stepToCenter(qreal step)
 void Node::setBallSize(int size)
 {
     if(size>2) ballSize = size;
-}
-
-int Node::getBallSize()
-{
-    return ballSize;
-}
-
-void Node::setLimited(bool val)
-{
-    unLimited = !val;
 }
 
 qreal Node::getX()
@@ -184,7 +175,8 @@ QVariant Node::itemChange(GraphicsItemChange change, const QVariant &value)
              // value is the new position.
              QPointF newPos = value.toPointF();
              QRectF rect = scene()->sceneRect();
-             if(!unLimited) newPos.setX(x());//make sure x doesn't change
+             if(fixedX) newPos.setX(x());//make sure x doesn't change
+             if(fixedY) newPos.setY(y());//make sure x doesn't change
              newPos.setX(qMin(rect.right(), qMax(newPos.x(), rect.left())));// bound X
              newPos.setY(qMin(rect.bottom(), qMax(newPos.y(), rect.top())));// bound Y
              if(qsb) qsb->setValue(100+(rect.top()-y())*200/rect.height());
