@@ -214,7 +214,7 @@ void MainWindow::burnToFlash()
 void MainWindow::burnFromFlash()
 {
     QSettings settings("er9x-eePe", "eePe");
-    QString fileName = QFileDialog::getSaveFileName(this,"Open",settings.value("lastDir").toString(),tr("FLASH files (*.bin *.hex);;BIN files (*.bin);;HEX files (*.hex)"));
+    QString fileName = QFileDialog::getSaveFileName(this,"Open",settings.value("lastDir").toString(),tr("HEX files (*.hex);;BIN files (*.bin);;FLASH files (*.bin *.hex)"));
     if (!fileName.isEmpty())
     {
         settings.setValue("lastDir",QFileInfo(fileName).dir().absolutePath());
