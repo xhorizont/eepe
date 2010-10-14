@@ -26,6 +26,8 @@ void simulatorDialog::setupTimer()
 {
     timer = new QTimer(this);
     connect(timer,SIGNAL(timeout()),this,SLOT(timerEvent()));
+    getValues();
+    perOut(true);
     timer->start(10);
 
 }
@@ -70,8 +72,8 @@ void simulatorDialog::loadParams(EEGeneral *gg, ModelData *gm)
 void simulatorDialog::getValues()
 {
     calibratedStick[0] = 1024*nodeLeft->getX(); //RUD
-    calibratedStick[1] = 1024*nodeLeft->getY(); //ELE
-    calibratedStick[2] = 1024*nodeRight->getY(); //THR
+    calibratedStick[1] = -1024*nodeLeft->getY(); //ELE
+    calibratedStick[2] = -1024*nodeRight->getY(); //THR
     calibratedStick[3] = 1024*nodeRight->getX(); //AIL
 
     trim[0] = ui->trimHLeft->value();
@@ -84,24 +86,29 @@ void simulatorDialog::getValues()
     calibratedStick[6] = ui->dialP_3->value();
 }
 
+inline int chVal(int val)
+{
+    return qMin(1024, qMax(-1024, val));
+}
+
 void simulatorDialog::setValues()
 {
-    ui->chout_1->setValue(chanOut[0]);
-    ui->chout_2->setValue(chanOut[1]);
-    ui->chout_3->setValue(chanOut[2]);
-    ui->chout_4->setValue(chanOut[3]);
-    ui->chout_5->setValue(chanOut[4]);
-    ui->chout_6->setValue(chanOut[5]);
-    ui->chout_7->setValue(chanOut[6]);
-    ui->chout_8->setValue(chanOut[7]);
-    ui->chout_9->setValue(chanOut[8]);
-    ui->chout_10->setValue(chanOut[9]);
-    ui->chout_11->setValue(chanOut[10]);
-    ui->chout_12->setValue(chanOut[11]);
-    ui->chout_13->setValue(chanOut[12]);
-    ui->chout_14->setValue(chanOut[13]);
-    ui->chout_15->setValue(chanOut[14]);
-    ui->chout_16->setValue(chanOut[15]);
+    ui->chout_1->setValue(chVal(chanOut[0]));
+    ui->chout_2->setValue(chVal(chanOut[1]));
+    ui->chout_3->setValue(chVal(chanOut[2]));
+    ui->chout_4->setValue(chVal(chanOut[3]));
+    ui->chout_5->setValue(chVal(chanOut[4]));
+    ui->chout_6->setValue(chVal(chanOut[5]));
+    ui->chout_7->setValue(chVal(chanOut[6]));
+    ui->chout_8->setValue(chVal(chanOut[7]));
+    ui->chout_9->setValue(chVal(chanOut[8]));
+    ui->chout_10->setValue(chVal(chanOut[9]));
+    ui->chout_11->setValue(chVal(chanOut[10]));
+    ui->chout_12->setValue(chVal(chanOut[11]));
+    ui->chout_13->setValue(chVal(chanOut[12]));
+    ui->chout_14->setValue(chVal(chanOut[13]));
+    ui->chout_15->setValue(chVal(chanOut[14]));
+    ui->chout_16->setValue(chVal(chanOut[15]));
 
 #define CSWITCH_ON  "QLabel { background-color: #4CC417 }"
 #define CSWITCH_OFF "QLabel { }"
@@ -175,9 +182,9 @@ void simulatorDialog::resizeEvent(QResizeEvent *event)
 }
 
 
-inline int16_t calc100toRESX(int8_t x)
+inline qint16 calc100toRESX(qint8 x)
 {
-  return (int16_t)x*10 + x/4;
+  return (qint16)x*10 + x/4;
 }
 
 bool simulatorDialog::keyState(EnumKeys key)
@@ -303,7 +310,7 @@ int16_t simulatorDialog::intpol(int16_t x, uint8_t idx) // -100, -75, -50, -25, 
   return erg / 25; // 100*D5/RESX;
 }
 
-void simulatorDialog::perOut()
+void simulatorDialog::perOut(bool init)
 {
   static int16_t  anas [NUM_XCHNRAW];
   static int32_t  chans[NUM_CHNOUT];
@@ -369,19 +376,22 @@ void simulatorDialog::perOut()
       static uint8_t swOn[MAX_MIXERS];
 
       int16_t v  = 0;
-      uint8_t swTog=!swOn[i];
-      swOn[i]=false;
+      uint8_t swTog;
+
+      //swOn[i]=false;
       if(!getSwitch(md.swtch,1)){ // switch on?  if no switch selected => on
+        swTog = swOn[i];
+        swOn[i] = false;
         if(md.srcRaw!=MIX_MAX && md.srcRaw!=MIX_FULL) continue;// if not MAX or FULL - next loop
         if(md.mltpx==MLTPX_REP) continue; // if switch is off and REPLACE then off
         v = (md.srcRaw == MIX_FULL ? -RESX : 0); // switch is off and it is either MAX=0 or FULL=-512
       }
       else {
+        swTog = !swOn[i];
+        swOn[i] = true;
         v = anas[md.srcRaw-1]; //Switch is on. MAX=FULL=512 or value.
         if(md.mixWarn) mixWarning |= 1<<(md.mixWarn-1); // Mix warning
       }
-
-      swOn[i]=true;
 
       //========== INPUT OFFSET ===============
       if(md.sOffset) v += calc100toRESX(md.sOffset);
@@ -394,6 +404,10 @@ void simulatorDialog::perOut()
 
 #define DEL_MULT 256
 
+        if(init) {
+          act[i]=(int32_t)v*DEL_MULT;
+          swTog = false;
+        }
         int16_t diff = v-act[i]/DEL_MULT;
 
         if(swTog) {

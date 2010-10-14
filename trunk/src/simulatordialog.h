@@ -42,7 +42,7 @@ private:
 
     void getValues();
     void setValues();
-    void perOut();
+    void perOut(bool init=false);
     void centerSticks();
 
     bool keyState(EnumKeys key);
