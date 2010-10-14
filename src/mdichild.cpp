@@ -337,7 +337,7 @@ void MdiChild::OpenEditWindow()
             setModified();
         }
 
-        char buf[11];
+        char buf[sizeof(g_model.name)+1];
         eeFile.getModelName((i-1),(char*)&buf);
         ModelEdit t(&eeFile,(i-1),this);
         t.setWindowTitle(tr("Editing model %1: ").arg(i) + QString(buf));
@@ -501,7 +501,7 @@ bool MdiChild::save()
 
 bool MdiChild::saveAs()
 {
-    QString fileName = QFileDialog::getSaveFileName(this, tr("Save As"),curFile,tr("EEPROM bin files (*.bin);;EEPROM hex files (*.hex)"));
+    QString fileName = QFileDialog::getSaveFileName(this, tr("Save As"),curFile,tr("EEPROM hex files (*.hex);;EEPROM bin files (*.bin)"));
     if (fileName.isEmpty())
         return false;
 

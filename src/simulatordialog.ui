@@ -296,7 +296,7 @@
          <number>2</number>
         </property>
         <item>
-         <widget class="QLabel" name="label_20">
+         <widget class="QLabel" name="labelCSW1">
           <property name="text">
            <string>SW1</string>
           </property>
@@ -327,7 +327,7 @@
          <number>2</number>
         </property>
         <item>
-         <widget class="QLabel" name="label_21">
+         <widget class="QLabel" name="labelCSW2">
           <property name="text">
            <string>SW2</string>
           </property>
@@ -358,7 +358,7 @@
          <number>2</number>
         </property>
         <item>
-         <widget class="QLabel" name="label_22">
+         <widget class="QLabel" name="labelCSW3">
           <property name="text">
            <string>SW3</string>
           </property>
@@ -389,7 +389,7 @@
          <number>2</number>
         </property>
         <item>
-         <widget class="QLabel" name="label_23">
+         <widget class="QLabel" name="labelCSW4">
           <property name="text">
            <string>SW4</string>
           </property>
@@ -420,7 +420,7 @@
          <number>2</number>
         </property>
         <item>
-         <widget class="QLabel" name="label_24">
+         <widget class="QLabel" name="labelCSW5">
           <property name="text">
            <string>SW5</string>
           </property>
@@ -451,7 +451,7 @@
          <number>2</number>
         </property>
         <item>
-         <widget class="QLabel" name="label_25">
+         <widget class="QLabel" name="labelCSW6">
           <property name="text">
            <string>SW6</string>
           </property>

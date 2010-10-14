@@ -15,7 +15,6 @@ simulatorDialog::simulatorDialog(QWidget *parent) :
 
     setupSticks();
     setupTimer();
-
 }
 
 simulatorDialog::~simulatorDialog()
@@ -50,6 +49,11 @@ void simulatorDialog::loadParams(EEGeneral *gg, ModelData *gm)
 {
     memcpy(&g_eeGeneral,gg,sizeof(EEGeneral));
     memcpy(&g_model,gm,sizeof(ModelData));
+
+    char buf[sizeof(g_model.name)+1];
+    memcpy(&buf,&g_model.name,sizeof(g_model.name));
+    buf[sizeof(g_model.name)] = 0;
+    this->setWindowTitle("Simulating " + QString(buf));
 
     if(g_eeGeneral.stickMode & 1)
         nodeLeft->setCenteringY(false);   //mode 1,3 -> THR on left
@@ -99,12 +103,16 @@ void simulatorDialog::setValues()
     ui->chout_15->setValue(chanOut[14]);
     ui->chout_16->setValue(chanOut[15]);
 
-    ui->cswitch_1->setFrameStyle(getSwitch(DSW_CS1,0) ? QFrame::Sunken : QFrame::Raised);
-    ui->cswitch_2->setFrameStyle(getSwitch(DSW_CS2,0) ? QFrame::Sunken : QFrame::Raised);
-    ui->cswitch_3->setFrameStyle(getSwitch(DSW_CS3,0) ? QFrame::Sunken : QFrame::Raised);
-    ui->cswitch_4->setFrameStyle(getSwitch(DSW_CS4,0) ? QFrame::Sunken : QFrame::Raised);
-    ui->cswitch_5->setFrameStyle(getSwitch(DSW_CS5,0) ? QFrame::Sunken : QFrame::Raised);
-    ui->cswitch_6->setFrameStyle(getSwitch(DSW_CS6,0) ? QFrame::Sunken : QFrame::Raised);
+#define CSWITCH_ON  "QLabel { background-color: #4CC417 }"
+#define CSWITCH_OFF "QLabel { }"
+
+    ui->labelCSW1->setStyleSheet(getSwitch(DSW_CS1,0) ? CSWITCH_ON : CSWITCH_OFF);
+    ui->labelCSW2->setStyleSheet(getSwitch(DSW_CS2,0) ? CSWITCH_ON : CSWITCH_OFF);
+    ui->labelCSW3->setStyleSheet(getSwitch(DSW_CS3,0) ? CSWITCH_ON : CSWITCH_OFF);
+    ui->labelCSW4->setStyleSheet(getSwitch(DSW_CS4,0) ? CSWITCH_ON : CSWITCH_OFF);
+    ui->labelCSW5->setStyleSheet(getSwitch(DSW_CS5,0) ? CSWITCH_ON : CSWITCH_OFF);
+    ui->labelCSW5->setStyleSheet(getSwitch(DSW_CS6,0) ? CSWITCH_ON : CSWITCH_OFF);
+
 }
 
 void simulatorDialog::setupSticks()
@@ -213,8 +221,7 @@ bool simulatorDialog::getSwitch(int swtch, bool nc)
      CSwData &cs = g_model.customSw[abs(swtch)-(MAX_DRSWITCH-NUM_CSW)];
      int16_t  v = 0;
      uint8_t  i = cs.input-1;
-     if(!i) return false;
-     else if(i<MIX_MAX) v = calibratedStick[i];//-512..512
+     if(i<MIX_MAX) v = calibratedStick[i];//-512..512
      else if(i<=MIX_FULL) v = 1024; //FULL/MAX
      else if(i<MIX_FULL+NUM_PPM) v = g_ppmIns[i-MIX_FULL] - g_eeGeneral.ppmInCalib[i-MIX_FULL];
      else v = ex_chans[i-MIX_FULL-NUM_PPM];

@@ -49,7 +49,6 @@ private:
     bool getSwitch(int swtch, bool nc);
 
     int16_t intpol(int16_t x, uint8_t idx);
-
 private slots:
     void timerEvent();
 
