@@ -255,14 +255,21 @@ void MdiChild::doPaste(QByteArray *gmData, int index)
     setModified();
 }
 
-void MdiChild::paste()
+bool MdiChild::hasPasteData()
 {
     const QClipboard *clipboard = QApplication::clipboard();
     const QMimeData *mimeData = clipboard->mimeData();
 
+    return mimeData->hasFormat("application/x-eepe");
+}
 
-    if(mimeData->hasFormat("application/x-eepe"))
+void MdiChild::paste()
+{
+    if(hasPasteData())
     {
+        const QClipboard *clipboard = QApplication::clipboard();
+        const QMimeData *mimeData = clipboard->mimeData();
+
         QByteArray gmData = mimeData->data("application/x-eepe");
         doPaste(&gmData,this->currentRow());
     }
