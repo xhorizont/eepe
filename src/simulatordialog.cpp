@@ -407,6 +407,8 @@ void simulatorDialog::perOut(bool init)
         if(md.srcRaw!=MIX_MAX && md.srcRaw!=MIX_FULL) continue;// if not MAX or FULL - next loop
         if(md.mltpx==MLTPX_REP) continue; // if switch is off and REPLACE then off
         v = (md.srcRaw == MIX_FULL ? -RESX : 0); // switch is off and it is either MAX=0 or FULL=-512
+
+        //if(md.srcRaw==MIX_MAX) continue;
       }
       else {
         swTog = !swOn[i];
@@ -440,7 +442,7 @@ void simulatorDialog::perOut(bool init)
           {
               act[i] = (int32_t)anas[md.destCh-1+CHOUT_BASE]*DEL_MULT;
               act[i] *=100;
-              act[i] /= md.weight;
+              if(md.weight) act[i] /= md.weight;
           }
           diff = v-act[i]/DEL_MULT;
           if(diff) sDelay[i] = (diff<0 ? md.delayUp :  md.delayDown) * 100;
@@ -455,9 +457,10 @@ void simulatorDialog::perOut(bool init)
         if(diff && (md.speedUp || md.speedDown)){
           //rate = steps/sec => 32*1024/100*md.speedUp/Down
           //act[i] += diff>0 ? (32768)/((int16_t)100*md.speedUp) : -(32768)/((int16_t)100*md.speedDown);
-          //-100..100 => 32768 ->  100*83886/256 = 32768,   For MAX we divide by 2 sincde it's asymmetrical
+          //-100..100 => 32768 ->  100*83886/256 = 32768,   For MAX we divide by 2 since it's asymmetrical
 
-            int32_t rate = (int32_t)DEL_MULT*2048*100/md.weight;
+            int32_t rate = (int32_t)DEL_MULT*2048*100;
+            if(md.weight) rate /= md.weight;
             act[i] = (diff>0) ? ((md.speedUp>0)   ? act[i]+(rate)/((int16_t)100*md.speedUp)   :  (int32_t)v*DEL_MULT) :
                      ((md.speedDown>0) ? act[i]-(rate)/((int16_t)100*md.speedDown) :  (int32_t)v*DEL_MULT) ;
 
@@ -552,6 +555,8 @@ void simulatorDialog::perOut(bool init)
     if(g_model.limitData[i].revert) v=-v;// finally do the reverse.
 
     //cli();
+    if(v>1024)  v =  1024;
+    if(v<-1024) v = -1024; //limits set by ppm streamer
     chanOut[i] = v; //copy consistent word to int-level
     //sei();
   }

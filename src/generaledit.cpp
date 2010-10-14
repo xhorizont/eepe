@@ -7,7 +7,7 @@
 #define BIT_WARN_THR     ( 0x01 )
 #define BIT_WARN_SW      ( 0x02 )
 #define BIT_WARN_MEM     ( 0x04 )
-#define BIT_WARN_MEM     ( 0x04 )
+#define BIT_WARN_BEEP    ( 0x80 )
 #define BIT_BEEP_VAL     ( 0x38 ) // >>3
 #define BEEP_VAL_SHIFT   3
 
@@ -38,6 +38,7 @@ GeneralEdit::GeneralEdit(EEPFILE *eFile, QWidget *parent) :
     ui->thrwarnChkB->setChecked(!(g_eeGeneral.warnOpts & BIT_WARN_THR));   //Default is zero=checked
     ui->switchwarnChkB->setChecked(!(g_eeGeneral.warnOpts & BIT_WARN_SW)); //Default is zero=checked
     ui->memwarnChkB->setChecked(!(g_eeGeneral.warnOpts & BIT_WARN_MEM));   //Default is zero=checked
+    ui->alarmwarnChkB->setChecked(!(g_eeGeneral.warnOpts & BIT_WARN_BEEP));//Default is zero=checked
     ui->beeperCB->setCurrentIndex((g_eeGeneral.warnOpts & BIT_BEEP_VAL) >> BEEP_VAL_SHIFT);
     ui->channelorderCB->setCurrentIndex(g_eeGeneral.templateSetup);
     ui->stickmodeCB->setCurrentIndex(g_eeGeneral.stickMode);
@@ -173,6 +174,16 @@ void GeneralEdit::on_memwarnChkB_stateChanged(int )
         g_eeGeneral.warnOpts |= BIT_WARN_MEM;
     else
         g_eeGeneral.warnOpts &= ~BIT_WARN_MEM;
+
+    updateSettings();
+}
+
+void GeneralEdit::on_alarmwarnChkB_stateChanged(int )
+{
+    if(!ui->alarmwarnChkB->isChecked()) //default value is 0 => checked!
+        g_eeGeneral.warnOpts |= BIT_WARN_BEEP;
+    else
+        g_eeGeneral.warnOpts &= ~BIT_WARN_BEEP;
 
     updateSettings();
 }
@@ -387,3 +398,4 @@ void GeneralEdit::on_tabWidget_currentChanged(int index)
     QSettings settings("er9x-eePe", "eePe");
     settings.setValue("generalEditTab",index);//ui->tabWidget->currentIndex());
 }
+
