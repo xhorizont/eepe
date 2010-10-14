@@ -27,6 +27,7 @@ signals:
     void modelValuesChanged();
 
 private slots:
+    void on_alarmwarnChkB_stateChanged(int );
     void on_tabWidget_currentChanged(int index);
     void on_PPM1_editingFinished();
     void on_PPM2_editingFinished();
