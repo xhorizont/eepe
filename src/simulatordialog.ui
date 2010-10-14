@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>796</width>
-    <height>718</height>
+    <width>804</width>
+    <height>719</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,10 +17,10 @@
    <iconset>
     <normaloff>icon.ico</normaloff>icon.ico</iconset>
   </property>
-  <layout class="QGridLayout" name="gridLayout_5">
-   <item row="0" column="0" colspan="2">
-    <layout class="QGridLayout" name="gridLayout_3">
-     <item row="0" column="0">
+  <layout class="QVBoxLayout" name="verticalLayout_9">
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <item>
       <widget class="QDial" name="dialP_1">
        <property name="minimum">
         <number>-1024</number>
@@ -30,17 +30,23 @@
        </property>
       </widget>
      </item>
-     <item row="0" column="1">
+     <item>
       <widget class="QDial" name="dialP_2">
+       <property name="toolTip">
+        <string>P2</string>
+       </property>
        <property name="minimum">
         <number>-1024</number>
        </property>
        <property name="maximum">
         <number>1024</number>
        </property>
+       <property name="invertedAppearance">
+        <bool>false</bool>
+       </property>
       </widget>
      </item>
-     <item row="0" column="2">
+     <item>
       <widget class="QDial" name="dialP_3">
        <property name="minimum">
         <number>-1024</number>
@@ -50,232 +56,257 @@
        </property>
       </widget>
      </item>
-     <item row="1" column="0">
-      <widget class="QLabel" name="label">
-       <property name="text">
-        <string>P1</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignCenter</set>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="1">
-      <widget class="QLabel" name="label_2">
-       <property name="text">
-        <string>P2</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignCenter</set>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="2">
-      <widget class="QLabel" name="label_3">
-       <property name="text">
-        <string>P3</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignCenter</set>
-       </property>
-      </widget>
-     </item>
     </layout>
    </item>
-   <item row="1" column="0">
-    <layout class="QGridLayout" name="gridLayout" columnstretch="0,0,0">
-     <item row="0" column="2">
-      <widget class="QSlider" name="trimVLeft">
-       <property name="minimum">
-        <number>-125</number>
-       </property>
-       <property name="maximum">
-        <number>125</number>
-       </property>
-       <property name="orientation">
-        <enum>Qt::Vertical</enum>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="1">
-      <widget class="QSlider" name="trimHLeft">
-       <property name="minimum">
-        <number>-125</number>
-       </property>
-       <property name="maximum">
-        <number>125</number>
-       </property>
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="1">
-      <widget class="QGraphicsView" name="leftStick">
-       <property name="verticalScrollBarPolicy">
-        <enum>Qt::ScrollBarAlwaysOff</enum>
-       </property>
-       <property name="horizontalScrollBarPolicy">
-        <enum>Qt::ScrollBarAlwaysOff</enum>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="0">
-      <layout class="QVBoxLayout" name="verticalLayout">
-       <property name="bottomMargin">
-        <number>0</number>
-       </property>
-       <item>
-        <widget class="QPushButton" name="switchTHR">
-         <property name="text">
-          <string>THR</string>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_5">
+     <item>
+      <layout class="QGridLayout" name="gridLayout" columnstretch="0,0,0">
+       <item row="1" column="2">
+        <widget class="QSlider" name="trimVLeft">
+         <property name="minimum">
+          <number>-125</number>
          </property>
-         <property name="checkable">
-          <bool>true</bool>
+         <property name="maximum">
+          <number>125</number>
+         </property>
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
          </property>
         </widget>
        </item>
-       <item>
-        <widget class="QPushButton" name="switchRUD">
-         <property name="text">
-          <string>RUD</string>
+       <item row="2" column="1">
+        <widget class="QSlider" name="trimHLeft">
+         <property name="minimum">
+          <number>-125</number>
          </property>
-         <property name="checkable">
-          <bool>true</bool>
+         <property name="maximum">
+          <number>125</number>
          </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="switchELE">
-         <property name="text">
-          <string>ELE</string>
-         </property>
-         <property name="checkable">
-          <bool>true</bool>
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
          </property>
         </widget>
        </item>
-       <item>
-        <widget class="QPushButton" name="switchAIL">
-         <property name="text">
-          <string>AIL</string>
+       <item row="1" column="1">
+        <widget class="QGraphicsView" name="leftStick">
+         <property name="verticalScrollBarPolicy">
+          <enum>Qt::ScrollBarAlwaysOff</enum>
          </property>
-         <property name="checkable">
-          <bool>true</bool>
+         <property name="horizontalScrollBarPolicy">
+          <enum>Qt::ScrollBarAlwaysOff</enum>
          </property>
         </widget>
+       </item>
+       <item row="1" column="0">
+        <layout class="QVBoxLayout" name="verticalLayout">
+         <property name="bottomMargin">
+          <number>0</number>
+         </property>
+         <item>
+          <widget class="QPushButton" name="switchTHR">
+           <property name="autoFillBackground">
+            <bool>true</bool>
+           </property>
+           <property name="text">
+            <string>THR</string>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="switchRUD">
+           <property name="text">
+            <string>RUD</string>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="switchELE">
+           <property name="text">
+            <string>ELE</string>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="switchAIL">
+           <property name="text">
+            <string>AIL</string>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item row="0" column="1">
+        <layout class="QHBoxLayout" name="horizontalLayout_3">
+         <item>
+          <widget class="QPushButton" name="holdLeftX">
+           <property name="text">
+            <string>Hold X</string>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="holdLeftY">
+           <property name="text">
+            <string>Hold Y</string>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QGridLayout" name="gridLayout_2" columnstretch="0,0,0">
+       <item row="1" column="0">
+        <widget class="QSlider" name="trimVRight">
+         <property name="minimum">
+          <number>-125</number>
+         </property>
+         <property name="maximum">
+          <number>125</number>
+         </property>
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QGraphicsView" name="rightStick">
+         <property name="verticalScrollBarPolicy">
+          <enum>Qt::ScrollBarAlwaysOff</enum>
+         </property>
+         <property name="horizontalScrollBarPolicy">
+          <enum>Qt::ScrollBarAlwaysOff</enum>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="QSlider" name="trimHRight">
+         <property name="minimum">
+          <number>-125</number>
+         </property>
+         <property name="maximum">
+          <number>125</number>
+         </property>
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="2">
+        <layout class="QVBoxLayout" name="verticalLayout_2">
+         <item>
+          <widget class="QPushButton" name="switchTRN">
+           <property name="text">
+            <string>TRN</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="switchGEA">
+           <property name="text">
+            <string>GEA</string>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="checked">
+            <bool>false</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="switchID0">
+           <property name="text">
+            <string>ID0</string>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
+           <property name="autoExclusive">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="switchID1">
+           <property name="text">
+            <string>ID1</string>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="autoExclusive">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="switchID2">
+           <property name="text">
+            <string>ID2</string>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="autoExclusive">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item row="0" column="1">
+        <layout class="QHBoxLayout" name="horizontalLayout_4">
+         <item>
+          <widget class="QPushButton" name="holdRightX">
+           <property name="text">
+            <string>Hold X</string>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="holdRightY">
+           <property name="text">
+            <string>Hold Y</string>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </item>
       </layout>
      </item>
     </layout>
    </item>
-   <item row="1" column="1">
-    <layout class="QGridLayout" name="gridLayout_2" columnstretch="0,0,0">
-     <item row="0" column="0">
-      <widget class="QSlider" name="trimVRight">
-       <property name="minimum">
-        <number>-125</number>
-       </property>
-       <property name="maximum">
-        <number>125</number>
-       </property>
-       <property name="orientation">
-        <enum>Qt::Vertical</enum>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="1">
-      <widget class="QGraphicsView" name="rightStick">
-       <property name="verticalScrollBarPolicy">
-        <enum>Qt::ScrollBarAlwaysOff</enum>
-       </property>
-       <property name="horizontalScrollBarPolicy">
-        <enum>Qt::ScrollBarAlwaysOff</enum>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="1">
-      <widget class="QSlider" name="trimHRight">
-       <property name="minimum">
-        <number>-125</number>
-       </property>
-       <property name="maximum">
-        <number>125</number>
-       </property>
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="2">
-      <layout class="QVBoxLayout" name="verticalLayout_2">
-       <item>
-        <widget class="QPushButton" name="switchTRN">
-         <property name="text">
-          <string>TRN</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="switchGEA">
-         <property name="text">
-          <string>GEA</string>
-         </property>
-         <property name="checkable">
-          <bool>true</bool>
-         </property>
-         <property name="checked">
-          <bool>false</bool>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="switchID0">
-         <property name="text">
-          <string>ID0</string>
-         </property>
-         <property name="checkable">
-          <bool>true</bool>
-         </property>
-         <property name="checked">
-          <bool>true</bool>
-         </property>
-         <property name="autoExclusive">
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="switchID1">
-         <property name="text">
-          <string>ID1</string>
-         </property>
-         <property name="checkable">
-          <bool>true</bool>
-         </property>
-         <property name="autoExclusive">
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="switchID2">
-         <property name="text">
-          <string>ID2</string>
-         </property>
-         <property name="checkable">
-          <bool>true</bool>
-         </property>
-         <property name="autoExclusive">
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </item>
-    </layout>
-   </item>
-   <item row="2" column="0" colspan="2">
+   <item>
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
       <widget class="QFrame" name="cswitch_1">
@@ -465,8 +496,8 @@
      </item>
     </layout>
    </item>
-   <item row="3" column="0" colspan="2">
-    <layout class="QGridLayout" name="gridLayout_4" columnstretch="0,1,0,1,0">
+   <item>
+    <layout class="QGridLayout" name="gridLayout_4" columnstretch="0,0,0,0,0,0">
      <item row="0" column="0">
       <widget class="QLabel" name="label_4">
        <property name="text">
@@ -474,33 +505,7 @@
        </property>
       </widget>
      </item>
-     <item row="0" column="1">
-      <widget class="QProgressBar" name="chout_1">
-       <property name="minimum">
-        <number>-1024</number>
-       </property>
-       <property name="maximum">
-        <number>1024</number>
-       </property>
-       <property name="value">
-        <number>0</number>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="3">
-      <widget class="QProgressBar" name="chout_9">
-       <property name="minimum">
-        <number>-1024</number>
-       </property>
-       <property name="maximum">
-        <number>1024</number>
-       </property>
-       <property name="value">
-        <number>0</number>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="4">
+     <item row="0" column="5">
       <widget class="QLabel" name="label_12">
        <property name="text">
         <string>CH9</string>
@@ -514,33 +519,7 @@
        </property>
       </widget>
      </item>
-     <item row="1" column="1">
-      <widget class="QProgressBar" name="chout_2">
-       <property name="minimum">
-        <number>-1024</number>
-       </property>
-       <property name="maximum">
-        <number>1024</number>
-       </property>
-       <property name="value">
-        <number>0</number>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="3">
-      <widget class="QProgressBar" name="chout_10">
-       <property name="minimum">
-        <number>-1024</number>
-       </property>
-       <property name="maximum">
-        <number>1024</number>
-       </property>
-       <property name="value">
-        <number>0</number>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="4">
+     <item row="1" column="5">
       <widget class="QLabel" name="label_13">
        <property name="text">
         <string>CH10</string>
@@ -554,33 +533,7 @@
        </property>
       </widget>
      </item>
-     <item row="2" column="1">
-      <widget class="QProgressBar" name="chout_3">
-       <property name="minimum">
-        <number>-1024</number>
-       </property>
-       <property name="maximum">
-        <number>1024</number>
-       </property>
-       <property name="value">
-        <number>0</number>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="3">
-      <widget class="QProgressBar" name="chout_11">
-       <property name="minimum">
-        <number>-1024</number>
-       </property>
-       <property name="maximum">
-        <number>1024</number>
-       </property>
-       <property name="value">
-        <number>0</number>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="4">
+     <item row="2" column="5">
       <widget class="QLabel" name="label_14">
        <property name="text">
         <string>CH11</string>
@@ -594,33 +547,7 @@
        </property>
       </widget>
      </item>
-     <item row="3" column="1">
-      <widget class="QProgressBar" name="chout_4">
-       <property name="minimum">
-        <number>-1024</number>
-       </property>
-       <property name="maximum">
-        <number>1024</number>
-       </property>
-       <property name="value">
-        <number>0</number>
-       </property>
-      </widget>
-     </item>
-     <item row="3" column="3">
-      <widget class="QProgressBar" name="chout_12">
-       <property name="minimum">
-        <number>-1024</number>
-       </property>
-       <property name="maximum">
-        <number>1024</number>
-       </property>
-       <property name="value">
-        <number>0</number>
-       </property>
-      </widget>
-     </item>
-     <item row="3" column="4">
+     <item row="3" column="5">
       <widget class="QLabel" name="label_15">
        <property name="text">
         <string>CH12</string>
@@ -634,33 +561,7 @@
        </property>
       </widget>
      </item>
-     <item row="4" column="1">
-      <widget class="QProgressBar" name="chout_5">
-       <property name="minimum">
-        <number>-1024</number>
-       </property>
-       <property name="maximum">
-        <number>1024</number>
-       </property>
-       <property name="value">
-        <number>0</number>
-       </property>
-      </widget>
-     </item>
-     <item row="4" column="3">
-      <widget class="QProgressBar" name="chout_13">
-       <property name="minimum">
-        <number>-1024</number>
-       </property>
-       <property name="maximum">
-        <number>1024</number>
-       </property>
-       <property name="value">
-        <number>0</number>
-       </property>
-      </widget>
-     </item>
-     <item row="4" column="4">
+     <item row="4" column="5">
       <widget class="QLabel" name="label_16">
        <property name="text">
         <string>CH13</string>
@@ -674,33 +575,7 @@
        </property>
       </widget>
      </item>
-     <item row="5" column="1">
-      <widget class="QProgressBar" name="chout_6">
-       <property name="minimum">
-        <number>-1024</number>
-       </property>
-       <property name="maximum">
-        <number>1024</number>
-       </property>
-       <property name="value">
-        <number>0</number>
-       </property>
-      </widget>
-     </item>
-     <item row="5" column="3">
-      <widget class="QProgressBar" name="chout_14">
-       <property name="minimum">
-        <number>-1024</number>
-       </property>
-       <property name="maximum">
-        <number>1024</number>
-       </property>
-       <property name="value">
-        <number>0</number>
-       </property>
-      </widget>
-     </item>
-     <item row="5" column="4">
+     <item row="5" column="5">
       <widget class="QLabel" name="label_17">
        <property name="text">
         <string>CH14</string>
@@ -714,33 +589,7 @@
        </property>
       </widget>
      </item>
-     <item row="6" column="1">
-      <widget class="QProgressBar" name="chout_7">
-       <property name="minimum">
-        <number>-1024</number>
-       </property>
-       <property name="maximum">
-        <number>1024</number>
-       </property>
-       <property name="value">
-        <number>0</number>
-       </property>
-      </widget>
-     </item>
-     <item row="6" column="3">
-      <widget class="QProgressBar" name="chout_15">
-       <property name="minimum">
-        <number>-1024</number>
-       </property>
-       <property name="maximum">
-        <number>1024</number>
-       </property>
-       <property name="value">
-        <number>0</number>
-       </property>
-      </widget>
-     </item>
-     <item row="6" column="4">
+     <item row="6" column="5">
       <widget class="QLabel" name="label_18">
        <property name="text">
         <string>CH15</string>
@@ -754,51 +603,956 @@
        </property>
       </widget>
      </item>
-     <item row="7" column="1">
-      <widget class="QProgressBar" name="chout_8">
-       <property name="minimum">
-        <number>-1024</number>
-       </property>
-       <property name="maximum">
-        <number>1024</number>
-       </property>
-       <property name="value">
-        <number>0</number>
-       </property>
-      </widget>
-     </item>
-     <item row="7" column="3">
-      <widget class="QProgressBar" name="chout_16">
-       <property name="minimum">
-        <number>-1024</number>
-       </property>
-       <property name="maximum">
-        <number>1024</number>
-       </property>
-       <property name="value">
-        <number>0</number>
-       </property>
-      </widget>
-     </item>
-     <item row="7" column="4">
+     <item row="7" column="5">
       <widget class="QLabel" name="label_19">
        <property name="text">
         <string>CH16</string>
        </property>
       </widget>
      </item>
-     <item row="0" column="2">
-      <spacer name="horizontalSpacer">
+     <item row="0" column="1">
+      <widget class="QSlider" name="chnout_1">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QSlider::sub-page:horizontal:disabled {
+border-color: #999;
+}
+
+QSlider::add-page:horizontal:disabled {
+border-color: #999;
+}
+
+QSlider::handle:horizontal:disabled {
+background: #0000CC;
+border: 1px solid #aaa;
+border-radius: 4px;
+}</string>
+       </property>
+       <property name="minimum">
+        <number>-1024</number>
+       </property>
+       <property name="maximum">
+        <number>1024</number>
+       </property>
+       <property name="pageStep">
+        <number>128</number>
+       </property>
+       <property name="tracking">
+        <bool>false</bool>
+       </property>
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
-       <property name="sizeHint" stdset="0">
+       <property name="invertedAppearance">
+        <bool>false</bool>
+       </property>
+       <property name="tickPosition">
+        <enum>QSlider::TicksBelow</enum>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QSlider" name="chnout_2">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QSlider::sub-page:horizontal:disabled {
+border-color: #999;
+}
+
+QSlider::add-page:horizontal:disabled {
+border-color: #999;
+}
+
+QSlider::handle:horizontal:disabled {
+background: #0000CC;
+border: 1px solid #aaa;
+border-radius: 4px;
+}</string>
+       </property>
+       <property name="minimum">
+        <number>-1024</number>
+       </property>
+       <property name="maximum">
+        <number>1024</number>
+       </property>
+       <property name="pageStep">
+        <number>128</number>
+       </property>
+       <property name="tracking">
+        <bool>false</bool>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="invertedAppearance">
+        <bool>false</bool>
+       </property>
+       <property name="tickPosition">
+        <enum>QSlider::TicksBelow</enum>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <widget class="QSlider" name="chnout_3">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QSlider::sub-page:horizontal:disabled {
+border-color: #999;
+}
+
+QSlider::add-page:horizontal:disabled {
+border-color: #999;
+}
+
+QSlider::handle:horizontal:disabled {
+background: #0000CC;
+border: 1px solid #aaa;
+border-radius: 4px;
+}</string>
+       </property>
+       <property name="minimum">
+        <number>-1024</number>
+       </property>
+       <property name="maximum">
+        <number>1024</number>
+       </property>
+       <property name="pageStep">
+        <number>128</number>
+       </property>
+       <property name="tracking">
+        <bool>false</bool>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="invertedAppearance">
+        <bool>false</bool>
+       </property>
+       <property name="tickPosition">
+        <enum>QSlider::TicksBelow</enum>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="1">
+      <widget class="QSlider" name="chnout_4">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QSlider::sub-page:horizontal:disabled {
+border-color: #999;
+}
+
+QSlider::add-page:horizontal:disabled {
+border-color: #999;
+}
+
+QSlider::handle:horizontal:disabled {
+background: #0000CC;
+border: 1px solid #aaa;
+border-radius: 4px;
+}</string>
+       </property>
+       <property name="minimum">
+        <number>-1024</number>
+       </property>
+       <property name="maximum">
+        <number>1024</number>
+       </property>
+       <property name="pageStep">
+        <number>128</number>
+       </property>
+       <property name="tracking">
+        <bool>false</bool>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="invertedAppearance">
+        <bool>false</bool>
+       </property>
+       <property name="tickPosition">
+        <enum>QSlider::TicksBelow</enum>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="1">
+      <widget class="QSlider" name="chnout_5">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QSlider::sub-page:horizontal:disabled {
+border-color: #999;
+}
+
+QSlider::add-page:horizontal:disabled {
+border-color: #999;
+}
+
+QSlider::handle:horizontal:disabled {
+background: #0000CC;
+border: 1px solid #aaa;
+border-radius: 4px;
+}</string>
+       </property>
+       <property name="minimum">
+        <number>-1024</number>
+       </property>
+       <property name="maximum">
+        <number>1024</number>
+       </property>
+       <property name="pageStep">
+        <number>128</number>
+       </property>
+       <property name="tracking">
+        <bool>false</bool>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="invertedAppearance">
+        <bool>false</bool>
+       </property>
+       <property name="tickPosition">
+        <enum>QSlider::TicksBelow</enum>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="1">
+      <widget class="QSlider" name="chnout_6">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QSlider::sub-page:horizontal:disabled {
+border-color: #999;
+}
+
+QSlider::add-page:horizontal:disabled {
+border-color: #999;
+}
+
+QSlider::handle:horizontal:disabled {
+background: #0000CC;
+border: 1px solid #aaa;
+border-radius: 4px;
+}</string>
+       </property>
+       <property name="minimum">
+        <number>-1024</number>
+       </property>
+       <property name="maximum">
+        <number>1024</number>
+       </property>
+       <property name="pageStep">
+        <number>128</number>
+       </property>
+       <property name="tracking">
+        <bool>false</bool>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="invertedAppearance">
+        <bool>false</bool>
+       </property>
+       <property name="tickPosition">
+        <enum>QSlider::TicksBelow</enum>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="1">
+      <widget class="QSlider" name="chnout_7">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QSlider::sub-page:horizontal:disabled {
+border-color: #999;
+}
+
+QSlider::add-page:horizontal:disabled {
+border-color: #999;
+}
+
+QSlider::handle:horizontal:disabled {
+background: #0000CC;
+border: 1px solid #aaa;
+border-radius: 4px;
+}</string>
+       </property>
+       <property name="minimum">
+        <number>-1024</number>
+       </property>
+       <property name="maximum">
+        <number>1024</number>
+       </property>
+       <property name="pageStep">
+        <number>128</number>
+       </property>
+       <property name="tracking">
+        <bool>false</bool>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="invertedAppearance">
+        <bool>false</bool>
+       </property>
+       <property name="tickPosition">
+        <enum>QSlider::TicksBelow</enum>
+       </property>
+      </widget>
+     </item>
+     <item row="7" column="1">
+      <widget class="QSlider" name="chnout_8">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QSlider::sub-page:horizontal:disabled {
+border-color: #999;
+}
+
+QSlider::add-page:horizontal:disabled {
+border-color: #999;
+}
+
+QSlider::handle:horizontal:disabled {
+background: #0000CC;
+border: 1px solid #aaa;
+border-radius: 4px;
+}</string>
+       </property>
+       <property name="minimum">
+        <number>-1024</number>
+       </property>
+       <property name="maximum">
+        <number>1024</number>
+       </property>
+       <property name="pageStep">
+        <number>128</number>
+       </property>
+       <property name="tracking">
+        <bool>false</bool>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="invertedAppearance">
+        <bool>false</bool>
+       </property>
+       <property name="tickPosition">
+        <enum>QSlider::TicksBelow</enum>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="4">
+      <widget class="QSlider" name="chnout_9">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QSlider::sub-page:horizontal:disabled {
+border-color: #999;
+}
+
+QSlider::add-page:horizontal:disabled {
+border-color: #999;
+}
+
+QSlider::handle:horizontal:disabled {
+background: #0000CC;
+border: 1px solid #aaa;
+border-radius: 4px;
+}</string>
+       </property>
+       <property name="minimum">
+        <number>-1024</number>
+       </property>
+       <property name="maximum">
+        <number>1024</number>
+       </property>
+       <property name="pageStep">
+        <number>128</number>
+       </property>
+       <property name="tracking">
+        <bool>false</bool>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="invertedAppearance">
+        <bool>false</bool>
+       </property>
+       <property name="tickPosition">
+        <enum>QSlider::TicksBelow</enum>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="4">
+      <widget class="QSlider" name="chnout_10">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QSlider::sub-page:horizontal:disabled {
+border-color: #999;
+}
+
+QSlider::add-page:horizontal:disabled {
+border-color: #999;
+}
+
+QSlider::handle:horizontal:disabled {
+background: #0000CC;
+border: 1px solid #aaa;
+border-radius: 4px;
+}</string>
+       </property>
+       <property name="minimum">
+        <number>-1024</number>
+       </property>
+       <property name="maximum">
+        <number>1024</number>
+       </property>
+       <property name="pageStep">
+        <number>128</number>
+       </property>
+       <property name="tracking">
+        <bool>false</bool>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="invertedAppearance">
+        <bool>false</bool>
+       </property>
+       <property name="tickPosition">
+        <enum>QSlider::TicksBelow</enum>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="4">
+      <widget class="QSlider" name="chnout_11">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QSlider::sub-page:horizontal:disabled {
+border-color: #999;
+}
+
+QSlider::add-page:horizontal:disabled {
+border-color: #999;
+}
+
+QSlider::handle:horizontal:disabled {
+background: #0000CC;
+border: 1px solid #aaa;
+border-radius: 4px;
+}</string>
+       </property>
+       <property name="minimum">
+        <number>-1024</number>
+       </property>
+       <property name="maximum">
+        <number>1024</number>
+       </property>
+       <property name="pageStep">
+        <number>128</number>
+       </property>
+       <property name="tracking">
+        <bool>false</bool>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="invertedAppearance">
+        <bool>false</bool>
+       </property>
+       <property name="tickPosition">
+        <enum>QSlider::TicksBelow</enum>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="4">
+      <widget class="QSlider" name="chnout_12">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QSlider::sub-page:horizontal:disabled {
+border-color: #999;
+}
+
+QSlider::add-page:horizontal:disabled {
+border-color: #999;
+}
+
+QSlider::handle:horizontal:disabled {
+background: #0000CC;
+border: 1px solid #aaa;
+border-radius: 4px;
+}</string>
+       </property>
+       <property name="minimum">
+        <number>-1024</number>
+       </property>
+       <property name="maximum">
+        <number>1024</number>
+       </property>
+       <property name="pageStep">
+        <number>128</number>
+       </property>
+       <property name="tracking">
+        <bool>false</bool>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="invertedAppearance">
+        <bool>false</bool>
+       </property>
+       <property name="tickPosition">
+        <enum>QSlider::TicksBelow</enum>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="4">
+      <widget class="QSlider" name="chnout_13">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QSlider::sub-page:horizontal:disabled {
+border-color: #999;
+}
+
+QSlider::add-page:horizontal:disabled {
+border-color: #999;
+}
+
+QSlider::handle:horizontal:disabled {
+background: #0000CC;
+border: 1px solid #aaa;
+border-radius: 4px;
+}</string>
+       </property>
+       <property name="minimum">
+        <number>-1024</number>
+       </property>
+       <property name="maximum">
+        <number>1024</number>
+       </property>
+       <property name="pageStep">
+        <number>128</number>
+       </property>
+       <property name="tracking">
+        <bool>false</bool>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="invertedAppearance">
+        <bool>false</bool>
+       </property>
+       <property name="tickPosition">
+        <enum>QSlider::TicksBelow</enum>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="4">
+      <widget class="QSlider" name="chnout_14">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QSlider::sub-page:horizontal:disabled {
+border-color: #999;
+}
+
+QSlider::add-page:horizontal:disabled {
+border-color: #999;
+}
+
+QSlider::handle:horizontal:disabled {
+background: #0000CC;
+border: 1px solid #aaa;
+border-radius: 4px;
+}</string>
+       </property>
+       <property name="minimum">
+        <number>-1024</number>
+       </property>
+       <property name="maximum">
+        <number>1024</number>
+       </property>
+       <property name="pageStep">
+        <number>128</number>
+       </property>
+       <property name="tracking">
+        <bool>false</bool>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="invertedAppearance">
+        <bool>false</bool>
+       </property>
+       <property name="tickPosition">
+        <enum>QSlider::TicksBelow</enum>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="4">
+      <widget class="QSlider" name="chnout_15">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QSlider::sub-page:horizontal:disabled {
+border-color: #999;
+}
+
+QSlider::add-page:horizontal:disabled {
+border-color: #999;
+}
+
+QSlider::handle:horizontal:disabled {
+background: #0000CC;
+border: 1px solid #aaa;
+border-radius: 4px;
+}</string>
+       </property>
+       <property name="minimum">
+        <number>-1024</number>
+       </property>
+       <property name="maximum">
+        <number>1024</number>
+       </property>
+       <property name="pageStep">
+        <number>128</number>
+       </property>
+       <property name="tracking">
+        <bool>false</bool>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="invertedAppearance">
+        <bool>false</bool>
+       </property>
+       <property name="tickPosition">
+        <enum>QSlider::TicksBelow</enum>
+       </property>
+      </widget>
+     </item>
+     <item row="7" column="4">
+      <widget class="QSlider" name="chnout_16">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QSlider::sub-page:horizontal:disabled {
+border-color: #999;
+}
+
+QSlider::add-page:horizontal:disabled {
+border-color: #999;
+}
+
+QSlider::handle:horizontal:disabled {
+background: #0000CC;
+border: 1px solid #aaa;
+border-radius: 4px;
+}</string>
+       </property>
+       <property name="minimum">
+        <number>-1024</number>
+       </property>
+       <property name="maximum">
+        <number>1024</number>
+       </property>
+       <property name="pageStep">
+        <number>128</number>
+       </property>
+       <property name="tracking">
+        <bool>false</bool>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="invertedAppearance">
+        <bool>false</bool>
+       </property>
+       <property name="tickPosition">
+        <enum>QSlider::TicksBelow</enum>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="2">
+      <widget class="QLabel" name="chnoutV_1">
+       <property name="minimumSize">
         <size>
-         <width>40</width>
-         <height>20</height>
+         <width>50</width>
+         <height>0</height>
         </size>
        </property>
-      </spacer>
+       <property name="text">
+        <string>-100.1</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="2">
+      <widget class="QLabel" name="chnoutV_2">
+       <property name="minimumSize">
+        <size>
+         <width>50</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>-100.1</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="2">
+      <widget class="QLabel" name="chnoutV_3">
+       <property name="minimumSize">
+        <size>
+         <width>50</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>-100.1</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="2">
+      <widget class="QLabel" name="chnoutV_4">
+       <property name="minimumSize">
+        <size>
+         <width>50</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>-100.1</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="2">
+      <widget class="QLabel" name="chnoutV_5">
+       <property name="minimumSize">
+        <size>
+         <width>50</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>-100.1</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="2">
+      <widget class="QLabel" name="chnoutV_6">
+       <property name="minimumSize">
+        <size>
+         <width>50</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>-100.1</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="2">
+      <widget class="QLabel" name="chnoutV_7">
+       <property name="minimumSize">
+        <size>
+         <width>50</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>-100.1</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="7" column="2">
+      <widget class="QLabel" name="chnoutV_8">
+       <property name="minimumSize">
+        <size>
+         <width>50</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>-100.1</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="3">
+      <widget class="QLabel" name="chnoutV_9">
+       <property name="minimumSize">
+        <size>
+         <width>50</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>-100.1</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="3">
+      <widget class="QLabel" name="chnoutV_10">
+       <property name="minimumSize">
+        <size>
+         <width>50</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>-100.1</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="3">
+      <widget class="QLabel" name="chnoutV_11">
+       <property name="minimumSize">
+        <size>
+         <width>50</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>-100.1</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="3">
+      <widget class="QLabel" name="chnoutV_12">
+       <property name="minimumSize">
+        <size>
+         <width>50</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>-100.1</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="3">
+      <widget class="QLabel" name="chnoutV_13">
+       <property name="minimumSize">
+        <size>
+         <width>50</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>-100.1</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="3">
+      <widget class="QLabel" name="chnoutV_14">
+       <property name="minimumSize">
+        <size>
+         <width>50</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>-100.1</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="3">
+      <widget class="QLabel" name="chnoutV_15">
+       <property name="minimumSize">
+        <size>
+         <width>50</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>-100.1</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="7" column="3">
+      <widget class="QLabel" name="chnoutV_16">
+       <property name="minimumSize">
+        <size>
+         <width>50</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>-100.1</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
      </item>
     </layout>
    </item>
