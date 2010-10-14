@@ -67,6 +67,7 @@ public:
     QString userFriendlyCurrentFile();
     QString currentFile() { return curFile; }
     void keyPressEvent(QKeyEvent *event);
+    bool hasPasteData();
 
 signals:
     void copyAvailable(bool val);

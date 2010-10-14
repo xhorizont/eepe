@@ -130,13 +130,19 @@ void MainWindow::saveAs()
 void MainWindow::cut()
 {
     if (activeMdiChild())
+    {
         activeMdiChild()->cut();
+        updateMenus();
+    }
 }
 
 void MainWindow::copy()
 {
     if (activeMdiChild())
+    {
         activeMdiChild()->copy();
+        updateMenus();
+    }
 }
 
 void MainWindow::paste()
@@ -271,7 +277,7 @@ void MainWindow::updateMenus()
     bool hasMdiChild = (activeMdiChild() != 0);
     saveAct->setEnabled(hasMdiChild);
     saveAsAct->setEnabled(hasMdiChild);
-    pasteAct->setEnabled(hasMdiChild);
+    pasteAct->setEnabled(hasMdiChild ? activeMdiChild()->hasPasteData() : false);
     closeAct->setEnabled(hasMdiChild);
     closeAllAct->setEnabled(hasMdiChild);
     tileAct->setEnabled(hasMdiChild);
