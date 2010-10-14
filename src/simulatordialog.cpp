@@ -158,14 +158,12 @@ void simulatorDialog::setupSticks()
 
 
     nodeLeft = new Node();
-    nodeLeft->setPos(0,0);
-    nodeLeft->setLimited(false);
+    nodeLeft->setPos(-GBALL_SIZE/2,-GBALL_SIZE/2);
     nodeLeft->setBallSize(GBALL_SIZE);
     leftScene->addItem(nodeLeft);
 
     nodeRight = new Node();
-    nodeRight->setPos(0,0);
-    nodeRight->setLimited(false);
+    nodeRight->setPos(-GBALL_SIZE/2,-GBALL_SIZE/2);
     nodeRight->setBallSize(GBALL_SIZE);
     rightScene->addItem(nodeRight);
 }
@@ -438,9 +436,9 @@ void simulatorDialog::perOut(bool init)
             //need to know which "v" will give "anas".
             //curves(v)*weight/100 -> anas
             // v * weight / 100 = anas => anas*100/weight = v
-          act[i] = (int32_t)anas[md.destCh-1+CHOUT_BASE]*DEL_MULT;
-          act[i] *=100;
-          act[i] /= md.weight;
+          //act[i] = (int32_t)anas[md.destCh-1+CHOUT_BASE]*DEL_MULT;
+          //act[i] *=100;
+          //act[i] /= md.weight;
           diff = v-act[i]/DEL_MULT;
           if(diff) sDelay[i] = (diff<0 ? md.delayUp :  md.delayDown) * 100;
         }
@@ -577,11 +575,24 @@ void simulatorDialog::on_holdRightY_clicked(bool checked)
     nodeRight->setCenteringY(!checked);
 }
 
-#define TSWITCH_ON  "QPushButton { background-color: #4CC417 }"
-#define TSWITCH_OFF "QPushButton { }"
 
-void simulatorDialog::on_switchTHR_clicked(bool checked)
+void simulatorDialog::on_FixLeftX_clicked(bool checked)
 {
-
-    ui->switchTHR->setStyleSheet(checked ? TSWITCH_ON : TSWITCH_OFF);
+    nodeLeft->setFixedX(checked);
 }
+
+void simulatorDialog::on_FixLeftY_clicked(bool checked)
+{
+    nodeLeft->setFixedY(checked);
+}
+
+void simulatorDialog::on_FixRightX_clicked(bool checked)
+{
+    nodeRight->setFixedX(checked);
+}
+
+void simulatorDialog::on_FixRightY_clicked(bool checked)
+{
+    nodeRight->setFixedY(checked);
+}
+

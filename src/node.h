@@ -67,15 +67,16 @@ public:
     QRectF boundingRect() const;
     QPainterPath shape() const;
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
-    void setLimited(bool val);
     void setBallSize(int size);
     void stepToCenter(qreal step=10);
-    int  getBallSize();
+    int  getBallSize() {return ballSize;}
     qreal getX();
     qreal getY();
 
     void setCenteringX(bool val) {centerX = val;}
     void setCenteringY(bool val) {centerY = val;}
+    void setFixedX(bool val) {fixedX = val;}
+    void setFixedY(bool val) {fixedY = val;}
 
 protected:
     QVariant itemChange(GraphicsItemChange change, const QVariant &value);
@@ -85,10 +86,11 @@ protected:
     
 private:
 
-    bool unLimited;
     bool bPressed;
     bool centerX;
     bool centerY;
+    bool fixedX;
+    bool fixedY;
     int  ballSize;
     QSpinBox *qsb;
     QList<Edge *> edgeList;
