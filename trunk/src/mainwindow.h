@@ -79,6 +79,7 @@ private slots:
     void burnList();
     void simulate();
     void about();
+    void donators();
     void updateMenus();
     void updateWindowMenu();
     MdiChild *createMdiChild();
@@ -129,6 +130,7 @@ private:
     QAction *previousAct;
     QAction *separatorAct;
     QAction *aboutAct;
+    QAction *donatorsAct;
     //QAction *aboutQtAct;
 };
 

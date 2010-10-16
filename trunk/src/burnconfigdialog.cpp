@@ -9,6 +9,8 @@ burnConfigDialog::burnConfigDialog(QWidget *parent) :
 {
     ui->setupUi(this);
     getSettings();
+
+    ui->avrdude_programmer->model()->sort(0);
 }
 
 burnConfigDialog::~burnConfigDialog()
@@ -41,6 +43,12 @@ QString burnConfigDialog::getProgrammer()
     return settings.value("programmer", QString("usbasp")).toString();
 }
 
+QString burnConfigDialog::getPort()
+{
+    QSettings settings("er9x-eePe", "eePe");
+    return settings.value("avr_port").toString();
+}
+
 void burnConfigDialog::getSettings()
 {
     ui->avrdude_location->setText(getAVRDUDE());
@@ -48,6 +56,9 @@ void burnConfigDialog::getSettings()
     ui->avrArgs->setText(getAVRArgs().join(" "));
     int idx = ui->avrdude_programmer->findText(getProgrammer());
     if(idx>=0) ui->avrdude_programmer->setCurrentIndex(idx);
+
+    idx = ui->avrdude_port->findText(getPort());
+    if(idx>=0) ui->avrdude_port->setCurrentIndex(idx);
 }
 
 void burnConfigDialog::putSettings()
@@ -56,6 +67,7 @@ void burnConfigDialog::putSettings()
     settings.setValue("avrdude_location", ui->avrdude_location->text());
     settings.setValue("temp_directory", ui->temp_location->text());
     settings.setValue("programmer", ui->avrdude_programmer->currentText());
+    settings.setValue("avr_port", ui->avrdude_port->currentText());
     settings.setValue("avr_arguments", ui->avrArgs->text());
 }
 
@@ -88,6 +100,11 @@ void burnConfigDialog::on_temp_location_editingFinished()
 }
 
 void burnConfigDialog::on_avrArgs_editingFinished()
+{
+    putSettings();
+}
+
+void burnConfigDialog::on_avrdude_port_currentIndexChanged(QString )
 {
     putSettings();
 }
@@ -160,6 +177,7 @@ void burnConfigDialog::on_resetFuses_clicked()
         QString avrdudeLoc = ui->avrdude_location->text();
         QString programmer = ui->avrdude_programmer->currentText();
         QStringList args   = ui->avrArgs->text().split(" ", QString::SkipEmptyParts);
+        if(!ui->avrdude_port->currentText().isEmpty()) args << "-P" << ui->avrdude_port->currentText();
 
         QStringList str;
         str << "-U" << "lfuse:w:0x0E:m" << "-U" << "hfuse:w:0x89:m" << "-U" << "efuse:w:0xFF:m";
@@ -179,6 +197,7 @@ void burnConfigDialog::on_readFuses_clicked()
     QString avrdudeLoc = ui->avrdude_location->text();
     QString programmer = ui->avrdude_programmer->currentText();
     QStringList args   = ui->avrArgs->text().split(" ", QString::SkipEmptyParts);
+    if(!ui->avrdude_port->currentText().isEmpty()) args << "-P" << ui->avrdude_port->currentText();
 
     QStringList str;
     str << "-U" << "lfuse:r:-:i" << "-U" << "hfuse:r:-:i" << "-U" << "efuse:r:-:i";
@@ -189,3 +208,4 @@ void burnConfigDialog::on_readFuses_clicked()
     avrOutputDialog ad(this, avrdudeLoc, arguments, "Read Fuses",AVR_DIALOG_KEEP_OPEN);
     ad.exec();
 }
+

@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>716</width>
-    <height>233</height>
+    <height>252</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -39,7 +39,7 @@
          </property>
         </widget>
        </item>
-       <item row="0" column="2" rowspan="2">
+       <item row="0" column="3" rowspan="2">
         <widget class="QPushButton" name="pushButton">
          <property name="text">
           <string>Browse...</string>
@@ -63,7 +63,7 @@
          </property>
         </widget>
        </item>
-       <item row="2" column="2">
+       <item row="2" column="3">
         <widget class="QPushButton" name="pushButton_2">
          <property name="text">
           <string>Browse...</string>
@@ -82,6 +82,9 @@
        </item>
        <item row="3" column="1">
         <widget class="QComboBox" name="avrdude_programmer">
+         <property name="insertPolicy">
+          <enum>QComboBox::InsertAlphabetically</enum>
+         </property>
          <item>
           <property name="text">
            <string>c2n232i</string>
@@ -394,21 +397,21 @@
          </item>
         </widget>
        </item>
-       <item row="3" column="2">
+       <item row="3" column="3">
         <widget class="QPushButton" name="pushButton_3">
          <property name="text">
           <string>List Available</string>
          </property>
         </widget>
        </item>
-       <item row="4" column="1">
+       <item row="5" column="1">
         <widget class="QLineEdit" name="avrArgs">
          <property name="toolTip">
           <string>Extra arguments that will be passed to AVRDUDE on every call</string>
          </property>
         </widget>
        </item>
-       <item row="4" column="0">
+       <item row="5" column="0">
         <widget class="QLabel" name="label_3">
          <property name="text">
           <string>Extra Arguments</string>
@@ -418,10 +421,74 @@
          </property>
         </widget>
        </item>
-       <item row="4" column="2">
+       <item row="5" column="3">
         <widget class="QPushButton" name="pushButton_4">
          <property name="text">
           <string>Show Help</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="1">
+        <widget class="QComboBox" name="avrdude_port">
+         <item>
+          <property name="text">
+           <string/>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>usb</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>com1</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>com2</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>com3</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>com4</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>lpt1</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>lpt2</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>lpt3</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>lpt4</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="4" column="0">
+        <widget class="QLabel" name="label_5">
+         <property name="text">
+          <string>Port</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
          </property>
         </widget>
        </item>

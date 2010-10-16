@@ -14,5 +14,6 @@
         <file>images/read_flash.png</file>
         <file>images/simulate.png</file>
         <file>images/configure.png</file>
+        <file>donators</file>
     </qresource>
 </RCC>
