@@ -663,6 +663,7 @@ void MdiChild::burnTo()  // write to Tx
     QString tempDir    = bcd.getTempDir();
     QString programmer = bcd.getProgrammer();
     QStringList args   = bcd.getAVRArgs();
+    if(!bcd.getPort().isEmpty()) args << "-P" << bcd.getPort();
 
     QString tempFile = tempDir + "/temp.hex";
     saveFile(tempFile, false);

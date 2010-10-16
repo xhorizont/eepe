@@ -45,6 +45,7 @@
 #include "mdichild.h"
 #include "burnconfigdialog.h"
 #include "avroutputdialog.h"
+#include "donatorsdialog.h"
 
 MainWindow::MainWindow()
 {
@@ -170,6 +171,8 @@ void MainWindow::burnFrom()
     QString tempDir    = bcd.getTempDir();
     QString programmer = bcd.getProgrammer();
     QStringList args   = bcd.getAVRArgs();
+    if(!bcd.getPort().isEmpty()) args << "-P" << bcd.getPort();
+
 
     QString tempFile = tempDir + "/temp.hex";
     QString str = "eeprom:r:" + tempFile + ":i"; // writing eeprom -> MEM:OPR:FILE:FTYPE"
@@ -203,6 +206,7 @@ void MainWindow::burnToFlash()
         QString avrdudeLoc = bcd.getAVRDUDE();
         QString programmer = bcd.getProgrammer();
         QStringList args   = bcd.getAVRArgs();
+        if(!bcd.getPort().isEmpty()) args << "-P" << bcd.getPort();
 
         QString str = "flash:w:" + fileName; // writing eeprom -> MEM:OPR:FILE:FTYPE"
         if(QFileInfo(fileName).suffix().toUpper()=="HEX") str += ":i";
@@ -229,6 +233,8 @@ void MainWindow::burnFromFlash()
         QString avrdudeLoc = bcd.getAVRDUDE();
         QString programmer = bcd.getProgrammer();
         QStringList args   = bcd.getAVRArgs();
+        if(!bcd.getPort().isEmpty()) args << "-P" << bcd.getPort();
+
 
         QString str = "flash:r:" + fileName; // writing eeprom -> MEM:OPR:FILE:FTYPE"
         if(QFileInfo(fileName).suffix().toUpper()=="HEX") str += ":i";
@@ -254,6 +260,12 @@ void MainWindow::burnList()
 {
     burnConfigDialog bcd;
     bcd.listProgrammers();
+}
+
+void MainWindow::donators()
+{
+    donatorsDialog dd;
+    dd.exec();
 }
 
 void MainWindow::about()
@@ -458,6 +470,10 @@ void MainWindow::createActions()
     aboutAct->setStatusTip(tr("Show the application's About box"));
     connect(aboutAct, SIGNAL(triggered()), this, SLOT(about()));
 
+    donatorsAct = new QAction(tr("&Donator List"), this);
+    donatorsAct->setStatusTip(tr("List er9x/eePe donators"));
+    connect(donatorsAct, SIGNAL(triggered()), this, SLOT(donators()));
+
     //aboutQtAct = new QAction(tr("About &Qt"), this);
     //aboutQtAct->setStatusTip(tr("Show the Qt library's About box"));
     //connect(aboutQtAct, SIGNAL(triggered()), qApp, SLOT(aboutQt()));
@@ -500,7 +516,7 @@ void MainWindow::createMenus()
 
     helpMenu = menuBar()->addMenu(tr("&Help"));
     helpMenu->addAction(aboutAct);
-    //helpMenu->addAction(aboutQtAct);
+    helpMenu->addAction(donatorsAct);
 }
 
 void MainWindow::createToolBars()
