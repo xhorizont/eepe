@@ -31,7 +31,7 @@ private:
     qint16  calibratedStick[7];
     qint16  g_ppmIns[8];
     qint16  ex_chans[NUM_CHNOUT];
-    qint8   trim[4];
+    qint16  trim[4];
 
     ModelData g_model;
     EEGeneral g_eeGeneral;
