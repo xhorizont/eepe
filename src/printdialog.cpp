@@ -16,6 +16,8 @@ printDialog::printDialog(QWidget *parent, EEGeneral *gg, ModelData *gm) :
     setWindowTitle(tr("Setup for: ") + getModelName());
     ui->textEdit->clear();
 
+    printTitle();
+
     printSetup();
     printExpo();
     printMixes();
@@ -97,9 +99,14 @@ QString printDialog::getTrimInc()
 
 }
 
+void printDialog::printTitle()
+{
+    te->append(tr("<h1>ER9x Model: %1</h1><br>").arg(getModelName()));
+}
+
 void printDialog::printSetup()
 {
-    QString str = tr("<h1>General Model Settings</h1>");
+    QString str = tr("<h2>General Model Settings</h2><br>");
     str.append(fv("Name", getModelName()));
     str.append(fv("Timer", getTimer()));  //value, mode, count up/down
     str.append(fv("Protocol", getProtocol())); //proto, numch, delay,
@@ -117,7 +124,7 @@ void printDialog::printSetup()
 
 void printDialog::printExpo()
 {
-    QString str = tr("<h1>Expo/Dr Settings</h1>");
+    QString str = tr("<h2>Expo/Dr Settings</h2>");
 
     for(int i=0; i<4; i++)
     {
@@ -169,7 +176,7 @@ void printDialog::printExpo()
 
 void printDialog::printMixes()
 {
-    QString str = tr("<h1>Mixers</h1><br>");
+    QString str = tr("<h2>Mixers</h2><br>");
 
     int lastCHN = 0;
     for(int i=0; i<MAX_MIXERS; i++)
@@ -243,7 +250,7 @@ void printDialog::printMixes()
 
 void printDialog::printLimits()
 {
-    QString str = tr("<h1>Limits</h1>");
+    QString str = tr("<h2>Limits</h2>");
 
     str.append("<table border=1 cellspacing=0 cellpadding=3>");
     str.append("<tr><td>&nbsp;</td><td><b>Offset</b></td><td><b>Min</b></td><td><b>Max</b></td><td><b>Invert</b></td></tr>");
@@ -266,7 +273,7 @@ void printDialog::printLimits()
 
 void printDialog::printCurves()
 {
-    QString str = tr("<h1>Curves</h1>");
+    QString str = tr("<h2>Curves</h2>");
 
     str.append(fv("5-point Curves", ""));
     str.append("<table border=1 cellspacing=0 cellpadding=3>");
@@ -310,7 +317,7 @@ void printDialog::printCurves()
 
 void printDialog::printSwitches()
 {
-    QString str = tr("<h1>Custom Switches</h1>");
+    QString str = tr("<h2>Custom Switches</h2>");
 
 
     str.append("<table border=1 cellspacing=0 cellpadding=3>");
@@ -334,4 +341,16 @@ void printDialog::printSwitches()
 
     str.append("<br><br>");
     te->append(str);
+}
+
+void printDialog::on_printButton_clicked()
+{
+    QPrinter printer;
+
+    QPrintDialog *dialog = new QPrintDialog(&printer, this);
+    dialog->setWindowTitle(tr("Print Document"));
+    if (dialog->exec() != QDialog::Accepted)
+        return;
+
+    te->print(&printer);
 }
