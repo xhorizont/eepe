@@ -48,6 +48,7 @@
 #include "avroutputdialog.h"
 #include "burnconfigdialog.h"
 #include "simulatordialog.h"
+#include "printdialog.h"
 
 
 MdiChild::MdiChild()
@@ -727,6 +728,20 @@ void MdiChild::simulate()
 
     sd.loadParams(&gg,&gm);
     sd.exec();
+}
+
+void MdiChild::print()
+{
+    if(currentRow()<1) return;
+
+    EEGeneral gg;
+    if(!eeFile.getGeneralSettings(&gg)) return;
+
+    ModelData gm;
+    if(!eeFile.getModel(&gm,currentRow()-1)) return;
+
+    printDialog pd(this, &gg, &gm);
+    pd.exec();
 }
 
 void MdiChild::viableModelSelected(int idx)

@@ -388,15 +388,7 @@ void ModelEdit::tabMixes()
         //str += " " + srcStr.mid(CONVERT_MODE(md->srcRaw+1)*4,4);
         str += getSourceStr(g_eeGeneral.stickMode,md->srcRaw);
 
-        if(md->swtch)
-        {
-            QString swtStr = SWITCHES_STR;
-            if(abs(md->swtch)==MAX_DRSWITCH)
-                str += md->swtch > 0 ? " Switch(ON)" : " Switch(OFF)";
-            else
-                str += tr(" Switch(%1%2)").arg(md->swtch<0 ? "!" : "").arg(swtStr.mid((abs(md->swtch)-1)*3,3));
-        }
-
+        if(md->swtch) str += " Switch(" + getSWName(md->swtch) + ")";
         if(md->carryTrim) str += " noTrim";
         if(md->sOffset)  str += tr(" Offset(%1\%)").arg(md->sOffset);
         if(md->curve)
