@@ -7,6 +7,20 @@
 
 #define GBALL_SIZE  20
 
+#define RESX    1024
+#define RESXu   1024u
+#define RESXul  1024ul
+#define RESXl   1024l
+#define RESKul  100ul
+#define RESX_PLUS_TRIM (RESX+128)
+
+#define IS_THROTTLE(x)  (((2-(g_eeGeneral.stickMode&1)) == x) && (x<4))
+#define GET_DR_STATE(x) (!getSwitch(g_model.expoData[x].drSw1,0) ?   \
+                          DR_HIGH :                                  \
+                          !getSwitch(g_model.expoData[x].drSw2,0)?   \
+                          DR_MID : DR_LOW);
+
+
 
 simulatorDialog::simulatorDialog(QWidget *parent) :
     QDialog(parent),
@@ -78,6 +92,7 @@ void simulatorDialog::loadParams(EEGeneral *gg, ModelData *gm)
 
 void simulatorDialog::getValues()
 {
+
     calibratedStick[0] = 1024*nodeLeft->getX(); //RUD
     calibratedStick[1] = -1024*nodeLeft->getY(); //ELE
     calibratedStick[2] = -1024*nodeRight->getY(); //THR
@@ -91,6 +106,30 @@ void simulatorDialog::getValues()
     calibratedStick[4] = ui->dialP_1->value();
     calibratedStick[5] = ui->dialP_2->value();
     calibratedStick[6] = ui->dialP_3->value();
+
+    if(g_eeGeneral.throttleReversed)
+    {
+        if(g_eeGeneral.stickMode & 1)//mode 1,3 -> THR on left
+        {
+            calibratedStick[1] = 1024*nodeLeft->getY(); //ELE
+            trim[1] = -ui->trimVLeft->value();
+        }
+        else //mode 1,3 -> THR on right
+        {
+            calibratedStick[2] = 1024*nodeRight->getY(); //THR
+            trim[2] = -ui->trimVRight->value();
+        }
+    }
+
+    if(g_model.thrTrim)
+    {
+        int i = 1+(g_eeGeneral.stickMode & 1);
+        int j = trim[i];
+
+        trim[i] = (g_eeGeneral.throttleReversed) ? ((qint32)j-125)*(RESX+calibratedStick[i])/(2*RESX) :
+                                                   ((qint32)j+125)*(RESX-calibratedStick[i])/(2*RESX);
+    }
+
 }
 
 inline int chVal(int val)
@@ -265,18 +304,6 @@ bool simulatorDialog::getSwitch(int swtch, bool nc)
      }
 }
 
-#define RESX    1024
-#define RESXu   1024u
-#define RESXul  1024ul
-#define RESXl   1024l
-#define RESKul  100ul
-#define RESX_PLUS_TRIM (RESX+128)
-
-#define IS_THROTTLE(x)  (((2-(g_eeGeneral.stickMode&1)) == x) && (x<4))
-#define GET_DR_STATE(x) (!getSwitch(g_model.expoData[x].drSw1,0) ?   \
-                          DR_HIGH :                                  \
-                          !getSwitch(g_model.expoData[x].drSw2,0)?   \
-                          DR_MID : DR_LOW);
 
 uint16_t expou(uint16_t x, uint16_t k)
 {

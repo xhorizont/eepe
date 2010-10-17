@@ -3,7 +3,7 @@
 #include <QtGui>
 
 avrOutputDialog::avrOutputDialog(QWidget *parent, QString prog, QStringList arg, QString wTitle, int closeBehaviour) :
-    QDialog(parent),
+    QDialog(parent, Qt::WindowTitleHint | Qt::WindowSystemMenuHint),
     ui(new Ui::avrOutputDialog)
 {
     ui->setupUi(this);
