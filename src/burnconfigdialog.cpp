@@ -18,57 +18,46 @@ burnConfigDialog::~burnConfigDialog()
     delete ui;
 }
 
-QString burnConfigDialog::getTempDir()
-{
-    QSettings settings("er9x-eePe", "eePe");
-    return settings.value("temp_directory", QDir("./").absolutePath()).toString();
-}
-
-QString burnConfigDialog::getAVRDUDE()
-{
-    QSettings settings("er9x-eePe", "eePe");
-    return settings.value("avrdude_location", QFileInfo("avrdude.exe").absoluteFilePath()).toString();
-}
-
-QStringList burnConfigDialog::getAVRArgs()
-{
-    QSettings settings("er9x-eePe", "eePe");
-    QString str = settings.value("avr_arguments").toString();
-    return str.split(" ", QString::SkipEmptyParts);
-}
-
-QString burnConfigDialog::getProgrammer()
-{
-    QSettings settings("er9x-eePe", "eePe");
-    return settings.value("programmer", QString("usbasp")).toString();
-}
-
-QString burnConfigDialog::getPort()
-{
-    QSettings settings("er9x-eePe", "eePe");
-    return settings.value("avr_port").toString();
-}
-
 void burnConfigDialog::getSettings()
 {
+
+    QSettings settings("er9x-eePe", "eePe");
+    avrTempDir = settings.value("temp_directory", QDir("./").absolutePath()).toString();
+    avrLoc = settings.value("avrdude_location", QFileInfo("avrdude.exe").absoluteFilePath()).toString();
+    QString str = settings.value("avr_arguments").toString();
+    avrArgs = str.split(" ", QString::SkipEmptyParts);
+    avrProgrammer =  settings.value("programmer", QString("usbasp")).toString();
+    avrPort =  settings.value("avr_port", "").toString();
+    avrEraseEEPROM = settings.value("eeprom_erase_bit", 1).toInt();
+
     ui->avrdude_location->setText(getAVRDUDE());
     ui->temp_location->setText(getTempDir());
     ui->avrArgs->setText(getAVRArgs().join(" "));
-    int idx = ui->avrdude_programmer->findText(getProgrammer());
-    if(idx>=0) ui->avrdude_programmer->setCurrentIndex(idx);
+    ui->eraseEEPROM_CB->setChecked(getEraseEEPROM());
 
-    idx = ui->avrdude_port->findText(getPort());
-    if(idx>=0) ui->avrdude_port->setCurrentIndex(idx);
+    int idx1 = ui->avrdude_programmer->findText(getProgrammer());
+    int idx2 = ui->avrdude_port->findText(getPort());
+    if(idx1>=0) ui->avrdude_programmer->setCurrentIndex(idx1);
+    if(idx2>=0) ui->avrdude_port->setCurrentIndex(idx2);
 }
 
 void burnConfigDialog::putSettings()
 {
+    avrTempDir = ui->temp_location->text();
+    avrLoc = ui->avrdude_location->text();
+    avrArgs = ui->avrArgs->text().split(" ", QString::SkipEmptyParts);
+    avrProgrammer = ui->avrdude_programmer->currentText();
+    avrPort = ui->avrdude_port->currentText();
+    avrEraseEEPROM = ui->eraseEEPROM_CB->isChecked();
+
+
     QSettings settings("er9x-eePe", "eePe");
-    settings.setValue("avrdude_location", ui->avrdude_location->text());
-    settings.setValue("temp_directory", ui->temp_location->text());
-    settings.setValue("programmer", ui->avrdude_programmer->currentText());
-    settings.setValue("avr_port", ui->avrdude_port->currentText());
-    settings.setValue("avr_arguments", ui->avrArgs->text());
+    settings.setValue("avrdude_location", avrLoc);
+    settings.setValue("temp_directory", avrTempDir);
+    settings.setValue("programmer", avrProgrammer);
+    settings.setValue("avr_port", avrPort);
+    settings.setValue("avr_arguments", avrArgs.join(" "));
+    settings.setValue("eeprom_erase_bit", (int)avrEraseEEPROM);
 }
 
 
@@ -105,6 +94,11 @@ void burnConfigDialog::on_avrArgs_editingFinished()
 }
 
 void burnConfigDialog::on_avrdude_port_currentIndexChanged(QString )
+{
+    putSettings();
+}
+
+void burnConfigDialog::on_eraseEEPROM_CB_toggled(bool )
 {
     putSettings();
 }
@@ -174,19 +168,18 @@ void burnConfigDialog::on_resetFuses_clicked()
                                QMessageBox::Yes | QMessageBox::No);
     if (ret == QMessageBox::Yes)
     {
-        QString avrdudeLoc = ui->avrdude_location->text();
-        QString programmer = ui->avrdude_programmer->currentText();
-        QStringList args   = ui->avrArgs->text().split(" ", QString::SkipEmptyParts);
-        if(!ui->avrdude_port->currentText().isEmpty()) args << "-P" << ui->avrdude_port->currentText();
+        QStringList args   = avrArgs;
+        if(!avrPort.isEmpty()) args << "-P" << avrPort;
 
+        QString erStr = getEraseEEPROM() ? "hfuse:w:0x89:m" : "hfuse:w:0x81:m";
         QStringList str;
-        str << "-U" << "lfuse:w:0x0E:m" << "-U" << "hfuse:w:0x89:m" << "-U" << "efuse:w:0xFF:m";
+        str << "-U" << "lfuse:w:0x0E:m" << "-U" << erStr << "-U" << "efuse:w:0xFF:m";
         //use hfuse = 0x81 to prevent eeprom being erased with every flashing
 
         QStringList arguments;
-        arguments << "-c" << programmer << "-p" << "m64" << args << "-u" << str;
+        arguments << "-c" << avrProgrammer << "-p" << "m64" << args << "-u" << str;
 
-        avrOutputDialog ad(this, avrdudeLoc, arguments, "Reset Fuses",AVR_DIALOG_KEEP_OPEN);
+        avrOutputDialog ad(this, avrLoc, arguments, "Reset Fuses",AVR_DIALOG_KEEP_OPEN);
         ad.exec();
     }
 
@@ -194,18 +187,16 @@ void burnConfigDialog::on_resetFuses_clicked()
 
 void burnConfigDialog::on_readFuses_clicked()
 {
-    QString avrdudeLoc = ui->avrdude_location->text();
-    QString programmer = ui->avrdude_programmer->currentText();
-    QStringList args   = ui->avrArgs->text().split(" ", QString::SkipEmptyParts);
-    if(!ui->avrdude_port->currentText().isEmpty()) args << "-P" << ui->avrdude_port->currentText();
+    QStringList args   = avrArgs;
+    if(!avrPort.isEmpty()) args << "-P" << avrPort;
 
     QStringList str;
     str << "-U" << "lfuse:r:-:i" << "-U" << "hfuse:r:-:i" << "-U" << "efuse:r:-:i";
 
     QStringList arguments;
-    arguments << "-c" << programmer << "-p" << "m64" << args << str;
+    arguments << "-c" << avrProgrammer << "-p" << "m64" << args << str;
 
-    avrOutputDialog ad(this, avrdudeLoc, arguments, "Read Fuses",AVR_DIALOG_KEEP_OPEN);
+    avrOutputDialog ad(this, avrLoc, arguments, "Read Fuses",AVR_DIALOG_KEEP_OPEN);
     ad.exec();
 }
 
