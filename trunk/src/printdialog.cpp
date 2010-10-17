@@ -24,6 +24,8 @@ printDialog::printDialog(QWidget *parent, EEGeneral *gg, ModelData *gm) :
     printLimits();
     printCurves();
     printSwitches();
+
+    te->scrollToAnchor("1");
 }
 
 printDialog::~printDialog()
@@ -101,7 +103,7 @@ QString printDialog::getTrimInc()
 
 void printDialog::printTitle()
 {
-    te->append(tr("<h1>ER9x Model: %1</h1><br>").arg(getModelName()));
+    te->append(tr("<a name=1></a><h1>ER9x Model: %1</h1><br>").arg(getModelName()));
 }
 
 void printDialog::printSetup()
