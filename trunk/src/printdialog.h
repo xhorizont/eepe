@@ -23,6 +23,7 @@ public:
 private:
     Ui::printDialog *ui;
 
+    void printTitle();
     void printSetup();
     void printExpo();
     void printMixes();
@@ -37,6 +38,9 @@ private:
     QString getCenterBeep();
     QString getTrimInc();
     QTextEdit * te;
+
+private slots:
+    void on_printButton_clicked();
 };
 
 #endif // PRINTDIALOG_H
