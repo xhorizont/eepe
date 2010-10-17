@@ -3,7 +3,7 @@
 #include <QtGui>
 
 donatorsDialog::donatorsDialog(QWidget *parent) :
-    QDialog(parent),
+    QDialog(parent, Qt::WindowTitleHint | Qt::WindowSystemMenuHint),
     ui(new Ui::donatorsDialog)
 {
     ui->setupUi(this);
