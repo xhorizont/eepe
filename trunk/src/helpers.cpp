@@ -3,6 +3,15 @@
 #include "helpers.h"
 
 
+QString getSWName(int val)
+{
+
+    if(!val) return "---";
+    if(val==MAX_DRSWITCH) return "ON";
+    if(val==-MAX_DRSWITCH) return "OFF";
+
+    return QString(val<0 ? "!" : "") + QString(SWITCHES_STR).mid((abs(val)-1)*3,3);
+}
 
 void populateSwitchCB(QComboBox *b, int value=0)
 {
@@ -11,24 +20,25 @@ void populateSwitchCB(QComboBox *b, int value=0)
     b->clear();
     for(int i=-MAX_DRSWITCH; i<=MAX_DRSWITCH; i++)
     {
-        switch (i)
-        {
-            case (0):
-                    b->addItem("---");
-                break;
-            case (MAX_DRSWITCH):
-                    b->addItem("ON");
-                break;
-            case (-MAX_DRSWITCH):
-                    b->addItem("OFF");
-                break;
-            default:
-                    if(i>0)
-                        b->addItem(str.mid((i-1)*3,3));
-                    else
-                        b->addItem("!" + str.mid((-i-1)*3,3));
-                break;
-        }
+//        switch (i)
+//        {
+//            case (0):
+//                    b->addItem("---");
+//                break;
+//            case (MAX_DRSWITCH):
+//                    b->addItem("ON");
+//                break;
+//            case (-MAX_DRSWITCH):
+//                    b->addItem("OFF");
+//                break;
+//            default:
+//                    if(i>0)
+//                        b->addItem(str.mid((i-1)*3,3));
+//                    else
+//                        b->addItem("!" + str.mid((-i-1)*3,3));
+//                break;
+//        }
+        b->addItem(getSWName(i));
     }
     b->setCurrentIndex(value+MAX_DRSWITCH);
     b->setMaxVisibleItems(10);
@@ -53,18 +63,66 @@ void populateTimerSwitchCB(QComboBox *b, int value=0)
     b->clear();
     for(int i=-TMR_NUM_OPTION; i<=TMR_NUM_OPTION; i++)
     {
-        QString s;
-        if(i<0) s+="!";
+//        QString s;
+//        if(i<0) s+="!";
 
-        if(abs(i)<TMR_VAROFS) s += stt.mid(abs(i)*3,3);
-        else if((abs(i)-TMR_VAROFS)<(MAX_DRSWITCH-1)) s += str.mid((abs(i)-TMR_VAROFS)*3,3);
-        else s += "m" + str.mid((abs(i)-TMR_VAROFS-MAX_DRSWITCH+1)*3,3);
+//        if(abs(i)<TMR_VAROFS) s += stt.mid(abs(i)*3,3);
+//        else if((abs(i)-TMR_VAROFS)<(MAX_DRSWITCH-1)) s += str.mid((abs(i)-TMR_VAROFS)*3,3);
+//        else s += "m" + str.mid((abs(i)-TMR_VAROFS-MAX_DRSWITCH+1)*3,3);
 
-        b->addItem(s);
+        b->addItem(getTimerMode(i));
     }
     b->setCurrentIndex(value+TMR_NUM_OPTION);
     b->setMaxVisibleItems(10);
 }
+
+QString getTimerMode(int tm)
+{
+
+    QString str = SWITCHES_STR;
+    QString stt = "OFFABSRUsRU%ELsEL%THsTH%ALsAL%P1 P1%P2 P2%P3 P3%";
+
+    QString s;
+    if(abs(tm)<TMR_VAROFS)
+    {
+        s = stt.mid(abs(tm)*3,3);
+        if(tm<-1) s.prepend("!");
+        return s;
+    }
+
+    if(abs(tm)<(TMR_VAROFS+MAX_DRSWITCH-1))
+    {
+        s = str.mid((abs(tm)-TMR_VAROFS)*3,3);
+        if(tm<0) s.prepend("!");
+        return s;
+    }
+
+
+    s = "m" + str.mid((abs(tm)-(TMR_VAROFS+MAX_DRSWITCH-1))*3,3);
+    if(tm<0) s.prepend("!");
+    return s;
+
+
+
+//    int8_t tm = g_model.tmrMode;
+//    if(abs(tm)<TMR_VAROFS) {
+//      lcd_putsnAtt(  x, y, PSTR("OFFABSRUsRU%ELsEL%THsTH%ALsAL%P1 P1%P2 P2%P3 P3%")+3*abs(tm),3,attr);
+//      if(tm<(-TMRMODE_ABS)) lcd_putcAtt(x-1*FW,  y,'!',attr);
+//      return;
+//    }
+
+//    if(abs(g_model.tmrMode)<(TMR_VAROFS+MAX_DRSWITCH-1)) { //normal on-off
+//      putsDrSwitches( x-1*FW,y,tm>0 ? tm-15 : tm+15,attr);
+//      return;
+//    }
+
+//    putsDrSwitches( x-1*FW,y,tm>0 ? tm-(TMR_VAROFS+MAX_DRSWITCH-1-1) : tm+(TMR_VAROFS+MAX_DRSWITCH-1-1),attr);//momentary on-off
+//    lcd_putcAtt(x+3*FW,  y,'m',attr);
+
+
+}
+
+
 
 
 #define MODI_STR  "RUD ELE THR AIL RUD THR ELE AIL AIL ELE THR RUD AIL THR ELE RUD "
@@ -98,6 +156,12 @@ void populateSourceCB(QComboBox *b, int stickMode, int value)
     for(int i=0; i<29; i++) b->addItem(str.mid(i*4,4));
     b->setCurrentIndex(value);
     b->setMaxVisibleItems(10);
+}
+
+
+QString getCSWFunc(int val)
+{
+    return QString(CSWITCH_STR).mid(val*7,7);
 }
 
 

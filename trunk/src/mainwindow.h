@@ -79,6 +79,7 @@ private slots:
     void burnList();
     void simulate();
     void about();
+    void print();
     void donators();
     void updateMenus();
     void updateWindowMenu();
@@ -131,6 +132,7 @@ private:
     QAction *separatorAct;
     QAction *aboutAct;
     QAction *donatorsAct;
+    QAction *printAct;
     //QAction *aboutQtAct;
 };
 

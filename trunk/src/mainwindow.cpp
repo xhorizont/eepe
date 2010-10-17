@@ -47,6 +47,8 @@
 #include "avroutputdialog.h"
 #include "donatorsdialog.h"
 
+#define DONATE_STR "https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=TGT92W338DPGN&lc=IL&item_name=Erez%20Raviv&item_number=eePe&amount=5%2e00&currency_code=USD&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted"
+
 MainWindow::MainWindow()
 {
     mdiArea = new QMdiArea;
@@ -164,6 +166,13 @@ void MainWindow::simulate()
         activeMdiChild()->simulate();
 }
 
+
+void MainWindow::print()
+{
+    if (activeMdiChild())
+        activeMdiChild()->print();
+}
+
 void MainWindow::burnFrom()
 {
     burnConfigDialog bcd;
@@ -278,10 +287,15 @@ void MainWindow::about()
         QStringList sl = str.split(":");
         str = sl.takeAt(1);
     }
-    QMessageBox::about(this, tr("About eePe"),
-                      tr("<center><img src=\":/images/eepe-title.png\"><br>"
-                      "Copyright Erez Raviv &copy;2010<br>"
-                      "<a href='http://code.google.com/p/eepe/'>http://code.google.com/p/eepe/</a><br>Revision: %1, %2</center>").arg(str.toInt()+1).arg(__DATE__));
+
+    QString aboutStr = tr("<center><img src=\":/images/eepe-title.png\"><br>");
+    aboutStr.append(tr("Copyright Erez Raviv &copy;2010<br>"));
+    aboutStr.append(tr("<a href='http://code.google.com/p/eepe/'>http://code.google.com/p/eepe/</a><br>Revision: %1, %2<br><br>").arg(str.toInt()+1).arg(__DATE__));
+    aboutStr.append(tr("If you've found this program and/or the Firmware useful please support by <a href='"));
+    aboutStr.append(DONATE_STR);
+    aboutStr.append("'>donating</a></center>");
+
+    QMessageBox::about(this, tr("About eePe"),aboutStr);
 }
 
 void MainWindow::updateMenus()
@@ -348,6 +362,7 @@ MdiChild *MainWindow::createMdiChild()
     connect(child, SIGNAL(copyAvailable(bool)),cutAct, SLOT(setEnabled(bool)));
     connect(child, SIGNAL(copyAvailable(bool)),copyAct, SLOT(setEnabled(bool)));
     connect(child, SIGNAL(copyAvailable(bool)),simulateAct, SLOT(setEnabled(bool)));
+    connect(child, SIGNAL(copyAvailable(bool)),printAct, SLOT(setEnabled(bool)));
 
     return child;
 }
@@ -432,6 +447,12 @@ void MainWindow::createActions()
     simulateAct->setEnabled(false);
     connect(simulateAct,SIGNAL(triggered()),this,SLOT(simulate()));
 
+    printAct = new QAction(QIcon(":/images/print.png"), tr("&Print"), this);
+    printAct->setShortcut(tr("Ctrl+P"));
+    printAct->setStatusTip("Print current model.");
+    printAct->setEnabled(false);
+    connect(printAct,SIGNAL(triggered()),this,SLOT(print()));
+
     closeAct = new QAction(tr("Cl&ose"), this);
     closeAct->setStatusTip(tr("Close the active window"));
     connect(closeAct, SIGNAL(triggered()),
@@ -488,6 +509,7 @@ void MainWindow::createMenus()
     fileMenu->addAction(saveAsAct);
     fileMenu->addSeparator();
     fileMenu->addAction(simulateAct);
+    fileMenu->addAction(printAct);
     fileMenu->addSeparator();
     QAction *action = fileMenu->addAction(tr("Switch layout direction"));
     connect(action, SIGNAL(triggered()), this, SLOT(switchLayoutDirection()));
@@ -527,6 +549,7 @@ void MainWindow::createToolBars()
     fileToolBar->addAction(saveAct);
     fileToolBar->addSeparator();
     fileToolBar->addAction(simulateAct);
+    fileToolBar->addAction(printAct);
 
     editToolBar = addToolBar(tr("Edit"));
     editToolBar->addAction(cutAct);

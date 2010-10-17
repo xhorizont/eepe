@@ -15,5 +15,6 @@
         <file>images/simulate.png</file>
         <file>images/configure.png</file>
         <file>donators</file>
+        <file>images/print.png</file>
     </qresource>
 </RCC>
