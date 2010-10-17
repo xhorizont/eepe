@@ -470,8 +470,8 @@ void MainWindow::createActions()
     aboutAct->setStatusTip(tr("Show the application's About box"));
     connect(aboutAct, SIGNAL(triggered()), this, SLOT(about()));
 
-    donatorsAct = new QAction(tr("&Donator List"), this);
-    donatorsAct->setStatusTip(tr("List er9x/eePe donators"));
+    donatorsAct = new QAction(tr("&Contributors"), this);
+    donatorsAct->setStatusTip(tr("List er9x/eePe Contributors"));
     connect(donatorsAct, SIGNAL(triggered()), this, SLOT(donators()));
 
     //aboutQtAct = new QAction(tr("About &Qt"), this);

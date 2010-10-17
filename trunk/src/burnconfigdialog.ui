@@ -505,7 +505,7 @@
        </property>
       </widget>
      </item>
-     <item row="0" column="2">
+     <item row="0" column="3">
       <widget class="QDialogButtonBox" name="buttonBox">
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
@@ -519,6 +519,16 @@
       <widget class="QPushButton" name="readFuses">
        <property name="text">
         <string>Read Fuses</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="2">
+      <widget class="QCheckBox" name="eraseEEPROM_CB">
+       <property name="text">
+        <string>Set Erase EEPROM Fuse</string>
+       </property>
+       <property name="checked">
+        <bool>true</bool>
        </property>
       </widget>
      </item>

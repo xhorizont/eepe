@@ -20,11 +20,12 @@ public:
     burnConfigDialog(QWidget *parent = 0);
     ~burnConfigDialog();
 
-    QString getTempDir();
-    QString getAVRDUDE();
-    QStringList getAVRArgs();
-    QString getProgrammer();
-    QString getPort();
+    QString getTempDir() {return avrTempDir;}
+    QString getAVRDUDE() {return avrLoc;}
+    QStringList getAVRArgs() {return avrArgs;}
+    QString getProgrammer() {return avrProgrammer;}
+    QString getPort() {return avrPort;}
+    bool getEraseEEPROM() {return avrEraseEEPROM;}
 
     void listProgrammers();
 
@@ -35,7 +36,17 @@ private:
     Ui::burnConfigDialog *ui;
 
 
+    QString avrTempDir;
+    QString avrLoc;
+    QStringList avrArgs;
+    QString avrProgrammer;
+    QString avrPort;
+    bool avrEraseEEPROM;
+
+
+
 private slots:
+    void on_eraseEEPROM_CB_toggled(bool );
     void on_readFuses_clicked();
     void on_resetFuses_clicked();
     void on_avrArgs_editingFinished();
