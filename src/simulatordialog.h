@@ -47,6 +47,10 @@ private:
 
     bool keyState(EnumKeys key);
     bool getSwitch(int swtch, bool nc);
+    void beepWarn1();
+
+    int beepVal;
+    int beepShow;
 
     int16_t intpol(int16_t x, uint8_t idx);
 private slots:

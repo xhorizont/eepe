@@ -28,6 +28,9 @@ simulatorDialog::simulatorDialog(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    beepVal = 0;
+    beepShow = 0;
+
     setupSticks();
     setupTimer();
 }
@@ -54,6 +57,19 @@ void simulatorDialog::timerEvent()
     perOut();
     setValues();
     centerSticks();
+
+    if(beepVal)
+    {
+        beepVal = 0;
+        QApplication::beep();
+    }
+
+
+#define CBEEP_ON  "QLabel { background-color: #FF364E }"
+#define CBEEP_OFF "QLabel { }"
+
+    ui->label_beep->setStyleSheet(beepShow ? CBEEP_ON : CBEEP_OFF);
+    if(beepShow) beepShow--;
 }
 
 void simulatorDialog::centerSticks()
@@ -182,8 +198,15 @@ void simulatorDialog::setValues()
     ui->labelCSW4->setStyleSheet(getSwitch(DSW_CS4,0) ? CSWITCH_ON : CSWITCH_OFF);
     ui->labelCSW5->setStyleSheet(getSwitch(DSW_CS5,0) ? CSWITCH_ON : CSWITCH_OFF);
     ui->labelCSW5->setStyleSheet(getSwitch(DSW_CS6,0) ? CSWITCH_ON : CSWITCH_OFF);
-
 }
+
+void simulatorDialog::beepWarn1()
+{
+    beepVal = 1;
+    beepShow = 20;
+}
+
+
 
 void simulatorDialog::setupSticks()
 {
@@ -365,6 +388,10 @@ void simulatorDialog::perOut(bool init)
   static int32_t  chans[NUM_CHNOUT];
   int16_t trimA[4];
 
+  static uint8_t  bpanaCenter;
+
+  uint8_t  anaCenter = 0;
+
   for(uint8_t i=0;i<7;i++){        // calc Sticks
 
     //Normalization  [0..2048] ->   [-1024..1024]
@@ -377,7 +404,8 @@ void simulatorDialog::perOut(bool init)
 //    if(v <= -RESX) v = -RESX;
 //    if(v >=  RESX) v =  RESX;
 //    calibratedStick[i] = v; //for show in expo
-//    if(!(v/16)) anaCenter |= 1<<(CONVERT_MODE((i+1))-1);
+
+    if(!(v/16)) anaCenter |= 1<<(CONVERT_MODE((i+1))-1);
 
 
     if(i<4) { //only do this for sticks
@@ -406,6 +434,12 @@ void simulatorDialog::perOut(bool init)
     }
     anas[i] = v; //set values for mixer
   }
+
+  //===========BEEP CENTER================
+  anaCenter &= g_model.beepANACenter;
+  if(((bpanaCenter ^ anaCenter) & anaCenter)) beepWarn1();
+  bpanaCenter = anaCenter;
+
 
   anas[MIX_MAX-1]  = RESX;     // MAX
   anas[MIX_FULL-1] = RESX;     // FULL
@@ -554,6 +588,16 @@ void simulatorDialog::perOut(bool init)
           break;
         }
     }
+
+
+    //========== MIXER WARNING ===============
+    //1= 00,08
+    //2= 24,32,40
+    //3= 56,64,72,80
+    if(mixWarning & 1) if(((g_tmr10ms&0xFF)==  0)) beepWarn1();
+    if(mixWarning & 2) if(((g_tmr10ms&0xFF)== 64) || ((g_tmr10ms&0xFF)== 72)) beepWarn1();
+    if(mixWarning & 4) if(((g_tmr10ms&0xFF)==128) || ((g_tmr10ms&0xFF)==136) || ((g_tmr10ms&0xFF)==144)) beepWarn1();
+
 
   //========== LIMITS ===============
   for(uint8_t i=0;i<NUM_CHNOUT;i++){
