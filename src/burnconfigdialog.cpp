@@ -8,9 +8,9 @@ burnConfigDialog::burnConfigDialog(QWidget *parent) :
     ui(new Ui::burnConfigDialog)
 {
     ui->setupUi(this);
-    getSettings();
-
     ui->avrdude_programmer->model()->sort(0);
+
+    getSettings();
 }
 
 burnConfigDialog::~burnConfigDialog()
