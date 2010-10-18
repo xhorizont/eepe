@@ -32,9 +32,12 @@ bool EEPFILE::Changed()
     return fileChanged;
 }
 
-void EEPFILE::loadFile(void* buf)
+bool EEPFILE::loadFile(void* buf)
 {
     theFile.load(buf);
+
+    EEGeneral g_eeGeneral;
+    return getGeneralSettings(&g_eeGeneral);
 }
 
 

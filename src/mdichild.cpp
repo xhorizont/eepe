@@ -454,7 +454,14 @@ bool MdiChild::loadFile(const QString &fileName, bool resetCurrentFile)
         }
 
         file.close();
-        eeFile.loadFile(&temp);
+        if(!eeFile.loadFile(&temp))
+        {
+            QMessageBox::warning(this, tr("Error"),
+                                 tr("Error reading file %1:\n%2.")
+                                 .arg(fileName)
+                                 .arg(file.errorString()));
+            return false;
+        }
         refreshList();
         if(resetCurrentFile) setCurrentFile(fileName);
 
@@ -492,7 +499,14 @@ bool MdiChild::loadFile(const QString &fileName, bool resetCurrentFile)
             return false;
         }
 
-        eeFile.loadFile(&temp);
+        if(!eeFile.loadFile(&temp))
+        {
+            QMessageBox::warning(this, tr("Error"),
+                                 tr("Error reading file %1:\n%2.")
+                                 .arg(fileName)
+                                 .arg(file.errorString()));
+            return false;
+        }
         refreshList();
         if(resetCurrentFile) setCurrentFile(fileName);
 

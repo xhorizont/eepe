@@ -216,7 +216,7 @@ public:
 
     bool Changed();
     void setChanged(bool v);
-    void loadFile(void* buf);
+    bool loadFile(void* buf);
     void saveFile(void* buf);
 
     //bool eeLoadModel(uint8_t id);
