@@ -349,10 +349,12 @@ void MdiChild::OpenEditWindow()
 
         char buf[sizeof(g_model.name)+1];
         eeFile.getModelName((i-1),(char*)&buf);
-        ModelEdit t(&eeFile,(i-1),this);
-        t.setWindowTitle(tr("Editing model %1: ").arg(i) + QString(buf));
-        connect(&t,SIGNAL(modelValuesChanged()),this,SLOT(setModified()));
-        t.exec();
+        ModelEdit *t = new ModelEdit(&eeFile,(i-1),this);
+        t->setWindowTitle(tr("Editing model %1: ").arg(i) + QString(buf));
+        connect(t,SIGNAL(modelValuesChanged()),this,SLOT(setModified()));
+        //t->exec();
+        t->show();
+
 
     }
     else
@@ -361,9 +363,9 @@ void MdiChild::OpenEditWindow()
         if(eeFile.eeLoadGeneral())
         {
             //setModified();
-            GeneralEdit t(&eeFile, this);
-            connect(&t,SIGNAL(modelValuesChanged()),this,SLOT(setModified()));
-            t.exec();
+            GeneralEdit *t = new GeneralEdit(&eeFile, this);
+            connect(t,SIGNAL(modelValuesChanged()),this,SLOT(setModified()));
+            t->show();
         }
         else
             QMessageBox::critical(this, tr("Error"),tr("Unable to read settings!"));
@@ -678,8 +680,8 @@ void MdiChild::burnTo()  // write to Tx
     QStringList arguments;
     arguments << "-c" << programmer << "-p" << "m64" << args << "-U" << str;
 
-    avrOutputDialog ad(this, avrdudeLoc, arguments, "Write EEPROM To Tx");
-    ad.exec();
+    avrOutputDialog *ad = new avrOutputDialog(this, avrdudeLoc, arguments, "Write EEPROM To Tx");
+    ad->show();
 }
 
 void MdiChild::ShowContextMenu(const QPoint& pos)
@@ -691,18 +693,17 @@ void MdiChild::ShowContextMenu(const QPoint& pos)
     bool hasData = mimeData->hasFormat("application/x-eepe");
 
     QMenu contextMenu;
-    contextMenu.addAction(tr("&Edit"),this,SLOT(OpenEditWindow()));
+    contextMenu.addAction(QIcon(":/images/edit.png"), tr("&Edit"),this,SLOT(OpenEditWindow()));
     contextMenu.addSeparator();
-    contextMenu.addAction(tr("&Delete"),this,SLOT(deleteSelected(bool)),tr("Delete"));
-    contextMenu.addAction(tr("&Copy"),this,SLOT(copy()),tr("Ctrl+C"));
-    contextMenu.addAction(tr("&Cut"),this,SLOT(cut()),tr("Ctrl+X"));
-    contextMenu.addAction(tr("&Paste"),this,SLOT(paste()),tr("Ctrl+V"))->setEnabled(hasData);
-    contextMenu.addAction(tr("D&uplicate"),this,SLOT(duplicate()),tr("Ctrl+U"));
+    contextMenu.addAction(QIcon(":/images/clear.png"), tr("&Delete"),this,SLOT(deleteSelected(bool)),tr("Delete"));
+    contextMenu.addAction(QIcon(":/images/copy.png"), tr("&Copy"),this,SLOT(copy()),tr("Ctrl+C"));
+    contextMenu.addAction(QIcon(":/images/cut.png"), tr("&Cut"),this,SLOT(cut()),tr("Ctrl+X"));
+    contextMenu.addAction(QIcon(":/images/paste.png"), tr("&Paste"),this,SLOT(paste()),tr("Ctrl+V"))->setEnabled(hasData);
+    contextMenu.addAction(QIcon(":/images/duplicate.png"), tr("D&uplicate"),this,SLOT(duplicate()),tr("Ctrl+U"));
     contextMenu.addSeparator();
-    contextMenu.addAction(tr("&Simulate"),this,SLOT(simulate()),tr("Alt+S"));
+    contextMenu.addAction(QIcon(":/images/simulate.png"), tr("&Simulate"),this,SLOT(simulate()),tr("Alt+S"));
     contextMenu.addSeparator();
-    contextMenu.addAction(tr("&Write To Tx"),this,SLOT(burnTo()),tr("Ctrl+Alt+W"));
-    contextMenu.addAction(tr("&Read From Tx"),this,SLOT(burnFrom()),tr("Ctrl+Alt+R"));
+    contextMenu.addAction(QIcon(":/images/write_eeprom.png"), tr("&Write To Tx"),this,SLOT(burnTo()),tr("Ctrl+Alt+W"));
 
     contextMenu.exec(globalPos);
 }
@@ -718,7 +719,7 @@ void MdiChild::simulate()
 {
     if(currentRow()<1) return;
 
-    simulatorDialog sd;
+
 
     EEGeneral gg;
     if(!eeFile.getGeneralSettings(&gg)) return;
@@ -726,8 +727,9 @@ void MdiChild::simulate()
     ModelData gm;
     if(!eeFile.getModel(&gm,currentRow()-1)) return;
 
-    sd.loadParams(&gg,&gm);
-    sd.exec();
+    simulatorDialog *sd = new simulatorDialog(this);
+    sd->loadParams(&gg,&gm);
+    sd->show();
 }
 
 void MdiChild::print()
@@ -740,8 +742,8 @@ void MdiChild::print()
     ModelData gm;
     if(!eeFile.getModel(&gm,currentRow()-1)) return;
 
-    printDialog pd(this, &gg, &gm);
-    pd.exec();
+    printDialog *pd = new printDialog(this, &gg, &gm);
+    pd->show();
 }
 
 void MdiChild::viableModelSelected(int idx)

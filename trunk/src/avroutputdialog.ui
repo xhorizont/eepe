@@ -14,8 +14,8 @@
    <string>Dialog</string>
   </property>
   <property name="windowIcon">
-   <iconset>
-    <normaloff>icon.ico</normaloff>icon.ico</iconset>
+   <iconset resource="eepe.qrc">
+    <normaloff>:/icon.ico</normaloff>:/icon.ico</iconset>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
@@ -33,6 +33,8 @@
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="eepe.qrc"/>
+ </resources>
  <connections/>
 </ui>

@@ -55,6 +55,24 @@ signals:
 
 
 private slots:
+    void on_resetCurve_1_clicked();
+    void on_resetCurve_2_clicked();
+    void on_resetCurve_3_clicked();
+    void on_resetCurve_4_clicked();
+    void on_resetCurve_5_clicked();
+    void on_resetCurve_6_clicked();
+    void on_resetCurve_7_clicked();
+    void on_resetCurve_8_clicked();
+    void on_resetCurve_9_clicked();
+    void on_resetCurve_10_clicked();
+    void on_resetCurve_11_clicked();
+    void on_resetCurve_12_clicked();
+    void on_resetCurve_13_clicked();
+    void on_resetCurve_14_clicked();
+    void on_resetCurve_15_clicked();
+    void on_resetCurve_16_clicked();
+
+
     void on_pushButton_clicked();
     void mixersDelete(bool ask=true);
     void mixersCut();
