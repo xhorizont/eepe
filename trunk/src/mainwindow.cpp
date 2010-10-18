@@ -72,6 +72,23 @@ MainWindow::MainWindow()
     setWindowTitle(tr("eePe - EEPROM Editor"));
     setUnifiedTitleAndToolBarOnMac(true);
     this->setWindowIcon(QIcon(":/icon.ico"));
+
+    QStringList strl = QApplication::arguments();
+    QString str;
+    if(strl.count()>1) str = strl[1];
+    if(!str.isEmpty())
+    {
+        MdiChild *child = createMdiChild();
+        if (child->loadFile(str)) {
+            statusBar()->showMessage(tr("File loaded"), 2000);
+            child->show();
+            if(!child->parentWidget()->isMaximized() && !child->parentWidget()->isMinimized()) child->parentWidget()->resize(400,500);
+        } else {
+            child->close();
+        }
+    }
+
+
 }
 
 void MainWindow::closeEvent(QCloseEvent *event)
