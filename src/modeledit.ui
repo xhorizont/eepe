@@ -6,22 +6,22 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>701</width>
-    <height>664</height>
+    <width>592</width>
+    <height>567</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
   <property name="windowIcon">
-   <iconset>
-    <normaloff>icon.ico</normaloff>icon.ico</iconset>
+   <iconset resource="eepe.qrc">
+    <normaloff>:/icon.ico</normaloff>:/icon.ico</iconset>
   </property>
   <property name="sizeGripEnabled">
    <bool>true</bool>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="0" column="1">
+   <item row="2" column="1">
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
       <number>0</number>
@@ -2475,7 +2475,7 @@ Right</string>
        <item row="0" column="0">
         <widget class="QLabel" name="label_36">
          <property name="frameShape">
-          <enum>QFrame::Box</enum>
+          <enum>QFrame::Panel</enum>
          </property>
          <property name="frameShadow">
           <enum>QFrame::Raised</enum>
@@ -2497,7 +2497,7 @@ Right</string>
        <item row="0" column="1">
         <widget class="QLabel" name="label_46">
          <property name="frameShape">
-          <enum>QFrame::Box</enum>
+          <enum>QFrame::Panel</enum>
          </property>
          <property name="frameShadow">
           <enum>QFrame::Raised</enum>
@@ -2519,7 +2519,7 @@ Right</string>
        <item row="0" column="2">
         <widget class="QLabel" name="label_49">
          <property name="frameShape">
-          <enum>QFrame::Box</enum>
+          <enum>QFrame::Panel</enum>
          </property>
          <property name="frameShadow">
           <enum>QFrame::Raised</enum>
@@ -2541,7 +2541,7 @@ Right</string>
        <item row="0" column="3">
         <widget class="QLabel" name="label_50">
          <property name="frameShape">
-          <enum>QFrame::Box</enum>
+          <enum>QFrame::Panel</enum>
          </property>
          <property name="frameShadow">
           <enum>QFrame::Raised</enum>
@@ -2563,7 +2563,7 @@ Right</string>
        <item row="0" column="4">
         <widget class="QLabel" name="label_54">
          <property name="frameShape">
-          <enum>QFrame::Box</enum>
+          <enum>QFrame::Panel</enum>
          </property>
          <property name="frameShadow">
           <enum>QFrame::Raised</enum>
@@ -2588,7 +2588,7 @@ Right</string>
       <attribute name="title">
        <string>Curves</string>
       </attribute>
-      <layout class="QGridLayout" name="gridLayout_7">
+      <layout class="QGridLayout" name="gridLayout_7" columnstretch="0,10,10,10,10,10,10,10,10,10,0">
        <item row="0" column="0">
         <widget class="QPushButton" name="curveEdit_1">
          <property name="text">
@@ -2660,6 +2660,9 @@ Right</string>
           <number>100</number>
          </property>
         </widget>
+       </item>
+       <item row="0" column="6" rowspan="8" colspan="4">
+        <widget class="QGraphicsView" name="curvePreview"/>
        </item>
        <item row="1" column="0">
         <widget class="QPushButton" name="curveEdit_2">
@@ -4157,8 +4160,277 @@ Right</string>
          </property>
         </widget>
        </item>
-       <item row="0" column="6" rowspan="8" colspan="4">
-        <widget class="QGraphicsView" name="curvePreview"/>
+       <item row="0" column="10">
+        <widget class="QPushButton" name="resetCurve_1">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="icon">
+          <iconset resource="eepe.qrc">
+           <normaloff>:/images/clear.png</normaloff>:/images/clear.png</iconset>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="10">
+        <widget class="QPushButton" name="resetCurve_2">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="icon">
+          <iconset resource="eepe.qrc">
+           <normaloff>:/images/clear.png</normaloff>:/images/clear.png</iconset>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="10">
+        <widget class="QPushButton" name="resetCurve_3">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="icon">
+          <iconset resource="eepe.qrc">
+           <normaloff>:/images/clear.png</normaloff>:/images/clear.png</iconset>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="10">
+        <widget class="QPushButton" name="resetCurve_4">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="icon">
+          <iconset resource="eepe.qrc">
+           <normaloff>:/images/clear.png</normaloff>:/images/clear.png</iconset>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="10">
+        <widget class="QPushButton" name="resetCurve_5">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="icon">
+          <iconset resource="eepe.qrc">
+           <normaloff>:/images/clear.png</normaloff>:/images/clear.png</iconset>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="10">
+        <widget class="QPushButton" name="resetCurve_6">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="icon">
+          <iconset resource="eepe.qrc">
+           <normaloff>:/images/clear.png</normaloff>:/images/clear.png</iconset>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="10">
+        <widget class="QPushButton" name="resetCurve_7">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="icon">
+          <iconset resource="eepe.qrc">
+           <normaloff>:/images/clear.png</normaloff>:/images/clear.png</iconset>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="10">
+        <widget class="QPushButton" name="resetCurve_8">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="icon">
+          <iconset resource="eepe.qrc">
+           <normaloff>:/images/clear.png</normaloff>:/images/clear.png</iconset>
+         </property>
+        </widget>
+       </item>
+       <item row="8" column="10">
+        <widget class="QPushButton" name="resetCurve_9">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="icon">
+          <iconset resource="eepe.qrc">
+           <normaloff>:/images/clear.png</normaloff>:/images/clear.png</iconset>
+         </property>
+        </widget>
+       </item>
+       <item row="9" column="10">
+        <widget class="QPushButton" name="resetCurve_10">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="icon">
+          <iconset resource="eepe.qrc">
+           <normaloff>:/images/clear.png</normaloff>:/images/clear.png</iconset>
+         </property>
+        </widget>
+       </item>
+       <item row="10" column="10">
+        <widget class="QPushButton" name="resetCurve_11">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="icon">
+          <iconset resource="eepe.qrc">
+           <normaloff>:/images/clear.png</normaloff>:/images/clear.png</iconset>
+         </property>
+        </widget>
+       </item>
+       <item row="11" column="10">
+        <widget class="QPushButton" name="resetCurve_12">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="icon">
+          <iconset resource="eepe.qrc">
+           <normaloff>:/images/clear.png</normaloff>:/images/clear.png</iconset>
+         </property>
+        </widget>
+       </item>
+       <item row="12" column="10">
+        <widget class="QPushButton" name="resetCurve_13">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="icon">
+          <iconset resource="eepe.qrc">
+           <normaloff>:/images/clear.png</normaloff>:/images/clear.png</iconset>
+         </property>
+        </widget>
+       </item>
+       <item row="13" column="10">
+        <widget class="QPushButton" name="resetCurve_14">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="icon">
+          <iconset resource="eepe.qrc">
+           <normaloff>:/images/clear.png</normaloff>:/images/clear.png</iconset>
+         </property>
+        </widget>
+       </item>
+       <item row="14" column="10">
+        <widget class="QPushButton" name="resetCurve_15">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="icon">
+          <iconset resource="eepe.qrc">
+           <normaloff>:/images/clear.png</normaloff>:/images/clear.png</iconset>
+         </property>
+        </widget>
+       </item>
+       <item row="15" column="10">
+        <widget class="QPushButton" name="resetCurve_16">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="icon">
+          <iconset resource="eepe.qrc">
+           <normaloff>:/images/clear.png</normaloff>:/images/clear.png</iconset>
+         </property>
+        </widget>
        </item>
       </layout>
      </widget>
@@ -4166,9 +4438,15 @@ Right</string>
       <attribute name="title">
        <string>Switches</string>
       </attribute>
-      <layout class="QGridLayout" name="gridLayout_8">
+      <layout class="QGridLayout" name="gridLayout_8" columnstretch="0,10,10,10">
        <item row="0" column="0">
         <widget class="QLabel" name="label_30">
+         <property name="frameShape">
+          <enum>QFrame::Panel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
          <property name="text">
           <string>CSwitch1</string>
          </property>
@@ -4221,6 +4499,12 @@ Right</string>
        </item>
        <item row="1" column="0">
         <widget class="QLabel" name="label_31">
+         <property name="frameShape">
+          <enum>QFrame::Panel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
          <property name="text">
           <string>CSwitch2</string>
          </property>
@@ -4273,6 +4557,12 @@ Right</string>
        </item>
        <item row="2" column="0">
         <widget class="QLabel" name="label_32">
+         <property name="frameShape">
+          <enum>QFrame::Panel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
          <property name="text">
           <string>CSwitch3</string>
          </property>
@@ -4325,6 +4615,12 @@ Right</string>
        </item>
        <item row="3" column="0">
         <widget class="QLabel" name="label_33">
+         <property name="frameShape">
+          <enum>QFrame::Panel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
          <property name="text">
           <string>CSwitch4</string>
          </property>
@@ -4377,6 +4673,12 @@ Right</string>
        </item>
        <item row="4" column="0">
         <widget class="QLabel" name="label_34">
+         <property name="frameShape">
+          <enum>QFrame::Panel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
          <property name="text">
           <string>CSwitch5</string>
          </property>
@@ -4429,6 +4731,12 @@ Right</string>
        </item>
        <item row="5" column="0">
         <widget class="QLabel" name="label_35">
+         <property name="frameShape">
+          <enum>QFrame::Panel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
          <property name="text">
           <string>CSwitch6</string>
          </property>
@@ -4770,10 +5078,14 @@ Right</string>
      </widget>
     </widget>
    </item>
-   <item row="1" column="1">
+   <item row="3" column="1">
     <widget class="QPushButton" name="pushButton">
      <property name="text">
       <string>Simulate</string>
+     </property>
+     <property name="icon">
+      <iconset resource="eepe.qrc">
+       <normaloff>:/images/simulate.png</normaloff>:/images/simulate.png</iconset>
      </property>
     </widget>
    </item>
@@ -5080,7 +5392,9 @@ Right</string>
   <tabstop>slider_S1</tabstop>
   <tabstop>slider_S4</tabstop>
  </tabstops>
- <resources/>
+ <resources>
+  <include location="eepe.qrc"/>
+ </resources>
  <connections>
   <connection>
    <sender>slider_S3</sender>

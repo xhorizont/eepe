@@ -131,8 +131,8 @@ void burnConfigDialog::listProgrammers()
     QStringList arguments;
     arguments << "-c?";
 
-    avrOutputDialog ad(this, ui->avrdude_location->text(), arguments, "List available programmers", AVR_DIALOG_KEEP_OPEN);
-    ad.exec();
+    avrOutputDialog *ad = new avrOutputDialog(this, ui->avrdude_location->text(), arguments, "List available programmers", AVR_DIALOG_KEEP_OPEN);
+    ad->show();
 }
 
 void burnConfigDialog::on_pushButton_3_clicked()
@@ -147,8 +147,8 @@ void burnConfigDialog::on_pushButton_4_clicked()
     QStringList arguments;
     arguments << "-?";
 
-    avrOutputDialog ad(this, ui->avrdude_location->text(), arguments, "Show help", AVR_DIALOG_KEEP_OPEN);
-    ad.exec();
+    avrOutputDialog *ad = new avrOutputDialog(this, ui->avrdude_location->text(), arguments, "Show help", AVR_DIALOG_KEEP_OPEN);
+    ad->show();
 }
 
 
@@ -179,8 +179,8 @@ void burnConfigDialog::on_resetFuses_clicked()
         QStringList arguments;
         arguments << "-c" << avrProgrammer << "-p" << "m64" << args << "-u" << str;
 
-        avrOutputDialog ad(this, avrLoc, arguments, "Reset Fuses",AVR_DIALOG_KEEP_OPEN);
-        ad.exec();
+        avrOutputDialog *ad = new avrOutputDialog(this, avrLoc, arguments, "Reset Fuses",AVR_DIALOG_KEEP_OPEN);
+        ad->show();
     }
 
 }
@@ -196,7 +196,7 @@ void burnConfigDialog::on_readFuses_clicked()
     QStringList arguments;
     arguments << "-c" << avrProgrammer << "-p" << "m64" << args << str;
 
-    avrOutputDialog ad(this, avrLoc, arguments, "Read Fuses",AVR_DIALOG_KEEP_OPEN);
-    ad.exec();
+    avrOutputDialog *ad = new avrOutputDialog(this, avrLoc, arguments, "Read Fuses",AVR_DIALOG_KEEP_OPEN);
+    ad->show();
 }
 

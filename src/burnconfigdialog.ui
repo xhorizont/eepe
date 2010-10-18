@@ -14,8 +14,8 @@
    <string>AVRDUDE Configuration</string>
   </property>
   <property name="windowIcon">
-   <iconset>
-    <normaloff>icon.ico</normaloff>icon.ico</iconset>
+   <iconset resource="eepe.qrc">
+    <normaloff>:/icon.ico</normaloff>:/icon.ico</iconset>
   </property>
   <layout class="QGridLayout" name="gridLayout_4">
    <item row="0" column="0">
@@ -611,7 +611,9 @@ To write the fuse you need to press &quot;Reset Fuses&quot;.
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="eepe.qrc"/>
+ </resources>
  <connections>
   <connection>
    <sender>buttonBox</sender>

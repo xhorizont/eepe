@@ -189,8 +189,8 @@ void MainWindow::burnFrom()
     QStringList arguments;
     arguments << "-c" << programmer << "-p" << "m64" << args << "-U" << str;
 
-    avrOutputDialog ad(this, avrdudeLoc, arguments,"Read EEPROM From Tx"); //, AVR_DIALOG_KEEP_OPEN);
-    int res = ad.exec();
+    avrOutputDialog *ad = new avrOutputDialog(this, avrdudeLoc, arguments,"Read EEPROM From Tx"); //, AVR_DIALOG_KEEP_OPEN);
+    int res = ad->exec();
 
     if(QFileInfo(tempFile).exists() && res)
     {
@@ -225,8 +225,8 @@ void MainWindow::burnToFlash()
         QStringList arguments;
         arguments << "-c" << programmer << "-p" << "m64" << args << "-U" << str;
 
-        avrOutputDialog ad(this, avrdudeLoc, arguments, "Write Flash To Tx");
-        ad.exec();
+        avrOutputDialog *ad = new avrOutputDialog(this, avrdudeLoc, arguments, "Write Flash To Tx");
+        ad->show();
     }
 }
 
@@ -253,16 +253,16 @@ void MainWindow::burnFromFlash()
         QStringList arguments;
         arguments << "-c" << programmer << "-p" << "m64" << args << "-U" << str;
 
-        avrOutputDialog ad(this, avrdudeLoc, arguments, "Read Flash From Tx");
-        ad.exec();
+        avrOutputDialog *ad = new avrOutputDialog(this, avrdudeLoc, arguments, "Read Flash From Tx");
+        ad->show();
     }
 
 }
 
 void MainWindow::burnConfig()
 {
-    burnConfigDialog bcd;
-    bcd.exec();
+    burnConfigDialog *bcd = new burnConfigDialog(this);
+    bcd->show();
 }
 
 void MainWindow::burnList()
@@ -273,8 +273,8 @@ void MainWindow::burnList()
 
 void MainWindow::donators()
 {
-    donatorsDialog dd;
-    dd.exec();
+    donatorsDialog *dd = new donatorsDialog(this);
+    dd->show();
 }
 
 void MainWindow::about()

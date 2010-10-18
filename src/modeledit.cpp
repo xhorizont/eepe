@@ -1591,10 +1591,10 @@ void ModelEdit::gm_openMix(int index)
     if(EDIT_EXT_MIX) memcpy(&mixd,&g_model.mixData[index],sizeof(MixData));
 
 
-    MixerDialog g(this,&mixd,g_eeGeneral.stickMode);
+    MixerDialog *g = new MixerDialog(this,&mixd,g_eeGeneral.stickMode);
 
 
-    if(g.exec())
+    if(g->exec())
     {
         if(ADD_NEW_MIX)
         {
@@ -1736,14 +1736,14 @@ void ModelEdit::on_MixerlistWidget_customContextMenuRequested(QPoint pos)
     bool hasData = mimeData->hasFormat("application/x-eepe-mix");
 
     QMenu contextMenu;
-    contextMenu.addAction(tr("&Add"),this,SLOT(mixerAdd()),tr("Ctrl+A"));
-    contextMenu.addAction(tr("&Edit"),this,SLOT(mixerOpen()),tr("Enter"));
+    contextMenu.addAction(QIcon(":/images/add.png"), tr("&Add"),this,SLOT(mixerAdd()),tr("Ctrl+A"));
+    contextMenu.addAction(QIcon(":/images/edit.png"), tr("&Edit"),this,SLOT(mixerOpen()),tr("Enter"));
     contextMenu.addSeparator();
-    contextMenu.addAction(tr("&Delete"),this,SLOT(mixersDelete()),tr("Delete"));
-    contextMenu.addAction(tr("&Copy"),this,SLOT(mixersCopy()),tr("Ctrl+C"));
-    contextMenu.addAction(tr("&Cut"),this,SLOT(mixersCut()),tr("Ctrl+X"));
-    contextMenu.addAction(tr("&Paste"),this,SLOT(mixersPaste()),tr("Ctrl+V"))->setEnabled(hasData);
-    contextMenu.addAction(tr("D&uplicate"),this,SLOT(mixersDuplicate()),tr("Ctrl+U"));
+    contextMenu.addAction(QIcon(":/images/clear.png"), tr("&Delete"),this,SLOT(mixersDelete()),tr("Delete"));
+    contextMenu.addAction(QIcon(":/images/copy.png"), tr("&Copy"),this,SLOT(mixersCopy()),tr("Ctrl+C"));
+    contextMenu.addAction(QIcon(":/images/cut.png"), tr("&Cut"),this,SLOT(mixersCut()),tr("Ctrl+X"));
+    contextMenu.addAction(QIcon(":/images/paste.png"), tr("&Paste"),this,SLOT(mixersPaste()),tr("Ctrl+V"))->setEnabled(hasData);
+    contextMenu.addAction(QIcon(":/images/duplicate.png"), tr("D&uplicate"),this,SLOT(mixersDuplicate()),tr("Ctrl+U"));
 
     contextMenu.exec(globalPos);
 
@@ -1751,12 +1751,127 @@ void ModelEdit::on_MixerlistWidget_customContextMenuRequested(QPoint pos)
 
 void ModelEdit::launchSimulation()
 {
-    simulatorDialog sd;
-    sd.loadParams(&g_eeGeneral,&g_model);
-    sd.exec();
+    simulatorDialog *sd = new simulatorDialog(this);
+    sd->loadParams(&g_eeGeneral,&g_model);
+    sd->show();
 }
 
 void ModelEdit::on_pushButton_clicked()
 {
     launchSimulation();
+}
+
+void ModelEdit::on_resetCurve_1_clicked()
+{
+    memset(&g_model.curves5[0],0,sizeof(g_model.curves5[0]));
+    updateTabCurves();
+    drawCurve();
+}
+
+void ModelEdit::on_resetCurve_2_clicked()
+{
+    memset(&g_model.curves5[1],0,sizeof(g_model.curves5[0]));
+    updateTabCurves();
+    drawCurve();
+}
+
+void ModelEdit::on_resetCurve_3_clicked()
+{
+    memset(&g_model.curves5[2],0,sizeof(g_model.curves5[0]));
+    updateTabCurves();
+    drawCurve();
+}
+
+void ModelEdit::on_resetCurve_4_clicked()
+{
+    memset(&g_model.curves5[3],0,sizeof(g_model.curves5[0]));
+    updateTabCurves();
+    drawCurve();
+}
+
+void ModelEdit::on_resetCurve_5_clicked()
+{
+    memset(&g_model.curves5[4],0,sizeof(g_model.curves5[0]));
+    updateTabCurves();
+    drawCurve();
+}
+
+void ModelEdit::on_resetCurve_6_clicked()
+{
+    memset(&g_model.curves5[5],0,sizeof(g_model.curves5[0]));
+    updateTabCurves();
+    drawCurve();
+}
+
+void ModelEdit::on_resetCurve_7_clicked()
+{
+    memset(&g_model.curves5[6],0,sizeof(g_model.curves5[0]));
+    updateTabCurves();
+    drawCurve();
+}
+
+void ModelEdit::on_resetCurve_8_clicked()
+{
+    memset(&g_model.curves5[7],0,sizeof(g_model.curves5[0]));
+    updateTabCurves();
+    drawCurve();
+}
+
+
+
+
+void ModelEdit::on_resetCurve_9_clicked()
+{
+    memset(&g_model.curves9[0],0,sizeof(g_model.curves9[0]));
+    updateTabCurves();
+    drawCurve();
+}
+
+void ModelEdit::on_resetCurve_10_clicked()
+{
+    memset(&g_model.curves9[1],0,sizeof(g_model.curves9[0]));
+    updateTabCurves();
+    drawCurve();
+}
+
+void ModelEdit::on_resetCurve_11_clicked()
+{
+    memset(&g_model.curves9[2],0,sizeof(g_model.curves9[0]));
+    updateTabCurves();
+    drawCurve();
+}
+
+void ModelEdit::on_resetCurve_12_clicked()
+{
+    memset(&g_model.curves9[3],0,sizeof(g_model.curves9[0]));
+    updateTabCurves();
+    drawCurve();
+}
+
+void ModelEdit::on_resetCurve_13_clicked()
+{
+    memset(&g_model.curves9[4],0,sizeof(g_model.curves9[0]));
+    updateTabCurves();
+    drawCurve();
+}
+
+void ModelEdit::on_resetCurve_14_clicked()
+{
+    memset(&g_model.curves9[5],0,sizeof(g_model.curves9[0]));
+    updateTabCurves();
+    drawCurve();
+}
+
+void ModelEdit::on_resetCurve_15_clicked()
+{
+    memset(&g_model.curves9[6],0,sizeof(g_model.curves9[0]));
+    updateTabCurves();
+    drawCurve();
+}
+
+void ModelEdit::on_resetCurve_16_clicked()
+{
+    memset(&g_model.curves9[7],0,sizeof(g_model.curves9[0]));
+    updateTabCurves();
+    drawCurve();
 }

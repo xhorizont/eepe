@@ -13,6 +13,10 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="eepe.qrc">
+    <normaloff>:/icon.ico</normaloff>:/icon.ico</iconset>
+  </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
     <widget class="QTextEdit" name="textEdit">
@@ -54,7 +58,9 @@
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="eepe.qrc"/>
+ </resources>
  <connections>
   <connection>
    <sender>closeButton</sender>

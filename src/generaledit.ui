@@ -14,8 +14,8 @@
    <string>General Edit</string>
   </property>
   <property name="windowIcon">
-   <iconset>
-    <normaloff>icon.ico</normaloff>icon.ico</iconset>
+   <iconset resource="eepe.qrc">
+    <normaloff>:/icon.ico</normaloff>:/icon.ico</iconset>
   </property>
   <property name="sizeGripEnabled">
    <bool>true</bool>
@@ -1201,6 +1201,8 @@ Mode 4:
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="eepe.qrc"/>
+ </resources>
  <connections/>
 </ui>

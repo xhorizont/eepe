@@ -13,6 +13,8 @@ avrOutputDialog::avrOutputDialog(QWidget *parent, QString prog, QStringList arg,
     else
         setWindowTitle("AVRDUDE - " + wTitle);
 
+
+
     cmdLine = prog;
     foreach(QString str, arg) cmdLine.append(" " + str);
     closeOpt = closeBehaviour;
