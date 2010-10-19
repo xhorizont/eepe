@@ -521,7 +521,7 @@ void simulatorDialog::perOut(bool init)
           //-100..100 => 32768 ->  100*83886/256 = 32768,   For MAX we divide by 2 since it's asymmetrical
 
             int32_t rate = (int32_t)DEL_MULT*2048*100;
-            if(md.weight) rate /= md.weight;
+            if(md.weight) rate /= abs(md.weight);
             act[i] = (diff>0) ? ((md.speedUp>0)   ? act[i]+(rate)/((int16_t)100*md.speedUp)   :  (int32_t)v*DEL_MULT) :
                      ((md.speedDown>0) ? act[i]-(rate)/((int16_t)100*md.speedDown) :  (int32_t)v*DEL_MULT) ;
 
