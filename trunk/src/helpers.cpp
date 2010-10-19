@@ -15,31 +15,9 @@ QString getSWName(int val)
 
 void populateSwitchCB(QComboBox *b, int value=0)
 {
-    QString str = SWITCHES_STR;
-
     b->clear();
     for(int i=-MAX_DRSWITCH; i<=MAX_DRSWITCH; i++)
-    {
-//        switch (i)
-//        {
-//            case (0):
-//                    b->addItem("---");
-//                break;
-//            case (MAX_DRSWITCH):
-//                    b->addItem("ON");
-//                break;
-//            case (-MAX_DRSWITCH):
-//                    b->addItem("OFF");
-//                break;
-//            default:
-//                    if(i>0)
-//                        b->addItem(str.mid((i-1)*3,3));
-//                    else
-//                        b->addItem("!" + str.mid((-i-1)*3,3));
-//                break;
-//        }
         b->addItem(getSWName(i));
-    }
     b->setCurrentIndex(value+MAX_DRSWITCH);
     b->setMaxVisibleItems(10);
 }
@@ -56,22 +34,9 @@ void populateCurvesCB(QComboBox *b, int value)
 
 void populateTimerSwitchCB(QComboBox *b, int value=0)
 {
-
-    QString str = SWITCHES_STR;
-    QString stt = "OFFABSRUsRU%ELsEL%THsTH%ALsAL%P1 P1%P2 P2%P3 P3%";
-
     b->clear();
     for(int i=-TMR_NUM_OPTION; i<=TMR_NUM_OPTION; i++)
-    {
-//        QString s;
-//        if(i<0) s+="!";
-
-//        if(abs(i)<TMR_VAROFS) s += stt.mid(abs(i)*3,3);
-//        else if((abs(i)-TMR_VAROFS)<(MAX_DRSWITCH-1)) s += str.mid((abs(i)-TMR_VAROFS)*3,3);
-//        else s += "m" + str.mid((abs(i)-TMR_VAROFS-MAX_DRSWITCH+1)*3,3);
-
         b->addItem(getTimerMode(i));
-    }
     b->setCurrentIndex(value+TMR_NUM_OPTION);
     b->setMaxVisibleItems(10);
 }
@@ -102,24 +67,6 @@ QString getTimerMode(int tm)
     if(tm<0) s.prepend("!");
     return s;
 
-
-
-//    int8_t tm = g_model.tmrMode;
-//    if(abs(tm)<TMR_VAROFS) {
-//      lcd_putsnAtt(  x, y, PSTR("OFFABSRUsRU%ELsEL%THsTH%ALsAL%P1 P1%P2 P2%P3 P3%")+3*abs(tm),3,attr);
-//      if(tm<(-TMRMODE_ABS)) lcd_putcAtt(x-1*FW,  y,'!',attr);
-//      return;
-//    }
-
-//    if(abs(g_model.tmrMode)<(TMR_VAROFS+MAX_DRSWITCH-1)) { //normal on-off
-//      putsDrSwitches( x-1*FW,y,tm>0 ? tm-15 : tm+15,attr);
-//      return;
-//    }
-
-//    putsDrSwitches( x-1*FW,y,tm>0 ? tm-(TMR_VAROFS+MAX_DRSWITCH-1-1) : tm+(TMR_VAROFS+MAX_DRSWITCH-1-1),attr);//momentary on-off
-//    lcd_putcAtt(x+3*FW,  y,'m',attr);
-
-
 }
 
 
@@ -148,12 +95,8 @@ QString getSourceStr(int stickMode=1, int idx=0)
 
 void populateSourceCB(QComboBox *b, int stickMode, int value)
 {
-    QString modi = MODI_STR;
-    QString str = SRCP_STR;
     b->clear();
-    b->addItem("----");
-    for(int i=0; i<4; i++)  b->addItem(modi.mid(i*4+stickMode*16,4));
-    for(int i=0; i<29; i++) b->addItem(str.mid(i*4,4));
+    for(int i=0; i<34; i++) b->addItem(getSourceStr(stickMode,i));
     b->setCurrentIndex(value);
     b->setMaxVisibleItems(10);
 }
@@ -161,8 +104,15 @@ void populateSourceCB(QComboBox *b, int stickMode, int value)
 
 QString getCSWFunc(int val)
 {
-    return QString(CSWITCH_STR).mid(val*7,7);
+    return QString(CSWITCH_STR).mid(val*CSW_LEN_FUNC,CSW_LEN_FUNC);
 }
 
 
+void populateCSWCB(QComboBox *b, int value)
+{
+    b->clear();
+    for(int i=0; i<CSW_NUM_FUNC; i++) b->addItem(getCSWFunc(i));
+    b->setCurrentIndex(value);
+    b->setMaxVisibleItems(10);
+}
 

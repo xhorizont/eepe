@@ -35,6 +35,7 @@ private:
     void tabSwitches();
     void tabTrims();
     void updateTabCurves();
+    void setCSWEnables();
 
     void launchSimulation();
     void resizeEvent(QResizeEvent *event  = 0);

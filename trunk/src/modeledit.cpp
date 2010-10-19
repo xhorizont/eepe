@@ -976,7 +976,7 @@ void ModelEdit::curvePointEdited()
 void ModelEdit::tabSwitches()
 {
     populateSourceCB(ui->cswitchCB_1,g_eeGeneral.stickMode,g_model.customSw[0].input);
-    populateSourceCB(ui->cswitchCB_2,g_eeGeneral.stickMode,g_model.customSw[2].input);
+    populateSourceCB(ui->cswitchCB_2,g_eeGeneral.stickMode,g_model.customSw[1].input);
     populateSourceCB(ui->cswitchCB_3,g_eeGeneral.stickMode,g_model.customSw[2].input);
     populateSourceCB(ui->cswitchCB_4,g_eeGeneral.stickMode,g_model.customSw[3].input);
     populateSourceCB(ui->cswitchCB_5,g_eeGeneral.stickMode,g_model.customSw[4].input);
@@ -989,12 +989,43 @@ void ModelEdit::tabSwitches()
     ui->cswitchOfs_5->setValue(g_model.customSw[4].offset);
     ui->cswitchOfs_6->setValue(g_model.customSw[5].offset);
 
-    ui->cswitchFunc_1->setCurrentIndex(g_model.customSw[0].func);
-    ui->cswitchFunc_2->setCurrentIndex(g_model.customSw[1].func);
-    ui->cswitchFunc_3->setCurrentIndex(g_model.customSw[2].func);
-    ui->cswitchFunc_4->setCurrentIndex(g_model.customSw[3].func);
-    ui->cswitchFunc_5->setCurrentIndex(g_model.customSw[4].func);
-    ui->cswitchFunc_6->setCurrentIndex(g_model.customSw[5].func);
+    populateCSWCB(ui->cswitchFunc_1,g_model.customSw[0].func);
+    populateCSWCB(ui->cswitchFunc_2,g_model.customSw[1].func);
+    populateCSWCB(ui->cswitchFunc_3,g_model.customSw[2].func);
+    populateCSWCB(ui->cswitchFunc_4,g_model.customSw[3].func);
+    populateCSWCB(ui->cswitchFunc_5,g_model.customSw[4].func);
+    populateCSWCB(ui->cswitchFunc_6,g_model.customSw[5].func);
+
+    populateSwitchCB(ui->cswitchLOGCB_12,g_model.customSw[0].input);
+    populateSwitchCB(ui->cswitchLOGCB_22,g_model.customSw[1].input);
+    populateSwitchCB(ui->cswitchLOGCB_32,g_model.customSw[2].input);
+    populateSwitchCB(ui->cswitchLOGCB_42,g_model.customSw[3].input);
+    populateSwitchCB(ui->cswitchLOGCB_52,g_model.customSw[4].input);
+    populateSwitchCB(ui->cswitchLOGCB_62,g_model.customSw[5].input);
+
+    populateSwitchCB(ui->cswitchLOGCB_13,g_model.customSw[0].offset);
+    populateSwitchCB(ui->cswitchLOGCB_23,g_model.customSw[1].offset);
+    populateSwitchCB(ui->cswitchLOGCB_33,g_model.customSw[2].offset);
+    populateSwitchCB(ui->cswitchLOGCB_43,g_model.customSw[3].offset);
+    populateSwitchCB(ui->cswitchLOGCB_53,g_model.customSw[4].offset);
+    populateSwitchCB(ui->cswitchLOGCB_63,g_model.customSw[5].offset);
+
+
+    setCSWEnables();
+
+    connect(ui->cswitchLOGCB_12,SIGNAL(currentIndexChanged(int)),this,SLOT(switchesEdited()));
+    connect(ui->cswitchLOGCB_22,SIGNAL(currentIndexChanged(int)),this,SLOT(switchesEdited()));
+    connect(ui->cswitchLOGCB_32,SIGNAL(currentIndexChanged(int)),this,SLOT(switchesEdited()));
+    connect(ui->cswitchLOGCB_42,SIGNAL(currentIndexChanged(int)),this,SLOT(switchesEdited()));
+    connect(ui->cswitchLOGCB_52,SIGNAL(currentIndexChanged(int)),this,SLOT(switchesEdited()));
+    connect(ui->cswitchLOGCB_62,SIGNAL(currentIndexChanged(int)),this,SLOT(switchesEdited()));
+
+    connect(ui->cswitchLOGCB_13,SIGNAL(currentIndexChanged(int)),this,SLOT(switchesEdited()));
+    connect(ui->cswitchLOGCB_23,SIGNAL(currentIndexChanged(int)),this,SLOT(switchesEdited()));
+    connect(ui->cswitchLOGCB_33,SIGNAL(currentIndexChanged(int)),this,SLOT(switchesEdited()));
+    connect(ui->cswitchLOGCB_43,SIGNAL(currentIndexChanged(int)),this,SLOT(switchesEdited()));
+    connect(ui->cswitchLOGCB_53,SIGNAL(currentIndexChanged(int)),this,SLOT(switchesEdited()));
+    connect(ui->cswitchLOGCB_63,SIGNAL(currentIndexChanged(int)),this,SLOT(switchesEdited()));
 
     connect(ui->cswitchCB_1,SIGNAL(currentIndexChanged(int)),this,SLOT(switchesEdited()));
     connect(ui->cswitchCB_2,SIGNAL(currentIndexChanged(int)),this,SLOT(switchesEdited()));
@@ -1018,21 +1049,120 @@ void ModelEdit::tabSwitches()
     connect(ui->cswitchFunc_6,SIGNAL(currentIndexChanged(int)),this,SLOT(switchesEdited()));
 }
 
+void ModelEdit::setCSWEnables()
+{
+    ui->cswitchCB_1->setVisible(g_model.customSw[0].func<CS_AND);
+    ui->cswitchCB_2->setVisible(g_model.customSw[1].func<CS_AND);
+    ui->cswitchCB_3->setVisible(g_model.customSw[2].func<CS_AND);
+    ui->cswitchCB_4->setVisible(g_model.customSw[3].func<CS_AND);
+    ui->cswitchCB_5->setVisible(g_model.customSw[4].func<CS_AND);
+    ui->cswitchCB_6->setVisible(g_model.customSw[5].func<CS_AND);
+
+    ui->cswitchOfs_1->setVisible(g_model.customSw[0].func<CS_AND);
+    ui->cswitchOfs_2->setVisible(g_model.customSw[1].func<CS_AND);
+    ui->cswitchOfs_3->setVisible(g_model.customSw[2].func<CS_AND);
+    ui->cswitchOfs_4->setVisible(g_model.customSw[3].func<CS_AND);
+    ui->cswitchOfs_5->setVisible(g_model.customSw[4].func<CS_AND);
+    ui->cswitchOfs_6->setVisible(g_model.customSw[5].func<CS_AND);
+
+    ui->cswitchLOGCB_12->setVisible(g_model.customSw[0].func>=CS_AND);
+    ui->cswitchLOGCB_13->setVisible(g_model.customSw[0].func>=CS_AND);
+    ui->cswitchLOGCB_22->setVisible(g_model.customSw[1].func>=CS_AND);
+    ui->cswitchLOGCB_23->setVisible(g_model.customSw[1].func>=CS_AND);
+    ui->cswitchLOGCB_32->setVisible(g_model.customSw[2].func>=CS_AND);
+    ui->cswitchLOGCB_33->setVisible(g_model.customSw[2].func>=CS_AND);
+    ui->cswitchLOGCB_42->setVisible(g_model.customSw[3].func>=CS_AND);
+    ui->cswitchLOGCB_43->setVisible(g_model.customSw[3].func>=CS_AND);
+    ui->cswitchLOGCB_52->setVisible(g_model.customSw[4].func>=CS_AND);
+    ui->cswitchLOGCB_53->setVisible(g_model.customSw[4].func>=CS_AND);
+    ui->cswitchLOGCB_62->setVisible(g_model.customSw[5].func>=CS_AND);
+    ui->cswitchLOGCB_63->setVisible(g_model.customSw[5].func>=CS_AND);
+}
+
 void ModelEdit::switchesEdited()
 {
-    g_model.customSw[0].input = ui->cswitchCB_1->currentIndex();
-    g_model.customSw[1].input = ui->cswitchCB_2->currentIndex();
-    g_model.customSw[2].input = ui->cswitchCB_3->currentIndex();
-    g_model.customSw[3].input = ui->cswitchCB_4->currentIndex();
-    g_model.customSw[4].input = ui->cswitchCB_5->currentIndex();
-    g_model.customSw[5].input = ui->cswitchCB_6->currentIndex();
+    if(ui->cswitchCB_1->isVisible()) g_model.customSw[0].input = ui->cswitchCB_1->currentIndex();
+    if(ui->cswitchCB_2->isVisible()) g_model.customSw[1].input = ui->cswitchCB_2->currentIndex();
+    if(ui->cswitchCB_3->isVisible()) g_model.customSw[2].input = ui->cswitchCB_3->currentIndex();
+    if(ui->cswitchCB_4->isVisible()) g_model.customSw[3].input = ui->cswitchCB_4->currentIndex();
+    if(ui->cswitchCB_5->isVisible()) g_model.customSw[4].input = ui->cswitchCB_5->currentIndex();
+    if(ui->cswitchCB_6->isVisible()) g_model.customSw[5].input = ui->cswitchCB_6->currentIndex();
 
-    g_model.customSw[0].offset = ui->cswitchOfs_1->value();
-    g_model.customSw[1].offset = ui->cswitchOfs_2->value();
-    g_model.customSw[2].offset = ui->cswitchOfs_3->value();
-    g_model.customSw[3].offset = ui->cswitchOfs_4->value();
-    g_model.customSw[4].offset = ui->cswitchOfs_5->value();
-    g_model.customSw[5].offset = ui->cswitchOfs_6->value();
+    if(ui->cswitchOfs_1->isVisible()) g_model.customSw[0].offset = ui->cswitchOfs_1->value();
+    if(ui->cswitchOfs_2->isVisible()) g_model.customSw[1].offset = ui->cswitchOfs_2->value();
+    if(ui->cswitchOfs_3->isVisible()) g_model.customSw[2].offset = ui->cswitchOfs_3->value();
+    if(ui->cswitchOfs_4->isVisible()) g_model.customSw[3].offset = ui->cswitchOfs_4->value();
+    if(ui->cswitchOfs_5->isVisible()) g_model.customSw[4].offset = ui->cswitchOfs_5->value();
+    if(ui->cswitchOfs_6->isVisible()) g_model.customSw[5].offset = ui->cswitchOfs_6->value();
+
+    if(ui->cswitchLOGCB_12->isVisible()) g_model.customSw[0].input = ui->cswitchLOGCB_12->currentIndex()-MAX_DRSWITCH;
+    if(ui->cswitchLOGCB_22->isVisible()) g_model.customSw[1].input = ui->cswitchLOGCB_22->currentIndex()-MAX_DRSWITCH;
+    if(ui->cswitchLOGCB_32->isVisible()) g_model.customSw[2].input = ui->cswitchLOGCB_32->currentIndex()-MAX_DRSWITCH;
+    if(ui->cswitchLOGCB_42->isVisible()) g_model.customSw[3].input = ui->cswitchLOGCB_42->currentIndex()-MAX_DRSWITCH;
+    if(ui->cswitchLOGCB_52->isVisible()) g_model.customSw[4].input = ui->cswitchLOGCB_52->currentIndex()-MAX_DRSWITCH;
+    if(ui->cswitchLOGCB_62->isVisible()) g_model.customSw[5].input = ui->cswitchLOGCB_62->currentIndex()-MAX_DRSWITCH;
+
+    if(ui->cswitchLOGCB_13->isVisible()) g_model.customSw[0].offset = ui->cswitchLOGCB_13->currentIndex()-MAX_DRSWITCH;
+    if(ui->cswitchLOGCB_23->isVisible()) g_model.customSw[1].offset = ui->cswitchLOGCB_23->currentIndex()-MAX_DRSWITCH;
+    if(ui->cswitchLOGCB_33->isVisible()) g_model.customSw[2].offset = ui->cswitchLOGCB_33->currentIndex()-MAX_DRSWITCH;
+    if(ui->cswitchLOGCB_43->isVisible()) g_model.customSw[3].offset = ui->cswitchLOGCB_43->currentIndex()-MAX_DRSWITCH;
+    if(ui->cswitchLOGCB_53->isVisible()) g_model.customSw[4].offset = ui->cswitchLOGCB_53->currentIndex()-MAX_DRSWITCH;
+    if(ui->cswitchLOGCB_63->isVisible()) g_model.customSw[5].offset = ui->cswitchLOGCB_63->currentIndex()-MAX_DRSWITCH;
+
+    //zero boxes if we switched between logical and offset
+    if((g_model.customSw[0].func<CS_AND) != (ui->cswitchFunc_1->currentIndex()<CS_AND))
+    {
+        memset(&g_model.customSw[0],0,sizeof(g_model.customSw[0]));
+        ui->cswitchLOGCB_12->setCurrentIndex(MAX_DRSWITCH);
+        ui->cswitchLOGCB_13->setCurrentIndex(MAX_DRSWITCH);
+        ui->cswitchCB_1->setCurrentIndex(0);
+        ui->cswitchOfs_1->setValue(0);
+    }
+
+    if((g_model.customSw[1].func<CS_AND) != (ui->cswitchFunc_2->currentIndex()<CS_AND))
+    {
+        memset(&g_model.customSw[1],0,sizeof(g_model.customSw[0]));
+        ui->cswitchLOGCB_22->setCurrentIndex(MAX_DRSWITCH);
+        ui->cswitchLOGCB_23->setCurrentIndex(MAX_DRSWITCH);
+        ui->cswitchCB_2->setCurrentIndex(0);
+        ui->cswitchOfs_2->setValue(0);
+    }
+
+    if((g_model.customSw[2].func<CS_AND) != (ui->cswitchFunc_3->currentIndex()<CS_AND))
+    {
+        memset(&g_model.customSw[2],0,sizeof(g_model.customSw[0]));
+        ui->cswitchLOGCB_32->setCurrentIndex(MAX_DRSWITCH);
+        ui->cswitchLOGCB_33->setCurrentIndex(MAX_DRSWITCH);
+        ui->cswitchCB_3->setCurrentIndex(0);
+        ui->cswitchOfs_3->setValue(0);
+    }
+
+    if((g_model.customSw[3].func<CS_AND) != (ui->cswitchFunc_4->currentIndex()<CS_AND))
+    {
+        memset(&g_model.customSw[3],0,sizeof(g_model.customSw[0]));
+        ui->cswitchLOGCB_42->setCurrentIndex(MAX_DRSWITCH);
+        ui->cswitchLOGCB_43->setCurrentIndex(MAX_DRSWITCH);
+        ui->cswitchCB_4->setCurrentIndex(0);
+        ui->cswitchOfs_4->setValue(0);
+    }
+
+    if((g_model.customSw[4].func<CS_AND) != (ui->cswitchFunc_5->currentIndex()<CS_AND))
+    {
+        memset(&g_model.customSw[4],0,sizeof(g_model.customSw[0]));
+        ui->cswitchLOGCB_52->setCurrentIndex(MAX_DRSWITCH);
+        ui->cswitchLOGCB_53->setCurrentIndex(MAX_DRSWITCH);
+        ui->cswitchCB_5->setCurrentIndex(0);
+        ui->cswitchOfs_5->setValue(0);
+    }
+
+    if((g_model.customSw[5].func<CS_AND) != (ui->cswitchFunc_6->currentIndex()<CS_AND))
+    {
+        memset(&g_model.customSw[5],0,sizeof(g_model.customSw[0]));
+        ui->cswitchLOGCB_62->setCurrentIndex(MAX_DRSWITCH);
+        ui->cswitchLOGCB_63->setCurrentIndex(MAX_DRSWITCH);
+        ui->cswitchCB_6->setCurrentIndex(0);
+        ui->cswitchOfs_6->setValue(0);
+    }
 
     g_model.customSw[0].func = ui->cswitchFunc_1->currentIndex();
     g_model.customSw[1].func = ui->cswitchFunc_2->currentIndex();
@@ -1040,6 +1170,9 @@ void ModelEdit::switchesEdited()
     g_model.customSw[3].func = ui->cswitchFunc_4->currentIndex();
     g_model.customSw[4].func = ui->cswitchFunc_5->currentIndex();
     g_model.customSw[5].func = ui->cswitchFunc_6->currentIndex();
+
+
+    setCSWEnables();
 
     updateSettings();
 }
