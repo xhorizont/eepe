@@ -110,8 +110,10 @@ enum EnumKeys {
 //#define SWITCHES_STR "  NC  ON THR RUD ELE ID0 ID1 ID2 AILGEARTRNR"
 #define MAX_DRSWITCH (1+SW_Trainer-SW_ThrCt+1+NUM_CSW)
 
-#define CURV_STR    "---x>0x<0|x|f>0f<0|f|c1 c2 c3 c4 c5 c6 c7 c8 c9 c10c11c12c13c14c15c16"
-#define CSWITCH_STR "----   v>ofs  v<ofs  |v|>ofs|v|<ofs"
+#define CURV_STR     "---x>0x<0|x|f>0f<0|f|c1 c2 c3 c4 c5 c6 c7 c8 c9 c10c11c12c13c14c15c16"
+#define CSWITCH_STR  "----   v>ofs  v<ofs  |v|>ofs|v|<ofsAND    OR     XOR    "
+#define CSW_NUM_FUNC 8
+#define CSW_LEN_FUNC 7
 
 #define MIX_P1    5
 #define MIX_P2    6

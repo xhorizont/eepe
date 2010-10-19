@@ -24,7 +24,7 @@
    <item row="2" column="1">
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
-      <number>4</number>
+      <number>5</number>
      </property>
      <widget class="QWidget" name="tabModelSetup">
       <attribute name="title">
@@ -4438,8 +4438,8 @@ Right</string>
       <attribute name="title">
        <string>Switches</string>
       </attribute>
-      <layout class="QGridLayout" name="gridLayout_8" columnstretch="0,10,10,10">
-       <item row="0" column="0">
+      <layout class="QGridLayout" name="gridLayout_8" rowstretch="0,10,10,10,10,10,10" columnstretch="0,0,0,0">
+       <item row="1" column="0">
         <widget class="QLabel" name="label_30">
          <property name="frameShape">
           <enum>QFrame::Panel</enum>
@@ -4452,23 +4452,7 @@ Right</string>
          </property>
         </widget>
        </item>
-       <item row="0" column="1">
-        <widget class="QComboBox" name="cswitchCB_1"/>
-       </item>
-       <item row="0" column="2">
-        <widget class="QSpinBox" name="cswitchOfs_1">
-         <property name="alignment">
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-         </property>
-         <property name="minimum">
-          <number>-125</number>
-         </property>
-         <property name="maximum">
-          <number>125</number>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="3">
+       <item row="1" column="1">
         <widget class="QComboBox" name="cswitchFunc_1">
          <item>
           <property name="text">
@@ -4497,24 +4481,14 @@ Right</string>
          </item>
         </widget>
        </item>
-       <item row="1" column="0">
-        <widget class="QLabel" name="label_31">
-         <property name="frameShape">
-          <enum>QFrame::Panel</enum>
-         </property>
-         <property name="frameShadow">
-          <enum>QFrame::Raised</enum>
-         </property>
-         <property name="text">
-          <string>CSwitch2</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="1">
-        <widget class="QComboBox" name="cswitchCB_2"/>
+       <item row="1" column="2">
+        <widget class="QComboBox" name="cswitchCB_1"/>
        </item>
        <item row="1" column="2">
-        <widget class="QSpinBox" name="cswitchOfs_2">
+        <widget class="QComboBox" name="cswitchLOGCB_12"/>
+       </item>
+       <item row="1" column="3">
+        <widget class="QSpinBox" name="cswitchOfs_1">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
@@ -4527,6 +4501,22 @@ Right</string>
         </widget>
        </item>
        <item row="1" column="3">
+        <widget class="QComboBox" name="cswitchLOGCB_13"/>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="label_31">
+         <property name="frameShape">
+          <enum>QFrame::Panel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <property name="text">
+          <string>CSwitch2</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
         <widget class="QComboBox" name="cswitchFunc_2">
          <item>
           <property name="text">
@@ -4555,24 +4545,14 @@ Right</string>
          </item>
         </widget>
        </item>
-       <item row="2" column="0">
-        <widget class="QLabel" name="label_32">
-         <property name="frameShape">
-          <enum>QFrame::Panel</enum>
-         </property>
-         <property name="frameShadow">
-          <enum>QFrame::Raised</enum>
-         </property>
-         <property name="text">
-          <string>CSwitch3</string>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="1">
-        <widget class="QComboBox" name="cswitchCB_3"/>
+       <item row="2" column="2">
+        <widget class="QComboBox" name="cswitchCB_2"/>
        </item>
        <item row="2" column="2">
-        <widget class="QSpinBox" name="cswitchOfs_3">
+        <widget class="QComboBox" name="cswitchLOGCB_22"/>
+       </item>
+       <item row="2" column="3">
+        <widget class="QSpinBox" name="cswitchOfs_2">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
@@ -4585,6 +4565,22 @@ Right</string>
         </widget>
        </item>
        <item row="2" column="3">
+        <widget class="QComboBox" name="cswitchLOGCB_23"/>
+       </item>
+       <item row="3" column="0">
+        <widget class="QLabel" name="label_32">
+         <property name="frameShape">
+          <enum>QFrame::Panel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <property name="text">
+          <string>CSwitch3</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1">
         <widget class="QComboBox" name="cswitchFunc_3">
          <item>
           <property name="text">
@@ -4613,24 +4609,14 @@ Right</string>
          </item>
         </widget>
        </item>
-       <item row="3" column="0">
-        <widget class="QLabel" name="label_33">
-         <property name="frameShape">
-          <enum>QFrame::Panel</enum>
-         </property>
-         <property name="frameShadow">
-          <enum>QFrame::Raised</enum>
-         </property>
-         <property name="text">
-          <string>CSwitch4</string>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="1">
-        <widget class="QComboBox" name="cswitchCB_4"/>
+       <item row="3" column="2">
+        <widget class="QComboBox" name="cswitchCB_3"/>
        </item>
        <item row="3" column="2">
-        <widget class="QSpinBox" name="cswitchOfs_4">
+        <widget class="QComboBox" name="cswitchLOGCB_32"/>
+       </item>
+       <item row="3" column="3">
+        <widget class="QSpinBox" name="cswitchOfs_3">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
@@ -4643,6 +4629,22 @@ Right</string>
         </widget>
        </item>
        <item row="3" column="3">
+        <widget class="QComboBox" name="cswitchLOGCB_33"/>
+       </item>
+       <item row="4" column="0">
+        <widget class="QLabel" name="label_33">
+         <property name="frameShape">
+          <enum>QFrame::Panel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <property name="text">
+          <string>CSwitch4</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="1">
         <widget class="QComboBox" name="cswitchFunc_4">
          <item>
           <property name="text">
@@ -4671,24 +4673,14 @@ Right</string>
          </item>
         </widget>
        </item>
-       <item row="4" column="0">
-        <widget class="QLabel" name="label_34">
-         <property name="frameShape">
-          <enum>QFrame::Panel</enum>
-         </property>
-         <property name="frameShadow">
-          <enum>QFrame::Raised</enum>
-         </property>
-         <property name="text">
-          <string>CSwitch5</string>
-         </property>
-        </widget>
-       </item>
-       <item row="4" column="1">
-        <widget class="QComboBox" name="cswitchCB_5"/>
+       <item row="4" column="2">
+        <widget class="QComboBox" name="cswitchCB_4"/>
        </item>
        <item row="4" column="2">
-        <widget class="QSpinBox" name="cswitchOfs_5">
+        <widget class="QComboBox" name="cswitchLOGCB_42"/>
+       </item>
+       <item row="4" column="3">
+        <widget class="QSpinBox" name="cswitchOfs_4">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
@@ -4701,6 +4693,22 @@ Right</string>
         </widget>
        </item>
        <item row="4" column="3">
+        <widget class="QComboBox" name="cswitchLOGCB_43"/>
+       </item>
+       <item row="5" column="0">
+        <widget class="QLabel" name="label_34">
+         <property name="frameShape">
+          <enum>QFrame::Panel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <property name="text">
+          <string>CSwitch5</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="1">
         <widget class="QComboBox" name="cswitchFunc_5">
          <item>
           <property name="text">
@@ -4729,24 +4737,14 @@ Right</string>
          </item>
         </widget>
        </item>
-       <item row="5" column="0">
-        <widget class="QLabel" name="label_35">
-         <property name="frameShape">
-          <enum>QFrame::Panel</enum>
-         </property>
-         <property name="frameShadow">
-          <enum>QFrame::Raised</enum>
-         </property>
-         <property name="text">
-          <string>CSwitch6</string>
-         </property>
-        </widget>
-       </item>
-       <item row="5" column="1">
-        <widget class="QComboBox" name="cswitchCB_6"/>
+       <item row="5" column="2">
+        <widget class="QComboBox" name="cswitchCB_5"/>
        </item>
        <item row="5" column="2">
-        <widget class="QSpinBox" name="cswitchOfs_6">
+        <widget class="QComboBox" name="cswitchLOGCB_52"/>
+       </item>
+       <item row="5" column="3">
+        <widget class="QSpinBox" name="cswitchOfs_5">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
@@ -4759,6 +4757,22 @@ Right</string>
         </widget>
        </item>
        <item row="5" column="3">
+        <widget class="QComboBox" name="cswitchLOGCB_53"/>
+       </item>
+       <item row="6" column="0">
+        <widget class="QLabel" name="label_35">
+         <property name="frameShape">
+          <enum>QFrame::Panel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <property name="text">
+          <string>CSwitch6</string>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="1">
         <widget class="QComboBox" name="cswitchFunc_6">
          <item>
           <property name="text">
@@ -4785,6 +4799,67 @@ Right</string>
            <string>|v|&lt;ofs</string>
           </property>
          </item>
+        </widget>
+       </item>
+       <item row="6" column="2">
+        <widget class="QComboBox" name="cswitchCB_6"/>
+       </item>
+       <item row="6" column="2">
+        <widget class="QComboBox" name="cswitchLOGCB_62"/>
+       </item>
+       <item row="6" column="3">
+        <widget class="QSpinBox" name="cswitchOfs_6">
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="minimum">
+          <number>-125</number>
+         </property>
+         <property name="maximum">
+          <number>125</number>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="3">
+        <widget class="QComboBox" name="cswitchLOGCB_63"/>
+       </item>
+       <item row="0" column="1">
+        <widget class="QLabel" name="cswFuncLabel">
+         <property name="frameShape">
+          <enum>QFrame::Panel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <property name="text">
+          <string>Function</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="2">
+        <widget class="QLabel" name="cswCol1">
+         <property name="frameShape">
+          <enum>QFrame::Panel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <property name="text">
+          <string>Source/SW1</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="3">
+        <widget class="QLabel" name="cswCol2">
+         <property name="frameShape">
+          <enum>QFrame::Panel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <property name="text">
+          <string>Value/SW2</string>
+         </property>
         </widget>
        </item>
       </layout>
