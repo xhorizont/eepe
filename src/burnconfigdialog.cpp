@@ -164,7 +164,7 @@ void burnConfigDialog::on_resetFuses_clicked()
     QMessageBox::StandardButton ret = QMessageBox::No;
 
     ret = QMessageBox::warning(this, tr("eePe"),
-                               tr("<b><u>WARNING!</u></b><br>Writing fuses can mess up your radio.<br>Do this only if you are sure they are wrong!<br>Are you sure you want to continue?"),
+                               tr("<b><u>WARNING!</u></b><br>This will reset the fuses to the factory settings.<br>Writing fuses can mess up your radio.<br>Do this only if you are sure they are wrong!<br>Are you sure you want to continue?"),
                                QMessageBox::Yes | QMessageBox::No);
     if (ret == QMessageBox::Yes)
     {

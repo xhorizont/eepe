@@ -80,6 +80,7 @@ void simulatorDialog::centerSticks()
 
 void simulatorDialog::loadParams(EEGeneral *gg, ModelData *gm)
 {
+
     memcpy(&g_eeGeneral,gg,sizeof(EEGeneral));
     memcpy(&g_model,gm,sizeof(ModelData));
 
@@ -122,29 +123,6 @@ void simulatorDialog::getValues()
     calibratedStick[4] = ui->dialP_1->value();
     calibratedStick[5] = ui->dialP_2->value();
     calibratedStick[6] = ui->dialP_3->value();
-
-//    if(g_eeGeneral.throttleReversed)
-//    {
-//        if(g_eeGeneral.stickMode & 1)//mode 1,3 -> THR on left
-//        {
-//            calibratedStick[1] = 1024*nodeLeft->getY(); //ELE
-//            trim[1] = -ui->trimVLeft->value();
-//        }
-//        else //mode 1,3 -> THR on right
-//        {
-//            calibratedStick[2] = 1024*nodeRight->getY(); //THR
-//            trim[2] = -ui->trimVRight->value();
-//        }
-//    }
-
-//    if(g_model.thrTrim)
-//    {
-//        int i = 1+(g_eeGeneral.stickMode & 1);
-//        int j = trim[i];
-
-//        trim[i] = (g_eeGeneral.throttleReversed) ? ((qint32)j-125)*(RESX+calibratedStick[i])/(RESX) :
-//                                                   ((qint32)j+125)*(RESX-calibratedStick[i])/(RESX);
-//    }
 
 }
 

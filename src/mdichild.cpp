@@ -54,6 +54,7 @@
 MdiChild::MdiChild()
 {
     setAttribute(Qt::WA_DeleteOnClose);
+    //setWindowFlags(Qt::WindowTitleHint | Qt::WindowSystemMenuHint);
 
     this->setFont(QFont("Courier New",12));
     refreshList();
