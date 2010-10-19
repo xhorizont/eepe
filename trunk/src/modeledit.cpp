@@ -354,7 +354,7 @@ void ModelEdit::tabMixes()
     for(i=0; i<MAX_MIXERS; i++)
     {
         MixData *md = &g_model.mixData[i];
-        if(!md->destCh) break;
+        if((md->destCh==0) || (md->destCh>NUM_CHNOUT)) break;
         QString str = "";
         while(curDest<(md->destCh-1))
         {

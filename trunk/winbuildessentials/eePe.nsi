@@ -6,6 +6,8 @@
 ;Include Modern UI
 
   !include "MUI2.nsh"
+  !include "FileAssociation.nsh"
+
 
 ;--------------------------------
 ;General
@@ -80,6 +82,11 @@ Section "eePe" SecDummy
   ;Store installation folder
   WriteRegStr HKCU "Software\er9x-eePe" "" $INSTDIR
   
+  ;Associate with extentions ,bin and .hex
+  ${registerExtension} "$INSTDIR\eepe.exe" ".bin" "BIN_File"
+  ${registerExtension} "$INSTDIR\eepe.exe" ".hex" "HEX_File"
+
+  
   ;Create uninstaller
   WriteUninstaller "$INSTDIR\Uninstall.exe"
   
@@ -123,6 +130,9 @@ Section "Uninstall"
   Delete "$INSTDIR\Uninstall.exe"
 
   RMDir "$INSTDIR"
+  
+  ${unregisterExtension} ".bin" "BIN File"
+  ${unregisterExtension} ".hex" "HEX File"
   
   !insertmacro MUI_STARTMENU_GETFOLDER Application $StartMenuFolder
     
