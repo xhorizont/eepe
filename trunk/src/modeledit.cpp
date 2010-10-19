@@ -1765,6 +1765,7 @@ void ModelEdit::on_resetCurve_1_clicked()
 {
     memset(&g_model.curves5[0],0,sizeof(g_model.curves5[0]));
     updateTabCurves();
+    updateSettings();
     drawCurve();
 }
 
@@ -1772,6 +1773,7 @@ void ModelEdit::on_resetCurve_2_clicked()
 {
     memset(&g_model.curves5[1],0,sizeof(g_model.curves5[0]));
     updateTabCurves();
+    updateSettings();
     drawCurve();
 }
 
@@ -1779,6 +1781,7 @@ void ModelEdit::on_resetCurve_3_clicked()
 {
     memset(&g_model.curves5[2],0,sizeof(g_model.curves5[0]));
     updateTabCurves();
+    updateSettings();
     drawCurve();
 }
 
@@ -1786,6 +1789,7 @@ void ModelEdit::on_resetCurve_4_clicked()
 {
     memset(&g_model.curves5[3],0,sizeof(g_model.curves5[0]));
     updateTabCurves();
+    updateSettings();
     drawCurve();
 }
 
@@ -1793,6 +1797,7 @@ void ModelEdit::on_resetCurve_5_clicked()
 {
     memset(&g_model.curves5[4],0,sizeof(g_model.curves5[0]));
     updateTabCurves();
+    updateSettings();
     drawCurve();
 }
 
@@ -1800,6 +1805,7 @@ void ModelEdit::on_resetCurve_6_clicked()
 {
     memset(&g_model.curves5[5],0,sizeof(g_model.curves5[0]));
     updateTabCurves();
+    updateSettings();
     drawCurve();
 }
 
@@ -1807,6 +1813,7 @@ void ModelEdit::on_resetCurve_7_clicked()
 {
     memset(&g_model.curves5[6],0,sizeof(g_model.curves5[0]));
     updateTabCurves();
+    updateSettings();
     drawCurve();
 }
 
@@ -1814,6 +1821,7 @@ void ModelEdit::on_resetCurve_8_clicked()
 {
     memset(&g_model.curves5[7],0,sizeof(g_model.curves5[0]));
     updateTabCurves();
+    updateSettings();
     drawCurve();
 }
 
@@ -1824,6 +1832,7 @@ void ModelEdit::on_resetCurve_9_clicked()
 {
     memset(&g_model.curves9[0],0,sizeof(g_model.curves9[0]));
     updateTabCurves();
+    updateSettings();
     drawCurve();
 }
 
@@ -1831,6 +1840,7 @@ void ModelEdit::on_resetCurve_10_clicked()
 {
     memset(&g_model.curves9[1],0,sizeof(g_model.curves9[0]));
     updateTabCurves();
+    updateSettings();
     drawCurve();
 }
 
@@ -1838,6 +1848,7 @@ void ModelEdit::on_resetCurve_11_clicked()
 {
     memset(&g_model.curves9[2],0,sizeof(g_model.curves9[0]));
     updateTabCurves();
+    updateSettings();
     drawCurve();
 }
 
@@ -1845,6 +1856,7 @@ void ModelEdit::on_resetCurve_12_clicked()
 {
     memset(&g_model.curves9[3],0,sizeof(g_model.curves9[0]));
     updateTabCurves();
+    updateSettings();
     drawCurve();
 }
 
@@ -1852,6 +1864,7 @@ void ModelEdit::on_resetCurve_13_clicked()
 {
     memset(&g_model.curves9[4],0,sizeof(g_model.curves9[0]));
     updateTabCurves();
+    updateSettings();
     drawCurve();
 }
 
@@ -1859,6 +1872,7 @@ void ModelEdit::on_resetCurve_14_clicked()
 {
     memset(&g_model.curves9[5],0,sizeof(g_model.curves9[0]));
     updateTabCurves();
+    updateSettings();
     drawCurve();
 }
 
@@ -1866,6 +1880,7 @@ void ModelEdit::on_resetCurve_15_clicked()
 {
     memset(&g_model.curves9[6],0,sizeof(g_model.curves9[0]));
     updateTabCurves();
+    updateSettings();
     drawCurve();
 }
 
@@ -1873,5 +1888,6 @@ void ModelEdit::on_resetCurve_16_clicked()
 {
     memset(&g_model.curves9[7],0,sizeof(g_model.curves9[0]));
     updateTabCurves();
+    updateSettings();
     drawCurve();
 }
