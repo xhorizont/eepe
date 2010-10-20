@@ -1884,8 +1884,14 @@ void ModelEdit::on_MixerlistWidget_customContextMenuRequested(QPoint pos)
 
 void ModelEdit::launchSimulation()
 {
+    EEGeneral gg;
+    memcpy(&gg, &g_eeGeneral,sizeof(gg));
+
+    ModelData gm;
+    memcpy(&gm, &g_model,sizeof(gm));
+
     simulatorDialog *sd = new simulatorDialog(this);
-    sd->loadParams(&g_eeGeneral,&g_model);
+    sd->loadParams(g_eeGeneral,g_model);
     sd->show();
 }
 

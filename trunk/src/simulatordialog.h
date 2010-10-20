@@ -18,7 +18,7 @@ public:
     explicit simulatorDialog(QWidget *parent = 0);
     ~simulatorDialog();
 
-    void loadParams(EEGeneral *gg, ModelData *gm);
+    void loadParams(const EEGeneral gg, const ModelData gm);
 
 private:
     Ui::simulatorDialog *ui;
@@ -32,6 +32,8 @@ private:
     qint16  g_ppmIns[8];
     qint16  ex_chans[NUM_CHNOUT];
     qint16  trim[4];
+    qint16  sDelay[MAX_MIXERS];
+    qint32  act[MAX_MIXERS];
 
     ModelData g_model;
     EEGeneral g_eeGeneral;

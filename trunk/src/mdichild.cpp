@@ -734,8 +734,6 @@ void MdiChild::simulate()
 {
     if(currentRow()<1) return;
 
-
-
     EEGeneral gg;
     if(!eeFile.getGeneralSettings(&gg)) return;
 
@@ -743,7 +741,7 @@ void MdiChild::simulate()
     if(!eeFile.getModel(&gm,currentRow()-1)) return;
 
     simulatorDialog *sd = new simulatorDialog(this);
-    sd->loadParams(&gg,&gm);
+    sd->loadParams(gg,gm);
     sd->show();
 }
 
