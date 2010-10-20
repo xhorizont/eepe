@@ -64,7 +64,6 @@ ModelEdit::~ModelEdit()
     delete ui;
 }
 
-
 void ModelEdit::resizeEvent(QResizeEvent *event)
 {
 
