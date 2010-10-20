@@ -34,6 +34,10 @@ private:
     qint16  trim[4];
     qint16  sDelay[MAX_MIXERS];
     qint32  act[MAX_MIXERS];
+    qint16  anas [NUM_XCHNRAW];
+    qint32  chans[NUM_CHNOUT];
+    quint8  bpanaCenter;
+    bool    swOn[MAX_MIXERS];
 
     ModelData g_model;
     EEGeneral g_eeGeneral;

@@ -31,8 +31,9 @@ simulatorDialog::simulatorDialog(QWidget *parent) :
     beepVal = 0;
     beepShow = 0;
 
-
+    bpanaCenter = 0;
     g_tmr10ms = 0;
+
     memset(&chanOut,0,sizeof(chanOut));
     memset(&calibratedStick,0,sizeof(calibratedStick));
     memset(&g_ppmIns,0,sizeof(g_ppmIns));
@@ -41,6 +42,11 @@ simulatorDialog::simulatorDialog(QWidget *parent) :
 
     memset(&sDelay,0,sizeof(sDelay));
     memset(&act,0,sizeof(act));
+
+    memset(&anas,0,sizeof(anas));
+    memset(&chans,0,sizeof(chans));
+
+    memset(&swOn,0,sizeof(swOn));
 
     setupSticks();
     setupTimer();
@@ -390,13 +396,8 @@ int16_t simulatorDialog::intpol(int16_t x, uint8_t idx) // -100, -75, -50, -25, 
 }
 
 void simulatorDialog::perOut(bool init)
-{
-  static int16_t  anas [NUM_XCHNRAW];
-  static int32_t  chans[NUM_CHNOUT];
+{  
   int16_t trimA[4];
-
-  static uint8_t  bpanaCenter;
-
   uint8_t  anaCenter = 0;
 
   for(uint8_t i=0;i<7;i++){        // calc Sticks
@@ -463,8 +464,6 @@ void simulatorDialog::perOut(bool init)
       if((md.destCh==0) || (md.destCh>NUM_CHNOUT)) break;
 
       //Notice 0 = NC switch means not used -> always on line
-      static uint8_t swOn[MAX_MIXERS];
-
       int16_t v  = 0;
       uint8_t swTog;
 
