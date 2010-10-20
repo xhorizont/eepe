@@ -31,6 +31,17 @@ simulatorDialog::simulatorDialog(QWidget *parent) :
     beepVal = 0;
     beepShow = 0;
 
+
+    g_tmr10ms = 0;
+    memset(&chanOut,0,sizeof(chanOut));
+    memset(&calibratedStick,0,sizeof(calibratedStick));
+    memset(&g_ppmIns,0,sizeof(g_ppmIns));
+    memset(&ex_chans,0,sizeof(ex_chans));
+    memset(&trim,0,sizeof(trim));
+
+    memset(&sDelay,0,sizeof(sDelay));
+    memset(&act,0,sizeof(act));
+
     setupSticks();
     setupTimer();
 }
@@ -78,10 +89,10 @@ void simulatorDialog::centerSticks()
     if(ui->rightStick->scene()) nodeRight->stepToCenter();
 }
 
-void simulatorDialog::loadParams(EEGeneral *gg, ModelData *gm)
+void simulatorDialog::loadParams(const EEGeneral gg, const ModelData gm)
 {    
-    memcpy(&g_eeGeneral,gg,sizeof(EEGeneral));
-    memcpy(&g_model,gm,sizeof(ModelData));
+    memcpy(&g_eeGeneral,&gg,sizeof(EEGeneral));
+    memcpy(&g_model,&gm,sizeof(ModelData));
 
     char buf[sizeof(g_model.name)+1];
     memcpy(&buf,&g_model.name,sizeof(g_model.name));
@@ -480,8 +491,6 @@ void simulatorDialog::perOut(bool init)
       //========== DELAY and PAUSE ===============
       if (md.speedUp || md.speedDown || md.delayUp || md.delayDown)  // there are delay values
       {
-        static int16_t sDelay[MAX_MIXERS];
-        static int32_t act   [MAX_MIXERS];
 
 #define DEL_MULT 256
 
