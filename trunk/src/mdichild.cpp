@@ -676,27 +676,36 @@ int MdiChild::getFileType(const QString &fullFileName)
 
 void MdiChild::burnTo()  // write to Tx
 {
-    burnConfigDialog bcd;
-    QString avrdudeLoc = bcd.getAVRDUDE();
-    QString tempDir    = bcd.getTempDir();
-    QString programmer = bcd.getProgrammer();
-    QStringList args   = bcd.getAVRArgs();
-    if(!bcd.getPort().isEmpty()) args << "-P" << bcd.getPort();
 
-    QString tempFile = tempDir + "/temp.hex";
-    saveFile(tempFile, false);
-    if(!QFileInfo(tempFile).exists())
+    QMessageBox::StandardButton ret = QMessageBox::question(this, tr("eePe"),
+                 tr("Burn %1 to transmitter?").arg(strippedName(curFile)),
+                 QMessageBox::Yes | QMessageBox::No);
+
+
+    if (ret == QMessageBox::Yes)
     {
-        QMessageBox::critical(this,tr("Error"), tr("Cannot write temporary file!"));
-        return;
+        burnConfigDialog bcd;
+        QString avrdudeLoc = bcd.getAVRDUDE();
+        QString tempDir    = bcd.getTempDir();
+        QString programmer = bcd.getProgrammer();
+        QStringList args   = bcd.getAVRArgs();
+        if(!bcd.getPort().isEmpty()) args << "-P" << bcd.getPort();
+
+        QString tempFile = tempDir + "/temp.hex";
+        saveFile(tempFile, false);
+        if(!QFileInfo(tempFile).exists())
+        {
+            QMessageBox::critical(this,tr("Error"), tr("Cannot write temporary file!"));
+            return;
+        }
+        QString str = "eeprom:w:" + tempFile + ":i"; // writing eeprom -> MEM:OPR:FILE:FTYPE"
+
+        QStringList arguments;
+        arguments << "-c" << programmer << "-p" << "m64" << args << "-U" << str;
+
+        avrOutputDialog *ad = new avrOutputDialog(this, avrdudeLoc, arguments, "Write EEPROM To Tx");
+        ad->show();
     }
-    QString str = "eeprom:w:" + tempFile + ":i"; // writing eeprom -> MEM:OPR:FILE:FTYPE"
-
-    QStringList arguments;
-    arguments << "-c" << programmer << "-p" << "m64" << args << "-U" << str;
-
-    avrOutputDialog *ad = new avrOutputDialog(this, avrdudeLoc, arguments, "Write EEPROM To Tx");
-    ad->show();
 }
 
 void MdiChild::ShowContextMenu(const QPoint& pos)

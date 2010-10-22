@@ -19,6 +19,7 @@
 #include "inttypes.h"
 #include "string.h"
 #include "pers.h"
+#include "file.h"
 
 
 
@@ -167,7 +168,7 @@ void EFile::EeFsFormat()
 //  }
   memset(eeFs,0, sizeof(EeFs));
   eeFs->version  = EEFS_VERS;
-  eeFs->mySize   = sizeof(eeFs);
+  eeFs->mySize   = sizeof(EeFs);
   eeFs->freeList = 0;
   eeFs->bs       = BS;
   for(uint8_t i = FIRSTBLK; i < BLOCKS; i++) EeFsSetLink(i,i+1);

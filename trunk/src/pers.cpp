@@ -24,6 +24,7 @@
 EEPFILE::EEPFILE()
 {
     fileChanged = false;
+    theFile = new EFile();
     generalDefault();
 }
 
@@ -34,7 +35,7 @@ bool EEPFILE::Changed()
 
 bool EEPFILE::loadFile(void* buf)
 {
-    theFile.load(buf);
+    theFile->load(buf);
 
     EEGeneral g_eeGeneral;
     return getGeneralSettings(&g_eeGeneral);
@@ -43,7 +44,7 @@ bool EEPFILE::loadFile(void* buf)
 
 void EEPFILE::saveFile(void* buf)
 {
-    theFile.save(buf);
+    theFile->save(buf);
 }
 
 void EEPFILE::setChanged(bool v)
@@ -110,7 +111,7 @@ void EEPFILE::modelDefault(uint8_t id)
 
 void EEPFILE::DeleteModel(uint8_t id)
 {
-    theFile.rm(id);
+    theFile->rm(id);
 }
 
 
@@ -119,12 +120,12 @@ void EEPFILE::eeLoadModelName(uint8_t id,char*buf,uint8_t len)
   if(id<MAX_MODELS)
   {
     //eeprom_read_block(buf,(void*)modelEeOfs(id),sizeof(g_model.name));
-    theFile.openRd(FILE_MODEL(id));
+    theFile->openRd(FILE_MODEL(id));
     memset(buf,' ',len);
     *buf='0'+(id+1)/10; buf++;
     *buf='0'+(id+1)%10; buf++;
     *buf=':';           buf++;buf++;
-    uint16_t res = theFile.readRlc((uint8_t*)buf,sizeof(g_model.name));
+    uint16_t res = theFile->readRlc((uint8_t*)buf,sizeof(g_model.name));
     if(res == sizeof(g_model.name) )
     {
       //buf+=len-5;
@@ -134,7 +135,7 @@ void EEPFILE::eeLoadModelName(uint8_t id,char*buf,uint8_t len)
           buf++;
       }
       *buf=0;buf--;
-      uint16_t sz=theFile.size(FILE_MODEL(id));
+      uint16_t sz=theFile->size(FILE_MODEL(id));
       while(sz){ --buf; *buf='0'+sz%10; sz/=10;}
     }
   }
@@ -161,8 +162,8 @@ bool EEPFILE::getModel(ModelData* model, uint8_t id)
 
     if(id<MAX_MODELS)
     {
-      theFile.openRd(FILE_MODEL(id));
-      sz = theFile.readRlc((uint8_t*)model, sizeof(g_model));
+      theFile->openRd(FILE_MODEL(id));
+      sz = theFile->readRlc((uint8_t*)model, sizeof(g_model));
     }
 
     return (sz == sizeof(ModelData));
@@ -174,9 +175,9 @@ bool EEPFILE::putModel(ModelData* model, uint8_t id)
 
     if(id<MAX_MODELS)
     {
-        sz = theFile.writeRlc(FILE_TMP, FILE_TYP_MODEL, (uint8_t*)model, sizeof(ModelData));
+        sz = theFile->writeRlc(FILE_TMP, FILE_TYP_MODEL, (uint8_t*)model, sizeof(ModelData));
         if(sz == sizeof(ModelData))
-            theFile.swap(FILE_MODEL(id),FILE_TMP);
+            theFile->swap(FILE_MODEL(id),FILE_TMP);
     }
 
     return (sz == sizeof(ModelData));
@@ -184,8 +185,8 @@ bool EEPFILE::putModel(ModelData* model, uint8_t id)
 
 bool EEPFILE::getGeneralSettings(EEGeneral* setData)
 {
-    theFile.openRd(FILE_GENERAL);
-    uint8_t sz = theFile.readRlc((uint8_t*)setData, sizeof(EEGeneral));
+    theFile->openRd(FILE_GENERAL);
+    uint8_t sz = theFile->readRlc((uint8_t*)setData, sizeof(EEGeneral));
 
     return (sz == sizeof(EEGeneral));
 }
@@ -194,8 +195,8 @@ bool EEPFILE::putGeneralSettings(EEGeneral* setData)
 {
     uint16_t sz = 0;
 
-    sz = theFile.writeRlc(FILE_TMP, FILE_TYP_GENERAL, (uint8_t*)setData, sizeof(EEGeneral));
-    if(sz == sizeof(EEGeneral)) theFile.swap(FILE_GENERAL,FILE_TMP);
+    sz = theFile->writeRlc(FILE_TMP, FILE_TYP_GENERAL, (uint8_t*)setData, sizeof(EEGeneral));
+    if(sz == sizeof(EEGeneral)) theFile->swap(FILE_GENERAL,FILE_TMP);
 
     return (sz == sizeof(EEGeneral));
 }

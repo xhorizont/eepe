@@ -24,33 +24,6 @@
 
 
 
-//#define eeprom_write_block eeWriteBlockCmp
-// bs=16  128 blocks    verlust link:128  16files:16*8  128     sum 256
-// bs=32   64 blocks    verlust link: 64  16files:16*16 256     sum 320
-//
-#  define EESIZE   2048
-#  define BS       16
-#  define RESV     64  //reserv for eeprom header with directory (eeFs)
-#define FIRSTBLK (RESV/BS)
-#define BLOCKS   (EESIZE/BS)
-#define EEFS_VERS 4
-
-#define MAX_MODELS 16
-#define MAXFILES (1+MAX_MODELS+3)
-
-struct DirEnt{
-  uint8_t  startBlk;
-  uint16_t size:12;
-  uint16_t typ:4;
-}__attribute__((packed));
-
-struct EeFs{
-  uint8_t  version;
-  uint8_t  mySize;
-  uint8_t  freeList;
-  uint8_t  bs;
-  DirEnt   files[MAXFILES];
-}__attribute__((packed));
 
 
 
@@ -209,7 +182,7 @@ bool eeLoadGeneral();
 
 class EEPFILE
 {
-    EFile theFile;
+    EFile *theFile;
     bool fileChanged;
 
 
