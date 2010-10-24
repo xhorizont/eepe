@@ -310,7 +310,7 @@ void MainWindow::about()
     aboutStr.append(tr("<a href='http://code.google.com/p/eepe/'>http://code.google.com/p/eepe/</a><br>Revision: %1, %2<br><br>").arg(str.toInt()+1).arg(__DATE__));
     aboutStr.append(tr("If you've found this program and/or the Firmware useful please support by <a href='"));
     aboutStr.append(DONATE_STR);
-    aboutStr.append("'>donating</a></center>");
+    aboutStr.append(tr("'>donating</a></center>"));
 
     QMessageBox::about(this, tr("About eePe"),aboutStr);
 }
