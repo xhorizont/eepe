@@ -46,6 +46,7 @@
 #include "burnconfigdialog.h"
 #include "avroutputdialog.h"
 #include "donatorsdialog.h"
+#include "preferencesdialog.h"
 
 #define DONATE_STR "https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=TGT92W338DPGN&lc=IL&item_name=Erez%20Raviv&item_number=eePe&amount=5%2e00&currency_code=USD&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted"
 
@@ -145,6 +146,12 @@ void MainWindow::saveAs()
 {
     if (activeMdiChild() && activeMdiChild()->saveAs())
         statusBar()->showMessage(tr("File saved"), 2000);
+}
+
+void MainWindow::preferences()
+{
+    preferencesDialog *pd = new preferencesDialog(this);
+    pd->exec();
 }
 
 void MainWindow::cut()
@@ -406,6 +413,10 @@ void MainWindow::createActions()
     saveAsAct->setStatusTip(tr("Save the document under a new name"));
     connect(saveAsAct, SIGNAL(triggered()), this, SLOT(saveAs()));
 
+    preferencesAct = new QAction(tr("&Preferences..."), this);
+    preferencesAct->setStatusTip(tr("Edit general preferences"));
+    connect(preferencesAct, SIGNAL(triggered()), this, SLOT(preferences()));
+
 //! [0]
     exitAct = new QAction(tr("E&xit"), this);
     exitAct->setShortcuts(QKeySequence::Quit);
@@ -528,6 +539,7 @@ void MainWindow::createMenus()
     fileMenu->addAction(simulateAct);
     fileMenu->addAction(printAct);
     fileMenu->addSeparator();
+    fileMenu->addAction(preferencesAct);
     QAction *action = fileMenu->addAction(tr("Switch layout direction"));
     connect(action, SIGNAL(triggered()), this, SLOT(switchLayoutDirection()));
     fileMenu->addAction(exitAct);

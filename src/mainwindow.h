@@ -80,6 +80,7 @@ private slots:
     void simulate();
     void about();
     void print();
+    void preferences();
     void donators();
     void updateMenus();
     void updateWindowMenu();
@@ -113,6 +114,7 @@ private:
     QAction *saveAct;
     QAction *saveAsAct;
     QAction *exitAct;
+    QAction *preferencesAct;
     QAction *cutAct;
     QAction *copyAct;
     QAction *pasteAct;

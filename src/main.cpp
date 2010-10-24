@@ -40,6 +40,9 @@
 ****************************************************************************/
 
 #include <QApplication>
+#include <QTranslator>
+#include <QLocale>
+#include <QString>
 
 #include "mainwindow.h"
 
@@ -48,6 +51,15 @@ int main(int argc, char *argv[])
     Q_INIT_RESOURCE(eepe);
 
     QApplication app(argc, argv);
+
+    QString locale = QLocale::system().name();
+    if(!locale.isEmpty())
+    {
+        QTranslator translator;
+        translator.load(QString("eepe_") + locale);
+        app.installTranslator(&translator);
+    }
+
     MainWindow mainWin;
     mainWin.show();
     return app.exec();
