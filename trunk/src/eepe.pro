@@ -13,7 +13,8 @@ HEADERS += mainwindow.h \
     avroutputdialog.h \ 
     simulatordialog.h \
     donatorsdialog.h \
-    printdialog.h
+    printdialog.h \
+    preferencesdialog.h
 SOURCES += main.cpp \
     mainwindow.cpp \
     file.cpp \
@@ -29,7 +30,8 @@ SOURCES += main.cpp \
     avroutputdialog.cpp \ 
     simulatordialog.cpp \
     donatorsdialog.cpp \
-    printdialog.cpp
+    printdialog.cpp \
+    preferencesdialog.cpp
 RESOURCES += eepe.qrc
 TARGET = eepe
 TEMPLATE = app
@@ -40,7 +42,8 @@ FORMS += modeledit.ui \
     avroutputdialog.ui \
     simulatordialog.ui \
     donatorsdialog.ui \
-    printdialog.ui
+    printdialog.ui \
+    preferencesdialog.ui
 win32:RC_FILE += icon.rc
 VERSION = $$system(svnversion)
 VERSTR = '\\"$${VERSION}\\"' # place quotes around the version string
