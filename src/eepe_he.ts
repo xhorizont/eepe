@@ -6,23 +6,24 @@
     <message>
         <location filename="generaledit.ui" line="14"/>
         <source>General Edit</source>
-        <translation type="unfinished"></translation>
+        <translation>פרמטרים כלליים</translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="27"/>
         <source>General settings used throught the transmitter.
 These will be relevant for all models in the same EEPROM.</source>
-        <translation type="unfinished"></translation>
+        <translation>פרמטרים כלליים המשמשים לכלל המודלים בשלטו
+הפרמטרים האלה רלוונטיים לכל מודל הנמצא בזיכרון.</translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="35"/>
         <source>Setup</source>
-        <translation type="unfinished"></translation>
+        <translation>כללי</translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="44"/>
         <source>Contrast</source>
-        <translation type="unfinished"></translation>
+        <translation>ניגודיות</translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="51"/>
@@ -32,12 +33,17 @@ p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;LCD Screen Contrast&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;Values can be 20-45&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;LCD ניגודיות&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;20-45 ערכים יכולים להיות&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="75"/>
         <source>Battery Warning</source>
-        <translation type="unfinished"></translation>
+        <translation>אזהרת מתח נמוך</translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="82"/>
@@ -45,228 +51,233 @@ p, li { white-space: pre-wrap; }
 This is the threashhold where the battery warning sounds.
 
 Acceptable values are 5v..10v</source>
-        <translation type="unfinished"></translation>
+        <translation>אזהרת מתח נמוך.
+מתחת למתח זה נשמע צפצוף אזהרה
+
+ערכים מותרים: 5v..10v</translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="88"/>
         <location filename="generaledit.ui" line="121"/>
         <location filename="generaledit.ui" line="1182"/>
         <source>v</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="110"/>
         <location filename="generaledit.ui" line="1085"/>
         <source>Battery Calibration</source>
-        <translation type="unfinished"></translation>
+        <translation>קליברציית סוללה</translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="117"/>
         <source>Battery calibration:
 This value will be added to the measured battery voltage.  Use this value to calibrate the meter with an external meter.</source>
-        <translation type="unfinished"></translation>
+        <translation>קליברציית סוללה:
+ערך זה יתווסף למדידת המתח של הסוללה.
+ניתן להשתמש בערך זה ע&quot;מ לכוון את מדידת הסוללה בעזרת מד מתח חיצוני.</translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="140"/>
         <source>Backlight Switch</source>
-        <translation type="unfinished"></translation>
+        <translation>מפסק תאורה</translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="147"/>
         <source>This is the switch selectrion for turning on the backlight (if installed).
 
 </source>
-        <translation type="unfinished"></translation>
+        <translation>מפסק זה מפעיל את תאורת המסך (אם קיימת).</translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="156"/>
         <source>!SW6</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="161"/>
         <source>!SW5</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="166"/>
         <source>!SW4</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="171"/>
         <source>!SW3</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="176"/>
         <source>!SW2</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="181"/>
         <source>!SW1</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="186"/>
         <source>!TRN</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="191"/>
         <source>!GEA</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="196"/>
         <source>!AIL</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="201"/>
         <source>!ID2</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="206"/>
         <source>!ID1</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="211"/>
         <source>!ID0</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="216"/>
         <source>!ELE</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="221"/>
         <source>!RUD</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="226"/>
         <source>!THR</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="231"/>
         <source>----</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="236"/>
         <source>THR</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="241"/>
         <source>RUD</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="246"/>
         <source>ELE</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="251"/>
         <source>ID0</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="256"/>
         <source>ID1</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="261"/>
         <source>ID2</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="266"/>
         <source>AIL</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="271"/>
         <source>GEA</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="276"/>
         <source>TRN</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="281"/>
         <source>SW1</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="286"/>
         <source>SW2</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="291"/>
         <source>SW3</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="296"/>
         <source>SW4</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="301"/>
         <source>SW5</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="306"/>
         <source>SW6</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="314"/>
         <source>Backlight Auto On/OFF after</source>
-        <translation type="unfinished"></translation>
+        <translation>הדלת וכיבוי תאורה אוטומטי אחרי</translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="321"/>
         <source>If this value is not 0, any keypress will turn on the backlight and turn it off after the specified number of seconds.</source>
-        <translation type="unfinished"></translation>
+        <translation>אם ערך זה אינו &quot;0&quot; כל מקש יפעיל את התאורה למשך הזמן המצויין.</translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="324"/>
         <source> sec</source>
-        <translation type="unfinished"></translation>
+        <translation> שניות</translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="337"/>
         <source>Inactivity Timer</source>
-        <translation type="unfinished"></translation>
+        <translation>שעון אי-פעילות</translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="344"/>
         <source>If not zero will sound beeps if the transmitter has been left without inputs for the specified number of minutes.</source>
-        <translation type="unfinished"></translation>
+        <translation>אם לא &quot;0&quot; יצפצף לאחר מס&apos; הדקות המצויין באם אין פעילות.</translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="347"/>
         <source> min</source>
-        <translation type="unfinished"></translation>
+        <translation> דקות</translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="357"/>
         <source>Reverse Throttle Operation</source>
-        <translation type="unfinished"></translation>
+        <translation>מצערת הפוכה</translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="364"/>
@@ -274,32 +285,34 @@ This value will be added to the measured battery voltage.  Use this value to cal
 If this is checked the throttle will be reversed.  Idle will be forward, trim will also be reversed and the throttle warning will be reversed as well.
 
 </source>
-        <translation type="unfinished"></translation>
+        <translation>הופך את כיוון פעולת המצערת.
+אם מסומן פעולת המצערת תהיה הפוכה - סרק יהיה קדימה ומלא יהיה אחורה.
+קיזוז ואזהרת מצערת יהיו הפוכים גם כן.</translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="377"/>
         <source>Input Filter</source>
-        <translation type="unfinished"></translation>
+        <translation>פילטר קלט</translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="385"/>
         <source>Single</source>
-        <translation type="unfinished"></translation>
+        <translation>יחיד</translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="390"/>
         <source>Oversample</source>
-        <translation type="unfinished"></translation>
+        <translation>מדוייק</translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="395"/>
         <source>Filter</source>
-        <translation type="unfinished"></translation>
+        <translation>סינון</translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="416"/>
         <source>Throttle Startup Warning</source>
-        <translation type="unfinished"></translation>
+        <translation>אזהרת מצערת</translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="423"/>
@@ -317,27 +330,33 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Switch warning - will alert if switches are not in their defaul position&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Memory warning - will alert if there&apos;s not a lot of memory left&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Silent mode warning - will alert you if the beeper is set to quiet (0)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>אזהרות
+
+ערכים אלה מגדירים אזהרות בזמן הפעלת המשדר.
+אזהרת מצערת: נותנת התרעה ברגע שהמצערת אינה בסרק.
+אזהרת מפסקים: התרעה ברגע שלא כל המפסקים כבויים.
+אזהרת זיכרון: התרעה באם לא נותר מספיק זיכרון.
+אזהרת מצב שקט: אזהרה באם הצפצפה נמצאת במצב &quot;שקט&quot;</translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="449"/>
         <source>Switch Startup Warning</source>
-        <translation type="unfinished"></translation>
+        <translation>אזהרת מפסקים</translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="479"/>
         <source>Memory Startup Warning</source>
-        <translation type="unfinished"></translation>
+        <translation>אזהרת זיכרון</translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="509"/>
         <source>Silent mode (No Alarm)</source>
-        <translation type="unfinished"></translation>
+        <translation>אזהרת מצב שקט</translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="539"/>
         <source>Beeper Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>מצב צלצול</translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="546"/>
@@ -348,32 +367,38 @@ p, li { white-space: pre-wrap; }
 2 - Normal.
 3 - Loud.
 4 - Extra loud.</source>
-        <translation type="unfinished"></translation>
+        <translation>רמת צלצול
+
+0 - שקט. אין צלילים כלל
+1 - ללא מקשים. צפצופים רגילים ללא צלילי מקשים
+2 - רגיל.
+3 - חזק.
+4 - חזק מאוד.</translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="556"/>
         <source>0 - Quiet</source>
-        <translation type="unfinished"></translation>
+        <translation>0 - שקט</translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="561"/>
         <source>1 - No Keys</source>
-        <translation type="unfinished"></translation>
+        <translation>1 - ללא מקשים</translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="566"/>
         <source>2 - Normal</source>
-        <translation type="unfinished"></translation>
+        <translation>2 - רגיל</translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="571"/>
         <source>3 - Long</source>
-        <translation type="unfinished"></translation>
+        <translation>3 - חזק</translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="576"/>
         <source>4 - Extra Long</source>
-        <translation type="unfinished"></translation>
+        <translation>4 - חזק מאוד</translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="597"/>
@@ -668,6 +693,11 @@ Mode 4:
     <message>
         <location filename="mainwindow.cpp" line="311"/>
         <source>If you&apos;ve found this program and/or the Firmware useful please support by &lt;a href=&apos;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="313"/>
+        <source>&apos;&gt;donating&lt;/a&gt;&lt;/center&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
