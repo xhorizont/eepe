@@ -671,6 +671,11 @@ Mode 4:
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="mainwindow.cpp" line="313"/>
+        <source>&apos;&gt;donating&lt;/a&gt;&lt;/center&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="mainwindow.cpp" line="315"/>
         <source>About eePe</source>
         <translation type="unfinished"></translation>
