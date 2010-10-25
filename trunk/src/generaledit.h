@@ -27,6 +27,8 @@ signals:
     void modelValuesChanged();
 
 private slots:
+    void on_beepCountDownChkB_stateChanged(int );
+    void on_beepMinuteChkB_stateChanged(int );
     void on_alarmwarnChkB_stateChanged(int );
     void on_tabWidget_currentChanged(int index);
     void on_PPM1_editingFinished();

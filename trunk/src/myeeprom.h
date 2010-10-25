@@ -39,31 +39,34 @@
 
 
 typedef struct t_EEGeneral {
-  uint8_t   myVers;
-  int16_t   calibMid[7];
-  int16_t   calibSpanNeg[7];
-  int16_t   calibSpanPos[7];
-  uint16_t  chkSum;
-  uint8_t   currModel; //0..15
-  uint8_t   contrast;
-  uint8_t   vBatWarn;
-  int8_t    vBatCalib;
-  int8_t    lightSw;
-  int16_t   ppmInCalib[8];
-  uint8_t   view;     //index of subview in main scrren
-#define WARN_THR     (!(g_eeGeneral.warnOpts & 0x01))
-#define WARN_BEP     (!(g_eeGeneral.warnOpts & 0x80))
-#define WARN_SW      (!(g_eeGeneral.warnOpts & 0x02))
-#define WARN_MEM     (!(g_eeGeneral.warnOpts & 0x04))
-#define BEEP_VAL     ( (g_eeGeneral.warnOpts & 0x38) >>3 )
-  uint8_t   warnOpts; //bitset for several warnings
-  uint8_t   stickMode;
-  uint8_t   inactivityTimer;
-  uint8_t   throttleReversed;
-  uint8_t   filterInput;
-  uint8_t   lightAutoOff;
-  uint8_t   templateSetup;  //RETA order according to chout_ar array
-  uint8_t   res[2];
+    uint8_t   myVers;
+    int16_t   calibMid[7];
+    int16_t   calibSpanNeg[7];
+    int16_t   calibSpanPos[7];
+    uint16_t  chkSum;
+    uint8_t   currModel; //0..15
+    uint8_t   contrast;
+    uint8_t   vBatWarn;
+    int8_t    vBatCalib;
+    int8_t    lightSw;
+    int16_t   ppmInCalib[8];
+    uint8_t   view;     //index of subview in main scrren
+  #define WARN_THR     (!(g_eeGeneral.warnOpts & 0x01))
+  #define WARN_BEP     (!(g_eeGeneral.warnOpts & 0x80))
+  #define WARN_SW      (!(g_eeGeneral.warnOpts & 0x02))
+  #define WARN_MEM     (!(g_eeGeneral.warnOpts & 0x04))
+  #define BEEP_VAL     ( (g_eeGeneral.warnOpts & 0x38) >>3 )
+    uint8_t   warnOpts; //bitset for several warnings
+    uint8_t   stickMode;
+    uint8_t   inactivityTimer;
+    uint8_t   throttleReversed:1;
+    uint8_t   minuteBeep:1;
+    uint8_t   preBeep:1;
+    uint8_t   res1:5;
+    uint8_t   filterInput;
+    uint8_t   lightAutoOff;
+    uint8_t   templateSetup;  //RETA order according to chout_ar array
+    uint8_t   res[2];
 } __attribute__((packed)) EEGeneral;
 
 

@@ -142,7 +142,7 @@ void MdiChild::dropEvent(QDropEvent *event)
 void MdiChild::refreshList()
 {
     clear();
-    addItem("General Settings");
+    addItem(tr("General Settings"));
 
     for(uint8_t i=0; i<MAX_MODELS; i++)
     {
