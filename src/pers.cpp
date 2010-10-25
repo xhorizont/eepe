@@ -16,6 +16,7 @@
 
 #include "pers.h"
 #include "file.h"
+#include <QSettings>
 
 #define FILE_TYP_GENERAL 1
 #define FILE_TYP_MODEL   2
@@ -69,6 +70,10 @@ void EEPFILE::generalDefault()
   int16_t sum=0;
   for(int i=0; i<12;i++) sum+=g_eeGeneral.calibMid[i];
   g_eeGeneral.chkSum = sum;
+
+  QSettings settings("er9x-eePe", "eePe");
+  g_eeGeneral.templateSetup = settings.value("default_channel_order", 0).toInt();
+  g_eeGeneral.stickMode = settings.value("default_mode", 1).toInt();
 
   putGeneralSettings(&g_eeGeneral);
 }

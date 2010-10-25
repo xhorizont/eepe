@@ -1,39 +1,268 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <author/>
- <comment/>
- <exportmacro/>
  <class>preferencesDialog</class>
  <widget class="QDialog" name="preferencesDialog">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>610</width>
+    <height>388</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Preferences</string>
   </property>
-  <widget class="QDialogButtonBox" name="buttonBox">
-   <property name="geometry">
-    <rect>
-     <x>30</x>
-     <y>240</y>
-     <width>341</width>
-     <height>32</height>
-    </rect>
-   </property>
-   <property name="orientation">
-    <enum>Qt::Horizontal</enum>
-   </property>
-   <property name="standardButtons">
-    <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
-   </property>
-  </widget>
+  <property name="windowIcon">
+   <iconset resource="eepe.qrc">
+    <normaloff>:/icon.ico</normaloff>:/icon.ico</iconset>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0">
+    <widget class="QLabel" name="label">
+     <property name="text">
+      <string>Language (requires restart)</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="1">
+    <widget class="QComboBox" name="locale_QB"/>
+   </item>
+   <item row="2" column="0">
+    <widget class="QLabel" name="label_13">
+     <property name="text">
+      <string>Default Channel Order</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="0">
+    <widget class="QLabel" name="label_14">
+     <property name="text">
+      <string>Default Stick Mode</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="1">
+    <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="1">
+    <widget class="QComboBox" name="channelorderCB">
+     <property name="whatsThis">
+      <string>Channel order
+
+This is used by the templated to determine which channel goes to what number output.</string>
+     </property>
+     <property name="currentIndex">
+      <number>0</number>
+     </property>
+     <item>
+      <property name="text">
+       <string>R E T A</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>R E A T</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>R T E A</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>R T A E</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>R A E T</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>R A T E</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>E R T A</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>E R A T</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>E T R A</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>E T A R</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>E A R T</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>E A T R</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>T R E A</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>T R A E</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>T E R A</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>T E A R</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>T A R E</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>T A E R</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>A R E T</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>A R T E</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>A E R T</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>A E T R</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>A T R E</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>A T E R</string>
+      </property>
+     </item>
+    </widget>
+   </item>
+   <item row="3" column="1">
+    <widget class="QComboBox" name="stickmodeCB">
+     <property name="whatsThis">
+      <string>Mode selection:
+
+Mode 1:
+  Left stick:  Elevator, Rudder
+  Right stick:  Throttle, Aileron
+
+Mode 2:
+  Left stick:  Throttle, Rudder
+  Right stick:  Elevator, Aileron
+
+Mode 3:
+  Left stick:  Elevator, Aileron
+  Right stick:  Throttle, Rudder
+
+Mode 4:
+  Left stick:  Throttle, Aileron
+  Right stick:  Elevator, Rudder
+
+</string>
+     </property>
+     <property name="currentIndex">
+      <number>1</number>
+     </property>
+     <item>
+      <property name="text">
+       <string>Mode 1 (RUD ELE THR AIL)</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Mode 2 (RUD THR ELE AIL)</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Mode 3 (AIL ELE THR RUD)</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Mode 4 (AIL THR ELE RUD)</string>
+      </property>
+     </item>
+    </widget>
+   </item>
+   <item row="4" column="1">
+    <spacer name="verticalSpacer">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>40</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="1" column="1">
+    <spacer name="horizontalSpacer">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>40</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+  </layout>
  </widget>
- <pixmapfunction/>
- <resources/>
+ <resources>
+  <include location="eepe.qrc"/>
+ </resources>
  <connections>
   <connection>
    <sender>buttonBox</sender>
@@ -42,8 +271,8 @@
    <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>248</x>
-     <y>254</y>
+     <x>370</x>
+     <y>49</y>
     </hint>
     <hint type="destinationlabel">
      <x>157</x>
@@ -58,8 +287,8 @@
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>316</x>
-     <y>260</y>
+     <x>390</x>
+     <y>55</y>
     </hint>
     <hint type="destinationlabel">
      <x>286</x>

@@ -43,22 +43,25 @@
 #include <QTranslator>
 #include <QLocale>
 #include <QString>
+#include <QFileInfo>
+#include <QSettings>
 
 #include "mainwindow.h"
 
 int main(int argc, char *argv[])
 {
     Q_INIT_RESOURCE(eepe);
-
     QApplication app(argc, argv);
 
-    QString locale = QLocale::system().name();
-    if(!locale.isEmpty())
-    {
-        QTranslator translator;
-        translator.load(QString("eepe_") + locale);
-        app.installTranslator(&translator);
-    }
+    QString dir;
+    if(argc) dir = QFileInfo(argv[0]).canonicalPath() + "/lang";
+
+    QSettings settings("er9x-eePe", "eePe");
+    QString locale = settings.value("locale",QLocale::system().name()).toString();
+
+    QTranslator *translator = new QTranslator();
+    translator->load(QString("eepe_") + locale, dir);
+    app.installTranslator(translator);
 
     MainWindow mainWin;
     mainWin.show();

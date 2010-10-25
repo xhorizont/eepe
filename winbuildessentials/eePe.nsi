@@ -79,6 +79,12 @@ Section "eePe" SecDummy
   File "avrdude.exe"
   File "avrdude.conf"
   
+  CreateDirectory "$INSTDIR\lang"
+  SetOutPath "$INSTDIR\lang"
+  File "*.qm"
+  
+  
+  SetOutPath "$INSTDIR"
   ;Store installation folder
   WriteRegStr HKCU "Software\er9x-eePe" "" $INSTDIR
   
@@ -128,7 +134,10 @@ Section "Uninstall"
   Delete "$INSTDIR\avrdude.exe"
   Delete "$INSTDIR\avrdude.conf"
   Delete "$INSTDIR\Uninstall.exe"
+  
+  Delete "$INSTDIR\lang\*.*"
 
+  RMDir "$INSTDIR\lang"
   RMDir "$INSTDIR"
   
   ${unregisterExtension} ".bin" "BIN File"

@@ -115,7 +115,7 @@ void MainWindow::newFile()
 void MainWindow::open()
 {
     QSettings settings("er9x-eePe", "eePe");
-    QString fileName = QFileDialog::getOpenFileName(this,"Open",settings.value("lastDir").toString(),tr("EEPROM files (*.bin *.hex);;BIN files (*.bin);;HEX files (*.hex)"));
+    QString fileName = QFileDialog::getOpenFileName(this,tr("Open"),settings.value("lastDir").toString(),tr("EEPROM files (*.bin *.hex);;BIN files (*.bin);;HEX files (*.hex)"));
     if (!fileName.isEmpty()) {
         settings.setValue("lastDir",QFileInfo(fileName).dir().absolutePath());
 
@@ -213,7 +213,7 @@ void MainWindow::burnFrom()
     QStringList arguments;
     arguments << "-c" << programmer << "-p" << "m64" << args << "-U" << str;
 
-    avrOutputDialog *ad = new avrOutputDialog(this, avrdudeLoc, arguments,"Read EEPROM From Tx"); //, AVR_DIALOG_KEEP_OPEN);
+    avrOutputDialog *ad = new avrOutputDialog(this, avrdudeLoc, arguments,tr("Read EEPROM From Tx")); //, AVR_DIALOG_KEEP_OPEN);
     int res = ad->exec();
 
     if(QFileInfo(tempFile).exists() && res)
@@ -230,7 +230,7 @@ void MainWindow::burnFrom()
 void MainWindow::burnToFlash()
 {
     QSettings settings("er9x-eePe", "eePe");
-    QString fileName = QFileDialog::getOpenFileName(this,"Open",settings.value("lastDir").toString(),tr("FLASH files (*.bin *.hex);;BIN files (*.bin);;HEX files (*.hex)"));
+    QString fileName = QFileDialog::getOpenFileName(this,tr("Open"),settings.value("lastDir").toString(),tr("FLASH files (*.bin *.hex);;BIN files (*.bin);;HEX files (*.hex)"));
     if (!fileName.isEmpty())
     {
         settings.setValue("lastDir",QFileInfo(fileName).dir().absolutePath());
@@ -257,7 +257,7 @@ void MainWindow::burnToFlash()
 void MainWindow::burnFromFlash()
 {
     QSettings settings("er9x-eePe", "eePe");
-    QString fileName = QFileDialog::getSaveFileName(this,"Open",settings.value("lastDir").toString(),tr("HEX files (*.hex);;BIN files (*.bin);;FLASH files (*.bin *.hex)"));
+    QString fileName = QFileDialog::getSaveFileName(this,tr("Open"),settings.value("lastDir").toString(),tr("HEX files (*.hex);;BIN files (*.bin);;FLASH files (*.bin *.hex)"));
     if (!fileName.isEmpty())
     {
         settings.setValue("lastDir",QFileInfo(fileName).dir().absolutePath());

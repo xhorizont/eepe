@@ -17,6 +17,12 @@ public:
 
 private:
     Ui::preferencesDialog *ui;
+
+    void populateLocale();
+    void initSettings();
+
+private slots:
+    void write_values();
 };
 
 #endif // PREFERENCESDIALOG_H

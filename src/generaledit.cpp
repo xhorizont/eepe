@@ -19,11 +19,10 @@ GeneralEdit::GeneralEdit(EEPFILE *eFile, QWidget *parent) :
     this->setWindowIcon(QIcon(":/icon.ico"));
     eeFile = eFile;
 
-    if(!eeFile->eeLoadGeneral())  eeFile->generalDefault();
-    eeFile->getGeneralSettings(&g_eeGeneral);
-
     QSettings settings("er9x-eePe", "eePe");
     ui->tabWidget->setCurrentIndex(settings.value("generalEditTab", 0).toInt());
+
+    eeFile->getGeneralSettings(&g_eeGeneral);
 
     populateSwitchCB(ui->backlightswCB,g_eeGeneral.lightSw);
 
@@ -42,6 +41,9 @@ GeneralEdit::GeneralEdit(EEPFILE *eFile, QWidget *parent) :
     ui->beeperCB->setCurrentIndex((g_eeGeneral.warnOpts & BIT_BEEP_VAL) >> BEEP_VAL_SHIFT);
     ui->channelorderCB->setCurrentIndex(g_eeGeneral.templateSetup);
     ui->stickmodeCB->setCurrentIndex(g_eeGeneral.stickMode);
+
+    ui->beepMinuteChkB->setChecked(!g_eeGeneral.minuteBeep);
+    ui->beepCountDownChkB->setChecked(!g_eeGeneral.preBeep);
 
     ui->ana1Neg->setValue(g_eeGeneral.calibSpanNeg[0]);
     ui->ana2Neg->setValue(g_eeGeneral.calibSpanNeg[1]);
@@ -399,3 +401,15 @@ void GeneralEdit::on_tabWidget_currentChanged(int index)
     settings.setValue("generalEditTab",index);//ui->tabWidget->currentIndex());
 }
 
+
+void GeneralEdit::on_beepMinuteChkB_stateChanged(int )
+{
+    g_eeGeneral.minuteBeep = ui->beepMinuteChkB->isChecked() ? 0 : 1;
+    updateSettings();
+}
+
+void GeneralEdit::on_beepCountDownChkB_stateChanged(int )
+{
+    g_eeGeneral.preBeep = ui->beepCountDownChkB->isChecked() ? 0 : 1;
+    updateSettings();
+}
