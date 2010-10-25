@@ -42,8 +42,8 @@ GeneralEdit::GeneralEdit(EEPFILE *eFile, QWidget *parent) :
     ui->channelorderCB->setCurrentIndex(g_eeGeneral.templateSetup);
     ui->stickmodeCB->setCurrentIndex(g_eeGeneral.stickMode);
 
-    ui->beepMinuteChkB->setChecked(!g_eeGeneral.minuteBeep);
-    ui->beepCountDownChkB->setChecked(!g_eeGeneral.preBeep);
+    ui->beepMinuteChkB->setChecked(g_eeGeneral.minuteBeep);
+    ui->beepCountDownChkB->setChecked(g_eeGeneral.preBeep);
 
     ui->ana1Neg->setValue(g_eeGeneral.calibSpanNeg[0]);
     ui->ana2Neg->setValue(g_eeGeneral.calibSpanNeg[1]);
@@ -404,12 +404,12 @@ void GeneralEdit::on_tabWidget_currentChanged(int index)
 
 void GeneralEdit::on_beepMinuteChkB_stateChanged(int )
 {
-    g_eeGeneral.minuteBeep = ui->beepMinuteChkB->isChecked() ? 0 : 1;
+    g_eeGeneral.minuteBeep = ui->beepMinuteChkB->isChecked() ? 1 : 0;
     updateSettings();
 }
 
 void GeneralEdit::on_beepCountDownChkB_stateChanged(int )
 {
-    g_eeGeneral.preBeep = ui->beepCountDownChkB->isChecked() ? 0 : 1;
+    g_eeGeneral.preBeep = ui->beepCountDownChkB->isChecked() ? 1 : 0;
     updateSettings();
 }
