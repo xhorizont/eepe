@@ -59,13 +59,13 @@ Acceptable values are 5v..10v</source>
     <message>
         <location filename="generaledit.ui" line="88"/>
         <location filename="generaledit.ui" line="121"/>
-        <location filename="generaledit.ui" line="1217"/>
+        <location filename="generaledit.ui" line="1231"/>
         <source>v</source>
         <translation></translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="110"/>
-        <location filename="generaledit.ui" line="1120"/>
+        <location filename="generaledit.ui" line="1134"/>
         <source>Battery Calibration</source>
         <translation>קליברציית סוללה</translation>
     </message>
@@ -319,35 +319,49 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="412"/>
+        <location filename="generaledit.ui" line="410"/>
+        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;Flash backlight on timer  beep&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="generaledit.ui" line="417"/>
+        <source>Flash on beep</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="generaledit.ui" line="426"/>
         <source>Input Filter</source>
         <translation>פילטר קלט</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="420"/>
+        <location filename="generaledit.ui" line="434"/>
         <source>Single</source>
         <translation>יחיד</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="425"/>
+        <location filename="generaledit.ui" line="439"/>
         <source>Oversample</source>
         <translation>מדוייק</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="430"/>
+        <location filename="generaledit.ui" line="444"/>
         <source>Filter</source>
         <translation>סינון</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="451"/>
+        <location filename="generaledit.ui" line="465"/>
         <source>Throttle Startup Warning</source>
         <translation>אזהרת מצערת</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="458"/>
-        <location filename="generaledit.ui" line="491"/>
-        <location filename="generaledit.ui" line="521"/>
-        <location filename="generaledit.ui" line="551"/>
+        <location filename="generaledit.ui" line="472"/>
+        <location filename="generaledit.ui" line="505"/>
+        <location filename="generaledit.ui" line="535"/>
+        <location filename="generaledit.ui" line="565"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
@@ -368,27 +382,27 @@ p, li { white-space: pre-wrap; }
 אזהרת מצב שקט: אזהרה באם הצפצפה נמצאת במצב &quot;שקט&quot;</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="484"/>
+        <location filename="generaledit.ui" line="498"/>
         <source>Switch Startup Warning</source>
         <translation>אזהרת מפסקים</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="514"/>
+        <location filename="generaledit.ui" line="528"/>
         <source>Memory Startup Warning</source>
         <translation>אזהרת זיכרון</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="544"/>
+        <location filename="generaledit.ui" line="558"/>
         <source>Silent mode (No Alarm)</source>
         <translation>אזהרת מצב שקט</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="587"/>
+        <location filename="generaledit.ui" line="601"/>
         <source>Beeper Mode</source>
         <translation>מצב צלצול</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="594"/>
+        <location filename="generaledit.ui" line="608"/>
         <source>Beeper volume
 
 0 - Quiet.  No beeps at all.
@@ -405,169 +419,169 @@ p, li { white-space: pre-wrap; }
 4 - חזק מאוד.</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="604"/>
+        <location filename="generaledit.ui" line="618"/>
         <source>0 - Quiet</source>
         <translation>0 - שקט</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="609"/>
+        <location filename="generaledit.ui" line="623"/>
         <source>1 - No Keys</source>
         <translation>1 - ללא מקשים</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="614"/>
+        <location filename="generaledit.ui" line="628"/>
         <source>2 - Normal</source>
         <translation>2 - רגיל</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="619"/>
+        <location filename="generaledit.ui" line="633"/>
         <source>3 - Long</source>
         <translation>3 - חזק</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="624"/>
+        <location filename="generaledit.ui" line="638"/>
         <source>4 - Extra Long</source>
         <translation>4 - חזק מאוד</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="632"/>
+        <location filename="generaledit.ui" line="646"/>
         <source>Channel Order (For Templates)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="639"/>
+        <location filename="generaledit.ui" line="653"/>
         <source>Channel order
 
 This is used by the templated to determine which channel goes to what number output.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="648"/>
+        <location filename="generaledit.ui" line="662"/>
         <source>R E T A</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="653"/>
+        <location filename="generaledit.ui" line="667"/>
         <source>R E A T</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="658"/>
+        <location filename="generaledit.ui" line="672"/>
         <source>R T E A</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="663"/>
+        <location filename="generaledit.ui" line="677"/>
         <source>R T A E</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="668"/>
+        <location filename="generaledit.ui" line="682"/>
         <source>R A E T</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="673"/>
+        <location filename="generaledit.ui" line="687"/>
         <source>R A T E</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="678"/>
+        <location filename="generaledit.ui" line="692"/>
         <source>E R T A</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="683"/>
+        <location filename="generaledit.ui" line="697"/>
         <source>E R A T</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="688"/>
+        <location filename="generaledit.ui" line="702"/>
         <source>E T R A</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="693"/>
+        <location filename="generaledit.ui" line="707"/>
         <source>E T A R</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="698"/>
+        <location filename="generaledit.ui" line="712"/>
         <source>E A R T</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="703"/>
+        <location filename="generaledit.ui" line="717"/>
         <source>E A T R</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="708"/>
+        <location filename="generaledit.ui" line="722"/>
         <source>T R E A</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="713"/>
+        <location filename="generaledit.ui" line="727"/>
         <source>T R A E</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="718"/>
+        <location filename="generaledit.ui" line="732"/>
         <source>T E R A</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="723"/>
+        <location filename="generaledit.ui" line="737"/>
         <source>T E A R</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="728"/>
+        <location filename="generaledit.ui" line="742"/>
         <source>T A R E</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="733"/>
+        <location filename="generaledit.ui" line="747"/>
         <source>T A E R</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="738"/>
+        <location filename="generaledit.ui" line="752"/>
         <source>A R E T</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="743"/>
+        <location filename="generaledit.ui" line="757"/>
         <source>A R T E</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="748"/>
+        <location filename="generaledit.ui" line="762"/>
         <source>A E R T</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="753"/>
+        <location filename="generaledit.ui" line="767"/>
         <source>A E T R</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="758"/>
+        <location filename="generaledit.ui" line="772"/>
         <source>A T R E</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="763"/>
+        <location filename="generaledit.ui" line="777"/>
         <source>A T E R</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="771"/>
+        <location filename="generaledit.ui" line="785"/>
         <source>Stick Mode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="778"/>
+        <location filename="generaledit.ui" line="792"/>
         <source>Mode selection:
 
 Mode 1:
@@ -590,82 +604,82 @@ Mode 4:
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="803"/>
+        <location filename="generaledit.ui" line="817"/>
         <source>Mode 1 (RUD ELE THR AIL)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="808"/>
+        <location filename="generaledit.ui" line="822"/>
         <source>Mode 2 (RUD THR ELE AIL)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="813"/>
+        <location filename="generaledit.ui" line="827"/>
         <source>Mode 3 (AIL ELE THR RUD)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="818"/>
+        <location filename="generaledit.ui" line="832"/>
         <source>Mode 4 (AIL THR ELE RUD)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="827"/>
+        <location filename="generaledit.ui" line="841"/>
         <source>Calibration</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="1127"/>
+        <location filename="generaledit.ui" line="1141"/>
         <source>ANALOG 7</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="1134"/>
+        <location filename="generaledit.ui" line="1148"/>
         <source>ANALOG 6</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="1141"/>
+        <location filename="generaledit.ui" line="1155"/>
         <source>ANALOG 5</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="1148"/>
+        <location filename="generaledit.ui" line="1162"/>
         <source>ANALOG 4</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="1155"/>
+        <location filename="generaledit.ui" line="1169"/>
         <source>ANALOG 3</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="1162"/>
+        <location filename="generaledit.ui" line="1176"/>
         <source>ANALOG 2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="1169"/>
+        <location filename="generaledit.ui" line="1183"/>
         <source>ANALOG 1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="1176"/>
+        <location filename="generaledit.ui" line="1190"/>
         <source>PPM In</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="1196"/>
+        <location filename="generaledit.ui" line="1210"/>
         <source>Negative</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="1203"/>
+        <location filename="generaledit.ui" line="1217"/>
         <source>Mid</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="1210"/>
+        <location filename="generaledit.ui" line="1224"/>
         <source>Positive</source>
         <translation type="unfinished"></translation>
     </message>

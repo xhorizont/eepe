@@ -80,6 +80,7 @@ private slots:
     void on_battcalibDSB_editingFinished();
     void on_battwarningDSB_editingFinished();
     void on_contrastSB_editingFinished();
+    void on_beepFlashChkB_stateChanged(int );
 };
 
 #endif // GENERALEDIT_H
