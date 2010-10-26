@@ -44,6 +44,7 @@ GeneralEdit::GeneralEdit(EEPFILE *eFile, QWidget *parent) :
 
     ui->beepMinuteChkB->setChecked(g_eeGeneral.minuteBeep);
     ui->beepCountDownChkB->setChecked(g_eeGeneral.preBeep);
+    ui->beepFlashChkB->setChecked(g_eeGeneral.flashBeep);
 
     ui->ana1Neg->setValue(g_eeGeneral.calibSpanNeg[0]);
     ui->ana2Neg->setValue(g_eeGeneral.calibSpanNeg[1]);
@@ -411,5 +412,11 @@ void GeneralEdit::on_beepMinuteChkB_stateChanged(int )
 void GeneralEdit::on_beepCountDownChkB_stateChanged(int )
 {
     g_eeGeneral.preBeep = ui->beepCountDownChkB->isChecked() ? 1 : 0;
+    updateSettings();
+}
+
+void GeneralEdit::on_beepFlashChkB_stateChanged(int )
+{
+    g_eeGeneral.flashBeep = ui->beepFlashChkB->isChecked() ? 1 : 0;
     updateSettings();
 }

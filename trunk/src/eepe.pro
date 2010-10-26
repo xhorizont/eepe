@@ -49,4 +49,5 @@ VERSION = $$system(svnversion)
 VERSTR = '\\"$${VERSION}\\"' # place quotes around the version string
 DEFINES += VER=\"$${VERSTR}\" # create a VER macro containing the version string
 TRANSLATIONS = eepe_.ts    \
-               eepe_he.ts
+               eepe_he.ts  \
+               eepe_fr.ts

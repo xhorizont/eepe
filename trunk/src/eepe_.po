@@ -61,12 +61,12 @@ msgid ""
 "Acceptable values are 5v..10v"
 msgstr ""
 
-#: generaledit.ui:88 generaledit.ui:121 generaledit.ui:1217
+#: generaledit.ui:88 generaledit.ui:121 generaledit.ui:1231
 msgctxt "GeneralEdit|"
 msgid "v"
 msgstr ""
 
-#: generaledit.ui:110 generaledit.ui:1120
+#: generaledit.ui:110 generaledit.ui:1134
 msgctxt "GeneralEdit|"
 msgid "Battery Calibration"
 msgstr ""
@@ -330,32 +330,52 @@ msgctxt "GeneralEdit|"
 msgid "Count Down to Zero"
 msgstr ""
 
-#: generaledit.ui:412
+#: generaledit.ui:410
+msgctxt "GeneralEdit|"
+msgid ""
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" "
+"\"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style "
+"type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:'MS Shell Dlg 2'; "
+"font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; "
+"margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" "
+"font-size:8pt;\">Flash backlight on timer  beep</span></p></body></html>"
+msgstr ""
+
+#: generaledit.ui:417
+msgctxt "GeneralEdit|"
+msgid "Flash on beep"
+msgstr ""
+
+#: generaledit.ui:426
 msgctxt "GeneralEdit|"
 msgid "Input Filter"
 msgstr ""
 
-#: generaledit.ui:420
+#: generaledit.ui:434
 msgctxt "GeneralEdit|"
 msgid "Single"
 msgstr ""
 
-#: generaledit.ui:425
+#: generaledit.ui:439
 msgctxt "GeneralEdit|"
 msgid "Oversample"
 msgstr ""
 
-#: generaledit.ui:430
+#: generaledit.ui:444
 msgctxt "GeneralEdit|"
 msgid "Filter"
 msgstr ""
 
-#: generaledit.ui:451
+#: generaledit.ui:465
 msgctxt "GeneralEdit|"
 msgid "Throttle Startup Warning"
 msgstr ""
 
-#: generaledit.ui:458 generaledit.ui:491 generaledit.ui:521 generaledit.ui:551
+#: generaledit.ui:472 generaledit.ui:505 generaledit.ui:535 generaledit.ui:565
 msgctxt "GeneralEdit|"
 msgid ""
 "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" "
@@ -388,27 +408,27 @@ msgid ""
 "- will alert you if the beeper is set to quiet (0)</p></body></html>"
 msgstr ""
 
-#: generaledit.ui:484
+#: generaledit.ui:498
 msgctxt "GeneralEdit|"
 msgid "Switch Startup Warning"
 msgstr ""
 
-#: generaledit.ui:514
+#: generaledit.ui:528
 msgctxt "GeneralEdit|"
 msgid "Memory Startup Warning"
 msgstr ""
 
-#: generaledit.ui:544
+#: generaledit.ui:558
 msgctxt "GeneralEdit|"
 msgid "Silent mode (No Alarm)"
 msgstr ""
 
-#: generaledit.ui:587
+#: generaledit.ui:601
 msgctxt "GeneralEdit|"
 msgid "Beeper Mode"
 msgstr ""
 
-#: generaledit.ui:594
+#: generaledit.ui:608
 msgctxt "GeneralEdit|"
 msgid ""
 "Beeper volume\n"
@@ -420,37 +440,37 @@ msgid ""
 "4 - Extra loud."
 msgstr ""
 
-#: generaledit.ui:604
+#: generaledit.ui:618
 msgctxt "GeneralEdit|"
 msgid "0 - Quiet"
 msgstr ""
 
-#: generaledit.ui:609
+#: generaledit.ui:623
 msgctxt "GeneralEdit|"
 msgid "1 - No Keys"
 msgstr ""
 
-#: generaledit.ui:614
+#: generaledit.ui:628
 msgctxt "GeneralEdit|"
 msgid "2 - Normal"
 msgstr ""
 
-#: generaledit.ui:619
+#: generaledit.ui:633
 msgctxt "GeneralEdit|"
 msgid "3 - Long"
 msgstr ""
 
-#: generaledit.ui:624
+#: generaledit.ui:638
 msgctxt "GeneralEdit|"
 msgid "4 - Extra Long"
 msgstr ""
 
-#: generaledit.ui:632
+#: generaledit.ui:646
 msgctxt "GeneralEdit|"
 msgid "Channel Order (For Templates)"
 msgstr ""
 
-#: generaledit.ui:639
+#: generaledit.ui:653
 msgctxt "GeneralEdit|"
 msgid ""
 "Channel order\n"
@@ -459,132 +479,132 @@ msgid ""
 "output."
 msgstr ""
 
-#: generaledit.ui:648
+#: generaledit.ui:662
 msgctxt "GeneralEdit|"
 msgid "R E T A"
 msgstr ""
 
-#: generaledit.ui:653
+#: generaledit.ui:667
 msgctxt "GeneralEdit|"
 msgid "R E A T"
 msgstr ""
 
-#: generaledit.ui:658
+#: generaledit.ui:672
 msgctxt "GeneralEdit|"
 msgid "R T E A"
 msgstr ""
 
-#: generaledit.ui:663
+#: generaledit.ui:677
 msgctxt "GeneralEdit|"
 msgid "R T A E"
 msgstr ""
 
-#: generaledit.ui:668
+#: generaledit.ui:682
 msgctxt "GeneralEdit|"
 msgid "R A E T"
 msgstr ""
 
-#: generaledit.ui:673
+#: generaledit.ui:687
 msgctxt "GeneralEdit|"
 msgid "R A T E"
 msgstr ""
 
-#: generaledit.ui:678
+#: generaledit.ui:692
 msgctxt "GeneralEdit|"
 msgid "E R T A"
 msgstr ""
 
-#: generaledit.ui:683
+#: generaledit.ui:697
 msgctxt "GeneralEdit|"
 msgid "E R A T"
 msgstr ""
 
-#: generaledit.ui:688
+#: generaledit.ui:702
 msgctxt "GeneralEdit|"
 msgid "E T R A"
 msgstr ""
 
-#: generaledit.ui:693
+#: generaledit.ui:707
 msgctxt "GeneralEdit|"
 msgid "E T A R"
 msgstr ""
 
-#: generaledit.ui:698
+#: generaledit.ui:712
 msgctxt "GeneralEdit|"
 msgid "E A R T"
 msgstr ""
 
-#: generaledit.ui:703
+#: generaledit.ui:717
 msgctxt "GeneralEdit|"
 msgid "E A T R"
 msgstr ""
 
-#: generaledit.ui:708
+#: generaledit.ui:722
 msgctxt "GeneralEdit|"
 msgid "T R E A"
 msgstr ""
 
-#: generaledit.ui:713
+#: generaledit.ui:727
 msgctxt "GeneralEdit|"
 msgid "T R A E"
 msgstr ""
 
-#: generaledit.ui:718
+#: generaledit.ui:732
 msgctxt "GeneralEdit|"
 msgid "T E R A"
 msgstr ""
 
-#: generaledit.ui:723
+#: generaledit.ui:737
 msgctxt "GeneralEdit|"
 msgid "T E A R"
 msgstr ""
 
-#: generaledit.ui:728
+#: generaledit.ui:742
 msgctxt "GeneralEdit|"
 msgid "T A R E"
 msgstr ""
 
-#: generaledit.ui:733
+#: generaledit.ui:747
 msgctxt "GeneralEdit|"
 msgid "T A E R"
 msgstr ""
 
-#: generaledit.ui:738
+#: generaledit.ui:752
 msgctxt "GeneralEdit|"
 msgid "A R E T"
 msgstr ""
 
-#: generaledit.ui:743
+#: generaledit.ui:757
 msgctxt "GeneralEdit|"
 msgid "A R T E"
 msgstr ""
 
-#: generaledit.ui:748
+#: generaledit.ui:762
 msgctxt "GeneralEdit|"
 msgid "A E R T"
 msgstr ""
 
-#: generaledit.ui:753
+#: generaledit.ui:767
 msgctxt "GeneralEdit|"
 msgid "A E T R"
 msgstr ""
 
-#: generaledit.ui:758
+#: generaledit.ui:772
 msgctxt "GeneralEdit|"
 msgid "A T R E"
 msgstr ""
 
-#: generaledit.ui:763
+#: generaledit.ui:777
 msgctxt "GeneralEdit|"
 msgid "A T E R"
 msgstr ""
 
-#: generaledit.ui:771
+#: generaledit.ui:785
 msgctxt "GeneralEdit|"
 msgid "Stick Mode"
 msgstr ""
 
-#: generaledit.ui:778
+#: generaledit.ui:792
 msgctxt "GeneralEdit|"
 msgid ""
 "Mode selection:\n"
@@ -607,82 +627,82 @@ msgid ""
 "\n"
 msgstr ""
 
-#: generaledit.ui:803
+#: generaledit.ui:817
 msgctxt "GeneralEdit|"
 msgid "Mode 1 (RUD ELE THR AIL)"
 msgstr ""
 
-#: generaledit.ui:808
+#: generaledit.ui:822
 msgctxt "GeneralEdit|"
 msgid "Mode 2 (RUD THR ELE AIL)"
 msgstr ""
 
-#: generaledit.ui:813
+#: generaledit.ui:827
 msgctxt "GeneralEdit|"
 msgid "Mode 3 (AIL ELE THR RUD)"
 msgstr ""
 
-#: generaledit.ui:818
+#: generaledit.ui:832
 msgctxt "GeneralEdit|"
 msgid "Mode 4 (AIL THR ELE RUD)"
 msgstr ""
 
-#: generaledit.ui:827
+#: generaledit.ui:841
 msgctxt "GeneralEdit|"
 msgid "Calibration"
 msgstr ""
 
-#: generaledit.ui:1127
+#: generaledit.ui:1141
 msgctxt "GeneralEdit|"
 msgid "ANALOG 7"
 msgstr ""
 
-#: generaledit.ui:1134
+#: generaledit.ui:1148
 msgctxt "GeneralEdit|"
 msgid "ANALOG 6"
 msgstr ""
 
-#: generaledit.ui:1141
+#: generaledit.ui:1155
 msgctxt "GeneralEdit|"
 msgid "ANALOG 5"
 msgstr ""
 
-#: generaledit.ui:1148
+#: generaledit.ui:1162
 msgctxt "GeneralEdit|"
 msgid "ANALOG 4"
 msgstr ""
 
-#: generaledit.ui:1155
+#: generaledit.ui:1169
 msgctxt "GeneralEdit|"
 msgid "ANALOG 3"
 msgstr ""
 
-#: generaledit.ui:1162
+#: generaledit.ui:1176
 msgctxt "GeneralEdit|"
 msgid "ANALOG 2"
 msgstr ""
 
-#: generaledit.ui:1169
+#: generaledit.ui:1183
 msgctxt "GeneralEdit|"
 msgid "ANALOG 1"
 msgstr ""
 
-#: generaledit.ui:1176
+#: generaledit.ui:1190
 msgctxt "GeneralEdit|"
 msgid "PPM In"
 msgstr ""
 
-#: generaledit.ui:1196
+#: generaledit.ui:1210
 msgctxt "GeneralEdit|"
 msgid "Negative"
 msgstr ""
 
-#: generaledit.ui:1203
+#: generaledit.ui:1217
 msgctxt "GeneralEdit|"
 msgid "Mid"
 msgstr ""
 
-#: generaledit.ui:1210
+#: generaledit.ui:1224
 msgctxt "GeneralEdit|"
 msgid "Positive"
 msgstr ""
