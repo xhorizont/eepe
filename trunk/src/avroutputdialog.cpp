@@ -9,9 +9,9 @@ avrOutputDialog::avrOutputDialog(QWidget *parent, QString prog, QStringList arg,
     ui->setupUi(this);
 
     if(wTitle.isEmpty())
-        setWindowTitle("AVRDUDE result");
+        setWindowTitle(tr("AVRDUDE result"));
     else
-        setWindowTitle("AVRDUDE - " + wTitle);
+        setWindowTitle(tr("AVRDUDE - ") + wTitle);
 
 
 
@@ -115,7 +115,7 @@ void avrOutputDialog::doFinished(int code=0)
 void avrOutputDialog::doProcessStarted()
 {
     addText(HLINE_SEPARATOR "\n");
-    addText("Started AVRDUDE\n");
+    addText(tr("Started AVRDUDE\n"));
     addText(cmdLine);
     addText("\n" HLINE_SEPARATOR "\n");
 }

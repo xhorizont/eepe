@@ -26,7 +26,7 @@ These will be relevant for all models in the same EEPROM.</source>
         <translation>ניגודיות</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="51"/>
+        <location filename="generaledit.ui" line="57"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
@@ -41,12 +41,12 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;20-45 ערכים יכולים להיות&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="75"/>
+        <location filename="generaledit.ui" line="81"/>
         <source>Battery Warning</source>
         <translation>אזהרת מתח נמוך</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="82"/>
+        <location filename="generaledit.ui" line="94"/>
         <source>Battery warning voltage.
 This is the threashhold where the battery warning sounds.
 
@@ -57,20 +57,18 @@ Acceptable values are 5v..10v</source>
 ערכים מותרים: 5v..10v</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="88"/>
-        <location filename="generaledit.ui" line="121"/>
-        <location filename="generaledit.ui" line="1231"/>
+        <location filename="generaledit.ui" line="1274"/>
         <source>v</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="110"/>
-        <location filename="generaledit.ui" line="1134"/>
+        <location filename="generaledit.ui" line="125"/>
+        <location filename="generaledit.ui" line="1174"/>
         <source>Battery Calibration</source>
         <translation>קליברציית סוללה</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="117"/>
+        <location filename="generaledit.ui" line="138"/>
         <source>Battery calibration:
 This value will be added to the measured battery voltage.  Use this value to calibrate the meter with an external meter.</source>
         <translation>קליברציית סוללה:
@@ -78,209 +76,54 @@ This value will be added to the measured battery voltage.  Use this value to cal
 ניתן להשתמש בערך זה ע&quot;מ לכוון את מדידת הסוללה בעזרת מד מתח חיצוני.</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="140"/>
+        <location filename="generaledit.ui" line="164"/>
         <source>Backlight Switch</source>
         <translation>מפסק תאורה</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="147"/>
+        <location filename="generaledit.ui" line="177"/>
         <source>This is the switch selectrion for turning on the backlight (if installed).
 
 </source>
         <translation>מפסק זה מפעיל את תאורת המסך (אם קיימת).</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="156"/>
-        <source>!SW6</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="generaledit.ui" line="161"/>
-        <source>!SW5</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="generaledit.ui" line="166"/>
-        <source>!SW4</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="generaledit.ui" line="171"/>
-        <source>!SW3</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="generaledit.ui" line="176"/>
-        <source>!SW2</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="generaledit.ui" line="181"/>
-        <source>!SW1</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="generaledit.ui" line="186"/>
-        <source>!TRN</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="generaledit.ui" line="191"/>
-        <source>!GEA</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="generaledit.ui" line="196"/>
-        <source>!AIL</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="generaledit.ui" line="201"/>
-        <source>!ID2</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="generaledit.ui" line="206"/>
-        <source>!ID1</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="generaledit.ui" line="211"/>
-        <source>!ID0</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="generaledit.ui" line="216"/>
-        <source>!ELE</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="generaledit.ui" line="221"/>
-        <source>!RUD</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="generaledit.ui" line="226"/>
-        <source>!THR</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="generaledit.ui" line="231"/>
-        <source>----</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="generaledit.ui" line="236"/>
-        <source>THR</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="generaledit.ui" line="241"/>
-        <source>RUD</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="generaledit.ui" line="246"/>
-        <source>ELE</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="generaledit.ui" line="251"/>
-        <source>ID0</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="generaledit.ui" line="256"/>
-        <source>ID1</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="generaledit.ui" line="261"/>
-        <source>ID2</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="generaledit.ui" line="266"/>
-        <source>AIL</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="generaledit.ui" line="271"/>
-        <source>GEA</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="generaledit.ui" line="276"/>
-        <source>TRN</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="generaledit.ui" line="281"/>
-        <source>SW1</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="generaledit.ui" line="286"/>
-        <source>SW2</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="generaledit.ui" line="291"/>
-        <source>SW3</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="generaledit.ui" line="296"/>
-        <source>SW4</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="generaledit.ui" line="301"/>
-        <source>SW5</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="generaledit.ui" line="306"/>
-        <source>SW6</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="generaledit.ui" line="314"/>
+        <location filename="generaledit.ui" line="189"/>
         <source>Backlight Auto On/OFF after</source>
         <translation>הדלת וכיבוי תאורה אוטומטי אחרי</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="321"/>
+        <location filename="generaledit.ui" line="202"/>
         <source>If this value is not 0, any keypress will turn on the backlight and turn it off after the specified number of seconds.</source>
         <translation>אם ערך זה אינו &quot;0&quot; כל מקש יפעיל את התאורה למשך הזמן המצויין.</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="324"/>
+        <location filename="generaledit.ui" line="205"/>
         <source> sec</source>
         <translation> שניות</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="337"/>
+        <location filename="generaledit.ui" line="218"/>
         <source>Inactivity Timer</source>
         <translation>שעון אי-פעילות</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="344"/>
+        <location filename="generaledit.ui" line="231"/>
         <source>If not zero will sound beeps if the transmitter has been left without inputs for the specified number of minutes.</source>
         <translation>אם לא &quot;0&quot; יצפצף לאחר מס&apos; הדקות המצויין באם אין פעילות.</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="347"/>
+        <location filename="generaledit.ui" line="234"/>
         <source> min</source>
         <translation> דקות</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="357"/>
+        <location filename="generaledit.ui" line="244"/>
         <source>Reverse Throttle Operation</source>
         <translation>מצערת הפוכה</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="364"/>
+        <location filename="generaledit.ui" line="251"/>
         <source>Reverse throttle operation.
 If this is checked the throttle will be reversed.  Idle will be forward, trim will also be reversed and the throttle warning will be reversed as well.
 
@@ -290,12 +133,12 @@ If this is checked the throttle will be reversed.  Idle will be forward, trim wi
 קיזוז ואזהרת מצערת יהיו הפוכים גם כן.</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="377"/>
+        <location filename="generaledit.ui" line="264"/>
         <source>Timer Beeps</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="386"/>
+        <location filename="generaledit.ui" line="273"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
@@ -304,22 +147,22 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="393"/>
+        <location filename="generaledit.ui" line="280"/>
         <source>Every Minute</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="400"/>
+        <location filename="generaledit.ui" line="287"/>
         <source>Beeps at 30, 15, 10, and down from5 seconds</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="403"/>
+        <location filename="generaledit.ui" line="290"/>
         <source>Count Down to Zero</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="410"/>
+        <location filename="generaledit.ui" line="297"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
@@ -328,40 +171,40 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="417"/>
+        <location filename="generaledit.ui" line="304"/>
         <source>Flash on beep</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="426"/>
+        <location filename="generaledit.ui" line="313"/>
         <source>Input Filter</source>
         <translation>פילטר קלט</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="434"/>
+        <location filename="generaledit.ui" line="321"/>
         <source>Single</source>
         <translation>יחיד</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="439"/>
+        <location filename="generaledit.ui" line="326"/>
         <source>Oversample</source>
         <translation>מדוייק</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="444"/>
+        <location filename="generaledit.ui" line="331"/>
         <source>Filter</source>
         <translation>סינון</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="465"/>
+        <location filename="generaledit.ui" line="352"/>
         <source>Throttle Startup Warning</source>
         <translation>אזהרת מצערת</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="472"/>
-        <location filename="generaledit.ui" line="505"/>
-        <location filename="generaledit.ui" line="535"/>
-        <location filename="generaledit.ui" line="565"/>
+        <location filename="generaledit.ui" line="359"/>
+        <location filename="generaledit.ui" line="392"/>
+        <location filename="generaledit.ui" line="422"/>
+        <location filename="generaledit.ui" line="452"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
@@ -382,27 +225,27 @@ p, li { white-space: pre-wrap; }
 אזהרת מצב שקט: אזהרה באם הצפצפה נמצאת במצב &quot;שקט&quot;</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="498"/>
+        <location filename="generaledit.ui" line="385"/>
         <source>Switch Startup Warning</source>
         <translation>אזהרת מפסקים</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="528"/>
+        <location filename="generaledit.ui" line="415"/>
         <source>Memory Startup Warning</source>
         <translation>אזהרת זיכרון</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="558"/>
+        <location filename="generaledit.ui" line="445"/>
         <source>Silent mode (No Alarm)</source>
         <translation>אזהרת מצב שקט</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="601"/>
+        <location filename="generaledit.ui" line="488"/>
         <source>Beeper Mode</source>
         <translation>מצב צלצול</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="608"/>
+        <location filename="generaledit.ui" line="501"/>
         <source>Beeper volume
 
 0 - Quiet.  No beeps at all.
@@ -419,169 +262,49 @@ p, li { white-space: pre-wrap; }
 4 - חזק מאוד.</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="618"/>
+        <location filename="generaledit.ui" line="511"/>
         <source>0 - Quiet</source>
         <translation>0 - שקט</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="623"/>
+        <location filename="generaledit.ui" line="516"/>
         <source>1 - No Keys</source>
         <translation>1 - ללא מקשים</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="628"/>
+        <location filename="generaledit.ui" line="521"/>
         <source>2 - Normal</source>
         <translation>2 - רגיל</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="633"/>
+        <location filename="generaledit.ui" line="526"/>
         <source>3 - Long</source>
         <translation>3 - חזק</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="638"/>
+        <location filename="generaledit.ui" line="531"/>
         <source>4 - Extra Long</source>
         <translation>4 - חזק מאוד</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="646"/>
+        <location filename="generaledit.ui" line="539"/>
         <source>Channel Order (For Templates)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="653"/>
+        <location filename="generaledit.ui" line="552"/>
         <source>Channel order
 
 This is used by the templated to determine which channel goes to what number output.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="662"/>
-        <source>R E T A</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="generaledit.ui" line="667"/>
-        <source>R E A T</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="generaledit.ui" line="672"/>
-        <source>R T E A</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="generaledit.ui" line="677"/>
-        <source>R T A E</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="generaledit.ui" line="682"/>
-        <source>R A E T</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="generaledit.ui" line="687"/>
-        <source>R A T E</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="generaledit.ui" line="692"/>
-        <source>E R T A</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="generaledit.ui" line="697"/>
-        <source>E R A T</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="generaledit.ui" line="702"/>
-        <source>E T R A</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="generaledit.ui" line="707"/>
-        <source>E T A R</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="generaledit.ui" line="712"/>
-        <source>E A R T</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="generaledit.ui" line="717"/>
-        <source>E A T R</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="generaledit.ui" line="722"/>
-        <source>T R E A</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="generaledit.ui" line="727"/>
-        <source>T R A E</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="generaledit.ui" line="732"/>
-        <source>T E R A</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="generaledit.ui" line="737"/>
-        <source>T E A R</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="generaledit.ui" line="742"/>
-        <source>T A R E</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="generaledit.ui" line="747"/>
-        <source>T A E R</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="generaledit.ui" line="752"/>
-        <source>A R E T</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="generaledit.ui" line="757"/>
-        <source>A R T E</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="generaledit.ui" line="762"/>
-        <source>A E R T</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="generaledit.ui" line="767"/>
-        <source>A E T R</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="generaledit.ui" line="772"/>
-        <source>A T R E</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="generaledit.ui" line="777"/>
-        <source>A T E R</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="generaledit.ui" line="785"/>
+        <location filename="generaledit.ui" line="684"/>
         <source>Stick Mode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="792"/>
+        <location filename="generaledit.ui" line="697"/>
         <source>Mode selection:
 
 Mode 1:
@@ -604,82 +327,82 @@ Mode 4:
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="817"/>
+        <location filename="generaledit.ui" line="722"/>
         <source>Mode 1 (RUD ELE THR AIL)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="822"/>
+        <location filename="generaledit.ui" line="727"/>
         <source>Mode 2 (RUD THR ELE AIL)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="827"/>
+        <location filename="generaledit.ui" line="732"/>
         <source>Mode 3 (AIL ELE THR RUD)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="832"/>
+        <location filename="generaledit.ui" line="737"/>
         <source>Mode 4 (AIL THR ELE RUD)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="841"/>
+        <location filename="generaledit.ui" line="746"/>
         <source>Calibration</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="1141"/>
+        <location filename="generaledit.ui" line="1181"/>
         <source>ANALOG 7</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="1148"/>
+        <location filename="generaledit.ui" line="1188"/>
         <source>ANALOG 6</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="1155"/>
+        <location filename="generaledit.ui" line="1195"/>
         <source>ANALOG 5</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="1162"/>
+        <location filename="generaledit.ui" line="1202"/>
         <source>ANALOG 4</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="1169"/>
+        <location filename="generaledit.ui" line="1209"/>
         <source>ANALOG 3</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="1176"/>
+        <location filename="generaledit.ui" line="1216"/>
         <source>ANALOG 2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="1183"/>
+        <location filename="generaledit.ui" line="1223"/>
         <source>ANALOG 1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="1190"/>
+        <location filename="generaledit.ui" line="1230"/>
         <source>PPM In</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="1210"/>
+        <location filename="generaledit.ui" line="1250"/>
         <source>Negative</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="1217"/>
+        <location filename="generaledit.ui" line="1257"/>
         <source>Mid</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="1224"/>
+        <location filename="generaledit.ui" line="1264"/>
         <source>Positive</source>
         <translation type="unfinished"></translation>
     </message>
@@ -731,28 +454,14 @@ Mode 4:
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="315"/>
-        <source>&lt;center&gt;&lt;img src=&quot;:/images/eepe-title.png&quot;&gt;&lt;br&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="mainwindow.cpp" line="316"/>
-        <source>Copyright Erez Raviv &amp;copy;2010&lt;br&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="mainwindow.cpp" line="317"/>
-        <source>&lt;a href=&apos;http://code.google.com/p/eepe/&apos;&gt;http://code.google.com/p/eepe/&lt;/a&gt;&lt;br&gt;Revision: %1, %2&lt;br&gt;&lt;br&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="mainwindow.cpp" line="318"/>
-        <source>If you&apos;ve found this program and/or the Firmware useful please support by &lt;a href=&apos;</source>
+        <source>If you&apos;ve found this program and/or the Firmware useful please support by</source>
+        <oldsource>If you&apos;ve found this program and/or the Firmware useful please support by &lt;a href=&apos;</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="320"/>
-        <source>&apos;&gt;donating&lt;/a&gt;&lt;/center&gt;</source>
+        <source>donating</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -871,6 +580,11 @@ Mode 4:
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="mainwindow.cpp" line="448"/>
+        <source>Write EEPROM to transmitter</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="mainwindow.cpp" line="451"/>
         <source>&amp;Read EEPROM From Tx</source>
         <translation type="unfinished"></translation>
@@ -881,8 +595,18 @@ Mode 4:
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="mainwindow.cpp" line="453"/>
+        <source>Read EEPROM from transmitter</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="mainwindow.cpp" line="456"/>
         <source>Write Flash memory</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="457"/>
+        <source>Write flash memory to transmitter</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -891,13 +615,28 @@ Mode 4:
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="mainwindow.cpp" line="461"/>
+        <source>Read flash memory to transmitter</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="mainwindow.cpp" line="464"/>
         <source>&amp;Configure...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="mainwindow.cpp" line="465"/>
+        <source>Configure burning software</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="mainwindow.cpp" line="468"/>
         <source>&amp;List programmers</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="469"/>
+        <source>List available programmers</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -911,6 +650,11 @@ Mode 4:
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="mainwindow.cpp" line="474"/>
+        <source>Simulate selected model.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="mainwindow.cpp" line="478"/>
         <source>&amp;Print</source>
         <translation type="unfinished"></translation>
@@ -918,6 +662,11 @@ Mode 4:
     <message>
         <location filename="mainwindow.cpp" line="479"/>
         <source>Ctrl+P</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="480"/>
+        <source>Print current model.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1054,7 +803,6 @@ Mode 4:
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="169"/>
         <location filename="mdichild.cpp" line="641"/>
         <location filename="mdichild.cpp" line="680"/>
         <source>eePe</source>
@@ -1598,31 +1346,6 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="262"/>
-        <source>PPM</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="modeledit.ui" line="267"/>
-        <source>Silver A</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="modeledit.ui" line="272"/>
-        <source>Silver B</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="modeledit.ui" line="277"/>
-        <source>Silver C</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="modeledit.ui" line="282"/>
-        <source>Trac 09</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="modeledit.ui" line="290"/>
         <source>Channels</source>
         <translation type="unfinished"></translation>
@@ -1994,122 +1717,72 @@ Right</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="4459"/>
-        <location filename="modeledit.ui" line="4523"/>
-        <location filename="modeledit.ui" line="4587"/>
-        <location filename="modeledit.ui" line="4651"/>
-        <location filename="modeledit.ui" line="4715"/>
-        <location filename="modeledit.ui" line="4779"/>
-        <source>----</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="modeledit.ui" line="4464"/>
-        <location filename="modeledit.ui" line="4528"/>
-        <location filename="modeledit.ui" line="4592"/>
-        <location filename="modeledit.ui" line="4656"/>
-        <location filename="modeledit.ui" line="4720"/>
-        <location filename="modeledit.ui" line="4784"/>
-        <source>v&gt;ofs</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="modeledit.ui" line="4469"/>
-        <location filename="modeledit.ui" line="4533"/>
-        <location filename="modeledit.ui" line="4597"/>
-        <location filename="modeledit.ui" line="4661"/>
-        <location filename="modeledit.ui" line="4725"/>
-        <location filename="modeledit.ui" line="4789"/>
-        <source>v&lt;ofs</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="modeledit.ui" line="4474"/>
-        <location filename="modeledit.ui" line="4538"/>
-        <location filename="modeledit.ui" line="4602"/>
-        <location filename="modeledit.ui" line="4666"/>
-        <location filename="modeledit.ui" line="4730"/>
-        <location filename="modeledit.ui" line="4794"/>
-        <source>|v|&gt;ofs</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="modeledit.ui" line="4479"/>
-        <location filename="modeledit.ui" line="4543"/>
-        <location filename="modeledit.ui" line="4607"/>
-        <location filename="modeledit.ui" line="4671"/>
-        <location filename="modeledit.ui" line="4735"/>
-        <location filename="modeledit.ui" line="4799"/>
-        <source>|v|&lt;ofs</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="modeledit.ui" line="4515"/>
+        <location filename="modeledit.ui" line="4489"/>
         <source>CSwitch2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="4579"/>
+        <location filename="modeledit.ui" line="4527"/>
         <source>CSwitch3</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="4643"/>
+        <location filename="modeledit.ui" line="4565"/>
         <source>CSwitch4</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="4707"/>
+        <location filename="modeledit.ui" line="4603"/>
         <source>CSwitch5</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="4771"/>
+        <location filename="modeledit.ui" line="4641"/>
         <source>CSwitch6</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="4835"/>
+        <location filename="modeledit.ui" line="4679"/>
         <source>Function</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="4848"/>
+        <location filename="modeledit.ui" line="4692"/>
         <source>Source/SW1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="4861"/>
+        <location filename="modeledit.ui" line="4705"/>
         <source>Value/SW2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="4869"/>
+        <location filename="modeledit.ui" line="4713"/>
         <source>Trims</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="4972"/>
+        <location filename="modeledit.ui" line="4816"/>
         <source>STICK 1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="4987"/>
+        <location filename="modeledit.ui" line="4831"/>
         <source>STICK 2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="5071"/>
+        <location filename="modeledit.ui" line="4915"/>
         <source>STICK 4</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="5086"/>
+        <location filename="modeledit.ui" line="4930"/>
         <source>STICK 3</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="5159"/>
+        <location filename="modeledit.ui" line="5003"/>
         <source>Simulate</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2128,6 +1801,16 @@ Right</source>
     <message>
         <location filename="modeledit.cpp" line="383"/>
         <source> +%1%</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="modeledit.cpp" line="390"/>
+        <source> Switch(</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="modeledit.cpp" line="391"/>
+        <source> noTrim</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2249,6 +1932,16 @@ Right</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="avroutputdialog.cpp" line="12"/>
+        <source>AVRDUDE result</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="avroutputdialog.cpp" line="14"/>
+        <source>AVRDUDE - </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="avroutputdialog.cpp" line="96"/>
         <source>
 AVRDUDE done - exit code %1</source>
@@ -2258,6 +1951,12 @@ AVRDUDE done - exit code %1</source>
         <location filename="avroutputdialog.cpp" line="98"/>
         <source>
 AVRDUDE done - SUCCESSFUL</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="avroutputdialog.cpp" line="118"/>
+        <source>Started AVRDUDE
+</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2289,376 +1988,66 @@ AVRDUDE done - SUCCESSFUL</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="burnconfigdialog.ui" line="48"/>
+        <location filename="burnconfigdialog.ui" line="51"/>
         <source>Use this button to browse and look for the AVRDUDE.EXE executable file.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="burnconfigdialog.ui" line="51"/>
-        <location filename="burnconfigdialog.ui" line="83"/>
+        <location filename="burnconfigdialog.ui" line="54"/>
+        <location filename="burnconfigdialog.ui" line="89"/>
         <source>Browse...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="burnconfigdialog.ui" line="58"/>
+        <location filename="burnconfigdialog.ui" line="61"/>
         <source>Temporary Directory</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="burnconfigdialog.ui" line="68"/>
+        <location filename="burnconfigdialog.ui" line="71"/>
         <source>Stores temporary files</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="burnconfigdialog.ui" line="71"/>
+        <location filename="burnconfigdialog.ui" line="74"/>
         <source>This directory holds temporary files needed for uploading and downloading EEPROM files.   
 
 Make sure you have write access to this directory.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="burnconfigdialog.ui" line="80"/>
+        <location filename="burnconfigdialog.ui" line="86"/>
         <source>Use this button to browse and select the temporary directory.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="burnconfigdialog.ui" line="90"/>
+        <location filename="burnconfigdialog.ui" line="96"/>
         <source>Programmer</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="burnconfigdialog.ui" line="100"/>
+        <location filename="burnconfigdialog.ui" line="106"/>
         <source>Programmer used for communicating with the controller.
 Please consult the programmer&apos;s documentation and the AVRDUDE documentation to select the appropriate programmer.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="burnconfigdialog.ui" line="108"/>
-        <source>c2n232i</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="burnconfigdialog.ui" line="113"/>
-        <source>dasa3</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="burnconfigdialog.ui" line="118"/>
-        <source>dasa</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="burnconfigdialog.ui" line="123"/>
-        <source>siprog</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="burnconfigdialog.ui" line="128"/>
-        <source>ponyser</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="burnconfigdialog.ui" line="133"/>
-        <source>89isp</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="burnconfigdialog.ui" line="138"/>
-        <source>frank-stk200</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="burnconfigdialog.ui" line="143"/>
-        <source>blaster</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="burnconfigdialog.ui" line="148"/>
-        <source>ere-isp-avr</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="burnconfigdialog.ui" line="153"/>
-        <source>atisp</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="burnconfigdialog.ui" line="158"/>
-        <source>dapa</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="burnconfigdialog.ui" line="163"/>
-        <source>xil</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="burnconfigdialog.ui" line="168"/>
-        <source>futurlec</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="burnconfigdialog.ui" line="173"/>
-        <source>abcmini</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="burnconfigdialog.ui" line="178"/>
-        <source>picoweb</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="burnconfigdialog.ui" line="183"/>
-        <source>sp12</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="burnconfigdialog.ui" line="188"/>
-        <source>alf</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="burnconfigdialog.ui" line="193"/>
-        <source>bascom</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="burnconfigdialog.ui" line="198"/>
-        <source>dt006</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="burnconfigdialog.ui" line="203"/>
-        <source>pony-stk200</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="burnconfigdialog.ui" line="208"/>
-        <source>stk200</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="burnconfigdialog.ui" line="213"/>
-        <source>bsd</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="burnconfigdialog.ui" line="218"/>
-        <source>pavr</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="burnconfigdialog.ui" line="223"/>
-        <source>dragon_pdi</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="burnconfigdialog.ui" line="228"/>
-        <source>dragon_dw</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="burnconfigdialog.ui" line="233"/>
-        <source>dragon_hvsp</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="burnconfigdialog.ui" line="238"/>
-        <source>dragon_pp</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="burnconfigdialog.ui" line="243"/>
-        <source>dragon_isp</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="burnconfigdialog.ui" line="248"/>
-        <source>dragon_jtag</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="burnconfigdialog.ui" line="253"/>
-        <source>jtag2pdi</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="burnconfigdialog.ui" line="258"/>
-        <source>jtag2avr32</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="burnconfigdialog.ui" line="263"/>
-        <source>jtagmkII_avr32</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="burnconfigdialog.ui" line="268"/>
-        <source>jtag2dw</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="burnconfigdialog.ui" line="273"/>
-        <source>jtag2isp</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="burnconfigdialog.ui" line="278"/>
-        <source>jtag2</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="burnconfigdialog.ui" line="283"/>
-        <source>jtag2fast</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="burnconfigdialog.ui" line="288"/>
-        <source>jtag2slow</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="burnconfigdialog.ui" line="293"/>
-        <source>jtagmkII</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="burnconfigdialog.ui" line="298"/>
-        <source>jtag1slow</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="burnconfigdialog.ui" line="303"/>
-        <source>jtag1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="burnconfigdialog.ui" line="308"/>
-        <source>jtagmkI</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="burnconfigdialog.ui" line="313"/>
-        <source>avr911</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="burnconfigdialog.ui" line="318"/>
-        <source>avr109</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="burnconfigdialog.ui" line="323"/>
-        <source>butterfly</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="burnconfigdialog.ui" line="328"/>
-        <source>usbtiny</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="burnconfigdialog.ui" line="333"/>
-        <source>usbasp</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="burnconfigdialog.ui" line="338"/>
-        <source>avr910</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="burnconfigdialog.ui" line="343"/>
-        <source>stk600hvsp</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="burnconfigdialog.ui" line="348"/>
-        <source>stk600pp</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="burnconfigdialog.ui" line="353"/>
-        <source>stk600</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="burnconfigdialog.ui" line="358"/>
-        <source>stk500hvsp</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="burnconfigdialog.ui" line="363"/>
-        <source>stk500pp</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="burnconfigdialog.ui" line="368"/>
-        <source>stk500v2</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="burnconfigdialog.ui" line="373"/>
-        <source>mib510</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="burnconfigdialog.ui" line="378"/>
-        <source>stk500v1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="burnconfigdialog.ui" line="383"/>
-        <source>stk500</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="burnconfigdialog.ui" line="388"/>
-        <source>buspirate</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="burnconfigdialog.ui" line="393"/>
-        <source>avrisp2</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="burnconfigdialog.ui" line="398"/>
-        <source>avrispmkII</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="burnconfigdialog.ui" line="403"/>
-        <source>avrispv2</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="burnconfigdialog.ui" line="408"/>
-        <source>avrisp</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="burnconfigdialog.ui" line="413"/>
-        <source>arduino</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="burnconfigdialog.ui" line="421"/>
+        <location filename="burnconfigdialog.ui" line="427"/>
         <source>List all available programmers.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="burnconfigdialog.ui" line="424"/>
+        <location filename="burnconfigdialog.ui" line="430"/>
         <source>List Available</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="burnconfigdialog.ui" line="431"/>
+        <location filename="burnconfigdialog.ui" line="437"/>
         <source>Extra arguments that will be passed to AVRDUDE on every call</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="burnconfigdialog.ui" line="434"/>
+        <location filename="burnconfigdialog.ui" line="440"/>
         <source>Extra arguments used in AVRDUDE.
 This can be used for providing extra information to AVRDUDE.
 
@@ -2666,78 +2055,33 @@ Please only use this if you know what you are doing.  There are no error checks 
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="burnconfigdialog.ui" line="444"/>
+        <location filename="burnconfigdialog.ui" line="453"/>
         <source>Extra Arguments</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="burnconfigdialog.ui" line="454"/>
+        <location filename="burnconfigdialog.ui" line="463"/>
         <source>Show AVRDUDE help</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="burnconfigdialog.ui" line="457"/>
+        <location filename="burnconfigdialog.ui" line="466"/>
         <source>Show Help</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="burnconfigdialog.ui" line="464"/>
+        <location filename="burnconfigdialog.ui" line="473"/>
         <source>Communication port to the programmer.
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="burnconfigdialog.ui" line="474"/>
-        <source>usb</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="burnconfigdialog.ui" line="479"/>
-        <source>com1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="burnconfigdialog.ui" line="484"/>
-        <source>com2</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="burnconfigdialog.ui" line="489"/>
-        <source>com3</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="burnconfigdialog.ui" line="494"/>
-        <source>com4</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="burnconfigdialog.ui" line="499"/>
-        <source>lpt1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="burnconfigdialog.ui" line="504"/>
-        <source>lpt2</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="burnconfigdialog.ui" line="509"/>
-        <source>lpt3</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="burnconfigdialog.ui" line="514"/>
-        <source>lpt4</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="burnconfigdialog.ui" line="522"/>
+        <location filename="burnconfigdialog.ui" line="531"/>
         <source>Port</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="burnconfigdialog.ui" line="538"/>
+        <location filename="burnconfigdialog.ui" line="547"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
@@ -2754,12 +2098,12 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="burnconfigdialog.ui" line="553"/>
+        <location filename="burnconfigdialog.ui" line="562"/>
         <source>Reset Fuses</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="burnconfigdialog.ui" line="570"/>
+        <location filename="burnconfigdialog.ui" line="579"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
@@ -2772,12 +2116,12 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="burnconfigdialog.ui" line="581"/>
+        <location filename="burnconfigdialog.ui" line="590"/>
         <source>Read Fuses</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="burnconfigdialog.ui" line="588"/>
+        <location filename="burnconfigdialog.ui" line="597"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
@@ -2798,7 +2142,7 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="burnconfigdialog.ui" line="607"/>
+        <location filename="burnconfigdialog.ui" line="616"/>
         <source>Set EEPROM Erase Fuse</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2854,126 +2198,6 @@ p, li { white-space: pre-wrap; }
         <source>Channel order
 
 This is used by the templated to determine which channel goes to what number output.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="preferencesdialog.ui" line="67"/>
-        <source>R E T A</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="preferencesdialog.ui" line="72"/>
-        <source>R E A T</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="preferencesdialog.ui" line="77"/>
-        <source>R T E A</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="preferencesdialog.ui" line="82"/>
-        <source>R T A E</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="preferencesdialog.ui" line="87"/>
-        <source>R A E T</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="preferencesdialog.ui" line="92"/>
-        <source>R A T E</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="preferencesdialog.ui" line="97"/>
-        <source>E R T A</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="preferencesdialog.ui" line="102"/>
-        <source>E R A T</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="preferencesdialog.ui" line="107"/>
-        <source>E T R A</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="preferencesdialog.ui" line="112"/>
-        <source>E T A R</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="preferencesdialog.ui" line="117"/>
-        <source>E A R T</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="preferencesdialog.ui" line="122"/>
-        <source>E A T R</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="preferencesdialog.ui" line="127"/>
-        <source>T R E A</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="preferencesdialog.ui" line="132"/>
-        <source>T R A E</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="preferencesdialog.ui" line="137"/>
-        <source>T E R A</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="preferencesdialog.ui" line="142"/>
-        <source>T E A R</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="preferencesdialog.ui" line="147"/>
-        <source>T A R E</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="preferencesdialog.ui" line="152"/>
-        <source>T A E R</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="preferencesdialog.ui" line="157"/>
-        <source>A R E T</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="preferencesdialog.ui" line="162"/>
-        <source>A R T E</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="preferencesdialog.ui" line="167"/>
-        <source>A E R T</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="preferencesdialog.ui" line="172"/>
-        <source>A E T R</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="preferencesdialog.ui" line="177"/>
-        <source>A T R E</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="preferencesdialog.ui" line="182"/>
-        <source>A T E R</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3063,6 +2287,26 @@ Mode 4:
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="printdialog.cpp" line="112"/>
+        <source>Name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="printdialog.cpp" line="113"/>
+        <source>Timer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="printdialog.cpp" line="114"/>
+        <source>Protocol</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="printdialog.cpp" line="115"/>
+        <source>Pulse Polarity</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="printdialog.cpp" line="116"/>
         <location filename="printdialog.cpp" line="117"/>
         <source>Enabled</source>
@@ -3075,8 +2319,78 @@ Mode 4:
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="printdialog.cpp" line="116"/>
+        <source>Throttle Trim</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="printdialog.cpp" line="117"/>
+        <source>Throttle Expo</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="printdialog.cpp" line="118"/>
+        <source>Trim Switch</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="printdialog.cpp" line="119"/>
+        <source>Trim Increment</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="printdialog.cpp" line="120"/>
+        <source>Center Beep</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="printdialog.cpp" line="129"/>
         <source>&lt;h2&gt;Expo/Dr Settings&lt;/h2&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="printdialog.cpp" line="136"/>
+        <source>Switch 1:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="printdialog.cpp" line="137"/>
+        <source>Switch 2:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="printdialog.cpp" line="142"/>
+        <source>Expo Left</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="printdialog.cpp" line="143"/>
+        <source>D/R Left</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="printdialog.cpp" line="144"/>
+        <source>D/R Right</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="printdialog.cpp" line="145"/>
+        <source>Expo Right</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="printdialog.cpp" line="150"/>
+        <source>High</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="printdialog.cpp" line="158"/>
+        <source>Mid</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="printdialog.cpp" line="166"/>
+        <source>Low</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3098,6 +2412,16 @@ Mode 4:
     <message>
         <location filename="printdialog.cpp" line="215"/>
         <source> +%1%</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="printdialog.cpp" line="222"/>
+        <source> Switch(</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="printdialog.cpp" line="223"/>
+        <source> noTrim</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3141,6 +2465,11 @@ Mode 4:
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="printdialog.cpp" line="280"/>
+        <source>5-point Curves</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="printdialog.cpp" line="284"/>
         <location filename="printdialog.cpp" line="302"/>
         <source>pt %1</source>
@@ -3153,8 +2482,28 @@ Mode 4:
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="printdialog.cpp" line="298"/>
+        <source>9-point Curves</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="printdialog.cpp" line="322"/>
         <source>&lt;h2&gt;Custom Switches&lt;/h2&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="printdialog.cpp" line="328"/>
+        <source>Source</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="printdialog.cpp" line="329"/>
+        <source>Offset</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="printdialog.cpp" line="330"/>
+        <source>Function</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

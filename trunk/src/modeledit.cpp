@@ -387,8 +387,8 @@ void ModelEdit::tabMixes()
         //str += " " + srcStr.mid(CONVERT_MODE(md->srcRaw+1)*4,4);
         str += getSourceStr(g_eeGeneral.stickMode,md->srcRaw);
 
-        if(md->swtch) str += " Switch(" + getSWName(md->swtch) + ")";
-        if(md->carryTrim) str += " noTrim";
+        if(md->swtch) str += tr(" Switch(") + getSWName(md->swtch) + ")";
+        if(md->carryTrim) str += tr(" noTrim");
         if(md->sOffset)  str += tr(" Offset(%1\%)").arg(md->sOffset);
         if(md->curve)
         {

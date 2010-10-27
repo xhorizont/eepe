@@ -64,122 +64,122 @@ This is used by the templated to determine which channel goes to what number out
      </property>
      <item>
       <property name="text">
-       <string>R E T A</string>
+       <string notr="true">R E T A</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>R E A T</string>
+       <string notr="true">R E A T</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>R T E A</string>
+       <string notr="true">R T E A</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>R T A E</string>
+       <string notr="true">R T A E</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>R A E T</string>
+       <string notr="true">R A E T</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>R A T E</string>
+       <string notr="true">R A T E</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>E R T A</string>
+       <string notr="true">E R T A</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>E R A T</string>
+       <string notr="true">E R A T</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>E T R A</string>
+       <string notr="true">E T R A</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>E T A R</string>
+       <string notr="true">E T A R</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>E A R T</string>
+       <string notr="true">E A R T</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>E A T R</string>
+       <string notr="true">E A T R</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>T R E A</string>
+       <string notr="true">T R E A</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>T R A E</string>
+       <string notr="true">T R A E</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>T E R A</string>
+       <string notr="true">T E R A</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>T E A R</string>
+       <string notr="true">T E A R</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>T A R E</string>
+       <string notr="true">T A R E</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>T A E R</string>
+       <string notr="true">T A E R</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>A R E T</string>
+       <string notr="true">A R E T</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>A R T E</string>
+       <string notr="true">A R T E</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>A E R T</string>
+       <string notr="true">A E R T</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>A E T R</string>
+       <string notr="true">A E T R</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>A T R E</string>
+       <string notr="true">A T R E</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>A T E R</string>
+       <string notr="true">A T E R</string>
       </property>
      </item>
     </widget>

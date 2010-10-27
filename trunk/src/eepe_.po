@@ -29,7 +29,7 @@ msgctxt "GeneralEdit|"
 msgid "Contrast"
 msgstr ""
 
-#: generaledit.ui:51
+#: generaledit.ui:57
 msgctxt "GeneralEdit|"
 msgid ""
 "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" "
@@ -47,12 +47,12 @@ msgid ""
 "font-size:8pt;\">Values can be 20-45</span></p></body></html>"
 msgstr ""
 
-#: generaledit.ui:75
+#: generaledit.ui:81
 msgctxt "GeneralEdit|"
 msgid "Battery Warning"
 msgstr ""
 
-#: generaledit.ui:82
+#: generaledit.ui:94
 msgctxt "GeneralEdit|"
 msgid ""
 "Battery warning voltage.\n"
@@ -61,17 +61,17 @@ msgid ""
 "Acceptable values are 5v..10v"
 msgstr ""
 
-#: generaledit.ui:88 generaledit.ui:121 generaledit.ui:1231
+#: generaledit.ui:1274
 msgctxt "GeneralEdit|"
 msgid "v"
 msgstr ""
 
-#: generaledit.ui:110 generaledit.ui:1134
+#: generaledit.ui:125 generaledit.ui:1174
 msgctxt "GeneralEdit|"
 msgid "Battery Calibration"
 msgstr ""
 
-#: generaledit.ui:117
+#: generaledit.ui:138
 msgctxt "GeneralEdit|"
 msgid ""
 "Battery calibration:\n"
@@ -79,213 +79,58 @@ msgid ""
 "calibrate the meter with an external meter."
 msgstr ""
 
-#: generaledit.ui:140
+#: generaledit.ui:164
 msgctxt "GeneralEdit|"
 msgid "Backlight Switch"
 msgstr ""
 
-#: generaledit.ui:147
+#: generaledit.ui:177
 msgctxt "GeneralEdit|"
 msgid ""
 "This is the switch selectrion for turning on the backlight (if installed).\n"
 "\n"
 msgstr ""
 
-#: generaledit.ui:156
-msgctxt "GeneralEdit|"
-msgid "!SW6"
-msgstr ""
-
-#: generaledit.ui:161
-msgctxt "GeneralEdit|"
-msgid "!SW5"
-msgstr ""
-
-#: generaledit.ui:166
-msgctxt "GeneralEdit|"
-msgid "!SW4"
-msgstr ""
-
-#: generaledit.ui:171
-msgctxt "GeneralEdit|"
-msgid "!SW3"
-msgstr ""
-
-#: generaledit.ui:176
-msgctxt "GeneralEdit|"
-msgid "!SW2"
-msgstr ""
-
-#: generaledit.ui:181
-msgctxt "GeneralEdit|"
-msgid "!SW1"
-msgstr ""
-
-#: generaledit.ui:186
-msgctxt "GeneralEdit|"
-msgid "!TRN"
-msgstr ""
-
-#: generaledit.ui:191
-msgctxt "GeneralEdit|"
-msgid "!GEA"
-msgstr ""
-
-#: generaledit.ui:196
-msgctxt "GeneralEdit|"
-msgid "!AIL"
-msgstr ""
-
-#: generaledit.ui:201
-msgctxt "GeneralEdit|"
-msgid "!ID2"
-msgstr ""
-
-#: generaledit.ui:206
-msgctxt "GeneralEdit|"
-msgid "!ID1"
-msgstr ""
-
-#: generaledit.ui:211
-msgctxt "GeneralEdit|"
-msgid "!ID0"
-msgstr ""
-
-#: generaledit.ui:216
-msgctxt "GeneralEdit|"
-msgid "!ELE"
-msgstr ""
-
-#: generaledit.ui:221
-msgctxt "GeneralEdit|"
-msgid "!RUD"
-msgstr ""
-
-#: generaledit.ui:226
-msgctxt "GeneralEdit|"
-msgid "!THR"
-msgstr ""
-
-#: generaledit.ui:231
-msgctxt "GeneralEdit|"
-msgid "----"
-msgstr ""
-
-#: generaledit.ui:236
-msgctxt "GeneralEdit|"
-msgid "THR"
-msgstr ""
-
-#: generaledit.ui:241
-msgctxt "GeneralEdit|"
-msgid "RUD"
-msgstr ""
-
-#: generaledit.ui:246
-msgctxt "GeneralEdit|"
-msgid "ELE"
-msgstr ""
-
-#: generaledit.ui:251
-msgctxt "GeneralEdit|"
-msgid "ID0"
-msgstr ""
-
-#: generaledit.ui:256
-msgctxt "GeneralEdit|"
-msgid "ID1"
-msgstr ""
-
-#: generaledit.ui:261
-msgctxt "GeneralEdit|"
-msgid "ID2"
-msgstr ""
-
-#: generaledit.ui:266
-msgctxt "GeneralEdit|"
-msgid "AIL"
-msgstr ""
-
-#: generaledit.ui:271
-msgctxt "GeneralEdit|"
-msgid "GEA"
-msgstr ""
-
-#: generaledit.ui:276
-msgctxt "GeneralEdit|"
-msgid "TRN"
-msgstr ""
-
-#: generaledit.ui:281
-msgctxt "GeneralEdit|"
-msgid "SW1"
-msgstr ""
-
-#: generaledit.ui:286
-msgctxt "GeneralEdit|"
-msgid "SW2"
-msgstr ""
-
-#: generaledit.ui:291
-msgctxt "GeneralEdit|"
-msgid "SW3"
-msgstr ""
-
-#: generaledit.ui:296
-msgctxt "GeneralEdit|"
-msgid "SW4"
-msgstr ""
-
-#: generaledit.ui:301
-msgctxt "GeneralEdit|"
-msgid "SW5"
-msgstr ""
-
-#: generaledit.ui:306
-msgctxt "GeneralEdit|"
-msgid "SW6"
-msgstr ""
-
-#: generaledit.ui:314
+#: generaledit.ui:189
 msgctxt "GeneralEdit|"
 msgid "Backlight Auto On/OFF after"
 msgstr ""
 
-#: generaledit.ui:321
+#: generaledit.ui:202
 msgctxt "GeneralEdit|"
 msgid ""
 "If this value is not 0, any keypress will turn on the backlight and turn it "
 "off after the specified number of seconds."
 msgstr ""
 
-#: generaledit.ui:324
+#: generaledit.ui:205
 msgctxt "GeneralEdit|"
 msgid " sec"
 msgstr ""
 
-#: generaledit.ui:337
+#: generaledit.ui:218
 msgctxt "GeneralEdit|"
 msgid "Inactivity Timer"
 msgstr ""
 
-#: generaledit.ui:344
+#: generaledit.ui:231
 msgctxt "GeneralEdit|"
 msgid ""
 "If not zero will sound beeps if the transmitter has been left without inputs "
 "for the specified number of minutes."
 msgstr ""
 
-#: generaledit.ui:347
+#: generaledit.ui:234
 msgctxt "GeneralEdit|"
 msgid " min"
 msgstr ""
 
-#: generaledit.ui:357
+#: generaledit.ui:244
 msgctxt "GeneralEdit|"
 msgid "Reverse Throttle Operation"
 msgstr ""
 
-#: generaledit.ui:364
+#: generaledit.ui:251
 msgctxt "GeneralEdit|"
 msgid ""
 "Reverse throttle operation.\n"
@@ -295,12 +140,12 @@ msgid ""
 "\n"
 msgstr ""
 
-#: generaledit.ui:377
+#: generaledit.ui:264
 msgctxt "GeneralEdit|"
 msgid "Timer Beeps"
 msgstr ""
 
-#: generaledit.ui:386
+#: generaledit.ui:273
 msgctxt "GeneralEdit|"
 msgid ""
 "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" "
@@ -315,22 +160,22 @@ msgid ""
 "font-size:8pt;\">Single Beep Every whole Minute</span></p></body></html>"
 msgstr ""
 
-#: generaledit.ui:393
+#: generaledit.ui:280
 msgctxt "GeneralEdit|"
 msgid "Every Minute"
 msgstr ""
 
-#: generaledit.ui:400
+#: generaledit.ui:287
 msgctxt "GeneralEdit|"
 msgid "Beeps at 30, 15, 10, and down from5 seconds"
 msgstr ""
 
-#: generaledit.ui:403
+#: generaledit.ui:290
 msgctxt "GeneralEdit|"
 msgid "Count Down to Zero"
 msgstr ""
 
-#: generaledit.ui:410
+#: generaledit.ui:297
 msgctxt "GeneralEdit|"
 msgid ""
 "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" "
@@ -345,37 +190,37 @@ msgid ""
 "font-size:8pt;\">Flash backlight on timer  beep</span></p></body></html>"
 msgstr ""
 
-#: generaledit.ui:417
+#: generaledit.ui:304
 msgctxt "GeneralEdit|"
 msgid "Flash on beep"
 msgstr ""
 
-#: generaledit.ui:426
+#: generaledit.ui:313
 msgctxt "GeneralEdit|"
 msgid "Input Filter"
 msgstr ""
 
-#: generaledit.ui:434
+#: generaledit.ui:321
 msgctxt "GeneralEdit|"
 msgid "Single"
 msgstr ""
 
-#: generaledit.ui:439
+#: generaledit.ui:326
 msgctxt "GeneralEdit|"
 msgid "Oversample"
 msgstr ""
 
-#: generaledit.ui:444
+#: generaledit.ui:331
 msgctxt "GeneralEdit|"
 msgid "Filter"
 msgstr ""
 
-#: generaledit.ui:465
+#: generaledit.ui:352
 msgctxt "GeneralEdit|"
 msgid "Throttle Startup Warning"
 msgstr ""
 
-#: generaledit.ui:472 generaledit.ui:505 generaledit.ui:535 generaledit.ui:565
+#: generaledit.ui:359 generaledit.ui:392 generaledit.ui:422 generaledit.ui:452
 msgctxt "GeneralEdit|"
 msgid ""
 "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" "
@@ -408,27 +253,27 @@ msgid ""
 "- will alert you if the beeper is set to quiet (0)</p></body></html>"
 msgstr ""
 
-#: generaledit.ui:498
+#: generaledit.ui:385
 msgctxt "GeneralEdit|"
 msgid "Switch Startup Warning"
 msgstr ""
 
-#: generaledit.ui:528
+#: generaledit.ui:415
 msgctxt "GeneralEdit|"
 msgid "Memory Startup Warning"
 msgstr ""
 
-#: generaledit.ui:558
+#: generaledit.ui:445
 msgctxt "GeneralEdit|"
 msgid "Silent mode (No Alarm)"
 msgstr ""
 
-#: generaledit.ui:601
+#: generaledit.ui:488
 msgctxt "GeneralEdit|"
 msgid "Beeper Mode"
 msgstr ""
 
-#: generaledit.ui:608
+#: generaledit.ui:501
 msgctxt "GeneralEdit|"
 msgid ""
 "Beeper volume\n"
@@ -440,37 +285,37 @@ msgid ""
 "4 - Extra loud."
 msgstr ""
 
-#: generaledit.ui:618
+#: generaledit.ui:511
 msgctxt "GeneralEdit|"
 msgid "0 - Quiet"
 msgstr ""
 
-#: generaledit.ui:623
+#: generaledit.ui:516
 msgctxt "GeneralEdit|"
 msgid "1 - No Keys"
 msgstr ""
 
-#: generaledit.ui:628
+#: generaledit.ui:521
 msgctxt "GeneralEdit|"
 msgid "2 - Normal"
 msgstr ""
 
-#: generaledit.ui:633
+#: generaledit.ui:526
 msgctxt "GeneralEdit|"
 msgid "3 - Long"
 msgstr ""
 
-#: generaledit.ui:638
+#: generaledit.ui:531
 msgctxt "GeneralEdit|"
 msgid "4 - Extra Long"
 msgstr ""
 
-#: generaledit.ui:646
+#: generaledit.ui:539
 msgctxt "GeneralEdit|"
 msgid "Channel Order (For Templates)"
 msgstr ""
 
-#: generaledit.ui:653
+#: generaledit.ui:552
 msgctxt "GeneralEdit|"
 msgid ""
 "Channel order\n"
@@ -479,132 +324,12 @@ msgid ""
 "output."
 msgstr ""
 
-#: generaledit.ui:662
-msgctxt "GeneralEdit|"
-msgid "R E T A"
-msgstr ""
-
-#: generaledit.ui:667
-msgctxt "GeneralEdit|"
-msgid "R E A T"
-msgstr ""
-
-#: generaledit.ui:672
-msgctxt "GeneralEdit|"
-msgid "R T E A"
-msgstr ""
-
-#: generaledit.ui:677
-msgctxt "GeneralEdit|"
-msgid "R T A E"
-msgstr ""
-
-#: generaledit.ui:682
-msgctxt "GeneralEdit|"
-msgid "R A E T"
-msgstr ""
-
-#: generaledit.ui:687
-msgctxt "GeneralEdit|"
-msgid "R A T E"
-msgstr ""
-
-#: generaledit.ui:692
-msgctxt "GeneralEdit|"
-msgid "E R T A"
-msgstr ""
-
-#: generaledit.ui:697
-msgctxt "GeneralEdit|"
-msgid "E R A T"
-msgstr ""
-
-#: generaledit.ui:702
-msgctxt "GeneralEdit|"
-msgid "E T R A"
-msgstr ""
-
-#: generaledit.ui:707
-msgctxt "GeneralEdit|"
-msgid "E T A R"
-msgstr ""
-
-#: generaledit.ui:712
-msgctxt "GeneralEdit|"
-msgid "E A R T"
-msgstr ""
-
-#: generaledit.ui:717
-msgctxt "GeneralEdit|"
-msgid "E A T R"
-msgstr ""
-
-#: generaledit.ui:722
-msgctxt "GeneralEdit|"
-msgid "T R E A"
-msgstr ""
-
-#: generaledit.ui:727
-msgctxt "GeneralEdit|"
-msgid "T R A E"
-msgstr ""
-
-#: generaledit.ui:732
-msgctxt "GeneralEdit|"
-msgid "T E R A"
-msgstr ""
-
-#: generaledit.ui:737
-msgctxt "GeneralEdit|"
-msgid "T E A R"
-msgstr ""
-
-#: generaledit.ui:742
-msgctxt "GeneralEdit|"
-msgid "T A R E"
-msgstr ""
-
-#: generaledit.ui:747
-msgctxt "GeneralEdit|"
-msgid "T A E R"
-msgstr ""
-
-#: generaledit.ui:752
-msgctxt "GeneralEdit|"
-msgid "A R E T"
-msgstr ""
-
-#: generaledit.ui:757
-msgctxt "GeneralEdit|"
-msgid "A R T E"
-msgstr ""
-
-#: generaledit.ui:762
-msgctxt "GeneralEdit|"
-msgid "A E R T"
-msgstr ""
-
-#: generaledit.ui:767
-msgctxt "GeneralEdit|"
-msgid "A E T R"
-msgstr ""
-
-#: generaledit.ui:772
-msgctxt "GeneralEdit|"
-msgid "A T R E"
-msgstr ""
-
-#: generaledit.ui:777
-msgctxt "GeneralEdit|"
-msgid "A T E R"
-msgstr ""
-
-#: generaledit.ui:785
+#: generaledit.ui:684
 msgctxt "GeneralEdit|"
 msgid "Stick Mode"
 msgstr ""
 
-#: generaledit.ui:792
+#: generaledit.ui:697
 msgctxt "GeneralEdit|"
 msgid ""
 "Mode selection:\n"
@@ -627,82 +352,82 @@ msgid ""
 "\n"
 msgstr ""
 
-#: generaledit.ui:817
+#: generaledit.ui:722
 msgctxt "GeneralEdit|"
 msgid "Mode 1 (RUD ELE THR AIL)"
 msgstr ""
 
-#: generaledit.ui:822
+#: generaledit.ui:727
 msgctxt "GeneralEdit|"
 msgid "Mode 2 (RUD THR ELE AIL)"
 msgstr ""
 
-#: generaledit.ui:827
+#: generaledit.ui:732
 msgctxt "GeneralEdit|"
 msgid "Mode 3 (AIL ELE THR RUD)"
 msgstr ""
 
-#: generaledit.ui:832
+#: generaledit.ui:737
 msgctxt "GeneralEdit|"
 msgid "Mode 4 (AIL THR ELE RUD)"
 msgstr ""
 
-#: generaledit.ui:841
+#: generaledit.ui:746
 msgctxt "GeneralEdit|"
 msgid "Calibration"
 msgstr ""
 
-#: generaledit.ui:1141
+#: generaledit.ui:1181
 msgctxt "GeneralEdit|"
 msgid "ANALOG 7"
 msgstr ""
 
-#: generaledit.ui:1148
+#: generaledit.ui:1188
 msgctxt "GeneralEdit|"
 msgid "ANALOG 6"
 msgstr ""
 
-#: generaledit.ui:1155
+#: generaledit.ui:1195
 msgctxt "GeneralEdit|"
 msgid "ANALOG 5"
 msgstr ""
 
-#: generaledit.ui:1162
+#: generaledit.ui:1202
 msgctxt "GeneralEdit|"
 msgid "ANALOG 4"
 msgstr ""
 
-#: generaledit.ui:1169
+#: generaledit.ui:1209
 msgctxt "GeneralEdit|"
 msgid "ANALOG 3"
 msgstr ""
 
-#: generaledit.ui:1176
+#: generaledit.ui:1216
 msgctxt "GeneralEdit|"
 msgid "ANALOG 2"
 msgstr ""
 
-#: generaledit.ui:1183
+#: generaledit.ui:1223
 msgctxt "GeneralEdit|"
 msgid "ANALOG 1"
 msgstr ""
 
-#: generaledit.ui:1190
+#: generaledit.ui:1230
 msgctxt "GeneralEdit|"
 msgid "PPM In"
 msgstr ""
 
-#: generaledit.ui:1210
+#: generaledit.ui:1250
 msgctxt "GeneralEdit|"
 msgid "Negative"
 msgstr ""
 
-#: generaledit.ui:1217
+#: generaledit.ui:1257
 msgctxt "GeneralEdit|"
 msgid "Mid"
 msgstr ""
 
-#: generaledit.ui:1224
+#: generaledit.ui:1264
 msgctxt "GeneralEdit|"
 msgid "Positive"
 msgstr ""
@@ -747,35 +472,18 @@ msgctxt "MainWindow|"
 msgid "HEX files (*.hex);;BIN files (*.bin);;FLASH files (*.bin *.hex)"
 msgstr ""
 
-#: mainwindow.cpp:315
-msgctxt "MainWindow|"
-msgid "<center><img src=\":/images/eepe-title.png\"><br>"
-msgstr ""
-
-#: mainwindow.cpp:316
-msgctxt "MainWindow|"
-msgid "Copyright Erez Raviv &copy;2010<br>"
-msgstr ""
-
-#: mainwindow.cpp:317
-#, qt-format
-msgctxt "MainWindow|"
-msgid ""
-"<a "
-"href='http://code.google.com/p/eepe/'>http://code.google.com/p/eepe/</a><br>Revision: "
-"%1, %2<br><br>"
-msgstr ""
-
 #: mainwindow.cpp:318
+#| msgid ""
+#| "If you've found this program and/or the Firmware useful please support by "
+#| "<a href='"
 msgctxt "MainWindow|"
 msgid ""
-"If you've found this program and/or the Firmware useful please support by <a "
-"href='"
+"If you've found this program and/or the Firmware useful please support by"
 msgstr ""
 
 #: mainwindow.cpp:320
 msgctxt "MainWindow|"
-msgid "'>donating</a></center>"
+msgid "donating"
 msgstr ""
 
 #: mainwindow.cpp:322
@@ -895,6 +603,11 @@ msgctxt "MainWindow|"
 msgid "Ctrl+Alt+W"
 msgstr ""
 
+#: mainwindow.cpp:448
+msgctxt "MainWindow|"
+msgid "Write EEPROM to transmitter"
+msgstr ""
+
 #: mainwindow.cpp:451
 msgctxt "MainWindow|"
 msgid "&Read EEPROM From Tx"
@@ -905,9 +618,19 @@ msgctxt "MainWindow|"
 msgid "Ctrl+Alt+R"
 msgstr ""
 
+#: mainwindow.cpp:453
+msgctxt "MainWindow|"
+msgid "Read EEPROM from transmitter"
+msgstr ""
+
 #: mainwindow.cpp:456
 msgctxt "MainWindow|"
 msgid "Write Flash memory"
+msgstr ""
+
+#: mainwindow.cpp:457
+msgctxt "MainWindow|"
+msgid "Write flash memory to transmitter"
 msgstr ""
 
 #: mainwindow.cpp:460
@@ -915,14 +638,29 @@ msgctxt "MainWindow|"
 msgid "Read Flash memory"
 msgstr ""
 
+#: mainwindow.cpp:461
+msgctxt "MainWindow|"
+msgid "Read flash memory to transmitter"
+msgstr ""
+
 #: mainwindow.cpp:464
 msgctxt "MainWindow|"
 msgid "&Configure..."
 msgstr ""
 
+#: mainwindow.cpp:465
+msgctxt "MainWindow|"
+msgid "Configure burning software"
+msgstr ""
+
 #: mainwindow.cpp:468
 msgctxt "MainWindow|"
 msgid "&List programmers"
+msgstr ""
+
+#: mainwindow.cpp:469
+msgctxt "MainWindow|"
+msgid "List available programmers"
 msgstr ""
 
 #: mainwindow.cpp:472
@@ -935,6 +673,11 @@ msgctxt "MainWindow|"
 msgid "Alt+S"
 msgstr ""
 
+#: mainwindow.cpp:474
+msgctxt "MainWindow|"
+msgid "Simulate selected model."
+msgstr ""
+
 #: mainwindow.cpp:478
 msgctxt "MainWindow|"
 msgid "&Print"
@@ -943,6 +686,11 @@ msgstr ""
 #: mainwindow.cpp:479
 msgctxt "MainWindow|"
 msgid "Ctrl+P"
+msgstr ""
+
+#: mainwindow.cpp:480
+msgctxt "MainWindow|"
+msgid "Print current model."
 msgstr ""
 
 #: mainwindow.cpp:484
@@ -1075,7 +823,7 @@ msgctxt "MdiChild|"
 msgid "General Settings"
 msgstr ""
 
-#: mdichild.cpp:169 mdichild.cpp:641 mdichild.cpp:680
+#: mdichild.cpp:641 mdichild.cpp:680
 msgctxt "MdiChild|"
 msgid "eePe"
 msgstr ""
@@ -1644,31 +1392,6 @@ msgctxt "ModelEdit|"
 msgid "Protocol"
 msgstr ""
 
-#: modeledit.ui:262
-msgctxt "ModelEdit|"
-msgid "PPM"
-msgstr ""
-
-#: modeledit.ui:267
-msgctxt "ModelEdit|"
-msgid "Silver A"
-msgstr ""
-
-#: modeledit.ui:272
-msgctxt "ModelEdit|"
-msgid "Silver B"
-msgstr ""
-
-#: modeledit.ui:277
-msgctxt "ModelEdit|"
-msgid "Silver C"
-msgstr ""
-
-#: modeledit.ui:282
-msgctxt "ModelEdit|"
-msgid "Trac 09"
-msgstr ""
-
 #: modeledit.ui:290
 msgctxt "ModelEdit|"
 msgid "Channels"
@@ -1993,102 +1716,72 @@ msgctxt "ModelEdit|"
 msgid "CSwitch1"
 msgstr ""
 
-#: modeledit.ui:4459 modeledit.ui:4523 modeledit.ui:4587 modeledit.ui:4651
-#: modeledit.ui:4715 modeledit.ui:4779
-msgctxt "ModelEdit|"
-msgid "----"
-msgstr ""
-
-#: modeledit.ui:4464 modeledit.ui:4528 modeledit.ui:4592 modeledit.ui:4656
-#: modeledit.ui:4720 modeledit.ui:4784
-msgctxt "ModelEdit|"
-msgid "v>ofs"
-msgstr ""
-
-#: modeledit.ui:4469 modeledit.ui:4533 modeledit.ui:4597 modeledit.ui:4661
-#: modeledit.ui:4725 modeledit.ui:4789
-msgctxt "ModelEdit|"
-msgid "v<ofs"
-msgstr ""
-
-#: modeledit.ui:4474 modeledit.ui:4538 modeledit.ui:4602 modeledit.ui:4666
-#: modeledit.ui:4730 modeledit.ui:4794
-msgctxt "ModelEdit|"
-msgid "|v|>ofs"
-msgstr ""
-
-#: modeledit.ui:4479 modeledit.ui:4543 modeledit.ui:4607 modeledit.ui:4671
-#: modeledit.ui:4735 modeledit.ui:4799
-msgctxt "ModelEdit|"
-msgid "|v|<ofs"
-msgstr ""
-
-#: modeledit.ui:4515
+#: modeledit.ui:4489
 msgctxt "ModelEdit|"
 msgid "CSwitch2"
 msgstr ""
 
-#: modeledit.ui:4579
+#: modeledit.ui:4527
 msgctxt "ModelEdit|"
 msgid "CSwitch3"
 msgstr ""
 
-#: modeledit.ui:4643
+#: modeledit.ui:4565
 msgctxt "ModelEdit|"
 msgid "CSwitch4"
 msgstr ""
 
-#: modeledit.ui:4707
+#: modeledit.ui:4603
 msgctxt "ModelEdit|"
 msgid "CSwitch5"
 msgstr ""
 
-#: modeledit.ui:4771
+#: modeledit.ui:4641
 msgctxt "ModelEdit|"
 msgid "CSwitch6"
 msgstr ""
 
-#: modeledit.ui:4835
+#: modeledit.ui:4679
 msgctxt "ModelEdit|"
 msgid "Function"
 msgstr ""
 
-#: modeledit.ui:4848
+#: modeledit.ui:4692
 msgctxt "ModelEdit|"
 msgid "Source/SW1"
 msgstr ""
 
-#: modeledit.ui:4861
+#: modeledit.ui:4705
 msgctxt "ModelEdit|"
 msgid "Value/SW2"
 msgstr ""
 
-#: modeledit.ui:4869
+#: modeledit.ui:4713
 msgctxt "ModelEdit|"
 msgid "Trims"
 msgstr ""
 
-#: modeledit.ui:4972
+#: modeledit.ui:4816
 msgctxt "ModelEdit|"
 msgid "STICK 1"
 msgstr ""
 
-#: modeledit.ui:4987
+#: modeledit.ui:4831
 msgctxt "ModelEdit|"
 msgid "STICK 2"
 msgstr ""
 
-#: modeledit.ui:5071
+#: modeledit.ui:4915
 msgctxt "ModelEdit|"
 msgid "STICK 4"
 msgstr ""
 
-#: modeledit.ui:5086
+#: modeledit.ui:4930
 msgctxt "ModelEdit|"
 msgid "STICK 3"
 msgstr ""
 
-#: modeledit.ui:5159
+#: modeledit.ui:5003
 msgctxt "ModelEdit|"
 msgid "Simulate"
 msgstr ""
@@ -2109,6 +1802,16 @@ msgstr ""
 #, qt-format
 msgctxt "ModelEdit|"
 msgid " +%1%"
+msgstr ""
+
+#: modeledit.cpp:390
+msgctxt "ModelEdit|"
+msgid " Switch("
+msgstr ""
+
+#: modeledit.cpp:391
+msgctxt "ModelEdit|"
+msgid " noTrim"
 msgstr ""
 
 #: modeledit.cpp:392
@@ -2232,6 +1935,16 @@ msgctxt "avrOutputDialog|"
 msgid "Dialog"
 msgstr ""
 
+#: avroutputdialog.cpp:12
+msgctxt "avrOutputDialog|"
+msgid "AVRDUDE result"
+msgstr ""
+
+#: avroutputdialog.cpp:14
+msgctxt "avrOutputDialog|"
+msgid "AVRDUDE - "
+msgstr ""
+
 #: avroutputdialog.cpp:96
 #, qt-format
 msgctxt "avrOutputDialog|"
@@ -2245,6 +1958,11 @@ msgctxt "avrOutputDialog|"
 msgid ""
 "\n"
 "AVRDUDE done - SUCCESSFUL"
+msgstr ""
+
+#: avroutputdialog.cpp:118
+msgctxt "avrOutputDialog|"
+msgid "Started AVRDUDE\n"
 msgstr ""
 
 #: avroutputdialog.cpp:128
@@ -2273,27 +1991,27 @@ msgctxt "burnConfigDialog|"
 msgid "The location of the AVRDUDE.EXE executable."
 msgstr ""
 
-#: burnconfigdialog.ui:48
+#: burnconfigdialog.ui:51
 msgctxt "burnConfigDialog|"
 msgid "Use this button to browse and look for the AVRDUDE.EXE executable file."
 msgstr ""
 
-#: burnconfigdialog.ui:51 burnconfigdialog.ui:83
+#: burnconfigdialog.ui:54 burnconfigdialog.ui:89
 msgctxt "burnConfigDialog|"
 msgid "Browse..."
 msgstr ""
 
-#: burnconfigdialog.ui:58
+#: burnconfigdialog.ui:61
 msgctxt "burnConfigDialog|"
 msgid "Temporary Directory"
 msgstr ""
 
-#: burnconfigdialog.ui:68
+#: burnconfigdialog.ui:71
 msgctxt "burnConfigDialog|"
 msgid "Stores temporary files"
 msgstr ""
 
-#: burnconfigdialog.ui:71
+#: burnconfigdialog.ui:74
 msgctxt "burnConfigDialog|"
 msgid ""
 "This directory holds temporary files needed for uploading and downloading "
@@ -2302,17 +2020,17 @@ msgid ""
 "Make sure you have write access to this directory."
 msgstr ""
 
-#: burnconfigdialog.ui:80
+#: burnconfigdialog.ui:86
 msgctxt "burnConfigDialog|"
 msgid "Use this button to browse and select the temporary directory."
 msgstr ""
 
-#: burnconfigdialog.ui:90
+#: burnconfigdialog.ui:96
 msgctxt "burnConfigDialog|"
 msgid "Programmer"
 msgstr ""
 
-#: burnconfigdialog.ui:100
+#: burnconfigdialog.ui:106
 msgctxt "burnConfigDialog|"
 msgid ""
 "Programmer used for communicating with the controller.\n"
@@ -2320,332 +2038,22 @@ msgid ""
 "to select the appropriate programmer."
 msgstr ""
 
-#: burnconfigdialog.ui:108
-msgctxt "burnConfigDialog|"
-msgid "c2n232i"
-msgstr ""
-
-#: burnconfigdialog.ui:113
-msgctxt "burnConfigDialog|"
-msgid "dasa3"
-msgstr ""
-
-#: burnconfigdialog.ui:118
-msgctxt "burnConfigDialog|"
-msgid "dasa"
-msgstr ""
-
-#: burnconfigdialog.ui:123
-msgctxt "burnConfigDialog|"
-msgid "siprog"
-msgstr ""
-
-#: burnconfigdialog.ui:128
-msgctxt "burnConfigDialog|"
-msgid "ponyser"
-msgstr ""
-
-#: burnconfigdialog.ui:133
-msgctxt "burnConfigDialog|"
-msgid "89isp"
-msgstr ""
-
-#: burnconfigdialog.ui:138
-msgctxt "burnConfigDialog|"
-msgid "frank-stk200"
-msgstr ""
-
-#: burnconfigdialog.ui:143
-msgctxt "burnConfigDialog|"
-msgid "blaster"
-msgstr ""
-
-#: burnconfigdialog.ui:148
-msgctxt "burnConfigDialog|"
-msgid "ere-isp-avr"
-msgstr ""
-
-#: burnconfigdialog.ui:153
-msgctxt "burnConfigDialog|"
-msgid "atisp"
-msgstr ""
-
-#: burnconfigdialog.ui:158
-msgctxt "burnConfigDialog|"
-msgid "dapa"
-msgstr ""
-
-#: burnconfigdialog.ui:163
-msgctxt "burnConfigDialog|"
-msgid "xil"
-msgstr ""
-
-#: burnconfigdialog.ui:168
-msgctxt "burnConfigDialog|"
-msgid "futurlec"
-msgstr ""
-
-#: burnconfigdialog.ui:173
-msgctxt "burnConfigDialog|"
-msgid "abcmini"
-msgstr ""
-
-#: burnconfigdialog.ui:178
-msgctxt "burnConfigDialog|"
-msgid "picoweb"
-msgstr ""
-
-#: burnconfigdialog.ui:183
-msgctxt "burnConfigDialog|"
-msgid "sp12"
-msgstr ""
-
-#: burnconfigdialog.ui:188
-msgctxt "burnConfigDialog|"
-msgid "alf"
-msgstr ""
-
-#: burnconfigdialog.ui:193
-msgctxt "burnConfigDialog|"
-msgid "bascom"
-msgstr ""
-
-#: burnconfigdialog.ui:198
-msgctxt "burnConfigDialog|"
-msgid "dt006"
-msgstr ""
-
-#: burnconfigdialog.ui:203
-msgctxt "burnConfigDialog|"
-msgid "pony-stk200"
-msgstr ""
-
-#: burnconfigdialog.ui:208
-msgctxt "burnConfigDialog|"
-msgid "stk200"
-msgstr ""
-
-#: burnconfigdialog.ui:213
-msgctxt "burnConfigDialog|"
-msgid "bsd"
-msgstr ""
-
-#: burnconfigdialog.ui:218
-msgctxt "burnConfigDialog|"
-msgid "pavr"
-msgstr ""
-
-#: burnconfigdialog.ui:223
-msgctxt "burnConfigDialog|"
-msgid "dragon_pdi"
-msgstr ""
-
-#: burnconfigdialog.ui:228
-msgctxt "burnConfigDialog|"
-msgid "dragon_dw"
-msgstr ""
-
-#: burnconfigdialog.ui:233
-msgctxt "burnConfigDialog|"
-msgid "dragon_hvsp"
-msgstr ""
-
-#: burnconfigdialog.ui:238
-msgctxt "burnConfigDialog|"
-msgid "dragon_pp"
-msgstr ""
-
-#: burnconfigdialog.ui:243
-msgctxt "burnConfigDialog|"
-msgid "dragon_isp"
-msgstr ""
-
-#: burnconfigdialog.ui:248
-msgctxt "burnConfigDialog|"
-msgid "dragon_jtag"
-msgstr ""
-
-#: burnconfigdialog.ui:253
-msgctxt "burnConfigDialog|"
-msgid "jtag2pdi"
-msgstr ""
-
-#: burnconfigdialog.ui:258
-msgctxt "burnConfigDialog|"
-msgid "jtag2avr32"
-msgstr ""
-
-#: burnconfigdialog.ui:263
-msgctxt "burnConfigDialog|"
-msgid "jtagmkII_avr32"
-msgstr ""
-
-#: burnconfigdialog.ui:268
-msgctxt "burnConfigDialog|"
-msgid "jtag2dw"
-msgstr ""
-
-#: burnconfigdialog.ui:273
-msgctxt "burnConfigDialog|"
-msgid "jtag2isp"
-msgstr ""
-
-#: burnconfigdialog.ui:278
-msgctxt "burnConfigDialog|"
-msgid "jtag2"
-msgstr ""
-
-#: burnconfigdialog.ui:283
-msgctxt "burnConfigDialog|"
-msgid "jtag2fast"
-msgstr ""
-
-#: burnconfigdialog.ui:288
-msgctxt "burnConfigDialog|"
-msgid "jtag2slow"
-msgstr ""
-
-#: burnconfigdialog.ui:293
-msgctxt "burnConfigDialog|"
-msgid "jtagmkII"
-msgstr ""
-
-#: burnconfigdialog.ui:298
-msgctxt "burnConfigDialog|"
-msgid "jtag1slow"
-msgstr ""
-
-#: burnconfigdialog.ui:303
-msgctxt "burnConfigDialog|"
-msgid "jtag1"
-msgstr ""
-
-#: burnconfigdialog.ui:308
-msgctxt "burnConfigDialog|"
-msgid "jtagmkI"
-msgstr ""
-
-#: burnconfigdialog.ui:313
-msgctxt "burnConfigDialog|"
-msgid "avr911"
-msgstr ""
-
-#: burnconfigdialog.ui:318
-msgctxt "burnConfigDialog|"
-msgid "avr109"
-msgstr ""
-
-#: burnconfigdialog.ui:323
-msgctxt "burnConfigDialog|"
-msgid "butterfly"
-msgstr ""
-
-#: burnconfigdialog.ui:328
-msgctxt "burnConfigDialog|"
-msgid "usbtiny"
-msgstr ""
-
-#: burnconfigdialog.ui:333
-msgctxt "burnConfigDialog|"
-msgid "usbasp"
-msgstr ""
-
-#: burnconfigdialog.ui:338
-msgctxt "burnConfigDialog|"
-msgid "avr910"
-msgstr ""
-
-#: burnconfigdialog.ui:343
-msgctxt "burnConfigDialog|"
-msgid "stk600hvsp"
-msgstr ""
-
-#: burnconfigdialog.ui:348
-msgctxt "burnConfigDialog|"
-msgid "stk600pp"
-msgstr ""
-
-#: burnconfigdialog.ui:353
-msgctxt "burnConfigDialog|"
-msgid "stk600"
-msgstr ""
-
-#: burnconfigdialog.ui:358
-msgctxt "burnConfigDialog|"
-msgid "stk500hvsp"
-msgstr ""
-
-#: burnconfigdialog.ui:363
-msgctxt "burnConfigDialog|"
-msgid "stk500pp"
-msgstr ""
-
-#: burnconfigdialog.ui:368
-msgctxt "burnConfigDialog|"
-msgid "stk500v2"
-msgstr ""
-
-#: burnconfigdialog.ui:373
-msgctxt "burnConfigDialog|"
-msgid "mib510"
-msgstr ""
-
-#: burnconfigdialog.ui:378
-msgctxt "burnConfigDialog|"
-msgid "stk500v1"
-msgstr ""
-
-#: burnconfigdialog.ui:383
-msgctxt "burnConfigDialog|"
-msgid "stk500"
-msgstr ""
-
-#: burnconfigdialog.ui:388
-msgctxt "burnConfigDialog|"
-msgid "buspirate"
-msgstr ""
-
-#: burnconfigdialog.ui:393
-msgctxt "burnConfigDialog|"
-msgid "avrisp2"
-msgstr ""
-
-#: burnconfigdialog.ui:398
-msgctxt "burnConfigDialog|"
-msgid "avrispmkII"
-msgstr ""
-
-#: burnconfigdialog.ui:403
-msgctxt "burnConfigDialog|"
-msgid "avrispv2"
-msgstr ""
-
-#: burnconfigdialog.ui:408
-msgctxt "burnConfigDialog|"
-msgid "avrisp"
-msgstr ""
-
-#: burnconfigdialog.ui:413
-msgctxt "burnConfigDialog|"
-msgid "arduino"
-msgstr ""
-
-#: burnconfigdialog.ui:421
+#: burnconfigdialog.ui:427
 msgctxt "burnConfigDialog|"
 msgid "List all available programmers."
 msgstr ""
 
-#: burnconfigdialog.ui:424
+#: burnconfigdialog.ui:430
 msgctxt "burnConfigDialog|"
 msgid "List Available"
 msgstr ""
 
-#: burnconfigdialog.ui:431
+#: burnconfigdialog.ui:437
 msgctxt "burnConfigDialog|"
 msgid "Extra arguments that will be passed to AVRDUDE on every call"
 msgstr ""
 
-#: burnconfigdialog.ui:434
+#: burnconfigdialog.ui:440
 msgctxt "burnConfigDialog|"
 msgid ""
 "Extra arguments used in AVRDUDE.\n"
@@ -2655,77 +2063,32 @@ msgid ""
 "checks and you could cripple your controller."
 msgstr ""
 
-#: burnconfigdialog.ui:444
+#: burnconfigdialog.ui:453
 msgctxt "burnConfigDialog|"
 msgid "Extra Arguments"
 msgstr ""
 
-#: burnconfigdialog.ui:454
+#: burnconfigdialog.ui:463
 msgctxt "burnConfigDialog|"
 msgid "Show AVRDUDE help"
 msgstr ""
 
-#: burnconfigdialog.ui:457
+#: burnconfigdialog.ui:466
 msgctxt "burnConfigDialog|"
 msgid "Show Help"
 msgstr ""
 
-#: burnconfigdialog.ui:464
+#: burnconfigdialog.ui:473
 msgctxt "burnConfigDialog|"
 msgid "Communication port to the programmer.\n"
 msgstr ""
 
-#: burnconfigdialog.ui:474
-msgctxt "burnConfigDialog|"
-msgid "usb"
-msgstr ""
-
-#: burnconfigdialog.ui:479
-msgctxt "burnConfigDialog|"
-msgid "com1"
-msgstr ""
-
-#: burnconfigdialog.ui:484
-msgctxt "burnConfigDialog|"
-msgid "com2"
-msgstr ""
-
-#: burnconfigdialog.ui:489
-msgctxt "burnConfigDialog|"
-msgid "com3"
-msgstr ""
-
-#: burnconfigdialog.ui:494
-msgctxt "burnConfigDialog|"
-msgid "com4"
-msgstr ""
-
-#: burnconfigdialog.ui:499
-msgctxt "burnConfigDialog|"
-msgid "lpt1"
-msgstr ""
-
-#: burnconfigdialog.ui:504
-msgctxt "burnConfigDialog|"
-msgid "lpt2"
-msgstr ""
-
-#: burnconfigdialog.ui:509
-msgctxt "burnConfigDialog|"
-msgid "lpt3"
-msgstr ""
-
-#: burnconfigdialog.ui:514
-msgctxt "burnConfigDialog|"
-msgid "lpt4"
-msgstr ""
-
-#: burnconfigdialog.ui:522
+#: burnconfigdialog.ui:531
 msgctxt "burnConfigDialog|"
 msgid "Port"
 msgstr ""
 
-#: burnconfigdialog.ui:538
+#: burnconfigdialog.ui:547
 msgctxt "burnConfigDialog|"
 msgid ""
 "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" "
@@ -2768,12 +2131,12 @@ msgid ""
 "Bricks&quot;.</p></body></html>"
 msgstr ""
 
-#: burnconfigdialog.ui:553
+#: burnconfigdialog.ui:562
 msgctxt "burnConfigDialog|"
 msgid "Reset Fuses"
 msgstr ""
 
-#: burnconfigdialog.ui:570
+#: burnconfigdialog.ui:579
 msgctxt "burnConfigDialog|"
 msgid ""
 "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" "
@@ -2801,12 +2164,12 @@ msgid ""
 "font-size:8pt;\">EEPROM erase fuse set: 0E, 89, FF</span></p></body></html>"
 msgstr ""
 
-#: burnconfigdialog.ui:581
+#: burnconfigdialog.ui:590
 msgctxt "burnConfigDialog|"
 msgid "Read Fuses"
 msgstr ""
 
-#: burnconfigdialog.ui:588
+#: burnconfigdialog.ui:597
 msgctxt "burnConfigDialog|"
 msgid ""
 "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" "
@@ -2865,7 +2228,7 @@ msgid ""
 "font-size:8pt;\"></p></body></html>"
 msgstr ""
 
-#: burnconfigdialog.ui:607
+#: burnconfigdialog.ui:616
 msgctxt "burnConfigDialog|"
 msgid "Set EEPROM Erase Fuse"
 msgstr ""
@@ -2920,126 +2283,6 @@ msgid ""
 "\n"
 "This is used by the templated to determine which channel goes to what number "
 "output."
-msgstr ""
-
-#: preferencesdialog.ui:67
-msgctxt "preferencesDialog|"
-msgid "R E T A"
-msgstr ""
-
-#: preferencesdialog.ui:72
-msgctxt "preferencesDialog|"
-msgid "R E A T"
-msgstr ""
-
-#: preferencesdialog.ui:77
-msgctxt "preferencesDialog|"
-msgid "R T E A"
-msgstr ""
-
-#: preferencesdialog.ui:82
-msgctxt "preferencesDialog|"
-msgid "R T A E"
-msgstr ""
-
-#: preferencesdialog.ui:87
-msgctxt "preferencesDialog|"
-msgid "R A E T"
-msgstr ""
-
-#: preferencesdialog.ui:92
-msgctxt "preferencesDialog|"
-msgid "R A T E"
-msgstr ""
-
-#: preferencesdialog.ui:97
-msgctxt "preferencesDialog|"
-msgid "E R T A"
-msgstr ""
-
-#: preferencesdialog.ui:102
-msgctxt "preferencesDialog|"
-msgid "E R A T"
-msgstr ""
-
-#: preferencesdialog.ui:107
-msgctxt "preferencesDialog|"
-msgid "E T R A"
-msgstr ""
-
-#: preferencesdialog.ui:112
-msgctxt "preferencesDialog|"
-msgid "E T A R"
-msgstr ""
-
-#: preferencesdialog.ui:117
-msgctxt "preferencesDialog|"
-msgid "E A R T"
-msgstr ""
-
-#: preferencesdialog.ui:122
-msgctxt "preferencesDialog|"
-msgid "E A T R"
-msgstr ""
-
-#: preferencesdialog.ui:127
-msgctxt "preferencesDialog|"
-msgid "T R E A"
-msgstr ""
-
-#: preferencesdialog.ui:132
-msgctxt "preferencesDialog|"
-msgid "T R A E"
-msgstr ""
-
-#: preferencesdialog.ui:137
-msgctxt "preferencesDialog|"
-msgid "T E R A"
-msgstr ""
-
-#: preferencesdialog.ui:142
-msgctxt "preferencesDialog|"
-msgid "T E A R"
-msgstr ""
-
-#: preferencesdialog.ui:147
-msgctxt "preferencesDialog|"
-msgid "T A R E"
-msgstr ""
-
-#: preferencesdialog.ui:152
-msgctxt "preferencesDialog|"
-msgid "T A E R"
-msgstr ""
-
-#: preferencesdialog.ui:157
-msgctxt "preferencesDialog|"
-msgid "A R E T"
-msgstr ""
-
-#: preferencesdialog.ui:162
-msgctxt "preferencesDialog|"
-msgid "A R T E"
-msgstr ""
-
-#: preferencesdialog.ui:167
-msgctxt "preferencesDialog|"
-msgid "A E R T"
-msgstr ""
-
-#: preferencesdialog.ui:172
-msgctxt "preferencesDialog|"
-msgid "A E T R"
-msgstr ""
-
-#: preferencesdialog.ui:177
-msgctxt "preferencesDialog|"
-msgid "A T R E"
-msgstr ""
-
-#: preferencesdialog.ui:182
-msgctxt "preferencesDialog|"
-msgid "A T E R"
 msgstr ""
 
 #: preferencesdialog.ui:190
@@ -3128,6 +2371,26 @@ msgctxt "printDialog|"
 msgid "<h2>General Model Settings</h2><br>"
 msgstr ""
 
+#: printdialog.cpp:112
+msgctxt "printDialog|"
+msgid "Name"
+msgstr ""
+
+#: printdialog.cpp:113
+msgctxt "printDialog|"
+msgid "Timer"
+msgstr ""
+
+#: printdialog.cpp:114
+msgctxt "printDialog|"
+msgid "Protocol"
+msgstr ""
+
+#: printdialog.cpp:115
+msgctxt "printDialog|"
+msgid "Pulse Polarity"
+msgstr ""
+
 #: printdialog.cpp:116 printdialog.cpp:117
 msgctxt "printDialog|"
 msgid "Enabled"
@@ -3138,9 +2401,79 @@ msgctxt "printDialog|"
 msgid "Disabled"
 msgstr ""
 
+#: printdialog.cpp:116
+msgctxt "printDialog|"
+msgid "Throttle Trim"
+msgstr ""
+
+#: printdialog.cpp:117
+msgctxt "printDialog|"
+msgid "Throttle Expo"
+msgstr ""
+
+#: printdialog.cpp:118
+msgctxt "printDialog|"
+msgid "Trim Switch"
+msgstr ""
+
+#: printdialog.cpp:119
+msgctxt "printDialog|"
+msgid "Trim Increment"
+msgstr ""
+
+#: printdialog.cpp:120
+msgctxt "printDialog|"
+msgid "Center Beep"
+msgstr ""
+
 #: printdialog.cpp:129
 msgctxt "printDialog|"
 msgid "<h2>Expo/Dr Settings</h2>"
+msgstr ""
+
+#: printdialog.cpp:136
+msgctxt "printDialog|"
+msgid "Switch 1:"
+msgstr ""
+
+#: printdialog.cpp:137
+msgctxt "printDialog|"
+msgid "Switch 2:"
+msgstr ""
+
+#: printdialog.cpp:142
+msgctxt "printDialog|"
+msgid "Expo Left"
+msgstr ""
+
+#: printdialog.cpp:143
+msgctxt "printDialog|"
+msgid "D/R Left"
+msgstr ""
+
+#: printdialog.cpp:144
+msgctxt "printDialog|"
+msgid "D/R Right"
+msgstr ""
+
+#: printdialog.cpp:145
+msgctxt "printDialog|"
+msgid "Expo Right"
+msgstr ""
+
+#: printdialog.cpp:150
+msgctxt "printDialog|"
+msgid "High"
+msgstr ""
+
+#: printdialog.cpp:158
+msgctxt "printDialog|"
+msgid "Mid"
+msgstr ""
+
+#: printdialog.cpp:166
+msgctxt "printDialog|"
+msgid "Low"
 msgstr ""
 
 #: printdialog.cpp:181
@@ -3164,6 +2497,16 @@ msgstr ""
 #, qt-format
 msgctxt "printDialog|"
 msgid " +%1%"
+msgstr ""
+
+#: printdialog.cpp:222
+msgctxt "printDialog|"
+msgid " Switch("
+msgstr ""
+
+#: printdialog.cpp:223
+msgctxt "printDialog|"
+msgid " noTrim"
 msgstr ""
 
 #: printdialog.cpp:224
@@ -3212,6 +2555,11 @@ msgctxt "printDialog|"
 msgid "<h2>Curves</h2>"
 msgstr ""
 
+#: printdialog.cpp:280
+msgctxt "printDialog|"
+msgid "5-point Curves"
+msgstr ""
+
 #: printdialog.cpp:284 printdialog.cpp:302
 #, qt-format
 msgctxt "printDialog|"
@@ -3224,9 +2572,29 @@ msgctxt "printDialog|"
 msgid "Curve %1"
 msgstr ""
 
+#: printdialog.cpp:298
+msgctxt "printDialog|"
+msgid "9-point Curves"
+msgstr ""
+
 #: printdialog.cpp:322
 msgctxt "printDialog|"
 msgid "<h2>Custom Switches</h2>"
+msgstr ""
+
+#: printdialog.cpp:328
+msgctxt "printDialog|"
+msgid "Source"
+msgstr ""
+
+#: printdialog.cpp:329
+msgctxt "printDialog|"
+msgid "Offset"
+msgstr ""
+
+#: printdialog.cpp:330
+msgctxt "printDialog|"
+msgid "Function"
 msgstr ""
 
 #: printdialog.cpp:335

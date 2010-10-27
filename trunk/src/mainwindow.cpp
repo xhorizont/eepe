@@ -312,12 +312,12 @@ void MainWindow::about()
         str = sl.takeAt(1);
     }
 
-    QString aboutStr = tr("<center><img src=\":/images/eepe-title.png\"><br>");
-    aboutStr.append(tr("Copyright Erez Raviv &copy;2010<br>"));
-    aboutStr.append(tr("<a href='http://code.google.com/p/eepe/'>http://code.google.com/p/eepe/</a><br>Revision: %1, %2<br><br>").arg(str.toInt()+1).arg(__DATE__));
-    aboutStr.append(tr("If you've found this program and/or the Firmware useful please support by <a href='"));
-    aboutStr.append(DONATE_STR);
-    aboutStr.append(tr("'>donating</a></center>"));
+    QString aboutStr = "<center><img src=\":/images/eepe-title.png\"><br>";
+    aboutStr.append("Copyright Erez Raviv &copy;2010<br>");
+    aboutStr.append(QString("<a href='http://code.google.com/p/eepe/'>http://code.google.com/p/eepe/</a><br>Revision: %1, %2<br><br>").arg(str.toInt()+1).arg(__DATE__));
+    aboutStr.append(tr("If you've found this program and/or the Firmware useful please support by"));
+    aboutStr.append(" <a href='" DONATE_STR "'>");
+    aboutStr.append(tr("donating") + "</a></center>");
 
     QMessageBox::about(this, tr("About eePe"),aboutStr);
 }
@@ -445,39 +445,39 @@ void MainWindow::createActions()
 
     burnToAct = new QAction(QIcon(":/images/write_eeprom.png"), tr("&Write EEPROM To Tx"), this);
     burnToAct->setShortcut(tr("Ctrl+Alt+W"));
-    burnToAct->setStatusTip("Write EEPROM to transmitter");
+    burnToAct->setStatusTip(tr("Write EEPROM to transmitter"));
     connect(burnToAct,SIGNAL(triggered()),this,SLOT(burnTo()));
 
     burnFromAct = new QAction(QIcon(":/images/read_eeprom.png"), tr("&Read EEPROM From Tx"), this);
     burnFromAct->setShortcut(tr("Ctrl+Alt+R"));
-    burnFromAct->setStatusTip("Read EEPROM from transmitter");
+    burnFromAct->setStatusTip(tr("Read EEPROM from transmitter"));
     connect(burnFromAct,SIGNAL(triggered()),this,SLOT(burnFrom()));
 
     burnToFlashAct = new QAction(QIcon(":/images/write_flash.png"), tr("Write Flash memory"), this);
-    burnToFlashAct->setStatusTip("Write flash memory to transmitter");
+    burnToFlashAct->setStatusTip(tr("Write flash memory to transmitter"));
     connect(burnToFlashAct,SIGNAL(triggered()),this,SLOT(burnToFlash()));
 
     burnFromFlashAct = new QAction(QIcon(":/images/read_flash.png"), tr("Read Flash memory"), this);
-    burnFromFlashAct->setStatusTip("Read flash memory to transmitter");
+    burnFromFlashAct->setStatusTip(tr("Read flash memory to transmitter"));
     connect(burnFromFlashAct,SIGNAL(triggered()),this,SLOT(burnFromFlash()));
 
     burnConfigAct = new QAction(QIcon(":/images/configure.png"), tr("&Configure..."), this);
-    burnConfigAct->setStatusTip("Configure burning software");
+    burnConfigAct->setStatusTip(tr("Configure burning software"));
     connect(burnConfigAct,SIGNAL(triggered()),this,SLOT(burnConfig()));
 
     burnListAct = new QAction(tr("&List programmers"), this);
-    burnListAct->setStatusTip("List available programmers");
+    burnListAct->setStatusTip(tr("List available programmers"));
     connect(burnListAct,SIGNAL(triggered()),this,SLOT(burnList()));
 
     simulateAct = new QAction(QIcon(":/images/simulate.png"), tr("&Simulate"), this);
     simulateAct->setShortcut(tr("Alt+S"));
-    simulateAct->setStatusTip("Simulate selected model.");
+    simulateAct->setStatusTip(tr("Simulate selected model."));
     simulateAct->setEnabled(false);
     connect(simulateAct,SIGNAL(triggered()),this,SLOT(simulate()));
 
     printAct = new QAction(QIcon(":/images/print.png"), tr("&Print"), this);
     printAct->setShortcut(tr("Ctrl+P"));
-    printAct->setStatusTip("Print current model.");
+    printAct->setStatusTip(tr("Print current model."));
     printAct->setEnabled(false);
     connect(printAct,SIGNAL(triggered()),this,SLOT(print()));
 
