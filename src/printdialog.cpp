@@ -109,15 +109,15 @@ void printDialog::printTitle()
 void printDialog::printSetup()
 {
     QString str = tr("<h2>General Model Settings</h2><br>");
-    str.append(fv("Name", getModelName()));
-    str.append(fv("Timer", getTimer()));  //value, mode, count up/down
-    str.append(fv("Protocol", getProtocol())); //proto, numch, delay,
-    str.append(fv("Pulse Polarity", g_model->pulsePol ? "NEG" : "POS"));
-    str.append(fv("Throttle Trim", g_model->thrTrim ? tr("Enabled") : tr("Disabled")));
-    str.append(fv("Throttle Expo", g_model->thrExpo ? tr("Enabled") : tr("Disabled")));
-    str.append(fv("Trim Switch", getSWName(g_model->trimSw)));
-    str.append(fv("Trim Increment", getTrimInc()));
-    str.append(fv("Center Beep", getCenterBeep())); // specify which channels beep
+    str.append(fv(tr("Name"), getModelName()));
+    str.append(fv(tr("Timer"), getTimer()));  //value, mode, count up/down
+    str.append(fv(tr("Protocol"), getProtocol())); //proto, numch, delay,
+    str.append(fv(tr("Pulse Polarity"), g_model->pulsePol ? "NEG" : "POS"));
+    str.append(fv(tr("Throttle Trim"), g_model->thrTrim ? tr("Enabled") : tr("Disabled")));
+    str.append(fv(tr("Throttle Expo"), g_model->thrExpo ? tr("Enabled") : tr("Disabled")));
+    str.append(fv(tr("Trim Switch"), getSWName(g_model->trimSw)));
+    str.append(fv(tr("Trim Increment"), getTrimInc()));
+    str.append(fv(tr("Center Beep"), getCenterBeep())); // specify which channels beep
     str.append("<br><br>");
     te->append(str);
 
@@ -133,21 +133,21 @@ void printDialog::printExpo()
         str.append("<h3>" + getSourceStr(g_eeGeneral->stickMode, i+1) + "</h3>");
         //high, mid, low
         //left right / expo, dr
-        str.append(fv("Switch 1:", getSWName(g_model->expoData[i].drSw1)));
-        str.append(fv("Switch 2:", getSWName(g_model->expoData[i].drSw2)));
+        str.append(fv(tr("Switch 1:"), getSWName(g_model->expoData[i].drSw1)));
+        str.append(fv(tr("Switch 2:"), getSWName(g_model->expoData[i].drSw2)));
         str.append("<table border=1 cellspacing=0 cellpadding=3>");
 
         str.append("<tr>");
         str.append(doTC("&nbsp;"));
-        str.append(doTC("Expo Left", "", true));
-        str.append(doTC("D/R Left", "", true));
-        str.append(doTC("D/R Right", "", true));
-        str.append(doTC("Expo Right", "", true));
+        str.append(doTC(tr("Expo Left"), "", true));
+        str.append(doTC(tr("D/R Left"), "", true));
+        str.append(doTC(tr("D/R Right"), "", true));
+        str.append(doTC(tr("Expo Right"), "", true));
         str.append("</tr>");
 
 
         str.append("<tr>");
-        str.append(doTC("High", "", true));
+        str.append(doTC(tr("High"), "", true));
         str.append(doTC(QString::number(g_model->expoData[i].expo[DR_HIGH][DR_EXPO][DR_LEFT]),"green"));
         str.append(doTC(QString::number(g_model->expoData[i].expo[DR_HIGH][DR_WEIGHT][DR_LEFT]+100),"green"));
         str.append(doTC(QString::number(g_model->expoData[i].expo[DR_HIGH][DR_WEIGHT][DR_RIGHT]+100),"green"));
@@ -155,7 +155,7 @@ void printDialog::printExpo()
         str.append("</tr>");
 
         str.append("<tr>");
-        str.append(doTC("Mid", "", true));
+        str.append(doTC(tr("Mid"), "", true));
         str.append(doTC(QString::number(g_model->expoData[i].expo[DR_MID][DR_EXPO][DR_LEFT]),"green"));
         str.append(doTC(QString::number(g_model->expoData[i].expo[DR_MID][DR_WEIGHT][DR_LEFT]+100),"green"));
         str.append(doTC(QString::number(g_model->expoData[i].expo[DR_MID][DR_WEIGHT][DR_RIGHT]+100),"green"));
@@ -163,7 +163,7 @@ void printDialog::printExpo()
         str.append("</tr>");
 
         str.append("<tr>");
-        str.append(doTC("Low", "", true));
+        str.append(doTC(tr("Low"), "", true));
         str.append(doTC(QString::number(g_model->expoData[i].expo[DR_LOW][DR_EXPO][DR_LEFT]),"green"));
         str.append(doTC(QString::number(g_model->expoData[i].expo[DR_LOW][DR_WEIGHT][DR_LEFT]+100),"green"));
         str.append(doTC(QString::number(g_model->expoData[i].expo[DR_LOW][DR_WEIGHT][DR_RIGHT]+100),"green"));
@@ -219,8 +219,8 @@ void printDialog::printMixes()
         //str += " " + srcStr.mid(CONVERT_MODE(md->srcRaw+1)*4,4);
         str += getSourceStr(g_eeGeneral->stickMode,md->srcRaw);
 
-        if(md->swtch) str += " Switch(" + getSWName(md->swtch) + ")";
-        if(md->carryTrim) str += " noTrim";
+        if(md->swtch) str += tr(" Switch(") + getSWName(md->swtch) + ")";
+        if(md->carryTrim) str += tr(" noTrim");
         if(md->sOffset)  str += tr(" Offset(%1\%)").arg(md->sOffset);
         if(md->curve)
         {
@@ -277,7 +277,7 @@ void printDialog::printCurves()
 {
     QString str = tr("<h2>Curves</h2>");
 
-    str.append(fv("5-point Curves", ""));
+    str.append(fv(tr("5-point Curves"), ""));
     str.append("<table border=1 cellspacing=0 cellpadding=3>");
     str.append("<tr>");
     str.append(doTC("&nbsp;"));
@@ -295,7 +295,7 @@ void printDialog::printCurves()
     str.append("<br><br>");
 
 
-    str.append(fv("9-point Curves", ""));
+    str.append(fv(tr("9-point Curves"), ""));
     str.append("<table border=1 cellspacing=0 cellpadding=3>");
     str.append("<tr>");
     str.append(doTC("&nbsp;"));
@@ -325,9 +325,9 @@ void printDialog::printSwitches()
     str.append("<table border=1 cellspacing=0 cellpadding=3>");
     str.append("<tr>");
     str.append(doTC("&nbsp;"));
-    str.append(doTC("Source", "", true));
-    str.append(doTC("Offset", "", true));
-    str.append(doTC("Function", "", true));
+    str.append(doTC(tr("Source"), "", true));
+    str.append(doTC(tr("Offset"), "", true));
+    str.append(doTC(tr("Function"), "", true));
     str.append("</tr>");
     for(int i=0; i<NUM_CSW; i++)
     {

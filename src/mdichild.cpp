@@ -166,7 +166,7 @@ void MdiChild::deleteSelected(bool ask=true)
     QMessageBox::StandardButton ret = QMessageBox::No;
 
     if(ask)
-        ret = QMessageBox::warning(this, tr("eePe"),
+        ret = QMessageBox::warning(this, "eePe",
                  tr("Delete Selected Models?"),
                  QMessageBox::Yes | QMessageBox::No);
 

@@ -47,6 +47,12 @@ These will be relevant for all models in the same EEPROM.</string>
        </item>
        <item row="0" column="1">
         <widget class="QSpinBox" name="contrastSB">
+         <property name="toolTip">
+          <string/>
+         </property>
+         <property name="statusTip">
+          <string/>
+         </property>
          <property name="whatsThis">
           <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
@@ -78,14 +84,23 @@ p, li { white-space: pre-wrap; }
        </item>
        <item row="1" column="1">
         <widget class="QDoubleSpinBox" name="battwarningDSB">
+         <property name="toolTip">
+          <string/>
+         </property>
+         <property name="statusTip">
+          <string/>
+         </property>
          <property name="whatsThis">
           <string>Battery warning voltage.
 This is the threashhold where the battery warning sounds.
 
 Acceptable values are 5v..10v</string>
          </property>
+         <property name="prefix">
+          <string notr="true"/>
+         </property>
          <property name="suffix">
-          <string>v</string>
+          <string notr="true">v</string>
          </property>
          <property name="decimals">
           <number>1</number>
@@ -113,12 +128,21 @@ Acceptable values are 5v..10v</string>
        </item>
        <item row="2" column="1">
         <widget class="QDoubleSpinBox" name="battcalibDSB">
+         <property name="toolTip">
+          <string/>
+         </property>
+         <property name="statusTip">
+          <string/>
+         </property>
          <property name="whatsThis">
           <string>Battery calibration:
 This value will be added to the measured battery voltage.  Use this value to calibrate the meter with an external meter.</string>
          </property>
+         <property name="prefix">
+          <string notr="true"/>
+         </property>
          <property name="suffix">
-          <string>v</string>
+          <string notr="true">v</string>
          </property>
          <property name="decimals">
           <number>1</number>
@@ -143,169 +167,20 @@ This value will be added to the measured battery voltage.  Use this value to cal
        </item>
        <item row="3" column="1">
         <widget class="QComboBox" name="backlightswCB">
+         <property name="toolTip">
+          <string/>
+         </property>
+         <property name="statusTip">
+          <string/>
+         </property>
          <property name="whatsThis">
           <string>This is the switch selectrion for turning on the backlight (if installed).
 
 </string>
          </property>
          <property name="currentIndex">
-          <number>15</number>
+          <number>-1</number>
          </property>
-         <item>
-          <property name="text">
-           <string>!SW6</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>!SW5</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>!SW4</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>!SW3</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>!SW2</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>!SW1</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>!TRN</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>!GEA</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>!AIL</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>!ID2</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>!ID1</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>!ID0</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>!ELE</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>!RUD</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>!THR</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>----</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>THR</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>RUD</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>ELE</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>ID0</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>ID1</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>ID2</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>AIL</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>GEA</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>TRN</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>SW1</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>SW2</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>SW3</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>SW4</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>SW5</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>SW6</string>
-          </property>
-         </item>
         </widget>
        </item>
        <item row="4" column="0">
@@ -317,6 +192,12 @@ This value will be added to the measured battery voltage.  Use this value to cal
        </item>
        <item row="4" column="1">
         <widget class="QSpinBox" name="backlightautoSB">
+         <property name="toolTip">
+          <string/>
+         </property>
+         <property name="statusTip">
+          <string/>
+         </property>
          <property name="whatsThis">
           <string>If this value is not 0, any keypress will turn on the backlight and turn it off after the specified number of seconds.</string>
          </property>
@@ -340,6 +221,12 @@ This value will be added to the measured battery voltage.  Use this value to cal
        </item>
        <item row="5" column="1">
         <widget class="QSpinBox" name="inactimerSB">
+         <property name="toolTip">
+          <string/>
+         </property>
+         <property name="statusTip">
+          <string/>
+         </property>
          <property name="whatsThis">
           <string>If not zero will sound beeps if the transmitter has been left without inputs for the specified number of minutes.</string>
          </property>
@@ -604,6 +491,12 @@ p, li { white-space: pre-wrap; }
        </item>
        <item row="15" column="1">
         <widget class="QComboBox" name="beeperCB">
+         <property name="toolTip">
+          <string/>
+         </property>
+         <property name="statusTip">
+          <string/>
+         </property>
          <property name="whatsThis">
           <string>Beeper volume
 
@@ -649,6 +542,12 @@ p, li { white-space: pre-wrap; }
        </item>
        <item row="16" column="1">
         <widget class="QComboBox" name="channelorderCB">
+         <property name="toolTip">
+          <string/>
+         </property>
+         <property name="statusTip">
+          <string/>
+         </property>
          <property name="whatsThis">
           <string>Channel order
 
@@ -659,122 +558,122 @@ This is used by the templated to determine which channel goes to what number out
          </property>
          <item>
           <property name="text">
-           <string>R E T A</string>
+           <string notr="true">R E T A</string>
           </property>
          </item>
          <item>
           <property name="text">
-           <string>R E A T</string>
+           <string notr="true">R E A T</string>
           </property>
          </item>
          <item>
           <property name="text">
-           <string>R T E A</string>
+           <string notr="true">R T E A</string>
           </property>
          </item>
          <item>
           <property name="text">
-           <string>R T A E</string>
+           <string notr="true">R T A E</string>
           </property>
          </item>
          <item>
           <property name="text">
-           <string>R A E T</string>
+           <string notr="true">R A E T</string>
           </property>
          </item>
          <item>
           <property name="text">
-           <string>R A T E</string>
+           <string notr="true">R A T E</string>
           </property>
          </item>
          <item>
           <property name="text">
-           <string>E R T A</string>
+           <string notr="true">E R T A</string>
           </property>
          </item>
          <item>
           <property name="text">
-           <string>E R A T</string>
+           <string notr="true">E R A T</string>
           </property>
          </item>
          <item>
           <property name="text">
-           <string>E T R A</string>
+           <string notr="true">E T R A</string>
           </property>
          </item>
          <item>
           <property name="text">
-           <string>E T A R</string>
+           <string notr="true">E T A R</string>
           </property>
          </item>
          <item>
           <property name="text">
-           <string>E A R T</string>
+           <string notr="true">E A R T</string>
           </property>
          </item>
          <item>
           <property name="text">
-           <string>E A T R</string>
+           <string notr="true">E A T R</string>
           </property>
          </item>
          <item>
           <property name="text">
-           <string>T R E A</string>
+           <string notr="true">T R E A</string>
           </property>
          </item>
          <item>
           <property name="text">
-           <string>T R A E</string>
+           <string notr="true">T R A E</string>
           </property>
          </item>
          <item>
           <property name="text">
-           <string>T E R A</string>
+           <string notr="true">T E R A</string>
           </property>
          </item>
          <item>
           <property name="text">
-           <string>T E A R</string>
+           <string notr="true">T E A R</string>
           </property>
          </item>
          <item>
           <property name="text">
-           <string>T A R E</string>
+           <string notr="true">T A R E</string>
           </property>
          </item>
          <item>
           <property name="text">
-           <string>T A E R</string>
+           <string notr="true">T A E R</string>
           </property>
          </item>
          <item>
           <property name="text">
-           <string>A R E T</string>
+           <string notr="true">A R E T</string>
           </property>
          </item>
          <item>
           <property name="text">
-           <string>A R T E</string>
+           <string notr="true">A R T E</string>
           </property>
          </item>
          <item>
           <property name="text">
-           <string>A E R T</string>
+           <string notr="true">A E R T</string>
           </property>
          </item>
          <item>
           <property name="text">
-           <string>A E T R</string>
+           <string notr="true">A E T R</string>
           </property>
          </item>
          <item>
           <property name="text">
-           <string>A T R E</string>
+           <string notr="true">A T R E</string>
           </property>
          </item>
          <item>
           <property name="text">
-           <string>A T E R</string>
+           <string notr="true">A T E R</string>
           </property>
          </item>
         </widget>
@@ -788,6 +687,12 @@ This is used by the templated to determine which channel goes to what number out
        </item>
        <item row="17" column="1">
         <widget class="QComboBox" name="stickmodeCB">
+         <property name="toolTip">
+          <string/>
+         </property>
+         <property name="statusTip">
+          <string/>
+         </property>
          <property name="whatsThis">
           <string>Mode selection:
 
@@ -843,6 +748,9 @@ Mode 4:
       <layout class="QGridLayout" name="gridLayout_3" rowstretch="0,0,0,0,0,0,0,0,0,0,0,0,0,1">
        <item row="1" column="2">
         <widget class="QSpinBox" name="ana1Neg">
+         <property name="statusTip">
+          <string/>
+         </property>
          <property name="minimum">
           <number>-9999</number>
          </property>
@@ -853,6 +761,9 @@ Mode 4:
        </item>
        <item row="1" column="3">
         <widget class="QSpinBox" name="ana1Mid">
+         <property name="statusTip">
+          <string/>
+         </property>
          <property name="minimum">
           <number>-9999</number>
          </property>
@@ -863,6 +774,9 @@ Mode 4:
        </item>
        <item row="1" column="4">
         <widget class="QSpinBox" name="ana1Pos">
+         <property name="statusTip">
+          <string/>
+         </property>
          <property name="minimum">
           <number>-9999</number>
          </property>
@@ -873,6 +787,9 @@ Mode 4:
        </item>
        <item row="2" column="2">
         <widget class="QSpinBox" name="ana2Neg">
+         <property name="statusTip">
+          <string/>
+         </property>
          <property name="minimum">
           <number>-9999</number>
          </property>
@@ -883,6 +800,9 @@ Mode 4:
        </item>
        <item row="2" column="3">
         <widget class="QSpinBox" name="ana2Mid">
+         <property name="statusTip">
+          <string/>
+         </property>
          <property name="minimum">
           <number>-9999</number>
          </property>
@@ -893,6 +813,9 @@ Mode 4:
        </item>
        <item row="2" column="4">
         <widget class="QSpinBox" name="ana2Pos">
+         <property name="statusTip">
+          <string/>
+         </property>
          <property name="minimum">
           <number>-9999</number>
          </property>
@@ -903,6 +826,9 @@ Mode 4:
        </item>
        <item row="3" column="2">
         <widget class="QSpinBox" name="ana3Neg">
+         <property name="statusTip">
+          <string/>
+         </property>
          <property name="minimum">
           <number>-9999</number>
          </property>
@@ -913,6 +839,9 @@ Mode 4:
        </item>
        <item row="3" column="3">
         <widget class="QSpinBox" name="ana3Mid">
+         <property name="statusTip">
+          <string/>
+         </property>
          <property name="minimum">
           <number>-9999</number>
          </property>
@@ -923,6 +852,9 @@ Mode 4:
        </item>
        <item row="3" column="4">
         <widget class="QSpinBox" name="ana3Pos">
+         <property name="statusTip">
+          <string/>
+         </property>
          <property name="minimum">
           <number>-9999</number>
          </property>
@@ -933,6 +865,9 @@ Mode 4:
        </item>
        <item row="4" column="2">
         <widget class="QSpinBox" name="ana4Neg">
+         <property name="statusTip">
+          <string/>
+         </property>
          <property name="minimum">
           <number>-9999</number>
          </property>
@@ -943,6 +878,9 @@ Mode 4:
        </item>
        <item row="4" column="3">
         <widget class="QSpinBox" name="ana4Mid">
+         <property name="statusTip">
+          <string/>
+         </property>
          <property name="minimum">
           <number>-9999</number>
          </property>
@@ -953,6 +891,9 @@ Mode 4:
        </item>
        <item row="4" column="4">
         <widget class="QSpinBox" name="ana4Pos">
+         <property name="statusTip">
+          <string/>
+         </property>
          <property name="minimum">
           <number>-9999</number>
          </property>
@@ -963,6 +904,9 @@ Mode 4:
        </item>
        <item row="5" column="2">
         <widget class="QSpinBox" name="ana5Neg">
+         <property name="statusTip">
+          <string/>
+         </property>
          <property name="minimum">
           <number>-9999</number>
          </property>
@@ -973,6 +917,9 @@ Mode 4:
        </item>
        <item row="5" column="3">
         <widget class="QSpinBox" name="ana5Mid">
+         <property name="statusTip">
+          <string/>
+         </property>
          <property name="minimum">
           <number>-9999</number>
          </property>
@@ -983,6 +930,9 @@ Mode 4:
        </item>
        <item row="5" column="4">
         <widget class="QSpinBox" name="ana5Pos">
+         <property name="statusTip">
+          <string/>
+         </property>
          <property name="minimum">
           <number>-9999</number>
          </property>
@@ -993,6 +943,9 @@ Mode 4:
        </item>
        <item row="6" column="2">
         <widget class="QSpinBox" name="ana6Neg">
+         <property name="statusTip">
+          <string/>
+         </property>
          <property name="minimum">
           <number>-9999</number>
          </property>
@@ -1003,6 +956,9 @@ Mode 4:
        </item>
        <item row="6" column="3">
         <widget class="QSpinBox" name="ana6Mid">
+         <property name="statusTip">
+          <string/>
+         </property>
          <property name="minimum">
           <number>-9999</number>
          </property>
@@ -1013,6 +969,9 @@ Mode 4:
        </item>
        <item row="6" column="4">
         <widget class="QSpinBox" name="ana6Pos">
+         <property name="statusTip">
+          <string/>
+         </property>
          <property name="minimum">
           <number>-9999</number>
          </property>
@@ -1023,6 +982,9 @@ Mode 4:
        </item>
        <item row="7" column="2">
         <widget class="QSpinBox" name="ana7Neg">
+         <property name="statusTip">
+          <string/>
+         </property>
          <property name="minimum">
           <number>-9999</number>
          </property>
@@ -1033,6 +995,9 @@ Mode 4:
        </item>
        <item row="7" column="3">
         <widget class="QSpinBox" name="ana7Mid">
+         <property name="statusTip">
+          <string/>
+         </property>
          <property name="minimum">
           <number>-9999</number>
          </property>
@@ -1043,6 +1008,9 @@ Mode 4:
        </item>
        <item row="7" column="4">
         <widget class="QSpinBox" name="ana7Pos">
+         <property name="statusTip">
+          <string/>
+         </property>
          <property name="minimum">
           <number>-9999</number>
          </property>
@@ -1053,6 +1021,15 @@ Mode 4:
        </item>
        <item row="11" column="1">
         <widget class="QSpinBox" name="PPM1">
+         <property name="toolTip">
+          <string/>
+         </property>
+         <property name="statusTip">
+          <string/>
+         </property>
+         <property name="whatsThis">
+          <string/>
+         </property>
          <property name="minimum">
           <number>-9999</number>
          </property>
@@ -1063,6 +1040,15 @@ Mode 4:
        </item>
        <item row="11" column="2">
         <widget class="QSpinBox" name="PPM2">
+         <property name="toolTip">
+          <string/>
+         </property>
+         <property name="statusTip">
+          <string/>
+         </property>
+         <property name="whatsThis">
+          <string/>
+         </property>
          <property name="minimum">
           <number>-9999</number>
          </property>
@@ -1073,6 +1059,15 @@ Mode 4:
        </item>
        <item row="11" column="3">
         <widget class="QSpinBox" name="PPM3">
+         <property name="toolTip">
+          <string/>
+         </property>
+         <property name="statusTip">
+          <string/>
+         </property>
+         <property name="whatsThis">
+          <string/>
+         </property>
          <property name="minimum">
           <number>-9999</number>
          </property>
@@ -1083,6 +1078,15 @@ Mode 4:
        </item>
        <item row="11" column="4">
         <widget class="QSpinBox" name="PPM4">
+         <property name="toolTip">
+          <string/>
+         </property>
+         <property name="statusTip">
+          <string/>
+         </property>
+         <property name="whatsThis">
+          <string/>
+         </property>
          <property name="minimum">
           <number>-9999</number>
          </property>
@@ -1093,6 +1097,15 @@ Mode 4:
        </item>
        <item row="12" column="1">
         <widget class="QSpinBox" name="PPM5">
+         <property name="toolTip">
+          <string/>
+         </property>
+         <property name="statusTip">
+          <string/>
+         </property>
+         <property name="whatsThis">
+          <string/>
+         </property>
          <property name="minimum">
           <number>-9999</number>
          </property>
@@ -1103,6 +1116,15 @@ Mode 4:
        </item>
        <item row="12" column="2">
         <widget class="QSpinBox" name="PPM6">
+         <property name="toolTip">
+          <string/>
+         </property>
+         <property name="statusTip">
+          <string/>
+         </property>
+         <property name="whatsThis">
+          <string/>
+         </property>
          <property name="minimum">
           <number>-9999</number>
          </property>
@@ -1113,6 +1135,15 @@ Mode 4:
        </item>
        <item row="12" column="3">
         <widget class="QSpinBox" name="PPM7">
+         <property name="toolTip">
+          <string/>
+         </property>
+         <property name="statusTip">
+          <string/>
+         </property>
+         <property name="whatsThis">
+          <string/>
+         </property>
          <property name="minimum">
           <number>-9999</number>
          </property>
@@ -1123,6 +1154,15 @@ Mode 4:
        </item>
        <item row="12" column="4">
         <widget class="QSpinBox" name="PPM8">
+         <property name="toolTip">
+          <string/>
+         </property>
+         <property name="statusTip">
+          <string/>
+         </property>
+         <property name="whatsThis">
+          <string/>
+         </property>
          <property name="minimum">
           <number>-9999</number>
          </property>
@@ -1227,6 +1267,9 @@ Mode 4:
        </item>
        <item row="8" column="2">
         <widget class="QDoubleSpinBox" name="battCalib">
+         <property name="statusTip">
+          <string/>
+         </property>
          <property name="suffix">
           <string>v</string>
          </property>
