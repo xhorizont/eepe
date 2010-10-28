@@ -6,24 +6,23 @@
     <message>
         <location filename="generaledit.ui" line="14"/>
         <source>General Edit</source>
-        <translation>פרמטרים כלליים</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="27"/>
         <source>General settings used throught the transmitter.
 These will be relevant for all models in the same EEPROM.</source>
-        <translation>פרמטרים כלליים המשמשים לכלל המודלים בשלטו
-הפרמטרים האלה רלוונטיים לכל מודל הנמצא בזיכרון.</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="35"/>
         <source>Setup</source>
-        <translation>כללי</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="44"/>
         <source>Contrast</source>
-        <translation>ניגודיות</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="57"/>
@@ -33,17 +32,12 @@ p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;LCD Screen Contrast&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;Values can be 20-45&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;LCD ניגודיות&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;20-45 ערכים יכולים להיות&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="81"/>
         <source>Battery Warning</source>
-        <translation>אזהרת מתח נמוך</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="94"/>
@@ -51,76 +45,66 @@ p, li { white-space: pre-wrap; }
 This is the threashhold where the battery warning sounds.
 
 Acceptable values are 5v..10v</source>
-        <translation>אזהרת מתח נמוך.
-מתחת למתח זה נשמע צפצוף אזהרה
-
-ערכים מותרים: 5v..10v</translation>
-    </message>
-    <message>
-        <location filename="generaledit.ui" line="1274"/>
-        <source>v</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="125"/>
         <location filename="generaledit.ui" line="1174"/>
         <source>Battery Calibration</source>
-        <translation>קליברציית סוללה</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="138"/>
         <source>Battery calibration:
 This value will be added to the measured battery voltage.  Use this value to calibrate the meter with an external meter.</source>
-        <translation>קליברציית סוללה:
-ערך זה יתווסף למדידת המתח של הסוללה.
-ניתן להשתמש בערך זה ע&quot;מ לכוון את מדידת הסוללה בעזרת מד מתח חיצוני.</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="164"/>
         <source>Backlight Switch</source>
-        <translation>מפסק תאורה</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="177"/>
         <source>This is the switch selectrion for turning on the backlight (if installed).
 
 </source>
-        <translation>מפסק זה מפעיל את תאורת המסך (אם קיימת).</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="189"/>
         <source>Backlight Auto On/OFF after</source>
-        <translation>הדלת וכיבוי תאורה אוטומטי אחרי</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="202"/>
         <source>If this value is not 0, any keypress will turn on the backlight and turn it off after the specified number of seconds.</source>
-        <translation>אם ערך זה אינו &quot;0&quot; כל מקש יפעיל את התאורה למשך הזמן המצויין.</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="205"/>
         <source> sec</source>
-        <translation> שניות</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="218"/>
         <source>Inactivity Timer</source>
-        <translation>שעון אי-פעילות</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="231"/>
         <source>If not zero will sound beeps if the transmitter has been left without inputs for the specified number of minutes.</source>
-        <translation>אם לא &quot;0&quot; יצפצף לאחר מס&apos; הדקות המצויין באם אין פעילות.</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="234"/>
         <source> min</source>
-        <translation> דקות</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="244"/>
         <source>Reverse Throttle Operation</source>
-        <translation>מצערת הפוכה</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="251"/>
@@ -128,9 +112,7 @@ This value will be added to the measured battery voltage.  Use this value to cal
 If this is checked the throttle will be reversed.  Idle will be forward, trim will also be reversed and the throttle warning will be reversed as well.
 
 </source>
-        <translation>הופך את כיוון פעולת המצערת.
-אם מסומן פעולת המצערת תהיה הפוכה - סרק יהיה קדימה ומלא יהיה אחורה.
-קיזוז ואזהרת מצערת יהיו הפוכים גם כן.</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="264"/>
@@ -178,27 +160,27 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="generaledit.ui" line="313"/>
         <source>Input Filter</source>
-        <translation>פילטר קלט</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="321"/>
         <source>Single</source>
-        <translation>יחיד</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="326"/>
         <source>Oversample</source>
-        <translation>מדוייק</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="331"/>
         <source>Filter</source>
-        <translation>סינון</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="352"/>
         <source>Throttle Startup Warning</source>
-        <translation>אזהרת מצערת</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="359"/>
@@ -216,33 +198,27 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Switch warning - will alert if switches are not in their defaul position&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Memory warning - will alert if there&apos;s not a lot of memory left&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Silent mode warning - will alert you if the beeper is set to quiet (0)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>אזהרות
-
-ערכים אלה מגדירים אזהרות בזמן הפעלת המשדר.
-אזהרת מצערת: נותנת התרעה ברגע שהמצערת אינה בסרק.
-אזהרת מפסקים: התרעה ברגע שלא כל המפסקים כבויים.
-אזהרת זיכרון: התרעה באם לא נותר מספיק זיכרון.
-אזהרת מצב שקט: אזהרה באם הצפצפה נמצאת במצב &quot;שקט&quot;</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="385"/>
         <source>Switch Startup Warning</source>
-        <translation>אזהרת מפסקים</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="415"/>
         <source>Memory Startup Warning</source>
-        <translation>אזהרת זיכרון</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="445"/>
         <source>Silent mode (No Alarm)</source>
-        <translation>אזהרת מצב שקט</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="488"/>
         <source>Beeper Mode</source>
-        <translation>מצב צלצול</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="501"/>
@@ -253,38 +229,32 @@ p, li { white-space: pre-wrap; }
 2 - Normal.
 3 - Loud.
 4 - Extra loud.</source>
-        <translation>רמת צלצול
-
-0 - שקט. אין צלילים כלל
-1 - ללא מקשים. צפצופים רגילים ללא צלילי מקשים
-2 - רגיל.
-3 - חזק.
-4 - חזק מאוד.</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="511"/>
         <source>0 - Quiet</source>
-        <translation>0 - שקט</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="516"/>
         <source>1 - No Keys</source>
-        <translation>1 - ללא מקשים</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="521"/>
         <source>2 - Normal</source>
-        <translation>2 - רגיל</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="526"/>
         <source>3 - Long</source>
-        <translation>3 - חזק</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="531"/>
         <source>4 - Extra Long</source>
-        <translation>4 - חזק מאוד</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="539"/>
@@ -406,6 +376,11 @@ Mode 4:
         <source>Positive</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="generaledit.ui" line="1274"/>
+        <source>v</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>MainWindow</name>
@@ -422,14 +397,14 @@ Mode 4:
     </message>
     <message>
         <location filename="mainwindow.cpp" line="118"/>
-        <source>EEPROM files (*.bin *.hex);;BIN files (*.bin);;HEX files (*.hex)</source>
+        <location filename="mainwindow.cpp" line="233"/>
+        <location filename="mainwindow.cpp" line="260"/>
+        <source>Open</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="118"/>
-        <location filename="mainwindow.cpp" line="233"/>
-        <location filename="mainwindow.cpp" line="260"/>
-        <source>Open</source>
+        <source>EEPROM files (*.bin *.hex);;BIN files (*.bin);;HEX files (*.hex)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -456,7 +431,6 @@ Mode 4:
     <message>
         <location filename="mainwindow.cpp" line="318"/>
         <source>If you&apos;ve found this program and/or the Firmware useful please support by</source>
-        <oldsource>If you&apos;ve found this program and/or the Firmware useful please support by &lt;a href=&apos;</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -803,12 +777,6 @@ Mode 4:
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="641"/>
-        <location filename="mdichild.cpp" line="680"/>
-        <source>eePe</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="mdichild.cpp" line="170"/>
         <source>Delete Selected Models?</source>
         <translation type="unfinished"></translation>
@@ -921,6 +889,12 @@ Mode 4:
         <location filename="mdichild.cpp" line="605"/>
         <source>Error writing file %1:
 %2.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mdichild.cpp" line="641"/>
+        <location filename="mdichild.cpp" line="680"/>
+        <source>eePe</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1110,7 +1084,8 @@ Setting this value will cause a beep to be emmitted when this value is active.</
     </message>
     <message>
         <location filename="mixerdialog.ui" line="161"/>
-        <source>2 Beeo</source>
+        <source>2 Beep</source>
+        <oldsource>2 Beeo</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1203,7 +1178,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="modeledit.ui" line="31"/>
         <source>Setup</source>
-        <translation type="unfinished">כללי</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="modeledit.ui" line="37"/>
@@ -1979,7 +1954,8 @@ AVRDUDE done - SUCCESSFUL</source>
     </message>
     <message>
         <location filename="burnconfigdialog.ui" line="38"/>
-        <source>Locatioon of AVRDUDE executable</source>
+        <source>Location of AVRDUDE executable</source>
+        <oldsource>Locatioon of AVRDUDE executable</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2308,6 +2284,11 @@ Mode 4:
     </message>
     <message>
         <location filename="printdialog.cpp" line="116"/>
+        <source>Throttle Trim</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="printdialog.cpp" line="116"/>
         <location filename="printdialog.cpp" line="117"/>
         <source>Enabled</source>
         <translation type="unfinished"></translation>
@@ -2316,11 +2297,6 @@ Mode 4:
         <location filename="printdialog.cpp" line="116"/>
         <location filename="printdialog.cpp" line="117"/>
         <source>Disabled</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="printdialog.cpp" line="116"/>
-        <source>Throttle Trim</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

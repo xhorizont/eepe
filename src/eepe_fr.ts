@@ -109,8 +109,8 @@ Cette valeur est ajoutée à la tension mesurée.Mesurer la tension réelle&apos
     <message>
         <location filename="generaledit.ui" line="231"/>
         <source>If not zero will sound beeps if the transmitter has been left without inputs for the specified number of minutes.</source>
-        <translation>Si différent  de 0, émission d&apos;un bip sonore régulier si aucune action n&apos;a été effectuée sur l&apos;émetteur depuis le temps spécifié (en minutes).
-Réinitialisation  en agissant sur n&apos;importe lequel des manches.</translation>
+        <translation>Si différent de 0, émission d&apos;un bip sonore régulier si aucune action n&apos;a été effectuée sur l&apos;émetteur depuis le temps spécifié (en minutes).
+Réinitialisation  en agissant sur n&apos;importe lequel des manches / touches de navigation.</translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="234"/>
@@ -136,7 +136,7 @@ Si cette option est cochée, la voie des gaz est inversée: le ralenti  est &apo
     <message>
         <location filename="generaledit.ui" line="264"/>
         <source>Timer Beeps</source>
-        <translation type="unfinished"></translation>
+        <translation>Bips du Chrono</translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="273"/>
@@ -145,22 +145,26 @@ Si cette option est cochée, la voie des gaz est inversée: le ralenti  est &apo
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;Single Beep Every whole Minute&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;Emet un bip à chaque minute écoulée&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="280"/>
         <source>Every Minute</source>
-        <translation type="unfinished"></translation>
+        <translation>Toutes les minutes</translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="287"/>
         <source>Beeps at 30, 15, 10, and down from5 seconds</source>
-        <translation type="unfinished"></translation>
+        <translation>Bip à 30, 15, 10, 5 puis toutes les secondes</translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="290"/>
         <source>Count Down to Zero</source>
-        <translation type="unfinished"></translation>
+        <translation>Compte à rebours </translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="297"/>
@@ -169,12 +173,12 @@ p, li { white-space: pre-wrap; }
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;Flash backlight on timer  beep&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Le rétroéclairage clignote en synchro avec les bips du chrono</translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="304"/>
         <source>Flash on beep</source>
-        <translation type="unfinished"></translation>
+        <translation>Clignotement avec les bips</translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="313"/>
@@ -247,7 +251,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="generaledit.ui" line="488"/>
         <source>Beeper Mode</source>
-        <translation>Mode Bipeur</translation>
+        <translation>Réglage des Bips</translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="501"/>
@@ -261,7 +265,7 @@ p, li { white-space: pre-wrap; }
         <translation>Volume des bips
 
 0 - Silence.  Tous Bips désactivés.
-1 - Silence Touches.  Volume des bips normaux mais touches de navigation silencieuses.
+1 - Touches Silencieuses.  Volume des bips normaux mais touches de navigation silencieuses.
 2 - Normal.  Volume par défaut.
 3 - Fort.
 4 - Très Fort.</translation>
@@ -269,27 +273,27 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="generaledit.ui" line="511"/>
         <source>0 - Quiet</source>
-        <translation></translation>
+        <translation>0 - Silence</translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="516"/>
         <source>1 - No Keys</source>
-        <translation></translation>
+        <translation>1 - Touches Silencieuses</translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="521"/>
         <source>2 - Normal</source>
-        <translation></translation>
+        <translation>2 - Normal</translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="526"/>
         <source>3 - Long</source>
-        <translation></translation>
+        <translation>3 - Fort</translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="531"/>
         <source>4 - Extra Long</source>
-        <translation></translation>
+        <translation>4 - Très Fort</translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="539"/>
@@ -454,7 +458,7 @@ Manche Droit:  Profondeur, Direction
         <location filename="mainwindow.cpp" line="233"/>
         <location filename="mainwindow.cpp" line="260"/>
         <source>Open</source>
-        <translation type="unfinished"></translation>
+        <translation>Ouvrir</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="142"/>
@@ -465,7 +469,7 @@ Manche Droit:  Profondeur, Direction
     <message>
         <location filename="mainwindow.cpp" line="216"/>
         <source>Read EEPROM From Tx</source>
-        <translation type="unfinished"></translation>
+        <translation>Charger l&apos;EEPROM du Tx</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="233"/>
@@ -481,7 +485,7 @@ Manche Droit:  Profondeur, Direction
         <location filename="mainwindow.cpp" line="318"/>
         <source>If you&apos;ve found this program and/or the Firmware useful please support by</source>
         <oldsource>If you&apos;ve found this program and/or the Firmware useful please support by &lt;a href=&apos;</oldsource>
-        <translation type="unfinished">Si vous trouvez ce programme et/ou ce firmware utiles, merci d&apos;apporter votre soutient en effectuant un &lt;a href=&apos;</translation>
+        <translation>Si vous trouvez ce programme et/ou ce firmware utiles, merci d&apos;apporter votre soutient en effectuant un &lt;a href=&apos;</translation>
     </message>
     <message>
         <source>&apos;&gt;donating&lt;/a&gt;&lt;/center&gt;</source>
@@ -490,7 +494,7 @@ Manche Droit:  Profondeur, Direction
     <message>
         <location filename="mainwindow.cpp" line="320"/>
         <source>donating</source>
-        <translation type="unfinished"></translation>
+        <translation>don</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="322"/>
@@ -515,7 +519,7 @@ Manche Droit:  Profondeur, Direction
     <message>
         <location filename="mainwindow.cpp" line="398"/>
         <source>Create a new file</source>
-        <translation>Créer un nouveau fichier</translation>
+        <translation>Crée un nouveau fichier</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="401"/>
@@ -525,7 +529,7 @@ Manche Droit:  Profondeur, Direction
     <message>
         <location filename="mainwindow.cpp" line="403"/>
         <source>Open an existing file</source>
-        <translation>Ouvrir un fichier existant</translation>
+        <translation>Ouvre un fichier existant</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="406"/>
@@ -535,7 +539,7 @@ Manche Droit:  Profondeur, Direction
     <message>
         <location filename="mainwindow.cpp" line="408"/>
         <source>Save the document to disk</source>
-        <translation>Enregistrer sur le disque</translation>
+        <translation>Enregistre sur le disque</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="411"/>
@@ -545,17 +549,17 @@ Manche Droit:  Profondeur, Direction
     <message>
         <location filename="mainwindow.cpp" line="413"/>
         <source>Save the document under a new name</source>
-        <translation>Enregistrer sous un nom différent</translation>
+        <translation>Enregistre sous un nom différent</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="416"/>
         <source>&amp;Preferences...</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Préférences...</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="417"/>
         <source>Edit general preferences</source>
-        <translation type="unfinished"></translation>
+        <translation>Définit les préférences générales</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="421"/>
@@ -565,7 +569,7 @@ Manche Droit:  Profondeur, Direction
     <message>
         <location filename="mainwindow.cpp" line="423"/>
         <source>Exit the application</source>
-        <translation>Quitter l&apos;application</translation>
+        <translation>Quitte l&apos;application</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="427"/>
@@ -610,7 +614,7 @@ Manche Droit:  Profondeur, Direction
     <message>
         <location filename="mainwindow.cpp" line="448"/>
         <source>Write EEPROM to transmitter</source>
-        <translation type="unfinished"></translation>
+        <translation>Transfére l&apos;EEPROM à l&apos;émetteur</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="451"/>
@@ -625,7 +629,7 @@ Manche Droit:  Profondeur, Direction
     <message>
         <location filename="mainwindow.cpp" line="453"/>
         <source>Read EEPROM from transmitter</source>
-        <translation type="unfinished"></translation>
+        <translation>Charge l&apos;EEPROM de l&apos;émetteur</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="456"/>
@@ -635,7 +639,7 @@ Manche Droit:  Profondeur, Direction
     <message>
         <location filename="mainwindow.cpp" line="457"/>
         <source>Write flash memory to transmitter</source>
-        <translation type="unfinished"></translation>
+        <translation>Ecrit dans la mémoire Flash de l&apos;émetteur</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="460"/>
@@ -645,7 +649,7 @@ Manche Droit:  Profondeur, Direction
     <message>
         <location filename="mainwindow.cpp" line="461"/>
         <source>Read flash memory to transmitter</source>
-        <translation type="unfinished"></translation>
+        <translation>Lit la mémoire Flash de l&apos;émetteur</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="464"/>
@@ -655,7 +659,7 @@ Manche Droit:  Profondeur, Direction
     <message>
         <location filename="mainwindow.cpp" line="465"/>
         <source>Configure burning software</source>
-        <translation type="unfinished"></translation>
+        <translation>Configure le logiciel de flashage</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="468"/>
@@ -665,12 +669,12 @@ Manche Droit:  Profondeur, Direction
     <message>
         <location filename="mainwindow.cpp" line="469"/>
         <source>List available programmers</source>
-        <translation type="unfinished"></translation>
+        <translation>Liste les programmateurs supportés</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="472"/>
         <source>&amp;Simulate</source>
-        <translation>&amp;Simulateur</translation>
+        <translation>&amp;Simulation</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="473"/>
@@ -680,7 +684,7 @@ Manche Droit:  Profondeur, Direction
     <message>
         <location filename="mainwindow.cpp" line="474"/>
         <source>Simulate selected model.</source>
-        <translation type="unfinished"></translation>
+        <translation>Simule le modèle sélectionné.</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="478"/>
@@ -695,7 +699,7 @@ Manche Droit:  Profondeur, Direction
     <message>
         <location filename="mainwindow.cpp" line="480"/>
         <source>Print current model.</source>
-        <translation type="unfinished"></translation>
+        <translation>Imprime les données du modèle sélectionné.</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="484"/>
@@ -715,7 +719,7 @@ Manche Droit:  Profondeur, Direction
     <message>
         <location filename="mainwindow.cpp" line="490"/>
         <source>Close all the windows</source>
-        <translation>Ferme toutes les fenètres</translation>
+        <translation>Ferme toutes les fenêtres</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="494"/>
@@ -745,7 +749,7 @@ Manche Droit:  Profondeur, Direction
     <message>
         <location filename="mainwindow.cpp" line="504"/>
         <source>Move the focus to the next window</source>
-        <translation>Fenêtre suivante</translation>
+        <translation>Active la fenêtre suivante</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="508"/>
@@ -755,7 +759,7 @@ Manche Droit:  Profondeur, Direction
     <message>
         <location filename="mainwindow.cpp" line="510"/>
         <source>Move the focus to the previous window</source>
-        <translation>Fenêtre précedente</translation>
+        <translation>Active la fenêtre précedente</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="518"/>
@@ -765,7 +769,7 @@ Manche Droit:  Profondeur, Direction
     <message>
         <location filename="mainwindow.cpp" line="519"/>
         <source>Show the application&apos;s About box</source>
-        <translation>A propos d&apos;eePe</translation>
+        <translation>Affiche la fenêtre &quot;A propos&quot; de l&apos;application</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="522"/>
@@ -828,7 +832,7 @@ Manche Droit:  Profondeur, Direction
     <message>
         <location filename="mdichild.cpp" line="145"/>
         <source>General Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Paramètres généraux</translation>
     </message>
     <message>
         <location filename="mdichild.cpp" line="641"/>
@@ -1030,7 +1034,7 @@ Enregistrer les changements?</translation>
     <message>
         <location filename="mdichild.cpp" line="728"/>
         <source>&amp;Simulate</source>
-        <translation>&amp;Simulateur</translation>
+        <translation>&amp;Simulation</translation>
     </message>
     <message>
         <location filename="mdichild.cpp" line="728"/>
@@ -1149,8 +1153,9 @@ Si activée, signale par des bips que le mixage est actif.</translation>
     </message>
     <message>
         <location filename="mixerdialog.ui" line="161"/>
-        <source>2 Beeo</source>
-        <translation>2 Bips</translation>
+        <source>2 Beep</source>
+        <oldsource>2 Beeo</oldsource>
+        <translation type="unfinished">2 Bips</translation>
     </message>
     <message>
         <location filename="mixerdialog.ui" line="166"/>
@@ -1398,7 +1403,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="modeledit.ui" line="254"/>
         <source>Protocol</source>
-        <translation>Protocole</translation>
+        <translation>Codage</translation>
     </message>
     <message>
         <location filename="modeledit.ui" line="290"/>
@@ -1843,7 +1848,7 @@ Droite</translation>
     <message>
         <location filename="modeledit.ui" line="5003"/>
         <source>Simulate</source>
-        <translation>Simulateur</translation>
+        <translation>Simulation</translation>
     </message>
     <message>
         <location filename="modeledit.cpp" line="361"/>
@@ -1865,12 +1870,12 @@ Droite</translation>
     <message>
         <location filename="modeledit.cpp" line="390"/>
         <source> Switch(</source>
-        <translation type="unfinished"></translation>
+        <translation> Inter(</translation>
     </message>
     <message>
         <location filename="modeledit.cpp" line="391"/>
         <source> noTrim</source>
-        <translation type="unfinished"></translation>
+        <translation> PasDeTrim</translation>
     </message>
     <message>
         <location filename="modeledit.cpp" line="392"/>
@@ -1993,12 +1998,12 @@ Droite</translation>
     <message>
         <location filename="avroutputdialog.cpp" line="12"/>
         <source>AVRDUDE result</source>
-        <translation type="unfinished"></translation>
+        <translation>Résultats d&apos;AVRDUDE</translation>
     </message>
     <message>
         <location filename="avroutputdialog.cpp" line="14"/>
         <source>AVRDUDE - </source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="avroutputdialog.cpp" line="96"/>
@@ -2016,7 +2021,7 @@ AVRDUDE done - SUCCESSFUL</source>
         <location filename="avroutputdialog.cpp" line="118"/>
         <source>Started AVRDUDE
 </source>
-        <translation type="unfinished"></translation>
+        <translation>AVRDUDE démarré</translation>
     </message>
     <message>
         <location filename="avroutputdialog.cpp" line="128"/>
@@ -2038,8 +2043,9 @@ AVRDUDE done - SUCCESSFUL</source>
     </message>
     <message>
         <location filename="burnconfigdialog.ui" line="38"/>
-        <source>Locatioon of AVRDUDE executable</source>
-        <translation>Chemin d&apos;accès de l&apos;exécutable AVRDUDE</translation>
+        <source>Location of AVRDUDE executable</source>
+        <oldsource>Locatioon of AVRDUDE executable</oldsource>
+        <translation type="unfinished">Chemin d&apos;accès de l&apos;exécutable AVRDUDE</translation>
     </message>
     <message>
         <location filename="burnconfigdialog.ui" line="41"/>
@@ -2277,29 +2283,29 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="preferencesdialog.ui" line="14"/>
         <source>Preferences</source>
-        <translation type="unfinished"></translation>
+        <translation>Préférences</translation>
     </message>
     <message>
         <location filename="preferencesdialog.ui" line="24"/>
         <source>Language (requires restart)</source>
-        <translation type="unfinished"></translation>
+        <translation>Langue (nécessite un redémarrage)</translation>
     </message>
     <message>
         <location filename="preferencesdialog.ui" line="34"/>
         <source>Default Channel Order</source>
-        <translation type="unfinished"></translation>
+        <translation>Ordre des voies par défaut</translation>
     </message>
     <message>
         <location filename="preferencesdialog.ui" line="41"/>
         <source>Default Stick Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Mode par défaut</translation>
     </message>
     <message>
         <location filename="preferencesdialog.ui" line="58"/>
         <source>Channel order
 
 This is used by the templated to determine which channel goes to what number output.</source>
-        <translation type="unfinished">Ordre des voies
+        <translation>Ordre des voies
 Indique l&apos;affectation voie / numéro d&apos;entrée pour les présélections (=Templates).</translation>
     </message>
     <message>
@@ -2323,7 +2329,7 @@ Mode 4:
   Right stick:  Elevator, Rudder
 
 </source>
-        <translation type="unfinished">Choix du mode:
+        <translation>Choix du mode:
 
 Mode 1:
 Manche Gauche:  Profondeur, Direction
@@ -2346,22 +2352,22 @@ Manche Droit:  Profondeur, Direction
     <message>
         <location filename="preferencesdialog.ui" line="215"/>
         <source>Mode 1 (RUD ELE THR AIL)</source>
-        <translation type="unfinished">Mode 1 (DIR PROF GAZ AIL)</translation>
+        <translation>Mode 1 (DIR PROF GAZ AIL)</translation>
     </message>
     <message>
         <location filename="preferencesdialog.ui" line="220"/>
         <source>Mode 2 (RUD THR ELE AIL)</source>
-        <translation type="unfinished">Mode 2 (DIR GAZ PROF AIL)</translation>
+        <translation>Mode 2 (DIR GAZ PROF AIL)</translation>
     </message>
     <message>
         <location filename="preferencesdialog.ui" line="225"/>
         <source>Mode 3 (AIL ELE THR RUD)</source>
-        <translation type="unfinished">Mode 3 (AIL PROF GAZ DIR)</translation>
+        <translation>Mode 3 (AIL PROF GAZ DIR)</translation>
     </message>
     <message>
         <location filename="preferencesdialog.ui" line="230"/>
         <source>Mode 4 (AIL THR ELE RUD)</source>
-        <translation type="unfinished">Mode 4 (AIL GAZ PROF DIR)</translation>
+        <translation>Mode 4 (AIL GAZ PROF DIR)</translation>
     </message>
 </context>
 <context>
@@ -2409,22 +2415,22 @@ Manche Droit:  Profondeur, Direction
     <message>
         <location filename="printdialog.cpp" line="112"/>
         <source>Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Nom</translation>
     </message>
     <message>
         <location filename="printdialog.cpp" line="113"/>
         <source>Timer</source>
-        <translation type="unfinished"></translation>
+        <translation>Chrono</translation>
     </message>
     <message>
         <location filename="printdialog.cpp" line="114"/>
         <source>Protocol</source>
-        <translation type="unfinished">Protocole</translation>
+        <translation>Codage</translation>
     </message>
     <message>
         <location filename="printdialog.cpp" line="115"/>
         <source>Pulse Polarity</source>
-        <translation type="unfinished"></translation>
+        <translation>Modulation</translation>
     </message>
     <message>
         <location filename="printdialog.cpp" line="116"/>
@@ -2441,77 +2447,77 @@ Manche Droit:  Profondeur, Direction
     <message>
         <location filename="printdialog.cpp" line="116"/>
         <source>Throttle Trim</source>
-        <translation type="unfinished">Trim des Gaz</translation>
+        <translation>Trim des Gaz</translation>
     </message>
     <message>
         <location filename="printdialog.cpp" line="117"/>
         <source>Throttle Expo</source>
-        <translation type="unfinished">Expo des Gaz</translation>
+        <translation>Expo des Gaz</translation>
     </message>
     <message>
         <location filename="printdialog.cpp" line="118"/>
         <source>Trim Switch</source>
-        <translation type="unfinished"></translation>
+        <translation>Inter de Trim</translation>
     </message>
     <message>
         <location filename="printdialog.cpp" line="119"/>
         <source>Trim Increment</source>
-        <translation type="unfinished">Incrémentation Trim</translation>
+        <translation>Incrémentation Trim</translation>
     </message>
     <message>
         <location filename="printdialog.cpp" line="120"/>
         <source>Center Beep</source>
-        <translation type="unfinished"></translation>
+        <translation>Bip de Centrage</translation>
     </message>
     <message>
         <location filename="printdialog.cpp" line="129"/>
         <source>&lt;h2&gt;Expo/Dr Settings&lt;/h2&gt;</source>
-        <translation>&lt;h2&gt;Expo/Dr&lt;/h2&gt;</translation>
+        <translation>&lt;h2&gt;Réglages Expo/Dr&lt;/h2&gt;</translation>
     </message>
     <message>
         <location filename="printdialog.cpp" line="136"/>
         <source>Switch 1:</source>
-        <translation type="unfinished"></translation>
+        <translation>Inter 1</translation>
     </message>
     <message>
         <location filename="printdialog.cpp" line="137"/>
         <source>Switch 2:</source>
-        <translation type="unfinished"></translation>
+        <translation>Inter 2</translation>
     </message>
     <message>
         <location filename="printdialog.cpp" line="142"/>
         <source>Expo Left</source>
-        <translation type="unfinished"></translation>
+        <translation>Expo Gauche</translation>
     </message>
     <message>
         <location filename="printdialog.cpp" line="143"/>
         <source>D/R Left</source>
-        <translation type="unfinished"></translation>
+        <translation>D/R Gauche</translation>
     </message>
     <message>
         <location filename="printdialog.cpp" line="144"/>
         <source>D/R Right</source>
-        <translation type="unfinished"></translation>
+        <translation>D/R Droite</translation>
     </message>
     <message>
         <location filename="printdialog.cpp" line="145"/>
         <source>Expo Right</source>
-        <translation type="unfinished"></translation>
+        <translation>Expo Droite</translation>
     </message>
     <message>
         <location filename="printdialog.cpp" line="150"/>
         <source>High</source>
-        <translation type="unfinished"></translation>
+        <translation>Haut</translation>
     </message>
     <message>
         <location filename="printdialog.cpp" line="158"/>
         <source>Mid</source>
-        <translation type="unfinished">Centre</translation>
+        <translation>Centre</translation>
     </message>
     <message>
         <location filename="printdialog.cpp" line="166"/>
         <source>Low</source>
-        <translation type="unfinished"></translation>
+        <translation>Bas</translation>
     </message>
     <message>
         <location filename="printdialog.cpp" line="181"/>
@@ -2537,12 +2543,12 @@ Manche Droit:  Profondeur, Direction
     <message>
         <location filename="printdialog.cpp" line="222"/>
         <source> Switch(</source>
-        <translation type="unfinished"></translation>
+        <translation> Inter(</translation>
     </message>
     <message>
         <location filename="printdialog.cpp" line="223"/>
         <source> noTrim</source>
-        <translation type="unfinished"></translation>
+        <translation> PasDeTrim(</translation>
     </message>
     <message>
         <location filename="printdialog.cpp" line="224"/>
@@ -2587,7 +2593,7 @@ Manche Droit:  Profondeur, Direction
     <message>
         <location filename="printdialog.cpp" line="280"/>
         <source>5-point Curves</source>
-        <translation type="unfinished"></translation>
+        <translation>Courbes à 5 points</translation>
     </message>
     <message>
         <location filename="printdialog.cpp" line="284"/>
@@ -2604,7 +2610,7 @@ Manche Droit:  Profondeur, Direction
     <message>
         <location filename="printdialog.cpp" line="298"/>
         <source>9-point Curves</source>
-        <translation type="unfinished"></translation>
+        <translation>Courbes à 9 points</translation>
     </message>
     <message>
         <location filename="printdialog.cpp" line="322"/>
@@ -2614,17 +2620,17 @@ Manche Droit:  Profondeur, Direction
     <message>
         <location filename="printdialog.cpp" line="328"/>
         <source>Source</source>
-        <translation type="unfinished">Maître</translation>
+        <translation>Maître</translation>
     </message>
     <message>
         <location filename="printdialog.cpp" line="329"/>
         <source>Offset</source>
-        <translation type="unfinished"></translation>
+        <translation>Décalage</translation>
     </message>
     <message>
         <location filename="printdialog.cpp" line="330"/>
         <source>Function</source>
-        <translation type="unfinished">Fonction</translation>
+        <translation>Fonction</translation>
     </message>
     <message>
         <location filename="printdialog.cpp" line="335"/>

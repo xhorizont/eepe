@@ -1136,8 +1136,9 @@ msgid "1 Beep"
 msgstr ""
 
 #: mixerdialog.ui:161
+#| msgid "2 Beeo"
 msgctxt "MixerDialog|"
-msgid "2 Beeo"
+msgid "2 Beep"
 msgstr ""
 
 #: mixerdialog.ui:166
@@ -1982,8 +1983,9 @@ msgid "AVRDUDE Location"
 msgstr ""
 
 #: burnconfigdialog.ui:38
+#| msgid "Locatioon of AVRDUDE executable"
 msgctxt "burnConfigDialog|"
-msgid "Locatioon of AVRDUDE executable"
+msgid "Location of AVRDUDE executable"
 msgstr ""
 
 #: burnconfigdialog.ui:41
