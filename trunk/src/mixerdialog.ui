@@ -158,7 +158,7 @@ Setting this value will cause a beep to be emmitted when this value is active.</
        </item>
        <item>
         <property name="text">
-         <string>2 Beeo</string>
+         <string>2 Beep</string>
         </property>
        </item>
        <item>

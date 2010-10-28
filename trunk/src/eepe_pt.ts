@@ -1085,8 +1085,9 @@ Setting this value will cause a beep to be emmitted when this value is active.</
     </message>
     <message>
         <location filename="mixerdialog.ui" line="161"/>
-        <source>2 Beeo</source>
-        <translation>2 Beeps</translation>
+        <source>2 Beep</source>
+        <oldsource>2 Beeo</oldsource>
+        <translation type="unfinished">2 Beeps</translation>
     </message>
     <message>
         <location filename="mixerdialog.ui" line="166"/>
@@ -1954,8 +1955,9 @@ AVRDUDE done - SUCCESSFUL</source>
     </message>
     <message>
         <location filename="burnconfigdialog.ui" line="38"/>
-        <source>Locatioon of AVRDUDE executable</source>
-        <translation>Localização do ficheiro executável AVRDUDE</translation>
+        <source>Location of AVRDUDE executable</source>
+        <oldsource>Locatioon of AVRDUDE executable</oldsource>
+        <translation type="unfinished">Localização do ficheiro executável AVRDUDE</translation>
     </message>
     <message>
         <location filename="burnconfigdialog.ui" line="41"/>
