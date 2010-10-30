@@ -47,6 +47,7 @@
 #include "avroutputdialog.h"
 #include "donatorsdialog.h"
 #include "preferencesdialog.h"
+#include "fusesdialog.h"
 
 #define DONATE_STR "https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=TGT92W338DPGN&lc=IL&item_name=Erez%20Raviv&item_number=eePe&amount=5%2e00&currency_code=USD&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted"
 
@@ -214,6 +215,7 @@ void MainWindow::burnFrom()
     arguments << "-c" << programmer << "-p" << "m64" << args << "-U" << str;
 
     avrOutputDialog *ad = new avrOutputDialog(this, avrdudeLoc, arguments,tr("Read EEPROM From Tx")); //, AVR_DIALOG_KEEP_OPEN);
+    ad->setWindowIcon(QIcon(":/images/read_eeprom.png"));
     int res = ad->exec();
 
     if(QFileInfo(tempFile).exists() && res)
@@ -250,6 +252,7 @@ void MainWindow::burnToFlash()
         arguments << "-c" << programmer << "-p" << "m64" << args << "-U" << str;
 
         avrOutputDialog *ad = new avrOutputDialog(this, avrdudeLoc, arguments, "Write Flash To Tx");
+        ad->setWindowIcon(QIcon(":/images/write_flash.png"));
         ad->show();
     }
 }
@@ -278,6 +281,7 @@ void MainWindow::burnFromFlash()
         arguments << "-c" << programmer << "-p" << "m64" << args << "-U" << str;
 
         avrOutputDialog *ad = new avrOutputDialog(this, avrdudeLoc, arguments, "Read Flash From Tx");
+        ad->setWindowIcon(QIcon(":/images/read_flash.png"));
         ad->show();
     }
 
@@ -286,19 +290,25 @@ void MainWindow::burnFromFlash()
 void MainWindow::burnConfig()
 {
     burnConfigDialog *bcd = new burnConfigDialog(this);
-    bcd->show();
+    bcd->exec();
 }
 
 void MainWindow::burnList()
 {
-    burnConfigDialog bcd;
-    bcd.listProgrammers();
+    burnConfigDialog *bcd = new burnConfigDialog(this);
+    bcd->listProgrammers();
+}
+
+void MainWindow::burnFuses()
+{
+    fusesDialog *fd = new fusesDialog(this);
+    fd->exec();
 }
 
 void MainWindow::donators()
 {
     donatorsDialog *dd = new donatorsDialog(this);
-    dd->show();
+    dd->exec();
 }
 
 void MainWindow::about()
@@ -465,9 +475,13 @@ void MainWindow::createActions()
     burnConfigAct->setStatusTip(tr("Configure burning software"));
     connect(burnConfigAct,SIGNAL(triggered()),this,SLOT(burnConfig()));
 
-    burnListAct = new QAction(tr("&List programmers"), this);
+    burnListAct = new QAction(QIcon(":/images/list.png"), tr("&List programmers"), this);
     burnListAct->setStatusTip(tr("List available programmers"));
     connect(burnListAct,SIGNAL(triggered()),this,SLOT(burnList()));
+
+    burnFusesAct = new QAction(QIcon(":/images/fuses.png"), tr("&Fuses..."), this);
+    burnFusesAct->setStatusTip(tr("Show fuses dialog"));
+    connect(burnFusesAct,SIGNAL(triggered()),this,SLOT(burnFuses()));
 
     simulateAct = new QAction(QIcon(":/images/simulate.png"), tr("&Simulate"), this);
     simulateAct->setShortcut(tr("Alt+S"));
@@ -557,6 +571,7 @@ void MainWindow::createMenus()
     burnMenu->addAction(burnFromFlashAct);
     burnMenu->addSeparator();
     burnMenu->addAction(burnConfigAct);
+    burnMenu->addAction(burnFusesAct);
     burnMenu->addAction(burnListAct);
 
     windowMenu = menuBar()->addMenu(tr("&Window"));

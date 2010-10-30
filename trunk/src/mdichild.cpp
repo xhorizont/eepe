@@ -704,6 +704,7 @@ void MdiChild::burnTo()  // write to Tx
         arguments << "-c" << programmer << "-p" << "m64" << args << "-U" << str;
 
         avrOutputDialog *ad = new avrOutputDialog(this, avrdudeLoc, arguments, "Write EEPROM To Tx");
+        ad->setWindowIcon(QIcon(":/images/write_eeprom.png"));
         ad->show();
     }
 }

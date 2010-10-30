@@ -25,12 +25,10 @@ public:
     QStringList getAVRArgs() {return avrArgs;}
     QString getProgrammer() {return avrProgrammer;}
     QString getPort() {return avrPort;}
-    bool getEraseEEPROM() {return avrEraseEEPROM;}
 
     void listProgrammers();
-
-protected:
-    void changeEvent(QEvent *e);
+    void restFuses(bool eeProtect);
+    void readFuses();
 
 private:
     Ui::burnConfigDialog *ui;
@@ -41,14 +39,8 @@ private:
     QStringList avrArgs;
     QString avrProgrammer;
     QString avrPort;
-    bool avrEraseEEPROM;
-
-
 
 private slots:
-    void on_eraseEEPROM_CB_toggled(bool );
-    void on_readFuses_clicked();
-    void on_resetFuses_clicked();
     void on_avrArgs_editingFinished();
     void on_pushButton_4_clicked();
     void on_temp_location_editingFinished();

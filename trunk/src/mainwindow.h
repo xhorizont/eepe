@@ -77,6 +77,7 @@ private slots:
     void burnFromFlash();
     void burnConfig();
     void burnList();
+    void burnFuses();
     void simulate();
     void about();
     void print();
@@ -122,6 +123,7 @@ private:
     QAction *burnFromAct;
     QAction *burnConfigAct;
     QAction *burnListAct;
+    QAction *burnFusesAct;
     QAction *burnToFlashAct;
     QAction *burnFromFlashAct;
     QAction *simulateAct;

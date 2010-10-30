@@ -11,6 +11,7 @@ burnConfigDialog::burnConfigDialog(QWidget *parent) :
     ui->avrdude_programmer->model()->sort(0);
 
     getSettings();
+    connect(this,SIGNAL(accepted()),this,SLOT(putSettings()));
 }
 
 burnConfigDialog::~burnConfigDialog()
@@ -28,12 +29,10 @@ void burnConfigDialog::getSettings()
     avrArgs = str.split(" ", QString::SkipEmptyParts);
     avrProgrammer =  settings.value("programmer", QString("usbasp")).toString();
     avrPort =  settings.value("avr_port", "").toString();
-    avrEraseEEPROM = settings.value("eeprom_erase_bit", 1).toInt();
 
     ui->avrdude_location->setText(getAVRDUDE());
     ui->temp_location->setText(getTempDir());
     ui->avrArgs->setText(getAVRArgs().join(" "));
-    ui->eraseEEPROM_CB->setChecked(getEraseEEPROM());
 
     int idx1 = ui->avrdude_programmer->findText(getProgrammer());
     int idx2 = ui->avrdude_port->findText(getPort());
@@ -43,12 +42,12 @@ void burnConfigDialog::getSettings()
 
 void burnConfigDialog::putSettings()
 {
-    avrTempDir = ui->temp_location->text();
-    avrLoc = ui->avrdude_location->text();
-    avrArgs = ui->avrArgs->text().split(" ", QString::SkipEmptyParts);
-    avrProgrammer = ui->avrdude_programmer->currentText();
-    avrPort = ui->avrdude_port->currentText();
-    avrEraseEEPROM = ui->eraseEEPROM_CB->isChecked();
+//    avrTempDir = ui->temp_location->text();
+//    avrLoc = ui->avrdude_location->text();
+//    avrArgs = ui->avrArgs->text().split(" ", QString::SkipEmptyParts);
+//    avrProgrammer = ui->avrdude_programmer->currentText();
+//    avrPort = ui->avrdude_port->currentText();
+//    avrEraseEEPROM = ui->eraseEEPROM_CB->isChecked();
 
 
     QSettings settings("er9x-eePe", "eePe");
@@ -57,50 +56,31 @@ void burnConfigDialog::putSettings()
     settings.setValue("programmer", avrProgrammer);
     settings.setValue("avr_port", avrPort);
     settings.setValue("avr_arguments", avrArgs.join(" "));
-    settings.setValue("eeprom_erase_bit", (int)avrEraseEEPROM);
-}
-
-
-void burnConfigDialog::changeEvent(QEvent *e)
-{
-    QDialog::changeEvent(e);
-    switch (e->type()) {
-    case QEvent::LanguageChange:
-        ui->retranslateUi(this);
-        break;
-    default:
-        break;
-    }
 }
 
 void burnConfigDialog::on_avrdude_programmer_currentIndexChanged(QString )
 {
-    putSettings();
+    avrProgrammer = ui->avrdude_programmer->currentText();
 }
 
 void burnConfigDialog::on_avrdude_location_editingFinished()
 {
-    putSettings();
+    avrLoc = ui->avrdude_location->text();
 }
 
 void burnConfigDialog::on_temp_location_editingFinished()
 {
-    putSettings();
+    avrTempDir = ui->temp_location->text();
 }
 
 void burnConfigDialog::on_avrArgs_editingFinished()
 {
-    putSettings();
+    avrArgs = ui->avrArgs->text().split(" ", QString::SkipEmptyParts);
 }
 
 void burnConfigDialog::on_avrdude_port_currentIndexChanged(QString )
 {
-    putSettings();
-}
-
-void burnConfigDialog::on_eraseEEPROM_CB_toggled(bool )
-{
-    putSettings();
+    avrPort = ui->avrdude_port->currentText();
 }
 
 void burnConfigDialog::on_pushButton_clicked()
@@ -110,7 +90,7 @@ void burnConfigDialog::on_pushButton_clicked()
     if(!fileName.isEmpty())
     {
         ui->avrdude_location->setText(fileName);
-        putSettings();
+        avrLoc = fileName;
     }
 }
 
@@ -121,7 +101,7 @@ void burnConfigDialog::on_pushButton_2_clicked()
     if(!dirName.isEmpty())
     {
         ui->temp_location->setText(dirName);
-        putSettings();
+        avrTempDir = dirName;
     }
 }
 
@@ -132,6 +112,7 @@ void burnConfigDialog::listProgrammers()
     arguments << "-c?";
 
     avrOutputDialog *ad = new avrOutputDialog(this, ui->avrdude_location->text(), arguments, "List available programmers", AVR_DIALOG_KEEP_OPEN);
+    ad->setWindowIcon(QIcon(":/images/list.png"));
     ad->show();
 }
 
@@ -148,13 +129,28 @@ void burnConfigDialog::on_pushButton_4_clicked()
     arguments << "-?";
 
     avrOutputDialog *ad = new avrOutputDialog(this, ui->avrdude_location->text(), arguments, "Show help", AVR_DIALOG_KEEP_OPEN);
+    ad->setWindowIcon(QIcon(":/images/configure.png"));
     ad->show();
 }
 
 
+void burnConfigDialog::readFuses()
+{
+    QStringList args   = avrArgs;
+    if(!avrPort.isEmpty()) args << "-P" << avrPort;
 
+    QStringList str;
+    str << "-U" << "lfuse:r:-:i" << "-U" << "hfuse:r:-:i" << "-U" << "efuse:r:-:i";
 
-void burnConfigDialog::on_resetFuses_clicked()
+    QStringList arguments;
+    arguments << "-c" << avrProgrammer << "-p" << "m64" << args << str;
+
+    avrOutputDialog *ad = new avrOutputDialog(this, avrLoc, arguments, "Read Fuses",AVR_DIALOG_KEEP_OPEN);
+    ad->setWindowIcon(QIcon(":/images/fuses.png"));
+    ad->show();
+}
+
+void burnConfigDialog::restFuses(bool eeProtect)
 {
     //fuses
     //avrdude -c usbasp -p m64 -U lfuse:w:<0x0E>:m
@@ -171,7 +167,7 @@ void burnConfigDialog::on_resetFuses_clicked()
         QStringList args   = avrArgs;
         if(!avrPort.isEmpty()) args << "-P" << avrPort;
 
-        QString erStr = getEraseEEPROM() ? "hfuse:w:0x89:m" : "hfuse:w:0x81:m";
+        QString erStr = eeProtect ? "hfuse:w:0x81:m" : "hfuse:w:0x89:m";
         QStringList str;
         str << "-U" << "lfuse:w:0x0E:m" << "-U" << erStr << "-U" << "efuse:w:0xFF:m";
         //use hfuse = 0x81 to prevent eeprom being erased with every flashing
@@ -180,23 +176,8 @@ void burnConfigDialog::on_resetFuses_clicked()
         arguments << "-c" << avrProgrammer << "-p" << "m64" << args << "-u" << str;
 
         avrOutputDialog *ad = new avrOutputDialog(this, avrLoc, arguments, "Reset Fuses",AVR_DIALOG_KEEP_OPEN);
+        ad->setWindowIcon(QIcon(":/images/fuses.png"));
         ad->show();
     }
 
 }
-
-void burnConfigDialog::on_readFuses_clicked()
-{
-    QStringList args   = avrArgs;
-    if(!avrPort.isEmpty()) args << "-P" << avrPort;
-
-    QStringList str;
-    str << "-U" << "lfuse:r:-:i" << "-U" << "hfuse:r:-:i" << "-U" << "efuse:r:-:i";
-
-    QStringList arguments;
-    arguments << "-c" << avrProgrammer << "-p" << "m64" << args << str;
-
-    avrOutputDialog *ad = new avrOutputDialog(this, avrLoc, arguments, "Read Fuses",AVR_DIALOG_KEEP_OPEN);
-    ad->show();
-}
-
