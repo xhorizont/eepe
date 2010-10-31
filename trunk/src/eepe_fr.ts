@@ -89,7 +89,7 @@ Cette valeur est ajoutée à la tension mesurée.Mesurer la tension réelle&apos
     <message>
         <location filename="generaledit.ui" line="189"/>
         <source>Backlight Auto On/OFF after</source>
-        <translation>Rétroéclairage Auto. Extinction après</translation>
+        <translation>Rétroéclairage, extinction auto après</translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="202"/>
@@ -236,7 +236,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="generaledit.ui" line="385"/>
         <source>Switch Startup Warning</source>
-        <translation>Alerte des Interrupteurs</translation>
+        <translation>Alerte des interrupteurs</translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="415"/>
@@ -246,7 +246,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="generaledit.ui" line="445"/>
         <source>Silent mode (No Alarm)</source>
-        <translation>Mode silencieux (Alarme désactivée)</translation>
+        <translation>Mode silencieux (alarme désactivée)</translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="488"/>
@@ -264,7 +264,7 @@ p, li { white-space: pre-wrap; }
 4 - Extra loud.</source>
         <translation>Volume des bips
 
-0 - Silence.  Tous Bips désactivés.
+0 - Silence.  Tous bips désactivés.
 1 - Touches Silencieuses.  Volume des bips normaux mais touches de navigation silencieuses.
 2 - Normal.  Volume par défaut.
 3 - Fort.
@@ -438,391 +438,414 @@ Manche Droit:  Profondeur, Direction
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="mainwindow.cpp" line="73"/>
+        <location filename="mainwindow.cpp" line="74"/>
         <source>eePe - EEPROM Editor</source>
         <translation>eePe - Editeur d&apos;EEPROM</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="84"/>
-        <location filename="mainwindow.cpp" line="130"/>
+        <location filename="mainwindow.cpp" line="85"/>
+        <location filename="mainwindow.cpp" line="131"/>
         <source>File loaded</source>
         <translation>Fichier chargé</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="118"/>
+        <location filename="mainwindow.cpp" line="119"/>
         <source>EEPROM files (*.bin *.hex);;BIN files (*.bin);;HEX files (*.hex)</source>
         <translation>Fichiers EEPROM (*.bin *.hex);;fichiers BIN (*.bin);;fichiers HEX (*.hex)</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="118"/>
-        <location filename="mainwindow.cpp" line="233"/>
-        <location filename="mainwindow.cpp" line="260"/>
+        <location filename="mainwindow.cpp" line="119"/>
         <source>Open</source>
         <translation>Ouvrir</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="142"/>
-        <location filename="mainwindow.cpp" line="148"/>
+        <location filename="mainwindow.cpp" line="143"/>
+        <location filename="mainwindow.cpp" line="149"/>
         <source>File saved</source>
         <translation>Fichier sauvegardé</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="216"/>
+        <location filename="mainwindow.cpp" line="217"/>
         <source>Read EEPROM From Tx</source>
         <translation>Charger l&apos;EEPROM du Tx</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="233"/>
+        <location filename="mainwindow.cpp" line="235"/>
         <source>FLASH files (*.bin *.hex);;BIN files (*.bin);;HEX files (*.hex)</source>
         <translation>Fichiers FLASH (*.bin *.hex);;fichiers BIN (*.bin);;fichiers HEX (*.hex)</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="260"/>
+        <location filename="mainwindow.cpp" line="235"/>
+        <source>Write Flash Memory</source>
+        <translation>Sélectionner le fichier à flasher</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="263"/>
         <source>HEX files (*.hex);;BIN files (*.bin);;FLASH files (*.bin *.hex)</source>
         <translation>Fichiers HEX (*.hex);;fichiers BIN (*.bin);;fichiers FLASH (*.bin *.hex)</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="318"/>
+        <location filename="mainwindow.cpp" line="263"/>
+        <source>Read Flash to File</source>
+        <translation>Enregistrer la mémoire Flash sous</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="328"/>
         <source>If you&apos;ve found this program and/or the Firmware useful please support by</source>
         <oldsource>If you&apos;ve found this program and/or the Firmware useful please support by &lt;a href=&apos;</oldsource>
-        <translation>Si vous trouvez ce programme et/ou ce firmware utiles, merci d&apos;apporter votre soutient en effectuant un &lt;a href=&apos;</translation>
+        <translation>Si vous trouvez ce programme et/ou ce firmware utiles, merci d&apos;apporter votre soutien en effectuant un &lt;a href=&apos;</translation>
     </message>
     <message>
         <source>&apos;&gt;donating&lt;/a&gt;&lt;/center&gt;</source>
         <translation type="obsolete">&apos;&gt;don&lt;/a&gt;&lt;/center&gt;</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="320"/>
+        <location filename="mainwindow.cpp" line="330"/>
         <source>donating</source>
         <translation>don</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="322"/>
+        <location filename="mainwindow.cpp" line="332"/>
         <source>About eePe</source>
         <translation>A propos d&apos;eePe</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="367"/>
+        <location filename="mainwindow.cpp" line="377"/>
         <source>&amp;%1 %2</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="370"/>
+        <location filename="mainwindow.cpp" line="380"/>
         <source>%1 %2</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="396"/>
+        <location filename="mainwindow.cpp" line="406"/>
         <source>&amp;New</source>
         <translation>&amp;Nouveau</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="398"/>
+        <location filename="mainwindow.cpp" line="408"/>
         <source>Create a new file</source>
         <translation>Crée un nouveau fichier</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="401"/>
+        <location filename="mainwindow.cpp" line="411"/>
         <source>&amp;Open...</source>
         <translation>&amp;Ouvrir...</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="403"/>
+        <location filename="mainwindow.cpp" line="413"/>
         <source>Open an existing file</source>
         <translation>Ouvre un fichier existant</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="406"/>
+        <location filename="mainwindow.cpp" line="416"/>
         <source>&amp;Save</source>
         <translation>&amp;Enregistrer</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="408"/>
+        <location filename="mainwindow.cpp" line="418"/>
         <source>Save the document to disk</source>
         <translation>Enregistre sur le disque</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="411"/>
+        <location filename="mainwindow.cpp" line="421"/>
         <source>Save &amp;As...</source>
         <translation>Enregistrer &amp;Sous...</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="413"/>
+        <location filename="mainwindow.cpp" line="423"/>
         <source>Save the document under a new name</source>
         <translation>Enregistre sous un nom différent</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="416"/>
+        <location filename="mainwindow.cpp" line="426"/>
         <source>&amp;Preferences...</source>
         <translation>&amp;Préférences...</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="417"/>
+        <location filename="mainwindow.cpp" line="427"/>
         <source>Edit general preferences</source>
         <translation>Définit les préférences générales</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="421"/>
+        <location filename="mainwindow.cpp" line="431"/>
         <source>E&amp;xit</source>
         <translation>&amp;Quitter</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="423"/>
+        <location filename="mainwindow.cpp" line="433"/>
         <source>Exit the application</source>
         <translation>Quitte l&apos;application</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="427"/>
+        <location filename="mainwindow.cpp" line="437"/>
         <source>Cu&amp;t</source>
         <translation>Co&amp;uper</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="429"/>
+        <location filename="mainwindow.cpp" line="439"/>
         <source>Cut the current selection&apos;s contents to the clipboard</source>
         <translation>Coupe la sélection et la copie dans le presse-papier</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="433"/>
+        <location filename="mainwindow.cpp" line="443"/>
         <source>&amp;Copy</source>
         <translation>&amp;Copier</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="435"/>
+        <location filename="mainwindow.cpp" line="445"/>
         <source>Copy the current selection&apos;s contents to the clipboard</source>
         <translation>Copie la sélection dans le presse-papier</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="439"/>
+        <location filename="mainwindow.cpp" line="449"/>
         <source>&amp;Paste</source>
         <translation>Co&amp;ller</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="441"/>
+        <location filename="mainwindow.cpp" line="451"/>
         <source>Paste the clipboard&apos;s contents into the current selection</source>
         <translation>Colle le contenu du presse-papier à l&apos;emplacement sélectionné</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="446"/>
+        <location filename="mainwindow.cpp" line="456"/>
         <source>&amp;Write EEPROM To Tx</source>
         <translation>&amp;Transférer l&apos;EEPROM au Tx</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="447"/>
+        <location filename="mainwindow.cpp" line="457"/>
         <source>Ctrl+Alt+W</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="448"/>
+        <location filename="mainwindow.cpp" line="458"/>
         <source>Write EEPROM to transmitter</source>
         <translation>Transfére l&apos;EEPROM à l&apos;émetteur</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="451"/>
+        <location filename="mainwindow.cpp" line="461"/>
         <source>&amp;Read EEPROM From Tx</source>
         <translation>&amp;Charger l&apos;EEPROM du Tx</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="452"/>
+        <location filename="mainwindow.cpp" line="462"/>
         <source>Ctrl+Alt+R</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="453"/>
+        <location filename="mainwindow.cpp" line="463"/>
         <source>Read EEPROM from transmitter</source>
         <translation>Charge l&apos;EEPROM de l&apos;émetteur</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="456"/>
+        <location filename="mainwindow.cpp" line="466"/>
         <source>Write Flash memory</source>
         <translation>Ecrire la mémoire Flash</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="457"/>
+        <location filename="mainwindow.cpp" line="467"/>
         <source>Write flash memory to transmitter</source>
         <translation>Ecrit dans la mémoire Flash de l&apos;émetteur</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="460"/>
+        <location filename="mainwindow.cpp" line="470"/>
         <source>Read Flash memory</source>
         <translation>Lire la mémoire Flash</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="461"/>
+        <location filename="mainwindow.cpp" line="471"/>
         <source>Read flash memory to transmitter</source>
         <translation>Lit la mémoire Flash de l&apos;émetteur</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="464"/>
+        <location filename="mainwindow.cpp" line="474"/>
         <source>&amp;Configure...</source>
         <translation>&amp;Configurer...</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="465"/>
+        <location filename="mainwindow.cpp" line="475"/>
         <source>Configure burning software</source>
         <translation>Configure le logiciel de flashage</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="468"/>
+        <location filename="mainwindow.cpp" line="478"/>
         <source>&amp;List programmers</source>
         <translation>&amp;Programmateurs supportés</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="469"/>
+        <location filename="mainwindow.cpp" line="479"/>
         <source>List available programmers</source>
         <translation>Liste les programmateurs supportés</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="472"/>
+        <location filename="mainwindow.cpp" line="482"/>
+        <source>&amp;Fuses...</source>
+        <translation>&amp;Fusibles...</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="483"/>
+        <source>Show fuses dialog</source>
+        <translation type="unfinished">Affiche les réglages des fusibles</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="486"/>
         <source>&amp;Simulate</source>
         <translation>&amp;Simulation</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="473"/>
+        <location filename="mainwindow.cpp" line="487"/>
         <source>Alt+S</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="474"/>
+        <location filename="mainwindow.cpp" line="488"/>
         <source>Simulate selected model.</source>
         <translation>Simule le modèle sélectionné.</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="478"/>
+        <location filename="mainwindow.cpp" line="492"/>
         <source>&amp;Print</source>
         <translation>Im&amp;primer</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="479"/>
+        <location filename="mainwindow.cpp" line="493"/>
         <source>Ctrl+P</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="480"/>
+        <location filename="mainwindow.cpp" line="494"/>
         <source>Print current model.</source>
         <translation>Imprime les données du modèle sélectionné.</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="484"/>
+        <location filename="mainwindow.cpp" line="498"/>
         <source>Cl&amp;ose</source>
         <translation>&amp;Fermer</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="485"/>
+        <location filename="mainwindow.cpp" line="499"/>
         <source>Close the active window</source>
         <translation>Ferme la fenêtre active</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="489"/>
+        <location filename="mainwindow.cpp" line="503"/>
         <source>Close &amp;All</source>
         <translation>Fermer To&amp;ut</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="490"/>
+        <location filename="mainwindow.cpp" line="504"/>
         <source>Close all the windows</source>
         <translation>Ferme toutes les fenêtres</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="494"/>
+        <location filename="mainwindow.cpp" line="508"/>
         <source>&amp;Tile</source>
         <translation>&amp;Tuiles</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="495"/>
+        <location filename="mainwindow.cpp" line="509"/>
         <source>Tile the windows</source>
         <translation>Dispose les fenêtres en tuiles</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="498"/>
+        <location filename="mainwindow.cpp" line="512"/>
         <source>&amp;Cascade</source>
         <translation>&amp;Cascade</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="499"/>
+        <location filename="mainwindow.cpp" line="513"/>
         <source>Cascade the windows</source>
         <translation>Dispose les fenêtres en cascade</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="502"/>
+        <location filename="mainwindow.cpp" line="516"/>
         <source>Ne&amp;xt</source>
         <translation>Sui&amp;vante</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="504"/>
+        <location filename="mainwindow.cpp" line="518"/>
         <source>Move the focus to the next window</source>
         <translation>Active la fenêtre suivante</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="508"/>
+        <location filename="mainwindow.cpp" line="522"/>
         <source>Pre&amp;vious</source>
-        <translation>P&amp;récedente</translation>
+        <translation>P&amp;récédente</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="510"/>
+        <location filename="mainwindow.cpp" line="524"/>
         <source>Move the focus to the previous window</source>
         <translation>Active la fenêtre précedente</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="518"/>
+        <location filename="mainwindow.cpp" line="532"/>
         <source>&amp;About</source>
         <translation>&amp;A Propos</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="519"/>
+        <location filename="mainwindow.cpp" line="533"/>
         <source>Show the application&apos;s About box</source>
         <translation>Affiche la fenêtre &quot;A propos&quot; de l&apos;application</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="522"/>
+        <location filename="mainwindow.cpp" line="536"/>
         <source>&amp;Contributors</source>
         <translation>&amp;Contributeurs</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="523"/>
+        <location filename="mainwindow.cpp" line="537"/>
         <source>List er9x/eePe Contributors</source>
         <translation>Liste les contributeurs à er9x/eePe</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="533"/>
+        <location filename="mainwindow.cpp" line="547"/>
         <source>&amp;File</source>
         <translation>&amp;Fichier</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="543"/>
+        <location filename="mainwindow.cpp" line="557"/>
         <source>Switch layout direction</source>
         <translation>Présentation justifiée à droite</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="547"/>
+        <location filename="mainwindow.cpp" line="561"/>
         <source>&amp;Edit</source>
         <translation>&amp;Edition</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="562"/>
-        <source>&amp;Window</source>
-        <translation>&amp;Fenêtre</translation>
+        <location filename="mainwindow.cpp" line="566"/>
+        <source>&amp;Burn</source>
+        <translation>Fl&amp;asher</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="568"/>
+        <location filename="mainwindow.cpp" line="577"/>
+        <source>&amp;Window</source>
+        <translation>Fe&amp;nêtre</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="583"/>
         <source>&amp;Help</source>
         <translation>&amp;Aide</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="575"/>
+        <location filename="mainwindow.cpp" line="590"/>
         <source>File</source>
         <translation>Fichier</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="583"/>
+        <location filename="mainwindow.cpp" line="598"/>
         <source>Edit</source>
         <translation>Edition</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="588"/>
+        <location filename="mainwindow.cpp" line="603"/>
         <source>Burn</source>
         <translation>Flasher</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="600"/>
+        <location filename="mainwindow.cpp" line="615"/>
         <source>Ready</source>
         <translation>Prêt</translation>
     </message>
@@ -977,77 +1000,77 @@ Enregistrer les changements?</translation>
         <translation>Ecriture de fichier temporaire impossible!</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="720"/>
+        <location filename="mdichild.cpp" line="721"/>
         <source>&amp;Edit</source>
         <translation>&amp;Edition</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="722"/>
+        <location filename="mdichild.cpp" line="723"/>
         <source>&amp;Delete</source>
         <translation>&amp;Suppression</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="722"/>
+        <location filename="mdichild.cpp" line="723"/>
         <source>Delete</source>
         <translation>Supprimer</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="723"/>
+        <location filename="mdichild.cpp" line="724"/>
         <source>&amp;Copy</source>
         <translation>&amp;Copier</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="723"/>
+        <location filename="mdichild.cpp" line="724"/>
         <source>Ctrl+C</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="724"/>
+        <location filename="mdichild.cpp" line="725"/>
         <source>&amp;Cut</source>
         <translation>&amp;Couper</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="724"/>
+        <location filename="mdichild.cpp" line="725"/>
         <source>Ctrl+X</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="725"/>
+        <location filename="mdichild.cpp" line="726"/>
         <source>&amp;Paste</source>
         <translation>&amp;Coller</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="725"/>
+        <location filename="mdichild.cpp" line="726"/>
         <source>Ctrl+V</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="726"/>
+        <location filename="mdichild.cpp" line="727"/>
         <source>D&amp;uplicate</source>
         <translation>D&amp;upliquer</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="726"/>
+        <location filename="mdichild.cpp" line="727"/>
         <source>Ctrl+U</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="728"/>
+        <location filename="mdichild.cpp" line="729"/>
         <source>&amp;Simulate</source>
         <translation>&amp;Simulation</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="728"/>
+        <location filename="mdichild.cpp" line="729"/>
         <source>Alt+S</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="730"/>
+        <location filename="mdichild.cpp" line="731"/>
         <source>&amp;Write To Tx</source>
         <translation>&amp;Envoyer à l&apos;émetteur</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="730"/>
+        <location filename="mdichild.cpp" line="731"/>
         <source>Ctrl+Alt+W</source>
         <translation></translation>
     </message>
@@ -1155,7 +1178,7 @@ Si activée, signale par des bips que le mixage est actif.</translation>
         <location filename="mixerdialog.ui" line="161"/>
         <source>2 Beep</source>
         <oldsource>2 Beeo</oldsource>
-        <translation type="unfinished">2 Bips</translation>
+        <translation>2 Bips</translation>
     </message>
     <message>
         <location filename="mixerdialog.ui" line="166"/>
@@ -1165,7 +1188,7 @@ Si activée, signale par des bips que le mixage est actif.</translation>
     <message>
         <location filename="mixerdialog.ui" line="174"/>
         <source>Multiplex</source>
-        <translation></translation>
+        <translation>Multiplexage</translation>
     </message>
     <message>
         <location filename="mixerdialog.ui" line="181"/>
@@ -1180,8 +1203,8 @@ This determines how mixer values are added.
 
 Spécifie comment les valeurs de mixage  sont interprétées.
 
-&quot;+&quot;: la valeur du mixage courant est ajoutée au mixage précédent dans la même voie.
-&quot;*&quot;: la valeur du mixage courant est multipliée par celle du mixage précédent dans la même voie.
+&quot;+&quot;: la valeur du mixage courant est ajoutée au résultat des mixages précédents dans la même voie.
+&quot;*&quot;: la valeur du mixage courant est multipliée par le résultat des mixages précédents dans la même voie.
 &quot;R&quot;: la valeur remplace les valeurs précédentes. Si l&apos;inter est sur OFF, la valeur est ignorée .</translation>
     </message>
     <message>
@@ -1240,7 +1263,7 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Si Délai est différent de 0, le départ du mixage sera décalé du nombre de secondes spécifié.&lt;/p&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Si Ralentissement est différent de 0, la vitesse du mixage sera la valeur spécifiée -&amp;gt; La valeur représente le nombre de secondes nécessaires à la course  -100/100.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Si Ralentissement est différent de 0, la vitesse du mixage sera la valeur spécifiée -&amp;gt; La valeur représente le nombre de secondes nécessaires à la course -100/100.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="mixerdialog.ui" line="283"/>
@@ -1915,7 +1938,7 @@ Droite</translation>
     <message>
         <location filename="modeledit.cpp" line="1779"/>
         <source>Delete Selected Mixes?</source>
-        <translation>Supprimer Mixage Sélectionné?</translation>
+        <translation>Supprimer Mixages Sélectionnés?</translation>
     </message>
     <message>
         <location filename="modeledit.cpp" line="1871"/>
@@ -2007,21 +2030,24 @@ Droite</translation>
     </message>
     <message>
         <location filename="avroutputdialog.cpp" line="96"/>
-        <source>
-AVRDUDE done - exit code %1</source>
-        <translation>AVRDUDE terminé -  code de sortie %1</translation>
+        <source>AVRDUDE done - exit code %1</source>
+        <oldsource>
+AVRDUDE done - exit code %1</oldsource>
+        <translation type="unfinished">AVRDUDE terminé -  code de sortie %1</translation>
     </message>
     <message>
         <location filename="avroutputdialog.cpp" line="98"/>
-        <source>
-AVRDUDE done - SUCCESSFUL</source>
-        <translation>AVRDUDE terminé AVEC SUCCES</translation>
+        <source>AVRDUDE done - SUCCESSFUL</source>
+        <oldsource>
+AVRDUDE done - SUCCESSFUL</oldsource>
+        <translation type="unfinished">AVRDUDE terminé AVEC SUCCES</translation>
     </message>
     <message>
         <location filename="avroutputdialog.cpp" line="118"/>
-        <source>Started AVRDUDE
-</source>
-        <translation>AVRDUDE démarré</translation>
+        <source>Started AVRDUDE</source>
+        <oldsource>Started AVRDUDE
+</oldsource>
+        <translation type="unfinished">AVRDUDE démarré</translation>
     </message>
     <message>
         <location filename="avroutputdialog.cpp" line="128"/>
@@ -2037,44 +2063,44 @@ AVRDUDE done - SUCCESSFUL</source>
         <translation>Configuration de AVRDUDE</translation>
     </message>
     <message>
-        <location filename="burnconfigdialog.ui" line="28"/>
+        <location filename="burnconfigdialog.ui" line="529"/>
         <source>AVRDUDE Location</source>
         <translation>Emplacement d&apos;AVRDUDE</translation>
     </message>
     <message>
-        <location filename="burnconfigdialog.ui" line="38"/>
+        <location filename="burnconfigdialog.ui" line="26"/>
         <source>Location of AVRDUDE executable</source>
         <oldsource>Locatioon of AVRDUDE executable</oldsource>
-        <translation type="unfinished">Chemin d&apos;accès de l&apos;exécutable AVRDUDE</translation>
+        <translation>Chemin d&apos;accès de l&apos;exécutable AVRDUDE</translation>
     </message>
     <message>
-        <location filename="burnconfigdialog.ui" line="41"/>
+        <location filename="burnconfigdialog.ui" line="29"/>
         <source>The location of the AVRDUDE.EXE executable.</source>
         <translation>Chemin d&apos;accès de l&apos;exécutable AVRDUDE.</translation>
     </message>
     <message>
-        <location filename="burnconfigdialog.ui" line="51"/>
+        <location filename="burnconfigdialog.ui" line="39"/>
         <source>Use this button to browse and look for the AVRDUDE.EXE executable file.</source>
         <translation>Utiliser ce bouton pour parcourir à la recherche du fichier exécutable AVRDUDE.EXE.</translation>
     </message>
     <message>
-        <location filename="burnconfigdialog.ui" line="54"/>
-        <location filename="burnconfigdialog.ui" line="89"/>
+        <location filename="burnconfigdialog.ui" line="42"/>
+        <location filename="burnconfigdialog.ui" line="77"/>
         <source>Browse...</source>
         <translation>Parcourir...</translation>
     </message>
     <message>
-        <location filename="burnconfigdialog.ui" line="61"/>
+        <location filename="burnconfigdialog.ui" line="49"/>
         <source>Temporary Directory</source>
         <translation>Dossier Temporaire</translation>
     </message>
     <message>
-        <location filename="burnconfigdialog.ui" line="71"/>
+        <location filename="burnconfigdialog.ui" line="59"/>
         <source>Stores temporary files</source>
         <translation>Stocke les fichiers temporarires</translation>
     </message>
     <message>
-        <location filename="burnconfigdialog.ui" line="74"/>
+        <location filename="burnconfigdialog.ui" line="62"/>
         <source>This directory holds temporary files needed for uploading and downloading EEPROM files.   
 
 Make sure you have write access to this directory.</source>
@@ -2083,39 +2109,39 @@ Make sure you have write access to this directory.</source>
 Assurez-vous de posséder les droits en écriture sur ce dossier.</translation>
     </message>
     <message>
-        <location filename="burnconfigdialog.ui" line="86"/>
+        <location filename="burnconfigdialog.ui" line="74"/>
         <source>Use this button to browse and select the temporary directory.</source>
         <translation>Utiliser ce bouton pour parcourir à la recherche du dossier pour les fichiers temporarires.</translation>
     </message>
     <message>
-        <location filename="burnconfigdialog.ui" line="96"/>
+        <location filename="burnconfigdialog.ui" line="84"/>
         <source>Programmer</source>
         <translation>Programmateur</translation>
     </message>
     <message>
-        <location filename="burnconfigdialog.ui" line="106"/>
+        <location filename="burnconfigdialog.ui" line="94"/>
         <source>Programmer used for communicating with the controller.
 Please consult the programmer&apos;s documentation and the AVRDUDE documentation to select the appropriate programmer.</source>
         <translation>Programmateur utilisé pour la communication avec le contrôleur.
 Consulter la documentation du programmateur utilisé et celle d&apos;AVRDUDE pour effectuer le choix approprié.</translation>
     </message>
     <message>
-        <location filename="burnconfigdialog.ui" line="427"/>
+        <location filename="burnconfigdialog.ui" line="415"/>
         <source>List all available programmers.</source>
         <translation>Liste tous les programmateurs compatibles.</translation>
     </message>
     <message>
-        <location filename="burnconfigdialog.ui" line="430"/>
+        <location filename="burnconfigdialog.ui" line="418"/>
         <source>List Available</source>
         <translation>Liste compatibles</translation>
     </message>
     <message>
-        <location filename="burnconfigdialog.ui" line="437"/>
+        <location filename="burnconfigdialog.ui" line="425"/>
         <source>Extra arguments that will be passed to AVRDUDE on every call</source>
         <translation>Arguments supplémentaires passés à chaque appel du programme</translation>
     </message>
     <message>
-        <location filename="burnconfigdialog.ui" line="440"/>
+        <location filename="burnconfigdialog.ui" line="428"/>
         <source>Extra arguments used in AVRDUDE.
 This can be used for providing extra information to AVRDUDE.
 
@@ -2126,33 +2152,32 @@ Permet de fournir des informations supplémentaires à AVRDUDE.
 A n&apos;utiliser qu&apos;en connaissance de cause: il n&apos;y a pas de contrôle d&apos;erreur et votre programmateur pourrait être endommagé.</translation>
     </message>
     <message>
-        <location filename="burnconfigdialog.ui" line="453"/>
+        <location filename="burnconfigdialog.ui" line="441"/>
         <source>Extra Arguments</source>
         <translation>Arguments supplémentaires</translation>
     </message>
     <message>
-        <location filename="burnconfigdialog.ui" line="463"/>
+        <location filename="burnconfigdialog.ui" line="451"/>
         <source>Show AVRDUDE help</source>
         <translation>Affiche l&apos;aide d&apos;AVRDUDE</translation>
     </message>
     <message>
-        <location filename="burnconfigdialog.ui" line="466"/>
+        <location filename="burnconfigdialog.ui" line="454"/>
         <source>Show Help</source>
         <translation>Aide</translation>
     </message>
     <message>
-        <location filename="burnconfigdialog.ui" line="473"/>
+        <location filename="burnconfigdialog.ui" line="461"/>
         <source>Communication port to the programmer.
 </source>
         <translation>Port de communication pour le programmateur.</translation>
     </message>
     <message>
-        <location filename="burnconfigdialog.ui" line="531"/>
+        <location filename="burnconfigdialog.ui" line="519"/>
         <source>Port</source>
         <translation>Port</translation>
     </message>
     <message>
-        <location filename="burnconfigdialog.ui" line="547"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
@@ -2166,7 +2191,7 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;When in doubt consult either the project&apos;s page or the forums @ RCG and RXModelreviews.&lt;/p&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;If you do get locked out - go to the project&apos;s homepage and lookup &amp;quot;dealing with Fuse Bricks&amp;quot;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+        <translation type="obsolete">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
@@ -2181,12 +2206,10 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;En cas de blocage, rendez-vous à la page Projets et consultez &amp;quot;dealing with Fuse Bricks&amp;quot;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="burnconfigdialog.ui" line="562"/>
         <source>Reset Fuses</source>
-        <translation>Réinitialiser Fusibles</translation>
+        <translation type="obsolete">Réinitialiser Fusibles</translation>
     </message>
     <message>
-        <location filename="burnconfigdialog.ui" line="579"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
@@ -2196,7 +2219,7 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;Proper states:&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;EEPROM erase fuse not set: 0E, 81, FF&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;EEPROM erase fuse set: 0E, 89, FF&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+        <translation type="obsolete">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
@@ -2207,12 +2230,10 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;Valeur fusible AVEC Effacement EEPROM: 0E, 89, FF&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="burnconfigdialog.ui" line="590"/>
         <source>Read Fuses</source>
-        <translation>Lire Fusibles</translation>
+        <translation type="obsolete">Lire Fusibles</translation>
     </message>
     <message>
-        <location filename="burnconfigdialog.ui" line="597"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
@@ -2230,7 +2251,7 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;EEPROM erase fuse set: 0E, 89, FF&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:8pt;&quot;&gt;&lt;/p&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:8pt;&quot;&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+        <translation type="obsolete">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
@@ -2249,25 +2270,24 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:8pt;&quot;&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="burnconfigdialog.ui" line="616"/>
         <source>Set EEPROM Erase Fuse</source>
-        <translation>Effacement de l&apos;EEPROM</translation>
+        <translation type="obsolete">Effacement de l&apos;EEPROM</translation>
     </message>
     <message>
-        <location filename="burnconfigdialog.cpp" line="108"/>
-        <location filename="burnconfigdialog.cpp" line="119"/>
+        <location filename="burnconfigdialog.cpp" line="88"/>
+        <location filename="burnconfigdialog.cpp" line="99"/>
         <source>Select Location</source>
         <translation>Choisir l&apos;emplacement</translation>
     </message>
     <message>
-        <location filename="burnconfigdialog.cpp" line="166"/>
+        <location filename="burnconfigdialog.cpp" line="162"/>
         <source>eePe</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="burnconfigdialog.cpp" line="167"/>
+        <location filename="burnconfigdialog.cpp" line="163"/>
         <source>&lt;b&gt;&lt;u&gt;WARNING!&lt;/u&gt;&lt;/b&gt;&lt;br&gt;This will reset the fuses to the factory settings.&lt;br&gt;Writing fuses can mess up your radio.&lt;br&gt;Do this only if you are sure they are wrong!&lt;br&gt;Are you sure you want to continue?</source>
-        <translation>&lt;b&gt;&lt;u&gt;AVERTISSEMENT!&lt;/u&gt;&lt;/b&gt;&lt;br&gt;Ceci réinitialisera les fusibles à leur valeur usine par défaut.&lt;br&gt;Modifier les fusibles peut entraîner le blocage de votre émetteur.&lt;br&gt;Ne l&apos;effectuer que si vous êtes certains qu&apos;ils sont incorrects!&lt;br&gt;Etes-vous sûrs de vouloir continuer?</translation>
+        <translation type="unfinished">&lt;b&gt;&lt;u&gt;AVERTISSEMENT!&lt;/u&gt;&lt;/b&gt;&lt;br&gt;Ceci réinitialisera les fusibles à leur valeur par défaut.&lt;br&gt;Modifier les fusibles peut entraîner le blocage de votre émetteur.&lt;br&gt;Ne l&apos;effectuer que si vous êtes certain qu&apos;ils sont incorrects!&lt;br&gt;Etes-vous sûr de vouloir continuer?</translation>
     </message>
 </context>
 <context>
@@ -2276,6 +2296,141 @@ p, li { white-space: pre-wrap; }
         <location filename="donatorsdialog.ui" line="14"/>
         <source>List of Contributors</source>
         <translation>Liste des Contributeurs</translation>
+    </message>
+</context>
+<context>
+    <name>fusesDialog</name>
+    <message>
+        <location filename="fusesdialog.ui" line="14"/>
+        <source>Fuses</source>
+        <translation>Fusibles</translation>
+    </message>
+    <message>
+        <location filename="fusesdialog.ui" line="24"/>
+        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;Reads the current fuses in the AVR AtMega 64 controller.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:8pt;&quot;&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;Proper states:&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;EEPROM erase fuse not set: 0E, 81, FF&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;EEPROM erase fuse set: 0E, 89, FF&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;Lecture des fusibles du contrôleur AVR AtMega64.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:8pt;&quot;&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;Etats corrects:&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;Valeur fusible SANS Effacement EEPROM: 0E, 81, FF&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;Valeur fusible AVEC Effacement EEPROM: 0E, 89, FF&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <location filename="fusesdialog.ui" line="35"/>
+        <source>Read Fuses</source>
+        <translation type="unfinished">Lire Fusibles</translation>
+    </message>
+    <message>
+        <location filename="fusesdialog.ui" line="42"/>
+        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt; font-weight:600; text-decoration: underline;&quot;&gt;Reset Fuses&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;Fuses in the AVR tell it how to behave.  Pressing this button sets the fuses to the default parameters needed in the er9x FW.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:8pt;&quot;&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;This button also sets the &amp;quot;EEPROM protect&amp;quot; Fuse.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;This prevents erasing of the EEPROM when the flash memory is written.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:8pt;&quot;&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt; font-weight:600; text-decoration: underline;&quot;&gt;WARNING&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;Setting fuses can lead to problems and even a total lockout from your controller.  Do this only if you know what you are doing.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:8pt;&quot;&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;When in doubt consult either the project&apos;s page or the forums @ RCG and RXModelreviews.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:8pt;&quot;&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;If you do get locked out - go to the project&apos;s homepage and lookup &amp;quot;dealing with Fuse Bricks&amp;quot;.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; text-decoration: underline;&quot;&gt;Reset Fuses&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Fuses in the AVR tell it how to behave.  Pressing this button sets the fuses to the default parameters needed in the er9x FW.&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; text-decoration: underline;&quot;&gt;WARNING&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Setting fuses can lead to problems and even a total lockout from your controller.  Do this only if you know what you are doing.&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;When in doubt consult either the project&apos;s page or the forums @ RCG and RXModelreviews.&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;If you do get locked out - go to the project&apos;s homepage and lookup &amp;quot;dealing with Fuse Bricks&amp;quot;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="obsolete">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; text-decoration: underline;&quot;&gt;Réinitialiser Fusibles&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Les fusibles de l&apos;AVR spécifient comment il doit se comporter.  Cliquer ce bouton réinitialise les fusibles aux valeurs par défaut requises par le firmware er9x.&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; text-decoration: underline;&quot;&gt;AVERTISSEMENT&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Ajuster les valeurs des fusibles peut entraîner des problèmes voire même un blocage complet de votre contrôleur. A n&apos;utiliser que si vous êtes certains de ce que vous faites.&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Dans le doute, consulter la page du projet ou les forums @ RCG et RCModelreviews.&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;En cas de blocage, allez sur la page du projet et consultez &amp;quot;dealing with Fuse Bricks&amp;quot;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <location filename="fusesdialog.ui" line="60"/>
+        <source>Reset Fuses
+EEPROM - PROTECT</source>
+        <translation type="unfinished">Réinitialiser Fusibles
+PROTECTION EEPROM</translation>
+    </message>
+    <message>
+        <location filename="fusesdialog.ui" line="68"/>
+        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt; font-weight:600; text-decoration: underline;&quot;&gt;Reset Fuses&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;Fuses in the AVR tell it how to behave.  Pressing this button sets the fuses to the default parameters needed in the er9x FW.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:8pt;&quot;&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;This button also clears the &amp;quot;EEPROM protect&amp;quot; Fuse.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;This causes erasing of the EEPROM when the flash memory is written.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:8pt;&quot;&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt; font-weight:600; text-decoration: underline;&quot;&gt;WARNING&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;Setting fuses can lead to problems and even a total lockout from your controller.  Do this only if you know what you are doing.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:8pt;&quot;&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;When in doubt consult either the project&apos;s page or the forums @ RCG and RXModelreviews.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:8pt;&quot;&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;If you do get locked out - go to the project&apos;s homepage and lookup &amp;quot;dealing with Fuse Bricks&amp;quot;.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="fusesdialog.ui" line="86"/>
+        <source>Reset Fuses
+EEPROM - DELETE</source>
+        <translation type="unfinished">Réinitialiser Fusibles
+EFFACEMENT EEPROM</translation>
+    </message>
+    <message>
+        <location filename="fusesdialog.ui" line="103"/>
+        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Ubuntu&apos;; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; text-decoration: underline;&quot;&gt;WARNING&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-weight:600; text-decoration: underline;&quot;&gt;&lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Changing the fuses can mess up your radio.&lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Proceed only if you know what you are doing.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Ubuntu&apos;; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; text-decoration: underline;&quot;&gt;AVERTISSEMENT&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-weight:600; text-decoration: underline;&quot;&gt;&lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Modifier les fusibles peut entraîner des problèmes, voire même un blocage complet de votre radio.&lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;A n&apos;utiliser que si vous êtes certain de ce que vous faites.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
 </context>
 <context>
@@ -2288,7 +2443,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="preferencesdialog.ui" line="24"/>
         <source>Language (requires restart)</source>
-        <translation>Langue (nécessite un redémarrage)</translation>
+        <translation>Langue (nécessite un redémarrage d&apos;eePe)</translation>
     </message>
     <message>
         <location filename="preferencesdialog.ui" line="34"/>
@@ -2477,12 +2632,12 @@ Manche Droit:  Profondeur, Direction
     <message>
         <location filename="printdialog.cpp" line="136"/>
         <source>Switch 1:</source>
-        <translation>Inter 1</translation>
+        <translation>Inter 1:</translation>
     </message>
     <message>
         <location filename="printdialog.cpp" line="137"/>
         <source>Switch 2:</source>
-        <translation>Inter 2</translation>
+        <translation>Inter 2:</translation>
     </message>
     <message>
         <location filename="printdialog.cpp" line="142"/>
@@ -2553,7 +2708,7 @@ Manche Droit:  Profondeur, Direction
     <message>
         <location filename="printdialog.cpp" line="224"/>
         <source> Offset(%1%)</source>
-        <translation> Décallage(%1%)</translation>
+        <translation> Décalage(%1%)</translation>
     </message>
     <message>
         <location filename="printdialog.cpp" line="228"/>
@@ -2651,242 +2806,222 @@ Manche Droit:  Profondeur, Direction
         <translation>Simulateur ER9x</translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="26"/>
+        <location filename="simulatordialog.ui" line="32"/>
         <source>P1</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="48"/>
+        <location filename="simulatordialog.ui" line="60"/>
         <source>P2</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="73"/>
+        <location filename="simulatordialog.ui" line="91"/>
         <source>P3</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="160"/>
+        <location filename="simulatordialog.ui" line="184"/>
         <source>THR</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="185"/>
+        <location filename="simulatordialog.ui" line="209"/>
         <source>RUD</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="210"/>
+        <location filename="simulatordialog.ui" line="234"/>
         <source>ELE</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="235"/>
+        <location filename="simulatordialog.ui" line="259"/>
         <source>AIL</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="264"/>
-        <location filename="simulatordialog.ui" line="549"/>
+        <location filename="simulatordialog.ui" line="288"/>
+        <location filename="simulatordialog.ui" line="579"/>
         <source>Hold X</source>
         <translation>Rappel X</translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="289"/>
-        <location filename="simulatordialog.ui" line="574"/>
+        <location filename="simulatordialog.ui" line="313"/>
+        <location filename="simulatordialog.ui" line="604"/>
         <source>Fix X</source>
         <translation>Verrou. Y</translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="314"/>
-        <location filename="simulatordialog.ui" line="599"/>
+        <location filename="simulatordialog.ui" line="338"/>
+        <location filename="simulatordialog.ui" line="629"/>
         <source>Fix Y</source>
         <translation>Verrou. X</translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="339"/>
-        <location filename="simulatordialog.ui" line="624"/>
+        <location filename="simulatordialog.ui" line="363"/>
+        <location filename="simulatordialog.ui" line="654"/>
         <source>Hold Y</source>
         <translation>Rappel Y</translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="408"/>
+        <location filename="simulatordialog.ui" line="438"/>
         <source>TRN</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="430"/>
+        <location filename="simulatordialog.ui" line="460"/>
         <source>GEA</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="458"/>
+        <location filename="simulatordialog.ui" line="488"/>
         <source>ID0</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="489"/>
+        <location filename="simulatordialog.ui" line="519"/>
         <source>ID1</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="517"/>
+        <location filename="simulatordialog.ui" line="547"/>
         <source>ID2</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="660"/>
+        <location filename="simulatordialog.ui" line="690"/>
         <source>SW1</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="691"/>
+        <location filename="simulatordialog.ui" line="721"/>
         <source>SW2</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="722"/>
+        <location filename="simulatordialog.ui" line="752"/>
         <source>SW3</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="753"/>
+        <location filename="simulatordialog.ui" line="783"/>
         <source>BEEP</source>
         <translation>BIP</translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="784"/>
+        <location filename="simulatordialog.ui" line="814"/>
         <source>SW4</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="815"/>
+        <location filename="simulatordialog.ui" line="845"/>
         <source>SW5</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="846"/>
+        <location filename="simulatordialog.ui" line="876"/>
         <source>SW6</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="863"/>
+        <location filename="simulatordialog.ui" line="893"/>
         <source>CH1</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="870"/>
+        <location filename="simulatordialog.ui" line="900"/>
         <source>CH9</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="877"/>
+        <location filename="simulatordialog.ui" line="907"/>
         <source>CH2</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="884"/>
+        <location filename="simulatordialog.ui" line="914"/>
         <source>CH10</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="891"/>
+        <location filename="simulatordialog.ui" line="921"/>
         <source>CH3</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="898"/>
+        <location filename="simulatordialog.ui" line="928"/>
         <source>CH11</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="905"/>
+        <location filename="simulatordialog.ui" line="935"/>
         <source>CH4</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="912"/>
+        <location filename="simulatordialog.ui" line="942"/>
         <source>CH12</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="919"/>
+        <location filename="simulatordialog.ui" line="949"/>
         <source>CH5</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="926"/>
+        <location filename="simulatordialog.ui" line="956"/>
         <source>CH13</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="933"/>
+        <location filename="simulatordialog.ui" line="963"/>
         <source>CH6</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="940"/>
+        <location filename="simulatordialog.ui" line="970"/>
         <source>CH14</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="947"/>
+        <location filename="simulatordialog.ui" line="977"/>
         <source>CH7</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="954"/>
+        <location filename="simulatordialog.ui" line="984"/>
         <source>CH15</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="961"/>
+        <location filename="simulatordialog.ui" line="991"/>
         <source>CH8</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="968"/>
+        <location filename="simulatordialog.ui" line="998"/>
         <source>CH16</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="1669"/>
-        <location filename="simulatordialog.ui" line="1685"/>
-        <location filename="simulatordialog.ui" line="1701"/>
-        <location filename="simulatordialog.ui" line="1717"/>
-        <location filename="simulatordialog.ui" line="1733"/>
-        <location filename="simulatordialog.ui" line="1749"/>
-        <location filename="simulatordialog.ui" line="1765"/>
-        <location filename="simulatordialog.ui" line="1781"/>
-        <location filename="simulatordialog.ui" line="1797"/>
-        <location filename="simulatordialog.ui" line="1813"/>
-        <location filename="simulatordialog.ui" line="1829"/>
-        <location filename="simulatordialog.ui" line="1845"/>
-        <location filename="simulatordialog.ui" line="1861"/>
-        <location filename="simulatordialog.ui" line="1877"/>
-        <location filename="simulatordialog.ui" line="1893"/>
-        <location filename="simulatordialog.ui" line="1909"/>
+        <location filename="simulatordialog.ui" line="1699"/>
+        <location filename="simulatordialog.ui" line="1715"/>
+        <location filename="simulatordialog.ui" line="1731"/>
+        <location filename="simulatordialog.ui" line="1747"/>
+        <location filename="simulatordialog.ui" line="1763"/>
+        <location filename="simulatordialog.ui" line="1779"/>
+        <location filename="simulatordialog.ui" line="1795"/>
+        <location filename="simulatordialog.ui" line="1811"/>
+        <location filename="simulatordialog.ui" line="1827"/>
+        <location filename="simulatordialog.ui" line="1843"/>
+        <location filename="simulatordialog.ui" line="1859"/>
+        <location filename="simulatordialog.ui" line="1875"/>
+        <location filename="simulatordialog.ui" line="1891"/>
+        <location filename="simulatordialog.ui" line="1907"/>
+        <location filename="simulatordialog.ui" line="1923"/>
+        <location filename="simulatordialog.ui" line="1939"/>
         <source>-100.1</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="simulatordialog.cpp" line="169"/>
-        <location filename="simulatordialog.cpp" line="170"/>
-        <location filename="simulatordialog.cpp" line="171"/>
-        <location filename="simulatordialog.cpp" line="172"/>
-        <location filename="simulatordialog.cpp" line="173"/>
-        <location filename="simulatordialog.cpp" line="174"/>
-        <location filename="simulatordialog.cpp" line="175"/>
-        <location filename="simulatordialog.cpp" line="176"/>
-        <location filename="simulatordialog.cpp" line="177"/>
-        <location filename="simulatordialog.cpp" line="178"/>
-        <location filename="simulatordialog.cpp" line="179"/>
-        <location filename="simulatordialog.cpp" line="180"/>
-        <location filename="simulatordialog.cpp" line="181"/>
-        <location filename="simulatordialog.cpp" line="182"/>
-        <location filename="simulatordialog.cpp" line="183"/>
-        <location filename="simulatordialog.cpp" line="184"/>
-        <source>%1</source>
         <translation></translation>
     </message>
 </context>

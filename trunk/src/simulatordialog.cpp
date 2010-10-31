@@ -166,22 +166,22 @@ void simulatorDialog::setValues()
     ui->chnout_15->setValue(chVal(chanOut[14]));
     ui->chnout_16->setValue(chVal(chanOut[15]));
 
-    ui->chnoutV_1->setText(tr("%1").arg((qreal)chanOut[0]*100/1024, 0, 'f', 1));
-    ui->chnoutV_2->setText(tr("%1").arg((qreal)chanOut[1]*100/1024, 0, 'f', 1));
-    ui->chnoutV_3->setText(tr("%1").arg((qreal)chanOut[2]*100/1024, 0, 'f', 1));
-    ui->chnoutV_4->setText(tr("%1").arg((qreal)chanOut[3]*100/1024, 0, 'f', 1));
-    ui->chnoutV_5->setText(tr("%1").arg((qreal)chanOut[4]*100/1024, 0, 'f', 1));
-    ui->chnoutV_6->setText(tr("%1").arg((qreal)chanOut[5]*100/1024, 0, 'f', 1));
-    ui->chnoutV_7->setText(tr("%1").arg((qreal)chanOut[6]*100/1024, 0, 'f', 1));
-    ui->chnoutV_8->setText(tr("%1").arg((qreal)chanOut[7]*100/1024, 0, 'f', 1));
-    ui->chnoutV_9->setText(tr("%1").arg((qreal)chanOut[8]*100/1024, 0, 'f', 1));
-    ui->chnoutV_10->setText(tr("%1").arg((qreal)chanOut[9]*100/1024, 0, 'f', 1));
-    ui->chnoutV_11->setText(tr("%1").arg((qreal)chanOut[10]*100/1024, 0, 'f', 1));
-    ui->chnoutV_12->setText(tr("%1").arg((qreal)chanOut[11]*100/1024, 0, 'f', 1));
-    ui->chnoutV_13->setText(tr("%1").arg((qreal)chanOut[12]*100/1024, 0, 'f', 1));
-    ui->chnoutV_14->setText(tr("%1").arg((qreal)chanOut[13]*100/1024, 0, 'f', 1));
-    ui->chnoutV_15->setText(tr("%1").arg((qreal)chanOut[14]*100/1024, 0, 'f', 1));
-    ui->chnoutV_16->setText(tr("%1").arg((qreal)chanOut[15]*100/1024, 0, 'f', 1));
+    ui->chnoutV_1->setText(QString("%1").arg((qreal)chanOut[0]*100/1024, 0, 'f', 1));
+    ui->chnoutV_2->setText(QString("%1").arg((qreal)chanOut[1]*100/1024, 0, 'f', 1));
+    ui->chnoutV_3->setText(QString("%1").arg((qreal)chanOut[2]*100/1024, 0, 'f', 1));
+    ui->chnoutV_4->setText(QString("%1").arg((qreal)chanOut[3]*100/1024, 0, 'f', 1));
+    ui->chnoutV_5->setText(QString("%1").arg((qreal)chanOut[4]*100/1024, 0, 'f', 1));
+    ui->chnoutV_6->setText(QString("%1").arg((qreal)chanOut[5]*100/1024, 0, 'f', 1));
+    ui->chnoutV_7->setText(QString("%1").arg((qreal)chanOut[6]*100/1024, 0, 'f', 1));
+    ui->chnoutV_8->setText(QString("%1").arg((qreal)chanOut[7]*100/1024, 0, 'f', 1));
+    ui->chnoutV_9->setText(QString("%1").arg((qreal)chanOut[8]*100/1024, 0, 'f', 1));
+    ui->chnoutV_10->setText(QString("%1").arg((qreal)chanOut[9]*100/1024, 0, 'f', 1));
+    ui->chnoutV_11->setText(QString("%1").arg((qreal)chanOut[10]*100/1024, 0, 'f', 1));
+    ui->chnoutV_12->setText(QString("%1").arg((qreal)chanOut[11]*100/1024, 0, 'f', 1));
+    ui->chnoutV_13->setText(QString("%1").arg((qreal)chanOut[12]*100/1024, 0, 'f', 1));
+    ui->chnoutV_14->setText(QString("%1").arg((qreal)chanOut[13]*100/1024, 0, 'f', 1));
+    ui->chnoutV_15->setText(QString("%1").arg((qreal)chanOut[14]*100/1024, 0, 'f', 1));
+    ui->chnoutV_16->setText(QString("%1").arg((qreal)chanOut[15]*100/1024, 0, 'f', 1));
 
 #define CSWITCH_ON  "QLabel { background-color: #4CC417 }"
 #define CSWITCH_OFF "QLabel { }"
@@ -630,8 +630,8 @@ void simulatorDialog::perOut(bool init)
     if(g_model.limitData[i].revert) v=-v;// finally do the reverse.
 
     //cli();
-    if(v>1024)  v =  1024;
-    if(v<-1024) v = -1024; //limits set by ppm streamer
+    if(v>1280)  v =  1280; //640*2 ->
+    if(v<-1280) v = -1280; //limits set by ppm streamer
     chanOut[i] = v; //copy consistent word to int-level
     //sei();
   }

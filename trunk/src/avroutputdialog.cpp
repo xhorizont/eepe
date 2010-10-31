@@ -93,9 +93,9 @@ void avrOutputDialog::doFinished(int code=0)
 {
     addText("\n" HLINE_SEPARATOR);
     if(code)
-        addText(tr("\nAVRDUDE done - exit code %1").arg(code));
+        addText("\n" + tr("AVRDUDE done - exit code %1").arg(code));
     else
-        addText(tr("\nAVRDUDE done - SUCCESSFUL"));
+        addText("\n" + tr("AVRDUDE done - SUCCESSFUL"));
     addText("\n" HLINE_SEPARATOR "\n");
 
     if(lfuse || hfuse || efuse) addReadFuses();
@@ -115,7 +115,7 @@ void avrOutputDialog::doFinished(int code=0)
 void avrOutputDialog::doProcessStarted()
 {
     addText(HLINE_SEPARATOR "\n");
-    addText(tr("Started AVRDUDE\n"));
+    addText(tr("Started AVRDUDE") + "\n");
     addText(cmdLine);
     addText("\n" HLINE_SEPARATOR "\n");
 }
