@@ -563,7 +563,7 @@ void MainWindow::createMenus()
     editMenu->addAction(copyAct);
     editMenu->addAction(pasteAct);
 
-    burnMenu = menuBar()->addMenu("&Burn");
+    burnMenu = menuBar()->addMenu(tr("&Burn"));
     burnMenu->addAction(burnToAct);
     burnMenu->addAction(burnFromAct);
     burnMenu->addSeparator();
