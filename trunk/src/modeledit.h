@@ -4,6 +4,7 @@
 #include <QDialog>
 #include <QtGui>
 #include "pers.h"
+#include "mixerslist.h"
 
 namespace Ui {
     class ModelEdit;
@@ -21,6 +22,8 @@ public:
 private:
     Ui::ModelEdit *ui;
     EEPFILE *eeFile;
+
+    MixersList *MixerlistWidget;
 
     EEGeneral g_eeGeneral;
     ModelData g_model;
@@ -84,8 +87,10 @@ private slots:
     void mixerAdd();
 
 
-    void on_MixerlistWidget_customContextMenuRequested(QPoint pos);
-    void on_MixerlistWidget_doubleClicked(QModelIndex index);
+    void MixerlistWidget_customContextMenuRequested(QPoint pos);
+    void MixerlistWidget_doubleClicked(QModelIndex index);
+    void MixerlistWidget_mimeDropped( int index, const QMimeData * data, Qt::DropAction action );
+
     void on_curveEdit_1_clicked();
     void on_curveEdit_2_clicked();
     void on_curveEdit_3_clicked();

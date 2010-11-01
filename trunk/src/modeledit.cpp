@@ -30,7 +30,6 @@ ModelEdit::ModelEdit(EEPFILE *eFile, uint8_t id, QWidget *parent) :
     ui(new Ui::ModelEdit)
 {
     ui->setupUi(this);
-    this->setWindowIcon(QIcon(":/icon.ico"));
 
     eeFile = eFile;
 
@@ -38,6 +37,13 @@ ModelEdit::ModelEdit(EEPFILE *eFile, uint8_t id, QWidget *parent) :
     eeFile->getGeneralSettings(&g_eeGeneral);
     eeFile->getModel(&g_model,id);
     id_model = id;
+
+    MixerlistWidget = new MixersList(this);
+    ui->tabMix->layout()->addWidget(MixerlistWidget);
+
+    connect(MixerlistWidget,SIGNAL(customContextMenuRequested(QPoint)),this,SLOT(MixerlistWidget_customContextMenuRequested(QPoint)));
+    connect(MixerlistWidget,SIGNAL(doubleClicked(QModelIndex)),this,SLOT(MixerlistWidget_doubleClicked(QModelIndex)));
+    connect(MixerlistWidget,SIGNAL(itemDropped(int,const QMimeData*,Qt::DropAction)),this,SLOT(MixerlistWidget_mimeDropped(int,const QMimeData*,Qt::DropAction)));
 
     QSettings settings("er9x-eePe", "eePe");
     ui->tabWidget->setCurrentIndex(settings.value("modelEditTab", 0).toInt());
@@ -52,7 +58,6 @@ ModelEdit::ModelEdit(EEPFILE *eFile, uint8_t id, QWidget *parent) :
 
     ui->curvePreview->setMinimumWidth(260);
     ui->curvePreview->setMinimumHeight(260);
-
 
     resizeEvent();  // draws the curves and Expo
 
@@ -347,7 +352,7 @@ void ModelEdit::expoEdited()
 
 void ModelEdit::tabMixes()
 {
-    ui->MixerlistWidget->clear();
+    MixerlistWidget->clear();
     int curDest = 0;
     int i;
     for(i=0; i<MAX_MIXERS; i++)
@@ -361,7 +366,7 @@ void ModelEdit::tabMixes()
             str = tr("CH%1%2").arg(curDest/10).arg(curDest%10);
             QListWidgetItem *itm = new QListWidgetItem(str);
             itm->setData(Qt::UserRole,QVariant(curDest+MAX_MIXERS)); // add new mixer
-            ui->MixerlistWidget->addItem(itm);
+            MixerlistWidget->addItem(itm);
         }
 
         if(curDest!=md->destCh)
@@ -403,7 +408,7 @@ void ModelEdit::tabMixes()
 
         QListWidgetItem *itm = new QListWidgetItem(str);
         itm->setData(Qt::UserRole,QVariant(i));  // mix number
-        ui->MixerlistWidget->addItem(itm);//(str);
+        MixerlistWidget->addItem(itm);//(str);
     }
 
     while(curDest<NUM_XCHNOUT)
@@ -412,7 +417,7 @@ void ModelEdit::tabMixes()
         QString str = tr("CH%1%2").arg(curDest/10).arg(curDest%10);
         QListWidgetItem *itm = new QListWidgetItem(str);
         itm->setData(Qt::UserRole,QVariant(curDest+MAX_MIXERS)); // add new mixer
-        ui->MixerlistWidget->addItem(itm);
+        MixerlistWidget->addItem(itm);
     }
 
 }
@@ -1741,9 +1746,9 @@ void ModelEdit::gm_openMix(int index)
     }
 }
 
-void ModelEdit::on_MixerlistWidget_doubleClicked(QModelIndex index)
+void ModelEdit::MixerlistWidget_doubleClicked(QModelIndex index)
 {
-    int mix = ui->MixerlistWidget->item(index.row())->data(Qt::UserRole).toInt();
+    int mix = MixerlistWidget->item(index.row())->data(Qt::UserRole).toInt();
     gm_openMix(mix);
 }
 
@@ -1762,7 +1767,7 @@ void ModelEdit::mixersDeleteList(QList<int> list)
 QList<int> ModelEdit::createListFromSelected()
 {
     QList<int> list;
-    foreach(QListWidgetItem *item, ui->MixerlistWidget->selectedItems())
+    foreach(QListWidgetItem *item, MixerlistWidget->selectedItems())
     {
         int idx = item->data(Qt::UserRole).toInt();
         if(idx>=0 && idx<MAX_MIXERS) list << idx;
@@ -1775,7 +1780,7 @@ void ModelEdit::mixersDelete(bool ask)
     QMessageBox::StandardButton ret = QMessageBox::No;
 
     if(ask)
-        ret = QMessageBox::warning(this, tr("eePe"),
+        ret = QMessageBox::warning(this, "eePe",
                  tr("Delete Selected Mixes?"),
                  QMessageBox::Yes | QMessageBox::No);
 
@@ -1818,7 +1823,7 @@ void ModelEdit::mixersPaste()
 
     if(mimeData->hasFormat("application/x-eepe-mix"))
     {
-        int dch = ui->MixerlistWidget->currentItem()->data(Qt::UserRole).toInt();
+        int dch = MixerlistWidget->currentItem()->data(Qt::UserRole).toInt();
         if(dch>MAX_MIXERS)
             dch -= MAX_MIXERS;
         else
@@ -1849,19 +1854,19 @@ void ModelEdit::mixersDuplicate()
 
 void ModelEdit::mixerOpen()
 {
-    gm_openMix(ui->MixerlistWidget->currentItem()->data(Qt::UserRole).toInt());
+    gm_openMix(MixerlistWidget->currentItem()->data(Qt::UserRole).toInt());
 }
 
 void ModelEdit::mixerAdd()
 {
-    int index = ui->MixerlistWidget->currentItem()->data(Qt::UserRole).toInt();
+    int index = MixerlistWidget->currentItem()->data(Qt::UserRole).toInt();
     if(index<MAX_MIXERS) index=g_model.mixData[index].destCh+MAX_MIXERS;
     gm_openMix(index);
 }
 
-void ModelEdit::on_MixerlistWidget_customContextMenuRequested(QPoint pos)
+void ModelEdit::MixerlistWidget_customContextMenuRequested(QPoint pos)
 {
-    QPoint globalPos = ui->MixerlistWidget->mapToGlobal(pos);
+    QPoint globalPos = MixerlistWidget->mapToGlobal(pos);
 
     const QClipboard *clipboard = QApplication::clipboard();
     const QMimeData *mimeData = clipboard->mimeData();
@@ -1878,6 +1883,34 @@ void ModelEdit::on_MixerlistWidget_customContextMenuRequested(QPoint pos)
     contextMenu.addAction(QIcon(":/images/duplicate.png"), tr("D&uplicate"),this,SLOT(mixersDuplicate()),tr("Ctrl+U"));
 
     contextMenu.exec(globalPos);
+
+}
+
+void ModelEdit::MixerlistWidget_mimeDropped( int index, const QMimeData * data, Qt::DropAction action )
+{
+
+    int dch = MixerlistWidget->item(index)->data(Qt::UserRole).toInt();
+    if(dch>MAX_MIXERS)
+        dch -= MAX_MIXERS;
+    else
+        dch = g_model.mixData[dch].destCh;
+
+
+//    QByteArray mxData = mimeData->data("application/x-eepe-mix");
+
+//    int i = 0;
+//    while(i<mxData.size())
+//    {
+//        MixData *md = gm_addMix(dch);
+//        memcpy(md,mxData.mid(i,sizeof(MixData)).constData(),sizeof(MixData));
+//        md->destCh = dch;
+
+//        i     += sizeof(MixData);
+//    }
+
+    updateSettings();
+    tabMixes();
+
 
 }
 
