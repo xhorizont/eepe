@@ -24,7 +24,7 @@
    <item row="2" column="1">
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
-      <number>0</number>
+      <number>2</number>
      </property>
      <widget class="QWidget" name="tabModelSetup">
       <attribute name="title">
@@ -1485,27 +1485,7 @@ Right</string>
       <attribute name="title">
        <string>Mixes</string>
       </attribute>
-      <layout class="QGridLayout" name="gridLayout_18">
-       <item row="0" column="0">
-        <widget class="QListWidget" name="MixerlistWidget">
-         <property name="font">
-          <font>
-           <family>Courier New</family>
-           <pointsize>12</pointsize>
-          </font>
-         </property>
-         <property name="contextMenuPolicy">
-          <enum>Qt::CustomContextMenu</enum>
-         </property>
-         <property name="dragEnabled">
-          <bool>true</bool>
-         </property>
-         <property name="selectionMode">
-          <enum>QAbstractItemView::ExtendedSelection</enum>
-         </property>
-        </widget>
-       </item>
-      </layout>
+      <layout class="QGridLayout" name="gridLayout_18"/>
      </widget>
      <widget class="QWidget" name="tabLimit">
       <attribute name="title">
@@ -5234,7 +5214,6 @@ Right</string>
   <tabstop>ELE_DrRLow</tabstop>
   <tabstop>ELE_ExpoRLow</tabstop>
   <tabstop>pushButton_3</tabstop>
-  <tabstop>MixerlistWidget</tabstop>
   <tabstop>curveEdit_1</tabstop>
   <tabstop>curvePt1_1</tabstop>
   <tabstop>curvePt2_1</tabstop>

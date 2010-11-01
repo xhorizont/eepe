@@ -15,7 +15,8 @@ HEADERS += mainwindow.h \
     donatorsdialog.h \
     printdialog.h \
     preferencesdialog.h \
-    fusesdialog.h
+    fusesdialog.h \
+    mixerslist.h
 SOURCES += main.cpp \
     mainwindow.cpp \
     file.cpp \
@@ -33,7 +34,8 @@ SOURCES += main.cpp \
     donatorsdialog.cpp \
     printdialog.cpp \
     preferencesdialog.cpp \
-    fusesdialog.cpp
+    fusesdialog.cpp \
+    mixerslist.cpp
 RESOURCES += eepe.qrc
 TARGET = eepe
 TEMPLATE = app
