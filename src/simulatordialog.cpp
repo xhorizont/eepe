@@ -103,7 +103,7 @@ void simulatorDialog::loadParams(const EEGeneral gg, const ModelData gm)
     char buf[sizeof(g_model.name)+1];
     memcpy(&buf,&g_model.name,sizeof(g_model.name));
     buf[sizeof(g_model.name)] = 0;
-    this->setWindowTitle("Simulating " + QString(buf));
+    this->setWindowTitle(tr("Simulating ") + QString(buf));
 
     if(g_eeGeneral.stickMode & 1)
     {
