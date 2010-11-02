@@ -45,7 +45,7 @@ GeneralEdit::GeneralEdit(EEPFILE *eFile, QWidget *parent) :
     ui->beepMinuteChkB->setChecked(g_eeGeneral.minuteBeep);
     ui->beepCountDownChkB->setChecked(g_eeGeneral.preBeep);
     ui->beepFlashChkB->setChecked(g_eeGeneral.flashBeep);
-    ui->splashScreenChkB->setChecked(g_eeGeneral.splashScreen);
+    ui->splashScreenChkB->setChecked(!g_eeGeneral.disableSplashScreen);
 
     ui->ana1Neg->setValue(g_eeGeneral.calibSpanNeg[0]);
     ui->ana2Neg->setValue(g_eeGeneral.calibSpanNeg[1]);
@@ -424,6 +424,6 @@ void GeneralEdit::on_beepFlashChkB_stateChanged(int )
 
 void GeneralEdit::on_splashScreenChkB_stateChanged(int )
 {
-    g_eeGeneral.splashScreen = ui->splashScreenChkB->isChecked() ? 1 : 0;
+    g_eeGeneral.disableSplashScreen = ui->splashScreenChkB->isChecked() ? 0 : 1;
     updateSettings();
 }
