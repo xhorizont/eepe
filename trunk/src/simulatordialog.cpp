@@ -262,7 +262,7 @@ void simulatorDialog::resizeEvent(QResizeEvent *event)
 
 inline qint16 calc100toRESX(qint8 x)
 {
-  return (qint16)x*10 + x/4;
+  return (qint16)x*10 + x/4 - x/64;
 }
 
 bool simulatorDialog::keyState(EnumKeys key)
@@ -630,8 +630,6 @@ void simulatorDialog::perOut(bool init)
     if(g_model.limitData[i].revert) v=-v;// finally do the reverse.
 
     //cli();
-    if(v>1280)  v =  1280; //640*2 ->
-    if(v<-1280) v = -1280; //limits set by ppm streamer
     chanOut[i] = v; //copy consistent word to int-level
     //sei();
   }
