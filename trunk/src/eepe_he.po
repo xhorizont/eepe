@@ -61,7 +61,7 @@ msgid ""
 "Acceptable values are 5v..10v"
 msgstr ""
 
-#: generaledit.ui:125 generaledit.ui:1174
+#: generaledit.ui:125 generaledit.ui:1194
 msgctxt "GeneralEdit|"
 msgid "Battery Calibration"
 msgstr ""
@@ -367,67 +367,77 @@ msgctxt "GeneralEdit|"
 msgid "Mode 4 (AIL THR ELE RUD)"
 msgstr ""
 
-#: generaledit.ui:746
+#: generaledit.ui:745
+msgctxt "GeneralEdit|"
+msgid "Show Splash Screen on Startup"
+msgstr ""
+
+#: generaledit.ui:752 generaledit.ui:755
+msgctxt "GeneralEdit|"
+msgid "Show splash screen on startup"
+msgstr ""
+
+#: generaledit.ui:766
 msgctxt "GeneralEdit|"
 msgid "Calibration"
 msgstr ""
 
-#: generaledit.ui:1181
+#: generaledit.ui:1201
 msgctxt "GeneralEdit|"
 msgid "ANALOG 7"
 msgstr ""
 
-#: generaledit.ui:1188
+#: generaledit.ui:1208
 msgctxt "GeneralEdit|"
 msgid "ANALOG 6"
 msgstr ""
 
-#: generaledit.ui:1195
+#: generaledit.ui:1215
 msgctxt "GeneralEdit|"
 msgid "ANALOG 5"
 msgstr ""
 
-#: generaledit.ui:1202
+#: generaledit.ui:1222
 msgctxt "GeneralEdit|"
 msgid "ANALOG 4"
 msgstr ""
 
-#: generaledit.ui:1209
+#: generaledit.ui:1229
 msgctxt "GeneralEdit|"
 msgid "ANALOG 3"
 msgstr ""
 
-#: generaledit.ui:1216
+#: generaledit.ui:1236
 msgctxt "GeneralEdit|"
 msgid "ANALOG 2"
 msgstr ""
 
-#: generaledit.ui:1223
+#: generaledit.ui:1243
 msgctxt "GeneralEdit|"
 msgid "ANALOG 1"
 msgstr ""
 
-#: generaledit.ui:1230
+#: generaledit.ui:1250
 msgctxt "GeneralEdit|"
 msgid "PPM In"
 msgstr ""
 
-#: generaledit.ui:1250
+#: generaledit.ui:1270
 msgctxt "GeneralEdit|"
 msgid "Negative"
 msgstr ""
 
-#: generaledit.ui:1257
+#: generaledit.ui:1277
 msgctxt "GeneralEdit|"
 msgid "Mid"
 msgstr ""
 
-#: generaledit.ui:1264
+#: generaledit.ui:1284
 msgctxt "GeneralEdit|"
 msgid "Positive"
 msgstr ""
 
-#: generaledit.ui:1274
+#: generaledit.ui:1294
 msgctxt "GeneralEdit|"
 msgid "v"
 msgstr ""
@@ -1809,141 +1819,141 @@ msgctxt "ModelEdit|"
 msgid "Simulate"
 msgstr ""
 
-#: modeledit.cpp:365 modeledit.cpp:373 modeledit.cpp:416
+#: modeledit.cpp:366 modeledit.cpp:374 modeledit.cpp:417
 #, qt-format
 msgctxt "ModelEdit|"
 msgid "CH%1%2"
 msgstr ""
 
-#: modeledit.cpp:386
+#: modeledit.cpp:387
 #, qt-format
 msgctxt "ModelEdit|"
 msgid " %1%"
 msgstr ""
 
-#: modeledit.cpp:387
+#: modeledit.cpp:388
 #, qt-format
 msgctxt "ModelEdit|"
 msgid " +%1%"
 msgstr ""
 
-#: modeledit.cpp:394
+#: modeledit.cpp:395
 msgctxt "ModelEdit|"
 msgid " Switch("
 msgstr ""
 
-#: modeledit.cpp:395
+#: modeledit.cpp:396
 msgctxt "ModelEdit|"
 msgid " noTrim"
 msgstr ""
 
-#: modeledit.cpp:396
+#: modeledit.cpp:397
 #, qt-format
 msgctxt "ModelEdit|"
 msgid " Offset(%1%)"
 msgstr ""
 
-#: modeledit.cpp:400
+#: modeledit.cpp:401
 #, qt-format
 msgctxt "ModelEdit|"
 msgid " Curve(%1)"
 msgstr ""
 
-#: modeledit.cpp:403
+#: modeledit.cpp:404
 #, qt-format
 msgctxt "ModelEdit|"
 msgid " Delay(u%1:d%2)"
 msgstr ""
 
-#: modeledit.cpp:404
+#: modeledit.cpp:405
 #, qt-format
 msgctxt "ModelEdit|"
 msgid " Slow(u%1:d%2)"
 msgstr ""
 
-#: modeledit.cpp:406
+#: modeledit.cpp:407
 #, qt-format
 msgctxt "ModelEdit|"
 msgid " Warn(%1)"
 msgstr ""
 
-#: modeledit.cpp:1562
+#: modeledit.cpp:1563
 #, qt-format
 msgctxt "ModelEdit|"
 msgid "Curve %1"
 msgstr ""
 
-#: modeledit.cpp:1783
+#: modeledit.cpp:1784
 msgctxt "ModelEdit|"
 msgid "Delete Selected Mixes?"
 msgstr ""
 
-#: modeledit.cpp:1875
+#: modeledit.cpp:1876
 msgctxt "ModelEdit|"
 msgid "&Add"
 msgstr ""
 
-#: modeledit.cpp:1875
+#: modeledit.cpp:1876
 msgctxt "ModelEdit|"
 msgid "Ctrl+A"
 msgstr ""
 
-#: modeledit.cpp:1876
+#: modeledit.cpp:1877
 msgctxt "ModelEdit|"
 msgid "&Edit"
 msgstr ""
 
-#: modeledit.cpp:1876
+#: modeledit.cpp:1877
 msgctxt "ModelEdit|"
 msgid "Enter"
 msgstr ""
 
-#: modeledit.cpp:1878
+#: modeledit.cpp:1879
 msgctxt "ModelEdit|"
 msgid "&Delete"
 msgstr ""
 
-#: modeledit.cpp:1878
+#: modeledit.cpp:1879
 msgctxt "ModelEdit|"
 msgid "Delete"
 msgstr ""
 
-#: modeledit.cpp:1879
+#: modeledit.cpp:1880
 msgctxt "ModelEdit|"
 msgid "&Copy"
 msgstr ""
 
-#: modeledit.cpp:1879
+#: modeledit.cpp:1880
 msgctxt "ModelEdit|"
 msgid "Ctrl+C"
 msgstr ""
 
-#: modeledit.cpp:1880
+#: modeledit.cpp:1881
 msgctxt "ModelEdit|"
 msgid "&Cut"
 msgstr ""
 
-#: modeledit.cpp:1880
+#: modeledit.cpp:1881
 msgctxt "ModelEdit|"
 msgid "Ctrl+X"
 msgstr ""
 
-#: modeledit.cpp:1881
+#: modeledit.cpp:1882
 msgctxt "ModelEdit|"
 msgid "&Paste"
 msgstr ""
 
-#: modeledit.cpp:1881
+#: modeledit.cpp:1882
 msgctxt "ModelEdit|"
 msgid "Ctrl+V"
 msgstr ""
 
-#: modeledit.cpp:1882
+#: modeledit.cpp:1883
 msgctxt "ModelEdit|"
 msgid "D&uplicate"
 msgstr ""
 
-#: modeledit.cpp:1882
+#: modeledit.cpp:1883
 msgctxt "ModelEdit|"
 msgid "Ctrl+U"
 msgstr ""

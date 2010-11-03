@@ -469,6 +469,14 @@ msgctxt "GeneralEdit|"
 msgid "Switch Startup Warning"
 msgstr "Alerte des interrupteurs"
 
+msgctxt "GeneralEdit|"
+msgid "Show Splash Screen on Startup"
+msgstr ""
+
+msgctxt "GeneralEdit|"
+msgid "Show splash screen on startup"
+msgstr ""
+
 msgctxt "MainWindow|"
 msgid "&New"
 msgstr "&Nouveau"
