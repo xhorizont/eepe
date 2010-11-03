@@ -48,13 +48,13 @@ Acceptable values are 5v..10v</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="1274"/>
+        <location filename="generaledit.ui" line="1294"/>
         <source>v</source>
         <translation>v</translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="125"/>
-        <location filename="generaledit.ui" line="1174"/>
+        <location filename="generaledit.ui" line="1194"/>
         <source>Battery Calibration</source>
         <translation>Calibração da Bateria</translation>
     </message>
@@ -322,62 +322,73 @@ Mode 4:
         <translation>Modo 4 (AIL THR ELE RUD)</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="746"/>
+        <location filename="generaledit.ui" line="745"/>
+        <source>Show Splash Screen on Startup</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="generaledit.ui" line="752"/>
+        <location filename="generaledit.ui" line="755"/>
+        <source>Show splash screen on startup</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="generaledit.ui" line="766"/>
         <source>Calibration</source>
         <translation>Calibração</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="1181"/>
+        <location filename="generaledit.ui" line="1201"/>
         <source>ANALOG 7</source>
         <translation>ANALÓGICO 7</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="1188"/>
+        <location filename="generaledit.ui" line="1208"/>
         <source>ANALOG 6</source>
         <translation>ANALÓGICO 6</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="1195"/>
+        <location filename="generaledit.ui" line="1215"/>
         <source>ANALOG 5</source>
         <translation>ANALÓGICO 5</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="1202"/>
+        <location filename="generaledit.ui" line="1222"/>
         <source>ANALOG 4</source>
         <translation>ANALÓGICO 4</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="1209"/>
+        <location filename="generaledit.ui" line="1229"/>
         <source>ANALOG 3</source>
         <translation>ANALÓGICO 3</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="1216"/>
+        <location filename="generaledit.ui" line="1236"/>
         <source>ANALOG 2</source>
         <translation>ANALÓGICO 2</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="1223"/>
+        <location filename="generaledit.ui" line="1243"/>
         <source>ANALOG 1</source>
         <translation>ANALÓGICO 1</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="1230"/>
+        <location filename="generaledit.ui" line="1250"/>
         <source>PPM In</source>
         <translation>Entrada PPM</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="1250"/>
+        <location filename="generaledit.ui" line="1270"/>
         <source>Negative</source>
         <translation>Negativo</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="1257"/>
+        <location filename="generaledit.ui" line="1277"/>
         <source>Mid</source>
         <translation>Meio</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="1264"/>
+        <location filename="generaledit.ui" line="1284"/>
         <source>Positive</source>
         <translation>Positivo</translation>
     </message>
@@ -1786,59 +1797,59 @@ Right</source>
         <translation>Simular</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="365"/>
-        <location filename="modeledit.cpp" line="373"/>
-        <location filename="modeledit.cpp" line="416"/>
+        <location filename="modeledit.cpp" line="366"/>
+        <location filename="modeledit.cpp" line="374"/>
+        <location filename="modeledit.cpp" line="417"/>
         <source>CH%1%2</source>
         <translation>CH%1%2</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="386"/>
+        <location filename="modeledit.cpp" line="387"/>
         <source> %1%</source>
         <translation>%1%</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="387"/>
+        <location filename="modeledit.cpp" line="388"/>
         <source> +%1%</source>
         <translation>+%1%</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="394"/>
+        <location filename="modeledit.cpp" line="395"/>
         <source> Switch(</source>
         <translation>Interruptor(</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="395"/>
+        <location filename="modeledit.cpp" line="396"/>
         <source> noTrim</source>
         <translation>semAjuste</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="396"/>
+        <location filename="modeledit.cpp" line="397"/>
         <source> Offset(%1%)</source>
         <translation>Atraso(%1%)</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="400"/>
+        <location filename="modeledit.cpp" line="401"/>
         <source> Curve(%1)</source>
         <translation>Curva(%1)</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="403"/>
+        <location filename="modeledit.cpp" line="404"/>
         <source> Delay(u%1:d%2)</source>
         <translation>Atraso(u%1:d%2)</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="404"/>
+        <location filename="modeledit.cpp" line="405"/>
         <source> Slow(u%1:d%2)</source>
         <translation>Lento(u%1:d%2)</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="406"/>
+        <location filename="modeledit.cpp" line="407"/>
         <source> Warn(%1)</source>
         <translation>Aviso(%1)</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="1562"/>
+        <location filename="modeledit.cpp" line="1563"/>
         <source>Curve %1</source>
         <translation>Curva %1</translation>
     </message>
@@ -1847,77 +1858,77 @@ Right</source>
         <translation type="obsolete">eePe</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="1783"/>
+        <location filename="modeledit.cpp" line="1784"/>
         <source>Delete Selected Mixes?</source>
         <translation>Apagar misturas selecionadas?</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="1875"/>
+        <location filename="modeledit.cpp" line="1876"/>
         <source>&amp;Add</source>
         <translation>&amp;Adicionar</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="1875"/>
+        <location filename="modeledit.cpp" line="1876"/>
         <source>Ctrl+A</source>
         <translation>Ctrl+A</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="1876"/>
+        <location filename="modeledit.cpp" line="1877"/>
         <source>&amp;Edit</source>
         <translation>&amp;Editar</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="1876"/>
+        <location filename="modeledit.cpp" line="1877"/>
         <source>Enter</source>
         <translation>Enter</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="1878"/>
+        <location filename="modeledit.cpp" line="1879"/>
         <source>&amp;Delete</source>
         <translation>&amp;Eliminar</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="1878"/>
+        <location filename="modeledit.cpp" line="1879"/>
         <source>Delete</source>
         <translation>Eliminar</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="1879"/>
+        <location filename="modeledit.cpp" line="1880"/>
         <source>&amp;Copy</source>
         <translation>&amp;Copiar</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="1879"/>
+        <location filename="modeledit.cpp" line="1880"/>
         <source>Ctrl+C</source>
         <translation>Ctrl+C</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="1880"/>
+        <location filename="modeledit.cpp" line="1881"/>
         <source>&amp;Cut</source>
         <translation>&amp;Cor&amp;tar</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="1880"/>
+        <location filename="modeledit.cpp" line="1881"/>
         <source>Ctrl+X</source>
         <translation>Ctrl+X</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="1881"/>
+        <location filename="modeledit.cpp" line="1882"/>
         <source>&amp;Paste</source>
         <translation>Co&amp;lar</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="1881"/>
+        <location filename="modeledit.cpp" line="1882"/>
         <source>Ctrl+V</source>
         <translation>Ctrl+V</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="1882"/>
+        <location filename="modeledit.cpp" line="1883"/>
         <source>D&amp;uplicate</source>
         <translation>&amp;Duplicar</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="1882"/>
+        <location filename="modeledit.cpp" line="1883"/>
         <source>Ctrl+U</source>
         <translation>Ctrl+U</translation>
     </message>

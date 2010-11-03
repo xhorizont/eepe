@@ -367,6 +367,14 @@ p, li { white-space: pre-wrap; }
         <source>Switch Startup Warning</source>
         <translation>Alerte des interrupteurs</translation>
     </message>
+    <message>
+        <source>Show Splash Screen on Startup</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show splash screen on startup</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>MainWindow</name>
