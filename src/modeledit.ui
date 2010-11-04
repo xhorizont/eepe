@@ -24,7 +24,7 @@
    <item row="2" column="1">
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
-      <number>2</number>
+      <number>5</number>
      </property>
      <widget class="QWidget" name="tabModelSetup">
       <attribute name="title">
@@ -4435,28 +4435,6 @@ Right</string>
        <item row="1" column="1">
         <widget class="QComboBox" name="cswitchFunc_1"/>
        </item>
-       <item row="1" column="2">
-        <widget class="QComboBox" name="cswitchCB_1"/>
-       </item>
-       <item row="1" column="2">
-        <widget class="QComboBox" name="cswitchLOGCB_12"/>
-       </item>
-       <item row="1" column="3">
-        <widget class="QSpinBox" name="cswitchOfs_1">
-         <property name="alignment">
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-         </property>
-         <property name="minimum">
-          <number>-125</number>
-         </property>
-         <property name="maximum">
-          <number>125</number>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="3">
-        <widget class="QComboBox" name="cswitchLOGCB_13"/>
-       </item>
        <item row="2" column="0">
         <widget class="QLabel" name="label_31">
          <property name="frameShape">
@@ -4472,28 +4450,6 @@ Right</string>
        </item>
        <item row="2" column="1">
         <widget class="QComboBox" name="cswitchFunc_2"/>
-       </item>
-       <item row="2" column="2">
-        <widget class="QComboBox" name="cswitchCB_2"/>
-       </item>
-       <item row="2" column="2">
-        <widget class="QComboBox" name="cswitchLOGCB_22"/>
-       </item>
-       <item row="2" column="3">
-        <widget class="QSpinBox" name="cswitchOfs_2">
-         <property name="alignment">
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-         </property>
-         <property name="minimum">
-          <number>-125</number>
-         </property>
-         <property name="maximum">
-          <number>125</number>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="3">
-        <widget class="QComboBox" name="cswitchLOGCB_23"/>
        </item>
        <item row="3" column="0">
         <widget class="QLabel" name="label_32">
@@ -4511,28 +4467,6 @@ Right</string>
        <item row="3" column="1">
         <widget class="QComboBox" name="cswitchFunc_3"/>
        </item>
-       <item row="3" column="2">
-        <widget class="QComboBox" name="cswitchCB_3"/>
-       </item>
-       <item row="3" column="2">
-        <widget class="QComboBox" name="cswitchLOGCB_32"/>
-       </item>
-       <item row="3" column="3">
-        <widget class="QSpinBox" name="cswitchOfs_3">
-         <property name="alignment">
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-         </property>
-         <property name="minimum">
-          <number>-125</number>
-         </property>
-         <property name="maximum">
-          <number>125</number>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="3">
-        <widget class="QComboBox" name="cswitchLOGCB_33"/>
-       </item>
        <item row="4" column="0">
         <widget class="QLabel" name="label_33">
          <property name="frameShape">
@@ -4548,28 +4482,6 @@ Right</string>
        </item>
        <item row="4" column="1">
         <widget class="QComboBox" name="cswitchFunc_4"/>
-       </item>
-       <item row="4" column="2">
-        <widget class="QComboBox" name="cswitchCB_4"/>
-       </item>
-       <item row="4" column="2">
-        <widget class="QComboBox" name="cswitchLOGCB_42"/>
-       </item>
-       <item row="4" column="3">
-        <widget class="QSpinBox" name="cswitchOfs_4">
-         <property name="alignment">
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-         </property>
-         <property name="minimum">
-          <number>-125</number>
-         </property>
-         <property name="maximum">
-          <number>125</number>
-         </property>
-        </widget>
-       </item>
-       <item row="4" column="3">
-        <widget class="QComboBox" name="cswitchLOGCB_43"/>
        </item>
        <item row="5" column="0">
         <widget class="QLabel" name="label_34">
@@ -4587,28 +4499,6 @@ Right</string>
        <item row="5" column="1">
         <widget class="QComboBox" name="cswitchFunc_5"/>
        </item>
-       <item row="5" column="2">
-        <widget class="QComboBox" name="cswitchCB_5"/>
-       </item>
-       <item row="5" column="2">
-        <widget class="QComboBox" name="cswitchLOGCB_52"/>
-       </item>
-       <item row="5" column="3">
-        <widget class="QSpinBox" name="cswitchOfs_5">
-         <property name="alignment">
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-         </property>
-         <property name="minimum">
-          <number>-125</number>
-         </property>
-         <property name="maximum">
-          <number>125</number>
-         </property>
-        </widget>
-       </item>
-       <item row="5" column="3">
-        <widget class="QComboBox" name="cswitchLOGCB_53"/>
-       </item>
        <item row="6" column="0">
         <widget class="QLabel" name="label_35">
          <property name="frameShape">
@@ -4624,28 +4514,6 @@ Right</string>
        </item>
        <item row="6" column="1">
         <widget class="QComboBox" name="cswitchFunc_6"/>
-       </item>
-       <item row="6" column="2">
-        <widget class="QComboBox" name="cswitchCB_6"/>
-       </item>
-       <item row="6" column="2">
-        <widget class="QComboBox" name="cswitchLOGCB_62"/>
-       </item>
-       <item row="6" column="3">
-        <widget class="QSpinBox" name="cswitchOfs_6">
-         <property name="alignment">
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-         </property>
-         <property name="minimum">
-          <number>-125</number>
-         </property>
-         <property name="maximum">
-          <number>125</number>
-         </property>
-        </widget>
-       </item>
-       <item row="6" column="3">
-        <widget class="QComboBox" name="cswitchLOGCB_63"/>
        </item>
        <item row="0" column="1">
         <widget class="QLabel" name="cswFuncLabel">
@@ -5263,23 +5131,11 @@ Right</string>
   <tabstop>curvePt4_8</tabstop>
   <tabstop>curvePt5_8</tabstop>
   <tabstop>curveEdit_9</tabstop>
-  <tabstop>cswitchCB_1</tabstop>
-  <tabstop>cswitchOfs_1</tabstop>
   <tabstop>cswitchFunc_1</tabstop>
-  <tabstop>cswitchCB_2</tabstop>
-  <tabstop>cswitchOfs_2</tabstop>
   <tabstop>cswitchFunc_2</tabstop>
-  <tabstop>cswitchCB_3</tabstop>
-  <tabstop>cswitchOfs_3</tabstop>
   <tabstop>cswitchFunc_3</tabstop>
-  <tabstop>cswitchCB_4</tabstop>
-  <tabstop>cswitchOfs_4</tabstop>
   <tabstop>cswitchFunc_4</tabstop>
-  <tabstop>cswitchCB_5</tabstop>
-  <tabstop>cswitchOfs_5</tabstop>
   <tabstop>cswitchFunc_5</tabstop>
-  <tabstop>cswitchCB_6</tabstop>
-  <tabstop>cswitchOfs_6</tabstop>
   <tabstop>cswitchFunc_6</tabstop>
   <tabstop>slider_S2</tabstop>
   <tabstop>spinBox_S2</tabstop>

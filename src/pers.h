@@ -84,9 +84,30 @@ enum EnumKeys {
 #define MAX_DRSWITCH (1+SW_Trainer-SW_ThrCt+1+NUM_CSW)
 
 #define CURV_STR     "---x>0x<0|x|f>0f<0|f|c1 c2 c3 c4 c5 c6 c7 c8 c9 c10c11c12c13c14c15c16"
-#define CSWITCH_STR  "----   v>ofs  v<ofs  |v|>ofs|v|<ofsAND    OR     XOR    "
-#define CSW_NUM_FUNC 8
+#define CSWITCH_STR  "----   v>ofs  v<ofs  |v|>ofs|v|<ofsAND    OR     XOR    ""v1==v2 ""v1!=v2 ""v1>v2  ""v1<v2  ""v1>=v2 ""v1<=v2 "
+#define CSW_NUM_FUNC 14
 #define CSW_LEN_FUNC 7
+
+#define CS_OFF       0
+#define CS_VPOS      1  //v>offset
+#define CS_VNEG      2  //v<offset
+#define CS_APOS      3  //|v|>offset
+#define CS_ANEG      4  //|v|<offset
+#define CS_AND       5
+#define CS_OR        6
+#define CS_XOR       7
+#define CS_EQUAL     8
+#define CS_NEQUAL    9
+#define CS_GREATER   10
+#define CS_LESS      11
+#define CS_EGREATER  12
+#define CS_ELESS     13
+#define CS_MAXF      13  //max function
+
+#define CS_VOFS       0
+#define CS_VBOOL      1
+#define CS_VCOMP      2
+#define CS_STATE(x)   ((x)<CS_AND ? CS_VOFS : ((x)<CS_EQUAL ? CS_VBOOL : CS_VCOMP))
 
 #define MIX_P1    5
 #define MIX_P2    6

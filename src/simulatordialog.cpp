@@ -96,7 +96,7 @@ void simulatorDialog::centerSticks()
 }
 
 void simulatorDialog::loadParams(const EEGeneral gg, const ModelData gm)
-{    
+{
     memcpy(&g_eeGeneral,&gg,sizeof(EEGeneral));
     memcpy(&g_model,&gm,sizeof(ModelData));
 
@@ -304,39 +304,72 @@ bool simulatorDialog::getSwitch(int swtch, bool nc)
      //MAX,FULL - disregard
      //ppm
      CSwData &cs = g_model.customSw[abs(swtch)-(MAX_DRSWITCH-NUM_CSW)];
-     if(cs.func<CS_AND)
-     {
-         int16_t  v = 0;
-         uint8_t  i = cs.input-1;
-         if(i<MIX_MAX) v = calibratedStick[i];//-512..512
-         else if(i<=MIX_FULL) v = 1024; //FULL/MAX
-         else if(i<MIX_FULL+NUM_PPM) v = g_ppmIns[i-MIX_FULL] - g_eeGeneral.ppmInCalib[i-MIX_FULL];
-         else v = ex_chans[i-MIX_FULL-NUM_PPM];
+     if(!cs.func) return false;
 
-         int16_t ofs = calc100toRESX(cs.offset); //coffset 100 -> 1024
-         switch (cs.func) {
-          case (CS_VPOS):   return swtch>0 ? (v>ofs) : !(v>ofs);
-          case (CS_VNEG):   return swtch>0 ? (v<ofs) : !(v<ofs);
-          case (CS_APOS):   return swtch>0 ? (abs(v)>ofs) : !(abs(v)>ofs);
-          case (CS_ANEG):   return swtch>0 ? (abs(v)<ofs) : !(abs(v)<ofs);
-          default:          return false;
-          }
-     }
-     else //cs.func>=CS_AND
+
+     int8_t a = cs.v1;
+     int8_t b = cs.v2;
+     int16_t x = 0;
+     int16_t y = 0;
+
+     // init values only if needed
+     uint8_t s = CS_STATE(cs.func);
+     if(s == CS_VOFS)
      {
-         int8_t a = cs.input;
-         int8_t b = cs.offset;
-         switch (cs.func) {
-         case (CS_OR):
-             return (getSwitch(a,0) || getSwitch(b,0));
-             break;
-         case (CS_XOR):
-             return (getSwitch(a,0) ^ getSwitch(b,0));
-             break;
-         default: //AND
-             return (getSwitch(a,0) && getSwitch(b,0));
-             break;
-         }
+         x = getValue(cs.v1-1);
+         y = calc100toRESX(cs.v2);
+     }
+     else if(s == CS_VCOMP)
+     {
+         x = getValue(cs.v1-1);
+         y = getValue(cs.v2-1);
+     }
+
+     switch (cs.func) {
+     case (CS_VPOS):
+         return swtch>0 ? (x>y) : !(x>y);
+         break;
+     case (CS_VNEG):
+         return swtch>0 ? (x<y) : !(x<y);
+         break;
+     case (CS_APOS):
+         return swtch>0 ? (abs(x)>y) : !(abs(x)>y);
+         break;
+     case (CS_ANEG):
+         return swtch>0 ? (abs(x)<y) : !(abs(x)<y);
+         break;
+
+     case (CS_AND):
+         return (getSwitch(a,0,level+1) && getSwitch(b,0,level+1));
+         break;
+     case (CS_OR):
+         return (getSwitch(a,0,level+1) || getSwitch(b,0,level+1));
+         break;
+     case (CS_XOR):
+         return (getSwitch(a,0,level+1) ^ getSwitch(b,0,level+1));
+         break;
+
+     case (CS_EQUAL):
+         return (x==y);
+         break;
+     case (CS_NEQUAL):
+         return (x!=y);
+         break;
+     case (CS_GREATER):
+         return (x>y);
+         break;
+     case (CS_LESS):
+         return (x<y);
+         break;
+     case (CS_EGREATER):
+         return (x>=y);
+         break;
+     case (CS_ELESS):
+         return (x<=y);
+         break;
+     default:
+         return false;
+         break;
      }
 }
 
@@ -396,7 +429,7 @@ int16_t simulatorDialog::intpol(int16_t x, uint8_t idx) // -100, -75, -50, -25, 
 }
 
 void simulatorDialog::perOut(bool init)
-{  
+{
   int16_t trimA[4];
   uint8_t  anaCenter = 0;
 
