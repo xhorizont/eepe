@@ -39,36 +39,37 @@
 
 
 typedef struct t_EEGeneral {
-    uint8_t   myVers;
-    int16_t   calibMid[7];
-    int16_t   calibSpanNeg[7];
-    int16_t   calibSpanPos[7];
-    uint16_t  chkSum;
-    uint8_t   currModel; //0..15
-    uint8_t   contrast;
-    uint8_t   vBatWarn;
-    int8_t    vBatCalib;
-    int8_t    lightSw;
-    int16_t   ppmInCalib[8];
-    uint8_t   view;     //index of subview in main scrren
-  #define WARN_THR     (!(g_eeGeneral.warnOpts & 0x01))
-  #define WARN_BEP     (!(g_eeGeneral.warnOpts & 0x80))
-  #define WARN_SW      (!(g_eeGeneral.warnOpts & 0x02))
-  #define WARN_MEM     (!(g_eeGeneral.warnOpts & 0x04))
-  #define BEEP_VAL     ( (g_eeGeneral.warnOpts & 0x38) >>3 )
-    uint8_t   warnOpts; //bitset for several warnings
-    uint8_t   stickMode;
-    uint8_t   inactivityTimer;
-    uint8_t   throttleReversed:1;
-    uint8_t   minuteBeep:1;
-    uint8_t   preBeep:1;
-    uint8_t   flashBeep:1;
-    uint8_t   disableSplashScreen:1;
-    uint8_t   res1:3;
-    uint8_t   filterInput;
-    uint8_t   lightAutoOff;
-    uint8_t   templateSetup;  //RETA order according to chout_ar array
-    uint8_t   res[2];
+  uint8_t   myVers;
+  int16_t   calibMid[7];
+  int16_t   calibSpanNeg[7];
+  int16_t   calibSpanPos[7];
+  uint16_t  chkSum;
+  uint8_t   currModel; //0..15
+  uint8_t   contrast;
+  uint8_t   vBatWarn;
+  int8_t    vBatCalib;
+  int8_t    lightSw;
+  int16_t   ppmInCalib[8];
+  uint8_t   view;     //index of subview in main scrren
+#define WARN_THR     (!(g_eeGeneral.warnOpts & 0x01))
+#define WARN_BEP     (!(g_eeGeneral.warnOpts & 0x80))
+#define WARN_SW      (!(g_eeGeneral.warnOpts & 0x02))
+#define WARN_MEM     (!(g_eeGeneral.warnOpts & 0x04))
+#define BEEP_VAL     ( (g_eeGeneral.warnOpts & 0x38) >>3 )
+  uint8_t   warnOpts; //bitset for several warnings
+  uint8_t   stickMode;
+  uint8_t   inactivityTimer;
+  uint8_t   throttleReversed:1;
+  uint8_t   minuteBeep:1;
+  uint8_t   preBeep:1;
+  uint8_t   flashBeep:1;
+  uint8_t   disableSplashScreen:1;
+  uint8_t   res1:3;
+  uint8_t   filterInput;
+  uint8_t   lightAutoOff;
+  uint8_t   templateSetup;  //RETA order according to chout_ar array
+  uint8_t   PPM_Multiplier;
+  uint8_t   res[1];
 } __attribute__((packed)) EEGeneral;
 
 
@@ -129,22 +130,14 @@ typedef struct t_MixData {
   int8_t  res;
 } __attribute__((packed)) MixData;
 
-#define CS_OFF     0
-#define CS_VPOS    1  //v>offset
-#define CS_VNEG    2  //v<offset
-#define CS_APOS    3  //|v|>offset
-#define CS_ANEG    4  //|v|<offset
-#define CS_AND     5
-#define CS_OR      6
-#define CS_XOR     7
-#define CS_MAXF    7  //max function
 
 
 typedef struct t_CSwData { // Custom Switches data
-  int8_t  input;
-  int8_t  offset;
+  int8_t  v1; //input
+  int8_t  v2; //offset
   uint8_t func;
 } __attribute__((packed)) CSwData;
+
 
 
 typedef struct t_SwashRingData { // Swash Ring data

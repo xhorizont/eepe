@@ -618,17 +618,31 @@ void MainWindow::createStatusBar()
 void MainWindow::readSettings()
 {
     QSettings settings("er9x-eePe", "eePe");
+    bool maximized = settings.value("maximized", false).toBool();
     QPoint pos = settings.value("pos", QPoint(200, 200)).toPoint();
     QSize size = settings.value("size", QSize(400, 400)).toSize();
-    move(pos);
-    resize(size);
+
+    if(maximized)
+    {
+         setWindowState(Qt::WindowMaximized);
+    }
+    else
+    {
+        move(pos);
+        resize(size);
+    }
 }
 
 void MainWindow::writeSettings()
 {
     QSettings settings("er9x-eePe", "eePe");
-    settings.setValue("pos", pos());
-    settings.setValue("size", size());
+
+    settings.setValue("maximized", isMaximized());
+    if(!isMaximized())
+    {
+        settings.setValue("pos", pos());
+        settings.setValue("size", size());
+    }
 }
 
 MdiChild *MainWindow::activeMdiChild()

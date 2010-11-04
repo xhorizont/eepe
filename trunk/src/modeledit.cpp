@@ -500,54 +500,54 @@ void ModelEdit::tabLimits()
 
 void ModelEdit::updateTabCurves()
 {
-   ui->curvePt1_1->setValue(g_model.curves5[0][0]);    
+   ui->curvePt1_1->setValue(g_model.curves5[0][0]);
    ui->curvePt2_1->setValue(g_model.curves5[0][1]);
    ui->curvePt3_1->setValue(g_model.curves5[0][2]);
    ui->curvePt4_1->setValue(g_model.curves5[0][3]);
    ui->curvePt5_1->setValue(g_model.curves5[0][4]);
-   
+
    ui->curvePt1_2->setValue(g_model.curves5[1][0]);
    ui->curvePt2_2->setValue(g_model.curves5[1][1]);
    ui->curvePt3_2->setValue(g_model.curves5[1][2]);
    ui->curvePt4_2->setValue(g_model.curves5[1][3]);
    ui->curvePt5_2->setValue(g_model.curves5[1][4]);
-   
+
    ui->curvePt1_3->setValue(g_model.curves5[2][0]);
    ui->curvePt2_3->setValue(g_model.curves5[2][1]);
    ui->curvePt3_3->setValue(g_model.curves5[2][2]);
    ui->curvePt4_3->setValue(g_model.curves5[2][3]);
    ui->curvePt5_3->setValue(g_model.curves5[2][4]);
-   
+
    ui->curvePt1_4->setValue(g_model.curves5[3][0]);
    ui->curvePt2_4->setValue(g_model.curves5[3][1]);
    ui->curvePt3_4->setValue(g_model.curves5[3][2]);
    ui->curvePt4_4->setValue(g_model.curves5[3][3]);
    ui->curvePt5_4->setValue(g_model.curves5[3][4]);
-	
+
    ui->curvePt1_5->setValue(g_model.curves5[4][0]);
    ui->curvePt2_5->setValue(g_model.curves5[4][1]);
    ui->curvePt3_5->setValue(g_model.curves5[4][2]);
    ui->curvePt4_5->setValue(g_model.curves5[4][3]);
    ui->curvePt5_5->setValue(g_model.curves5[4][4]);
-	
+
    ui->curvePt1_6->setValue(g_model.curves5[5][0]);
    ui->curvePt2_6->setValue(g_model.curves5[5][1]);
    ui->curvePt3_6->setValue(g_model.curves5[5][2]);
    ui->curvePt4_6->setValue(g_model.curves5[5][3]);
    ui->curvePt5_6->setValue(g_model.curves5[5][4]);
-	
+
    ui->curvePt1_7->setValue(g_model.curves5[6][0]);
    ui->curvePt2_7->setValue(g_model.curves5[6][1]);
    ui->curvePt3_7->setValue(g_model.curves5[6][2]);
    ui->curvePt4_7->setValue(g_model.curves5[6][3]);
    ui->curvePt5_7->setValue(g_model.curves5[6][4]);
-	
+
    ui->curvePt1_8->setValue(g_model.curves5[7][0]);
    ui->curvePt2_8->setValue(g_model.curves5[7][1]);
    ui->curvePt3_8->setValue(g_model.curves5[7][2]);
    ui->curvePt4_8->setValue(g_model.curves5[7][3]);
    ui->curvePt5_8->setValue(g_model.curves5[7][4]);
-   
+
    ui->curvePt1_9->setValue(g_model.curves9[0][0]);
    ui->curvePt2_9->setValue(g_model.curves9[0][1]);
    ui->curvePt3_9->setValue(g_model.curves9[0][2]);
@@ -557,7 +557,7 @@ void ModelEdit::updateTabCurves()
    ui->curvePt7_9->setValue(g_model.curves9[0][6]);
    ui->curvePt8_9->setValue(g_model.curves9[0][7]);
    ui->curvePt9_9->setValue(g_model.curves9[0][8]);
-   
+
    ui->curvePt1_10->setValue(g_model.curves9[1][0]);
    ui->curvePt2_10->setValue(g_model.curves9[1][1]);
    ui->curvePt3_10->setValue(g_model.curves9[1][2]);
@@ -567,7 +567,7 @@ void ModelEdit::updateTabCurves()
    ui->curvePt7_10->setValue(g_model.curves9[1][6]);
    ui->curvePt8_10->setValue(g_model.curves9[1][7]);
    ui->curvePt9_10->setValue(g_model.curves9[1][8]);
-   
+
    ui->curvePt1_11->setValue(g_model.curves9[2][0]);
    ui->curvePt2_11->setValue(g_model.curves9[2][1]);
    ui->curvePt3_11->setValue(g_model.curves9[2][2]);
@@ -577,7 +577,7 @@ void ModelEdit::updateTabCurves()
    ui->curvePt7_11->setValue(g_model.curves9[2][6]);
    ui->curvePt8_11->setValue(g_model.curves9[2][7]);
    ui->curvePt9_11->setValue(g_model.curves9[2][8]);
-   
+
    ui->curvePt1_12->setValue(g_model.curves9[3][0]);
    ui->curvePt2_12->setValue(g_model.curves9[3][1]);
    ui->curvePt3_12->setValue(g_model.curves9[3][2]);
@@ -587,7 +587,7 @@ void ModelEdit::updateTabCurves()
    ui->curvePt7_12->setValue(g_model.curves9[3][6]);
    ui->curvePt8_12->setValue(g_model.curves9[3][7]);
    ui->curvePt9_12->setValue(g_model.curves9[3][8]);
-   
+
    ui->curvePt1_13->setValue(g_model.curves9[4][0]);
    ui->curvePt2_13->setValue(g_model.curves9[4][1]);
    ui->curvePt3_13->setValue(g_model.curves9[4][2]);
@@ -597,7 +597,7 @@ void ModelEdit::updateTabCurves()
    ui->curvePt7_13->setValue(g_model.curves9[4][6]);
    ui->curvePt8_13->setValue(g_model.curves9[4][7]);
    ui->curvePt9_13->setValue(g_model.curves9[4][8]);
-   
+
    ui->curvePt1_14->setValue(g_model.curves9[5][0]);
    ui->curvePt2_14->setValue(g_model.curves9[5][1]);
    ui->curvePt3_14->setValue(g_model.curves9[5][2]);
@@ -607,7 +607,7 @@ void ModelEdit::updateTabCurves()
    ui->curvePt7_14->setValue(g_model.curves9[5][6]);
    ui->curvePt8_14->setValue(g_model.curves9[5][7]);
    ui->curvePt9_14->setValue(g_model.curves9[5][8]);
-   
+
    ui->curvePt1_15->setValue(g_model.curves9[6][0]);
    ui->curvePt2_15->setValue(g_model.curves9[6][1]);
    ui->curvePt3_15->setValue(g_model.curves9[6][2]);
@@ -617,7 +617,7 @@ void ModelEdit::updateTabCurves()
    ui->curvePt7_15->setValue(g_model.curves9[6][6]);
    ui->curvePt8_15->setValue(g_model.curves9[6][7]);
    ui->curvePt9_15->setValue(g_model.curves9[6][8]);
-   
+
    ui->curvePt1_16->setValue(g_model.curves9[7][0]);
    ui->curvePt2_16->setValue(g_model.curves9[7][1]);
    ui->curvePt3_16->setValue(g_model.curves9[7][2]);
@@ -843,7 +843,7 @@ void ModelEdit::limitEdited()
 }
 
 void ModelEdit::curvePointEdited()
-{            
+{
     g_model.curves5[0][0] = ui->curvePt1_1->value();
     g_model.curves5[0][1] = ui->curvePt2_1->value();
     g_model.curves5[0][2] = ui->curvePt3_1->value();
@@ -979,19 +979,7 @@ void ModelEdit::curvePointEdited()
 
 void ModelEdit::tabSwitches()
 {
-    populateSourceCB(ui->cswitchCB_1,g_eeGeneral.stickMode,g_model.customSw[0].input);
-    populateSourceCB(ui->cswitchCB_2,g_eeGeneral.stickMode,g_model.customSw[1].input);
-    populateSourceCB(ui->cswitchCB_3,g_eeGeneral.stickMode,g_model.customSw[2].input);
-    populateSourceCB(ui->cswitchCB_4,g_eeGeneral.stickMode,g_model.customSw[3].input);
-    populateSourceCB(ui->cswitchCB_5,g_eeGeneral.stickMode,g_model.customSw[4].input);
-    populateSourceCB(ui->cswitchCB_6,g_eeGeneral.stickMode,g_model.customSw[5].input);
 
-    ui->cswitchOfs_1->setValue(g_model.customSw[0].offset);
-    ui->cswitchOfs_2->setValue(g_model.customSw[1].offset);
-    ui->cswitchOfs_3->setValue(g_model.customSw[2].offset);
-    ui->cswitchOfs_4->setValue(g_model.customSw[3].offset);
-    ui->cswitchOfs_5->setValue(g_model.customSw[4].offset);
-    ui->cswitchOfs_6->setValue(g_model.customSw[5].offset);
 
     populateCSWCB(ui->cswitchFunc_1,g_model.customSw[0].func);
     populateCSWCB(ui->cswitchFunc_2,g_model.customSw[1].func);
@@ -1000,51 +988,11 @@ void ModelEdit::tabSwitches()
     populateCSWCB(ui->cswitchFunc_5,g_model.customSw[4].func);
     populateCSWCB(ui->cswitchFunc_6,g_model.customSw[5].func);
 
-    populateSwitchCB(ui->cswitchLOGCB_12,g_model.customSw[0].input);
-    populateSwitchCB(ui->cswitchLOGCB_22,g_model.customSw[1].input);
-    populateSwitchCB(ui->cswitchLOGCB_32,g_model.customSw[2].input);
-    populateSwitchCB(ui->cswitchLOGCB_42,g_model.customSw[3].input);
-    populateSwitchCB(ui->cswitchLOGCB_52,g_model.customSw[4].input);
-    populateSwitchCB(ui->cswitchLOGCB_62,g_model.customSw[5].input);
-
-    populateSwitchCB(ui->cswitchLOGCB_13,g_model.customSw[0].offset);
-    populateSwitchCB(ui->cswitchLOGCB_23,g_model.customSw[1].offset);
-    populateSwitchCB(ui->cswitchLOGCB_33,g_model.customSw[2].offset);
-    populateSwitchCB(ui->cswitchLOGCB_43,g_model.customSw[3].offset);
-    populateSwitchCB(ui->cswitchLOGCB_53,g_model.customSw[4].offset);
-    populateSwitchCB(ui->cswitchLOGCB_63,g_model.customSw[5].offset);
-
+    //create and populate boxes
 
     setCSWEnables();
 
-    connect(ui->cswitchLOGCB_12,SIGNAL(currentIndexChanged(int)),this,SLOT(switchesEdited()));
-    connect(ui->cswitchLOGCB_22,SIGNAL(currentIndexChanged(int)),this,SLOT(switchesEdited()));
-    connect(ui->cswitchLOGCB_32,SIGNAL(currentIndexChanged(int)),this,SLOT(switchesEdited()));
-    connect(ui->cswitchLOGCB_42,SIGNAL(currentIndexChanged(int)),this,SLOT(switchesEdited()));
-    connect(ui->cswitchLOGCB_52,SIGNAL(currentIndexChanged(int)),this,SLOT(switchesEdited()));
-    connect(ui->cswitchLOGCB_62,SIGNAL(currentIndexChanged(int)),this,SLOT(switchesEdited()));
-
-    connect(ui->cswitchLOGCB_13,SIGNAL(currentIndexChanged(int)),this,SLOT(switchesEdited()));
-    connect(ui->cswitchLOGCB_23,SIGNAL(currentIndexChanged(int)),this,SLOT(switchesEdited()));
-    connect(ui->cswitchLOGCB_33,SIGNAL(currentIndexChanged(int)),this,SLOT(switchesEdited()));
-    connect(ui->cswitchLOGCB_43,SIGNAL(currentIndexChanged(int)),this,SLOT(switchesEdited()));
-    connect(ui->cswitchLOGCB_53,SIGNAL(currentIndexChanged(int)),this,SLOT(switchesEdited()));
-    connect(ui->cswitchLOGCB_63,SIGNAL(currentIndexChanged(int)),this,SLOT(switchesEdited()));
-
-    connect(ui->cswitchCB_1,SIGNAL(currentIndexChanged(int)),this,SLOT(switchesEdited()));
-    connect(ui->cswitchCB_2,SIGNAL(currentIndexChanged(int)),this,SLOT(switchesEdited()));
-    connect(ui->cswitchCB_3,SIGNAL(currentIndexChanged(int)),this,SLOT(switchesEdited()));
-    connect(ui->cswitchCB_4,SIGNAL(currentIndexChanged(int)),this,SLOT(switchesEdited()));
-    connect(ui->cswitchCB_5,SIGNAL(currentIndexChanged(int)),this,SLOT(switchesEdited()));
-    connect(ui->cswitchCB_6,SIGNAL(currentIndexChanged(int)),this,SLOT(switchesEdited()));
-
-    connect(ui->cswitchOfs_1,SIGNAL(editingFinished()),this,SLOT(switchesEdited()));
-    connect(ui->cswitchOfs_2,SIGNAL(editingFinished()),this,SLOT(switchesEdited()));
-    connect(ui->cswitchOfs_3,SIGNAL(editingFinished()),this,SLOT(switchesEdited()));
-    connect(ui->cswitchOfs_4,SIGNAL(editingFinished()),this,SLOT(switchesEdited()));
-    connect(ui->cswitchOfs_5,SIGNAL(editingFinished()),this,SLOT(switchesEdited()));
-    connect(ui->cswitchOfs_6,SIGNAL(editingFinished()),this,SLOT(switchesEdited()));
-
+    //connects
     connect(ui->cswitchFunc_1,SIGNAL(currentIndexChanged(int)),this,SLOT(switchesEdited()));
     connect(ui->cswitchFunc_2,SIGNAL(currentIndexChanged(int)),this,SLOT(switchesEdited()));
     connect(ui->cswitchFunc_3,SIGNAL(currentIndexChanged(int)),this,SLOT(switchesEdited()));
@@ -1055,118 +1003,118 @@ void ModelEdit::tabSwitches()
 
 void ModelEdit::setCSWEnables()
 {
-    ui->cswitchCB_1->setVisible(g_model.customSw[0].func<CS_AND);
-    ui->cswitchCB_2->setVisible(g_model.customSw[1].func<CS_AND);
-    ui->cswitchCB_3->setVisible(g_model.customSw[2].func<CS_AND);
-    ui->cswitchCB_4->setVisible(g_model.customSw[3].func<CS_AND);
-    ui->cswitchCB_5->setVisible(g_model.customSw[4].func<CS_AND);
-    ui->cswitchCB_6->setVisible(g_model.customSw[5].func<CS_AND);
+//    ui->cswitchCB_1->setVisible(g_model.customSw[0].func<CS_AND);
+//    ui->cswitchCB_2->setVisible(g_model.customSw[1].func<CS_AND);
+//    ui->cswitchCB_3->setVisible(g_model.customSw[2].func<CS_AND);
+//    ui->cswitchCB_4->setVisible(g_model.customSw[3].func<CS_AND);
+//    ui->cswitchCB_5->setVisible(g_model.customSw[4].func<CS_AND);
+//    ui->cswitchCB_6->setVisible(g_model.customSw[5].func<CS_AND);
 
-    ui->cswitchOfs_1->setVisible(g_model.customSw[0].func<CS_AND);
-    ui->cswitchOfs_2->setVisible(g_model.customSw[1].func<CS_AND);
-    ui->cswitchOfs_3->setVisible(g_model.customSw[2].func<CS_AND);
-    ui->cswitchOfs_4->setVisible(g_model.customSw[3].func<CS_AND);
-    ui->cswitchOfs_5->setVisible(g_model.customSw[4].func<CS_AND);
-    ui->cswitchOfs_6->setVisible(g_model.customSw[5].func<CS_AND);
+//    ui->cswitchOfs_1->setVisible(g_model.customSw[0].func<CS_AND);
+//    ui->cswitchOfs_2->setVisible(g_model.customSw[1].func<CS_AND);
+//    ui->cswitchOfs_3->setVisible(g_model.customSw[2].func<CS_AND);
+//    ui->cswitchOfs_4->setVisible(g_model.customSw[3].func<CS_AND);
+//    ui->cswitchOfs_5->setVisible(g_model.customSw[4].func<CS_AND);
+//    ui->cswitchOfs_6->setVisible(g_model.customSw[5].func<CS_AND);
 
-    ui->cswitchLOGCB_12->setVisible(g_model.customSw[0].func>=CS_AND);
-    ui->cswitchLOGCB_13->setVisible(g_model.customSw[0].func>=CS_AND);
-    ui->cswitchLOGCB_22->setVisible(g_model.customSw[1].func>=CS_AND);
-    ui->cswitchLOGCB_23->setVisible(g_model.customSw[1].func>=CS_AND);
-    ui->cswitchLOGCB_32->setVisible(g_model.customSw[2].func>=CS_AND);
-    ui->cswitchLOGCB_33->setVisible(g_model.customSw[2].func>=CS_AND);
-    ui->cswitchLOGCB_42->setVisible(g_model.customSw[3].func>=CS_AND);
-    ui->cswitchLOGCB_43->setVisible(g_model.customSw[3].func>=CS_AND);
-    ui->cswitchLOGCB_52->setVisible(g_model.customSw[4].func>=CS_AND);
-    ui->cswitchLOGCB_53->setVisible(g_model.customSw[4].func>=CS_AND);
-    ui->cswitchLOGCB_62->setVisible(g_model.customSw[5].func>=CS_AND);
-    ui->cswitchLOGCB_63->setVisible(g_model.customSw[5].func>=CS_AND);
+//    ui->cswitchLOGCB_12->setVisible(g_model.customSw[0].func>=CS_AND);
+//    ui->cswitchLOGCB_13->setVisible(g_model.customSw[0].func>=CS_AND);
+//    ui->cswitchLOGCB_22->setVisible(g_model.customSw[1].func>=CS_AND);
+//    ui->cswitchLOGCB_23->setVisible(g_model.customSw[1].func>=CS_AND);
+//    ui->cswitchLOGCB_32->setVisible(g_model.customSw[2].func>=CS_AND);
+//    ui->cswitchLOGCB_33->setVisible(g_model.customSw[2].func>=CS_AND);
+//    ui->cswitchLOGCB_42->setVisible(g_model.customSw[3].func>=CS_AND);
+//    ui->cswitchLOGCB_43->setVisible(g_model.customSw[3].func>=CS_AND);
+//    ui->cswitchLOGCB_52->setVisible(g_model.customSw[4].func>=CS_AND);
+//    ui->cswitchLOGCB_53->setVisible(g_model.customSw[4].func>=CS_AND);
+//    ui->cswitchLOGCB_62->setVisible(g_model.customSw[5].func>=CS_AND);
+//    ui->cswitchLOGCB_63->setVisible(g_model.customSw[5].func>=CS_AND);
 }
 
 void ModelEdit::switchesEdited()
 {
-    if(ui->cswitchCB_1->isVisible()) g_model.customSw[0].input = ui->cswitchCB_1->currentIndex();
-    if(ui->cswitchCB_2->isVisible()) g_model.customSw[1].input = ui->cswitchCB_2->currentIndex();
-    if(ui->cswitchCB_3->isVisible()) g_model.customSw[2].input = ui->cswitchCB_3->currentIndex();
-    if(ui->cswitchCB_4->isVisible()) g_model.customSw[3].input = ui->cswitchCB_4->currentIndex();
-    if(ui->cswitchCB_5->isVisible()) g_model.customSw[4].input = ui->cswitchCB_5->currentIndex();
-    if(ui->cswitchCB_6->isVisible()) g_model.customSw[5].input = ui->cswitchCB_6->currentIndex();
+//    if(ui->cswitchCB_1->isVisible()) g_model.customSw[0].input = ui->cswitchCB_1->currentIndex();
+//    if(ui->cswitchCB_2->isVisible()) g_model.customSw[1].input = ui->cswitchCB_2->currentIndex();
+//    if(ui->cswitchCB_3->isVisible()) g_model.customSw[2].input = ui->cswitchCB_3->currentIndex();
+//    if(ui->cswitchCB_4->isVisible()) g_model.customSw[3].input = ui->cswitchCB_4->currentIndex();
+//    if(ui->cswitchCB_5->isVisible()) g_model.customSw[4].input = ui->cswitchCB_5->currentIndex();
+//    if(ui->cswitchCB_6->isVisible()) g_model.customSw[5].input = ui->cswitchCB_6->currentIndex();
 
-    if(ui->cswitchOfs_1->isVisible()) g_model.customSw[0].offset = ui->cswitchOfs_1->value();
-    if(ui->cswitchOfs_2->isVisible()) g_model.customSw[1].offset = ui->cswitchOfs_2->value();
-    if(ui->cswitchOfs_3->isVisible()) g_model.customSw[2].offset = ui->cswitchOfs_3->value();
-    if(ui->cswitchOfs_4->isVisible()) g_model.customSw[3].offset = ui->cswitchOfs_4->value();
-    if(ui->cswitchOfs_5->isVisible()) g_model.customSw[4].offset = ui->cswitchOfs_5->value();
-    if(ui->cswitchOfs_6->isVisible()) g_model.customSw[5].offset = ui->cswitchOfs_6->value();
+//    if(ui->cswitchOfs_1->isVisible()) g_model.customSw[0].v2 = ui->cswitchOfs_1->value();
+//    if(ui->cswitchOfs_2->isVisible()) g_model.customSw[1].v2 = ui->cswitchOfs_2->value();
+//    if(ui->cswitchOfs_3->isVisible()) g_model.customSw[2].v2 = ui->cswitchOfs_3->value();
+//    if(ui->cswitchOfs_4->isVisible()) g_model.customSw[3].v2 = ui->cswitchOfs_4->value();
+//    if(ui->cswitchOfs_5->isVisible()) g_model.customSw[4].v2 = ui->cswitchOfs_5->value();
+//    if(ui->cswitchOfs_6->isVisible()) g_model.customSw[5].v2 = ui->cswitchOfs_6->value();
 
-    if(ui->cswitchLOGCB_12->isVisible()) g_model.customSw[0].input = ui->cswitchLOGCB_12->currentIndex()-MAX_DRSWITCH;
-    if(ui->cswitchLOGCB_22->isVisible()) g_model.customSw[1].input = ui->cswitchLOGCB_22->currentIndex()-MAX_DRSWITCH;
-    if(ui->cswitchLOGCB_32->isVisible()) g_model.customSw[2].input = ui->cswitchLOGCB_32->currentIndex()-MAX_DRSWITCH;
-    if(ui->cswitchLOGCB_42->isVisible()) g_model.customSw[3].input = ui->cswitchLOGCB_42->currentIndex()-MAX_DRSWITCH;
-    if(ui->cswitchLOGCB_52->isVisible()) g_model.customSw[4].input = ui->cswitchLOGCB_52->currentIndex()-MAX_DRSWITCH;
-    if(ui->cswitchLOGCB_62->isVisible()) g_model.customSw[5].input = ui->cswitchLOGCB_62->currentIndex()-MAX_DRSWITCH;
+//    if(ui->cswitchLOGCB_12->isVisible()) g_model.customSw[0].input = ui->cswitchLOGCB_12->currentIndex()-MAX_DRSWITCH;
+//    if(ui->cswitchLOGCB_22->isVisible()) g_model.customSw[1].input = ui->cswitchLOGCB_22->currentIndex()-MAX_DRSWITCH;
+//    if(ui->cswitchLOGCB_32->isVisible()) g_model.customSw[2].input = ui->cswitchLOGCB_32->currentIndex()-MAX_DRSWITCH;
+//    if(ui->cswitchLOGCB_42->isVisible()) g_model.customSw[3].input = ui->cswitchLOGCB_42->currentIndex()-MAX_DRSWITCH;
+//    if(ui->cswitchLOGCB_52->isVisible()) g_model.customSw[4].input = ui->cswitchLOGCB_52->currentIndex()-MAX_DRSWITCH;
+//    if(ui->cswitchLOGCB_62->isVisible()) g_model.customSw[5].input = ui->cswitchLOGCB_62->currentIndex()-MAX_DRSWITCH;
 
-    if(ui->cswitchLOGCB_13->isVisible()) g_model.customSw[0].offset = ui->cswitchLOGCB_13->currentIndex()-MAX_DRSWITCH;
-    if(ui->cswitchLOGCB_23->isVisible()) g_model.customSw[1].offset = ui->cswitchLOGCB_23->currentIndex()-MAX_DRSWITCH;
-    if(ui->cswitchLOGCB_33->isVisible()) g_model.customSw[2].offset = ui->cswitchLOGCB_33->currentIndex()-MAX_DRSWITCH;
-    if(ui->cswitchLOGCB_43->isVisible()) g_model.customSw[3].offset = ui->cswitchLOGCB_43->currentIndex()-MAX_DRSWITCH;
-    if(ui->cswitchLOGCB_53->isVisible()) g_model.customSw[4].offset = ui->cswitchLOGCB_53->currentIndex()-MAX_DRSWITCH;
-    if(ui->cswitchLOGCB_63->isVisible()) g_model.customSw[5].offset = ui->cswitchLOGCB_63->currentIndex()-MAX_DRSWITCH;
+//    if(ui->cswitchLOGCB_13->isVisible()) g_model.customSw[0].v2 = ui->cswitchLOGCB_13->currentIndex()-MAX_DRSWITCH;
+//    if(ui->cswitchLOGCB_23->isVisible()) g_model.customSw[1].v2 = ui->cswitchLOGCB_23->currentIndex()-MAX_DRSWITCH;
+//    if(ui->cswitchLOGCB_33->isVisible()) g_model.customSw[2].v2 = ui->cswitchLOGCB_33->currentIndex()-MAX_DRSWITCH;
+//    if(ui->cswitchLOGCB_43->isVisible()) g_model.customSw[3].v2 = ui->cswitchLOGCB_43->currentIndex()-MAX_DRSWITCH;
+//    if(ui->cswitchLOGCB_53->isVisible()) g_model.customSw[4].v2 = ui->cswitchLOGCB_53->currentIndex()-MAX_DRSWITCH;
+//    if(ui->cswitchLOGCB_63->isVisible()) g_model.customSw[5].v2 = ui->cswitchLOGCB_63->currentIndex()-MAX_DRSWITCH;
 
     //zero boxes if we switched between logical and offset
-    if((g_model.customSw[0].func<CS_AND) != (ui->cswitchFunc_1->currentIndex()<CS_AND))
-    {
-        memset(&g_model.customSw[0],0,sizeof(g_model.customSw[0]));
-        ui->cswitchLOGCB_12->setCurrentIndex(MAX_DRSWITCH);
-        ui->cswitchLOGCB_13->setCurrentIndex(MAX_DRSWITCH);
-        ui->cswitchCB_1->setCurrentIndex(0);
-        ui->cswitchOfs_1->setValue(0);
-    }
+//    if((g_model.customSw[0].func<CS_AND) != (ui->cswitchFunc_1->currentIndex()<CS_AND))
+//    {
+//        memset(&g_model.customSw[0],0,sizeof(g_model.customSw[0]));
+//        ui->cswitchLOGCB_12->setCurrentIndex(MAX_DRSWITCH);
+//        ui->cswitchLOGCB_13->setCurrentIndex(MAX_DRSWITCH);
+//        ui->cswitchCB_1->setCurrentIndex(0);
+//        ui->cswitchOfs_1->setValue(0);
+//    }
 
-    if((g_model.customSw[1].func<CS_AND) != (ui->cswitchFunc_2->currentIndex()<CS_AND))
-    {
-        memset(&g_model.customSw[1],0,sizeof(g_model.customSw[0]));
-        ui->cswitchLOGCB_22->setCurrentIndex(MAX_DRSWITCH);
-        ui->cswitchLOGCB_23->setCurrentIndex(MAX_DRSWITCH);
-        ui->cswitchCB_2->setCurrentIndex(0);
-        ui->cswitchOfs_2->setValue(0);
-    }
+//    if((g_model.customSw[1].func<CS_AND) != (ui->cswitchFunc_2->currentIndex()<CS_AND))
+//    {
+//        memset(&g_model.customSw[1],0,sizeof(g_model.customSw[0]));
+//        ui->cswitchLOGCB_22->setCurrentIndex(MAX_DRSWITCH);
+//        ui->cswitchLOGCB_23->setCurrentIndex(MAX_DRSWITCH);
+//        ui->cswitchCB_2->setCurrentIndex(0);
+//        ui->cswitchOfs_2->setValue(0);
+//    }
 
-    if((g_model.customSw[2].func<CS_AND) != (ui->cswitchFunc_3->currentIndex()<CS_AND))
-    {
-        memset(&g_model.customSw[2],0,sizeof(g_model.customSw[0]));
-        ui->cswitchLOGCB_32->setCurrentIndex(MAX_DRSWITCH);
-        ui->cswitchLOGCB_33->setCurrentIndex(MAX_DRSWITCH);
-        ui->cswitchCB_3->setCurrentIndex(0);
-        ui->cswitchOfs_3->setValue(0);
-    }
+//    if((g_model.customSw[2].func<CS_AND) != (ui->cswitchFunc_3->currentIndex()<CS_AND))
+//    {
+//        memset(&g_model.customSw[2],0,sizeof(g_model.customSw[0]));
+//        ui->cswitchLOGCB_32->setCurrentIndex(MAX_DRSWITCH);
+//        ui->cswitchLOGCB_33->setCurrentIndex(MAX_DRSWITCH);
+//        ui->cswitchCB_3->setCurrentIndex(0);
+//        ui->cswitchOfs_3->setValue(0);
+//    }
 
-    if((g_model.customSw[3].func<CS_AND) != (ui->cswitchFunc_4->currentIndex()<CS_AND))
-    {
-        memset(&g_model.customSw[3],0,sizeof(g_model.customSw[0]));
-        ui->cswitchLOGCB_42->setCurrentIndex(MAX_DRSWITCH);
-        ui->cswitchLOGCB_43->setCurrentIndex(MAX_DRSWITCH);
-        ui->cswitchCB_4->setCurrentIndex(0);
-        ui->cswitchOfs_4->setValue(0);
-    }
+//    if((g_model.customSw[3].func<CS_AND) != (ui->cswitchFunc_4->currentIndex()<CS_AND))
+//    {
+//        memset(&g_model.customSw[3],0,sizeof(g_model.customSw[0]));
+//        ui->cswitchLOGCB_42->setCurrentIndex(MAX_DRSWITCH);
+//        ui->cswitchLOGCB_43->setCurrentIndex(MAX_DRSWITCH);
+//        ui->cswitchCB_4->setCurrentIndex(0);
+//        ui->cswitchOfs_4->setValue(0);
+//    }
 
-    if((g_model.customSw[4].func<CS_AND) != (ui->cswitchFunc_5->currentIndex()<CS_AND))
-    {
-        memset(&g_model.customSw[4],0,sizeof(g_model.customSw[0]));
-        ui->cswitchLOGCB_52->setCurrentIndex(MAX_DRSWITCH);
-        ui->cswitchLOGCB_53->setCurrentIndex(MAX_DRSWITCH);
-        ui->cswitchCB_5->setCurrentIndex(0);
-        ui->cswitchOfs_5->setValue(0);
-    }
+//    if((g_model.customSw[4].func<CS_AND) != (ui->cswitchFunc_5->currentIndex()<CS_AND))
+//    {
+//        memset(&g_model.customSw[4],0,sizeof(g_model.customSw[0]));
+//        ui->cswitchLOGCB_52->setCurrentIndex(MAX_DRSWITCH);
+//        ui->cswitchLOGCB_53->setCurrentIndex(MAX_DRSWITCH);
+//        ui->cswitchCB_5->setCurrentIndex(0);
+//        ui->cswitchOfs_5->setValue(0);
+//    }
 
-    if((g_model.customSw[5].func<CS_AND) != (ui->cswitchFunc_6->currentIndex()<CS_AND))
-    {
-        memset(&g_model.customSw[5],0,sizeof(g_model.customSw[0]));
-        ui->cswitchLOGCB_62->setCurrentIndex(MAX_DRSWITCH);
-        ui->cswitchLOGCB_63->setCurrentIndex(MAX_DRSWITCH);
-        ui->cswitchCB_6->setCurrentIndex(0);
-        ui->cswitchOfs_6->setValue(0);
-    }
+//    if((g_model.customSw[5].func<CS_AND) != (ui->cswitchFunc_6->currentIndex()<CS_AND))
+//    {
+//        memset(&g_model.customSw[5],0,sizeof(g_model.customSw[0]));
+//        ui->cswitchLOGCB_62->setCurrentIndex(MAX_DRSWITCH);
+//        ui->cswitchLOGCB_63->setCurrentIndex(MAX_DRSWITCH);
+//        ui->cswitchCB_6->setCurrentIndex(0);
+//        ui->cswitchOfs_6->setValue(0);
+//    }
 
     g_model.customSw[0].func = ui->cswitchFunc_1->currentIndex();
     g_model.customSw[1].func = ui->cswitchFunc_2->currentIndex();
@@ -1416,50 +1364,50 @@ QSpinBox *ModelEdit::getNodeSB(int i)   // get the SpinBox that corresponds to t
     if(currentCurve==0 && i==2) return ui->curvePt3_1;
     if(currentCurve==0 && i==3) return ui->curvePt4_1;
     if(currentCurve==0 && i==4) return ui->curvePt5_1;
-                                                    
+
     if(currentCurve==1 && i==0) return ui->curvePt1_2;
     if(currentCurve==1 && i==1) return ui->curvePt2_2;
     if(currentCurve==1 && i==2) return ui->curvePt3_2;
     if(currentCurve==1 && i==3) return ui->curvePt4_2;
     if(currentCurve==1 && i==4) return ui->curvePt5_2;
-                                                    
+
     if(currentCurve==2 && i==0) return ui->curvePt1_3;
     if(currentCurve==2 && i==1) return ui->curvePt2_3;
     if(currentCurve==2 && i==2) return ui->curvePt3_3;
     if(currentCurve==2 && i==3) return ui->curvePt4_3;
     if(currentCurve==2 && i==4) return ui->curvePt5_3;
-                                                    
+
     if(currentCurve==3 && i==0) return ui->curvePt1_4;
     if(currentCurve==3 && i==1) return ui->curvePt2_4;
     if(currentCurve==3 && i==2) return ui->curvePt3_4;
     if(currentCurve==3 && i==3) return ui->curvePt4_4;
     if(currentCurve==3 && i==4) return ui->curvePt5_4;
-                                                    
+
     if(currentCurve==4 && i==0) return ui->curvePt1_5;
     if(currentCurve==4 && i==1) return ui->curvePt2_5;
     if(currentCurve==4 && i==2) return ui->curvePt3_5;
     if(currentCurve==4 && i==3) return ui->curvePt4_5;
     if(currentCurve==4 && i==4) return ui->curvePt5_5;
-                                                    
+
     if(currentCurve==5 && i==0) return ui->curvePt1_6;
     if(currentCurve==5 && i==1) return ui->curvePt2_6;
     if(currentCurve==5 && i==2) return ui->curvePt3_6;
     if(currentCurve==5 && i==3) return ui->curvePt4_6;
     if(currentCurve==5 && i==4) return ui->curvePt5_6;
-                                                    
+
     if(currentCurve==6 && i==0) return ui->curvePt1_7;
     if(currentCurve==6 && i==1) return ui->curvePt2_7;
     if(currentCurve==6 && i==2) return ui->curvePt3_7;
     if(currentCurve==6 && i==3) return ui->curvePt4_7;
     if(currentCurve==6 && i==4) return ui->curvePt5_7;
-                                                    
+
     if(currentCurve==7 && i==0) return ui->curvePt1_8;
     if(currentCurve==7 && i==1) return ui->curvePt2_8;
     if(currentCurve==7 && i==2) return ui->curvePt3_8;
     if(currentCurve==7 && i==3) return ui->curvePt4_8;
     if(currentCurve==7 && i==4) return ui->curvePt5_8;
-                                                    
-                                                    
+
+
     if(currentCurve==8 && i==0) return ui->curvePt1_9;
     if(currentCurve==8 && i==1) return ui->curvePt2_9;
     if(currentCurve==8 && i==2) return ui->curvePt3_9;
@@ -1923,7 +1871,7 @@ void ModelEdit::launchSimulation()
     memcpy(&gm, &g_model,sizeof(gm));
 
     simulatorDialog *sd = new simulatorDialog(this);
-    sd->loadParams(g_eeGeneral,g_model);
+    sd->loadParams(gg,gm);
     sd->show();
 }
 
