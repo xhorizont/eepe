@@ -52,7 +52,8 @@ private:
     void centerSticks();
 
     bool keyState(EnumKeys key);
-    bool getSwitch(int swtch, bool nc);
+    qint16 getValue(qint8 i);
+    bool getSwitch(int swtch, bool nc, qint8 level=0);
     void beepWarn1();
 
     int beepVal;

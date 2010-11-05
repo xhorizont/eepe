@@ -333,8 +333,8 @@ void printDialog::printSwitches()
     {
         str.append("<tr>");
         str.append(doTC(tr("SW%1").arg(i+1),"",true));
-        str.append(doTC(getSourceStr(g_eeGeneral->stickMode,g_model->customSw[i].input),"green"));
-        str.append(doTC(QString::number(g_model->customSw[i].offset),"green"));
+        str.append(doTC(getSourceStr(g_eeGeneral->stickMode,g_model->customSw[i].v1),"green"));
+        str.append(doTC(QString::number(g_model->customSw[i].v2),"green"));
         str.append(doTC(getCSWFunc(g_model->customSw[i].func),"green"));
         str.append("</tr>");
     }

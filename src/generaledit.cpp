@@ -34,11 +34,11 @@ GeneralEdit::GeneralEdit(EEPFILE *eFile, QWidget *parent) :
     ui->inactimerSB->setValue(g_eeGeneral.inactivityTimer);
     ui->thrrevChkB->setChecked(g_eeGeneral.throttleReversed);
     ui->inputfilterCB->setCurrentIndex(g_eeGeneral.filterInput);
-    ui->thrwarnChkB->setChecked(!(g_eeGeneral.warnOpts & BIT_WARN_THR));   //Default is zero=checked
-    ui->switchwarnChkB->setChecked(!(g_eeGeneral.warnOpts & BIT_WARN_SW)); //Default is zero=checked
-    ui->memwarnChkB->setChecked(!(g_eeGeneral.warnOpts & BIT_WARN_MEM));   //Default is zero=checked
-    ui->alarmwarnChkB->setChecked(!(g_eeGeneral.warnOpts & BIT_WARN_BEEP));//Default is zero=checked
-    ui->beeperCB->setCurrentIndex((g_eeGeneral.warnOpts & BIT_BEEP_VAL) >> BEEP_VAL_SHIFT);
+    ui->thrwarnChkB->setChecked(!g_eeGeneral.disableThrottleWarning);   //Default is zero=checked
+    ui->switchwarnChkB->setChecked(!g_eeGeneral.disableSwitchWarning); //Default is zero=checked
+    ui->memwarnChkB->setChecked(!g_eeGeneral.disableMemoryWarning);   //Default is zero=checked
+    ui->alarmwarnChkB->setChecked(!g_eeGeneral.disableAlarmWarning);//Default is zero=checked
+    ui->beeperCB->setCurrentIndex(g_eeGeneral.beeperVal);
     ui->channelorderCB->setCurrentIndex(g_eeGeneral.templateSetup);
     ui->stickmodeCB->setCurrentIndex(g_eeGeneral.stickMode);
 
@@ -79,6 +79,8 @@ GeneralEdit::GeneralEdit(EEPFILE *eFile, QWidget *parent) :
     ui->PPM6->setValue(g_eeGeneral.ppmInCalib[5]);
     ui->PPM7->setValue(g_eeGeneral.ppmInCalib[6]);
     ui->PPM8->setValue(g_eeGeneral.ppmInCalib[7]);
+
+    ui->PPM_MultiplierDSB->setValue((qreal)(g_eeGeneral.PPM_Multiplier+10)/10);
 
 }
 
@@ -154,47 +156,31 @@ void GeneralEdit::on_inputfilterCB_currentIndexChanged(int index)
 
 void GeneralEdit::on_thrwarnChkB_stateChanged(int )
 {
-    if(!ui->thrwarnChkB->isChecked()) //default value is 0 => checked!
-        g_eeGeneral.warnOpts |= BIT_WARN_THR;
-    else
-        g_eeGeneral.warnOpts &= ~BIT_WARN_THR;
-
+    g_eeGeneral.disableThrottleWarning = ui->thrwarnChkB->isChecked() ? 0 : 1;
     updateSettings();
 }
 
 void GeneralEdit::on_switchwarnChkB_stateChanged(int )
 {
-    if(!ui->switchwarnChkB->isChecked()) //default value is 0 => checked!
-        g_eeGeneral.warnOpts |= BIT_WARN_SW;
-    else
-        g_eeGeneral.warnOpts &= ~BIT_WARN_SW;
-
+    g_eeGeneral.disableSwitchWarning = ui->switchwarnChkB->isChecked() ? 0 : 1;
     updateSettings();
 }
 
 void GeneralEdit::on_memwarnChkB_stateChanged(int )
 {
-    if(!ui->memwarnChkB->isChecked()) //default value is 0 => checked!
-        g_eeGeneral.warnOpts |= BIT_WARN_MEM;
-    else
-        g_eeGeneral.warnOpts &= ~BIT_WARN_MEM;
-
+    g_eeGeneral.disableMemoryWarning = ui->memwarnChkB->isChecked() ? 0 : 1;
     updateSettings();
 }
 
 void GeneralEdit::on_alarmwarnChkB_stateChanged(int )
 {
-    if(!ui->alarmwarnChkB->isChecked()) //default value is 0 => checked!
-        g_eeGeneral.warnOpts |= BIT_WARN_BEEP;
-    else
-        g_eeGeneral.warnOpts &= ~BIT_WARN_BEEP;
-
+    g_eeGeneral.disableAlarmWarning = ui->alarmwarnChkB->isChecked() ? 0 : 1;
     updateSettings();
 }
 
 void GeneralEdit::on_beeperCB_currentIndexChanged(int index)
 {
-    g_eeGeneral.warnOpts = (g_eeGeneral.warnOpts & ~BIT_BEEP_VAL) | index << BEEP_VAL_SHIFT;
+    g_eeGeneral.beeperVal = index;
     updateSettings();
 }
 
@@ -425,5 +411,11 @@ void GeneralEdit::on_beepFlashChkB_stateChanged(int )
 void GeneralEdit::on_splashScreenChkB_stateChanged(int )
 {
     g_eeGeneral.disableSplashScreen = ui->splashScreenChkB->isChecked() ? 0 : 1;
+    updateSettings();
+}
+
+void GeneralEdit::on_PPM_MultiplierDSB_editingFinished()
+{
+    g_eeGeneral.PPM_Multiplier = (int)(ui->PPM_MultiplierDSB->value()*10)-10;
     updateSettings();
 }
