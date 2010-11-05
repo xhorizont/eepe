@@ -27,6 +27,7 @@ signals:
     void modelValuesChanged();
 
 private slots:
+    void on_PPM_MultiplierDSB_editingFinished();
     void on_splashScreenChkB_stateChanged(int );
     void on_beepCountDownChkB_stateChanged(int );
     void on_beepMinuteChkB_stateChanged(int );

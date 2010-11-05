@@ -284,7 +284,16 @@ bool simulatorDialog::keyState(EnumKeys key)
     }
 }
 
-bool simulatorDialog::getSwitch(int swtch, bool nc)
+qint16 simulatorDialog::getValue(qint8 i)
+{
+    if(i<MIX_MAX) return calibratedStick[i];//-512..512
+    else if(i<=MIX_FULL) return 1024; //FULL/MAX
+    else if(i<MIX_FULL+NUM_PPM) return g_ppmIns[i-MIX_FULL] - g_eeGeneral.ppmInCalib[i-MIX_FULL];
+    else return ex_chans[i-MIX_FULL-NUM_PPM];
+    return 0;
+}
+
+bool simulatorDialog::getSwitch(int swtch, bool nc, qint8 level)
 {
     switch(swtch){
        case  0:            return  nc;
@@ -644,26 +653,23 @@ void simulatorDialog::perOut(bool init)
     // interpolate value with min/max so we get smooth motion from center to stop
     // this limits based on v original values and min=-1024, max=1024  RESX=1024
 
-    int16_t v = 0;
-    int16_t lim_p = g_model.limitData[i].max+100;
-    int16_t lim_n = g_model.limitData[i].min-100;
 
-    int32_t q = chans[i]; // offset before limit
-    if(q) v = (q>0) ? q*lim_p/10000 : -q*lim_n/10000; //div by 10000 -> output = -1024..1024
-    chans[i] /= 100; // chans back to -512..512
-    ex_chans[i] = chans[i]; //for getswitch
+      int32_t q = chans[i];// + (int32_t)g_model.limitData[i].offset*100; // offset before limit
 
-    //impose hard limits
-    lim_p = calc100toRESX(lim_p);
-    lim_n = calc100toRESX(lim_n);
-    if(v>lim_p) v = lim_p;
-    if(v<lim_n) v = lim_n;// absolute limits - do not go over!
+      chans[i] /= 100; // chans back to -1024..1024
+      ex_chans[i] = chans[i]; //for getswitch
 
-    v+=g_model.limitData[i].offset;      //offset after limit.
-    if(g_model.limitData[i].revert) v=-v;// finally do the reverse.
+      int16_t ofs = g_model.limitData[i].offset;
+
+      if(q) q = (q>0) ?
+                q*((int32_t)10*(g_model.limitData[i].max+100)-ofs)/100000 :
+               -q*((int32_t)10*(g_model.limitData[i].min-100)-ofs)/100000 ; //div by 10000 -> output = -1024..1024
+
+      q += ofs + ofs/32 -ofs/128; // x-x/32+x/128 -> 1000 + 1000/32 - 1000/128 = 1024
+      if(g_model.limitData[i].revert) q=-q;// finally do the reverse.
 
     //cli();
-    chanOut[i] = v; //copy consistent word to int-level
+    chanOut[i] = q; //copy consistent word to int-level
     //sei();
   }
 }

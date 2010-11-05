@@ -38,6 +38,8 @@
 // eeprom ver >9 => mdvers ==2
 
 
+
+
 typedef struct t_EEGeneral {
   uint8_t   myVers;
   int16_t   calibMid[7];
@@ -51,12 +53,13 @@ typedef struct t_EEGeneral {
   int8_t    lightSw;
   int16_t   ppmInCalib[8];
   uint8_t   view;     //index of subview in main scrren
-#define WARN_THR     (!(g_eeGeneral.warnOpts & 0x01))
-#define WARN_BEP     (!(g_eeGeneral.warnOpts & 0x80))
-#define WARN_SW      (!(g_eeGeneral.warnOpts & 0x02))
-#define WARN_MEM     (!(g_eeGeneral.warnOpts & 0x04))
-#define BEEP_VAL     ( (g_eeGeneral.warnOpts & 0x38) >>3 )
-  uint8_t   warnOpts; //bitset for several warnings
+//  uint8_t   warnOpts; //bitset for several warnings
+  uint8_t   disableThrottleWarning:1;
+  uint8_t   disableSwitchWarning:1;
+  uint8_t   disableMemoryWarning:1;
+  uint8_t   beeperVal:3;
+  uint8_t   reserveWarning:1;
+  uint8_t   disableAlarmWarning:1;
   uint8_t   stickMode;
   uint8_t   inactivityTimer;
   uint8_t   throttleReversed:1;
@@ -68,9 +71,10 @@ typedef struct t_EEGeneral {
   uint8_t   filterInput;
   uint8_t   lightAutoOff;
   uint8_t   templateSetup;  //RETA order according to chout_ar array
-  uint8_t   PPM_Multiplier;
+  int8_t    PPM_Multiplier;
   uint8_t   res[1];
 } __attribute__((packed)) EEGeneral;
+
 
 
 

@@ -29,6 +29,12 @@ private:
     ModelData g_model;
     int       id_model;
 
+    bool switchEditLock;
+
+    QSpinBox  * cswitchOffset[NUM_CSW];
+    QComboBox * cswitchSource1[NUM_CSW];
+    QComboBox * cswitchSource2[NUM_CSW];
+
     void updateSettings();
     void tabModelEditSetup();
     void tabExpo();
@@ -38,7 +44,7 @@ private:
     void tabSwitches();
     void tabTrims();
     void updateTabCurves();
-    void setCSWEnables();
+    void setSwitchWidgetVisibility(int i);
 
     void launchSimulation();
     void resizeEvent(QResizeEvent *event  = 0);

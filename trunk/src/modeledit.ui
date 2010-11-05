@@ -1518,10 +1518,10 @@ Right</string>
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
          <property name="minimum">
-          <number>-125</number>
+          <number>-100</number>
          </property>
          <property name="maximum">
-          <number>125</number>
+          <number>100</number>
          </property>
         </widget>
        </item>
@@ -1531,10 +1531,10 @@ Right</string>
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
          <property name="minimum">
-          <number>-125</number>
+          <number>-100</number>
          </property>
          <property name="maximum">
-          <number>125</number>
+          <number>100</number>
          </property>
         </widget>
        </item>
@@ -1578,10 +1578,10 @@ Right</string>
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
          <property name="minimum">
-          <number>-125</number>
+          <number>-100</number>
          </property>
          <property name="maximum">
-          <number>125</number>
+          <number>100</number>
          </property>
         </widget>
        </item>
@@ -1591,10 +1591,10 @@ Right</string>
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
          <property name="minimum">
-          <number>-125</number>
+          <number>-100</number>
          </property>
          <property name="maximum">
-          <number>125</number>
+          <number>100</number>
          </property>
         </widget>
        </item>
@@ -1638,10 +1638,10 @@ Right</string>
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
          <property name="minimum">
-          <number>-125</number>
+          <number>-100</number>
          </property>
          <property name="maximum">
-          <number>125</number>
+          <number>100</number>
          </property>
         </widget>
        </item>
@@ -1651,10 +1651,10 @@ Right</string>
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
          <property name="minimum">
-          <number>-125</number>
+          <number>-100</number>
          </property>
          <property name="maximum">
-          <number>125</number>
+          <number>100</number>
          </property>
         </widget>
        </item>
@@ -1698,10 +1698,10 @@ Right</string>
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
          <property name="minimum">
-          <number>-125</number>
+          <number>-100</number>
          </property>
          <property name="maximum">
-          <number>125</number>
+          <number>100</number>
          </property>
         </widget>
        </item>
@@ -1711,10 +1711,10 @@ Right</string>
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
          <property name="minimum">
-          <number>-125</number>
+          <number>-100</number>
          </property>
          <property name="maximum">
-          <number>125</number>
+          <number>100</number>
          </property>
         </widget>
        </item>
@@ -1758,10 +1758,10 @@ Right</string>
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
          <property name="minimum">
-          <number>-125</number>
+          <number>-100</number>
          </property>
          <property name="maximum">
-          <number>125</number>
+          <number>100</number>
          </property>
         </widget>
        </item>
@@ -1771,10 +1771,10 @@ Right</string>
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
          <property name="minimum">
-          <number>-125</number>
+          <number>-100</number>
          </property>
          <property name="maximum">
-          <number>125</number>
+          <number>100</number>
          </property>
         </widget>
        </item>
@@ -1818,10 +1818,10 @@ Right</string>
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
          <property name="minimum">
-          <number>-125</number>
+          <number>-100</number>
          </property>
          <property name="maximum">
-          <number>125</number>
+          <number>100</number>
          </property>
         </widget>
        </item>
@@ -1831,10 +1831,10 @@ Right</string>
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
          <property name="minimum">
-          <number>-125</number>
+          <number>-100</number>
          </property>
          <property name="maximum">
-          <number>125</number>
+          <number>100</number>
          </property>
         </widget>
        </item>
@@ -1878,10 +1878,10 @@ Right</string>
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
          <property name="minimum">
-          <number>-125</number>
+          <number>-100</number>
          </property>
          <property name="maximum">
-          <number>125</number>
+          <number>100</number>
          </property>
         </widget>
        </item>
@@ -1891,10 +1891,10 @@ Right</string>
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
          <property name="minimum">
-          <number>-125</number>
+          <number>-100</number>
          </property>
          <property name="maximum">
-          <number>125</number>
+          <number>100</number>
          </property>
         </widget>
        </item>
@@ -1938,10 +1938,10 @@ Right</string>
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
          <property name="minimum">
-          <number>-125</number>
+          <number>-100</number>
          </property>
          <property name="maximum">
-          <number>125</number>
+          <number>100</number>
          </property>
         </widget>
        </item>
@@ -1951,10 +1951,10 @@ Right</string>
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
          <property name="minimum">
-          <number>-125</number>
+          <number>-100</number>
          </property>
          <property name="maximum">
-          <number>125</number>
+          <number>100</number>
          </property>
         </widget>
        </item>
@@ -1998,10 +1998,10 @@ Right</string>
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
          <property name="minimum">
-          <number>-125</number>
+          <number>-100</number>
          </property>
          <property name="maximum">
-          <number>125</number>
+          <number>100</number>
          </property>
         </widget>
        </item>
@@ -2011,10 +2011,10 @@ Right</string>
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
          <property name="minimum">
-          <number>-125</number>
+          <number>-100</number>
          </property>
          <property name="maximum">
-          <number>125</number>
+          <number>100</number>
          </property>
         </widget>
        </item>
@@ -2058,10 +2058,10 @@ Right</string>
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
          <property name="minimum">
-          <number>-125</number>
+          <number>-100</number>
          </property>
          <property name="maximum">
-          <number>125</number>
+          <number>100</number>
          </property>
         </widget>
        </item>
@@ -2071,10 +2071,10 @@ Right</string>
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
          <property name="minimum">
-          <number>-125</number>
+          <number>-100</number>
          </property>
          <property name="maximum">
-          <number>125</number>
+          <number>100</number>
          </property>
         </widget>
        </item>
@@ -2118,10 +2118,10 @@ Right</string>
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
          <property name="minimum">
-          <number>-125</number>
+          <number>-100</number>
          </property>
          <property name="maximum">
-          <number>125</number>
+          <number>100</number>
          </property>
         </widget>
        </item>
@@ -2131,10 +2131,10 @@ Right</string>
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
          <property name="minimum">
-          <number>-125</number>
+          <number>-100</number>
          </property>
          <property name="maximum">
-          <number>125</number>
+          <number>100</number>
          </property>
         </widget>
        </item>
@@ -2178,10 +2178,10 @@ Right</string>
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
          <property name="minimum">
-          <number>-125</number>
+          <number>-100</number>
          </property>
          <property name="maximum">
-          <number>125</number>
+          <number>100</number>
          </property>
         </widget>
        </item>
@@ -2191,10 +2191,10 @@ Right</string>
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
          <property name="minimum">
-          <number>-125</number>
+          <number>-100</number>
          </property>
          <property name="maximum">
-          <number>125</number>
+          <number>100</number>
          </property>
         </widget>
        </item>
@@ -2238,10 +2238,10 @@ Right</string>
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
          <property name="minimum">
-          <number>-125</number>
+          <number>-100</number>
          </property>
          <property name="maximum">
-          <number>125</number>
+          <number>100</number>
          </property>
         </widget>
        </item>
@@ -2251,10 +2251,10 @@ Right</string>
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
          <property name="minimum">
-          <number>-125</number>
+          <number>-100</number>
          </property>
          <property name="maximum">
-          <number>125</number>
+          <number>100</number>
          </property>
         </widget>
        </item>
@@ -2298,10 +2298,10 @@ Right</string>
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
          <property name="minimum">
-          <number>-125</number>
+          <number>-100</number>
          </property>
          <property name="maximum">
-          <number>125</number>
+          <number>100</number>
          </property>
         </widget>
        </item>
@@ -2311,10 +2311,10 @@ Right</string>
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
          <property name="minimum">
-          <number>-125</number>
+          <number>-100</number>
          </property>
          <property name="maximum">
-          <number>125</number>
+          <number>100</number>
          </property>
         </widget>
        </item>
@@ -2358,10 +2358,10 @@ Right</string>
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
          <property name="minimum">
-          <number>-125</number>
+          <number>-100</number>
          </property>
          <property name="maximum">
-          <number>125</number>
+          <number>100</number>
          </property>
         </widget>
        </item>
@@ -2371,10 +2371,10 @@ Right</string>
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
          <property name="minimum">
-          <number>-125</number>
+          <number>-100</number>
          </property>
          <property name="maximum">
-          <number>125</number>
+          <number>100</number>
          </property>
         </widget>
        </item>
@@ -2418,10 +2418,10 @@ Right</string>
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
          <property name="minimum">
-          <number>-125</number>
+          <number>-100</number>
          </property>
          <property name="maximum">
-          <number>125</number>
+          <number>100</number>
          </property>
         </widget>
        </item>
@@ -2431,10 +2431,10 @@ Right</string>
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
          <property name="minimum">
-          <number>-125</number>
+          <number>-100</number>
          </property>
          <property name="maximum">
-          <number>125</number>
+          <number>100</number>
          </property>
         </widget>
        </item>
@@ -4537,7 +4537,7 @@ Right</string>
           <enum>QFrame::Raised</enum>
          </property>
          <property name="text">
-          <string>Source/SW1</string>
+          <string>V1</string>
          </property>
         </widget>
        </item>
@@ -4550,7 +4550,7 @@ Right</string>
           <enum>QFrame::Raised</enum>
          </property>
          <property name="text">
-          <string>Value/SW2</string>
+          <string>V2</string>
          </property>
         </widget>
        </item>
