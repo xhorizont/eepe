@@ -83,7 +83,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Silent mode (No Alarm)</source>
-        <translation>Mode silencieux (alarme désactivée)</translation>
+        <translation type="obsolete">Mode silencieux (alarme désactivée)</translation>
     </message>
     <message>
         <source>If not zero will sound beeps if the transmitter has been left without inputs for the specified number of minutes.</source>
@@ -92,7 +92,7 @@ Réinitialisation  en agissant sur n&apos;importe lequel des manches / touches d
     </message>
     <message>
         <source>3 - Long</source>
-        <translation>3 - Fort</translation>
+        <translation type="obsolete">3 - Fort</translation>
     </message>
     <message>
         <source>General Edit</source>
@@ -144,7 +144,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>1 - No Keys</source>
-        <translation>1 - Touches Silencieuses</translation>
+        <translation type="obsolete">1 - Touches Silencieuses</translation>
     </message>
     <message>
         <source>PPM In</source>
@@ -152,7 +152,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>2 - Normal</source>
-        <translation>2 - Normal</translation>
+        <translation type="obsolete">2 - Normal</translation>
     </message>
     <message>
         <source>Beeper volume
@@ -291,7 +291,7 @@ Indique l&apos;affectation voie / numéro d&apos;entrée pour les présélection
     </message>
     <message>
         <source>4 - Extra Long</source>
-        <translation>4 - Très Fort</translation>
+        <translation type="obsolete">4 - Très Fort</translation>
     </message>
     <message>
         <source>Count Down to Zero</source>
@@ -357,7 +357,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>0 - Quiet</source>
-        <translation>0 - Silence</translation>
+        <translation type="obsolete">0 - Silence</translation>
     </message>
     <message>
         <source>Channel Order (For Templates)</source>
@@ -374,6 +374,34 @@ p, li { white-space: pre-wrap; }
     <message>
         <source>Show splash screen on startup</source>
         <translation>Affiche l&apos;écran d&apos;accueil au démarrage</translation>
+    </message>
+    <message>
+        <source>Alarm Warning</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Quiet</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No Keys</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Normal</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Long</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Extra Long</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>PPM Multiplier</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1241,7 +1269,7 @@ Droite</translation>
     </message>
     <message>
         <source>Value/SW2</source>
-        <translation>Valeur/SW2</translation>
+        <translation type="obsolete">Valeur/SW2</translation>
     </message>
     <message>
         <source>Timer Value</source>
@@ -1386,10 +1414,6 @@ Gauche</translation>
     <message>
         <source> Warn(%1)</source>
         <translation> Alerte(%1)</translation>
-    </message>
-    <message>
-        <source>Source/SW1</source>
-        <translation></translation>
     </message>
     <message>
         <source>Protocol</source>
@@ -1572,6 +1596,14 @@ Gauche</translation>
 Right</source>
         <translation>Expo
 Droite</translation>
+    </message>
+    <message>
+        <source>V1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>V2</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
