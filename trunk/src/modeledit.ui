@@ -24,7 +24,7 @@
    <item row="2" column="1">
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
-      <number>5</number>
+      <number>6</number>
      </property>
      <widget class="QWidget" name="tabModelSetup">
       <attribute name="title">
@@ -85,6 +85,9 @@
        </item>
        <item row="3" column="1">
         <widget class="QTimeEdit" name="timerValTE">
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
          <property name="currentSection">
           <enum>QDateTimeEdit::MinuteSection</enum>
          </property>
@@ -375,6 +378,9 @@
               <property name="alignment">
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
               </property>
+              <property name="accelerated">
+               <bool>true</bool>
+              </property>
               <property name="minimum">
                <number>-100</number>
               </property>
@@ -387,6 +393,9 @@
              <widget class="QSpinBox" name="RUD_DrLHi">
               <property name="alignment">
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+              <property name="accelerated">
+               <bool>true</bool>
               </property>
               <property name="minimum">
                <number>-100</number>
@@ -401,6 +410,9 @@
               <property name="alignment">
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
               </property>
+              <property name="accelerated">
+               <bool>true</bool>
+              </property>
               <property name="minimum">
                <number>-100</number>
               </property>
@@ -413,6 +425,9 @@
              <widget class="QSpinBox" name="RUD_ExpoRHi">
               <property name="alignment">
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+              <property name="accelerated">
+               <bool>true</bool>
               </property>
               <property name="minimum">
                <number>-100</number>
@@ -437,6 +452,9 @@
               <property name="alignment">
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
               </property>
+              <property name="accelerated">
+               <bool>true</bool>
+              </property>
               <property name="minimum">
                <number>-100</number>
               </property>
@@ -449,6 +467,9 @@
              <widget class="QSpinBox" name="RUD_DrLMid">
               <property name="alignment">
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+              <property name="accelerated">
+               <bool>true</bool>
               </property>
               <property name="minimum">
                <number>-100</number>
@@ -463,6 +484,9 @@
               <property name="alignment">
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
               </property>
+              <property name="accelerated">
+               <bool>true</bool>
+              </property>
               <property name="minimum">
                <number>-100</number>
               </property>
@@ -475,6 +499,9 @@
              <widget class="QSpinBox" name="RUD_ExpoRMid">
               <property name="alignment">
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+              <property name="accelerated">
+               <bool>true</bool>
               </property>
               <property name="minimum">
                <number>-100</number>
@@ -499,6 +526,9 @@
               <property name="alignment">
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
               </property>
+              <property name="accelerated">
+               <bool>true</bool>
+              </property>
               <property name="minimum">
                <number>-100</number>
               </property>
@@ -511,6 +541,9 @@
              <widget class="QSpinBox" name="RUD_DrLLow">
               <property name="alignment">
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+              <property name="accelerated">
+               <bool>true</bool>
               </property>
               <property name="minimum">
                <number>-100</number>
@@ -525,6 +558,9 @@
               <property name="alignment">
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
               </property>
+              <property name="accelerated">
+               <bool>true</bool>
+              </property>
               <property name="minimum">
                <number>-100</number>
               </property>
@@ -537,6 +573,9 @@
              <widget class="QSpinBox" name="RUD_ExpoRLow">
               <property name="alignment">
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+              <property name="accelerated">
+               <bool>true</bool>
               </property>
               <property name="minimum">
                <number>-100</number>
@@ -659,6 +698,9 @@ Right</string>
               <property name="alignment">
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
               </property>
+              <property name="accelerated">
+               <bool>true</bool>
+              </property>
               <property name="minimum">
                <number>-100</number>
               </property>
@@ -671,6 +713,9 @@ Right</string>
              <widget class="QSpinBox" name="AIL_DrLHi">
               <property name="alignment">
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+              <property name="accelerated">
+               <bool>true</bool>
               </property>
               <property name="minimum">
                <number>-100</number>
@@ -685,6 +730,9 @@ Right</string>
               <property name="alignment">
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
               </property>
+              <property name="accelerated">
+               <bool>true</bool>
+              </property>
               <property name="minimum">
                <number>-100</number>
               </property>
@@ -697,6 +745,9 @@ Right</string>
              <widget class="QSpinBox" name="AIL_ExpoRHi">
               <property name="alignment">
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+              <property name="accelerated">
+               <bool>true</bool>
               </property>
               <property name="minimum">
                <number>-100</number>
@@ -721,6 +772,9 @@ Right</string>
               <property name="alignment">
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
               </property>
+              <property name="accelerated">
+               <bool>true</bool>
+              </property>
               <property name="minimum">
                <number>-100</number>
               </property>
@@ -733,6 +787,9 @@ Right</string>
              <widget class="QSpinBox" name="AIL_DrLMid">
               <property name="alignment">
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+              <property name="accelerated">
+               <bool>true</bool>
               </property>
               <property name="minimum">
                <number>-100</number>
@@ -747,6 +804,9 @@ Right</string>
               <property name="alignment">
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
               </property>
+              <property name="accelerated">
+               <bool>true</bool>
+              </property>
               <property name="minimum">
                <number>-100</number>
               </property>
@@ -759,6 +819,9 @@ Right</string>
              <widget class="QSpinBox" name="AIL_ExpoRMid">
               <property name="alignment">
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+              <property name="accelerated">
+               <bool>true</bool>
               </property>
               <property name="minimum">
                <number>-100</number>
@@ -783,6 +846,9 @@ Right</string>
               <property name="alignment">
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
               </property>
+              <property name="accelerated">
+               <bool>true</bool>
+              </property>
               <property name="minimum">
                <number>-100</number>
               </property>
@@ -795,6 +861,9 @@ Right</string>
              <widget class="QSpinBox" name="AIL_DrLLow">
               <property name="alignment">
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+              <property name="accelerated">
+               <bool>true</bool>
               </property>
               <property name="minimum">
                <number>-100</number>
@@ -809,6 +878,9 @@ Right</string>
               <property name="alignment">
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
               </property>
+              <property name="accelerated">
+               <bool>true</bool>
+              </property>
               <property name="minimum">
                <number>-100</number>
               </property>
@@ -821,6 +893,9 @@ Right</string>
              <widget class="QSpinBox" name="AIL_ExpoRLow">
               <property name="alignment">
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+              <property name="accelerated">
+               <bool>true</bool>
               </property>
               <property name="minimum">
                <number>-100</number>
@@ -976,6 +1051,9 @@ Right</string>
               <property name="alignment">
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
               </property>
+              <property name="accelerated">
+               <bool>true</bool>
+              </property>
               <property name="minimum">
                <number>-100</number>
               </property>
@@ -988,6 +1066,9 @@ Right</string>
              <widget class="QSpinBox" name="THR_DrLHi">
               <property name="alignment">
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+              <property name="accelerated">
+               <bool>true</bool>
               </property>
               <property name="minimum">
                <number>-100</number>
@@ -1002,6 +1083,9 @@ Right</string>
               <property name="alignment">
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
               </property>
+              <property name="accelerated">
+               <bool>true</bool>
+              </property>
               <property name="minimum">
                <number>-100</number>
               </property>
@@ -1014,6 +1098,9 @@ Right</string>
              <widget class="QSpinBox" name="THR_ExpoRHi">
               <property name="alignment">
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+              <property name="accelerated">
+               <bool>true</bool>
               </property>
               <property name="minimum">
                <number>-100</number>
@@ -1038,6 +1125,9 @@ Right</string>
               <property name="alignment">
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
               </property>
+              <property name="accelerated">
+               <bool>true</bool>
+              </property>
               <property name="minimum">
                <number>-100</number>
               </property>
@@ -1050,6 +1140,9 @@ Right</string>
              <widget class="QSpinBox" name="THR_DrLMid">
               <property name="alignment">
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+              <property name="accelerated">
+               <bool>true</bool>
               </property>
               <property name="minimum">
                <number>-100</number>
@@ -1064,6 +1157,9 @@ Right</string>
               <property name="alignment">
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
               </property>
+              <property name="accelerated">
+               <bool>true</bool>
+              </property>
               <property name="minimum">
                <number>-100</number>
               </property>
@@ -1076,6 +1172,9 @@ Right</string>
              <widget class="QSpinBox" name="THR_ExpoRMid">
               <property name="alignment">
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+              <property name="accelerated">
+               <bool>true</bool>
               </property>
               <property name="minimum">
                <number>-100</number>
@@ -1100,6 +1199,9 @@ Right</string>
               <property name="alignment">
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
               </property>
+              <property name="accelerated">
+               <bool>true</bool>
+              </property>
               <property name="minimum">
                <number>-100</number>
               </property>
@@ -1112,6 +1214,9 @@ Right</string>
              <widget class="QSpinBox" name="THR_DrLLow">
               <property name="alignment">
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+              <property name="accelerated">
+               <bool>true</bool>
               </property>
               <property name="minimum">
                <number>-100</number>
@@ -1126,6 +1231,9 @@ Right</string>
               <property name="alignment">
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
               </property>
+              <property name="accelerated">
+               <bool>true</bool>
+              </property>
               <property name="minimum">
                <number>-100</number>
               </property>
@@ -1138,6 +1246,9 @@ Right</string>
              <widget class="QSpinBox" name="THR_ExpoRLow">
               <property name="alignment">
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+              <property name="accelerated">
+               <bool>true</bool>
               </property>
               <property name="minimum">
                <number>-100</number>
@@ -1227,6 +1338,9 @@ Left</string>
               <property name="alignment">
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
               </property>
+              <property name="accelerated">
+               <bool>true</bool>
+              </property>
               <property name="minimum">
                <number>-100</number>
               </property>
@@ -1239,6 +1353,9 @@ Left</string>
              <widget class="QSpinBox" name="ELE_DrLHi">
               <property name="alignment">
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+              <property name="accelerated">
+               <bool>true</bool>
               </property>
               <property name="minimum">
                <number>-100</number>
@@ -1253,6 +1370,9 @@ Left</string>
               <property name="alignment">
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
               </property>
+              <property name="accelerated">
+               <bool>true</bool>
+              </property>
               <property name="minimum">
                <number>-100</number>
               </property>
@@ -1265,6 +1385,9 @@ Left</string>
              <widget class="QSpinBox" name="ELE_ExpoRHi">
               <property name="alignment">
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+              <property name="accelerated">
+               <bool>true</bool>
               </property>
               <property name="minimum">
                <number>-100</number>
@@ -1289,6 +1412,9 @@ Left</string>
               <property name="alignment">
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
               </property>
+              <property name="accelerated">
+               <bool>true</bool>
+              </property>
               <property name="minimum">
                <number>-100</number>
               </property>
@@ -1301,6 +1427,9 @@ Left</string>
              <widget class="QSpinBox" name="ELE_DrLMid">
               <property name="alignment">
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+              <property name="accelerated">
+               <bool>true</bool>
               </property>
               <property name="minimum">
                <number>-100</number>
@@ -1315,6 +1444,9 @@ Left</string>
               <property name="alignment">
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
               </property>
+              <property name="accelerated">
+               <bool>true</bool>
+              </property>
               <property name="minimum">
                <number>-100</number>
               </property>
@@ -1327,6 +1459,9 @@ Left</string>
              <widget class="QSpinBox" name="ELE_ExpoRMid">
               <property name="alignment">
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+              <property name="accelerated">
+               <bool>true</bool>
               </property>
               <property name="minimum">
                <number>-100</number>
@@ -1351,6 +1486,9 @@ Left</string>
               <property name="alignment">
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
               </property>
+              <property name="accelerated">
+               <bool>true</bool>
+              </property>
               <property name="minimum">
                <number>-100</number>
               </property>
@@ -1363,6 +1501,9 @@ Left</string>
              <widget class="QSpinBox" name="ELE_DrLLow">
               <property name="alignment">
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+              <property name="accelerated">
+               <bool>true</bool>
               </property>
               <property name="minimum">
                <number>-100</number>
@@ -1377,6 +1518,9 @@ Left</string>
               <property name="alignment">
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
               </property>
+              <property name="accelerated">
+               <bool>true</bool>
+              </property>
               <property name="minimum">
                <number>-100</number>
               </property>
@@ -1389,6 +1533,9 @@ Left</string>
              <widget class="QSpinBox" name="ELE_ExpoRLow">
               <property name="alignment">
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+              <property name="accelerated">
+               <bool>true</bool>
               </property>
               <property name="minimum">
                <number>-100</number>
@@ -1504,6 +1651,9 @@ Right</string>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
          <property name="decimals">
           <number>1</number>
          </property>
@@ -1517,6 +1667,9 @@ Right</string>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
          <property name="minimum">
           <number>-100</number>
          </property>
@@ -1529,6 +1682,9 @@ Right</string>
         <widget class="QSpinBox" name="maxSB_1">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="accelerated">
+          <bool>true</bool>
          </property>
          <property name="minimum">
           <number>-100</number>
@@ -1564,6 +1720,9 @@ Right</string>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
          <property name="decimals">
           <number>1</number>
          </property>
@@ -1577,6 +1736,9 @@ Right</string>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
          <property name="minimum">
           <number>-100</number>
          </property>
@@ -1589,6 +1751,9 @@ Right</string>
         <widget class="QSpinBox" name="maxSB_2">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="accelerated">
+          <bool>true</bool>
          </property>
          <property name="minimum">
           <number>-100</number>
@@ -1624,6 +1789,9 @@ Right</string>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
          <property name="decimals">
           <number>1</number>
          </property>
@@ -1637,6 +1805,9 @@ Right</string>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
          <property name="minimum">
           <number>-100</number>
          </property>
@@ -1649,6 +1820,9 @@ Right</string>
         <widget class="QSpinBox" name="maxSB_3">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="accelerated">
+          <bool>true</bool>
          </property>
          <property name="minimum">
           <number>-100</number>
@@ -1684,6 +1858,9 @@ Right</string>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
          <property name="decimals">
           <number>1</number>
          </property>
@@ -1697,6 +1874,9 @@ Right</string>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
          <property name="minimum">
           <number>-100</number>
          </property>
@@ -1709,6 +1889,9 @@ Right</string>
         <widget class="QSpinBox" name="maxSB_4">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="accelerated">
+          <bool>true</bool>
          </property>
          <property name="minimum">
           <number>-100</number>
@@ -1744,6 +1927,9 @@ Right</string>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
          <property name="decimals">
           <number>1</number>
          </property>
@@ -1757,6 +1943,9 @@ Right</string>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
          <property name="minimum">
           <number>-100</number>
          </property>
@@ -1769,6 +1958,9 @@ Right</string>
         <widget class="QSpinBox" name="maxSB_5">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="accelerated">
+          <bool>true</bool>
          </property>
          <property name="minimum">
           <number>-100</number>
@@ -1804,6 +1996,9 @@ Right</string>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
          <property name="decimals">
           <number>1</number>
          </property>
@@ -1817,6 +2012,9 @@ Right</string>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
          <property name="minimum">
           <number>-100</number>
          </property>
@@ -1829,6 +2027,9 @@ Right</string>
         <widget class="QSpinBox" name="maxSB_6">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="accelerated">
+          <bool>true</bool>
          </property>
          <property name="minimum">
           <number>-100</number>
@@ -1864,6 +2065,9 @@ Right</string>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
          <property name="decimals">
           <number>1</number>
          </property>
@@ -1877,6 +2081,9 @@ Right</string>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
          <property name="minimum">
           <number>-100</number>
          </property>
@@ -1889,6 +2096,9 @@ Right</string>
         <widget class="QSpinBox" name="maxSB_7">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="accelerated">
+          <bool>true</bool>
          </property>
          <property name="minimum">
           <number>-100</number>
@@ -1924,6 +2134,9 @@ Right</string>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
          <property name="decimals">
           <number>1</number>
          </property>
@@ -1937,6 +2150,9 @@ Right</string>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
          <property name="minimum">
           <number>-100</number>
          </property>
@@ -1949,6 +2165,9 @@ Right</string>
         <widget class="QSpinBox" name="maxSB_8">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="accelerated">
+          <bool>true</bool>
          </property>
          <property name="minimum">
           <number>-100</number>
@@ -1984,6 +2203,9 @@ Right</string>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
          <property name="decimals">
           <number>1</number>
          </property>
@@ -1997,6 +2219,9 @@ Right</string>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
          <property name="minimum">
           <number>-100</number>
          </property>
@@ -2009,6 +2234,9 @@ Right</string>
         <widget class="QSpinBox" name="maxSB_9">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="accelerated">
+          <bool>true</bool>
          </property>
          <property name="minimum">
           <number>-100</number>
@@ -2044,6 +2272,9 @@ Right</string>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
          <property name="decimals">
           <number>1</number>
          </property>
@@ -2057,6 +2288,9 @@ Right</string>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
          <property name="minimum">
           <number>-100</number>
          </property>
@@ -2069,6 +2303,9 @@ Right</string>
         <widget class="QSpinBox" name="maxSB_10">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="accelerated">
+          <bool>true</bool>
          </property>
          <property name="minimum">
           <number>-100</number>
@@ -2104,6 +2341,9 @@ Right</string>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
          <property name="decimals">
           <number>1</number>
          </property>
@@ -2117,6 +2357,9 @@ Right</string>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
          <property name="minimum">
           <number>-100</number>
          </property>
@@ -2129,6 +2372,9 @@ Right</string>
         <widget class="QSpinBox" name="maxSB_11">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="accelerated">
+          <bool>true</bool>
          </property>
          <property name="minimum">
           <number>-100</number>
@@ -2164,6 +2410,9 @@ Right</string>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
          <property name="decimals">
           <number>1</number>
          </property>
@@ -2177,6 +2426,9 @@ Right</string>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
          <property name="minimum">
           <number>-100</number>
          </property>
@@ -2189,6 +2441,9 @@ Right</string>
         <widget class="QSpinBox" name="maxSB_12">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="accelerated">
+          <bool>true</bool>
          </property>
          <property name="minimum">
           <number>-100</number>
@@ -2224,6 +2479,9 @@ Right</string>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
          <property name="decimals">
           <number>1</number>
          </property>
@@ -2237,6 +2495,9 @@ Right</string>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
          <property name="minimum">
           <number>-100</number>
          </property>
@@ -2249,6 +2510,9 @@ Right</string>
         <widget class="QSpinBox" name="maxSB_13">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="accelerated">
+          <bool>true</bool>
          </property>
          <property name="minimum">
           <number>-100</number>
@@ -2284,6 +2548,9 @@ Right</string>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
          <property name="decimals">
           <number>1</number>
          </property>
@@ -2297,6 +2564,9 @@ Right</string>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
          <property name="minimum">
           <number>-100</number>
          </property>
@@ -2309,6 +2579,9 @@ Right</string>
         <widget class="QSpinBox" name="maxSB_14">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="accelerated">
+          <bool>true</bool>
          </property>
          <property name="minimum">
           <number>-100</number>
@@ -2344,6 +2617,9 @@ Right</string>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
          <property name="decimals">
           <number>1</number>
          </property>
@@ -2357,6 +2633,9 @@ Right</string>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
          <property name="minimum">
           <number>-100</number>
          </property>
@@ -2369,6 +2648,9 @@ Right</string>
         <widget class="QSpinBox" name="maxSB_15">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="accelerated">
+          <bool>true</bool>
          </property>
          <property name="minimum">
           <number>-100</number>
@@ -2404,6 +2686,9 @@ Right</string>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
          <property name="decimals">
           <number>1</number>
          </property>
@@ -2417,6 +2702,9 @@ Right</string>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
          <property name="minimum">
           <number>-100</number>
          </property>
@@ -2429,6 +2717,9 @@ Right</string>
         <widget class="QSpinBox" name="maxSB_16">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="accelerated">
+          <bool>true</bool>
          </property>
          <property name="minimum">
           <number>-100</number>
@@ -2581,6 +2872,9 @@ Right</string>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
          <property name="minimum">
           <number>-100</number>
          </property>
@@ -2593,6 +2887,9 @@ Right</string>
         <widget class="QSpinBox" name="curvePt2_1">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="accelerated">
+          <bool>true</bool>
          </property>
          <property name="minimum">
           <number>-100</number>
@@ -2607,6 +2904,9 @@ Right</string>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
          <property name="minimum">
           <number>-100</number>
          </property>
@@ -2620,6 +2920,9 @@ Right</string>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
          <property name="minimum">
           <number>-100</number>
          </property>
@@ -2632,6 +2935,9 @@ Right</string>
         <widget class="QSpinBox" name="curvePt5_1">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="accelerated">
+          <bool>true</bool>
          </property>
          <property name="minimum">
           <number>-100</number>
@@ -2656,6 +2962,9 @@ Right</string>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
          <property name="minimum">
           <number>-100</number>
          </property>
@@ -2668,6 +2977,9 @@ Right</string>
         <widget class="QSpinBox" name="curvePt2_2">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="accelerated">
+          <bool>true</bool>
          </property>
          <property name="minimum">
           <number>-100</number>
@@ -2682,6 +2994,9 @@ Right</string>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
          <property name="minimum">
           <number>-100</number>
          </property>
@@ -2695,6 +3010,9 @@ Right</string>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
          <property name="minimum">
           <number>-100</number>
          </property>
@@ -2707,6 +3025,9 @@ Right</string>
         <widget class="QSpinBox" name="curvePt5_2">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="accelerated">
+          <bool>true</bool>
          </property>
          <property name="minimum">
           <number>-100</number>
@@ -2728,6 +3049,9 @@ Right</string>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
          <property name="minimum">
           <number>-100</number>
          </property>
@@ -2740,6 +3064,9 @@ Right</string>
         <widget class="QSpinBox" name="curvePt2_3">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="accelerated">
+          <bool>true</bool>
          </property>
          <property name="minimum">
           <number>-100</number>
@@ -2754,6 +3081,9 @@ Right</string>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
          <property name="minimum">
           <number>-100</number>
          </property>
@@ -2767,6 +3097,9 @@ Right</string>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
          <property name="minimum">
           <number>-100</number>
          </property>
@@ -2779,6 +3112,9 @@ Right</string>
         <widget class="QSpinBox" name="curvePt5_3">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="accelerated">
+          <bool>true</bool>
          </property>
          <property name="minimum">
           <number>-100</number>
@@ -2800,6 +3136,9 @@ Right</string>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
          <property name="minimum">
           <number>-100</number>
          </property>
@@ -2812,6 +3151,9 @@ Right</string>
         <widget class="QSpinBox" name="curvePt2_4">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="accelerated">
+          <bool>true</bool>
          </property>
          <property name="minimum">
           <number>-100</number>
@@ -2826,6 +3168,9 @@ Right</string>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
          <property name="minimum">
           <number>-100</number>
          </property>
@@ -2839,6 +3184,9 @@ Right</string>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
          <property name="minimum">
           <number>-100</number>
          </property>
@@ -2851,6 +3199,9 @@ Right</string>
         <widget class="QSpinBox" name="curvePt5_4">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="accelerated">
+          <bool>true</bool>
          </property>
          <property name="minimum">
           <number>-100</number>
@@ -2872,6 +3223,9 @@ Right</string>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
          <property name="minimum">
           <number>-100</number>
          </property>
@@ -2884,6 +3238,9 @@ Right</string>
         <widget class="QSpinBox" name="curvePt2_5">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="accelerated">
+          <bool>true</bool>
          </property>
          <property name="minimum">
           <number>-100</number>
@@ -2898,6 +3255,9 @@ Right</string>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
          <property name="minimum">
           <number>-100</number>
          </property>
@@ -2911,6 +3271,9 @@ Right</string>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
          <property name="minimum">
           <number>-100</number>
          </property>
@@ -2923,6 +3286,9 @@ Right</string>
         <widget class="QSpinBox" name="curvePt5_5">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="accelerated">
+          <bool>true</bool>
          </property>
          <property name="minimum">
           <number>-100</number>
@@ -2944,6 +3310,9 @@ Right</string>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
          <property name="minimum">
           <number>-100</number>
          </property>
@@ -2956,6 +3325,9 @@ Right</string>
         <widget class="QSpinBox" name="curvePt2_6">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="accelerated">
+          <bool>true</bool>
          </property>
          <property name="minimum">
           <number>-100</number>
@@ -2970,6 +3342,9 @@ Right</string>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
          <property name="minimum">
           <number>-100</number>
          </property>
@@ -2983,6 +3358,9 @@ Right</string>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
          <property name="minimum">
           <number>-100</number>
          </property>
@@ -2995,6 +3373,9 @@ Right</string>
         <widget class="QSpinBox" name="curvePt5_6">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="accelerated">
+          <bool>true</bool>
          </property>
          <property name="minimum">
           <number>-100</number>
@@ -3016,6 +3397,9 @@ Right</string>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
          <property name="minimum">
           <number>-100</number>
          </property>
@@ -3028,6 +3412,9 @@ Right</string>
         <widget class="QSpinBox" name="curvePt2_7">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="accelerated">
+          <bool>true</bool>
          </property>
          <property name="minimum">
           <number>-100</number>
@@ -3042,6 +3429,9 @@ Right</string>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
          <property name="minimum">
           <number>-100</number>
          </property>
@@ -3055,6 +3445,9 @@ Right</string>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
          <property name="minimum">
           <number>-100</number>
          </property>
@@ -3067,6 +3460,9 @@ Right</string>
         <widget class="QSpinBox" name="curvePt5_7">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="accelerated">
+          <bool>true</bool>
          </property>
          <property name="minimum">
           <number>-100</number>
@@ -3088,6 +3484,9 @@ Right</string>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
          <property name="minimum">
           <number>-100</number>
          </property>
@@ -3100,6 +3499,9 @@ Right</string>
         <widget class="QSpinBox" name="curvePt2_8">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="accelerated">
+          <bool>true</bool>
          </property>
          <property name="minimum">
           <number>-100</number>
@@ -3114,6 +3516,9 @@ Right</string>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
          <property name="minimum">
           <number>-100</number>
          </property>
@@ -3127,6 +3532,9 @@ Right</string>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
          <property name="minimum">
           <number>-100</number>
          </property>
@@ -3139,6 +3547,9 @@ Right</string>
         <widget class="QSpinBox" name="curvePt5_8">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="accelerated">
+          <bool>true</bool>
          </property>
          <property name="minimum">
           <number>-100</number>
@@ -3160,6 +3571,9 @@ Right</string>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
          <property name="minimum">
           <number>-100</number>
          </property>
@@ -3172,6 +3586,9 @@ Right</string>
         <widget class="QSpinBox" name="curvePt2_9">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="accelerated">
+          <bool>true</bool>
          </property>
          <property name="minimum">
           <number>-100</number>
@@ -3186,6 +3603,9 @@ Right</string>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
          <property name="minimum">
           <number>-100</number>
          </property>
@@ -3198,6 +3618,9 @@ Right</string>
         <widget class="QSpinBox" name="curvePt4_9">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="accelerated">
+          <bool>true</bool>
          </property>
          <property name="minimum">
           <number>-100</number>
@@ -3212,6 +3635,9 @@ Right</string>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
          <property name="minimum">
           <number>-100</number>
          </property>
@@ -3224,6 +3650,9 @@ Right</string>
         <widget class="QSpinBox" name="curvePt6_9">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="accelerated">
+          <bool>true</bool>
          </property>
          <property name="minimum">
           <number>-100</number>
@@ -3238,6 +3667,9 @@ Right</string>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
          <property name="minimum">
           <number>-100</number>
          </property>
@@ -3251,6 +3683,9 @@ Right</string>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
          <property name="minimum">
           <number>-100</number>
          </property>
@@ -3263,6 +3698,9 @@ Right</string>
         <widget class="QSpinBox" name="curvePt9_9">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="accelerated">
+          <bool>true</bool>
          </property>
          <property name="minimum">
           <number>-100</number>
@@ -3284,6 +3722,9 @@ Right</string>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
          <property name="minimum">
           <number>-100</number>
          </property>
@@ -3296,6 +3737,9 @@ Right</string>
         <widget class="QSpinBox" name="curvePt2_10">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="accelerated">
+          <bool>true</bool>
          </property>
          <property name="minimum">
           <number>-100</number>
@@ -3310,6 +3754,9 @@ Right</string>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
          <property name="minimum">
           <number>-100</number>
          </property>
@@ -3322,6 +3769,9 @@ Right</string>
         <widget class="QSpinBox" name="curvePt4_10">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="accelerated">
+          <bool>true</bool>
          </property>
          <property name="minimum">
           <number>-100</number>
@@ -3336,6 +3786,9 @@ Right</string>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
          <property name="minimum">
           <number>-100</number>
          </property>
@@ -3348,6 +3801,9 @@ Right</string>
         <widget class="QSpinBox" name="curvePt6_10">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="accelerated">
+          <bool>true</bool>
          </property>
          <property name="minimum">
           <number>-100</number>
@@ -3362,6 +3818,9 @@ Right</string>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
          <property name="minimum">
           <number>-100</number>
          </property>
@@ -3375,6 +3834,9 @@ Right</string>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
          <property name="minimum">
           <number>-100</number>
          </property>
@@ -3387,6 +3849,9 @@ Right</string>
         <widget class="QSpinBox" name="curvePt9_10">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="accelerated">
+          <bool>true</bool>
          </property>
          <property name="minimum">
           <number>-100</number>
@@ -3408,6 +3873,9 @@ Right</string>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
          <property name="minimum">
           <number>-100</number>
          </property>
@@ -3420,6 +3888,9 @@ Right</string>
         <widget class="QSpinBox" name="curvePt2_11">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="accelerated">
+          <bool>true</bool>
          </property>
          <property name="minimum">
           <number>-100</number>
@@ -3434,6 +3905,9 @@ Right</string>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
          <property name="minimum">
           <number>-100</number>
          </property>
@@ -3446,6 +3920,9 @@ Right</string>
         <widget class="QSpinBox" name="curvePt4_11">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="accelerated">
+          <bool>true</bool>
          </property>
          <property name="minimum">
           <number>-100</number>
@@ -3460,6 +3937,9 @@ Right</string>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
          <property name="minimum">
           <number>-100</number>
          </property>
@@ -3472,6 +3952,9 @@ Right</string>
         <widget class="QSpinBox" name="curvePt6_11">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="accelerated">
+          <bool>true</bool>
          </property>
          <property name="minimum">
           <number>-100</number>
@@ -3486,6 +3969,9 @@ Right</string>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
          <property name="minimum">
           <number>-100</number>
          </property>
@@ -3499,6 +3985,9 @@ Right</string>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
          <property name="minimum">
           <number>-100</number>
          </property>
@@ -3511,6 +4000,9 @@ Right</string>
         <widget class="QSpinBox" name="curvePt9_11">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="accelerated">
+          <bool>true</bool>
          </property>
          <property name="minimum">
           <number>-100</number>
@@ -3532,6 +4024,9 @@ Right</string>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
          <property name="minimum">
           <number>-100</number>
          </property>
@@ -3544,6 +4039,9 @@ Right</string>
         <widget class="QSpinBox" name="curvePt2_12">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="accelerated">
+          <bool>true</bool>
          </property>
          <property name="minimum">
           <number>-100</number>
@@ -3558,6 +4056,9 @@ Right</string>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
          <property name="minimum">
           <number>-100</number>
          </property>
@@ -3570,6 +4071,9 @@ Right</string>
         <widget class="QSpinBox" name="curvePt4_12">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="accelerated">
+          <bool>true</bool>
          </property>
          <property name="minimum">
           <number>-100</number>
@@ -3584,6 +4088,9 @@ Right</string>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
          <property name="minimum">
           <number>-100</number>
          </property>
@@ -3596,6 +4103,9 @@ Right</string>
         <widget class="QSpinBox" name="curvePt6_12">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="accelerated">
+          <bool>true</bool>
          </property>
          <property name="minimum">
           <number>-100</number>
@@ -3610,6 +4120,9 @@ Right</string>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
          <property name="minimum">
           <number>-100</number>
          </property>
@@ -3623,6 +4136,9 @@ Right</string>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
          <property name="minimum">
           <number>-100</number>
          </property>
@@ -3635,6 +4151,9 @@ Right</string>
         <widget class="QSpinBox" name="curvePt9_12">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="accelerated">
+          <bool>true</bool>
          </property>
          <property name="minimum">
           <number>-100</number>
@@ -3656,6 +4175,9 @@ Right</string>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
          <property name="minimum">
           <number>-100</number>
          </property>
@@ -3668,6 +4190,9 @@ Right</string>
         <widget class="QSpinBox" name="curvePt2_13">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="accelerated">
+          <bool>true</bool>
          </property>
          <property name="minimum">
           <number>-100</number>
@@ -3682,6 +4207,9 @@ Right</string>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
          <property name="minimum">
           <number>-100</number>
          </property>
@@ -3694,6 +4222,9 @@ Right</string>
         <widget class="QSpinBox" name="curvePt4_13">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="accelerated">
+          <bool>true</bool>
          </property>
          <property name="minimum">
           <number>-100</number>
@@ -3708,6 +4239,9 @@ Right</string>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
          <property name="minimum">
           <number>-100</number>
          </property>
@@ -3720,6 +4254,9 @@ Right</string>
         <widget class="QSpinBox" name="curvePt6_13">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="accelerated">
+          <bool>true</bool>
          </property>
          <property name="minimum">
           <number>-100</number>
@@ -3734,6 +4271,9 @@ Right</string>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
          <property name="minimum">
           <number>-100</number>
          </property>
@@ -3747,6 +4287,9 @@ Right</string>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
          <property name="minimum">
           <number>-100</number>
          </property>
@@ -3759,6 +4302,9 @@ Right</string>
         <widget class="QSpinBox" name="curvePt9_13">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="accelerated">
+          <bool>true</bool>
          </property>
          <property name="minimum">
           <number>-100</number>
@@ -3780,6 +4326,9 @@ Right</string>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
          <property name="minimum">
           <number>-100</number>
          </property>
@@ -3792,6 +4341,9 @@ Right</string>
         <widget class="QSpinBox" name="curvePt2_14">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="accelerated">
+          <bool>true</bool>
          </property>
          <property name="minimum">
           <number>-100</number>
@@ -3806,6 +4358,9 @@ Right</string>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
          <property name="minimum">
           <number>-100</number>
          </property>
@@ -3818,6 +4373,9 @@ Right</string>
         <widget class="QSpinBox" name="curvePt4_14">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="accelerated">
+          <bool>true</bool>
          </property>
          <property name="minimum">
           <number>-100</number>
@@ -3832,6 +4390,9 @@ Right</string>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
          <property name="minimum">
           <number>-100</number>
          </property>
@@ -3844,6 +4405,9 @@ Right</string>
         <widget class="QSpinBox" name="curvePt6_14">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="accelerated">
+          <bool>true</bool>
          </property>
          <property name="minimum">
           <number>-100</number>
@@ -3858,6 +4422,9 @@ Right</string>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
          <property name="minimum">
           <number>-100</number>
          </property>
@@ -3871,6 +4438,9 @@ Right</string>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
          <property name="minimum">
           <number>-100</number>
          </property>
@@ -3883,6 +4453,9 @@ Right</string>
         <widget class="QSpinBox" name="curvePt9_14">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="accelerated">
+          <bool>true</bool>
          </property>
          <property name="minimum">
           <number>-100</number>
@@ -3904,6 +4477,9 @@ Right</string>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
          <property name="minimum">
           <number>-100</number>
          </property>
@@ -3916,6 +4492,9 @@ Right</string>
         <widget class="QSpinBox" name="curvePt2_15">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="accelerated">
+          <bool>true</bool>
          </property>
          <property name="minimum">
           <number>-100</number>
@@ -3930,6 +4509,9 @@ Right</string>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
          <property name="minimum">
           <number>-100</number>
          </property>
@@ -3942,6 +4524,9 @@ Right</string>
         <widget class="QSpinBox" name="curvePt4_15">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="accelerated">
+          <bool>true</bool>
          </property>
          <property name="minimum">
           <number>-100</number>
@@ -3956,6 +4541,9 @@ Right</string>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
          <property name="minimum">
           <number>-100</number>
          </property>
@@ -3968,6 +4556,9 @@ Right</string>
         <widget class="QSpinBox" name="curvePt6_15">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="accelerated">
+          <bool>true</bool>
          </property>
          <property name="minimum">
           <number>-100</number>
@@ -3982,6 +4573,9 @@ Right</string>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
          <property name="minimum">
           <number>-100</number>
          </property>
@@ -3995,6 +4589,9 @@ Right</string>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
          <property name="minimum">
           <number>-100</number>
          </property>
@@ -4007,6 +4604,9 @@ Right</string>
         <widget class="QSpinBox" name="curvePt9_15">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="accelerated">
+          <bool>true</bool>
          </property>
          <property name="minimum">
           <number>-100</number>
@@ -4028,6 +4628,9 @@ Right</string>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
          <property name="minimum">
           <number>-100</number>
          </property>
@@ -4040,6 +4643,9 @@ Right</string>
         <widget class="QSpinBox" name="curvePt2_16">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="accelerated">
+          <bool>true</bool>
          </property>
          <property name="minimum">
           <number>-100</number>
@@ -4054,6 +4660,9 @@ Right</string>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
          <property name="minimum">
           <number>-100</number>
          </property>
@@ -4066,6 +4675,9 @@ Right</string>
         <widget class="QSpinBox" name="curvePt4_16">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="accelerated">
+          <bool>true</bool>
          </property>
          <property name="minimum">
           <number>-100</number>
@@ -4080,6 +4692,9 @@ Right</string>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
          <property name="minimum">
           <number>-100</number>
          </property>
@@ -4092,6 +4707,9 @@ Right</string>
         <widget class="QSpinBox" name="curvePt6_16">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="accelerated">
+          <bool>true</bool>
          </property>
          <property name="minimum">
           <number>-100</number>
@@ -4106,6 +4724,9 @@ Right</string>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
          <property name="minimum">
           <number>-100</number>
          </property>
@@ -4119,6 +4740,9 @@ Right</string>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
          <property name="minimum">
           <number>-100</number>
          </property>
@@ -4131,6 +4755,9 @@ Right</string>
         <widget class="QSpinBox" name="curvePt9_16">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="accelerated">
+          <bool>true</bool>
          </property>
          <property name="minimum">
           <number>-100</number>
@@ -4593,6 +5220,9 @@ Right</string>
            <property name="alignment">
             <set>Qt::AlignCenter</set>
            </property>
+           <property name="accelerated">
+            <bool>true</bool>
+           </property>
            <property name="minimum">
             <number>-127</number>
            </property>
@@ -4605,6 +5235,9 @@ Right</string>
           <widget class="QSpinBox" name="spinBox_S1">
            <property name="alignment">
             <set>Qt::AlignCenter</set>
+           </property>
+           <property name="accelerated">
+            <bool>true</bool>
            </property>
            <property name="minimum">
             <number>-127</number>
@@ -4692,6 +5325,9 @@ Right</string>
            <property name="alignment">
             <set>Qt::AlignCenter</set>
            </property>
+           <property name="accelerated">
+            <bool>true</bool>
+           </property>
            <property name="minimum">
             <number>-127</number>
            </property>
@@ -4704,6 +5340,9 @@ Right</string>
           <widget class="QSpinBox" name="spinBox_S4">
            <property name="alignment">
             <set>Qt::AlignCenter</set>
+           </property>
+           <property name="accelerated">
+            <bool>true</bool>
            </property>
            <property name="minimum">
             <number>-127</number>

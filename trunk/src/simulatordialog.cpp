@@ -265,6 +265,12 @@ inline qint16 calc100toRESX(qint8 x)
   return (qint16)x*10 + x/4 - x/64;
 }
 
+inline qint16 calc1000toRESX(qint16 x)
+{
+  return x + x/32 - x/128 + x/512;
+}
+
+
 bool simulatorDialog::keyState(EnumKeys key)
 {
     switch (key)
@@ -660,12 +666,20 @@ void simulatorDialog::perOut(bool init)
       ex_chans[i] = chans[i]; //for getswitch
 
       int16_t ofs = g_model.limitData[i].offset;
+      int16_t lim_p = 10*(g_model.limitData[i].max+100);
+      int16_t lim_n = 10*(g_model.limitData[i].min-100); //multiply by 10 to get same range as ofs (-1000..1000)
+      if(ofs>lim_p) ofs = lim_p;
+      if(ofs<lim_n) ofs = lim_n;
 
       if(q) q = (q>0) ?
-                q*((int32_t)10*(g_model.limitData[i].max+100)-ofs)/100000 :
-               -q*((int32_t)10*(g_model.limitData[i].min-100)-ofs)/100000 ; //div by 10000 -> output = -1024..1024
+                q*((int32_t)lim_p-ofs)/100000 :
+               -q*((int32_t)lim_n-ofs)/100000 ; //div by 100000 -> output = -1024..1024
 
-      q += ofs + ofs/32 -ofs/128; // x-x/32+x/128 -> 1000 + 1000/32 - 1000/128 = 1024
+      q += calc1000toRESX(ofs);
+      lim_p = calc1000toRESX(lim_p);
+      lim_n = calc1000toRESX(lim_n);
+      if(q>lim_p) q = lim_p;
+      if(q<lim_n) q = lim_n;
       if(g_model.limitData[i].revert) q=-q;// finally do the reverse.
 
     //cli();
