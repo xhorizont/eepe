@@ -1027,6 +1027,7 @@ void ModelEdit::tabSwitches()
         cswitchOffset[i] = new QSpinBox(this);
         cswitchOffset[i]->setMaximum(125);
         cswitchOffset[i]->setMinimum(-125);
+        cswitchOffset[i]->setAccelerated(true);
         connect(cswitchOffset[i],SIGNAL(editingFinished()),this,SLOT(switchesEdited()));
         ui->gridLayout_8->addWidget(cswitchOffset[i],i+1,3);
         cswitchOffset[i]->setVisible(false);

@@ -88,7 +88,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <source>If not zero will sound beeps if the transmitter has been left without inputs for the specified number of minutes.</source>
         <translation>Si différent de 0, émission d&apos;un bip sonore régulier si aucune action n&apos;a été effectuée sur l&apos;émetteur depuis le temps spécifié (en minutes).
-Réinitialisation  en agissant sur n&apos;importe lequel des manches / touches de navigation.</translation>
+Réinitialisation en agissant sur n&apos;importe lequel des manches / touches de navigation.</translation>
     </message>
     <message>
         <source>3 - Long</source>
@@ -104,7 +104,7 @@ If this is checked the throttle will be reversed.  Idle will be forward, trim wi
 
 </source>
         <translation>Inversion des gaz.
-Si cette option est cochée, la voie des gaz est inversée: le ralenti  est &apos;manche en haut&apos;, le trim et  l&apos;alerte des gaz sont inversés également.
+Si cette option est cochée, la voie des gaz est inversée: le ralenti  est &apos;manche en haut&apos;. Le trim et l&apos;alerte des gaz sont inversés également.
 
 </translation>
     </message>
@@ -118,7 +118,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Memory Startup Warning</source>
-        <translation>Alerte de mémoire basse (au démarrage)</translation>
+        <translation>Alerte mémoire</translation>
     </message>
     <message>
         <source>Beeps at 30, 15, 10, and down from5 seconds</source>
@@ -132,7 +132,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Timer Beeps</source>
-        <translation>Bips du Chrono</translation>
+        <translation>Bips du chrono</translation>
     </message>
     <message>
         <source>Mode 2 (RUD THR ELE AIL)</source>
@@ -164,15 +164,15 @@ p, li { white-space: pre-wrap; }
 4 - Extra loud.</source>
         <translation>Volume des bips
 
-0 - Silence.  Tous bips désactivés.
-1 - Touches Silencieuses.  Volume des bips normaux mais touches de navigation silencieuses.
-2 - Normal.  Volume par défaut.
-3 - Fort.
-4 - Très Fort.</translation>
+Mode silencieux : tous bips désactivés.
+Touches silencieuses : bips normaux mais touches de navigation silencieuses.
+Normal : durée des bips par défaut.
+Long : bips plus longs.
+Extra long : bips extra longs.</translation>
     </message>
     <message>
         <source>Throttle Startup Warning</source>
-        <translation>Alerte des gaz</translation>
+        <translation>Alerte gaz</translation>
     </message>
     <message>
         <source>Single</source>
@@ -180,7 +180,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Battery Warning</source>
-        <translation>Alerte de batterie</translation>
+        <translation>Alerte batterie</translation>
     </message>
     <message>
         <source>Contrast</source>
@@ -307,7 +307,7 @@ Indique l&apos;affectation voie / numéro d&apos;entrée pour les présélection
     </message>
     <message>
         <source>Beeper Mode</source>
-        <translation>Réglage des Bips</translation>
+        <translation>Réglage des bips</translation>
     </message>
     <message>
         <source>Battery calibration:
@@ -345,11 +345,11 @@ p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; text-decoration: underline;&quot;&gt;Alertes&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Défini les alertes au démarrage.&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Alerte Gaz - Averti si les gaz ne sont pas à 0 au démarrage&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Alerte Inters - Averti si les inters ne sont pas au repos&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Alerte Mémoire - Averti si la mémoire disponible est insuffisante&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Alerte Mode Silencieux - Averti si le volume des bips est à 0&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Définit les alertes au démarrage.&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Alerte gaz - Avertissement si les gaz ne sont pas à 0 au démarrage&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Alerte interrupteurs - Avertissement si un ou plusieurs interrupteurs ne sont pas au repos&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Alerte mémoire - Avertissement si la mémoire disponible est insuffisante&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Alerte mode silencieux - Avertissement si les bips sont désactivés&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <source>Mode 1 (RUD ELE THR AIL)</source>
@@ -365,11 +365,11 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Switch Startup Warning</source>
-        <translation>Alerte des interrupteurs</translation>
+        <translation>Alerte interrupteurs</translation>
     </message>
     <message>
         <source>Show Splash Screen on Startup</source>
-        <translation>Afficher l&apos;écran d&apos;accueil au démarrage</translation>
+        <translation>Afficher l&apos;écran de démarrage</translation>
     </message>
     <message>
         <source>Show splash screen on startup</source>
@@ -377,31 +377,31 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Alarm Warning</source>
-        <translation type="unfinished"></translation>
+        <translation>Alerte mode silencieux</translation>
     </message>
     <message>
         <source>Quiet</source>
-        <translation type="unfinished"></translation>
+        <translation>Mode silencieux</translation>
     </message>
     <message>
         <source>No Keys</source>
-        <translation type="unfinished"></translation>
+        <translation>Touches silencieuses</translation>
     </message>
     <message>
         <source>Normal</source>
-        <translation type="unfinished"></translation>
+        <translation>Normal</translation>
     </message>
     <message>
         <source>Long</source>
-        <translation type="unfinished"></translation>
+        <translation>Long</translation>
     </message>
     <message>
         <source>Extra Long</source>
-        <translation type="unfinished"></translation>
+        <translation>Extra long</translation>
     </message>
     <message>
         <source>PPM Multiplier</source>
-        <translation type="unfinished"></translation>
+        <translation>Coeff. multiplicateur PPM</translation>
     </message>
 </context>
 <context>
@@ -468,7 +468,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>&amp;Tile</source>
-        <translation>&amp;Tuiles</translation>
+        <translation>&amp;Mosaïque</translation>
     </message>
     <message>
         <source>E&amp;xit</source>
@@ -616,7 +616,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Switch layout direction</source>
-        <translation>Changement de côté Présentation</translation>
+        <translation>Inverser l&apos;interface</translation>
     </message>
     <message>
         <source>Move the focus to the previous window</source>
@@ -660,7 +660,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Tile the windows</source>
-        <translation>Dispose les fenêtres en tuiles</translation>
+        <translation>Dispose les fenêtres en mosaïque</translation>
     </message>
     <message>
         <source>Read flash memory to transmitter</source>
@@ -1247,7 +1247,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Trim Increment</source>
-        <translation>Incrémentation Trim</translation>
+        <translation>Incrément trims</translation>
     </message>
     <message>
         <source> Slow(u%1:d%2)</source>
@@ -1273,7 +1273,7 @@ Droite</translation>
     </message>
     <message>
         <source>Timer Value</source>
-        <translation>Durée Chrono</translation>
+        <translation>Durée du chrono</translation>
     </message>
     <message>
         <source>D/R
@@ -1291,7 +1291,7 @@ Gauche</translation>
     </message>
     <message>
         <source>Coarse</source>
-        <translation>Elévée</translation>
+        <translation>Elevée</translation>
     </message>
     <message>
         <source>Ctrl+A</source>
@@ -1385,11 +1385,11 @@ Gauche</translation>
     </message>
     <message>
         <source>Extra Fine</source>
-        <translation>Extra Fine</translation>
+        <translation>Extra fin</translation>
     </message>
     <message>
         <source>Throttle Trim</source>
-        <translation>Trim des Gaz</translation>
+        <translation>Trim des gaz</translation>
     </message>
     <message>
         <source>STICK 1</source>
@@ -1409,7 +1409,7 @@ Gauche</translation>
     </message>
     <message>
         <source>Throttle Expo</source>
-        <translation>Expo des Gaz</translation>
+        <translation>Expo des gaz</translation>
     </message>
     <message>
         <source> Warn(%1)</source>
@@ -1505,11 +1505,11 @@ Gauche</translation>
     </message>
     <message>
         <source>Delete Selected Mixes?</source>
-        <translation>Supprimer Mixages Sélectionnés?</translation>
+        <translation>Supprimer mixages sélectionnés ?</translation>
     </message>
     <message>
         <source>Timer Direction</source>
-        <translation>Sens du Chrono</translation>
+        <translation>Sens du chrono</translation>
     </message>
     <message>
         <source>Negative</source>
@@ -1517,15 +1517,15 @@ Gauche</translation>
     </message>
     <message>
         <source>Model Name</source>
-        <translation>Nom du Modèle</translation>
+        <translation>Nom du modèle</translation>
     </message>
     <message>
         <source>Center beep</source>
-        <translation>Bip de Centrage</translation>
+        <translation>Bip de centrage</translation>
     </message>
     <message>
         <source>Timer Mode</source>
-        <translation>Mode du Chrono</translation>
+        <translation>Mode du chrono</translation>
     </message>
     <message>
         <source>Function</source>
@@ -1569,7 +1569,7 @@ Gauche</translation>
     </message>
     <message>
         <source>Switches</source>
-        <translation>Inters</translation>
+        <translation>Inters personnalisés</translation>
     </message>
     <message>
         <source> Offset(%1%)</source>
@@ -1589,7 +1589,7 @@ Gauche</translation>
     </message>
     <message>
         <source>instaTrim Switch</source>
-        <translation>Inter. InstaTrim</translation>
+        <translation>Inter. instaTrim</translation>
     </message>
     <message>
         <source>Expo
@@ -1599,11 +1599,11 @@ Droite</translation>
     </message>
     <message>
         <source>V1</source>
-        <translation type="unfinished"></translation>
+        <translation>V1</translation>
     </message>
     <message>
         <source>V2</source>
-        <translation type="unfinished"></translation>
+        <translation>V2</translation>
     </message>
 </context>
 <context>
