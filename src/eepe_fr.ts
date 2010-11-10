@@ -580,7 +580,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Write Flash Memory</source>
-        <translation>Sélectionner le fichier à flasher</translation>
+        <translation type="obsolete">Sélectionner le fichier à flasher</translation>
     </message>
     <message>
         <source>donating</source>
@@ -729,6 +729,34 @@ p, li { white-space: pre-wrap; }
     <message>
         <source>Read EEPROM From Tx</source>
         <translation>Charger l&apos;EEPROM du Tx</translation>
+    </message>
+    <message>
+        <source>Choose file to write to EEPROM memory</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Choose file to write to flash memory</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Read EEPROM memory to File</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Write EEPROM memory from file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Write EEPROM memory from file to transmitter</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Read EEPROM memory to file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Read EEPROM memory from transmitter to file</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
