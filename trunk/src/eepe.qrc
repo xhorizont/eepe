@@ -22,5 +22,7 @@
         <file>images/duplicate.png</file>
         <file>images/fuses.png</file>
         <file>images/list.png</file>
+        <file>images/read_eeprom_file.png</file>
+        <file>images/write_eeprom_file.png</file>
     </qresource>
 </RCC>

@@ -21,9 +21,8 @@ burnConfigDialog::~burnConfigDialog()
 
 void burnConfigDialog::getSettings()
 {
-
     QSettings settings("er9x-eePe", "eePe");
-    avrTempDir = settings.value("temp_directory", QDir("./").absolutePath()).toString();
+    avrTempDir = settings.value("temp_directory", QDir(QProcessEnvironment::systemEnvironment().value("TEMP","./")).absolutePath()).toString();
     avrLoc = settings.value("avrdude_location", QFileInfo("avrdude.exe").absoluteFilePath()).toString();
     QString str = settings.value("avr_arguments").toString();
     avrArgs = str.split(" ", QString::SkipEmptyParts);

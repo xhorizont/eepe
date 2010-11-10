@@ -9,6 +9,7 @@
   !include "FileAssociation.nsh"
 
 
+
 ;--------------------------------
 ;General
 
@@ -27,7 +28,7 @@
   SetCompressorDictSize 64
 
   ;Request application privileges for Windows Vista
-  RequestExecutionLevel user
+  RequestExecutionLevel admin
 
 ;--------------------------------
 ;Variables
@@ -78,6 +79,7 @@ Section "eePe" SecDummy
   File "QtGui4.dll"
   File "avrdude.exe"
   File "avrdude.conf"
+  File "libusb0.dll"
   
   CreateDirectory "$INSTDIR\lang"
   SetOutPath "$INSTDIR\lang"
@@ -133,6 +135,7 @@ Section "Uninstall"
   Delete "$INSTDIR\QtGui4.dll"
   Delete "$INSTDIR\avrdude.exe"
   Delete "$INSTDIR\avrdude.conf"
+  Delete "$INSTDIR\libusb0.dll"
   Delete "$INSTDIR\Uninstall.exe"
   
   Delete "$INSTDIR\lang\*.*"

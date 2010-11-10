@@ -229,10 +229,38 @@ void MainWindow::burnFrom()
     }
 }
 
+void MainWindow::burnExtenalToEEPROM()
+{
+    QSettings settings("er9x-eePe", "eePe");
+    QString fileName = QFileDialog::getOpenFileName(this,tr("Choose file to write to EEPROM memory"),settings.value("lastDir").toString(),tr("FLASH files (*.bin *.hex);;BIN files (*.bin);;HEX files (*.hex)"));
+    if (!fileName.isEmpty())
+    {
+        settings.setValue("lastDir",QFileInfo(fileName).dir().absolutePath());
+
+        burnConfigDialog bcd;
+        QString avrdudeLoc = bcd.getAVRDUDE();
+        QString programmer = bcd.getProgrammer();
+        QStringList args   = bcd.getAVRArgs();
+        if(!bcd.getPort().isEmpty()) args << "-P" << bcd.getPort();
+
+        QString str = "eeprom:w:" + fileName; // writing eeprom -> MEM:OPR:FILE:FTYPE"
+        if(QFileInfo(fileName).suffix().toUpper()=="HEX") str += ":i";
+        else if(QFileInfo(fileName).suffix().toUpper()=="BIN") str += ":r";
+        else str += ":a";
+
+        QStringList arguments;
+        arguments << "-c" << programmer << "-p" << "m64" << args << "-U" << str;
+
+        avrOutputDialog *ad = new avrOutputDialog(this, avrdudeLoc, arguments, "Write EEPROM To Tx");
+        ad->setWindowIcon(QIcon(":/images/write_eeprom.png"));
+        ad->show();
+    }
+}
+
 void MainWindow::burnToFlash()
 {
     QSettings settings("er9x-eePe", "eePe");
-    QString fileName = QFileDialog::getOpenFileName(this,tr("Write Flash Memory"),settings.value("lastDir").toString(),tr("FLASH files (*.bin *.hex);;BIN files (*.bin);;HEX files (*.hex)"));
+    QString fileName = QFileDialog::getOpenFileName(this,tr("Choose file to write to flash memory"),settings.value("lastDir").toString(),tr("FLASH files (*.bin *.hex);;BIN files (*.bin);;HEX files (*.hex)"));
     if (!fileName.isEmpty())
     {
         settings.setValue("lastDir",QFileInfo(fileName).dir().absolutePath());
@@ -255,6 +283,37 @@ void MainWindow::burnToFlash()
         ad->setWindowIcon(QIcon(":/images/write_flash.png"));
         ad->show();
     }
+}
+
+
+void MainWindow::burnExtenalFromEEPROM()
+{
+    QSettings settings("er9x-eePe", "eePe");
+    QString fileName = QFileDialog::getSaveFileName(this,tr("Read EEPROM memory to File"),settings.value("lastDir").toString(),tr("HEX files (*.hex);;BIN files (*.bin);;FLASH files (*.bin *.hex)"));
+    if (!fileName.isEmpty())
+    {
+        settings.setValue("lastDir",QFileInfo(fileName).dir().absolutePath());
+
+        burnConfigDialog bcd;
+        QString avrdudeLoc = bcd.getAVRDUDE();
+        QString programmer = bcd.getProgrammer();
+        QStringList args   = bcd.getAVRArgs();
+        if(!bcd.getPort().isEmpty()) args << "-P" << bcd.getPort();
+
+
+        QString str = "eeprom:r:" + fileName;
+        if(QFileInfo(fileName).suffix().toUpper()=="HEX") str += ":i";
+        else if(QFileInfo(fileName).suffix().toUpper()=="BIN") str += ":r";
+        else str += ":a";
+
+        QStringList arguments;
+        arguments << "-c" << programmer << "-p" << "m64" << args << "-U" << str;
+
+        avrOutputDialog *ad = new avrOutputDialog(this, avrdudeLoc, arguments, "Read EEPROM From Tx");
+        ad->setWindowIcon(QIcon(":/images/read_eeprom.png"));
+        ad->show();
+    }
+
 }
 
 void MainWindow::burnFromFlash()
@@ -467,6 +526,14 @@ void MainWindow::createActions()
     burnToFlashAct->setStatusTip(tr("Write flash memory to transmitter"));
     connect(burnToFlashAct,SIGNAL(triggered()),this,SLOT(burnToFlash()));
 
+    burnExtenalToEEPROMAct = new QAction(QIcon(":/images/write_eeprom_file.png"), tr("Write EEPROM memory from file"), this);
+    burnExtenalToEEPROMAct->setStatusTip(tr("Write EEPROM memory from file to transmitter"));
+    connect(burnExtenalToEEPROMAct,SIGNAL(triggered()),this,SLOT(burnExtenalToEEPROM()));
+
+    burnExtenalFromEEPROMAct = new QAction(QIcon(":/images/read_eeprom_file.png"), tr("Read EEPROM memory to file"), this);
+    burnExtenalFromEEPROMAct->setStatusTip(tr("Read EEPROM memory from transmitter to file"));
+    connect(burnExtenalFromEEPROMAct,SIGNAL(triggered()),this,SLOT(burnExtenalFromEEPROM()));
+
     burnFromFlashAct = new QAction(QIcon(":/images/read_flash.png"), tr("Read Flash memory"), this);
     burnFromFlashAct->setStatusTip(tr("Read flash memory to transmitter"));
     connect(burnFromFlashAct,SIGNAL(triggered()),this,SLOT(burnFromFlash()));
@@ -567,6 +634,9 @@ void MainWindow::createMenus()
     burnMenu->addAction(burnToAct);
     burnMenu->addAction(burnFromAct);
     burnMenu->addSeparator();
+    burnMenu->addAction(burnExtenalToEEPROMAct);
+    burnMenu->addAction(burnExtenalFromEEPROMAct);
+    burnMenu->addSeparator();
     burnMenu->addAction(burnToFlashAct);
     burnMenu->addAction(burnFromFlashAct);
     burnMenu->addSeparator();
@@ -603,6 +673,9 @@ void MainWindow::createToolBars()
     burnToolBar = addToolBar(tr("Burn"));
     burnToolBar->addAction(burnToAct);
     burnToolBar->addAction(burnFromAct);
+    burnToolBar->addSeparator();
+    burnToolBar->addAction(burnExtenalToEEPROMAct);
+    burnToolBar->addAction(burnExtenalFromEEPROMAct);
     burnToolBar->addSeparator();
     burnToolBar->addAction(burnToFlashAct);
     burnToolBar->addAction(burnFromFlashAct);

@@ -75,6 +75,8 @@ private slots:
     void burnFrom();
     void burnToFlash();
     void burnFromFlash();
+    void burnExtenalToEEPROM();
+    void burnExtenalFromEEPROM();
     void burnConfig();
     void burnList();
     void burnFuses();
@@ -126,6 +128,8 @@ private:
     QAction *burnFusesAct;
     QAction *burnToFlashAct;
     QAction *burnFromFlashAct;
+    QAction *burnExtenalToEEPROMAct;
+    QAction *burnExtenalFromEEPROMAct;
     QAction *simulateAct;
     QAction *closeAct;
     QAction *closeAllAct;

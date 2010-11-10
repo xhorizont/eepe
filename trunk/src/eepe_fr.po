@@ -685,9 +685,9 @@ msgctxt "MainWindow|"
 msgid "&Contributors"
 msgstr "&Contributeurs"
 
-msgctxt "MainWindow|"
-msgid "Write Flash Memory"
-msgstr "Sélectionner le fichier à flasher"
+#~ msgctxt "MainWindow|"
+#~ msgid "Write Flash Memory"
+#~ msgstr "Sélectionner le fichier à flasher"
 
 msgctxt "MainWindow|"
 msgid "donating"
@@ -837,6 +837,34 @@ msgstr "&Charger l'EEPROM du Tx"
 msgctxt "MainWindow|"
 msgid "Read EEPROM From Tx"
 msgstr "Charger l'EEPROM du Tx"
+
+msgctxt "MainWindow|"
+msgid "Choose file to write to EEPROM memory"
+msgstr ""
+
+msgctxt "MainWindow|"
+msgid "Choose file to write to flash memory"
+msgstr ""
+
+msgctxt "MainWindow|"
+msgid "Read EEPROM memory to File"
+msgstr ""
+
+msgctxt "MainWindow|"
+msgid "Write EEPROM memory from file"
+msgstr ""
+
+msgctxt "MainWindow|"
+msgid "Write EEPROM memory from file to transmitter"
+msgstr ""
+
+msgctxt "MainWindow|"
+msgid "Read EEPROM memory to file"
+msgstr ""
+
+msgctxt "MainWindow|"
+msgid "Read EEPROM memory from transmitter to file"
+msgstr ""
 
 #, qt-format
 msgctxt "MdiChild|"
