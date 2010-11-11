@@ -9,7 +9,7 @@ class MixersList : public QListWidget
 public:
     explicit MixersList(QWidget *parent = 0);
 
-    void dropEvent( QDropEvent * event );
+    void dragEnterEvent(QDragEnterEvent *event);
 
 signals:
     void itemDropped( int index, const QMimeData * data, Qt::DropAction action );
@@ -18,6 +18,10 @@ protected:
     bool dropMimeData( int index, const QMimeData * data, Qt::DropAction action );
 
 public slots:
+
+private:
+    QPoint dragStartPosition;
+
 
 
 

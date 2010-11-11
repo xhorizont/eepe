@@ -22,7 +22,6 @@ burnConfigDialog::~burnConfigDialog()
 void burnConfigDialog::getSettings()
 {
     QSettings settings("er9x-eePe", "eePe");
-    avrTempDir = settings.value("temp_directory", QDir(QProcessEnvironment::systemEnvironment().value("TEMP","./")).absolutePath()).toString();
     avrLoc = settings.value("avrdude_location", QFileInfo("avrdude.exe").absoluteFilePath()).toString();
     QString str = settings.value("avr_arguments").toString();
     avrArgs = str.split(" ", QString::SkipEmptyParts);
@@ -30,7 +29,6 @@ void burnConfigDialog::getSettings()
     avrPort =  settings.value("avr_port", "").toString();
 
     ui->avrdude_location->setText(getAVRDUDE());
-    ui->temp_location->setText(getTempDir());
     ui->avrArgs->setText(getAVRArgs().join(" "));
 
     int idx1 = ui->avrdude_programmer->findText(getProgrammer());
@@ -51,7 +49,6 @@ void burnConfigDialog::putSettings()
 
     QSettings settings("er9x-eePe", "eePe");
     settings.setValue("avrdude_location", avrLoc);
-    settings.setValue("temp_directory", avrTempDir);
     settings.setValue("programmer", avrProgrammer);
     settings.setValue("avr_port", avrPort);
     settings.setValue("avr_arguments", avrArgs.join(" "));
@@ -65,11 +62,6 @@ void burnConfigDialog::on_avrdude_programmer_currentIndexChanged(QString )
 void burnConfigDialog::on_avrdude_location_editingFinished()
 {
     avrLoc = ui->avrdude_location->text();
-}
-
-void burnConfigDialog::on_temp_location_editingFinished()
-{
-    avrTempDir = ui->temp_location->text();
 }
 
 void burnConfigDialog::on_avrArgs_editingFinished()
@@ -90,17 +82,6 @@ void burnConfigDialog::on_pushButton_clicked()
     {
         ui->avrdude_location->setText(fileName);
         avrLoc = fileName;
-    }
-}
-
-void burnConfigDialog::on_pushButton_2_clicked()
-{
-    QString dirName = QFileDialog::getExistingDirectory(this, tr("Select Location"),ui->temp_location->text());
-
-    if(!dirName.isEmpty())
-    {
-        ui->temp_location->setText(dirName);
-        avrTempDir = dirName;
     }
 }
 

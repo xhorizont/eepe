@@ -20,7 +20,6 @@ public:
     burnConfigDialog(QWidget *parent = 0);
     ~burnConfigDialog();
 
-    QString getTempDir() {return avrTempDir;}
     QString getAVRDUDE() {return avrLoc;}
     QStringList getAVRArgs() {return avrArgs;}
     QString getProgrammer() {return avrProgrammer;}
@@ -34,7 +33,6 @@ private:
     Ui::burnConfigDialog *ui;
 
 
-    QString avrTempDir;
     QString avrLoc;
     QStringList avrArgs;
     QString avrProgrammer;
@@ -43,9 +41,7 @@ private:
 private slots:
     void on_avrArgs_editingFinished();
     void on_pushButton_4_clicked();
-    void on_temp_location_editingFinished();
     void on_pushButton_3_clicked();
-    void on_pushButton_2_clicked();
     void on_pushButton_clicked();
     void on_avrdude_location_editingFinished();
     void on_avrdude_programmer_currentIndexChanged(QString );
