@@ -1816,33 +1816,6 @@ void ModelEdit::MixerlistWidget_customContextMenuRequested(QPoint pos)
 
 }
 
-void ModelEdit::MixerlistWidget_mimeDropped( int index, const QMimeData * data, Qt::DropAction action )
-{
-
-    int dch = MixerlistWidget->item(index)->data(Qt::UserRole).toInt();
-    if(dch>MAX_MIXERS)
-        dch -= MAX_MIXERS;
-    else
-        dch = g_model.mixData[dch].destCh;
-
-
-//    QByteArray mxData = mimeData->data("application/x-eepe-mix");
-
-//    int i = 0;
-//    while(i<mxData.size())
-//    {
-//        MixData *md = gm_addMix(dch);
-//        memcpy(md,mxData.mid(i,sizeof(MixData)).constData(),sizeof(MixData));
-//        md->destCh = dch;
-
-//        i     += sizeof(MixData);
-//    }
-
-    updateSettings();
-    tabMixes();
-
-
-}
 
 void ModelEdit::launchSimulation()
 {

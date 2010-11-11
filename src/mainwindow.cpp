@@ -202,7 +202,7 @@ void MainWindow::burnFrom()
 {
     burnConfigDialog bcd;
     QString avrdudeLoc = bcd.getAVRDUDE();
-    QString tempDir    = bcd.getTempDir();
+    QString tempDir    = QDir::tempPath();
     QString programmer = bcd.getProgrammer();
     QStringList args   = bcd.getAVRArgs();
     if(!bcd.getPort().isEmpty()) args << "-P" << bcd.getPort();

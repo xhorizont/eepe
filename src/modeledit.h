@@ -95,7 +95,6 @@ private slots:
 
     void MixerlistWidget_customContextMenuRequested(QPoint pos);
     void MixerlistWidget_doubleClicked(QModelIndex index);
-    void MixerlistWidget_mimeDropped( int index, const QMimeData * data, Qt::DropAction action );
 
     void on_curveEdit_1_clicked();
     void on_curveEdit_2_clicked();
