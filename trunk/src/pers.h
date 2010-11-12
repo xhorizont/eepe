@@ -88,6 +88,9 @@ enum EnumKeys {
 #define CSW_NUM_FUNC 14
 #define CSW_LEN_FUNC 7
 
+#define CSWITCH_STR  "----   v>ofs  v<ofs  |v|>ofs|v|<ofsAND    OR     XOR    ""v1==v2 ""v1!=v2 ""v1>v2  ""v1<v2  ""v1>=v2 ""v1<=v2 "
+#define CSW_LEN_FUNC 7
+
 #define CS_OFF       0
 #define CS_VPOS      1  //v>offset
 #define CS_VNEG      2  //v<offset
@@ -118,6 +121,16 @@ enum EnumKeys {
 #define PPM_BASE   (MIX_FULL)
 #define CHOUT_BASE (MIX_FULL+NUM_PPM)
 
+#define DR_HIGH   0
+#define DR_MID    1
+#define DR_LOW    2
+#define DR_EXPO   0
+#define DR_WEIGHT 1
+#define DR_RIGHT  0
+#define DR_LEFT   1
+#define DR_DRSW1  99
+#define DR_DRSW2  98
+
 #define DSW_THR  1
 #define DSW_RUD  2
 #define DSW_ELE  3
@@ -127,12 +140,12 @@ enum EnumKeys {
 #define DSW_AIL  7
 #define DSW_GEA  8
 #define DSW_TRN  9
-#define DSW_CS1  10
-#define DSW_CS2  11
-#define DSW_CS3  12
-#define DSW_CS4  13
-#define DSW_CS5  14
-#define DSW_CS6  15
+#define DSW_SW1  10
+#define DSW_SW2  11
+#define DSW_SW3  12
+#define DSW_SW4  13
+#define DSW_SW5  14
+#define DSW_SW6  15
 
 
 #define NUM_KEYS TRM_RH_UP+1
@@ -224,9 +237,9 @@ public:
     bool eeLoadGeneral();
     void generalDefault();
 
-    bool getModel(ModelData* model, uint8_t id);
+    int  getModel(ModelData* model, uint8_t id);
     bool putModel(ModelData* model, uint8_t id);
-    bool getGeneralSettings(EEGeneral* setData);
+    int  getGeneralSettings(EEGeneral* setData);
     bool putGeneralSettings(EEGeneral* setData);
 
 };

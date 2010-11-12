@@ -54,6 +54,7 @@ ModelEdit::ModelEdit(EEPFILE *eFile, uint8_t id, QWidget *parent) :
     tabLimits();
     tabCurves();
     tabSwitches();
+    tabSafetySwitches();
     tabTrims();
 
     ui->curvePreview->setMinimumWidth(260);
@@ -132,6 +133,7 @@ void ModelEdit::tabModelEditSetup()
     ui->numChannelsSB->setValue(8+2*g_model.ppmNCH);
     ui->ppmDelaySB->setEnabled(!g_model.protocol);
     ui->numChannelsSB->setEnabled(!g_model.protocol);
+    ui->extendedLimitsChkB->setChecked(g_model.extendedLimits);
 }
 
 void ModelEdit::tabExpo()
@@ -496,6 +498,8 @@ void ModelEdit::tabLimits()
     ui->chInvCB_14->setCurrentIndex((g_model.limitData[13].revert) ? 1 : 0); connect(ui->chInvCB_14,SIGNAL(currentIndexChanged(int)),this,SLOT(limitEdited()));
     ui->chInvCB_15->setCurrentIndex((g_model.limitData[14].revert) ? 1 : 0); connect(ui->chInvCB_15,SIGNAL(currentIndexChanged(int)),this,SLOT(limitEdited()));
     ui->chInvCB_16->setCurrentIndex((g_model.limitData[15].revert) ? 1 : 0); connect(ui->chInvCB_16,SIGNAL(currentIndexChanged(int)),this,SLOT(limitEdited()));
+
+    setLimitMinMax();
 }
 
 void ModelEdit::updateTabCurves()
@@ -1054,6 +1058,26 @@ void ModelEdit::tabSwitches()
     connect(ui->cswitchFunc_6,SIGNAL(currentIndexChanged(int)),this,SLOT(switchesEdited()));
 
     switchEditLock = false;
+}
+
+void ModelEdit::tabSafetySwitches()
+{
+    for(int i=0; i<NUM_CHNOUT; i++)
+    {
+        safetySwitchSwtch[i] = new QComboBox(this);
+        populateSwitchCB(safetySwitchSwtch[i],g_model.safetySw[i].swtch);
+        ui->grid_tabSafetySwitches->addWidget(safetySwitchSwtch[i],i+1,1);
+        connect(safetySwitchSwtch[i],SIGNAL(currentIndexChanged(int)),this,SLOT(safetySwitchesEdited()));
+
+        safetySwitchValue[i] = new QSpinBox(this);
+        safetySwitchValue[i]->setAlignment(Qt::AlignRight | Qt::AlignVCenter);
+        safetySwitchValue[i]->setMaximum(125);
+        safetySwitchValue[i]->setMinimum(-125);
+        safetySwitchValue[i]->setAccelerated(true);
+        safetySwitchValue[i]->setValue(g_model.safetySw[i].val);
+        ui->grid_tabSafetySwitches->addWidget(safetySwitchValue[i],i+1,2);
+        connect(safetySwitchValue[i],SIGNAL(editingFinished()),this,SLOT(safetySwitchesEdited()));
+    }
 }
 
 void ModelEdit::switchesEdited()
@@ -1964,4 +1988,94 @@ void ModelEdit::on_resetCurve_16_clicked()
     updateTabCurves();
     updateSettings();
     drawCurve();
+}
+
+void ModelEdit::on_extendedLimitsChkB_toggled(bool checked)
+{
+    g_model.extendedLimits = checked;
+    setLimitMinMax();
+    updateSettings();
+}
+
+void ModelEdit::setLimitMinMax()
+{
+    int v = g_model.extendedLimits ? 125 : 100;
+    ui->minSB_1->setMaximum(v);
+    ui->minSB_2->setMaximum(v);
+    ui->minSB_3->setMaximum(v);
+    ui->minSB_4->setMaximum(v);
+    ui->minSB_5->setMaximum(v);
+    ui->minSB_6->setMaximum(v);
+    ui->minSB_7->setMaximum(v);
+    ui->minSB_8->setMaximum(v);
+    ui->minSB_9->setMaximum(v);
+    ui->minSB_10->setMaximum(v);
+    ui->minSB_11->setMaximum(v);
+    ui->minSB_12->setMaximum(v);
+    ui->minSB_13->setMaximum(v);
+    ui->minSB_14->setMaximum(v);
+    ui->minSB_15->setMaximum(v);
+    ui->minSB_16->setMaximum(v);
+
+    ui->minSB_1->setMinimum(-v);
+    ui->minSB_2->setMinimum(-v);
+    ui->minSB_3->setMinimum(-v);
+    ui->minSB_4->setMinimum(-v);
+    ui->minSB_5->setMinimum(-v);
+    ui->minSB_6->setMinimum(-v);
+    ui->minSB_7->setMinimum(-v);
+    ui->minSB_8->setMinimum(-v);
+    ui->minSB_9->setMinimum(-v);
+    ui->minSB_10->setMinimum(-v);
+    ui->minSB_11->setMinimum(-v);
+    ui->minSB_12->setMinimum(-v);
+    ui->minSB_13->setMinimum(-v);
+    ui->minSB_14->setMinimum(-v);
+    ui->minSB_15->setMinimum(-v);
+    ui->minSB_16->setMinimum(-v);
+
+    ui->maxSB_1->setMaximum(v);
+    ui->maxSB_2->setMaximum(v);
+    ui->maxSB_3->setMaximum(v);
+    ui->maxSB_4->setMaximum(v);
+    ui->maxSB_5->setMaximum(v);
+    ui->maxSB_6->setMaximum(v);
+    ui->maxSB_7->setMaximum(v);
+    ui->maxSB_8->setMaximum(v);
+    ui->maxSB_9->setMaximum(v);
+    ui->maxSB_10->setMaximum(v);
+    ui->maxSB_11->setMaximum(v);
+    ui->maxSB_12->setMaximum(v);
+    ui->maxSB_13->setMaximum(v);
+    ui->maxSB_14->setMaximum(v);
+    ui->maxSB_15->setMaximum(v);
+    ui->maxSB_16->setMaximum(v);
+
+    ui->maxSB_1->setMinimum(-v);
+    ui->maxSB_2->setMinimum(-v);
+    ui->maxSB_3->setMinimum(-v);
+    ui->maxSB_4->setMinimum(-v);
+    ui->maxSB_5->setMinimum(-v);
+    ui->maxSB_6->setMinimum(-v);
+    ui->maxSB_7->setMinimum(-v);
+    ui->maxSB_8->setMinimum(-v);
+    ui->maxSB_9->setMinimum(-v);
+    ui->maxSB_10->setMinimum(-v);
+    ui->maxSB_11->setMinimum(-v);
+    ui->maxSB_12->setMinimum(-v);
+    ui->maxSB_13->setMinimum(-v);
+    ui->maxSB_14->setMinimum(-v);
+    ui->maxSB_15->setMinimum(-v);
+    ui->maxSB_16->setMinimum(-v);
+}
+
+
+void ModelEdit::safetySwitchesEdited()
+{
+    for(int i=0; i<NUM_CHNOUT; i++)
+    {
+        g_model.safetySw[i].swtch = safetySwitchSwtch[i]->currentIndex()-MAX_DRSWITCH;
+        g_model.safetySw[i].val   = safetySwitchValue[i]->value();
+    }
+    updateSettings();
 }

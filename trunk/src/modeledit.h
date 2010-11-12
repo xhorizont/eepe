@@ -35,6 +35,9 @@ private:
     QComboBox * cswitchSource1[NUM_CSW];
     QComboBox * cswitchSource2[NUM_CSW];
 
+    QSpinBox  * safetySwitchValue[NUM_CHNOUT];
+    QComboBox * safetySwitchSwtch[NUM_CHNOUT];
+
     void updateSettings();
     void tabModelEditSetup();
     void tabExpo();
@@ -42,9 +45,11 @@ private:
     void tabLimits();
     void tabCurves();
     void tabSwitches();
+    void tabSafetySwitches();
     void tabTrims();
     void updateTabCurves();
     void setSwitchWidgetVisibility(int i);
+    void setLimitMinMax();
 
     void launchSimulation();
     void resizeEvent(QResizeEvent *event  = 0);
@@ -65,6 +70,7 @@ signals:
 
 
 private slots:
+    void on_extendedLimitsChkB_toggled(bool checked);
     void on_resetCurve_1_clicked();
     void on_resetCurve_2_clicked();
     void on_resetCurve_3_clicked();
@@ -116,6 +122,7 @@ private slots:
     void curvePointEdited();
     void limitEdited();
     void switchesEdited();
+    void safetySwitchesEdited();
     void expoEdited();
     void mixesEdited();
 

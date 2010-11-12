@@ -26,6 +26,8 @@ GeneralEdit::GeneralEdit(EEPFILE *eFile, QWidget *parent) :
 
     populateSwitchCB(ui->backlightswCB,g_eeGeneral.lightSw);
 
+    ui->ownerNameLE->setText(g_eeGeneral.ownerName);
+
     ui->contrastSB->setValue(g_eeGeneral.contrast);
     ui->battwarningDSB->setValue((double)g_eeGeneral.vBatWarn/10);
     ui->battcalibDSB->setValue((double)g_eeGeneral.vBatCalib/10);
@@ -417,5 +419,22 @@ void GeneralEdit::on_splashScreenChkB_stateChanged(int )
 void GeneralEdit::on_PPM_MultiplierDSB_editingFinished()
 {
     g_eeGeneral.PPM_Multiplier = (int)(ui->PPM_MultiplierDSB->value()*10)-10;
+    updateSettings();
+}
+
+void GeneralEdit::on_ownerNameLE_textEdited(QString txt)
+{
+    ui->ownerNameLE->setText(txt.toUpper());
+}
+
+void GeneralEdit::on_ownerNameLE_editingFinished()
+{
+    memset(&g_eeGeneral.ownerName,' ',sizeof(g_eeGeneral.ownerName));
+    for(quint8 i=0; i<(ui->ownerNameLE->text().length()); i++)
+    {
+        if(i>=sizeof(g_eeGeneral.ownerName)) break;
+        g_eeGeneral.ownerName[i] = ui->ownerNameLE->text().toStdString()[i];
+    }
+
     updateSettings();
 }

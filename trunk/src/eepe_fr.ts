@@ -403,6 +403,10 @@ p, li { white-space: pre-wrap; }
         <source>PPM Multiplier</source>
         <translation>Coeff. multiplicateur PPM</translation>
     </message>
+    <message>
+        <source>Owner Name</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>MainWindow</name>
@@ -1114,42 +1118,6 @@ p, li { white-space: pre-wrap; }
         <translation>AIL</translation>
     </message>
     <message>
-        <source>CH1</source>
-        <translation></translation>
-    </message>
-    <message>
-        <source>CH2</source>
-        <translation></translation>
-    </message>
-    <message>
-        <source>CH3</source>
-        <translation></translation>
-    </message>
-    <message>
-        <source>CH4</source>
-        <translation></translation>
-    </message>
-    <message>
-        <source>CH5</source>
-        <translation></translation>
-    </message>
-    <message>
-        <source>CH6</source>
-        <translation></translation>
-    </message>
-    <message>
-        <source>CH7</source>
-        <translation></translation>
-    </message>
-    <message>
-        <source>CH8</source>
-        <translation></translation>
-    </message>
-    <message>
-        <source>CH9</source>
-        <translation></translation>
-    </message>
-    <message>
         <source>ELE</source>
         <translation>PROF</translation>
     </message>
@@ -1196,34 +1164,6 @@ p, li { white-space: pre-wrap; }
     <message>
         <source>&amp;Cut</source>
         <translation>&amp;Couper</translation>
-    </message>
-    <message>
-        <source>CH10</source>
-        <translation></translation>
-    </message>
-    <message>
-        <source>CH11</source>
-        <translation></translation>
-    </message>
-    <message>
-        <source>CH12</source>
-        <translation></translation>
-    </message>
-    <message>
-        <source>CH13</source>
-        <translation></translation>
-    </message>
-    <message>
-        <source>CH14</source>
-        <translation></translation>
-    </message>
-    <message>
-        <source>CH15</source>
-        <translation></translation>
-    </message>
-    <message>
-        <source>CH16</source>
-        <translation></translation>
     </message>
     <message>
         <source>HIGH</source>
@@ -1633,6 +1573,22 @@ Droite</translation>
         <source>V2</source>
         <translation>V2</translation>
     </message>
+    <message>
+        <source>Extended Limits</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Safety Switches</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Switch</source>
+        <translation type="unfinished">Interrupteur</translation>
+    </message>
+    <message>
+        <source>Value</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>avrOutputDialog</name>
@@ -1708,7 +1664,7 @@ Consulter la documentation du programmateur utilisé et celle d&apos;AVRDUDE pou
     </message>
     <message>
         <source>Use this button to browse and select the temporary directory.</source>
-        <translation>Utiliser ce bouton pour parcourir à la recherche du dossier pour les fichiers temporarires.</translation>
+        <translation type="obsolete">Utiliser ce bouton pour parcourir à la recherche du dossier pour les fichiers temporarires.</translation>
     </message>
     <message>
         <source>Show Help</source>
@@ -1728,7 +1684,7 @@ Consulter la documentation du programmateur utilisé et celle d&apos;AVRDUDE pou
     </message>
     <message>
         <source>Stores temporary files</source>
-        <translation>Stocke les fichiers temporarires</translation>
+        <translation type="obsolete">Stocke les fichiers temporarires</translation>
     </message>
     <message>
         <source>Extra arguments used in AVRDUDE.
@@ -1742,7 +1698,7 @@ A n&apos;utiliser qu&apos;en connaissance de cause: il n&apos;y a pas de contrô
     </message>
     <message>
         <source>Temporary Directory</source>
-        <translation>Dossier Temporaire</translation>
+        <translation type="obsolete">Dossier Temporaire</translation>
     </message>
     <message>
         <source>AVRDUDE Location</source>
@@ -1772,7 +1728,7 @@ A n&apos;utiliser qu&apos;en connaissance de cause: il n&apos;y a pas de contrô
         <source>This directory holds temporary files needed for uploading and downloading EEPROM files.   
 
 Make sure you have write access to this directory.</source>
-        <translation>Ce dossier contient les fichiers temporaires nécessaires  à la gestion des EEPROM.
+        <translation type="obsolete">Ce dossier contient les fichiers temporaires nécessaires  à la gestion des EEPROM.
 
 Assurez-vous de posséder les droits en écriture sur ce dossier.</translation>
     </message>
@@ -1994,6 +1950,18 @@ Indique l&apos;affectation voie / numéro de canal par défaut utilisée lors de
     <message>
         <source>Mode 1 (RUD ELE THR AIL)</source>
         <translation>Mode 1 (DIR PROF GAZ AIL)</translation>
+    </message>
+    <message>
+        <source>er9x</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>eePe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Check for updates on startup</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

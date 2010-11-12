@@ -21,10 +21,21 @@
    <bool>true</bool>
   </property>
   <layout class="QGridLayout" name="gridLayout">
+   <item row="3" column="1">
+    <widget class="QPushButton" name="pushButton">
+     <property name="text">
+      <string>Simulate</string>
+     </property>
+     <property name="icon">
+      <iconset resource="eepe.qrc">
+       <normaloff>:/images/simulate.png</normaloff>:/images/simulate.png</iconset>
+     </property>
+    </widget>
+   </item>
    <item row="2" column="1">
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
-      <number>6</number>
+      <number>3</number>
      </property>
      <widget class="QWidget" name="tabModelSetup">
       <attribute name="title">
@@ -251,14 +262,14 @@
          </item>
         </widget>
        </item>
-       <item row="10" column="0">
+       <item row="11" column="0">
         <widget class="QLabel" name="label_5">
          <property name="text">
           <string>Protocol</string>
          </property>
         </widget>
        </item>
-       <item row="10" column="1">
+       <item row="11" column="1">
         <widget class="QComboBox" name="protocolCB">
          <item>
           <property name="text">
@@ -287,14 +298,14 @@
          </item>
         </widget>
        </item>
-       <item row="11" column="0">
+       <item row="12" column="0">
         <widget class="QLabel" name="label_6">
          <property name="text">
           <string>Channels</string>
          </property>
         </widget>
        </item>
-       <item row="11" column="1">
+       <item row="12" column="1">
         <widget class="QSpinBox" name="numChannelsSB">
          <property name="suffix">
           <string>ch</string>
@@ -313,14 +324,14 @@
          </property>
         </widget>
        </item>
-       <item row="12" column="0">
+       <item row="13" column="0">
         <widget class="QLabel" name="label_9">
          <property name="text">
           <string>ppm Delay</string>
          </property>
         </widget>
        </item>
-       <item row="12" column="1">
+       <item row="13" column="1">
         <widget class="QSpinBox" name="ppmDelaySB">
          <property name="suffix">
           <string> usec</string>
@@ -336,6 +347,20 @@
          </property>
          <property name="value">
           <number>300</number>
+         </property>
+        </widget>
+       </item>
+       <item row="10" column="0">
+        <widget class="QLabel" name="label_55">
+         <property name="text">
+          <string>Extended Limits</string>
+         </property>
+        </widget>
+       </item>
+       <item row="10" column="1">
+        <widget class="QCheckBox" name="extendedLimitsChkB">
+         <property name="text">
+          <string/>
          </property>
         </widget>
        </item>
@@ -1642,7 +1667,7 @@ Right</string>
        <item row="1" column="0">
         <widget class="QLabel" name="label_14">
          <property name="text">
-          <string>CH1</string>
+          <string notr="true">CH1</string>
          </property>
         </widget>
        </item>
@@ -1711,7 +1736,7 @@ Right</string>
        <item row="2" column="0">
         <widget class="QLabel" name="label_15">
          <property name="text">
-          <string>CH2</string>
+          <string notr="true">CH2</string>
          </property>
         </widget>
        </item>
@@ -1780,7 +1805,7 @@ Right</string>
        <item row="3" column="0">
         <widget class="QLabel" name="label_16">
          <property name="text">
-          <string>CH3</string>
+          <string notr="true">CH3</string>
          </property>
         </widget>
        </item>
@@ -1849,7 +1874,7 @@ Right</string>
        <item row="4" column="0">
         <widget class="QLabel" name="label_17">
          <property name="text">
-          <string>CH4</string>
+          <string notr="true">CH4</string>
          </property>
         </widget>
        </item>
@@ -1918,7 +1943,7 @@ Right</string>
        <item row="5" column="0">
         <widget class="QLabel" name="label_18">
          <property name="text">
-          <string>CH5</string>
+          <string notr="true">CH5</string>
          </property>
         </widget>
        </item>
@@ -1987,7 +2012,7 @@ Right</string>
        <item row="6" column="0">
         <widget class="QLabel" name="label_19">
          <property name="text">
-          <string>CH6</string>
+          <string notr="true">CH6</string>
          </property>
         </widget>
        </item>
@@ -2056,7 +2081,7 @@ Right</string>
        <item row="7" column="0">
         <widget class="QLabel" name="label_20">
          <property name="text">
-          <string>CH7</string>
+          <string notr="true">CH7</string>
          </property>
         </widget>
        </item>
@@ -2125,7 +2150,7 @@ Right</string>
        <item row="8" column="0">
         <widget class="QLabel" name="label_21">
          <property name="text">
-          <string>CH8</string>
+          <string notr="true">CH8</string>
          </property>
         </widget>
        </item>
@@ -2194,7 +2219,7 @@ Right</string>
        <item row="9" column="0">
         <widget class="QLabel" name="label_22">
          <property name="text">
-          <string>CH9</string>
+          <string notr="true">CH9</string>
          </property>
         </widget>
        </item>
@@ -2263,7 +2288,7 @@ Right</string>
        <item row="10" column="0">
         <widget class="QLabel" name="label_23">
          <property name="text">
-          <string>CH10</string>
+          <string notr="true">CH10</string>
          </property>
         </widget>
        </item>
@@ -2332,7 +2357,7 @@ Right</string>
        <item row="11" column="0">
         <widget class="QLabel" name="label_24">
          <property name="text">
-          <string>CH11</string>
+          <string notr="true">CH11</string>
          </property>
         </widget>
        </item>
@@ -2401,7 +2426,7 @@ Right</string>
        <item row="12" column="0">
         <widget class="QLabel" name="label_25">
          <property name="text">
-          <string>CH12</string>
+          <string notr="true">CH12</string>
          </property>
         </widget>
        </item>
@@ -2470,7 +2495,7 @@ Right</string>
        <item row="13" column="0">
         <widget class="QLabel" name="label_26">
          <property name="text">
-          <string>CH13</string>
+          <string notr="true">CH13</string>
          </property>
         </widget>
        </item>
@@ -2539,7 +2564,7 @@ Right</string>
        <item row="14" column="0">
         <widget class="QLabel" name="label_27">
          <property name="text">
-          <string>CH14</string>
+          <string notr="true">CH14</string>
          </property>
         </widget>
        </item>
@@ -2608,7 +2633,7 @@ Right</string>
        <item row="15" column="0">
         <widget class="QLabel" name="label_28">
          <property name="text">
-          <string>CH15</string>
+          <string notr="true">CH15</string>
          </property>
         </widget>
        </item>
@@ -2677,7 +2702,7 @@ Right</string>
        <item row="16" column="0">
         <widget class="QLabel" name="label_29">
          <property name="text">
-          <string>CH16</string>
+          <string notr="true">CH16</string>
          </property>
         </widget>
        </item>
@@ -5183,6 +5208,191 @@ Right</string>
        </item>
       </layout>
      </widget>
+     <widget class="QWidget" name="tabSafetySwitches">
+      <attribute name="title">
+       <string>Safety Switches</string>
+      </attribute>
+      <layout class="QGridLayout" name="grid_tabSafetySwitches" rowstretch="0,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10" columnstretch="0,10,10">
+       <item row="0" column="0">
+        <widget class="QLabel" name="label_56">
+         <property name="frameShape">
+          <enum>QFrame::Panel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <property name="midLineWidth">
+          <number>0</number>
+         </property>
+         <property name="text">
+          <string>Channel</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+         <property name="margin">
+          <number>3</number>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QLabel" name="label_66">
+         <property name="frameShape">
+          <enum>QFrame::Panel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <property name="midLineWidth">
+          <number>0</number>
+         </property>
+         <property name="text">
+          <string>Switch</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+         <property name="margin">
+          <number>3</number>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="2">
+        <widget class="QLabel" name="label_80">
+         <property name="frameShape">
+          <enum>QFrame::Panel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <property name="midLineWidth">
+          <number>0</number>
+         </property>
+         <property name="text">
+          <string>Value</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+         <property name="margin">
+          <number>3</number>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="label_97">
+         <property name="text">
+          <string notr="true">CH1</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="label_88">
+         <property name="text">
+          <string notr="true">CH2</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QLabel" name="label_85">
+         <property name="text">
+          <string notr="true">CH3</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="0">
+        <widget class="QLabel" name="label_84">
+         <property name="text">
+          <string notr="true">CH4</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="0">
+        <widget class="QLabel" name="label_89">
+         <property name="text">
+          <string notr="true">CH5</string>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="0">
+        <widget class="QLabel" name="label_90">
+         <property name="text">
+          <string notr="true">CH6</string>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="0">
+        <widget class="QLabel" name="label_86">
+         <property name="text">
+          <string notr="true">CH7</string>
+         </property>
+        </widget>
+       </item>
+       <item row="8" column="0">
+        <widget class="QLabel" name="label_98">
+         <property name="text">
+          <string notr="true">CH8</string>
+         </property>
+        </widget>
+       </item>
+       <item row="9" column="0">
+        <widget class="QLabel" name="label_91">
+         <property name="text">
+          <string notr="true">CH9</string>
+         </property>
+        </widget>
+       </item>
+       <item row="10" column="0">
+        <widget class="QLabel" name="label_92">
+         <property name="text">
+          <string notr="true">CH10</string>
+         </property>
+        </widget>
+       </item>
+       <item row="11" column="0">
+        <widget class="QLabel" name="label_83">
+         <property name="text">
+          <string notr="true">CH11</string>
+         </property>
+        </widget>
+       </item>
+       <item row="12" column="0">
+        <widget class="QLabel" name="label_93">
+         <property name="text">
+          <string notr="true">CH12</string>
+         </property>
+        </widget>
+       </item>
+       <item row="13" column="0">
+        <widget class="QLabel" name="label_94">
+         <property name="text">
+          <string notr="true">CH13</string>
+         </property>
+        </widget>
+       </item>
+       <item row="14" column="0">
+        <widget class="QLabel" name="label_95">
+         <property name="text">
+          <string notr="true">CH14</string>
+         </property>
+        </widget>
+       </item>
+       <item row="15" column="0">
+        <widget class="QLabel" name="label_87">
+         <property name="text">
+          <string notr="true">CH15</string>
+         </property>
+        </widget>
+       </item>
+       <item row="16" column="0">
+        <widget class="QLabel" name="label_96">
+         <property name="text">
+          <string notr="true">CH16</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
      <widget class="QWidget" name="tabTrims">
       <attribute name="title">
        <string>Trims</string>
@@ -5482,17 +5692,6 @@ Right</string>
        </item>
       </layout>
      </widget>
-    </widget>
-   </item>
-   <item row="3" column="1">
-    <widget class="QPushButton" name="pushButton">
-     <property name="text">
-      <string>Simulate</string>
-     </property>
-     <property name="icon">
-      <iconset resource="eepe.qrc">
-       <normaloff>:/images/simulate.png</normaloff>:/images/simulate.png</iconset>
-     </property>
     </widget>
    </item>
   </layout>
