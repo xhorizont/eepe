@@ -186,12 +186,12 @@ void simulatorDialog::setValues()
 #define CSWITCH_ON  "QLabel { background-color: #4CC417 }"
 #define CSWITCH_OFF "QLabel { }"
 
-    ui->labelCSW1->setStyleSheet(getSwitch(DSW_CS1,0) ? CSWITCH_ON : CSWITCH_OFF);
-    ui->labelCSW2->setStyleSheet(getSwitch(DSW_CS2,0) ? CSWITCH_ON : CSWITCH_OFF);
-    ui->labelCSW3->setStyleSheet(getSwitch(DSW_CS3,0) ? CSWITCH_ON : CSWITCH_OFF);
-    ui->labelCSW4->setStyleSheet(getSwitch(DSW_CS4,0) ? CSWITCH_ON : CSWITCH_OFF);
-    ui->labelCSW5->setStyleSheet(getSwitch(DSW_CS5,0) ? CSWITCH_ON : CSWITCH_OFF);
-    ui->labelCSW5->setStyleSheet(getSwitch(DSW_CS6,0) ? CSWITCH_ON : CSWITCH_OFF);
+    ui->labelCSW1->setStyleSheet(getSwitch(DSW_SW1,0) ? CSWITCH_ON : CSWITCH_OFF);
+    ui->labelCSW2->setStyleSheet(getSwitch(DSW_SW2,0) ? CSWITCH_ON : CSWITCH_OFF);
+    ui->labelCSW3->setStyleSheet(getSwitch(DSW_SW3,0) ? CSWITCH_ON : CSWITCH_OFF);
+    ui->labelCSW4->setStyleSheet(getSwitch(DSW_SW4,0) ? CSWITCH_ON : CSWITCH_OFF);
+    ui->labelCSW5->setStyleSheet(getSwitch(DSW_SW5,0) ? CSWITCH_ON : CSWITCH_OFF);
+    ui->labelCSW5->setStyleSheet(getSwitch(DSW_SW6,0) ? CSWITCH_ON : CSWITCH_OFF);
 }
 
 void simulatorDialog::beepWarn1()
@@ -681,6 +681,9 @@ void simulatorDialog::perOut(bool init)
       if(q>lim_p) q = lim_p;
       if(q<lim_n) q = lim_n;
       if(g_model.limitData[i].revert) q=-q;// finally do the reverse.
+
+      if(g_model.safetySw[i].swtch)  //if safety sw available for channel check and replace val if needed
+          if(getSwitch(g_model.safetySw[i].swtch,0)) q = calc100toRESX(g_model.safetySw[i].val);
 
     //cli();
     chanOut[i] = q; //copy consistent word to int-level

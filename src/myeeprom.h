@@ -16,28 +16,42 @@
 #ifndef eeprom_h
 #define eeprom_h
 
+#include <inttypes.h>
+
 
 //eeprom data
 //#define EE_VERSION 2
-#define MAX_MODELS 16
-#define MAX_MIXERS 32
-#define MAX_CURVE5 8
-#define MAX_CURVE9 8
-#define MDVERS_r9  1
-#define MDVERS_r14 2
-#define MDVERS_r22 3
-#define MDVERS_r77 4
-#define MDVERS_r85 5
-#define MDVERS     6
+#define MAX_MODELS  16
+#define MAX_MIXERS  32
+#define MAX_CURVE5  8
+#define MAX_CURVE9  8
+#define MDVERS_r9   1
+#define MDVERS_r14  2
+#define MDVERS_r22  3
+#define MDVERS_r77  4
+#define MDVERS_r85  5
+#define MDVERS_r261 6
+#define MDVERS      7
 
 
-#define GENERAL_MYVER 3
+#define GENERAL_MYVER_r261 3
+#define GENERAL_MYVER      4
 
 
 // eeprom ver <9 => mdvers == 1
 // eeprom ver >9 => mdvers ==2
 
+#define WARN_THR_BIT  0x01
+#define WARN_BEP_BIT  0x80
+#define WARN_SW_BIT   0x02
+#define WARN_MEM_BIT  0x04
+#define WARN_BVAL_BIT 0x38
 
+#define WARN_THR     (!(g_eeGeneral.warnOpts & WARN_THR_BIT))
+#define WARN_BEP     (!(g_eeGeneral.warnOpts & WARN_BEP_BIT))
+#define WARN_SW      (!(g_eeGeneral.warnOpts & WARN_SW_BIT))
+#define WARN_MEM     (!(g_eeGeneral.warnOpts & WARN_MEM_BIT))
+#define BEEP_VAL     ( (g_eeGeneral.warnOpts & WARN_BVAL_BIT) >>3 )
 
 
 typedef struct t_EEGeneral {
@@ -52,8 +66,7 @@ typedef struct t_EEGeneral {
   int8_t    vBatCalib;
   int8_t    lightSw;
   int16_t   ppmInCalib[8];
-  uint8_t   view;     //index of subview in main scrren
-//  uint8_t   warnOpts; //bitset for several warnings
+  uint8_t   view;
   uint8_t   disableThrottleWarning:1;
   uint8_t   disableSwitchWarning:1;
   uint8_t   disableMemoryWarning:1;
@@ -72,29 +85,16 @@ typedef struct t_EEGeneral {
   uint8_t   lightAutoOff;
   uint8_t   templateSetup;  //RETA order according to chout_ar array
   int8_t    PPM_Multiplier;
-  uint8_t   res[1];
+
+  // ver4 and up :=>
+
+  uint8_t   res[6];
+  char      ownerName[10];
 } __attribute__((packed)) EEGeneral;
 
 
 
 
-#define MIX_P1    5
-#define MIX_P2    6
-#define MIX_P3    7
-#define MIX_MAX   8
-#define MIX_FULL  9
-
-
-
-#define DR_HIGH   0
-#define DR_MID    1
-#define DR_LOW    2
-#define DR_EXPO   0
-#define DR_WEIGHT 1
-#define DR_RIGHT  0
-#define DR_LEFT   1
-#define DR_DRSW1  99
-#define DR_DRSW2  98
 
 //eeprom modelspec
 //expo[3][2][2] //[Norm/Dr][expo/weight][R/L]
@@ -135,13 +135,16 @@ typedef struct t_MixData {
 } __attribute__((packed)) MixData;
 
 
-
 typedef struct t_CSwData { // Custom Switches data
   int8_t  v1; //input
   int8_t  v2; //offset
   uint8_t func;
 } __attribute__((packed)) CSwData;
 
+typedef struct t_SafetySwData { // Custom Switches data
+  int8_t  swtch;
+  int8_t  val;
+} __attribute__((packed)) SafetySwData;
 
 
 typedef struct t_SwashRingData { // Swash Ring data
@@ -164,7 +167,9 @@ typedef struct t_ModelData {
   int8_t    ppmDelay;
   int8_t    trimSw;
   uint8_t   beepANACenter;        //1<<0->A1.. 1<<6->A7
-  uint8_t   pulsePol;
+  uint8_t   pulsePol:1;
+  uint8_t   extendedLimits:1;
+  uint8_t   bfres:6;
   char      res[3];
   MixData   mixData[MAX_MIXERS];
   LimitData limitData[NUM_CHNOUT];
@@ -174,6 +179,7 @@ typedef struct t_ModelData {
   int8_t    curves9[MAX_CURVE9][9];
   CSwData   customSw[NUM_CSW];
   SwashRingData swashR;
+  SafetySwData  safetySw[NUM_CHNOUT];
 } __attribute__((packed)) ModelData;
 
 

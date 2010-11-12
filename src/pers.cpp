@@ -57,6 +57,7 @@ void EEPFILE::generalDefault()
 {
   EEGeneral g_eeGeneral;
   memset(&g_eeGeneral,0,sizeof(g_eeGeneral));
+  memset(&g_eeGeneral.ownerName,' ',sizeof(g_eeGeneral.ownerName));
   g_eeGeneral.myVers   =  GENERAL_MYVER;
   g_eeGeneral.currModel=  0;
   g_eeGeneral.contrast = 25;
@@ -81,18 +82,14 @@ void EEPFILE::generalDefault()
 bool EEPFILE::eeLoadGeneral()
 {
   EEGeneral g_eeGeneral;
-  bool ret = getGeneralSettings(&g_eeGeneral);
+  int ret = getGeneralSettings(&g_eeGeneral);
 
-  if (!ret) return false;
+  if (ret<(int)(sizeof(EEGeneral)-20)) return false;
 
   uint16_t sum=0;
-  if(g_eeGeneral.myVers==GENERAL_MYVER)
-  {
-    for(int i=0; i<12;i++) sum+=g_eeGeneral.calibMid[i];
-    putGeneralSettings(&g_eeGeneral);
-    return g_eeGeneral.chkSum == sum;
-  }
-  return false;
+  for(int i=0; i<12;i++) sum+=g_eeGeneral.calibMid[i];
+  putGeneralSettings(&g_eeGeneral);
+  return g_eeGeneral.chkSum == sum;
 }
 
 void EEPFILE::modelDefault(uint8_t id)
@@ -161,9 +158,9 @@ bool EEPFILE::eeModelExists(uint8_t id)
 }
 
 
-bool EEPFILE::getModel(ModelData* model, uint8_t id)
+int EEPFILE::getModel(ModelData* model, uint8_t id)
 {
-    uint16_t sz = 0;
+    int sz = 0;
 
     if(id<MAX_MODELS)
     {
@@ -171,12 +168,12 @@ bool EEPFILE::getModel(ModelData* model, uint8_t id)
       sz = theFile->readRlc((uint8_t*)model, sizeof(g_model));
     }
 
-    return (sz == sizeof(ModelData));
+    return sz;
 }
 
 bool EEPFILE::putModel(ModelData* model, uint8_t id)
 {
-    uint16_t sz = 0;
+    int sz = 0;
 
     if(id<MAX_MODELS)
     {
@@ -188,17 +185,17 @@ bool EEPFILE::putModel(ModelData* model, uint8_t id)
     return (sz == sizeof(ModelData));
 }
 
-bool EEPFILE::getGeneralSettings(EEGeneral* setData)
+int EEPFILE::getGeneralSettings(EEGeneral* setData)
 {
     theFile->openRd(FILE_GENERAL);
-    uint8_t sz = theFile->readRlc((uint8_t*)setData, sizeof(EEGeneral));
+    int sz = theFile->readRlc((uint8_t*)setData, sizeof(EEGeneral));
 
-    return (sz == sizeof(EEGeneral));
+    return sz;
 }
 
 bool EEPFILE::putGeneralSettings(EEGeneral* setData)
 {
-    uint16_t sz = 0;
+    int sz = 0;
 
     sz = theFile->writeRlc(FILE_TMP, FILE_TYP_GENERAL, (uint8_t*)setData, sizeof(EEGeneral));
     if(sz == sizeof(EEGeneral)) theFile->swap(FILE_GENERAL,FILE_TMP);

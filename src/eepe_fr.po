@@ -506,6 +506,10 @@ msgctxt "GeneralEdit|"
 msgid "PPM Multiplier"
 msgstr "Coeff. multiplicateur PPM"
 
+msgctxt "GeneralEdit|"
+msgid "Owner Name"
+msgstr ""
+
 msgctxt "MainWindow|"
 msgid "&New"
 msgstr "&Nouveau"
@@ -1306,42 +1310,6 @@ msgid "AIL"
 msgstr "AIL"
 
 msgctxt "ModelEdit|"
-msgid "CH1"
-msgstr ""
-
-msgctxt "ModelEdit|"
-msgid "CH2"
-msgstr ""
-
-msgctxt "ModelEdit|"
-msgid "CH3"
-msgstr ""
-
-msgctxt "ModelEdit|"
-msgid "CH4"
-msgstr ""
-
-msgctxt "ModelEdit|"
-msgid "CH5"
-msgstr ""
-
-msgctxt "ModelEdit|"
-msgid "CH6"
-msgstr ""
-
-msgctxt "ModelEdit|"
-msgid "CH7"
-msgstr ""
-
-msgctxt "ModelEdit|"
-msgid "CH8"
-msgstr ""
-
-msgctxt "ModelEdit|"
-msgid "CH9"
-msgstr ""
-
-msgctxt "ModelEdit|"
 msgid "ELE"
 msgstr "PROF"
 
@@ -1389,34 +1357,6 @@ msgstr "&Ajouter"
 msgctxt "ModelEdit|"
 msgid "&Cut"
 msgstr "&Couper"
-
-msgctxt "ModelEdit|"
-msgid "CH10"
-msgstr ""
-
-msgctxt "ModelEdit|"
-msgid "CH11"
-msgstr ""
-
-msgctxt "ModelEdit|"
-msgid "CH12"
-msgstr ""
-
-msgctxt "ModelEdit|"
-msgid "CH13"
-msgstr ""
-
-msgctxt "ModelEdit|"
-msgid "CH14"
-msgstr ""
-
-msgctxt "ModelEdit|"
-msgid "CH15"
-msgstr ""
-
-msgctxt "ModelEdit|"
-msgid "CH16"
-msgstr ""
 
 msgctxt "ModelEdit|"
 msgid "HIGH"
@@ -1842,6 +1782,23 @@ msgctxt "ModelEdit|"
 msgid "V2"
 msgstr "V2"
 
+msgctxt "ModelEdit|"
+msgid "Extended Limits"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "Safety Switches"
+msgstr ""
+
+#, fuzzy
+msgctxt "ModelEdit|"
+msgid "Switch"
+msgstr "Interrupteur"
+
+msgctxt "ModelEdit|"
+msgid "Value"
+msgstr ""
+
 #, qt-format
 msgctxt "avrOutputDialog|"
 msgid "AVRDUDE done - exit code %1"
@@ -1923,11 +1880,11 @@ msgstr ""
 "Utiliser ce bouton pour parcourir à la recherche du fichier exécutable "
 "AVRDUDE.EXE."
 
-msgctxt "burnConfigDialog|"
-msgid "Use this button to browse and select the temporary directory."
-msgstr ""
-"Utiliser ce bouton pour parcourir à la recherche du dossier pour les "
-"fichiers temporarires."
+#~ msgctxt "burnConfigDialog|"
+#~ msgid "Use this button to browse and select the temporary directory."
+#~ msgstr ""
+#~ "Utiliser ce bouton pour parcourir à la recherche du dossier pour les "
+#~ "fichiers temporarires."
 
 msgctxt "burnConfigDialog|"
 msgid "Show Help"
@@ -1945,9 +1902,9 @@ msgctxt "burnConfigDialog|"
 msgid "List Available"
 msgstr "Affiche Liste"
 
-msgctxt "burnConfigDialog|"
-msgid "Stores temporary files"
-msgstr "Stocke les fichiers temporarires"
+#~ msgctxt "burnConfigDialog|"
+#~ msgid "Stores temporary files"
+#~ msgstr "Stocke les fichiers temporarires"
 
 msgctxt "burnConfigDialog|"
 msgid ""
@@ -1963,9 +1920,9 @@ msgstr ""
 "A n'utiliser qu'en connaissance de cause: il n'y a pas de contrôle d'erreur "
 "et votre programmateur pourrait être endommagé."
 
-msgctxt "burnConfigDialog|"
-msgid "Temporary Directory"
-msgstr "Dossier Temporaire"
+#~ msgctxt "burnConfigDialog|"
+#~ msgid "Temporary Directory"
+#~ msgstr "Dossier Temporaire"
 
 msgctxt "burnConfigDialog|"
 msgid "AVRDUDE Location"
@@ -1991,17 +1948,17 @@ msgctxt "burnConfigDialog|"
 msgid "Programmer"
 msgstr "Programmateur"
 
-msgctxt "burnConfigDialog|"
-msgid ""
-"This directory holds temporary files needed for uploading and downloading "
-"EEPROM files.   \n"
-"\n"
-"Make sure you have write access to this directory."
-msgstr ""
-"Ce dossier contient les fichiers temporaires nécessaires  à la gestion des "
-"EEPROM.\n"
-"\n"
-"Assurez-vous de posséder les droits en écriture sur ce dossier."
+#~ msgctxt "burnConfigDialog|"
+#~ msgid ""
+#~ "This directory holds temporary files needed for uploading and downloading "
+#~ "EEPROM files.   \n"
+#~ "\n"
+#~ "Make sure you have write access to this directory."
+#~ msgstr ""
+#~ "Ce dossier contient les fichiers temporaires nécessaires  à la gestion "
+#~ "des EEPROM.\n"
+#~ "\n"
+#~ "Assurez-vous de posséder les droits en écriture sur ce dossier."
 
 msgctxt "donatorsDialog|"
 msgid "List of Contributors"
@@ -2432,6 +2389,18 @@ msgstr "Mode par défaut"
 msgctxt "preferencesDialog|"
 msgid "Mode 1 (RUD ELE THR AIL)"
 msgstr "Mode 1 (DIR PROF GAZ AIL)"
+
+msgctxt "preferencesDialog|"
+msgid "er9x"
+msgstr ""
+
+msgctxt "preferencesDialog|"
+msgid "eePe"
+msgstr ""
+
+msgctxt "preferencesDialog|"
+msgid "Check for updates on startup"
+msgstr ""
 
 msgctxt "printDialog|"
 msgid "Low"

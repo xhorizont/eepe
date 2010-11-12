@@ -25,6 +25,8 @@ void preferencesDialog::write_values()
     settings.setValue("locale", ui->locale_QB->itemData(ui->locale_QB->currentIndex()));
     settings.setValue("default_channel_order", ui->channelorderCB->currentIndex());
     settings.setValue("default_mode", ui->stickmodeCB->currentIndex());
+    settings.setValue("startup_check_er9x", ui->startupCheck_er9x->isChecked());
+    settings.setValue("startup_check_eepe", ui->startupCheck_eepe->isChecked());
 }
 
 
@@ -37,6 +39,9 @@ void preferencesDialog::initSettings()
 
     ui->channelorderCB->setCurrentIndex(settings.value("default_channel_order", 0).toInt());
     ui->stickmodeCB->setCurrentIndex(settings.value("default_mode", 1).toInt());
+
+    ui->startupCheck_er9x->setChecked(settings.value("startup_check_er9x").toBool());
+    ui->startupCheck_eepe->setChecked(settings.value("startup_check_eepe").toBool());
 }
 
 void preferencesDialog::populateLocale()
