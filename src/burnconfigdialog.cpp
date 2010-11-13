@@ -11,6 +11,7 @@ burnConfigDialog::burnConfigDialog(QWidget *parent) :
     ui->avrdude_programmer->model()->sort(0);
 
     getSettings();
+    populateProgrammers();
     connect(this,SIGNAL(accepted()),this,SLOT(putSettings()));
 }
 
@@ -52,6 +53,39 @@ void burnConfigDialog::putSettings()
     settings.setValue("programmer", avrProgrammer);
     settings.setValue("avr_port", avrPort);
     settings.setValue("avr_arguments", avrArgs.join(" "));
+}
+
+void burnConfigDialog::populateProgrammers()
+{
+    QString fileName = QDir(avrLoc).absolutePath() + "/avrdude.conf"; //for windows
+    if(!QFileInfo(fileName).exists()) fileName = "/etc/avrdude.conf"; //for linux
+    if(!QFileInfo(fileName).exists()) return; // not found avrdude.conf - returning
+
+    QFile file(fileName);
+
+    if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) return;
+
+    QStringList items;
+    QString line = "";
+    QString prevline = "";
+    QTextStream in(&file);
+    while (!in.atEnd())
+    {
+        prevline = line;
+        line = in.readLine();
+
+        if(prevline.left(10).toLower()=="programmer")
+            items << line.section('"',1,1);
+    }
+    file.close();
+
+    items.sort();
+
+    QString avrProgrammer_temp = avrProgrammer;
+    ui->avrdude_programmer->clear();
+    ui->avrdude_programmer->addItems(items);
+    int idx1 = ui->avrdude_programmer->findText(avrProgrammer_temp);
+    if(idx1>=0) ui->avrdude_programmer->setCurrentIndex(idx1);
 }
 
 void burnConfigDialog::on_avrdude_programmer_currentIndexChanged(QString )

@@ -140,6 +140,12 @@ void simulatorDialog::getValues()
     calibratedStick[5] = ui->dialP_2->value();
     calibratedStick[6] = ui->dialP_3->value();
 
+    if(g_eeGeneral.throttleReversed)
+    {
+        int thrchn=THR_CHN;//stickMode=0123 -> thr=2121
+        calibratedStick[thrchn] *= -1;
+        trim[thrchn] *= -1;
+    }
 }
 
 inline int chVal(int val)
@@ -481,9 +487,7 @@ void simulatorDialog::perOut(bool init)
 
       //do trim -> throttle trim if applicable
       int32_t vv = 2*RESX;
-      if(IS_THROTTLE(i) && g_model.thrTrim) vv = (g_eeGeneral.throttleReversed) ?
-                                 ((int32_t)trim[i]-125)*(RESX+v)/(2*RESX) :
-                                 ((int32_t)trim[i]+125)*(RESX-v)/(2*RESX);
+      if(IS_THROTTLE(i) && g_model.thrTrim) vv = ((int32_t)trim[i]+125)*(RESX-v)/(2*RESX);
 
       //trim
       trimA[i] = (vv==2*RESX) ? trim[i]*2 : (int16_t)vv*2; //    if throttle trim -> trim low end
