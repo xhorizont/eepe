@@ -32,6 +32,7 @@ public:
 private:
     Ui::burnConfigDialog *ui;
 
+    void populateProgrammers();
 
     QString avrLoc;
     QStringList avrArgs;

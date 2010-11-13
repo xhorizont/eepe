@@ -272,7 +272,7 @@ Plage de valeurs: 5v...10v</translation>
     </message>
     <message>
         <source>Calibration</source>
-        <translation>Etalonnage</translation>
+        <translation>Étalonnage</translation>
     </message>
     <message>
         <source>Stick Mode</source>
@@ -287,7 +287,7 @@ Indique l&apos;affectation voie / numéro d&apos;entrée pour les présélection
     </message>
     <message>
         <source>Battery Calibration</source>
-        <translation>Etalonnage batterie</translation>
+        <translation>Étalonnage batterie</translation>
     </message>
     <message>
         <source>4 - Extra Long</source>
@@ -312,7 +312,7 @@ Indique l&apos;affectation voie / numéro d&apos;entrée pour les présélection
     <message>
         <source>Battery calibration:
 This value will be added to the measured battery voltage.  Use this value to calibrate the meter with an external meter.</source>
-        <translation>Etalonnage batterie:
+        <translation>Étalonnage batterie:
 Cette valeur est ajoutée à la tension mesurée.Mesurer la tension réelle&apos; à l&apos;aide d&apos;un multimètre pour déterminer l&apos;écart à appliquer.</translation>
     </message>
     <message>
@@ -405,7 +405,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Owner Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Nom du propriétaire</translation>
     </message>
 </context>
 <context>
@@ -444,7 +444,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>&amp;Write EEPROM To Tx</source>
-        <translation>&amp;Transférer l&apos;EEPROM au Tx</translation>
+        <translation>&amp;Transférer l&apos;EEPROM vers l&apos;émetteur</translation>
     </message>
     <message>
         <source>&amp;Burn</source>
@@ -512,7 +512,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>&amp;About</source>
-        <translation>&amp;A Propos</translation>
+        <translation>&amp;À Propos</translation>
     </message>
     <message>
         <source>&amp;Paste</source>
@@ -612,7 +612,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>eePe - EEPROM Editor</source>
-        <translation>eePe - Editeur d&apos;EEPROM</translation>
+        <translation>eePe - Éditeur d&apos;EEPROM</translation>
     </message>
     <message>
         <source>File saved</source>
@@ -688,7 +688,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>About eePe</source>
-        <translation>A propos d&apos;eePe</translation>
+        <translation>À propos d&apos;eePe</translation>
     </message>
     <message>
         <source>&amp;Fuses...</source>
@@ -708,7 +708,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Write EEPROM to transmitter</source>
-        <translation>Transfère l&apos;EEPROM à l&apos;émetteur</translation>
+        <translation>Transfère l&apos;EEPROM vers l&apos;émetteur</translation>
     </message>
     <message>
         <source>Cut the current selection&apos;s contents to the clipboard</source>
@@ -728,39 +728,39 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>&amp;Read EEPROM From Tx</source>
-        <translation>&amp;Charger l&apos;EEPROM du Tx</translation>
+        <translation>&amp;Charger l&apos;EEPROM de l&apos;émetteur</translation>
     </message>
     <message>
         <source>Read EEPROM From Tx</source>
-        <translation>Charger l&apos;EEPROM du Tx</translation>
+        <translation>Charger l&apos;EEPROM de l&apos;émetteur</translation>
     </message>
     <message>
         <source>Choose file to write to EEPROM memory</source>
-        <translation type="unfinished"></translation>
+        <translation>Choisir le fichier EEPROM à transmettre à l&apos;émetteur</translation>
     </message>
     <message>
         <source>Choose file to write to flash memory</source>
-        <translation type="unfinished"></translation>
+        <translation>Choisir le fichier FLASH à transmettre à l&apos;émetteur</translation>
     </message>
     <message>
         <source>Read EEPROM memory to File</source>
-        <translation type="unfinished"></translation>
+        <translation>Enregistrer l&apos;EEPROM de l&apos;émetteur dans un fichier</translation>
     </message>
     <message>
         <source>Write EEPROM memory from file</source>
-        <translation type="unfinished"></translation>
+        <translation>Transfèrer un fichier EEPROM vers l&apos;émetteur</translation>
     </message>
     <message>
         <source>Write EEPROM memory from file to transmitter</source>
-        <translation type="unfinished"></translation>
+        <translation>Transfère un fichier EEPROM vers l&apos;émetteur</translation>
     </message>
     <message>
         <source>Read EEPROM memory to file</source>
-        <translation type="unfinished"></translation>
+        <translation>Enregistrer l&apos;EEPROM de l&apos;émetteur dans un fichier</translation>
     </message>
     <message>
         <source>Read EEPROM memory from transmitter to file</source>
-        <translation type="unfinished"></translation>
+        <translation>Enregistrer l&apos;EEPROM de l&apos;émetteur vers un fichier</translation>
     </message>
 </context>
 <context>
@@ -1575,19 +1575,19 @@ Droite</translation>
     </message>
     <message>
         <source>Extended Limits</source>
-        <translation type="unfinished"></translation>
+        <translation>Débattements étendus</translation>
     </message>
     <message>
         <source>Safety Switches</source>
-        <translation type="unfinished"></translation>
+        <translation>Inters de sécurité</translation>
     </message>
     <message>
         <source>Switch</source>
-        <translation type="unfinished">Interrupteur</translation>
+        <translation>Interrupteur</translation>
     </message>
     <message>
         <source>Value</source>
-        <translation type="unfinished"></translation>
+        <translation>Valeur</translation>
     </message>
 </context>
 <context>
@@ -1953,15 +1953,15 @@ Indique l&apos;affectation voie / numéro de canal par défaut utilisée lors de
     </message>
     <message>
         <source>er9x</source>
-        <translation type="unfinished"></translation>
+        <translation>er9x</translation>
     </message>
     <message>
         <source>eePe</source>
-        <translation type="unfinished"></translation>
+        <translation>eePe</translation>
     </message>
     <message>
         <source>Check for updates on startup</source>
-        <translation type="unfinished"></translation>
+        <translation>Vérifier les mises à jour au démarrage</translation>
     </message>
 </context>
 <context>

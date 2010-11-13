@@ -1142,7 +1142,6 @@ void ModelEdit::tabTrims()
     ui->spinBox_S3->setValue(g_model.trim[CONVERT_MODE(THR)-1]);
     ui->spinBox_S4->setValue(g_model.trim[CONVERT_MODE(AIL)-1]);
 
-
     switch (g_eeGeneral.stickMode)
     {
         case (0):
@@ -1150,24 +1149,32 @@ void ModelEdit::tabTrims()
             ui->Label_S2->setText("ELE");
             ui->Label_S3->setText("THR");
             ui->Label_S4->setText("AIL");
+            if(g_eeGeneral.throttleReversed)
+                ui->slider_S3->setInvertedAppearance(true);
             break;
         case (1):
             ui->Label_S1->setText("RUD");
             ui->Label_S2->setText("THR");
             ui->Label_S3->setText("ELE");
             ui->Label_S4->setText("AIL");
+            if(g_eeGeneral.throttleReversed)
+                ui->slider_S2->setInvertedAppearance(true);
             break;
         case (2):
             ui->Label_S1->setText("AIL");
             ui->Label_S2->setText("ELE");
             ui->Label_S3->setText("THR");
             ui->Label_S4->setText("RUD");
+            if(g_eeGeneral.throttleReversed)
+                ui->slider_S3->setInvertedAppearance(true);
             break;
         case (3):
             ui->Label_S1->setText("AIL");
             ui->Label_S2->setText("THR");
             ui->Label_S3->setText("ELE");
             ui->Label_S4->setText("RUD");
+            if(g_eeGeneral.throttleReversed)
+                ui->slider_S2->setInvertedAppearance(true);
             break;
     }
 
