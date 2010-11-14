@@ -50,6 +50,8 @@ simulatorDialog::simulatorDialog(QWidget *parent) :
 
     setupSticks();
     setupTimer();
+
+
 }
 
 simulatorDialog::~simulatorDialog()
@@ -189,6 +191,12 @@ void simulatorDialog::setValues()
     ui->chnoutV_15->setText(QString("%1").arg((qreal)chanOut[14]*100/1024, 0, 'f', 1));
     ui->chnoutV_16->setText(QString("%1").arg((qreal)chanOut[15]*100/1024, 0, 'f', 1));
 
+    ui->leftXPerc->setText(QString("X %1\%").arg((qreal)nodeLeft->getX()*100, 2, 'f', 0));
+    ui->leftYPerc->setText(QString("Y %1\%").arg((qreal)nodeLeft->getY()*-100, 2, 'f', 0));
+
+    ui->rightXPerc->setText(QString("X %1\%").arg((qreal)nodeRight->getX()*100, 2, 'f', 0));
+    ui->rightYPerc->setText(QString("Y %1\%").arg((qreal)nodeRight->getY()*-100, 2, 'f', 0));
+
 #define CSWITCH_ON  "QLabel { background-color: #4CC417 }"
 #define CSWITCH_OFF "QLabel { }"
 
@@ -214,10 +222,13 @@ void simulatorDialog::setupSticks()
     leftScene->setItemIndexMethod(QGraphicsScene::NoIndex);
     ui->leftStick->setScene(leftScene);
 
+    // ui->leftStick->scene()->addLine(0,10,20,30);
+
     QGraphicsScene *rightScene = new QGraphicsScene(ui->rightStick);
     rightScene->setItemIndexMethod(QGraphicsScene::NoIndex);
     ui->rightStick->setScene(rightScene);
 
+    // ui->rightStick->scene()->addLine(0,10,20,30);
 
     nodeLeft = new Node();
     nodeLeft->setPos(-GBALL_SIZE/2,-GBALL_SIZE/2);

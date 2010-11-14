@@ -313,7 +313,7 @@ msgstr ""
 
 msgctxt "GeneralEdit|"
 msgid "Calibration"
-msgstr "Etalonnage"
+msgstr "Étalonnage"
 
 msgctxt "GeneralEdit|"
 msgid "Stick Mode"
@@ -332,7 +332,7 @@ msgstr ""
 
 msgctxt "GeneralEdit|"
 msgid "Battery Calibration"
-msgstr "Etalonnage batterie"
+msgstr "Étalonnage batterie"
 
 #~ msgctxt "GeneralEdit|"
 #~ msgid "4 - Extra Long"
@@ -365,7 +365,7 @@ msgid ""
 "This value will be added to the measured battery voltage.  Use this value to "
 "calibrate the meter with an external meter."
 msgstr ""
-"Etalonnage batterie:\n"
+"Étalonnage batterie:\n"
 "Cette valeur est ajoutée à la tension mesurée.Mesurer la tension réelle' à "
 "l'aide d'un multimètre pour déterminer l'écart à appliquer."
 
@@ -508,7 +508,7 @@ msgstr "Coeff. multiplicateur PPM"
 
 msgctxt "GeneralEdit|"
 msgid "Owner Name"
-msgstr ""
+msgstr "Nom du propriétaire"
 
 msgctxt "MainWindow|"
 msgid "&New"
@@ -545,7 +545,7 @@ msgstr "Affiche les réglages des fusibles"
 
 msgctxt "MainWindow|"
 msgid "&Write EEPROM To Tx"
-msgstr "&Transférer l'EEPROM au Tx"
+msgstr "&Transférer l'EEPROM vers l'émetteur"
 
 msgctxt "MainWindow|"
 msgid "&Burn"
@@ -615,7 +615,7 @@ msgstr ""
 
 msgctxt "MainWindow|"
 msgid "&About"
-msgstr "&A Propos"
+msgstr "&À Propos"
 
 msgctxt "MainWindow|"
 msgid "&Paste"
@@ -720,7 +720,7 @@ msgstr "Fichier chargé"
 
 msgctxt "MainWindow|"
 msgid "eePe - EEPROM Editor"
-msgstr "eePe - Editeur d'EEPROM"
+msgstr "eePe - Éditeur d'EEPROM"
 
 msgctxt "MainWindow|"
 msgid "File saved"
@@ -796,7 +796,7 @@ msgstr "&Préférences..."
 
 msgctxt "MainWindow|"
 msgid "About eePe"
-msgstr "A propos d'eePe"
+msgstr "À propos d'eePe"
 
 msgctxt "MainWindow|"
 msgid "&Fuses..."
@@ -816,7 +816,7 @@ msgstr "&Programmateurs supportés"
 
 msgctxt "MainWindow|"
 msgid "Write EEPROM to transmitter"
-msgstr "Transfère l'EEPROM à l'émetteur"
+msgstr "Transfère l'EEPROM vers l'émetteur"
 
 msgctxt "MainWindow|"
 msgid "Cut the current selection's contents to the clipboard"
@@ -836,39 +836,39 @@ msgstr "Configure le logiciel de flashage"
 
 msgctxt "MainWindow|"
 msgid "&Read EEPROM From Tx"
-msgstr "&Charger l'EEPROM du Tx"
+msgstr "&Charger l'EEPROM de l'émetteur"
 
 msgctxt "MainWindow|"
 msgid "Read EEPROM From Tx"
-msgstr "Charger l'EEPROM du Tx"
+msgstr "Charger l'EEPROM de l'émetteur"
 
 msgctxt "MainWindow|"
 msgid "Choose file to write to EEPROM memory"
-msgstr ""
+msgstr "Choisir le fichier EEPROM à transmettre à l'émetteur"
 
 msgctxt "MainWindow|"
 msgid "Choose file to write to flash memory"
-msgstr ""
+msgstr "Choisir le fichier FLASH à transmettre à l'émetteur"
 
 msgctxt "MainWindow|"
 msgid "Read EEPROM memory to File"
-msgstr ""
+msgstr "Enregistrer l'EEPROM de l'émetteur dans un fichier"
 
 msgctxt "MainWindow|"
 msgid "Write EEPROM memory from file"
-msgstr ""
+msgstr "Transfèrer un fichier EEPROM vers l'émetteur"
 
 msgctxt "MainWindow|"
 msgid "Write EEPROM memory from file to transmitter"
-msgstr ""
+msgstr "Transfère un fichier EEPROM vers l'émetteur"
 
 msgctxt "MainWindow|"
 msgid "Read EEPROM memory to file"
-msgstr ""
+msgstr "Enregistrer l'EEPROM de l'émetteur dans un fichier"
 
 msgctxt "MainWindow|"
 msgid "Read EEPROM memory from transmitter to file"
-msgstr ""
+msgstr "Enregistrer l'EEPROM de l'émetteur vers un fichier"
 
 #, qt-format
 msgctxt "MdiChild|"
@@ -1784,20 +1784,19 @@ msgstr "V2"
 
 msgctxt "ModelEdit|"
 msgid "Extended Limits"
-msgstr ""
+msgstr "Débattements étendus"
 
 msgctxt "ModelEdit|"
 msgid "Safety Switches"
-msgstr ""
+msgstr "Inters de sécurité"
 
-#, fuzzy
 msgctxt "ModelEdit|"
 msgid "Switch"
 msgstr "Interrupteur"
 
 msgctxt "ModelEdit|"
 msgid "Value"
-msgstr ""
+msgstr "Valeur"
 
 #, qt-format
 msgctxt "avrOutputDialog|"
@@ -2392,15 +2391,15 @@ msgstr "Mode 1 (DIR PROF GAZ AIL)"
 
 msgctxt "preferencesDialog|"
 msgid "er9x"
-msgstr ""
+msgstr "er9x"
 
 msgctxt "preferencesDialog|"
 msgid "eePe"
-msgstr ""
+msgstr "eePe"
 
 msgctxt "preferencesDialog|"
 msgid "Check for updates on startup"
-msgstr ""
+msgstr "Vérifier les mises à jour au démarrage"
 
 msgctxt "printDialog|"
 msgid "Low"
@@ -2796,3 +2795,7 @@ msgstr "Rappel Y"
 msgctxt "simulatorDialog|"
 msgid "Simulating "
 msgstr "Simulation "
+
+msgctxt "simulatorDialog|"
+msgid "TextLabel"
+msgstr ""

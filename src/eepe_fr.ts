@@ -2349,5 +2349,9 @@ Indique l&apos;affectation voie / numéro de canal par défaut utilisée lors de
         <source>Simulating </source>
         <translation>Simulation </translation>
     </message>
+    <message>
+        <source>TextLabel</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 </TS>

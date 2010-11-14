@@ -1860,83 +1860,83 @@ msgctxt "ModelEdit|"
 msgid " Warn(%1)"
 msgstr ""
 
-#: modeledit.cpp:1517
+#: modeledit.cpp:1524
 #, qt-format
 msgctxt "ModelEdit|"
 msgid "Curve %1"
 msgstr ""
 
-#: modeledit.cpp:1738
+#: modeledit.cpp:1745
 msgctxt "ModelEdit|"
 msgid "Delete Selected Mixes?"
 msgstr ""
 
-#: modeledit.cpp:1830
+#: modeledit.cpp:1837
 msgctxt "ModelEdit|"
 msgid "&Add"
 msgstr ""
 
-#: modeledit.cpp:1830
+#: modeledit.cpp:1837
 msgctxt "ModelEdit|"
 msgid "Ctrl+A"
 msgstr ""
 
-#: modeledit.cpp:1831
+#: modeledit.cpp:1838
 msgctxt "ModelEdit|"
 msgid "&Edit"
 msgstr ""
 
-#: modeledit.cpp:1831
+#: modeledit.cpp:1838
 msgctxt "ModelEdit|"
 msgid "Enter"
 msgstr ""
 
-#: modeledit.cpp:1833
+#: modeledit.cpp:1840
 msgctxt "ModelEdit|"
 msgid "&Delete"
 msgstr ""
 
-#: modeledit.cpp:1833
+#: modeledit.cpp:1840
 msgctxt "ModelEdit|"
 msgid "Delete"
 msgstr ""
 
-#: modeledit.cpp:1834
+#: modeledit.cpp:1841
 msgctxt "ModelEdit|"
 msgid "&Copy"
 msgstr ""
 
-#: modeledit.cpp:1834
+#: modeledit.cpp:1841
 msgctxt "ModelEdit|"
 msgid "Ctrl+C"
 msgstr ""
 
-#: modeledit.cpp:1835
+#: modeledit.cpp:1842
 msgctxt "ModelEdit|"
 msgid "&Cut"
 msgstr ""
 
-#: modeledit.cpp:1835
+#: modeledit.cpp:1842
 msgctxt "ModelEdit|"
 msgid "Ctrl+X"
 msgstr ""
 
-#: modeledit.cpp:1836
+#: modeledit.cpp:1843
 msgctxt "ModelEdit|"
 msgid "&Paste"
 msgstr ""
 
-#: modeledit.cpp:1836
+#: modeledit.cpp:1843
 msgctxt "ModelEdit|"
 msgid "Ctrl+V"
 msgstr ""
 
-#: modeledit.cpp:1837
+#: modeledit.cpp:1844
 msgctxt "ModelEdit|"
 msgid "D&uplicate"
 msgstr ""
 
-#: modeledit.cpp:1837
+#: modeledit.cpp:1844
 msgctxt "ModelEdit|"
 msgid "Ctrl+U"
 msgstr ""
@@ -2079,17 +2079,17 @@ msgctxt "burnConfigDialog|"
 msgid "Port"
 msgstr ""
 
-#: burnconfigdialog.cpp:79
+#: burnconfigdialog.cpp:113
 msgctxt "burnConfigDialog|"
 msgid "Select Location"
 msgstr ""
 
-#: burnconfigdialog.cpp:142
+#: burnconfigdialog.cpp:176
 msgctxt "burnConfigDialog|"
 msgid "eePe"
 msgstr ""
 
-#: burnconfigdialog.cpp:143
+#: burnconfigdialog.cpp:177
 msgctxt "burnConfigDialog|"
 msgid ""
 "<b><u>WARNING!</u></b><br>This will reset the fuses to the factory "
@@ -2703,177 +2703,183 @@ msgctxt "simulatorDialog|"
 msgid "AIL"
 msgstr ""
 
-#: simulatordialog.ui:288 simulatordialog.ui:579
+#: simulatordialog.ui:288 simulatordialog.ui:609
 msgctxt "simulatorDialog|"
 msgid "Hold X"
 msgstr ""
 
-#: simulatordialog.ui:313 simulatordialog.ui:604
+#: simulatordialog.ui:313 simulatordialog.ui:634
 msgctxt "simulatorDialog|"
 msgid "Fix X"
 msgstr ""
 
-#: simulatordialog.ui:338 simulatordialog.ui:629
+#: simulatordialog.ui:338 simulatordialog.ui:659
 msgctxt "simulatorDialog|"
 msgid "Fix Y"
 msgstr ""
 
-#: simulatordialog.ui:363 simulatordialog.ui:654
+#: simulatordialog.ui:363 simulatordialog.ui:684
 msgctxt "simulatorDialog|"
 msgid "Hold Y"
 msgstr ""
 
-#: simulatordialog.ui:438
+#: simulatordialog.ui:383 simulatordialog.ui:393 simulatordialog.ui:704
+#: simulatordialog.ui:714
+msgctxt "simulatorDialog|"
+msgid "TextLabel"
+msgstr ""
+
+#: simulatordialog.ui:468
 msgctxt "simulatorDialog|"
 msgid "TRN"
 msgstr ""
 
-#: simulatordialog.ui:460
+#: simulatordialog.ui:490
 msgctxt "simulatorDialog|"
 msgid "GEA"
 msgstr ""
 
-#: simulatordialog.ui:488
+#: simulatordialog.ui:518
 msgctxt "simulatorDialog|"
 msgid "ID0"
 msgstr ""
 
-#: simulatordialog.ui:519
+#: simulatordialog.ui:549
 msgctxt "simulatorDialog|"
 msgid "ID1"
 msgstr ""
 
-#: simulatordialog.ui:547
+#: simulatordialog.ui:577
 msgctxt "simulatorDialog|"
 msgid "ID2"
 msgstr ""
 
-#: simulatordialog.ui:690
+#: simulatordialog.ui:764
 msgctxt "simulatorDialog|"
 msgid "SW1"
 msgstr ""
 
-#: simulatordialog.ui:721
+#: simulatordialog.ui:795
 msgctxt "simulatorDialog|"
 msgid "SW2"
 msgstr ""
 
-#: simulatordialog.ui:752
+#: simulatordialog.ui:826
 msgctxt "simulatorDialog|"
 msgid "SW3"
 msgstr ""
 
-#: simulatordialog.ui:783
+#: simulatordialog.ui:857
 msgctxt "simulatorDialog|"
 msgid "BEEP"
 msgstr ""
 
-#: simulatordialog.ui:814
+#: simulatordialog.ui:888
 msgctxt "simulatorDialog|"
 msgid "SW4"
 msgstr ""
 
-#: simulatordialog.ui:845
+#: simulatordialog.ui:919
 msgctxt "simulatorDialog|"
 msgid "SW5"
 msgstr ""
 
-#: simulatordialog.ui:876
+#: simulatordialog.ui:950
 msgctxt "simulatorDialog|"
 msgid "SW6"
 msgstr ""
 
-#: simulatordialog.ui:893
+#: simulatordialog.ui:967
 msgctxt "simulatorDialog|"
 msgid "CH1"
 msgstr ""
 
-#: simulatordialog.ui:900
+#: simulatordialog.ui:974
 msgctxt "simulatorDialog|"
 msgid "CH9"
 msgstr ""
 
-#: simulatordialog.ui:907
+#: simulatordialog.ui:981
 msgctxt "simulatorDialog|"
 msgid "CH2"
 msgstr ""
 
-#: simulatordialog.ui:914
+#: simulatordialog.ui:988
 msgctxt "simulatorDialog|"
 msgid "CH10"
 msgstr ""
 
-#: simulatordialog.ui:921
+#: simulatordialog.ui:995
 msgctxt "simulatorDialog|"
 msgid "CH3"
 msgstr ""
 
-#: simulatordialog.ui:928
+#: simulatordialog.ui:1002
 msgctxt "simulatorDialog|"
 msgid "CH11"
 msgstr ""
 
-#: simulatordialog.ui:935
+#: simulatordialog.ui:1009
 msgctxt "simulatorDialog|"
 msgid "CH4"
 msgstr ""
 
-#: simulatordialog.ui:942
+#: simulatordialog.ui:1016
 msgctxt "simulatorDialog|"
 msgid "CH12"
 msgstr ""
 
-#: simulatordialog.ui:949
+#: simulatordialog.ui:1023
 msgctxt "simulatorDialog|"
 msgid "CH5"
 msgstr ""
 
-#: simulatordialog.ui:956
+#: simulatordialog.ui:1030
 msgctxt "simulatorDialog|"
 msgid "CH13"
 msgstr ""
 
-#: simulatordialog.ui:963
+#: simulatordialog.ui:1037
 msgctxt "simulatorDialog|"
 msgid "CH6"
 msgstr ""
 
-#: simulatordialog.ui:970
+#: simulatordialog.ui:1044
 msgctxt "simulatorDialog|"
 msgid "CH14"
 msgstr ""
 
-#: simulatordialog.ui:977
+#: simulatordialog.ui:1051
 msgctxt "simulatorDialog|"
 msgid "CH7"
 msgstr ""
 
-#: simulatordialog.ui:984
+#: simulatordialog.ui:1058
 msgctxt "simulatorDialog|"
 msgid "CH15"
 msgstr ""
 
-#: simulatordialog.ui:991
+#: simulatordialog.ui:1065
 msgctxt "simulatorDialog|"
 msgid "CH8"
 msgstr ""
 
-#: simulatordialog.ui:998
+#: simulatordialog.ui:1072
 msgctxt "simulatorDialog|"
 msgid "CH16"
 msgstr ""
 
-#: simulatordialog.ui:1699 simulatordialog.ui:1715 simulatordialog.ui:1731
-#: simulatordialog.ui:1747 simulatordialog.ui:1763 simulatordialog.ui:1779
-#: simulatordialog.ui:1795 simulatordialog.ui:1811 simulatordialog.ui:1827
-#: simulatordialog.ui:1843 simulatordialog.ui:1859 simulatordialog.ui:1875
-#: simulatordialog.ui:1891 simulatordialog.ui:1907 simulatordialog.ui:1923
-#: simulatordialog.ui:1939
+#: simulatordialog.ui:1773 simulatordialog.ui:1789 simulatordialog.ui:1805
+#: simulatordialog.ui:1821 simulatordialog.ui:1837 simulatordialog.ui:1853
+#: simulatordialog.ui:1869 simulatordialog.ui:1885 simulatordialog.ui:1901
+#: simulatordialog.ui:1917 simulatordialog.ui:1933 simulatordialog.ui:1949
+#: simulatordialog.ui:1965 simulatordialog.ui:1981 simulatordialog.ui:1997
+#: simulatordialog.ui:2013
 msgctxt "simulatorDialog|"
 msgid "-100.1"
 msgstr ""
 
-#: simulatordialog.cpp:106
+#: simulatordialog.cpp:108
 msgctxt "simulatorDialog|"
 msgid "Simulating "
 msgstr ""

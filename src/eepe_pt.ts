@@ -1928,7 +1928,7 @@ Right</source>
         <translation>Aviso(%1)</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="1517"/>
+        <location filename="modeledit.cpp" line="1524"/>
         <source>Curve %1</source>
         <translation>Curva %1</translation>
     </message>
@@ -1937,77 +1937,77 @@ Right</source>
         <translation type="obsolete">eePe</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="1738"/>
+        <location filename="modeledit.cpp" line="1745"/>
         <source>Delete Selected Mixes?</source>
         <translation>Apagar misturas selecionadas?</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="1830"/>
+        <location filename="modeledit.cpp" line="1837"/>
         <source>&amp;Add</source>
         <translation>&amp;Adicionar</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="1830"/>
+        <location filename="modeledit.cpp" line="1837"/>
         <source>Ctrl+A</source>
         <translation>Ctrl+A</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="1831"/>
+        <location filename="modeledit.cpp" line="1838"/>
         <source>&amp;Edit</source>
         <translation>&amp;Editar</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="1831"/>
+        <location filename="modeledit.cpp" line="1838"/>
         <source>Enter</source>
         <translation>Enter</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="1833"/>
+        <location filename="modeledit.cpp" line="1840"/>
         <source>&amp;Delete</source>
         <translation>&amp;Eliminar</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="1833"/>
+        <location filename="modeledit.cpp" line="1840"/>
         <source>Delete</source>
         <translation>Eliminar</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="1834"/>
+        <location filename="modeledit.cpp" line="1841"/>
         <source>&amp;Copy</source>
         <translation>&amp;Copiar</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="1834"/>
+        <location filename="modeledit.cpp" line="1841"/>
         <source>Ctrl+C</source>
         <translation>Ctrl+C</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="1835"/>
+        <location filename="modeledit.cpp" line="1842"/>
         <source>&amp;Cut</source>
         <translation>&amp;Cor&amp;tar</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="1835"/>
+        <location filename="modeledit.cpp" line="1842"/>
         <source>Ctrl+X</source>
         <translation>Ctrl+X</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="1836"/>
+        <location filename="modeledit.cpp" line="1843"/>
         <source>&amp;Paste</source>
         <translation>Co&amp;lar</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="1836"/>
+        <location filename="modeledit.cpp" line="1843"/>
         <source>Ctrl+V</source>
         <translation>Ctrl+V</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="1837"/>
+        <location filename="modeledit.cpp" line="1844"/>
         <source>D&amp;uplicate</source>
         <translation>&amp;Duplicar</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="1837"/>
+        <location filename="modeledit.cpp" line="1844"/>
         <source>Ctrl+U</source>
         <translation>Ctrl+U</translation>
     </message>
@@ -2174,17 +2174,17 @@ Please only use this if you know what you are doing.  There are no error checks 
         <translation type="obsolete">Activar o Fuse &quot;Limpar EEPROM&quot;</translation>
     </message>
     <message>
-        <location filename="burnconfigdialog.cpp" line="79"/>
+        <location filename="burnconfigdialog.cpp" line="113"/>
         <source>Select Location</source>
         <translation>Selecionar localização</translation>
     </message>
     <message>
-        <location filename="burnconfigdialog.cpp" line="142"/>
+        <location filename="burnconfigdialog.cpp" line="176"/>
         <source>eePe</source>
         <translation>eePe</translation>
     </message>
     <message>
-        <location filename="burnconfigdialog.cpp" line="143"/>
+        <location filename="burnconfigdialog.cpp" line="177"/>
         <source>&lt;b&gt;&lt;u&gt;WARNING!&lt;/u&gt;&lt;/b&gt;&lt;br&gt;This will reset the fuses to the factory settings.&lt;br&gt;Writing fuses can mess up your radio.&lt;br&gt;Do this only if you are sure they are wrong!&lt;br&gt;Are you sure you want to continue?</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2692,185 +2692,193 @@ Mode 4:
     </message>
     <message>
         <location filename="simulatordialog.ui" line="288"/>
-        <location filename="simulatordialog.ui" line="579"/>
+        <location filename="simulatordialog.ui" line="609"/>
         <source>Hold X</source>
         <translation>Manter X</translation>
     </message>
     <message>
         <location filename="simulatordialog.ui" line="313"/>
-        <location filename="simulatordialog.ui" line="604"/>
+        <location filename="simulatordialog.ui" line="634"/>
         <source>Fix X</source>
         <translation>Fixar X</translation>
     </message>
     <message>
         <location filename="simulatordialog.ui" line="338"/>
-        <location filename="simulatordialog.ui" line="629"/>
+        <location filename="simulatordialog.ui" line="659"/>
         <source>Fix Y</source>
         <translation>Fixar Y</translation>
     </message>
     <message>
         <location filename="simulatordialog.ui" line="363"/>
-        <location filename="simulatordialog.ui" line="654"/>
+        <location filename="simulatordialog.ui" line="684"/>
         <source>Hold Y</source>
         <translation>Manter Y</translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="438"/>
+        <location filename="simulatordialog.ui" line="383"/>
+        <location filename="simulatordialog.ui" line="393"/>
+        <location filename="simulatordialog.ui" line="704"/>
+        <location filename="simulatordialog.ui" line="714"/>
+        <source>TextLabel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="simulatordialog.ui" line="468"/>
         <source>TRN</source>
         <translation>TRN</translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="460"/>
+        <location filename="simulatordialog.ui" line="490"/>
         <source>GEA</source>
         <translation>GEA</translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="488"/>
+        <location filename="simulatordialog.ui" line="518"/>
         <source>ID0</source>
         <translation>ID0</translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="519"/>
+        <location filename="simulatordialog.ui" line="549"/>
         <source>ID1</source>
         <translation>ID1</translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="547"/>
+        <location filename="simulatordialog.ui" line="577"/>
         <source>ID2</source>
         <translation>ID2</translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="690"/>
+        <location filename="simulatordialog.ui" line="764"/>
         <source>SW1</source>
         <translation>SW1</translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="721"/>
+        <location filename="simulatordialog.ui" line="795"/>
         <source>SW2</source>
         <translation>SW2</translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="752"/>
+        <location filename="simulatordialog.ui" line="826"/>
         <source>SW3</source>
         <translation>SW3</translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="783"/>
+        <location filename="simulatordialog.ui" line="857"/>
         <source>BEEP</source>
         <translation>BEEP</translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="814"/>
+        <location filename="simulatordialog.ui" line="888"/>
         <source>SW4</source>
         <translation>SW4</translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="845"/>
+        <location filename="simulatordialog.ui" line="919"/>
         <source>SW5</source>
         <translation>SW5</translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="876"/>
+        <location filename="simulatordialog.ui" line="950"/>
         <source>SW6</source>
         <translation>SW6</translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="893"/>
+        <location filename="simulatordialog.ui" line="967"/>
         <source>CH1</source>
         <translation>CH1</translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="900"/>
+        <location filename="simulatordialog.ui" line="974"/>
         <source>CH9</source>
         <translation>CH9</translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="907"/>
+        <location filename="simulatordialog.ui" line="981"/>
         <source>CH2</source>
         <translation>CH2</translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="914"/>
+        <location filename="simulatordialog.ui" line="988"/>
         <source>CH10</source>
         <translation>CH10</translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="921"/>
+        <location filename="simulatordialog.ui" line="995"/>
         <source>CH3</source>
         <translation>CH3</translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="928"/>
+        <location filename="simulatordialog.ui" line="1002"/>
         <source>CH11</source>
         <translation>CH11</translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="935"/>
+        <location filename="simulatordialog.ui" line="1009"/>
         <source>CH4</source>
         <translation>CH4</translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="942"/>
+        <location filename="simulatordialog.ui" line="1016"/>
         <source>CH12</source>
         <translation>CH12</translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="949"/>
+        <location filename="simulatordialog.ui" line="1023"/>
         <source>CH5</source>
         <translation>CH5</translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="956"/>
+        <location filename="simulatordialog.ui" line="1030"/>
         <source>CH13</source>
         <translation>CH13</translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="963"/>
+        <location filename="simulatordialog.ui" line="1037"/>
         <source>CH6</source>
         <translation>CH6</translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="970"/>
+        <location filename="simulatordialog.ui" line="1044"/>
         <source>CH14</source>
         <translation>CH14</translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="977"/>
+        <location filename="simulatordialog.ui" line="1051"/>
         <source>CH7</source>
         <translation>CH7</translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="984"/>
+        <location filename="simulatordialog.ui" line="1058"/>
         <source>CH15</source>
         <translation>CH15</translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="991"/>
+        <location filename="simulatordialog.ui" line="1065"/>
         <source>CH8</source>
         <translation>CH8</translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="998"/>
+        <location filename="simulatordialog.ui" line="1072"/>
         <source>CH16</source>
         <translation>CH16</translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="1699"/>
-        <location filename="simulatordialog.ui" line="1715"/>
-        <location filename="simulatordialog.ui" line="1731"/>
-        <location filename="simulatordialog.ui" line="1747"/>
-        <location filename="simulatordialog.ui" line="1763"/>
-        <location filename="simulatordialog.ui" line="1779"/>
-        <location filename="simulatordialog.ui" line="1795"/>
-        <location filename="simulatordialog.ui" line="1811"/>
-        <location filename="simulatordialog.ui" line="1827"/>
-        <location filename="simulatordialog.ui" line="1843"/>
-        <location filename="simulatordialog.ui" line="1859"/>
-        <location filename="simulatordialog.ui" line="1875"/>
-        <location filename="simulatordialog.ui" line="1891"/>
-        <location filename="simulatordialog.ui" line="1907"/>
-        <location filename="simulatordialog.ui" line="1923"/>
-        <location filename="simulatordialog.ui" line="1939"/>
+        <location filename="simulatordialog.ui" line="1773"/>
+        <location filename="simulatordialog.ui" line="1789"/>
+        <location filename="simulatordialog.ui" line="1805"/>
+        <location filename="simulatordialog.ui" line="1821"/>
+        <location filename="simulatordialog.ui" line="1837"/>
+        <location filename="simulatordialog.ui" line="1853"/>
+        <location filename="simulatordialog.ui" line="1869"/>
+        <location filename="simulatordialog.ui" line="1885"/>
+        <location filename="simulatordialog.ui" line="1901"/>
+        <location filename="simulatordialog.ui" line="1917"/>
+        <location filename="simulatordialog.ui" line="1933"/>
+        <location filename="simulatordialog.ui" line="1949"/>
+        <location filename="simulatordialog.ui" line="1965"/>
+        <location filename="simulatordialog.ui" line="1981"/>
+        <location filename="simulatordialog.ui" line="1997"/>
+        <location filename="simulatordialog.ui" line="2013"/>
         <source>-100.1</source>
         <translation>-100.1</translation>
     </message>
@@ -2879,7 +2887,7 @@ Mode 4:
         <translation type="obsolete">%1</translation>
     </message>
     <message>
-        <location filename="simulatordialog.cpp" line="106"/>
+        <location filename="simulatordialog.cpp" line="108"/>
         <source>Simulating </source>
         <translation type="unfinished"></translation>
     </message>
