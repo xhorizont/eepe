@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>567</width>
-    <height>611</height>
+    <width>591</width>
+    <height>642</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -110,63 +110,63 @@
     </layout>
    </item>
    <item>
-    <layout class="QHBoxLayout" name="horizontalLayout_5">
-     <item>
-      <layout class="QGridLayout" name="gridLayout" columnstretch="0,0,0">
-       <item row="1" column="2">
-        <widget class="QSlider" name="trimVLeft">
-         <property name="minimum">
-          <number>-125</number>
-         </property>
-         <property name="maximum">
-          <number>125</number>
-         </property>
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="1">
-        <widget class="QSlider" name="trimHLeft">
-         <property name="minimum">
-          <number>-125</number>
-         </property>
-         <property name="maximum">
-          <number>125</number>
-         </property>
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="1">
-        <widget class="QGraphicsView" name="leftStick">
-         <property name="minimumSize">
-          <size>
-           <width>200</width>
-           <height>200</height>
-          </size>
-         </property>
-         <property name="verticalScrollBarPolicy">
-          <enum>Qt::ScrollBarAlwaysOff</enum>
-         </property>
-         <property name="horizontalScrollBarPolicy">
-          <enum>Qt::ScrollBarAlwaysOff</enum>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="0">
-        <layout class="QVBoxLayout" name="verticalLayout">
-         <property name="bottomMargin">
-          <number>0</number>
-         </property>
-         <item>
-          <widget class="QPushButton" name="switchTHR">
-           <property name="autoFillBackground">
-            <bool>false</bool>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">QPushButton {
+    <widget class="QFrame" name="controlFrame">
+     <property name="frameShape">
+      <enum>QFrame::Panel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <property name="lineWidth">
+      <number>2</number>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_5">
+      <property name="margin">
+       <number>2</number>
+      </property>
+      <item>
+       <layout class="QGridLayout" name="gridLayout" columnstretch="0,0,0">
+        <item row="1" column="2">
+         <widget class="QSlider" name="trimVLeft">
+          <property name="minimum">
+           <number>-125</number>
+          </property>
+          <property name="maximum">
+           <number>125</number>
+          </property>
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QGraphicsView" name="leftStick">
+          <property name="minimumSize">
+           <size>
+            <width>200</width>
+            <height>200</height>
+           </size>
+          </property>
+          <property name="verticalScrollBarPolicy">
+           <enum>Qt::ScrollBarAlwaysOff</enum>
+          </property>
+          <property name="horizontalScrollBarPolicy">
+           <enum>Qt::ScrollBarAlwaysOff</enum>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <layout class="QVBoxLayout" name="verticalLayout">
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
+          <item>
+           <widget class="QPushButton" name="switchTHR">
+            <property name="autoFillBackground">
+             <bool>false</bool>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton {
      background-color: #EEEEEE;
      border-style: outset;
      border-width: 1px;
@@ -179,19 +179,19 @@ QPushButton:checked {
      background-color: #4CC417;
      border-style: inset;
  }</string>
-           </property>
-           <property name="text">
-            <string>THR</string>
-           </property>
-           <property name="checkable">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="switchRUD">
-           <property name="styleSheet">
-            <string notr="true">QPushButton {
+            </property>
+            <property name="text">
+             <string>THR</string>
+            </property>
+            <property name="checkable">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="switchRUD">
+            <property name="styleSheet">
+             <string notr="true">QPushButton {
      background-color: #EEEEEE;
      border-style: outset;
      border-width: 1px;
@@ -204,19 +204,19 @@ QPushButton:checked {
      background-color: #4CC417;
      border-style: inset;
  }</string>
-           </property>
-           <property name="text">
-            <string>RUD</string>
-           </property>
-           <property name="checkable">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="switchELE">
-           <property name="styleSheet">
-            <string notr="true">QPushButton {
+            </property>
+            <property name="text">
+             <string>RUD</string>
+            </property>
+            <property name="checkable">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="switchELE">
+            <property name="styleSheet">
+             <string notr="true">QPushButton {
      background-color: #EEEEEE;
      border-style: outset;
      border-width: 1px;
@@ -229,19 +229,19 @@ QPushButton:checked {
      background-color: #4CC417;
      border-style: inset;
  }</string>
-           </property>
-           <property name="text">
-            <string>ELE</string>
-           </property>
-           <property name="checkable">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="switchAIL">
-           <property name="styleSheet">
-            <string notr="true">QPushButton {
+            </property>
+            <property name="text">
+             <string>ELE</string>
+            </property>
+            <property name="checkable">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="switchAIL">
+            <property name="styleSheet">
+             <string notr="true">QPushButton {
      background-color: #EEEEEE;
      border-style: outset;
      border-width: 1px;
@@ -254,23 +254,23 @@ QPushButton:checked {
      background-color: #4CC417;
      border-style: inset;
  }</string>
-           </property>
-           <property name="text">
-            <string>AIL</string>
-           </property>
-           <property name="checkable">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-       <item row="0" column="1">
-        <layout class="QHBoxLayout" name="horizontalLayout_3">
-         <item>
-          <widget class="QPushButton" name="holdLeftX">
-           <property name="styleSheet">
-            <string notr="true">QPushButton {
+            </property>
+            <property name="text">
+             <string>AIL</string>
+            </property>
+            <property name="checkable">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item row="0" column="1">
+         <layout class="QHBoxLayout" name="horizontalLayout_3">
+          <item>
+           <widget class="QPushButton" name="holdLeftX">
+            <property name="styleSheet">
+             <string notr="true">QPushButton {
      background-color: #EEEEEE;
      border-style: outset;
      border-width: 1px;
@@ -283,19 +283,19 @@ QPushButton:checked {
      background-color: #4CC417;
      border-style: inset;
  }</string>
-           </property>
-           <property name="text">
-            <string>Hold X</string>
-           </property>
-           <property name="checkable">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="FixLeftX">
-           <property name="styleSheet">
-            <string notr="true">QPushButton {
+            </property>
+            <property name="text">
+             <string>Hold X</string>
+            </property>
+            <property name="checkable">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="FixLeftX">
+            <property name="styleSheet">
+             <string notr="true">QPushButton {
      background-color: #EEEEEE;
      border-style: outset;
      border-width: 1px;
@@ -308,19 +308,19 @@ QPushButton:checked {
      background-color: #4CC417;
      border-style: inset;
  }</string>
-           </property>
-           <property name="text">
-            <string>Fix X</string>
-           </property>
-           <property name="checkable">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="FixLeftY">
-           <property name="styleSheet">
-            <string notr="true">QPushButton {
+            </property>
+            <property name="text">
+             <string>Fix X</string>
+            </property>
+            <property name="checkable">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="FixLeftY">
+            <property name="styleSheet">
+             <string notr="true">QPushButton {
      background-color: #EEEEEE;
      border-style: outset;
      border-width: 1px;
@@ -333,19 +333,19 @@ QPushButton:checked {
      background-color: #4CC417;
      border-style: inset;
  }</string>
-           </property>
-           <property name="text">
-            <string>Fix Y</string>
-           </property>
-           <property name="checkable">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="holdLeftY">
-           <property name="styleSheet">
-            <string notr="true">QPushButton {
+            </property>
+            <property name="text">
+             <string>Fix Y</string>
+            </property>
+            <property name="checkable">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="holdLeftY">
+            <property name="styleSheet">
+             <string notr="true">QPushButton {
      background-color: #EEEEEE;
      border-style: outset;
      border-width: 1px;
@@ -358,69 +358,99 @@ QPushButton:checked {
      background-color: #4CC417;
      border-style: inset;
  }</string>
-           </property>
-           <property name="text">
-            <string>Hold Y</string>
-           </property>
-           <property name="checkable">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-      </layout>
-     </item>
-     <item>
-      <layout class="QGridLayout" name="gridLayout_2" columnstretch="0,0,0">
-       <item row="1" column="0">
-        <widget class="QSlider" name="trimVRight">
-         <property name="minimum">
-          <number>-125</number>
-         </property>
-         <property name="maximum">
-          <number>125</number>
-         </property>
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="1">
-        <widget class="QGraphicsView" name="rightStick">
-         <property name="minimumSize">
-          <size>
-           <width>200</width>
-           <height>200</height>
-          </size>
-         </property>
-         <property name="verticalScrollBarPolicy">
-          <enum>Qt::ScrollBarAlwaysOff</enum>
-         </property>
-         <property name="horizontalScrollBarPolicy">
-          <enum>Qt::ScrollBarAlwaysOff</enum>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="1">
-        <widget class="QSlider" name="trimHRight">
-         <property name="minimum">
-          <number>-125</number>
-         </property>
-         <property name="maximum">
-          <number>125</number>
-         </property>
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="2">
-        <layout class="QVBoxLayout" name="verticalLayout_2">
-         <item>
-          <widget class="QPushButton" name="switchTRN">
-           <property name="styleSheet">
-            <string notr="true">QPushButton {
+            </property>
+            <property name="text">
+             <string>Hold Y</string>
+            </property>
+            <property name="checkable">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item row="7" column="1">
+         <layout class="QHBoxLayout" name="horizontalLayout_6">
+          <property name="leftMargin">
+           <number>20</number>
+          </property>
+          <property name="rightMargin">
+           <number>20</number>
+          </property>
+          <item>
+           <widget class="QLabel" name="leftXPerc">
+            <property name="text">
+             <string>TextLabel</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="leftYPerc">
+            <property name="text">
+             <string>TextLabel</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item row="2" column="1">
+         <widget class="QSlider" name="trimHLeft">
+          <property name="minimum">
+           <number>-125</number>
+          </property>
+          <property name="maximum">
+           <number>125</number>
+          </property>
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QGridLayout" name="gridLayout_2" columnstretch="0,0,0">
+        <item row="1" column="0">
+         <widget class="QSlider" name="trimVRight">
+          <property name="minimum">
+           <number>-125</number>
+          </property>
+          <property name="maximum">
+           <number>125</number>
+          </property>
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QGraphicsView" name="rightStick">
+          <property name="minimumSize">
+           <size>
+            <width>200</width>
+            <height>200</height>
+           </size>
+          </property>
+          <property name="verticalScrollBarPolicy">
+           <enum>Qt::ScrollBarAlwaysOff</enum>
+          </property>
+          <property name="horizontalScrollBarPolicy">
+           <enum>Qt::ScrollBarAlwaysOff</enum>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="2">
+         <layout class="QVBoxLayout" name="verticalLayout_2">
+          <item>
+           <widget class="QPushButton" name="switchTRN">
+            <property name="styleSheet">
+             <string notr="true">QPushButton {
      background-color: #EEEEEE;
      border-style: outset;
      border-width: 1px;
@@ -433,16 +463,16 @@ QPushButton:pressed {
      background-color: #4CC417;
      border-style: inset;
  }</string>
-           </property>
-           <property name="text">
-            <string>TRN</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="switchGEA">
-           <property name="styleSheet">
-            <string notr="true">QPushButton {
+            </property>
+            <property name="text">
+             <string>TRN</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="switchGEA">
+            <property name="styleSheet">
+             <string notr="true">QPushButton {
      background-color: #EEEEEE;
      border-style: outset;
      border-width: 1px;
@@ -455,22 +485,22 @@ QPushButton:checked {
      background-color: #4CC417;
      border-style: inset;
  }</string>
-           </property>
-           <property name="text">
-            <string>GEA</string>
-           </property>
-           <property name="checkable">
-            <bool>true</bool>
-           </property>
-           <property name="checked">
-            <bool>false</bool>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="switchID0">
-           <property name="styleSheet">
-            <string notr="true">QPushButton {
+            </property>
+            <property name="text">
+             <string>GEA</string>
+            </property>
+            <property name="checkable">
+             <bool>true</bool>
+            </property>
+            <property name="checked">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="switchID0">
+            <property name="styleSheet">
+             <string notr="true">QPushButton {
      background-color: #EEEEEE;
      border-style: outset;
      border-width: 1px;
@@ -483,25 +513,25 @@ QPushButton:checked {
      background-color: #4CC417;
      border-style: inset;
  }</string>
-           </property>
-           <property name="text">
-            <string>ID0</string>
-           </property>
-           <property name="checkable">
-            <bool>true</bool>
-           </property>
-           <property name="checked">
-            <bool>true</bool>
-           </property>
-           <property name="autoExclusive">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="switchID1">
-           <property name="styleSheet">
-            <string notr="true">QPushButton {
+            </property>
+            <property name="text">
+             <string>ID0</string>
+            </property>
+            <property name="checkable">
+             <bool>true</bool>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+            <property name="autoExclusive">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="switchID1">
+            <property name="styleSheet">
+             <string notr="true">QPushButton {
      background-color: #EEEEEE;
      border-style: outset;
      border-width: 1px;
@@ -514,22 +544,22 @@ QPushButton:checked {
      background-color: #4CC417;
      border-style: inset;
  }</string>
-           </property>
-           <property name="text">
-            <string>ID1</string>
-           </property>
-           <property name="checkable">
-            <bool>true</bool>
-           </property>
-           <property name="autoExclusive">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="switchID2">
-           <property name="styleSheet">
-            <string notr="true">QPushButton {
+            </property>
+            <property name="text">
+             <string>ID1</string>
+            </property>
+            <property name="checkable">
+             <bool>true</bool>
+            </property>
+            <property name="autoExclusive">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="switchID2">
+            <property name="styleSheet">
+             <string notr="true">QPushButton {
      background-color: #EEEEEE;
      border-style: outset;
      border-width: 1px;
@@ -542,26 +572,26 @@ QPushButton:checked {
      background-color: #4CC417;
      border-style: inset;
  }</string>
-           </property>
-           <property name="text">
-            <string>ID2</string>
-           </property>
-           <property name="checkable">
-            <bool>true</bool>
-           </property>
-           <property name="autoExclusive">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-       <item row="0" column="1">
-        <layout class="QHBoxLayout" name="horizontalLayout_4">
-         <item>
-          <widget class="QPushButton" name="holdRightX">
-           <property name="styleSheet">
-            <string notr="true">QPushButton {
+            </property>
+            <property name="text">
+             <string>ID2</string>
+            </property>
+            <property name="checkable">
+             <bool>true</bool>
+            </property>
+            <property name="autoExclusive">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item row="0" column="1">
+         <layout class="QHBoxLayout" name="horizontalLayout_4">
+          <item>
+           <widget class="QPushButton" name="holdRightX">
+            <property name="styleSheet">
+             <string notr="true">QPushButton {
      background-color: #EEEEEE;
      border-style: outset;
      border-width: 1px;
@@ -574,19 +604,19 @@ QPushButton:checked {
      background-color: #4CC417;
      border-style: inset;
  }</string>
-           </property>
-           <property name="text">
-            <string>Hold X</string>
-           </property>
-           <property name="checkable">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="FixRightX">
-           <property name="styleSheet">
-            <string notr="true">QPushButton {
+            </property>
+            <property name="text">
+             <string>Hold X</string>
+            </property>
+            <property name="checkable">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="FixRightX">
+            <property name="styleSheet">
+             <string notr="true">QPushButton {
      background-color: #EEEEEE;
      border-style: outset;
      border-width: 1px;
@@ -599,19 +629,19 @@ QPushButton:checked {
      background-color: #4CC417;
      border-style: inset;
  }</string>
-           </property>
-           <property name="text">
-            <string>Fix X</string>
-           </property>
-           <property name="checkable">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="FixRightY">
-           <property name="styleSheet">
-            <string notr="true">QPushButton {
+            </property>
+            <property name="text">
+             <string>Fix X</string>
+            </property>
+            <property name="checkable">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="FixRightY">
+            <property name="styleSheet">
+             <string notr="true">QPushButton {
      background-color: #EEEEEE;
      border-style: outset;
      border-width: 1px;
@@ -624,19 +654,19 @@ QPushButton:checked {
      background-color: #4CC417;
      border-style: inset;
  }</string>
-           </property>
-           <property name="text">
-            <string>Fix Y</string>
-           </property>
-           <property name="checkable">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="holdRightY">
-           <property name="styleSheet">
-            <string notr="true">QPushButton {
+            </property>
+            <property name="text">
+             <string>Fix Y</string>
+            </property>
+            <property name="checkable">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="holdRightY">
+            <property name="styleSheet">
+             <string notr="true">QPushButton {
      background-color: #EEEEEE;
      border-style: outset;
      border-width: 1px;
@@ -649,20 +679,64 @@ QPushButton:checked {
      background-color: #4CC417;
      border-style: inset;
  }</string>
-           </property>
-           <property name="text">
-            <string>Hold Y</string>
-           </property>
-           <property name="checkable">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-      </layout>
-     </item>
-    </layout>
+            </property>
+            <property name="text">
+             <string>Hold Y</string>
+            </property>
+            <property name="checkable">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item row="3" column="1">
+         <layout class="QHBoxLayout" name="horizontalLayout_7">
+          <property name="leftMargin">
+           <number>20</number>
+          </property>
+          <property name="rightMargin">
+           <number>20</number>
+          </property>
+          <item>
+           <widget class="QLabel" name="rightXPerc">
+            <property name="text">
+             <string>TextLabel</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="rightYPerc">
+            <property name="text">
+             <string>TextLabel</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item row="2" column="1">
+         <widget class="QSlider" name="trimHRight">
+          <property name="minimum">
+           <number>-125</number>
+          </property>
+          <property name="maximum">
+           <number>125</number>
+          </property>
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
    </item>
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout">
