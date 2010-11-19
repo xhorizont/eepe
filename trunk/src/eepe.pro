@@ -55,5 +55,6 @@ VERSTR = '\\"$${VERSION}\\"' # place quotes around the version string
 DEFINES += VER=\"$${VERSTR}\" # create a VER macro containing the version string
 TRANSLATIONS = eepe_.ts    \
                eepe_he.ts  \
-			   eepe_pt.ts  \
+               eepe_pt.ts  \
+               eepe_ru.ts  \
                eepe_fr.ts
