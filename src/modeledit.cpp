@@ -43,7 +43,6 @@ ModelEdit::ModelEdit(EEPFILE *eFile, uint8_t id, QWidget *parent) :
 
     connect(MixerlistWidget,SIGNAL(customContextMenuRequested(QPoint)),this,SLOT(MixerlistWidget_customContextMenuRequested(QPoint)));
     connect(MixerlistWidget,SIGNAL(doubleClicked(QModelIndex)),this,SLOT(MixerlistWidget_doubleClicked(QModelIndex)));
-    connect(MixerlistWidget,SIGNAL(itemDropped(int,const QMimeData*,Qt::DropAction)),this,SLOT(MixerlistWidget_mimeDropped(int,const QMimeData*,Qt::DropAction)));
 
     QSettings settings("er9x-eePe", "eePe");
     ui->tabWidget->setCurrentIndex(settings.value("modelEditTab", 0).toInt());
