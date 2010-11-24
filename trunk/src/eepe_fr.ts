@@ -774,6 +774,18 @@ p, li { white-space: pre-wrap; }
         <source>A new version of eePe is available&lt;br&gt;Would you like to download it?</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Save As</source>
+        <translation type="unfinished">Enregister Sous</translation>
+    </message>
+    <message>
+        <source>EEPROM hex files (*.hex);;EEPROM bin files (*.bin)</source>
+        <translation type="unfinished">Fichiers EEPROM hexa (*.hex);;Fichiers EEPROM binaires (*.bin)</translation>
+    </message>
+    <message>
+        <source>Executable (*.exe)</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>MdiChild</name>
@@ -1742,6 +1754,25 @@ Assurez-vous de posséder les droits en écriture sur ce dossier.</translation>
     <message>
         <source>List of Contributors</source>
         <translation>Liste des Contributeurs</translation>
+    </message>
+</context>
+<context>
+    <name>downloadDialog</name>
+    <message>
+        <source>Downloading: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unable to save the file %1: %2.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>eePe</source>
+        <translation type="unfinished">eePe</translation>
+    </message>
+    <message>
+        <source>Download failed: %1.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

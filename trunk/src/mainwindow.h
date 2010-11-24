@@ -113,6 +113,8 @@ private:
 
     QDateTime lastER9X;
     QDateTime lastEEPE;
+    bool checkER9X;
+    bool checkEEPE;
 
     QMenu *fileMenu;
     QMenu *editMenu;

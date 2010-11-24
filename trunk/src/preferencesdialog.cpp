@@ -40,8 +40,8 @@ void preferencesDialog::initSettings()
     ui->channelorderCB->setCurrentIndex(settings.value("default_channel_order", 0).toInt());
     ui->stickmodeCB->setCurrentIndex(settings.value("default_mode", 1).toInt());
 
-    ui->startupCheck_er9x->setChecked(settings.value("startup_check_er9x").toBool());
-    ui->startupCheck_eepe->setChecked(settings.value("startup_check_eepe").toBool());
+    ui->startupCheck_er9x->setChecked(settings.value("startup_check_er9x", true).toBool());
+    ui->startupCheck_eepe->setChecked(settings.value("startup_check_eepe", true).toBool());
 }
 
 void preferencesDialog::populateLocale()

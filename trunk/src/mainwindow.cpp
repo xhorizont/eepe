@@ -44,6 +44,7 @@
 #include <QNetworkRequest>
 #include <QNetworkReply>
 #include <QNetworkProxy>
+#include <QNetworkProxyFactory>
 
 #include "mainwindow.h"
 #include "mdichild.h"
@@ -52,8 +53,11 @@
 #include "donatorsdialog.h"
 #include "preferencesdialog.h"
 #include "fusesdialog.h"
+#include "downloaddialog.h"
 
 #define DONATE_STR "https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=TGT92W338DPGN&lc=IL&item_name=Erez%20Raviv&item_number=eePe&amount=5%2e00&currency_code=USD&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted"
+#define ER9X_URL "http://er9x.googlecode.com/svn/trunk/er9x.hex"
+#define EEPE_URL "http://eepe.googlecode.com/svn/trunk/eePeInstall.exe"
 
 MainWindow::MainWindow()
 {
@@ -102,15 +106,21 @@ MainWindow::MainWindow()
 
 void MainWindow::checkForUpdates()
 {
-    QNetworkAccessManager *manager1 = new QNetworkAccessManager(this);
-    connect(manager1, SIGNAL(finished(QNetworkReply*)),this, SLOT(reply1Finished(QNetworkReply*)));
-    manager1->setProxy(QNetworkProxy(QNetworkProxy::HttpProxy,"proxy1.haifa.ac.il",8080));
-    manager1->head(QNetworkRequest(QUrl("http://er9x.googlecode.com/svn/trunk/er9x.hex")));
+    QNetworkProxyFactory::setUseSystemConfiguration(true);
 
-    QNetworkAccessManager *manager2 = new QNetworkAccessManager(this);
-    connect(manager2, SIGNAL(finished(QNetworkReply*)),this, SLOT(reply2Finished(QNetworkReply*)));
-    manager2->setProxy(QNetworkProxy(QNetworkProxy::HttpProxy,"proxy1.haifa.ac.il",8080));
-    manager2->head(QNetworkRequest(QUrl("http://eepe.googlecode.com/svn/trunk/eePeInstall.exe")));
+    if(checkER9X)
+    {
+        QNetworkAccessManager *manager1 = new QNetworkAccessManager(this);
+        connect(manager1, SIGNAL(finished(QNetworkReply*)),this, SLOT(reply1Finished(QNetworkReply*)));
+        manager1->head(QNetworkRequest(QUrl(ER9X_URL)));
+    }
+
+    if(checkEEPE)
+    {
+        QNetworkAccessManager *manager2 = new QNetworkAccessManager(this);
+        connect(manager2, SIGNAL(finished(QNetworkReply*)),this, SLOT(reply2Finished(QNetworkReply*)));
+        manager2->head(QNetworkRequest(QUrl(EEPE_URL)));
+    }
 }
 
 
@@ -128,7 +138,19 @@ void MainWindow::reply1Finished(QNetworkReply * reply)
 
             if (ret == QMessageBox::Yes)
             {
-                QMessageBox::information(this,"ee","downloading");
+                QSettings settings("er9x-eePe", "eePe");
+
+                QString fileName = QFileDialog::getSaveFileName(this, tr("Save As"),settings.value("lastDir").toString() + "/er9x.hex",tr("EEPROM hex files (*.hex);;EEPROM bin files (*.bin)"));
+                if (fileName.isEmpty()) return;
+                settings.setValue("lastDir",QFileInfo(fileName).dir().absolutePath());
+
+                downloadDialog * dd = new downloadDialog(this,ER9X_URL,fileName);
+                int res = dd->exec();
+                if(res == QDialog::Accepted)
+                {
+                    lastER9X = qdt;
+                    settings.setValue("laster9x", qdt);
+                }
             }
         }
 
@@ -141,7 +163,7 @@ void MainWindow::reply2Finished(QNetworkReply * reply)
     if(qv.isValid())
     {
         QDateTime qdt = qv.toDateTime();
-        if(qdt>lastER9X)
+        if(qdt>lastEEPE)
         {
             int ret = QMessageBox::question(this, tr("eePe"),tr("A new version of eePe is available<br>"
                                                                 "Would you like to download it?") ,
@@ -149,7 +171,19 @@ void MainWindow::reply2Finished(QNetworkReply * reply)
 
             if (ret == QMessageBox::Yes)
             {
-                QMessageBox::information(this,"ee","downloading");
+                QSettings settings("er9x-eePe", "eePe");
+
+                QString fileName = QFileDialog::getSaveFileName(this, tr("Save As"),settings.value("lastDir").toString() + "/eePeInstall.exe",tr("Executable (*.exe)"));
+                if (fileName.isEmpty()) return;
+                settings.setValue("lastDir",QFileInfo(fileName).dir().absolutePath());
+
+                downloadDialog * dd = new downloadDialog(this,EEPE_URL,fileName);
+                int res = dd->exec();
+                if(res == QDialog::Accepted)
+                {
+                    lastEEPE = qdt;
+                    settings.setValue("lasteepe", qdt);
+                }
             }
         }
 
@@ -758,8 +792,14 @@ void MainWindow::readSettings()
     QPoint pos = settings.value("pos", QPoint(200, 200)).toPoint();
     QSize size = settings.value("size", QSize(400, 400)).toSize();
 
-    lastER9X = settings.value("laster9x", QDate(2010,11,11)).toDateTime();
-    lastEEPE = settings.value("lasteepe", QDate(2010,11,11)).toDateTime();
+    QDateTime qdt = QDateTime(QDate(2010,11,11));
+    QString appName = QCoreApplication::arguments().at(0);
+    if(QFileInfo(appName).exists())
+        qdt = QFileInfo(appName).lastModified();
+    lastER9X = settings.value("laster9x", qdt).toDateTime();
+    lastEEPE = settings.value("lasteepe", qdt).toDateTime();
+    checkER9X = settings.value("startup_check_er9x", true).toBool();
+    checkEEPE = settings.value("startup_check_eepe", true).toBool();
 
     if(maximized)
     {
