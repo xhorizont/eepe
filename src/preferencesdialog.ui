@@ -35,12 +35,18 @@
        <property name="text">
         <string>er9x</string>
        </property>
+       <property name="checked">
+        <bool>true</bool>
+       </property>
       </widget>
      </item>
      <item>
       <widget class="QCheckBox" name="startupCheck_eepe">
        <property name="text">
         <string>eePe</string>
+       </property>
+       <property name="checked">
+        <bool>true</bool>
        </property>
       </widget>
      </item>

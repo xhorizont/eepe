@@ -883,6 +883,20 @@ msgctxt "MainWindow|"
 msgid "A new version of eePe is available<br>Would you like to download it?"
 msgstr ""
 
+#, fuzzy
+msgctxt "MainWindow|"
+msgid "Save As"
+msgstr "Enregister Sous"
+
+#, fuzzy
+msgctxt "MainWindow|"
+msgid "EEPROM hex files (*.hex);;EEPROM bin files (*.bin)"
+msgstr "Fichiers EEPROM hexa (*.hex);;Fichiers EEPROM binaires (*.bin)"
+
+msgctxt "MainWindow|"
+msgid "Executable (*.exe)"
+msgstr ""
+
 #, qt-format
 msgctxt "MdiChild|"
 msgid "%1"
@@ -1965,6 +1979,25 @@ msgstr "Programmateur"
 msgctxt "donatorsDialog|"
 msgid "List of Contributors"
 msgstr "Liste des Contributeurs"
+
+msgctxt "downloadDialog|"
+msgid "Downloading: "
+msgstr ""
+
+#, qt-format
+msgctxt "downloadDialog|"
+msgid "Unable to save the file %1: %2."
+msgstr ""
+
+#, fuzzy
+msgctxt "downloadDialog|"
+msgid "eePe"
+msgstr "eePe"
+
+#, qt-format
+msgctxt "downloadDialog|"
+msgid "Download failed: %1."
+msgstr ""
 
 msgctxt "fusesDialog|"
 msgid "Fuses"
