@@ -13,6 +13,14 @@ MixersList::MixersList(QWidget *parent) :
 }
 
 
+//QMimeData * MixersList::mimeData ( const QList<QListWidgetItem *> items )
+//{
+//    foreach(QListWidgetItem item, items)
+//    {
+
+//    }
+//}
+
 bool MixersList::dropMimeData( int index, const QMimeData * data, Qt::DropAction action )
 {
     QByteArray dropData = data->data("application/x-qabstractitemmodeldatalist");
@@ -25,8 +33,9 @@ bool MixersList::dropMimeData( int index, const QMimeData * data, Qt::DropAction
         stream >> r >> c >> v;
         QList<QVariant> lsVars;
         lsVars = v.values();
-        QVariant qVar = lsVars.at(0);
-        QString itemString = qVar.toString();
+        QString itemString = lsVars.at(0).toString();
+        int mixerNum = lsVars.at(1).toInt();
+
 
         if(itemString.isEmpty()) {};
     }

@@ -8,6 +8,7 @@ class MixersList : public QListWidget
     Q_OBJECT
 public:
     explicit MixersList(QWidget *parent = 0);
+//    QMimeData * mimeData ( const QList<QListWidgetItem *> items );
 
 
 signals:

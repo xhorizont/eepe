@@ -762,6 +762,18 @@ p, li { white-space: pre-wrap; }
         <source>Read EEPROM memory from transmitter to file</source>
         <translation>Enregistrer l&apos;EEPROM de l&apos;émetteur vers un fichier</translation>
     </message>
+    <message>
+        <source>eePe</source>
+        <translation type="unfinished">eePe</translation>
+    </message>
+    <message>
+        <source>A new version of ER9x is available&lt;br&gt;Would you like to download it?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>A new version of eePe is available&lt;br&gt;Would you like to download it?</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>MdiChild</name>
@@ -1154,10 +1166,6 @@ p, li { white-space: pre-wrap; }
         <translation>GAZ</translation>
     </message>
     <message>
-        <source> %1%</source>
-        <translation></translation>
-    </message>
-    <message>
         <source>&amp;Add</source>
         <translation>&amp;Ajouter</translation>
     </message>
@@ -1172,10 +1180,6 @@ p, li { white-space: pre-wrap; }
     <message>
         <source>Fine</source>
         <translation>Fine</translation>
-    </message>
-    <message>
-        <source> +%1%</source>
-        <translation></translation>
     </message>
     <message>
         <source> usec</source>

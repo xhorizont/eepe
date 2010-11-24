@@ -385,8 +385,8 @@ void ModelEdit::tabMixes()
         default:  str += "  "; break;
         };
 
-        str += md->weight<0 ? tr(" %1\%").arg(md->weight).rightJustified(6,' ') :
-                              tr(" +%1\%").arg(md->weight).rightJustified(6, ' ');
+        str += md->weight<0 ? QString(" %1\%").arg(md->weight).rightJustified(6,' ') :
+                              QString(" +%1\%").arg(md->weight).rightJustified(6, ' ');
 
 
         //QString srcStr = SRC_STR;
@@ -1770,8 +1770,9 @@ void ModelEdit::mixersCopy()
     QMimeData *mimeData = new QMimeData;
     mimeData->setData("application/x-eepe-mix", mxData);
 
-    QClipboard *clipboard = QApplication::clipboard();
-    clipboard->setMimeData(mimeData,QClipboard::Clipboard);
+//    QMimeData *mimeData = MixerlistWidget->mimeData();
+
+    QApplication::clipboard()->setMimeData(mimeData,QClipboard::Clipboard);
 }
 
 void ModelEdit::mixersPaste()

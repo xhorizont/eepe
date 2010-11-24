@@ -40,6 +40,10 @@
 ****************************************************************************/
 
 #include <QtGui>
+#include <QNetworkAccessManager>
+#include <QNetworkRequest>
+#include <QNetworkReply>
+#include <QNetworkProxy>
 
 #include "mainwindow.h"
 #include "mdichild.h"
@@ -75,6 +79,9 @@ MainWindow::MainWindow()
     setUnifiedTitleAndToolBarOnMac(true);
     this->setWindowIcon(QIcon(":/icon.ico"));
 
+    checkForUpdates();
+
+
     QStringList strl = QApplication::arguments();
     QString str;
     if(strl.count()>1) str = strl[1];
@@ -91,6 +98,62 @@ MainWindow::MainWindow()
     }
 
 
+}
+
+void MainWindow::checkForUpdates()
+{
+    QNetworkAccessManager *manager1 = new QNetworkAccessManager(this);
+    connect(manager1, SIGNAL(finished(QNetworkReply*)),this, SLOT(reply1Finished(QNetworkReply*)));
+    manager1->setProxy(QNetworkProxy(QNetworkProxy::HttpProxy,"proxy1.haifa.ac.il",8080));
+    manager1->head(QNetworkRequest(QUrl("http://er9x.googlecode.com/svn/trunk/er9x.hex")));
+
+    QNetworkAccessManager *manager2 = new QNetworkAccessManager(this);
+    connect(manager2, SIGNAL(finished(QNetworkReply*)),this, SLOT(reply2Finished(QNetworkReply*)));
+    manager2->setProxy(QNetworkProxy(QNetworkProxy::HttpProxy,"proxy1.haifa.ac.il",8080));
+    manager2->head(QNetworkRequest(QUrl("http://eepe.googlecode.com/svn/trunk/eePeInstall.exe")));
+}
+
+
+void MainWindow::reply1Finished(QNetworkReply * reply)
+{
+    QVariant qv = reply->header(QNetworkRequest::LastModifiedHeader);
+    if(qv.isValid())
+    {
+        QDateTime qdt = qv.toDateTime();
+        if(qdt>lastER9X)
+        {
+            int ret = QMessageBox::question(this, tr("eePe"),tr("A new version of ER9x is available<br>"
+                                                                "Would you like to download it?") ,
+                                            QMessageBox::Yes | QMessageBox::No);
+
+            if (ret == QMessageBox::Yes)
+            {
+                QMessageBox::information(this,"ee","downloading");
+            }
+        }
+
+    }
+}
+
+void MainWindow::reply2Finished(QNetworkReply * reply)
+{
+    QVariant qv = reply->header(QNetworkRequest::LastModifiedHeader);
+    if(qv.isValid())
+    {
+        QDateTime qdt = qv.toDateTime();
+        if(qdt>lastER9X)
+        {
+            int ret = QMessageBox::question(this, tr("eePe"),tr("A new version of eePe is available<br>"
+                                                                "Would you like to download it?") ,
+                                            QMessageBox::Yes | QMessageBox::No);
+
+            if (ret == QMessageBox::Yes)
+            {
+                QMessageBox::information(this,"ee","downloading");
+            }
+        }
+
+    }
 }
 
 void MainWindow::closeEvent(QCloseEvent *event)
@@ -694,6 +757,9 @@ void MainWindow::readSettings()
     bool maximized = settings.value("maximized", false).toBool();
     QPoint pos = settings.value("pos", QPoint(200, 200)).toPoint();
     QSize size = settings.value("size", QSize(400, 400)).toSize();
+
+    lastER9X = settings.value("laster9x", QDate(2010,11,11)).toDateTime();
+    lastEEPE = settings.value("lasteepe", QDate(2010,11,11)).toDateTime();
 
     if(maximized)
     {
