@@ -870,6 +870,19 @@ msgctxt "MainWindow|"
 msgid "Read EEPROM memory from transmitter to file"
 msgstr "Enregistrer l'EEPROM de l'émetteur vers un fichier"
 
+#, fuzzy
+msgctxt "MainWindow|"
+msgid "eePe"
+msgstr "eePe"
+
+msgctxt "MainWindow|"
+msgid "A new version of ER9x is available<br>Would you like to download it?"
+msgstr ""
+
+msgctxt "MainWindow|"
+msgid "A new version of eePe is available<br>Would you like to download it?"
+msgstr ""
+
 #, qt-format
 msgctxt "MdiChild|"
 msgid "%1"
@@ -1345,11 +1358,6 @@ msgctxt "ModelEdit|"
 msgid "THR"
 msgstr "GAZ"
 
-#, qt-format
-msgctxt "ModelEdit|"
-msgid " %1%"
-msgstr ""
-
 msgctxt "ModelEdit|"
 msgid "&Add"
 msgstr "&Ajouter"
@@ -1365,11 +1373,6 @@ msgstr "HAUT"
 msgctxt "ModelEdit|"
 msgid "Fine"
 msgstr "Fine"
-
-#, qt-format
-msgctxt "ModelEdit|"
-msgid " +%1%"
-msgstr ""
 
 msgctxt "ModelEdit|"
 msgid " usec"

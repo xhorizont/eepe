@@ -43,6 +43,9 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QNetworkAccessManager>
+#include <QDateTime>
+
 
 class MdiChild;
 QT_BEGIN_NAMESPACE
@@ -64,6 +67,9 @@ protected:
     void closeEvent(QCloseEvent *event);
 
 private slots:
+    void reply1Finished(QNetworkReply * reply);
+    void reply2Finished(QNetworkReply * reply);
+
     void newFile();
     void open();
     void save();
@@ -92,6 +98,7 @@ private slots:
     void setActiveSubWindow(QWidget *window);
 
 private:
+    void checkForUpdates();
     void createActions();
     void createMenus();
     void createToolBars();
@@ -103,6 +110,9 @@ private:
 
     QMdiArea *mdiArea;
     QSignalMapper *windowMapper;
+
+    QDateTime lastER9X;
+    QDateTime lastEEPE;
 
     QMenu *fileMenu;
     QMenu *editMenu;

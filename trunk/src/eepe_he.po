@@ -452,440 +452,455 @@ msgctxt "GeneralEdit|"
 msgid "v"
 msgstr ""
 
-#: mainwindow.cpp:74
+#: mainwindow.cpp:78
 msgctxt "MainWindow|"
 msgid "eePe - EEPROM Editor"
 msgstr ""
 
-#: mainwindow.cpp:85 mainwindow.cpp:131
+#: mainwindow.cpp:92 mainwindow.cpp:194
 msgctxt "MainWindow|"
 msgid "File loaded"
 msgstr ""
 
-#: mainwindow.cpp:119
+#: mainwindow.cpp:125 mainwindow.cpp:146
+msgctxt "MainWindow|"
+msgid "eePe"
+msgstr ""
+
+#: mainwindow.cpp:125
+msgctxt "MainWindow|"
+msgid "A new version of ER9x is available<br>Would you like to download it?"
+msgstr ""
+
+#: mainwindow.cpp:146
+msgctxt "MainWindow|"
+msgid "A new version of eePe is available<br>Would you like to download it?"
+msgstr ""
+
+#: mainwindow.cpp:182
 msgctxt "MainWindow|"
 msgid "Open"
 msgstr ""
 
-#: mainwindow.cpp:119
+#: mainwindow.cpp:182
 msgctxt "MainWindow|"
 msgid "EEPROM files (*.bin *.hex);;BIN files (*.bin);;HEX files (*.hex)"
 msgstr ""
 
-#: mainwindow.cpp:143 mainwindow.cpp:149
+#: mainwindow.cpp:206 mainwindow.cpp:212
 msgctxt "MainWindow|"
 msgid "File saved"
 msgstr ""
 
-#: mainwindow.cpp:217
+#: mainwindow.cpp:280
 msgctxt "MainWindow|"
 msgid "Read EEPROM From Tx"
 msgstr ""
 
-#: mainwindow.cpp:235 mainwindow.cpp:263
+#: mainwindow.cpp:298 mainwindow.cpp:326
 msgctxt "MainWindow|"
 msgid "FLASH files (*.bin *.hex);;BIN files (*.bin);;HEX files (*.hex)"
 msgstr ""
 
-#: mainwindow.cpp:235
+#: mainwindow.cpp:298
 msgctxt "MainWindow|"
 msgid "Choose file to write to EEPROM memory"
 msgstr ""
 
-#: mainwindow.cpp:263
+#: mainwindow.cpp:326
 msgctxt "MainWindow|"
 msgid "Choose file to write to flash memory"
 msgstr ""
 
-#: mainwindow.cpp:292 mainwindow.cpp:322
+#: mainwindow.cpp:355 mainwindow.cpp:385
 msgctxt "MainWindow|"
 msgid "HEX files (*.hex);;BIN files (*.bin);;FLASH files (*.bin *.hex)"
 msgstr ""
 
-#: mainwindow.cpp:292
+#: mainwindow.cpp:355
 msgctxt "MainWindow|"
 msgid "Read EEPROM memory to File"
 msgstr ""
 
-#: mainwindow.cpp:322
+#: mainwindow.cpp:385
 msgctxt "MainWindow|"
 msgid "Read Flash to File"
 msgstr ""
 
-#: mainwindow.cpp:387
+#: mainwindow.cpp:450
 msgctxt "MainWindow|"
 msgid ""
 "If you've found this program and/or the Firmware useful please support by"
 msgstr ""
 
-#: mainwindow.cpp:389
+#: mainwindow.cpp:452
 msgctxt "MainWindow|"
 msgid "donating"
 msgstr ""
 
-#: mainwindow.cpp:391
+#: mainwindow.cpp:454
 msgctxt "MainWindow|"
 msgid "About eePe"
 msgstr ""
 
-#: mainwindow.cpp:436
+#: mainwindow.cpp:499
 #, qt-format
 msgctxt "MainWindow|"
 msgid "&%1 %2"
 msgstr ""
 
-#: mainwindow.cpp:439
+#: mainwindow.cpp:502
 #, qt-format
 msgctxt "MainWindow|"
 msgid "%1 %2"
 msgstr ""
 
-#: mainwindow.cpp:465
+#: mainwindow.cpp:528
 msgctxt "MainWindow|"
 msgid "&New"
 msgstr ""
 
-#: mainwindow.cpp:467
+#: mainwindow.cpp:530
 msgctxt "MainWindow|"
 msgid "Create a new file"
 msgstr ""
 
-#: mainwindow.cpp:470
+#: mainwindow.cpp:533
 msgctxt "MainWindow|"
 msgid "&Open..."
 msgstr ""
 
-#: mainwindow.cpp:472
+#: mainwindow.cpp:535
 msgctxt "MainWindow|"
 msgid "Open an existing file"
 msgstr ""
 
-#: mainwindow.cpp:475
+#: mainwindow.cpp:538
 msgctxt "MainWindow|"
 msgid "&Save"
 msgstr ""
 
-#: mainwindow.cpp:477
+#: mainwindow.cpp:540
 msgctxt "MainWindow|"
 msgid "Save the document to disk"
 msgstr ""
 
-#: mainwindow.cpp:480
+#: mainwindow.cpp:543
 msgctxt "MainWindow|"
 msgid "Save &As..."
 msgstr ""
 
-#: mainwindow.cpp:482
+#: mainwindow.cpp:545
 msgctxt "MainWindow|"
 msgid "Save the document under a new name"
 msgstr ""
 
-#: mainwindow.cpp:485
+#: mainwindow.cpp:548
 msgctxt "MainWindow|"
 msgid "&Preferences..."
 msgstr ""
 
-#: mainwindow.cpp:486
+#: mainwindow.cpp:549
 msgctxt "MainWindow|"
 msgid "Edit general preferences"
 msgstr ""
 
-#: mainwindow.cpp:490
+#: mainwindow.cpp:553
 msgctxt "MainWindow|"
 msgid "E&xit"
 msgstr ""
 
-#: mainwindow.cpp:492
+#: mainwindow.cpp:555
 msgctxt "MainWindow|"
 msgid "Exit the application"
 msgstr ""
 
-#: mainwindow.cpp:496
+#: mainwindow.cpp:559
 msgctxt "MainWindow|"
 msgid "Cu&t"
 msgstr ""
 
-#: mainwindow.cpp:498
+#: mainwindow.cpp:561
 msgctxt "MainWindow|"
 msgid "Cut the current selection's contents to the clipboard"
 msgstr ""
 
-#: mainwindow.cpp:502
+#: mainwindow.cpp:565
 msgctxt "MainWindow|"
 msgid "&Copy"
 msgstr ""
 
-#: mainwindow.cpp:504
+#: mainwindow.cpp:567
 msgctxt "MainWindow|"
 msgid "Copy the current selection's contents to the clipboard"
 msgstr ""
 
-#: mainwindow.cpp:508
+#: mainwindow.cpp:571
 msgctxt "MainWindow|"
 msgid "&Paste"
 msgstr ""
 
-#: mainwindow.cpp:510
+#: mainwindow.cpp:573
 msgctxt "MainWindow|"
 msgid "Paste the clipboard's contents into the current selection"
 msgstr ""
 
-#: mainwindow.cpp:515
+#: mainwindow.cpp:578
 msgctxt "MainWindow|"
 msgid "&Write EEPROM To Tx"
 msgstr ""
 
-#: mainwindow.cpp:516
+#: mainwindow.cpp:579
 msgctxt "MainWindow|"
 msgid "Ctrl+Alt+W"
 msgstr ""
 
-#: mainwindow.cpp:517
+#: mainwindow.cpp:580
 msgctxt "MainWindow|"
 msgid "Write EEPROM to transmitter"
 msgstr ""
 
-#: mainwindow.cpp:520
+#: mainwindow.cpp:583
 msgctxt "MainWindow|"
 msgid "&Read EEPROM From Tx"
 msgstr ""
 
-#: mainwindow.cpp:521
+#: mainwindow.cpp:584
 msgctxt "MainWindow|"
 msgid "Ctrl+Alt+R"
 msgstr ""
 
-#: mainwindow.cpp:522
+#: mainwindow.cpp:585
 msgctxt "MainWindow|"
 msgid "Read EEPROM from transmitter"
 msgstr ""
 
-#: mainwindow.cpp:525
+#: mainwindow.cpp:588
 msgctxt "MainWindow|"
 msgid "Write Flash memory"
 msgstr ""
 
-#: mainwindow.cpp:526
+#: mainwindow.cpp:589
 msgctxt "MainWindow|"
 msgid "Write flash memory to transmitter"
 msgstr ""
 
-#: mainwindow.cpp:529
+#: mainwindow.cpp:592
 msgctxt "MainWindow|"
 msgid "Write EEPROM memory from file"
 msgstr ""
 
-#: mainwindow.cpp:530
+#: mainwindow.cpp:593
 msgctxt "MainWindow|"
 msgid "Write EEPROM memory from file to transmitter"
 msgstr ""
 
-#: mainwindow.cpp:533
+#: mainwindow.cpp:596
 msgctxt "MainWindow|"
 msgid "Read EEPROM memory to file"
 msgstr ""
 
-#: mainwindow.cpp:534
+#: mainwindow.cpp:597
 msgctxt "MainWindow|"
 msgid "Read EEPROM memory from transmitter to file"
 msgstr ""
 
-#: mainwindow.cpp:537
+#: mainwindow.cpp:600
 msgctxt "MainWindow|"
 msgid "Read Flash memory"
 msgstr ""
 
-#: mainwindow.cpp:538
+#: mainwindow.cpp:601
 msgctxt "MainWindow|"
 msgid "Read flash memory to transmitter"
 msgstr ""
 
-#: mainwindow.cpp:541
+#: mainwindow.cpp:604
 msgctxt "MainWindow|"
 msgid "&Configure..."
 msgstr ""
 
-#: mainwindow.cpp:542
+#: mainwindow.cpp:605
 msgctxt "MainWindow|"
 msgid "Configure burning software"
 msgstr ""
 
-#: mainwindow.cpp:545
+#: mainwindow.cpp:608
 msgctxt "MainWindow|"
 msgid "&List programmers"
 msgstr ""
 
-#: mainwindow.cpp:546
+#: mainwindow.cpp:609
 msgctxt "MainWindow|"
 msgid "List available programmers"
 msgstr ""
 
-#: mainwindow.cpp:549
+#: mainwindow.cpp:612
 msgctxt "MainWindow|"
 msgid "&Fuses..."
 msgstr ""
 
-#: mainwindow.cpp:550
+#: mainwindow.cpp:613
 msgctxt "MainWindow|"
 msgid "Show fuses dialog"
 msgstr ""
 
-#: mainwindow.cpp:553
+#: mainwindow.cpp:616
 msgctxt "MainWindow|"
 msgid "&Simulate"
 msgstr ""
 
-#: mainwindow.cpp:554
+#: mainwindow.cpp:617
 msgctxt "MainWindow|"
 msgid "Alt+S"
 msgstr ""
 
-#: mainwindow.cpp:555
+#: mainwindow.cpp:618
 msgctxt "MainWindow|"
 msgid "Simulate selected model."
 msgstr ""
 
-#: mainwindow.cpp:559
+#: mainwindow.cpp:622
 msgctxt "MainWindow|"
 msgid "&Print"
 msgstr ""
 
-#: mainwindow.cpp:560
+#: mainwindow.cpp:623
 msgctxt "MainWindow|"
 msgid "Ctrl+P"
 msgstr ""
 
-#: mainwindow.cpp:561
+#: mainwindow.cpp:624
 msgctxt "MainWindow|"
 msgid "Print current model."
 msgstr ""
 
-#: mainwindow.cpp:565
+#: mainwindow.cpp:628
 msgctxt "MainWindow|"
 msgid "Cl&ose"
 msgstr ""
 
-#: mainwindow.cpp:566
+#: mainwindow.cpp:629
 msgctxt "MainWindow|"
 msgid "Close the active window"
 msgstr ""
 
-#: mainwindow.cpp:570
+#: mainwindow.cpp:633
 msgctxt "MainWindow|"
 msgid "Close &All"
 msgstr ""
 
-#: mainwindow.cpp:571
+#: mainwindow.cpp:634
 msgctxt "MainWindow|"
 msgid "Close all the windows"
 msgstr ""
 
-#: mainwindow.cpp:575
+#: mainwindow.cpp:638
 msgctxt "MainWindow|"
 msgid "&Tile"
 msgstr ""
 
-#: mainwindow.cpp:576
+#: mainwindow.cpp:639
 msgctxt "MainWindow|"
 msgid "Tile the windows"
 msgstr ""
 
-#: mainwindow.cpp:579
+#: mainwindow.cpp:642
 msgctxt "MainWindow|"
 msgid "&Cascade"
 msgstr ""
 
-#: mainwindow.cpp:580
+#: mainwindow.cpp:643
 msgctxt "MainWindow|"
 msgid "Cascade the windows"
 msgstr ""
 
-#: mainwindow.cpp:583
+#: mainwindow.cpp:646
 msgctxt "MainWindow|"
 msgid "Ne&xt"
 msgstr ""
 
-#: mainwindow.cpp:585
+#: mainwindow.cpp:648
 msgctxt "MainWindow|"
 msgid "Move the focus to the next window"
 msgstr ""
 
-#: mainwindow.cpp:589
+#: mainwindow.cpp:652
 msgctxt "MainWindow|"
 msgid "Pre&vious"
 msgstr ""
 
-#: mainwindow.cpp:591
+#: mainwindow.cpp:654
 msgctxt "MainWindow|"
 msgid "Move the focus to the previous window"
 msgstr ""
 
-#: mainwindow.cpp:599
+#: mainwindow.cpp:662
 msgctxt "MainWindow|"
 msgid "&About"
 msgstr ""
 
-#: mainwindow.cpp:600
+#: mainwindow.cpp:663
 msgctxt "MainWindow|"
 msgid "Show the application's About box"
 msgstr ""
 
-#: mainwindow.cpp:603
+#: mainwindow.cpp:666
 msgctxt "MainWindow|"
 msgid "&Contributors"
 msgstr ""
 
-#: mainwindow.cpp:604
+#: mainwindow.cpp:667
 msgctxt "MainWindow|"
 msgid "List er9x/eePe Contributors"
 msgstr ""
 
-#: mainwindow.cpp:614
+#: mainwindow.cpp:677
 msgctxt "MainWindow|"
 msgid "&File"
 msgstr ""
 
-#: mainwindow.cpp:624
+#: mainwindow.cpp:687
 msgctxt "MainWindow|"
 msgid "Switch layout direction"
 msgstr ""
 
-#: mainwindow.cpp:628
+#: mainwindow.cpp:691
 msgctxt "MainWindow|"
 msgid "&Edit"
 msgstr ""
 
-#: mainwindow.cpp:633
+#: mainwindow.cpp:696
 msgctxt "MainWindow|"
 msgid "&Burn"
 msgstr ""
 
-#: mainwindow.cpp:647
+#: mainwindow.cpp:710
 msgctxt "MainWindow|"
 msgid "&Window"
 msgstr ""
 
-#: mainwindow.cpp:653
+#: mainwindow.cpp:716
 msgctxt "MainWindow|"
 msgid "&Help"
 msgstr ""
 
-#: mainwindow.cpp:660
+#: mainwindow.cpp:723
 msgctxt "MainWindow|"
 msgid "File"
 msgstr ""
 
-#: mainwindow.cpp:668
+#: mainwindow.cpp:731
 msgctxt "MainWindow|"
 msgid "Edit"
 msgstr ""
 
-#: mainwindow.cpp:673
+#: mainwindow.cpp:736
 msgctxt "MainWindow|"
 msgid "Burn"
 msgstr ""
 
-#: mainwindow.cpp:688
+#: mainwindow.cpp:751
 msgctxt "MainWindow|"
 msgid "Ready"
 msgstr ""
@@ -1799,71 +1814,59 @@ msgctxt "ModelEdit|"
 msgid "Simulate"
 msgstr ""
 
-#: modeledit.cpp:368 modeledit.cpp:376 modeledit.cpp:419
+#: modeledit.cpp:367 modeledit.cpp:375 modeledit.cpp:418
 #, qt-format
 msgctxt "ModelEdit|"
 msgid "CH%1%2"
 msgstr ""
 
-#: modeledit.cpp:389
-#, qt-format
-msgctxt "ModelEdit|"
-msgid " %1%"
-msgstr ""
-
-#: modeledit.cpp:390
-#, qt-format
-msgctxt "ModelEdit|"
-msgid " +%1%"
-msgstr ""
-
-#: modeledit.cpp:397
+#: modeledit.cpp:396
 msgctxt "ModelEdit|"
 msgid " Switch("
 msgstr ""
 
-#: modeledit.cpp:398
+#: modeledit.cpp:397
 msgctxt "ModelEdit|"
 msgid " noTrim"
 msgstr ""
 
-#: modeledit.cpp:399
+#: modeledit.cpp:398
 #, qt-format
 msgctxt "ModelEdit|"
 msgid " Offset(%1%)"
 msgstr ""
 
-#: modeledit.cpp:403
+#: modeledit.cpp:402
 #, qt-format
 msgctxt "ModelEdit|"
 msgid " Curve(%1)"
 msgstr ""
 
-#: modeledit.cpp:406
+#: modeledit.cpp:405
 #, qt-format
 msgctxt "ModelEdit|"
 msgid " Delay(u%1:d%2)"
 msgstr ""
 
-#: modeledit.cpp:407
+#: modeledit.cpp:406
 #, qt-format
 msgctxt "ModelEdit|"
 msgid " Slow(u%1:d%2)"
 msgstr ""
 
-#: modeledit.cpp:409
+#: modeledit.cpp:408
 #, qt-format
 msgctxt "ModelEdit|"
 msgid " Warn(%1)"
 msgstr ""
 
-#: modeledit.cpp:1524
+#: modeledit.cpp:1523
 #, qt-format
 msgctxt "ModelEdit|"
 msgid "Curve %1"
 msgstr ""
 
-#: modeledit.cpp:1745
+#: modeledit.cpp:1744
 msgctxt "ModelEdit|"
 msgid "Delete Selected Mixes?"
 msgstr ""

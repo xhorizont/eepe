@@ -1,3 +1,4 @@
+QT += network
 HEADERS += mainwindow.h \
     file.h \
     pers.h \
@@ -57,4 +58,5 @@ TRANSLATIONS = eepe_.ts    \
                eepe_he.ts  \
                eepe_pt.ts  \
                eepe_ru.ts  \
+               eepe_de.ts  \
                eepe_fr.ts
