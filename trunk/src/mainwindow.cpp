@@ -55,7 +55,7 @@
 #include "fusesdialog.h"
 #include "downloaddialog.h"
 
-#define DONATE_STR "https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=TGT92W338DPGN&lc=IL&item_name=Erez%20Raviv&item_number=eePe&amount=5%2e00&currency_code=USD&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted"
+#define DONATE_STR "https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=TGT92W338DPGN&lc=IL&item_name=Erez%20Raviv&item_number=eePe&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted"
 #define ER9X_URL "http://er9x.googlecode.com/svn/trunk/er9x.hex"
 #define EEPE_URL "http://eepe.googlecode.com/svn/trunk/eePeInstall.exe"
 
