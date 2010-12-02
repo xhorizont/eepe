@@ -1357,7 +1357,7 @@ Gauche</translation>
     </message>
     <message>
         <source>D&amp;uplicate</source>
-        <translation>D&amp;upliquer</translation>
+        <translation type="obsolete">D&amp;upliquer</translation>
     </message>
     <message>
         <source> noTrim</source>
@@ -1604,6 +1604,26 @@ Droite</translation>
     <message>
         <source>Value</source>
         <translation>Valeur</translation>
+    </message>
+    <message>
+        <source>Du&amp;plicate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Move Up</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ctrl+Up</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Move Down</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ctrl+Down</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

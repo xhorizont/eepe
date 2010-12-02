@@ -12,6 +12,7 @@ public:
 
 
 signals:
+    void mimeDropped(int index, const QMimeData *data, Qt::DropAction action);
 
 protected:
 

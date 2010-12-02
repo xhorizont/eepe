@@ -38,6 +38,7 @@ private:
     QSpinBox  * safetySwitchValue[NUM_CHNOUT];
     QComboBox * safetySwitchSwtch[NUM_CHNOUT];
 
+    void setupMixerListWidget();
     void updateSettings();
     void tabModelEditSetup();
     void tabExpo();
@@ -59,9 +60,11 @@ private:
 
     QSpinBox *getNodeSB(int i);
 
-    MixData* gm_addMix(uint8_t dch);
+    void gm_insertMix(int idx);
+    int getMixerIndex(int dch);
     void gm_deleteMix(int index);
     void gm_openMix(int index);
+    void gm_moveMix(int idx, bool dir);
     void mixersDeleteList(QList<int> list);
     QList<int> createListFromSelected();
 
@@ -89,6 +92,8 @@ private slots:
     void on_resetCurve_16_clicked();
 
 
+    void mimeDropped(int index, const QMimeData *data, Qt::DropAction action);
+    void pasteMIMEData(const QMimeData * mimeData, int destIdx=1000);
     void on_pushButton_clicked();
     void mixersDelete(bool ask=true);
     void mixersCut();
@@ -97,7 +102,8 @@ private slots:
     void mixersDuplicate();
     void mixerOpen();
     void mixerAdd();
-
+    void moveMixUp();
+    void moveMixDown();
 
     void MixerlistWidget_customContextMenuRequested(QPoint pos);
     void MixerlistWidget_doubleClicked(QModelIndex index);

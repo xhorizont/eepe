@@ -1559,9 +1559,9 @@ msgstr ""
 "Expo\n"
 "Gauche"
 
-msgctxt "ModelEdit|"
-msgid "D&uplicate"
-msgstr "D&upliquer"
+#~ msgctxt "ModelEdit|"
+#~ msgid "D&uplicate"
+#~ msgstr "D&upliquer"
 
 msgctxt "ModelEdit|"
 msgid " noTrim"
@@ -1814,6 +1814,26 @@ msgstr "Interrupteur"
 msgctxt "ModelEdit|"
 msgid "Value"
 msgstr "Valeur"
+
+msgctxt "ModelEdit|"
+msgid "Du&plicate"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "Move Up"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "Ctrl+Up"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "Move Down"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "Ctrl+Down"
+msgstr ""
 
 #, qt-format
 msgctxt "avrOutputDialog|"

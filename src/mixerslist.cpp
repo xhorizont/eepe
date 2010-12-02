@@ -13,18 +13,11 @@ MixersList::MixersList(QWidget *parent) :
 }
 
 
-//QMimeData * MixersList::mimeData ( const QList<QListWidgetItem *> items )
-//{
-//    foreach(QListWidgetItem item, items)
-//    {
-
-//    }
-//}
-
 bool MixersList::dropMimeData( int index, const QMimeData * data, Qt::DropAction action )
 {
     QByteArray dropData = data->data("application/x-qabstractitemmodeldatalist");
     QDataStream stream(&dropData, QIODevice::ReadOnly);
+    QByteArray qba;
 
     while (!stream.atEnd())
     {
@@ -34,12 +27,21 @@ bool MixersList::dropMimeData( int index, const QMimeData * data, Qt::DropAction
         QList<QVariant> lsVars;
         lsVars = v.values();
         QString itemString = lsVars.at(0).toString();
-        int mixerNum = lsVars.at(1).toInt();
-
+        qba.append(lsVars.at(1).toByteArray().mid(1));
 
         if(itemString.isEmpty()) {};
+    }
+
+    if(qba.length()>0)
+    {
+        QMimeData *mimeData = new QMimeData;
+        mimeData->setData("application/x-eepe-mix", qba);
+
+        emit mimeDropped(index, mimeData, action);
     }
 
 
     return true;
 }
+
+
