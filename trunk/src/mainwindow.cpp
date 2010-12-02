@@ -798,8 +798,12 @@ void MainWindow::readSettings()
         qdt = QFileInfo(appName).lastModified();
     lastER9X = settings.value("laster9x", qdt).toDateTime();
     lastEEPE = settings.value("lasteepe", qdt).toDateTime();
+
     checkER9X = settings.value("startup_check_er9x", true).toBool();
     checkEEPE = settings.value("startup_check_eepe", true).toBool();
+
+    if(!settings.contains("laster9x")) settings.setValue("laster9x", qdt);
+    if(!settings.contains("lasteepe")) settings.setValue("lasteepe", qdt);
 
     if(maximized)
     {

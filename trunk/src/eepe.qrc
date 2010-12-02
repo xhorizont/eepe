@@ -24,5 +24,7 @@
         <file>images/list.png</file>
         <file>images/read_eeprom_file.png</file>
         <file>images/write_eeprom_file.png</file>
+        <file>images/moveup.png</file>
+        <file>images/movedown.png</file>
     </qresource>
 </RCC>

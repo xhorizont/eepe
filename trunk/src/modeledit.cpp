@@ -38,11 +38,7 @@ ModelEdit::ModelEdit(EEPFILE *eFile, uint8_t id, QWidget *parent) :
     eeFile->getModel(&g_model,id);
     id_model = id;
 
-    MixerlistWidget = new MixersList(this);
-    ui->tabMix->layout()->addWidget(MixerlistWidget);
-
-    connect(MixerlistWidget,SIGNAL(customContextMenuRequested(QPoint)),this,SLOT(MixerlistWidget_customContextMenuRequested(QPoint)));
-    connect(MixerlistWidget,SIGNAL(doubleClicked(QModelIndex)),this,SLOT(MixerlistWidget_doubleClicked(QModelIndex)));
+    setupMixerListWidget();
 
     QSettings settings("er9x-eePe", "eePe");
     ui->tabWidget->setCurrentIndex(settings.value("modelEditTab", 0).toInt());
@@ -67,6 +63,29 @@ ModelEdit::ModelEdit(EEPFILE *eFile, uint8_t id, QWidget *parent) :
 ModelEdit::~ModelEdit()
 {
     delete ui;
+}
+
+void ModelEdit::setupMixerListWidget()
+{
+    MixerlistWidget = new MixersList(this);
+    QPushButton * qbUp = new QPushButton(this);
+    QPushButton * qbDown = new QPushButton(this);
+
+    qbUp->setText("Move Up");
+    qbUp->setIcon(QIcon(":/images/moveup.png"));
+    qbDown->setText("Move Down");
+    qbDown->setIcon(QIcon(":/images/movedown.png"));
+
+    ui->mixersLayout->addWidget(MixerlistWidget,1,1,1,2);
+    ui->mixersLayout->addWidget(qbUp,2,1);
+    ui->mixersLayout->addWidget(qbDown,2,2);
+
+    connect(MixerlistWidget,SIGNAL(customContextMenuRequested(QPoint)),this,SLOT(MixerlistWidget_customContextMenuRequested(QPoint)));
+    connect(MixerlistWidget,SIGNAL(doubleClicked(QModelIndex)),this,SLOT(MixerlistWidget_doubleClicked(QModelIndex)));
+    connect(MixerlistWidget,SIGNAL(mimeDropped(int,const QMimeData*,Qt::DropAction)),this,SLOT(mimeDropped(int,const QMimeData*,Qt::DropAction)));
+
+    connect(qbUp,SIGNAL(pressed()),SLOT(moveMixUp()));
+    connect(qbDown,SIGNAL(pressed()),SLOT(moveMixDown()));
 }
 
 void ModelEdit::resizeEvent(QResizeEvent *event)
@@ -353,6 +372,9 @@ void ModelEdit::expoEdited()
 
 void ModelEdit::tabMixes()
 {
+    // curDest -> destination channel
+    // i -> mixer number
+    QByteArray qba;
     MixerlistWidget->clear();
     int curDest = 0;
     int i;
@@ -365,8 +387,10 @@ void ModelEdit::tabMixes()
         {
             curDest++;
             str = tr("CH%1%2").arg(curDest/10).arg(curDest%10);
+            qba.clear();
+            qba.append((quint8)-curDest);
             QListWidgetItem *itm = new QListWidgetItem(str);
-            itm->setData(Qt::UserRole,QVariant(curDest+MAX_MIXERS)); // add new mixer
+            itm->setData(Qt::UserRole,qba);
             MixerlistWidget->addItem(itm);
         }
 
@@ -407,8 +431,11 @@ void ModelEdit::tabMixes()
 
         if(md->mixWarn)  str += tr(" Warn(%1)").arg(md->mixWarn);
 
+        qba.clear();
+        qba.append((quint8)i);
+        qba.append((const char*)md, sizeof(MixData));
         QListWidgetItem *itm = new QListWidgetItem(str);
-        itm->setData(Qt::UserRole,QVariant(i));  // mix number
+        itm->setData(Qt::UserRole,qba);  // mix number
         MixerlistWidget->addItem(itm);//(str);
     }
 
@@ -416,8 +443,11 @@ void ModelEdit::tabMixes()
     {
         curDest++;
         QString str = tr("CH%1%2").arg(curDest/10).arg(curDest%10);
+
+        qba.clear();
+        qba.append((quint8)-curDest);
         QListWidgetItem *itm = new QListWidgetItem(str);
-        itm->setData(Qt::UserRole,QVariant(curDest+MAX_MIXERS)); // add new mixer
+        itm->setData(Qt::UserRole,qba); // add new mixer
         MixerlistWidget->addItem(itm);
     }
 
@@ -1650,17 +1680,16 @@ void ModelEdit::on_curveEdit_16_clicked()
 }
 
 
-MixData* ModelEdit::gm_addMix(uint8_t dch)
+void ModelEdit::gm_insertMix(int idx)
 {
-  uint8_t i = 0;
-  while ((g_model.mixData[i].destCh<=dch) && (g_model.mixData[i].destCh) && (i<MAX_MIXERS)) i++;
-  if(i==MAX_MIXERS) return &g_model.mixData[0];
+    if(idx<0 || idx>=MAX_MIXERS) return;
 
-  memmove(&g_model.mixData[i+1],&g_model.mixData[i],
-         (MAX_MIXERS-(i+1))*sizeof(MixData) );
-  memset(&g_model.mixData[i],0,sizeof(MixData));
-  g_model.mixData[i].destCh = dch;
-  return &g_model.mixData[i];
+    int i = g_model.mixData[idx].destCh;
+    memmove(&g_model.mixData[idx+1],&g_model.mixData[idx],
+            (MAX_MIXERS-(idx+1))*sizeof(MixData) );
+    memset(&g_model.mixData[idx],0,sizeof(MixData));
+    g_model.mixData[idx].destCh = i;
+    g_model.mixData[idx].weight = 100;
 }
 
 void ModelEdit::gm_deleteMix(int index)
@@ -1670,46 +1699,45 @@ void ModelEdit::gm_deleteMix(int index)
   memset(&g_model.mixData[MAX_MIXERS-1],0,sizeof(MixData));
 }
 
-#define ADD_NEW_MIX  (index>=MAX_MIXERS && index<(MAX_MIXERS+NUM_XCHNOUT+1))
-#define EDIT_EXT_MIX (index>=0 && index<MAX_MIXERS)
-
-
 void ModelEdit::gm_openMix(int index)
 {
+    if(index<0 || index>=MAX_MIXERS) return;
+
     MixData mixd;
-    if(ADD_NEW_MIX)
-    {
-        memset(&mixd,0,sizeof(MixData));
-        mixd.destCh = index - MAX_MIXERS;
-        mixd.srcRaw = 1;
-        mixd.weight = 100;
-    };
+    memcpy(&mixd,&g_model.mixData[index],sizeof(MixData));
 
-    if(EDIT_EXT_MIX) memcpy(&mixd,&g_model.mixData[index],sizeof(MixData));
-
+    updateSettings();
+    tabMixes();
 
     MixerDialog *g = new MixerDialog(this,&mixd,g_eeGeneral.stickMode);
-
-
     if(g->exec())
     {
-        if(ADD_NEW_MIX)
-        {
-            MixData* md = gm_addMix(index - MAX_MIXERS);
-            memcpy(md,&mixd,sizeof(MixData));
-        };
-
-        if(EDIT_EXT_MIX) memcpy(&g_model.mixData[index],&mixd,sizeof(MixData));
+        memcpy(&g_model.mixData[index],&mixd,sizeof(MixData));
 
         updateSettings();
         tabMixes();
     }
 }
 
+int ModelEdit::getMixerIndex(int dch)
+{
+    int i = 0;
+    while ((g_model.mixData[i].destCh<=dch) && (g_model.mixData[i].destCh) && (i<MAX_MIXERS)) i++;
+    if(i==MAX_MIXERS) return -1;
+    return i;
+}
+
 void ModelEdit::MixerlistWidget_doubleClicked(QModelIndex index)
 {
-    int mix = MixerlistWidget->item(index.row())->data(Qt::UserRole).toInt();
-    gm_openMix(mix);
+    int idx= MixerlistWidget->item(index.row())->data(Qt::UserRole).toByteArray().at(0);
+    if(idx<0)
+    {
+        int i = -idx;
+        idx = getMixerIndex(i); //get mixer index to insert
+        gm_insertMix(idx);
+        g_model.mixData[idx].destCh = i;
+    }
+    gm_openMix(idx);
 }
 
 void ModelEdit::mixersDeleteList(QList<int> list)
@@ -1729,7 +1757,7 @@ QList<int> ModelEdit::createListFromSelected()
     QList<int> list;
     foreach(QListWidgetItem *item, MixerlistWidget->selectedItems())
     {
-        int idx = item->data(Qt::UserRole).toInt();
+        int idx= item->data(Qt::UserRole).toByteArray().at(0);
         if(idx>=0 && idx<MAX_MIXERS) list << idx;
     }
     return list;
@@ -1770,32 +1798,41 @@ void ModelEdit::mixersCopy()
     QMimeData *mimeData = new QMimeData;
     mimeData->setData("application/x-eepe-mix", mxData);
 
-//    QMimeData *mimeData = MixerlistWidget->mimeData();
-
     QApplication::clipboard()->setMimeData(mimeData,QClipboard::Clipboard);
 }
 
-void ModelEdit::mixersPaste()
+void ModelEdit::mimeDropped(int index, const QMimeData *data, Qt::DropAction action)
 {
-    const QClipboard *clipboard = QApplication::clipboard();
-    const QMimeData *mimeData = clipboard->mimeData();
+    int idx= MixerlistWidget->item(index)->data(Qt::UserRole).toByteArray().at(0);
+    pasteMIMEData(data,idx);
+    if(action) {}
+}
 
-
-
+void ModelEdit::pasteMIMEData(const QMimeData * mimeData, int destIdx)
+{
     if(mimeData->hasFormat("application/x-eepe-mix"))
     {
-        int dch = MixerlistWidget->currentItem()->data(Qt::UserRole).toInt();
-        if(dch>MAX_MIXERS)
-            dch -= MAX_MIXERS;
+        int idx = MixerlistWidget->currentItem()->data(Qt::UserRole).toByteArray().at(0);
+        if(destIdx!=1000)
+            idx = destIdx>=0 ? destIdx-1 : destIdx;
+
+
+        int dch = -idx;
+        if(idx<0)
+            idx = getMixerIndex(-idx) - 1; //get mixer index to insert
         else
-            dch = g_model.mixData[dch].destCh;
+            dch = g_model.mixData[idx].destCh;
 
         QByteArray mxData = mimeData->data("application/x-eepe-mix");
 
         int i = 0;
         while(i<mxData.size())
         {
-            MixData *md = gm_addMix(dch);
+            idx++;
+            if(idx==MAX_MIXERS) break;
+
+            gm_insertMix(idx);
+            MixData *md = &g_model.mixData[idx];
             memcpy(md,mxData.mid(i,sizeof(MixData)).constData(),sizeof(MixData));
             md->destCh = dch;
 
@@ -1807,6 +1844,14 @@ void ModelEdit::mixersPaste()
     }
 }
 
+void ModelEdit::mixersPaste()
+{
+    const QClipboard *clipboard = QApplication::clipboard();
+    const QMimeData *mimeData = clipboard->mimeData();
+
+    pasteMIMEData(mimeData);
+}
+
 void ModelEdit::mixersDuplicate()
 {
     mixersCopy();
@@ -1815,14 +1860,37 @@ void ModelEdit::mixersDuplicate()
 
 void ModelEdit::mixerOpen()
 {
-    gm_openMix(MixerlistWidget->currentItem()->data(Qt::UserRole).toInt());
+    int idx = MixerlistWidget->currentItem()->data(Qt::UserRole).toByteArray().at(0);
+    if(idx<0)
+    {
+        int i = -idx;
+        idx = getMixerIndex(i); //get mixer index to insert
+        gm_insertMix(idx);
+        g_model.mixData[idx].destCh = i;
+    }
+    gm_openMix(idx);
 }
 
 void ModelEdit::mixerAdd()
 {
-    int index = MixerlistWidget->currentItem()->data(Qt::UserRole).toInt();
-    if(index<MAX_MIXERS) index=g_model.mixData[index].destCh+MAX_MIXERS;
+    int index = MixerlistWidget->currentItem()->data(Qt::UserRole).toByteArray().at(0);
+
+    if(index<0)  // if empty then return relavent index
+    {
+        int i = -index;
+        index = getMixerIndex(i); //get mixer index to insert
+        gm_insertMix(index);
+        g_model.mixData[index].destCh = i;
+    }
+    else
+    {
+        index++;
+        gm_insertMix(index);
+        g_model.mixData[index].destCh = g_model.mixData[index-1].destCh;
+    }
+
     gm_openMix(index);
+
 }
 
 void ModelEdit::MixerlistWidget_customContextMenuRequested(QPoint pos)
@@ -1841,12 +1909,56 @@ void ModelEdit::MixerlistWidget_customContextMenuRequested(QPoint pos)
     contextMenu.addAction(QIcon(":/images/copy.png"), tr("&Copy"),this,SLOT(mixersCopy()),tr("Ctrl+C"));
     contextMenu.addAction(QIcon(":/images/cut.png"), tr("&Cut"),this,SLOT(mixersCut()),tr("Ctrl+X"));
     contextMenu.addAction(QIcon(":/images/paste.png"), tr("&Paste"),this,SLOT(mixersPaste()),tr("Ctrl+V"))->setEnabled(hasData);
-    contextMenu.addAction(QIcon(":/images/duplicate.png"), tr("D&uplicate"),this,SLOT(mixersDuplicate()),tr("Ctrl+U"));
+    contextMenu.addAction(QIcon(":/images/duplicate.png"), tr("Du&plicate"),this,SLOT(mixersDuplicate()),tr("Ctrl+U"));
+    contextMenu.addSeparator();
+    contextMenu.addAction(QIcon(":/images/moveup.png"), tr("Move Up"),this,SLOT(moveMixUp()),tr("Ctrl+Up"));
+    contextMenu.addAction(QIcon(":/images/movedown.png"), tr("Move Down"),this,SLOT(moveMixDown()),tr("Ctrl+Down"));
 
     contextMenu.exec(globalPos);
-
 }
 
+void ModelEdit::gm_moveMix(int idx, bool dir) //true=inc=down false=dec=up
+{
+    if(idx>MAX_MIXERS || (idx==0 && !dir) || (idx==MAX_MIXERS && dir)) return;
+
+    int tdx = dir ? idx+1 : idx-1;
+    MixData &src=g_model.mixData[idx];
+    MixData &tgt=g_model.mixData[tdx];
+
+    if((src.destCh==0) || (src.destCh>NUM_CHNOUT) || (tgt.destCh>NUM_CHNOUT)) return;
+
+    if(tgt.destCh!=src.destCh) {
+        if ((dir)  && (src.destCh<NUM_CHNOUT)) src.destCh++;
+        if ((!dir) && (src.destCh>0))          src.destCh--;
+        return;
+    }
+
+    //flip between idx and tgt
+    MixData temp;
+    memcpy(&temp,&src,sizeof(MixData));
+    memcpy(&src,&tgt,sizeof(MixData));
+    memcpy(&tgt,&temp,sizeof(MixData));
+}
+
+void ModelEdit::moveMixUp()
+{
+    QList<int> list = createListFromSelected();
+    foreach(int idx, list)
+        gm_moveMix(idx, false);
+
+    updateSettings();
+    tabMixes();
+}
+
+void ModelEdit::moveMixDown()
+{
+    QList<int> list = createListFromSelected();
+    foreach(int idx, list)
+        gm_moveMix(idx, true);
+
+    updateSettings();
+    tabMixes();
+}
 
 void ModelEdit::launchSimulation()
 {

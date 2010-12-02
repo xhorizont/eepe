@@ -35,7 +35,7 @@
    <item row="2" column="1">
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
-      <number>7</number>
+      <number>2</number>
      </property>
      <widget class="QWidget" name="tabModelSetup">
       <attribute name="title">
@@ -1657,7 +1657,11 @@ Right</string>
       <attribute name="title">
        <string>Mixes</string>
       </attribute>
-      <layout class="QGridLayout" name="gridLayout_18"/>
+      <layout class="QGridLayout" name="gridLayout_18">
+       <item row="0" column="0">
+        <layout class="QGridLayout" name="mixersLayout"/>
+       </item>
+      </layout>
      </widget>
      <widget class="QWidget" name="tabLimit">
       <attribute name="title">
