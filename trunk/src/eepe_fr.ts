@@ -2127,11 +2127,11 @@ Indique l&apos;affectation voie / numéro de canal par défaut utilisée lors de
     </message>
     <message>
         <source>Offset</source>
-        <translation>Décalage</translation>
+        <translation type="obsolete">Décalage</translation>
     </message>
     <message>
         <source>Source</source>
-        <translation>Maître</translation>
+        <translation type="obsolete">Maître</translation>
     </message>
     <message>
         <source>Trim Switch</source>
@@ -2211,7 +2211,7 @@ Indique l&apos;affectation voie / numéro de canal par défaut utilisée lors de
     </message>
     <message>
         <source>Function</source>
-        <translation>Fonction</translation>
+        <translation type="obsolete">Fonction</translation>
     </message>
     <message>
         <source>Curve %1</source>
@@ -2232,6 +2232,18 @@ Indique l&apos;affectation voie / numéro de canal par défaut utilisée lors de
     <message>
         <source> Offset(%1%)</source>
         <translation> Décalage(%1%)</translation>
+    </message>
+    <message>
+        <source>&lt;h2&gt;Safety Switches&lt;/h2&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Switch</source>
+        <translation type="unfinished">Interrupteur</translation>
+    </message>
+    <message>
+        <source>Value</source>
+        <translation type="unfinished">Valeur</translation>
     </message>
 </context>
 <context>
