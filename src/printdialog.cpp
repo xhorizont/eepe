@@ -24,6 +24,7 @@ printDialog::printDialog(QWidget *parent, EEGeneral *gg, ModelData *gm) :
     printLimits();
     printCurves();
     printSwitches();
+    printSafetySwitches();
 
     te->scrollToAnchor("1");
 }
@@ -56,7 +57,7 @@ QString printDialog::fv(const QString name, const QString value)
 
 QString printDialog::getTimer()
 {
-    QString str = ", " + g_model->tmrDir ? ", Count Up" : " Count Down";
+    QString str = ", " + g_model->tmrDir ? ", Count Down" : " Count Up";
     return tr("%1:%2, ").arg(g_model->tmrVal/60, 2, 10, QChar('0')).arg(g_model->tmrVal%60, 2, 10, QChar('0')) + getTimerMode(g_model->tmrMode) + str;
 }
 
@@ -323,19 +324,101 @@ void printDialog::printSwitches()
 
 
     str.append("<table border=1 cellspacing=0 cellpadding=3>");
-    str.append("<tr>");
-    str.append(doTC("&nbsp;"));
-    str.append(doTC(tr("Source"), "", true));
-    str.append(doTC(tr("Offset"), "", true));
-    str.append(doTC(tr("Function"), "", true));
-    str.append("</tr>");
+//    str.append("<tr>");
+//    str.append(doTC("&nbsp;"));
+//    str.append(doTC(tr("Source"), "", true));
+//    str.append(doTC(tr("Offset"), "", true));
+//    str.append(doTC(tr("Function"), "", true));
+//    str.append("</tr>");
     for(int i=0; i<NUM_CSW; i++)
     {
         str.append("<tr>");
         str.append(doTC(tr("SW%1").arg(i+1),"",true));
-        str.append(doTC(getSourceStr(g_eeGeneral->stickMode,g_model->customSw[i].v1),"green"));
-        str.append(doTC(QString::number(g_model->customSw[i].v2),"green"));
-        str.append(doTC(getCSWFunc(g_model->customSw[i].func),"green"));
+
+        QString tstr;
+
+        if(g_model->customSw[i].func)
+        {
+            switch CS_STATE(g_model->customSw[i].func)
+            {
+            case CS_VOFS:
+                tstr = g_model->customSw[i].v1 ?
+                       getSourceStr(g_eeGeneral->stickMode,g_model->customSw[i].v1) :
+                       "0";
+                tstr.remove(" ");
+                if(g_model->customSw[i].func==CS_APOS || g_model->customSw[i].func==CS_ANEG)
+                    tstr = "|" + tstr + "|";
+
+                if(g_model->customSw[i].func==CS_APOS || g_model->customSw[i].func==CS_VPOS)
+                    tstr += " &gt; ";
+                if(g_model->customSw[i].func==CS_ANEG || g_model->customSw[i].func==CS_VNEG)
+                    tstr += " &lt; ";
+
+                tstr += QString::number(g_model->customSw[i].v2);
+                break;
+
+
+            case CS_VBOOL:
+                tstr = getSWName(g_model->customSw[i].v1);
+
+                switch (g_model->customSw[i].func)
+                {
+                case CS_AND:
+                    tstr += " AND ";
+                    break;
+                case CS_OR:
+                    tstr += " OR ";
+                    break;
+                case CS_XOR:
+                    tstr += " XOR ";
+                    break;
+                default:
+                    break;
+                }
+
+                tstr += getSWName(g_model->customSw[i].v2);
+                break;
+
+
+            case CS_VCOMP:
+                tstr = g_model->customSw[i].v1 ?
+                       getSourceStr(g_eeGeneral->stickMode,g_model->customSw[i].v1) :
+                       "0";
+
+                switch (g_model->customSw[i].func)
+                {
+                case CS_EQUAL:
+                    tstr += " = ";
+                    break;
+                case CS_NEQUAL:
+                    tstr += " != ";
+                    break;
+                case CS_GREATER:
+                    tstr += " &gt; ";
+                    break;
+                case CS_LESS:
+                    tstr += " &lt; ";
+                    break;
+                case CS_EGREATER:
+                    tstr += " &gt;= ";
+                    break;
+                case CS_ELESS:
+                    tstr += " &lt;= ";
+                    break;
+                default:
+                    break;
+                }
+
+                tstr += g_model->customSw[i].v2 ?
+                        getSourceStr(g_eeGeneral->stickMode,g_model->customSw[i].v2) :
+                        "0";
+                break;
+            default:
+                break;
+            }
+        }
+
+        str.append(doTC(tstr,"green"));
         str.append("</tr>");
     }
     str.append("</table>");
@@ -344,6 +427,33 @@ void printDialog::printSwitches()
     str.append("<br><br>");
     te->append(str);
 }
+
+void printDialog::printSafetySwitches()
+{
+    QString str = tr("<h2>Safety Switches</h2>");
+
+
+    str.append("<table border=1 cellspacing=0 cellpadding=3>");
+    str.append("<tr>");
+    str.append(doTC("&nbsp;"));
+    str.append(doTC(tr("Switch"), "", true));
+    str.append(doTC(tr("Value"), "", true));
+    str.append("</tr>");
+    for(int i=0; i<NUM_CHNOUT; i++)
+    {
+        str.append("<tr>");
+        str.append(doTC(tr("CH%1").arg(i+1),"",true));
+        str.append(doTC(getSWName(g_model->safetySw[i].swtch),"green"));
+        str.append(doTC(QString::number(g_model->safetySw[i].val),"green"));
+        str.append("</tr>");
+    }
+    str.append("</table>");
+
+
+    str.append("<br><br>");
+    te->append(str);
+}
+
 
 void printDialog::on_printButton_clicked()
 {

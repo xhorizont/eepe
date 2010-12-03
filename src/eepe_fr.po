@@ -2568,13 +2568,13 @@ msgctxt "printDialog|"
 msgid "Dialog"
 msgstr "Dialogue"
 
-msgctxt "printDialog|"
-msgid "Offset"
-msgstr "Décalage"
+#~ msgctxt "printDialog|"
+#~ msgid "Offset"
+#~ msgstr "Décalage"
 
-msgctxt "printDialog|"
-msgid "Source"
-msgstr "Maître"
+#~ msgctxt "printDialog|"
+#~ msgid "Source"
+#~ msgstr "Maître"
 
 msgctxt "printDialog|"
 msgid "Trim Switch"
@@ -2658,9 +2658,9 @@ msgctxt "printDialog|"
 msgid "Enabled"
 msgstr "Actif"
 
-msgctxt "printDialog|"
-msgid "Function"
-msgstr "Fonction"
+#~ msgctxt "printDialog|"
+#~ msgid "Function"
+#~ msgstr "Fonction"
 
 #, qt-format
 msgctxt "printDialog|"
@@ -2683,6 +2683,20 @@ msgstr "<h2>Inters Personnalisés</h2>"
 msgctxt "printDialog|"
 msgid " Offset(%1%)"
 msgstr " Décalage(%1%)"
+
+msgctxt "printDialog|"
+msgid "<h2>Safety Switches</h2>"
+msgstr ""
+
+#, fuzzy
+msgctxt "printDialog|"
+msgid "Switch"
+msgstr "Interrupteur"
+
+#, fuzzy
+msgctxt "printDialog|"
+msgid "Value"
+msgstr "Valeur"
 
 msgctxt "simulatorDialog|"
 msgid "P1"

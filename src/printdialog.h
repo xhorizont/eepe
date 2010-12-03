@@ -30,6 +30,7 @@ private:
     void printLimits();
     void printCurves();
     void printSwitches();
+    void printSafetySwitches();
 
     QString fv(const QString name, const QString value);
     QString getModelName();

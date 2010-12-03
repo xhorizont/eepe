@@ -2475,252 +2475,265 @@ Mode 4:
         <translation>Configurar para:</translation>
     </message>
     <message>
-        <location filename="printdialog.cpp" line="60"/>
+        <location filename="printdialog.cpp" line="61"/>
         <source>%1:%2, </source>
         <translation>%1:%2,</translation>
     </message>
     <message>
-        <location filename="printdialog.cpp" line="69"/>
+        <location filename="printdialog.cpp" line="70"/>
         <source>: %1 Channels, %3msec Delay</source>
         <translation>:%1 Canais, Atraso de %3 mseg</translation>
     </message>
     <message>
-        <location filename="printdialog.cpp" line="106"/>
+        <location filename="printdialog.cpp" line="107"/>
         <source>&lt;a name=1&gt;&lt;/a&gt;&lt;h1&gt;ER9x Model: %1&lt;/h1&gt;&lt;br&gt;</source>
         <translation>&lt;a name=1&gt;&lt;/a&gt;&lt;h1&gt;ER9x Modelo: %1&lt;/h1&gt;&lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="printdialog.cpp" line="111"/>
+        <location filename="printdialog.cpp" line="112"/>
         <source>&lt;h2&gt;General Model Settings&lt;/h2&gt;&lt;br&gt;</source>
         <translation>&lt;h2&gt;Parametros Gerais do Modelo&lt;/h2&gt;&lt;br&gt; </translation>
     </message>
     <message>
-        <location filename="printdialog.cpp" line="112"/>
+        <location filename="printdialog.cpp" line="113"/>
         <source>Name</source>
         <translation>Nome</translation>
     </message>
     <message>
-        <location filename="printdialog.cpp" line="113"/>
+        <location filename="printdialog.cpp" line="114"/>
         <source>Timer</source>
         <translation>Temporizador</translation>
     </message>
     <message>
-        <location filename="printdialog.cpp" line="114"/>
+        <location filename="printdialog.cpp" line="115"/>
         <source>Protocol</source>
         <translation>Protocolo</translation>
     </message>
     <message>
-        <location filename="printdialog.cpp" line="115"/>
+        <location filename="printdialog.cpp" line="116"/>
         <source>Pulse Polarity</source>
         <translation>Polaridade</translation>
     </message>
     <message>
-        <location filename="printdialog.cpp" line="116"/>
         <location filename="printdialog.cpp" line="117"/>
+        <location filename="printdialog.cpp" line="118"/>
         <source>Enabled</source>
         <translation>Activo</translation>
     </message>
     <message>
-        <location filename="printdialog.cpp" line="116"/>
         <location filename="printdialog.cpp" line="117"/>
+        <location filename="printdialog.cpp" line="118"/>
         <source>Disabled</source>
         <translation>Inactivo</translation>
     </message>
     <message>
-        <location filename="printdialog.cpp" line="116"/>
+        <location filename="printdialog.cpp" line="117"/>
         <source>Throttle Trim</source>
         <translation>Ajuste do Acelerador</translation>
     </message>
     <message>
-        <location filename="printdialog.cpp" line="117"/>
+        <location filename="printdialog.cpp" line="118"/>
         <source>Throttle Expo</source>
         <translation>Exponencial do Acelerador</translation>
     </message>
     <message>
-        <location filename="printdialog.cpp" line="118"/>
+        <location filename="printdialog.cpp" line="119"/>
         <source>Trim Switch</source>
         <translation>Interruptor para instaTrim</translation>
     </message>
     <message>
-        <location filename="printdialog.cpp" line="119"/>
+        <location filename="printdialog.cpp" line="120"/>
         <source>Trim Increment</source>
         <translation>Incremento do Ajuste</translation>
     </message>
     <message>
-        <location filename="printdialog.cpp" line="120"/>
+        <location filename="printdialog.cpp" line="121"/>
         <source>Center Beep</source>
         <translation>Som ao Centrar</translation>
     </message>
     <message>
-        <location filename="printdialog.cpp" line="129"/>
+        <location filename="printdialog.cpp" line="130"/>
         <source>&lt;h2&gt;Expo/Dr Settings&lt;/h2&gt;</source>
         <translation>&lt;h2&gt;Parâmetros de Exponencial/Dual Rate&lt;/h2&gt; </translation>
     </message>
     <message>
-        <location filename="printdialog.cpp" line="136"/>
+        <location filename="printdialog.cpp" line="137"/>
         <source>Switch 1:</source>
         <translation>Interruptor 1:</translation>
     </message>
     <message>
-        <location filename="printdialog.cpp" line="137"/>
+        <location filename="printdialog.cpp" line="138"/>
         <source>Switch 2:</source>
         <translation>Interruptor 2:</translation>
     </message>
     <message>
-        <location filename="printdialog.cpp" line="142"/>
+        <location filename="printdialog.cpp" line="143"/>
         <source>Expo Left</source>
         <translation>Exponencial à Esquerda</translation>
     </message>
     <message>
-        <location filename="printdialog.cpp" line="143"/>
+        <location filename="printdialog.cpp" line="144"/>
         <source>D/R Left</source>
         <translation>D/R à Esquerda</translation>
     </message>
     <message>
-        <location filename="printdialog.cpp" line="144"/>
+        <location filename="printdialog.cpp" line="145"/>
         <source>D/R Right</source>
         <translation>D/R à Direita</translation>
     </message>
     <message>
-        <location filename="printdialog.cpp" line="145"/>
+        <location filename="printdialog.cpp" line="146"/>
         <source>Expo Right</source>
         <translation>Exponencial à Direita</translation>
     </message>
     <message>
-        <location filename="printdialog.cpp" line="150"/>
+        <location filename="printdialog.cpp" line="151"/>
         <source>High</source>
         <translation>Alto</translation>
     </message>
     <message>
-        <location filename="printdialog.cpp" line="158"/>
+        <location filename="printdialog.cpp" line="159"/>
         <source>Mid</source>
         <translation>Meio</translation>
     </message>
     <message>
-        <location filename="printdialog.cpp" line="166"/>
+        <location filename="printdialog.cpp" line="167"/>
         <source>Low</source>
         <translation>Baixo</translation>
     </message>
     <message>
-        <location filename="printdialog.cpp" line="181"/>
+        <location filename="printdialog.cpp" line="182"/>
         <source>&lt;h2&gt;Mixers&lt;/h2&gt;&lt;br&gt;</source>
         <translation>&lt;h2&gt;Misturas&lt;/h2&gt;&lt;br&gt;</translation>
     </message>
     <message>
-        <location filename="printdialog.cpp" line="193"/>
-        <location filename="printdialog.cpp" line="243"/>
+        <location filename="printdialog.cpp" line="194"/>
+        <location filename="printdialog.cpp" line="244"/>
         <source>&lt;b&gt;CH%1&lt;/b&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="printdialog.cpp" line="214"/>
+        <location filename="printdialog.cpp" line="215"/>
         <source> %1%</source>
         <translation>&lt;b&gt;CH%1&lt;/b&gt; </translation>
     </message>
     <message>
-        <location filename="printdialog.cpp" line="215"/>
+        <location filename="printdialog.cpp" line="216"/>
         <source> +%1%</source>
         <translation>+%1% </translation>
     </message>
     <message>
-        <location filename="printdialog.cpp" line="222"/>
+        <location filename="printdialog.cpp" line="223"/>
         <source> Switch(</source>
         <translation>Interruptor(</translation>
     </message>
     <message>
-        <location filename="printdialog.cpp" line="223"/>
+        <location filename="printdialog.cpp" line="224"/>
         <source> noTrim</source>
         <translation>semAjuste</translation>
     </message>
     <message>
-        <location filename="printdialog.cpp" line="224"/>
+        <location filename="printdialog.cpp" line="225"/>
         <source> Offset(%1%)</source>
         <translation>Offset(%1%) </translation>
     </message>
     <message>
-        <location filename="printdialog.cpp" line="228"/>
+        <location filename="printdialog.cpp" line="229"/>
         <source> Curve(%1)</source>
         <translation>Curva(%1)</translation>
     </message>
     <message>
-        <location filename="printdialog.cpp" line="231"/>
+        <location filename="printdialog.cpp" line="232"/>
         <source> Delay(u%1:d%2)</source>
         <translation>Atraso(u%1:d%2)</translation>
     </message>
     <message>
-        <location filename="printdialog.cpp" line="232"/>
+        <location filename="printdialog.cpp" line="233"/>
         <source> Slow(u%1:d%2)</source>
         <translation>Lento(u%1:d%2)</translation>
     </message>
     <message>
-        <location filename="printdialog.cpp" line="234"/>
+        <location filename="printdialog.cpp" line="235"/>
         <source> Warn(%1)</source>
         <translation>Aviso(%1)</translation>
     </message>
     <message>
-        <location filename="printdialog.cpp" line="255"/>
+        <location filename="printdialog.cpp" line="256"/>
         <source>&lt;h2&gt;Limits&lt;/h2&gt;</source>
         <translation>&lt;h2&gt;Limites&lt;/h2&gt; </translation>
     </message>
     <message>
-        <location filename="printdialog.cpp" line="263"/>
+        <location filename="printdialog.cpp" line="264"/>
+        <location filename="printdialog.cpp" line="445"/>
         <source>CH%1</source>
         <translation>CH%1</translation>
     </message>
     <message>
-        <location filename="printdialog.cpp" line="278"/>
+        <location filename="printdialog.cpp" line="279"/>
         <source>&lt;h2&gt;Curves&lt;/h2&gt;</source>
         <translation>&lt;h2&gt;Curvas&lt;/h2&gt;</translation>
     </message>
     <message>
-        <location filename="printdialog.cpp" line="280"/>
+        <location filename="printdialog.cpp" line="281"/>
         <source>5-point Curves</source>
         <translation>Curvas de 5 pontos</translation>
     </message>
     <message>
-        <location filename="printdialog.cpp" line="284"/>
-        <location filename="printdialog.cpp" line="302"/>
+        <location filename="printdialog.cpp" line="285"/>
+        <location filename="printdialog.cpp" line="303"/>
         <source>pt %1</source>
         <translation>pt %1</translation>
     </message>
     <message>
-        <location filename="printdialog.cpp" line="289"/>
-        <location filename="printdialog.cpp" line="307"/>
+        <location filename="printdialog.cpp" line="290"/>
+        <location filename="printdialog.cpp" line="308"/>
         <source>Curve %1</source>
         <translation>Curva %1</translation>
     </message>
     <message>
-        <location filename="printdialog.cpp" line="298"/>
+        <location filename="printdialog.cpp" line="299"/>
         <source>9-point Curves</source>
         <translation>Curvas de 9 pontos</translation>
     </message>
     <message>
-        <location filename="printdialog.cpp" line="322"/>
+        <location filename="printdialog.cpp" line="323"/>
         <source>&lt;h2&gt;Custom Switches&lt;/h2&gt;</source>
         <translation>&lt;h2&gt;Interruptores Customizaveis&lt;/h2&gt; </translation>
     </message>
     <message>
-        <location filename="printdialog.cpp" line="328"/>
         <source>Source</source>
-        <translation>Fonte</translation>
+        <translation type="obsolete">Fonte</translation>
     </message>
     <message>
-        <location filename="printdialog.cpp" line="329"/>
         <source>Offset</source>
-        <translation>Compensação</translation>
+        <translation type="obsolete">Compensação</translation>
     </message>
     <message>
-        <location filename="printdialog.cpp" line="330"/>
         <source>Function</source>
-        <translation>Função</translation>
+        <translation type="obsolete">Função</translation>
     </message>
     <message>
-        <location filename="printdialog.cpp" line="335"/>
+        <location filename="printdialog.cpp" line="336"/>
         <source>SW%1</source>
         <translation>SW%1</translation>
     </message>
     <message>
-        <location filename="printdialog.cpp" line="353"/>
+        <location filename="printdialog.cpp" line="433"/>
+        <source>&lt;h2&gt;Safety Switches&lt;/h2&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="printdialog.cpp" line="439"/>
+        <source>Switch</source>
+        <translation type="unfinished">Interruptor</translation>
+    </message>
+    <message>
+        <location filename="printdialog.cpp" line="440"/>
+        <source>Value</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="printdialog.cpp" line="463"/>
         <source>Print Document</source>
         <translation>Imprimir Documento</translation>
     </message>

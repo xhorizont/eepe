@@ -2463,262 +2463,262 @@ msgctxt "printDialog|"
 msgid "Setup for: "
 msgstr ""
 
-#: printdialog.cpp:60
+#: printdialog.cpp:61
 #, qt-format
 msgctxt "printDialog|"
 msgid "%1:%2, "
 msgstr ""
 
-#: printdialog.cpp:69
+#: printdialog.cpp:70
 #, qt-format
 msgctxt "printDialog|"
 msgid ": %1 Channels, %3msec Delay"
 msgstr ""
 
-#: printdialog.cpp:106
+#: printdialog.cpp:107
 #, qt-format
 msgctxt "printDialog|"
 msgid "<a name=1></a><h1>ER9x Model: %1</h1><br>"
 msgstr ""
 
-#: printdialog.cpp:111
+#: printdialog.cpp:112
 msgctxt "printDialog|"
 msgid "<h2>General Model Settings</h2><br>"
 msgstr ""
 
-#: printdialog.cpp:112
+#: printdialog.cpp:113
 msgctxt "printDialog|"
 msgid "Name"
 msgstr ""
 
-#: printdialog.cpp:113
+#: printdialog.cpp:114
 msgctxt "printDialog|"
 msgid "Timer"
 msgstr ""
 
-#: printdialog.cpp:114
+#: printdialog.cpp:115
 msgctxt "printDialog|"
 msgid "Protocol"
 msgstr ""
 
-#: printdialog.cpp:115
+#: printdialog.cpp:116
 msgctxt "printDialog|"
 msgid "Pulse Polarity"
 msgstr ""
 
-#: printdialog.cpp:116 printdialog.cpp:117
+#: printdialog.cpp:117 printdialog.cpp:118
 msgctxt "printDialog|"
 msgid "Enabled"
 msgstr ""
 
-#: printdialog.cpp:116 printdialog.cpp:117
+#: printdialog.cpp:117 printdialog.cpp:118
 msgctxt "printDialog|"
 msgid "Disabled"
 msgstr ""
 
-#: printdialog.cpp:116
+#: printdialog.cpp:117
 msgctxt "printDialog|"
 msgid "Throttle Trim"
 msgstr ""
 
-#: printdialog.cpp:117
+#: printdialog.cpp:118
 msgctxt "printDialog|"
 msgid "Throttle Expo"
 msgstr ""
 
-#: printdialog.cpp:118
+#: printdialog.cpp:119
 msgctxt "printDialog|"
 msgid "Trim Switch"
 msgstr ""
 
-#: printdialog.cpp:119
+#: printdialog.cpp:120
 msgctxt "printDialog|"
 msgid "Trim Increment"
 msgstr ""
 
-#: printdialog.cpp:120
+#: printdialog.cpp:121
 msgctxt "printDialog|"
 msgid "Center Beep"
 msgstr ""
 
-#: printdialog.cpp:129
+#: printdialog.cpp:130
 msgctxt "printDialog|"
 msgid "<h2>Expo/Dr Settings</h2>"
 msgstr ""
 
-#: printdialog.cpp:136
+#: printdialog.cpp:137
 msgctxt "printDialog|"
 msgid "Switch 1:"
 msgstr ""
 
-#: printdialog.cpp:137
+#: printdialog.cpp:138
 msgctxt "printDialog|"
 msgid "Switch 2:"
 msgstr ""
 
-#: printdialog.cpp:142
+#: printdialog.cpp:143
 msgctxt "printDialog|"
 msgid "Expo Left"
 msgstr ""
 
-#: printdialog.cpp:143
+#: printdialog.cpp:144
 msgctxt "printDialog|"
 msgid "D/R Left"
 msgstr ""
 
-#: printdialog.cpp:144
+#: printdialog.cpp:145
 msgctxt "printDialog|"
 msgid "D/R Right"
 msgstr ""
 
-#: printdialog.cpp:145
+#: printdialog.cpp:146
 msgctxt "printDialog|"
 msgid "Expo Right"
 msgstr ""
 
-#: printdialog.cpp:150
+#: printdialog.cpp:151
 msgctxt "printDialog|"
 msgid "High"
 msgstr ""
 
-#: printdialog.cpp:158
+#: printdialog.cpp:159
 msgctxt "printDialog|"
 msgid "Mid"
 msgstr ""
 
-#: printdialog.cpp:166
+#: printdialog.cpp:167
 msgctxt "printDialog|"
 msgid "Low"
 msgstr ""
 
-#: printdialog.cpp:181
+#: printdialog.cpp:182
 msgctxt "printDialog|"
 msgid "<h2>Mixers</h2><br>"
 msgstr ""
 
-#: printdialog.cpp:193 printdialog.cpp:243
+#: printdialog.cpp:194 printdialog.cpp:244
 #, qt-format
 msgctxt "printDialog|"
 msgid "<b>CH%1</b>"
 msgstr ""
 
-#: printdialog.cpp:214
+#: printdialog.cpp:215
 #, qt-format
 msgctxt "printDialog|"
 msgid " %1%"
 msgstr ""
 
-#: printdialog.cpp:215
+#: printdialog.cpp:216
 #, qt-format
 msgctxt "printDialog|"
 msgid " +%1%"
 msgstr ""
 
-#: printdialog.cpp:222
+#: printdialog.cpp:223
 msgctxt "printDialog|"
 msgid " Switch("
 msgstr ""
 
-#: printdialog.cpp:223
+#: printdialog.cpp:224
 msgctxt "printDialog|"
 msgid " noTrim"
 msgstr ""
 
-#: printdialog.cpp:224
+#: printdialog.cpp:225
 #, qt-format
 msgctxt "printDialog|"
 msgid " Offset(%1%)"
 msgstr ""
 
-#: printdialog.cpp:228
+#: printdialog.cpp:229
 #, qt-format
 msgctxt "printDialog|"
 msgid " Curve(%1)"
 msgstr ""
 
-#: printdialog.cpp:231
+#: printdialog.cpp:232
 #, qt-format
 msgctxt "printDialog|"
 msgid " Delay(u%1:d%2)"
 msgstr ""
 
-#: printdialog.cpp:232
+#: printdialog.cpp:233
 #, qt-format
 msgctxt "printDialog|"
 msgid " Slow(u%1:d%2)"
 msgstr ""
 
-#: printdialog.cpp:234
+#: printdialog.cpp:235
 #, qt-format
 msgctxt "printDialog|"
 msgid " Warn(%1)"
 msgstr ""
 
-#: printdialog.cpp:255
+#: printdialog.cpp:256
 msgctxt "printDialog|"
 msgid "<h2>Limits</h2>"
 msgstr ""
 
-#: printdialog.cpp:263
+#: printdialog.cpp:264 printdialog.cpp:445
 #, qt-format
 msgctxt "printDialog|"
 msgid "CH%1"
 msgstr ""
 
-#: printdialog.cpp:278
+#: printdialog.cpp:279
 msgctxt "printDialog|"
 msgid "<h2>Curves</h2>"
 msgstr ""
 
-#: printdialog.cpp:280
+#: printdialog.cpp:281
 msgctxt "printDialog|"
 msgid "5-point Curves"
 msgstr ""
 
-#: printdialog.cpp:284 printdialog.cpp:302
+#: printdialog.cpp:285 printdialog.cpp:303
 #, qt-format
 msgctxt "printDialog|"
 msgid "pt %1"
 msgstr ""
 
-#: printdialog.cpp:289 printdialog.cpp:307
+#: printdialog.cpp:290 printdialog.cpp:308
 #, qt-format
 msgctxt "printDialog|"
 msgid "Curve %1"
 msgstr ""
 
-#: printdialog.cpp:298
+#: printdialog.cpp:299
 msgctxt "printDialog|"
 msgid "9-point Curves"
 msgstr ""
 
-#: printdialog.cpp:322
+#: printdialog.cpp:323
 msgctxt "printDialog|"
 msgid "<h2>Custom Switches</h2>"
 msgstr ""
 
-#: printdialog.cpp:328
-msgctxt "printDialog|"
-msgid "Source"
-msgstr ""
-
-#: printdialog.cpp:329
-msgctxt "printDialog|"
-msgid "Offset"
-msgstr ""
-
-#: printdialog.cpp:330
-msgctxt "printDialog|"
-msgid "Function"
-msgstr ""
-
-#: printdialog.cpp:335
+#: printdialog.cpp:336
 #, qt-format
 msgctxt "printDialog|"
 msgid "SW%1"
 msgstr ""
 
-#: printdialog.cpp:353
+#: printdialog.cpp:433
+msgctxt "printDialog|"
+msgid "<h2>Safety Switches</h2>"
+msgstr ""
+
+#: printdialog.cpp:439
+msgctxt "printDialog|"
+msgid "Switch"
+msgstr ""
+
+#: printdialog.cpp:440
+msgctxt "printDialog|"
+msgid "Value"
+msgstr ""
+
+#: printdialog.cpp:463
 msgctxt "printDialog|"
 msgid "Print Document"
 msgstr ""
