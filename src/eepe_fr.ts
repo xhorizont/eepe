@@ -893,7 +893,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>File wrong size - %1</source>
-        <translation>Taille de fichier incorrecte - %1</translation>
+        <translation type="obsolete">Taille de fichier incorrecte - %1</translation>
     </message>
     <message>
         <source>D&amp;uplicate</source>
@@ -940,7 +940,7 @@ Enregistrer les changements?</translation>
     <message>
         <source>Cannot read file %1:
 %2.</source>
-        <translation>Fichier %1 illisible:
+        <translation type="obsolete">Fichier %1 illisible:
 %2.</translation>
     </message>
     <message>
@@ -950,6 +950,21 @@ Enregistrer les changements?</translation>
     <message>
         <source>Unable set data!</source>
         <translation>Sélection des données impossible!</translation>
+    </message>
+    <message>
+        <source>Error reading file:
+File wrong size - %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Error opening file %1:
+%2.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Error loading file %1:
+%2.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
