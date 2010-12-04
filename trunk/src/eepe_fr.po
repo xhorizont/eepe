@@ -1008,9 +1008,9 @@ msgid "&Write To Tx"
 msgstr "&Envoyer à l'émetteur"
 
 #, qt-format
-msgctxt "MdiChild|"
-msgid "File wrong size - %1"
-msgstr "Taille de fichier incorrecte - %1"
+#~ msgctxt "MdiChild|"
+#~ msgid "File wrong size - %1"
+#~ msgstr "Taille de fichier incorrecte - %1"
 
 msgctxt "MdiChild|"
 msgid "D&uplicate"
@@ -1066,13 +1066,13 @@ msgstr ""
 "%2."
 
 #, qt-format
-msgctxt "MdiChild|"
-msgid ""
-"Cannot read file %1:\n"
-"%2."
-msgstr ""
-"Fichier %1 illisible:\n"
-"%2."
+#~ msgctxt "MdiChild|"
+#~ msgid ""
+#~ "Cannot read file %1:\n"
+#~ "%2."
+#~ msgstr ""
+#~ "Fichier %1 illisible:\n"
+#~ "%2."
 
 msgctxt "MdiChild|"
 msgid "Ctrl+Alt+W"
@@ -1081,6 +1081,27 @@ msgstr ""
 msgctxt "MdiChild|"
 msgid "Unable set data!"
 msgstr "Sélection des données impossible!"
+
+#, qt-format
+msgctxt "MdiChild|"
+msgid ""
+"Error reading file:\n"
+"File wrong size - %1"
+msgstr ""
+
+#, qt-format
+msgctxt "MdiChild|"
+msgid ""
+"Error opening file %1:\n"
+"%2."
+msgstr ""
+
+#, qt-format
+msgctxt "MdiChild|"
+msgid ""
+"Error loading file %1:\n"
+"%2."
+msgstr ""
 
 msgctxt "MixerDialog|"
 msgid "Up"

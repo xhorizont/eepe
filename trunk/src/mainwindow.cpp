@@ -214,7 +214,8 @@ void MainWindow::open()
 {
     QSettings settings("er9x-eePe", "eePe");
     QString fileName = QFileDialog::getOpenFileName(this,tr("Open"),settings.value("lastDir").toString(),tr("EEPROM files (*.bin *.hex);;BIN files (*.bin);;HEX files (*.hex)"));
-    if (!fileName.isEmpty()) {
+    if (!fileName.isEmpty())
+    {
         settings.setValue("lastDir",QFileInfo(fileName).dir().absolutePath());
 
         QMdiSubWindow *existing = findMdiChild(fileName);
@@ -224,12 +225,11 @@ void MainWindow::open()
         }
 
         MdiChild *child = createMdiChild();
-        if (child->loadFile(fileName)) {
+        if (child->loadFile(fileName))
+        {
             statusBar()->showMessage(tr("File loaded"), 2000);
             child->show();
             if(!child->parentWidget()->isMaximized() && !child->parentWidget()->isMinimized()) child->parentWidget()->resize(400,500);
-        } else {
-            child->close();
         }
     }
 }

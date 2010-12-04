@@ -406,9 +406,16 @@ bool MdiChild::loadFile(const QString &fileName, bool resetCurrentFile)
 
     if(fileType==FILE_TYPE_HEX) //read HEX file
     {
+        if((file.size()>(6*1024)) || (file.size()<(4*1024)))  //if filesize> 6k and <4kb
+        {
+            QMessageBox::critical(this, tr("Error"),tr("Error reading file:\n"
+                                                       "File wrong size - %1").arg(fileName));
+            return false;
+        }
+
         if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {  //reading HEX TEXT file
-            QMessageBox::warning(this, tr("Error"),
-                                 tr("Cannot read file %1:\n%2.")
+            QMessageBox::critical(this, tr("Error"),
+                                 tr("Error opening file %1:\n%2.")
                                  .arg(fileName)
                                  .arg(file.errorString()));
             return false;
@@ -428,7 +435,12 @@ bool MdiChild::loadFile(const QString &fileName, bool resetCurrentFile)
             int address = getValueFromLine(line,3,4);
             int recType = getValueFromLine(line,7);
 
-            if(byteCount<0 || address<0 || recType<0) {QMessageBox::critical(this, tr("Error"),tr("Error reading file %1!").arg(fileName));return false;}
+            if(byteCount<0 || address<0 || recType<0)
+            {
+                QMessageBox::critical(this, tr("Error"),tr("Error reading file %1!").arg(fileName));
+                file.close();
+                return false;
+            }
 
             QByteArray ba;
             ba.clear();
@@ -447,7 +459,11 @@ bool MdiChild::loadFile(const QString &fileName, bool resetCurrentFile)
 
 
             quint8 retV = getValueFromLine(line,(byteCount*2)+9) & 0xFF;
-            if(chkSum!=retV) {QMessageBox::critical(this, tr("Error"),tr("Error reading file %1!").arg(fileName));return false;}
+            if(chkSum!=retV) {
+                QMessageBox::critical(this, tr("Error"),tr("Error reading file %1!").arg(fileName));
+                file.close();
+                return false;
+            }
 
             if((recType == 0x00) && ((address+byteCount)<=EESIZE)) //data record - ba holds record
                 memcpy(&temp[address],ba.data(),byteCount);
@@ -457,8 +473,8 @@ bool MdiChild::loadFile(const QString &fileName, bool resetCurrentFile)
         file.close();
         if(!eeFile.loadFile(&temp))
         {
-            QMessageBox::warning(this, tr("Error"),
-                                 tr("Error reading file %1:\n%2.")
+            QMessageBox::critical(this, tr("Error"),
+                                 tr("Error loading file %1:\n%2.")
                                  .arg(fileName)
                                  .arg(file.errorString()));
             return false;
@@ -474,13 +490,14 @@ bool MdiChild::loadFile(const QString &fileName, bool resetCurrentFile)
     {
         if(file.size()!=EESIZE)
         {
-            QMessageBox::critical(this, tr("Error"),tr("File wrong size - %1").arg(fileName));
+            QMessageBox::critical(this, tr("Error"),tr("Error reading file:\n"
+                                                       "File wrong size - %1").arg(fileName));
             return false;
         }
 
         if (!file.open(QFile::ReadOnly)) {  //reading binary file   - TODO HEX support
-            QMessageBox::warning(this, tr("Error"),
-                                 tr("Cannot read file %1:\n%2.")
+            QMessageBox::critical(this, tr("Error"),
+                                 tr("Error opening file %1:\n%2.")
                                  .arg(fileName)
                                  .arg(file.errorString()));
             return false;
@@ -492,7 +509,7 @@ bool MdiChild::loadFile(const QString &fileName, bool resetCurrentFile)
 
         if (result!=EESIZE)
         {
-            QMessageBox::warning(this, tr("Error"),
+            QMessageBox::critical(this, tr("Error"),
                                  tr("Error reading file %1:\n%2.")
                                  .arg(fileName)
                                  .arg(file.errorString()));
@@ -502,8 +519,8 @@ bool MdiChild::loadFile(const QString &fileName, bool resetCurrentFile)
 
         if(!eeFile.loadFile(&temp))
         {
-            QMessageBox::warning(this, tr("Error"),
-                                 tr("Error reading file %1:\n%2.")
+            QMessageBox::critical(this, tr("Error"),
+                                 tr("Error loading file %1:\n%2.")
                                  .arg(fileName)
                                  .arg(file.errorString()));
             return false;
