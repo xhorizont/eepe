@@ -64,9 +64,10 @@ private:
     int getMixerIndex(int dch);
     void gm_deleteMix(int index);
     void gm_openMix(int index);
-    void gm_moveMix(int idx, bool dir);
+    int gm_moveMix(int idx, bool dir);
     void mixersDeleteList(QList<int> list);
     QList<int> createListFromSelected();
+    void setSelectedByList(QList<int> list);
 
 signals:
     void modelValuesChanged();

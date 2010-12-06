@@ -1763,6 +1763,17 @@ QList<int> ModelEdit::createListFromSelected()
     return list;
 }
 
+
+void ModelEdit::setSelectedByList(QList<int> list)
+{
+    for(int i=0; i<MixerlistWidget->count(); i++)
+    {
+        int t = MixerlistWidget->item(i)->data(Qt::UserRole).toByteArray().at(0);
+        if(list.contains(t))
+            MixerlistWidget->item(i)->setSelected(true);
+    }
+}
+
 void ModelEdit::mixersDelete(bool ask)
 {
     QMessageBox::StandardButton ret = QMessageBox::No;
@@ -1917,20 +1928,20 @@ void ModelEdit::MixerlistWidget_customContextMenuRequested(QPoint pos)
     contextMenu.exec(globalPos);
 }
 
-void ModelEdit::gm_moveMix(int idx, bool dir) //true=inc=down false=dec=up
+int ModelEdit::gm_moveMix(int idx, bool dir) //true=inc=down false=dec=up
 {
-    if(idx>MAX_MIXERS || (idx==0 && !dir) || (idx==MAX_MIXERS && dir)) return;
+    if(idx>MAX_MIXERS || (idx==0 && !dir) || (idx==MAX_MIXERS && dir)) return idx;
 
     int tdx = dir ? idx+1 : idx-1;
     MixData &src=g_model.mixData[idx];
     MixData &tgt=g_model.mixData[tdx];
 
-    if((src.destCh==0) || (src.destCh>NUM_CHNOUT) || (tgt.destCh>NUM_CHNOUT)) return;
+    if((src.destCh==0) || (src.destCh>NUM_CHNOUT) || (tgt.destCh>NUM_CHNOUT)) return idx;
 
     if(tgt.destCh!=src.destCh) {
         if ((dir)  && (src.destCh<NUM_CHNOUT)) src.destCh++;
         if ((!dir) && (src.destCh>0))          src.destCh--;
-        return;
+        return idx;
     }
 
     //flip between idx and tgt
@@ -1938,26 +1949,33 @@ void ModelEdit::gm_moveMix(int idx, bool dir) //true=inc=down false=dec=up
     memcpy(&temp,&src,sizeof(MixData));
     memcpy(&src,&tgt,sizeof(MixData));
     memcpy(&tgt,&temp,sizeof(MixData));
+    return tdx;
 }
 
 void ModelEdit::moveMixUp()
 {
     QList<int> list = createListFromSelected();
+    QList<int> highlightList;
     foreach(int idx, list)
-        gm_moveMix(idx, false);
+        highlightList << gm_moveMix(idx, false);
 
     updateSettings();
     tabMixes();
+
+    setSelectedByList(highlightList);
 }
 
 void ModelEdit::moveMixDown()
 {
     QList<int> list = createListFromSelected();
+    QList<int> highlightList;
     foreach(int idx, list)
-        gm_moveMix(idx, true);
+        highlightList << gm_moveMix(idx, true);
 
     updateSettings();
     tabMixes();
+
+    setSelectedByList(highlightList);
 }
 
 void ModelEdit::launchSimulation()

@@ -544,7 +544,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>If you&apos;ve found this program and/or the Firmware useful please support by</source>
-        <translation>Si vous trouvez ce programme et/ou ce firmware utiles, merci d&apos;apporter votre soutien en effectuant un &lt;a href=&apos;</translation>
+        <translation type="obsolete">Si vous trouvez ce programme et/ou ce firmware utiles, merci d&apos;apporter votre soutien en effectuant un &lt;a href=&apos;</translation>
     </message>
     <message>
         <source>Open an existing file</source>
@@ -812,6 +812,18 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Check for new version of eePe/er9x</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Copyright</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>If you&apos;ve found this program and/or the er9x firmware useful please support by</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Switch layout Left/Right</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
