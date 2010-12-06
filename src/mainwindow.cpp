@@ -521,9 +521,9 @@ void MainWindow::about()
     }
 
     QString aboutStr = "<center><img src=\":/images/eepe-title.png\"><br>";
-    aboutStr.append("Copyright Erez Raviv &copy;2010<br>");
+    aboutStr.append(tr("Copyright") +" Erez Raviv &copy;2010<br>");
     aboutStr.append(QString("<a href='http://code.google.com/p/eepe/'>http://code.google.com/p/eepe/</a><br>Revision: %1, %2<br><br>").arg(str.toInt()+1).arg(__DATE__));
-    aboutStr.append(tr("If you've found this program and/or the Firmware useful please support by"));
+    aboutStr.append(tr("If you've found this program and/or the er9x firmware useful please support by"));
     aboutStr.append(" <a href='" DONATE_STR "'>");
     aboutStr.append(tr("donating") + "</a></center>");
 
@@ -747,9 +747,9 @@ void MainWindow::createActions()
     donatorsAct->setStatusTip(tr("List er9x/eePe Contributors"));
     connect(donatorsAct, SIGNAL(triggered()), this, SLOT(donators()));
 
-    //aboutQtAct = new QAction(tr("About &Qt"), this);
-    //aboutQtAct->setStatusTip(tr("Show the Qt library's About box"));
-    //connect(aboutQtAct, SIGNAL(triggered()), qApp, SLOT(aboutQt()));
+    switchLayoutDirectionAct = new QAction(QIcon(":/images/switch_dir.png"),  tr("Switch layout direction"), this);
+    switchLayoutDirectionAct->setStatusTip(tr("Switch layout Left/Right"));
+    connect(switchLayoutDirectionAct, SIGNAL(triggered()), this, SLOT(switchLayoutDirection()));
 }
 
 void MainWindow::createMenus()
@@ -764,8 +764,7 @@ void MainWindow::createMenus()
     fileMenu->addAction(printAct);
     fileMenu->addSeparator();
     fileMenu->addAction(preferencesAct);
-    QAction *action = fileMenu->addAction(QIcon(":/images/switch_dir.png"),  tr("Switch layout direction"));
-    connect(action, SIGNAL(triggered()), this, SLOT(switchLayoutDirection()));
+    fileMenu->addAction(switchLayoutDirectionAct);
     fileMenu->addAction(exitAct);
 
     editMenu = menuBar()->addMenu(tr("&Edit"));

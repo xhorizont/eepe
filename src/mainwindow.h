@@ -160,6 +160,7 @@ private:
     QAction *aboutAct;
     QAction *donatorsAct;
     QAction *printAct;
+    QAction *switchLayoutDirectionAct;
     //QAction *aboutQtAct;
 };
 

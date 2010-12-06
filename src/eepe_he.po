@@ -564,10 +564,18 @@ msgctxt "MainWindow|"
 msgid "Read Flash to File"
 msgstr ""
 
+#: mainwindow.cpp:524
+msgctxt "MainWindow|"
+msgid "Copyright"
+msgstr ""
+
 #: mainwindow.cpp:526
+#| msgid ""
+#| "If you've found this program and/or the Firmware useful please support by"
 msgctxt "MainWindow|"
 msgid ""
-"If you've found this program and/or the Firmware useful please support by"
+"If you've found this program and/or the er9x firmware useful please support "
+"by"
 msgstr ""
 
 #: mainwindow.cpp:528
@@ -902,52 +910,57 @@ msgctxt "MainWindow|"
 msgid "List er9x/eePe Contributors"
 msgstr ""
 
+#: mainwindow.cpp:751
+msgctxt "MainWindow|"
+msgid "Switch layout Left/Right"
+msgstr ""
+
 #: mainwindow.cpp:757
 msgctxt "MainWindow|"
 msgid "&File"
 msgstr ""
 
-#: mainwindow.cpp:767
+#: mainwindow.cpp:750
 msgctxt "MainWindow|"
 msgid "Switch layout direction"
 msgstr ""
 
-#: mainwindow.cpp:771
+#: mainwindow.cpp:770
 msgctxt "MainWindow|"
 msgid "&Edit"
 msgstr ""
 
-#: mainwindow.cpp:776
+#: mainwindow.cpp:775
 msgctxt "MainWindow|"
 msgid "&Burn"
 msgstr ""
 
-#: mainwindow.cpp:790
+#: mainwindow.cpp:789
 msgctxt "MainWindow|"
 msgid "&Window"
 msgstr ""
 
-#: mainwindow.cpp:796
+#: mainwindow.cpp:795
 msgctxt "MainWindow|"
 msgid "&Help"
 msgstr ""
 
-#: mainwindow.cpp:805
+#: mainwindow.cpp:804
 msgctxt "MainWindow|"
 msgid "File"
 msgstr ""
 
-#: mainwindow.cpp:813
+#: mainwindow.cpp:812
 msgctxt "MainWindow|"
 msgid "Edit"
 msgstr ""
 
-#: mainwindow.cpp:818
+#: mainwindow.cpp:817
 msgctxt "MainWindow|"
 msgid "Burn"
 msgstr ""
 
-#: mainwindow.cpp:833
+#: mainwindow.cpp:832
 msgctxt "MainWindow|"
 msgid "Ready"
 msgstr ""
@@ -1926,97 +1939,97 @@ msgctxt "ModelEdit|"
 msgid "Curve %1"
 msgstr ""
 
-#: modeledit.cpp:1772
+#: modeledit.cpp:1783
 msgctxt "ModelEdit|"
 msgid "Delete Selected Mixes?"
 msgstr ""
 
-#: modeledit.cpp:1905
+#: modeledit.cpp:1916
 msgctxt "ModelEdit|"
 msgid "&Add"
 msgstr ""
 
-#: modeledit.cpp:1905
+#: modeledit.cpp:1916
 msgctxt "ModelEdit|"
 msgid "Ctrl+A"
 msgstr ""
 
-#: modeledit.cpp:1906
+#: modeledit.cpp:1917
 msgctxt "ModelEdit|"
 msgid "&Edit"
 msgstr ""
 
-#: modeledit.cpp:1906
+#: modeledit.cpp:1917
 msgctxt "ModelEdit|"
 msgid "Enter"
 msgstr ""
 
-#: modeledit.cpp:1908
+#: modeledit.cpp:1919
 msgctxt "ModelEdit|"
 msgid "&Delete"
 msgstr ""
 
-#: modeledit.cpp:1908
+#: modeledit.cpp:1919
 msgctxt "ModelEdit|"
 msgid "Delete"
 msgstr ""
 
-#: modeledit.cpp:1909
+#: modeledit.cpp:1920
 msgctxt "ModelEdit|"
 msgid "&Copy"
 msgstr ""
 
-#: modeledit.cpp:1909
+#: modeledit.cpp:1920
 msgctxt "ModelEdit|"
 msgid "Ctrl+C"
 msgstr ""
 
-#: modeledit.cpp:1910
+#: modeledit.cpp:1921
 msgctxt "ModelEdit|"
 msgid "&Cut"
 msgstr ""
 
-#: modeledit.cpp:1910
+#: modeledit.cpp:1921
 msgctxt "ModelEdit|"
 msgid "Ctrl+X"
 msgstr ""
 
-#: modeledit.cpp:1911
+#: modeledit.cpp:1922
 msgctxt "ModelEdit|"
 msgid "&Paste"
 msgstr ""
 
-#: modeledit.cpp:1911
+#: modeledit.cpp:1922
 msgctxt "ModelEdit|"
 msgid "Ctrl+V"
 msgstr ""
 
-#: modeledit.cpp:1912
+#: modeledit.cpp:1923
 msgctxt "ModelEdit|"
 msgid "Du&plicate"
 msgstr ""
 
-#: modeledit.cpp:1914
+#: modeledit.cpp:1925
 msgctxt "ModelEdit|"
 msgid "Move Up"
 msgstr ""
 
-#: modeledit.cpp:1914
+#: modeledit.cpp:1925
 msgctxt "ModelEdit|"
 msgid "Ctrl+Up"
 msgstr ""
 
-#: modeledit.cpp:1915
+#: modeledit.cpp:1926
 msgctxt "ModelEdit|"
 msgid "Move Down"
 msgstr ""
 
-#: modeledit.cpp:1915
+#: modeledit.cpp:1926
 msgctxt "ModelEdit|"
 msgid "Ctrl+Down"
 msgstr ""
 
-#: modeledit.cpp:1912
+#: modeledit.cpp:1923
 msgctxt "ModelEdit|"
 msgid "Ctrl+U"
 msgstr ""

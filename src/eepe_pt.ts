@@ -551,9 +551,14 @@ Mode 4:
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="mainwindow.cpp" line="524"/>
+        <source>Copyright</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="mainwindow.cpp" line="526"/>
-        <source>If you&apos;ve found this program and/or the Firmware useful please support by</source>
-        <oldsource>If you&apos;ve found this program and/or the Firmware useful please support by &lt;a href=&apos;</oldsource>
+        <source>If you&apos;ve found this program and/or the er9x firmware useful please support by</source>
+        <oldsource>If you&apos;ve found this program and/or the Firmware useful please support by</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -887,52 +892,57 @@ Mode 4:
         <translation>Lista de contribuidores do er9x/eePe</translation>
     </message>
     <message>
+        <location filename="mainwindow.cpp" line="751"/>
+        <source>Switch layout Left/Right</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="mainwindow.cpp" line="757"/>
         <source>&amp;File</source>
         <translation>&amp;Ficheiro</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="767"/>
+        <location filename="mainwindow.cpp" line="750"/>
         <source>Switch layout direction</source>
         <translation>Mudar apresentação dos menus</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="771"/>
+        <location filename="mainwindow.cpp" line="770"/>
         <source>&amp;Edit</source>
         <translation>&amp;Editar</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="776"/>
+        <location filename="mainwindow.cpp" line="775"/>
         <source>&amp;Burn</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="790"/>
+        <location filename="mainwindow.cpp" line="789"/>
         <source>&amp;Window</source>
         <translation>&amp;Janela</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="796"/>
+        <location filename="mainwindow.cpp" line="795"/>
         <source>&amp;Help</source>
         <translation>&amp;Ajuda</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="805"/>
+        <location filename="mainwindow.cpp" line="804"/>
         <source>File</source>
         <translation>Ficheiro</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="813"/>
+        <location filename="mainwindow.cpp" line="812"/>
         <source>Edit</source>
         <translation>Editar</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="818"/>
+        <location filename="mainwindow.cpp" line="817"/>
         <source>Burn</source>
         <translation>Gravar</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="833"/>
+        <location filename="mainwindow.cpp" line="832"/>
         <source>Ready</source>
         <translation>Pronto</translation>
     </message>
@@ -2012,92 +2022,92 @@ Right</source>
         <translation type="obsolete">eePe</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="1772"/>
+        <location filename="modeledit.cpp" line="1783"/>
         <source>Delete Selected Mixes?</source>
         <translation>Apagar misturas selecionadas?</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="1905"/>
+        <location filename="modeledit.cpp" line="1916"/>
         <source>&amp;Add</source>
         <translation>&amp;Adicionar</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="1905"/>
+        <location filename="modeledit.cpp" line="1916"/>
         <source>Ctrl+A</source>
         <translation>Ctrl+A</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="1906"/>
+        <location filename="modeledit.cpp" line="1917"/>
         <source>&amp;Edit</source>
         <translation>&amp;Editar</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="1906"/>
+        <location filename="modeledit.cpp" line="1917"/>
         <source>Enter</source>
         <translation>Enter</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="1908"/>
+        <location filename="modeledit.cpp" line="1919"/>
         <source>&amp;Delete</source>
         <translation>&amp;Eliminar</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="1908"/>
+        <location filename="modeledit.cpp" line="1919"/>
         <source>Delete</source>
         <translation>Eliminar</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="1909"/>
+        <location filename="modeledit.cpp" line="1920"/>
         <source>&amp;Copy</source>
         <translation>&amp;Copiar</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="1909"/>
+        <location filename="modeledit.cpp" line="1920"/>
         <source>Ctrl+C</source>
         <translation>Ctrl+C</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="1910"/>
+        <location filename="modeledit.cpp" line="1921"/>
         <source>&amp;Cut</source>
         <translation>&amp;Cor&amp;tar</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="1910"/>
+        <location filename="modeledit.cpp" line="1921"/>
         <source>Ctrl+X</source>
         <translation>Ctrl+X</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="1911"/>
+        <location filename="modeledit.cpp" line="1922"/>
         <source>&amp;Paste</source>
         <translation>Co&amp;lar</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="1911"/>
+        <location filename="modeledit.cpp" line="1922"/>
         <source>Ctrl+V</source>
         <translation>Ctrl+V</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="1912"/>
+        <location filename="modeledit.cpp" line="1923"/>
         <source>Du&amp;plicate</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="1914"/>
+        <location filename="modeledit.cpp" line="1925"/>
         <source>Move Up</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="1914"/>
+        <location filename="modeledit.cpp" line="1925"/>
         <source>Ctrl+Up</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="1915"/>
+        <location filename="modeledit.cpp" line="1926"/>
         <source>Move Down</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="1915"/>
+        <location filename="modeledit.cpp" line="1926"/>
         <source>Ctrl+Down</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2106,7 +2116,7 @@ Right</source>
         <translation type="obsolete">&amp;Duplicar</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="1912"/>
+        <location filename="modeledit.cpp" line="1923"/>
         <source>Ctrl+U</source>
         <translation>Ctrl+U</translation>
     </message>
