@@ -764,7 +764,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>eePe</source>
-        <translation type="unfinished">eePe</translation>
+        <translation type="obsolete">eePe</translation>
     </message>
     <message>
         <source>A new version of ER9x is available&lt;br&gt;Would you like to download it?</source>
@@ -784,6 +784,34 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Executable (*.exe)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No updates available at this time.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unable to check for updates.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Would you like to launch the installer?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Write %1 to EEPROM memory?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Write %1 to flash memory?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Check for updates...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Check for new version of eePe/er9x</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -901,7 +929,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Burn %1 to transmitter?</source>
-        <translation>Flasher %1 dans l&apos;émetteur?</translation>
+        <translation type="obsolete">Flasher %1 dans l&apos;émetteur?</translation>
     </message>
     <message>
         <source>&apos;%1&apos; has been modified.
@@ -964,6 +992,10 @@ File wrong size - %1</source>
     <message>
         <source>Error loading file %1:
 %2.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Write %1 to EEPROM memory?</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1671,6 +1703,14 @@ Droite</translation>
         <source>Started AVRDUDE</source>
         <translation>AVRDUDE démarré</translation>
     </message>
+    <message>
+        <source>AVRDUDE did not finish correctly</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>AVRDUDE finished correctly</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>burnConfigDialog</name>
@@ -1782,6 +1822,10 @@ Make sure you have write access to this directory.</source>
         <translation type="obsolete">Ce dossier contient les fichiers temporaires nécessaires  à la gestion des EEPROM.
 
 Assurez-vous de posséder les droits en écriture sur ce dossier.</translation>
+    </message>
+    <message>
+        <source>avrdoper</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
