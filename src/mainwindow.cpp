@@ -83,7 +83,7 @@ MainWindow::MainWindow()
     setUnifiedTitleAndToolBarOnMac(true);
     this->setWindowIcon(QIcon(":/icon.ico"));
 
-    checkForUpdates();
+    checkForUpdates(false);
 
 
     QStringList strl = QApplication::arguments();
@@ -104,35 +104,43 @@ MainWindow::MainWindow()
 
 }
 
-void MainWindow::checkForUpdates()
+void MainWindow::checkForUpdates(bool ignoreSettings)
 {
+    showcheckForUpdatesResult = ignoreSettings;
+    check1done = true;
+    check2done = true;
+
     QNetworkProxyFactory::setUseSystemConfiguration(true);
 
-    if(checkER9X)
+    if(checkER9X || ignoreSettings)
     {
-        QNetworkAccessManager *manager1 = new QNetworkAccessManager(this);
+        manager1 = new QNetworkAccessManager(this);
         connect(manager1, SIGNAL(finished(QNetworkReply*)),this, SLOT(reply1Finished(QNetworkReply*)));
         manager1->head(QNetworkRequest(QUrl(ER9X_URL)));
+        check1done = false;
     }
 
-    if(checkEEPE)
+    if(checkEEPE || ignoreSettings)
     {
-        QNetworkAccessManager *manager2 = new QNetworkAccessManager(this);
+        manager2 = new QNetworkAccessManager(this);
         connect(manager2, SIGNAL(finished(QNetworkReply*)),this, SLOT(reply2Finished(QNetworkReply*)));
         manager2->head(QNetworkRequest(QUrl(EEPE_URL)));
+        check2done = false;
     }
 }
 
 
 void MainWindow::reply1Finished(QNetworkReply * reply)
 {
+    check1done = true;
     QVariant qv = reply->header(QNetworkRequest::LastModifiedHeader);
     if(qv.isValid())
     {
         QDateTime qdt = qv.toDateTime();
         if(qdt>lastER9X)
         {
-            int ret = QMessageBox::question(this, tr("eePe"),tr("A new version of ER9x is available<br>"
+            showcheckForUpdatesResult = false; // update is available - do not show dialog
+            int ret = QMessageBox::question(this, "eePe",tr("A new version of ER9x is available<br>"
                                                                 "Would you like to download it?") ,
                                             QMessageBox::Yes | QMessageBox::No);
 
@@ -153,19 +161,30 @@ void MainWindow::reply1Finished(QNetworkReply * reply)
                 }
             }
         }
-
+        else
+        {
+            if(showcheckForUpdatesResult && check1done && check2done)
+                QMessageBox::information(this, "eePe", tr("No updates available at this time."));
+        }
+    }
+    else
+    {
+        if(check1done && check2done)
+            QMessageBox::information(this, "eePe", tr("Unable to check for updates."));
     }
 }
 
 void MainWindow::reply2Finished(QNetworkReply * reply)
 {
+    check2done = true;
     QVariant qv = reply->header(QNetworkRequest::LastModifiedHeader);
     if(qv.isValid())
     {
         QDateTime qdt = qv.toDateTime();
         if(qdt>lastEEPE)
         {
-            int ret = QMessageBox::question(this, tr("eePe"),tr("A new version of eePe is available<br>"
+            showcheckForUpdatesResult = false; // update is available - do not show dialog
+            int ret = QMessageBox::question(this, "eePe", tr("A new version of eePe is available<br>"
                                                                 "Would you like to download it?") ,
                                             QMessageBox::Yes | QMessageBox::No);
 
@@ -183,10 +202,27 @@ void MainWindow::reply2Finished(QNetworkReply * reply)
                 {
                     lastEEPE = qdt;
                     settings.setValue("lasteepe", qdt);
+
+                    int ret2 = QMessageBox::question(this, "eePe",tr("Would you like to launch the installer?") ,
+                                                     QMessageBox::Yes | QMessageBox::No);
+                    if (ret2 == QMessageBox::Yes)
+                    {
+                        if(QDesktopServices::openUrl(QUrl(fileName, QUrl::TolerantMode)))
+                            QApplication::exit();
+                    }
                 }
             }
         }
-
+        else
+        {
+            if(showcheckForUpdatesResult && check1done && check2done)
+                QMessageBox::information(this, "eePe", tr("No updates available at this time."));
+        }
+    }
+    else
+    {
+        if(check1done && check2done)
+            QMessageBox::information(this, "eePe", tr("Unable to check for updates."));
     }
 }
 
@@ -334,6 +370,9 @@ void MainWindow::burnExtenalToEEPROM()
     {
         settings.setValue("lastDir",QFileInfo(fileName).dir().absolutePath());
 
+        int ret = QMessageBox::question(this, "eePe", tr("Write %1 to EEPROM memory?").arg(QFileInfo(fileName).fileName()), QMessageBox::Yes | QMessageBox::No);
+        if(ret!=QMessageBox::Yes) return;
+
         burnConfigDialog bcd;
         QString avrdudeLoc = bcd.getAVRDUDE();
         QString programmer = bcd.getProgrammer();
@@ -348,7 +387,7 @@ void MainWindow::burnExtenalToEEPROM()
         QStringList arguments;
         arguments << "-c" << programmer << "-p" << "m64" << args << "-U" << str;
 
-        avrOutputDialog *ad = new avrOutputDialog(this, avrdudeLoc, arguments, "Write EEPROM To Tx");
+        avrOutputDialog *ad = new avrOutputDialog(this, avrdudeLoc, arguments, "Write EEPROM To Tx", AVR_DIALOG_SHOW_DONE);
         ad->setWindowIcon(QIcon(":/images/write_eeprom.png"));
         ad->show();
     }
@@ -361,6 +400,9 @@ void MainWindow::burnToFlash()
     if (!fileName.isEmpty())
     {
         settings.setValue("lastDir",QFileInfo(fileName).dir().absolutePath());
+
+        int ret = QMessageBox::question(this, "eePe", tr("Write %1 to flash memory?").arg(QFileInfo(fileName).fileName()), QMessageBox::Yes | QMessageBox::No);
+        if(ret!=QMessageBox::Yes) return;
 
         burnConfigDialog bcd;
         QString avrdudeLoc = bcd.getAVRDUDE();
@@ -376,7 +418,7 @@ void MainWindow::burnToFlash()
         QStringList arguments;
         arguments << "-c" << programmer << "-p" << "m64" << args << "-U" << str;
 
-        avrOutputDialog *ad = new avrOutputDialog(this, avrdudeLoc, arguments, "Write Flash To Tx");
+        avrOutputDialog *ad = new avrOutputDialog(this, avrdudeLoc, arguments, "Write Flash To Tx", AVR_DIALOG_SHOW_DONE);
         ad->setWindowIcon(QIcon(":/images/write_flash.png"));
         ad->show();
     }
@@ -579,12 +621,16 @@ void MainWindow::createActions()
     saveAsAct->setStatusTip(tr("Save the document under a new name"));
     connect(saveAsAct, SIGNAL(triggered()), this, SLOT(saveAs()));
 
-    preferencesAct = new QAction(tr("&Preferences..."), this);
+    preferencesAct = new QAction(QIcon(":/images/preferences.png"), tr("&Preferences..."), this);
     preferencesAct->setStatusTip(tr("Edit general preferences"));
     connect(preferencesAct, SIGNAL(triggered()), this, SLOT(preferences()));
 
+    checkForUpdatesAct = new QAction(QIcon(":/images/update.png"), tr("&Check for updates..."), this);
+    checkForUpdatesAct->setStatusTip(tr("Check for new version of eePe/er9x"));
+    connect(checkForUpdatesAct, SIGNAL(triggered()), this, SLOT(checkForUpdates()));
+
 //! [0]
-    exitAct = new QAction(tr("E&xit"), this);
+    exitAct = new QAction(QIcon(":/images/exit.png"), tr("E&xit"), this);
     exitAct->setShortcuts(QKeySequence::Quit);
     exitAct->setStatusTip(tr("Exit the application"));
     connect(exitAct, SIGNAL(triggered()), qApp, SLOT(closeAllWindows()));
@@ -693,11 +739,11 @@ void MainWindow::createActions()
     separatorAct = new QAction(this);
     separatorAct->setSeparator(true);
 
-    aboutAct = new QAction(tr("&About"), this);
+    aboutAct = new QAction(QIcon(":/icon.ico"), tr("&About"), this);
     aboutAct->setStatusTip(tr("Show the application's About box"));
     connect(aboutAct, SIGNAL(triggered()), this, SLOT(about()));
 
-    donatorsAct = new QAction(tr("&Contributors"), this);
+    donatorsAct = new QAction(QIcon(":/images/contributors.png"), tr("&Contributors"), this);
     donatorsAct->setStatusTip(tr("List er9x/eePe Contributors"));
     connect(donatorsAct, SIGNAL(triggered()), this, SLOT(donators()));
 
@@ -718,7 +764,7 @@ void MainWindow::createMenus()
     fileMenu->addAction(printAct);
     fileMenu->addSeparator();
     fileMenu->addAction(preferencesAct);
-    QAction *action = fileMenu->addAction(tr("Switch layout direction"));
+    QAction *action = fileMenu->addAction(QIcon(":/images/switch_dir.png"),  tr("Switch layout direction"));
     connect(action, SIGNAL(triggered()), this, SLOT(switchLayoutDirection()));
     fileMenu->addAction(exitAct);
 
@@ -750,6 +796,8 @@ void MainWindow::createMenus()
     helpMenu = menuBar()->addMenu(tr("&Help"));
     helpMenu->addAction(aboutAct);
     helpMenu->addAction(donatorsAct);
+    helpMenu->addSeparator();
+    helpMenu->addAction(checkForUpdatesAct);
 }
 
 void MainWindow::createToolBars()

@@ -870,10 +870,9 @@ msgctxt "MainWindow|"
 msgid "Read EEPROM memory from transmitter to file"
 msgstr "Enregistrer l'EEPROM de l'émetteur vers un fichier"
 
-#, fuzzy
-msgctxt "MainWindow|"
-msgid "eePe"
-msgstr "eePe"
+#~ msgctxt "MainWindow|"
+#~ msgid "eePe"
+#~ msgstr "eePe"
 
 msgctxt "MainWindow|"
 msgid "A new version of ER9x is available<br>Would you like to download it?"
@@ -895,6 +894,36 @@ msgstr "Fichiers EEPROM hexa (*.hex);;Fichiers EEPROM binaires (*.bin)"
 
 msgctxt "MainWindow|"
 msgid "Executable (*.exe)"
+msgstr ""
+
+msgctxt "MainWindow|"
+msgid "No updates available at this time."
+msgstr ""
+
+msgctxt "MainWindow|"
+msgid "Unable to check for updates."
+msgstr ""
+
+msgctxt "MainWindow|"
+msgid "Would you like to launch the installer?"
+msgstr ""
+
+#, qt-format
+msgctxt "MainWindow|"
+msgid "Write %1 to EEPROM memory?"
+msgstr ""
+
+#, qt-format
+msgctxt "MainWindow|"
+msgid "Write %1 to flash memory?"
+msgstr ""
+
+msgctxt "MainWindow|"
+msgid "&Check for updates..."
+msgstr ""
+
+msgctxt "MainWindow|"
+msgid "Check for new version of eePe/er9x"
 msgstr ""
 
 #, qt-format
@@ -1017,9 +1046,9 @@ msgid "D&uplicate"
 msgstr "D&upliquer"
 
 #, qt-format
-msgctxt "MdiChild|"
-msgid "Burn %1 to transmitter?"
-msgstr "Flasher %1 dans l'émetteur?"
+#~ msgctxt "MdiChild|"
+#~ msgid "Burn %1 to transmitter?"
+#~ msgstr "Flasher %1 dans l'émetteur?"
 
 #, qt-format
 msgctxt "MdiChild|"
@@ -1101,6 +1130,11 @@ msgctxt "MdiChild|"
 msgid ""
 "Error loading file %1:\n"
 "%2."
+msgstr ""
+
+#, qt-format
+msgctxt "MdiChild|"
+msgid "Write %1 to EEPROM memory?"
 msgstr ""
 
 msgctxt "MixerDialog|"
@@ -1886,6 +1920,14 @@ msgctxt "avrOutputDialog|"
 msgid "Started AVRDUDE"
 msgstr "AVRDUDE démarré"
 
+msgctxt "avrOutputDialog|"
+msgid "AVRDUDE did not finish correctly"
+msgstr ""
+
+msgctxt "avrOutputDialog|"
+msgid "AVRDUDE finished correctly"
+msgstr ""
+
 msgctxt "burnConfigDialog|"
 msgid "Port"
 msgstr "Port"
@@ -2016,6 +2058,10 @@ msgstr "Programmateur"
 #~ "des EEPROM.\n"
 #~ "\n"
 #~ "Assurez-vous de posséder les droits en écriture sur ce dossier."
+
+msgctxt "burnConfigDialog|"
+msgid "avrdoper"
+msgstr ""
 
 msgctxt "donatorsDialog|"
 msgid "List of Contributors"

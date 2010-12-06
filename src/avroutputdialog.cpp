@@ -100,11 +100,22 @@ void avrOutputDialog::doFinished(int code=0)
 
     if(lfuse || hfuse || efuse) addReadFuses();
 
-
     switch(closeOpt)
     {
     case (AVR_DIALOG_CLOSE_IF_SUCCESSFUL): if(!code) accept();break;
     case (AVR_DIALOG_FORCE_CLOSE): if(code) reject(); else accept(); break;
+    case (AVR_DIALOG_SHOW_DONE):
+        if(code)
+        {
+            QMessageBox::critical(this, "eePe", tr("AVRDUDE did not finish correctly"));
+            reject();
+        }
+        else
+        {
+            QMessageBox::information(this, "eePe", tr("AVRDUDE finished correctly"));
+            accept();
+        }
+        break;
     default: //AVR_DIALOG_KEEP_OPEN
         break;
     }

@@ -26,5 +26,10 @@
         <file>images/write_eeprom_file.png</file>
         <file>images/moveup.png</file>
         <file>images/movedown.png</file>
+        <file>images/update.png</file>
+        <file>images/contributors.png</file>
+        <file>images/preferences.png</file>
+        <file>images/switch_dir.png</file>
+        <file>images/exit.png</file>
     </qresource>
 </RCC>

@@ -67,6 +67,7 @@ protected:
     void closeEvent(QCloseEvent *event);
 
 private slots:
+    void checkForUpdates(bool ignoreSettings=true);
     void reply1Finished(QNetworkReply * reply);
     void reply2Finished(QNetworkReply * reply);
 
@@ -98,7 +99,6 @@ private slots:
     void setActiveSubWindow(QWidget *window);
 
 private:
-    void checkForUpdates();
     void createActions();
     void createMenus();
     void createToolBars();
@@ -115,6 +115,12 @@ private:
     QDateTime lastEEPE;
     bool checkER9X;
     bool checkEEPE;
+    bool showcheckForUpdatesResult;
+    bool check1done;
+    bool check2done;
+
+    QNetworkAccessManager *manager1;
+    QNetworkAccessManager *manager2;
 
     QMenu *fileMenu;
     QMenu *editMenu;
@@ -130,6 +136,7 @@ private:
     QAction *saveAsAct;
     QAction *exitAct;
     QAction *preferencesAct;
+    QAction *checkForUpdatesAct;
     QAction *cutAct;
     QAction *copyAct;
     QAction *pasteAct;

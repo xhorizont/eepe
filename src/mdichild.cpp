@@ -561,7 +561,7 @@ bool MdiChild::saveFile(const QString &fileName, bool setCurrent)
     int fileType = getFileType(fileName);
 
     if(fileType==FILE_TYPE_HEX) //write hex
-    {        
+    {
         if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
             QMessageBox::warning(this, tr("Error"),
                                  tr("Cannot write file %1:\n%2.")
@@ -654,13 +654,13 @@ void MdiChild::documentWasModified()
 bool MdiChild::maybeSave()
 {
     if (eeFile.Changed()) {
-	QMessageBox::StandardButton ret;
+        QMessageBox::StandardButton ret;
         ret = QMessageBox::warning(this, tr("eePe"),
                      tr("'%1' has been modified.\n"
                         "Do you want to save your changes?")
                      .arg(userFriendlyCurrentFile()),
                      QMessageBox::Save | QMessageBox::Discard
-		     | QMessageBox::Cancel);
+                     | QMessageBox::Cancel);
         if (ret == QMessageBox::Save)
             return save();
         else if (ret == QMessageBox::Cancel)
@@ -695,7 +695,7 @@ void MdiChild::burnTo()  // write to Tx
 {
 
     QMessageBox::StandardButton ret = QMessageBox::question(this, tr("eePe"),
-                 tr("Burn %1 to transmitter?").arg(strippedName(curFile)),
+                 tr("Write %1 to EEPROM memory?").arg(strippedName(curFile)),
                  QMessageBox::Yes | QMessageBox::No);
 
 
@@ -720,7 +720,7 @@ void MdiChild::burnTo()  // write to Tx
         QStringList arguments;
         arguments << "-c" << programmer << "-p" << "m64" << args << "-U" << str;
 
-        avrOutputDialog *ad = new avrOutputDialog(this, avrdudeLoc, arguments, "Write EEPROM To Tx");
+        avrOutputDialog *ad = new avrOutputDialog(this, avrdudeLoc, arguments, "Write EEPROM To Tx", AVR_DIALOG_SHOW_DONE);
         ad->setWindowIcon(QIcon(":/images/write_eeprom.png"));
         ad->show();
     }

@@ -56,6 +56,16 @@
   
   !insertmacro MUI_PAGE_INSTFILES
   
+        # These indented statements modify settings for MUI_PAGE_FINISH
+    !define MUI_FINISHPAGE_NOAUTOCLOSE
+    !define MUI_FINISHPAGE_RUN
+    !define MUI_FINISHPAGE_RUN_CHECKED
+    !define MUI_FINISHPAGE_RUN_TEXT "Launch eePe"
+    !define MUI_FINISHPAGE_RUN_FUNCTION "LaunchLink"
+  #  !define MUI_FINISHPAGE_SHOWREADME_NOTCHECKED
+  #  !define MUI_FINISHPAGE_SHOWREADME $INSTDIR\readme.txt
+  !insertmacro MUI_PAGE_FINISH
+  
   !insertmacro MUI_UNPAGE_CONFIRM
   !insertmacro MUI_UNPAGE_INSTFILES
 
@@ -157,3 +167,7 @@ Section "Uninstall"
   DeleteRegKey /ifempty HKCU "Software\er9x-eePe"
 
 SectionEnd
+
+Function LaunchLink
+  ExecShell "" "$INSTDIR\eepe.exe"
+FunctionEnd

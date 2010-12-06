@@ -476,6 +476,11 @@ Please only use this if you know what you are doing.  There are no error checks 
          <string notr="true">lpt4</string>
         </property>
        </item>
+       <item>
+        <property name="text">
+         <string>avrdoper</string>
+        </property>
+       </item>
       </widget>
      </item>
      <item row="3" column="0">
