@@ -866,7 +866,8 @@ void MainWindow::readSettings()
     if(QFileInfo(appName).exists())
         qdt = QFileInfo(appName).lastModified();
     lastER9X = settings.value("laster9x", qdt).toDateTime();
-    lastEEPE = qdt;//settings.value("lasteepe", qdt).toDateTime();
+    lastEEPE = settings.value("lasteepe", qdt).toDateTime();
+    if(lastEEPE<qdt) lastEEPE=qdt;
 
     checkER9X = settings.value("startup_check_er9x", true).toBool();
     checkEEPE = settings.value("startup_check_eepe", true).toBool();
