@@ -767,14 +767,6 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">eePe</translation>
     </message>
     <message>
-        <source>A new version of ER9x is available&lt;br&gt;Would you like to download it?</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>A new version of eePe is available&lt;br&gt;Would you like to download it?</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Save As</source>
         <translation type="unfinished">Enregister Sous</translation>
     </message>
@@ -827,7 +819,15 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Ignore this version?</source>
+        <source>A new version of ER9x is available (r%1)&lt;br&gt;Would you like to download it?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ignore this version (r%1)?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>A new version of eePe is available (r%1)&lt;br&gt;Would you like to download it?</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
