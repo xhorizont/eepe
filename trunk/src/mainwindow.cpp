@@ -127,7 +127,7 @@ void MainWindow::checkForUpdates(bool ignoreSettings)
     {
         manager2 = new QNetworkAccessManager(this);
         connect(manager2, SIGNAL(finished(QNetworkReply*)),this, SLOT(reply2Finished(QNetworkReply*)));
-        manager2->head(QNetworkRequest(QUrl(EEPE_STAMP)));
+        manager2->get(QNetworkRequest(QUrl(EEPE_STAMP)));
         check2done = false;
     }
 }
@@ -155,7 +155,7 @@ void MainWindow::reply1Finished(QNetworkReply * reply)
             showcheckForUpdatesResult = false; // update is available - do not show dialog
             int ret = QMessageBox::question(this, "eePe",tr("A new version of ER9x is available (r%1)<br>"
                                                                 "Would you like to download it?").arg(rev) ,
-                                            QMessageBox::Yes | QMessageBox::No | QMessageBox::Ignore);
+                                            QMessageBox::Yes | QMessageBox::No);
 
             QSettings settings("er9x-eePe", "eePe");
 
@@ -168,15 +168,21 @@ void MainWindow::reply1Finished(QNetworkReply * reply)
                 downloadDialog * dd = new downloadDialog(this,ER9X_URL,fileName);
                 int res = dd->exec();
                 if(res == QDialog::Accepted)
+                {
+                    currentER9Xrev = rev;
                     settings.setValue("currentER9Xrev", rev);
+                }
             }
 
-            if(ret == QMessageBox::Ignore)
+            if(ret == QMessageBox::No)
             {
-                int res = QMessageBox::question(this, "eePe",tr("Ignore this version?") ,
+                int res = QMessageBox::question(this, "eePe",tr("Ignore this version (r%1)?").arg(rev) ,
                                                 QMessageBox::Yes | QMessageBox::No);
                 if(res == QMessageBox::Yes)
+                {
+                    currentER9Xrev = rev;
                     settings.setValue("currentER9Xrev", rev);
+                }
             }
         }
         else
