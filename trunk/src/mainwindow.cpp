@@ -56,7 +56,8 @@
 #include "downloaddialog.h"
 
 #define DONATE_STR "https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=TGT92W338DPGN&lc=IL&item_name=Erez%20Raviv&item_number=eePe&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted"
-#define ER9X_URL "http://er9x.googlecode.com/svn/trunk/er9x.hex"
+//#define ER9X_URL "http://er9x.googlecode.com/svn/trunk/er9x.hex"
+#define ER9X_URL "http://er9x.googlecode.com/svn/trunk/src/stamp-er9x.h"
 #define EEPE_URL "http://eepe.googlecode.com/svn/trunk/eePeInstall.exe"
 
 MainWindow::MainWindow()
@@ -116,7 +117,8 @@ void MainWindow::checkForUpdates(bool ignoreSettings)
     {
         manager1 = new QNetworkAccessManager(this);
         connect(manager1, SIGNAL(finished(QNetworkReply*)),this, SLOT(reply1Finished(QNetworkReply*)));
-        manager1->head(QNetworkRequest(QUrl(ER9X_URL)));
+//        manager1->head(QNetworkRequest(QUrl(ER9X_URL)));
+        manager1->get(QNetworkRequest(QUrl(ER9X_URL)));
         check1done = false;
     }
 
@@ -133,11 +135,16 @@ void MainWindow::checkForUpdates(bool ignoreSettings)
 void MainWindow::reply1Finished(QNetworkReply * reply)
 {
     check1done = true;
-    QVariant qv = reply->header(QNetworkRequest::LastModifiedHeader);
-    if(qv.isValid())
+    QByteArray qba = reply->readAll();
+    int i = qba.indexOf("SVN_VERS");
+
+    if(i>0)
     {
-        QDateTime qdt = qv.toDateTime();
-        if(qdt>lastER9X)
+        bool cres;
+        int rev = QString::fromAscii(qba.mid(i+17,3)).toInt(&cres);
+
+
+        if(rev>lastER9X)
         {
             showcheckForUpdatesResult = false; // update is available - do not show dialog
             int ret = QMessageBox::question(this, "eePe",tr("A new version of ER9x is available<br>"
@@ -156,8 +163,8 @@ void MainWindow::reply1Finished(QNetworkReply * reply)
                 int res = dd->exec();
                 if(res == QDialog::Accepted)
                 {
-                    lastER9X = qdt;
-                    settings.setValue("laster9x", qdt);
+                    lastER9X = rev;
+                    settings.setValue("laster9x", rev);
                 }
             }
 
@@ -167,8 +174,8 @@ void MainWindow::reply1Finished(QNetworkReply * reply)
                                                 QMessageBox::Yes | QMessageBox::No);
                 if(res == QMessageBox::Yes)
                 {
-                    lastER9X = qdt;
-                    settings.setValue("laster9x", qdt);
+                    lastER9X = rev;
+                    settings.setValue("laster9x", rev);
                 }
             }
         }
@@ -861,19 +868,19 @@ void MainWindow::readSettings()
     QPoint pos = settings.value("pos", QPoint(200, 200)).toPoint();
     QSize size = settings.value("size", QSize(400, 400)).toSize();
 
-    QDateTime qdt = QDateTime(QDate(2010,11,11));
-    QString appName = QCoreApplication::arguments().at(0);
-    if(QFileInfo(appName).exists())
-        qdt = QFileInfo(appName).lastModified();
-    lastER9X = settings.value("laster9x", qdt).toDateTime();
-    lastEEPE = settings.value("lasteepe", qdt).toDateTime();
-    if(lastEEPE<qdt) lastEEPE=qdt;
+//    QDateTime qdt = QDateTime(QDate(2010,11,11));
+//    QString appName = QCoreApplication::arguments().at(0);
+//    if(QFileInfo(appName).exists())
+//        qdt = QFileInfo(appName).lastModified();
+//    lastER9X = settings.value("laster9x", qdt).toDateTime();
+//    lastEEPE = settings.value("lasteepe", qdt).toDateTime();
+//    if(lastEEPE<qdt) lastEEPE=qdt;
 
-    checkER9X = settings.value("startup_check_er9x", true).toBool();
-    checkEEPE = settings.value("startup_check_eepe", true).toBool();
+//    checkER9X = settings.value("startup_check_er9x", true).toBool();
+//    checkEEPE = settings.value("startup_check_eepe", true).toBool();
 
-    if(!settings.contains("laster9x")) settings.setValue("laster9x", qdt);
-    if(!settings.contains("lasteepe")) settings.setValue("lasteepe", qdt);
+//    if(!settings.contains("laster9x")) settings.setValue("laster9x", qdt);
+//    if(!settings.contains("lasteepe")) settings.setValue("lasteepe", qdt);
 
     if(maximized)
     {

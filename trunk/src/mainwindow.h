@@ -111,7 +111,7 @@ private:
     QMdiArea *mdiArea;
     QSignalMapper *windowMapper;
 
-    QDateTime lastER9X;
+    int lastER9X;
     QDateTime lastEEPE;
     bool checkER9X;
     bool checkEEPE;
