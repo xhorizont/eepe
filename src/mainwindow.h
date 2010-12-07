@@ -111,8 +111,8 @@ private:
     QMdiArea *mdiArea;
     QSignalMapper *windowMapper;
 
-    int lastER9X;
-    QDateTime lastEEPE;
+    int currentER9Xrev;
+    int currentEEPErev;
     bool checkER9X;
     bool checkEEPE;
     bool showcheckForUpdatesResult;

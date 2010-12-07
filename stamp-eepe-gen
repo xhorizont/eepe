@@ -1,0 +1,12 @@
+#! /bin/bash
+
+VER=$(svn info | awk '/^Revision:/{print $2}')
+let "VER+=1"
+
+echo "===== GENERATING VERSION STAMP ====="
+echo "//Automatically generated file - do not edit" > src/stamp-eepe.h
+echo "#define DATE_STR \"`date +%d.%m.%Y`\"" >> src/stamp-eepe.h
+echo "#define TIME_STR \"`date +%H:%I:%S`\"" >> src/stamp-eepe.h
+echo "#define SUB_VERS 1-$USER" >> src/stamp-eepe.h
+echo "#define SVN_VERS \"trunk-r$VER\"" >> src/stamp-eepe.h
+echo "#define SVN_VER_NUM $VER" >> src/stamp-eepe.h
