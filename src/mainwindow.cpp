@@ -142,12 +142,12 @@ void MainWindow::reply1Finished(QNetworkReply * reply)
             showcheckForUpdatesResult = false; // update is available - do not show dialog
             int ret = QMessageBox::question(this, "eePe",tr("A new version of ER9x is available<br>"
                                                                 "Would you like to download it?") ,
-                                            QMessageBox::Yes | QMessageBox::No);
+                                            QMessageBox::Yes | QMessageBox::No | QMessageBox::Ignore);
+
+            QSettings settings("er9x-eePe", "eePe");
 
             if (ret == QMessageBox::Yes)
             {
-                QSettings settings("er9x-eePe", "eePe");
-
                 QString fileName = QFileDialog::getSaveFileName(this, tr("Save As"),settings.value("lastDir").toString() + "/er9x.hex",tr("EEPROM hex files (*.hex);;EEPROM bin files (*.bin)"));
                 if (fileName.isEmpty()) return;
                 settings.setValue("lastDir",QFileInfo(fileName).dir().absolutePath());
@@ -155,6 +155,17 @@ void MainWindow::reply1Finished(QNetworkReply * reply)
                 downloadDialog * dd = new downloadDialog(this,ER9X_URL,fileName);
                 int res = dd->exec();
                 if(res == QDialog::Accepted)
+                {
+                    lastER9X = qdt;
+                    settings.setValue("laster9x", qdt);
+                }
+            }
+
+            if(ret == QMessageBox::Ignore)
+            {
+                int res = QMessageBox::question(this, "eePe",tr("Ignore this version?") ,
+                                                QMessageBox::Yes | QMessageBox::No);
+                if(res == QMessageBox::Yes)
                 {
                     lastER9X = qdt;
                     settings.setValue("laster9x", qdt);
@@ -186,12 +197,12 @@ void MainWindow::reply2Finished(QNetworkReply * reply)
             showcheckForUpdatesResult = false; // update is available - do not show dialog
             int ret = QMessageBox::question(this, "eePe", tr("A new version of eePe is available<br>"
                                                                 "Would you like to download it?") ,
-                                            QMessageBox::Yes | QMessageBox::No);
+                                            QMessageBox::Yes | QMessageBox::No | QMessageBox::Ignore);
+
+            QSettings settings("er9x-eePe", "eePe");
 
             if (ret == QMessageBox::Yes)
             {
-                QSettings settings("er9x-eePe", "eePe");
-
                 QString fileName = QFileDialog::getSaveFileName(this, tr("Save As"),settings.value("lastDir").toString() + "/eePeInstall.exe",tr("Executable (*.exe)"));
                 if (fileName.isEmpty()) return;
                 settings.setValue("lastDir",QFileInfo(fileName).dir().absolutePath());
@@ -207,9 +218,20 @@ void MainWindow::reply2Finished(QNetworkReply * reply)
                                                      QMessageBox::Yes | QMessageBox::No);
                     if (ret2 == QMessageBox::Yes)
                     {
-                        if(QDesktopServices::openUrl(QUrl(fileName, QUrl::TolerantMode)))
+                        if(QDesktopServices::openUrl(QUrl(QFileInfo(fileName).absoluteFilePath(), QUrl::TolerantMode)))
                             QApplication::exit();
                     }
+                }
+            }
+
+            if(ret == QMessageBox::Ignore)
+            {
+                int res = QMessageBox::question(this, "eePe",tr("Ignore this version?") ,
+                                                QMessageBox::Yes | QMessageBox::No);
+                if(res == QMessageBox::Yes)
+                {
+                    lastEEPE = qdt;
+                    settings.setValue("lasteepe", qdt);
                 }
             }
         }
