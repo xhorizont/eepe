@@ -940,6 +940,10 @@ msgctxt "MainWindow|"
 msgid "Switch layout Left/Right"
 msgstr ""
 
+msgctxt "MainWindow|"
+msgid "Ignore this version?"
+msgstr ""
+
 #, qt-format
 msgctxt "MdiChild|"
 msgid "%1"

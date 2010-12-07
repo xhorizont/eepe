@@ -826,6 +826,10 @@ p, li { white-space: pre-wrap; }
         <source>Switch layout Left/Right</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Ignore this version?</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>MdiChild</name>
