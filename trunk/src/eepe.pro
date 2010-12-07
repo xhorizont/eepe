@@ -18,7 +18,8 @@ HEADERS += mainwindow.h \
     preferencesdialog.h \
     fusesdialog.h \
     mixerslist.h \
-    downloaddialog.h
+    downloaddialog.h \
+    stamp-eepe.h
 SOURCES += main.cpp \
     mainwindow.cpp \
     file.cpp \
@@ -54,9 +55,6 @@ FORMS += modeledit.ui \
     fusesdialog.ui \
     downloaddialog.ui
 win32:RC_FILE += icon.rc
-VERSION = $$system(svnversion)
-VERSTR = '\\"$${VERSION}\\"' # place quotes around the version string
-DEFINES += VER=\"$${VERSTR}\" # create a VER macro containing the version string
 TRANSLATIONS = eepe_.ts    \
                eepe_he.ts  \
                eepe_pt.ts  \

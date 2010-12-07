@@ -54,11 +54,13 @@
 #include "preferencesdialog.h"
 #include "fusesdialog.h"
 #include "downloaddialog.h"
+#include "stamp-eepe.h"
 
 #define DONATE_STR "https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=TGT92W338DPGN&lc=IL&item_name=Erez%20Raviv&item_number=eePe&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted"
-//#define ER9X_URL "http://er9x.googlecode.com/svn/trunk/er9x.hex"
-#define ER9X_URL "http://er9x.googlecode.com/svn/trunk/src/stamp-er9x.h"
-#define EEPE_URL "http://eepe.googlecode.com/svn/trunk/eePeInstall.exe"
+#define ER9X_URL   "http://er9x.googlecode.com/svn/trunk/er9x.hex"
+#define ER9X_STAMP "http://er9x.googlecode.com/svn/trunk/src/stamp-er9x.h"
+#define EEPE_URL   "http://eepe.googlecode.com/svn/trunk/eePeInstall.exe"
+#define EEPE_STAMP "http://eepe.googlecode.com/svn/trunk/src/stamp-eepe.h"
 
 MainWindow::MainWindow()
 {
@@ -117,8 +119,7 @@ void MainWindow::checkForUpdates(bool ignoreSettings)
     {
         manager1 = new QNetworkAccessManager(this);
         connect(manager1, SIGNAL(finished(QNetworkReply*)),this, SLOT(reply1Finished(QNetworkReply*)));
-//        manager1->head(QNetworkRequest(QUrl(ER9X_URL)));
-        manager1->get(QNetworkRequest(QUrl(ER9X_URL)));
+        manager1->get(QNetworkRequest(QUrl(ER9X_STAMP)));
         check1done = false;
     }
 
@@ -126,7 +127,7 @@ void MainWindow::checkForUpdates(bool ignoreSettings)
     {
         manager2 = new QNetworkAccessManager(this);
         connect(manager2, SIGNAL(finished(QNetworkReply*)),this, SLOT(reply2Finished(QNetworkReply*)));
-        manager2->head(QNetworkRequest(QUrl(EEPE_URL)));
+        manager2->head(QNetworkRequest(QUrl(EEPE_STAMP)));
         check2done = false;
     }
 }
@@ -143,12 +144,17 @@ void MainWindow::reply1Finished(QNetworkReply * reply)
         bool cres;
         int rev = QString::fromAscii(qba.mid(i+17,3)).toInt(&cres);
 
+        if(!cres)
+        {
+            QMessageBox::warning(this, "eePe", tr("Unable to check for updates."));
+            return;
+        }
 
-        if(rev>lastER9X)
+        if(rev>currentER9Xrev)
         {
             showcheckForUpdatesResult = false; // update is available - do not show dialog
-            int ret = QMessageBox::question(this, "eePe",tr("A new version of ER9x is available<br>"
-                                                                "Would you like to download it?") ,
+            int ret = QMessageBox::question(this, "eePe",tr("A new version of ER9x is available (r%1)<br>"
+                                                                "Would you like to download it?").arg(rev) ,
                                             QMessageBox::Yes | QMessageBox::No | QMessageBox::Ignore);
 
             QSettings settings("er9x-eePe", "eePe");
@@ -162,10 +168,7 @@ void MainWindow::reply1Finished(QNetworkReply * reply)
                 downloadDialog * dd = new downloadDialog(this,ER9X_URL,fileName);
                 int res = dd->exec();
                 if(res == QDialog::Accepted)
-                {
-                    lastER9X = rev;
-                    settings.setValue("laster9x", rev);
-                }
+                    settings.setValue("currentER9Xrev", rev);
             }
 
             if(ret == QMessageBox::Ignore)
@@ -173,10 +176,7 @@ void MainWindow::reply1Finished(QNetworkReply * reply)
                 int res = QMessageBox::question(this, "eePe",tr("Ignore this version?") ,
                                                 QMessageBox::Yes | QMessageBox::No);
                 if(res == QMessageBox::Yes)
-                {
-                    lastER9X = rev;
-                    settings.setValue("laster9x", rev);
-                }
+                    settings.setValue("currentER9Xrev", rev);
             }
         }
         else
@@ -188,23 +188,34 @@ void MainWindow::reply1Finished(QNetworkReply * reply)
     else
     {
         if(check1done && check2done)
-            QMessageBox::information(this, "eePe", tr("Unable to check for updates."));
+            QMessageBox::warning(this, "eePe", tr("Unable to check for updates."));
     }
 }
 
 void MainWindow::reply2Finished(QNetworkReply * reply)
 {
     check2done = true;
-    QVariant qv = reply->header(QNetworkRequest::LastModifiedHeader);
-    if(qv.isValid())
+
+    QByteArray qba = reply->readAll();
+    int i = qba.indexOf("SVN_VERS");
+
+    if(i>0)
     {
-        QDateTime qdt = qv.toDateTime();
-        if(qdt>lastEEPE)
+        bool cres;
+        int rev = QString::fromAscii(qba.mid(i+17,3)).toInt(&cres);
+
+        if(!cres)
+        {
+            QMessageBox::warning(this, "eePe", tr("Unable to check for updates."));
+            return;
+        }
+
+        if(rev>currentEEPErev)
         {
             showcheckForUpdatesResult = false; // update is available - do not show dialog
-            int ret = QMessageBox::question(this, "eePe", tr("A new version of eePe is available<br>"
-                                                                "Would you like to download it?") ,
-                                            QMessageBox::Yes | QMessageBox::No | QMessageBox::Ignore);
+            int ret = QMessageBox::question(this, "eePe", tr("A new version of eePe is available (r%1)<br>"
+                                                                "Would you like to download it?").arg(rev) ,
+                                            QMessageBox::Yes | QMessageBox::No);
 
             QSettings settings("er9x-eePe", "eePe");
 
@@ -218,9 +229,6 @@ void MainWindow::reply2Finished(QNetworkReply * reply)
                 int res = dd->exec();
                 if(res == QDialog::Accepted)
                 {
-                    lastEEPE = qdt;
-                    settings.setValue("lasteepe", qdt);
-
                     int ret2 = QMessageBox::question(this, "eePe",tr("Would you like to launch the installer?") ,
                                                      QMessageBox::Yes | QMessageBox::No);
                     if (ret2 == QMessageBox::Yes)
@@ -228,17 +236,6 @@ void MainWindow::reply2Finished(QNetworkReply * reply)
                         if(QDesktopServices::openUrl(QUrl(QFileInfo(fileName).absoluteFilePath(), QUrl::TolerantMode)))
                             QApplication::exit();
                     }
-                }
-            }
-
-            if(ret == QMessageBox::Ignore)
-            {
-                int res = QMessageBox::question(this, "eePe",tr("Ignore this version?") ,
-                                                QMessageBox::Yes | QMessageBox::No);
-                if(res == QMessageBox::Yes)
-                {
-                    lastEEPE = qdt;
-                    settings.setValue("lasteepe", qdt);
                 }
             }
         }
@@ -251,7 +248,7 @@ void MainWindow::reply2Finished(QNetworkReply * reply)
     else
     {
         if(check1done && check2done)
-            QMessageBox::information(this, "eePe", tr("Unable to check for updates."));
+            QMessageBox::warning(this, "eePe", tr("Unable to check for updates."));
     }
 }
 
@@ -540,18 +537,9 @@ void MainWindow::donators()
 
 void MainWindow::about()
 {
-    QString str = VER;
-    str.remove("M");
-    str.remove("S");
-    if(str.contains(":"))
-    {
-        QStringList sl = str.split(":");
-        str = sl.takeAt(1);
-    }
-
     QString aboutStr = "<center><img src=\":/images/eepe-title.png\"><br>";
     aboutStr.append(tr("Copyright") +" Erez Raviv &copy;2010<br>");
-    aboutStr.append(QString("<a href='http://code.google.com/p/eepe/'>http://code.google.com/p/eepe/</a><br>Revision: %1, %2<br><br>").arg(str.toInt()+1).arg(__DATE__));
+    aboutStr.append(QString("<a href='http://code.google.com/p/eepe/'>http://code.google.com/p/eepe/</a><br>Revision: %1, %2<br><br>").arg(currentEEPErev).arg(__DATE__));
     aboutStr.append(tr("If you've found this program and/or the er9x firmware useful please support by"));
     aboutStr.append(" <a href='" DONATE_STR "'>");
     aboutStr.append(tr("donating") + "</a></center>");
@@ -868,19 +856,11 @@ void MainWindow::readSettings()
     QPoint pos = settings.value("pos", QPoint(200, 200)).toPoint();
     QSize size = settings.value("size", QSize(400, 400)).toSize();
 
-//    QDateTime qdt = QDateTime(QDate(2010,11,11));
-//    QString appName = QCoreApplication::arguments().at(0);
-//    if(QFileInfo(appName).exists())
-//        qdt = QFileInfo(appName).lastModified();
-//    lastER9X = settings.value("laster9x", qdt).toDateTime();
-//    lastEEPE = settings.value("lasteepe", qdt).toDateTime();
-//    if(lastEEPE<qdt) lastEEPE=qdt;
+    currentER9Xrev = settings.value("currentER9Xrev", 1).toInt();
+    currentEEPErev = SVN_VER_NUM;
 
-//    checkER9X = settings.value("startup_check_er9x", true).toBool();
-//    checkEEPE = settings.value("startup_check_eepe", true).toBool();
-
-//    if(!settings.contains("laster9x")) settings.setValue("laster9x", qdt);
-//    if(!settings.contains("lasteepe")) settings.setValue("lasteepe", qdt);
+    checkER9X = settings.value("startup_check_er9x", true).toBool();
+    checkEEPE = settings.value("startup_check_eepe", true).toBool();
 
     if(maximized)
     {
