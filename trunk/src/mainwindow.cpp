@@ -99,12 +99,8 @@ MainWindow::MainWindow()
             statusBar()->showMessage(tr("File loaded"), 2000);
             child->show();
             if(!child->parentWidget()->isMaximized() && !child->parentWidget()->isMinimized()) child->parentWidget()->resize(400,500);
-        } else {
-            child->close();
         }
     }
-
-
 }
 
 void MainWindow::checkForUpdates(bool ignoreSettings)
