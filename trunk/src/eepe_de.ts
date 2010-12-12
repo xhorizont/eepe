@@ -981,63 +981,63 @@ Mode 4:
 <context>
     <name>MdiChild</name>
     <message>
-        <location filename="mdichild.cpp" line="145"/>
+        <location filename="mdichild.cpp" line="151"/>
         <source>General Settings</source>
         <translation>Generelle Einstellungen</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="170"/>
+        <location filename="mdichild.cpp" line="174"/>
         <source>Delete Selected Models?</source>
         <translation>Gewähltes Modell löschen ?</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="239"/>
-        <location filename="mdichild.cpp" line="249"/>
-        <location filename="mdichild.cpp" line="372"/>
-        <location filename="mdichild.cpp" line="400"/>
-        <location filename="mdichild.cpp" line="411"/>
-        <location filename="mdichild.cpp" line="417"/>
-        <location filename="mdichild.cpp" line="440"/>
-        <location filename="mdichild.cpp" line="463"/>
-        <location filename="mdichild.cpp" line="476"/>
-        <location filename="mdichild.cpp" line="493"/>
-        <location filename="mdichild.cpp" line="499"/>
-        <location filename="mdichild.cpp" line="512"/>
-        <location filename="mdichild.cpp" line="522"/>
-        <location filename="mdichild.cpp" line="566"/>
-        <location filename="mdichild.cpp" line="608"/>
-        <location filename="mdichild.cpp" line="621"/>
-        <location filename="mdichild.cpp" line="715"/>
+        <location filename="mdichild.cpp" line="243"/>
+        <location filename="mdichild.cpp" line="253"/>
+        <location filename="mdichild.cpp" line="376"/>
+        <location filename="mdichild.cpp" line="404"/>
+        <location filename="mdichild.cpp" line="415"/>
+        <location filename="mdichild.cpp" line="421"/>
+        <location filename="mdichild.cpp" line="444"/>
+        <location filename="mdichild.cpp" line="467"/>
+        <location filename="mdichild.cpp" line="480"/>
+        <location filename="mdichild.cpp" line="497"/>
+        <location filename="mdichild.cpp" line="503"/>
+        <location filename="mdichild.cpp" line="516"/>
+        <location filename="mdichild.cpp" line="526"/>
+        <location filename="mdichild.cpp" line="570"/>
+        <location filename="mdichild.cpp" line="612"/>
+        <location filename="mdichild.cpp" line="625"/>
+        <location filename="mdichild.cpp" line="719"/>
         <source>Error</source>
         <translation>Fehler</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="239"/>
+        <location filename="mdichild.cpp" line="243"/>
         <source>Unable set data!</source>
         <translation>Kann die Daten nicht setzen !</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="249"/>
+        <location filename="mdichild.cpp" line="253"/>
         <source>Unable set model!</source>
         <translation>Kann das Modell nicht anlegen !</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="354"/>
+        <location filename="mdichild.cpp" line="358"/>
         <source>Editing model %1: </source>
         <translation>Modell %1 bearbeiten</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="372"/>
+        <location filename="mdichild.cpp" line="376"/>
         <source>Unable to read settings!</source>
         <translation>Kann die Einstellungen nicht lesen !</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="382"/>
+        <location filename="mdichild.cpp" line="386"/>
         <source>document%1.hex</source>
         <translation>Dokument%1.hex</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="400"/>
+        <location filename="mdichild.cpp" line="404"/>
         <source>Unable to find file %1!</source>
         <translation>Kann die Datei %1 nicht finden !</translation>
     </message>
@@ -1048,172 +1048,172 @@ Mode 4:
 %2 nicht lesen.</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="440"/>
-        <location filename="mdichild.cpp" line="463"/>
+        <location filename="mdichild.cpp" line="444"/>
+        <location filename="mdichild.cpp" line="467"/>
         <source>Error reading file %1!</source>
         <translation>Fehler beim Lesen der Datei %1 !</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="513"/>
+        <location filename="mdichild.cpp" line="517"/>
         <source>Error reading file %1:
 %2.</source>
         <translation>Fehler beim Lesen der Datei %1:
 %2.</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="477"/>
-        <location filename="mdichild.cpp" line="523"/>
+        <location filename="mdichild.cpp" line="481"/>
+        <location filename="mdichild.cpp" line="527"/>
         <source>Error loading file %1:
 %2.</source>
         <oldsource>File wrong size - %1</oldsource>
         <translation type="unfinished">Datei hat falsche Größe - %1</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="411"/>
-        <location filename="mdichild.cpp" line="493"/>
+        <location filename="mdichild.cpp" line="415"/>
+        <location filename="mdichild.cpp" line="497"/>
         <source>Error reading file:
 File wrong size - %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="418"/>
-        <location filename="mdichild.cpp" line="500"/>
+        <location filename="mdichild.cpp" line="422"/>
+        <location filename="mdichild.cpp" line="504"/>
         <source>Error opening file %1:
 %2.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="548"/>
+        <location filename="mdichild.cpp" line="552"/>
         <source>Save As</source>
         <translation>Speichern unter</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="548"/>
+        <location filename="mdichild.cpp" line="552"/>
         <source>EEPROM hex files (*.hex);;EEPROM bin files (*.bin)</source>
         <translation>EEPROM hex Datei (*.hex);;EEPROM bin Datei (*.bin)</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="567"/>
-        <location filename="mdichild.cpp" line="609"/>
+        <location filename="mdichild.cpp" line="571"/>
+        <location filename="mdichild.cpp" line="613"/>
         <source>Cannot write file %1:
 %2.</source>
         <translation>Kann Datei %1:
 %2 nicht schreiben.</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="580"/>
+        <location filename="mdichild.cpp" line="584"/>
         <source>:20%1000</source>
         <translation>:20%1000</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="587"/>
         <location filename="mdichild.cpp" line="591"/>
+        <location filename="mdichild.cpp" line="595"/>
         <source>%1</source>
         <translation>%1</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="622"/>
+        <location filename="mdichild.cpp" line="626"/>
         <source>Error writing file %1:
 %2.</source>
         <translation>Fehler beim Schreiben der Datei %1:
 %2.</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="658"/>
-        <location filename="mdichild.cpp" line="697"/>
+        <location filename="mdichild.cpp" line="662"/>
+        <location filename="mdichild.cpp" line="701"/>
         <source>eePe</source>
         <translation>eePee</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="659"/>
+        <location filename="mdichild.cpp" line="663"/>
         <source>&apos;%1&apos; has been modified.
 Do you want to save your changes?</source>
         <translation>&apos;%1&apos; wurde geändert.
 Möchtest Du die Änderungen speichern ?</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="698"/>
+        <location filename="mdichild.cpp" line="702"/>
         <source>Write %1 to EEPROM memory?</source>
         <oldsource>Burn %1 to transmitter?</oldsource>
         <translation type="unfinished">Brenne %1 in den Sender ?</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="715"/>
+        <location filename="mdichild.cpp" line="719"/>
         <source>Cannot write temporary file!</source>
         <translation>Kann temporäre Datei nicht schreiben </translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="738"/>
+        <location filename="mdichild.cpp" line="742"/>
         <source>&amp;Edit</source>
         <translation>&amp;Bearbeiten</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="740"/>
+        <location filename="mdichild.cpp" line="744"/>
         <source>&amp;Delete</source>
         <translation>&amp;Löschen</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="740"/>
+        <location filename="mdichild.cpp" line="744"/>
         <source>Delete</source>
         <translation>Löschen</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="741"/>
+        <location filename="mdichild.cpp" line="745"/>
         <source>&amp;Copy</source>
         <translation>&amp;Kopieren</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="741"/>
+        <location filename="mdichild.cpp" line="745"/>
         <source>Ctrl+C</source>
         <translation>Ctrl+C</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="742"/>
+        <location filename="mdichild.cpp" line="746"/>
         <source>&amp;Cut</source>
         <translation>&amp;Ausschneiden</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="742"/>
+        <location filename="mdichild.cpp" line="746"/>
         <source>Ctrl+X</source>
         <translation>Ctrl+X</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="743"/>
+        <location filename="mdichild.cpp" line="747"/>
         <source>&amp;Paste</source>
         <translation>&amp;Einfügen</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="743"/>
+        <location filename="mdichild.cpp" line="747"/>
         <source>Ctrl+V</source>
         <translation>Ctrl+V</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="744"/>
+        <location filename="mdichild.cpp" line="748"/>
         <source>D&amp;uplicate</source>
         <translation>D&amp;uplizieren</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="744"/>
+        <location filename="mdichild.cpp" line="748"/>
         <source>Ctrl+U</source>
         <translation>Ctrl+U</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="746"/>
+        <location filename="mdichild.cpp" line="750"/>
         <source>&amp;Simulate</source>
         <translation>&amp;Simulieren</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="746"/>
+        <location filename="mdichild.cpp" line="750"/>
         <source>Alt+S</source>
         <translation>Alt+S</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="748"/>
+        <location filename="mdichild.cpp" line="752"/>
         <source>&amp;Write To Tx</source>
         <translation>&amp;Schreibe in den Sender</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="748"/>
+        <location filename="mdichild.cpp" line="752"/>
         <source>Ctrl+Alt+W</source>
         <translation>Ctrl+Alt+W</translation>
     </message>
@@ -1945,139 +1945,139 @@ Right</source>
         <translation>KNÜPPEL 3</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="389"/>
-        <location filename="modeledit.cpp" line="399"/>
-        <location filename="modeledit.cpp" line="445"/>
+        <location filename="modeledit.cpp" line="392"/>
+        <location filename="modeledit.cpp" line="402"/>
+        <location filename="modeledit.cpp" line="448"/>
         <source>CH%1%2</source>
         <translation>CH%1%2</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="420"/>
+        <location filename="modeledit.cpp" line="423"/>
         <source> Switch(</source>
         <translation>Schalter(</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="421"/>
+        <location filename="modeledit.cpp" line="424"/>
         <source> noTrim</source>
         <translation>kein Trimmer</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="422"/>
+        <location filename="modeledit.cpp" line="425"/>
         <source> Offset(%1%)</source>
         <translation> Offset(%1%)</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="426"/>
+        <location filename="modeledit.cpp" line="429"/>
         <source> Curve(%1)</source>
         <translation>Kurve(%1)</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="429"/>
+        <location filename="modeledit.cpp" line="432"/>
         <source> Delay(u%1:d%2)</source>
         <translation>Verzögerung(u%1:d%2)</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="430"/>
+        <location filename="modeledit.cpp" line="433"/>
         <source> Slow(u%1:d%2)</source>
         <translation>Langsam/u%1:d%2)</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="432"/>
+        <location filename="modeledit.cpp" line="435"/>
         <source> Warn(%1)</source>
         <translation>Warnung(%1)</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="1553"/>
+        <location filename="modeledit.cpp" line="1549"/>
         <source>Curve %1</source>
         <translation>Kurve %1</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="1783"/>
+        <location filename="modeledit.cpp" line="1779"/>
         <source>Delete Selected Mixes?</source>
         <translation>Lösche ausgewählte Mischer ?</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="1916"/>
+        <location filename="modeledit.cpp" line="1912"/>
         <source>&amp;Add</source>
         <translation>&amp;Addieren</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="1916"/>
+        <location filename="modeledit.cpp" line="1912"/>
         <source>Ctrl+A</source>
         <translation>CTRL+A</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="1917"/>
+        <location filename="modeledit.cpp" line="1913"/>
         <source>&amp;Edit</source>
         <translation>&amp;Editieren</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="1917"/>
+        <location filename="modeledit.cpp" line="1913"/>
         <source>Enter</source>
         <translation>Eingabe</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="1919"/>
+        <location filename="modeledit.cpp" line="1915"/>
         <source>&amp;Delete</source>
         <translation>&amp;Löschen</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="1919"/>
+        <location filename="modeledit.cpp" line="1915"/>
         <source>Delete</source>
         <translation>Löschen</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="1920"/>
+        <location filename="modeledit.cpp" line="1916"/>
         <source>&amp;Copy</source>
         <translation>&amp;Kopieren</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="1920"/>
+        <location filename="modeledit.cpp" line="1916"/>
         <source>Ctrl+C</source>
         <translation>Ctrl*C</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="1921"/>
+        <location filename="modeledit.cpp" line="1917"/>
         <source>&amp;Cut</source>
         <translation>&amp;Ausschneiden</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="1921"/>
+        <location filename="modeledit.cpp" line="1917"/>
         <source>Ctrl+X</source>
         <translation>Ctrl+X</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="1922"/>
+        <location filename="modeledit.cpp" line="1918"/>
         <source>&amp;Paste</source>
         <translation>&amp;Einfügen</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="1922"/>
+        <location filename="modeledit.cpp" line="1918"/>
         <source>Ctrl+V</source>
         <translation>Ctrl+V</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="1923"/>
+        <location filename="modeledit.cpp" line="1919"/>
         <source>Du&amp;plicate</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="1925"/>
+        <location filename="modeledit.cpp" line="1921"/>
         <source>Move Up</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="1925"/>
+        <location filename="modeledit.cpp" line="1921"/>
         <source>Ctrl+Up</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="1926"/>
+        <location filename="modeledit.cpp" line="1922"/>
         <source>Move Down</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="1926"/>
+        <location filename="modeledit.cpp" line="1922"/>
         <source>Ctrl+Down</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2086,7 +2086,7 @@ Right</source>
         <translation type="obsolete">D&amp;uplizieren</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="1923"/>
+        <location filename="modeledit.cpp" line="1919"/>
         <source>Ctrl+U</source>
         <translation>Ctrl+U</translation>
     </message>

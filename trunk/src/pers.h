@@ -113,6 +113,7 @@ enum EnumKeys {
 #define CS_VCOMP      2
 #define CS_STATE(x)   ((x)<CS_AND ? CS_VOFS : ((x)<CS_EQUAL ? CS_VBOOL : CS_VCOMP))
 
+#define CHAR_FOR_NAMES " ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_-."
 #define CHAR_FOR_NAMES_REGEX "[ A-Za-z0-9_.-]*"
 
 #define MIX_P1    5
@@ -234,6 +235,7 @@ public:
     //bool eeLoadModel(uint8_t id);
     bool eeModelExists(uint8_t id);
     void eeLoadModelName(uint8_t id,char*buf,uint8_t len);
+    void eeLoadOwnerName(char*buf,uint8_t len);
     void getModelName(uint8_t id, char* buf);
     void modelDefault(uint8_t id);
     void DeleteModel(uint8_t id);

@@ -142,17 +142,18 @@ void MdiChild::dropEvent(QDropEvent *event)
 void MdiChild::refreshList()
 {
     clear();
-    QString str = " - ";
-    for(int i=0; i<10; i++)
-        str.append(QChar(g_eeGeneral.ownerName[i]));
+    static char buf[20];
+
+    eeFile.eeLoadOwnerName(buf,sizeof(buf));
+    QString str = QString(buf);
+    if(!str.remove(" ").isEmpty())
+        str.prepend(" - ");
     addItem(tr("General Settings") + str);
 
     for(uint8_t i=0; i<MAX_MODELS; i++)
     {
-        static char buf[sizeof(ModelData().name)+10];
         eeFile.eeLoadModelName(i,buf,sizeof(buf));
-        QString str = QString(buf);
-        addItem(str);
+        addItem(QString(buf));
     }
 
 }
