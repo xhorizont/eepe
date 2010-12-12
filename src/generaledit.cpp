@@ -25,7 +25,7 @@ GeneralEdit::GeneralEdit(EEPFILE *eFile, QWidget *parent) :
     eeFile->getGeneralSettings(&g_eeGeneral);
 
     QRegExp rx(CHAR_FOR_NAMES_REGEX);
-    ui->ownerNameLE->setValidator(new QRegExpValidator(rx,this));
+    ui->ownerNameLE->setValidator(new QRegExpValidator(rx, this));
 
     populateSwitchCB(ui->backlightswCB,g_eeGeneral.lightSw);
 

@@ -44,7 +44,7 @@ ModelEdit::ModelEdit(EEPFILE *eFile, uint8_t id, QWidget *parent) :
     ui->tabWidget->setCurrentIndex(settings.value("modelEditTab", 0).toInt());
 
     QRegExp rx(CHAR_FOR_NAMES_REGEX);
-    ui->modelNameLE->setValidator(new QRegExpValidator(rx,this));
+    ui->modelNameLE->setValidator(new QRegExpValidator(rx, this));
 
     tabModelEditSetup();
     tabExpo();
@@ -1212,7 +1212,6 @@ void ModelEdit::tabTrims()
 
 }
 
-
 void ModelEdit::on_modelNameLE_editingFinished()
 {
     uint8_t temp = g_model.mdVers;
@@ -2213,3 +2212,5 @@ void ModelEdit::safetySwitchesEdited()
     }
     updateSettings();
 }
+
+

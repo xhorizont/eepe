@@ -143,6 +143,17 @@ void EEPFILE::eeLoadModelName(uint8_t id,char*buf,uint8_t len)
   }
 }
 
+void EEPFILE::eeLoadOwnerName(char*buf,uint8_t len)
+{
+    EEGeneral g_eeGeneral;
+    int ret = getGeneralSettings(&g_eeGeneral);
+
+    memset(buf,0,len);
+
+    if (ret<(int)(sizeof(EEGeneral)-20)) return;
+    memcpy(buf,&g_eeGeneral.ownerName,sizeof(g_eeGeneral.ownerName));
+}
+
 void EEPFILE::getModelName(uint8_t id, char* buf)
 {
     ModelData g_model;
