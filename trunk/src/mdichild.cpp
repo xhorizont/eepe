@@ -142,11 +142,14 @@ void MdiChild::dropEvent(QDropEvent *event)
 void MdiChild::refreshList()
 {
     clear();
-    addItem(tr("General Settings"));
+    QString str = " - ";
+    for(int i=0; i<10; i++)
+        str.append(QChar(g_eeGeneral.ownerName[i]));
+    addItem(tr("General Settings") + str);
 
     for(uint8_t i=0; i<MAX_MODELS; i++)
     {
-        static char buf[sizeof(g_model.name)+10];
+        static char buf[sizeof(ModelData().name)+10];
         eeFile.eeLoadModelName(i,buf,sizeof(buf));
         QString str = QString(buf);
         addItem(str);
@@ -348,7 +351,7 @@ void MdiChild::OpenEditWindow()
             setModified();
         }
 
-        char buf[sizeof(g_model.name)+1];
+        char buf[sizeof(ModelData().name)+1];
         eeFile.getModelName((i-1),(char*)&buf);
         ModelEdit *t = new ModelEdit(&eeFile,(i-1),this);
         t->setWindowTitle(tr("Editing model %1: ").arg(i) + QString(buf));

@@ -28,7 +28,6 @@ signals:
 
 private slots:
     void on_ownerNameLE_editingFinished();
-    void on_ownerNameLE_textEdited(QString txt);
     void on_PPM_MultiplierDSB_editingFinished();
     void on_splashScreenChkB_stateChanged(int );
     void on_beepCountDownChkB_stateChanged(int );

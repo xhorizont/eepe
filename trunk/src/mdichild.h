@@ -47,6 +47,7 @@
 
 #include <QtGui>
 #include "pers.h"
+#include "myeeprom.h"
 
 class MdiChild : public QListWidget//QMdiSubWindow
 {
@@ -112,6 +113,9 @@ private:
 
     QString curFile;
     bool isUntitled;
+
+//    ModelData g_model;
+//    EEGeneral g_eeGeneral;
 
 };
 
