@@ -43,6 +43,9 @@ ModelEdit::ModelEdit(EEPFILE *eFile, uint8_t id, QWidget *parent) :
     QSettings settings("er9x-eePe", "eePe");
     ui->tabWidget->setCurrentIndex(settings.value("modelEditTab", 0).toInt());
 
+    QRegExp rx(CHAR_FOR_NAMES_REGEX);
+    ui->modelNameLE->setValidator(new QRegExpValidator(rx,this));
+
     tabModelEditSetup();
     tabExpo();
     tabMixes();
@@ -1209,12 +1212,6 @@ void ModelEdit::tabTrims()
 
 }
 
-
-void ModelEdit::on_modelNameLE_textEdited(QString txt)
-{
-    //allow uppercase, number, ' ', '.', '_', '-' only
-    ui->modelNameLE->setText(txt.toUpper());
-}
 
 void ModelEdit::on_modelNameLE_editingFinished()
 {

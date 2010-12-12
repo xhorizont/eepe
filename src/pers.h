@@ -113,6 +113,8 @@ enum EnumKeys {
 #define CS_VCOMP      2
 #define CS_STATE(x)   ((x)<CS_AND ? CS_VOFS : ((x)<CS_EQUAL ? CS_VBOOL : CS_VCOMP))
 
+#define CHAR_FOR_NAMES_REGEX "[ A-Za-z0-9_.-]*"
+
 #define MIX_P1    5
 #define MIX_P2    6
 #define MIX_P3    7

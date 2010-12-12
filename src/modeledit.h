@@ -158,7 +158,6 @@ private slots:
     void on_timerDirCB_currentIndexChanged(int index);
     void on_timerModeCB_currentIndexChanged(int index);
     void on_modelNameLE_editingFinished();
-    void on_modelNameLE_textEdited(QString txt);
     void on_tabWidget_currentChanged(int index);
 };
 

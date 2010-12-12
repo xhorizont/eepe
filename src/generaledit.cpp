@@ -24,6 +24,9 @@ GeneralEdit::GeneralEdit(EEPFILE *eFile, QWidget *parent) :
 
     eeFile->getGeneralSettings(&g_eeGeneral);
 
+    QRegExp rx(CHAR_FOR_NAMES_REGEX);
+    ui->ownerNameLE->setValidator(new QRegExpValidator(rx,this));
+
     populateSwitchCB(ui->backlightswCB,g_eeGeneral.lightSw);
 
     ui->ownerNameLE->setText(g_eeGeneral.ownerName);
@@ -420,11 +423,6 @@ void GeneralEdit::on_PPM_MultiplierDSB_editingFinished()
 {
     g_eeGeneral.PPM_Multiplier = (int)(ui->PPM_MultiplierDSB->value()*10)-10;
     updateSettings();
-}
-
-void GeneralEdit::on_ownerNameLE_textEdited(QString txt)
-{
-    ui->ownerNameLE->setText(txt.toUpper());
 }
 
 void GeneralEdit::on_ownerNameLE_editingFinished()

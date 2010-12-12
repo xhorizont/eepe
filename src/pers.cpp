@@ -127,8 +127,8 @@ void EEPFILE::eeLoadModelName(uint8_t id,char*buf,uint8_t len)
     *buf='0'+(id+1)/10; buf++;
     *buf='0'+(id+1)%10; buf++;
     *buf=':';           buf++;buf++;
-    uint16_t res = theFile->readRlc((uint8_t*)buf,sizeof(g_model.name));
-    if(res == sizeof(g_model.name) )
+    uint16_t res = theFile->readRlc((uint8_t*)buf,sizeof(ModelData().name));
+    if(res == sizeof(ModelData().name) )
     {
       //buf+=len-5;
       for(int i=0; i<(len-4); i++)
@@ -165,7 +165,7 @@ int EEPFILE::getModel(ModelData* model, uint8_t id)
     if(id<MAX_MODELS)
     {
       theFile->openRd(FILE_MODEL(id));
-      sz = theFile->readRlc((uint8_t*)model, sizeof(g_model));
+      sz = theFile->readRlc((uint8_t*)model, sizeof(ModelData));
     }
 
     return sz;

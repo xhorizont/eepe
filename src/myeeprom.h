@@ -187,8 +187,8 @@ typedef struct t_ModelData {
 #define TOTAL_EEPROM_USAGE (sizeof(ModelData)*MAX_MODELS + sizeof(EEGeneral))
 
 
-extern EEGeneral g_eeGeneral;
-extern ModelData g_model;
+//extern EEGeneral g_eeGeneral;
+//extern ModelData g_model;
 
 
 
