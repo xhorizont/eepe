@@ -91,6 +91,7 @@ Section "eePe" SecDummy
   File "avrdude.exe"
   File "avrdude.conf"
   File "libusb0.dll"
+  File "ER9x Users Guide.pdf"
   
   CreateDirectory "$INSTDIR\lang"
   SetOutPath "$INSTDIR\lang"
@@ -114,6 +115,7 @@ Section "eePe" SecDummy
     ;Create shortcuts
     CreateDirectory "$SMPROGRAMS\$StartMenuFolder"
 	CreateShortCut "$SMPROGRAMS\$StartMenuFolder\eePe.lnk" "$INSTDIR\eePe.exe"
+	CreateShortCut "$SMPROGRAMS\$StartMenuFolder\er9x Users Guide.lnk" "$INSTDIR\ER9x Users Guide.pdf"
     CreateShortCut "$SMPROGRAMS\$StartMenuFolder\Uninstall.lnk" "$INSTDIR\Uninstall.exe"
   
   !insertmacro MUI_STARTMENU_WRITE_END
@@ -148,6 +150,7 @@ Section "Uninstall"
   Delete "$INSTDIR\avrdude.exe"
   Delete "$INSTDIR\avrdude.conf"
   Delete "$INSTDIR\libusb0.dll"
+  Delete "$INSTDIR\ER9x Users Guide.pdf"
   Delete "$INSTDIR\Uninstall.exe"
   
   Delete "$INSTDIR\lang\*.*"
