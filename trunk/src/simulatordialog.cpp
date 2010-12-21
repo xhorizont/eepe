@@ -200,12 +200,18 @@ void simulatorDialog::setValues()
 #define CSWITCH_ON  "QLabel { background-color: #4CC417 }"
 #define CSWITCH_OFF "QLabel { }"
 
-    ui->labelCSW1->setStyleSheet(getSwitch(DSW_SW1,0) ? CSWITCH_ON : CSWITCH_OFF);
-    ui->labelCSW2->setStyleSheet(getSwitch(DSW_SW2,0) ? CSWITCH_ON : CSWITCH_OFF);
-    ui->labelCSW3->setStyleSheet(getSwitch(DSW_SW3,0) ? CSWITCH_ON : CSWITCH_OFF);
-    ui->labelCSW4->setStyleSheet(getSwitch(DSW_SW4,0) ? CSWITCH_ON : CSWITCH_OFF);
-    ui->labelCSW5->setStyleSheet(getSwitch(DSW_SW5,0) ? CSWITCH_ON : CSWITCH_OFF);
-    ui->labelCSW5->setStyleSheet(getSwitch(DSW_SW6,0) ? CSWITCH_ON : CSWITCH_OFF);
+    ui->labelCSW_1->setStyleSheet(getSwitch(DSW_SW1,0)   ? CSWITCH_ON : CSWITCH_OFF);
+    ui->labelCSW_2->setStyleSheet(getSwitch(DSW_SW2,0)   ? CSWITCH_ON : CSWITCH_OFF);
+    ui->labelCSW_3->setStyleSheet(getSwitch(DSW_SW3,0)   ? CSWITCH_ON : CSWITCH_OFF);
+    ui->labelCSW_4->setStyleSheet(getSwitch(DSW_SW4,0)   ? CSWITCH_ON : CSWITCH_OFF);
+    ui->labelCSW_5->setStyleSheet(getSwitch(DSW_SW5,0)   ? CSWITCH_ON : CSWITCH_OFF);
+    ui->labelCSW_6->setStyleSheet(getSwitch(DSW_SW6,0)   ? CSWITCH_ON : CSWITCH_OFF);
+    ui->labelCSW_7->setStyleSheet(getSwitch(DSW_SW7,0)   ? CSWITCH_ON : CSWITCH_OFF);
+    ui->labelCSW_8->setStyleSheet(getSwitch(DSW_SW8,0)   ? CSWITCH_ON : CSWITCH_OFF);
+    ui->labelCSW_9->setStyleSheet(getSwitch(DSW_SW9,0)   ? CSWITCH_ON : CSWITCH_OFF);
+    ui->labelCSW_10->setStyleSheet(getSwitch(DSW_SW10,0) ? CSWITCH_ON : CSWITCH_OFF);
+    ui->labelCSW_11->setStyleSheet(getSwitch(DSW_SW11,0) ? CSWITCH_ON : CSWITCH_OFF);
+    ui->labelCSW_12->setStyleSheet(getSwitch(DSW_SW12,0) ? CSWITCH_ON : CSWITCH_OFF);
 }
 
 void simulatorDialog::beepWarn1()

@@ -2939,112 +2939,142 @@ msgctxt "simulatorDialog|"
 msgid "SW3"
 msgstr ""
 
-#: simulatordialog.ui:857
+#: simulatordialog.ui:950
 msgctxt "simulatorDialog|"
 msgid "BEEP"
 msgstr ""
 
-#: simulatordialog.ui:888
+#: simulatordialog.ui:857
 msgctxt "simulatorDialog|"
 msgid "SW4"
 msgstr ""
 
-#: simulatordialog.ui:919
+#: simulatordialog.ui:888
 msgctxt "simulatorDialog|"
 msgid "SW5"
 msgstr ""
 
-#: simulatordialog.ui:950
+#: simulatordialog.ui:919
 msgctxt "simulatorDialog|"
 msgid "SW6"
 msgstr ""
 
-#: simulatordialog.ui:967
+#: simulatordialog.ui:981
+msgctxt "simulatorDialog|"
+msgid "SW7"
+msgstr ""
+
+#: simulatordialog.ui:1012
+msgctxt "simulatorDialog|"
+msgid "SW8"
+msgstr ""
+
+#: simulatordialog.ui:1043
+msgctxt "simulatorDialog|"
+msgid "SW9"
+msgstr ""
+
+#: simulatordialog.ui:1074
+msgctxt "simulatorDialog|"
+msgid "SW10"
+msgstr ""
+
+#: simulatordialog.ui:1105
+msgctxt "simulatorDialog|"
+msgid "SW11"
+msgstr ""
+
+#: simulatordialog.ui:1136
+msgctxt "simulatorDialog|"
+msgid "SW12"
+msgstr ""
+
+#: simulatordialog.ui:1153
 msgctxt "simulatorDialog|"
 msgid "CH1"
 msgstr ""
 
-#: simulatordialog.ui:974
+#: simulatordialog.ui:1160
 msgctxt "simulatorDialog|"
 msgid "CH9"
 msgstr ""
 
-#: simulatordialog.ui:981
+#: simulatordialog.ui:1167
 msgctxt "simulatorDialog|"
 msgid "CH2"
 msgstr ""
 
-#: simulatordialog.ui:988
+#: simulatordialog.ui:1174
 msgctxt "simulatorDialog|"
 msgid "CH10"
 msgstr ""
 
-#: simulatordialog.ui:995
+#: simulatordialog.ui:1181
 msgctxt "simulatorDialog|"
 msgid "CH3"
 msgstr ""
 
-#: simulatordialog.ui:1002
+#: simulatordialog.ui:1188
 msgctxt "simulatorDialog|"
 msgid "CH11"
 msgstr ""
 
-#: simulatordialog.ui:1009
+#: simulatordialog.ui:1195
 msgctxt "simulatorDialog|"
 msgid "CH4"
 msgstr ""
 
-#: simulatordialog.ui:1016
+#: simulatordialog.ui:1202
 msgctxt "simulatorDialog|"
 msgid "CH12"
 msgstr ""
 
-#: simulatordialog.ui:1023
+#: simulatordialog.ui:1209
 msgctxt "simulatorDialog|"
 msgid "CH5"
 msgstr ""
 
-#: simulatordialog.ui:1030
+#: simulatordialog.ui:1216
 msgctxt "simulatorDialog|"
 msgid "CH13"
 msgstr ""
 
-#: simulatordialog.ui:1037
+#: simulatordialog.ui:1223
 msgctxt "simulatorDialog|"
 msgid "CH6"
 msgstr ""
 
-#: simulatordialog.ui:1044
+#: simulatordialog.ui:1230
 msgctxt "simulatorDialog|"
 msgid "CH14"
 msgstr ""
 
-#: simulatordialog.ui:1051
+#: simulatordialog.ui:1237
 msgctxt "simulatorDialog|"
 msgid "CH7"
 msgstr ""
 
-#: simulatordialog.ui:1058
+#: simulatordialog.ui:1244
 msgctxt "simulatorDialog|"
 msgid "CH15"
 msgstr ""
 
-#: simulatordialog.ui:1065
+#: simulatordialog.ui:1251
 msgctxt "simulatorDialog|"
 msgid "CH8"
 msgstr ""
 
-#: simulatordialog.ui:1072
+#: simulatordialog.ui:1258
 msgctxt "simulatorDialog|"
 msgid "CH16"
 msgstr ""
 
-#: simulatordialog.ui:1773 simulatordialog.ui:1789 simulatordialog.ui:1805
-#: simulatordialog.ui:1821 simulatordialog.ui:1837 simulatordialog.ui:1853
-#: simulatordialog.ui:1869 simulatordialog.ui:1885 simulatordialog.ui:1901
-#: simulatordialog.ui:1917 simulatordialog.ui:1933 simulatordialog.ui:1949
-#: simulatordialog.ui:1965 simulatordialog.ui:1981 simulatordialog.ui:1997
-#: simulatordialog.ui:2013
+#: simulatordialog.ui:1959 simulatordialog.ui:1975 simulatordialog.ui:1991
+#: simulatordialog.ui:2007 simulatordialog.ui:2023 simulatordialog.ui:2039
+#: simulatordialog.ui:2055 simulatordialog.ui:2071 simulatordialog.ui:2087
+#: simulatordialog.ui:2103 simulatordialog.ui:2119 simulatordialog.ui:2135
+#: simulatordialog.ui:2151 simulatordialog.ui:2167 simulatordialog.ui:2183
+#: simulatordialog.ui:2199
 msgctxt "simulatorDialog|"
 msgid "-100.1"
 msgstr ""

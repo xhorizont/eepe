@@ -135,21 +135,27 @@ enum EnumKeys {
 #define DR_DRSW1  99
 #define DR_DRSW2  98
 
-#define DSW_THR  1
-#define DSW_RUD  2
-#define DSW_ELE  3
-#define DSW_ID0  4
-#define DSW_ID1  5
-#define DSW_ID2  6
-#define DSW_AIL  7
-#define DSW_GEA  8
-#define DSW_TRN  9
-#define DSW_SW1  10
-#define DSW_SW2  11
-#define DSW_SW3  12
-#define DSW_SW4  13
-#define DSW_SW5  14
-#define DSW_SW6  15
+#define DSW_THR   1
+#define DSW_RUD   2
+#define DSW_ELE   3
+#define DSW_ID0   4
+#define DSW_ID1   5
+#define DSW_ID2   6
+#define DSW_AIL   7
+#define DSW_GEA   8
+#define DSW_TRN   9
+#define DSW_SW1   10
+#define DSW_SW2   11
+#define DSW_SW3   12
+#define DSW_SW4   13
+#define DSW_SW5   14
+#define DSW_SW6   15
+#define DSW_SW7   16
+#define DSW_SW8   17
+#define DSW_SW9   18
+#define DSW_SW10  19
+#define DSW_SW11  20
+#define DSW_SW12  21
 
 
 #define NUM_KEYS TRM_RH_UP+1
