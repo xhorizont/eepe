@@ -1069,12 +1069,18 @@ void ModelEdit::tabSwitches()
         cswitchOffset[i]->setVisible(false);
     }
 
-    populateCSWCB(ui->cswitchFunc_1,g_model.customSw[0].func);
-    populateCSWCB(ui->cswitchFunc_2,g_model.customSw[1].func);
-    populateCSWCB(ui->cswitchFunc_3,g_model.customSw[2].func);
-    populateCSWCB(ui->cswitchFunc_4,g_model.customSw[3].func);
-    populateCSWCB(ui->cswitchFunc_5,g_model.customSw[4].func);
-    populateCSWCB(ui->cswitchFunc_6,g_model.customSw[5].func);
+    populateCSWCB(ui->cswitchFunc_1, g_model.customSw[0].func);
+    populateCSWCB(ui->cswitchFunc_2, g_model.customSw[1].func);
+    populateCSWCB(ui->cswitchFunc_3, g_model.customSw[2].func);
+    populateCSWCB(ui->cswitchFunc_4, g_model.customSw[3].func);
+    populateCSWCB(ui->cswitchFunc_5, g_model.customSw[4].func);
+    populateCSWCB(ui->cswitchFunc_6, g_model.customSw[5].func);
+    populateCSWCB(ui->cswitchFunc_7, g_model.customSw[6].func);
+    populateCSWCB(ui->cswitchFunc_8, g_model.customSw[7].func);
+    populateCSWCB(ui->cswitchFunc_9, g_model.customSw[8].func);
+    populateCSWCB(ui->cswitchFunc_10,g_model.customSw[9].func);
+    populateCSWCB(ui->cswitchFunc_11,g_model.customSw[10].func);
+    populateCSWCB(ui->cswitchFunc_12,g_model.customSw[11].func);
 
 
     //create and populate boxes
@@ -1088,6 +1094,12 @@ void ModelEdit::tabSwitches()
     connect(ui->cswitchFunc_4,SIGNAL(currentIndexChanged(int)),this,SLOT(switchesEdited()));
     connect(ui->cswitchFunc_5,SIGNAL(currentIndexChanged(int)),this,SLOT(switchesEdited()));
     connect(ui->cswitchFunc_6,SIGNAL(currentIndexChanged(int)),this,SLOT(switchesEdited()));
+    connect(ui->cswitchFunc_7,SIGNAL(currentIndexChanged(int)),this,SLOT(switchesEdited()));
+    connect(ui->cswitchFunc_8,SIGNAL(currentIndexChanged(int)),this,SLOT(switchesEdited()));
+    connect(ui->cswitchFunc_9,SIGNAL(currentIndexChanged(int)),this,SLOT(switchesEdited()));
+    connect(ui->cswitchFunc_10,SIGNAL(currentIndexChanged(int)),this,SLOT(switchesEdited()));
+    connect(ui->cswitchFunc_11,SIGNAL(currentIndexChanged(int)),this,SLOT(switchesEdited()));
+    connect(ui->cswitchFunc_12,SIGNAL(currentIndexChanged(int)),this,SLOT(switchesEdited()));
 
     switchEditLock = false;
 }
@@ -1119,19 +1131,31 @@ void ModelEdit::switchesEdited()
 
     bool chAr[NUM_CSW];
 
-    chAr[0] = (CS_STATE(g_model.customSw[0].func))!=(CS_STATE(ui->cswitchFunc_1->currentIndex()));
-    chAr[1] = (CS_STATE(g_model.customSw[1].func))!=(CS_STATE(ui->cswitchFunc_2->currentIndex()));
-    chAr[2] = (CS_STATE(g_model.customSw[2].func))!=(CS_STATE(ui->cswitchFunc_3->currentIndex()));
-    chAr[3] = (CS_STATE(g_model.customSw[3].func))!=(CS_STATE(ui->cswitchFunc_4->currentIndex()));
-    chAr[4] = (CS_STATE(g_model.customSw[4].func))!=(CS_STATE(ui->cswitchFunc_5->currentIndex()));
-    chAr[5] = (CS_STATE(g_model.customSw[5].func))!=(CS_STATE(ui->cswitchFunc_6->currentIndex()));
+    chAr[0]  = (CS_STATE(g_model.customSw[0].func)) !=(CS_STATE(ui->cswitchFunc_1->currentIndex()));
+    chAr[1]  = (CS_STATE(g_model.customSw[1].func)) !=(CS_STATE(ui->cswitchFunc_2->currentIndex()));
+    chAr[2]  = (CS_STATE(g_model.customSw[2].func)) !=(CS_STATE(ui->cswitchFunc_3->currentIndex()));
+    chAr[3]  = (CS_STATE(g_model.customSw[3].func)) !=(CS_STATE(ui->cswitchFunc_4->currentIndex()));
+    chAr[4]  = (CS_STATE(g_model.customSw[4].func)) !=(CS_STATE(ui->cswitchFunc_5->currentIndex()));
+    chAr[5]  = (CS_STATE(g_model.customSw[5].func)) !=(CS_STATE(ui->cswitchFunc_6->currentIndex()));
+    chAr[6]  = (CS_STATE(g_model.customSw[6].func)) !=(CS_STATE(ui->cswitchFunc_7->currentIndex()));
+    chAr[7]  = (CS_STATE(g_model.customSw[7].func)) !=(CS_STATE(ui->cswitchFunc_8->currentIndex()));
+    chAr[8]  = (CS_STATE(g_model.customSw[8].func)) !=(CS_STATE(ui->cswitchFunc_9->currentIndex()));
+    chAr[9]  = (CS_STATE(g_model.customSw[9].func)) !=(CS_STATE(ui->cswitchFunc_10->currentIndex()));
+    chAr[10] = (CS_STATE(g_model.customSw[10].func))!=(CS_STATE(ui->cswitchFunc_11->currentIndex()));
+    chAr[11] = (CS_STATE(g_model.customSw[11].func))!=(CS_STATE(ui->cswitchFunc_12->currentIndex()));
 
-    g_model.customSw[0].func = ui->cswitchFunc_1->currentIndex();
-    g_model.customSw[1].func = ui->cswitchFunc_2->currentIndex();
-    g_model.customSw[2].func = ui->cswitchFunc_3->currentIndex();
-    g_model.customSw[3].func = ui->cswitchFunc_4->currentIndex();
-    g_model.customSw[4].func = ui->cswitchFunc_5->currentIndex();
-    g_model.customSw[5].func = ui->cswitchFunc_6->currentIndex();
+    g_model.customSw[0].func  = ui->cswitchFunc_1->currentIndex();
+    g_model.customSw[1].func  = ui->cswitchFunc_2->currentIndex();
+    g_model.customSw[2].func  = ui->cswitchFunc_3->currentIndex();
+    g_model.customSw[3].func  = ui->cswitchFunc_4->currentIndex();
+    g_model.customSw[4].func  = ui->cswitchFunc_5->currentIndex();
+    g_model.customSw[5].func  = ui->cswitchFunc_6->currentIndex();
+    g_model.customSw[6].func  = ui->cswitchFunc_7->currentIndex();
+    g_model.customSw[7].func  = ui->cswitchFunc_8->currentIndex();
+    g_model.customSw[8].func  = ui->cswitchFunc_9->currentIndex();
+    g_model.customSw[9].func  = ui->cswitchFunc_10->currentIndex();
+    g_model.customSw[10].func = ui->cswitchFunc_11->currentIndex();
+    g_model.customSw[11].func = ui->cswitchFunc_12->currentIndex();
 
 
     for(int i=0; i<NUM_CSW; i++)

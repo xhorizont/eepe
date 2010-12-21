@@ -557,7 +557,7 @@ msgstr "&Copier"
 
 msgctxt "MainWindow|"
 msgid "&Edit"
-msgstr "&Edition"
+msgstr "Éditio&n"
 
 msgctxt "MainWindow|"
 msgid "&File"
@@ -683,7 +683,7 @@ msgstr "Ferme toutes les fenêtres"
 
 msgctxt "MainWindow|"
 msgid "Write flash memory to transmitter"
-msgstr "Ecrit dans la mémoire Flash de l'émetteur"
+msgstr "Écrit dans la mémoire Flash de l'émetteur"
 
 msgctxt "MainWindow|"
 msgid "&Contributors"
@@ -744,7 +744,7 @@ msgstr "Quitte l'application"
 
 msgctxt "MainWindow|"
 msgid "Write Flash memory"
-msgstr "Ecrire la mémoire Flash"
+msgstr "Écrire la mémoire Flash"
 
 msgctxt "MainWindow|"
 msgid "List available programmers"
@@ -874,80 +874,84 @@ msgstr "Enregistrer l'EEPROM de l'émetteur vers un fichier"
 #~ msgid "eePe"
 #~ msgstr "eePe"
 
-#, fuzzy
 msgctxt "MainWindow|"
 msgid "Save As"
 msgstr "Enregister Sous"
 
-#, fuzzy
 msgctxt "MainWindow|"
 msgid "EEPROM hex files (*.hex);;EEPROM bin files (*.bin)"
 msgstr "Fichiers EEPROM hexa (*.hex);;Fichiers EEPROM binaires (*.bin)"
 
 msgctxt "MainWindow|"
 msgid "Executable (*.exe)"
-msgstr ""
+msgstr "Exécutable (*.exe)"
 
 msgctxt "MainWindow|"
 msgid "No updates available at this time."
-msgstr ""
+msgstr "Aucune mise à jour disponible."
 
 msgctxt "MainWindow|"
 msgid "Unable to check for updates."
-msgstr ""
+msgstr "Impossible de rechercher des mises à jour."
 
 msgctxt "MainWindow|"
 msgid "Would you like to launch the installer?"
-msgstr ""
+msgstr "Voulez-vous lancer l'installation ?"
 
 #, qt-format
 msgctxt "MainWindow|"
 msgid "Write %1 to EEPROM memory?"
-msgstr ""
+msgstr "Transférer %1 dans la mémoire EEPROM de l'émetteur ?"
 
 #, qt-format
 msgctxt "MainWindow|"
 msgid "Write %1 to flash memory?"
-msgstr ""
+msgstr "Transférer %1 dans la mémoire FLASH de l'émetteur ?"
 
 msgctxt "MainWindow|"
 msgid "&Check for updates..."
-msgstr ""
+msgstr "Re&chercher des mises à jour..."
 
 msgctxt "MainWindow|"
 msgid "Check for new version of eePe/er9x"
-msgstr ""
+msgstr "Vérifier l'existence d'un nouvelle version d'eePe/er9x"
 
 msgctxt "MainWindow|"
 msgid "Copyright"
-msgstr ""
+msgstr "Copyright"
 
 msgctxt "MainWindow|"
 msgid ""
 "If you've found this program and/or the er9x firmware useful please support "
 "by"
 msgstr ""
+"Si vous trouvez ce programme et/ou ce firmware utiles, merci d'apporter "
+"votre soutien en effectuant un <a href='"
 
 msgctxt "MainWindow|"
 msgid "Switch layout Left/Right"
-msgstr ""
+msgstr "Inverser l'interface gauche/droite"
 
 #, qt-format
 msgctxt "MainWindow|"
 msgid ""
 "A new version of ER9x is available (r%1)<br>Would you like to download it?"
 msgstr ""
+"Une nouvelle version d'ER9X est disponible (r%1)<br>Voulez-vous la "
+"télécharger ?"
 
 #, qt-format
 msgctxt "MainWindow|"
 msgid "Ignore this version (r%1)?"
-msgstr ""
+msgstr "Ignorer cette version (r%1)?"
 
 #, qt-format
 msgctxt "MainWindow|"
 msgid ""
 "A new version of eePe is available (r%1)<br>Would you like to download it?"
 msgstr ""
+"Une nouvelle version d'eePe est disponible (r%1)<br>Voulez-vous la "
+"télécharger ?"
 
 #, qt-format
 msgctxt "MdiChild|"
@@ -968,7 +972,7 @@ msgstr "&Copier"
 
 msgctxt "MdiChild|"
 msgid "&Edit"
-msgstr "&Edition"
+msgstr "Éditio&n"
 
 msgctxt "MdiChild|"
 msgid "General Settings"
@@ -1097,7 +1101,7 @@ msgstr "Ecriture de fichier temporaire impossible!"
 #, qt-format
 msgctxt "MdiChild|"
 msgid "Editing model %1: "
-msgstr "Edition du modèle %1: "
+msgstr "Édition du modèle %1: "
 
 #, qt-format
 msgctxt "MdiChild|"
@@ -1139,7 +1143,7 @@ msgctxt "MdiChild|"
 msgid ""
 "Error reading file:\n"
 "File wrong size - %1"
-msgstr ""
+msgstr "Erreur de lecture du fichier : taille de fichier incorrecte - %1"
 
 #, qt-format
 msgctxt "MdiChild|"
@@ -1147,6 +1151,8 @@ msgid ""
 "Error opening file %1:\n"
 "%2."
 msgstr ""
+"Erreur à l'ouverture du fichier %1:\n"
+"%2."
 
 #, qt-format
 msgctxt "MdiChild|"
@@ -1154,11 +1160,13 @@ msgid ""
 "Error loading file %1:\n"
 "%2."
 msgstr ""
+"Erreur au chargement du fichier %1:\n"
+"%2."
 
 #, qt-format
 msgctxt "MdiChild|"
 msgid "Write %1 to EEPROM memory?"
-msgstr ""
+msgstr "Transférer %1 dans la mémoire EEPROM de l'émetteur ?"
 
 msgctxt "MixerDialog|"
 msgid "Up"
@@ -1895,23 +1903,53 @@ msgstr "Valeur"
 
 msgctxt "ModelEdit|"
 msgid "Du&plicate"
-msgstr ""
+msgstr "D&upliquer"
 
 msgctxt "ModelEdit|"
 msgid "Move Up"
-msgstr ""
+msgstr "Monter"
 
 msgctxt "ModelEdit|"
 msgid "Ctrl+Up"
-msgstr ""
+msgstr "Ctrl+Haut"
 
 msgctxt "ModelEdit|"
 msgid "Move Down"
-msgstr ""
+msgstr "Descendre"
 
 msgctxt "ModelEdit|"
 msgid "Ctrl+Down"
-msgstr ""
+msgstr "Ctrl+Bas"
+
+#, fuzzy
+msgctxt "ModelEdit|"
+msgid "CSwitch7"
+msgstr "Inter Personnalisé 7"
+
+#, fuzzy
+msgctxt "ModelEdit|"
+msgid "CSwitch8"
+msgstr "Inter Personnalisé 8"
+
+#, fuzzy
+msgctxt "ModelEdit|"
+msgid "CSwitch9"
+msgstr "Inter Personnalisé 9"
+
+#, fuzzy
+msgctxt "ModelEdit|"
+msgid "CSwitch10"
+msgstr "Inter Personnalisé 10"
+
+#, fuzzy
+msgctxt "ModelEdit|"
+msgid "CSwitch11"
+msgstr "Inter Personnalisé 11"
+
+#, fuzzy
+msgctxt "ModelEdit|"
+msgid "CSwitch12"
+msgstr "Inter Personnalisé 12"
 
 #, qt-format
 msgctxt "avrOutputDialog|"
@@ -1945,11 +1983,11 @@ msgstr "AVRDUDE démarré"
 
 msgctxt "avrOutputDialog|"
 msgid "AVRDUDE did not finish correctly"
-msgstr ""
+msgstr "AVRDUDE : erreur"
 
 msgctxt "avrOutputDialog|"
 msgid "AVRDUDE finished correctly"
-msgstr ""
+msgstr "AVRDUDE : mission accomplie"
 
 msgctxt "burnConfigDialog|"
 msgid "Port"
@@ -2092,14 +2130,13 @@ msgstr "Liste des Contributeurs"
 
 msgctxt "downloadDialog|"
 msgid "Downloading: "
-msgstr ""
+msgstr "Téléchargement :"
 
 #, qt-format
 msgctxt "downloadDialog|"
 msgid "Unable to save the file %1: %2."
-msgstr ""
+msgstr "Impossible d'enregistrer le fichier %1 : %2."
 
-#, fuzzy
 msgctxt "downloadDialog|"
 msgid "eePe"
 msgstr "eePe"
@@ -2107,7 +2144,7 @@ msgstr "eePe"
 #, qt-format
 msgctxt "downloadDialog|"
 msgid "Download failed: %1."
-msgstr ""
+msgstr "Le téléchargement a échoué : %1."
 
 msgctxt "fusesDialog|"
 msgid "Fuses"
@@ -2776,14 +2813,12 @@ msgstr " Décalage(%1%)"
 
 msgctxt "printDialog|"
 msgid "<h2>Safety Switches</h2>"
-msgstr ""
+msgstr "<h2>Inters de sécurité</h2>"
 
-#, fuzzy
 msgctxt "printDialog|"
 msgid "Switch"
 msgstr "Interrupteur"
 
-#, fuzzy
 msgctxt "printDialog|"
 msgid "Value"
 msgstr "Valeur"
