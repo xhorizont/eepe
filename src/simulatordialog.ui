@@ -759,7 +759,7 @@ QPushButton:checked {
          <number>2</number>
         </property>
         <item>
-         <widget class="QLabel" name="labelCSW1">
+         <widget class="QLabel" name="labelCSW_1">
           <property name="text">
            <string>SW1</string>
           </property>
@@ -790,7 +790,7 @@ QPushButton:checked {
          <number>2</number>
         </property>
         <item>
-         <widget class="QLabel" name="labelCSW2">
+         <widget class="QLabel" name="labelCSW_2">
           <property name="text">
            <string>SW2</string>
           </property>
@@ -821,9 +821,102 @@ QPushButton:checked {
          <number>2</number>
         </property>
         <item>
-         <widget class="QLabel" name="labelCSW3">
+         <widget class="QLabel" name="labelCSW_3">
           <property name="text">
            <string>SW3</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item>
+      <widget class="QFrame" name="cswitch_4">
+       <property name="autoFillBackground">
+        <bool>true</bool>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::Panel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+       <property name="lineWidth">
+        <number>2</number>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_6">
+        <property name="margin">
+         <number>2</number>
+        </property>
+        <item>
+         <widget class="QLabel" name="labelCSW_4">
+          <property name="text">
+           <string>SW4</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item>
+      <widget class="QFrame" name="cswitch_5">
+       <property name="autoFillBackground">
+        <bool>true</bool>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::Panel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+       <property name="lineWidth">
+        <number>2</number>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_7">
+        <property name="margin">
+         <number>2</number>
+        </property>
+        <item>
+         <widget class="QLabel" name="labelCSW_5">
+          <property name="text">
+           <string>SW5</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item>
+      <widget class="QFrame" name="cswitch_6">
+       <property name="autoFillBackground">
+        <bool>true</bool>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::Panel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+       <property name="lineWidth">
+        <number>2</number>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_8">
+        <property name="margin">
+         <number>2</number>
+        </property>
+        <item>
+         <widget class="QLabel" name="labelCSW_6">
+          <property name="text">
+           <string>SW6</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -865,7 +958,7 @@ QPushButton:checked {
       </widget>
      </item>
      <item>
-      <widget class="QFrame" name="cswitch_4">
+      <widget class="QFrame" name="cswitch_7">
        <property name="autoFillBackground">
         <bool>true</bool>
        </property>
@@ -878,14 +971,14 @@ QPushButton:checked {
        <property name="lineWidth">
         <number>2</number>
        </property>
-       <layout class="QVBoxLayout" name="verticalLayout_6">
+       <layout class="QVBoxLayout" name="verticalLayout_13">
         <property name="margin">
          <number>2</number>
         </property>
         <item>
-         <widget class="QLabel" name="labelCSW4">
+         <widget class="QLabel" name="labelCSW_7">
           <property name="text">
-           <string>SW4</string>
+           <string>SW7</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -896,7 +989,7 @@ QPushButton:checked {
       </widget>
      </item>
      <item>
-      <widget class="QFrame" name="cswitch_5">
+      <widget class="QFrame" name="cswitch_8">
        <property name="autoFillBackground">
         <bool>true</bool>
        </property>
@@ -909,14 +1002,14 @@ QPushButton:checked {
        <property name="lineWidth">
         <number>2</number>
        </property>
-       <layout class="QVBoxLayout" name="verticalLayout_7">
+       <layout class="QVBoxLayout" name="verticalLayout_14">
         <property name="margin">
          <number>2</number>
         </property>
         <item>
-         <widget class="QLabel" name="labelCSW5">
+         <widget class="QLabel" name="labelCSW_8">
           <property name="text">
-           <string>SW5</string>
+           <string>SW8</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -927,7 +1020,7 @@ QPushButton:checked {
       </widget>
      </item>
      <item>
-      <widget class="QFrame" name="cswitch_6">
+      <widget class="QFrame" name="cswitch_9">
        <property name="autoFillBackground">
         <bool>true</bool>
        </property>
@@ -940,14 +1033,107 @@ QPushButton:checked {
        <property name="lineWidth">
         <number>2</number>
        </property>
-       <layout class="QVBoxLayout" name="verticalLayout_8">
+       <layout class="QVBoxLayout" name="verticalLayout_15">
         <property name="margin">
          <number>2</number>
         </property>
         <item>
-         <widget class="QLabel" name="labelCSW6">
+         <widget class="QLabel" name="labelCSW_9">
           <property name="text">
-           <string>SW6</string>
+           <string>SW9</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item>
+      <widget class="QFrame" name="cswitch_10">
+       <property name="autoFillBackground">
+        <bool>true</bool>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::Panel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+       <property name="lineWidth">
+        <number>2</number>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_17">
+        <property name="margin">
+         <number>2</number>
+        </property>
+        <item>
+         <widget class="QLabel" name="labelCSW_10">
+          <property name="text">
+           <string>SW10</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item>
+      <widget class="QFrame" name="cswitch_11">
+       <property name="autoFillBackground">
+        <bool>true</bool>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::Panel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+       <property name="lineWidth">
+        <number>2</number>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_19">
+        <property name="margin">
+         <number>2</number>
+        </property>
+        <item>
+         <widget class="QLabel" name="labelCSW_11">
+          <property name="text">
+           <string>SW11</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item>
+      <widget class="QFrame" name="cswitch_12">
+       <property name="autoFillBackground">
+        <bool>true</bool>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::Panel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+       <property name="lineWidth">
+        <number>2</number>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_20">
+        <property name="margin">
+         <number>2</number>
+        </property>
+        <item>
+         <widget class="QLabel" name="labelCSW_12">
+          <property name="text">
+           <string>SW12</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>

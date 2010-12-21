@@ -2521,5 +2521,29 @@ Indique l&apos;affectation voie / numéro de canal par défaut utilisée lors de
         <source>TextLabel</source>
         <translation></translation>
     </message>
+    <message>
+        <source>SW7</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SW8</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SW9</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SW10</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SW11</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SW12</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 </TS>

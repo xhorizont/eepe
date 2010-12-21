@@ -2994,3 +2994,27 @@ msgstr "Simulation "
 msgctxt "simulatorDialog|"
 msgid "TextLabel"
 msgstr ""
+
+msgctxt "simulatorDialog|"
+msgid "SW7"
+msgstr ""
+
+msgctxt "simulatorDialog|"
+msgid "SW8"
+msgstr ""
+
+msgctxt "simulatorDialog|"
+msgid "SW9"
+msgstr ""
+
+msgctxt "simulatorDialog|"
+msgid "SW10"
+msgstr ""
+
+msgctxt "simulatorDialog|"
+msgid "SW11"
+msgstr ""
+
+msgctxt "simulatorDialog|"
+msgid "SW12"
+msgstr ""
