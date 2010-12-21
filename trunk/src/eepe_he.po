@@ -1692,7 +1692,7 @@ msgctxt "ModelEdit|"
 msgid "INV"
 msgstr ""
 
-#: modeledit.ui:2787 modeledit.ui:5232
+#: modeledit.ui:2787 modeledit.ui:5341
 msgctxt "ModelEdit|"
 msgid "Channel"
 msgstr ""
@@ -1832,62 +1832,92 @@ msgctxt "ModelEdit|"
 msgid "CSwitch5"
 msgstr ""
 
-#: modeledit.ui:5167
+#: modeledit.ui:5209
 msgctxt "ModelEdit|"
 msgid "CSwitch6"
 msgstr ""
 
-#: modeledit.ui:5183
+#: modeledit.ui:5170
 msgctxt "ModelEdit|"
 msgid "Function"
 msgstr ""
 
-#: modeledit.ui:5196
+#: modeledit.ui:5183
 msgctxt "ModelEdit|"
 msgid "V1"
 msgstr ""
 
-#: modeledit.ui:5209
+#: modeledit.ui:5196
 msgctxt "ModelEdit|"
 msgid "V2"
 msgstr ""
 
-#: modeledit.ui:5217
+#: modeledit.ui:5222
+msgctxt "ModelEdit|"
+msgid "CSwitch7"
+msgstr ""
+
+#: modeledit.ui:5235
+msgctxt "ModelEdit|"
+msgid "CSwitch8"
+msgstr ""
+
+#: modeledit.ui:5248
+msgctxt "ModelEdit|"
+msgid "CSwitch9"
+msgstr ""
+
+#: modeledit.ui:5261
+msgctxt "ModelEdit|"
+msgid "CSwitch10"
+msgstr ""
+
+#: modeledit.ui:5274
+msgctxt "ModelEdit|"
+msgid "CSwitch11"
+msgstr ""
+
+#: modeledit.ui:5287
+msgctxt "ModelEdit|"
+msgid "CSwitch12"
+msgstr ""
+
+#: modeledit.ui:5326
 msgctxt "ModelEdit|"
 msgid "Safety Switches"
 msgstr ""
 
-#: modeledit.ui:5254
+#: modeledit.ui:5363
 msgctxt "ModelEdit|"
 msgid "Switch"
 msgstr ""
 
-#: modeledit.ui:5276
+#: modeledit.ui:5385
 msgctxt "ModelEdit|"
 msgid "Value"
 msgstr ""
 
-#: modeledit.ui:5402
+#: modeledit.ui:5511
 msgctxt "ModelEdit|"
 msgid "Trims"
 msgstr ""
 
-#: modeledit.ui:5511
+#: modeledit.ui:5620
 msgctxt "ModelEdit|"
 msgid "STICK 1"
 msgstr ""
 
-#: modeledit.ui:5526
+#: modeledit.ui:5635
 msgctxt "ModelEdit|"
 msgid "STICK 2"
 msgstr ""
 
-#: modeledit.ui:5616
+#: modeledit.ui:5725
 msgctxt "ModelEdit|"
 msgid "STICK 4"
 msgstr ""
 
-#: modeledit.ui:5631
+#: modeledit.ui:5740
 msgctxt "ModelEdit|"
 msgid "STICK 3"
 msgstr ""
@@ -1943,103 +1973,103 @@ msgctxt "ModelEdit|"
 msgid " Warn(%1)"
 msgstr ""
 
-#: modeledit.cpp:1549
+#: modeledit.cpp:1573
 #, qt-format
 msgctxt "ModelEdit|"
 msgid "Curve %1"
 msgstr ""
 
-#: modeledit.cpp:1779
+#: modeledit.cpp:1803
 msgctxt "ModelEdit|"
 msgid "Delete Selected Mixes?"
 msgstr ""
 
-#: modeledit.cpp:1912
+#: modeledit.cpp:1936
 msgctxt "ModelEdit|"
 msgid "&Add"
 msgstr ""
 
-#: modeledit.cpp:1912
+#: modeledit.cpp:1936
 msgctxt "ModelEdit|"
 msgid "Ctrl+A"
 msgstr ""
 
-#: modeledit.cpp:1913
+#: modeledit.cpp:1937
 msgctxt "ModelEdit|"
 msgid "&Edit"
 msgstr ""
 
-#: modeledit.cpp:1913
+#: modeledit.cpp:1937
 msgctxt "ModelEdit|"
 msgid "Enter"
 msgstr ""
 
-#: modeledit.cpp:1915
+#: modeledit.cpp:1939
 msgctxt "ModelEdit|"
 msgid "&Delete"
 msgstr ""
 
-#: modeledit.cpp:1915
+#: modeledit.cpp:1939
 msgctxt "ModelEdit|"
 msgid "Delete"
 msgstr ""
 
-#: modeledit.cpp:1916
+#: modeledit.cpp:1940
 msgctxt "ModelEdit|"
 msgid "&Copy"
 msgstr ""
 
-#: modeledit.cpp:1916
+#: modeledit.cpp:1940
 msgctxt "ModelEdit|"
 msgid "Ctrl+C"
 msgstr ""
 
-#: modeledit.cpp:1917
+#: modeledit.cpp:1941
 msgctxt "ModelEdit|"
 msgid "&Cut"
 msgstr ""
 
-#: modeledit.cpp:1917
+#: modeledit.cpp:1941
 msgctxt "ModelEdit|"
 msgid "Ctrl+X"
 msgstr ""
 
-#: modeledit.cpp:1918
+#: modeledit.cpp:1942
 msgctxt "ModelEdit|"
 msgid "&Paste"
 msgstr ""
 
-#: modeledit.cpp:1918
+#: modeledit.cpp:1942
 msgctxt "ModelEdit|"
 msgid "Ctrl+V"
 msgstr ""
 
-#: modeledit.cpp:1919
+#: modeledit.cpp:1943
 msgctxt "ModelEdit|"
 msgid "Du&plicate"
 msgstr ""
 
-#: modeledit.cpp:1921
+#: modeledit.cpp:1945
 msgctxt "ModelEdit|"
 msgid "Move Up"
 msgstr ""
 
-#: modeledit.cpp:1921
+#: modeledit.cpp:1945
 msgctxt "ModelEdit|"
 msgid "Ctrl+Up"
 msgstr ""
 
-#: modeledit.cpp:1922
+#: modeledit.cpp:1946
 msgctxt "ModelEdit|"
 msgid "Move Down"
 msgstr ""
 
-#: modeledit.cpp:1922
+#: modeledit.cpp:1946
 msgctxt "ModelEdit|"
 msgid "Ctrl+Down"
 msgstr ""
 
-#: modeledit.cpp:1919
+#: modeledit.cpp:1943
 msgctxt "ModelEdit|"
 msgid "Ctrl+U"
 msgstr ""

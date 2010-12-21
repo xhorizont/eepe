@@ -456,7 +456,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>&amp;Edit</source>
-        <translation>&amp;Edition</translation>
+        <translation>Éditio&amp;n</translation>
     </message>
     <message>
         <source>&amp;File</source>
@@ -576,7 +576,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Write flash memory to transmitter</source>
-        <translation>Ecrit dans la mémoire Flash de l&apos;émetteur</translation>
+        <translation>Écrit dans la mémoire Flash de l&apos;émetteur</translation>
     </message>
     <message>
         <source>&amp;Contributors</source>
@@ -636,7 +636,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Write Flash memory</source>
-        <translation>Ecrire la mémoire Flash</translation>
+        <translation>Écrire la mémoire Flash</translation>
     </message>
     <message>
         <source>List available programmers</source>
@@ -768,67 +768,67 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Save As</source>
-        <translation type="unfinished">Enregister Sous</translation>
+        <translation>Enregister Sous</translation>
     </message>
     <message>
         <source>EEPROM hex files (*.hex);;EEPROM bin files (*.bin)</source>
-        <translation type="unfinished">Fichiers EEPROM hexa (*.hex);;Fichiers EEPROM binaires (*.bin)</translation>
+        <translation>Fichiers EEPROM hexa (*.hex);;Fichiers EEPROM binaires (*.bin)</translation>
     </message>
     <message>
         <source>Executable (*.exe)</source>
-        <translation type="unfinished"></translation>
+        <translation>Exécutable (*.exe)</translation>
     </message>
     <message>
         <source>No updates available at this time.</source>
-        <translation type="unfinished"></translation>
+        <translation>Aucune mise à jour disponible.</translation>
     </message>
     <message>
         <source>Unable to check for updates.</source>
-        <translation type="unfinished"></translation>
+        <translation>Impossible de rechercher des mises à jour.</translation>
     </message>
     <message>
         <source>Would you like to launch the installer?</source>
-        <translation type="unfinished"></translation>
+        <translation>Voulez-vous lancer l&apos;installation ?</translation>
     </message>
     <message>
         <source>Write %1 to EEPROM memory?</source>
-        <translation type="unfinished"></translation>
+        <translation>Transférer %1 dans la mémoire EEPROM de l&apos;émetteur ?</translation>
     </message>
     <message>
         <source>Write %1 to flash memory?</source>
-        <translation type="unfinished"></translation>
+        <translation>Transférer %1 dans la mémoire FLASH de l&apos;émetteur ?</translation>
     </message>
     <message>
         <source>&amp;Check for updates...</source>
-        <translation type="unfinished"></translation>
+        <translation>Re&amp;chercher des mises à jour...</translation>
     </message>
     <message>
         <source>Check for new version of eePe/er9x</source>
-        <translation type="unfinished"></translation>
+        <translation>Vérifier l&apos;existence d&apos;un nouvelle version d&apos;eePe/er9x</translation>
     </message>
     <message>
         <source>Copyright</source>
-        <translation type="unfinished"></translation>
+        <translation>Copyright</translation>
     </message>
     <message>
         <source>If you&apos;ve found this program and/or the er9x firmware useful please support by</source>
-        <translation type="unfinished"></translation>
+        <translation>Si vous trouvez ce programme et/ou ce firmware utiles, merci d&apos;apporter votre soutien en effectuant un &lt;a href=&apos;</translation>
     </message>
     <message>
         <source>Switch layout Left/Right</source>
-        <translation type="unfinished"></translation>
+        <translation>Inverser l&apos;interface gauche/droite</translation>
     </message>
     <message>
         <source>A new version of ER9x is available (r%1)&lt;br&gt;Would you like to download it?</source>
-        <translation type="unfinished"></translation>
+        <translation>Une nouvelle version d&apos;ER9X est disponible (r%1)&lt;br&gt;Voulez-vous la télécharger ?</translation>
     </message>
     <message>
         <source>Ignore this version (r%1)?</source>
-        <translation type="unfinished"></translation>
+        <translation>Ignorer cette version (r%1)?</translation>
     </message>
     <message>
         <source>A new version of eePe is available (r%1)&lt;br&gt;Would you like to download it?</source>
-        <translation type="unfinished"></translation>
+        <translation>Une nouvelle version d&apos;eePe est disponible (r%1)&lt;br&gt;Voulez-vous la télécharger ?</translation>
     </message>
 </context>
 <context>
@@ -851,7 +851,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>&amp;Edit</source>
-        <translation>&amp;Edition</translation>
+        <translation>Éditio&amp;n</translation>
     </message>
     <message>
         <source>General Settings</source>
@@ -967,7 +967,7 @@ Enregistrer les changements?</translation>
     </message>
     <message>
         <source>Editing model %1: </source>
-        <translation>Edition du modèle %1: </translation>
+        <translation>Édition du modèle %1: </translation>
     </message>
     <message>
         <source>Error writing file %1:
@@ -998,21 +998,23 @@ Enregistrer les changements?</translation>
     <message>
         <source>Error reading file:
 File wrong size - %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Erreur de lecture du fichier : taille de fichier incorrecte - %1</translation>
     </message>
     <message>
         <source>Error opening file %1:
 %2.</source>
-        <translation type="unfinished"></translation>
+        <translation>Erreur à l&apos;ouverture du fichier %1:
+%2.</translation>
     </message>
     <message>
         <source>Error loading file %1:
 %2.</source>
-        <translation type="unfinished"></translation>
+        <translation>Erreur au chargement du fichier %1:
+%2.</translation>
     </message>
     <message>
         <source>Write %1 to EEPROM memory?</source>
-        <translation type="unfinished"></translation>
+        <translation>Transférer %1 dans la mémoire EEPROM de l&apos;émetteur ?</translation>
     </message>
 </context>
 <context>
@@ -1670,23 +1672,47 @@ Droite</translation>
     </message>
     <message>
         <source>Du&amp;plicate</source>
-        <translation type="unfinished"></translation>
+        <translation>D&amp;upliquer</translation>
     </message>
     <message>
         <source>Move Up</source>
-        <translation type="unfinished"></translation>
+        <translation>Monter</translation>
     </message>
     <message>
         <source>Ctrl+Up</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+Haut</translation>
     </message>
     <message>
         <source>Move Down</source>
-        <translation type="unfinished"></translation>
+        <translation>Descendre</translation>
     </message>
     <message>
         <source>Ctrl+Down</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+Bas</translation>
+    </message>
+    <message>
+        <source>CSwitch7</source>
+        <translation type="unfinished">Inter Personnalisé 7</translation>
+    </message>
+    <message>
+        <source>CSwitch8</source>
+        <translation type="unfinished">Inter Personnalisé 8</translation>
+    </message>
+    <message>
+        <source>CSwitch9</source>
+        <translation type="unfinished">Inter Personnalisé 9</translation>
+    </message>
+    <message>
+        <source>CSwitch10</source>
+        <translation type="unfinished">Inter Personnalisé 10</translation>
+    </message>
+    <message>
+        <source>CSwitch11</source>
+        <translation type="unfinished">Inter Personnalisé 11</translation>
+    </message>
+    <message>
+        <source>CSwitch12</source>
+        <translation type="unfinished">Inter Personnalisé 12</translation>
     </message>
 </context>
 <context>
@@ -1721,11 +1747,11 @@ Droite</translation>
     </message>
     <message>
         <source>AVRDUDE did not finish correctly</source>
-        <translation type="unfinished"></translation>
+        <translation>AVRDUDE : erreur</translation>
     </message>
     <message>
         <source>AVRDUDE finished correctly</source>
-        <translation type="unfinished"></translation>
+        <translation>AVRDUDE : mission accomplie</translation>
     </message>
 </context>
 <context>
@@ -1841,7 +1867,7 @@ Assurez-vous de posséder les droits en écriture sur ce dossier.</translation>
     </message>
     <message>
         <source>avrdoper</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -1855,19 +1881,19 @@ Assurez-vous de posséder les droits en écriture sur ce dossier.</translation>
     <name>downloadDialog</name>
     <message>
         <source>Downloading: </source>
-        <translation type="unfinished"></translation>
+        <translation>Téléchargement :</translation>
     </message>
     <message>
         <source>Unable to save the file %1: %2.</source>
-        <translation type="unfinished"></translation>
+        <translation>Impossible d&apos;enregistrer le fichier %1 : %2.</translation>
     </message>
     <message>
         <source>eePe</source>
-        <translation type="unfinished">eePe</translation>
+        <translation>eePe</translation>
     </message>
     <message>
         <source>Download failed: %1.</source>
-        <translation type="unfinished"></translation>
+        <translation>Le téléchargement a échoué : %1.</translation>
     </message>
 </context>
 <context>
@@ -2310,15 +2336,15 @@ Indique l&apos;affectation voie / numéro de canal par défaut utilisée lors de
     </message>
     <message>
         <source>&lt;h2&gt;Safety Switches&lt;/h2&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;h2&gt;Inters de sécurité&lt;/h2&gt;</translation>
     </message>
     <message>
         <source>Switch</source>
-        <translation type="unfinished">Interrupteur</translation>
+        <translation>Interrupteur</translation>
     </message>
     <message>
         <source>Value</source>
-        <translation type="unfinished">Valeur</translation>
+        <translation>Valeur</translation>
     </message>
 </context>
 <context>
@@ -2493,7 +2519,7 @@ Indique l&apos;affectation voie / numéro de canal par défaut utilisée lors de
     </message>
     <message>
         <source>TextLabel</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 </TS>

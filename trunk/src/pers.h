@@ -76,7 +76,7 @@ enum EnumKeys {
 };
 
 #define SWITCHES_STR "THR""RUD""ELE""ID0""ID1""ID2""AIL""GEA""TRN""SW1""SW2""SW3""SW4""SW5""SW6"
-#define NUM_CSW  6 //number of custom switches
+#define NUM_CSW  12 //number of custom switches
 
 //#define SW_BASE      SW_NC
 #define SW_BASE      SW_ThrCt
