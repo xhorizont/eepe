@@ -46,6 +46,11 @@ const uint8_t modn12x3[4][4]= {
 //NOTICE!  =>  1..4 -> 1..4
 #define CONVERT_MODE(x) (((x)<=4) ? modn12x3[g_eeGeneral.stickMode][((x)-1)] : (x))
 #define THR_CHN         (2-(g_eeGeneral.stickMode&1))
+#define THR_STICK       (2-(g_eeGeneral.stickMode&1))
+#define ELE_STICK       (1+(g_eeGeneral.stickMode&1))
+#define AIL_STICK       ((g_eeGeneral.stickMode&2) ? 0 : 3)
+#define RUD_STICK       ((g_eeGeneral.stickMode&2) ? 3 : 0)
+
 
 enum EnumKeys {
   KEY_MENU ,
@@ -75,7 +80,7 @@ enum EnumKeys {
   SW_Trainer
 };
 
-#define SWITCHES_STR "THR""RUD""ELE""ID0""ID1""ID2""AIL""GEA""TRN""SW1""SW2""SW3""SW4""SW5""SW6"
+#define SWITCHES_STR "THR""RUD""ELE""ID0""ID1""ID2""AIL""GEA""TRN""SW1""SW2""SW3""SW4""SW5""SW6""SW7""SW8""SW9""SWA""SWB""SWC"
 #define NUM_CSW  12 //number of custom switches
 
 //#define SW_BASE      SW_NC
@@ -116,14 +121,22 @@ enum EnumKeys {
 #define CHAR_FOR_NAMES " ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_-."
 #define CHAR_FOR_NAMES_REGEX "[ A-Za-z0-9_.-]*"
 
+#define SWASH_TYPE_120   1
+#define SWASH_TYPE_120X  2
+#define SWASH_TYPE_140   3
+#define SWASH_TYPE_90    4
+
 #define MIX_P1    5
 #define MIX_P2    6
 #define MIX_P3    7
 #define MIX_MAX   8
 #define MIX_FULL  9
+#define MIX_CYC1  10
+#define MIX_CYC2  11
+#define MIX_CYC3  12
 
-#define PPM_BASE   (MIX_FULL)
-#define CHOUT_BASE (MIX_FULL+NUM_PPM)
+#define PPM_BASE   (MIX_CYC3)
+#define CHOUT_BASE (PPM_BASE+NUM_PPM)
 
 #define DR_HIGH   0
 #define DR_MID    1

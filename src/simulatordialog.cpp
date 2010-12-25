@@ -523,6 +523,52 @@ void simulatorDialog::perOut(bool init)
   for(uint8_t i=PPM_BASE;i<CHOUT_BASE;i++)    anas[i] = g_ppmIns[i-PPM_BASE] - g_eeGeneral.ppmInCalib[i-PPM_BASE]; //add ppm channels
   for(uint8_t i=CHOUT_BASE;i<NUM_XCHNRAW;i++) anas[i] = chans[i-CHOUT_BASE]; //other mixes previous outputs
 
+  if(g_model.swashType)
+  {
+      int8_t tp = g_model.swashPitch+100;
+      int32_t vp = (int32_t)tp*anas[ELE_STICK];
+      tp = g_model.swashRoll+100;
+      int32_t vr = (int32_t)tp*anas[AIL_STICK];
+      int16_t vc = anas[THR_STICK];
+
+      switch (g_model.swashType)
+      {
+      case (SWASH_TYPE_120):
+          vp = (vp*60)/10000; //(vp => 60%)
+          vr = (vr*52)/10000; //(vr => 52%)
+
+          anas[MIX_CYC1-1] = vc - vp;
+          anas[MIX_CYC2-1] = vc + vp/2 + vr;
+          anas[MIX_CYC3-1] = vc + vp/2 - vr;
+          break;
+      case (SWASH_TYPE_120X):
+          vp = (vp*52)/10000;
+          vr = (vr*60)/10000;
+
+          anas[MIX_CYC1-1] = vc - vr;
+          anas[MIX_CYC2-1] = vc + vr/2 + vp;
+          anas[MIX_CYC3-1] = vc + vr/2 - vp;
+          break;
+      case (SWASH_TYPE_140):
+          vp = (vp*60)/10000;
+          vr = (vp*52)/10000;
+          anas[MIX_CYC1-1] = vc - vp;
+          anas[MIX_CYC2-1] = vc + vp/2 + vr;
+          anas[MIX_CYC3-1] = vc + vp/2 - vr;
+          break;
+          break;
+      case (SWASH_TYPE_90):
+          vp = (vp*60)/10000;
+          vr = (vp*52)/10000;
+          anas[MIX_CYC1-1] = vc - vp;
+          anas[MIX_CYC2-1] = vc + vr;
+          anas[MIX_CYC3-1] = vc - vr;
+          break;
+      default:
+          break;
+      }
+  }
+
   memset(chans,0,sizeof(chans));        // All outputs to 0
 
    uint8_t mixWarning = 0;

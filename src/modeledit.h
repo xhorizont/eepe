@@ -43,6 +43,7 @@ private:
     void tabModelEditSetup();
     void tabExpo();
     void tabMixes();
+    void tabHeli();
     void tabLimits();
     void tabCurves();
     void tabSwitches();
@@ -132,6 +133,7 @@ private slots:
     void safetySwitchesEdited();
     void expoEdited();
     void mixesEdited();
+    void heliEdited();
 
     void on_spinBox_S1_valueChanged(int value);
     void on_spinBox_S2_valueChanged(int value);
