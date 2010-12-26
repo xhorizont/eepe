@@ -1720,19 +1720,6 @@ Right</string>
            </property>
           </widget>
          </item>
-         <item row="3" column="1">
-          <widget class="QSpinBox" name="swashCollective">
-           <property name="accelerated">
-            <bool>true</bool>
-           </property>
-           <property name="minimum">
-            <number>-100</number>
-           </property>
-           <property name="maximum">
-            <number>100</number>
-           </property>
-          </widget>
-         </item>
          <item row="0" column="0">
           <widget class="QLabel" name="label_103">
            <property name="text">
@@ -1768,6 +1755,9 @@ Right</string>
             </property>
            </item>
           </widget>
+         </item>
+         <item row="3" column="1">
+          <widget class="QComboBox" name="swashCollectiveCB"/>
          </item>
         </layout>
        </item>

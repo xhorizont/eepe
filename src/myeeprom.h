@@ -167,7 +167,7 @@ typedef struct t_ModelData {
   uint8_t   swashType:3;
   uint8_t   swashPitch;
   uint8_t   swashRoll;
-  uint8_t   swashCollective;
+  uint8_t   swashCollectiveSource;
   MixData   mixData[MAX_MIXERS];
   LimitData limitData[NUM_CHNOUT];
   ExpoData  expoData[4];
