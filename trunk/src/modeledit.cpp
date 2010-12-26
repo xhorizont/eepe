@@ -468,12 +468,13 @@ void ModelEdit::tabHeli()
     ui->swashTypeCB->setCurrentIndex(g_model.swashType);
     ui->swashPitch->setValue(g_model.swashPitch+100);
     ui->swashRoll->setValue(g_model.swashRoll+100);
-    ui->swashCollective->setValue(g_model.swashCollective+100);
+
+    populateSourceCB(ui->swashCollectiveCB,g_eeGeneral.stickMode,g_model.swashCollectiveSource);
 
     connect(ui->swashTypeCB,SIGNAL(currentIndexChanged(int)),this,SLOT(heliEdited()));
     connect(ui->swashPitch,SIGNAL(editingFinished()),this,SLOT(heliEdited()));
     connect(ui->swashRoll,SIGNAL(editingFinished()),this,SLOT(heliEdited()));
-    connect(ui->swashCollective,SIGNAL(editingFinished()),this,SLOT(heliEdited()));
+    connect(ui->swashCollectiveCB,SIGNAL(currentIndexChanged(int)),this,SLOT(heliEdited()));
 }
 
 void ModelEdit::heliEdited()
@@ -481,7 +482,7 @@ void ModelEdit::heliEdited()
     g_model.swashType  = ui->swashTypeCB->currentIndex();
     g_model.swashPitch = ui->swashPitch->value()-100;
     g_model.swashRoll  = ui->swashRoll->value()-100;
-    g_model.swashCollective = ui->swashCollective->value()-100;
+    g_model.swashCollectiveSource = ui->swashCollectiveCB->currentIndex();
     updateSettings();
 }
 
