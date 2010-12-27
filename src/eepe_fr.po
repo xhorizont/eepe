@@ -1951,6 +1951,34 @@ msgctxt "ModelEdit|"
 msgid "CSwitch12"
 msgstr "Inter Personnalisé 12"
 
+msgctxt "ModelEdit|"
+msgid "Swash Type"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "Off"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "120"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "120X"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "140"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "90"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "Collective"
+msgstr ""
+
 #, qt-format
 msgctxt "avrOutputDialog|"
 msgid "AVRDUDE done - exit code %1"

@@ -1386,700 +1386,735 @@ p, li { white-space: pre-wrap; }
         <translation>Диалог</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="42"/>
+        <location filename="modeledit.ui" line="31"/>
         <source>Setup</source>
         <translation>Настройка</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="48"/>
+        <location filename="modeledit.ui" line="37"/>
         <source>Model Name</source>
         <translation>Название модели</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="62"/>
+        <location filename="modeledit.ui" line="51"/>
         <source>Timer Mode</source>
         <translation>Режим таймера</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="72"/>
+        <location filename="modeledit.ui" line="61"/>
         <source>Timer Direction</source>
         <translation>Направ. таймера</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="80"/>
+        <location filename="modeledit.ui" line="69"/>
         <source>Count Down</source>
         <translation>Обратный отсчет</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="85"/>
+        <location filename="modeledit.ui" line="74"/>
         <source>Count Up</source>
         <translation>Прямой отсчет</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="93"/>
+        <location filename="modeledit.ui" line="82"/>
         <source>Timer Value</source>
         <translation>Значен. таймера</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="106"/>
+        <location filename="modeledit.ui" line="95"/>
         <source>mm:ss</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="113"/>
+        <location filename="modeledit.ui" line="102"/>
         <source>Trim Increment</source>
         <translation>Изм. триммеров</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="121"/>
+        <location filename="modeledit.ui" line="110"/>
         <source>Exponential</source>
         <translation>экспонента</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="126"/>
+        <location filename="modeledit.ui" line="115"/>
         <source>Extra Fine</source>
         <translation>очень точно</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="131"/>
+        <location filename="modeledit.ui" line="120"/>
         <source>Fine</source>
         <translation>точно</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="136"/>
+        <location filename="modeledit.ui" line="125"/>
         <source>Medium</source>
         <translation>средне</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="141"/>
+        <location filename="modeledit.ui" line="130"/>
         <source>Coarse</source>
         <translation>грубо</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="149"/>
+        <location filename="modeledit.ui" line="138"/>
         <source>Throttle Trim</source>
         <translation>Газ трим</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="163"/>
+        <location filename="modeledit.ui" line="152"/>
         <source>Throttle Expo</source>
         <translation>Газ экспо</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="177"/>
+        <location filename="modeledit.ui" line="166"/>
         <source>instaTrim Switch</source>
         <translation>инстаТрим</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="187"/>
+        <location filename="modeledit.ui" line="176"/>
         <source>Center beep</source>
         <translation>Бип в центре</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="196"/>
+        <location filename="modeledit.ui" line="185"/>
         <source>RUD</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="203"/>
+        <location filename="modeledit.ui" line="192"/>
         <source>ELE</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="210"/>
+        <location filename="modeledit.ui" line="199"/>
         <source>THR</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="217"/>
+        <location filename="modeledit.ui" line="206"/>
         <source>AIL</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="224"/>
+        <location filename="modeledit.ui" line="213"/>
         <source>P1</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="231"/>
+        <location filename="modeledit.ui" line="220"/>
         <source>P2</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="238"/>
+        <location filename="modeledit.ui" line="227"/>
         <source>P3</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="247"/>
+        <location filename="modeledit.ui" line="236"/>
         <source>Pulse Shift (polarity)</source>
         <translation>PPM модуляция</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="255"/>
+        <location filename="modeledit.ui" line="244"/>
         <source>Positive</source>
         <translation>Положительная</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="260"/>
+        <location filename="modeledit.ui" line="249"/>
         <source>Negative</source>
         <translation>Негативная</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="268"/>
+        <location filename="modeledit.ui" line="271"/>
         <source>Protocol</source>
         <translation>Протокол</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="304"/>
+        <location filename="modeledit.ui" line="307"/>
         <source>Channels</source>
         <translation>Каналы</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="311"/>
+        <location filename="modeledit.ui" line="314"/>
         <source>ch</source>
         <translation>ch</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="330"/>
+        <location filename="modeledit.ui" line="333"/>
         <source>ppm Delay</source>
         <translation>PPM пауза</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="337"/>
+        <location filename="modeledit.ui" line="340"/>
         <source> usec</source>
         <translation>мсек</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="356"/>
+        <location filename="modeledit.ui" line="257"/>
         <source>Extended Limits</source>
         <translation>Расш. лимиты</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="371"/>
+        <location filename="modeledit.ui" line="359"/>
+        <source>Swash Type</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="modeledit.ui" line="367"/>
+        <source>Off</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="modeledit.ui" line="372"/>
+        <source>120</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="modeledit.ui" line="377"/>
+        <source>120X</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="modeledit.ui" line="382"/>
+        <source>140</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="modeledit.ui" line="387"/>
+        <source>90</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="modeledit.ui" line="395"/>
+        <source>Collective</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="modeledit.ui" line="406"/>
         <source>Expo/Dr</source>
         <translation>Расходы/Экспо</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="394"/>
-        <location filename="modeledit.ui" line="714"/>
-        <location filename="modeledit.ui" line="1067"/>
-        <location filename="modeledit.ui" line="1354"/>
+        <location filename="modeledit.ui" line="429"/>
+        <location filename="modeledit.ui" line="749"/>
+        <location filename="modeledit.ui" line="1102"/>
+        <location filename="modeledit.ui" line="1389"/>
         <source>HIGH</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="468"/>
-        <location filename="modeledit.ui" line="788"/>
-        <location filename="modeledit.ui" line="1141"/>
-        <location filename="modeledit.ui" line="1428"/>
+        <location filename="modeledit.ui" line="503"/>
+        <location filename="modeledit.ui" line="823"/>
+        <location filename="modeledit.ui" line="1176"/>
+        <location filename="modeledit.ui" line="1463"/>
         <source>MID</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="542"/>
-        <location filename="modeledit.ui" line="862"/>
-        <location filename="modeledit.ui" line="1215"/>
-        <location filename="modeledit.ui" line="1502"/>
+        <location filename="modeledit.ui" line="577"/>
+        <location filename="modeledit.ui" line="897"/>
+        <location filename="modeledit.ui" line="1250"/>
+        <location filename="modeledit.ui" line="1537"/>
         <source>LOW</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="616"/>
-        <location filename="modeledit.ui" line="936"/>
-        <location filename="modeledit.ui" line="1289"/>
-        <location filename="modeledit.ui" line="1576"/>
+        <location filename="modeledit.ui" line="651"/>
+        <location filename="modeledit.ui" line="971"/>
+        <location filename="modeledit.ui" line="1324"/>
+        <location filename="modeledit.ui" line="1611"/>
         <source>Expo
 Left</source>
         <translation>Expo
 слева</translation>
-    </message>
-    <message>
-        <location filename="modeledit.ui" line="627"/>
-        <location filename="modeledit.ui" line="958"/>
-        <location filename="modeledit.ui" line="1034"/>
-        <location filename="modeledit.ui" line="1598"/>
-        <source>D/R
-Left</source>
-        <translation>D/R
-слева</translation>
-    </message>
-    <message>
-        <location filename="modeledit.ui" line="638"/>
-        <location filename="modeledit.ui" line="947"/>
-        <location filename="modeledit.ui" line="1045"/>
-        <location filename="modeledit.ui" line="1587"/>
-        <source>D/R
-Right</source>
-        <translation>D/R
-справа</translation>
-    </message>
-    <message>
-        <location filename="modeledit.ui" line="649"/>
-        <location filename="modeledit.ui" line="969"/>
-        <location filename="modeledit.ui" line="1056"/>
-        <location filename="modeledit.ui" line="1609"/>
-        <source>Expo
-Right</source>
-        <translation>Expo
-справа</translation>
     </message>
     <message>
         <location filename="modeledit.ui" line="662"/>
-        <location filename="modeledit.ui" line="992"/>
-        <location filename="modeledit.ui" line="1302"/>
-        <location filename="modeledit.ui" line="1632"/>
+        <location filename="modeledit.ui" line="993"/>
+        <location filename="modeledit.ui" line="1069"/>
+        <location filename="modeledit.ui" line="1633"/>
+        <source>D/R
+Left</source>
+        <translation>D/R
+слева</translation>
+    </message>
+    <message>
+        <location filename="modeledit.ui" line="673"/>
+        <location filename="modeledit.ui" line="982"/>
+        <location filename="modeledit.ui" line="1080"/>
+        <location filename="modeledit.ui" line="1622"/>
+        <source>D/R
+Right</source>
+        <translation>D/R
+справа</translation>
+    </message>
+    <message>
+        <location filename="modeledit.ui" line="684"/>
+        <location filename="modeledit.ui" line="1004"/>
+        <location filename="modeledit.ui" line="1091"/>
+        <location filename="modeledit.ui" line="1644"/>
+        <source>Expo
+Right</source>
+        <translation>Expo
+справа</translation>
+    </message>
+    <message>
+        <location filename="modeledit.ui" line="697"/>
+        <location filename="modeledit.ui" line="1027"/>
+        <location filename="modeledit.ui" line="1337"/>
+        <location filename="modeledit.ui" line="1667"/>
         <source>Switch1</source>
         <translation>Тумблер 1</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="672"/>
-        <location filename="modeledit.ui" line="982"/>
-        <location filename="modeledit.ui" line="1312"/>
-        <location filename="modeledit.ui" line="1622"/>
+        <location filename="modeledit.ui" line="707"/>
+        <location filename="modeledit.ui" line="1017"/>
+        <location filename="modeledit.ui" line="1347"/>
+        <location filename="modeledit.ui" line="1657"/>
         <source>Switch2</source>
         <translation>Тумблер 2</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="687"/>
+        <location filename="modeledit.ui" line="722"/>
         <source>Rudder</source>
         <translation>Руддер</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="1007"/>
+        <location filename="modeledit.ui" line="1042"/>
         <source>Aileron</source>
         <translation>Элероны</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="1327"/>
+        <location filename="modeledit.ui" line="1362"/>
         <source>Throttle</source>
         <translation>Газ</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="1647"/>
+        <location filename="modeledit.ui" line="1682"/>
         <source>Elevator</source>
         <translation>Элеватор</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="1658"/>
+        <location filename="modeledit.ui" line="1693"/>
         <source>Mixes</source>
         <translation>Микшеры</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="1668"/>
+        <location filename="modeledit.ui" line="1703"/>
         <source>Limits</source>
         <translation>Лимиты</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="1730"/>
-        <location filename="modeledit.ui" line="1799"/>
-        <location filename="modeledit.ui" line="1868"/>
-        <location filename="modeledit.ui" line="1937"/>
-        <location filename="modeledit.ui" line="2006"/>
-        <location filename="modeledit.ui" line="2075"/>
-        <location filename="modeledit.ui" line="2144"/>
-        <location filename="modeledit.ui" line="2213"/>
-        <location filename="modeledit.ui" line="2282"/>
-        <location filename="modeledit.ui" line="2351"/>
-        <location filename="modeledit.ui" line="2420"/>
-        <location filename="modeledit.ui" line="2489"/>
-        <location filename="modeledit.ui" line="2558"/>
-        <location filename="modeledit.ui" line="2627"/>
-        <location filename="modeledit.ui" line="2696"/>
-        <location filename="modeledit.ui" line="2765"/>
+        <location filename="modeledit.ui" line="1765"/>
+        <location filename="modeledit.ui" line="1834"/>
+        <location filename="modeledit.ui" line="1903"/>
+        <location filename="modeledit.ui" line="1972"/>
+        <location filename="modeledit.ui" line="2041"/>
+        <location filename="modeledit.ui" line="2110"/>
+        <location filename="modeledit.ui" line="2179"/>
+        <location filename="modeledit.ui" line="2248"/>
+        <location filename="modeledit.ui" line="2317"/>
+        <location filename="modeledit.ui" line="2386"/>
+        <location filename="modeledit.ui" line="2455"/>
+        <location filename="modeledit.ui" line="2524"/>
+        <location filename="modeledit.ui" line="2593"/>
+        <location filename="modeledit.ui" line="2662"/>
+        <location filename="modeledit.ui" line="2731"/>
+        <location filename="modeledit.ui" line="2800"/>
         <source>NOR</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="1735"/>
-        <location filename="modeledit.ui" line="1804"/>
-        <location filename="modeledit.ui" line="1873"/>
-        <location filename="modeledit.ui" line="1942"/>
-        <location filename="modeledit.ui" line="2011"/>
-        <location filename="modeledit.ui" line="2080"/>
-        <location filename="modeledit.ui" line="2149"/>
-        <location filename="modeledit.ui" line="2218"/>
-        <location filename="modeledit.ui" line="2287"/>
-        <location filename="modeledit.ui" line="2356"/>
-        <location filename="modeledit.ui" line="2425"/>
-        <location filename="modeledit.ui" line="2494"/>
-        <location filename="modeledit.ui" line="2563"/>
-        <location filename="modeledit.ui" line="2632"/>
-        <location filename="modeledit.ui" line="2701"/>
-        <location filename="modeledit.ui" line="2770"/>
+        <location filename="modeledit.ui" line="1770"/>
+        <location filename="modeledit.ui" line="1839"/>
+        <location filename="modeledit.ui" line="1908"/>
+        <location filename="modeledit.ui" line="1977"/>
+        <location filename="modeledit.ui" line="2046"/>
+        <location filename="modeledit.ui" line="2115"/>
+        <location filename="modeledit.ui" line="2184"/>
+        <location filename="modeledit.ui" line="2253"/>
+        <location filename="modeledit.ui" line="2322"/>
+        <location filename="modeledit.ui" line="2391"/>
+        <location filename="modeledit.ui" line="2460"/>
+        <location filename="modeledit.ui" line="2529"/>
+        <location filename="modeledit.ui" line="2598"/>
+        <location filename="modeledit.ui" line="2667"/>
+        <location filename="modeledit.ui" line="2736"/>
+        <location filename="modeledit.ui" line="2805"/>
         <source>INV</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="2787"/>
-        <location filename="modeledit.ui" line="5341"/>
+        <location filename="modeledit.ui" line="2822"/>
+        <location filename="modeledit.ui" line="5376"/>
         <source>Channel</source>
         <translation>Канал</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="2809"/>
+        <location filename="modeledit.ui" line="2844"/>
         <source>Offset</source>
         <translation>Смещение</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="2831"/>
+        <location filename="modeledit.ui" line="2866"/>
         <source>Min</source>
         <translation>Мин</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="2853"/>
+        <location filename="modeledit.ui" line="2888"/>
         <source>Max</source>
         <translation>Макс</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="2875"/>
+        <location filename="modeledit.ui" line="2910"/>
         <source>Invert</source>
         <translation>Инверт</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="2889"/>
+        <location filename="modeledit.ui" line="2924"/>
         <source>Curves</source>
         <translation>Кривые</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="2895"/>
+        <location filename="modeledit.ui" line="2930"/>
         <source>Curve 1</source>
         <translation>Кривая 1</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="2985"/>
+        <location filename="modeledit.ui" line="3020"/>
         <source>Curve 2</source>
         <translation>Кривая 2</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="3072"/>
+        <location filename="modeledit.ui" line="3107"/>
         <source>Curve 3</source>
         <translation>Кривая 3</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="3159"/>
+        <location filename="modeledit.ui" line="3194"/>
         <source>Curve 4</source>
         <translation>Кривая 4</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="3246"/>
+        <location filename="modeledit.ui" line="3281"/>
         <source>Curve 5</source>
         <translation>Кривая 5</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="3333"/>
+        <location filename="modeledit.ui" line="3368"/>
         <source>Curve 6</source>
         <translation>Кривая 6</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="3420"/>
+        <location filename="modeledit.ui" line="3455"/>
         <source>Curve 7</source>
         <translation>Кривая 7</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="3507"/>
+        <location filename="modeledit.ui" line="3542"/>
         <source>Curve 8</source>
         <translation>Кривая 8</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="3594"/>
+        <location filename="modeledit.ui" line="3629"/>
         <source>Curve 9</source>
         <translation>Кривая 9</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="3745"/>
+        <location filename="modeledit.ui" line="3780"/>
         <source>Curve 10</source>
         <translation>Кривая 10</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="3896"/>
+        <location filename="modeledit.ui" line="3931"/>
         <source>Curve 11</source>
         <translation>Кривая 11</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="4047"/>
+        <location filename="modeledit.ui" line="4082"/>
         <source>Curve 12</source>
         <translation>Кривая 12</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="4198"/>
+        <location filename="modeledit.ui" line="4233"/>
         <source>Curve 13</source>
         <translation>Кривая 13</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="4349"/>
+        <location filename="modeledit.ui" line="4384"/>
         <source>Curve 14</source>
         <translation>Кривая 14</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="4500"/>
+        <location filename="modeledit.ui" line="4535"/>
         <source>Curve 15</source>
         <translation>Кривая 15</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="4651"/>
+        <location filename="modeledit.ui" line="4686"/>
         <source>Curve 16</source>
         <translation>Кривая 16</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="5075"/>
+        <location filename="modeledit.ui" line="5110"/>
         <source>Switches</source>
         <translation>Триггеры</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="5087"/>
+        <location filename="modeledit.ui" line="5122"/>
         <source>CSwitch1</source>
         <translation>Триггер 1</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="5103"/>
+        <location filename="modeledit.ui" line="5138"/>
         <source>CSwitch2</source>
         <translation>Триггер 2</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="5119"/>
+        <location filename="modeledit.ui" line="5154"/>
         <source>CSwitch3</source>
         <translation>Триггер 3</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="5135"/>
+        <location filename="modeledit.ui" line="5170"/>
         <source>CSwitch4</source>
         <translation>Триггер 4</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="5151"/>
+        <location filename="modeledit.ui" line="5186"/>
         <source>CSwitch5</source>
         <translation>Триггер 5</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="5209"/>
+        <location filename="modeledit.ui" line="5244"/>
         <source>CSwitch6</source>
         <translation>Триггер 6</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="5170"/>
+        <location filename="modeledit.ui" line="5205"/>
         <source>Function</source>
         <translation>Функция</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="5183"/>
+        <location filename="modeledit.ui" line="5218"/>
         <source>V1</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="5196"/>
+        <location filename="modeledit.ui" line="5231"/>
         <source>V2</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="5222"/>
+        <location filename="modeledit.ui" line="5257"/>
         <source>CSwitch7</source>
         <translation type="unfinished">Триггер 7</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="5235"/>
+        <location filename="modeledit.ui" line="5270"/>
         <source>CSwitch8</source>
         <translation type="unfinished">Триггер 8</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="5248"/>
+        <location filename="modeledit.ui" line="5283"/>
         <source>CSwitch9</source>
         <translation type="unfinished">Триггер 9</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="5261"/>
+        <location filename="modeledit.ui" line="5296"/>
         <source>CSwitch10</source>
         <translation type="unfinished">Триггер 10</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="5274"/>
+        <location filename="modeledit.ui" line="5309"/>
         <source>CSwitch11</source>
         <translation type="unfinished">Триггер 11</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="5287"/>
+        <location filename="modeledit.ui" line="5322"/>
         <source>CSwitch12</source>
         <translation type="unfinished">Триггер 12</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="5326"/>
+        <location filename="modeledit.ui" line="5361"/>
         <source>Safety Switches</source>
         <translation>Защитные выкл.</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="5363"/>
+        <location filename="modeledit.ui" line="5398"/>
         <source>Switch</source>
         <translation>Выключатель</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="5385"/>
+        <location filename="modeledit.ui" line="5420"/>
         <source>Value</source>
         <translation>Значение</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="5511"/>
+        <location filename="modeledit.ui" line="5546"/>
         <source>Trims</source>
         <translation>Триммеры</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="5620"/>
+        <location filename="modeledit.ui" line="5655"/>
         <source>STICK 1</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="5635"/>
+        <location filename="modeledit.ui" line="5670"/>
         <source>STICK 2</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="5725"/>
+        <location filename="modeledit.ui" line="5760"/>
         <source>STICK 4</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="5740"/>
+        <location filename="modeledit.ui" line="5775"/>
         <source>STICK 3</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="27"/>
+        <location filename="modeledit.ui" line="5848"/>
         <source>Simulate</source>
         <translation>Симуляция</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="392"/>
-        <location filename="modeledit.cpp" line="402"/>
-        <location filename="modeledit.cpp" line="448"/>
+        <location filename="modeledit.cpp" line="394"/>
+        <location filename="modeledit.cpp" line="404"/>
+        <location filename="modeledit.cpp" line="450"/>
         <source>CH%1%2</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="423"/>
+        <location filename="modeledit.cpp" line="425"/>
         <source> Switch(</source>
         <translation> Тумблер(</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="424"/>
+        <location filename="modeledit.cpp" line="426"/>
         <source> noTrim</source>
         <translation>безТрим</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="425"/>
+        <location filename="modeledit.cpp" line="427"/>
         <source> Offset(%1%)</source>
         <translation>Смещение(%1%)</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="429"/>
+        <location filename="modeledit.cpp" line="431"/>
         <source> Curve(%1)</source>
         <translation>Кривая(%1)</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="432"/>
+        <location filename="modeledit.cpp" line="434"/>
         <source> Delay(u%1:d%2)</source>
         <translation> Задержка(u%1:d%2)</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="433"/>
+        <location filename="modeledit.cpp" line="435"/>
         <source> Slow(u%1:d%2)</source>
         <translation> Задержка(u%1:d%2)</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="435"/>
+        <location filename="modeledit.cpp" line="437"/>
         <source> Warn(%1)</source>
         <translation> Пред(%1)</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="1573"/>
+        <location filename="modeledit.cpp" line="1592"/>
         <source>Curve %1</source>
         <translation>Кривая %1</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="1803"/>
+        <location filename="modeledit.cpp" line="1822"/>
         <source>Delete Selected Mixes?</source>
         <translation>Удалить выбранные микшеры?</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="1936"/>
+        <location filename="modeledit.cpp" line="1955"/>
         <source>&amp;Add</source>
         <translation>Добавить</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="1936"/>
+        <location filename="modeledit.cpp" line="1955"/>
         <source>Ctrl+A</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="1937"/>
+        <location filename="modeledit.cpp" line="1956"/>
         <source>&amp;Edit</source>
         <translation>Правка</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="1937"/>
+        <location filename="modeledit.cpp" line="1956"/>
         <source>Enter</source>
         <translation>Ввод</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="1939"/>
+        <location filename="modeledit.cpp" line="1958"/>
         <source>&amp;Delete</source>
         <translation>Удалить</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="1939"/>
+        <location filename="modeledit.cpp" line="1958"/>
         <source>Delete</source>
         <translation>Удалить</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="1940"/>
+        <location filename="modeledit.cpp" line="1959"/>
         <source>&amp;Copy</source>
         <translation>Копировать</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="1940"/>
+        <location filename="modeledit.cpp" line="1959"/>
         <source>Ctrl+C</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="1941"/>
+        <location filename="modeledit.cpp" line="1960"/>
         <source>&amp;Cut</source>
         <translation>Вырезать</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="1941"/>
+        <location filename="modeledit.cpp" line="1960"/>
         <source>Ctrl+X</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="1942"/>
+        <location filename="modeledit.cpp" line="1961"/>
         <source>&amp;Paste</source>
         <translation>Вставить</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="1942"/>
+        <location filename="modeledit.cpp" line="1961"/>
         <source>Ctrl+V</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="1943"/>
+        <location filename="modeledit.cpp" line="1962"/>
         <source>Du&amp;plicate</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="1945"/>
+        <location filename="modeledit.cpp" line="1964"/>
         <source>Move Up</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="1945"/>
+        <location filename="modeledit.cpp" line="1964"/>
         <source>Ctrl+Up</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="1946"/>
+        <location filename="modeledit.cpp" line="1965"/>
         <source>Move Down</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="1946"/>
+        <location filename="modeledit.cpp" line="1965"/>
         <source>Ctrl+Down</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2088,7 +2123,7 @@ Right</source>
         <translation type="obsolete">Дублировать</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="1943"/>
+        <location filename="modeledit.cpp" line="1962"/>
         <source>Ctrl+U</source>
         <translation></translation>
     </message>
