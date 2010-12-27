@@ -1714,6 +1714,34 @@ Droite</translation>
         <source>CSwitch12</source>
         <translation type="unfinished">Inter Personnalisé 12</translation>
     </message>
+    <message>
+        <source>Swash Type</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Off</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>120</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>120X</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>140</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>90</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Collective</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>avrOutputDialog</name>
