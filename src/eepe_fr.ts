@@ -1742,6 +1742,38 @@ Droite</translation>
         <source>Collective</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Clear All Mixes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Templates</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Apply Template?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Apply template &quot;%1&quot;?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Clear Mixes?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Really clear all the mixes?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Clear Curves?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Really clear all the curves?</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>avrOutputDialog</name>

@@ -1979,6 +1979,39 @@ msgctxt "ModelEdit|"
 msgid "Collective"
 msgstr ""
 
+msgctxt "ModelEdit|"
+msgid "Clear All Mixes"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "Templates"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "Apply Template?"
+msgstr ""
+
+#, qt-format
+msgctxt "ModelEdit|"
+msgid "Apply template \"%1\"?"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "Clear Mixes?"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "Really clear all the mixes?"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "Clear Curves?"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "Really clear all the curves?"
+msgstr ""
+
 #, qt-format
 msgctxt "avrOutputDialog|"
 msgid "AVRDUDE done - exit code %1"

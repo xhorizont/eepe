@@ -24,7 +24,7 @@
    <item row="4" column="1">
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
-      <number>0</number>
+      <number>4</number>
      </property>
      <widget class="QWidget" name="tabModelSetup">
       <attribute name="title">
@@ -5103,6 +5103,17 @@ Right</string>
          </property>
         </widget>
        </item>
+       <item row="16" column="4" colspan="2">
+        <widget class="QPushButton" name="clearMixesPB">
+         <property name="text">
+          <string>Clear All Mixes</string>
+         </property>
+         <property name="icon">
+          <iconset resource="eepe.qrc">
+           <normaloff>:/images/clear.png</normaloff>:/images/clear.png</iconset>
+         </property>
+        </widget>
+       </item>
       </layout>
      </widget>
      <widget class="QWidget" name="tabSwitch">
@@ -5837,6 +5848,16 @@ Right</string>
           <number>32</number>
          </property>
         </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tabTemplates">
+      <attribute name="title">
+       <string>Templates</string>
+      </attribute>
+      <layout class="QGridLayout" name="gridLayout_19">
+       <item row="0" column="0">
+        <widget class="QListWidget" name="templateList"/>
        </item>
       </layout>
      </widget>

@@ -45,11 +45,45 @@ const uint8_t modn12x3[4][4]= {
 //convert from mode 1 to mode g_eeGeneral.stickMode
 //NOTICE!  =>  1..4 -> 1..4
 #define CONVERT_MODE(x) (((x)<=4) ? modn12x3[g_eeGeneral.stickMode][((x)-1)] : (x))
-#define THR_CHN         (2-(g_eeGeneral.stickMode&1))
+#define CHANNEL_ORDER(x) (chout_ar[g_eeGeneral.templateSetup*4 + (x)-1])
 #define THR_STICK       (2-(g_eeGeneral.stickMode&1))
 #define ELE_STICK       (1+(g_eeGeneral.stickMode&1))
 #define AIL_STICK       ((g_eeGeneral.stickMode&2) ? 0 : 3)
 #define RUD_STICK       ((g_eeGeneral.stickMode&2) ? 3 : 0)
+
+
+#define STK_RUD  1
+#define STK_ELE  2
+#define STK_THR  3
+#define STK_AIL  4
+#define STK_P1   5
+#define STK_P2   6
+#define STK_P3   7
+#define NUM_TEMPLATES    DIM(n_Templates)
+#define NUM_TEMPLATE_MIX 8
+#define TEMPLATE_NLEN    15
+
+#define TRIM_ON  0
+#define TRIM_OFF 1
+
+
+const uint8_t chout_ar[] = { //First number is 0..23 -> template setup,  Second is relevant channel out
+1,2,3,4 , 1,2,4,3 , 1,3,2,4 , 1,3,4,2 , 1,4,2,3 , 1,4,3,2,
+2,1,3,4 , 2,1,4,3 , 2,3,1,4 , 2,3,4,1 , 2,4,1,3 , 2,4,3,1,
+3,1,2,4 , 3,1,4,2 , 3,2,1,4 , 3,2,4,1 , 3,4,1,2 , 3,4,2,1,
+4,1,2,3 , 4,1,3,2 , 4,2,1,3 , 4,2,3,1 , 4,3,1,2 , 4,3,2,1    };
+
+//convert from mode 1 to mode g_eeGeneral.stickMode
+//NOTICE!  =>  1..4 -> 1..4
+
+
+#define CM(x) (CONVERT_MODE(x))  //good for SRC
+#define CH(x) (CHOUT_BASE+(x))
+#define CV(x) (CURVE_BASE+(x)-1)
+#define CC(x) (CHANNEL_ORDER(x)) //need to invert this to work with dest
+
+#define CURVE5(x) ((x)-1)
+#define CURVE9(x) (MAX_CURVE5+(x)-1)
 
 
 enum EnumKeys {
@@ -90,6 +124,7 @@ enum EnumKeys {
 #define MAX_DRSWITCH (1+SW_Trainer-SW_ThrCt+1+NUM_CSW)
 
 #define CURV_STR     "---x>0x<0|x|f>0f<0|f|c1 c2 c3 c4 c5 c6 c7 c8 c9 c10c11c12c13c14c15c16"
+#define CURVE_BASE 7
 #define CSWITCH_STR  "----   v>ofs  v<ofs  |v|>ofs|v|<ofsAND    OR     XOR    ""v1==v2 ""v1!=v2 ""v1>v2  ""v1<v2  ""v1>=v2 ""v1<=v2 "
 #define CSW_NUM_FUNC 14
 #define CSW_LEN_FUNC 7
