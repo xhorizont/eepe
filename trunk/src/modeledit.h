@@ -53,6 +53,7 @@ private:
     void updateTabCurves();
     void setSwitchWidgetVisibility(int i);
     void setLimitMinMax();
+    void redrawSwitchesTab();
 
     void launchSimulation();
     void resizeEvent(QResizeEvent *event  = 0);
