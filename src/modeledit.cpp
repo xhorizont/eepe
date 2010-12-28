@@ -1071,6 +1071,29 @@ void ModelEdit::setSwitchWidgetVisibility(int i)
     }
 }
 
+void ModelEdit::redrawSwitchesTab()
+{
+    switchEditLock = true;
+
+    populateCSWCB(ui->cswitchFunc_1, g_model.customSw[0].func);
+    populateCSWCB(ui->cswitchFunc_2, g_model.customSw[1].func);
+    populateCSWCB(ui->cswitchFunc_3, g_model.customSw[2].func);
+    populateCSWCB(ui->cswitchFunc_4, g_model.customSw[3].func);
+    populateCSWCB(ui->cswitchFunc_5, g_model.customSw[4].func);
+    populateCSWCB(ui->cswitchFunc_6, g_model.customSw[5].func);
+    populateCSWCB(ui->cswitchFunc_7, g_model.customSw[6].func);
+    populateCSWCB(ui->cswitchFunc_8, g_model.customSw[7].func);
+    populateCSWCB(ui->cswitchFunc_9, g_model.customSw[8].func);
+    populateCSWCB(ui->cswitchFunc_10,g_model.customSw[9].func);
+    populateCSWCB(ui->cswitchFunc_11,g_model.customSw[10].func);
+    populateCSWCB(ui->cswitchFunc_12,g_model.customSw[11].func);
+
+    for(int i=0; i<NUM_CSW; i++)
+        setSwitchWidgetVisibility(i);
+
+    switchEditLock = false;
+}
+
 void ModelEdit::tabSwitches()
 {
     switchEditLock = true;
@@ -1096,23 +1119,7 @@ void ModelEdit::tabSwitches()
         cswitchOffset[i]->setVisible(false);
     }
 
-    populateCSWCB(ui->cswitchFunc_1, g_model.customSw[0].func);
-    populateCSWCB(ui->cswitchFunc_2, g_model.customSw[1].func);
-    populateCSWCB(ui->cswitchFunc_3, g_model.customSw[2].func);
-    populateCSWCB(ui->cswitchFunc_4, g_model.customSw[3].func);
-    populateCSWCB(ui->cswitchFunc_5, g_model.customSw[4].func);
-    populateCSWCB(ui->cswitchFunc_6, g_model.customSw[5].func);
-    populateCSWCB(ui->cswitchFunc_7, g_model.customSw[6].func);
-    populateCSWCB(ui->cswitchFunc_8, g_model.customSw[7].func);
-    populateCSWCB(ui->cswitchFunc_9, g_model.customSw[8].func);
-    populateCSWCB(ui->cswitchFunc_10,g_model.customSw[9].func);
-    populateCSWCB(ui->cswitchFunc_11,g_model.customSw[10].func);
-    populateCSWCB(ui->cswitchFunc_12,g_model.customSw[11].func);
-
-
-    //create and populate boxes
-    for(int i=0; i<NUM_CSW; i++)
-        setSwitchWidgetVisibility(i);
+    redrawSwitchesTab();
 
     //connects
     connect(ui->cswitchFunc_1,SIGNAL(currentIndexChanged(int)),this,SLOT(switchesEdited()));
@@ -2289,8 +2296,7 @@ void ModelEdit::on_templateList_doubleClicked(QModelIndex index)
     applyTemplate(index.row());
     updateSettings();
     tabMixes();
-    updateTabCurves();
-    resizeEvent();
+
 }
 
 
@@ -2436,6 +2442,10 @@ void ModelEdit::applyTemplate(uint8_t idx)
         setCurve(CURVE5(3),heli_ar3);
         setCurve(CURVE5(4),heli_ar4);
         setCurve(CURVE5(5),heli_ar5);
+
+        // make sure curves are redrawn
+        updateTabCurves();
+        resizeEvent();
         break;
 
         //Servo Test
@@ -2448,6 +2458,9 @@ void ModelEdit::applyTemplate(uint8_t idx)
         setSwitch(1,CS_LESS,CH(15),CH(16));
         setSwitch(2,CS_VPOS,CH(15),   105);
         setSwitch(3,CS_VNEG,CH(15),  -105);
+
+        // redraw switches tab
+        redrawSwitchesTab();
         break;
 
 
