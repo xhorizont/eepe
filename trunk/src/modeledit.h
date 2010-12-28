@@ -49,6 +49,7 @@ private:
     void tabSwitches();
     void tabSafetySwitches();
     void tabTrims();
+    void tabTemplates();
     void updateTabCurves();
     void setSwitchWidgetVisibility(int i);
     void setLimitMinMax();
@@ -70,11 +71,19 @@ private:
     QList<int> createListFromSelected();
     void setSelectedByList(QList<int> list);
 
+    void applyTemplate(uint8_t idx);
+    MixData* setDest(uint8_t dch);
+    void setCurve(uint8_t c, int8_t ar[]);
+    void setSwitch(uint8_t idx, uint8_t func, int8_t v1, int8_t v2);
+
 signals:
     void modelValuesChanged();
 
 
 private slots:
+    void clearMixes(bool ask=true);
+    void clearCurves(bool ask=true);
+
     void on_extendedLimitsChkB_toggled(bool checked);
     void on_resetCurve_1_clicked();
     void on_resetCurve_2_clicked();
@@ -161,6 +170,7 @@ private slots:
     void on_timerModeCB_currentIndexChanged(int index);
     void on_modelNameLE_editingFinished();
     void on_tabWidget_currentChanged(int index);
+    void on_templateList_doubleClicked(QModelIndex index);
 };
 
 #endif // MODELEDIT_H

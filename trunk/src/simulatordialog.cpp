@@ -144,9 +144,8 @@ void simulatorDialog::getValues()
 
     if(g_eeGeneral.throttleReversed)
     {
-        int thrchn=THR_CHN;//stickMode=0123 -> thr=2121
-        calibratedStick[thrchn] *= -1;
-        trim[thrchn] *= -1;
+        calibratedStick[THR_STICK] *= -1;
+        trim[THR_STICK] *= -1;
     }
 }
 
