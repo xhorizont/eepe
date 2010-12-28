@@ -96,7 +96,7 @@ QString getSourceStr(int stickMode=1, int idx=0)
 void populateSourceCB(QComboBox *b, int stickMode, int value)
 {
     b->clear();
-    for(int i=0; i<34; i++) b->addItem(getSourceStr(stickMode,i));
+    for(int i=0; i<37; i++) b->addItem(getSourceStr(stickMode,i));
     b->setCurrentIndex(value);
     b->setMaxVisibleItems(10);
 }

@@ -73,18 +73,6 @@ const uint8_t chout_ar[] = { //First number is 0..23 -> template setup,  Second 
 3,1,2,4 , 3,1,4,2 , 3,2,1,4 , 3,2,4,1 , 3,4,1,2 , 3,4,2,1,
 4,1,2,3 , 4,1,3,2 , 4,2,1,3 , 4,2,3,1 , 4,3,1,2 , 4,3,2,1    };
 
-//convert from mode 1 to mode g_eeGeneral.stickMode
-//NOTICE!  =>  1..4 -> 1..4
-
-
-#define CM(x) (CONVERT_MODE(x))  //good for SRC
-#define CH(x) (CHOUT_BASE+(x))
-#define CV(x) (CURVE_BASE+(x)-1)
-#define CC(x) (CHANNEL_ORDER(x)) //need to invert this to work with dest
-
-#define CURVE5(x) ((x)-1)
-#define CURVE9(x) (MAX_CURVE5+(x)-1)
-
 
 enum EnumKeys {
   KEY_MENU ,
@@ -172,6 +160,14 @@ enum EnumKeys {
 
 #define PPM_BASE   (MIX_CYC3)
 #define CHOUT_BASE (PPM_BASE+NUM_PPM)
+
+#define CM(x) (CONVERT_MODE(x))  //good for SRC
+#define CH(x) (CHOUT_BASE+(x))
+#define CV(x) (CURVE_BASE+(x)-1)
+#define CC(x) (CHANNEL_ORDER(x)) //need to invert this to work with dest
+
+#define CURVE5(x) ((x)-1)
+#define CURVE9(x) (MAX_CURVE5+(x)-1)
 
 #define DR_HIGH   0
 #define DR_MID    1

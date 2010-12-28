@@ -314,10 +314,9 @@ bool simulatorDialog::keyState(EnumKeys key)
 
 qint16 simulatorDialog::getValue(qint8 i)
 {
-    if(i<MIX_MAX) return calibratedStick[i];//-512..512
-    else if(i<=MIX_FULL) return 1024; //FULL/MAX
-    else if(i<MIX_FULL+NUM_PPM) return g_ppmIns[i-MIX_FULL] - g_eeGeneral.ppmInCalib[i-MIX_FULL];
-    else return ex_chans[i-MIX_FULL-NUM_PPM];
+    if(i<PPM_BASE) return calibratedStick[i];//-512..512
+    else if(i<CHOUT_BASE) return g_ppmIns[i-PPM_BASE] - g_eeGeneral.ppmInCalib[i-PPM_BASE];
+    else return ex_chans[i-CHOUT_BASE];
     return 0;
 }
 
@@ -517,6 +516,7 @@ void simulatorDialog::perOut(bool init)
   bpanaCenter = anaCenter;
 
 
+  calibratedStick[MIX_MAX-1]=calibratedStick[MIX_FULL-1]=1024;
   anas[MIX_MAX-1]  = RESX;     // MAX
   anas[MIX_FULL-1] = RESX;     // FULL
   for(uint8_t i=PPM_BASE;i<CHOUT_BASE;i++)    anas[i] = g_ppmIns[i-PPM_BASE] - g_eeGeneral.ppmInCalib[i-PPM_BASE]; //add ppm channels
@@ -566,6 +566,10 @@ void simulatorDialog::perOut(bool init)
       default:
           break;
       }
+
+      calibratedStick[MIX_CYC1-1]=anas[MIX_CYC1-1];
+      calibratedStick[MIX_CYC2-1]=anas[MIX_CYC2-1];
+      calibratedStick[MIX_CYC3-1]=anas[MIX_CYC3-1];
   }
 
   memset(chans,0,sizeof(chans));        // All outputs to 0
