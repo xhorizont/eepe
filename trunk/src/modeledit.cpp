@@ -2455,9 +2455,9 @@ void ModelEdit::applyTemplate(uint8_t idx)
         md=setDest(16); md->srcRaw=MIX_MAX;  md->weight=-110; md->swtch=DSW_SW2; md->mltpx=MLTPX_REP;
         md=setDest(16); md->srcRaw=MIX_MAX;  md->weight= 110; md->swtch=DSW_SW3; md->mltpx=MLTPX_REP;
 
-        setSwitch(1,CS_LESS,CH(15),CH(16));
-        setSwitch(2,CS_VPOS,CH(15),   105);
-        setSwitch(3,CS_VNEG,CH(15),  -105);
+        setSwitch(1,CS_LESS,CH(15), CH(16));
+        setSwitch(2,CS_VPOS,CH(15), 105);
+        setSwitch(3,CS_VNEG,CH(15),-105);
 
         // redraw switches tab
         redrawSwitchesTab();
