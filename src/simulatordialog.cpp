@@ -519,16 +519,16 @@ void simulatorDialog::perOut(bool init)
   calibratedStick[MIX_MAX-1]=calibratedStick[MIX_FULL-1]=1024;
   anas[MIX_MAX-1]  = RESX;     // MAX
   anas[MIX_FULL-1] = RESX;     // FULL
-  for(uint8_t i=PPM_BASE;i<CHOUT_BASE;i++)    anas[i] = g_ppmIns[i-PPM_BASE] - g_eeGeneral.ppmInCalib[i-PPM_BASE]; //add ppm channels
-  for(uint8_t i=CHOUT_BASE;i<NUM_XCHNRAW;i++) anas[i] = chans[i-CHOUT_BASE]; //other mixes previous outputs
+  for(uint8_t i=0;i<NUM_PPM;i++)    anas[i+PPM_BASE]   = g_ppmIns[i] - g_eeGeneral.ppmInCalib[i]; //add ppm channels
+  for(uint8_t i=0;i<NUM_CHNOUT;i++) anas[i+CHOUT_BASE] = chans[i]; //other mixes previous outputs
 
 #define REZ_SWASH_X(x)  ((x) - (x)/8 - (x)/128 - (x)/512)   //  1024*sin(60) ~= 886
 #define REZ_SWASH_Y(x)  ((x))   //  1024 => 1024
 
   if(g_model.swashType)
   {
-      int32_t vp = anas[ELE_STICK];
-      int32_t vr = anas[AIL_STICK];
+      int16_t vp = anas[ELE_STICK]+trimA[ELE_STICK];
+      int16_t vr = anas[AIL_STICK]+trimA[AIL_STICK];
       int16_t vc = 0;
       if(g_model.swashCollectiveSource)
           vc = anas[g_model.swashCollectiveSource-1];
