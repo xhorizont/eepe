@@ -437,6 +437,21 @@ int16_t expo(int16_t x, int16_t k)
     return neg? -y:y;
 }
 
+uint16_t isqrt32(uint32_t n)
+{
+    uint16_t c = 0x8000;
+    uint16_t g = 0x8000;
+
+    for(;;) {
+        if((uint32_t)g*g > n)
+            g ^= c;
+        c >>= 1;
+        if(c == 0)
+            return g;
+        g |= c;
+    }
+}
+
 int16_t simulatorDialog::intpol(int16_t x, uint8_t idx) // -100, -75, -50, -25, 0 ,25 ,50, 75, 100
 {
 #define D9 (RESX * 2 / 8)
@@ -522,20 +537,19 @@ void simulatorDialog::perOut(bool init)
   for(uint8_t i=0;i<NUM_PPM;i++)    anas[i+PPM_BASE]   = g_ppmIns[i] - g_eeGeneral.ppmInCalib[i]; //add ppm channels
   for(uint8_t i=0;i<NUM_CHNOUT;i++) anas[i+CHOUT_BASE] = chans[i]; //other mixes previous outputs
 
-  g_model.swashRingValue = 50;
   //===========Swash Ring================
-#define REDUCE_SWASH_RING(x,v) ((int32_t)(x)*(RESX*RESX*g_model.swashRingValue)/v)
-
   if(g_model.swashRingValue)
   {
-      uint32_t v = (anas[ELE_STICK]*anas[ELE_STICK] + anas[AIL_STICK]*anas[AIL_STICK])*100;
-      if(v>(RESX*RESX*g_model.swashRingValue))
+      uint32_t v = (anas[ELE_STICK]*anas[ELE_STICK] + anas[AIL_STICK]*anas[AIL_STICK]);
+      uint32_t q = RESX*g_model.swashRingValue/100;
+      q *= q;
+      if(v>q)
       {
-          int32_t a = (int32_t)100*anas[AIL_STICK]*(RESX*RESX*g_model.swashRingValue);
-          anas[AIL_STICK] = a/v;
+          uint16_t d = isqrt32(v);
+          anas[ELE_STICK] = (int32_t)anas[ELE_STICK]*g_model.swashRingValue*RESX/(d*100);
+          anas[AIL_STICK] = (int32_t)anas[AIL_STICK]*g_model.swashRingValue*RESX/(d*100);
       }
   }
-
 
   //===========Swash Mix================
 #define REZ_SWASH_X(x)  ((x) - (x)/8 - (x)/128 - (x)/512)   //  1024*sin(60) ~= 886

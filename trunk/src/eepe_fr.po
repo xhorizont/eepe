@@ -2012,6 +2012,10 @@ msgctxt "ModelEdit|"
 msgid "Really clear all the curves?"
 msgstr ""
 
+msgctxt "ModelEdit|"
+msgid "Swash Ring"
+msgstr ""
+
 #, qt-format
 msgctxt "avrOutputDialog|"
 msgid "AVRDUDE done - exit code %1"

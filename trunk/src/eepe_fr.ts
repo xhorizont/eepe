@@ -1774,6 +1774,10 @@ Droite</translation>
         <source>Really clear all the curves?</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Swash Ring</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>avrOutputDialog</name>
