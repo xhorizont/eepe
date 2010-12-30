@@ -474,15 +474,18 @@ void ModelEdit::tabHeli()
 {
     ui->swashTypeCB->setCurrentIndex(g_model.swashType);
     populateSourceCB(ui->swashCollectiveCB,g_eeGeneral.stickMode,g_model.swashCollectiveSource);
+    ui->swashRingValSB->setValue(g_model.swashRingValue);
 
     connect(ui->swashTypeCB,SIGNAL(currentIndexChanged(int)),this,SLOT(heliEdited()));
     connect(ui->swashCollectiveCB,SIGNAL(currentIndexChanged(int)),this,SLOT(heliEdited()));
+    connect(ui->swashRingValSB,SIGNAL(editingFinished()),this,SLOT(heliEdited()));
 }
 
 void ModelEdit::heliEdited()
 {
     g_model.swashType  = ui->swashTypeCB->currentIndex();
     g_model.swashCollectiveSource = ui->swashCollectiveCB->currentIndex();
+    g_model.swashRingValue = ui->swashRingValSB->value();
     updateSettings();
 }
 
