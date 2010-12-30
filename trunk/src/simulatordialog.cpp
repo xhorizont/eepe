@@ -522,6 +522,22 @@ void simulatorDialog::perOut(bool init)
   for(uint8_t i=0;i<NUM_PPM;i++)    anas[i+PPM_BASE]   = g_ppmIns[i] - g_eeGeneral.ppmInCalib[i]; //add ppm channels
   for(uint8_t i=0;i<NUM_CHNOUT;i++) anas[i+CHOUT_BASE] = chans[i]; //other mixes previous outputs
 
+  g_model.swashRingValue = 50;
+  //===========Swash Ring================
+#define REDUCE_SWASH_RING(x,v) ((int32_t)(x)*(RESX*RESX*g_model.swashRingValue)/v)
+
+  if(g_model.swashRingValue)
+  {
+      uint32_t v = (anas[ELE_STICK]*anas[ELE_STICK] + anas[AIL_STICK]*anas[AIL_STICK])*100;
+      if(v>(RESX*RESX*g_model.swashRingValue))
+      {
+          int32_t a = (int32_t)100*anas[AIL_STICK]*(RESX*RESX*g_model.swashRingValue);
+          anas[AIL_STICK] = a/v;
+      }
+  }
+
+
+  //===========Swash Mix================
 #define REZ_SWASH_X(x)  ((x) - (x)/8 - (x)/128 - (x)/512)   //  1024*sin(60) ~= 886
 #define REZ_SWASH_Y(x)  ((x))   //  1024 => 1024
 
