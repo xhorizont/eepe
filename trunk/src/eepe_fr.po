@@ -2016,6 +2016,22 @@ msgctxt "ModelEdit|"
 msgid "Swash Ring"
 msgstr ""
 
+msgctxt "ModelEdit|"
+msgid "Heli Setup"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "Invert Elevator"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "Invert Aileron"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "Invert Collective"
+msgstr ""
+
 #, qt-format
 msgctxt "avrOutputDialog|"
 msgid "AVRDUDE done - exit code %1"
@@ -2648,6 +2664,22 @@ msgstr "eePe"
 msgctxt "preferencesDialog|"
 msgid "Check for updates on startup"
 msgstr "Vérifier les mises à jour au démarrage"
+
+msgctxt "preferencesDialog|"
+msgid "Version to download"
+msgstr ""
+
+msgctxt "preferencesDialog|"
+msgid "er9x - JETI"
+msgstr ""
+
+msgctxt "preferencesDialog|"
+msgid "er9x - FrSky"
+msgstr ""
+
+msgctxt "preferencesDialog|"
+msgid "er9x - Ardupilot"
+msgstr ""
 
 msgctxt "printDialog|"
 msgid "Low"

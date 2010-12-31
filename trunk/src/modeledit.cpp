@@ -55,7 +55,6 @@ ModelEdit::ModelEdit(EEPFILE *eFile, uint8_t id, QWidget *parent) :
     tabSafetySwitches();
     tabTrims();
     tabTemplates();
-
     tabHeli();
 
     ui->curvePreview->setMinimumWidth(260);
@@ -472,20 +471,39 @@ void ModelEdit::mixesEdited()
 
 void ModelEdit::tabHeli()
 {
-    ui->swashTypeCB->setCurrentIndex(g_model.swashType);
-    populateSourceCB(ui->swashCollectiveCB,g_eeGeneral.stickMode,g_model.swashCollectiveSource);
-    ui->swashRingValSB->setValue(g_model.swashRingValue);
+    updateHeliTab();
 
     connect(ui->swashTypeCB,SIGNAL(currentIndexChanged(int)),this,SLOT(heliEdited()));
     connect(ui->swashCollectiveCB,SIGNAL(currentIndexChanged(int)),this,SLOT(heliEdited()));
     connect(ui->swashRingValSB,SIGNAL(editingFinished()),this,SLOT(heliEdited()));
+    connect(ui->swashInvertELE,SIGNAL(stateChanged(int)),this,SLOT(heliEdited()));
+    connect(ui->swashInvertAIL,SIGNAL(stateChanged(int)),this,SLOT(heliEdited()));
+    connect(ui->swashInvertCOL,SIGNAL(stateChanged(int)),this,SLOT(heliEdited()));
+}
+
+void ModelEdit::updateHeliTab()
+{
+    heliEditLock = true;
+
+    ui->swashTypeCB->setCurrentIndex(g_model.swashType);
+    populateSourceCB(ui->swashCollectiveCB,g_eeGeneral.stickMode,g_model.swashCollectiveSource);
+    ui->swashRingValSB->setValue(g_model.swashRingValue);
+    ui->swashInvertELE->setChecked(g_model.swashInvertELE);
+    ui->swashInvertAIL->setChecked(g_model.swashInvertAIL);
+    ui->swashInvertCOL->setChecked(g_model.swashInvertCOL);
+
+    heliEditLock = false;
 }
 
 void ModelEdit::heliEdited()
 {
+    if(heliEditLock) return;
     g_model.swashType  = ui->swashTypeCB->currentIndex();
     g_model.swashCollectiveSource = ui->swashCollectiveCB->currentIndex();
     g_model.swashRingValue = ui->swashRingValSB->value();
+    g_model.swashInvertELE = ui->swashInvertELE->isChecked();
+    g_model.swashInvertAIL = ui->swashInvertAIL->isChecked();
+    g_model.swashInvertCOL = ui->swashInvertCOL->isChecked();
     updateSettings();
 }
 
@@ -562,7 +580,7 @@ void ModelEdit::tabLimits()
     setLimitMinMax();
 }
 
-void ModelEdit::updateTabCurves()
+void ModelEdit::updateCurvesTab()
 {
    ui->curvePt1_1->setValue(g_model.curves5[0][0]);
    ui->curvePt2_1->setValue(g_model.curves5[0][1]);
@@ -696,7 +714,7 @@ void ModelEdit::updateTabCurves()
 
 void ModelEdit::tabCurves()
 {
-   updateTabCurves();
+   updateCurvesTab();
 
    QGraphicsScene *scene = new QGraphicsScene(ui->curvePreview);
    scene->setItemIndexMethod(QGraphicsScene::NoIndex);
@@ -2069,7 +2087,7 @@ void ModelEdit::on_pushButton_clicked()
 void ModelEdit::on_resetCurve_1_clicked()
 {
     memset(&g_model.curves5[0],0,sizeof(g_model.curves5[0]));
-    updateTabCurves();
+    updateCurvesTab();
     updateSettings();
     drawCurve();
 }
@@ -2077,7 +2095,7 @@ void ModelEdit::on_resetCurve_1_clicked()
 void ModelEdit::on_resetCurve_2_clicked()
 {
     memset(&g_model.curves5[1],0,sizeof(g_model.curves5[0]));
-    updateTabCurves();
+    updateCurvesTab();
     updateSettings();
     drawCurve();
 }
@@ -2085,7 +2103,7 @@ void ModelEdit::on_resetCurve_2_clicked()
 void ModelEdit::on_resetCurve_3_clicked()
 {
     memset(&g_model.curves5[2],0,sizeof(g_model.curves5[0]));
-    updateTabCurves();
+    updateCurvesTab();
     updateSettings();
     drawCurve();
 }
@@ -2093,7 +2111,7 @@ void ModelEdit::on_resetCurve_3_clicked()
 void ModelEdit::on_resetCurve_4_clicked()
 {
     memset(&g_model.curves5[3],0,sizeof(g_model.curves5[0]));
-    updateTabCurves();
+    updateCurvesTab();
     updateSettings();
     drawCurve();
 }
@@ -2101,7 +2119,7 @@ void ModelEdit::on_resetCurve_4_clicked()
 void ModelEdit::on_resetCurve_5_clicked()
 {
     memset(&g_model.curves5[4],0,sizeof(g_model.curves5[0]));
-    updateTabCurves();
+    updateCurvesTab();
     updateSettings();
     drawCurve();
 }
@@ -2109,7 +2127,7 @@ void ModelEdit::on_resetCurve_5_clicked()
 void ModelEdit::on_resetCurve_6_clicked()
 {
     memset(&g_model.curves5[5],0,sizeof(g_model.curves5[0]));
-    updateTabCurves();
+    updateCurvesTab();
     updateSettings();
     drawCurve();
 }
@@ -2117,7 +2135,7 @@ void ModelEdit::on_resetCurve_6_clicked()
 void ModelEdit::on_resetCurve_7_clicked()
 {
     memset(&g_model.curves5[6],0,sizeof(g_model.curves5[0]));
-    updateTabCurves();
+    updateCurvesTab();
     updateSettings();
     drawCurve();
 }
@@ -2125,7 +2143,7 @@ void ModelEdit::on_resetCurve_7_clicked()
 void ModelEdit::on_resetCurve_8_clicked()
 {
     memset(&g_model.curves5[7],0,sizeof(g_model.curves5[0]));
-    updateTabCurves();
+    updateCurvesTab();
     updateSettings();
     drawCurve();
 }
@@ -2136,7 +2154,7 @@ void ModelEdit::on_resetCurve_8_clicked()
 void ModelEdit::on_resetCurve_9_clicked()
 {
     memset(&g_model.curves9[0],0,sizeof(g_model.curves9[0]));
-    updateTabCurves();
+    updateCurvesTab();
     updateSettings();
     drawCurve();
 }
@@ -2144,7 +2162,7 @@ void ModelEdit::on_resetCurve_9_clicked()
 void ModelEdit::on_resetCurve_10_clicked()
 {
     memset(&g_model.curves9[1],0,sizeof(g_model.curves9[0]));
-    updateTabCurves();
+    updateCurvesTab();
     updateSettings();
     drawCurve();
 }
@@ -2152,7 +2170,7 @@ void ModelEdit::on_resetCurve_10_clicked()
 void ModelEdit::on_resetCurve_11_clicked()
 {
     memset(&g_model.curves9[2],0,sizeof(g_model.curves9[0]));
-    updateTabCurves();
+    updateCurvesTab();
     updateSettings();
     drawCurve();
 }
@@ -2160,7 +2178,7 @@ void ModelEdit::on_resetCurve_11_clicked()
 void ModelEdit::on_resetCurve_12_clicked()
 {
     memset(&g_model.curves9[3],0,sizeof(g_model.curves9[0]));
-    updateTabCurves();
+    updateCurvesTab();
     updateSettings();
     drawCurve();
 }
@@ -2168,7 +2186,7 @@ void ModelEdit::on_resetCurve_12_clicked()
 void ModelEdit::on_resetCurve_13_clicked()
 {
     memset(&g_model.curves9[4],0,sizeof(g_model.curves9[0]));
-    updateTabCurves();
+    updateCurvesTab();
     updateSettings();
     drawCurve();
 }
@@ -2176,7 +2194,7 @@ void ModelEdit::on_resetCurve_13_clicked()
 void ModelEdit::on_resetCurve_14_clicked()
 {
     memset(&g_model.curves9[5],0,sizeof(g_model.curves9[0]));
-    updateTabCurves();
+    updateCurvesTab();
     updateSettings();
     drawCurve();
 }
@@ -2184,7 +2202,7 @@ void ModelEdit::on_resetCurve_14_clicked()
 void ModelEdit::on_resetCurve_15_clicked()
 {
     memset(&g_model.curves9[6],0,sizeof(g_model.curves9[0]));
-    updateTabCurves();
+    updateCurvesTab();
     updateSettings();
     drawCurve();
 }
@@ -2192,7 +2210,7 @@ void ModelEdit::on_resetCurve_15_clicked()
 void ModelEdit::on_resetCurve_16_clicked()
 {
     memset(&g_model.curves9[7],0,sizeof(g_model.curves9[0]));
-    updateTabCurves();
+    updateCurvesTab();
     updateSettings();
     drawCurve();
 }
@@ -2338,7 +2356,7 @@ void ModelEdit::clearCurves(bool ask)
     memset(g_model.curves5,0,sizeof(g_model.curves5)); //clear all curves
     memset(g_model.curves9,0,sizeof(g_model.curves9)); //clear all curves
     updateSettings();
-    updateTabCurves();
+    updateCurvesTab();
     resizeEvent();
 }
 
@@ -2446,7 +2464,8 @@ void ModelEdit::applyTemplate(uint8_t idx)
         setCurve(CURVE5(5),heli_ar5);
 
         // make sure curves are redrawn
-        updateTabCurves();
+        updateHeliTab();
+        updateCurvesTab();
         resizeEvent();
         break;
 

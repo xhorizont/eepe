@@ -17,7 +17,7 @@
    <iconset resource="eepe.qrc">
     <normaloff>:/images/preferences.png</normaloff>:/images/preferences.png</iconset>
   </property>
-  <layout class="QGridLayout" name="gridLayout">
+  <layout class="QGridLayout" name="gridLayout_2">
    <item row="0" column="0">
     <widget class="QLabel" name="label">
      <property name="text">
@@ -28,9 +28,16 @@
    <item row="0" column="1">
     <widget class="QComboBox" name="locale_QB"/>
    </item>
+   <item row="1" column="0">
+    <widget class="QLabel" name="label_2">
+     <property name="text">
+      <string>Check for updates on startup</string>
+     </property>
+    </widget>
+   </item>
    <item row="1" column="1">
-    <layout class="QHBoxLayout" name="horizontalLayout">
-     <item>
+    <layout class="QGridLayout" name="gridLayout">
+     <item row="0" column="0">
       <widget class="QCheckBox" name="startupCheck_er9x">
        <property name="text">
         <string>er9x</string>
@@ -40,7 +47,7 @@
        </property>
       </widget>
      </item>
-     <item>
+     <item row="0" column="1">
       <widget class="QCheckBox" name="startupCheck_eepe">
        <property name="text">
         <string>eePe</string>
@@ -52,7 +59,38 @@
      </item>
     </layout>
    </item>
+   <item row="2" column="0">
+    <widget class="QLabel" name="label_3">
+     <property name="text">
+      <string>Version to download</string>
+     </property>
+    </widget>
+   </item>
    <item row="2" column="1">
+    <widget class="QComboBox" name="downloadVerCB">
+     <item>
+      <property name="text">
+       <string>er9x</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>er9x - JETI</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>er9x - FrSky</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>er9x - Ardupilot</string>
+      </property>
+     </item>
+    </widget>
+   </item>
+   <item row="3" column="1">
     <spacer name="horizontalSpacer">
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
@@ -65,14 +103,14 @@
      </property>
     </spacer>
    </item>
-   <item row="3" column="0">
+   <item row="4" column="0">
     <widget class="QLabel" name="label_13">
      <property name="text">
       <string>Default Channel Order</string>
      </property>
     </widget>
    </item>
-   <item row="3" column="1">
+   <item row="4" column="1">
     <widget class="QComboBox" name="channelorderCB">
      <property name="whatsThis">
       <string>Channel order
@@ -204,14 +242,14 @@ This is used by the templated to determine which channel goes to what number out
      </item>
     </widget>
    </item>
-   <item row="4" column="0">
+   <item row="5" column="0">
     <widget class="QLabel" name="label_14">
      <property name="text">
       <string>Default Stick Mode</string>
      </property>
     </widget>
    </item>
-   <item row="4" column="1">
+   <item row="5" column="1" colspan="2">
     <widget class="QComboBox" name="stickmodeCB">
      <property name="whatsThis">
       <string>Mode selection:
@@ -259,7 +297,17 @@ Mode 4:
      </item>
     </widget>
    </item>
-   <item row="5" column="1">
+   <item row="8" column="0" colspan="2">
+    <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="1">
     <spacer name="verticalSpacer">
      <property name="orientation">
       <enum>Qt::Vertical</enum>
@@ -271,23 +319,6 @@ Mode 4:
       </size>
      </property>
     </spacer>
-   </item>
-   <item row="6" column="1">
-    <widget class="QDialogButtonBox" name="buttonBox">
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-     <property name="standardButtons">
-      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="0">
-    <widget class="QLabel" name="label_2">
-     <property name="text">
-      <string>Check for updates on startup</string>
-     </property>
-    </widget>
    </item>
   </layout>
  </widget>

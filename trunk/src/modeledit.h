@@ -30,6 +30,7 @@ private:
     int       id_model;
 
     bool switchEditLock;
+    bool heliEditLock;
 
     QSpinBox  * cswitchOffset[NUM_CSW];
     QComboBox * cswitchSource1[NUM_CSW];
@@ -50,10 +51,11 @@ private:
     void tabSafetySwitches();
     void tabTrims();
     void tabTemplates();
-    void updateTabCurves();
+    void updateCurvesTab();
     void setSwitchWidgetVisibility(int i);
     void setLimitMinMax();
     void redrawSwitchesTab();
+    void updateHeliTab();
 
     void launchSimulation();
     void resizeEvent(QResizeEvent *event  = 0);
