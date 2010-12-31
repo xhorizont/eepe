@@ -1778,6 +1778,22 @@ Droite</translation>
         <source>Swash Ring</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Heli Setup</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Invert Elevator</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Invert Aileron</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Invert Collective</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>avrOutputDialog</name>
@@ -2182,6 +2198,22 @@ Indique l&apos;affectation voie / numéro de canal par défaut utilisée lors de
     <message>
         <source>Check for updates on startup</source>
         <translation>Vérifier les mises à jour au démarrage</translation>
+    </message>
+    <message>
+        <source>Version to download</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>er9x - JETI</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>er9x - FrSky</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>er9x - Ardupilot</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

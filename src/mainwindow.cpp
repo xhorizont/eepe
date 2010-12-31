@@ -57,7 +57,14 @@
 #include "stamp-eepe.h"
 
 #define DONATE_STR "https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=TGT92W338DPGN&lc=IL&item_name=Erez%20Raviv&item_number=eePe&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted"
+#define DNLD_VER_ER9X           0
+#define DNLD_VER_ER9X_JETI      1
+#define DNLD_VER_ER9X_FRSKY     2
+#define DNLD_VER_ER9X_ARDUPILOT 3
 #define ER9X_URL   "http://er9x.googlecode.com/svn/trunk/er9x.hex"
+#define ER9X_JETI_URL   "http://er9x.googlecode.com/svn/trunk/er9x-jeti.hex"
+#define ER9X_FRSKY_URL   "http://er9x.googlecode.com/svn/trunk/er9x-frsky.hex"
+#define ER9X_ARDUPILOT_URL   "http://er9x.googlecode.com/svn/trunk/er9x-ardupilot.hex"
 #define ER9X_STAMP "http://er9x.googlecode.com/svn/trunk/src/stamp-er9x.h"
 #define EEPE_URL   "http://eepe.googlecode.com/svn/trunk/eePeInstall.exe"
 #define EEPE_STAMP "http://eepe.googlecode.com/svn/trunk/src/stamp-eepe.h"
@@ -161,7 +168,24 @@ void MainWindow::reply1Finished(QNetworkReply * reply)
                 if (fileName.isEmpty()) return;
                 settings.setValue("lastDir",QFileInfo(fileName).dir().absolutePath());
 
-                downloadDialog * dd = new downloadDialog(this,ER9X_URL,fileName);
+                QString dnldURL;
+                switch (settings.value("download-version", 0).toInt())
+                {
+                case (DNLD_VER_ER9X_JETI):
+                    dnldURL = ER9X_JETI_URL;
+                    break;
+                case (DNLD_VER_ER9X_FRSKY):
+                    dnldURL = ER9X_FRSKY_URL;
+                    break;
+                case (DNLD_VER_ER9X_ARDUPILOT):
+                    dnldURL = ER9X_ARDUPILOT_URL;
+                    break;
+                default:
+                    dnldURL = ER9X_URL;
+                    break;
+                }
+
+                downloadDialog * dd = new downloadDialog(this,dnldURL,fileName);
                 int res = dd->exec();
                 if(res == QDialog::Accepted)
                 {

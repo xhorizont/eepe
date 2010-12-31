@@ -563,6 +563,10 @@ void simulatorDialog::perOut(bool init)
       if(g_model.swashCollectiveSource)
           vc = anas[g_model.swashCollectiveSource-1];
 
+      if(g_model.swashInvertELE) vp = -vp;
+      if(g_model.swashInvertAIL) vr = -vr;
+      if(g_model.swashInvertCOL) vc = -vc;
+
       switch (g_model.swashType)
       {
       case (SWASH_TYPE_120):
