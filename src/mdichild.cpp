@@ -145,8 +145,8 @@ void MdiChild::refreshList()
     static char buf[20];
 
     eeFile.eeLoadOwnerName(buf,sizeof(buf));
-    QString str = QString(buf);
-    if(!str.remove(" ").isEmpty())
+    QString str = QString(buf).trimmed();
+    if(!str.isEmpty())
         str.prepend(" - ");
     addItem(tr("General Settings") + str);
 
