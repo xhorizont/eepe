@@ -6,7 +6,7 @@ MixersList::MixersList(QWidget *parent) :
 {
     setFont(QFont("Courier New",12));
     setContextMenuPolicy(Qt::CustomContextMenu);
-    setSelectionMode(QAbstractItemView::ExtendedSelection);
+    setSelectionMode(QAbstractItemView::SingleSelection);
     setDragEnabled(true);
     setAcceptDrops(true);
     setDropIndicatorShown(true);
