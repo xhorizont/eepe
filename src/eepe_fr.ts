@@ -820,7 +820,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>A new version of ER9x is available (r%1)&lt;br&gt;Would you like to download it?</source>
-        <translation>Une nouvelle version d&apos;ER9X est disponible (r%1)&lt;br&gt;Voulez-vous la télécharger ?</translation>
+        <translation type="obsolete">Une nouvelle version d&apos;ER9X est disponible (r%1)&lt;br&gt;Voulez-vous la télécharger ?</translation>
     </message>
     <message>
         <source>Ignore this version (r%1)?</source>
@@ -829,6 +829,10 @@ p, li { white-space: pre-wrap; }
     <message>
         <source>A new version of eePe is available (r%1)&lt;br&gt;Would you like to download it?</source>
         <translation>Une nouvelle version d&apos;eePe est disponible (r%1)&lt;br&gt;Voulez-vous la télécharger ?</translation>
+    </message>
+    <message>
+        <source>A new version of ER9x (%2) is available (r%1)&lt;br&gt;Would you like to download it?</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

@@ -155,35 +155,39 @@ void MainWindow::reply1Finished(QNetworkReply * reply)
 
         if(rev>currentER9Xrev)
         {
-            showcheckForUpdatesResult = false; // update is available - do not show dialog
-            int ret = QMessageBox::question(this, "eePe",tr("A new version of ER9x is available (r%1)<br>"
-                                                                "Would you like to download it?").arg(rev) ,
-                                            QMessageBox::Yes | QMessageBox::No);
-
             QSettings settings("er9x-eePe", "eePe");
+
+            QString dnldURL, baseFileName;
+            switch (settings.value("download-version", 0).toInt())
+            {
+            case (DNLD_VER_ER9X_JETI):
+                dnldURL = ER9X_JETI_URL;
+                baseFileName = "er9x-jeti.hex";
+                break;
+            case (DNLD_VER_ER9X_FRSKY):
+                dnldURL = ER9X_FRSKY_URL;
+                baseFileName = "er9x-frsky.hex";
+                break;
+            case (DNLD_VER_ER9X_ARDUPILOT):
+                dnldURL = ER9X_ARDUPILOT_URL;
+                baseFileName = "er9x-ardupilot.hex";
+                break;
+            default:
+                dnldURL = ER9X_URL;
+                baseFileName = "er9x.hex";
+                break;
+            }
+
+            showcheckForUpdatesResult = false; // update is available - do not show dialog
+            int ret = QMessageBox::question(this, "eePe",tr("A new version of ER9x (%2) is available (r%1)<br>"
+                                                                "Would you like to download it?").arg(rev).arg(baseFileName) ,
+                                            QMessageBox::Yes | QMessageBox::No);
 
             if (ret == QMessageBox::Yes)
             {
-                QString fileName = QFileDialog::getSaveFileName(this, tr("Save As"),settings.value("lastDir").toString() + "/er9x.hex",tr("EEPROM hex files (*.hex);;EEPROM bin files (*.bin)"));
+                QString fileName = QFileDialog::getSaveFileName(this, tr("Save As"),settings.value("lastDir").toString() + "/" + baseFileName,tr("EEPROM hex files (*.hex);;EEPROM bin files (*.bin)"));
                 if (fileName.isEmpty()) return;
                 settings.setValue("lastDir",QFileInfo(fileName).dir().absolutePath());
-
-                QString dnldURL;
-                switch (settings.value("download-version", 0).toInt())
-                {
-                case (DNLD_VER_ER9X_JETI):
-                    dnldURL = ER9X_JETI_URL;
-                    break;
-                case (DNLD_VER_ER9X_FRSKY):
-                    dnldURL = ER9X_FRSKY_URL;
-                    break;
-                case (DNLD_VER_ER9X_ARDUPILOT):
-                    dnldURL = ER9X_ARDUPILOT_URL;
-                    break;
-                default:
-                    dnldURL = ER9X_URL;
-                    break;
-                }
 
                 downloadDialog * dd = new downloadDialog(this,dnldURL,fileName);
                 int res = dd->exec();

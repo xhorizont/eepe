@@ -933,12 +933,12 @@ msgid "Switch layout Left/Right"
 msgstr "Inverser l'interface gauche/droite"
 
 #, qt-format
-msgctxt "MainWindow|"
-msgid ""
-"A new version of ER9x is available (r%1)<br>Would you like to download it?"
-msgstr ""
-"Une nouvelle version d'ER9X est disponible (r%1)<br>Voulez-vous la "
-"télécharger ?"
+#~ msgctxt "MainWindow|"
+#~ msgid ""
+#~ "A new version of ER9x is available (r%1)<br>Would you like to download it?"
+#~ msgstr ""
+#~ "Une nouvelle version d'ER9X est disponible (r%1)<br>Voulez-vous la "
+#~ "télécharger ?"
 
 #, qt-format
 msgctxt "MainWindow|"
@@ -952,6 +952,13 @@ msgid ""
 msgstr ""
 "Une nouvelle version d'eePe est disponible (r%1)<br>Voulez-vous la "
 "télécharger ?"
+
+#, qt-format
+msgctxt "MainWindow|"
+msgid ""
+"A new version of ER9x (%2) is available (r%1)<br>Would you like to download "
+"it?"
+msgstr ""
 
 #, qt-format
 msgctxt "MdiChild|"
