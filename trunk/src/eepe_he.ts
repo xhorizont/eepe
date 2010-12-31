@@ -1837,7 +1837,8 @@ Right</source>
     </message>
     <message>
         <location filename="modeledit.ui" line="5190"/>
-        <source>Clear All Mixes</source>
+        <source>Clear All Curves</source>
+        <oldsource>Clear All Mixes</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>

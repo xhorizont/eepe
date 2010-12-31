@@ -1747,10 +1747,6 @@ Droite</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Clear All Mixes</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Templates</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1796,6 +1792,10 @@ Droite</translation>
     </message>
     <message>
         <source>Invert Collective</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Clear All Curves</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

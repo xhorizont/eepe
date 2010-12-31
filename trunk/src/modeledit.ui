@@ -24,7 +24,7 @@
    <item row="4" column="1">
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
-      <number>1</number>
+      <number>5</number>
      </property>
      <widget class="QWidget" name="tabModelSetup">
       <attribute name="title">
@@ -5184,10 +5184,10 @@ Right</string>
          </property>
         </widget>
        </item>
-       <item row="16" column="4" colspan="2">
+       <item row="16" column="3" colspan="4">
         <widget class="QPushButton" name="clearMixesPB">
          <property name="text">
-          <string>Clear All Mixes</string>
+          <string>Clear All Curves</string>
          </property>
          <property name="icon">
           <iconset resource="eepe.qrc">

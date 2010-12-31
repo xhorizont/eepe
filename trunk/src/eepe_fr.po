@@ -1987,10 +1987,6 @@ msgid "Collective"
 msgstr ""
 
 msgctxt "ModelEdit|"
-msgid "Clear All Mixes"
-msgstr ""
-
-msgctxt "ModelEdit|"
 msgid "Templates"
 msgstr ""
 
@@ -2037,6 +2033,10 @@ msgstr ""
 
 msgctxt "ModelEdit|"
 msgid "Invert Collective"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "Clear All Curves"
 msgstr ""
 
 #, qt-format

@@ -1864,8 +1864,9 @@ msgid "Curve 16"
 msgstr ""
 
 #: modeledit.ui:5190
+#| msgid "Clear All Mixes"
 msgctxt "ModelEdit|"
-msgid "Clear All Mixes"
+msgid "Clear All Curves"
 msgstr ""
 
 #: modeledit.ui:5202
