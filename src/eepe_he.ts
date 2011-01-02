@@ -2014,132 +2014,132 @@ Right</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="1641"/>
+        <location filename="modeledit.cpp" line="1642"/>
         <source>Curve %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="1871"/>
+        <location filename="modeledit.cpp" line="1872"/>
         <source>Delete Selected Mixes?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2004"/>
+        <location filename="modeledit.cpp" line="2005"/>
         <source>&amp;Add</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2004"/>
+        <location filename="modeledit.cpp" line="2005"/>
         <source>Ctrl+A</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2005"/>
+        <location filename="modeledit.cpp" line="2006"/>
         <source>&amp;Edit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2005"/>
+        <location filename="modeledit.cpp" line="2006"/>
         <source>Enter</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2007"/>
+        <location filename="modeledit.cpp" line="2008"/>
         <source>&amp;Delete</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2007"/>
+        <location filename="modeledit.cpp" line="2008"/>
         <source>Delete</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2008"/>
+        <location filename="modeledit.cpp" line="2009"/>
         <source>&amp;Copy</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2008"/>
+        <location filename="modeledit.cpp" line="2009"/>
         <source>Ctrl+C</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2009"/>
+        <location filename="modeledit.cpp" line="2010"/>
         <source>&amp;Cut</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2009"/>
+        <location filename="modeledit.cpp" line="2010"/>
         <source>Ctrl+X</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2010"/>
+        <location filename="modeledit.cpp" line="2011"/>
         <source>&amp;Paste</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2010"/>
+        <location filename="modeledit.cpp" line="2011"/>
         <source>Ctrl+V</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2011"/>
+        <location filename="modeledit.cpp" line="2012"/>
         <source>Du&amp;plicate</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2013"/>
+        <location filename="modeledit.cpp" line="2014"/>
         <source>Move Up</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2013"/>
+        <location filename="modeledit.cpp" line="2014"/>
         <source>Ctrl+Up</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2014"/>
+        <location filename="modeledit.cpp" line="2015"/>
         <source>Move Down</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2014"/>
+        <location filename="modeledit.cpp" line="2015"/>
         <source>Ctrl+Down</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2314"/>
+        <location filename="modeledit.cpp" line="2315"/>
         <source>Apply Template?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2314"/>
+        <location filename="modeledit.cpp" line="2315"/>
         <source>Apply template &quot;%1&quot;?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2341"/>
+        <location filename="modeledit.cpp" line="2342"/>
         <source>Clear Mixes?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2341"/>
+        <location filename="modeledit.cpp" line="2342"/>
         <source>Really clear all the mixes?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2353"/>
+        <location filename="modeledit.cpp" line="2354"/>
         <source>Clear Curves?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2353"/>
+        <location filename="modeledit.cpp" line="2354"/>
         <source>Really clear all the curves?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2011"/>
+        <location filename="modeledit.cpp" line="2012"/>
         <source>Ctrl+U</source>
         <translation type="unfinished"></translation>
     </message>
