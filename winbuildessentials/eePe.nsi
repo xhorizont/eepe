@@ -91,7 +91,7 @@ Section "eePe" SecDummy
   File "avrdude.exe"
   File "avrdude.conf"
   File "libusb0.dll"
-  File "ER9x Users Guide.pdf"
+  File "..\..\..\er9x\doc\ER9x Users Guide.pdf"
   
   CreateDirectory "$INSTDIR\lang"
   SetOutPath "$INSTDIR\lang"
