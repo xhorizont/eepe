@@ -832,7 +832,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>A new version of ER9x (%2) is available (r%1)&lt;br&gt;Would you like to download it?</source>
-        <translation type="unfinished"></translation>
+        <translation>Une nouvelle version d&apos;ER9X (%2) est disponible (r%1)&lt;br&gt;Voulez-vous la télécharger ?</translation>
     </message>
 </context>
 <context>
@@ -1522,11 +1522,11 @@ Gauche</translation>
     </message>
     <message>
         <source>Switch1</source>
-        <translation>Inter1</translation>
+        <translation>Interrupteur 1</translation>
     </message>
     <message>
         <source>Switch2</source>
-        <translation>Inter2</translation>
+        <translation>Interrupteur 2</translation>
     </message>
     <message>
         <source> Switch(</source>
@@ -1534,27 +1534,27 @@ Gauche</translation>
     </message>
     <message>
         <source>CSwitch1</source>
-        <translation>Inter Personnalisé 1</translation>
+        <translation>Interrupteur personnalisé SW1</translation>
     </message>
     <message>
         <source>CSwitch2</source>
-        <translation>Inter Personnalisé 2</translation>
+        <translation>Interrupteur personnalisé SW2</translation>
     </message>
     <message>
         <source>CSwitch3</source>
-        <translation>Inter Personnalisé 3</translation>
+        <translation>Interrupteur personnalisé SW3</translation>
     </message>
     <message>
         <source>CSwitch4</source>
-        <translation>Inter Personnalisé 4</translation>
+        <translation>Interrupteur personnalisé SW4</translation>
     </message>
     <message>
         <source>CSwitch5</source>
-        <translation>Inter Personnalisé 5</translation>
+        <translation>Interrupteur personnalisé SW5</translation>
     </message>
     <message>
         <source>CSwitch6</source>
-        <translation>Inter Personnalisé 6</translation>
+        <translation>Interrupteur personnalisé SW6</translation>
     </message>
     <message>
         <source>Delete Selected Mixes?</source>
@@ -1696,107 +1696,107 @@ Droite</translation>
     </message>
     <message>
         <source>CSwitch7</source>
-        <translation type="unfinished">Inter Personnalisé 7</translation>
+        <translation>Interrupteur personnalisé SW7</translation>
     </message>
     <message>
         <source>CSwitch8</source>
-        <translation type="unfinished">Inter Personnalisé 8</translation>
+        <translation>Interrupteur personnalisé SW8</translation>
     </message>
     <message>
         <source>CSwitch9</source>
-        <translation type="unfinished">Inter Personnalisé 9</translation>
+        <translation>Interrupteur personnalisé SW9</translation>
     </message>
     <message>
         <source>CSwitch10</source>
-        <translation type="unfinished">Inter Personnalisé 10</translation>
+        <translation>Interrupteur personnalisé SW10</translation>
     </message>
     <message>
         <source>CSwitch11</source>
-        <translation type="unfinished">Inter Personnalisé 11</translation>
+        <translation>Interrupteur personnalisé SW11</translation>
     </message>
     <message>
         <source>CSwitch12</source>
-        <translation type="unfinished">Inter Personnalisé 12</translation>
+        <translation>Interrupteur personnalisé SW12</translation>
     </message>
     <message>
         <source>Swash Type</source>
-        <translation type="unfinished"></translation>
+        <translation>Type de plateau cyclique</translation>
     </message>
     <message>
         <source>Off</source>
-        <translation type="unfinished"></translation>
+        <translation>Aucun</translation>
     </message>
     <message>
         <source>120</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>120X</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>140</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>90</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Collective</source>
-        <translation type="unfinished"></translation>
+        <translation>Source du pas collectif</translation>
     </message>
     <message>
         <source>Templates</source>
-        <translation type="unfinished"></translation>
+        <translation>Gabarits</translation>
     </message>
     <message>
         <source>Apply Template?</source>
-        <translation type="unfinished"></translation>
+        <translation>Appliquer le gabarit ?</translation>
     </message>
     <message>
         <source>Apply template &quot;%1&quot;?</source>
-        <translation type="unfinished"></translation>
+        <translation>Appliquer le gabarit &quot;%1&quot; ?</translation>
     </message>
     <message>
         <source>Clear Mixes?</source>
-        <translation type="unfinished"></translation>
+        <translation>Effacer les mixages ?</translation>
     </message>
     <message>
         <source>Really clear all the mixes?</source>
-        <translation type="unfinished"></translation>
+        <translation>Êtes-vous sûr de vraiment vouloir effacer tous les mixages ?</translation>
     </message>
     <message>
         <source>Clear Curves?</source>
-        <translation type="unfinished"></translation>
+        <translation>Effacer les courbes ?</translation>
     </message>
     <message>
         <source>Really clear all the curves?</source>
-        <translation type="unfinished"></translation>
+        <translation>Êtes-vous sûr de vraiment vouloir effacer toutes les courbes ?</translation>
     </message>
     <message>
         <source>Swash Ring</source>
-        <translation type="unfinished"></translation>
+        <translation>Swash Ring</translation>
     </message>
     <message>
         <source>Heli Setup</source>
-        <translation type="unfinished"></translation>
+        <translation>Réglages hélico</translation>
     </message>
     <message>
         <source>Invert Elevator</source>
-        <translation type="unfinished"></translation>
+        <translation>Profondeur</translation>
     </message>
     <message>
         <source>Invert Aileron</source>
-        <translation type="unfinished"></translation>
+        <translation>Aileron</translation>
     </message>
     <message>
         <source>Invert Collective</source>
-        <translation type="unfinished"></translation>
+        <translation>Pas collectif</translation>
     </message>
     <message>
         <source>Clear All Curves</source>
-        <translation type="unfinished"></translation>
+        <translation>Effacer toutes les courbes</translation>
     </message>
 </context>
 <context>
@@ -2205,19 +2205,19 @@ Indique l&apos;affectation voie / numéro de canal par défaut utilisée lors de
     </message>
     <message>
         <source>Version to download</source>
-        <translation type="unfinished"></translation>
+        <translation>Version à télécharger</translation>
     </message>
     <message>
         <source>er9x - JETI</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>er9x - FrSky</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>er9x - Ardupilot</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -2623,27 +2623,27 @@ Indique l&apos;affectation voie / numéro de canal par défaut utilisée lors de
     </message>
     <message>
         <source>SW7</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>SW8</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>SW9</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>SW10</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>SW11</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>SW12</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 </TS>
