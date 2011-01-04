@@ -25,6 +25,7 @@ private:
     Node *nodeLeft;
     Node *nodeRight;
     QTimer *timer;
+    QString modelName;
 
     quint16 g_tmr10ms;
     qint16  chanOut[NUM_CHNOUT];

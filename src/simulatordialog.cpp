@@ -50,8 +50,6 @@ simulatorDialog::simulatorDialog(QWidget *parent) :
 
     setupSticks();
     setupTimer();
-
-
 }
 
 simulatorDialog::~simulatorDialog()
@@ -66,14 +64,18 @@ void simulatorDialog::setupTimer()
     getValues();
     perOut(true);
     timer->start(10);
-
 }
 
 void simulatorDialog::timerEvent()
 {
     g_tmr10ms++;
     getValues();
+
+//    QElapsedTimer time;
+//    time.start();
     perOut();
+//    setWindowTitle(modelName + QString(" - %1msec").arg(time.elapsed()));
+
     setValues();
     centerSticks();
 
@@ -105,7 +107,8 @@ void simulatorDialog::loadParams(const EEGeneral gg, const ModelData gm)
     char buf[sizeof(g_model.name)+1];
     memcpy(&buf,&g_model.name,sizeof(g_model.name));
     buf[sizeof(g_model.name)] = 0;
-    this->setWindowTitle(tr("Simulating ") + QString(buf));
+    modelName = tr("Simulating ") + QString(buf);
+    setWindowTitle(modelName);
 
     if(g_eeGeneral.stickMode & 1)
     {
