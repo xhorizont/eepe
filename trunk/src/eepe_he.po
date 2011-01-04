@@ -3202,7 +3202,7 @@ msgctxt "simulatorDialog|"
 msgid "-100.1"
 msgstr ""
 
-#: simulatordialog.cpp:108
+#: simulatordialog.cpp:110
 msgctxt "simulatorDialog|"
 msgid "Simulating "
 msgstr ""

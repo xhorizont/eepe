@@ -3143,7 +3143,7 @@ Mode 4:
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="simulatordialog.cpp" line="108"/>
+        <location filename="simulatordialog.cpp" line="110"/>
         <source>Simulating </source>
         <translation>Симуляция</translation>
     </message>

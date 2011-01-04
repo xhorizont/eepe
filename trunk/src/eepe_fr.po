@@ -959,6 +959,8 @@ msgid ""
 "A new version of ER9x (%2) is available (r%1)<br>Would you like to download "
 "it?"
 msgstr ""
+"Une nouvelle version d'ER9X (%2) est disponible (r%1)<br>Voulez-vous la "
+"télécharger ?"
 
 #, qt-format
 msgctxt "MdiChild|"
@@ -1752,11 +1754,11 @@ msgstr "Courbe 9"
 
 msgctxt "ModelEdit|"
 msgid "Switch1"
-msgstr "Inter1"
+msgstr "Interrupteur 1"
 
 msgctxt "ModelEdit|"
 msgid "Switch2"
-msgstr "Inter2"
+msgstr "Interrupteur 2"
 
 msgctxt "ModelEdit|"
 msgid " Switch("
@@ -1764,27 +1766,27 @@ msgstr " Inter("
 
 msgctxt "ModelEdit|"
 msgid "CSwitch1"
-msgstr "Inter Personnalisé 1"
+msgstr "Interrupteur personnalisé SW1"
 
 msgctxt "ModelEdit|"
 msgid "CSwitch2"
-msgstr "Inter Personnalisé 2"
+msgstr "Interrupteur personnalisé SW2"
 
 msgctxt "ModelEdit|"
 msgid "CSwitch3"
-msgstr "Inter Personnalisé 3"
+msgstr "Interrupteur personnalisé SW3"
 
 msgctxt "ModelEdit|"
 msgid "CSwitch4"
-msgstr "Inter Personnalisé 4"
+msgstr "Interrupteur personnalisé SW4"
 
 msgctxt "ModelEdit|"
 msgid "CSwitch5"
-msgstr "Inter Personnalisé 5"
+msgstr "Interrupteur personnalisé SW5"
 
 msgctxt "ModelEdit|"
 msgid "CSwitch6"
-msgstr "Inter Personnalisé 6"
+msgstr "Interrupteur personnalisé SW6"
 
 msgctxt "ModelEdit|"
 msgid "Delete Selected Mixes?"
@@ -1928,43 +1930,37 @@ msgctxt "ModelEdit|"
 msgid "Ctrl+Down"
 msgstr "Ctrl+Bas"
 
-#, fuzzy
 msgctxt "ModelEdit|"
 msgid "CSwitch7"
-msgstr "Inter Personnalisé 7"
+msgstr "Interrupteur personnalisé SW7"
 
-#, fuzzy
 msgctxt "ModelEdit|"
 msgid "CSwitch8"
-msgstr "Inter Personnalisé 8"
+msgstr "Interrupteur personnalisé SW8"
 
-#, fuzzy
 msgctxt "ModelEdit|"
 msgid "CSwitch9"
-msgstr "Inter Personnalisé 9"
+msgstr "Interrupteur personnalisé SW9"
 
-#, fuzzy
 msgctxt "ModelEdit|"
 msgid "CSwitch10"
-msgstr "Inter Personnalisé 10"
+msgstr "Interrupteur personnalisé SW10"
 
-#, fuzzy
 msgctxt "ModelEdit|"
 msgid "CSwitch11"
-msgstr "Inter Personnalisé 11"
+msgstr "Interrupteur personnalisé SW11"
 
-#, fuzzy
 msgctxt "ModelEdit|"
 msgid "CSwitch12"
-msgstr "Inter Personnalisé 12"
+msgstr "Interrupteur personnalisé SW12"
 
 msgctxt "ModelEdit|"
 msgid "Swash Type"
-msgstr ""
+msgstr "Type de plateau cyclique"
 
 msgctxt "ModelEdit|"
 msgid "Off"
-msgstr ""
+msgstr "Aucun"
 
 msgctxt "ModelEdit|"
 msgid "120"
@@ -1984,60 +1980,60 @@ msgstr ""
 
 msgctxt "ModelEdit|"
 msgid "Collective"
-msgstr ""
+msgstr "Source du pas collectif"
 
 msgctxt "ModelEdit|"
 msgid "Templates"
-msgstr ""
+msgstr "Gabarits"
 
 msgctxt "ModelEdit|"
 msgid "Apply Template?"
-msgstr ""
+msgstr "Appliquer le gabarit ?"
 
 #, qt-format
 msgctxt "ModelEdit|"
 msgid "Apply template \"%1\"?"
-msgstr ""
+msgstr "Appliquer le gabarit \"%1\" ?"
 
 msgctxt "ModelEdit|"
 msgid "Clear Mixes?"
-msgstr ""
+msgstr "Effacer les mixages ?"
 
 msgctxt "ModelEdit|"
 msgid "Really clear all the mixes?"
-msgstr ""
+msgstr "Êtes-vous sûr de vraiment vouloir effacer tous les mixages ?"
 
 msgctxt "ModelEdit|"
 msgid "Clear Curves?"
-msgstr ""
+msgstr "Effacer les courbes ?"
 
 msgctxt "ModelEdit|"
 msgid "Really clear all the curves?"
-msgstr ""
+msgstr "Êtes-vous sûr de vraiment vouloir effacer toutes les courbes ?"
 
 msgctxt "ModelEdit|"
 msgid "Swash Ring"
-msgstr ""
+msgstr "Swash Ring"
 
 msgctxt "ModelEdit|"
 msgid "Heli Setup"
-msgstr ""
+msgstr "Réglages hélico"
 
 msgctxt "ModelEdit|"
 msgid "Invert Elevator"
-msgstr ""
+msgstr "Profondeur"
 
 msgctxt "ModelEdit|"
 msgid "Invert Aileron"
-msgstr ""
+msgstr "Aileron"
 
 msgctxt "ModelEdit|"
 msgid "Invert Collective"
-msgstr ""
+msgstr "Pas collectif"
 
 msgctxt "ModelEdit|"
 msgid "Clear All Curves"
-msgstr ""
+msgstr "Effacer toutes les courbes"
 
 #, qt-format
 msgctxt "avrOutputDialog|"
@@ -2674,7 +2670,7 @@ msgstr "Vérifier les mises à jour au démarrage"
 
 msgctxt "preferencesDialog|"
 msgid "Version to download"
-msgstr ""
+msgstr "Version à télécharger"
 
 msgctxt "preferencesDialog|"
 msgid "er9x - JETI"
