@@ -573,29 +573,29 @@ void simulatorDialog::perOut(bool init)
       switch (g_model.swashType)
       {
       case (SWASH_TYPE_120):
-          vp = REZ_SWASH_Y(vp);
-          vr = REZ_SWASH_X(vr);
+//          vp = REZ_SWASH_Y(vp);
+//          vr = REZ_SWASH_X(vr);
           anas[MIX_CYC1-1] = vc - vp;
           anas[MIX_CYC2-1] = vc + vp/2 + vr;
           anas[MIX_CYC3-1] = vc + vp/2 - vr;
           break;
       case (SWASH_TYPE_120X):
-          vp = REZ_SWASH_X(vp);
-          vr = REZ_SWASH_Y(vr);
+//          vp = REZ_SWASH_X(vp);
+//          vr = REZ_SWASH_Y(vr);
           anas[MIX_CYC1-1] = vc - vr;
           anas[MIX_CYC2-1] = vc + vr/2 + vp;
           anas[MIX_CYC3-1] = vc + vr/2 - vp;
           break;
       case (SWASH_TYPE_140):
-          vp = REZ_SWASH_Y(vp);
-          vr = REZ_SWASH_Y(vr);
+//          vp = REZ_SWASH_Y(vp);
+//          vr = REZ_SWASH_Y(vr);
           anas[MIX_CYC1-1] = vc - vp;
           anas[MIX_CYC2-1] = vc + vp + vr;
           anas[MIX_CYC3-1] = vc + vp - vr;
           break;
       case (SWASH_TYPE_90):
-          vp = REZ_SWASH_Y(vp);
-          vr = REZ_SWASH_Y(vr);
+//          vp = REZ_SWASH_Y(vp);
+//          vr = REZ_SWASH_Y(vr);
           anas[MIX_CYC1-1] = vc - vp;
           anas[MIX_CYC2-1] = vc + vr;
           anas[MIX_CYC3-1] = vc - vr;
