@@ -288,7 +288,12 @@ void MdiChild::duplicate()
     if(i && i<MAX_MODELS)
     {
         ModelData gmodel;
-        if(eeFile.getModel(&gmodel,--i)) eeFile.putModel(&gmodel,i+1);
+        if(eeFile.getModel(&gmodel,--i))
+        {
+            int j = i+1;
+            while(j<MAX_MODELS && eeFile.eeModelExists(j)) j++;
+            if(j<MAX_MODELS) eeFile.putModel(&gmodel,j);
+        }
         setModified();
     }
 }

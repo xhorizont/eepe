@@ -955,8 +955,8 @@ Mode 4:
         <translation>Основные настройки</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="662"/>
-        <location filename="mdichild.cpp" line="701"/>
+        <location filename="mdichild.cpp" line="667"/>
+        <location filename="mdichild.cpp" line="706"/>
         <source>eePe</source>
         <translation></translation>
     </message>
@@ -968,21 +968,21 @@ Mode 4:
     <message>
         <location filename="mdichild.cpp" line="243"/>
         <location filename="mdichild.cpp" line="253"/>
-        <location filename="mdichild.cpp" line="376"/>
-        <location filename="mdichild.cpp" line="404"/>
-        <location filename="mdichild.cpp" line="415"/>
-        <location filename="mdichild.cpp" line="421"/>
-        <location filename="mdichild.cpp" line="444"/>
-        <location filename="mdichild.cpp" line="467"/>
-        <location filename="mdichild.cpp" line="480"/>
-        <location filename="mdichild.cpp" line="497"/>
-        <location filename="mdichild.cpp" line="503"/>
-        <location filename="mdichild.cpp" line="516"/>
-        <location filename="mdichild.cpp" line="526"/>
-        <location filename="mdichild.cpp" line="570"/>
-        <location filename="mdichild.cpp" line="612"/>
-        <location filename="mdichild.cpp" line="625"/>
-        <location filename="mdichild.cpp" line="719"/>
+        <location filename="mdichild.cpp" line="381"/>
+        <location filename="mdichild.cpp" line="409"/>
+        <location filename="mdichild.cpp" line="420"/>
+        <location filename="mdichild.cpp" line="426"/>
+        <location filename="mdichild.cpp" line="449"/>
+        <location filename="mdichild.cpp" line="472"/>
+        <location filename="mdichild.cpp" line="485"/>
+        <location filename="mdichild.cpp" line="502"/>
+        <location filename="mdichild.cpp" line="508"/>
+        <location filename="mdichild.cpp" line="521"/>
+        <location filename="mdichild.cpp" line="531"/>
+        <location filename="mdichild.cpp" line="575"/>
+        <location filename="mdichild.cpp" line="617"/>
+        <location filename="mdichild.cpp" line="630"/>
+        <location filename="mdichild.cpp" line="724"/>
         <source>Error</source>
         <translation>Ошибка</translation>
     </message>
@@ -997,22 +997,22 @@ Mode 4:
         <translation>Невозможно установить модель!</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="358"/>
+        <location filename="mdichild.cpp" line="363"/>
         <source>Editing model %1: </source>
         <translation>Редактирование модели %1: </translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="376"/>
+        <location filename="mdichild.cpp" line="381"/>
         <source>Unable to read settings!</source>
         <translation>Невозможно считать настройки!</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="386"/>
+        <location filename="mdichild.cpp" line="391"/>
         <source>document%1.hex</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="404"/>
+        <location filename="mdichild.cpp" line="409"/>
         <source>Unable to find file %1!</source>
         <translation>Невозможно найти файл %1!</translation>
     </message>
@@ -1023,166 +1023,166 @@ Mode 4:
 %2.</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="444"/>
-        <location filename="mdichild.cpp" line="467"/>
+        <location filename="mdichild.cpp" line="449"/>
+        <location filename="mdichild.cpp" line="472"/>
         <source>Error reading file %1!</source>
         <translation>Ошибка при считывании файла %1!</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="517"/>
+        <location filename="mdichild.cpp" line="522"/>
         <source>Error reading file %1:
 %2.</source>
         <translation>Ошибка при считывании файла %1:
 %2.</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="481"/>
-        <location filename="mdichild.cpp" line="527"/>
+        <location filename="mdichild.cpp" line="486"/>
+        <location filename="mdichild.cpp" line="532"/>
         <source>Error loading file %1:
 %2.</source>
         <oldsource>File wrong size - %1</oldsource>
         <translation type="unfinished">Неверный размер файла - %1</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="415"/>
-        <location filename="mdichild.cpp" line="497"/>
+        <location filename="mdichild.cpp" line="420"/>
+        <location filename="mdichild.cpp" line="502"/>
         <source>Error reading file:
 File wrong size - %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="422"/>
-        <location filename="mdichild.cpp" line="504"/>
+        <location filename="mdichild.cpp" line="427"/>
+        <location filename="mdichild.cpp" line="509"/>
         <source>Error opening file %1:
 %2.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="552"/>
+        <location filename="mdichild.cpp" line="557"/>
         <source>Save As</source>
         <translation>Сохранить как...</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="552"/>
+        <location filename="mdichild.cpp" line="557"/>
         <source>EEPROM hex files (*.hex);;EEPROM bin files (*.bin)</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="571"/>
-        <location filename="mdichild.cpp" line="613"/>
+        <location filename="mdichild.cpp" line="576"/>
+        <location filename="mdichild.cpp" line="618"/>
         <source>Cannot write file %1:
 %2.</source>
         <translation>Не удается записать файл %1:
 %2.</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="584"/>
+        <location filename="mdichild.cpp" line="589"/>
         <source>:20%1000</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="591"/>
-        <location filename="mdichild.cpp" line="595"/>
+        <location filename="mdichild.cpp" line="596"/>
+        <location filename="mdichild.cpp" line="600"/>
         <source>%1</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="626"/>
+        <location filename="mdichild.cpp" line="631"/>
         <source>Error writing file %1:
 %2.</source>
         <translation>Ошибка при записи файла %1:
 %2.</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="663"/>
+        <location filename="mdichild.cpp" line="668"/>
         <source>&apos;%1&apos; has been modified.
 Do you want to save your changes?</source>
         <translation>&apos;%1&apos; был изменен.
 Вы хотите сохранить изменения?</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="702"/>
+        <location filename="mdichild.cpp" line="707"/>
         <source>Write %1 to EEPROM memory?</source>
         <oldsource>Burn %1 to transmitter?</oldsource>
         <translation type="unfinished">Прошить %1 в передатчик?</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="719"/>
+        <location filename="mdichild.cpp" line="724"/>
         <source>Cannot write temporary file!</source>
         <translation>Не удается записать временный файл!</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="742"/>
+        <location filename="mdichild.cpp" line="747"/>
         <source>&amp;Edit</source>
         <translation>Править</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="744"/>
+        <location filename="mdichild.cpp" line="749"/>
         <source>&amp;Delete</source>
         <translation>Удалить</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="744"/>
+        <location filename="mdichild.cpp" line="749"/>
         <source>Delete</source>
         <translation>Удалить</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="745"/>
+        <location filename="mdichild.cpp" line="750"/>
         <source>&amp;Copy</source>
         <translation>Копировать</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="745"/>
+        <location filename="mdichild.cpp" line="750"/>
         <source>Ctrl+C</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="746"/>
+        <location filename="mdichild.cpp" line="751"/>
         <source>&amp;Cut</source>
         <translation>Вырезать</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="746"/>
+        <location filename="mdichild.cpp" line="751"/>
         <source>Ctrl+X</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="747"/>
+        <location filename="mdichild.cpp" line="752"/>
         <source>&amp;Paste</source>
         <translation>Вставить</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="747"/>
+        <location filename="mdichild.cpp" line="752"/>
         <source>Ctrl+V</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="748"/>
+        <location filename="mdichild.cpp" line="753"/>
         <source>D&amp;uplicate</source>
         <translation>Дублировать</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="748"/>
+        <location filename="mdichild.cpp" line="753"/>
         <source>Ctrl+U</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="750"/>
+        <location filename="mdichild.cpp" line="755"/>
         <source>&amp;Simulate</source>
         <translation>Симуляция</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="750"/>
+        <location filename="mdichild.cpp" line="755"/>
         <source>Alt+S</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="752"/>
+        <location filename="mdichild.cpp" line="757"/>
         <source>&amp;Write To Tx</source>
         <translation>Записать в TX</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="752"/>
+        <location filename="mdichild.cpp" line="757"/>
         <source>Ctrl+Alt+W</source>
         <translation></translation>
     </message>
