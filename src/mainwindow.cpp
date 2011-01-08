@@ -263,7 +263,7 @@ void MainWindow::reply2Finished(QNetworkReply * reply)
                                                      QMessageBox::Yes | QMessageBox::No);
                     if (ret2 == QMessageBox::Yes)
                     {
-                        if(QDesktopServices::openUrl(QUrl(QFileInfo(fileName).absoluteFilePath(), QUrl::TolerantMode)))
+                        if(QDesktopServices::openUrl(QUrl(QFileInfo(fileName).absoluteFilePath(), QUrl::StrictMode)))
                             QApplication::exit();
                     }
                 }
