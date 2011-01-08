@@ -31,5 +31,6 @@
         <file>images/preferences.png</file>
         <file>images/switch_dir.png</file>
         <file>images/exit.png</file>
+        <file>images/er9x_manual.png</file>
     </qresource>
 </RCC>

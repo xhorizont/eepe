@@ -12,9 +12,13 @@ MixersList::MixersList(QWidget *parent) :
     setDropIndicatorShown(true);
 }
 
+void MixersList::keyPressEvent(QKeyEvent *event)
+{
+    emit keyWasPressed(event);
+}
 
 bool MixersList::dropMimeData( int index, const QMimeData * data, Qt::DropAction action )
-{
+{    
     QByteArray dropData = data->data("application/x-qabstractitemmodeldatalist");
     QDataStream stream(&dropData, QIODevice::ReadOnly);
     QByteArray qba;

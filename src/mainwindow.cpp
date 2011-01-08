@@ -565,6 +565,13 @@ void MainWindow::donators()
     dd->exec();
 }
 
+void MainWindow::showEr9xManual()
+{
+//    ER9x Users Guide.pdf
+    QString fp = "file://" + QFileInfo("ER9x Users Guide.pdf").absoluteFilePath();
+    QDesktopServices::openUrl(QUrl(fp, QUrl::StrictMode));
+}
+
 void MainWindow::about()
 {
     QString aboutStr = "<center><img src=\":/images/eepe-title.png\"><br>";
@@ -797,6 +804,10 @@ void MainWindow::createActions()
     switchLayoutDirectionAct = new QAction(QIcon(":/images/switch_dir.png"),  tr("Switch layout direction"), this);
     switchLayoutDirectionAct->setStatusTip(tr("Switch layout Left/Right"));
     connect(switchLayoutDirectionAct, SIGNAL(triggered()), this, SLOT(switchLayoutDirection()));
+
+    showEr9xManualAct = new QAction(QIcon(":/images/er9x_manual.png"), tr("&ER9x Users Guide"), this);
+    showEr9xManualAct->setStatusTip(tr("Show ER9x Users Guide"));
+    connect(showEr9xManualAct, SIGNAL(triggered()), this, SLOT(showEr9xManual()));
 }
 
 void MainWindow::createMenus()
@@ -840,6 +851,8 @@ void MainWindow::createMenus()
     menuBar()->addSeparator();
 
     helpMenu = menuBar()->addMenu(tr("&Help"));
+    helpMenu->addAction(showEr9xManualAct);
+    helpMenu->addSeparator();
     helpMenu->addAction(aboutAct);
     helpMenu->addAction(donatorsAct);
     helpMenu->addSeparator();
@@ -872,6 +885,12 @@ void MainWindow::createToolBars()
     burnToolBar->addAction(burnFromFlashAct);
     burnToolBar->addSeparator();
     burnToolBar->addAction(burnConfigAct);
+
+    helpToolBar = addToolBar(tr("Help"));
+    helpToolBar->addAction(showEr9xManualAct);
+    helpToolBar->addAction(aboutAct);
+    helpToolBar->addAction(donatorsAct);
+    helpToolBar->addAction(checkForUpdatesAct);
 }
 
 void MainWindow::createStatusBar()

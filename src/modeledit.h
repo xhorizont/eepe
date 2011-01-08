@@ -105,7 +105,6 @@ private slots:
     void on_resetCurve_15_clicked();
     void on_resetCurve_16_clicked();
 
-
     void mimeDropped(int index, const QMimeData *data, Qt::DropAction action);
     void pasteMIMEData(const QMimeData * mimeData, int destIdx=1000);
     void on_pushButton_clicked();
@@ -119,8 +118,11 @@ private slots:
     void moveMixUp();
     void moveMixDown();
 
-    void MixerlistWidget_customContextMenuRequested(QPoint pos);
-    void MixerlistWidget_doubleClicked(QModelIndex index);
+    void mixerlistWidget_customContextMenuRequested(QPoint pos);
+    void mixerlistWidget_doubleClicked(QModelIndex index);
+    void mixerlistWidget_KeyPress(QKeyEvent *event);
+
+
 
     void on_curveEdit_1_clicked();
     void on_curveEdit_2_clicked();

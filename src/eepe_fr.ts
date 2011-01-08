@@ -834,6 +834,18 @@ p, li { white-space: pre-wrap; }
         <source>A new version of ER9x (%2) is available (r%1)&lt;br&gt;Would you like to download it?</source>
         <translation>Une nouvelle version d&apos;ER9X (%2) est disponible (r%1)&lt;br&gt;Voulez-vous la télécharger ?</translation>
     </message>
+    <message>
+        <source>&amp;ER9x Users Guide</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show ER9x Users Guide</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Help</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>MdiChild</name>

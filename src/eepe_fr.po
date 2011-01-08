@@ -962,6 +962,18 @@ msgstr ""
 "Une nouvelle version d'ER9X (%2) est disponible (r%1)<br>Voulez-vous la "
 "télécharger ?"
 
+msgctxt "MainWindow|"
+msgid "&ER9x Users Guide"
+msgstr ""
+
+msgctxt "MainWindow|"
+msgid "Show ER9x Users Guide"
+msgstr ""
+
+msgctxt "MainWindow|"
+msgid "Help"
+msgstr ""
+
 #, qt-format
 msgctxt "MdiChild|"
 msgid "%1"
