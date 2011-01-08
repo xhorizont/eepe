@@ -92,6 +92,7 @@ private slots:
     void print();
     void preferences();
     void donators();
+    void showEr9xManual();
     void updateMenus();
     void updateWindowMenu();
     MdiChild *createMdiChild();
@@ -130,6 +131,7 @@ private:
     QToolBar *fileToolBar;
     QToolBar *editToolBar;
     QToolBar *burnToolBar;
+    QToolBar *helpToolBar;
     QAction *newAct;
     QAction *openAct;
     QAction *saveAct;
@@ -161,6 +163,7 @@ private:
     QAction *donatorsAct;
     QAction *printAct;
     QAction *switchLayoutDirectionAct;
+    QAction *showEr9xManualAct;
     //QAction *aboutQtAct;
 };
 

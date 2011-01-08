@@ -10,9 +10,13 @@ public:
     explicit MixersList(QWidget *parent = 0);
 //    QMimeData * mimeData ( const QList<QListWidgetItem *> items );
 
+    void keyPressEvent(QKeyEvent *event);
+
 
 signals:
     void mimeDropped(int index, const QMimeData *data, Qt::DropAction action);
+    void keyWasPressed(QKeyEvent *event);
+
 
 protected:
 
@@ -21,9 +25,6 @@ public slots:
 
 private:
     QPoint dragStartPosition;
-
-
-
 
 };
 
