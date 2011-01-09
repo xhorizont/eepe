@@ -836,15 +836,15 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>&amp;ER9x Users Guide</source>
-        <translation type="unfinished"></translation>
+        <translation>Manuel d&apos;utilisation d&apos;&amp;ER9x</translation>
     </message>
     <message>
         <source>Show ER9x Users Guide</source>
-        <translation type="unfinished"></translation>
+        <translation>Affiche le manuel d&apos;utilisation d&apos;ER9x</translation>
     </message>
     <message>
         <source>Help</source>
-        <translation type="unfinished"></translation>
+        <translation>Aide</translation>
     </message>
 </context>
 <context>
