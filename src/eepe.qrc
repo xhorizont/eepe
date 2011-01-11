@@ -6,7 +6,6 @@
         <file>images/open.png</file>
         <file>images/paste.png</file>
         <file>images/save.png</file>
-        <file>icon.ico</file>
         <file>images/eepe-title.png</file>
         <file>images/read_eeprom.png</file>
         <file>images/write_eeprom.png</file>
@@ -32,5 +31,6 @@
         <file>images/switch_dir.png</file>
         <file>images/exit.png</file>
         <file>images/er9x_manual.png</file>
+        <file>icon.png</file>
     </qresource>
 </RCC>

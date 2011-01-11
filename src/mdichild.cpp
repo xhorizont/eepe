@@ -388,7 +388,7 @@ void MdiChild::newFile()
     static int sequenceNumber = 1;
 
     isUntitled = true;
-    curFile = tr("document%1.hex").arg(sequenceNumber++);
+    curFile = tr("document%1.eepe").arg(sequenceNumber++);
     setWindowTitle(curFile + "[*]");
 
 }
@@ -413,7 +413,7 @@ bool MdiChild::loadFile(const QString &fileName, bool resetCurrentFile)
 
     int fileType = getFileType(fileName);
 
-    if(fileType==FILE_TYPE_HEX) //read HEX file
+    if(fileType==FILE_TYPE_HEX || fileType==FILE_TYPE_EEPE) //read HEX file
     {
         if((file.size()>(6*1024)) || (file.size()<(4*1024)))  //if filesize> 6k and <4kb
         {
@@ -434,6 +434,20 @@ bool MdiChild::loadFile(const QString &fileName, bool resetCurrentFile)
         memset(&temp,0,EESIZE);
 
         QTextStream in(&file);
+
+        if(fileType==FILE_TYPE_EEPE)   // read EEPE file header
+        {
+            QString hline = in.readLine();
+            if(hline!=EEPE_EEPROM_FILE_HEADER)
+            {
+                QMessageBox::critical(this, tr("Error"),
+                                     tr("Invalid EEPE EEPROM File %1")
+                                     .arg(fileName));
+                file.close();
+                return false;
+            }
+        }
+
         while (!in.atEnd())
         {
             QString line = in.readLine();
@@ -554,7 +568,7 @@ bool MdiChild::save()
 
 bool MdiChild::saveAs()
 {
-    QString fileName = QFileDialog::getSaveFileName(this, tr("Save As"),curFile,tr("EEPROM hex files (*.hex);;EEPROM bin files (*.bin)"));
+    QString fileName = QFileDialog::getSaveFileName(this, tr("Save As"),curFile,tr(EEPROM_FILES_FILTER));
     if (fileName.isEmpty())
         return false;
 
@@ -569,7 +583,7 @@ bool MdiChild::saveFile(const QString &fileName, bool setCurrent)
 
     int fileType = getFileType(fileName);
 
-    if(fileType==FILE_TYPE_HEX) //write hex
+    if(fileType==FILE_TYPE_HEX || fileType==FILE_TYPE_EEPE) //write hex
     {
         if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
             QMessageBox::warning(this, tr("Error"),
@@ -584,9 +598,15 @@ bool MdiChild::saveFile(const QString &fileName, bool setCurrent)
         eeFile.saveFile(&temp);
 
         QTextStream out(&file);
+
+        if(fileType==FILE_TYPE_EEPE) // write EEPE file header
+        {
+            out << EEPE_EEPROM_FILE_HEADER << "\n";
+        }
+
         for(int i=0; i<(EESIZE/32); i++)
         {
-            QString str = tr(":20%1000").arg(i*32,4,16,QChar('0')); //write start, bytecount (32), address and record type
+            QString str = QString(":20%1000").arg(i*32,4,16,QChar('0')); //write start, bytecount (32), address and record type
             quint8 chkSum = 0;
             chkSum = -32; //-bytecount; recordtype is zero
             chkSum -= (i*32) & 0xFF;
@@ -599,16 +619,12 @@ bool MdiChild::saveFile(const QString &fileName, bool setCurrent)
 
             str += tr("%1").arg(chkSum,2,16,QChar('0'));
             out << str.toUpper() << "\n"; // output to file and lf;
-
         }
 
         out << ":00000001FF";  // write EOF
         file.close();
         if(setCurrent) setCurrentFile(fileName);
         return true;
-
-
-        //             out << "The magic number is: " << 49 << "\n"
     }
 
     if(fileType==FILE_TYPE_BIN) //write binary
@@ -695,8 +711,10 @@ QString MdiChild::strippedName(const QString &fullFileName)
 
 int MdiChild::getFileType(const QString &fullFileName)
 {
-    if(QFileInfo(fullFileName).suffix().toUpper()=="HEX") return FILE_TYPE_HEX;
-    if(QFileInfo(fullFileName).suffix().toUpper()=="BIN") return FILE_TYPE_BIN;
+    if(QFileInfo(fullFileName).suffix().toUpper()=="HEX")  return FILE_TYPE_HEX;
+    if(QFileInfo(fullFileName).suffix().toUpper()=="BIN")  return FILE_TYPE_BIN;
+    if(QFileInfo(fullFileName).suffix().toUpper()=="EEPM") return FILE_TYPE_EEPM;
+    if(QFileInfo(fullFileName).suffix().toUpper()=="EEPE") return FILE_TYPE_EEPE;
     return 0;
 }
 

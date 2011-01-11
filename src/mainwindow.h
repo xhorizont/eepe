@@ -80,7 +80,7 @@ private slots:
     void paste();
     void burnTo();
     void burnFrom();
-    void burnToFlash();
+    void burnToFlash(QString fileToFlash="");
     void burnFromFlash();
     void burnExtenalToEEPROM();
     void burnExtenalFromEEPROM();

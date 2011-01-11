@@ -105,6 +105,8 @@ Section "eePe" SecDummy
   ;Associate with extentions ,bin and .hex
   ${registerExtension} "$INSTDIR\eepe.exe" ".bin" "BIN_File"
   ${registerExtension} "$INSTDIR\eepe.exe" ".hex" "HEX_File"
+  ${registerExtension} "$INSTDIR\eepe.exe" ".eepe" "EEPE_File"
+  ${registerExtension} "$INSTDIR\eepe.exe" ".eepm" "EEPM_File"
 
   
   ;Create uninstaller
@@ -160,6 +162,8 @@ Section "Uninstall"
   
   ${unregisterExtension} ".bin" "BIN File"
   ${unregisterExtension} ".hex" "HEX File"
+  ${unregisterExtension} ".eepm" "EEPE File"
+  ${unregisterExtension} ".eepe" "EEPM File"
   
   !insertmacro MUI_STARTMENU_GETFOLDER Application $StartMenuFolder
     
