@@ -85,7 +85,7 @@ void simulatorDialog::timerEvent()
     centerSticks();
 
     timerTick();
-    if(s_timerState != TMR_OFF)
+//    if(s_timerState != TMR_OFF)
         setWindowTitle(modelName + QString(" - Timer: (%3, %4) %1:%2")
                        .arg(abs(-s_timerVal)/60, 2, 10, QChar('0'))
                        .arg(abs(-s_timerVal)%60, 2, 10, QChar('0'))
