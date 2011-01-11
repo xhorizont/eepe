@@ -4,6 +4,7 @@
 #include <QtGui>
 #include <inttypes.h>
 #include "pers.h"
+#include "helpers.h"
 
 #define GBALL_SIZE  20
 
@@ -57,6 +58,12 @@ simulatorDialog::~simulatorDialog()
     delete ui;
 }
 
+void simulatorDialog::closeEvent ( QCloseEvent * event )
+{
+    timer->stop();
+    delete timer;
+}
+
 void simulatorDialog::setupTimer()
 {
     timer = new QTimer(this);
@@ -69,15 +76,21 @@ void simulatorDialog::setupTimer()
 void simulatorDialog::timerEvent()
 {
     g_tmr10ms++;
+
     getValues();
 
-//    QElapsedTimer time;
-//    time.start();
     perOut();
-//    setWindowTitle(modelName + QString(" - %1msec").arg(time.elapsed()));
 
     setValues();
     centerSticks();
+
+    timerTick();
+    if(s_timerState != TMR_OFF)
+        setWindowTitle(modelName + QString(" - Timer: (%3, %4) %1:%2")
+                       .arg(abs(-s_timerVal)/60, 2, 10, QChar('0'))
+                       .arg(abs(-s_timerVal)%60, 2, 10, QChar('0'))
+                       .arg(getTimerMode(g_model.tmrMode))
+                       .arg(g_model.tmrDir ? "Count Up" : "Count Down"));
 
     if(beepVal)
     {
@@ -126,6 +139,25 @@ void simulatorDialog::loadParams(const EEGeneral gg, const ModelData gm)
     ui->trimVLeft->setValue(g_model.trim[1]);
     ui->trimVRight->setValue(g_model.trim[2]);
     ui->trimHRight->setValue(g_model.trim[3]);
+
+    beepVal = 0;
+    beepShow = 0;
+    bpanaCenter = 0;
+    g_tmr10ms = 0;
+
+    s_timeCumTot = 0;
+    s_timeCumAbs = 0;
+    s_timeCumSw = 0;
+    s_timeCumThr = 0;
+    s_timeCum16ThrP = 0;
+    s_timerState = 0;
+    beepAgain = 0;
+    g_LightOffCounter = 0;
+    s_timerVal = 0;
+    s_time = 0;
+    s_cnt = 0;
+    s_sum = 0;
+    sw_toggled = 0;
 }
 
 void simulatorDialog::getValues()
@@ -222,7 +254,17 @@ void simulatorDialog::beepWarn1()
     beepShow = 20;
 }
 
+void simulatorDialog::beepWarn2()
+{
+    beepVal = 1;
+    beepShow = 20;
+}
 
+void simulatorDialog::beepWarn()
+{
+    beepVal = 1;
+    beepShow = 20;
+}
 
 void simulatorDialog::setupSticks()
 {
@@ -480,6 +522,95 @@ int16_t simulatorDialog::intpol(int16_t x, uint8_t idx) // -100, -75, -50, -25, 
     erg  = (int16_t)crv[a]*((D5-dx)/2) + (int16_t)crv[a+1]*(dx/2);
   }
   return erg / 25; // 100*D5/RESX;
+}
+
+void simulatorDialog::timerTick()
+{
+    int16_t val = 0;
+    if((abs(g_model.tmrMode)>1) && (abs(g_model.tmrMode)<TMR_VAROFS)) {
+      val = calibratedStick[CONVERT_MODE(abs(g_model.tmrMode)/2)-1];
+      val = (g_model.tmrMode<0 ? RESX-val : val+RESX ) / (RESX/16);  // only used for %
+    }
+
+      int8_t tm = g_model.tmrMode;
+
+      if(abs(tm)>=(TMR_VAROFS+MAX_DRSWITCH-1)){ //toggeled switch//abs(g_model.tmrMode)<(10+MAX_DRSWITCH-1)
+        static uint8_t lastSwPos;
+        uint8_t swPos = getSwitch(tm>0 ? tm-(TMR_VAROFS+MAX_DRSWITCH-1-1) : tm+(TMR_VAROFS+MAX_DRSWITCH-1-1) ,0);
+        if(swPos && !lastSwPos)  sw_toggled = !sw_toggled;  //if switcdh is flipped first time -> change counter state
+        lastSwPos = swPos;
+      }
+
+      s_time++;
+      if(s_time<100) return; //1 sec
+      s_time = 0;
+
+      if(abs(tm)<TMR_VAROFS) sw_toggled = false; // not switch - sw timer off
+      else if(abs(tm)<(TMR_VAROFS+MAX_DRSWITCH-1)) sw_toggled = getSwitch((tm>0 ? tm-(TMR_VAROFS-1) : tm+(TMR_VAROFS-1)) ,0); //normal switch
+
+      s_timeCumTot               += 1;
+      s_timeCumAbs               += 1;
+      if(val) s_timeCumThr       += 1;
+      if(!sw_toggled) s_timeCumSw += 1;
+      s_timeCum16ThrP            += val/2;
+
+      s_timerVal = g_model.tmrVal;
+      uint8_t tmrM = abs(g_model.tmrMode);
+      if(tmrM==TMRMODE_NONE) s_timerState = TMR_OFF;
+      else if(tmrM==TMRMODE_ABS) s_timerVal -= s_timeCumAbs;
+      else if(tmrM<TMR_VAROFS) s_timerVal -= (tmrM&1) ? s_timeCum16ThrP/16 : s_timeCumThr;// stick% : stick
+      else s_timerVal -= s_timeCumSw; //switch
+
+      switch(s_timerState)
+      {
+        case TMR_OFF:
+          if(g_model.tmrMode != TMRMODE_NONE) s_timerState=TMR_RUNNING;
+          break;
+        case TMR_RUNNING:
+          if(s_timerVal<=0 && g_model.tmrVal) s_timerState=TMR_BEEPING;
+          break;
+        case TMR_BEEPING:
+          if(s_timerVal <= -MAX_ALERT_TIME)   s_timerState=TMR_STOPPED;
+          if(g_model.tmrVal == 0)             s_timerState=TMR_RUNNING;
+          break;
+        case TMR_STOPPED:
+          break;
+      }
+
+      static int16_t last_tmr;
+
+      if(last_tmr != s_timerVal)  //beep only if seconds advance
+      {
+          if(s_timerState==TMR_RUNNING)
+          {
+              if(g_eeGeneral.preBeep && g_model.tmrVal) // beep when 30, 15, 10, 5,4,3,2,1 seconds remaining
+              {
+                  if(s_timerVal==30) {beepAgain=2; beepWarn2();} //beep three times
+                  if(s_timerVal==20) {beepAgain=1; beepWarn2();} //beep two times
+                  if(s_timerVal==10)  beepWarn2();
+                  if(s_timerVal<= 3)  beepWarn2();
+
+                  if(g_eeGeneral.flashBeep && (s_timerVal==30 || s_timerVal==20 || s_timerVal==10 || s_timerVal<=3))
+                      g_LightOffCounter = FLASH_DURATION;
+              }
+
+              if(g_eeGeneral.minuteBeep && (((g_model.tmrDir ? g_model.tmrVal-s_timerVal : s_timerVal)%60)==0)) //short beep every minute
+              {
+                  beepWarn2();
+                  if(g_eeGeneral.flashBeep) g_LightOffCounter = FLASH_DURATION;
+              }
+          }
+          else if(s_timerState==TMR_BEEPING)
+          {
+              beepWarn();
+              if(g_eeGeneral.flashBeep) g_LightOffCounter = FLASH_DURATION;
+          }
+      }
+      last_tmr = s_timerVal;
+      if(g_model.tmrDir) s_timerVal = g_model.tmrVal-s_timerVal; //if counting backwards - display backwards
+
+
+
 }
 
 void simulatorDialog::perOut(bool init)
