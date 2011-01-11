@@ -69,6 +69,7 @@
 #define EEPE_URL   "http://eepe.googlecode.com/svn/trunk/eePeInstall.exe"
 #define EEPE_STAMP "http://eepe.googlecode.com/svn/trunk/src/stamp-eepe.h"
 
+
 MainWindow::MainWindow()
 {
     mdiArea = new QMdiArea;
@@ -91,7 +92,7 @@ MainWindow::MainWindow()
 
     setWindowTitle(tr("eePe - EEPROM Editor"));
     setUnifiedTitleAndToolBarOnMac(true);
-    this->setWindowIcon(QIcon(":/icon.ico"));
+    this->setWindowIcon(QIcon(":/icon.png"));
 
     checkForUpdates(false);
 
@@ -101,11 +102,23 @@ MainWindow::MainWindow()
     if(strl.count()>1) str = strl[1];
     if(!str.isEmpty())
     {
-        MdiChild *child = createMdiChild();
-        if (child->loadFile(str)) {
-            statusBar()->showMessage(tr("File loaded"), 2000);
-            child->show();
-            if(!child->parentWidget()->isMaximized() && !child->parentWidget()->isMinimized()) child->parentWidget()->resize(400,500);
+//        MdiChild tch;
+        int fileType = MdiChild::getFileType(str);
+
+        if(fileType==FILE_TYPE_HEX)
+        {
+            burnToFlash(str);
+        }
+
+        if(fileType==FILE_TYPE_EEPE || fileType==FILE_TYPE_EEPM)
+        {
+            MdiChild *child = createMdiChild();
+            if (child->loadFile(str))
+            {
+                statusBar()->showMessage(tr("File loaded"), 2000);
+                child->show();
+                if(!child->parentWidget()->isMaximized() && !child->parentWidget()->isMinimized()) child->parentWidget()->resize(400,500);
+            }
         }
     }
 }
@@ -185,7 +198,7 @@ void MainWindow::reply1Finished(QNetworkReply * reply)
 
             if (ret == QMessageBox::Yes)
             {
-                QString fileName = QFileDialog::getSaveFileName(this, tr("Save As"),settings.value("lastDir").toString() + "/" + baseFileName,tr("EEPROM hex files (*.hex);;EEPROM bin files (*.bin)"));
+                QString fileName = QFileDialog::getSaveFileName(this, tr("Save As"),settings.value("lastDir").toString() + "/" + baseFileName,tr(HEX_FILES_FILTER));
                 if (fileName.isEmpty()) return;
                 settings.setValue("lastDir",QFileInfo(fileName).dir().absolutePath());
 
@@ -263,7 +276,7 @@ void MainWindow::reply2Finished(QNetworkReply * reply)
                                                      QMessageBox::Yes | QMessageBox::No);
                     if (ret2 == QMessageBox::Yes)
                     {
-                        if(QDesktopServices::openUrl(QUrl(QFileInfo(fileName).absoluteFilePath(), QUrl::StrictMode)))
+                        if(QDesktopServices::openUrl(QUrl(QFileInfo(fileName).canonicalFilePath(), QUrl::StrictMode)))
                             QApplication::exit();
                     }
                 }
@@ -305,7 +318,7 @@ void MainWindow::newFile()
 void MainWindow::open()
 {
     QSettings settings("er9x-eePe", "eePe");
-    QString fileName = QFileDialog::getOpenFileName(this,tr("Open"),settings.value("lastDir").toString(),tr("EEPROM files (*.bin *.hex);;BIN files (*.bin);;HEX files (*.hex)"));
+    QString fileName = QFileDialog::getOpenFileName(this,tr("Open"),settings.value("lastDir").toString(),tr(EEPROM_FILES_FILTER));
     if (!fileName.isEmpty())
     {
         settings.setValue("lastDir",QFileInfo(fileName).dir().absolutePath());
@@ -421,7 +434,7 @@ void MainWindow::burnFrom()
 void MainWindow::burnExtenalToEEPROM()
 {
     QSettings settings("er9x-eePe", "eePe");
-    QString fileName = QFileDialog::getOpenFileName(this,tr("Choose file to write to EEPROM memory"),settings.value("lastDir").toString(),tr("FLASH files (*.bin *.hex);;BIN files (*.bin);;HEX files (*.hex)"));
+    QString fileName = QFileDialog::getOpenFileName(this,tr("Choose file to write to EEPROM memory"),settings.value("lastDir").toString(),tr(EXTERNAL_EEPROM_FILES_FILTER));
     if (!fileName.isEmpty())
     {
         settings.setValue("lastDir",QFileInfo(fileName).dir().absolutePath());
@@ -449,10 +462,15 @@ void MainWindow::burnExtenalToEEPROM()
     }
 }
 
-void MainWindow::burnToFlash()
+void MainWindow::burnToFlash(QString fileToFlash)
 {
     QSettings settings("er9x-eePe", "eePe");
-    QString fileName = QFileDialog::getOpenFileName(this,tr("Choose file to write to flash memory"),settings.value("lastDir").toString(),tr("FLASH files (*.bin *.hex);;BIN files (*.bin);;HEX files (*.hex)"));
+    QString fileName;
+    if(fileToFlash.isEmpty())
+        fileName = QFileDialog::getOpenFileName(this,tr("Choose file to write to flash memory"),settings.value("lastDir").toString(),tr(FLASH_FILES_FILTER));
+    else
+        fileName = fileToFlash;
+
     if (!fileName.isEmpty())
     {
         settings.setValue("lastDir",QFileInfo(fileName).dir().absolutePath());
@@ -484,7 +502,7 @@ void MainWindow::burnToFlash()
 void MainWindow::burnExtenalFromEEPROM()
 {
     QSettings settings("er9x-eePe", "eePe");
-    QString fileName = QFileDialog::getSaveFileName(this,tr("Read EEPROM memory to File"),settings.value("lastDir").toString(),tr("HEX files (*.hex);;BIN files (*.bin);;FLASH files (*.bin *.hex)"));
+    QString fileName = QFileDialog::getSaveFileName(this,tr("Read EEPROM memory to File"),settings.value("lastDir").toString(),tr(EXTERNAL_EEPROM_FILES_FILTER));
     if (!fileName.isEmpty())
     {
         settings.setValue("lastDir",QFileInfo(fileName).dir().absolutePath());
@@ -514,7 +532,7 @@ void MainWindow::burnExtenalFromEEPROM()
 void MainWindow::burnFromFlash()
 {
     QSettings settings("er9x-eePe", "eePe");
-    QString fileName = QFileDialog::getSaveFileName(this,tr("Read Flash to File"),settings.value("lastDir").toString(),tr("HEX files (*.hex);;BIN files (*.bin);;FLASH files (*.bin *.hex)"));
+    QString fileName = QFileDialog::getSaveFileName(this,tr("Read Flash to File"),settings.value("lastDir").toString(),tr(FLASH_FILES_FILTER));
     if (!fileName.isEmpty())
     {
         settings.setValue("lastDir",QFileInfo(fileName).dir().absolutePath());
@@ -568,8 +586,8 @@ void MainWindow::donators()
 void MainWindow::showEr9xManual()
 {
 //    ER9x Users Guide.pdf
-    QString fp = "file://" + QFileInfo("ER9x Users Guide.pdf").absoluteFilePath();
-    QDesktopServices::openUrl(QUrl(fp, QUrl::StrictMode));
+    QString cdir = QApplication::applicationDirPath();
+    QDesktopServices::openUrl(QUrl::fromLocalFile(cdir + "/ER9x Users Guide.pdf"));
 }
 
 void MainWindow::about()
@@ -793,7 +811,7 @@ void MainWindow::createActions()
     separatorAct = new QAction(this);
     separatorAct->setSeparator(true);
 
-    aboutAct = new QAction(QIcon(":/icon.ico"), tr("&About"), this);
+    aboutAct = new QAction(QIcon(":/icon.png"), tr("&About"), this);
     aboutAct->setStatusTip(tr("Show the application's About box"));
     connect(aboutAct, SIGNAL(triggered()), this, SLOT(about()));
 

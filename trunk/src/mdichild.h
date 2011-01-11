@@ -42,12 +42,25 @@
 #ifndef MDICHILD_H
 #define MDICHILD_H
 
-#define FILE_TYPE_BIN 1
-#define FILE_TYPE_HEX 2
+#define FILE_TYPE_BIN  1
+#define FILE_TYPE_HEX  2
+#define FILE_TYPE_EEPE 3
+#define FILE_TYPE_EEPM 4
 
 #include <QtGui>
 #include "pers.h"
 #include "myeeprom.h"
+
+#define EEPE_EEPROM_FILE_HEADER  "EEPE EEPROM FILE"
+#define EEPE_MODEL_FILE_HEADER  "EEPE MODEL FILE"
+
+#define HEX_FILES_FILTER     "HEX files (*.hex);;"
+#define BIN_FILES_FILTER     "BIN files (*.bin);;"
+#define EEPE_FILES_FILTER    "EEPE EEPROM files (*.eepe);;"
+#define EEPM_FILES_FILTER    "EEPE MODEL files (*.eepm);;"
+#define EEPROM_FILES_FILTER  "EEPE files (*.eepe *.eepm *.bin *.hex);;" EEPE_FILES_FILTER EEPM_FILES_FILTER BIN_FILES_FILTER HEX_FILES_FILTER
+#define FLASH_FILES_FILTER   "FLASH files (*.bin *.hex);;" BIN_FILES_FILTER HEX_FILES_FILTER
+#define EXTERNAL_EEPROM_FILES_FILTER   "EEPROM files (*.bin *.hex);;" BIN_FILES_FILTER HEX_FILES_FILTER
 
 class MdiChild : public QListWidget//QMdiSubWindow
 {
@@ -69,6 +82,7 @@ public:
     QString currentFile() { return curFile; }
     void keyPressEvent(QKeyEvent *event);
     bool hasPasteData();
+    static int getFileType(const QString &fullFileName);
 
 signals:
     void copyAvailable(bool val);
@@ -107,7 +121,6 @@ private:
     void doPaste(QByteArray *gmData, int index);
     void doCopy(QByteArray *gmData);
     QString strippedName(const QString &fullFileName);
-    int getFileType(const QString &fullFileName);
 
     QPoint dragStartPosition;
 

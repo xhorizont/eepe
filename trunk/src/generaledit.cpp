@@ -16,7 +16,7 @@ GeneralEdit::GeneralEdit(EEPFILE *eFile, QWidget *parent) :
     ui(new Ui::GeneralEdit)
 {
     ui->setupUi(this);
-    this->setWindowIcon(QIcon(":/icon.ico"));
+    this->setWindowIcon(QIcon(":/icon.png"));
     eeFile = eFile;
 
     QSettings settings("er9x-eePe", "eePe");

@@ -504,7 +504,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>FLASH files (*.bin *.hex);;BIN files (*.bin);;HEX files (*.hex)</source>
-        <translation>Fichiers FLASH (*.bin *.hex);;fichiers BIN (*.bin);;fichiers HEX (*.hex)</translation>
+        <translation type="obsolete">Fichiers FLASH (*.bin *.hex);;fichiers BIN (*.bin);;fichiers HEX (*.hex)</translation>
     </message>
     <message>
         <source>&amp;%1 %2</source>
@@ -532,7 +532,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>EEPROM files (*.bin *.hex);;BIN files (*.bin);;HEX files (*.hex)</source>
-        <translation>Fichiers EEPROM (*.bin *.hex);;fichiers BIN (*.bin);;fichiers HEX (*.hex)</translation>
+        <translation type="obsolete">Fichiers EEPROM (*.bin *.hex);;fichiers BIN (*.bin);;fichiers HEX (*.hex)</translation>
     </message>
     <message>
         <source>Read Flash memory</source>
@@ -592,7 +592,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>HEX files (*.hex);;BIN files (*.bin);;FLASH files (*.bin *.hex)</source>
-        <translation>Fichiers HEX (*.hex);;fichiers BIN (*.bin);;fichiers FLASH (*.bin *.hex)</translation>
+        <translation type="obsolete">Fichiers HEX (*.hex);;fichiers BIN (*.bin);;fichiers FLASH (*.bin *.hex)</translation>
     </message>
     <message>
         <source>&amp;Open...</source>
@@ -772,7 +772,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>EEPROM hex files (*.hex);;EEPROM bin files (*.bin)</source>
-        <translation>Fichiers EEPROM hexa (*.hex);;Fichiers EEPROM binaires (*.bin)</translation>
+        <translation type="obsolete">Fichiers EEPROM hexa (*.hex);;Fichiers EEPROM binaires (*.bin)</translation>
     </message>
     <message>
         <source>Executable (*.exe)</source>
@@ -904,16 +904,12 @@ p, li { white-space: pre-wrap; }
         <translation>Fichier %1 introuvable!</translation>
     </message>
     <message>
-        <source>document%1.hex</source>
-        <translation></translation>
-    </message>
-    <message>
         <source>Delete Selected Models?</source>
         <translation>Supprimer le Modèle Sélectionné?</translation>
     </message>
     <message>
         <source>EEPROM hex files (*.hex);;EEPROM bin files (*.bin)</source>
-        <translation>Fichiers EEPROM hexa (*.hex);;Fichiers EEPROM binaires (*.bin)</translation>
+        <translation type="obsolete">Fichiers EEPROM hexa (*.hex);;Fichiers EEPROM binaires (*.bin)</translation>
     </message>
     <message>
         <source>Ctrl+C</source>
@@ -938,10 +934,6 @@ p, li { white-space: pre-wrap; }
     <message>
         <source>Error reading file %1!</source>
         <translation>Fichier %1 corrompu!</translation>
-    </message>
-    <message>
-        <source>:20%1000</source>
-        <translation></translation>
     </message>
     <message>
         <source>Unable set model!</source>
@@ -1031,6 +1023,14 @@ File wrong size - %1</source>
     <message>
         <source>Write %1 to EEPROM memory?</source>
         <translation>Transférer %1 dans la mémoire EEPROM de l&apos;émetteur ?</translation>
+    </message>
+    <message>
+        <source>document%1.eepe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Invalid EEPE EEPROM File %1</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

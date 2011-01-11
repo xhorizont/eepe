@@ -603,10 +603,10 @@ msgctxt "MainWindow|"
 msgid "Show the application's About box"
 msgstr "Affiche la fenêtre \"A propos\" de l'application"
 
-msgctxt "MainWindow|"
-msgid "FLASH files (*.bin *.hex);;BIN files (*.bin);;HEX files (*.hex)"
-msgstr ""
-"Fichiers FLASH (*.bin *.hex);;fichiers BIN (*.bin);;fichiers HEX (*.hex)"
+#~ msgctxt "MainWindow|"
+#~ msgid "FLASH files (*.bin *.hex);;BIN files (*.bin);;HEX files (*.hex)"
+#~ msgstr ""
+#~ "Fichiers FLASH (*.bin *.hex);;fichiers BIN (*.bin);;fichiers HEX (*.hex)"
 
 #, qt-format
 msgctxt "MainWindow|"
@@ -633,10 +633,10 @@ msgctxt "MainWindow|"
 msgid "Cascade the windows"
 msgstr "Dispose les fenêtres en cascade"
 
-msgctxt "MainWindow|"
-msgid "EEPROM files (*.bin *.hex);;BIN files (*.bin);;HEX files (*.hex)"
-msgstr ""
-"Fichiers EEPROM (*.bin *.hex);;fichiers BIN (*.bin);;fichiers HEX (*.hex)"
+#~ msgctxt "MainWindow|"
+#~ msgid "EEPROM files (*.bin *.hex);;BIN files (*.bin);;HEX files (*.hex)"
+#~ msgstr ""
+#~ "Fichiers EEPROM (*.bin *.hex);;fichiers BIN (*.bin);;fichiers HEX (*.hex)"
 
 msgctxt "MainWindow|"
 msgid "Read Flash memory"
@@ -697,10 +697,10 @@ msgctxt "MainWindow|"
 msgid "donating"
 msgstr "don"
 
-msgctxt "MainWindow|"
-msgid "HEX files (*.hex);;BIN files (*.bin);;FLASH files (*.bin *.hex)"
-msgstr ""
-"Fichiers HEX (*.hex);;fichiers BIN (*.bin);;fichiers FLASH (*.bin *.hex)"
+#~ msgctxt "MainWindow|"
+#~ msgid "HEX files (*.hex);;BIN files (*.bin);;FLASH files (*.bin *.hex)"
+#~ msgstr ""
+#~ "Fichiers HEX (*.hex);;fichiers BIN (*.bin);;fichiers FLASH (*.bin *.hex)"
 
 msgctxt "MainWindow|"
 msgid "&Open..."
@@ -878,9 +878,9 @@ msgctxt "MainWindow|"
 msgid "Save As"
 msgstr "Enregister Sous"
 
-msgctxt "MainWindow|"
-msgid "EEPROM hex files (*.hex);;EEPROM bin files (*.bin)"
-msgstr "Fichiers EEPROM hexa (*.hex);;Fichiers EEPROM binaires (*.bin)"
+#~ msgctxt "MainWindow|"
+#~ msgid "EEPROM hex files (*.hex);;EEPROM bin files (*.bin)"
+#~ msgstr "Fichiers EEPROM hexa (*.hex);;Fichiers EEPROM binaires (*.bin)"
 
 msgctxt "MainWindow|"
 msgid "Executable (*.exe)"
@@ -964,15 +964,15 @@ msgstr ""
 
 msgctxt "MainWindow|"
 msgid "&ER9x Users Guide"
-msgstr ""
+msgstr "Manuel d'utilisation d'&ER9x"
 
 msgctxt "MainWindow|"
 msgid "Show ER9x Users Guide"
-msgstr ""
+msgstr "Affiche le manuel d'utilisation d'ER9x"
 
 msgctxt "MainWindow|"
 msgid "Help"
-msgstr ""
+msgstr "Aide"
 
 #, qt-format
 msgctxt "MdiChild|"
@@ -1033,18 +1033,13 @@ msgctxt "MdiChild|"
 msgid "Unable to find file %1!"
 msgstr "Fichier %1 introuvable!"
 
-#, qt-format
-msgctxt "MdiChild|"
-msgid "document%1.hex"
-msgstr ""
-
 msgctxt "MdiChild|"
 msgid "Delete Selected Models?"
 msgstr "Supprimer le Modèle Sélectionné?"
 
-msgctxt "MdiChild|"
-msgid "EEPROM hex files (*.hex);;EEPROM bin files (*.bin)"
-msgstr "Fichiers EEPROM hexa (*.hex);;Fichiers EEPROM binaires (*.bin)"
+#~ msgctxt "MdiChild|"
+#~ msgid "EEPROM hex files (*.hex);;EEPROM bin files (*.bin)"
+#~ msgstr "Fichiers EEPROM hexa (*.hex);;Fichiers EEPROM binaires (*.bin)"
 
 msgctxt "MdiChild|"
 msgid "Ctrl+C"
@@ -1070,11 +1065,6 @@ msgstr "Supprimer"
 msgctxt "MdiChild|"
 msgid "Error reading file %1!"
 msgstr "Fichier %1 corrompu!"
-
-#, qt-format
-msgctxt "MdiChild|"
-msgid ":20%1000"
-msgstr ""
 
 msgctxt "MdiChild|"
 msgid "Unable set model!"
@@ -1188,6 +1178,16 @@ msgstr ""
 msgctxt "MdiChild|"
 msgid "Write %1 to EEPROM memory?"
 msgstr "Transférer %1 dans la mémoire EEPROM de l'émetteur ?"
+
+#, qt-format
+msgctxt "MdiChild|"
+msgid "document%1.eepe"
+msgstr ""
+
+#, qt-format
+msgctxt "MdiChild|"
+msgid "Invalid EEPE EEPROM File %1"
+msgstr ""
 
 msgctxt "MixerDialog|"
 msgid "Up"
