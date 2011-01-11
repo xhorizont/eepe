@@ -3253,7 +3253,7 @@ Mode 4:
         <translation type="obsolete">%1</translation>
     </message>
     <message>
-        <location filename="simulatordialog.cpp" line="110"/>
+        <location filename="simulatordialog.cpp" line="123"/>
         <source>Simulating </source>
         <translation type="unfinished"></translation>
     </message>
