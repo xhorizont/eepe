@@ -58,7 +58,7 @@ simulatorDialog::~simulatorDialog()
     delete ui;
 }
 
-void simulatorDialog::closeEvent ( QCloseEvent * event )
+void simulatorDialog::closeEvent ( )
 {
     timer->stop();
     delete timer;
