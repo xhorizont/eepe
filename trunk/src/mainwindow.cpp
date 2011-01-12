@@ -146,12 +146,21 @@ void MainWindow::checkForUpdates(bool ignoreSettings)
         manager2->get(QNetworkRequest(QUrl(EEPE_STAMP)));
         check2done = false;
     }
+
+    if(ignoreSettings)
+    {
+        downloadDialog_forWait = new downloadDialog(this, tr("Checking for updates"));
+        downloadDialog_forWait->show();
+    }
 }
 
 
 void MainWindow::reply1Finished(QNetworkReply * reply)
 {
     check1done = true;
+    if(check1done && check2done)
+        downloadDialog_forWait->close();
+
     QByteArray qba = reply->readAll();
     int i = qba.indexOf("SVN_VERS");
 
@@ -203,12 +212,9 @@ void MainWindow::reply1Finished(QNetworkReply * reply)
                 settings.setValue("lastDir",QFileInfo(fileName).dir().absolutePath());
 
                 downloadDialog * dd = new downloadDialog(this,dnldURL,fileName);
-                int res = dd->exec();
-                if(res == QDialog::Accepted)
-                {
-                    currentER9Xrev = rev;
-                    settings.setValue("currentER9Xrev", rev);
-                }
+                currentER9Xrev_temp = rev;
+                connect(dd,SIGNAL(accepted()),this,SLOT(reply1Accepted()));
+                dd->show();
             }
 
             if(ret == QMessageBox::No)
@@ -238,6 +244,8 @@ void MainWindow::reply1Finished(QNetworkReply * reply)
 void MainWindow::reply2Finished(QNetworkReply * reply)
 {
     check2done = true;
+    if(check1done && check2done)
+        downloadDialog_forWait->close();
 
     QByteArray qba = reply->readAll();
     int i = qba.indexOf("SVN_VERS");
@@ -269,17 +277,9 @@ void MainWindow::reply2Finished(QNetworkReply * reply)
                 settings.setValue("lastDir",QFileInfo(fileName).dir().absolutePath());
 
                 downloadDialog * dd = new downloadDialog(this,EEPE_URL,fileName);
-                int res = dd->exec();
-                if(res == QDialog::Accepted)
-                {
-                    int ret2 = QMessageBox::question(this, "eePe",tr("Would you like to launch the installer?") ,
-                                                     QMessageBox::Yes | QMessageBox::No);
-                    if (ret2 == QMessageBox::Yes)
-                    {
-                        if(QDesktopServices::openUrl(QUrl(QFileInfo(fileName).canonicalFilePath(), QUrl::StrictMode)))
-                            QApplication::exit();
-                    }
-                }
+                installer_fileName = fileName;
+                connect(dd,SIGNAL(accepted()),this,SLOT(reply2Accepted()));
+                dd->show();
             }
         }
         else
@@ -293,6 +293,25 @@ void MainWindow::reply2Finished(QNetworkReply * reply)
         if(check1done && check2done)
             QMessageBox::warning(this, "eePe", tr("Unable to check for updates."));
     }
+}
+
+void MainWindow::reply1Accepted()
+{
+    QSettings settings("er9x-eePe", "eePe");
+    currentER9Xrev = currentER9Xrev_temp;
+    settings.setValue("currentER9Xrev", currentER9Xrev);
+}
+
+void MainWindow::reply2Accepted()
+{
+    int ret2 = QMessageBox::question(this, "eePe",tr("Would you like to launch the installer?") ,
+                                     QMessageBox::Yes | QMessageBox::No);
+    if (ret2 == QMessageBox::Yes)
+    {
+        if(QDesktopServices::openUrl(QUrl::fromLocalFile(installer_fileName)))
+            QApplication::exit();
+    }
+
 }
 
 void MainWindow::closeEvent(QCloseEvent *event)
@@ -587,7 +606,11 @@ void MainWindow::showEr9xManual()
 {
 //    ER9x Users Guide.pdf
     QString cdir = QApplication::applicationDirPath();
-    QDesktopServices::openUrl(QUrl::fromLocalFile(cdir + "/ER9x Users Guide.pdf"));
+#ifdef Q_WS_WIN
+    QDesktopServices::openUrl(QUrl::fromLocalFile(cdir + "/ER9x Users Guide.pdf")); // WIN
+#else
+    QDesktopServices::openUrl(QUrl(cdir + "/ER9x Users Guide.pdf"));   // MAC & Linux (X11)
+#endif
 }
 
 void MainWindow::about()

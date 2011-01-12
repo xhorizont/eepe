@@ -45,6 +45,7 @@
 #include <QMainWindow>
 #include <QNetworkAccessManager>
 #include <QDateTime>
+#include "downloaddialog.h"
 
 
 class MdiChild;
@@ -70,6 +71,9 @@ private slots:
     void checkForUpdates(bool ignoreSettings=true);
     void reply1Finished(QNetworkReply * reply);
     void reply2Finished(QNetworkReply * reply);
+
+    void reply1Accepted();
+    void reply2Accepted();
 
     void newFile();
     void open();
@@ -112,7 +116,11 @@ private:
     QMdiArea *mdiArea;
     QSignalMapper *windowMapper;
 
+    QString installer_fileName;
+    downloadDialog * downloadDialog_forWait;
+
     int currentER9Xrev;
+    int currentER9Xrev_temp;
     int currentEEPErev;
     bool checkER9X;
     bool checkEEPE;

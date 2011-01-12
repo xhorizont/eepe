@@ -117,9 +117,6 @@ enum EnumKeys {
 #define CSW_NUM_FUNC 14
 #define CSW_LEN_FUNC 7
 
-#define CSWITCH_STR  "----   v>ofs  v<ofs  |v|>ofs|v|<ofsAND    OR     XOR    ""v1==v2 ""v1!=v2 ""v1>v2  ""v1<v2  ""v1>=v2 ""v1<=v2 "
-#define CSW_LEN_FUNC 7
-
 #define CS_OFF       0
 #define CS_VPOS      1  //v>offset
 #define CS_VNEG      2  //v<offset
