@@ -147,6 +147,9 @@ void MainWindow::checkForUpdates(bool ignoreSettings)
         check2done = false;
     }
 
+    if(downloadDialog_forWait!=0)
+        downloadDialog_forWait = 0;
+
     if(ignoreSettings)
     {
         downloadDialog_forWait = new downloadDialog(this, tr("Checking for updates"));
@@ -158,7 +161,7 @@ void MainWindow::checkForUpdates(bool ignoreSettings)
 void MainWindow::reply1Finished(QNetworkReply * reply)
 {
     check1done = true;
-    if(check1done && check2done)
+    if(check1done && check2done && downloadDialog_forWait)
         downloadDialog_forWait->close();
 
     QByteArray qba = reply->readAll();
@@ -244,7 +247,7 @@ void MainWindow::reply1Finished(QNetworkReply * reply)
 void MainWindow::reply2Finished(QNetworkReply * reply)
 {
     check2done = true;
-    if(check1done && check2done)
+    if(check1done && check2done && downloadDialog_forWait)
         downloadDialog_forWait->close();
 
     QByteArray qba = reply->readAll();

@@ -87,7 +87,7 @@ private:
     int16_t intpol(int16_t x, uint8_t idx);
 
 protected:
-    void closeEvent ( QCloseEvent * event );
+    void closeEvent (  );
 
 private slots:
     void on_FixRightY_clicked(bool checked);
