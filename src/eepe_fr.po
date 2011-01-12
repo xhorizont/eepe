@@ -974,6 +974,10 @@ msgctxt "MainWindow|"
 msgid "Help"
 msgstr "Aide"
 
+msgctxt "MainWindow|"
+msgid "Checking for updates"
+msgstr ""
+
 #, qt-format
 msgctxt "MdiChild|"
 msgid "%1"

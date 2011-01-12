@@ -10,6 +10,16 @@ downloadDialog::downloadDialog(QWidget *parent, QString src, QString tgt) :
 {
     ui->setupUi(this);
 
+    ui->progressBar->setValue(1);
+    ui->progressBar->setMinimum(0);
+    ui->progressBar->setMaximum(0);
+
+    if(tgt.isEmpty())
+    {
+        setWindowTitle(src);
+        return;  // just show wait dialog.
+    }
+
     file = new QFile(tgt);
     if (!file->open(QIODevice::WriteOnly)) {
         QMessageBox::critical(this, "eePe",
@@ -39,19 +49,25 @@ void downloadDialog::httpFinished()
     file->flush();
     file->close();
 
+    bool ok = true;
     if (reply->error())
     {
         file->remove();
         QMessageBox::information(this, tr("eePe"),
                                  tr("Download failed: %1.")
                                  .arg(reply->errorString()));
+        ok = false;
     }
 
     reply->deleteLater();
     reply = 0;
     delete file;
     file = 0;
-    this->accept();
+
+    if(ok)
+        accept();
+    else
+        reject();
 }
 
 void downloadDialog::httpReadyRead()

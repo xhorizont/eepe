@@ -846,6 +846,10 @@ p, li { white-space: pre-wrap; }
         <source>Help</source>
         <translation>Aide</translation>
     </message>
+    <message>
+        <source>Checking for updates</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>MdiChild</name>
