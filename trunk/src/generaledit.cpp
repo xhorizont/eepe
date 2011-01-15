@@ -36,7 +36,7 @@ GeneralEdit::GeneralEdit(EEPFILE *eFile, QWidget *parent) :
     ui->battcalibDSB->setValue((double)g_eeGeneral.vBatCalib/10);
     ui->battCalib->setValue((double)g_eeGeneral.vBatCalib/10);
     ui->backlightautoSB->setValue(g_eeGeneral.lightAutoOff*5);
-    ui->inactimerSB->setValue(g_eeGeneral.inactivityTimer);
+    ui->inactimerSB->setValue(g_eeGeneral.inactivityTimer+10);
     ui->thrrevChkB->setChecked(g_eeGeneral.throttleReversed);
     ui->inputfilterCB->setCurrentIndex(g_eeGeneral.filterInput);
     ui->thrwarnChkB->setChecked(!g_eeGeneral.disableThrottleWarning);   //Default is zero=checked
@@ -143,7 +143,7 @@ void GeneralEdit::on_backlightautoSB_editingFinished()
 
 void GeneralEdit::on_inactimerSB_editingFinished()
 {
-    g_eeGeneral.inactivityTimer = ui->inactimerSB->value();
+    g_eeGeneral.inactivityTimer = ui->inactimerSB->value() - 10;
     updateSettings();
 }
 
