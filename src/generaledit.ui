@@ -234,7 +234,7 @@ This value will be added to the measured battery voltage.  Use this value to cal
           <string> min</string>
          </property>
          <property name="maximum">
-          <number>250</number>
+          <number>120</number>
          </property>
         </widget>
        </item>

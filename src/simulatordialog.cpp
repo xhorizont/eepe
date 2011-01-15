@@ -618,6 +618,20 @@ void simulatorDialog::perOut(bool init)
 {
   int16_t trimA[4];
   uint8_t  anaCenter = 0;
+  uint16_t d = 0;
+
+  //===========Swash Ring================
+  if(g_model.swashRingValue)
+  {
+      uint32_t v = (calibratedStick[ELE_STICK]*calibratedStick[ELE_STICK] +
+                    calibratedStick[AIL_STICK]*calibratedStick[AIL_STICK]);
+      uint32_t q = RESX*g_model.swashRingValue/100;
+      q *= q;
+      if(v>q)
+          d = isqrt32(v);
+  }
+  //===========Swash Ring================
+
 
   for(uint8_t i=0;i<7;i++){        // calc Sticks
 
@@ -633,6 +647,11 @@ void simulatorDialog::perOut(bool init)
 //    calibratedStick[i] = v; //for show in expo
 
     if(!(v/16)) anaCenter |= 1<<(CONVERT_MODE((i+1))-1);
+
+    //===========Swash Ring================
+    if(d && (i==ELE_STICK || i==AIL_STICK))
+        v = (int32_t)v*g_model.swashRingValue*RESX/(d*100);
+    //===========Swash Ring================
 
 
     if(i<4) { //only do this for sticks
@@ -672,19 +691,6 @@ void simulatorDialog::perOut(bool init)
   for(uint8_t i=0;i<NUM_PPM;i++)    anas[i+PPM_BASE]   = g_ppmIns[i] - g_eeGeneral.ppmInCalib[i]; //add ppm channels
   for(uint8_t i=0;i<NUM_CHNOUT;i++) anas[i+CHOUT_BASE] = chans[i]; //other mixes previous outputs
 
-  //===========Swash Ring================
-  if(g_model.swashRingValue)
-  {
-      uint32_t v = (anas[ELE_STICK]*anas[ELE_STICK] + anas[AIL_STICK]*anas[AIL_STICK]);
-      uint32_t q = RESX*g_model.swashRingValue/100;
-      q *= q;
-      if(v>q)
-      {
-          uint16_t d = isqrt32(v);
-          anas[ELE_STICK] = (int32_t)anas[ELE_STICK]*g_model.swashRingValue*RESX/(d*100);
-          anas[AIL_STICK] = (int32_t)anas[AIL_STICK]*g_model.swashRingValue*RESX/(d*100);
-      }
-  }
 
   //===========Swash Mix================
 #define REZ_SWASH_X(x)  ((x) - (x)/8 - (x)/128 - (x)/512)   //  1024*sin(60) ~= 886
