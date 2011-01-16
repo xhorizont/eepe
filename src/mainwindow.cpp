@@ -277,7 +277,7 @@ void MainWindow::reply2Finished(QNetworkReply * reply)
             {
                 QString fileName = QFileDialog::getSaveFileName(this, tr("Save As"),settings.value("lastDir").toString() + "/eePeInstall.exe",tr("Executable (*.exe)"));
                 if (fileName.isEmpty()) return;
-                settings.setValue("lastDir",QFileInfo(fileName).dir().absolutePath());
+//                settings.setValue("lastDir",QFileInfo(fileName)s.dir().absolutePath());
 
                 downloadDialog * dd = new downloadDialog(this,EEPE_URL,fileName);
                 installer_fileName = fileName;
