@@ -367,6 +367,8 @@ qint16 simulatorDialog::getValue(qint8 i)
 
 bool simulatorDialog::getSwitch(int swtch, bool nc, qint8 level)
 {
+    if(level>5) return false; //prevent recursive loop going too deep
+
     switch(swtch){
        case  0:            return  nc;
        case  MAX_DRSWITCH: return  true;
