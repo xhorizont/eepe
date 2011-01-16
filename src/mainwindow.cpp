@@ -612,7 +612,7 @@ void MainWindow::showEr9xManual()
 #ifdef Q_WS_WIN
     QDesktopServices::openUrl(QUrl::fromLocalFile(cdir + "/ER9x Users Guide.pdf")); // WIN
 #else
-    QDesktopServices::openUrl(QUrl(cdir + "/ER9x Users Guide.pdf"));   // MAC & Linux (X11)
+    QDesktopServices::openUrl(QUrl("file:///" + cdir + "/ER9x Users Guide.pdf"));   // MAC & Linux (X11)
 #endif
 }
 
