@@ -986,11 +986,11 @@ msgctxt "MdiChild|"
 msgid "Delete Selected Models?"
 msgstr ""
 
-#: mdichild.cpp:243 mdichild.cpp:253 mdichild.cpp:381 mdichild.cpp:409
-#: mdichild.cpp:420 mdichild.cpp:426 mdichild.cpp:443 mdichild.cpp:463
-#: mdichild.cpp:486 mdichild.cpp:499 mdichild.cpp:516 mdichild.cpp:522
-#: mdichild.cpp:535 mdichild.cpp:545 mdichild.cpp:589 mdichild.cpp:633
-#: mdichild.cpp:646 mdichild.cpp:742
+#: mdichild.cpp:243 mdichild.cpp:253 mdichild.cpp:384 mdichild.cpp:412
+#: mdichild.cpp:423 mdichild.cpp:429 mdichild.cpp:446 mdichild.cpp:466
+#: mdichild.cpp:489 mdichild.cpp:502 mdichild.cpp:519 mdichild.cpp:525
+#: mdichild.cpp:538 mdichild.cpp:548 mdichild.cpp:592 mdichild.cpp:636
+#: mdichild.cpp:649 mdichild.cpp:745
 msgctxt "MdiChild|"
 msgid "Error"
 msgstr ""
@@ -1005,43 +1005,43 @@ msgctxt "MdiChild|"
 msgid "Unable set model!"
 msgstr ""
 
-#: mdichild.cpp:363
+#: mdichild.cpp:366
 #, qt-format
 msgctxt "MdiChild|"
 msgid "Editing model %1: "
 msgstr ""
 
-#: mdichild.cpp:381
+#: mdichild.cpp:384
 msgctxt "MdiChild|"
 msgid "Unable to read settings!"
 msgstr ""
 
-#: mdichild.cpp:391
+#: mdichild.cpp:394
 #, qt-format
 #| msgid "document%1.hex"
 msgctxt "MdiChild|"
 msgid "document%1.eepe"
 msgstr ""
 
-#: mdichild.cpp:409
+#: mdichild.cpp:412
 #, qt-format
 msgctxt "MdiChild|"
 msgid "Unable to find file %1!"
 msgstr ""
 
-#: mdichild.cpp:444
+#: mdichild.cpp:447
 #, qt-format
 msgctxt "MdiChild|"
 msgid "Invalid EEPE EEPROM File %1"
 msgstr ""
 
-#: mdichild.cpp:463 mdichild.cpp:486
+#: mdichild.cpp:466 mdichild.cpp:489
 #, qt-format
 msgctxt "MdiChild|"
 msgid "Error reading file %1!"
 msgstr ""
 
-#: mdichild.cpp:536
+#: mdichild.cpp:539
 #, qt-format
 msgctxt "MdiChild|"
 msgid ""
@@ -1049,7 +1049,7 @@ msgid ""
 "%2."
 msgstr ""
 
-#: mdichild.cpp:500 mdichild.cpp:546
+#: mdichild.cpp:503 mdichild.cpp:549
 #, qt-format
 #| msgid "File wrong size - %1"
 msgctxt "MdiChild|"
@@ -1058,7 +1058,7 @@ msgid ""
 "%2."
 msgstr ""
 
-#: mdichild.cpp:420 mdichild.cpp:516
+#: mdichild.cpp:423 mdichild.cpp:519
 #, qt-format
 msgctxt "MdiChild|"
 msgid ""
@@ -1066,7 +1066,7 @@ msgid ""
 "File wrong size - %1"
 msgstr ""
 
-#: mdichild.cpp:427 mdichild.cpp:523
+#: mdichild.cpp:430 mdichild.cpp:526
 #, qt-format
 msgctxt "MdiChild|"
 msgid ""
@@ -1074,12 +1074,12 @@ msgid ""
 "%2."
 msgstr ""
 
-#: mdichild.cpp:571
+#: mdichild.cpp:574
 msgctxt "MdiChild|"
 msgid "Save As"
 msgstr ""
 
-#: mdichild.cpp:590 mdichild.cpp:634
+#: mdichild.cpp:593 mdichild.cpp:637
 #, qt-format
 msgctxt "MdiChild|"
 msgid ""
@@ -1087,13 +1087,13 @@ msgid ""
 "%2."
 msgstr ""
 
-#: mdichild.cpp:616 mdichild.cpp:620
+#: mdichild.cpp:619 mdichild.cpp:623
 #, qt-format
 msgctxt "MdiChild|"
 msgid "%1"
 msgstr ""
 
-#: mdichild.cpp:647
+#: mdichild.cpp:650
 #, qt-format
 msgctxt "MdiChild|"
 msgid ""
@@ -1101,12 +1101,12 @@ msgid ""
 "%2."
 msgstr ""
 
-#: mdichild.cpp:683 mdichild.cpp:724
+#: mdichild.cpp:686 mdichild.cpp:727
 msgctxt "MdiChild|"
 msgid "eePe"
 msgstr ""
 
-#: mdichild.cpp:684
+#: mdichild.cpp:687
 #, qt-format
 msgctxt "MdiChild|"
 msgid ""
@@ -1114,89 +1114,89 @@ msgid ""
 "Do you want to save your changes?"
 msgstr ""
 
-#: mdichild.cpp:725
+#: mdichild.cpp:728
 #, qt-format
 #| msgid "Burn %1 to transmitter?"
 msgctxt "MdiChild|"
 msgid "Write %1 to EEPROM memory?"
 msgstr ""
 
-#: mdichild.cpp:742
+#: mdichild.cpp:745
 msgctxt "MdiChild|"
 msgid "Cannot write temporary file!"
 msgstr ""
 
-#: mdichild.cpp:765
+#: mdichild.cpp:768
 msgctxt "MdiChild|"
 msgid "&Edit"
 msgstr ""
 
-#: mdichild.cpp:767
+#: mdichild.cpp:770
 msgctxt "MdiChild|"
 msgid "&Delete"
 msgstr ""
 
-#: mdichild.cpp:767
+#: mdichild.cpp:770
 msgctxt "MdiChild|"
 msgid "Delete"
 msgstr ""
 
-#: mdichild.cpp:768
+#: mdichild.cpp:771
 msgctxt "MdiChild|"
 msgid "&Copy"
 msgstr ""
 
-#: mdichild.cpp:768
+#: mdichild.cpp:771
 msgctxt "MdiChild|"
 msgid "Ctrl+C"
 msgstr ""
 
-#: mdichild.cpp:769
+#: mdichild.cpp:772
 msgctxt "MdiChild|"
 msgid "&Cut"
 msgstr ""
 
-#: mdichild.cpp:769
+#: mdichild.cpp:772
 msgctxt "MdiChild|"
 msgid "Ctrl+X"
 msgstr ""
 
-#: mdichild.cpp:770
+#: mdichild.cpp:773
 msgctxt "MdiChild|"
 msgid "&Paste"
 msgstr ""
 
-#: mdichild.cpp:770
+#: mdichild.cpp:773
 msgctxt "MdiChild|"
 msgid "Ctrl+V"
 msgstr ""
 
-#: mdichild.cpp:771
+#: mdichild.cpp:774
 msgctxt "MdiChild|"
 msgid "D&uplicate"
 msgstr ""
 
-#: mdichild.cpp:771
+#: mdichild.cpp:774
 msgctxt "MdiChild|"
 msgid "Ctrl+U"
 msgstr ""
 
-#: mdichild.cpp:773
+#: mdichild.cpp:776
 msgctxt "MdiChild|"
 msgid "&Simulate"
 msgstr ""
 
-#: mdichild.cpp:773
+#: mdichild.cpp:776
 msgctxt "MdiChild|"
 msgid "Alt+S"
 msgstr ""
 
-#: mdichild.cpp:775
+#: mdichild.cpp:778
 msgctxt "MdiChild|"
 msgid "&Write To Tx"
 msgstr ""
 
-#: mdichild.cpp:775
+#: mdichild.cpp:778
 msgctxt "MdiChild|"
 msgid "Ctrl+Alt+W"
 msgstr ""
@@ -1931,18 +1931,21 @@ msgid "CSwitch9"
 msgstr ""
 
 #: modeledit.ui:5388
+#| msgid "CSwitch10"
 msgctxt "ModelEdit|"
-msgid "CSwitch10"
+msgid "CSwitchA"
 msgstr ""
 
 #: modeledit.ui:5401
+#| msgid "CSwitch11"
 msgctxt "ModelEdit|"
-msgid "CSwitch11"
+msgid "CSwitchB"
 msgstr ""
 
 #: modeledit.ui:5414
+#| msgid "CSwitch12"
 msgctxt "ModelEdit|"
-msgid "CSwitch12"
+msgid "CSwitchC"
 msgstr ""
 
 #: modeledit.ui:5453
@@ -1995,180 +1998,180 @@ msgctxt "ModelEdit|"
 msgid "Simulate"
 msgstr ""
 
-#: modeledit.cpp:403 modeledit.cpp:413 modeledit.cpp:459
+#: modeledit.cpp:411 modeledit.cpp:421 modeledit.cpp:467
 #, qt-format
 msgctxt "ModelEdit|"
 msgid "CH%1%2"
 msgstr ""
 
-#: modeledit.cpp:434
+#: modeledit.cpp:442
 msgctxt "ModelEdit|"
 msgid " Switch("
 msgstr ""
 
-#: modeledit.cpp:435
+#: modeledit.cpp:443
 msgctxt "ModelEdit|"
 msgid " noTrim"
-msgstr ""
-
-#: modeledit.cpp:436
-#, qt-format
-msgctxt "ModelEdit|"
-msgid " Offset(%1%)"
-msgstr ""
-
-#: modeledit.cpp:440
-#, qt-format
-msgctxt "ModelEdit|"
-msgid " Curve(%1)"
-msgstr ""
-
-#: modeledit.cpp:443
-#, qt-format
-msgctxt "ModelEdit|"
-msgid " Delay(u%1:d%2)"
 msgstr ""
 
 #: modeledit.cpp:444
 #, qt-format
 msgctxt "ModelEdit|"
+msgid " Offset(%1%)"
+msgstr ""
+
+#: modeledit.cpp:448
+#, qt-format
+msgctxt "ModelEdit|"
+msgid " Curve(%1)"
+msgstr ""
+
+#: modeledit.cpp:451
+#, qt-format
+msgctxt "ModelEdit|"
+msgid " Delay(u%1:d%2)"
+msgstr ""
+
+#: modeledit.cpp:452
+#, qt-format
+msgctxt "ModelEdit|"
 msgid " Slow(u%1:d%2)"
 msgstr ""
 
-#: modeledit.cpp:446
+#: modeledit.cpp:454
 #, qt-format
 msgctxt "ModelEdit|"
 msgid " Warn(%1)"
 msgstr ""
 
-#: modeledit.cpp:1646
+#: modeledit.cpp:1654
 #, qt-format
 msgctxt "ModelEdit|"
 msgid "Curve %1"
 msgstr ""
 
-#: modeledit.cpp:1876
+#: modeledit.cpp:1884
 msgctxt "ModelEdit|"
 msgid "Delete Selected Mixes?"
 msgstr ""
 
-#: modeledit.cpp:2009
+#: modeledit.cpp:2017
 msgctxt "ModelEdit|"
 msgid "&Add"
 msgstr ""
 
-#: modeledit.cpp:2009
+#: modeledit.cpp:2017
 msgctxt "ModelEdit|"
 msgid "Ctrl+A"
 msgstr ""
 
-#: modeledit.cpp:2010
+#: modeledit.cpp:2018
 msgctxt "ModelEdit|"
 msgid "&Edit"
 msgstr ""
 
-#: modeledit.cpp:2010
+#: modeledit.cpp:2018
 msgctxt "ModelEdit|"
 msgid "Enter"
 msgstr ""
 
-#: modeledit.cpp:2012
+#: modeledit.cpp:2020
 msgctxt "ModelEdit|"
 msgid "&Delete"
 msgstr ""
 
-#: modeledit.cpp:2012
+#: modeledit.cpp:2020
 msgctxt "ModelEdit|"
 msgid "Delete"
 msgstr ""
 
-#: modeledit.cpp:2013
+#: modeledit.cpp:2021
 msgctxt "ModelEdit|"
 msgid "&Copy"
 msgstr ""
 
-#: modeledit.cpp:2013
+#: modeledit.cpp:2021
 msgctxt "ModelEdit|"
 msgid "Ctrl+C"
 msgstr ""
 
-#: modeledit.cpp:2014
+#: modeledit.cpp:2022
 msgctxt "ModelEdit|"
 msgid "&Cut"
 msgstr ""
 
-#: modeledit.cpp:2014
+#: modeledit.cpp:2022
 msgctxt "ModelEdit|"
 msgid "Ctrl+X"
 msgstr ""
 
-#: modeledit.cpp:2015
+#: modeledit.cpp:2023
 msgctxt "ModelEdit|"
 msgid "&Paste"
 msgstr ""
 
-#: modeledit.cpp:2015
+#: modeledit.cpp:2023
 msgctxt "ModelEdit|"
 msgid "Ctrl+V"
 msgstr ""
 
-#: modeledit.cpp:2016
+#: modeledit.cpp:2024
 msgctxt "ModelEdit|"
 msgid "Du&plicate"
 msgstr ""
 
-#: modeledit.cpp:2018
+#: modeledit.cpp:2026
 msgctxt "ModelEdit|"
 msgid "Move Up"
 msgstr ""
 
-#: modeledit.cpp:82 modeledit.cpp:2018
+#: modeledit.cpp:82 modeledit.cpp:2026
 msgctxt "ModelEdit|"
 msgid "Ctrl+Up"
 msgstr ""
 
-#: modeledit.cpp:2019
+#: modeledit.cpp:2027
 msgctxt "ModelEdit|"
 msgid "Move Down"
 msgstr ""
 
-#: modeledit.cpp:85 modeledit.cpp:2019
+#: modeledit.cpp:85 modeledit.cpp:2027
 msgctxt "ModelEdit|"
 msgid "Ctrl+Down"
 msgstr ""
 
-#: modeledit.cpp:2335
+#: modeledit.cpp:2343
 msgctxt "ModelEdit|"
 msgid "Apply Template?"
 msgstr ""
 
-#: modeledit.cpp:2335
+#: modeledit.cpp:2343
 #, qt-format
 msgctxt "ModelEdit|"
 msgid "Apply template \"%1\"?"
 msgstr ""
 
-#: modeledit.cpp:2362
+#: modeledit.cpp:2370
 msgctxt "ModelEdit|"
 msgid "Clear Mixes?"
 msgstr ""
 
-#: modeledit.cpp:2362
+#: modeledit.cpp:2370
 msgctxt "ModelEdit|"
 msgid "Really clear all the mixes?"
 msgstr ""
 
-#: modeledit.cpp:2374
+#: modeledit.cpp:2382
 msgctxt "ModelEdit|"
 msgid "Clear Curves?"
 msgstr ""
 
-#: modeledit.cpp:2374
+#: modeledit.cpp:2382
 msgctxt "ModelEdit|"
 msgid "Really clear all the curves?"
 msgstr ""
 
-#: modeledit.cpp:2016
+#: modeledit.cpp:2024
 msgctxt "ModelEdit|"
 msgid "Ctrl+U"
 msgstr ""

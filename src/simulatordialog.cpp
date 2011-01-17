@@ -243,9 +243,9 @@ void simulatorDialog::setValues()
     ui->labelCSW_7->setStyleSheet(getSwitch(DSW_SW7,0)   ? CSWITCH_ON : CSWITCH_OFF);
     ui->labelCSW_8->setStyleSheet(getSwitch(DSW_SW8,0)   ? CSWITCH_ON : CSWITCH_OFF);
     ui->labelCSW_9->setStyleSheet(getSwitch(DSW_SW9,0)   ? CSWITCH_ON : CSWITCH_OFF);
-    ui->labelCSW_10->setStyleSheet(getSwitch(DSW_SW10,0) ? CSWITCH_ON : CSWITCH_OFF);
-    ui->labelCSW_11->setStyleSheet(getSwitch(DSW_SW11,0) ? CSWITCH_ON : CSWITCH_OFF);
-    ui->labelCSW_12->setStyleSheet(getSwitch(DSW_SW12,0) ? CSWITCH_ON : CSWITCH_OFF);
+    ui->labelCSW_10->setStyleSheet(getSwitch(DSW_SWA,0)  ? CSWITCH_ON : CSWITCH_OFF);
+    ui->labelCSW_11->setStyleSheet(getSwitch(DSW_SWB,0)  ? CSWITCH_ON : CSWITCH_OFF);
+    ui->labelCSW_12->setStyleSheet(getSwitch(DSW_SWC,0)  ? CSWITCH_ON : CSWITCH_OFF);
 }
 
 void simulatorDialog::beepWarn1()

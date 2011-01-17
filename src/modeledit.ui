@@ -5385,7 +5385,7 @@ Right</string>
           <enum>QFrame::Raised</enum>
          </property>
          <property name="text">
-          <string>CSwitch10</string>
+          <string>CSwitchA</string>
          </property>
         </widget>
        </item>
@@ -5398,7 +5398,7 @@ Right</string>
           <enum>QFrame::Raised</enum>
          </property>
          <property name="text">
-          <string>CSwitch11</string>
+          <string>CSwitchB</string>
          </property>
         </widget>
        </item>
@@ -5411,7 +5411,7 @@ Right</string>
           <enum>QFrame::Raised</enum>
          </property>
          <property name="text">
-          <string>CSwitch12</string>
+          <string>CSwitchC</string>
          </property>
         </widget>
        </item>

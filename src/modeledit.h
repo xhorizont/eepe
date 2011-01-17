@@ -18,6 +18,8 @@ public:
     explicit ModelEdit(EEPFILE *eFile, uint8_t id, QWidget *parent = 0);
     ~ModelEdit();
 
+    void applyBaseTemplate();
+
 
 private:
     Ui::ModelEdit *ui;
@@ -54,7 +56,7 @@ private:
     void updateCurvesTab();
     void setSwitchWidgetVisibility(int i);
     void setLimitMinMax();
-    void redrawSwitchesTab();
+    void updateSwitchesTab();
     void updateHeliTab();
 
     void launchSimulation();
@@ -81,7 +83,6 @@ private:
 
 signals:
     void modelValuesChanged();
-
 
 private slots:
     void clearMixes(bool ask=true);

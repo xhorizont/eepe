@@ -1724,15 +1724,15 @@ Droite</translation>
     </message>
     <message>
         <source>CSwitch10</source>
-        <translation>Interrupteur personnalisé SW10</translation>
+        <translation type="obsolete">Interrupteur personnalisé SW10</translation>
     </message>
     <message>
         <source>CSwitch11</source>
-        <translation>Interrupteur personnalisé SW11</translation>
+        <translation type="obsolete">Interrupteur personnalisé SW11</translation>
     </message>
     <message>
         <source>CSwitch12</source>
-        <translation>Interrupteur personnalisé SW12</translation>
+        <translation type="obsolete">Interrupteur personnalisé SW12</translation>
     </message>
     <message>
         <source>Swash Type</source>
@@ -1813,6 +1813,18 @@ Droite</translation>
     <message>
         <source>Clear All Curves</source>
         <translation>Effacer toutes les courbes</translation>
+    </message>
+    <message>
+        <source>CSwitchA</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>CSwitchB</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>CSwitchC</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
