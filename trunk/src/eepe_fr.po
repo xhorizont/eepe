@@ -1958,17 +1958,17 @@ msgctxt "ModelEdit|"
 msgid "CSwitch9"
 msgstr "Interrupteur personnalisé SW9"
 
-msgctxt "ModelEdit|"
-msgid "CSwitch10"
-msgstr "Interrupteur personnalisé SW10"
+#~ msgctxt "ModelEdit|"
+#~ msgid "CSwitch10"
+#~ msgstr "Interrupteur personnalisé SW10"
 
-msgctxt "ModelEdit|"
-msgid "CSwitch11"
-msgstr "Interrupteur personnalisé SW11"
+#~ msgctxt "ModelEdit|"
+#~ msgid "CSwitch11"
+#~ msgstr "Interrupteur personnalisé SW11"
 
-msgctxt "ModelEdit|"
-msgid "CSwitch12"
-msgstr "Interrupteur personnalisé SW12"
+#~ msgctxt "ModelEdit|"
+#~ msgid "CSwitch12"
+#~ msgstr "Interrupteur personnalisé SW12"
 
 msgctxt "ModelEdit|"
 msgid "Swash Type"
@@ -2050,6 +2050,18 @@ msgstr "Pas collectif"
 msgctxt "ModelEdit|"
 msgid "Clear All Curves"
 msgstr "Effacer toutes les courbes"
+
+msgctxt "ModelEdit|"
+msgid "CSwitchA"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "CSwitchB"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "CSwitchC"
+msgstr ""
 
 #, qt-format
 msgctxt "avrOutputDialog|"

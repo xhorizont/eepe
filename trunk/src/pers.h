@@ -182,9 +182,9 @@ enum EnumKeys {
 #define DSW_SW7   16
 #define DSW_SW8   17
 #define DSW_SW9   18
-#define DSW_SW10  19
-#define DSW_SW11  20
-#define DSW_SW12  21
+#define DSW_SWA   19
+#define DSW_SWB   20
+#define DSW_SWC   21
 
 
 #define NUM_KEYS TRM_RH_UP+1

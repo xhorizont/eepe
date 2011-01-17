@@ -350,16 +350,19 @@ void MdiChild::OpenEditWindow()
     if(i)
     {
         //TODO error checking
+        bool isNew = false;
 
         if(!eeFile.eeModelExists((uint8_t)i-1))
         {
             eeFile.modelDefault(i-1);
+            isNew = true;//modeledit - clear mixes, apply first template
             setModified();
         }
 
         char buf[sizeof(ModelData().name)+1];
         eeFile.getModelName((i-1),(char*)&buf);
         ModelEdit *t = new ModelEdit(&eeFile,(i-1),this);
+        if(isNew) t->applyBaseTemplate();
         t->setWindowTitle(tr("Editing model %1: ").arg(i) + QString(buf));
         connect(t,SIGNAL(modelValuesChanged()),this,SLOT(setModified()));
         //t->exec();
