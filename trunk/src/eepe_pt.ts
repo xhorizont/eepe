@@ -2144,7 +2144,7 @@ Right</source>
         <translation>Aviso(%1)</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="1654"/>
+        <location filename="modeledit.cpp" line="1655"/>
         <source>Curve %1</source>
         <translation>Curva %1</translation>
     </message>
@@ -2153,124 +2153,124 @@ Right</source>
         <translation type="obsolete">eePe</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="1884"/>
+        <location filename="modeledit.cpp" line="1885"/>
         <source>Delete Selected Mixes?</source>
         <translation>Apagar misturas selecionadas?</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2017"/>
+        <location filename="modeledit.cpp" line="2018"/>
         <source>&amp;Add</source>
         <translation>&amp;Adicionar</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2017"/>
+        <location filename="modeledit.cpp" line="2018"/>
         <source>Ctrl+A</source>
         <translation>Ctrl+A</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2018"/>
+        <location filename="modeledit.cpp" line="2019"/>
         <source>&amp;Edit</source>
         <translation>&amp;Editar</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2018"/>
+        <location filename="modeledit.cpp" line="2019"/>
         <source>Enter</source>
         <translation>Enter</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2020"/>
+        <location filename="modeledit.cpp" line="2021"/>
         <source>&amp;Delete</source>
         <translation>&amp;Eliminar</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2020"/>
+        <location filename="modeledit.cpp" line="2021"/>
         <source>Delete</source>
         <translation>Eliminar</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2021"/>
+        <location filename="modeledit.cpp" line="2022"/>
         <source>&amp;Copy</source>
         <translation>&amp;Copiar</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2021"/>
+        <location filename="modeledit.cpp" line="2022"/>
         <source>Ctrl+C</source>
         <translation>Ctrl+C</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2022"/>
+        <location filename="modeledit.cpp" line="2023"/>
         <source>&amp;Cut</source>
         <translation>&amp;Cor&amp;tar</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2022"/>
+        <location filename="modeledit.cpp" line="2023"/>
         <source>Ctrl+X</source>
         <translation>Ctrl+X</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2023"/>
+        <location filename="modeledit.cpp" line="2024"/>
         <source>&amp;Paste</source>
         <translation>Co&amp;lar</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2023"/>
+        <location filename="modeledit.cpp" line="2024"/>
         <source>Ctrl+V</source>
         <translation>Ctrl+V</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2024"/>
+        <location filename="modeledit.cpp" line="2025"/>
         <source>Du&amp;plicate</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2026"/>
+        <location filename="modeledit.cpp" line="2027"/>
         <source>Move Up</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="modeledit.cpp" line="82"/>
-        <location filename="modeledit.cpp" line="2026"/>
+        <location filename="modeledit.cpp" line="2027"/>
         <source>Ctrl+Up</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2027"/>
+        <location filename="modeledit.cpp" line="2028"/>
         <source>Move Down</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="modeledit.cpp" line="85"/>
-        <location filename="modeledit.cpp" line="2027"/>
+        <location filename="modeledit.cpp" line="2028"/>
         <source>Ctrl+Down</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2343"/>
+        <location filename="modeledit.cpp" line="2344"/>
         <source>Apply Template?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2343"/>
+        <location filename="modeledit.cpp" line="2344"/>
         <source>Apply template &quot;%1&quot;?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2370"/>
+        <location filename="modeledit.cpp" line="2371"/>
         <source>Clear Mixes?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2370"/>
+        <location filename="modeledit.cpp" line="2371"/>
         <source>Really clear all the mixes?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2382"/>
+        <location filename="modeledit.cpp" line="2383"/>
         <source>Clear Curves?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2382"/>
+        <location filename="modeledit.cpp" line="2383"/>
         <source>Really clear all the curves?</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2279,7 +2279,7 @@ Right</source>
         <translation type="obsolete">&amp;Duplicar</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2024"/>
+        <location filename="modeledit.cpp" line="2025"/>
         <source>Ctrl+U</source>
         <translation>Ctrl+U</translation>
     </message>

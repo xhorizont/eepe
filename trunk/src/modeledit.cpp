@@ -1308,6 +1308,7 @@ void ModelEdit::tabTemplates()
     ui->templateList->clear();
     ui->templateList->addItem("Simple 4-CH");
     ui->templateList->addItem("T-Cut");
+    ui->templateList->addItem("Sticky T-Cut");
     ui->templateList->addItem("V-Tail");
     ui->templateList->addItem("Elevon\\Delta");
     ui->templateList->addItem("Heli Setup");
@@ -2423,47 +2424,62 @@ void ModelEdit::applyTemplate(uint8_t idx)
         for(uint8_t j=1; j<=4; j++) if(CC(i)==j) icc[j-1]=i;
 
 
-    switch (idx){
-        //Simple 4-Ch
-    case (0):
+    uint8_t j = 0;
+
+
+    //Simple 4-Ch
+    if(idx==j++)
+    {
         md=setDest(ICC(STK_RUD));  md->srcRaw=CM(STK_RUD);  md->weight=100;
         md=setDest(ICC(STK_ELE));  md->srcRaw=CM(STK_ELE);  md->weight=100;
         md=setDest(ICC(STK_THR));  md->srcRaw=CM(STK_THR);  md->weight=100;
         md=setDest(ICC(STK_AIL));  md->srcRaw=CM(STK_AIL);  md->weight=100;
-        break;
+    }
 
-        //T-Cut
-    case (1):
-        md=setDest(ICC(STK_THR));  md->srcRaw=MIX_MAX;  md->weight=-100;  md->swtch=DSW_SWA;  md->mltpx=MLTPX_REP;
-        md=setDest(14);            md->srcRaw=MIX_FULL; md->weight=-100;  md->swtch=DSW_SWC;
+    //T-Cut
+    if(idx==j++)
+    {
+        md=setDest(ICC(STK_THR));  md->srcRaw=MIX_MAX;  md->weight=-100;  md->swtch=DSW_THR;  md->mltpx=MLTPX_REP;
+    }
+
+    //sticky t-cut
+    if(idx==j++)
+    {
+        md=setDest(ICC(STK_THR));  md->srcRaw=MIX_MAX;  md->weight=-100;  md->swtch=DSW_SWC;  md->mltpx=MLTPX_REP;
+        md=setDest(14);            md->srcRaw=CH(14);   md->weight= 100;
+        md=setDest(14);            md->srcRaw=MIX_MAX;  md->weight=-100;  md->swtch=DSW_SWB;  md->mltpx=MLTPX_REP;
         md=setDest(14);            md->srcRaw=MIX_MAX;  md->weight= 100;  md->swtch=DSW_THR;  md->mltpx=MLTPX_REP;
 
-        setSwitch(0xA,CS_VPOS, CH(14), 0);
         setSwitch(0xB,CS_VNEG, CM(STK_THR), -99);
-        setSwitch(0xC,CS_OR,  -DSW_SWA, DSW_SWB);
+        setSwitch(0xC,CS_VPOS, CH(14), 0);
 
         updateSwitchesTab();
-        break;
+    }
 
-        //V-Tail
-    case (2):
+    //V-Tail
+    if(idx==j++)
+    {
+        clearMixes();
         md=setDest(ICC(STK_RUD));  md->srcRaw=CM(STK_RUD);  md->weight= 100;
         md=setDest(ICC(STK_RUD));  md->srcRaw=CM(STK_ELE);  md->weight=-100;
         md=setDest(ICC(STK_ELE));  md->srcRaw=CM(STK_RUD);  md->weight= 100;
         md=setDest(ICC(STK_ELE));  md->srcRaw=CM(STK_ELE);  md->weight= 100;
-        break;
+    }
 
-        //Elevon\\Delta
-    case (3):
+    //Elevon\\Delta
+    if(idx==j++)
+    {
+        clearMixes();
         md=setDest(ICC(STK_ELE));  md->srcRaw=CM(STK_ELE);  md->weight= 100;
         md=setDest(ICC(STK_ELE));  md->srcRaw=CM(STK_AIL);  md->weight= 100;
         md=setDest(ICC(STK_AIL));  md->srcRaw=CM(STK_ELE);  md->weight= 100;
         md=setDest(ICC(STK_AIL));  md->srcRaw=CM(STK_AIL);  md->weight=-100;
-        break;
+    }
 
 
-        //Heli Setup
-    case (4):
+    //Heli Setup
+    if(idx==j++)
+    {
         clearMixes();  //This time we want a clean slate
         clearCurves();
 
@@ -2505,16 +2521,18 @@ void ModelEdit::applyTemplate(uint8_t idx)
         updateHeliTab();
         updateCurvesTab();
         resizeEvent();
-        break;
+    }
 
     //Gyro Gain
-    case (5):
+    if(idx==j++)
+    {
         md=setDest(6);  md->srcRaw=STK_P2; md->weight= 50; md->swtch=-DSW_GEA; md->sOffset=100;
         md=setDest(6);  md->srcRaw=STK_P2; md->weight=-50; md->swtch= DSW_GEA; md->sOffset=100;
-        break;
+    }
 
     //Servo Test
-    case (6):
+    if(idx==j++)
+    {
         md=setDest(15); md->srcRaw=CH(16);   md->weight= 100; md->speedUp = 8; md->speedDown = 8;
         md=setDest(16); md->srcRaw=MIX_FULL; md->weight= 110; md->swtch=DSW_SW1;
         md=setDest(16); md->srcRaw=MIX_MAX;  md->weight=-110; md->swtch=DSW_SW2; md->mltpx=MLTPX_REP;
@@ -2526,13 +2544,10 @@ void ModelEdit::applyTemplate(uint8_t idx)
 
         // redraw switches tab
         updateSwitchesTab();
-        break;
-
-
-    default:
-        break;
-
     }
+
+
+
 }
 
 
