@@ -3097,18 +3097,21 @@ msgid "SW9"
 msgstr ""
 
 #: simulatordialog.ui:1074
+#| msgid "SW10"
 msgctxt "simulatorDialog|"
-msgid "SW10"
+msgid "SWA"
 msgstr ""
 
 #: simulatordialog.ui:1105
+#| msgid "SW11"
 msgctxt "simulatorDialog|"
-msgid "SW11"
+msgid "SWB"
 msgstr ""
 
 #: simulatordialog.ui:1136
+#| msgid "SW12"
 msgctxt "simulatorDialog|"
-msgid "SW12"
+msgid "SWC"
 msgstr ""
 
 #: simulatordialog.ui:1153

@@ -3033,17 +3033,20 @@ Mode 4:
     </message>
     <message>
         <location filename="simulatordialog.ui" line="1074"/>
-        <source>SW10</source>
+        <source>SWA</source>
+        <oldsource>SW10</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="simulatordialog.ui" line="1105"/>
-        <source>SW11</source>
+        <source>SWB</source>
+        <oldsource>SW11</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="simulatordialog.ui" line="1136"/>
-        <source>SW12</source>
+        <source>SWC</source>
+        <oldsource>SW12</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
