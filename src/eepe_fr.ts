@@ -2662,16 +2662,16 @@ Indique l&apos;affectation voie / numéro de canal par défaut utilisée lors de
         <translation></translation>
     </message>
     <message>
-        <source>SW10</source>
-        <translation></translation>
+        <source>SWA</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>SW11</source>
-        <translation></translation>
+        <source>SWB</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>SW12</source>
-        <translation></translation>
+        <source>SWC</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

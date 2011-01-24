@@ -3136,13 +3136,13 @@ msgid "SW9"
 msgstr ""
 
 msgctxt "simulatorDialog|"
-msgid "SW10"
+msgid "SWA"
 msgstr ""
 
 msgctxt "simulatorDialog|"
-msgid "SW11"
+msgid "SWB"
 msgstr ""
 
 msgctxt "simulatorDialog|"
-msgid "SW12"
+msgid "SWC"
 msgstr ""

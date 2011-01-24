@@ -1071,7 +1071,7 @@ QPushButton:checked {
         <item>
          <widget class="QLabel" name="labelCSW_10">
           <property name="text">
-           <string>SW10</string>
+           <string>SWA</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -1102,7 +1102,7 @@ QPushButton:checked {
         <item>
          <widget class="QLabel" name="labelCSW_11">
           <property name="text">
-           <string>SW11</string>
+           <string>SWB</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -1133,7 +1133,7 @@ QPushButton:checked {
         <item>
          <widget class="QLabel" name="labelCSW_12">
           <property name="text">
-           <string>SW12</string>
+           <string>SWC</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
