@@ -1828,6 +1828,13 @@ Droite</translation>
     </message>
 </context>
 <context>
+    <name>QObject</name>
+    <message>
+        <source>Checking for updates...</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>avrOutputDialog</name>
     <message>
         <source>AVRDUDE done - exit code %1</source>
@@ -2246,6 +2253,10 @@ Indique l&apos;affectation voie / numéro de canal par défaut utilisée lors de
     <message>
         <source>er9x - Ardupilot</source>
         <translation></translation>
+    </message>
+    <message>
+        <source>Show Splash Screen</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
