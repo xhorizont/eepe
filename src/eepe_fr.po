@@ -2063,6 +2063,10 @@ msgctxt "ModelEdit|"
 msgid "CSwitchC"
 msgstr ""
 
+msgctxt "QObject|"
+msgid "Checking for updates..."
+msgstr ""
+
 #, qt-format
 msgctxt "avrOutputDialog|"
 msgid "AVRDUDE done - exit code %1"
@@ -2710,6 +2714,10 @@ msgstr ""
 
 msgctxt "preferencesDialog|"
 msgid "er9x - Ardupilot"
+msgstr ""
+
+msgctxt "preferencesDialog|"
+msgid "Show Splash Screen"
 msgstr ""
 
 msgctxt "printDialog|"

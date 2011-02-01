@@ -27,6 +27,7 @@ void preferencesDialog::write_values()
     settings.setValue("default_mode", ui->stickmodeCB->currentIndex());
     settings.setValue("startup_check_er9x", ui->startupCheck_er9x->isChecked());
     settings.setValue("startup_check_eepe", ui->startupCheck_eepe->isChecked());
+    settings.setValue("show_splash", ui->showSplash->isChecked());
     settings.setValue("download-version", ui->downloadVerCB->currentIndex());
 }
 
@@ -44,6 +45,8 @@ void preferencesDialog::initSettings()
 
     ui->startupCheck_er9x->setChecked(settings.value("startup_check_er9x", true).toBool());
     ui->startupCheck_eepe->setChecked(settings.value("startup_check_eepe", true).toBool());
+
+    ui->showSplash->setChecked(settings.value("show_splash", true).toBool());
 }
 
 void preferencesDialog::populateLocale()

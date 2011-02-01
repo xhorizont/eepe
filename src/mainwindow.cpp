@@ -123,6 +123,7 @@ MainWindow::MainWindow()
     }
 }
 
+
 void MainWindow::checkForUpdates(bool ignoreSettings)
 {
     showcheckForUpdatesResult = ignoreSettings;
@@ -952,8 +953,8 @@ void MainWindow::readSettings()
     currentER9Xrev = settings.value("currentER9Xrev", 1).toInt();
     currentEEPErev = SVN_VER_NUM;
 
-    checkER9X = settings.value("startup_check_er9x", true).toBool();
-    checkEEPE = settings.value("startup_check_eepe", true).toBool();
+    checkER9X  = settings.value("startup_check_er9x", true).toBool();
+    checkEEPE  = settings.value("startup_check_eepe", true).toBool();
 
     if(maximized)
     {

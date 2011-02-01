@@ -45,8 +45,12 @@
 #include <QString>
 #include <QFileInfo>
 #include <QSettings>
+#include <QSplashScreen>
+#include <QThread>
+
 
 #include "mainwindow.h"
+
 
 int main(int argc, char *argv[])
 {
@@ -58,6 +62,21 @@ int main(int argc, char *argv[])
 
     QSettings settings("er9x-eePe", "eePe");
     QString locale = settings.value("locale",QLocale::system().name()).toString();
+    bool showSplash = settings.value("show_splash", true).toBool();
+
+
+    QPixmap pixmap(":/images/eepe-title.png");
+    QSplashScreen *splash = new QSplashScreen(pixmap);
+    if(showSplash)
+    {
+        splash->show();
+
+        bool checkER9X  = settings.value("startup_check_er9x", true).toBool();
+        bool checkEEPE  = settings.value("startup_check_eepe", true).toBool();
+
+        if(checkEEPE || checkER9X)
+            splash->showMessage(QObject::tr("Checking for updates..."));
+    }
 
     QTranslator *translator = new QTranslator();
     translator->load(QString("eepe_") + locale, dir);
@@ -65,5 +84,6 @@ int main(int argc, char *argv[])
 
     MainWindow mainWin;
     mainWin.show();
+    splash->finish(&mainWin);
     return app.exec();
 }
