@@ -2019,19 +2019,19 @@ Right</source>
         <location filename="modeledit.ui" line="5388"/>
         <source>CSwitchA</source>
         <oldsource>CSwitch10</oldsource>
-        <translation type="unfinished">CSchalter10</translation>
+        <translation>CSchalter10</translation>
     </message>
     <message>
         <location filename="modeledit.ui" line="5401"/>
         <source>CSwitchB</source>
         <oldsource>CSwitch11</oldsource>
-        <translation type="unfinished">CSchalter11</translation>
+        <translation>CSchalter11</translation>
     </message>
     <message>
         <location filename="modeledit.ui" line="5414"/>
         <source>CSwitchC</source>
         <oldsource>CSwitch12</oldsource>
-        <translation type="unfinished">CSchalter12</translation>
+        <translation>CSchalter12</translation>
     </message>
     <message>
         <location filename="modeledit.ui" line="5453"/>
