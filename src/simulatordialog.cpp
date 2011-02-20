@@ -775,7 +775,9 @@ void simulatorDialog::perOut(bool init)
       else {
         swTog = !swOn[i];
         swOn[i] = true;
-        v = anas[md.srcRaw-1]; //Switch is on. MAX=FULL=512 or value.
+        uint8_t k = md.srcRaw-1;
+        v = anas[k]; //Switch is on. MAX=FULL=512 or value.
+        if(k>=CHOUT_BASE && (k<i)) v = chans[k];
         if(md.mixWarn) mixWarning |= 1<<(md.mixWarn-1); // Mix warning
       }
 
