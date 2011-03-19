@@ -571,11 +571,11 @@ bool MdiChild::save()
 
 bool MdiChild::saveAs()
 {
-    QString fileName = QFileDialog::getSaveFileName(this, tr("Save As"),curFile,tr(EEPROM_FILES_FILTER));
+    QSettings settings("er9x-eePe", "eePe");
+    QString fileName = QFileDialog::getSaveFileName(this, tr("Save As"),settings.value("lastDir").toString() + "/" +curFile,tr(EEPROM_FILES_FILTER));
     if (fileName.isEmpty())
         return false;
 
-    QSettings settings("er9x-eePe", "eePe");
     settings.setValue("lastDir",QFileInfo(fileName).dir().absolutePath());
     return saveFile(fileName);
 }
