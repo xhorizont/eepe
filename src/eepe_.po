@@ -1079,7 +1079,7 @@ msgid ""
 "%2."
 msgstr ""
 
-#: mdichild.cpp:574
+#: mdichild.cpp:575
 msgctxt "MdiChild|"
 msgid "Save As"
 msgstr ""

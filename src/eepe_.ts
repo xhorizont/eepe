@@ -1035,7 +1035,7 @@ File wrong size - %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="574"/>
+        <location filename="mdichild.cpp" line="575"/>
         <source>Save As</source>
         <translation type="unfinished"></translation>
     </message>
