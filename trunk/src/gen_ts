@@ -6,4 +6,4 @@ lconvert -i eepe_he.ts -o eepe_he.po
 lconvert -i eepe_fr.ts -o eepe_fr.po
 lrelease eepe.pro
 rm eepe_.qm
-mv *.qm ../build-win/release
+mv *.qm ../winbuild
