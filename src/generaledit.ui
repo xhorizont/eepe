@@ -28,7 +28,7 @@
 These will be relevant for all models in the same EEPROM.</string>
      </property>
      <property name="currentIndex">
-      <number>0</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="tabSetup">
       <attribute name="title">
@@ -819,6 +819,9 @@ Mode 4:
          <property name="minimum">
           <number>-9999</number>
          </property>
+         <property name="maximum">
+          <number>9999</number>
+         </property>
          <property name="value">
           <number>0</number>
          </property>
@@ -943,6 +946,9 @@ Mode 4:
          </property>
          <property name="minimum">
           <number>-9999</number>
+         </property>
+         <property name="maximum">
+          <number>9999</number>
          </property>
          <property name="value">
           <number>0</number>
