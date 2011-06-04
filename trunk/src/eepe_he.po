@@ -61,7 +61,7 @@ msgid ""
 "Acceptable values are 5v..10v"
 msgstr ""
 
-#: generaledit.ui:125 generaledit.ui:1119
+#: generaledit.ui:125 generaledit.ui:1125
 msgctxt "GeneralEdit|"
 msgid "Battery Calibration"
 msgstr ""
@@ -140,7 +140,7 @@ msgctxt "GeneralEdit|"
 msgid "Owner Name"
 msgstr ""
 
-#: generaledit.ui:1304
+#: generaledit.ui:1310
 msgctxt "GeneralEdit|"
 msgid "PPM Multiplier"
 msgstr ""
@@ -392,32 +392,32 @@ msgctxt "GeneralEdit|"
 msgid "Calibration"
 msgstr ""
 
-#: generaledit.ui:1073
+#: generaledit.ui:1079
 msgctxt "GeneralEdit|"
 msgid "ANALOG 7"
 msgstr ""
 
-#: generaledit.ui:1027
+#: generaledit.ui:1033
 msgctxt "GeneralEdit|"
 msgid "ANALOG 6"
 msgstr ""
 
-#: generaledit.ui:981
+#: generaledit.ui:987
 msgctxt "GeneralEdit|"
 msgid "ANALOG 5"
 msgstr ""
 
-#: generaledit.ui:935
+#: generaledit.ui:938
 msgctxt "GeneralEdit|"
 msgid "ANALOG 4"
 msgstr ""
 
-#: generaledit.ui:889
+#: generaledit.ui:892
 msgctxt "GeneralEdit|"
 msgid "ANALOG 3"
 msgstr ""
 
-#: generaledit.ui:843
+#: generaledit.ui:846
 msgctxt "GeneralEdit|"
 msgid "ANALOG 2"
 msgstr ""
@@ -427,7 +427,7 @@ msgctxt "GeneralEdit|"
 msgid "ANALOG 1"
 msgstr ""
 
-#: generaledit.ui:1148
+#: generaledit.ui:1154
 msgctxt "GeneralEdit|"
 msgid "PPM In"
 msgstr ""
@@ -447,7 +447,7 @@ msgctxt "GeneralEdit|"
 msgid "Positive"
 msgstr ""
 
-#: generaledit.ui:1129
+#: generaledit.ui:1135
 msgctxt "GeneralEdit|"
 msgid "v"
 msgstr ""

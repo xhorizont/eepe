@@ -53,13 +53,13 @@ Acceptable values are 5v..10v</source>
 Диапазон 5В..10В</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="1129"/>
+        <location filename="generaledit.ui" line="1135"/>
         <source>v</source>
         <translation>В</translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="125"/>
-        <location filename="generaledit.ui" line="1119"/>
+        <location filename="generaledit.ui" line="1125"/>
         <source>Battery Calibration</source>
         <translation>Калибровка батареи</translation>
     </message>
@@ -225,7 +225,7 @@ p, li { white-space: pre-wrap; }
         <translation>Имя владельца</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="1304"/>
+        <location filename="generaledit.ui" line="1310"/>
         <source>PPM Multiplier</source>
         <translation>PPM множитель</translation>
     </message>
@@ -368,32 +368,32 @@ Mode 4:
         <translation>Калибровка.</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="1073"/>
+        <location filename="generaledit.ui" line="1079"/>
         <source>ANALOG 7</source>
         <translation>АНАЛОГ 7</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="1027"/>
+        <location filename="generaledit.ui" line="1033"/>
         <source>ANALOG 6</source>
         <translation>АНАЛОГ 6</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="981"/>
+        <location filename="generaledit.ui" line="987"/>
         <source>ANALOG 5</source>
         <translation>АНАЛОГ 5</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="935"/>
+        <location filename="generaledit.ui" line="938"/>
         <source>ANALOG 4</source>
         <translation>АНАЛОГ 4</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="889"/>
+        <location filename="generaledit.ui" line="892"/>
         <source>ANALOG 3</source>
         <translation>АНАЛОГ 3</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="843"/>
+        <location filename="generaledit.ui" line="846"/>
         <source>ANALOG 2</source>
         <translation>АНАЛОГ 2</translation>
     </message>
@@ -403,7 +403,7 @@ Mode 4:
         <translation>АНАЛОГ 1</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="1148"/>
+        <location filename="generaledit.ui" line="1154"/>
         <source>PPM In</source>
         <translation>Вход PPM</translation>
     </message>
