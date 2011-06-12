@@ -146,6 +146,18 @@ typedef struct t_SafetySwData { // Custom Switches data
   int8_t  val;
 } __attribute__((packed)) SafetySwData;
 
+typedef struct t_FrSkyChannelData {
+  uint8_t   ratio;                // 0.0 means not used, 0.1V steps EG. 6.6 Volts = 66. 25.1V = 251, etc.
+  uint8_t   alarms_value[2];      // 0.1V steps EG. 6.6 Volts = 66. 25.1V = 251, etc.
+  uint8_t   alarms_level:4;
+  uint8_t   alarms_greater:2;     // 0=LT(<), 1=GT(>)
+  uint8_t   type:2;               // future use: 0=volts, ...
+} __attribute__((packed)) FrSkyChannelData;
+
+typedef struct t_FrSkyData {
+  FrSkyChannelData channels[2];
+} __attribute__((packed)) FrSkyData;
+
 typedef struct t_ModelData {
   char      name[10];             // 10 must be first for eeLoadModelName
   uint8_t   mdVers;
@@ -178,6 +190,7 @@ typedef struct t_ModelData {
   CSwData   customSw[NUM_CSW];
   uint8_t   res3[3];
   SafetySwData  safetySw[NUM_CHNOUT];
+  FrSkyData frsky;
 } __attribute__((packed)) ModelData;
 
 
