@@ -421,7 +421,9 @@ bool MdiChild::loadFile(const QString &fileName, bool resetCurrentFile)
         if((file.size()>(6*1024)) || (file.size()<(4*1024)))  //if filesize> 6k and <4kb
         {
             QMessageBox::critical(this, tr("Error"),tr("Error reading file:\n"
-                                                       "File wrong size - %1").arg(fileName));
+                                                       "File wrong size - %1\n"
+                                                       "This might be a FW file. You might want to try burning it to the TX.\n"
+                                                       "(Burn->Write Flash Memory)").arg(fileName));
             return false;
         }
 

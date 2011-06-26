@@ -60,4 +60,5 @@ TRANSLATIONS = eepe_.ts    \
                eepe_pt.ts  \
                eepe_ru.ts  \
                eepe_de.ts  \
+               eepe_es.ts  \
                eepe_fr.ts
