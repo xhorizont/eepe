@@ -981,7 +981,7 @@ msgctxt "MdiChild|"
 msgid "General Settings"
 msgstr ""
 
-#: mdichild.cpp:686 mdichild.cpp:727
+#: mdichild.cpp:688 mdichild.cpp:729
 msgctxt "MdiChild|"
 msgid "eePe"
 msgstr ""
@@ -992,10 +992,10 @@ msgid "Delete Selected Models?"
 msgstr ""
 
 #: mdichild.cpp:243 mdichild.cpp:253 mdichild.cpp:384 mdichild.cpp:412
-#: mdichild.cpp:423 mdichild.cpp:429 mdichild.cpp:446 mdichild.cpp:466
-#: mdichild.cpp:489 mdichild.cpp:502 mdichild.cpp:519 mdichild.cpp:525
-#: mdichild.cpp:538 mdichild.cpp:548 mdichild.cpp:592 mdichild.cpp:636
-#: mdichild.cpp:649 mdichild.cpp:745
+#: mdichild.cpp:423 mdichild.cpp:431 mdichild.cpp:448 mdichild.cpp:468
+#: mdichild.cpp:491 mdichild.cpp:504 mdichild.cpp:521 mdichild.cpp:527
+#: mdichild.cpp:540 mdichild.cpp:550 mdichild.cpp:594 mdichild.cpp:638
+#: mdichild.cpp:651 mdichild.cpp:747
 msgctxt "MdiChild|"
 msgid "Error"
 msgstr ""
@@ -1034,19 +1034,19 @@ msgctxt "MdiChild|"
 msgid "Unable to find file %1!"
 msgstr ""
 
-#: mdichild.cpp:447
+#: mdichild.cpp:449
 #, qt-format
 msgctxt "MdiChild|"
 msgid "Invalid EEPE EEPROM File %1"
 msgstr ""
 
-#: mdichild.cpp:466 mdichild.cpp:489
+#: mdichild.cpp:468 mdichild.cpp:491
 #, qt-format
 msgctxt "MdiChild|"
 msgid "Error reading file %1!"
 msgstr ""
 
-#: mdichild.cpp:539
+#: mdichild.cpp:541
 #, qt-format
 msgctxt "MdiChild|"
 msgid ""
@@ -1054,7 +1054,7 @@ msgid ""
 "%2."
 msgstr ""
 
-#: mdichild.cpp:503 mdichild.cpp:549
+#: mdichild.cpp:505 mdichild.cpp:551
 #, qt-format
 #| msgid "File wrong size - %1"
 msgctxt "MdiChild|"
@@ -1063,7 +1063,7 @@ msgid ""
 "%2."
 msgstr ""
 
-#: mdichild.cpp:423 mdichild.cpp:519
+#: mdichild.cpp:521
 #, qt-format
 msgctxt "MdiChild|"
 msgid ""
@@ -1071,7 +1071,7 @@ msgid ""
 "File wrong size - %1"
 msgstr ""
 
-#: mdichild.cpp:430 mdichild.cpp:526
+#: mdichild.cpp:432 mdichild.cpp:528
 #, qt-format
 msgctxt "MdiChild|"
 msgid ""
@@ -1079,12 +1079,22 @@ msgid ""
 "%2."
 msgstr ""
 
-#: mdichild.cpp:575
+#: mdichild.cpp:423
+#, qt-format
+msgctxt "MdiChild|"
+msgid ""
+"Error reading file:\n"
+"File wrong size - %1\n"
+"This might be a FW file. You might want to try burning it to the TX.\n"
+"(Burn->Write Flash Memory)"
+msgstr ""
+
+#: mdichild.cpp:577
 msgctxt "MdiChild|"
 msgid "Save As"
 msgstr ""
 
-#: mdichild.cpp:593 mdichild.cpp:637
+#: mdichild.cpp:595 mdichild.cpp:639
 #, qt-format
 msgctxt "MdiChild|"
 msgid ""
@@ -1092,13 +1102,13 @@ msgid ""
 "%2."
 msgstr ""
 
-#: mdichild.cpp:619 mdichild.cpp:623
+#: mdichild.cpp:621 mdichild.cpp:625
 #, qt-format
 msgctxt "MdiChild|"
 msgid "%1"
 msgstr ""
 
-#: mdichild.cpp:650
+#: mdichild.cpp:652
 #, qt-format
 msgctxt "MdiChild|"
 msgid ""
@@ -1106,7 +1116,7 @@ msgid ""
 "%2."
 msgstr ""
 
-#: mdichild.cpp:687
+#: mdichild.cpp:689
 #, qt-format
 msgctxt "MdiChild|"
 msgid ""
@@ -1114,89 +1124,89 @@ msgid ""
 "Do you want to save your changes?"
 msgstr ""
 
-#: mdichild.cpp:728
+#: mdichild.cpp:730
 #, qt-format
 #| msgid "Burn %1 to transmitter?"
 msgctxt "MdiChild|"
 msgid "Write %1 to EEPROM memory?"
 msgstr ""
 
-#: mdichild.cpp:745
+#: mdichild.cpp:747
 msgctxt "MdiChild|"
 msgid "Cannot write temporary file!"
 msgstr ""
 
-#: mdichild.cpp:768
+#: mdichild.cpp:770
 msgctxt "MdiChild|"
 msgid "&Edit"
 msgstr ""
 
-#: mdichild.cpp:770
+#: mdichild.cpp:772
 msgctxt "MdiChild|"
 msgid "&Delete"
 msgstr ""
 
-#: mdichild.cpp:770
+#: mdichild.cpp:772
 msgctxt "MdiChild|"
 msgid "Delete"
 msgstr ""
 
-#: mdichild.cpp:771
+#: mdichild.cpp:773
 msgctxt "MdiChild|"
 msgid "&Copy"
 msgstr ""
 
-#: mdichild.cpp:771
+#: mdichild.cpp:773
 msgctxt "MdiChild|"
 msgid "Ctrl+C"
 msgstr ""
 
-#: mdichild.cpp:772
+#: mdichild.cpp:774
 msgctxt "MdiChild|"
 msgid "&Cut"
 msgstr ""
 
-#: mdichild.cpp:772
+#: mdichild.cpp:774
 msgctxt "MdiChild|"
 msgid "Ctrl+X"
 msgstr ""
 
-#: mdichild.cpp:773
+#: mdichild.cpp:775
 msgctxt "MdiChild|"
 msgid "&Paste"
 msgstr ""
 
-#: mdichild.cpp:773
+#: mdichild.cpp:775
 msgctxt "MdiChild|"
 msgid "Ctrl+V"
 msgstr ""
 
-#: mdichild.cpp:774
+#: mdichild.cpp:776
 msgctxt "MdiChild|"
 msgid "D&uplicate"
 msgstr ""
 
-#: mdichild.cpp:774
+#: mdichild.cpp:776
 msgctxt "MdiChild|"
 msgid "Ctrl+U"
 msgstr ""
 
-#: mdichild.cpp:776
+#: mdichild.cpp:778
 msgctxt "MdiChild|"
 msgid "&Simulate"
 msgstr ""
 
-#: mdichild.cpp:776
+#: mdichild.cpp:778
 msgctxt "MdiChild|"
 msgid "Alt+S"
 msgstr ""
 
-#: mdichild.cpp:778
+#: mdichild.cpp:780
 msgctxt "MdiChild|"
 msgid "&Write To Tx"
 msgstr ""
 
-#: mdichild.cpp:778
+#: mdichild.cpp:780
 msgctxt "MdiChild|"
 msgid "Ctrl+Alt+W"
 msgstr ""
@@ -1415,763 +1425,825 @@ msgctxt "ModelEdit|"
 msgid "Dialog"
 msgstr ""
 
-#: modeledit.ui:31
+#: modeledit.ui:42
 msgctxt "ModelEdit|"
 msgid "Setup"
 msgstr ""
 
-#: modeledit.ui:40
+#: modeledit.ui:51
 msgctxt "ModelEdit|"
 msgid "Model Name"
 msgstr ""
 
-#: modeledit.ui:54
+#: modeledit.ui:65
 msgctxt "ModelEdit|"
 msgid "Timer Mode"
 msgstr ""
 
-#: modeledit.ui:64
+#: modeledit.ui:75
 msgctxt "ModelEdit|"
 msgid "Timer Direction"
 msgstr ""
 
-#: modeledit.ui:72
+#: modeledit.ui:83
 msgctxt "ModelEdit|"
 msgid "Count Down"
 msgstr ""
 
-#: modeledit.ui:77
+#: modeledit.ui:88
 msgctxt "ModelEdit|"
 msgid "Count Up"
 msgstr ""
 
-#: modeledit.ui:85
+#: modeledit.ui:96
 msgctxt "ModelEdit|"
 msgid "Timer Value"
 msgstr ""
 
-#: modeledit.ui:98
+#: modeledit.ui:109
 msgctxt "ModelEdit|"
 msgid "mm:ss"
 msgstr ""
 
-#: modeledit.ui:105
+#: modeledit.ui:116
 msgctxt "ModelEdit|"
 msgid "Trim Increment"
 msgstr ""
 
-#: modeledit.ui:113
+#: modeledit.ui:124
 msgctxt "ModelEdit|"
 msgid "Exponential"
 msgstr ""
 
-#: modeledit.ui:118
+#: modeledit.ui:129
 msgctxt "ModelEdit|"
 msgid "Extra Fine"
 msgstr ""
 
-#: modeledit.ui:123
+#: modeledit.ui:134
 msgctxt "ModelEdit|"
 msgid "Fine"
 msgstr ""
 
-#: modeledit.ui:128
+#: modeledit.ui:139
 msgctxt "ModelEdit|"
 msgid "Medium"
 msgstr ""
 
-#: modeledit.ui:133
+#: modeledit.ui:144
 msgctxt "ModelEdit|"
 msgid "Coarse"
 msgstr ""
 
-#: modeledit.ui:141
+#: modeledit.ui:152
 msgctxt "ModelEdit|"
 msgid "Throttle Trim"
 msgstr ""
 
-#: modeledit.ui:155
+#: modeledit.ui:166
 msgctxt "ModelEdit|"
 msgid "Throttle Expo"
 msgstr ""
 
-#: modeledit.ui:169
+#: modeledit.ui:180
 msgctxt "ModelEdit|"
 msgid "instaTrim Switch"
 msgstr ""
 
-#: modeledit.ui:179
+#: modeledit.ui:190
 msgctxt "ModelEdit|"
 msgid "Center beep"
 msgstr ""
 
-#: modeledit.ui:188
+#: modeledit.ui:199
 msgctxt "ModelEdit|"
 msgid "RUD"
 msgstr ""
 
-#: modeledit.ui:195
+#: modeledit.ui:206
 msgctxt "ModelEdit|"
 msgid "ELE"
 msgstr ""
 
-#: modeledit.ui:202
+#: modeledit.ui:213
 msgctxt "ModelEdit|"
 msgid "THR"
 msgstr ""
 
-#: modeledit.ui:209
+#: modeledit.ui:220
 msgctxt "ModelEdit|"
 msgid "AIL"
 msgstr ""
 
-#: modeledit.ui:216
+#: modeledit.ui:227
 msgctxt "ModelEdit|"
 msgid "P1"
 msgstr ""
 
-#: modeledit.ui:223
+#: modeledit.ui:234
 msgctxt "ModelEdit|"
 msgid "P2"
 msgstr ""
 
-#: modeledit.ui:230
+#: modeledit.ui:241
 msgctxt "ModelEdit|"
 msgid "P3"
 msgstr ""
 
-#: modeledit.ui:239
+#: modeledit.ui:250
 msgctxt "ModelEdit|"
 msgid "Pulse Shift (polarity)"
 msgstr ""
 
-#: modeledit.ui:247
+#: modeledit.ui:258
 msgctxt "ModelEdit|"
 msgid "Positive"
 msgstr ""
 
-#: modeledit.ui:252
+#: modeledit.ui:263
 msgctxt "ModelEdit|"
 msgid "Negative"
 msgstr ""
 
-#: modeledit.ui:274
+#: modeledit.ui:285
 msgctxt "ModelEdit|"
 msgid "Protocol"
 msgstr ""
 
-#: modeledit.ui:310
+#: modeledit.ui:321
 msgctxt "ModelEdit|"
 msgid "Channels"
 msgstr ""
 
-#: modeledit.ui:317
+#: modeledit.ui:328
 msgctxt "ModelEdit|"
 msgid "ch"
 msgstr ""
 
-#: modeledit.ui:336
+#: modeledit.ui:347
 msgctxt "ModelEdit|"
 msgid "ppm Delay"
 msgstr ""
 
-#: modeledit.ui:343
+#: modeledit.ui:354
 msgctxt "ModelEdit|"
 msgid " usec"
 msgstr ""
 
-#: modeledit.ui:260
+#: modeledit.ui:271
 msgctxt "ModelEdit|"
 msgid "Extended Limits"
 msgstr ""
 
-#: modeledit.ui:363
+#: modeledit.ui:374
 msgctxt "ModelEdit|"
 msgid "Heli Setup"
 msgstr ""
 
-#: modeledit.ui:369
+#: modeledit.ui:380
 msgctxt "ModelEdit|"
 msgid "Swash Type"
 msgstr ""
 
-#: modeledit.ui:377
+#: modeledit.ui:388
 msgctxt "ModelEdit|"
 msgid "Off"
 msgstr ""
 
-#: modeledit.ui:382
+#: modeledit.ui:393
 msgctxt "ModelEdit|"
 msgid "120"
 msgstr ""
 
-#: modeledit.ui:387
+#: modeledit.ui:398
 msgctxt "ModelEdit|"
 msgid "120X"
 msgstr ""
 
-#: modeledit.ui:392
+#: modeledit.ui:403
 msgctxt "ModelEdit|"
 msgid "140"
 msgstr ""
 
-#: modeledit.ui:397
+#: modeledit.ui:408
 msgctxt "ModelEdit|"
 msgid "90"
 msgstr ""
 
-#: modeledit.ui:405
+#: modeledit.ui:416
 msgctxt "ModelEdit|"
 msgid "Collective"
 msgstr ""
 
-#: modeledit.ui:415
+#: modeledit.ui:426
 msgctxt "ModelEdit|"
 msgid "Swash Ring"
 msgstr ""
 
-#: modeledit.ui:450
+#: modeledit.ui:461
 msgctxt "ModelEdit|"
 msgid "Invert Elevator"
 msgstr ""
 
-#: modeledit.ui:457
+#: modeledit.ui:468
 msgctxt "ModelEdit|"
 msgid "Invert Aileron"
 msgstr ""
 
-#: modeledit.ui:464
+#: modeledit.ui:475
 msgctxt "ModelEdit|"
 msgid "Invert Collective"
 msgstr ""
 
-#: modeledit.ui:487
+#: modeledit.ui:498
 msgctxt "ModelEdit|"
 msgid "Expo/Dr"
 msgstr ""
 
-#: modeledit.ui:510 modeledit.ui:830 modeledit.ui:1183 modeledit.ui:1470
+#: modeledit.ui:521 modeledit.ui:841 modeledit.ui:1194 modeledit.ui:1481
 msgctxt "ModelEdit|"
 msgid "HIGH"
 msgstr ""
 
-#: modeledit.ui:584 modeledit.ui:904 modeledit.ui:1257 modeledit.ui:1544
+#: modeledit.ui:595 modeledit.ui:915 modeledit.ui:1268 modeledit.ui:1555
 msgctxt "ModelEdit|"
 msgid "MID"
 msgstr ""
 
-#: modeledit.ui:658 modeledit.ui:978 modeledit.ui:1331 modeledit.ui:1618
+#: modeledit.ui:669 modeledit.ui:989 modeledit.ui:1342 modeledit.ui:1629
 msgctxt "ModelEdit|"
 msgid "LOW"
 msgstr ""
 
-#: modeledit.ui:732 modeledit.ui:1052 modeledit.ui:1405 modeledit.ui:1692
+#: modeledit.ui:743 modeledit.ui:1063 modeledit.ui:1416 modeledit.ui:1703
 msgctxt "ModelEdit|"
 msgid ""
 "Expo\n"
 "Left"
 msgstr ""
 
-#: modeledit.ui:743 modeledit.ui:1074 modeledit.ui:1150 modeledit.ui:1714
+#: modeledit.ui:754 modeledit.ui:1085 modeledit.ui:1161 modeledit.ui:1725
 msgctxt "ModelEdit|"
 msgid ""
 "D/R\n"
 "Left"
 msgstr ""
 
-#: modeledit.ui:754 modeledit.ui:1063 modeledit.ui:1161 modeledit.ui:1703
+#: modeledit.ui:765 modeledit.ui:1074 modeledit.ui:1172 modeledit.ui:1714
 msgctxt "ModelEdit|"
 msgid ""
 "D/R\n"
 "Right"
 msgstr ""
 
-#: modeledit.ui:765 modeledit.ui:1085 modeledit.ui:1172 modeledit.ui:1725
+#: modeledit.ui:776 modeledit.ui:1096 modeledit.ui:1183 modeledit.ui:1736
 msgctxt "ModelEdit|"
 msgid ""
 "Expo\n"
 "Right"
 msgstr ""
 
-#: modeledit.ui:778 modeledit.ui:1108 modeledit.ui:1418 modeledit.ui:1748
+#: modeledit.ui:789 modeledit.ui:1119 modeledit.ui:1429 modeledit.ui:1759
 msgctxt "ModelEdit|"
 msgid "Switch1"
 msgstr ""
 
-#: modeledit.ui:788 modeledit.ui:1098 modeledit.ui:1428 modeledit.ui:1738
+#: modeledit.ui:799 modeledit.ui:1109 modeledit.ui:1439 modeledit.ui:1749
 msgctxt "ModelEdit|"
 msgid "Switch2"
 msgstr ""
 
-#: modeledit.ui:803
+#: modeledit.ui:814
 msgctxt "ModelEdit|"
 msgid "Rudder"
 msgstr ""
 
-#: modeledit.ui:1123
+#: modeledit.ui:1134
 msgctxt "ModelEdit|"
 msgid "Aileron"
 msgstr ""
 
-#: modeledit.ui:1443
+#: modeledit.ui:1454
 msgctxt "ModelEdit|"
 msgid "Throttle"
 msgstr ""
 
-#: modeledit.ui:1763
+#: modeledit.ui:1774
 msgctxt "ModelEdit|"
 msgid "Elevator"
 msgstr ""
 
-#: modeledit.ui:1774
+#: modeledit.ui:1785
 msgctxt "ModelEdit|"
 msgid "Mixes"
 msgstr ""
 
-#: modeledit.ui:1784
+#: modeledit.ui:1795
 msgctxt "ModelEdit|"
 msgid "Limits"
 msgstr ""
 
-#: modeledit.ui:1846 modeledit.ui:1915 modeledit.ui:1984 modeledit.ui:2053
-#: modeledit.ui:2122 modeledit.ui:2191 modeledit.ui:2260 modeledit.ui:2329
-#: modeledit.ui:2398 modeledit.ui:2467 modeledit.ui:2536 modeledit.ui:2605
-#: modeledit.ui:2674 modeledit.ui:2743 modeledit.ui:2812 modeledit.ui:2881
+#: modeledit.ui:1857 modeledit.ui:1926 modeledit.ui:1995 modeledit.ui:2064
+#: modeledit.ui:2133 modeledit.ui:2202 modeledit.ui:2271 modeledit.ui:2340
+#: modeledit.ui:2409 modeledit.ui:2478 modeledit.ui:2547 modeledit.ui:2616
+#: modeledit.ui:2685 modeledit.ui:2754 modeledit.ui:2823 modeledit.ui:2892
 msgctxt "ModelEdit|"
 msgid "NOR"
 msgstr ""
 
-#: modeledit.ui:1851 modeledit.ui:1920 modeledit.ui:1989 modeledit.ui:2058
-#: modeledit.ui:2127 modeledit.ui:2196 modeledit.ui:2265 modeledit.ui:2334
-#: modeledit.ui:2403 modeledit.ui:2472 modeledit.ui:2541 modeledit.ui:2610
-#: modeledit.ui:2679 modeledit.ui:2748 modeledit.ui:2817 modeledit.ui:2886
+#: modeledit.ui:1862 modeledit.ui:1931 modeledit.ui:2000 modeledit.ui:2069
+#: modeledit.ui:2138 modeledit.ui:2207 modeledit.ui:2276 modeledit.ui:2345
+#: modeledit.ui:2414 modeledit.ui:2483 modeledit.ui:2552 modeledit.ui:2621
+#: modeledit.ui:2690 modeledit.ui:2759 modeledit.ui:2828 modeledit.ui:2897
 msgctxt "ModelEdit|"
 msgid "INV"
 msgstr ""
 
-#: modeledit.ui:2903 modeledit.ui:5468
+#: modeledit.ui:2914 modeledit.ui:5479
 msgctxt "ModelEdit|"
 msgid "Channel"
 msgstr ""
 
-#: modeledit.ui:2925
+#: modeledit.ui:2936
 msgctxt "ModelEdit|"
 msgid "Offset"
 msgstr ""
 
-#: modeledit.ui:2947
+#: modeledit.ui:2958
 msgctxt "ModelEdit|"
 msgid "Min"
 msgstr ""
 
-#: modeledit.ui:2969
+#: modeledit.ui:2980
 msgctxt "ModelEdit|"
 msgid "Max"
 msgstr ""
 
-#: modeledit.ui:441 modeledit.ui:2991
+#: modeledit.ui:452 modeledit.ui:3002
 msgctxt "ModelEdit|"
 msgid "Invert"
 msgstr ""
 
-#: modeledit.ui:3005
+#: modeledit.ui:3016
 msgctxt "ModelEdit|"
 msgid "Curves"
 msgstr ""
 
-#: modeledit.ui:3011
+#: modeledit.ui:3022
 msgctxt "ModelEdit|"
 msgid "Curve 1"
 msgstr ""
 
-#: modeledit.ui:3101
+#: modeledit.ui:3112
 msgctxt "ModelEdit|"
 msgid "Curve 2"
 msgstr ""
 
-#: modeledit.ui:3188
+#: modeledit.ui:3199
 msgctxt "ModelEdit|"
 msgid "Curve 3"
 msgstr ""
 
-#: modeledit.ui:3275
+#: modeledit.ui:3286
 msgctxt "ModelEdit|"
 msgid "Curve 4"
 msgstr ""
 
-#: modeledit.ui:3362
+#: modeledit.ui:3373
 msgctxt "ModelEdit|"
 msgid "Curve 5"
 msgstr ""
 
-#: modeledit.ui:3449
+#: modeledit.ui:3460
 msgctxt "ModelEdit|"
 msgid "Curve 6"
 msgstr ""
 
-#: modeledit.ui:3536
+#: modeledit.ui:3547
 msgctxt "ModelEdit|"
 msgid "Curve 7"
 msgstr ""
 
-#: modeledit.ui:3623
+#: modeledit.ui:3634
 msgctxt "ModelEdit|"
 msgid "Curve 8"
 msgstr ""
 
-#: modeledit.ui:3710
+#: modeledit.ui:3721
 msgctxt "ModelEdit|"
 msgid "Curve 9"
 msgstr ""
 
-#: modeledit.ui:3861
+#: modeledit.ui:3872
 msgctxt "ModelEdit|"
 msgid "Curve 10"
 msgstr ""
 
-#: modeledit.ui:4012
+#: modeledit.ui:4023
 msgctxt "ModelEdit|"
 msgid "Curve 11"
 msgstr ""
 
-#: modeledit.ui:4163
+#: modeledit.ui:4174
 msgctxt "ModelEdit|"
 msgid "Curve 12"
 msgstr ""
 
-#: modeledit.ui:4314
+#: modeledit.ui:4325
 msgctxt "ModelEdit|"
 msgid "Curve 13"
 msgstr ""
 
-#: modeledit.ui:4465
+#: modeledit.ui:4476
 msgctxt "ModelEdit|"
 msgid "Curve 14"
 msgstr ""
 
-#: modeledit.ui:4616
+#: modeledit.ui:4627
 msgctxt "ModelEdit|"
 msgid "Curve 15"
 msgstr ""
 
-#: modeledit.ui:4767
+#: modeledit.ui:4778
 msgctxt "ModelEdit|"
 msgid "Curve 16"
 msgstr ""
 
-#: modeledit.ui:5190
+#: modeledit.ui:5201
 #| msgid "Clear All Mixes"
 msgctxt "ModelEdit|"
 msgid "Clear All Curves"
 msgstr ""
 
-#: modeledit.ui:5202
+#: modeledit.ui:5213
 msgctxt "ModelEdit|"
 msgid "Switches"
 msgstr ""
 
-#: modeledit.ui:5214
+#: modeledit.ui:5225
 msgctxt "ModelEdit|"
 msgid "CSwitch1"
 msgstr ""
 
-#: modeledit.ui:5230
+#: modeledit.ui:5241
 msgctxt "ModelEdit|"
 msgid "CSwitch2"
 msgstr ""
 
-#: modeledit.ui:5246
+#: modeledit.ui:5257
 msgctxt "ModelEdit|"
 msgid "CSwitch3"
 msgstr ""
 
-#: modeledit.ui:5262
+#: modeledit.ui:5273
 msgctxt "ModelEdit|"
 msgid "CSwitch4"
 msgstr ""
 
-#: modeledit.ui:5278
+#: modeledit.ui:5289
 msgctxt "ModelEdit|"
 msgid "CSwitch5"
 msgstr ""
 
-#: modeledit.ui:5336
+#: modeledit.ui:5347
 msgctxt "ModelEdit|"
 msgid "CSwitch6"
 msgstr ""
 
-#: modeledit.ui:5297
+#: modeledit.ui:5308
 msgctxt "ModelEdit|"
 msgid "Function"
 msgstr ""
 
-#: modeledit.ui:5310
+#: modeledit.ui:5321
 msgctxt "ModelEdit|"
 msgid "V1"
 msgstr ""
 
-#: modeledit.ui:5323
+#: modeledit.ui:5334
 msgctxt "ModelEdit|"
 msgid "V2"
 msgstr ""
 
-#: modeledit.ui:5349
+#: modeledit.ui:5360
 msgctxt "ModelEdit|"
 msgid "CSwitch7"
 msgstr ""
 
-#: modeledit.ui:5362
+#: modeledit.ui:5373
 msgctxt "ModelEdit|"
 msgid "CSwitch8"
 msgstr ""
 
-#: modeledit.ui:5375
+#: modeledit.ui:5386
 msgctxt "ModelEdit|"
 msgid "CSwitch9"
 msgstr ""
 
-#: modeledit.ui:5388
+#: modeledit.ui:5399
 #| msgid "CSwitch10"
 msgctxt "ModelEdit|"
 msgid "CSwitchA"
 msgstr ""
 
-#: modeledit.ui:5401
+#: modeledit.ui:5412
 #| msgid "CSwitch11"
 msgctxt "ModelEdit|"
 msgid "CSwitchB"
 msgstr ""
 
-#: modeledit.ui:5414
+#: modeledit.ui:5425
 #| msgid "CSwitch12"
 msgctxt "ModelEdit|"
 msgid "CSwitchC"
 msgstr ""
 
-#: modeledit.ui:5453
+#: modeledit.ui:5464
 msgctxt "ModelEdit|"
 msgid "Safety Switches"
 msgstr ""
 
-#: modeledit.ui:5490
+#: modeledit.ui:5501
 msgctxt "ModelEdit|"
 msgid "Switch"
 msgstr ""
 
-#: modeledit.ui:5512
+#: modeledit.ui:5523
 msgctxt "ModelEdit|"
 msgid "Value"
 msgstr ""
 
-#: modeledit.ui:5638
+#: modeledit.ui:5649
 msgctxt "ModelEdit|"
 msgid "Trims"
 msgstr ""
 
-#: modeledit.ui:5747
+#: modeledit.ui:5758
 msgctxt "ModelEdit|"
 msgid "STICK 1"
 msgstr ""
 
-#: modeledit.ui:5762
+#: modeledit.ui:5773
 msgctxt "ModelEdit|"
 msgid "STICK 2"
 msgstr ""
 
-#: modeledit.ui:5852
+#: modeledit.ui:5863
 msgctxt "ModelEdit|"
 msgid "STICK 4"
 msgstr ""
 
-#: modeledit.ui:5867
+#: modeledit.ui:5878
 msgctxt "ModelEdit|"
 msgid "STICK 3"
 msgstr ""
 
-#: modeledit.ui:5937
+#: modeledit.ui:5948
+msgctxt "ModelEdit|"
+msgid "FrSky"
+msgstr ""
+
+#: modeledit.ui:5956
+msgctxt "ModelEdit|"
+msgid "Channel 1"
+msgstr ""
+
+#: modeledit.ui:5964 modeledit.ui:6114
+msgctxt "ModelEdit|"
+msgid "V"
+msgstr ""
+
+#: modeledit.ui:5969 modeledit.ui:5974 modeledit.ui:5979 modeledit.ui:5997
+#: modeledit.ui:6042 modeledit.ui:6119 modeledit.ui:6124 modeledit.ui:6129
+#: modeledit.ui:6147 modeledit.ui:6192
+msgctxt "ModelEdit|"
+msgid "---"
+msgstr ""
+
+#: modeledit.ui:5989 modeledit.ui:6139
+msgctxt "ModelEdit|"
+msgid "Alarm 1"
+msgstr ""
+
+#: modeledit.ui:6002 modeledit.ui:6047 modeledit.ui:6152 modeledit.ui:6197
+msgctxt "ModelEdit|"
+msgid "Yellow"
+msgstr ""
+
+#: modeledit.ui:6007 modeledit.ui:6052 modeledit.ui:6157 modeledit.ui:6202
+msgctxt "ModelEdit|"
+msgid "Orange"
+msgstr ""
+
+#: modeledit.ui:6012 modeledit.ui:6057 modeledit.ui:6162 modeledit.ui:6207
+msgctxt "ModelEdit|"
+msgid "Red"
+msgstr ""
+
+#: modeledit.ui:6021 modeledit.ui:6066 modeledit.ui:6171 modeledit.ui:6216
+msgctxt "ModelEdit|"
+msgid "<"
+msgstr ""
+
+#: modeledit.ui:6026 modeledit.ui:6071 modeledit.ui:6176 modeledit.ui:6221
+msgctxt "ModelEdit|"
+msgid ">"
+msgstr ""
+
+#: modeledit.ui:6034 modeledit.ui:6184
+msgctxt "ModelEdit|"
+msgid "Alarm 2"
+msgstr ""
+
+#: modeledit.ui:6106
+msgctxt "ModelEdit|"
+msgid "Channel 2"
+msgstr ""
+
+#: modeledit.ui:6268
 msgctxt "ModelEdit|"
 msgid "Templates"
 msgstr ""
 
-#: modeledit.ui:5950
+#: modeledit.ui:27
 msgctxt "ModelEdit|"
 msgid "Simulate"
 msgstr ""
 
-#: modeledit.cpp:411 modeledit.cpp:421 modeledit.cpp:467
+#: modeledit.cpp:415 modeledit.cpp:425 modeledit.cpp:471
 #, qt-format
 msgctxt "ModelEdit|"
 msgid "CH%1%2"
 msgstr ""
 
-#: modeledit.cpp:442
+#: modeledit.cpp:446
 msgctxt "ModelEdit|"
 msgid " Switch("
 msgstr ""
 
-#: modeledit.cpp:443
+#: modeledit.cpp:447
 msgctxt "ModelEdit|"
 msgid " noTrim"
-msgstr ""
-
-#: modeledit.cpp:444
-#, qt-format
-msgctxt "ModelEdit|"
-msgid " Offset(%1%)"
 msgstr ""
 
 #: modeledit.cpp:448
 #, qt-format
 msgctxt "ModelEdit|"
-msgid " Curve(%1)"
-msgstr ""
-
-#: modeledit.cpp:451
-#, qt-format
-msgctxt "ModelEdit|"
-msgid " Delay(u%1:d%2)"
+msgid " Offset(%1%)"
 msgstr ""
 
 #: modeledit.cpp:452
 #, qt-format
 msgctxt "ModelEdit|"
+msgid " Curve(%1)"
+msgstr ""
+
+#: modeledit.cpp:455
+#, qt-format
+msgctxt "ModelEdit|"
+msgid " Delay(u%1:d%2)"
+msgstr ""
+
+#: modeledit.cpp:456
+#, qt-format
+msgctxt "ModelEdit|"
 msgid " Slow(u%1:d%2)"
 msgstr ""
 
-#: modeledit.cpp:454
+#: modeledit.cpp:458
 #, qt-format
 msgctxt "ModelEdit|"
 msgid " Warn(%1)"
 msgstr ""
 
-#: modeledit.cpp:1655
+#: modeledit.cpp:1723
 #, qt-format
 msgctxt "ModelEdit|"
 msgid "Curve %1"
 msgstr ""
 
-#: modeledit.cpp:1885
+#: modeledit.cpp:1953
 msgctxt "ModelEdit|"
 msgid "Delete Selected Mixes?"
 msgstr ""
 
-#: modeledit.cpp:2018
+#: modeledit.cpp:2086
 msgctxt "ModelEdit|"
 msgid "&Add"
 msgstr ""
 
-#: modeledit.cpp:2018
+#: modeledit.cpp:2086
 msgctxt "ModelEdit|"
 msgid "Ctrl+A"
 msgstr ""
 
-#: modeledit.cpp:2019
+#: modeledit.cpp:2087
 msgctxt "ModelEdit|"
 msgid "&Edit"
 msgstr ""
 
-#: modeledit.cpp:2019
+#: modeledit.cpp:2087
 msgctxt "ModelEdit|"
 msgid "Enter"
 msgstr ""
 
-#: modeledit.cpp:2021
+#: modeledit.cpp:2089
 msgctxt "ModelEdit|"
 msgid "&Delete"
 msgstr ""
 
-#: modeledit.cpp:2021
+#: modeledit.cpp:2089
 msgctxt "ModelEdit|"
 msgid "Delete"
 msgstr ""
 
-#: modeledit.cpp:2022
+#: modeledit.cpp:2090
 msgctxt "ModelEdit|"
 msgid "&Copy"
 msgstr ""
 
-#: modeledit.cpp:2022
+#: modeledit.cpp:2090
 msgctxt "ModelEdit|"
 msgid "Ctrl+C"
 msgstr ""
 
-#: modeledit.cpp:2023
+#: modeledit.cpp:2091
 msgctxt "ModelEdit|"
 msgid "&Cut"
 msgstr ""
 
-#: modeledit.cpp:2023
+#: modeledit.cpp:2091
 msgctxt "ModelEdit|"
 msgid "Ctrl+X"
 msgstr ""
 
-#: modeledit.cpp:2024
+#: modeledit.cpp:2092
 msgctxt "ModelEdit|"
 msgid "&Paste"
 msgstr ""
 
-#: modeledit.cpp:2024
+#: modeledit.cpp:2092
 msgctxt "ModelEdit|"
 msgid "Ctrl+V"
 msgstr ""
 
-#: modeledit.cpp:2025
+#: modeledit.cpp:2093
 msgctxt "ModelEdit|"
 msgid "Du&plicate"
 msgstr ""
 
-#: modeledit.cpp:2027
+#: modeledit.cpp:2095
 msgctxt "ModelEdit|"
 msgid "Move Up"
 msgstr ""
 
-#: modeledit.cpp:82 modeledit.cpp:2027
+#: modeledit.cpp:86 modeledit.cpp:2095
 msgctxt "ModelEdit|"
 msgid "Ctrl+Up"
 msgstr ""
 
-#: modeledit.cpp:2028
+#: modeledit.cpp:2096
 msgctxt "ModelEdit|"
 msgid "Move Down"
 msgstr ""
 
-#: modeledit.cpp:85 modeledit.cpp:2028
+#: modeledit.cpp:89 modeledit.cpp:2096
 msgctxt "ModelEdit|"
 msgid "Ctrl+Down"
 msgstr ""
 
-#: modeledit.cpp:2344
+#: modeledit.cpp:2412
 msgctxt "ModelEdit|"
 msgid "Apply Template?"
 msgstr ""
 
-#: modeledit.cpp:2344
+#: modeledit.cpp:2412
 #, qt-format
 msgctxt "ModelEdit|"
 msgid "Apply template \"%1\"?"
 msgstr ""
 
-#: modeledit.cpp:2371
+#: modeledit.cpp:2439
 msgctxt "ModelEdit|"
 msgid "Clear Mixes?"
 msgstr ""
 
-#: modeledit.cpp:2371
+#: modeledit.cpp:2439
 msgctxt "ModelEdit|"
 msgid "Really clear all the mixes?"
 msgstr ""
 
-#: modeledit.cpp:2383
+#: modeledit.cpp:2451
 msgctxt "ModelEdit|"
 msgid "Clear Curves?"
 msgstr ""
 
-#: modeledit.cpp:2383
+#: modeledit.cpp:2451
 msgctxt "ModelEdit|"
 msgid "Really clear all the curves?"
 msgstr ""
 
-#: modeledit.cpp:2025
+#: modeledit.cpp:2093
 msgctxt "ModelEdit|"
 msgid "Ctrl+U"
 msgstr ""

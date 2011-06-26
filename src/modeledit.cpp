@@ -24,6 +24,9 @@
 
 #define GFX_MARGIN 16
 
+#define ALARM_GREATER(channel, alarm) ((g_model.frsky.channels[channel].alarms_greater >> alarm) & 1)
+#define ALARM_LEVEL(channel, alarm) ((g_model.frsky.channels[channel].alarms_level >> (2*alarm)) & 3)
+
 
 ModelEdit::ModelEdit(EEPFILE *eFile, uint8_t id, QWidget *parent) :
     QDialog(parent),
@@ -54,6 +57,7 @@ ModelEdit::ModelEdit(EEPFILE *eFile, uint8_t id, QWidget *parent) :
     tabSwitches();
     tabSafetySwitches();
     tabTrims();
+    tabFrsky();
     tabTemplates();
     tabHeli();
 
@@ -1301,6 +1305,70 @@ void ModelEdit::tabTrims()
             break;
     }
 
+}
+
+void ModelEdit::tabFrsky()
+{
+    ui->frsky_ratio_0->setValue(g_model.frsky.channels[0].ratio);
+    ui->frsky_type_0->setCurrentIndex(g_model.frsky.channels[0].type);
+    ui->frsky_ratio_1->setValue(g_model.frsky.channels[1].ratio);
+    ui->frsky_type_1->setCurrentIndex(g_model.frsky.channels[1].type);
+
+    ui->frsky_val_0_0->setValue(g_model.frsky.channels[0].alarms_value[0]);
+    ui->frsky_val_0_1->setValue(g_model.frsky.channels[0].alarms_value[1]);
+    ui->frsky_val_1_0->setValue(g_model.frsky.channels[1].alarms_value[0]);
+    ui->frsky_val_1_1->setValue(g_model.frsky.channels[1].alarms_value[1]);
+
+    ui->frsky_level_0_0->setCurrentIndex(ALARM_LEVEL(0,0));
+    ui->frsky_level_0_1->setCurrentIndex(ALARM_LEVEL(0,1));
+    ui->frsky_level_1_0->setCurrentIndex(ALARM_LEVEL(1,0));
+    ui->frsky_level_1_1->setCurrentIndex(ALARM_LEVEL(1,1));
+
+    ui->frsky_gr_0_0->setCurrentIndex(ALARM_GREATER(0,0));
+    ui->frsky_gr_0_1->setCurrentIndex(ALARM_GREATER(0,1));
+    ui->frsky_gr_1_0->setCurrentIndex(ALARM_GREATER(1,0));
+    ui->frsky_gr_1_1->setCurrentIndex(ALARM_GREATER(1,1));
+
+    connect(ui->frsky_ratio_0,SIGNAL(editingFinished()),this,SLOT(FrSkyEdited()));
+    connect(ui->frsky_ratio_1,SIGNAL(editingFinished()),this,SLOT(FrSkyEdited()));
+    connect(ui->frsky_type_0,SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
+    connect(ui->frsky_type_1,SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
+
+    connect(ui->frsky_val_0_0,SIGNAL(editingFinished()),this,SLOT(FrSkyEdited()));
+    connect(ui->frsky_val_0_1,SIGNAL(editingFinished()),this,SLOT(FrSkyEdited()));
+    connect(ui->frsky_val_1_0,SIGNAL(editingFinished()),this,SLOT(FrSkyEdited()));
+    connect(ui->frsky_val_1_1,SIGNAL(editingFinished()),this,SLOT(FrSkyEdited()));
+
+    connect(ui->frsky_level_0_0,SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
+    connect(ui->frsky_level_0_1,SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
+    connect(ui->frsky_level_1_0,SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
+    connect(ui->frsky_level_1_1,SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
+
+    connect(ui->frsky_gr_0_0,SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
+    connect(ui->frsky_gr_0_1,SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
+    connect(ui->frsky_gr_1_0,SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
+    connect(ui->frsky_gr_1_1,SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
+}
+
+void ModelEdit::FrSkyEdited()
+{
+    g_model.frsky.channels[0].ratio = ui->frsky_ratio_0->value();
+    g_model.frsky.channels[1].ratio = ui->frsky_ratio_1->value();
+    g_model.frsky.channels[0].type  = ui->frsky_type_0->currentIndex();
+    g_model.frsky.channels[1].type  = ui->frsky_type_1->currentIndex();
+
+    g_model.frsky.channels[0].alarms_value[0] = ui->frsky_val_0_0->value();
+    g_model.frsky.channels[0].alarms_value[1] = ui->frsky_val_0_1->value();
+    g_model.frsky.channels[1].alarms_value[0] = ui->frsky_val_1_0->value();
+    g_model.frsky.channels[1].alarms_value[1] = ui->frsky_val_1_1->value();
+
+    g_model.frsky.channels[0].alarms_level = (ui->frsky_level_0_0->currentIndex() & 3) + ((ui->frsky_level_0_1->currentIndex() & 3) << 2);
+    g_model.frsky.channels[1].alarms_level = (ui->frsky_level_1_0->currentIndex() & 3) + ((ui->frsky_level_1_1->currentIndex() & 3) << 2);
+
+    g_model.frsky.channels[0].alarms_greater = (ui->frsky_gr_0_0->currentIndex() & 1) + ((ui->frsky_gr_0_1->currentIndex() & 1) << 1);
+    g_model.frsky.channels[1].alarms_greater = (ui->frsky_gr_1_1->currentIndex() & 1) + ((ui->frsky_gr_1_1->currentIndex() & 1) << 1);
+
+    updateSettings();
 }
 
 void ModelEdit::tabTemplates()

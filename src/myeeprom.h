@@ -31,7 +31,8 @@
 #define MDVERS_r77  4
 #define MDVERS_r85  5
 #define MDVERS_r261 6
-#define MDVERS      7
+#define MDVERS_r352 7
+#define MDVERS      8
 
 
 #define GENERAL_MYVER_r261 3
@@ -161,8 +162,10 @@ typedef struct t_FrSkyData {
 typedef struct t_ModelData {
   char      name[10];             // 10 must be first for eeLoadModelName
   uint8_t   mdVers;
-  int8_t    tmrMode;   //timer trigger source -> off, abs, stk, stk%, sw/!sw, !m_sw/!m_sw
-  int8_t    tmrDir;    //0=>Count Down, 1=>Count Up
+  int8_t    tmrMode;              // timer trigger source -> off, abs, stk, stk%, sw/!sw, !m_sw/!m_sw
+  uint8_t   tmrDir:1;    //0=>Count Down, 1=>Count Up
+  uint8_t   traineron:1;  // 0 disable trainer, 1 allow trainer
+  uint8_t   spare:6;
   uint16_t  tmrVal;
   uint8_t   protocol;
   int8_t    ppmNCH;
@@ -171,7 +174,7 @@ typedef struct t_ModelData {
   int8_t    trimInc;              // Trim Increments
   int8_t    ppmDelay;
   int8_t    trimSw;
-  uint8_t   beepANACenter;        //1<<0->A1.. 1<<6->A7
+  uint8_t   beepANACenter;        // 1<<0->A1.. 1<<6->A7
   uint8_t   pulsePol:1;
   uint8_t   extendedLimits:1;
   uint8_t   swashInvertELE:1;

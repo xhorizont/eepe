@@ -1036,6 +1036,13 @@ File wrong size - %1</source>
         <source>Invalid EEPE EEPROM File %1</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Error reading file:
+File wrong size - %1
+This might be a FW file. You might want to try burning it to the TX.
+(Burn-&gt;Write Flash Memory)</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>MixerDialog</name>
@@ -1824,6 +1831,54 @@ Droite</translation>
     </message>
     <message>
         <source>CSwitchC</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>FrSky</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Channel 1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>V</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>---</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Alarm 1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Yellow</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Orange</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Red</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&lt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Alarm 2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Channel 2</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

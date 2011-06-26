@@ -1193,6 +1193,15 @@ msgctxt "MdiChild|"
 msgid "Invalid EEPE EEPROM File %1"
 msgstr ""
 
+#, qt-format
+msgctxt "MdiChild|"
+msgid ""
+"Error reading file:\n"
+"File wrong size - %1\n"
+"This might be a FW file. You might want to try burning it to the TX.\n"
+"(Burn->Write Flash Memory)"
+msgstr ""
+
 msgctxt "MixerDialog|"
 msgid "Up"
 msgstr "Haut"
@@ -2061,6 +2070,54 @@ msgstr ""
 
 msgctxt "ModelEdit|"
 msgid "CSwitchC"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "FrSky"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "Channel 1"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "V"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "---"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "Alarm 1"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "Yellow"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "Orange"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "Red"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "<"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid ">"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "Alarm 2"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "Channel 2"
 msgstr ""
 
 msgctxt "QObject|"
