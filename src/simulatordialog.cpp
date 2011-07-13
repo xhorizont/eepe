@@ -135,10 +135,12 @@ void simulatorDialog::loadParams(const EEGeneral gg, const ModelData gm)
     }
 
 
-    ui->trimHLeft->setValue(g_model.trim[0]);
-    ui->trimVLeft->setValue(g_model.trim[1]);
-    ui->trimVRight->setValue(g_model.trim[2]);
-    ui->trimHRight->setValue(g_model.trim[3]);
+    ui->trimHLeft->setValue( g_model.trim[(g_eeGeneral.stickMode>2)   ? 3 : 0]);  // mode=(0 || 1) -> rud trim else -> ail trim
+    ui->trimVLeft->setValue( g_model.trim[(g_eeGeneral.stickMode & 1) ? 2 : 1]);  // mode=(0 || 2) -> thr trim else -> ele trim
+    ui->trimVRight->setValue(g_model.trim[(g_eeGeneral.stickMode & 1) ? 1 : 2]);  // mode=(0 || 2) -> ele trim else -> thr trim
+    ui->trimHRight->setValue(g_model.trim[(g_eeGeneral.stickMode>2)   ? 0 : 3]);  // mode=(0 || 1) -> ail trim else -> rud trim
+
+
 
     beepVal = 0;
     beepShow = 0;
