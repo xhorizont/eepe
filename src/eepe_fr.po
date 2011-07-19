@@ -1281,6 +1281,11 @@ msgctxt "MdiChild|"
 msgid "Simulate"
 msgstr "Simulation"
 
+#, qt-format
+msgctxt "MdiChild|"
+msgid "Coulden't find %1"
+msgstr ""
+
 msgctxt "MixerDialog|"
 msgid "Up"
 msgstr "Haut"

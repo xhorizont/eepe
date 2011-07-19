@@ -46,6 +46,7 @@
 #define FILE_TYPE_HEX  2
 #define FILE_TYPE_EEPE 3
 #define FILE_TYPE_EEPM 4
+#define FILE_TYPE_EEPG 5
 
 #include <QtGui>
 #include "pers.h"
@@ -60,7 +61,7 @@
 #define EEPE_FILES_FILTER    "EEPE EEPROM files (*.eepe);;"
 #define EEPM_FILES_FILTER    "EEPE MODEL files (*.eepm);;"
 #define EEPG_FILES_FILTER    "EEPE GENERAL SETTINGS files (*.eepg);;"
-#define EEPROM_FILES_FILTER  "EEPE files (*.eepe *.bin *.hex);;" EEPE_FILES_FILTER BIN_FILES_FILTER HEX_FILES_FILTER
+#define EEPROM_FILES_FILTER  "EEPE files (*.eepe *.eepm *.eepg *.bin *.hex);;" EEPE_FILES_FILTER EEPM_FILES_FILTER EEPG_FILES_FILTER BIN_FILES_FILTER HEX_FILES_FILTER
 #define FLASH_FILES_FILTER   "FLASH files (*.bin *.hex);;" BIN_FILES_FILTER HEX_FILES_FILTER
 #define EXTERNAL_EEPROM_FILES_FILTER   "EEPROM files (*.bin *.hex);;" BIN_FILES_FILTER HEX_FILES_FILTER
 
@@ -117,7 +118,7 @@ public slots:
     void cut();
     void copy();
     void paste();
-    void loadModelFromFile();
+    bool loadModelFromFile(QString fn="");
     void saveModelToFile();
     void burnTo();
     void simulate();

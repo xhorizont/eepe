@@ -110,7 +110,7 @@ MainWindow::MainWindow()
             burnToFlash(str);
         }
 
-        if(fileType==FILE_TYPE_EEPE || fileType==FILE_TYPE_EEPM)
+        if(fileType==FILE_TYPE_EEPE || fileType==FILE_TYPE_EEPM  || fileType==FILE_TYPE_EEPG)
         {
             MdiChild *child = createMdiChild();
             if (child->loadFile(str))

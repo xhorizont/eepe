@@ -433,7 +433,7 @@ bool MdiChild::saveiHEX(QString fileName, quint8 * data, int datalen, QString he
     return true;
 }
 
-void MdiChild::loadModelFromFile()
+bool MdiChild::loadModelFromFile(QString fn)
 {
     int cmod = currentRow()-1;
     bool genfile = currentRow()==0;
@@ -442,7 +442,19 @@ void MdiChild::loadModelFromFile()
     QSettings settings("er9x-eePe", "eePe");
 
 
-    if(genfile)
+    if(!fn.isEmpty())
+    {
+        if(!QFileInfo(fn).exists())
+        {
+            QMessageBox::critical(this, tr("Error"),
+                                  tr("Coulden't find %1")
+                                  .arg(fn));
+            return false;
+        }
+
+        fileName = fn;
+    }
+    else if(genfile)
     {
         char buf[sizeof(EEGeneral().ownerName)+1];
 
@@ -454,7 +466,7 @@ void MdiChild::loadModelFromFile()
                                            tr("Overwrite Current Settings?"),
                                            QMessageBox::Yes | QMessageBox::No);
             if(ret != QMessageBox::Yes)
-                return;
+                return false;
         }
 
         //get file to load
@@ -472,7 +484,7 @@ void MdiChild::loadModelFromFile()
                                            tr("Overwrite %1?").arg(cmodelName),
                                            QMessageBox::Yes | QMessageBox::No);
             if(ret != QMessageBox::Yes)
-                return;
+                return false;
         }
 
         //get file to load
@@ -480,7 +492,7 @@ void MdiChild::loadModelFromFile()
     }
 
     if (fileName.isEmpty())
-        return;
+        return false;
 
     settings.setValue("lastDir",QFileInfo(fileName).dir().absolutePath());
 
@@ -489,31 +501,32 @@ void MdiChild::loadModelFromFile()
     if(genfile)
     {
         if(!loadiHEX(fileName, (quint8*)&temp, sizeof(EEGeneral), EEPE_GENERAL_FILE_HEADER))
-            return;
+            return false;
 
         if(!eeFile.putGeneralSettings((EEGeneral*)&temp))
         {
             QMessageBox::critical(this, tr("Error"),
                                   tr("Error writing to container"));
-            return;
+            return false;
         }
     }
     else
     {
         if(!loadiHEX(fileName, (quint8*)&temp, sizeof(ModelData), EEPE_MODEL_FILE_HEADER))
-            return;
+            return false;
 
         if(!eeFile.putModel((ModelData*)&temp,cmod))
         {
             QMessageBox::critical(this, tr("Error"),
                                   tr("Error writing to container"));
-            return;
+            return false;
         }
     }
 
     refreshList();
     setModified();
 
+    return true;
 }
 
 void MdiChild::saveModelToFile()
@@ -693,6 +706,21 @@ bool MdiChild::loadFile(const QString &fileName, bool resetCurrentFile)
 
 
     int fileType = getFileType(fileName);
+
+    if(fileType==FILE_TYPE_EEPM || fileType==FILE_TYPE_EEPG)
+    {
+        //load new file and paste in
+        newFile();
+
+        setCurrentRow(fileType==FILE_TYPE_EEPG ? 0 : 1);
+        if(!loadModelFromFile(fileName))
+            return false;
+
+        refreshList();
+        if(resetCurrentFile) setCurrentFile(fileName);
+
+        return true;
+    }
 
     if(fileType==FILE_TYPE_HEX || fileType==FILE_TYPE_EEPE) //read HEX file
     {

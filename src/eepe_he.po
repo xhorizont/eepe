@@ -1008,10 +1008,10 @@ msgstr ""
 
 #: mdichild.cpp:250 mdichild.cpp:260 mdichild.cpp:316 mdichild.cpp:321
 #: mdichild.cpp:338 mdichild.cpp:358 mdichild.cpp:381 mdichild.cpp:402
-#: mdichild.cpp:496 mdichild.cpp:508 mdichild.cpp:534 mdichild.cpp:552
-#: mdichild.cpp:671 mdichild.cpp:690 mdichild.cpp:701 mdichild.cpp:720
-#: mdichild.cpp:738 mdichild.cpp:744 mdichild.cpp:757 mdichild.cpp:767
-#: mdichild.cpp:825 mdichild.cpp:838 mdichild.cpp:934
+#: mdichild.cpp:449 mdichild.cpp:508 mdichild.cpp:520 mdichild.cpp:547
+#: mdichild.cpp:565 mdichild.cpp:684 mdichild.cpp:703 mdichild.cpp:729
+#: mdichild.cpp:748 mdichild.cpp:766 mdichild.cpp:772 mdichild.cpp:785
+#: mdichild.cpp:795 mdichild.cpp:853 mdichild.cpp:866 mdichild.cpp:963
 msgctxt "MdiChild|"
 msgid "Error"
 msgstr ""
@@ -1038,87 +1038,93 @@ msgctxt "MdiChild|"
 msgid "Checksum Error reading file %1!"
 msgstr ""
 
-#: mdichild.cpp:454
+#: mdichild.cpp:450
+#, qt-format
+msgctxt "MdiChild|"
+msgid "Coulden't find %1"
+msgstr ""
+
+#: mdichild.cpp:466
 msgctxt "MdiChild|"
 msgid "Overwrite Current Settings?"
 msgstr ""
 
-#: mdichild.cpp:461 mdichild.cpp:479
+#: mdichild.cpp:473 mdichild.cpp:491
 msgctxt "MdiChild|"
 msgid "Open"
 msgstr ""
 
-#: mdichild.cpp:472
+#: mdichild.cpp:484
 #, qt-format
 msgctxt "MdiChild|"
 msgid "Overwrite %1?"
 msgstr ""
 
-#: mdichild.cpp:497 mdichild.cpp:509
+#: mdichild.cpp:509 mdichild.cpp:521
 msgctxt "MdiChild|"
 msgid "Error writing to container"
 msgstr ""
 
-#: mdichild.cpp:534
+#: mdichild.cpp:547
 msgctxt "MdiChild|"
 msgid "Error Getting General Settings Data"
 msgstr ""
 
-#: mdichild.cpp:540
+#: mdichild.cpp:553
 msgctxt "MdiChild|"
 msgid "Save Settings As"
 msgstr ""
 
-#: mdichild.cpp:552
+#: mdichild.cpp:565
 #, qt-format
 msgctxt "MdiChild|"
 msgid "Error Getting Model #%1"
 msgstr ""
 
-#: mdichild.cpp:558
+#: mdichild.cpp:571
 msgctxt "MdiChild|"
 msgid "Save Model As"
 msgstr ""
 
-#: mdichild.cpp:653
+#: mdichild.cpp:666
 #, qt-format
 msgctxt "MdiChild|"
 msgid "Editing model %1: "
 msgstr ""
 
-#: mdichild.cpp:671
+#: mdichild.cpp:684
 msgctxt "MdiChild|"
 msgid "Unable to read settings!"
 msgstr ""
 
-#: mdichild.cpp:681
+#: mdichild.cpp:694
 #, qt-format
 #| msgid "document%1.hex"
 msgctxt "MdiChild|"
 msgid "document%1.eepe"
 msgstr ""
 
-#: mdichild.cpp:974
+#: mdichild.cpp:1003
 msgctxt "MdiChild|"
 msgid "&Load Model/Settings"
 msgstr ""
 
-#: mdichild.cpp:974
+#: mdichild.cpp:1003
 msgctxt "MdiChild|"
 msgid "Ctrl+L"
 msgstr ""
 
-#: mdichild.cpp:975
+#: mdichild.cpp:1004
 msgctxt "MdiChild|"
 msgid "&Save Model/Settings"
 msgstr ""
 
-#: mdichild.cpp:975
+#: mdichild.cpp:1004
 msgctxt "MdiChild|"
 msgid "Ctrl+S"
 msgstr ""
 
-#: mdichild.cpp:316 mdichild.cpp:690
+#: mdichild.cpp:316 mdichild.cpp:703
 #, qt-format
 msgctxt "MdiChild|"
 msgid "Unable to find file %1!"
@@ -1130,7 +1136,7 @@ msgctxt "MdiChild|"
 msgid "Error reading file %1!"
 msgstr ""
 
-#: mdichild.cpp:758
+#: mdichild.cpp:786
 #, qt-format
 msgctxt "MdiChild|"
 msgid ""
@@ -1138,7 +1144,7 @@ msgid ""
 "%2."
 msgstr ""
 
-#: mdichild.cpp:768
+#: mdichild.cpp:796
 #, qt-format
 #| msgid "File wrong size - %1"
 msgctxt "MdiChild|"
@@ -1147,7 +1153,7 @@ msgid ""
 "%2."
 msgstr ""
 
-#: mdichild.cpp:738
+#: mdichild.cpp:766
 #, qt-format
 msgctxt "MdiChild|"
 msgid ""
@@ -1155,7 +1161,7 @@ msgid ""
 "File wrong size - %1"
 msgstr ""
 
-#: mdichild.cpp:322 mdichild.cpp:745
+#: mdichild.cpp:322 mdichild.cpp:773
 #, qt-format
 msgctxt "MdiChild|"
 msgid ""
@@ -1163,7 +1169,7 @@ msgid ""
 "%2."
 msgstr ""
 
-#: mdichild.cpp:701
+#: mdichild.cpp:729
 #, qt-format
 msgctxt "MdiChild|"
 msgid ""
@@ -1173,7 +1179,7 @@ msgid ""
 "(Burn->Write Flash Memory)"
 msgstr ""
 
-#: mdichild.cpp:721
+#: mdichild.cpp:749
 #, qt-format
 msgctxt "MdiChild|"
 msgid ""
@@ -1181,12 +1187,12 @@ msgid ""
 "."
 msgstr ""
 
-#: mdichild.cpp:794
+#: mdichild.cpp:822
 msgctxt "MdiChild|"
 msgid "Save As"
 msgstr ""
 
-#: mdichild.cpp:403 mdichild.cpp:826
+#: mdichild.cpp:403 mdichild.cpp:854
 #, qt-format
 msgctxt "MdiChild|"
 msgid ""
@@ -1194,7 +1200,7 @@ msgid ""
 "%2."
 msgstr ""
 
-#: mdichild.cpp:839
+#: mdichild.cpp:867
 #, qt-format
 msgctxt "MdiChild|"
 msgid ""
@@ -1202,12 +1208,12 @@ msgid ""
 "%2."
 msgstr ""
 
-#: mdichild.cpp:875 mdichild.cpp:916
+#: mdichild.cpp:903 mdichild.cpp:945
 msgctxt "MdiChild|"
 msgid "eePe"
 msgstr ""
 
-#: mdichild.cpp:876
+#: mdichild.cpp:904
 #, qt-format
 msgctxt "MdiChild|"
 msgid ""
@@ -1215,89 +1221,89 @@ msgid ""
 "Do you want to save your changes?"
 msgstr ""
 
-#: mdichild.cpp:917
+#: mdichild.cpp:946
 #, qt-format
 #| msgid "Burn %1 to transmitter?"
 msgctxt "MdiChild|"
 msgid "Write %1 to EEPROM memory?"
 msgstr ""
 
-#: mdichild.cpp:934
+#: mdichild.cpp:963
 msgctxt "MdiChild|"
 msgid "Cannot write temporary file!"
 msgstr ""
 
-#: mdichild.cpp:966
+#: mdichild.cpp:995
 msgctxt "MdiChild|"
 msgid "&Edit"
 msgstr ""
 
-#: mdichild.cpp:968
+#: mdichild.cpp:997
 msgctxt "MdiChild|"
 msgid "&Delete"
 msgstr ""
 
-#: mdichild.cpp:968
+#: mdichild.cpp:997
 msgctxt "MdiChild|"
 msgid "Delete"
 msgstr ""
 
-#: mdichild.cpp:969
+#: mdichild.cpp:998
 msgctxt "MdiChild|"
 msgid "&Copy"
 msgstr ""
 
-#: mdichild.cpp:969
+#: mdichild.cpp:998
 msgctxt "MdiChild|"
 msgid "Ctrl+C"
 msgstr ""
 
-#: mdichild.cpp:970
+#: mdichild.cpp:999
 msgctxt "MdiChild|"
 msgid "&Cut"
 msgstr ""
 
-#: mdichild.cpp:970
+#: mdichild.cpp:999
 msgctxt "MdiChild|"
 msgid "Ctrl+X"
 msgstr ""
 
-#: mdichild.cpp:971
+#: mdichild.cpp:1000
 msgctxt "MdiChild|"
 msgid "&Paste"
 msgstr ""
 
-#: mdichild.cpp:971
+#: mdichild.cpp:1000
 msgctxt "MdiChild|"
 msgid "Ctrl+V"
 msgstr ""
 
-#: mdichild.cpp:972
+#: mdichild.cpp:1001
 msgctxt "MdiChild|"
 msgid "D&uplicate"
 msgstr ""
 
-#: mdichild.cpp:972
+#: mdichild.cpp:1001
 msgctxt "MdiChild|"
 msgid "Ctrl+U"
 msgstr ""
 
-#: mdichild.cpp:977
+#: mdichild.cpp:1006
 msgctxt "MdiChild|"
 msgid "Alt+S"
 msgstr ""
 
-#: mdichild.cpp:977
+#: mdichild.cpp:1006
 msgctxt "MdiChild|"
 msgid "Simulate"
 msgstr ""
 
-#: mdichild.cpp:979
+#: mdichild.cpp:1008
 msgctxt "MdiChild|"
 msgid "&Write To Tx"
 msgstr ""
 
-#: mdichild.cpp:979
+#: mdichild.cpp:1008
 msgctxt "MdiChild|"
 msgid "Ctrl+Alt+W"
 msgstr ""
