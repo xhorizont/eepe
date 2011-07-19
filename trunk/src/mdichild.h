@@ -53,14 +53,19 @@
 
 #define EEPE_EEPROM_FILE_HEADER  "EEPE EEPROM FILE"
 #define EEPE_MODEL_FILE_HEADER  "EEPE MODEL FILE"
+#define EEPE_GENERAL_FILE_HEADER  "EEPE GENERAL SETTINGS FILE"
 
 #define HEX_FILES_FILTER     "HEX files (*.hex);;"
 #define BIN_FILES_FILTER     "BIN files (*.bin);;"
 #define EEPE_FILES_FILTER    "EEPE EEPROM files (*.eepe);;"
 #define EEPM_FILES_FILTER    "EEPE MODEL files (*.eepm);;"
-#define EEPROM_FILES_FILTER  "EEPE files (*.eepe *.eepm *.bin *.hex);;" EEPE_FILES_FILTER EEPM_FILES_FILTER BIN_FILES_FILTER HEX_FILES_FILTER
+#define EEPG_FILES_FILTER    "EEPE GENERAL SETTINGS files (*.eepg);;"
+#define EEPROM_FILES_FILTER  "EEPE files (*.eepe *.bin *.hex);;" EEPE_FILES_FILTER BIN_FILES_FILTER HEX_FILES_FILTER
 #define FLASH_FILES_FILTER   "FLASH files (*.bin *.hex);;" BIN_FILES_FILTER HEX_FILES_FILTER
 #define EXTERNAL_EEPROM_FILES_FILTER   "EEPROM files (*.bin *.hex);;" BIN_FILES_FILTER HEX_FILES_FILTER
+
+#define WRITESIZE  (sizeof(ModelData) + sizeof(EEGeneral))
+
 
 class MdiChild : public QListWidget//QMdiSubWindow
 {
@@ -83,9 +88,11 @@ public:
     void keyPressEvent(QKeyEvent *event);
     bool hasPasteData();
     static int getFileType(const QString &fullFileName);
+    bool saveToFileEnabled();
 
 signals:
     void copyAvailable(bool val);
+    void saveModelToFileAvailable(bool val);
 
 protected:
     void closeEvent(QCloseEvent *event);
@@ -99,6 +106,9 @@ protected:
 private slots:
     void documentWasModified();
     void refreshList();
+    bool saveiHEX(QString fileName, quint8 * data, int datalen, QString header="");
+    bool loadiHEX(QString fileName, quint8 * data, int datalen, QString header="");
+
 
 
 public slots:
@@ -107,6 +117,8 @@ public slots:
     void cut();
     void copy();
     void paste();
+    void loadModelFromFile();
+    void saveModelToFile();
     void burnTo();
     void simulate();
     void print();

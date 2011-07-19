@@ -41,6 +41,7 @@ MixerDialog::MixerDialog(QWidget *parent, MixData *mixdata, int stickMode) :
     connect(ui->delayUpSB,SIGNAL(valueChanged(int)),this,SLOT(valuesChanged()));
     connect(ui->slowDownSB,SIGNAL(valueChanged(int)),this,SLOT(valuesChanged()));
     connect(ui->slowUpSB,SIGNAL(valueChanged(int)),this,SLOT(valuesChanged()));
+    connect(ui->FMtrimChkB,SIGNAL(stateChanged(int)),this,SLOT(valuesChanged()));
 }
 
 MixerDialog::~MixerDialog()
@@ -63,16 +64,22 @@ void MixerDialog::changeEvent(QEvent *e)
 
 void MixerDialog::valuesChanged()
 {
-    md->srcRaw    = ui->sourceCB->currentIndex()+1;
-    md->weight    = ui->weightSB->value();
-    md->sOffset   = ui->offsetSB->value();
-    md->carryTrim = ui->trimChkB->checkState() ? 0 : 1;
-    md->curve     = ui->curvesCB->currentIndex();
-    md->swtch     = ui->switchesCB->currentIndex()-MAX_DRSWITCH;
-    md->mixWarn   = ui->warningCB->currentIndex();
-    md->mltpx     = ui->mltpxCB->currentIndex();
-    md->delayDown = ui->delayDownSB->value();
-    md->delayUp   = ui->delayUpSB->value();
-    md->speedDown = ui->slowDownSB->value();
-    md->speedUp   = ui->slowUpSB->value();
+    md->srcRaw       = ui->sourceCB->currentIndex()+1;
+    md->weight       = ui->weightSB->value();
+    md->sOffset      = ui->offsetSB->value();
+    md->carryTrim    = ui->trimChkB->checkState() ? 0 : 1;
+    md->curve        = ui->curvesCB->currentIndex();
+    md->swtch        = ui->switchesCB->currentIndex()-MAX_DRSWITCH;
+    md->mixWarn      = ui->warningCB->currentIndex();
+    md->mltpx        = ui->mltpxCB->currentIndex();
+    md->delayDown    = ui->delayDownSB->value();
+    md->delayUp      = ui->delayUpSB->value();
+    md->speedDown    = ui->slowDownSB->value();
+    md->speedUp      = ui->slowUpSB->value();
+    md->enableFmTrim = ui->FMtrimChkB->checkState() ? 1 : 0;
+
+    if(ui->FMtrimChkB->checkState())
+        ui->offset_label->setText("FmTrimVal");
+    else
+        ui->offset_label->setText("Offset");
 }

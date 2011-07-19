@@ -102,6 +102,9 @@ private slots:
     MdiChild *createMdiChild();
     void switchLayoutDirection();
     void setActiveSubWindow(QWidget *window);
+    void loadModelFromFile();
+    void saveModelToFile();
+
 
 private:
     void createActions();
@@ -172,6 +175,9 @@ private:
     QAction *printAct;
     QAction *switchLayoutDirectionAct;
     QAction *showEr9xManualAct;
+    QAction *loadModelFromFileAct;
+    QAction *saveModelToFileAct;
+
     //QAction *aboutQtAct;
 };
 

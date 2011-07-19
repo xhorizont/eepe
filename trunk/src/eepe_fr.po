@@ -978,9 +978,20 @@ msgctxt "MainWindow|"
 msgid "Checking for updates"
 msgstr ""
 
-#, qt-format
-msgctxt "MdiChild|"
-msgid "%1"
+msgctxt "MainWindow|"
+msgid "&Load Model/Settings"
+msgstr ""
+
+msgctxt "MainWindow|"
+msgid "Load Model/Settings From File"
+msgstr ""
+
+msgctxt "MainWindow|"
+msgid "S&ave Model/Settings"
+msgstr ""
+
+msgctxt "MainWindow|"
+msgid "Save Model/Settings To File"
 msgstr ""
 
 msgctxt "MdiChild|"
@@ -1007,9 +1018,9 @@ msgctxt "MdiChild|"
 msgid "Alt+S"
 msgstr ""
 
-msgctxt "MdiChild|"
-msgid "&Simulate"
-msgstr "&Simulation"
+#~ msgctxt "MdiChild|"
+#~ msgid "&Simulate"
+#~ msgstr "&Simulation"
 
 msgctxt "MdiChild|"
 msgid "Error"
@@ -1190,17 +1201,85 @@ msgstr ""
 
 #, qt-format
 msgctxt "MdiChild|"
-msgid "Invalid EEPE EEPROM File %1"
-msgstr ""
-
-#, qt-format
-msgctxt "MdiChild|"
 msgid ""
 "Error reading file:\n"
 "File wrong size - %1\n"
 "This might be a FW file. You might want to try burning it to the TX.\n"
 "(Burn->Write Flash Memory)"
 msgstr ""
+
+#, qt-format
+msgctxt "MdiChild|"
+msgid "Invalid EEPE File Format %1"
+msgstr ""
+
+#, qt-format
+msgctxt "MdiChild|"
+msgid "Checksum Error reading file %1!"
+msgstr ""
+
+msgctxt "MdiChild|"
+msgid "Overwrite Current Settings?"
+msgstr ""
+
+#, fuzzy
+msgctxt "MdiChild|"
+msgid "Open"
+msgstr "Ouvrir"
+
+#, qt-format
+msgctxt "MdiChild|"
+msgid "Overwrite %1?"
+msgstr ""
+
+msgctxt "MdiChild|"
+msgid "Error writing to container"
+msgstr ""
+
+msgctxt "MdiChild|"
+msgid "Error Getting General Settings Data"
+msgstr ""
+
+msgctxt "MdiChild|"
+msgid "Save Settings As"
+msgstr ""
+
+#, qt-format
+msgctxt "MdiChild|"
+msgid "Error Getting Model #%1"
+msgstr ""
+
+msgctxt "MdiChild|"
+msgid "Save Model As"
+msgstr ""
+
+#, qt-format
+msgctxt "MdiChild|"
+msgid ""
+"Error loading file %1:\n"
+"."
+msgstr ""
+
+msgctxt "MdiChild|"
+msgid "&Load Model/Settings"
+msgstr ""
+
+msgctxt "MdiChild|"
+msgid "Ctrl+L"
+msgstr ""
+
+msgctxt "MdiChild|"
+msgid "&Save Model/Settings"
+msgstr ""
+
+msgctxt "MdiChild|"
+msgid "Ctrl+S"
+msgstr ""
+
+#, fuzzy
+msgctxt "MdiChild|"
+msgid "Simulate"
+msgstr "Simulation"
 
 msgctxt "MixerDialog|"
 msgid "Up"
@@ -1435,6 +1514,10 @@ msgstr "La source est multipliée par cette valeur puis divisée par 100."
 msgctxt "MixerDialog|"
 msgid "Include Trim"
 msgstr "Inclure Trim"
+
+msgctxt "MixerDialog|"
+msgid "Flightmode Trim"
+msgstr ""
 
 msgctxt "ModelEdit|"
 msgid "P1"

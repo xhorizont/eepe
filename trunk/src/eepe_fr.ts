@@ -850,13 +850,25 @@ p, li { white-space: pre-wrap; }
         <source>Checking for updates</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>&amp;Load Model/Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Load Model/Settings From File</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>S&amp;ave Model/Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Save Model/Settings To File</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>MdiChild</name>
-    <message>
-        <source>%1</source>
-        <translation></translation>
-    </message>
     <message>
         <source>&amp;Cut</source>
         <translation>&amp;Couper</translation>
@@ -883,7 +895,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>&amp;Simulate</source>
-        <translation>&amp;Simulation</translation>
+        <translation type="obsolete">&amp;Simulation</translation>
     </message>
     <message>
         <source>Error</source>
@@ -1033,15 +1045,76 @@ File wrong size - %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Invalid EEPE EEPROM File %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Error reading file:
 File wrong size - %1
 This might be a FW file. You might want to try burning it to the TX.
 (Burn-&gt;Write Flash Memory)</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Invalid EEPE File Format %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Checksum Error reading file %1!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Overwrite Current Settings?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Open</source>
+        <translation type="unfinished">Ouvrir</translation>
+    </message>
+    <message>
+        <source>Overwrite %1?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Error writing to container</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Error Getting General Settings Data</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Save Settings As</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Error Getting Model #%1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Save Model As</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Error loading file %1:
+.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Load Model/Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ctrl+L</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Save Model/Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ctrl+S</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Simulate</source>
+        <translation type="unfinished">Simulation</translation>
     </message>
 </context>
 <context>
@@ -1209,6 +1282,10 @@ p, li { white-space: pre-wrap; }
     <message>
         <source>Include Trim</source>
         <translation>Inclure Trim</translation>
+    </message>
+    <message>
+        <source>Flightmode Trim</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
