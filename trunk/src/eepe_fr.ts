@@ -1116,6 +1116,10 @@ This might be a FW file. You might want to try burning it to the TX.
         <source>Simulate</source>
         <translation type="unfinished">Simulation</translation>
     </message>
+    <message>
+        <source>Coulden&apos;t find %1</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>MixerDialog</name>

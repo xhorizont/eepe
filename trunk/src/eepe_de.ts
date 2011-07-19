@@ -1035,21 +1035,22 @@ Mode 4:
         <location filename="mdichild.cpp" line="358"/>
         <location filename="mdichild.cpp" line="381"/>
         <location filename="mdichild.cpp" line="402"/>
-        <location filename="mdichild.cpp" line="496"/>
+        <location filename="mdichild.cpp" line="449"/>
         <location filename="mdichild.cpp" line="508"/>
-        <location filename="mdichild.cpp" line="534"/>
-        <location filename="mdichild.cpp" line="552"/>
-        <location filename="mdichild.cpp" line="671"/>
-        <location filename="mdichild.cpp" line="690"/>
-        <location filename="mdichild.cpp" line="701"/>
-        <location filename="mdichild.cpp" line="720"/>
-        <location filename="mdichild.cpp" line="738"/>
-        <location filename="mdichild.cpp" line="744"/>
-        <location filename="mdichild.cpp" line="757"/>
-        <location filename="mdichild.cpp" line="767"/>
-        <location filename="mdichild.cpp" line="825"/>
-        <location filename="mdichild.cpp" line="838"/>
-        <location filename="mdichild.cpp" line="934"/>
+        <location filename="mdichild.cpp" line="520"/>
+        <location filename="mdichild.cpp" line="547"/>
+        <location filename="mdichild.cpp" line="565"/>
+        <location filename="mdichild.cpp" line="684"/>
+        <location filename="mdichild.cpp" line="703"/>
+        <location filename="mdichild.cpp" line="729"/>
+        <location filename="mdichild.cpp" line="748"/>
+        <location filename="mdichild.cpp" line="766"/>
+        <location filename="mdichild.cpp" line="772"/>
+        <location filename="mdichild.cpp" line="785"/>
+        <location filename="mdichild.cpp" line="795"/>
+        <location filename="mdichild.cpp" line="853"/>
+        <location filename="mdichild.cpp" line="866"/>
+        <location filename="mdichild.cpp" line="963"/>
         <source>Error</source>
         <translation>Fehler</translation>
     </message>
@@ -1074,86 +1075,91 @@ Mode 4:
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="454"/>
+        <location filename="mdichild.cpp" line="450"/>
+        <source>Coulden&apos;t find %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mdichild.cpp" line="466"/>
         <source>Overwrite Current Settings?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="461"/>
-        <location filename="mdichild.cpp" line="479"/>
+        <location filename="mdichild.cpp" line="473"/>
+        <location filename="mdichild.cpp" line="491"/>
         <source>Open</source>
         <translation type="unfinished">Öffnen</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="472"/>
+        <location filename="mdichild.cpp" line="484"/>
         <source>Overwrite %1?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="497"/>
         <location filename="mdichild.cpp" line="509"/>
+        <location filename="mdichild.cpp" line="521"/>
         <source>Error writing to container</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="534"/>
+        <location filename="mdichild.cpp" line="547"/>
         <source>Error Getting General Settings Data</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="540"/>
+        <location filename="mdichild.cpp" line="553"/>
         <source>Save Settings As</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="552"/>
+        <location filename="mdichild.cpp" line="565"/>
         <source>Error Getting Model #%1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="558"/>
+        <location filename="mdichild.cpp" line="571"/>
         <source>Save Model As</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="653"/>
+        <location filename="mdichild.cpp" line="666"/>
         <source>Editing model %1: </source>
         <translation>Modell %1 bearbeiten</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="671"/>
+        <location filename="mdichild.cpp" line="684"/>
         <source>Unable to read settings!</source>
         <translation>Kann die Einstellungen nicht lesen !</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="681"/>
+        <location filename="mdichild.cpp" line="694"/>
         <source>document%1.eepe</source>
         <oldsource>document%1.hex</oldsource>
         <translation type="unfinished">Dokument%1.hex</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="974"/>
+        <location filename="mdichild.cpp" line="1003"/>
         <source>&amp;Load Model/Settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="974"/>
+        <location filename="mdichild.cpp" line="1003"/>
         <source>Ctrl+L</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="975"/>
+        <location filename="mdichild.cpp" line="1004"/>
         <source>&amp;Save Model/Settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="975"/>
+        <location filename="mdichild.cpp" line="1004"/>
         <source>Ctrl+S</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="mdichild.cpp" line="316"/>
-        <location filename="mdichild.cpp" line="690"/>
+        <location filename="mdichild.cpp" line="703"/>
         <source>Unable to find file %1!</source>
         <translation>Kann die Datei %1 nicht finden !</translation>
     </message>
@@ -1169,20 +1175,20 @@ Mode 4:
         <translation>Fehler beim Lesen der Datei %1 !</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="721"/>
+        <location filename="mdichild.cpp" line="749"/>
         <source>Error loading file %1:
 .</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="758"/>
+        <location filename="mdichild.cpp" line="786"/>
         <source>Error reading file %1:
 %2.</source>
         <translation>Fehler beim Lesen der Datei %1:
 %2.</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="768"/>
+        <location filename="mdichild.cpp" line="796"/>
         <source>Error loading file %1:
 %2.</source>
         <oldsource>File wrong size - %1</oldsource>
@@ -1190,7 +1196,7 @@ Mode 4:
 %2.</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="738"/>
+        <location filename="mdichild.cpp" line="766"/>
         <source>Error reading file:
 File wrong size - %1</source>
         <translation>Fehler beim Lesen der Datei:
@@ -1198,14 +1204,14 @@ Dateigröße falsch - %1</translation>
     </message>
     <message>
         <location filename="mdichild.cpp" line="322"/>
-        <location filename="mdichild.cpp" line="745"/>
+        <location filename="mdichild.cpp" line="773"/>
         <source>Error opening file %1:
 %2.</source>
         <translation>Fehler beim Öffnen der Datei %1:
 %2.</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="701"/>
+        <location filename="mdichild.cpp" line="729"/>
         <source>Error reading file:
 File wrong size - %1
 This might be a FW file. You might want to try burning it to the TX.
@@ -1213,7 +1219,7 @@ This might be a FW file. You might want to try burning it to the TX.
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="794"/>
+        <location filename="mdichild.cpp" line="822"/>
         <source>Save As</source>
         <translation>Speichern unter</translation>
     </message>
@@ -1223,7 +1229,7 @@ This might be a FW file. You might want to try burning it to the TX.
     </message>
     <message>
         <location filename="mdichild.cpp" line="403"/>
-        <location filename="mdichild.cpp" line="826"/>
+        <location filename="mdichild.cpp" line="854"/>
         <source>Cannot write file %1:
 %2.</source>
         <translation>Kann Datei %1:
@@ -1238,88 +1244,88 @@ This might be a FW file. You might want to try burning it to the TX.
         <translation type="obsolete">%1</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="839"/>
+        <location filename="mdichild.cpp" line="867"/>
         <source>Error writing file %1:
 %2.</source>
         <translation>Fehler beim Schreiben der Datei %1:
 %2.</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="875"/>
-        <location filename="mdichild.cpp" line="916"/>
+        <location filename="mdichild.cpp" line="903"/>
+        <location filename="mdichild.cpp" line="945"/>
         <source>eePe</source>
         <translation>eePee</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="876"/>
+        <location filename="mdichild.cpp" line="904"/>
         <source>&apos;%1&apos; has been modified.
 Do you want to save your changes?</source>
         <translation>&apos;%1&apos; wurde geändert.
 Möchtest Du die Änderungen speichern ?</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="917"/>
+        <location filename="mdichild.cpp" line="946"/>
         <source>Write %1 to EEPROM memory?</source>
         <oldsource>Burn %1 to transmitter?</oldsource>
         <translation>Brenne %1 in den Sender ?</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="934"/>
+        <location filename="mdichild.cpp" line="963"/>
         <source>Cannot write temporary file!</source>
         <translation>Kann temporäre Datei nicht schreiben </translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="966"/>
+        <location filename="mdichild.cpp" line="995"/>
         <source>&amp;Edit</source>
         <translation>&amp;Bearbeiten</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="968"/>
+        <location filename="mdichild.cpp" line="997"/>
         <source>&amp;Delete</source>
         <translation>&amp;Löschen</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="968"/>
+        <location filename="mdichild.cpp" line="997"/>
         <source>Delete</source>
         <translation>Löschen</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="969"/>
+        <location filename="mdichild.cpp" line="998"/>
         <source>&amp;Copy</source>
         <translation>&amp;Kopieren</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="969"/>
+        <location filename="mdichild.cpp" line="998"/>
         <source>Ctrl+C</source>
         <translation>Ctrl+C</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="970"/>
+        <location filename="mdichild.cpp" line="999"/>
         <source>&amp;Cut</source>
         <translation>&amp;Ausschneiden</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="970"/>
+        <location filename="mdichild.cpp" line="999"/>
         <source>Ctrl+X</source>
         <translation>Ctrl+X</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="971"/>
+        <location filename="mdichild.cpp" line="1000"/>
         <source>&amp;Paste</source>
         <translation>&amp;Einfügen</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="971"/>
+        <location filename="mdichild.cpp" line="1000"/>
         <source>Ctrl+V</source>
         <translation>Ctrl+V</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="972"/>
+        <location filename="mdichild.cpp" line="1001"/>
         <source>D&amp;uplicate</source>
         <translation>D&amp;uplizieren</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="972"/>
+        <location filename="mdichild.cpp" line="1001"/>
         <source>Ctrl+U</source>
         <translation>Ctrl+U</translation>
     </message>
@@ -1328,22 +1334,22 @@ Möchtest Du die Änderungen speichern ?</translation>
         <translation type="obsolete">&amp;Simulieren</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="977"/>
+        <location filename="mdichild.cpp" line="1006"/>
         <source>Alt+S</source>
         <translation>Alt+S</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="977"/>
+        <location filename="mdichild.cpp" line="1006"/>
         <source>Simulate</source>
         <translation type="unfinished">Simulation</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="979"/>
+        <location filename="mdichild.cpp" line="1008"/>
         <source>&amp;Write To Tx</source>
         <translation>&amp;Schreibe in den Sender</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="979"/>
+        <location filename="mdichild.cpp" line="1008"/>
         <source>Ctrl+Alt+W</source>
         <translation>Ctrl+Alt+W</translation>
     </message>
