@@ -142,7 +142,7 @@ void MdiChild::dropEvent(QDropEvent *event)
 void MdiChild::refreshList()
 {
     clear();
-    static char buf[20];
+    char buf[20];
 
     eeFile.eeLoadOwnerName(buf,sizeof(buf));
     QString str = QString(buf).trimmed();
@@ -153,9 +153,16 @@ void MdiChild::refreshList()
     for(uint8_t i=0; i<MAX_MODELS; i++)
     {
         eeFile.eeLoadModelName(i,buf,sizeof(buf));
-        addItem(QString(buf));
+        addItem(QString::fromAscii(buf,MODEL_NAME_LEN+4));
     }
 
+}
+
+int getValueFromLine(const QString &line, int pos, int len=2)
+{
+    bool ok;
+    int hex = line.mid(pos,len).toInt(&ok, 16);
+    return ok ? hex : -1;
 }
 
 
@@ -282,6 +289,286 @@ void MdiChild::paste()
 
 }
 
+QString iHEXLine(quint8 * data, quint16 addr, quint8 len)
+{
+    QString str = QString(":%1%2000").arg(len,2,16,QChar('0')).arg(addr,4,16,QChar('0')); //write start, bytecount (32), address and record type
+    quint8 chkSum = 0;
+    chkSum = -len; //-bytecount; recordtype is zero
+    chkSum -= addr & 0xFF;
+    chkSum -= addr >> 8;
+    for(int j=0; j<len; j++)
+    {
+        str += QString("%1").arg(data[addr+j],2,16,QChar('0'));
+        chkSum -= data[addr+j];
+    }
+
+    str += QString("%1").arg(chkSum,2,16,QChar('0'));
+    return str.toUpper(); // output to file and lf;
+}
+
+bool MdiChild::loadiHEX(QString fileName, quint8 * data, int datalen, QString header)
+{
+    //load from intel hex type file
+    QFile file(fileName);
+
+    if(!file.exists())
+    {
+        QMessageBox::critical(this, tr("Error"),tr("Unable to find file %1!").arg(fileName));
+        return false;
+    }
+
+    if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {  //reading HEX TEXT file
+        QMessageBox::critical(this, tr("Error"),
+                              tr("Error opening file %1:\n%2.")
+                              .arg(fileName)
+                              .arg(file.errorString()));
+        return false;
+    }
+
+    memset(data,0,datalen);
+
+    QTextStream in(&file);
+
+    if(!header.isEmpty())
+    {
+        QString hline = in.readLine();
+
+        if(hline!=header)
+        {
+            QMessageBox::critical(this, tr("Error"),
+                                  tr("Invalid EEPE File Format %1")
+                                  .arg(fileName));
+            file.close();
+            return false;
+        }
+    }
+
+    while (!in.atEnd())
+    {
+        QString line = in.readLine();
+
+        if(line.left(1)!=":") continue;
+
+        int byteCount = getValueFromLine(line,1);
+        int address = getValueFromLine(line,3,4);
+        int recType = getValueFromLine(line,7);
+
+        if(byteCount<0 || address<0 || recType<0)
+        {
+            QMessageBox::critical(this, tr("Error"),tr("Error reading file %1!").arg(fileName));
+            file.close();
+            return false;
+        }
+
+        QByteArray ba;
+        ba.clear();
+
+        quint8 chkSum = 0;
+        chkSum -= byteCount;
+        chkSum -= recType;
+        chkSum -= address & 0xFF;
+        chkSum -= address >> 8;
+        for(int i=0; i<byteCount; i++)
+        {
+            quint8 v = getValueFromLine(line,(i*2)+9) & 0xFF;
+            chkSum -= v;
+            ba.append(v);
+        }
+
+
+        quint8 retV = getValueFromLine(line,(byteCount*2)+9) & 0xFF;
+        if(chkSum!=retV) {
+            QMessageBox::critical(this, tr("Error"),tr("Checksum Error reading file %1!").arg(fileName));
+            file.close();
+            return false;
+        }
+
+        if((recType == 0x00) && ((address+byteCount)<=datalen)) //data record - ba holds record
+            memcpy(&data[address],ba.data(),byteCount);
+
+    }
+
+    file.close();
+    return true;
+}
+
+bool MdiChild::saveiHEX(QString fileName, quint8 * data, int datalen, QString header)
+{
+    QFile file(fileName);
+
+
+    //open file
+    if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
+        QMessageBox::warning(this, tr("Error"),
+                             tr("Cannot write file %1:\n%2.")
+                             .arg(fileName)
+                             .arg(file.errorString()));
+        return false;
+    }
+
+    QTextStream out(&file);
+
+    //write file header in Intel HEX format
+    if(!header.isEmpty())
+    {
+        out << header << "\n";
+    }
+
+    int addr = 0;
+
+    while (addr<datalen)
+    {
+        int llen = 32;
+        if((datalen-addr)<llen)
+            llen = datalen-addr;
+
+        out << iHEXLine(data, addr, llen) << "\n";
+
+        addr += llen;
+    }
+
+    out << ":00000001FF";  // write EOF
+    file.close();
+
+    return true;
+}
+
+void MdiChild::loadModelFromFile()
+{
+    int cmod = currentRow()-1;
+    bool genfile = currentRow()==0;
+
+    QString fileName;
+    QSettings settings("er9x-eePe", "eePe");
+
+
+    if(genfile)
+    {
+        char buf[sizeof(EEGeneral().ownerName)+1];
+
+        eeFile.eeLoadOwnerName(buf,sizeof(buf));
+        QString str = QString(buf).trimmed();
+        if(!str.isEmpty())
+        {
+            int ret = QMessageBox::warning(this, "eePe",
+                                           tr("Overwrite Current Settings?"),
+                                           QMessageBox::Yes | QMessageBox::No);
+            if(ret != QMessageBox::Yes)
+                return;
+        }
+
+        //get file to load
+        fileName = QFileDialog::getOpenFileName(this,tr("Open"),settings.value("lastDir").toString(),tr(EEPG_FILES_FILTER));
+    }
+    else
+    {
+        //if slot is used - confirm overwrite
+        if(eeFile.eeModelExists(cmod))
+        {
+            char buf[sizeof(ModelData().name)+1];
+            eeFile.getModelName(cmod,(char*)&buf);
+            QString cmodelName = QString(buf).trimmed();
+            int ret = QMessageBox::warning(this, "eePe",
+                                           tr("Overwrite %1?").arg(cmodelName),
+                                           QMessageBox::Yes | QMessageBox::No);
+            if(ret != QMessageBox::Yes)
+                return;
+        }
+
+        //get file to load
+        fileName = QFileDialog::getOpenFileName(this,tr("Open"),settings.value("lastDir").toString(),tr(EEPM_FILES_FILTER));
+    }
+
+    if (fileName.isEmpty())
+        return;
+
+    settings.setValue("lastDir",QFileInfo(fileName).dir().absolutePath());
+
+    quint8 temp[WRITESIZE];
+
+    if(genfile)
+    {
+        if(!loadiHEX(fileName, (quint8*)&temp, sizeof(EEGeneral), EEPE_GENERAL_FILE_HEADER))
+            return;
+
+        if(!eeFile.putGeneralSettings((EEGeneral*)&temp))
+        {
+            QMessageBox::critical(this, tr("Error"),
+                                  tr("Error writing to container"));
+            return;
+        }
+    }
+    else
+    {
+        if(!loadiHEX(fileName, (quint8*)&temp, sizeof(ModelData), EEPE_MODEL_FILE_HEADER))
+            return;
+
+        if(!eeFile.putModel((ModelData*)&temp,cmod))
+        {
+            QMessageBox::critical(this, tr("Error"),
+                                  tr("Error writing to container"));
+            return;
+        }
+    }
+
+    refreshList();
+    setModified();
+
+}
+
+void MdiChild::saveModelToFile()
+{
+    int cmod = currentRow()-1;
+    bool genfile = currentRow()==0;
+
+    ModelData tmod;
+    EEGeneral tgen;
+    QString fileName;
+    QSettings settings("er9x-eePe", "eePe");
+
+
+    if(genfile)
+    {
+        if(!eeFile.getGeneralSettings(&tgen))
+        {
+            QMessageBox::critical(this, tr("Error"),tr("Error Getting General Settings Data"));
+            return;
+        }
+
+        QString ownerName = QString::fromAscii(tgen.ownerName,sizeof(tgen.ownerName)).trimmed() + ".eepg";
+
+        fileName = QFileDialog::getSaveFileName(this, tr("Save Settings As"),settings.value("lastDir").toString() + "/" +ownerName,tr(EEPG_FILES_FILTER));
+    }
+    else
+    {
+        if(!eeFile.eeModelExists(cmod))
+        {
+            //            QMessageBox::critical(this, tr("Error"),tr("Error Getting Model #%1").arg(cmod+1));
+            return;
+        }
+
+        if(!eeFile.getModel(&tmod,cmod))
+        {
+            QMessageBox::critical(this, tr("Error"),tr("Error Getting Model #%1").arg(cmod+1));
+            return;
+        }
+
+        QString modelName = QString::fromAscii(tmod.name,sizeof(tmod.name)).trimmed() + ".eepm";
+
+        fileName = QFileDialog::getSaveFileName(this, tr("Save Model As"),settings.value("lastDir").toString() + "/" +modelName,tr(EEPM_FILES_FILTER));
+    }
+
+    if (fileName.isEmpty())
+        return;
+
+    settings.setValue("lastDir",QFileInfo(fileName).dir().absolutePath());
+
+    if(genfile)
+        saveiHEX(fileName, (quint8*)&tgen, sizeof(tgen), EEPE_GENERAL_FILE_HEADER);
+    else
+        saveiHEX(fileName, (quint8*)&tmod, sizeof(tmod), EEPE_MODEL_FILE_HEADER);
+}
+
 void MdiChild::duplicate()
 {
     int i = this->currentRow();
@@ -396,18 +683,9 @@ void MdiChild::newFile()
 
 }
 
-int getValueFromLine(const QString &line, int pos, int len=2)
-{
-    bool ok;
-    int hex = line.mid(pos,len).toInt(&ok, 16);
-    return ok ? hex : -1;
-}
-
 bool MdiChild::loadFile(const QString &fileName, bool resetCurrentFile)
 {
-    QFile file(fileName);
-
-    if(!file.exists())
+    if(!QFileInfo(fileName).exists())
     {
         QMessageBox::critical(this, tr("Error"),tr("Unable to find file %1!").arg(fileName));
         return false;
@@ -418,7 +696,7 @@ bool MdiChild::loadFile(const QString &fileName, bool resetCurrentFile)
 
     if(fileType==FILE_TYPE_HEX || fileType==FILE_TYPE_EEPE) //read HEX file
     {
-        if((file.size()>(6*1024)) || (file.size()<(4*1024)))  //if filesize> 6k and <4kb
+        if((QFileInfo(fileName).size()>(6*1024)) || (QFileInfo(fileName).size()<(4*1024)))  //if filesize> 6k and <4kb
         {
             QMessageBox::critical(this, tr("Error"),tr("Error reading file:\n"
                                                        "File wrong size - %1\n"
@@ -427,84 +705,21 @@ bool MdiChild::loadFile(const QString &fileName, bool resetCurrentFile)
             return false;
         }
 
-        if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {  //reading HEX TEXT file
-            QMessageBox::critical(this, tr("Error"),
-                                 tr("Error opening file %1:\n%2.")
-                                 .arg(fileName)
-                                 .arg(file.errorString()));
-            return false;
-        }
+        quint8 temp[EESIZE];
 
-        uint8_t temp[EESIZE];
-        memset(&temp,0,EESIZE);
-
-        QTextStream in(&file);
-
+        QString header ="";
         if(fileType==FILE_TYPE_EEPE)   // read EEPE file header
-        {
-            QString hline = in.readLine();
-            if(hline!=EEPE_EEPROM_FILE_HEADER)
-            {
-                QMessageBox::critical(this, tr("Error"),
-                                     tr("Invalid EEPE EEPROM File %1")
-                                     .arg(fileName));
-                file.close();
-                return false;
-            }
-        }
+            header=EEPE_EEPROM_FILE_HEADER;
 
-        while (!in.atEnd())
-        {
-            QString line = in.readLine();
-
-            if(line.left(1)!=":") continue;
-
-            int byteCount = getValueFromLine(line,1);
-            int address = getValueFromLine(line,3,4);
-            int recType = getValueFromLine(line,7);
-
-            if(byteCount<0 || address<0 || recType<0)
-            {
-                QMessageBox::critical(this, tr("Error"),tr("Error reading file %1!").arg(fileName));
-                file.close();
-                return false;
-            }
-
-            QByteArray ba;
-            ba.clear();
-
-            quint8 chkSum = 0;
-            chkSum -= byteCount;
-            chkSum -= recType;
-            chkSum -= address & 0xFF;
-            chkSum -= address >> 8;
-            for(int i=0; i<byteCount; i++)
-            {
-                quint8 v = getValueFromLine(line,(i*2)+9) & 0xFF;
-                chkSum -= v;
-                ba.append(v);
-            }
+        if(!loadiHEX(fileName, (quint8*)&temp, EESIZE, header))
+            return false;
 
 
-            quint8 retV = getValueFromLine(line,(byteCount*2)+9) & 0xFF;
-            if(chkSum!=retV) {
-                QMessageBox::critical(this, tr("Error"),tr("Error reading file %1!").arg(fileName));
-                file.close();
-                return false;
-            }
-
-            if((recType == 0x00) && ((address+byteCount)<=EESIZE)) //data record - ba holds record
-                memcpy(&temp[address],ba.data(),byteCount);
-
-        }
-
-        file.close();
         if(!eeFile.loadFile(&temp))
         {
             QMessageBox::critical(this, tr("Error"),
-                                 tr("Error loading file %1:\n%2.")
-                                 .arg(fileName)
-                                 .arg(file.errorString()));
+                                 tr("Error loading file %1:\n.")
+                                 .arg(fileName));
             return false;
         }
         refreshList();
@@ -516,6 +731,8 @@ bool MdiChild::loadFile(const QString &fileName, bool resetCurrentFile)
 
     if(fileType==FILE_TYPE_BIN) //read binary
     {
+        QFile file(fileName);
+
         if(file.size()!=EESIZE)
         {
             QMessageBox::critical(this, tr("Error"),tr("Error reading file:\n"
@@ -590,44 +807,14 @@ bool MdiChild::saveFile(const QString &fileName, bool setCurrent)
 
     if(fileType==FILE_TYPE_HEX || fileType==FILE_TYPE_EEPE) //write hex
     {
-        if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
-            QMessageBox::warning(this, tr("Error"),
-                                 tr("Cannot write file %1:\n%2.")
-                                 .arg(fileName)
-                                 .arg(file.errorString()));
-            return false;
-        }
-
-
         quint8 temp[EESIZE];
         eeFile.saveFile(&temp);
+        QString header = "";
+        if(fileType==FILE_TYPE_EEPE)
+            header = EEPE_EEPROM_FILE_HEADER;
+        saveiHEX(fileName, (quint8*)&temp, EESIZE, header);
 
-        QTextStream out(&file);
 
-        if(fileType==FILE_TYPE_EEPE) // write EEPE file header
-        {
-            out << EEPE_EEPROM_FILE_HEADER << "\n";
-        }
-
-        for(int i=0; i<(EESIZE/32); i++)
-        {
-            QString str = QString(":20%1000").arg(i*32,4,16,QChar('0')); //write start, bytecount (32), address and record type
-            quint8 chkSum = 0;
-            chkSum = -32; //-bytecount; recordtype is zero
-            chkSum -= (i*32) & 0xFF;
-            chkSum -= (i*32) >> 8;
-            for(int j=0; j<32; j++)
-            {
-                str += tr("%1").arg(temp[i*32+j],2,16,QChar('0'));
-                chkSum -= temp[i*32+j];
-            }
-
-            str += tr("%1").arg(chkSum,2,16,QChar('0'));
-            out << str.toUpper() << "\n"; // output to file and lf;
-        }
-
-        out << ":00000001FF";  // write EOF
-        file.close();
         if(setCurrent) setCurrentFile(fileName);
         return true;
     }
@@ -719,6 +906,7 @@ int MdiChild::getFileType(const QString &fullFileName)
     if(QFileInfo(fullFileName).suffix().toUpper()=="HEX")  return FILE_TYPE_HEX;
     if(QFileInfo(fullFileName).suffix().toUpper()=="BIN")  return FILE_TYPE_BIN;
     if(QFileInfo(fullFileName).suffix().toUpper()=="EEPM") return FILE_TYPE_EEPM;
+    if(QFileInfo(fullFileName).suffix().toUpper()=="EEPG") return FILE_TYPE_EEPG;
     if(QFileInfo(fullFileName).suffix().toUpper()=="EEPE") return FILE_TYPE_EEPE;
     return 0;
 }
@@ -758,6 +946,15 @@ void MdiChild::burnTo()  // write to Tx
     }
 }
 
+bool MdiChild::saveToFileEnabled()
+{
+    int crow = currentRow();
+    if(crow==0)
+        return true;
+
+    return eeFile.eeModelExists(crow-1);
+}
+
 void MdiChild::ShowContextMenu(const QPoint& pos)
 {
     QPoint globalPos = this->mapToGlobal(pos);
@@ -775,7 +972,10 @@ void MdiChild::ShowContextMenu(const QPoint& pos)
     contextMenu.addAction(QIcon(":/images/paste.png"), tr("&Paste"),this,SLOT(paste()),tr("Ctrl+V"))->setEnabled(hasData);
     contextMenu.addAction(QIcon(":/images/duplicate.png"), tr("D&uplicate"),this,SLOT(duplicate()),tr("Ctrl+U"));
     contextMenu.addSeparator();
-    contextMenu.addAction(QIcon(":/images/simulate.png"), tr("&Simulate"),this,SLOT(simulate()),tr("Alt+S"));
+    contextMenu.addAction(QIcon(":/images/load_model.png"), tr("&Load Model/Settings"),this,SLOT(loadModelFromFile()),tr("Ctrl+L"));
+    contextMenu.addAction(QIcon(":/images/save_model.png"), tr("&Save Model/Settings"),this,SLOT(saveModelToFile()),tr("Ctrl+S"))->setEnabled(saveToFileEnabled());
+    contextMenu.addSeparator();
+    contextMenu.addAction(QIcon(":/images/simulate.png"), tr("Simulate"),this,SLOT(simulate()),tr("Alt+S"));
     contextMenu.addSeparator();
     contextMenu.addAction(QIcon(":/images/write_eeprom.png"), tr("&Write To Tx"),this,SLOT(burnTo()),tr("Ctrl+Alt+W"));
 
@@ -826,6 +1026,8 @@ void MdiChild::viableModelSelected(int idx)
         emit copyAvailable(false);
     else
         emit copyAvailable(eeFile.eeModelExists(currentRow()-1));
+
+    emit saveModelToFileAvailable(saveToFileEnabled());
 }
 
 

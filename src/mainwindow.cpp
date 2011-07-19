@@ -617,6 +617,18 @@ void MainWindow::showEr9xManual()
 #endif
 }
 
+void MainWindow::loadModelFromFile()
+{
+    if(activeMdiChild())
+        activeMdiChild()->loadModelFromFile();
+}
+
+void MainWindow::saveModelToFile()
+{
+    if(activeMdiChild())
+        activeMdiChild()->saveModelToFile();
+}
+
 void MainWindow::about()
 {
     QString aboutStr = "<center><img src=\":/images/eepe-title.png\"><br>";
@@ -643,6 +655,8 @@ void MainWindow::updateMenus()
     previousAct->setEnabled(hasMdiChild);
     burnToAct->setEnabled(hasMdiChild);
     separatorAct->setVisible(hasMdiChild);
+    saveModelToFileAct->setEnabled(hasMdiChild ? activeMdiChild()->saveToFileEnabled() : false);
+    loadModelFromFileAct->setEnabled(hasMdiChild);
 
     bool hasSelection = (activeMdiChild() &&
                          activeMdiChild()->hasSelection());
@@ -694,6 +708,7 @@ MdiChild *MainWindow::createMdiChild()
     connect(child, SIGNAL(copyAvailable(bool)),copyAct, SLOT(setEnabled(bool)));
     connect(child, SIGNAL(copyAvailable(bool)),simulateAct, SLOT(setEnabled(bool)));
     connect(child, SIGNAL(copyAvailable(bool)),printAct, SLOT(setEnabled(bool)));
+    connect(child, SIGNAL(saveModelToFileAvailable(bool)),saveModelToFileAct, SLOT(setEnabled(bool)));
 
     return child;
 }
@@ -853,6 +868,15 @@ void MainWindow::createActions()
     showEr9xManualAct = new QAction(QIcon(":/images/er9x_manual.png"), tr("&ER9x Users Guide"), this);
     showEr9xManualAct->setStatusTip(tr("Show ER9x Users Guide"));
     connect(showEr9xManualAct, SIGNAL(triggered()), this, SLOT(showEr9xManual()));
+
+
+    loadModelFromFileAct = new QAction(QIcon(":/images/load_model.png"), tr("&Load Model/Settings"), this);
+    loadModelFromFileAct->setStatusTip(tr("Load Model/Settings From File"));
+    connect(loadModelFromFileAct, SIGNAL(triggered()), this, SLOT(loadModelFromFile()));
+
+    saveModelToFileAct = new QAction(QIcon(":/images/save_model.png"), tr("S&ave Model/Settings"), this);
+    saveModelToFileAct->setStatusTip(tr("Save Model/Settings To File"));
+    connect(saveModelToFileAct, SIGNAL(triggered()), this, SLOT(saveModelToFile()));
 }
 
 void MainWindow::createMenus()
@@ -862,6 +886,9 @@ void MainWindow::createMenus()
     fileMenu->addAction(openAct);
     fileMenu->addAction(saveAct);
     fileMenu->addAction(saveAsAct);
+    fileMenu->addSeparator();
+    fileMenu->addAction(loadModelFromFileAct);
+    fileMenu->addAction(saveModelToFileAct);
     fileMenu->addSeparator();
     fileMenu->addAction(simulateAct);
     fileMenu->addAction(printAct);
@@ -913,6 +940,9 @@ void MainWindow::createToolBars()
     fileToolBar->addSeparator();
     fileToolBar->addAction(simulateAct);
     fileToolBar->addAction(printAct);
+    fileToolBar->addSeparator();
+    fileToolBar->addAction(loadModelFromFileAct);
+    fileToolBar->addAction(saveModelToFileAct);
 
     editToolBar = addToolBar(tr("Edit"));
     editToolBar->addAction(cutAct);
