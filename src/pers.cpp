@@ -42,11 +42,14 @@ bool EEPFILE::loadFile(void* buf)
     EEGeneral g_eeGeneral;
     int sz = getGeneralSettings(&g_eeGeneral);
 
-    if(sz<80) return false; //if it's too small then we have a corrupted memory
+    if(sz<40) return false; //if it's too small then we have a corrupted memory
 
-    if(g_eeGeneral.myVers>MDVERS || g_eeGeneral.myVers<MDVERS_r261) return false;
+    if(g_eeGeneral.myVers>MDVERS || (g_eeGeneral.myVers<MDVERS_r261 && g_eeGeneral.myVers!=4)) return false;
 
-    return true;
+    int16_t sum=0;
+    for(int i=0; i<12;i++) sum+=g_eeGeneral.calibMid[i];
+
+    return g_eeGeneral.chkSum == sum;
 }
 
 
