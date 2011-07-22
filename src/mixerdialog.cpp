@@ -3,7 +3,7 @@
 #include "pers.h"
 #include "helpers.h"
 
-MixerDialog::MixerDialog(QWidget *parent, MixData *mixdata, int stickMode) :
+MixerDialog::MixerDialog(QWidget *parent, MixData *mixdata, int stickMode, QString * comment) :
     QDialog(parent),
     ui(new Ui::MixerDialog)
 {
@@ -26,6 +26,9 @@ MixerDialog::MixerDialog(QWidget *parent, MixData *mixdata, int stickMode) :
     ui->slowDownSB->setValue(md->speedDown);
     ui->slowUpSB->setValue(md->speedUp);
 
+    mixCommennt = comment;
+    ui->mixerComment->setPlainText(mixCommennt->trimmed());
+
 
     valuesChanged();
 
@@ -42,6 +45,7 @@ MixerDialog::MixerDialog(QWidget *parent, MixData *mixdata, int stickMode) :
     connect(ui->slowDownSB,SIGNAL(valueChanged(int)),this,SLOT(valuesChanged()));
     connect(ui->slowUpSB,SIGNAL(valueChanged(int)),this,SLOT(valuesChanged()));
     connect(ui->FMtrimChkB,SIGNAL(stateChanged(int)),this,SLOT(valuesChanged()));
+    connect(ui->mixerComment,SIGNAL(textChanged()),this,SLOT(valuesChanged()));
 }
 
 MixerDialog::~MixerDialog()
@@ -82,4 +86,7 @@ void MixerDialog::valuesChanged()
         ui->offset_label->setText("FmTrimVal");
     else
         ui->offset_label->setText("Offset");
+
+    mixCommennt->clear();
+    mixCommennt->append(ui->mixerComment->toPlainText());
 }

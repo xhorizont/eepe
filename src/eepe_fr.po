@@ -1181,13 +1181,13 @@ msgstr ""
 "%2."
 
 #, qt-format
-msgctxt "MdiChild|"
-msgid ""
-"Error loading file %1:\n"
-"%2."
-msgstr ""
-"Erreur au chargement du fichier %1:\n"
-"%2."
+#~ msgctxt "MdiChild|"
+#~ msgid ""
+#~ "Error loading file %1:\n"
+#~ "%2."
+#~ msgstr ""
+#~ "Erreur au chargement du fichier %1:\n"
+#~ "%2."
 
 #, qt-format
 msgctxt "MdiChild|"
@@ -1253,13 +1253,6 @@ msgctxt "MdiChild|"
 msgid "Save Model As"
 msgstr ""
 
-#, qt-format
-msgctxt "MdiChild|"
-msgid ""
-"Error loading file %1:\n"
-"."
-msgstr ""
-
 msgctxt "MdiChild|"
 msgid "&Load Model/Settings"
 msgstr ""
@@ -1284,6 +1277,13 @@ msgstr "Simulation"
 #, qt-format
 msgctxt "MdiChild|"
 msgid "Coulden't find %1"
+msgstr ""
+
+#, qt-format
+msgctxt "MdiChild|"
+msgid ""
+"Error loading file %1:\n"
+"File may be corrupted, old or from a different system."
 msgstr ""
 
 msgctxt "MixerDialog|"
@@ -1524,6 +1524,10 @@ msgctxt "MixerDialog|"
 msgid "Flightmode Trim"
 msgstr ""
 
+msgctxt "MixerDialog|"
+msgid "Comment"
+msgstr ""
+
 msgctxt "ModelEdit|"
 msgid "P1"
 msgstr ""
@@ -1595,10 +1599,6 @@ msgstr "HAUT"
 msgctxt "ModelEdit|"
 msgid "Fine"
 msgstr "Fine"
-
-msgctxt "ModelEdit|"
-msgid " usec"
-msgstr ""
 
 msgctxt "ModelEdit|"
 msgid "&Copy"
@@ -2206,6 +2206,18 @@ msgstr ""
 
 msgctxt "ModelEdit|"
 msgid "Channel 2"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid " uSec"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid " mSec"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "PPM Frame Length"
 msgstr ""
 
 msgctxt "QObject|"
@@ -2863,6 +2875,10 @@ msgstr ""
 
 msgctxt "preferencesDialog|"
 msgid "Show Splash Screen"
+msgstr ""
+
+msgctxt "preferencesDialog|"
+msgid "er9x - FrSky NOHT"
 msgstr ""
 
 msgctxt "printDialog|"

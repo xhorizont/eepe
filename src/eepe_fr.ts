@@ -1033,7 +1033,7 @@ File wrong size - %1</source>
     <message>
         <source>Error loading file %1:
 %2.</source>
-        <translation>Erreur au chargement du fichier %1:
+        <translation type="obsolete">Erreur au chargement du fichier %1:
 %2.</translation>
     </message>
     <message>
@@ -1092,11 +1092,6 @@ This might be a FW file. You might want to try burning it to the TX.
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Error loading file %1:
-.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>&amp;Load Model/Settings</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1118,6 +1113,11 @@ This might be a FW file. You might want to try burning it to the TX.
     </message>
     <message>
         <source>Coulden&apos;t find %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Error loading file %1:
+File may be corrupted, old or from a different system.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1291,6 +1291,10 @@ p, li { white-space: pre-wrap; }
         <source>Flightmode Trim</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Comment</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ModelEdit</name>
@@ -1365,10 +1369,6 @@ p, li { white-space: pre-wrap; }
     <message>
         <source>Fine</source>
         <translation>Fine</translation>
-    </message>
-    <message>
-        <source> usec</source>
-        <translation></translation>
     </message>
     <message>
         <source>&amp;Copy</source>
@@ -1962,6 +1962,18 @@ Droite</translation>
         <source>Channel 2</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source> uSec</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source> mSec</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>PPM Frame Length</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>QObject</name>
@@ -2392,6 +2404,10 @@ Indique l&apos;affectation voie / numéro de canal par défaut utilisée lors de
     </message>
     <message>
         <source>Show Splash Screen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>er9x - FrSky NOHT</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

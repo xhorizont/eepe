@@ -56,6 +56,10 @@ MdiChild::MdiChild()
     setAttribute(Qt::WA_DeleteOnClose);
     //setWindowFlags(Qt::WindowTitleHint | Qt::WindowSystemMenuHint);
 
+    fNotes.clear();
+    for(int i=0; i<MAX_MODELS; i++)
+        fNotes.append(QStringList("")); //make sure the list isn't empty.
+
     this->setFont(QFont("Courier New",12));
     refreshList();
     if(!(this->isMaximized() || this->isMinimized())) this->adjustSize();
@@ -392,7 +396,7 @@ bool MdiChild::loadiHEX(QString fileName, quint8 * data, int datalen, QString he
     return true;
 }
 
-bool MdiChild::saveiHEX(QString fileName, quint8 * data, int datalen, QString header)
+bool MdiChild::saveiHEX(QString fileName, quint8 * data, int datalen, QString header, int notesIndex)
 {
     QFile file(fileName);
 
@@ -428,6 +432,35 @@ bool MdiChild::saveiHEX(QString fileName, quint8 * data, int datalen, QString he
     }
 
     out << ":00000001FF";  // write EOF
+
+//    if(notesIndex==NOTES_ALL)
+//    {
+//        out << "\n" << QString("%1 LISTS").arg(fNotes.size()) << "\n";
+
+//        int idx = 0;
+//        foreach(QStringList qsl, fNotes)
+//        {
+//            out << QString("%1 ITEM#").arg(idx) << "\n";
+//            out << QString("%1 ITEM SIZE").arg(qsl.size()) << "\n";
+//            foreach(QString nt, qsl)
+//            {
+//                out << nt << "\n";
+//            }
+//            idx++;
+//        }
+//    }
+//    else if(notesIndex>NOTES_NONE)
+//    {
+//        out << "\n";
+//        out << QString("1 LISTS") << "\n";
+//        out << QString("0 ITEM#") << "\n";
+//        out << QString("%1 ITEM SIZE").arg(fNotes[notesIndex].size()) << "\n";
+//        foreach(QString nt, fNotes[notesIndex])
+//        {
+//            out << nt << "\n";
+//        }
+//    }
+
     file.close();
 
     return true;
@@ -579,7 +612,7 @@ void MdiChild::saveModelToFile()
     if(genfile)
         saveiHEX(fileName, (quint8*)&tgen, sizeof(tgen), EEPE_GENERAL_FILE_HEADER);
     else
-        saveiHEX(fileName, (quint8*)&tmod, sizeof(tmod), EEPE_MODEL_FILE_HEADER);
+        saveiHEX(fileName, (quint8*)&tmod, sizeof(tmod), EEPE_MODEL_FILE_HEADER, cmod);
 }
 
 void MdiChild::duplicate()
@@ -667,8 +700,6 @@ void MdiChild::OpenEditWindow()
         connect(t,SIGNAL(modelValuesChanged()),this,SLOT(setModified()));
         //t->exec();
         t->show();
-
-
     }
     else
     {
@@ -714,7 +745,13 @@ bool MdiChild::loadFile(const QString &fileName, bool resetCurrentFile)
 
         setCurrentRow(fileType==FILE_TYPE_EEPG ? 0 : 1);
         if(!loadModelFromFile(fileName))
+        {
+            QMessageBox::critical(this, tr("Error"),
+                                 tr("Error loading file %1:\n"
+                                    "File may be corrupted, old or from a different system.")
+                                 .arg(fileName));
             return false;
+        }
 
         refreshList();
         if(resetCurrentFile) setCurrentFile(fileName);
@@ -746,7 +783,8 @@ bool MdiChild::loadFile(const QString &fileName, bool resetCurrentFile)
         if(!eeFile.loadFile(&temp))
         {
             QMessageBox::critical(this, tr("Error"),
-                                 tr("Error loading file %1:\n.")
+                                 tr("Error loading file %1:\n"
+                                    "File may be corrupted, old or from a different system.")
                                  .arg(fileName));
             return false;
         }
@@ -793,9 +831,9 @@ bool MdiChild::loadFile(const QString &fileName, bool resetCurrentFile)
         if(!eeFile.loadFile(&temp))
         {
             QMessageBox::critical(this, tr("Error"),
-                                 tr("Error loading file %1:\n%2.")
-                                 .arg(fileName)
-                                 .arg(file.errorString()));
+                                 tr("Error loading file %1:\n"
+                                    "File may be corrupted, old or from a different system.")
+                                 .arg(fileName));
             return false;
         }
         refreshList();
@@ -840,7 +878,7 @@ bool MdiChild::saveFile(const QString &fileName, bool setCurrent)
         QString header = "";
         if(fileType==FILE_TYPE_EEPE)
             header = EEPE_EEPROM_FILE_HEADER;
-        saveiHEX(fileName, (quint8*)&temp, EESIZE, header);
+        saveiHEX(fileName, (quint8*)&temp, EESIZE, header, NOTES_ALL);
 
 
         if(setCurrent) setCurrentFile(fileName);

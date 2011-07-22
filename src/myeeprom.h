@@ -32,11 +32,12 @@
 #define MDVERS_r85  5
 #define MDVERS_r261 6
 #define MDVERS_r352 7
-#define MDVERS      8
+#define MDVERS      9
 
-
-#define GENERAL_MYVER_r261 3
-#define GENERAL_MYVER      4
+//OBSOLETE - USE ONLY MDVERS NOW
+//#define GENERAL_MYVER_r261 3
+//#define GENERAL_MYVER_r365 4
+//#define GENERAL_MYVER      5
 
 
 // eeprom ver <9 => mdvers == 1
@@ -187,7 +188,7 @@ typedef struct t_ModelData {
   uint8_t   swashType:3;
   uint8_t   swashCollectiveSource;
   uint8_t   swashRingValue;
-  uint8_t   res1;
+  int8_t    ppmFrameLength;    //0=22.5  (10msec-30msec) 0.5msec increments
   MixData   mixData[MAX_MIXERS];
   LimitData limitData[NUM_CHNOUT];
   ExpoData  expoData[4];
