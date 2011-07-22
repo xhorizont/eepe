@@ -35,6 +35,11 @@ ModelEdit::ModelEdit(EEPFILE *eFile, uint8_t id, QWidget *parent) :
     ui->setupUi(this);
 
     eeFile = eFile;
+    sdptr = 0;
+
+    mixNotes.clear();
+    for(int i=0; i<MAX_MIXERS; i++)
+        mixNotes.append(""); //make sure the list isn't empty.
 
     if(!eeFile->eeLoadGeneral())  eeFile->generalDefault();
     eeFile->getGeneralSettings(&g_eeGeneral);
@@ -175,6 +180,7 @@ void ModelEdit::tabModelEditSetup()
     ui->protocolCB->setCurrentIndex(g_model.protocol);
     ui->ppmDelaySB->setValue(300+50*g_model.ppmDelay);
     ui->numChannelsSB->setValue(8+2*g_model.ppmNCH);
+    ui->ppmFrameLengthDSB->setValue(22.5+((double)g_model.ppmFrameLength)*0.5);
     ui->ppmDelaySB->setEnabled(!g_model.protocol);
     ui->numChannelsSB->setEnabled(!g_model.protocol);
     ui->extendedLimitsChkB->setChecked(g_model.extendedLimits);
@@ -457,12 +463,16 @@ void ModelEdit::tabMixes()
 
         if(md->mixWarn)  str += tr(" Warn(%1)").arg(md->mixWarn);
 
+        if(!mixNotes[i].isEmpty())
+            str += " (Note)";
+
         qba.clear();
         qba.append((quint8)i);
         qba.append((const char*)md, sizeof(MixData));
         QListWidgetItem *itm = new QListWidgetItem(str);
         itm->setData(Qt::UserRole,qba);  // mix number
         MixerlistWidget->addItem(itm);//(str);
+        MixerlistWidget->item(MixerlistWidget->count()-1)->setToolTip(mixNotes.at(i));
     }
 
     while(curDest<NUM_XCHNOUT)
@@ -1879,10 +1889,14 @@ void ModelEdit::gm_openMix(int index)
     updateSettings();
     tabMixes();
 
-    MixerDialog *g = new MixerDialog(this,&mixd,g_eeGeneral.stickMode);
+    QString comment = mixNotes[index];
+
+    MixerDialog *g = new MixerDialog(this,&mixd,g_eeGeneral.stickMode, &comment);
     if(g->exec())
     {
         memcpy(&g_model.mixData[index],&mixd,sizeof(MixData));
+
+        mixNotes[index] = comment;
 
         updateSettings();
         tabMixes();
@@ -2172,9 +2186,12 @@ void ModelEdit::launchSimulation()
     ModelData gm;
     memcpy(&gm, &g_model,sizeof(gm));
 
-    simulatorDialog *sd = new simulatorDialog(this);
-    sd->loadParams(gg,gm);
-    sd->show();
+    if ( sdptr == 0 )
+    {
+        sdptr = new simulatorDialog(this);
+    }
+    sdptr->loadParams(gg,gm);
+    sdptr->show();
 }
 
 void ModelEdit::on_pushButton_clicked()
@@ -2620,3 +2637,9 @@ void ModelEdit::applyTemplate(uint8_t idx)
 
 
 
+
+void ModelEdit::on_ppmFrameLengthDSB_editingFinished()
+{
+    g_model.ppmFrameLength = (ui->ppmFrameLengthDSB->value()-22.5)/0.5;
+    updateSettings();
+}

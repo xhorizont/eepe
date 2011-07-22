@@ -426,48 +426,48 @@ Mode 4:
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="mainwindow.cpp" line="93"/>
+        <location filename="mainwindow.cpp" line="95"/>
         <source>eePe - EEPROM Editor</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="118"/>
-        <location filename="mainwindow.cpp" line="358"/>
+        <location filename="mainwindow.cpp" line="120"/>
+        <location filename="mainwindow.cpp" line="364"/>
         <source>File loaded</source>
         <translation>Файл загружен</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="214"/>
-        <location filename="mainwindow.cpp" line="279"/>
+        <location filename="mainwindow.cpp" line="220"/>
+        <location filename="mainwindow.cpp" line="285"/>
         <source>Save As</source>
         <translation type="unfinished">Сохранить как...</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="238"/>
-        <location filename="mainwindow.cpp" line="292"/>
+        <location filename="mainwindow.cpp" line="244"/>
+        <location filename="mainwindow.cpp" line="298"/>
         <source>No updates available at this time.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="178"/>
-        <location filename="mainwindow.cpp" line="244"/>
-        <location filename="mainwindow.cpp" line="264"/>
-        <location filename="mainwindow.cpp" line="298"/>
+        <location filename="mainwindow.cpp" line="180"/>
+        <location filename="mainwindow.cpp" line="250"/>
+        <location filename="mainwindow.cpp" line="270"/>
+        <location filename="mainwindow.cpp" line="304"/>
         <source>Unable to check for updates.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="208"/>
+        <location filename="mainwindow.cpp" line="214"/>
         <source>A new version of ER9x (%2) is available (r%1)&lt;br&gt;Would you like to download it?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="279"/>
+        <location filename="mainwindow.cpp" line="285"/>
         <source>Executable (*.exe)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="311"/>
+        <location filename="mainwindow.cpp" line="317"/>
         <source>Would you like to launch the installer?</source>
         <translation type="unfinished"></translation>
     </message>
@@ -476,495 +476,495 @@ Mode 4:
         <translation type="obsolete">файлы EEPROM (*.bin *.hex);;файлы BIN (*.bin);;файлы HEX (*.hex)</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="344"/>
+        <location filename="mainwindow.cpp" line="350"/>
         <source>Open</source>
         <translation>Открыть</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="368"/>
         <location filename="mainwindow.cpp" line="374"/>
+        <location filename="mainwindow.cpp" line="380"/>
         <source>File saved</source>
         <translation>Файл записан</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="442"/>
+        <location filename="mainwindow.cpp" line="448"/>
         <source>Read EEPROM From Tx</source>
         <translation>Считать EEPROM из TX</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="460"/>
+        <location filename="mainwindow.cpp" line="471"/>
         <source>Choose file to write to EEPROM memory</source>
         <translation>Выберите файл для записи в EEPROM</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="465"/>
+        <location filename="mainwindow.cpp" line="476"/>
         <source>Write %1 to EEPROM memory?</source>
         <translation type="unfinished">Прошить %1 в передатчик?</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="493"/>
+        <location filename="mainwindow.cpp" line="504"/>
         <source>Choose file to write to flash memory</source>
         <translation>Выберите файл для записи в прошивку</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="501"/>
+        <location filename="mainwindow.cpp" line="512"/>
         <source>Write %1 to flash memory?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="528"/>
+        <location filename="mainwindow.cpp" line="539"/>
         <source>Read EEPROM memory to File</source>
         <translation>Считать EEPROM в файл</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="558"/>
+        <location filename="mainwindow.cpp" line="569"/>
         <source>Read Flash to File</source>
         <translation>Считать прошивку в файл</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="635"/>
+        <location filename="mainwindow.cpp" line="646"/>
         <source>Copyright</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="637"/>
+        <location filename="mainwindow.cpp" line="648"/>
         <source>If you&apos;ve found this program and/or the er9x firmware useful please support by</source>
         <oldsource>If you&apos;ve found this program and/or the Firmware useful please support by</oldsource>
         <translation type="unfinished">Если эта программа и/или прошивка оказалась полезной, вы можете </translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="639"/>
+        <location filename="mainwindow.cpp" line="650"/>
         <source>donating</source>
         <translation>поддержать ее</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="641"/>
+        <location filename="mainwindow.cpp" line="652"/>
         <source>About eePe</source>
         <translation>О eePe</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="688"/>
+        <location filename="mainwindow.cpp" line="699"/>
         <source>&amp;%1 %2</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="691"/>
+        <location filename="mainwindow.cpp" line="702"/>
         <source>%1 %2</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="718"/>
+        <location filename="mainwindow.cpp" line="729"/>
         <source>&amp;New</source>
         <translation>Новый</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="720"/>
+        <location filename="mainwindow.cpp" line="731"/>
         <source>Create a new file</source>
         <translation>Создать новый файл</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="723"/>
+        <location filename="mainwindow.cpp" line="734"/>
         <source>&amp;Open...</source>
         <translation>Открыть</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="725"/>
+        <location filename="mainwindow.cpp" line="736"/>
         <source>Open an existing file</source>
         <translation>Открыть файл</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="728"/>
+        <location filename="mainwindow.cpp" line="739"/>
         <source>&amp;Save</source>
         <translation>Сохранить</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="730"/>
+        <location filename="mainwindow.cpp" line="741"/>
         <source>Save the document to disk</source>
         <translation>Записать на диск</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="733"/>
+        <location filename="mainwindow.cpp" line="744"/>
         <source>Save &amp;As...</source>
         <translation>Сохранить как...</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="735"/>
+        <location filename="mainwindow.cpp" line="746"/>
         <source>Save the document under a new name</source>
         <translation>Записать с другим именем</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="738"/>
+        <location filename="mainwindow.cpp" line="749"/>
         <source>&amp;Preferences...</source>
         <translation>Настройки</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="739"/>
+        <location filename="mainwindow.cpp" line="750"/>
         <source>Edit general preferences</source>
         <translation>Редактировать основные настройки</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="742"/>
+        <location filename="mainwindow.cpp" line="753"/>
         <source>&amp;Check for updates...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="743"/>
+        <location filename="mainwindow.cpp" line="754"/>
         <source>Check for new version of eePe/er9x</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="747"/>
+        <location filename="mainwindow.cpp" line="758"/>
         <source>E&amp;xit</source>
         <translation>Выход</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="749"/>
+        <location filename="mainwindow.cpp" line="760"/>
         <source>Exit the application</source>
         <translation>Выйти из программы</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="753"/>
+        <location filename="mainwindow.cpp" line="764"/>
         <source>Cu&amp;t</source>
         <translation>Вырезать</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="755"/>
+        <location filename="mainwindow.cpp" line="766"/>
         <source>Cut the current selection&apos;s contents to the clipboard</source>
         <translation>Вырезать выделение в буфер обмена</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="759"/>
+        <location filename="mainwindow.cpp" line="770"/>
         <source>&amp;Copy</source>
         <translation>Копировать</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="761"/>
+        <location filename="mainwindow.cpp" line="772"/>
         <source>Copy the current selection&apos;s contents to the clipboard</source>
         <translation>Копировать выделение в буфер обмена</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="765"/>
+        <location filename="mainwindow.cpp" line="776"/>
         <source>&amp;Paste</source>
         <translation>Вставить</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="767"/>
+        <location filename="mainwindow.cpp" line="778"/>
         <source>Paste the clipboard&apos;s contents into the current selection</source>
         <translation>Вставить выделение из буфера обмена</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="772"/>
+        <location filename="mainwindow.cpp" line="783"/>
         <source>&amp;Write EEPROM To Tx</source>
         <translation>Записать EEPROM в TX</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="773"/>
+        <location filename="mainwindow.cpp" line="784"/>
         <source>Ctrl+Alt+W</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="774"/>
+        <location filename="mainwindow.cpp" line="785"/>
         <source>Write EEPROM to transmitter</source>
         <translation>Записать EEPROM в передатчик</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="777"/>
+        <location filename="mainwindow.cpp" line="788"/>
         <source>&amp;Read EEPROM From Tx</source>
         <translation>Считать EEPROM из TX</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="778"/>
+        <location filename="mainwindow.cpp" line="789"/>
         <source>Ctrl+Alt+R</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="779"/>
+        <location filename="mainwindow.cpp" line="790"/>
         <source>Read EEPROM from transmitter</source>
         <translation>Считать EEPROM из передатчика</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="782"/>
+        <location filename="mainwindow.cpp" line="793"/>
         <source>Write Flash memory</source>
         <translation>Загрузить прошивку</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="783"/>
+        <location filename="mainwindow.cpp" line="794"/>
         <source>Write flash memory to transmitter</source>
         <translation>Загрузить прошивку в передатчик</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="786"/>
+        <location filename="mainwindow.cpp" line="797"/>
         <source>Write EEPROM memory from file</source>
         <translation>Загрузить EEPROM из файла</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="787"/>
+        <location filename="mainwindow.cpp" line="798"/>
         <source>Write EEPROM memory from file to transmitter</source>
         <translation>Загрузить EEPROM из файла в передатчик</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="790"/>
+        <location filename="mainwindow.cpp" line="801"/>
         <source>Read EEPROM memory to file</source>
         <translation>Считать EEPROM в файл</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="791"/>
+        <location filename="mainwindow.cpp" line="802"/>
         <source>Read EEPROM memory from transmitter to file</source>
         <translation>Считать EEPROM из передатчика в файл</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="794"/>
+        <location filename="mainwindow.cpp" line="805"/>
         <source>Read Flash memory</source>
         <translation>Считать прошивку</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="795"/>
+        <location filename="mainwindow.cpp" line="806"/>
         <source>Read flash memory to transmitter</source>
         <translation>Считать прошивку из передатчика</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="798"/>
+        <location filename="mainwindow.cpp" line="809"/>
         <source>&amp;Configure...</source>
         <translation>Настройка</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="799"/>
+        <location filename="mainwindow.cpp" line="810"/>
         <source>Configure burning software</source>
         <translation>Настроить программатор</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="802"/>
+        <location filename="mainwindow.cpp" line="813"/>
         <source>&amp;List programmers</source>
         <translation>Список программаторов</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="803"/>
+        <location filename="mainwindow.cpp" line="814"/>
         <source>List available programmers</source>
         <translation>Показать список программаторов</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="806"/>
+        <location filename="mainwindow.cpp" line="817"/>
         <source>&amp;Fuses...</source>
         <translation>Фьюзы</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="807"/>
+        <location filename="mainwindow.cpp" line="818"/>
         <source>Show fuses dialog</source>
         <translation>Показать диалог установки фьюзов</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="810"/>
+        <location filename="mainwindow.cpp" line="821"/>
         <source>&amp;Simulate</source>
         <translation>Симуляция</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="811"/>
+        <location filename="mainwindow.cpp" line="822"/>
         <source>Alt+S</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="812"/>
+        <location filename="mainwindow.cpp" line="823"/>
         <source>Simulate selected model.</source>
         <translation>Запустить симуляцию</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="816"/>
+        <location filename="mainwindow.cpp" line="827"/>
         <source>&amp;Print</source>
         <translation>Печать</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="817"/>
+        <location filename="mainwindow.cpp" line="828"/>
         <source>Ctrl+P</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="818"/>
+        <location filename="mainwindow.cpp" line="829"/>
         <source>Print current model.</source>
         <translation>Распечатать текущую модель</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="822"/>
+        <location filename="mainwindow.cpp" line="833"/>
         <source>Cl&amp;ose</source>
         <translation>Закрыть</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="823"/>
+        <location filename="mainwindow.cpp" line="834"/>
         <source>Close the active window</source>
         <translation>Закрыть активное окно</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="827"/>
+        <location filename="mainwindow.cpp" line="838"/>
         <source>Close &amp;All</source>
         <translation>Закрыть все</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="828"/>
+        <location filename="mainwindow.cpp" line="839"/>
         <source>Close all the windows</source>
         <translation>Закрыть все окна</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="832"/>
+        <location filename="mainwindow.cpp" line="843"/>
         <source>&amp;Tile</source>
         <translation>Мозаика</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="833"/>
+        <location filename="mainwindow.cpp" line="844"/>
         <source>Tile the windows</source>
         <translation>Расположить окна мозаикой</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="836"/>
+        <location filename="mainwindow.cpp" line="847"/>
         <source>&amp;Cascade</source>
         <translation>Каскад</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="837"/>
+        <location filename="mainwindow.cpp" line="848"/>
         <source>Cascade the windows</source>
         <translation>Разместить окна каскадом</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="840"/>
+        <location filename="mainwindow.cpp" line="851"/>
         <source>Ne&amp;xt</source>
         <translation>Следующее</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="842"/>
+        <location filename="mainwindow.cpp" line="853"/>
         <source>Move the focus to the next window</source>
         <translation>Переместить фокус на следующее окно</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="846"/>
+        <location filename="mainwindow.cpp" line="857"/>
         <source>Pre&amp;vious</source>
         <translation>Предыдущее</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="848"/>
+        <location filename="mainwindow.cpp" line="859"/>
         <source>Move the focus to the previous window</source>
         <translation>Переместить фокус на предыдущее окно</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="856"/>
+        <location filename="mainwindow.cpp" line="867"/>
         <source>&amp;About</source>
         <translation>О программе</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="857"/>
+        <location filename="mainwindow.cpp" line="868"/>
         <source>Show the application&apos;s About box</source>
         <translation>Показать окно &quot;О программе&quot;</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="860"/>
+        <location filename="mainwindow.cpp" line="871"/>
         <source>&amp;Contributors</source>
         <translation>Авторы</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="861"/>
+        <location filename="mainwindow.cpp" line="872"/>
         <source>List er9x/eePe Contributors</source>
         <translatorcomment>Показать авторов er9x/eePe</translatorcomment>
         <translation></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="865"/>
+        <location filename="mainwindow.cpp" line="876"/>
         <source>Switch layout Left/Right</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="868"/>
+        <location filename="mainwindow.cpp" line="879"/>
         <source>&amp;ER9x Users Guide</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="869"/>
+        <location filename="mainwindow.cpp" line="880"/>
         <source>Show ER9x Users Guide</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="873"/>
+        <location filename="mainwindow.cpp" line="884"/>
         <source>&amp;Load Model/Settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="874"/>
+        <location filename="mainwindow.cpp" line="885"/>
         <source>Load Model/Settings From File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="877"/>
+        <location filename="mainwindow.cpp" line="888"/>
         <source>S&amp;ave Model/Settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="878"/>
+        <location filename="mainwindow.cpp" line="889"/>
         <source>Save Model/Settings To File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="884"/>
+        <location filename="mainwindow.cpp" line="895"/>
         <source>&amp;File</source>
         <translation>Файл</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="864"/>
+        <location filename="mainwindow.cpp" line="875"/>
         <source>Switch layout direction</source>
         <translation>Зеркало</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="156"/>
+        <location filename="mainwindow.cpp" line="158"/>
         <source>Checking for updates</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="226"/>
+        <location filename="mainwindow.cpp" line="232"/>
         <source>Ignore this version (r%1)?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="271"/>
+        <location filename="mainwindow.cpp" line="277"/>
         <source>A new version of eePe is available (r%1)&lt;br&gt;Would you like to download it?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="900"/>
+        <location filename="mainwindow.cpp" line="911"/>
         <source>&amp;Edit</source>
         <translation>Правка</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="905"/>
+        <location filename="mainwindow.cpp" line="916"/>
         <source>&amp;Burn</source>
         <translation>Запись</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="919"/>
+        <location filename="mainwindow.cpp" line="930"/>
         <source>&amp;Window</source>
         <translation>Окна</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="925"/>
+        <location filename="mainwindow.cpp" line="936"/>
         <source>&amp;Help</source>
         <translation>Помощь</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="936"/>
+        <location filename="mainwindow.cpp" line="947"/>
         <source>File</source>
         <translation>Файл</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="947"/>
+        <location filename="mainwindow.cpp" line="958"/>
         <source>Edit</source>
         <translation>Правка</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="952"/>
+        <location filename="mainwindow.cpp" line="963"/>
         <source>Burn</source>
         <translation>Запись</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="964"/>
+        <location filename="mainwindow.cpp" line="975"/>
         <source>Help</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="973"/>
+        <location filename="mainwindow.cpp" line="984"/>
         <source>Ready</source>
         <translation>Готово</translation>
     </message>
@@ -972,155 +972,164 @@ Mode 4:
 <context>
     <name>MdiChild</name>
     <message>
-        <location filename="mdichild.cpp" line="151"/>
+        <location filename="mdichild.cpp" line="155"/>
         <source>General Settings</source>
         <translation>Основные настройки</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="903"/>
-        <location filename="mdichild.cpp" line="945"/>
+        <location filename="mdichild.cpp" line="941"/>
+        <location filename="mdichild.cpp" line="983"/>
         <source>eePe</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="181"/>
+        <location filename="mdichild.cpp" line="185"/>
         <source>Delete Selected Models?</source>
         <translation>Удалить выбранные модели?</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="250"/>
-        <location filename="mdichild.cpp" line="260"/>
-        <location filename="mdichild.cpp" line="316"/>
-        <location filename="mdichild.cpp" line="321"/>
-        <location filename="mdichild.cpp" line="338"/>
-        <location filename="mdichild.cpp" line="358"/>
-        <location filename="mdichild.cpp" line="381"/>
-        <location filename="mdichild.cpp" line="402"/>
-        <location filename="mdichild.cpp" line="449"/>
-        <location filename="mdichild.cpp" line="508"/>
-        <location filename="mdichild.cpp" line="520"/>
-        <location filename="mdichild.cpp" line="547"/>
-        <location filename="mdichild.cpp" line="565"/>
-        <location filename="mdichild.cpp" line="684"/>
-        <location filename="mdichild.cpp" line="703"/>
-        <location filename="mdichild.cpp" line="729"/>
-        <location filename="mdichild.cpp" line="748"/>
+        <location filename="mdichild.cpp" line="254"/>
+        <location filename="mdichild.cpp" line="264"/>
+        <location filename="mdichild.cpp" line="320"/>
+        <location filename="mdichild.cpp" line="325"/>
+        <location filename="mdichild.cpp" line="342"/>
+        <location filename="mdichild.cpp" line="362"/>
+        <location filename="mdichild.cpp" line="385"/>
+        <location filename="mdichild.cpp" line="406"/>
+        <location filename="mdichild.cpp" line="482"/>
+        <location filename="mdichild.cpp" line="541"/>
+        <location filename="mdichild.cpp" line="553"/>
+        <location filename="mdichild.cpp" line="580"/>
+        <location filename="mdichild.cpp" line="598"/>
+        <location filename="mdichild.cpp" line="715"/>
+        <location filename="mdichild.cpp" line="734"/>
+        <location filename="mdichild.cpp" line="749"/>
         <location filename="mdichild.cpp" line="766"/>
-        <location filename="mdichild.cpp" line="772"/>
         <location filename="mdichild.cpp" line="785"/>
-        <location filename="mdichild.cpp" line="795"/>
-        <location filename="mdichild.cpp" line="853"/>
-        <location filename="mdichild.cpp" line="866"/>
-        <location filename="mdichild.cpp" line="963"/>
+        <location filename="mdichild.cpp" line="804"/>
+        <location filename="mdichild.cpp" line="810"/>
+        <location filename="mdichild.cpp" line="823"/>
+        <location filename="mdichild.cpp" line="833"/>
+        <location filename="mdichild.cpp" line="891"/>
+        <location filename="mdichild.cpp" line="904"/>
+        <location filename="mdichild.cpp" line="1001"/>
         <source>Error</source>
         <translation>Ошибка</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="250"/>
+        <location filename="mdichild.cpp" line="254"/>
         <source>Unable set data!</source>
         <translation>Невозможно установить данные!</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="260"/>
+        <location filename="mdichild.cpp" line="264"/>
         <source>Unable set model!</source>
         <translation>Невозможно установить модель!</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="339"/>
+        <location filename="mdichild.cpp" line="343"/>
         <source>Invalid EEPE File Format %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="381"/>
+        <location filename="mdichild.cpp" line="385"/>
         <source>Checksum Error reading file %1!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="450"/>
+        <location filename="mdichild.cpp" line="483"/>
         <source>Coulden&apos;t find %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="466"/>
+        <location filename="mdichild.cpp" line="499"/>
         <source>Overwrite Current Settings?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="473"/>
-        <location filename="mdichild.cpp" line="491"/>
+        <location filename="mdichild.cpp" line="506"/>
+        <location filename="mdichild.cpp" line="524"/>
         <source>Open</source>
         <translation type="unfinished">Открыть</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="484"/>
+        <location filename="mdichild.cpp" line="517"/>
         <source>Overwrite %1?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="509"/>
-        <location filename="mdichild.cpp" line="521"/>
+        <location filename="mdichild.cpp" line="542"/>
+        <location filename="mdichild.cpp" line="554"/>
         <source>Error writing to container</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="547"/>
+        <location filename="mdichild.cpp" line="580"/>
         <source>Error Getting General Settings Data</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="553"/>
+        <location filename="mdichild.cpp" line="586"/>
         <source>Save Settings As</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="565"/>
+        <location filename="mdichild.cpp" line="598"/>
         <source>Error Getting Model #%1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="571"/>
+        <location filename="mdichild.cpp" line="604"/>
         <source>Save Model As</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="666"/>
+        <location filename="mdichild.cpp" line="699"/>
         <source>Editing model %1: </source>
         <translation>Редактирование модели %1: </translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="684"/>
+        <location filename="mdichild.cpp" line="715"/>
         <source>Unable to read settings!</source>
         <translation>Невозможно считать настройки!</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="694"/>
+        <location filename="mdichild.cpp" line="725"/>
         <source>document%1.eepe</source>
         <oldsource>document%1.hex</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="1003"/>
+        <location filename="mdichild.cpp" line="750"/>
+        <location filename="mdichild.cpp" line="786"/>
+        <location filename="mdichild.cpp" line="834"/>
+        <source>Error loading file %1:
+File may be corrupted, old or from a different system.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mdichild.cpp" line="1041"/>
         <source>&amp;Load Model/Settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="1003"/>
+        <location filename="mdichild.cpp" line="1041"/>
         <source>Ctrl+L</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="1004"/>
+        <location filename="mdichild.cpp" line="1042"/>
         <source>&amp;Save Model/Settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="1004"/>
+        <location filename="mdichild.cpp" line="1042"/>
         <source>Ctrl+S</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="316"/>
-        <location filename="mdichild.cpp" line="703"/>
+        <location filename="mdichild.cpp" line="320"/>
+        <location filename="mdichild.cpp" line="734"/>
         <source>Unable to find file %1!</source>
         <translation>Невозможно найти файл %1!</translation>
     </message>
@@ -1131,45 +1140,38 @@ Mode 4:
 %2.</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="358"/>
+        <location filename="mdichild.cpp" line="362"/>
         <source>Error reading file %1!</source>
         <translation>Ошибка при считывании файла %1!</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="749"/>
-        <source>Error loading file %1:
-.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="mdichild.cpp" line="786"/>
+        <location filename="mdichild.cpp" line="824"/>
         <source>Error reading file %1:
 %2.</source>
         <translation>Ошибка при считывании файла %1:
 %2.</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="796"/>
         <source>Error loading file %1:
 %2.</source>
         <oldsource>File wrong size - %1</oldsource>
-        <translation type="unfinished">Неверный размер файла - %1</translation>
+        <translation type="obsolete">Неверный размер файла - %1</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="766"/>
+        <location filename="mdichild.cpp" line="804"/>
         <source>Error reading file:
 File wrong size - %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="322"/>
-        <location filename="mdichild.cpp" line="773"/>
+        <location filename="mdichild.cpp" line="326"/>
+        <location filename="mdichild.cpp" line="811"/>
         <source>Error opening file %1:
 %2.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="729"/>
+        <location filename="mdichild.cpp" line="766"/>
         <source>Error reading file:
 File wrong size - %1
 This might be a FW file. You might want to try burning it to the TX.
@@ -1177,95 +1179,95 @@ This might be a FW file. You might want to try burning it to the TX.
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="822"/>
+        <location filename="mdichild.cpp" line="860"/>
         <source>Save As</source>
         <translation>Сохранить как...</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="403"/>
-        <location filename="mdichild.cpp" line="854"/>
+        <location filename="mdichild.cpp" line="407"/>
+        <location filename="mdichild.cpp" line="892"/>
         <source>Cannot write file %1:
 %2.</source>
         <translation>Не удается записать файл %1:
 %2.</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="867"/>
+        <location filename="mdichild.cpp" line="905"/>
         <source>Error writing file %1:
 %2.</source>
         <translation>Ошибка при записи файла %1:
 %2.</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="904"/>
+        <location filename="mdichild.cpp" line="942"/>
         <source>&apos;%1&apos; has been modified.
 Do you want to save your changes?</source>
         <translation>&apos;%1&apos; был изменен.
 Вы хотите сохранить изменения?</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="946"/>
+        <location filename="mdichild.cpp" line="984"/>
         <source>Write %1 to EEPROM memory?</source>
         <oldsource>Burn %1 to transmitter?</oldsource>
         <translation type="unfinished">Прошить %1 в передатчик?</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="963"/>
+        <location filename="mdichild.cpp" line="1001"/>
         <source>Cannot write temporary file!</source>
         <translation>Не удается записать временный файл!</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="995"/>
+        <location filename="mdichild.cpp" line="1033"/>
         <source>&amp;Edit</source>
         <translation>Править</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="997"/>
+        <location filename="mdichild.cpp" line="1035"/>
         <source>&amp;Delete</source>
         <translation>Удалить</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="997"/>
+        <location filename="mdichild.cpp" line="1035"/>
         <source>Delete</source>
         <translation>Удалить</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="998"/>
+        <location filename="mdichild.cpp" line="1036"/>
         <source>&amp;Copy</source>
         <translation>Копировать</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="998"/>
+        <location filename="mdichild.cpp" line="1036"/>
         <source>Ctrl+C</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="999"/>
+        <location filename="mdichild.cpp" line="1037"/>
         <source>&amp;Cut</source>
         <translation>Вырезать</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="999"/>
+        <location filename="mdichild.cpp" line="1037"/>
         <source>Ctrl+X</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="1000"/>
+        <location filename="mdichild.cpp" line="1038"/>
         <source>&amp;Paste</source>
         <translation>Вставить</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="1000"/>
+        <location filename="mdichild.cpp" line="1038"/>
         <source>Ctrl+V</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="1001"/>
+        <location filename="mdichild.cpp" line="1039"/>
         <source>D&amp;uplicate</source>
         <translation>Дублировать</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="1001"/>
+        <location filename="mdichild.cpp" line="1039"/>
         <source>Ctrl+U</source>
         <translation></translation>
     </message>
@@ -1274,22 +1276,22 @@ Do you want to save your changes?</source>
         <translation type="obsolete">Симуляция</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="1006"/>
+        <location filename="mdichild.cpp" line="1044"/>
         <source>Alt+S</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="1006"/>
+        <location filename="mdichild.cpp" line="1044"/>
         <source>Simulate</source>
         <translation type="unfinished">Симуляция</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="1008"/>
+        <location filename="mdichild.cpp" line="1046"/>
         <source>&amp;Write To Tx</source>
         <translation>Записать в TX</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="1008"/>
+        <location filename="mdichild.cpp" line="1046"/>
         <source>Ctrl+Alt+W</source>
         <translation></translation>
     </message>
@@ -1485,6 +1487,11 @@ p, li { white-space: pre-wrap; }
         <translation>Низ</translation>
     </message>
     <message>
+        <location filename="mixerdialog.ui" line="397"/>
+        <source>Comment</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="mixerdialog.cpp" line="13"/>
         <source>DEST -&gt; CH%1%2</source>
         <translatorcomment>???</translatorcomment>
@@ -1660,8 +1667,9 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="modeledit.ui" line="354"/>
-        <source> usec</source>
-        <translation>мсек</translation>
+        <source> uSec</source>
+        <oldsource> usec</oldsource>
+        <translation type="unfinished">мсек</translation>
     </message>
     <message>
         <location filename="modeledit.ui" line="271"/>
@@ -1669,550 +1677,560 @@ p, li { white-space: pre-wrap; }
         <translation>Расш. лимиты</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="374"/>
-        <source>Heli Setup</source>
+        <location filename="modeledit.ui" line="373"/>
+        <source> mSec</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="380"/>
-        <source>Swash Type</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="modeledit.ui" line="388"/>
-        <source>Off</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="modeledit.ui" line="393"/>
-        <source>120</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="modeledit.ui" line="398"/>
-        <source>120X</source>
+        <location filename="modeledit.ui" line="395"/>
+        <source>PPM Frame Length</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="modeledit.ui" line="403"/>
+        <source>Heli Setup</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="modeledit.ui" line="409"/>
+        <source>Swash Type</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="modeledit.ui" line="417"/>
+        <source>Off</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="modeledit.ui" line="422"/>
+        <source>120</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="modeledit.ui" line="427"/>
+        <source>120X</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="modeledit.ui" line="432"/>
         <source>140</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="408"/>
+        <location filename="modeledit.ui" line="437"/>
         <source>90</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="416"/>
+        <location filename="modeledit.ui" line="445"/>
         <source>Collective</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="426"/>
+        <location filename="modeledit.ui" line="455"/>
         <source>Swash Ring</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="461"/>
+        <location filename="modeledit.ui" line="490"/>
         <source>Invert Elevator</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="468"/>
+        <location filename="modeledit.ui" line="497"/>
         <source>Invert Aileron</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="475"/>
+        <location filename="modeledit.ui" line="504"/>
         <source>Invert Collective</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="498"/>
+        <location filename="modeledit.ui" line="527"/>
         <source>Expo/Dr</source>
         <translation>Расходы/Экспо</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="521"/>
-        <location filename="modeledit.ui" line="841"/>
-        <location filename="modeledit.ui" line="1194"/>
-        <location filename="modeledit.ui" line="1481"/>
+        <location filename="modeledit.ui" line="550"/>
+        <location filename="modeledit.ui" line="870"/>
+        <location filename="modeledit.ui" line="1223"/>
+        <location filename="modeledit.ui" line="1510"/>
         <source>HIGH</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="595"/>
-        <location filename="modeledit.ui" line="915"/>
-        <location filename="modeledit.ui" line="1268"/>
-        <location filename="modeledit.ui" line="1555"/>
+        <location filename="modeledit.ui" line="624"/>
+        <location filename="modeledit.ui" line="944"/>
+        <location filename="modeledit.ui" line="1297"/>
+        <location filename="modeledit.ui" line="1584"/>
         <source>MID</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="669"/>
-        <location filename="modeledit.ui" line="989"/>
-        <location filename="modeledit.ui" line="1342"/>
-        <location filename="modeledit.ui" line="1629"/>
+        <location filename="modeledit.ui" line="698"/>
+        <location filename="modeledit.ui" line="1018"/>
+        <location filename="modeledit.ui" line="1371"/>
+        <location filename="modeledit.ui" line="1658"/>
         <source>LOW</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="743"/>
-        <location filename="modeledit.ui" line="1063"/>
-        <location filename="modeledit.ui" line="1416"/>
-        <location filename="modeledit.ui" line="1703"/>
+        <location filename="modeledit.ui" line="772"/>
+        <location filename="modeledit.ui" line="1092"/>
+        <location filename="modeledit.ui" line="1445"/>
+        <location filename="modeledit.ui" line="1732"/>
         <source>Expo
 Left</source>
         <translation>Expo
 слева</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="754"/>
-        <location filename="modeledit.ui" line="1085"/>
-        <location filename="modeledit.ui" line="1161"/>
-        <location filename="modeledit.ui" line="1725"/>
+        <location filename="modeledit.ui" line="783"/>
+        <location filename="modeledit.ui" line="1114"/>
+        <location filename="modeledit.ui" line="1190"/>
+        <location filename="modeledit.ui" line="1754"/>
         <source>D/R
 Left</source>
         <translation>D/R
 слева</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="765"/>
-        <location filename="modeledit.ui" line="1074"/>
-        <location filename="modeledit.ui" line="1172"/>
-        <location filename="modeledit.ui" line="1714"/>
+        <location filename="modeledit.ui" line="794"/>
+        <location filename="modeledit.ui" line="1103"/>
+        <location filename="modeledit.ui" line="1201"/>
+        <location filename="modeledit.ui" line="1743"/>
         <source>D/R
 Right</source>
         <translation>D/R
 справа</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="776"/>
-        <location filename="modeledit.ui" line="1096"/>
-        <location filename="modeledit.ui" line="1183"/>
-        <location filename="modeledit.ui" line="1736"/>
+        <location filename="modeledit.ui" line="805"/>
+        <location filename="modeledit.ui" line="1125"/>
+        <location filename="modeledit.ui" line="1212"/>
+        <location filename="modeledit.ui" line="1765"/>
         <source>Expo
 Right</source>
         <translation>Expo
 справа</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="789"/>
-        <location filename="modeledit.ui" line="1119"/>
-        <location filename="modeledit.ui" line="1429"/>
-        <location filename="modeledit.ui" line="1759"/>
+        <location filename="modeledit.ui" line="818"/>
+        <location filename="modeledit.ui" line="1148"/>
+        <location filename="modeledit.ui" line="1458"/>
+        <location filename="modeledit.ui" line="1788"/>
         <source>Switch1</source>
         <translation>Тумблер 1</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="799"/>
-        <location filename="modeledit.ui" line="1109"/>
-        <location filename="modeledit.ui" line="1439"/>
-        <location filename="modeledit.ui" line="1749"/>
+        <location filename="modeledit.ui" line="828"/>
+        <location filename="modeledit.ui" line="1138"/>
+        <location filename="modeledit.ui" line="1468"/>
+        <location filename="modeledit.ui" line="1778"/>
         <source>Switch2</source>
         <translation>Тумблер 2</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="814"/>
+        <location filename="modeledit.ui" line="843"/>
         <source>Rudder</source>
         <translation>Руддер</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="1134"/>
+        <location filename="modeledit.ui" line="1163"/>
         <source>Aileron</source>
         <translation>Элероны</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="1454"/>
+        <location filename="modeledit.ui" line="1483"/>
         <source>Throttle</source>
         <translation>Газ</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="1774"/>
+        <location filename="modeledit.ui" line="1803"/>
         <source>Elevator</source>
         <translation>Элеватор</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="1785"/>
+        <location filename="modeledit.ui" line="1814"/>
         <source>Mixes</source>
         <translation>Микшеры</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="1795"/>
+        <location filename="modeledit.ui" line="1824"/>
         <source>Limits</source>
         <translation>Лимиты</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="1857"/>
-        <location filename="modeledit.ui" line="1926"/>
-        <location filename="modeledit.ui" line="1995"/>
-        <location filename="modeledit.ui" line="2064"/>
-        <location filename="modeledit.ui" line="2133"/>
-        <location filename="modeledit.ui" line="2202"/>
-        <location filename="modeledit.ui" line="2271"/>
-        <location filename="modeledit.ui" line="2340"/>
-        <location filename="modeledit.ui" line="2409"/>
-        <location filename="modeledit.ui" line="2478"/>
-        <location filename="modeledit.ui" line="2547"/>
-        <location filename="modeledit.ui" line="2616"/>
-        <location filename="modeledit.ui" line="2685"/>
-        <location filename="modeledit.ui" line="2754"/>
-        <location filename="modeledit.ui" line="2823"/>
-        <location filename="modeledit.ui" line="2892"/>
+        <location filename="modeledit.ui" line="1886"/>
+        <location filename="modeledit.ui" line="1955"/>
+        <location filename="modeledit.ui" line="2024"/>
+        <location filename="modeledit.ui" line="2093"/>
+        <location filename="modeledit.ui" line="2162"/>
+        <location filename="modeledit.ui" line="2231"/>
+        <location filename="modeledit.ui" line="2300"/>
+        <location filename="modeledit.ui" line="2369"/>
+        <location filename="modeledit.ui" line="2438"/>
+        <location filename="modeledit.ui" line="2507"/>
+        <location filename="modeledit.ui" line="2576"/>
+        <location filename="modeledit.ui" line="2645"/>
+        <location filename="modeledit.ui" line="2714"/>
+        <location filename="modeledit.ui" line="2783"/>
+        <location filename="modeledit.ui" line="2852"/>
+        <location filename="modeledit.ui" line="2921"/>
         <source>NOR</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="1862"/>
-        <location filename="modeledit.ui" line="1931"/>
-        <location filename="modeledit.ui" line="2000"/>
-        <location filename="modeledit.ui" line="2069"/>
-        <location filename="modeledit.ui" line="2138"/>
-        <location filename="modeledit.ui" line="2207"/>
-        <location filename="modeledit.ui" line="2276"/>
-        <location filename="modeledit.ui" line="2345"/>
-        <location filename="modeledit.ui" line="2414"/>
-        <location filename="modeledit.ui" line="2483"/>
-        <location filename="modeledit.ui" line="2552"/>
-        <location filename="modeledit.ui" line="2621"/>
-        <location filename="modeledit.ui" line="2690"/>
-        <location filename="modeledit.ui" line="2759"/>
-        <location filename="modeledit.ui" line="2828"/>
-        <location filename="modeledit.ui" line="2897"/>
+        <location filename="modeledit.ui" line="1891"/>
+        <location filename="modeledit.ui" line="1960"/>
+        <location filename="modeledit.ui" line="2029"/>
+        <location filename="modeledit.ui" line="2098"/>
+        <location filename="modeledit.ui" line="2167"/>
+        <location filename="modeledit.ui" line="2236"/>
+        <location filename="modeledit.ui" line="2305"/>
+        <location filename="modeledit.ui" line="2374"/>
+        <location filename="modeledit.ui" line="2443"/>
+        <location filename="modeledit.ui" line="2512"/>
+        <location filename="modeledit.ui" line="2581"/>
+        <location filename="modeledit.ui" line="2650"/>
+        <location filename="modeledit.ui" line="2719"/>
+        <location filename="modeledit.ui" line="2788"/>
+        <location filename="modeledit.ui" line="2857"/>
+        <location filename="modeledit.ui" line="2926"/>
         <source>INV</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="2914"/>
-        <location filename="modeledit.ui" line="5479"/>
+        <location filename="modeledit.ui" line="2943"/>
+        <location filename="modeledit.ui" line="5508"/>
         <source>Channel</source>
         <translation>Канал</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="2936"/>
+        <location filename="modeledit.ui" line="2965"/>
         <source>Offset</source>
         <translation>Смещение</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="2958"/>
+        <location filename="modeledit.ui" line="2987"/>
         <source>Min</source>
         <translation>Мин</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="2980"/>
+        <location filename="modeledit.ui" line="3009"/>
         <source>Max</source>
         <translation>Макс</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="452"/>
-        <location filename="modeledit.ui" line="3002"/>
+        <location filename="modeledit.ui" line="481"/>
+        <location filename="modeledit.ui" line="3031"/>
         <source>Invert</source>
         <translation>Инверт</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="3016"/>
+        <location filename="modeledit.ui" line="3045"/>
         <source>Curves</source>
         <translation>Кривые</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="3022"/>
+        <location filename="modeledit.ui" line="3051"/>
         <source>Curve 1</source>
         <translation>Кривая 1</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="3112"/>
+        <location filename="modeledit.ui" line="3141"/>
         <source>Curve 2</source>
         <translation>Кривая 2</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="3199"/>
+        <location filename="modeledit.ui" line="3228"/>
         <source>Curve 3</source>
         <translation>Кривая 3</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="3286"/>
+        <location filename="modeledit.ui" line="3315"/>
         <source>Curve 4</source>
         <translation>Кривая 4</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="3373"/>
+        <location filename="modeledit.ui" line="3402"/>
         <source>Curve 5</source>
         <translation>Кривая 5</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="3460"/>
+        <location filename="modeledit.ui" line="3489"/>
         <source>Curve 6</source>
         <translation>Кривая 6</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="3547"/>
+        <location filename="modeledit.ui" line="3576"/>
         <source>Curve 7</source>
         <translation>Кривая 7</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="3634"/>
+        <location filename="modeledit.ui" line="3663"/>
         <source>Curve 8</source>
         <translation>Кривая 8</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="3721"/>
+        <location filename="modeledit.ui" line="3750"/>
         <source>Curve 9</source>
         <translation>Кривая 9</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="3872"/>
+        <location filename="modeledit.ui" line="3901"/>
         <source>Curve 10</source>
         <translation>Кривая 10</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="4023"/>
+        <location filename="modeledit.ui" line="4052"/>
         <source>Curve 11</source>
         <translation>Кривая 11</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="4174"/>
+        <location filename="modeledit.ui" line="4203"/>
         <source>Curve 12</source>
         <translation>Кривая 12</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="4325"/>
+        <location filename="modeledit.ui" line="4354"/>
         <source>Curve 13</source>
         <translation>Кривая 13</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="4476"/>
+        <location filename="modeledit.ui" line="4505"/>
         <source>Curve 14</source>
         <translation>Кривая 14</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="4627"/>
+        <location filename="modeledit.ui" line="4656"/>
         <source>Curve 15</source>
         <translation>Кривая 15</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="4778"/>
+        <location filename="modeledit.ui" line="4807"/>
         <source>Curve 16</source>
         <translation>Кривая 16</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="5201"/>
+        <location filename="modeledit.ui" line="5230"/>
         <source>Clear All Curves</source>
         <oldsource>Clear All Mixes</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="5213"/>
+        <location filename="modeledit.ui" line="5242"/>
         <source>Switches</source>
         <translation>Триггеры</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="5225"/>
+        <location filename="modeledit.ui" line="5254"/>
         <source>CSwitch1</source>
         <translation>Триггер 1</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="5241"/>
+        <location filename="modeledit.ui" line="5270"/>
         <source>CSwitch2</source>
         <translation>Триггер 2</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="5257"/>
+        <location filename="modeledit.ui" line="5286"/>
         <source>CSwitch3</source>
         <translation>Триггер 3</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="5273"/>
+        <location filename="modeledit.ui" line="5302"/>
         <source>CSwitch4</source>
         <translation>Триггер 4</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="5289"/>
+        <location filename="modeledit.ui" line="5318"/>
         <source>CSwitch5</source>
         <translation>Триггер 5</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="5347"/>
+        <location filename="modeledit.ui" line="5376"/>
         <source>CSwitch6</source>
         <translation>Триггер 6</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="5308"/>
+        <location filename="modeledit.ui" line="5337"/>
         <source>Function</source>
         <translation>Функция</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="5321"/>
+        <location filename="modeledit.ui" line="5350"/>
         <source>V1</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="5334"/>
+        <location filename="modeledit.ui" line="5363"/>
         <source>V2</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="5360"/>
+        <location filename="modeledit.ui" line="5389"/>
         <source>CSwitch7</source>
         <translation type="unfinished">Триггер 7</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="5373"/>
+        <location filename="modeledit.ui" line="5402"/>
         <source>CSwitch8</source>
         <translation type="unfinished">Триггер 8</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="5386"/>
+        <location filename="modeledit.ui" line="5415"/>
         <source>CSwitch9</source>
         <translation type="unfinished">Триггер 9</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="5399"/>
+        <location filename="modeledit.ui" line="5428"/>
         <source>CSwitchA</source>
         <oldsource>CSwitch10</oldsource>
         <translation type="unfinished">Триггер 10</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="5412"/>
+        <location filename="modeledit.ui" line="5441"/>
         <source>CSwitchB</source>
         <oldsource>CSwitch11</oldsource>
         <translation type="unfinished">Триггер 11</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="5425"/>
+        <location filename="modeledit.ui" line="5454"/>
         <source>CSwitchC</source>
         <oldsource>CSwitch12</oldsource>
         <translation type="unfinished">Триггер 12</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="5464"/>
+        <location filename="modeledit.ui" line="5493"/>
         <source>Safety Switches</source>
         <translation>Защитные выкл.</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="5501"/>
+        <location filename="modeledit.ui" line="5530"/>
         <source>Switch</source>
         <translation>Выключатель</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="5523"/>
+        <location filename="modeledit.ui" line="5552"/>
         <source>Value</source>
         <translation>Значение</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="5649"/>
+        <location filename="modeledit.ui" line="5678"/>
         <source>Trims</source>
         <translation>Триммеры</translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="5758"/>
+        <location filename="modeledit.ui" line="5787"/>
         <source>STICK 1</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="5773"/>
+        <location filename="modeledit.ui" line="5802"/>
         <source>STICK 2</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="5863"/>
+        <location filename="modeledit.ui" line="5892"/>
         <source>STICK 4</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="5878"/>
+        <location filename="modeledit.ui" line="5907"/>
         <source>STICK 3</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="5948"/>
+        <location filename="modeledit.ui" line="5977"/>
         <source>FrSky</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="5956"/>
+        <location filename="modeledit.ui" line="5985"/>
         <source>Channel 1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="5964"/>
-        <location filename="modeledit.ui" line="6114"/>
+        <location filename="modeledit.ui" line="5993"/>
+        <location filename="modeledit.ui" line="6143"/>
         <source>V</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="5969"/>
-        <location filename="modeledit.ui" line="5974"/>
-        <location filename="modeledit.ui" line="5979"/>
-        <location filename="modeledit.ui" line="5997"/>
-        <location filename="modeledit.ui" line="6042"/>
-        <location filename="modeledit.ui" line="6119"/>
-        <location filename="modeledit.ui" line="6124"/>
-        <location filename="modeledit.ui" line="6129"/>
-        <location filename="modeledit.ui" line="6147"/>
-        <location filename="modeledit.ui" line="6192"/>
+        <location filename="modeledit.ui" line="5998"/>
+        <location filename="modeledit.ui" line="6003"/>
+        <location filename="modeledit.ui" line="6008"/>
+        <location filename="modeledit.ui" line="6026"/>
+        <location filename="modeledit.ui" line="6071"/>
+        <location filename="modeledit.ui" line="6148"/>
+        <location filename="modeledit.ui" line="6153"/>
+        <location filename="modeledit.ui" line="6158"/>
+        <location filename="modeledit.ui" line="6176"/>
+        <location filename="modeledit.ui" line="6221"/>
         <source>---</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="5989"/>
-        <location filename="modeledit.ui" line="6139"/>
+        <location filename="modeledit.ui" line="6018"/>
+        <location filename="modeledit.ui" line="6168"/>
         <source>Alarm 1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="6002"/>
-        <location filename="modeledit.ui" line="6047"/>
-        <location filename="modeledit.ui" line="6152"/>
-        <location filename="modeledit.ui" line="6197"/>
+        <location filename="modeledit.ui" line="6031"/>
+        <location filename="modeledit.ui" line="6076"/>
+        <location filename="modeledit.ui" line="6181"/>
+        <location filename="modeledit.ui" line="6226"/>
         <source>Yellow</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="6007"/>
-        <location filename="modeledit.ui" line="6052"/>
-        <location filename="modeledit.ui" line="6157"/>
-        <location filename="modeledit.ui" line="6202"/>
+        <location filename="modeledit.ui" line="6036"/>
+        <location filename="modeledit.ui" line="6081"/>
+        <location filename="modeledit.ui" line="6186"/>
+        <location filename="modeledit.ui" line="6231"/>
         <source>Orange</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="6012"/>
-        <location filename="modeledit.ui" line="6057"/>
-        <location filename="modeledit.ui" line="6162"/>
-        <location filename="modeledit.ui" line="6207"/>
+        <location filename="modeledit.ui" line="6041"/>
+        <location filename="modeledit.ui" line="6086"/>
+        <location filename="modeledit.ui" line="6191"/>
+        <location filename="modeledit.ui" line="6236"/>
         <source>Red</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="6021"/>
-        <location filename="modeledit.ui" line="6066"/>
-        <location filename="modeledit.ui" line="6171"/>
-        <location filename="modeledit.ui" line="6216"/>
+        <location filename="modeledit.ui" line="6050"/>
+        <location filename="modeledit.ui" line="6095"/>
+        <location filename="modeledit.ui" line="6200"/>
+        <location filename="modeledit.ui" line="6245"/>
         <source>&lt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="6026"/>
-        <location filename="modeledit.ui" line="6071"/>
-        <location filename="modeledit.ui" line="6176"/>
-        <location filename="modeledit.ui" line="6221"/>
+        <location filename="modeledit.ui" line="6055"/>
+        <location filename="modeledit.ui" line="6100"/>
+        <location filename="modeledit.ui" line="6205"/>
+        <location filename="modeledit.ui" line="6250"/>
         <source>&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="6034"/>
-        <location filename="modeledit.ui" line="6184"/>
+        <location filename="modeledit.ui" line="6063"/>
+        <location filename="modeledit.ui" line="6213"/>
         <source>Alarm 2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="6106"/>
+        <location filename="modeledit.ui" line="6135"/>
         <source>Channel 2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.ui" line="6268"/>
+        <location filename="modeledit.ui" line="6297"/>
         <source>Templates</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2222,171 +2240,171 @@ Right</source>
         <translation>Симуляция</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="415"/>
-        <location filename="modeledit.cpp" line="425"/>
-        <location filename="modeledit.cpp" line="471"/>
+        <location filename="modeledit.cpp" line="421"/>
+        <location filename="modeledit.cpp" line="431"/>
+        <location filename="modeledit.cpp" line="481"/>
         <source>CH%1%2</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="446"/>
+        <location filename="modeledit.cpp" line="452"/>
         <source> Switch(</source>
         <translation> Тумблер(</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="447"/>
+        <location filename="modeledit.cpp" line="453"/>
         <source> noTrim</source>
         <translation>безТрим</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="448"/>
+        <location filename="modeledit.cpp" line="454"/>
         <source> Offset(%1%)</source>
         <translation>Смещение(%1%)</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="452"/>
+        <location filename="modeledit.cpp" line="458"/>
         <source> Curve(%1)</source>
         <translation>Кривая(%1)</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="455"/>
+        <location filename="modeledit.cpp" line="461"/>
         <source> Delay(u%1:d%2)</source>
         <translation> Задержка(u%1:d%2)</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="456"/>
+        <location filename="modeledit.cpp" line="462"/>
         <source> Slow(u%1:d%2)</source>
         <translation> Задержка(u%1:d%2)</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="458"/>
+        <location filename="modeledit.cpp" line="464"/>
         <source> Warn(%1)</source>
         <translation> Пред(%1)</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="1723"/>
+        <location filename="modeledit.cpp" line="1733"/>
         <source>Curve %1</source>
         <translation>Кривая %1</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="1953"/>
+        <location filename="modeledit.cpp" line="1967"/>
         <source>Delete Selected Mixes?</source>
         <translation>Удалить выбранные микшеры?</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2086"/>
+        <location filename="modeledit.cpp" line="2100"/>
         <source>&amp;Add</source>
         <translation>Добавить</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2086"/>
+        <location filename="modeledit.cpp" line="2100"/>
         <source>Ctrl+A</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2087"/>
+        <location filename="modeledit.cpp" line="2101"/>
         <source>&amp;Edit</source>
         <translation>Правка</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2087"/>
+        <location filename="modeledit.cpp" line="2101"/>
         <source>Enter</source>
         <translation>Ввод</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2089"/>
+        <location filename="modeledit.cpp" line="2103"/>
         <source>&amp;Delete</source>
         <translation>Удалить</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2089"/>
+        <location filename="modeledit.cpp" line="2103"/>
         <source>Delete</source>
         <translation>Удалить</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2090"/>
+        <location filename="modeledit.cpp" line="2104"/>
         <source>&amp;Copy</source>
         <translation>Копировать</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2090"/>
+        <location filename="modeledit.cpp" line="2104"/>
         <source>Ctrl+C</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2091"/>
+        <location filename="modeledit.cpp" line="2105"/>
         <source>&amp;Cut</source>
         <translation>Вырезать</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2091"/>
+        <location filename="modeledit.cpp" line="2105"/>
         <source>Ctrl+X</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2092"/>
+        <location filename="modeledit.cpp" line="2106"/>
         <source>&amp;Paste</source>
         <translation>Вставить</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2092"/>
+        <location filename="modeledit.cpp" line="2106"/>
         <source>Ctrl+V</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2093"/>
+        <location filename="modeledit.cpp" line="2107"/>
         <source>Du&amp;plicate</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2095"/>
+        <location filename="modeledit.cpp" line="2109"/>
         <source>Move Up</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="86"/>
-        <location filename="modeledit.cpp" line="2095"/>
+        <location filename="modeledit.cpp" line="91"/>
+        <location filename="modeledit.cpp" line="2109"/>
         <source>Ctrl+Up</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2096"/>
+        <location filename="modeledit.cpp" line="2110"/>
         <source>Move Down</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="89"/>
-        <location filename="modeledit.cpp" line="2096"/>
+        <location filename="modeledit.cpp" line="94"/>
+        <location filename="modeledit.cpp" line="2110"/>
         <source>Ctrl+Down</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2412"/>
+        <location filename="modeledit.cpp" line="2429"/>
         <source>Apply Template?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2412"/>
+        <location filename="modeledit.cpp" line="2429"/>
         <source>Apply template &quot;%1&quot;?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2439"/>
+        <location filename="modeledit.cpp" line="2456"/>
         <source>Clear Mixes?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2439"/>
+        <location filename="modeledit.cpp" line="2456"/>
         <source>Really clear all the mixes?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2451"/>
+        <location filename="modeledit.cpp" line="2468"/>
         <source>Clear Curves?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2451"/>
+        <location filename="modeledit.cpp" line="2468"/>
         <source>Really clear all the curves?</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2395,7 +2413,7 @@ Right</source>
         <translation type="obsolete">Дублировать</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2093"/>
+        <location filename="modeledit.cpp" line="2107"/>
         <source>Ctrl+U</source>
         <translation></translation>
     </message>
@@ -2711,17 +2729,17 @@ p, li { white-space: pre-wrap; }
         <translation>Язык (треб. перезапуск)</translation>
     </message>
     <message>
-        <location filename="preferencesdialog.ui" line="126"/>
+        <location filename="preferencesdialog.ui" line="131"/>
         <source>Default Channel Order</source>
         <translation>Порядок следов. каналов</translation>
     </message>
     <message>
-        <location filename="preferencesdialog.ui" line="265"/>
+        <location filename="preferencesdialog.ui" line="270"/>
         <source>Default Stick Mode</source>
         <translation>Режим стиков</translation>
     </message>
     <message>
-        <location filename="preferencesdialog.ui" line="133"/>
+        <location filename="preferencesdialog.ui" line="138"/>
         <source>Channel order
 
 This is used by the templated to determine which channel goes to what number output.</source>
@@ -2766,7 +2784,12 @@ This is used by the templated to determine which channel goes to what number out
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="preferencesdialog.ui" line="272"/>
+        <location filename="preferencesdialog.ui" line="110"/>
+        <source>er9x - FrSky NOHT</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="preferencesdialog.ui" line="277"/>
         <source>Mode selection:
 
 Mode 1:
@@ -2789,22 +2812,22 @@ Mode 4:
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="preferencesdialog.ui" line="297"/>
+        <location filename="preferencesdialog.ui" line="302"/>
         <source>Mode 1 (RUD ELE THR AIL)</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="preferencesdialog.ui" line="302"/>
+        <location filename="preferencesdialog.ui" line="307"/>
         <source>Mode 2 (RUD THR ELE AIL)</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="preferencesdialog.ui" line="307"/>
+        <location filename="preferencesdialog.ui" line="312"/>
         <source>Mode 3 (AIL ELE THR RUD)</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="preferencesdialog.ui" line="312"/>
+        <location filename="preferencesdialog.ui" line="317"/>
         <source>Mode 4 (AIL THR ELE RUD)</source>
         <translation></translation>
     </message>

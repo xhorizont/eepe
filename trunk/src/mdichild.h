@@ -67,6 +67,10 @@
 
 #define WRITESIZE  (sizeof(ModelData) + sizeof(EEGeneral))
 
+#define NOTES_NONE (-2)
+#define NOTES_ALL  (-1)
+
+
 
 class MdiChild : public QListWidget//QMdiSubWindow
 {
@@ -91,6 +95,8 @@ public:
     static int getFileType(const QString &fullFileName);
     bool saveToFileEnabled();
 
+    QList<QStringList> fNotes;
+
 signals:
     void copyAvailable(bool val);
     void saveModelToFileAvailable(bool val);
@@ -107,7 +113,7 @@ protected:
 private slots:
     void documentWasModified();
     void refreshList();
-    bool saveiHEX(QString fileName, quint8 * data, int datalen, QString header="");
+    bool saveiHEX(QString fileName, quint8 * data, int datalen, QString header="", int notesIndex=NOTES_NONE);
     bool loadiHEX(QString fileName, quint8 * data, int datalen, QString header="");
 
 

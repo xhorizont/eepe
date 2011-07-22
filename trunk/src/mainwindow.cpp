@@ -57,13 +57,15 @@
 #include "stamp-eepe.h"
 
 #define DONATE_STR "https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=TGT92W338DPGN&lc=IL&item_name=Erez%20Raviv&item_number=eePe&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted"
-#define DNLD_VER_ER9X           0
-#define DNLD_VER_ER9X_JETI      1
-#define DNLD_VER_ER9X_FRSKY     2
-#define DNLD_VER_ER9X_ARDUPILOT 3
+#define DNLD_VER_ER9X            0
+#define DNLD_VER_ER9X_JETI       1
+#define DNLD_VER_ER9X_FRSKY      2
+#define DNLD_VER_ER9X_ARDUPILOT  3
+#define DNLD_VER_ER9X_FRSKY_NOHT 4
 #define ER9X_URL   "http://er9x.googlecode.com/svn/trunk/er9x.hex"
 #define ER9X_JETI_URL   "http://er9x.googlecode.com/svn/trunk/er9x-jeti.hex"
 #define ER9X_FRSKY_URL   "http://er9x.googlecode.com/svn/trunk/er9x-frsky.hex"
+#define ER9X_FRSKY_NOHT_URL   "http://er9x.googlecode.com/svn/trunk/er9x-frsky-noht.hex"
 #define ER9X_ARDUPILOT_URL   "http://er9x.googlecode.com/svn/trunk/er9x-ardupilot.hex"
 #define ER9X_STAMP "http://er9x.googlecode.com/svn/trunk/src/stamp-er9x.h"
 #define EEPE_URL   "http://eepe.googlecode.com/svn/trunk/eePeInstall.exe"
@@ -197,6 +199,10 @@ void MainWindow::reply1Finished(QNetworkReply * reply)
             case (DNLD_VER_ER9X_ARDUPILOT):
                 dnldURL = ER9X_ARDUPILOT_URL;
                 baseFileName = "er9x-ardupilot.hex";
+                break;
+            case (DNLD_VER_ER9X_FRSKY_NOHT):
+                dnldURL = ER9X_FRSKY_NOHT_URL;
+                baseFileName = "er9x-frsky-noht.hex";
                 break;
             default:
                 dnldURL = ER9X_URL;
@@ -447,7 +453,12 @@ void MainWindow::burnFrom()
     {
         MdiChild *child = createMdiChild();
         child->newFile();
-        child->loadFile(tempFile,false);
+        if(!child->loadFile(tempFile,false))
+        {
+            child->close();
+            return;
+        }
+
         child->setModified();
         child->show();
         if(!child->parentWidget()->isMaximized() && !child->parentWidget()->isMinimized()) child->parentWidget()->resize(400,500);

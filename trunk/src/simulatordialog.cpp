@@ -768,11 +768,8 @@ void simulatorDialog::perOut(bool init)
       if(!getSwitch(md.swtch,1)){ // switch on?  if no switch selected => on
         swTog = swOn[i];
         swOn[i] = false;
-        if(md.srcRaw!=MIX_MAX && md.srcRaw!=MIX_FULL) continue;// if not MAX or FULL - next loop
-        if(md.mltpx==MLTPX_REP) continue; // if switch is off and REPLACE then off
-        v = (md.srcRaw == MIX_FULL ? -RESX : 0); // switch is off and it is either MAX=0 or FULL=-512
-
-        //if(md.srcRaw==MIX_MAX) continue;
+        if(md.srcRaw!=MIX_FULL) continue;// if not MAX or FULL - next loop
+        v = -RESX; // switch is off => FULL=-RESX
       }
       else {
         swTog = !swOn[i];

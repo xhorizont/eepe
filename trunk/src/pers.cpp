@@ -38,8 +38,15 @@ bool EEPFILE::loadFile(void* buf)
 {
     theFile->load(buf);
 
+
     EEGeneral g_eeGeneral;
-    return getGeneralSettings(&g_eeGeneral);
+    int sz = getGeneralSettings(&g_eeGeneral);
+
+    if(sz<80) return false; //if it's too small then we have a corrupted memory
+
+    if(g_eeGeneral.myVers>MDVERS || g_eeGeneral.myVers<MDVERS_r261) return false;
+
+    return true;
 }
 
 
@@ -58,7 +65,7 @@ void EEPFILE::generalDefault()
   EEGeneral g_eeGeneral;
   memset(&g_eeGeneral,0,sizeof(g_eeGeneral));
   memset(&g_eeGeneral.ownerName,' ',sizeof(g_eeGeneral.ownerName));
-  g_eeGeneral.myVers   =  GENERAL_MYVER;
+  g_eeGeneral.myVers   =  MDVERS;
   g_eeGeneral.currModel=  0;
   g_eeGeneral.contrast = 25;
   g_eeGeneral.vBatWarn = 90;

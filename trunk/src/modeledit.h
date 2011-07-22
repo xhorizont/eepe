@@ -24,8 +24,11 @@ public:
 private:
     Ui::ModelEdit *ui;
     EEPFILE *eeFile;
+    class simulatorDialog *sdptr ;
 
     MixersList *MixerlistWidget;
+
+    QStringList mixNotes;
 
     EEGeneral g_eeGeneral;
     ModelData g_model;
@@ -179,6 +182,9 @@ private slots:
     void on_modelNameLE_editingFinished();
     void on_tabWidget_currentChanged(int index);
     void on_templateList_doubleClicked(QModelIndex index);
+    void on_ppmFrameLengthDSB_editingFinished();
 };
+
+
 
 #endif // MODELEDIT_H
