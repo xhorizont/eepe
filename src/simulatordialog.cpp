@@ -764,13 +764,14 @@ void simulatorDialog::perOut(bool init)
       int16_t v  = 0;
       uint8_t swTog;
 
+#define DEL_MULT 256
+
       //swOn[i]=false;
       if(!getSwitch(md.swtch,1)){ // switch on?  if no switch selected => on
         swTog = swOn[i];
         swOn[i] = false;
-        if(md.srcRaw==MIX_MAX) act[i] = 0;// MAX back to 0 for slow up
-        if(md.srcRaw!=MIX_FULL) continue;// if not MAX or FULL - next loop
-        v = -RESX; // switch is off => FULL=-RESX
+        if(md.srcRaw!=MIX_FULL && md.srcRaw!=MIX_MAX) continue;// if not MAX or FULL - next loop
+        v = md.srcRaw==MIX_FULL ? -RESX : 0; // switch is off => FULL=-RESX
       }
       else {
         swTog = !swOn[i];
@@ -787,10 +788,8 @@ void simulatorDialog::perOut(bool init)
       //========== DELAY and PAUSE ===============
       if (md.speedUp || md.speedDown || md.delayUp || md.delayDown)  // there are delay values
       {
-
-#define DEL_MULT 256
-
-        if(init) {
+        if(init)
+        {
           act[i]=(int32_t)v*DEL_MULT;
           swTog = false;
         }
