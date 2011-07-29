@@ -768,6 +768,7 @@ void simulatorDialog::perOut(bool init)
       if(!getSwitch(md.swtch,1)){ // switch on?  if no switch selected => on
         swTog = swOn[i];
         swOn[i] = false;
+        if(md.srcRaw==MIX_MAX) act[i] = 0;// MAX back to 0 for slow up
         if(md.srcRaw!=MIX_FULL) continue;// if not MAX or FULL - next loop
         v = -RESX; // switch is off => FULL=-RESX
       }
