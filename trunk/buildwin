@@ -5,7 +5,7 @@ make clean
 qmake -spec win32-g++-cross
 make
 
-cp release/eepe.exe ../winbuild
+mv release/eepe.exe ../winbuild
 
 ./gen_ts
 
