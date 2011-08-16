@@ -18,11 +18,16 @@ public:
 private:
     Ui::preferencesDialog *ui;
 
+    int currentER9Xrev;
+    int currentEEPErev;
+
     void populateLocale();
     void initSettings();
 
 private slots:
     void write_values();
+    void on_er9x_dnld_2_clicked();
+    void on_er9x_dnld_clicked();
 };
 
 #endif // PREFERENCESDIALOG_H

@@ -27,6 +27,7 @@ void burnConfigDialog::getSettings()
     QString str = settings.value("avr_arguments").toString();
     avrArgs = str.split(" ", QString::SkipEmptyParts);
     avrProgrammer =  settings.value("programmer", QString("usbasp")).toString();
+    avrMCU =  settings.value("mcu", QString("m64")).toString();
     avrPort =  settings.value("avr_port", "").toString();
 
     ui->avrdude_location->setText(getAVRDUDE());
@@ -34,8 +35,10 @@ void burnConfigDialog::getSettings()
 
     int idx1 = ui->avrdude_programmer->findText(getProgrammer());
     int idx2 = ui->avrdude_port->findText(getPort());
+    int idx3 = ui->avrdude_mcu->findText(getMCU());
     if(idx1>=0) ui->avrdude_programmer->setCurrentIndex(idx1);
     if(idx2>=0) ui->avrdude_port->setCurrentIndex(idx2);
+    if(idx3>=0) ui->avrdude_mcu->setCurrentIndex(idx3);
 }
 
 void burnConfigDialog::putSettings()
@@ -51,6 +54,7 @@ void burnConfigDialog::putSettings()
     QSettings settings("er9x-eePe", "eePe");
     settings.setValue("avrdude_location", avrLoc);
     settings.setValue("programmer", avrProgrammer);
+    settings.setValue("mcu", avrMCU);
     settings.setValue("avr_port", avrPort);
     settings.setValue("avr_arguments", avrArgs.join(" "));
 }
@@ -91,6 +95,11 @@ void burnConfigDialog::populateProgrammers()
 void burnConfigDialog::on_avrdude_programmer_currentIndexChanged(QString )
 {
     avrProgrammer = ui->avrdude_programmer->currentText();
+}
+
+void burnConfigDialog::on_avrdude_mcu_currentIndexChanged(QString )
+{
+    avrMCU = ui->avrdude_mcu->currentText();
 }
 
 void burnConfigDialog::on_avrdude_location_editingFinished()
@@ -157,7 +166,7 @@ void burnConfigDialog::readFuses()
     str << "-U" << "lfuse:r:-:i" << "-U" << "hfuse:r:-:i" << "-U" << "efuse:r:-:i";
 
     QStringList arguments;
-    arguments << "-c" << avrProgrammer << "-p" << "m64" << args << str;
+    arguments << "-c" << avrProgrammer << "-p" << avrMCU << args << str;
 
     avrOutputDialog *ad = new avrOutputDialog(this, avrLoc, arguments, "Read Fuses",AVR_DIALOG_KEEP_OPEN);
     ad->setWindowIcon(QIcon(":/images/fuses.png"));
@@ -187,7 +196,7 @@ void burnConfigDialog::restFuses(bool eeProtect)
         //use hfuse = 0x81 to prevent eeprom being erased with every flashing
 
         QStringList arguments;
-        arguments << "-c" << avrProgrammer << "-p" << "m64" << args << "-u" << str;
+        arguments << "-c" << avrProgrammer << "-p" << avrMCU << args << "-u" << str;
 
         avrOutputDialog *ad = new avrOutputDialog(this, avrLoc, arguments, "Reset Fuses",AVR_DIALOG_KEEP_OPEN);
         ad->setWindowIcon(QIcon(":/images/fuses.png"));
@@ -195,3 +204,7 @@ void burnConfigDialog::restFuses(bool eeProtect)
     }
 
 }
+
+
+
+

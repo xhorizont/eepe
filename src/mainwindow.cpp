@@ -62,7 +62,9 @@
 #define DNLD_VER_ER9X_FRSKY      2
 #define DNLD_VER_ER9X_ARDUPILOT  3
 #define DNLD_VER_ER9X_FRSKY_NOHT 4
+#define DNLD_VER_ER9X_NOHT       5
 #define ER9X_URL   "http://er9x.googlecode.com/svn/trunk/er9x.hex"
+#define ER9X_NOHT_URL   "http://er9x.googlecode.com/svn/trunk/er9x-noht.hex"
 #define ER9X_JETI_URL   "http://er9x.googlecode.com/svn/trunk/er9x-jeti.hex"
 #define ER9X_FRSKY_URL   "http://er9x.googlecode.com/svn/trunk/er9x-frsky.hex"
 #define ER9X_FRSKY_NOHT_URL   "http://er9x.googlecode.com/svn/trunk/er9x-frsky-noht.hex"
@@ -204,6 +206,10 @@ void MainWindow::reply1Finished(QNetworkReply * reply)
                 dnldURL = ER9X_FRSKY_NOHT_URL;
                 baseFileName = "er9x-frsky-noht.hex";
                 break;
+            case (DNLD_VER_ER9X_NOHT):
+                dnldURL = ER9X_NOHT_URL;
+                baseFileName = "er9x-noht.hex";
+                break;
             default:
                 dnldURL = ER9X_URL;
                 baseFileName = "er9x.hex";
@@ -251,6 +257,50 @@ void MainWindow::reply1Finished(QNetworkReply * reply)
     }
 }
 
+void MainWindow::downloadLatester9x()
+{
+
+    QSettings settings("er9x-eePe", "eePe");
+
+    QString dnldURL, baseFileName;
+    switch (settings.value("download-version", 0).toInt())
+    {
+    case (DNLD_VER_ER9X_JETI):
+        dnldURL = ER9X_JETI_URL;
+        baseFileName = "er9x-jeti.hex";
+        break;
+    case (DNLD_VER_ER9X_FRSKY):
+        dnldURL = ER9X_FRSKY_URL;
+        baseFileName = "er9x-frsky.hex";
+        break;
+    case (DNLD_VER_ER9X_ARDUPILOT):
+        dnldURL = ER9X_ARDUPILOT_URL;
+        baseFileName = "er9x-ardupilot.hex";
+        break;
+    case (DNLD_VER_ER9X_FRSKY_NOHT):
+        dnldURL = ER9X_FRSKY_NOHT_URL;
+        baseFileName = "er9x-frsky-noht.hex";
+        break;
+    case (DNLD_VER_ER9X_NOHT):
+        dnldURL = ER9X_NOHT_URL;
+        baseFileName = "er9x-noht.hex";
+        break;
+    default:
+        dnldURL = ER9X_URL;
+        baseFileName = "er9x.hex";
+        break;
+    }
+
+    QString fileName = QFileDialog::getSaveFileName(this, tr("Save As"),settings.value("lastDir").toString() + "/" + baseFileName,tr(HEX_FILES_FILTER));
+    if (fileName.isEmpty()) return;
+    settings.setValue("lastDir",QFileInfo(fileName).dir().absolutePath());
+
+    downloadDialog * dd = new downloadDialog(this,dnldURL,fileName);
+    currentER9Xrev_temp = currentER9Xrev;
+    connect(dd,SIGNAL(accepted()),this,SLOT(reply1Accepted()));
+    dd->show();
+}
+
 void MainWindow::reply2Finished(QNetworkReply * reply)
 {
     check2done = true;
@@ -284,7 +334,6 @@ void MainWindow::reply2Finished(QNetworkReply * reply)
             {
                 QString fileName = QFileDialog::getSaveFileName(this, tr("Save As"),settings.value("lastDir").toString() + "/eePeInstall.exe",tr("Executable (*.exe)"));
                 if (fileName.isEmpty()) return;
-//                settings.setValue("lastDir",QFileInfo(fileName)s.dir().absolutePath());
 
                 downloadDialog * dd = new downloadDialog(this,EEPE_URL,fileName);
                 installer_fileName = fileName;
@@ -435,6 +484,7 @@ void MainWindow::burnFrom()
     QString avrdudeLoc = bcd.getAVRDUDE();
     QString tempDir    = QDir::tempPath();
     QString programmer = bcd.getProgrammer();
+    QString mcu        = bcd.getMCU();
     QStringList args   = bcd.getAVRArgs();
     if(!bcd.getPort().isEmpty()) args << "-P" << bcd.getPort();
 
@@ -443,7 +493,7 @@ void MainWindow::burnFrom()
     QString str = "eeprom:r:" + tempFile + ":i"; // writing eeprom -> MEM:OPR:FILE:FTYPE"
 
     QStringList arguments;
-    arguments << "-c" << programmer << "-p" << "m64" << args << "-U" << str;
+    arguments << "-c" << programmer << "-p" << mcu << args << "-U" << str;
 
     avrOutputDialog *ad = new avrOutputDialog(this, avrdudeLoc, arguments,tr("Read EEPROM From Tx")); //, AVR_DIALOG_KEEP_OPEN);
     ad->setWindowIcon(QIcon(":/images/read_eeprom.png"));
@@ -479,6 +529,7 @@ void MainWindow::burnExtenalToEEPROM()
         burnConfigDialog bcd;
         QString avrdudeLoc = bcd.getAVRDUDE();
         QString programmer = bcd.getProgrammer();
+        QString mcu        = bcd.getMCU();
         QStringList args   = bcd.getAVRArgs();
         if(!bcd.getPort().isEmpty()) args << "-P" << bcd.getPort();
 
@@ -488,7 +539,7 @@ void MainWindow::burnExtenalToEEPROM()
         else str += ":a";
 
         QStringList arguments;
-        arguments << "-c" << programmer << "-p" << "m64" << args << "-U" << str;
+        arguments << "-c" << programmer << "-p" << mcu << args << "-U" << str;
 
         avrOutputDialog *ad = new avrOutputDialog(this, avrdudeLoc, arguments, "Write EEPROM To Tx", AVR_DIALOG_SHOW_DONE);
         ad->setWindowIcon(QIcon(":/images/write_eeprom.png"));
@@ -515,6 +566,7 @@ void MainWindow::burnToFlash(QString fileToFlash)
         burnConfigDialog bcd;
         QString avrdudeLoc = bcd.getAVRDUDE();
         QString programmer = bcd.getProgrammer();
+        QString mcu        = bcd.getMCU();
         QStringList args   = bcd.getAVRArgs();
         if(!bcd.getPort().isEmpty()) args << "-P" << bcd.getPort();
 
@@ -524,7 +576,7 @@ void MainWindow::burnToFlash(QString fileToFlash)
         else str += ":a";
 
         QStringList arguments;
-        arguments << "-c" << programmer << "-p" << "m64" << args << "-U" << str;
+        arguments << "-c" << programmer << "-p" << mcu << args << "-U" << str;
 
         avrOutputDialog *ad = new avrOutputDialog(this, avrdudeLoc, arguments, "Write Flash To Tx", AVR_DIALOG_SHOW_DONE);
         ad->setWindowIcon(QIcon(":/images/write_flash.png"));
@@ -544,6 +596,7 @@ void MainWindow::burnExtenalFromEEPROM()
         burnConfigDialog bcd;
         QString avrdudeLoc = bcd.getAVRDUDE();
         QString programmer = bcd.getProgrammer();
+        QString mcu        = bcd.getMCU();
         QStringList args   = bcd.getAVRArgs();
         if(!bcd.getPort().isEmpty()) args << "-P" << bcd.getPort();
 
@@ -554,7 +607,7 @@ void MainWindow::burnExtenalFromEEPROM()
         else str += ":a";
 
         QStringList arguments;
-        arguments << "-c" << programmer << "-p" << "m64" << args << "-U" << str;
+        arguments << "-c" << programmer << "-p" << mcu << args << "-U" << str;
 
         avrOutputDialog *ad = new avrOutputDialog(this, avrdudeLoc, arguments, "Read EEPROM From Tx");
         ad->setWindowIcon(QIcon(":/images/read_eeprom.png"));
@@ -574,6 +627,7 @@ void MainWindow::burnFromFlash()
         burnConfigDialog bcd;
         QString avrdudeLoc = bcd.getAVRDUDE();
         QString programmer = bcd.getProgrammer();
+        QString mcu        = bcd.getMCU();
         QStringList args   = bcd.getAVRArgs();
         if(!bcd.getPort().isEmpty()) args << "-P" << bcd.getPort();
 
@@ -584,7 +638,7 @@ void MainWindow::burnFromFlash()
         else str += ":a";
 
         QStringList arguments;
-        arguments << "-c" << programmer << "-p" << "m64" << args << "-U" << str;
+        arguments << "-c" << programmer << "-p" << mcu << args << "-U" << str;
 
         avrOutputDialog *ad = new avrOutputDialog(this, avrdudeLoc, arguments, "Read Flash From Tx");
         ad->setWindowIcon(QIcon(":/images/read_flash.png"));

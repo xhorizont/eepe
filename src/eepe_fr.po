@@ -2397,6 +2397,22 @@ msgctxt "burnConfigDialog|"
 msgid "avrdoper"
 msgstr ""
 
+msgctxt "burnConfigDialog|"
+msgid "mcu"
+msgstr ""
+
+msgctxt "burnConfigDialog|"
+msgid "m64"
+msgstr ""
+
+msgctxt "burnConfigDialog|"
+msgid "m128"
+msgstr ""
+
+msgctxt "burnConfigDialog|"
+msgid "m328p"
+msgstr ""
+
 msgctxt "donatorsDialog|"
 msgid "List of Contributors"
 msgstr "Liste des Contributeurs"
@@ -2879,6 +2895,26 @@ msgstr ""
 
 msgctxt "preferencesDialog|"
 msgid "er9x - FrSky NOHT"
+msgstr ""
+
+msgctxt "preferencesDialog|"
+msgid "er9x - NOHT"
+msgstr ""
+
+msgctxt "preferencesDialog|"
+msgid "Download"
+msgstr ""
+
+msgctxt "preferencesDialog|"
+msgid "r111"
+msgstr ""
+
+msgctxt "preferencesDialog|"
+msgid "Check"
+msgstr ""
+
+msgctxt "preferencesDialog|"
+msgid "Current Version - er9x"
 msgstr ""
 
 msgctxt "printDialog|"

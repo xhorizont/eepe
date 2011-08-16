@@ -23,6 +23,7 @@ public:
     QString getAVRDUDE() {return avrLoc;}
     QStringList getAVRArgs() {return avrArgs;}
     QString getProgrammer() {return avrProgrammer;}
+    QString getMCU() {return avrMCU;}
     QString getPort() {return avrPort;}
 
     void listProgrammers();
@@ -37,6 +38,7 @@ private:
     QString avrLoc;
     QStringList avrArgs;
     QString avrProgrammer;
+    QString avrMCU;
     QString avrPort;
 
 private slots:
@@ -46,6 +48,7 @@ private slots:
     void on_pushButton_clicked();
     void on_avrdude_location_editingFinished();
     void on_avrdude_programmer_currentIndexChanged(QString );
+    void on_avrdude_mcu_currentIndexChanged(QString );
     void on_avrdude_port_currentIndexChanged(QString );
 
     void getSettings();
