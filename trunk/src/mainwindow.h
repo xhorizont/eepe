@@ -64,11 +64,14 @@ class MainWindow : public QMainWindow
 public:
     MainWindow();
 
+    void checkForUpdates(bool ignoreSettings=true);
+    void downloadLatester9x();
+
 protected:
     void closeEvent(QCloseEvent *event);
 
 private slots:
-    void checkForUpdates(bool ignoreSettings=true);
+
     void reply1Finished(QNetworkReply * reply);
     void reply2Finished(QNetworkReply * reply);
 

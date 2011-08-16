@@ -2136,6 +2136,22 @@ Assurez-vous de posséder les droits en écriture sur ce dossier.</translation>
         <source>avrdoper</source>
         <translation></translation>
     </message>
+    <message>
+        <source>mcu</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>m64</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>m128</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>m328p</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>donatorsDialog</name>
@@ -2408,6 +2424,26 @@ Indique l&apos;affectation voie / numéro de canal par défaut utilisée lors de
     </message>
     <message>
         <source>er9x - FrSky NOHT</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>er9x - NOHT</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Download</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>r111</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Check</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Current Version - er9x</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

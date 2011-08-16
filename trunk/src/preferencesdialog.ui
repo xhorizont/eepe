@@ -28,14 +28,14 @@
    <item row="0" column="1">
     <widget class="QComboBox" name="locale_QB"/>
    </item>
-   <item row="1" column="0">
+   <item row="4" column="0">
     <widget class="QLabel" name="label_2">
      <property name="text">
       <string>Check for updates on startup</string>
      </property>
     </widget>
    </item>
-   <item row="1" column="1">
+   <item row="4" column="1">
     <layout class="QGridLayout" name="gridLayout">
      <item row="0" column="0">
       <widget class="QCheckBox" name="startupCheck_er9x">
@@ -59,14 +59,14 @@
      </item>
     </layout>
    </item>
-   <item row="2" column="0">
+   <item row="5" column="0">
     <widget class="QLabel" name="label_4">
      <property name="text">
       <string>Show Splash Screen</string>
      </property>
     </widget>
    </item>
-   <item row="2" column="1">
+   <item row="5" column="1">
     <widget class="QCheckBox" name="showSplash">
      <property name="text">
       <string/>
@@ -76,14 +76,14 @@
      </property>
     </widget>
    </item>
-   <item row="3" column="0">
+   <item row="6" column="0">
     <widget class="QLabel" name="label_3">
      <property name="text">
       <string>Version to download</string>
      </property>
     </widget>
    </item>
-   <item row="3" column="1">
+   <item row="6" column="1">
     <widget class="QComboBox" name="downloadVerCB">
      <item>
       <property name="text">
@@ -110,29 +110,44 @@
        <string>er9x - FrSky NOHT</string>
       </property>
      </item>
+     <item>
+      <property name="text">
+       <string>er9x - NOHT</string>
+      </property>
+     </item>
     </widget>
    </item>
-   <item row="4" column="1">
-    <spacer name="horizontalSpacer">
+   <item row="8" column="1">
+    <spacer name="verticalSpacer">
      <property name="orientation">
-      <enum>Qt::Horizontal</enum>
+      <enum>Qt::Vertical</enum>
      </property>
      <property name="sizeHint" stdset="0">
       <size>
-       <width>40</width>
-       <height>20</height>
+       <width>20</width>
+       <height>40</height>
       </size>
      </property>
     </spacer>
    </item>
-   <item row="5" column="0">
+   <item row="9" column="1">
+    <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0">
     <widget class="QLabel" name="label_13">
      <property name="text">
       <string>Default Channel Order</string>
      </property>
     </widget>
    </item>
-   <item row="5" column="1">
+   <item row="1" column="1">
     <widget class="QComboBox" name="channelorderCB">
      <property name="whatsThis">
       <string>Channel order
@@ -264,14 +279,14 @@ This is used by the templated to determine which channel goes to what number out
      </item>
     </widget>
    </item>
-   <item row="6" column="0">
+   <item row="2" column="0">
     <widget class="QLabel" name="label_14">
      <property name="text">
       <string>Default Stick Mode</string>
      </property>
     </widget>
    </item>
-   <item row="6" column="1">
+   <item row="2" column="1">
     <widget class="QComboBox" name="stickmodeCB">
      <property name="whatsThis">
       <string>Mode selection:
@@ -319,26 +334,48 @@ Mode 4:
      </item>
     </widget>
    </item>
-   <item row="7" column="1">
-    <spacer name="verticalSpacer">
+   <item row="3" column="1">
+    <spacer name="horizontalSpacer">
      <property name="orientation">
-      <enum>Qt::Vertical</enum>
+      <enum>Qt::Horizontal</enum>
      </property>
      <property name="sizeHint" stdset="0">
       <size>
-       <width>20</width>
-       <height>40</height>
+       <width>40</width>
+       <height>20</height>
       </size>
      </property>
     </spacer>
    </item>
-   <item row="8" column="1">
-    <widget class="QDialogButtonBox" name="buttonBox">
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-     <property name="standardButtons">
-      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+   <item row="7" column="1">
+    <layout class="QGridLayout" name="gridLayout_3" columnstretch="0,10,10" columnminimumwidth="0,0,0">
+     <item row="0" column="2">
+      <widget class="QPushButton" name="er9x_dnld">
+       <property name="text">
+        <string>Download</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="0">
+      <widget class="QLabel" name="er9x_ver_label">
+       <property name="text">
+        <string>r111</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QPushButton" name="er9x_dnld_2">
+       <property name="text">
+        <string>Check</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="7" column="0">
+    <widget class="QLabel" name="label_5">
+     <property name="text">
+      <string>Current Version - er9x</string>
      </property>
     </widget>
    </item>

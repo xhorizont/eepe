@@ -1,5 +1,7 @@
 #include "preferencesdialog.h"
 #include "ui_preferencesdialog.h"
+#include "stamp-eepe.h"
+#include "mainwindow.h"
 #include <QtGui>
 
 preferencesDialog::preferencesDialog(QWidget *parent) :
@@ -47,6 +49,10 @@ void preferencesDialog::initSettings()
     ui->startupCheck_eepe->setChecked(settings.value("startup_check_eepe", true).toBool());
 
     ui->showSplash->setChecked(settings.value("show_splash", true).toBool());
+
+    currentER9Xrev = settings.value("currentER9Xrev", 1).toInt();
+
+    ui->er9x_ver_label->setText(QString("r%1").arg(currentER9Xrev));
 }
 
 void preferencesDialog::populateLocale()
@@ -74,5 +80,20 @@ void preferencesDialog::populateLocale()
     //ui->locale_QB->addItems(files);
 
 
+}
+
+
+void preferencesDialog::on_er9x_dnld_2_clicked()
+{
+    MainWindow * mw = (MainWindow *)this->parent();
+
+    mw->checkForUpdates(true);
+}
+
+void preferencesDialog::on_er9x_dnld_clicked()
+{
+    MainWindow * mw = (MainWindow *)this->parent();
+
+    mw->downloadLatester9x();
 }
 
