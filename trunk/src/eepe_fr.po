@@ -2220,6 +2220,14 @@ msgctxt "ModelEdit|"
 msgid "PPM Frame Length"
 msgstr ""
 
+msgctxt "ModelEdit|"
+msgid "Trainer"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "T2throttleTrig"
+msgstr ""
+
 msgctxt "QObject|"
 msgid "Checking for updates..."
 msgstr ""
@@ -2915,6 +2923,22 @@ msgstr ""
 
 msgctxt "preferencesDialog|"
 msgid "Current Version - er9x"
+msgstr ""
+
+msgctxt "preferencesDialog|"
+msgid "er9x - SPKR"
+msgstr ""
+
+msgctxt "preferencesDialog|"
+msgid "er9x - NOHT, SPKR"
+msgstr ""
+
+msgctxt "preferencesDialog|"
+msgid "er9x - FrSky, SPKR"
+msgstr ""
+
+msgctxt "preferencesDialog|"
+msgid "er9x - FrSky, NOHT, SPKR"
 msgstr ""
 
 msgctxt "printDialog|"

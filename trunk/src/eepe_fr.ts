@@ -1974,6 +1974,14 @@ Droite</translation>
         <source>PPM Frame Length</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Trainer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>T2throttleTrig</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>QObject</name>
@@ -2444,6 +2452,22 @@ Indique l&apos;affectation voie / numéro de canal par défaut utilisée lors de
     </message>
     <message>
         <source>Current Version - er9x</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>er9x - SPKR</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>er9x - NOHT, SPKR</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>er9x - FrSky, SPKR</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>er9x - FrSky, NOHT, SPKR</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

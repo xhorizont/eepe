@@ -1,0 +1,2 @@
+#! /bin/bash
+./domake | tee make.log

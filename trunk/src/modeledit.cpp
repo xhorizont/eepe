@@ -163,6 +163,8 @@ void ModelEdit::tabModelEditSetup()
     ui->thrExpoChkB->setChecked(g_model.thrExpo);
     ui->thrTrimChkB->setChecked(g_model.thrTrim);
     ui->timerDirCB->setCurrentIndex(g_model.tmrDir);
+    ui->TrainerChkB->setChecked(g_model.traineron);
+    ui->T2ThrTrgChkB->setChecked(g_model.t2throttle);
 
     //center beep
     ui->bcRUDChkB->setChecked(g_model.beepANACenter & BC_BIT_RUD);
@@ -1401,7 +1403,7 @@ void ModelEdit::on_modelNameLE_editingFinished()
     uint8_t temp = g_model.mdVers;
     memset(&g_model.name,' ',sizeof(g_model.name));
     const char *c = ui->modelNameLE->text().left(10).toAscii();
-    strncpy((char*)&g_model.name,c,MODEL_NAME_LEN);
+    strcpy((char*)&g_model.name,c);
     g_model.mdVers = temp;  //in case strcpy overruns
     for(int i=0; i<10; i++) if(!g_model.name[i]) g_model.name[i] = ' ';
     updateSettings();
@@ -1473,6 +1475,18 @@ void ModelEdit::on_ppmDelaySB_editingFinished()
 void ModelEdit::on_thrTrimChkB_toggled(bool checked)
 {
     g_model.thrTrim = checked;
+    updateSettings();
+}
+
+void ModelEdit::on_TrainerChkB_toggled(bool checked)
+{
+    g_model.traineron = checked;
+    updateSettings();
+}
+
+void ModelEdit::on_T2ThrTrgChkB_toggled(bool checked)
+{
+    g_model.t2throttle = checked;
     updateSettings();
 }
 
@@ -2643,3 +2657,4 @@ void ModelEdit::on_ppmFrameLengthDSB_editingFinished()
     g_model.ppmFrameLength = (ui->ppmFrameLengthDSB->value()-22.5)/0.5;
     updateSettings();
 }
+

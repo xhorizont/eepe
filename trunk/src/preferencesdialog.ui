@@ -115,6 +115,26 @@
        <string>er9x - NOHT</string>
       </property>
      </item>
+     <item>
+      <property name="text">
+       <string>er9x - SPKR</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>er9x - NOHT, SPKR</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>er9x - FrSky, SPKR</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>er9x - FrSky, NOHT, SPKR</string>
+      </property>
+     </item>
     </widget>
    </item>
    <item row="8" column="1">
