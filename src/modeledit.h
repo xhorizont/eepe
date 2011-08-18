@@ -170,6 +170,9 @@ private slots:
 
     void on_thrExpoChkB_toggled(bool checked);
     void on_thrTrimChkB_toggled(bool checked);
+    void on_TrainerChkB_toggled(bool checked);
+    void on_T2ThrTrgChkB_toggled(bool checked);
+		
     void on_ppmDelaySB_editingFinished();
     void on_numChannelsSB_editingFinished();
     void on_timerValTE_editingFinished();
@@ -188,3 +191,4 @@ private slots:
 
 
 #endif // MODELEDIT_H
+
