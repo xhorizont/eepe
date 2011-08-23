@@ -17,6 +17,8 @@ public:
 
 private:
     Ui::donatorsDialog *ui;
+
+    void showEvent ( QShowEvent * );
 };
 
 #endif // DONATORSDIALOG_H

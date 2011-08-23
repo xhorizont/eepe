@@ -148,7 +148,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>PPM In</source>
-        <translation>Entrée PPM</translation>
+        <translation type="obsolete">Entrée PPM</translation>
     </message>
     <message>
         <source>2 - Normal</source>
@@ -406,6 +406,42 @@ p, li { white-space: pre-wrap; }
     <message>
         <source>Owner Name</source>
         <translation>Nom du propriétaire</translation>
+    </message>
+    <message>
+        <source>Speaker Pitch (spkr versions)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Trainer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>CH1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Off</source>
+        <translation type="unfinished">Aucun</translation>
+    </message>
+    <message>
+        <source>Add</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Substitute</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>CH2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>CH3</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>CH4</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

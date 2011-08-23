@@ -29,7 +29,7 @@ msgctxt "GeneralEdit|"
 msgid "Contrast"
 msgstr ""
 
-#: generaledit.ui:57
+#: generaledit.ui:57 generaledit.ui:782
 msgctxt "GeneralEdit|"
 msgid ""
 "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" "
@@ -61,7 +61,7 @@ msgid ""
 "Acceptable values are 5v..10v"
 msgstr ""
 
-#: generaledit.ui:125 generaledit.ui:1125
+#: generaledit.ui:125 generaledit.ui:1518
 msgctxt "GeneralEdit|"
 msgid "Battery Calibration"
 msgstr ""
@@ -140,7 +140,53 @@ msgctxt "GeneralEdit|"
 msgid "Owner Name"
 msgstr ""
 
-#: generaledit.ui:1310
+#: generaledit.ui:769
+msgctxt "GeneralEdit|"
+msgid "Speaker Pitch (spkr versions)"
+msgstr ""
+
+#: generaledit.ui:804
+msgctxt "GeneralEdit|"
+msgid "Trainer"
+msgstr ""
+
+#: generaledit.ui:812 generaledit.ui:852 generaledit.ui:878 generaledit.ui:918
+#: generaledit.ui:944 generaledit.ui:984 generaledit.ui:1010 generaledit.ui:1050
+msgctxt "GeneralEdit|"
+msgid "CH1"
+msgstr ""
+
+#: generaledit.ui:820 generaledit.ui:886 generaledit.ui:952 generaledit.ui:1018
+msgctxt "GeneralEdit|"
+msgid "Off"
+msgstr ""
+
+#: generaledit.ui:825 generaledit.ui:891 generaledit.ui:957 generaledit.ui:1023
+msgctxt "GeneralEdit|"
+msgid "Add"
+msgstr ""
+
+#: generaledit.ui:830 generaledit.ui:896 generaledit.ui:962 generaledit.ui:1028
+msgctxt "GeneralEdit|"
+msgid "Substitute"
+msgstr ""
+
+#: generaledit.ui:857 generaledit.ui:923 generaledit.ui:989 generaledit.ui:1055
+msgctxt "GeneralEdit|"
+msgid "CH2"
+msgstr ""
+
+#: generaledit.ui:862 generaledit.ui:928 generaledit.ui:994 generaledit.ui:1060
+msgctxt "GeneralEdit|"
+msgid "CH3"
+msgstr ""
+
+#: generaledit.ui:867 generaledit.ui:933 generaledit.ui:999 generaledit.ui:1065
+msgctxt "GeneralEdit|"
+msgid "CH4"
+msgstr ""
+
+#: generaledit.ui:1078
 msgctxt "GeneralEdit|"
 msgid "PPM Multiplier"
 msgstr ""
@@ -387,67 +433,62 @@ msgctxt "GeneralEdit|"
 msgid "Show splash screen on startup"
 msgstr ""
 
-#: generaledit.ui:770
+#: generaledit.ui:1098 generaledit.ui:1163
 msgctxt "GeneralEdit|"
 msgid "Calibration"
 msgstr ""
 
-#: generaledit.ui:1079
+#: generaledit.ui:1472
 msgctxt "GeneralEdit|"
 msgid "ANALOG 7"
 msgstr ""
 
-#: generaledit.ui:1033
+#: generaledit.ui:1426
 msgctxt "GeneralEdit|"
 msgid "ANALOG 6"
 msgstr ""
 
-#: generaledit.ui:987
+#: generaledit.ui:1380
 msgctxt "GeneralEdit|"
 msgid "ANALOG 5"
 msgstr ""
 
-#: generaledit.ui:938
+#: generaledit.ui:1331
 msgctxt "GeneralEdit|"
 msgid "ANALOG 4"
 msgstr ""
 
-#: generaledit.ui:892
+#: generaledit.ui:1285
 msgctxt "GeneralEdit|"
 msgid "ANALOG 3"
 msgstr ""
 
-#: generaledit.ui:846
+#: generaledit.ui:1239
 msgctxt "GeneralEdit|"
 msgid "ANALOG 2"
 msgstr ""
 
-#: generaledit.ui:797
+#: generaledit.ui:1190
 msgctxt "GeneralEdit|"
 msgid "ANALOG 1"
 msgstr ""
 
-#: generaledit.ui:1154
-msgctxt "GeneralEdit|"
-msgid "PPM In"
-msgstr ""
-
-#: generaledit.ui:776
+#: generaledit.ui:1169
 msgctxt "GeneralEdit|"
 msgid "Negative"
 msgstr ""
 
-#: generaledit.ui:783
+#: generaledit.ui:1176
 msgctxt "GeneralEdit|"
 msgid "Mid"
 msgstr ""
 
-#: generaledit.ui:790
+#: generaledit.ui:1183
 msgctxt "GeneralEdit|"
 msgid "Positive"
 msgstr ""
 
-#: generaledit.ui:1135
+#: generaledit.ui:1528
 msgctxt "GeneralEdit|"
 msgid "v"
 msgstr ""

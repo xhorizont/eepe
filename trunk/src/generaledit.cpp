@@ -37,6 +37,7 @@ GeneralEdit::GeneralEdit(EEPFILE *eFile, QWidget *parent) :
     ui->battCalib->setValue((double)g_eeGeneral.vBatCalib/10);
     ui->backlightautoSB->setValue(g_eeGeneral.lightAutoOff*5);
     ui->inactimerSB->setValue(g_eeGeneral.inactivityTimer+10);
+    ui->speakerPitchSB->setValue(g_eeGeneral.speakerPitch);
     ui->thrrevChkB->setChecked(g_eeGeneral.throttleReversed);
     ui->inputfilterCB->setCurrentIndex(g_eeGeneral.filterInput);
     ui->thrwarnChkB->setChecked(!g_eeGeneral.disableThrottleWarning);   //Default is zero=checked
@@ -76,17 +77,39 @@ GeneralEdit::GeneralEdit(EEPFILE *eFile, QWidget *parent) :
     ui->ana6Pos->setValue(g_eeGeneral.calibSpanPos[5]);
     ui->ana7Pos->setValue(g_eeGeneral.calibSpanPos[6]);
 
-    ui->PPM1->setValue(g_eeGeneral.ppmInCalib[0]);
-    ui->PPM2->setValue(g_eeGeneral.ppmInCalib[1]);
-    ui->PPM3->setValue(g_eeGeneral.ppmInCalib[2]);
-    ui->PPM4->setValue(g_eeGeneral.ppmInCalib[3]);
-    ui->PPM5->setValue(g_eeGeneral.ppmInCalib[4]);
-    ui->PPM6->setValue(g_eeGeneral.ppmInCalib[5]);
-    ui->PPM7->setValue(g_eeGeneral.ppmInCalib[6]);
-    ui->PPM8->setValue(g_eeGeneral.ppmInCalib[7]);
+    updateTrianerTab();
 
-    ui->PPM_MultiplierDSB->setValue((qreal)(g_eeGeneral.PPM_Multiplier+10)/10);
+    connect(ui->modeCB_1, SIGNAL(currentIndexChanged(int)), this, SLOT(trainerTabValueChanged()));
+    connect(ui->modeCB_2, SIGNAL(currentIndexChanged(int)), this, SLOT(trainerTabValueChanged()));
+    connect(ui->modeCB_3, SIGNAL(currentIndexChanged(int)), this, SLOT(trainerTabValueChanged()));
+    connect(ui->modeCB_4, SIGNAL(currentIndexChanged(int)), this, SLOT(trainerTabValueChanged()));
 
+    connect(ui->weightSB_1, SIGNAL(editingFinished()), this, SLOT(trainerTabValueChanged()));
+    connect(ui->weightSB_2, SIGNAL(editingFinished()), this, SLOT(trainerTabValueChanged()));
+    connect(ui->weightSB_3, SIGNAL(editingFinished()), this, SLOT(trainerTabValueChanged()));
+    connect(ui->weightSB_4, SIGNAL(editingFinished()), this, SLOT(trainerTabValueChanged()));
+
+    connect(ui->sourceCB_1, SIGNAL(currentIndexChanged(int)), this, SLOT(trainerTabValueChanged()));
+    connect(ui->sourceCB_2, SIGNAL(currentIndexChanged(int)), this, SLOT(trainerTabValueChanged()));
+    connect(ui->sourceCB_3, SIGNAL(currentIndexChanged(int)), this, SLOT(trainerTabValueChanged()));
+    connect(ui->sourceCB_4, SIGNAL(currentIndexChanged(int)), this, SLOT(trainerTabValueChanged()));
+
+    connect(ui->swtchCB_1, SIGNAL(currentIndexChanged(int)), this, SLOT(trainerTabValueChanged()));
+    connect(ui->swtchCB_2, SIGNAL(currentIndexChanged(int)), this, SLOT(trainerTabValueChanged()));
+    connect(ui->swtchCB_3, SIGNAL(currentIndexChanged(int)), this, SLOT(trainerTabValueChanged()));
+    connect(ui->swtchCB_4, SIGNAL(currentIndexChanged(int)), this, SLOT(trainerTabValueChanged()));
+
+    connect(ui->trainerCalib_1, SIGNAL(editingFinished()), this, SLOT(trainerTabValueChanged()));
+    connect(ui->trainerCalib_2, SIGNAL(editingFinished()), this, SLOT(trainerTabValueChanged()));
+    connect(ui->trainerCalib_3, SIGNAL(editingFinished()), this, SLOT(trainerTabValueChanged()));
+    connect(ui->trainerCalib_4, SIGNAL(editingFinished()), this, SLOT(trainerTabValueChanged()));
+
+    connect(ui->PPM_MultiplierDSB, SIGNAL(editingFinished()), this, SLOT(trainerTabValueChanged()));
+
+    connect(ui->weightSB_1, SIGNAL(valueChanged(int)), this, SLOT(validateWeightSB()));
+    connect(ui->weightSB_2, SIGNAL(valueChanged(int)), this, SLOT(validateWeightSB()));
+    connect(ui->weightSB_3, SIGNAL(valueChanged(int)), this, SLOT(validateWeightSB()));
+    connect(ui->weightSB_4, SIGNAL(valueChanged(int)), this, SLOT(validateWeightSB()));
 }
 
 GeneralEdit::~GeneralEdit()
@@ -102,6 +125,98 @@ void GeneralEdit::updateSettings()
     eeFile->putGeneralSettings(&g_eeGeneral);
 
     emit modelValuesChanged();
+}
+
+
+void GeneralEdit::updateTrianerTab()
+{
+    on_tabWidget_selected(""); // updates channel name labels
+
+    ui->modeCB_1->setCurrentIndex(g_eeGeneral.trainer.mix[0].mode);
+    ui->weightSB_1->setValue(g_eeGeneral.trainer.mix[0].studWeight*13/4);
+    ui->sourceCB_1->setCurrentIndex(g_eeGeneral.trainer.mix[0].srcChn);
+    populateSwitchCB(ui->swtchCB_1,g_eeGeneral.trainer.mix[0].swtch);
+
+    ui->modeCB_2->setCurrentIndex(g_eeGeneral.trainer.mix[1].mode);
+    ui->weightSB_2->setValue(g_eeGeneral.trainer.mix[1].studWeight*13/4);
+    ui->sourceCB_2->setCurrentIndex(g_eeGeneral.trainer.mix[1].srcChn);
+    populateSwitchCB(ui->swtchCB_2,g_eeGeneral.trainer.mix[1].swtch);
+
+    ui->modeCB_3->setCurrentIndex(g_eeGeneral.trainer.mix[2].mode);
+    ui->weightSB_3->setValue(g_eeGeneral.trainer.mix[2].studWeight*13/4);
+    ui->sourceCB_3->setCurrentIndex(g_eeGeneral.trainer.mix[2].srcChn);
+    populateSwitchCB(ui->swtchCB_3,g_eeGeneral.trainer.mix[2].swtch);
+
+    ui->modeCB_4->setCurrentIndex(g_eeGeneral.trainer.mix[0].mode);
+    ui->weightSB_4->setValue(g_eeGeneral.trainer.mix[3].studWeight*13/4);
+    ui->sourceCB_4->setCurrentIndex(g_eeGeneral.trainer.mix[3].srcChn);
+    populateSwitchCB(ui->swtchCB_4,g_eeGeneral.trainer.mix[3].swtch);
+
+    ui->trainerCalib_1->setValue(g_eeGeneral.trainer.calib[0]);
+    ui->trainerCalib_2->setValue(g_eeGeneral.trainer.calib[1]);
+    ui->trainerCalib_3->setValue(g_eeGeneral.trainer.calib[2]);
+    ui->trainerCalib_4->setValue(g_eeGeneral.trainer.calib[3]);
+
+    ui->PPM_MultiplierDSB->setValue(double(g_eeGeneral.PPM_Multiplier+10)/10);
+}
+
+void GeneralEdit::trainerTabValueChanged()
+{
+    g_eeGeneral.trainer.mix[0].mode       = ui->modeCB_1->currentIndex();
+    g_eeGeneral.trainer.mix[0].studWeight = ui->weightSB_1->value()*4/13;
+    g_eeGeneral.trainer.mix[0].srcChn     = ui->sourceCB_1->currentIndex();
+    g_eeGeneral.trainer.mix[0].swtch      = ui->swtchCB_1->currentIndex()-MAX_DRSWITCH;
+
+    g_eeGeneral.trainer.mix[1].mode       = ui->modeCB_2->currentIndex();
+    g_eeGeneral.trainer.mix[1].studWeight = ui->weightSB_2->value()*4/13;
+    g_eeGeneral.trainer.mix[1].srcChn     = ui->sourceCB_2->currentIndex();
+    g_eeGeneral.trainer.mix[1].swtch      = ui->swtchCB_2->currentIndex()-MAX_DRSWITCH;
+
+    g_eeGeneral.trainer.mix[2].mode       = ui->modeCB_3->currentIndex();
+    g_eeGeneral.trainer.mix[2].studWeight = ui->weightSB_3->value()*4/13;
+    g_eeGeneral.trainer.mix[2].srcChn     = ui->sourceCB_3->currentIndex();
+    g_eeGeneral.trainer.mix[2].swtch      = ui->swtchCB_3->currentIndex()-MAX_DRSWITCH;
+
+    g_eeGeneral.trainer.mix[3].mode       = ui->modeCB_4->currentIndex();
+    g_eeGeneral.trainer.mix[3].studWeight = ui->weightSB_4->value()*4/13;
+    g_eeGeneral.trainer.mix[3].srcChn     = ui->sourceCB_4->currentIndex();
+    g_eeGeneral.trainer.mix[3].swtch      = ui->swtchCB_4->currentIndex()-MAX_DRSWITCH;
+
+    g_eeGeneral.trainer.calib[0] = ui->trainerCalib_1->value();
+    g_eeGeneral.trainer.calib[1] = ui->trainerCalib_2->value();
+    g_eeGeneral.trainer.calib[2] = ui->trainerCalib_3->value();
+    g_eeGeneral.trainer.calib[3] = ui->trainerCalib_4->value();
+
+    g_eeGeneral.PPM_Multiplier = ((quint16)(ui->PPM_MultiplierDSB->value()*10))-10;
+
+    updateSettings();
+}
+
+void GeneralEdit::validateWeightSB()
+{
+    int i;
+
+    ui->weightSB_1->blockSignals(true);
+    ui->weightSB_2->blockSignals(true);
+    ui->weightSB_3->blockSignals(true);
+    ui->weightSB_4->blockSignals(true);
+
+    i = ui->weightSB_1->value()*4/13;
+    ui->weightSB_1->setValue(i*13/4);
+
+    i = ui->weightSB_2->value()*4/13;
+    ui->weightSB_2->setValue(i*13/4);
+
+    i = ui->weightSB_3->value()*4/13;
+    ui->weightSB_3->setValue(i*13/4);
+
+    i = ui->weightSB_4->value()*4/13;
+    ui->weightSB_4->setValue(i*13/4);
+
+    ui->weightSB_1->blockSignals(false);
+    ui->weightSB_2->blockSignals(false);
+    ui->weightSB_3->blockSignals(false);
+    ui->weightSB_4->blockSignals(false);
 }
 
 void GeneralEdit::on_contrastSB_editingFinished()
@@ -340,53 +455,6 @@ void GeneralEdit::on_battCalib_editingFinished()
     updateSettings();
 }
 
-void GeneralEdit::on_PPM1_editingFinished()
-{
-    g_eeGeneral.ppmInCalib[0] = ui->PPM1->value();
-    updateSettings();
-}
-
-void GeneralEdit::on_PPM2_editingFinished()
-{
-    g_eeGeneral.ppmInCalib[1] = ui->PPM2->value();
-    updateSettings();
-}
-
-void GeneralEdit::on_PPM3_editingFinished()
-{
-    g_eeGeneral.ppmInCalib[2] = ui->PPM3->value();
-    updateSettings();
-}
-
-void GeneralEdit::on_PPM4_editingFinished()
-{
-    g_eeGeneral.ppmInCalib[3] = ui->PPM4->value();
-    updateSettings();
-}
-
-void GeneralEdit::on_PPM5_editingFinished()
-{
-    g_eeGeneral.ppmInCalib[4] = ui->PPM5->value();
-    updateSettings();
-}
-
-void GeneralEdit::on_PPM6_editingFinished()
-{
-    g_eeGeneral.ppmInCalib[5] = ui->PPM6->value();
-    updateSettings();
-}
-
-void GeneralEdit::on_PPM7_editingFinished()
-{
-    g_eeGeneral.ppmInCalib[6] = ui->PPM7->value();
-    updateSettings();
-}
-
-void GeneralEdit::on_PPM8_editingFinished()
-{
-    g_eeGeneral.ppmInCalib[7] = ui->PPM8->value();
-    updateSettings();
-}
 
 void GeneralEdit::on_tabWidget_currentChanged(int index)
 {
@@ -419,12 +487,6 @@ void GeneralEdit::on_splashScreenChkB_stateChanged(int )
     updateSettings();
 }
 
-void GeneralEdit::on_PPM_MultiplierDSB_editingFinished()
-{
-    g_eeGeneral.PPM_Multiplier = (int)(ui->PPM_MultiplierDSB->value()*10)-10;
-    updateSettings();
-}
-
 void GeneralEdit::on_ownerNameLE_editingFinished()
 {
     memset(&g_eeGeneral.ownerName,' ',sizeof(g_eeGeneral.ownerName));
@@ -435,4 +497,18 @@ void GeneralEdit::on_ownerNameLE_editingFinished()
     }
 
     updateSettings();
+}
+
+void GeneralEdit::on_speakerPitchSB_editingFinished()
+{
+    g_eeGeneral.speakerPitch = ui->speakerPitchSB->value();
+    updateSettings();
+}
+
+void GeneralEdit::on_tabWidget_selected(QString )
+{
+    ui->chnLabel_1->setText(getSourceStr(g_eeGeneral.stickMode,1));
+    ui->chnLabel_2->setText(getSourceStr(g_eeGeneral.stickMode,2));
+    ui->chnLabel_3->setText(getSourceStr(g_eeGeneral.stickMode,3));
+    ui->chnLabel_4->setText(getSourceStr(g_eeGeneral.stickMode,4));
 }

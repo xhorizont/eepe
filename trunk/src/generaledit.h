@@ -27,21 +27,16 @@ signals:
     void modelValuesChanged();
 
 private slots:
+    void updateTrianerTab();
+    void trainerTabValueChanged();
+    void validateWeightSB();
+
     void on_ownerNameLE_editingFinished();
-    void on_PPM_MultiplierDSB_editingFinished();
     void on_splashScreenChkB_stateChanged(int );
     void on_beepCountDownChkB_stateChanged(int );
     void on_beepMinuteChkB_stateChanged(int );
     void on_alarmwarnChkB_stateChanged(int );
     void on_tabWidget_currentChanged(int index);
-    void on_PPM1_editingFinished();
-    void on_PPM2_editingFinished();
-    void on_PPM3_editingFinished();
-    void on_PPM4_editingFinished();
-    void on_PPM5_editingFinished();
-    void on_PPM6_editingFinished();
-    void on_PPM7_editingFinished();
-    void on_PPM8_editingFinished();
 
     void on_battCalib_editingFinished();
     void on_ana1Neg_editingFinished();
@@ -84,6 +79,8 @@ private slots:
     void on_battwarningDSB_editingFinished();
     void on_contrastSB_editingFinished();
     void on_beepFlashChkB_stateChanged(int );
+    void on_speakerPitchSB_editingFinished();
+    void on_tabWidget_selected(QString );
 };
 
 #endif // GENERALEDIT_H

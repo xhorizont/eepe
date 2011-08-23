@@ -1,18 +1,18 @@
 ===== Starting build =====
 Timestamp
-Thu Aug 18 00:22:56 UTC 2011
+Tue Aug 23 02:27:56 UTC 2011
 ==========================
 
 ===== Updating from SVN =====
-At revision 263.
+At revision 264.
 
 ===== GENERATING VERSION STAMP =====
 //Automatically generated file - do not edit
-#define DATE_STR "18.08.2011"
-#define TIME_STR "00:12:57"
+#define DATE_STR "23.08.2011"
+#define TIME_STR "02:02:58"
 #define SUB_VERS "1-erez"
-#define SVN_VERS "trunk-r264"
-#define SVN_VER_NUM 264
+#define SVN_VERS "trunk-r265"
+#define SVN_VER_NUM 265
 ====================================
 
 
@@ -59,66 +59,28 @@ i586-mingw32msvc-g++ -c -pipe -O2 -fexceptions -mthreads -Wall -fno-rtti -DUNICO
 i586-mingw32msvc-g++ -c -pipe -O2 -fexceptions -mthreads -Wall -fno-rtti -DUNICODE -DQT_LARGEFILE_SUPPORT -DQT_NO_DEBUG -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -DQT_NO_DYNAMIC_CAST -I'../../.wine/drive_c/Qt/4.7.3/include/QtCore' -I'../../.wine/drive_c/Qt/4.7.3/include/QtNetwork' -I'../../.wine/drive_c/Qt/4.7.3/include/QtGui' -I'../../.wine/drive_c/Qt/4.7.3/include' -I'../../.wine/drive_c/Qt/4.7.3/include/ActiveQt' -I'release' -I'.' -I'/usr/i586-mingw32msvc/include' -I'/usr/share/qt4/mkspecs/win32-g++-cross' -o release/burnconfigdialog.o burnconfigdialog.cpp
 i586-mingw32msvc-g++ -c -pipe -O2 -fexceptions -mthreads -Wall -fno-rtti -DUNICODE -DQT_LARGEFILE_SUPPORT -DQT_NO_DEBUG -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -DQT_NO_DYNAMIC_CAST -I'../../.wine/drive_c/Qt/4.7.3/include/QtCore' -I'../../.wine/drive_c/Qt/4.7.3/include/QtNetwork' -I'../../.wine/drive_c/Qt/4.7.3/include/QtGui' -I'../../.wine/drive_c/Qt/4.7.3/include' -I'../../.wine/drive_c/Qt/4.7.3/include/ActiveQt' -I'release' -I'.' -I'/usr/i586-mingw32msvc/include' -I'/usr/share/qt4/mkspecs/win32-g++-cross' -o release/avroutputdialog.o avroutputdialog.cpp
 i586-mingw32msvc-g++ -c -pipe -O2 -fexceptions -mthreads -Wall -fno-rtti -DUNICODE -DQT_LARGEFILE_SUPPORT -DQT_NO_DEBUG -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -DQT_NO_DYNAMIC_CAST -I'../../.wine/drive_c/Qt/4.7.3/include/QtCore' -I'../../.wine/drive_c/Qt/4.7.3/include/QtNetwork' -I'../../.wine/drive_c/Qt/4.7.3/include/QtGui' -I'../../.wine/drive_c/Qt/4.7.3/include' -I'../../.wine/drive_c/Qt/4.7.3/include/ActiveQt' -I'release' -I'.' -I'/usr/i586-mingw32msvc/include' -I'/usr/share/qt4/mkspecs/win32-g++-cross' -o release/simulatordialog.o simulatordialog.cpp
-i586-mingw32msvc-g++ -c -pipe -O2 -fexceptions -mthreads -Wall -fno-rtti -DUNICODE -DQT_LARGEFILE_SUPPORT -DQT_NO_DEBUG -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -DQT_NO_DYNAMIC_CAST -I'../../.wine/drive_c/Qt/4.7.3/include/QtCore' -I'../../.wine/drive_c/Qt/4.7.3/include/QtNetwork' -I'../../.wine/drive_c/Qt/4.7.3/include/QtGui' -I'../../.wine/drive_c/Qt/4.7.3/include' -I'../../.wine/drive_c/Qt/4.7.3/include/ActiveQt' -I'release' -I'.' -I'/usr/i586-mingw32msvc/include' -I'/usr/share/qt4/mkspecs/win32-g++-cross' -o release/donatorsdialog.o donatorsdialog.cpp
-i586-mingw32msvc-g++ -c -pipe -O2 -fexceptions -mthreads -Wall -fno-rtti -DUNICODE -DQT_LARGEFILE_SUPPORT -DQT_NO_DEBUG -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -DQT_NO_DYNAMIC_CAST -I'../../.wine/drive_c/Qt/4.7.3/include/QtCore' -I'../../.wine/drive_c/Qt/4.7.3/include/QtNetwork' -I'../../.wine/drive_c/Qt/4.7.3/include/QtGui' -I'../../.wine/drive_c/Qt/4.7.3/include' -I'../../.wine/drive_c/Qt/4.7.3/include/ActiveQt' -I'release' -I'.' -I'/usr/i586-mingw32msvc/include' -I'/usr/share/qt4/mkspecs/win32-g++-cross' -o release/printdialog.o printdialog.cpp
-i586-mingw32msvc-g++ -c -pipe -O2 -fexceptions -mthreads -Wall -fno-rtti -DUNICODE -DQT_LARGEFILE_SUPPORT -DQT_NO_DEBUG -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -DQT_NO_DYNAMIC_CAST -I'../../.wine/drive_c/Qt/4.7.3/include/QtCore' -I'../../.wine/drive_c/Qt/4.7.3/include/QtNetwork' -I'../../.wine/drive_c/Qt/4.7.3/include/QtGui' -I'../../.wine/drive_c/Qt/4.7.3/include' -I'../../.wine/drive_c/Qt/4.7.3/include/ActiveQt' -I'release' -I'.' -I'/usr/i586-mingw32msvc/include' -I'/usr/share/qt4/mkspecs/win32-g++-cross' -o release/preferencesdialog.o preferencesdialog.cpp
-i586-mingw32msvc-g++ -c -pipe -O2 -fexceptions -mthreads -Wall -fno-rtti -DUNICODE -DQT_LARGEFILE_SUPPORT -DQT_NO_DEBUG -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -DQT_NO_DYNAMIC_CAST -I'../../.wine/drive_c/Qt/4.7.3/include/QtCore' -I'../../.wine/drive_c/Qt/4.7.3/include/QtNetwork' -I'../../.wine/drive_c/Qt/4.7.3/include/QtGui' -I'../../.wine/drive_c/Qt/4.7.3/include' -I'../../.wine/drive_c/Qt/4.7.3/include/ActiveQt' -I'release' -I'.' -I'/usr/i586-mingw32msvc/include' -I'/usr/share/qt4/mkspecs/win32-g++-cross' -o release/fusesdialog.o fusesdialog.cpp
-i586-mingw32msvc-g++ -c -pipe -O2 -fexceptions -mthreads -Wall -fno-rtti -DUNICODE -DQT_LARGEFILE_SUPPORT -DQT_NO_DEBUG -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -DQT_NO_DYNAMIC_CAST -I'../../.wine/drive_c/Qt/4.7.3/include/QtCore' -I'../../.wine/drive_c/Qt/4.7.3/include/QtNetwork' -I'../../.wine/drive_c/Qt/4.7.3/include/QtGui' -I'../../.wine/drive_c/Qt/4.7.3/include' -I'../../.wine/drive_c/Qt/4.7.3/include/ActiveQt' -I'release' -I'.' -I'/usr/i586-mingw32msvc/include' -I'/usr/share/qt4/mkspecs/win32-g++-cross' -o release/mixerslist.o mixerslist.cpp
-i586-mingw32msvc-g++ -c -pipe -O2 -fexceptions -mthreads -Wall -fno-rtti -DUNICODE -DQT_LARGEFILE_SUPPORT -DQT_NO_DEBUG -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -DQT_NO_DYNAMIC_CAST -I'../../.wine/drive_c/Qt/4.7.3/include/QtCore' -I'../../.wine/drive_c/Qt/4.7.3/include/QtNetwork' -I'../../.wine/drive_c/Qt/4.7.3/include/QtGui' -I'../../.wine/drive_c/Qt/4.7.3/include' -I'../../.wine/drive_c/Qt/4.7.3/include/ActiveQt' -I'release' -I'.' -I'/usr/i586-mingw32msvc/include' -I'/usr/share/qt4/mkspecs/win32-g++-cross' -o release/downloaddialog.o downloaddialog.cpp
-moc -DUNICODE -DQT_LARGEFILE_SUPPORT -DQT_NO_DEBUG -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -DQT_NO_DYNAMIC_CAST -I'../../.wine/drive_c/Qt/4.7.3/include/QtCore' -I'../../.wine/drive_c/Qt/4.7.3/include/QtNetwork' -I'../../.wine/drive_c/Qt/4.7.3/include/QtGui' -I'../../.wine/drive_c/Qt/4.7.3/include' -I'../../.wine/drive_c/Qt/4.7.3/include/ActiveQt' -I'release' -I'.' -I'/usr/i586-mingw32msvc/include' -I'/usr/share/qt4/mkspecs/win32-g++-cross' -D__GNUC__ -DWIN32 mainwindow.h -o release/moc_mainwindow.cpp
-i586-mingw32msvc-g++ -c -pipe -O2 -fexceptions -mthreads -Wall -fno-rtti -DUNICODE -DQT_LARGEFILE_SUPPORT -DQT_NO_DEBUG -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -DQT_NO_DYNAMIC_CAST -I'../../.wine/drive_c/Qt/4.7.3/include/QtCore' -I'../../.wine/drive_c/Qt/4.7.3/include/QtNetwork' -I'../../.wine/drive_c/Qt/4.7.3/include/QtGui' -I'../../.wine/drive_c/Qt/4.7.3/include' -I'../../.wine/drive_c/Qt/4.7.3/include/ActiveQt' -I'release' -I'.' -I'/usr/i586-mingw32msvc/include' -I'/usr/share/qt4/mkspecs/win32-g++-cross' -o release/moc_mainwindow.o release/moc_mainwindow.cpp
-moc -DUNICODE -DQT_LARGEFILE_SUPPORT -DQT_NO_DEBUG -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -DQT_NO_DYNAMIC_CAST -I'../../.wine/drive_c/Qt/4.7.3/include/QtCore' -I'../../.wine/drive_c/Qt/4.7.3/include/QtNetwork' -I'../../.wine/drive_c/Qt/4.7.3/include/QtGui' -I'../../.wine/drive_c/Qt/4.7.3/include' -I'../../.wine/drive_c/Qt/4.7.3/include/ActiveQt' -I'release' -I'.' -I'/usr/i586-mingw32msvc/include' -I'/usr/share/qt4/mkspecs/win32-g++-cross' -D__GNUC__ -DWIN32 modeledit.h -o release/moc_modeledit.cpp
-i586-mingw32msvc-g++ -c -pipe -O2 -fexceptions -mthreads -Wall -fno-rtti -DUNICODE -DQT_LARGEFILE_SUPPORT -DQT_NO_DEBUG -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -DQT_NO_DYNAMIC_CAST -I'../../.wine/drive_c/Qt/4.7.3/include/QtCore' -I'../../.wine/drive_c/Qt/4.7.3/include/QtNetwork' -I'../../.wine/drive_c/Qt/4.7.3/include/QtGui' -I'../../.wine/drive_c/Qt/4.7.3/include' -I'../../.wine/drive_c/Qt/4.7.3/include/ActiveQt' -I'release' -I'.' -I'/usr/i586-mingw32msvc/include' -I'/usr/share/qt4/mkspecs/win32-g++-cross' -o release/moc_modeledit.o release/moc_modeledit.cpp
-moc -DUNICODE -DQT_LARGEFILE_SUPPORT -DQT_NO_DEBUG -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -DQT_NO_DYNAMIC_CAST -I'../../.wine/drive_c/Qt/4.7.3/include/QtCore' -I'../../.wine/drive_c/Qt/4.7.3/include/QtNetwork' -I'../../.wine/drive_c/Qt/4.7.3/include/QtGui' -I'../../.wine/drive_c/Qt/4.7.3/include' -I'../../.wine/drive_c/Qt/4.7.3/include/ActiveQt' -I'release' -I'.' -I'/usr/i586-mingw32msvc/include' -I'/usr/share/qt4/mkspecs/win32-g++-cross' -D__GNUC__ -DWIN32 generaledit.h -o release/moc_generaledit.cpp
-i586-mingw32msvc-g++ -c -pipe -O2 -fexceptions -mthreads -Wall -fno-rtti -DUNICODE -DQT_LARGEFILE_SUPPORT -DQT_NO_DEBUG -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -DQT_NO_DYNAMIC_CAST -I'../../.wine/drive_c/Qt/4.7.3/include/QtCore' -I'../../.wine/drive_c/Qt/4.7.3/include/QtNetwork' -I'../../.wine/drive_c/Qt/4.7.3/include/QtGui' -I'../../.wine/drive_c/Qt/4.7.3/include' -I'../../.wine/drive_c/Qt/4.7.3/include/ActiveQt' -I'release' -I'.' -I'/usr/i586-mingw32msvc/include' -I'/usr/share/qt4/mkspecs/win32-g++-cross' -o release/moc_generaledit.o release/moc_generaledit.cpp
-moc -DUNICODE -DQT_LARGEFILE_SUPPORT -DQT_NO_DEBUG -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -DQT_NO_DYNAMIC_CAST -I'../../.wine/drive_c/Qt/4.7.3/include/QtCore' -I'../../.wine/drive_c/Qt/4.7.3/include/QtNetwork' -I'../../.wine/drive_c/Qt/4.7.3/include/QtGui' -I'../../.wine/drive_c/Qt/4.7.3/include' -I'../../.wine/drive_c/Qt/4.7.3/include/ActiveQt' -I'release' -I'.' -I'/usr/i586-mingw32msvc/include' -I'/usr/share/qt4/mkspecs/win32-g++-cross' -D__GNUC__ -DWIN32 mdichild.h -o release/moc_mdichild.cpp
-i586-mingw32msvc-g++ -c -pipe -O2 -fexceptions -mthreads -Wall -fno-rtti -DUNICODE -DQT_LARGEFILE_SUPPORT -DQT_NO_DEBUG -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -DQT_NO_DYNAMIC_CAST -I'../../.wine/drive_c/Qt/4.7.3/include/QtCore' -I'../../.wine/drive_c/Qt/4.7.3/include/QtNetwork' -I'../../.wine/drive_c/Qt/4.7.3/include/QtGui' -I'../../.wine/drive_c/Qt/4.7.3/include' -I'../../.wine/drive_c/Qt/4.7.3/include/ActiveQt' -I'release' -I'.' -I'/usr/i586-mingw32msvc/include' -I'/usr/share/qt4/mkspecs/win32-g++-cross' -o release/moc_mdichild.o release/moc_mdichild.cpp
-moc -DUNICODE -DQT_LARGEFILE_SUPPORT -DQT_NO_DEBUG -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -DQT_NO_DYNAMIC_CAST -I'../../.wine/drive_c/Qt/4.7.3/include/QtCore' -I'../../.wine/drive_c/Qt/4.7.3/include/QtNetwork' -I'../../.wine/drive_c/Qt/4.7.3/include/QtGui' -I'../../.wine/drive_c/Qt/4.7.3/include' -I'../../.wine/drive_c/Qt/4.7.3/include/ActiveQt' -I'release' -I'.' -I'/usr/i586-mingw32msvc/include' -I'/usr/share/qt4/mkspecs/win32-g++-cross' -D__GNUC__ -DWIN32 mixerdialog.h -o release/moc_mixerdialog.cpp
-i586-mingw32msvc-g++ -c -pipe -O2 -fexceptions -mthreads -Wall -fno-rtti -DUNICODE -DQT_LARGEFILE_SUPPORT -DQT_NO_DEBUG -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -DQT_NO_DYNAMIC_CAST -I'../../.wine/drive_c/Qt/4.7.3/include/QtCore' -I'../../.wine/drive_c/Qt/4.7.3/include/QtNetwork' -I'../../.wine/drive_c/Qt/4.7.3/include/QtGui' -I'../../.wine/drive_c/Qt/4.7.3/include' -I'../../.wine/drive_c/Qt/4.7.3/include/ActiveQt' -I'release' -I'.' -I'/usr/i586-mingw32msvc/include' -I'/usr/share/qt4/mkspecs/win32-g++-cross' -o release/moc_mixerdialog.o release/moc_mixerdialog.cpp
-moc -DUNICODE -DQT_LARGEFILE_SUPPORT -DQT_NO_DEBUG -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -DQT_NO_DYNAMIC_CAST -I'../../.wine/drive_c/Qt/4.7.3/include/QtCore' -I'../../.wine/drive_c/Qt/4.7.3/include/QtNetwork' -I'../../.wine/drive_c/Qt/4.7.3/include/QtGui' -I'../../.wine/drive_c/Qt/4.7.3/include' -I'../../.wine/drive_c/Qt/4.7.3/include/ActiveQt' -I'release' -I'.' -I'/usr/i586-mingw32msvc/include' -I'/usr/share/qt4/mkspecs/win32-g++-cross' -D__GNUC__ -DWIN32 burnconfigdialog.h -o release/moc_burnconfigdialog.cpp
-i586-mingw32msvc-g++ -c -pipe -O2 -fexceptions -mthreads -Wall -fno-rtti -DUNICODE -DQT_LARGEFILE_SUPPORT -DQT_NO_DEBUG -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -DQT_NO_DYNAMIC_CAST -I'../../.wine/drive_c/Qt/4.7.3/include/QtCore' -I'../../.wine/drive_c/Qt/4.7.3/include/QtNetwork' -I'../../.wine/drive_c/Qt/4.7.3/include/QtGui' -I'../../.wine/drive_c/Qt/4.7.3/include' -I'../../.wine/drive_c/Qt/4.7.3/include/ActiveQt' -I'release' -I'.' -I'/usr/i586-mingw32msvc/include' -I'/usr/share/qt4/mkspecs/win32-g++-cross' -o release/moc_burnconfigdialog.o release/moc_burnconfigdialog.cpp
-moc -DUNICODE -DQT_LARGEFILE_SUPPORT -DQT_NO_DEBUG -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -DQT_NO_DYNAMIC_CAST -I'../../.wine/drive_c/Qt/4.7.3/include/QtCore' -I'../../.wine/drive_c/Qt/4.7.3/include/QtNetwork' -I'../../.wine/drive_c/Qt/4.7.3/include/QtGui' -I'../../.wine/drive_c/Qt/4.7.3/include' -I'../../.wine/drive_c/Qt/4.7.3/include/ActiveQt' -I'release' -I'.' -I'/usr/i586-mingw32msvc/include' -I'/usr/share/qt4/mkspecs/win32-g++-cross' -D__GNUC__ -DWIN32 avroutputdialog.h -o release/moc_avroutputdialog.cpp
-i586-mingw32msvc-g++ -c -pipe -O2 -fexceptions -mthreads -Wall -fno-rtti -DUNICODE -DQT_LARGEFILE_SUPPORT -DQT_NO_DEBUG -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -DQT_NO_DYNAMIC_CAST -I'../../.wine/drive_c/Qt/4.7.3/include/QtCore' -I'../../.wine/drive_c/Qt/4.7.3/include/QtNetwork' -I'../../.wine/drive_c/Qt/4.7.3/include/QtGui' -I'../../.wine/drive_c/Qt/4.7.3/include' -I'../../.wine/drive_c/Qt/4.7.3/include/ActiveQt' -I'release' -I'.' -I'/usr/i586-mingw32msvc/include' -I'/usr/share/qt4/mkspecs/win32-g++-cross' -o release/moc_avroutputdialog.o release/moc_avroutputdialog.cpp
-moc -DUNICODE -DQT_LARGEFILE_SUPPORT -DQT_NO_DEBUG -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -DQT_NO_DYNAMIC_CAST -I'../../.wine/drive_c/Qt/4.7.3/include/QtCore' -I'../../.wine/drive_c/Qt/4.7.3/include/QtNetwork' -I'../../.wine/drive_c/Qt/4.7.3/include/QtGui' -I'../../.wine/drive_c/Qt/4.7.3/include' -I'../../.wine/drive_c/Qt/4.7.3/include/ActiveQt' -I'release' -I'.' -I'/usr/i586-mingw32msvc/include' -I'/usr/share/qt4/mkspecs/win32-g++-cross' -D__GNUC__ -DWIN32 simulatordialog.h -o release/moc_simulatordialog.cpp
-i586-mingw32msvc-g++ -c -pipe -O2 -fexceptions -mthreads -Wall -fno-rtti -DUNICODE -DQT_LARGEFILE_SUPPORT -DQT_NO_DEBUG -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -DQT_NO_DYNAMIC_CAST -I'../../.wine/drive_c/Qt/4.7.3/include/QtCore' -I'../../.wine/drive_c/Qt/4.7.3/include/QtNetwork' -I'../../.wine/drive_c/Qt/4.7.3/include/QtGui' -I'../../.wine/drive_c/Qt/4.7.3/include' -I'../../.wine/drive_c/Qt/4.7.3/include/ActiveQt' -I'release' -I'.' -I'/usr/i586-mingw32msvc/include' -I'/usr/share/qt4/mkspecs/win32-g++-cross' -o release/moc_simulatordialog.o release/moc_simulatordialog.cpp
-moc -DUNICODE -DQT_LARGEFILE_SUPPORT -DQT_NO_DEBUG -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -DQT_NO_DYNAMIC_CAST -I'../../.wine/drive_c/Qt/4.7.3/include/QtCore' -I'../../.wine/drive_c/Qt/4.7.3/include/QtNetwork' -I'../../.wine/drive_c/Qt/4.7.3/include/QtGui' -I'../../.wine/drive_c/Qt/4.7.3/include' -I'../../.wine/drive_c/Qt/4.7.3/include/ActiveQt' -I'release' -I'.' -I'/usr/i586-mingw32msvc/include' -I'/usr/share/qt4/mkspecs/win32-g++-cross' -D__GNUC__ -DWIN32 donatorsdialog.h -o release/moc_donatorsdialog.cpp
-i586-mingw32msvc-g++ -c -pipe -O2 -fexceptions -mthreads -Wall -fno-rtti -DUNICODE -DQT_LARGEFILE_SUPPORT -DQT_NO_DEBUG -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -DQT_NO_DYNAMIC_CAST -I'../../.wine/drive_c/Qt/4.7.3/include/QtCore' -I'../../.wine/drive_c/Qt/4.7.3/include/QtNetwork' -I'../../.wine/drive_c/Qt/4.7.3/include/QtGui' -I'../../.wine/drive_c/Qt/4.7.3/include' -I'../../.wine/drive_c/Qt/4.7.3/include/ActiveQt' -I'release' -I'.' -I'/usr/i586-mingw32msvc/include' -I'/usr/share/qt4/mkspecs/win32-g++-cross' -o release/moc_donatorsdialog.o release/moc_donatorsdialog.cpp
-moc -DUNICODE -DQT_LARGEFILE_SUPPORT -DQT_NO_DEBUG -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -DQT_NO_DYNAMIC_CAST -I'../../.wine/drive_c/Qt/4.7.3/include/QtCore' -I'../../.wine/drive_c/Qt/4.7.3/include/QtNetwork' -I'../../.wine/drive_c/Qt/4.7.3/include/QtGui' -I'../../.wine/drive_c/Qt/4.7.3/include' -I'../../.wine/drive_c/Qt/4.7.3/include/ActiveQt' -I'release' -I'.' -I'/usr/i586-mingw32msvc/include' -I'/usr/share/qt4/mkspecs/win32-g++-cross' -D__GNUC__ -DWIN32 printdialog.h -o release/moc_printdialog.cpp
-i586-mingw32msvc-g++ -c -pipe -O2 -fexceptions -mthreads -Wall -fno-rtti -DUNICODE -DQT_LARGEFILE_SUPPORT -DQT_NO_DEBUG -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -DQT_NO_DYNAMIC_CAST -I'../../.wine/drive_c/Qt/4.7.3/include/QtCore' -I'../../.wine/drive_c/Qt/4.7.3/include/QtNetwork' -I'../../.wine/drive_c/Qt/4.7.3/include/QtGui' -I'../../.wine/drive_c/Qt/4.7.3/include' -I'../../.wine/drive_c/Qt/4.7.3/include/ActiveQt' -I'release' -I'.' -I'/usr/i586-mingw32msvc/include' -I'/usr/share/qt4/mkspecs/win32-g++-cross' -o release/moc_printdialog.o release/moc_printdialog.cpp
-moc -DUNICODE -DQT_LARGEFILE_SUPPORT -DQT_NO_DEBUG -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -DQT_NO_DYNAMIC_CAST -I'../../.wine/drive_c/Qt/4.7.3/include/QtCore' -I'../../.wine/drive_c/Qt/4.7.3/include/QtNetwork' -I'../../.wine/drive_c/Qt/4.7.3/include/QtGui' -I'../../.wine/drive_c/Qt/4.7.3/include' -I'../../.wine/drive_c/Qt/4.7.3/include/ActiveQt' -I'release' -I'.' -I'/usr/i586-mingw32msvc/include' -I'/usr/share/qt4/mkspecs/win32-g++-cross' -D__GNUC__ -DWIN32 preferencesdialog.h -o release/moc_preferencesdialog.cpp
-i586-mingw32msvc-g++ -c -pipe -O2 -fexceptions -mthreads -Wall -fno-rtti -DUNICODE -DQT_LARGEFILE_SUPPORT -DQT_NO_DEBUG -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -DQT_NO_DYNAMIC_CAST -I'../../.wine/drive_c/Qt/4.7.3/include/QtCore' -I'../../.wine/drive_c/Qt/4.7.3/include/QtNetwork' -I'../../.wine/drive_c/Qt/4.7.3/include/QtGui' -I'../../.wine/drive_c/Qt/4.7.3/include' -I'../../.wine/drive_c/Qt/4.7.3/include/ActiveQt' -I'release' -I'.' -I'/usr/i586-mingw32msvc/include' -I'/usr/share/qt4/mkspecs/win32-g++-cross' -o release/moc_preferencesdialog.o release/moc_preferencesdialog.cpp
-moc -DUNICODE -DQT_LARGEFILE_SUPPORT -DQT_NO_DEBUG -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -DQT_NO_DYNAMIC_CAST -I'../../.wine/drive_c/Qt/4.7.3/include/QtCore' -I'../../.wine/drive_c/Qt/4.7.3/include/QtNetwork' -I'../../.wine/drive_c/Qt/4.7.3/include/QtGui' -I'../../.wine/drive_c/Qt/4.7.3/include' -I'../../.wine/drive_c/Qt/4.7.3/include/ActiveQt' -I'release' -I'.' -I'/usr/i586-mingw32msvc/include' -I'/usr/share/qt4/mkspecs/win32-g++-cross' -D__GNUC__ -DWIN32 fusesdialog.h -o release/moc_fusesdialog.cpp
-i586-mingw32msvc-g++ -c -pipe -O2 -fexceptions -mthreads -Wall -fno-rtti -DUNICODE -DQT_LARGEFILE_SUPPORT -DQT_NO_DEBUG -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -DQT_NO_DYNAMIC_CAST -I'../../.wine/drive_c/Qt/4.7.3/include/QtCore' -I'../../.wine/drive_c/Qt/4.7.3/include/QtNetwork' -I'../../.wine/drive_c/Qt/4.7.3/include/QtGui' -I'../../.wine/drive_c/Qt/4.7.3/include' -I'../../.wine/drive_c/Qt/4.7.3/include/ActiveQt' -I'release' -I'.' -I'/usr/i586-mingw32msvc/include' -I'/usr/share/qt4/mkspecs/win32-g++-cross' -o release/moc_fusesdialog.o release/moc_fusesdialog.cpp
-moc -DUNICODE -DQT_LARGEFILE_SUPPORT -DQT_NO_DEBUG -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -DQT_NO_DYNAMIC_CAST -I'../../.wine/drive_c/Qt/4.7.3/include/QtCore' -I'../../.wine/drive_c/Qt/4.7.3/include/QtNetwork' -I'../../.wine/drive_c/Qt/4.7.3/include/QtGui' -I'../../.wine/drive_c/Qt/4.7.3/include' -I'../../.wine/drive_c/Qt/4.7.3/include/ActiveQt' -I'release' -I'.' -I'/usr/i586-mingw32msvc/include' -I'/usr/share/qt4/mkspecs/win32-g++-cross' -D__GNUC__ -DWIN32 mixerslist.h -o release/moc_mixerslist.cpp
-i586-mingw32msvc-g++ -c -pipe -O2 -fexceptions -mthreads -Wall -fno-rtti -DUNICODE -DQT_LARGEFILE_SUPPORT -DQT_NO_DEBUG -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -DQT_NO_DYNAMIC_CAST -I'../../.wine/drive_c/Qt/4.7.3/include/QtCore' -I'../../.wine/drive_c/Qt/4.7.3/include/QtNetwork' -I'../../.wine/drive_c/Qt/4.7.3/include/QtGui' -I'../../.wine/drive_c/Qt/4.7.3/include' -I'../../.wine/drive_c/Qt/4.7.3/include/ActiveQt' -I'release' -I'.' -I'/usr/i586-mingw32msvc/include' -I'/usr/share/qt4/mkspecs/win32-g++-cross' -o release/moc_mixerslist.o release/moc_mixerslist.cpp
-moc -DUNICODE -DQT_LARGEFILE_SUPPORT -DQT_NO_DEBUG -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -DQT_NO_DYNAMIC_CAST -I'../../.wine/drive_c/Qt/4.7.3/include/QtCore' -I'../../.wine/drive_c/Qt/4.7.3/include/QtNetwork' -I'../../.wine/drive_c/Qt/4.7.3/include/QtGui' -I'../../.wine/drive_c/Qt/4.7.3/include' -I'../../.wine/drive_c/Qt/4.7.3/include/ActiveQt' -I'release' -I'.' -I'/usr/i586-mingw32msvc/include' -I'/usr/share/qt4/mkspecs/win32-g++-cross' -D__GNUC__ -DWIN32 downloaddialog.h -o release/moc_downloaddialog.cpp
-i586-mingw32msvc-g++ -c -pipe -O2 -fexceptions -mthreads -Wall -fno-rtti -DUNICODE -DQT_LARGEFILE_SUPPORT -DQT_NO_DEBUG -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -DQT_NO_DYNAMIC_CAST -I'../../.wine/drive_c/Qt/4.7.3/include/QtCore' -I'../../.wine/drive_c/Qt/4.7.3/include/QtNetwork' -I'../../.wine/drive_c/Qt/4.7.3/include/QtGui' -I'../../.wine/drive_c/Qt/4.7.3/include' -I'../../.wine/drive_c/Qt/4.7.3/include/ActiveQt' -I'release' -I'.' -I'/usr/i586-mingw32msvc/include' -I'/usr/share/qt4/mkspecs/win32-g++-cross' -o release/moc_downloaddialog.o release/moc_downloaddialog.cpp
-/usr/bin/rcc -name eepe eepe.qrc -o release/qrc_eepe.cpp
-i586-mingw32msvc-g++ -c -pipe -O2 -fexceptions -mthreads -Wall -fno-rtti -DUNICODE -DQT_LARGEFILE_SUPPORT -DQT_NO_DEBUG -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -DQT_NO_DYNAMIC_CAST -I'../../.wine/drive_c/Qt/4.7.3/include/QtCore' -I'../../.wine/drive_c/Qt/4.7.3/include/QtNetwork' -I'../../.wine/drive_c/Qt/4.7.3/include/QtGui' -I'../../.wine/drive_c/Qt/4.7.3/include' -I'../../.wine/drive_c/Qt/4.7.3/include/ActiveQt' -I'release' -I'.' -I'/usr/i586-mingw32msvc/include' -I'/usr/share/qt4/mkspecs/win32-g++-cross' -o release/qrc_eepe.o release/qrc_eepe.cpp
-i586-mingw32msvc-windres -i icon.rc -o release/icon_res.o --include-dir=. -DUNICODE -DQT_LARGEFILE_SUPPORT -DQT_NO_DEBUG -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -DQT_NO_DYNAMIC_CAST
-i586-mingw32msvc-g++ -mthreads -Wl,-enable-stdcall-fixup -Wl,-enable-auto-import -Wl,-enable-runtime-pseudo-reloc -mwindows -Wl,-s -Wl -Wl,-subsystem,windows -o release/eepe.exe object_script.eepe.Release  -L'/home/erez/.wine/drive_c/Qt/4.7.3/lib' -lmingw32 -lqtmain release/icon_res.o -lQtGui4 -lQtNetwork4 -lQtCore4 
 make[1]: Leaving directory `/home/erez/eepe/src'
 Updating '/home/erez/eepe/src/eepe_.qm'...
     Generated 0 translation(s) (0 finished and 0 unfinished)
-    Ignored 599 untranslated source text(s)
+    Ignored 607 untranslated source text(s)
 Updating '/home/erez/eepe/src/eepe_he.qm'...
     Generated 0 translation(s) (0 finished and 0 unfinished)
-    Ignored 599 untranslated source text(s)
+    Ignored 607 untranslated source text(s)
 Updating '/home/erez/eepe/src/eepe_pt.qm'...
-    Generated 417 translation(s) (390 finished and 27 unfinished)
-    Ignored 182 untranslated source text(s)
+    Generated 420 translation(s) (389 finished and 31 unfinished)
+    Ignored 187 untranslated source text(s)
 Updating '/home/erez/eepe/src/eepe_ru.qm'...
-    Generated 398 translation(s) (370 finished and 28 unfinished)
-    Ignored 201 untranslated source text(s)
+    Generated 397 translation(s) (369 finished and 28 unfinished)
+    Ignored 210 untranslated source text(s)
 Updating '/home/erez/eepe/src/eepe_de.qm'...
-    Generated 541 translation(s) (534 finished and 7 unfinished)
-    Ignored 58 untranslated source text(s)
+    Generated 545 translation(s) (533 finished and 12 unfinished)
+    Ignored 62 untranslated source text(s)
 Updating '/home/erez/eepe/src/eepe_es.qm'...
-    Generated 546 translation(s) (544 finished and 2 unfinished)
-    Ignored 53 untranslated source text(s)
+    Generated 546 translation(s) (543 finished and 3 unfinished)
+    Ignored 61 untranslated source text(s)
 Updating '/home/erez/eepe/src/eepe_fr.qm'...
-    Generated 536 translation(s) (534 finished and 2 unfinished)
-    Ignored 63 untranslated source text(s)
+    Generated 536 translation(s) (533 finished and 3 unfinished)
+    Ignored 71 untranslated source text(s)
 make -f Makefile.Release clean
 make[1]: Entering directory `/home/erez/eepe/src'
 rm -f release/moc_mainwindow.cpp release/moc_modeledit.cpp release/moc_generaledit.cpp release/moc_mdichild.cpp release/moc_mixerdialog.cpp release/moc_burnconfigdialog.cpp release/moc_avroutputdialog.cpp release/moc_simulatordialog.cpp release/moc_donatorsdialog.cpp release/moc_printdialog.cpp release/moc_preferencesdialog.cpp release/moc_fusesdialog.cpp release/moc_mixerslist.cpp release/moc_downloaddialog.cpp
@@ -276,12 +238,12 @@ File: "libusb0.dll" 43520 bytes
 File: "ER9x Users Guide.pdf" 426302 bytes
 CreateDirectory: "$INSTDIR\lang"
 SetOutPath: "$INSTDIR\lang"
-File: "eepe_de.qm" 71686 bytes
-File: "eepe_es.qm" 94674 bytes
-File: "eepe_fr.qm" 94189 bytes
+File: "eepe_de.qm" 71873 bytes
+File: "eepe_es.qm" 94663 bytes
+File: "eepe_fr.qm" 94176 bytes
 File: "eepe_he.qm" 23 bytes
-File: "eepe_pt.qm" 32471 bytes
-File: "eepe_ru.qm" 41862 bytes
+File: "eepe_pt.qm" 32599 bytes
+File: "eepe_ru.qm" 41800 bytes
 SetOutPath: "$INSTDIR"
 WriteRegStr: HKCU\Software\er9x-eePe\=$INSTDIR
 !insertmacro: RegisterExtensionCall
@@ -365,9 +327,9 @@ Using lzma (compress whole) compression.
 
 EXE header size:               65024 / 49664 bytes
 Install code:                          (20943 bytes)
-Install data:                          (16884218 bytes)
+Install data:                          (16884447 bytes)
 Uninstall code+data:                   (20637 bytes)
-Compressed data:             5579230 / 16925798 bytes
-CRC (0xF510A74A):                  4 / 4 bytes
+Compressed data:             5579170 / 16926027 bytes
+CRC (0x8FAF276E):                  4 / 4 bytes
 
-Total size:                  5644258 / 16975466 bytes (33.2%)
+Total size:                  5644198 / 16975695 bytes (33.2%)

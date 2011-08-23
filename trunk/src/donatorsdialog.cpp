@@ -15,6 +15,16 @@ donatorsDialog::donatorsDialog(QWidget *parent) :
     }
 
     //ui->plainTextEdit->insertPlainText();
+    ui->plainTextEdit->setReadOnly(true);
+
+//    ui->plainTextEdit->verticalScrollBar()->setValue(ui->plainTextEdit->verticalScrollBar()->minimum());
+    ui->plainTextEdit->centerOnScroll();
+    ui->plainTextEdit->verticalScrollBar()->setValue(0);
+}
+
+void donatorsDialog::showEvent ( QShowEvent * )
+{
+    ui->plainTextEdit->verticalScrollBar()->setValue(0);
 }
 
 donatorsDialog::~donatorsDialog()
