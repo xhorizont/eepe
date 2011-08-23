@@ -27,6 +27,7 @@ These will be relevant for all models in the same EEPROM.</source>
     </message>
     <message>
         <location filename="generaledit.ui" line="57"/>
+        <location filename="generaledit.ui" line="782"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
@@ -53,13 +54,13 @@ Acceptable values are 5v..10v</source>
 Диапазон 5В..10В</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="1135"/>
+        <location filename="generaledit.ui" line="1528"/>
         <source>v</source>
         <translation>В</translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="125"/>
-        <location filename="generaledit.ui" line="1125"/>
+        <location filename="generaledit.ui" line="1518"/>
         <source>Battery Calibration</source>
         <translation>Калибровка батареи</translation>
     </message>
@@ -225,7 +226,77 @@ p, li { white-space: pre-wrap; }
         <translation>Имя владельца</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="1310"/>
+        <location filename="generaledit.ui" line="769"/>
+        <source>Speaker Pitch (spkr versions)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="generaledit.ui" line="804"/>
+        <source>Trainer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="generaledit.ui" line="812"/>
+        <location filename="generaledit.ui" line="852"/>
+        <location filename="generaledit.ui" line="878"/>
+        <location filename="generaledit.ui" line="918"/>
+        <location filename="generaledit.ui" line="944"/>
+        <location filename="generaledit.ui" line="984"/>
+        <location filename="generaledit.ui" line="1010"/>
+        <location filename="generaledit.ui" line="1050"/>
+        <source>CH1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="generaledit.ui" line="820"/>
+        <location filename="generaledit.ui" line="886"/>
+        <location filename="generaledit.ui" line="952"/>
+        <location filename="generaledit.ui" line="1018"/>
+        <source>Off</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="generaledit.ui" line="825"/>
+        <location filename="generaledit.ui" line="891"/>
+        <location filename="generaledit.ui" line="957"/>
+        <location filename="generaledit.ui" line="1023"/>
+        <source>Add</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="generaledit.ui" line="830"/>
+        <location filename="generaledit.ui" line="896"/>
+        <location filename="generaledit.ui" line="962"/>
+        <location filename="generaledit.ui" line="1028"/>
+        <source>Substitute</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="generaledit.ui" line="857"/>
+        <location filename="generaledit.ui" line="923"/>
+        <location filename="generaledit.ui" line="989"/>
+        <location filename="generaledit.ui" line="1055"/>
+        <source>CH2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="generaledit.ui" line="862"/>
+        <location filename="generaledit.ui" line="928"/>
+        <location filename="generaledit.ui" line="994"/>
+        <location filename="generaledit.ui" line="1060"/>
+        <source>CH3</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="generaledit.ui" line="867"/>
+        <location filename="generaledit.ui" line="933"/>
+        <location filename="generaledit.ui" line="999"/>
+        <location filename="generaledit.ui" line="1065"/>
+        <source>CH4</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="generaledit.ui" line="1078"/>
         <source>PPM Multiplier</source>
         <translation>PPM множитель</translation>
     </message>
@@ -363,62 +434,62 @@ Mode 4:
         <translation>Показывать заставку при включении</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="770"/>
+        <location filename="generaledit.ui" line="1098"/>
+        <location filename="generaledit.ui" line="1163"/>
         <source>Calibration</source>
         <translation>Калибровка.</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="1079"/>
+        <location filename="generaledit.ui" line="1472"/>
         <source>ANALOG 7</source>
         <translation>АНАЛОГ 7</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="1033"/>
+        <location filename="generaledit.ui" line="1426"/>
         <source>ANALOG 6</source>
         <translation>АНАЛОГ 6</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="987"/>
+        <location filename="generaledit.ui" line="1380"/>
         <source>ANALOG 5</source>
         <translation>АНАЛОГ 5</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="938"/>
+        <location filename="generaledit.ui" line="1331"/>
         <source>ANALOG 4</source>
         <translation>АНАЛОГ 4</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="892"/>
+        <location filename="generaledit.ui" line="1285"/>
         <source>ANALOG 3</source>
         <translation>АНАЛОГ 3</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="846"/>
+        <location filename="generaledit.ui" line="1239"/>
         <source>ANALOG 2</source>
         <translation>АНАЛОГ 2</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="797"/>
+        <location filename="generaledit.ui" line="1190"/>
         <source>ANALOG 1</source>
         <translation>АНАЛОГ 1</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="1154"/>
         <source>PPM In</source>
-        <translation>Вход PPM</translation>
+        <translation type="obsolete">Вход PPM</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="776"/>
+        <location filename="generaledit.ui" line="1169"/>
         <source>Negative</source>
         <translation>негатив</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="783"/>
+        <location filename="generaledit.ui" line="1176"/>
         <source>Mid</source>
         <translation>центр</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="790"/>
+        <location filename="generaledit.ui" line="1183"/>
         <source>Positive</source>
         <translation>позитив</translation>
     </message>

@@ -56,7 +56,7 @@
 #include "downloaddialog.h"
 #include "stamp-eepe.h"
 
-#define DONATE_STR "https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=TGT92W338DPGN&lc=IL&item_name=Erez%20Raviv&item_number=eePe&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted"
+#define DONATE_STR "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=B9RNATGH7DTQ6"
 #define DNLD_VER_ER9X            0
 #define DNLD_VER_ER9X_JETI       1
 #define DNLD_VER_ER9X_FRSKY      2

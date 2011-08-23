@@ -180,9 +180,9 @@ msgstr "Filtre (si 'jitter' - Latence +30msec)"
 #~ msgid "1 - No Keys"
 #~ msgstr "1 - Touches Silencieuses"
 
-msgctxt "GeneralEdit|"
-msgid "PPM In"
-msgstr "Entrée PPM"
+#~ msgctxt "GeneralEdit|"
+#~ msgid "PPM In"
+#~ msgstr "Entrée PPM"
 
 #~ msgctxt "GeneralEdit|"
 #~ msgid "2 - Normal"
@@ -509,6 +509,43 @@ msgstr "Coeff. multiplicateur PPM"
 msgctxt "GeneralEdit|"
 msgid "Owner Name"
 msgstr "Nom du propriétaire"
+
+msgctxt "GeneralEdit|"
+msgid "Speaker Pitch (spkr versions)"
+msgstr ""
+
+msgctxt "GeneralEdit|"
+msgid "Trainer"
+msgstr ""
+
+msgctxt "GeneralEdit|"
+msgid "CH1"
+msgstr ""
+
+#, fuzzy
+msgctxt "GeneralEdit|"
+msgid "Off"
+msgstr "Aucun"
+
+msgctxt "GeneralEdit|"
+msgid "Add"
+msgstr ""
+
+msgctxt "GeneralEdit|"
+msgid "Substitute"
+msgstr ""
+
+msgctxt "GeneralEdit|"
+msgid "CH2"
+msgstr ""
+
+msgctxt "GeneralEdit|"
+msgid "CH3"
+msgstr ""
+
+msgctxt "GeneralEdit|"
+msgid "CH4"
+msgstr ""
 
 msgctxt "MainWindow|"
 msgid "&New"
