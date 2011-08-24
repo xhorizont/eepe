@@ -362,7 +362,7 @@ bool simulatorDialog::keyState(EnumKeys key)
 qint16 simulatorDialog::getValue(qint8 i)
 {
     if(i<PPM_BASE) return calibratedStick[i];//-512..512
-    else if(i<CHOUT_BASE) return g_ppmIns[i-PPM_BASE] - g_eeGeneral.ppmInCalib[i-PPM_BASE];
+    else if(i<CHOUT_BASE) return g_ppmIns[i-PPM_BASE];// - g_eeGeneral.ppmInCalib[i-PPM_BASE];
     else return ex_chans[i-CHOUT_BASE];
     return 0;
 }
@@ -692,7 +692,7 @@ void simulatorDialog::perOut(bool init)
   calibratedStick[MIX_MAX-1]=calibratedStick[MIX_FULL-1]=1024;
   anas[MIX_MAX-1]  = RESX;     // MAX
   anas[MIX_FULL-1] = RESX;     // FULL
-  for(uint8_t i=0;i<NUM_PPM;i++)    anas[i+PPM_BASE]   = g_ppmIns[i] - g_eeGeneral.ppmInCalib[i]; //add ppm channels
+  for(uint8_t i=0;i<NUM_PPM;i++)    anas[i+PPM_BASE]   = g_ppmIns[i];// - g_eeGeneral.ppmInCalib[i]; //add ppm channels
   for(uint8_t i=0;i<NUM_CHNOUT;i++) anas[i+CHOUT_BASE] = chans[i]; //other mixes previous outputs
 
 

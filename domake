@@ -11,6 +11,7 @@ echo
 cd src
 make clean
 qmake -spec win32-g++-cross
+make clean
 make
 
 mv release/eepe.exe ../winbuild
