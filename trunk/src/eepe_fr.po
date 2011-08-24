@@ -2978,6 +2978,10 @@ msgctxt "preferencesDialog|"
 msgid "er9x - FrSky, NOHT, SPKR"
 msgstr ""
 
+msgctxt "preferencesDialog|"
+msgid "er9x - NMEA"
+msgstr ""
+
 msgctxt "printDialog|"
 msgid "Low"
 msgstr "Bas"

@@ -1,18 +1,18 @@
 ===== Starting build =====
 Timestamp
-Wed Aug 24 01:18:22 UTC 2011
+Wed Aug 24 02:02:14 UTC 2011
 ==========================
 
 ===== Updating from SVN =====
-At revision 265.
+At revision 266.
 
 ===== GENERATING VERSION STAMP =====
 //Automatically generated file - do not edit
 #define DATE_STR "24.08.2011"
-#define TIME_STR "01:01:23"
+#define TIME_STR "02:02:16"
 #define SUB_VERS "1-erez"
-#define SVN_VERS "trunk-r266"
-#define SVN_VER_NUM 266
+#define SVN_VERS "trunk-r267"
+#define SVN_VER_NUM 267
 ====================================
 
 
@@ -116,25 +116,25 @@ i586-mingw32msvc-g++ -mthreads -Wl,-enable-stdcall-fixup -Wl,-enable-auto-import
 make[1]: Leaving directory `/home/erez/eepe/src'
 Updating '/home/erez/eepe/src/eepe_.qm'...
     Generated 0 translation(s) (0 finished and 0 unfinished)
-    Ignored 607 untranslated source text(s)
+    Ignored 608 untranslated source text(s)
 Updating '/home/erez/eepe/src/eepe_he.qm'...
     Generated 0 translation(s) (0 finished and 0 unfinished)
-    Ignored 607 untranslated source text(s)
+    Ignored 608 untranslated source text(s)
 Updating '/home/erez/eepe/src/eepe_pt.qm'...
     Generated 420 translation(s) (389 finished and 31 unfinished)
-    Ignored 187 untranslated source text(s)
+    Ignored 188 untranslated source text(s)
 Updating '/home/erez/eepe/src/eepe_ru.qm'...
     Generated 397 translation(s) (369 finished and 28 unfinished)
-    Ignored 210 untranslated source text(s)
+    Ignored 211 untranslated source text(s)
 Updating '/home/erez/eepe/src/eepe_de.qm'...
     Generated 545 translation(s) (533 finished and 12 unfinished)
-    Ignored 62 untranslated source text(s)
+    Ignored 63 untranslated source text(s)
 Updating '/home/erez/eepe/src/eepe_es.qm'...
     Generated 546 translation(s) (543 finished and 3 unfinished)
-    Ignored 61 untranslated source text(s)
+    Ignored 62 untranslated source text(s)
 Updating '/home/erez/eepe/src/eepe_fr.qm'...
     Generated 536 translation(s) (533 finished and 3 unfinished)
-    Ignored 71 untranslated source text(s)
+    Ignored 72 untranslated source text(s)
 make -f Makefile.Release clean
 make[1]: Entering directory `/home/erez/eepe/src'
 rm -f release/moc_mainwindow.cpp release/moc_modeledit.cpp release/moc_generaledit.cpp release/moc_mdichild.cpp release/moc_mixerdialog.cpp release/moc_burnconfigdialog.cpp release/moc_avroutputdialog.cpp release/moc_simulatordialog.cpp release/moc_donatorsdialog.cpp release/moc_printdialog.cpp release/moc_preferencesdialog.cpp release/moc_fusesdialog.cpp release/moc_mixerslist.cpp release/moc_downloaddialog.cpp
@@ -280,7 +280,7 @@ Var: "StartMenuFolder"
 Section: "eePe" ->(SecDummy)
 SetOutPath: "$INSTDIR"
 File: "license.txt" 832 bytes
-File: "eepe.exe" 1468928 bytes
+File: "eepe.exe" 1470976 bytes
 File: "libgcc_s_dw2-1.dll" 43008 bytes
 File: "mingwm10.dll" 11362 bytes
 File: "QtCore4.dll" 2555392 bytes
@@ -381,9 +381,9 @@ Using lzma (compress whole) compression.
 
 EXE header size:               65024 / 49664 bytes
 Install code:                          (20943 bytes)
-Install data:                          (16900831 bytes)
+Install data:                          (16902879 bytes)
 Uninstall code+data:                   (20637 bytes)
-Compressed data:             5582901 / 16942411 bytes
-CRC (0x221AAFA8):                  4 / 4 bytes
+Compressed data:             5582709 / 16944459 bytes
+CRC (0x4686ADDA):                  4 / 4 bytes
 
-Total size:                  5647929 / 16992079 bytes (33.2%)
+Total size:                  5647737 / 16994127 bytes (33.2%)

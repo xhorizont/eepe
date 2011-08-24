@@ -2506,6 +2506,10 @@ Indique l&apos;affectation voie / numéro de canal par défaut utilisée lors de
         <source>er9x - FrSky, NOHT, SPKR</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>er9x - NMEA</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>printDialog</name>
