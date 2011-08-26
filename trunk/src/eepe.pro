@@ -42,6 +42,16 @@ SOURCES += main.cpp \
     downloaddialog.cpp
 RESOURCES += eepe.qrc
 TARGET = eepe
+
+unix {
+TARGET.path = /usr/bin/eepe
+INSTALLS = TARGET
+
+LANGS.path = /usr/bin/eepe/lang
+LANGS.files = lang/*.qm
+INSTALLS += LANGS
+}
+
 TEMPLATE = app
 FORMS += modeledit.ui \
     generaledit.ui \
@@ -55,6 +65,11 @@ FORMS += modeledit.ui \
     fusesdialog.ui \
     downloaddialog.ui
 win32:RC_FILE += icon.rc
+
+
+
+
+
 TRANSLATIONS = eepe_.ts    \
                eepe_he.ts  \
                eepe_pt.ts  \
