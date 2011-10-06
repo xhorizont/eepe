@@ -1276,10 +1276,10 @@ void ModelEdit::switchesEdited()
 
 void ModelEdit::tabTrims()
 {
-    ui->spinBox_S1->setValue(g_model.trim[CONVERT_MODE(RUD)-1]);
-    ui->spinBox_S2->setValue(g_model.trim[CONVERT_MODE(ELE)-1]);
-    ui->spinBox_S3->setValue(g_model.trim[CONVERT_MODE(THR)-1]);
-    ui->spinBox_S4->setValue(g_model.trim[CONVERT_MODE(AIL)-1]);
+    ui->spinBox_S1->setValue(g_model.trim[0]);//CONVERT_MODE(RUD)-1]);
+    ui->spinBox_S2->setValue(g_model.trim[1]);//CONVERT_MODE(ELE)-1]);
+    ui->spinBox_S3->setValue(g_model.trim[2]);//CONVERT_MODE(THR)-1]);
+    ui->spinBox_S4->setValue(g_model.trim[3]);//CONVERT_MODE(AIL)-1]);
 
     switch (g_eeGeneral.stickMode)
     {

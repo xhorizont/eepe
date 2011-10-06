@@ -57,13 +57,13 @@ Es el voltaje en el que se dispara la alarma de la batería.
 Los valores aceptables son: 5v...10v</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="1528"/>
+        <location filename="generaledit.ui" line="1588"/>
         <source>v</source>
         <translation>v</translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="125"/>
-        <location filename="generaledit.ui" line="1518"/>
+        <location filename="generaledit.ui" line="1578"/>
         <source>Battery Calibration</source>
         <translation>Calibaración Batería</translation>
     </message>
@@ -244,72 +244,82 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="804"/>
+        <location filename="generaledit.ui" line="803"/>
+        <source>Pot Scrolling Enable</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="generaledit.ui" line="810"/>
+        <source>Bandgap Measuring Enable</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="generaledit.ui" line="864"/>
         <source>Trainer</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="812"/>
-        <location filename="generaledit.ui" line="852"/>
-        <location filename="generaledit.ui" line="878"/>
-        <location filename="generaledit.ui" line="918"/>
-        <location filename="generaledit.ui" line="944"/>
-        <location filename="generaledit.ui" line="984"/>
-        <location filename="generaledit.ui" line="1010"/>
-        <location filename="generaledit.ui" line="1050"/>
+        <location filename="generaledit.ui" line="872"/>
+        <location filename="generaledit.ui" line="912"/>
+        <location filename="generaledit.ui" line="938"/>
+        <location filename="generaledit.ui" line="978"/>
+        <location filename="generaledit.ui" line="1004"/>
+        <location filename="generaledit.ui" line="1044"/>
+        <location filename="generaledit.ui" line="1070"/>
+        <location filename="generaledit.ui" line="1110"/>
         <source>CH1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="820"/>
-        <location filename="generaledit.ui" line="886"/>
-        <location filename="generaledit.ui" line="952"/>
-        <location filename="generaledit.ui" line="1018"/>
+        <location filename="generaledit.ui" line="880"/>
+        <location filename="generaledit.ui" line="946"/>
+        <location filename="generaledit.ui" line="1012"/>
+        <location filename="generaledit.ui" line="1078"/>
         <source>Off</source>
         <translation type="unfinished">Ninguno</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="825"/>
-        <location filename="generaledit.ui" line="891"/>
-        <location filename="generaledit.ui" line="957"/>
-        <location filename="generaledit.ui" line="1023"/>
+        <location filename="generaledit.ui" line="885"/>
+        <location filename="generaledit.ui" line="951"/>
+        <location filename="generaledit.ui" line="1017"/>
+        <location filename="generaledit.ui" line="1083"/>
         <source>Add</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="830"/>
-        <location filename="generaledit.ui" line="896"/>
-        <location filename="generaledit.ui" line="962"/>
-        <location filename="generaledit.ui" line="1028"/>
+        <location filename="generaledit.ui" line="890"/>
+        <location filename="generaledit.ui" line="956"/>
+        <location filename="generaledit.ui" line="1022"/>
+        <location filename="generaledit.ui" line="1088"/>
         <source>Substitute</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="857"/>
-        <location filename="generaledit.ui" line="923"/>
-        <location filename="generaledit.ui" line="989"/>
-        <location filename="generaledit.ui" line="1055"/>
+        <location filename="generaledit.ui" line="917"/>
+        <location filename="generaledit.ui" line="983"/>
+        <location filename="generaledit.ui" line="1049"/>
+        <location filename="generaledit.ui" line="1115"/>
         <source>CH2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="862"/>
-        <location filename="generaledit.ui" line="928"/>
-        <location filename="generaledit.ui" line="994"/>
-        <location filename="generaledit.ui" line="1060"/>
+        <location filename="generaledit.ui" line="922"/>
+        <location filename="generaledit.ui" line="988"/>
+        <location filename="generaledit.ui" line="1054"/>
+        <location filename="generaledit.ui" line="1120"/>
         <source>CH3</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="867"/>
-        <location filename="generaledit.ui" line="933"/>
-        <location filename="generaledit.ui" line="999"/>
-        <location filename="generaledit.ui" line="1065"/>
+        <location filename="generaledit.ui" line="927"/>
+        <location filename="generaledit.ui" line="993"/>
+        <location filename="generaledit.ui" line="1059"/>
+        <location filename="generaledit.ui" line="1125"/>
         <source>CH4</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="1078"/>
+        <location filename="generaledit.ui" line="1138"/>
         <source>PPM Multiplier</source>
         <translation>Multiplicador PPM</translation>
     </message>
@@ -323,6 +333,8 @@ p, li { white-space: pre-wrap; }
         <location filename="generaledit.ui" line="373"/>
         <location filename="generaledit.ui" line="403"/>
         <location filename="generaledit.ui" line="433"/>
+        <location filename="generaledit.ui" line="817"/>
+        <location filename="generaledit.ui" line="840"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
@@ -470,43 +482,43 @@ Stick Der Elevador y Timón
         <translation>Mostar la pantalla de inicio al encender</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="1098"/>
-        <location filename="generaledit.ui" line="1163"/>
+        <location filename="generaledit.ui" line="1158"/>
+        <location filename="generaledit.ui" line="1223"/>
         <source>Calibration</source>
         <translation>Calibración</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="1472"/>
+        <location filename="generaledit.ui" line="1532"/>
         <source>ANALOG 7</source>
         <translation>ANALOGICO 7</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="1426"/>
+        <location filename="generaledit.ui" line="1486"/>
         <source>ANALOG 6</source>
         <translation>ANALOGICO 6</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="1380"/>
+        <location filename="generaledit.ui" line="1440"/>
         <source>ANALOG 5</source>
         <translation>ANALOGICO 5</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="1331"/>
+        <location filename="generaledit.ui" line="1391"/>
         <source>ANALOG 4</source>
         <translation>ANALOGICO 4</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="1285"/>
+        <location filename="generaledit.ui" line="1345"/>
         <source>ANALOG 3</source>
         <translation>ANALOGICO 3</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="1239"/>
+        <location filename="generaledit.ui" line="1299"/>
         <source>ANALOG 2</source>
         <translation>ANALOGICO 2</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="1190"/>
+        <location filename="generaledit.ui" line="1250"/>
         <source>ANALOG 1</source>
         <translation>ANALOGICO 1</translation>
     </message>
@@ -515,17 +527,17 @@ Stick Der Elevador y Timón
         <translation type="obsolete">Entrada PPM</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="1169"/>
+        <location filename="generaledit.ui" line="1229"/>
         <source>Negative</source>
         <translation>Negativo</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="1176"/>
+        <location filename="generaledit.ui" line="1236"/>
         <source>Mid</source>
         <translation>Medio</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="1183"/>
+        <location filename="generaledit.ui" line="1243"/>
         <source>Positive</source>
         <translation>Positivo</translation>
     </message>

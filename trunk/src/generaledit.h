@@ -81,6 +81,8 @@ private slots:
     void on_beepFlashChkB_stateChanged(int );
     void on_speakerPitchSB_editingFinished();
     void on_tabWidget_selected(QString );
+    void on_PotScrollEnableChkB_stateChanged(int );
+    void on_BandGapEnableChkB_stateChanged(int );
 };
 
 #endif // GENERALEDIT_H
