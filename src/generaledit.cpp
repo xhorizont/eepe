@@ -44,6 +44,8 @@ GeneralEdit::GeneralEdit(EEPFILE *eFile, QWidget *parent) :
     ui->switchwarnChkB->setChecked(!g_eeGeneral.disableSwitchWarning); //Default is zero=checked
     ui->memwarnChkB->setChecked(!g_eeGeneral.disableMemoryWarning);   //Default is zero=checked
     ui->alarmwarnChkB->setChecked(!g_eeGeneral.disableAlarmWarning);//Default is zero=checked
+    ui->PotScrollEnableChkB->setChecked(!g_eeGeneral.disablePotScroll);//Default is zero=checked
+    ui->BandGapEnableChkB->setChecked(!g_eeGeneral.disableBG);//Default is zero=checked
     ui->beeperCB->setCurrentIndex(g_eeGeneral.beeperVal);
     ui->channelorderCB->setCurrentIndex(g_eeGeneral.templateSetup);
     ui->stickmodeCB->setCurrentIndex(g_eeGeneral.stickMode);
@@ -298,6 +300,18 @@ void GeneralEdit::on_alarmwarnChkB_stateChanged(int )
     updateSettings();
 }
 
+void GeneralEdit::on_PotScrollEnableChkB_stateChanged(int )
+{
+    g_eeGeneral.disablePotScroll = ui->PotScrollEnableChkB->isChecked() ? 0 : 1;
+    updateSettings();
+}
+
+void GeneralEdit::on_BandGapEnableChkB_stateChanged(int )
+{
+    g_eeGeneral.disableBG = ui->BandGapEnableChkB->isChecked() ? 0 : 1;
+    updateSettings();
+}
+
 void GeneralEdit::on_beeperCB_currentIndexChanged(int index)
 {
     g_eeGeneral.beeperVal = index;
@@ -512,3 +526,5 @@ void GeneralEdit::on_tabWidget_selected(QString )
     ui->chnLabel_3->setText(getSourceStr(g_eeGeneral.stickMode,3));
     ui->chnLabel_4->setText(getSourceStr(g_eeGeneral.stickMode,4));
 }
+
+

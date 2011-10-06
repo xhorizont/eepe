@@ -61,12 +61,12 @@ msgid ""
 "Acceptable values are 5v..10v"
 msgstr ""
 
-#: generaledit.ui:1528
+#: generaledit.ui:1588
 msgctxt "GeneralEdit|"
 msgid "v"
 msgstr ""
 
-#: generaledit.ui:125 generaledit.ui:1518
+#: generaledit.ui:125 generaledit.ui:1578
 msgctxt "GeneralEdit|"
 msgid "Battery Calibration"
 msgstr ""
@@ -255,48 +255,59 @@ msgctxt "GeneralEdit|"
 msgid "Speaker Pitch (spkr versions)"
 msgstr ""
 
-#: generaledit.ui:804
+#: generaledit.ui:803
+msgctxt "GeneralEdit|"
+msgid "Pot Scrolling Enable"
+msgstr ""
+
+#: generaledit.ui:810
+msgctxt "GeneralEdit|"
+msgid "Bandgap Measuring Enable"
+msgstr ""
+
+#: generaledit.ui:864
 msgctxt "GeneralEdit|"
 msgid "Trainer"
 msgstr ""
 
-#: generaledit.ui:812 generaledit.ui:852 generaledit.ui:878 generaledit.ui:918
-#: generaledit.ui:944 generaledit.ui:984 generaledit.ui:1010 generaledit.ui:1050
+#: generaledit.ui:872 generaledit.ui:912 generaledit.ui:938 generaledit.ui:978
+#: generaledit.ui:1004 generaledit.ui:1044 generaledit.ui:1070
+#: generaledit.ui:1110
 msgctxt "GeneralEdit|"
 msgid "CH1"
 msgstr ""
 
-#: generaledit.ui:820 generaledit.ui:886 generaledit.ui:952 generaledit.ui:1018
+#: generaledit.ui:880 generaledit.ui:946 generaledit.ui:1012 generaledit.ui:1078
 msgctxt "GeneralEdit|"
 msgid "Off"
 msgstr ""
 
-#: generaledit.ui:825 generaledit.ui:891 generaledit.ui:957 generaledit.ui:1023
+#: generaledit.ui:885 generaledit.ui:951 generaledit.ui:1017 generaledit.ui:1083
 msgctxt "GeneralEdit|"
 msgid "Add"
 msgstr ""
 
-#: generaledit.ui:830 generaledit.ui:896 generaledit.ui:962 generaledit.ui:1028
+#: generaledit.ui:890 generaledit.ui:956 generaledit.ui:1022 generaledit.ui:1088
 msgctxt "GeneralEdit|"
 msgid "Substitute"
 msgstr ""
 
-#: generaledit.ui:857 generaledit.ui:923 generaledit.ui:989 generaledit.ui:1055
+#: generaledit.ui:917 generaledit.ui:983 generaledit.ui:1049 generaledit.ui:1115
 msgctxt "GeneralEdit|"
 msgid "CH2"
 msgstr ""
 
-#: generaledit.ui:862 generaledit.ui:928 generaledit.ui:994 generaledit.ui:1060
+#: generaledit.ui:922 generaledit.ui:988 generaledit.ui:1054 generaledit.ui:1120
 msgctxt "GeneralEdit|"
 msgid "CH3"
 msgstr ""
 
-#: generaledit.ui:867 generaledit.ui:933 generaledit.ui:999 generaledit.ui:1065
+#: generaledit.ui:927 generaledit.ui:993 generaledit.ui:1059 generaledit.ui:1125
 msgctxt "GeneralEdit|"
 msgid "CH4"
 msgstr ""
 
-#: generaledit.ui:1078
+#: generaledit.ui:1138
 msgctxt "GeneralEdit|"
 msgid "PPM Multiplier"
 msgstr ""
@@ -307,6 +318,7 @@ msgid "Throttle Startup Warning"
 msgstr ""
 
 #: generaledit.ui:340 generaledit.ui:373 generaledit.ui:403 generaledit.ui:433
+#: generaledit.ui:817 generaledit.ui:840
 msgctxt "GeneralEdit|"
 msgid ""
 "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" "
@@ -438,57 +450,57 @@ msgctxt "GeneralEdit|"
 msgid "Show splash screen on startup"
 msgstr ""
 
-#: generaledit.ui:1098 generaledit.ui:1163
+#: generaledit.ui:1158 generaledit.ui:1223
 msgctxt "GeneralEdit|"
 msgid "Calibration"
 msgstr ""
 
-#: generaledit.ui:1472
+#: generaledit.ui:1532
 msgctxt "GeneralEdit|"
 msgid "ANALOG 7"
 msgstr ""
 
-#: generaledit.ui:1426
+#: generaledit.ui:1486
 msgctxt "GeneralEdit|"
 msgid "ANALOG 6"
 msgstr ""
 
-#: generaledit.ui:1380
+#: generaledit.ui:1440
 msgctxt "GeneralEdit|"
 msgid "ANALOG 5"
 msgstr ""
 
-#: generaledit.ui:1331
+#: generaledit.ui:1391
 msgctxt "GeneralEdit|"
 msgid "ANALOG 4"
 msgstr ""
 
-#: generaledit.ui:1285
+#: generaledit.ui:1345
 msgctxt "GeneralEdit|"
 msgid "ANALOG 3"
 msgstr ""
 
-#: generaledit.ui:1239
+#: generaledit.ui:1299
 msgctxt "GeneralEdit|"
 msgid "ANALOG 2"
 msgstr ""
 
-#: generaledit.ui:1190
+#: generaledit.ui:1250
 msgctxt "GeneralEdit|"
 msgid "ANALOG 1"
 msgstr ""
 
-#: generaledit.ui:1169
+#: generaledit.ui:1229
 msgctxt "GeneralEdit|"
 msgid "Negative"
 msgstr ""
 
-#: generaledit.ui:1176
+#: generaledit.ui:1236
 msgctxt "GeneralEdit|"
 msgid "Mid"
 msgstr ""
 
-#: generaledit.ui:1183
+#: generaledit.ui:1243
 msgctxt "GeneralEdit|"
 msgid "Positive"
 msgstr ""

@@ -443,6 +443,14 @@ p, li { white-space: pre-wrap; }
         <source>CH4</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Pot Scrolling Enable</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Bandgap Measuring Enable</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>MainWindow</name>

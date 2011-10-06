@@ -1,6 +1,5 @@
 #! /bin/bash
-./domake | tee make.log
-
+./domake 2>&1 | tee make.log
 
 echo
 echo "=======  errors ======="
@@ -8,6 +7,6 @@ cat make.log | grep error
 
 echo
 echo "=======  warnings ======="
-cat make.log | grep warning
+# cat make.log | grep warning
 
 

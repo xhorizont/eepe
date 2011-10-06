@@ -547,6 +547,14 @@ msgctxt "GeneralEdit|"
 msgid "CH4"
 msgstr ""
 
+msgctxt "GeneralEdit|"
+msgid "Pot Scrolling Enable"
+msgstr ""
+
+msgctxt "GeneralEdit|"
+msgid "Bandgap Measuring Enable"
+msgstr ""
+
 msgctxt "MainWindow|"
 msgid "&New"
 msgstr "&Nouveau"
