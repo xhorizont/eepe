@@ -156,6 +156,7 @@ void MainWindow::checkForUpdates(bool ignoreSettings)
         check1done = false;
     }
 
+#ifdef Q_OS_WIN32
     if(checkEEPE || ignoreSettings)
     {
         manager2 = new QNetworkAccessManager(this);
@@ -163,6 +164,7 @@ void MainWindow::checkForUpdates(bool ignoreSettings)
         manager2->get(QNetworkRequest(QUrl(EEPE_STAMP)));
         check2done = false;
     }
+#endif
 
     if(downloadDialog_forWait!=0)
         downloadDialog_forWait = 0;
