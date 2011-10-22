@@ -2745,6 +2745,10 @@ Indique l&apos;affectation voie / numéro de canal par défaut utilisée lors de
         <source>Value</source>
         <translation>Valeur</translation>
     </message>
+    <message>
+        <source>&lt;b&gt;CH%1&lt;/b&gt;&lt;br&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>simulatorDialog</name>

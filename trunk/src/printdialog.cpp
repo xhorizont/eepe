@@ -57,7 +57,7 @@ QString printDialog::fv(const QString name, const QString value)
 
 QString printDialog::getTimer()
 {
-    QString str = ", " + g_model->tmrDir ? ", Count Down" : " Count Up";
+    QString str = ", " + g_model->tmrDir==0 ? ", Count Down" : " Count Up";
     return tr("%1:%2, ").arg(g_model->tmrVal/60, 2, 10, QChar('0')).arg(g_model->tmrVal%60, 2, 10, QChar('0')) + getTimerMode(g_model->tmrMode) + str;
 }
 
@@ -200,16 +200,21 @@ void printDialog::printMixes()
         if(lastCHN!=md->destCh)
         {
             str.append("<br>");
-            continue;
-        }
+            lastCHN++;
+            for (int k=lastCHN; k<md->destCh; k++) {
+                str.append(tr("<b>CH%1</b><br>").arg(lastCHN,2,10,QChar('0')));
+                lastCHN++;        
+            }   
+            str.append(tr("<b>CH%1</b>").arg(lastCHN,2,10,QChar('0')));
+        } 
 
         str.append("<font size=+1 face='Courier New' color=green>");
 
         switch(md->mltpx)
         {
-        case (1): str += "&nbsp;*"; break;
-        case (2): str += "&nbsp;R"; break;
-        default:  str += "&nbsp;&nbsp;"; break;
+            case (1): str += "&nbsp;*"; break;
+            case (2): str += "&nbsp;R"; break;
+            default:  str += "&nbsp;&nbsp;"; break;
         };
 
         str += md->weight<0 ? tr(" %1\%").arg(md->weight).rightJustified(6,' ') :
@@ -235,7 +240,6 @@ void printDialog::printMixes()
         if(md->mixWarn)  str += tr(" Warn(%1)").arg(md->mixWarn);
 
         str.append("</font><br>");
-
     }
 
     for(int j=lastCHN; j<NUM_XCHNOUT; j++)
@@ -244,9 +248,6 @@ void printDialog::printMixes()
         str.append(tr("<b>CH%1</b>").arg(j+1,2,10,QChar('0')));
         str.append("</font><br>");
     }
-
-
-
     str.append("<br><br>");
     te->append(str);
 }

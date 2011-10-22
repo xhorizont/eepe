@@ -551,535 +551,535 @@ Stick Der Elevador y Timón
     </message>
     <message>
         <location filename="mainwindow.cpp" line="134"/>
-        <location filename="mainwindow.cpp" line="465"/>
+        <location filename="mainwindow.cpp" line="467"/>
         <source>File loaded</source>
         <translation>Archivo cargado</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="261"/>
-        <location filename="mainwindow.cpp" line="346"/>
-        <location filename="mainwindow.cpp" line="387"/>
+        <location filename="mainwindow.cpp" line="263"/>
+        <location filename="mainwindow.cpp" line="348"/>
+        <location filename="mainwindow.cpp" line="389"/>
         <source>Save As</source>
         <translation>Guardar como</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="285"/>
-        <location filename="mainwindow.cpp" line="399"/>
+        <location filename="mainwindow.cpp" line="287"/>
+        <location filename="mainwindow.cpp" line="401"/>
         <source>No updates available at this time.</source>
         <translation>No hay actualizaciones disponibles en este momento.</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="194"/>
-        <location filename="mainwindow.cpp" line="291"/>
-        <location filename="mainwindow.cpp" line="372"/>
-        <location filename="mainwindow.cpp" line="405"/>
+        <location filename="mainwindow.cpp" line="196"/>
+        <location filename="mainwindow.cpp" line="293"/>
+        <location filename="mainwindow.cpp" line="374"/>
+        <location filename="mainwindow.cpp" line="407"/>
         <source>Unable to check for updates.</source>
         <translation>No se pueden comprobar las actualizaciones.</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="172"/>
+        <location filename="mainwindow.cpp" line="174"/>
         <source>Checking for updates</source>
         <translation>Comprobando si hay actualizaciones</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="255"/>
+        <location filename="mainwindow.cpp" line="257"/>
         <source>A new version of ER9x (%2) is available (r%1)&lt;br&gt;Would you like to download it?</source>
         <translation>La nueva versión ER9x (%2) está disponible (r%1)&lt;br&gt;¿Quieres descargarla?</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="387"/>
+        <location filename="mainwindow.cpp" line="389"/>
         <source>Executable (*.exe)</source>
         <translation>Ejecutable (*.exe)</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="418"/>
+        <location filename="mainwindow.cpp" line="420"/>
         <source>Would you like to launch the installer?</source>
         <translation>¿Quieres lanzar el instalador?</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="451"/>
+        <location filename="mainwindow.cpp" line="453"/>
         <source>Open</source>
         <translation>Abrir</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="475"/>
-        <location filename="mainwindow.cpp" line="481"/>
+        <location filename="mainwindow.cpp" line="477"/>
+        <location filename="mainwindow.cpp" line="483"/>
         <source>File saved</source>
         <translation>Archivo guardado</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="550"/>
+        <location filename="mainwindow.cpp" line="552"/>
         <source>Read EEPROM From Tx</source>
         <translation>Leer EEPROM desde el TX</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="573"/>
+        <location filename="mainwindow.cpp" line="575"/>
         <source>Choose file to write to EEPROM memory</source>
         <translation>Elije el archivo para escribir en la memoria EEPROM</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="578"/>
+        <location filename="mainwindow.cpp" line="580"/>
         <source>Write %1 to EEPROM memory?</source>
         <translation>¿Escribir %1 en la memoria EEPROM?</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="607"/>
+        <location filename="mainwindow.cpp" line="609"/>
         <source>Choose file to write to flash memory</source>
         <translation>Elije un archivo para escribir en la memoria flash</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="615"/>
+        <location filename="mainwindow.cpp" line="617"/>
         <source>Write %1 to flash memory?</source>
         <translation>¿Escribir %1 en la memoria flash?</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="643"/>
+        <location filename="mainwindow.cpp" line="645"/>
         <source>Read EEPROM memory to File</source>
         <translation>Leer la memoria EEPROM del archivo</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="674"/>
+        <location filename="mainwindow.cpp" line="676"/>
         <source>Read Flash to File</source>
         <translation>Leer flash del Archivo</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="752"/>
+        <location filename="mainwindow.cpp" line="754"/>
         <source>Copyright</source>
         <translation>Copyright</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="754"/>
+        <location filename="mainwindow.cpp" line="756"/>
         <source>If you&apos;ve found this program and/or the er9x firmware useful please support by</source>
         <oldsource>If you&apos;ve found this program and/or the Firmware useful please support by</oldsource>
         <translation>Si has encontrado util este programa o el firmware er9x por favor soportalo haciendo una</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="756"/>
+        <location filename="mainwindow.cpp" line="758"/>
         <source>donating</source>
         <translation>donación</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="758"/>
+        <location filename="mainwindow.cpp" line="760"/>
         <source>About eePe</source>
         <translation>Sobre eePe</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="805"/>
+        <location filename="mainwindow.cpp" line="807"/>
         <source>&amp;%1 %2</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="808"/>
+        <location filename="mainwindow.cpp" line="810"/>
         <source>%1 %2</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="835"/>
+        <location filename="mainwindow.cpp" line="837"/>
         <source>&amp;New</source>
         <translation>&amp;Nuevo</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="837"/>
+        <location filename="mainwindow.cpp" line="839"/>
         <source>Create a new file</source>
         <translation>Crea un archivo nuevo</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="840"/>
+        <location filename="mainwindow.cpp" line="842"/>
         <source>&amp;Open...</source>
         <translation>(&amp;Open)  Abrir...</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="842"/>
+        <location filename="mainwindow.cpp" line="844"/>
         <source>Open an existing file</source>
         <translation>Abre un archivo existente</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="845"/>
+        <location filename="mainwindow.cpp" line="847"/>
         <source>&amp;Save</source>
         <translation>(&amp;Save)  Guardar</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="847"/>
+        <location filename="mainwindow.cpp" line="849"/>
         <source>Save the document to disk</source>
         <translation>Guarda el documento en el disco</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="850"/>
+        <location filename="mainwindow.cpp" line="852"/>
         <source>Save &amp;As...</source>
         <translation>(Save &amp;As...)  Guardar como...</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="852"/>
+        <location filename="mainwindow.cpp" line="854"/>
         <source>Save the document under a new name</source>
         <translation>Guarda el documento bajo un nuevo nombre</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="855"/>
+        <location filename="mainwindow.cpp" line="857"/>
         <source>&amp;Preferences...</source>
         <translation>&amp;Preferencias...</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="856"/>
+        <location filename="mainwindow.cpp" line="858"/>
         <source>Edit general preferences</source>
         <translation>Definir las preferencias generales</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="859"/>
+        <location filename="mainwindow.cpp" line="861"/>
         <source>&amp;Check for updates...</source>
         <translation>Bus&amp;car Actualizaciones...</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="860"/>
+        <location filename="mainwindow.cpp" line="862"/>
         <source>Check for new version of eePe/er9x</source>
         <translation>Buscar una nueva actualización de eePe/er9x</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="864"/>
+        <location filename="mainwindow.cpp" line="866"/>
         <source>E&amp;xit</source>
         <translation>(E&amp;xit)  Salir</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="866"/>
+        <location filename="mainwindow.cpp" line="868"/>
         <source>Exit the application</source>
         <translation>Cierra el programa</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="870"/>
+        <location filename="mainwindow.cpp" line="872"/>
         <source>Cu&amp;t</source>
         <translation>Cor&amp;tar</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="872"/>
+        <location filename="mainwindow.cpp" line="874"/>
         <source>Cut the current selection&apos;s contents to the clipboard</source>
         <translation>Corta la selección actual y la pega en el portapapeles</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="876"/>
+        <location filename="mainwindow.cpp" line="878"/>
         <source>&amp;Copy</source>
         <translation>&amp;Copiar</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="878"/>
+        <location filename="mainwindow.cpp" line="880"/>
         <source>Copy the current selection&apos;s contents to the clipboard</source>
         <translation>Copia la selección actual al portapapeles</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="882"/>
+        <location filename="mainwindow.cpp" line="884"/>
         <source>&amp;Paste</source>
         <translation>&amp;Pegar</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="884"/>
+        <location filename="mainwindow.cpp" line="886"/>
         <source>Paste the clipboard&apos;s contents into the current selection</source>
         <translation>Pega el contenido del portapapeles en la posición del cursor</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="889"/>
+        <location filename="mainwindow.cpp" line="891"/>
         <source>&amp;Write EEPROM To Tx</source>
         <translation>(&amp;Write...)  Escribir EEPROM al Tx</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="890"/>
+        <location filename="mainwindow.cpp" line="892"/>
         <source>Ctrl+Alt+W</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="891"/>
+        <location filename="mainwindow.cpp" line="893"/>
         <source>Write EEPROM to transmitter</source>
         <translation>Escribir EEPROM en la emisora</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="894"/>
+        <location filename="mainwindow.cpp" line="896"/>
         <source>&amp;Read EEPROM From Tx</source>
         <translation>(&amp;Read...)  Leer EEPROM desde el Tx</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="895"/>
+        <location filename="mainwindow.cpp" line="897"/>
         <source>Ctrl+Alt+R</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="896"/>
+        <location filename="mainwindow.cpp" line="898"/>
         <source>Read EEPROM from transmitter</source>
         <translation>Leer EEPROM desde la emisora</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="899"/>
+        <location filename="mainwindow.cpp" line="901"/>
         <source>Write Flash memory</source>
         <translation>Escribir memoria Flash</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="900"/>
+        <location filename="mainwindow.cpp" line="902"/>
         <source>Write flash memory to transmitter</source>
         <translation>Escribir memoria flash en la emisora</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="903"/>
+        <location filename="mainwindow.cpp" line="905"/>
         <source>Write EEPROM memory from file</source>
         <translation>Escribir memoria EEPROM desde archivo</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="904"/>
+        <location filename="mainwindow.cpp" line="906"/>
         <source>Write EEPROM memory from file to transmitter</source>
         <translation>Escribir memoria EEPROM desde archivo a la emisora</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="907"/>
+        <location filename="mainwindow.cpp" line="909"/>
         <source>Read EEPROM memory to file</source>
         <translation>Leer memoria EEPROM del archivo</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="908"/>
+        <location filename="mainwindow.cpp" line="910"/>
         <source>Read EEPROM memory from transmitter to file</source>
         <translation>Leer memoria EEPROM desde la emisora al archivo</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="911"/>
+        <location filename="mainwindow.cpp" line="913"/>
         <source>Read Flash memory</source>
         <translation>Leer memoria Flash</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="912"/>
+        <location filename="mainwindow.cpp" line="914"/>
         <source>Read flash memory to transmitter</source>
         <translation>Leer memoria flash de la emisora</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="915"/>
+        <location filename="mainwindow.cpp" line="917"/>
         <source>&amp;Configure...</source>
         <translation>&amp;Configurar...</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="916"/>
+        <location filename="mainwindow.cpp" line="918"/>
         <source>Configure burning software</source>
         <translation>Configurar el software de grabación</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="919"/>
+        <location filename="mainwindow.cpp" line="921"/>
         <source>&amp;List programmers</source>
         <translation>&amp;Lista de programadores</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="920"/>
+        <location filename="mainwindow.cpp" line="922"/>
         <source>List available programmers</source>
         <translation>Lista de programadores disponibles</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="923"/>
+        <location filename="mainwindow.cpp" line="925"/>
         <source>&amp;Fuses...</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="924"/>
+        <location filename="mainwindow.cpp" line="926"/>
         <source>Show fuses dialog</source>
         <translation>Muestra el dialogo de fuses</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="927"/>
+        <location filename="mainwindow.cpp" line="929"/>
         <source>&amp;Simulate</source>
         <translation>&amp;Simular</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="928"/>
+        <location filename="mainwindow.cpp" line="930"/>
         <source>Alt+S</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="929"/>
+        <location filename="mainwindow.cpp" line="931"/>
         <source>Simulate selected model.</source>
         <translation>Simula el modelo seleccionado.</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="933"/>
+        <location filename="mainwindow.cpp" line="935"/>
         <source>&amp;Print</source>
         <translation>Im&amp;primir</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="934"/>
+        <location filename="mainwindow.cpp" line="936"/>
         <source>Ctrl+P</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="935"/>
+        <location filename="mainwindow.cpp" line="937"/>
         <source>Print current model.</source>
         <translation>Imprime el modelo actual.</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="939"/>
+        <location filename="mainwindow.cpp" line="941"/>
         <source>Cl&amp;ose</source>
         <translation>(Cl&amp;ose)  Cerrar</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="940"/>
+        <location filename="mainwindow.cpp" line="942"/>
         <source>Close the active window</source>
         <translation>Cierra la ventana activa</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="944"/>
+        <location filename="mainwindow.cpp" line="946"/>
         <source>Close &amp;All</source>
         <translation>(Close &amp;All)  Cerrar Todo</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="945"/>
+        <location filename="mainwindow.cpp" line="947"/>
         <source>Close all the windows</source>
         <translation>Cierra todas las ventanas</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="949"/>
+        <location filename="mainwindow.cpp" line="951"/>
         <source>&amp;Tile</source>
         <translation>&amp;Titulo</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="950"/>
+        <location filename="mainwindow.cpp" line="952"/>
         <source>Tile the windows</source>
         <translation>Titulo de la ventana</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="953"/>
+        <location filename="mainwindow.cpp" line="955"/>
         <source>&amp;Cascade</source>
         <translation>&amp;Cascada</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="954"/>
+        <location filename="mainwindow.cpp" line="956"/>
         <source>Cascade the windows</source>
         <translation>Ventanas en Cascada</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="957"/>
+        <location filename="mainwindow.cpp" line="959"/>
         <source>Ne&amp;xt</source>
         <translation>(Ne&amp;xt)  Siguiente</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="959"/>
+        <location filename="mainwindow.cpp" line="961"/>
         <source>Move the focus to the next window</source>
         <translation>Mueve el foco a la siguiente ventana</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="963"/>
+        <location filename="mainwindow.cpp" line="965"/>
         <source>Pre&amp;vious</source>
         <translation>Pre&amp;via</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="965"/>
+        <location filename="mainwindow.cpp" line="967"/>
         <source>Move the focus to the previous window</source>
         <translation>Mueve el foco a la ventana previa</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="973"/>
+        <location filename="mainwindow.cpp" line="975"/>
         <source>&amp;About</source>
         <translation>&amp;A cerca de</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="974"/>
+        <location filename="mainwindow.cpp" line="976"/>
         <source>Show the application&apos;s About box</source>
         <translation>Muestra información sobre la aplicación</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="977"/>
+        <location filename="mainwindow.cpp" line="979"/>
         <source>&amp;Contributors</source>
         <translation>&amp;Contribuciones</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="978"/>
+        <location filename="mainwindow.cpp" line="980"/>
         <source>List er9x/eePe Contributors</source>
         <translation>Lista las contribuciones de er9x/eePe</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="982"/>
+        <location filename="mainwindow.cpp" line="984"/>
         <source>Switch layout Left/Right</source>
         <translation>Menu a Izquierda/Derecha</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="985"/>
+        <location filename="mainwindow.cpp" line="987"/>
         <source>&amp;ER9x Users Guide</source>
         <translation>&amp;ER9x Guia de usuario</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="986"/>
+        <location filename="mainwindow.cpp" line="988"/>
         <source>Show ER9x Users Guide</source>
         <translation>Muestra la guia de usuario de ER9x</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="990"/>
+        <location filename="mainwindow.cpp" line="992"/>
         <source>&amp;Load Model/Settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="991"/>
+        <location filename="mainwindow.cpp" line="993"/>
         <source>Load Model/Settings From File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="994"/>
+        <location filename="mainwindow.cpp" line="996"/>
         <source>S&amp;ave Model/Settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="995"/>
+        <location filename="mainwindow.cpp" line="997"/>
         <source>Save Model/Settings To File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1001"/>
+        <location filename="mainwindow.cpp" line="1003"/>
         <source>&amp;File</source>
         <translation>(&amp;File)  Archivo</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="981"/>
+        <location filename="mainwindow.cpp" line="983"/>
         <source>Switch layout direction</source>
         <translation>Cambia la posicion del menu</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="273"/>
+        <location filename="mainwindow.cpp" line="275"/>
         <source>Ignore this version (r%1)?</source>
         <translation>¿Ignorar esta versión (r%1)?</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="379"/>
+        <location filename="mainwindow.cpp" line="381"/>
         <source>A new version of eePe is available (r%1)&lt;br&gt;Would you like to download it?</source>
         <translation>Esta disponible la versión (r%1) de eePe&lt;br&gt;¿Quieres descargarla?</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1017"/>
+        <location filename="mainwindow.cpp" line="1019"/>
         <source>&amp;Edit</source>
         <translation>&amp;Editar</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1022"/>
+        <location filename="mainwindow.cpp" line="1024"/>
         <source>&amp;Burn</source>
         <translation>(&amp;Burn)  Quemar</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1036"/>
+        <location filename="mainwindow.cpp" line="1038"/>
         <source>&amp;Window</source>
         <translation>(&amp;Window)  Ventana</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1042"/>
+        <location filename="mainwindow.cpp" line="1044"/>
         <source>&amp;Help</source>
         <translation>(&amp;Help)  Ayuda</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1053"/>
+        <location filename="mainwindow.cpp" line="1055"/>
         <source>File</source>
         <translation>Archivo</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1064"/>
+        <location filename="mainwindow.cpp" line="1066"/>
         <source>Edit</source>
         <translation>Editar</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1069"/>
+        <location filename="mainwindow.cpp" line="1071"/>
         <source>Burn</source>
         <translation>Quemar</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1081"/>
+        <location filename="mainwindow.cpp" line="1083"/>
         <source>Help</source>
         <translation>Ayuda</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1090"/>
+        <location filename="mainwindow.cpp" line="1092"/>
         <source>Ready</source>
         <translation>Listo</translation>
     </message>
@@ -3262,120 +3262,126 @@ Modo 4:
     </message>
     <message>
         <location filename="printdialog.cpp" line="194"/>
-        <location filename="printdialog.cpp" line="244"/>
+        <location filename="printdialog.cpp" line="208"/>
+        <location filename="printdialog.cpp" line="248"/>
         <source>&lt;b&gt;CH%1&lt;/b&gt;</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="printdialog.cpp" line="215"/>
+        <location filename="printdialog.cpp" line="205"/>
+        <source>&lt;b&gt;CH%1&lt;/b&gt;&lt;br&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="printdialog.cpp" line="220"/>
         <source> %1%</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="printdialog.cpp" line="216"/>
+        <location filename="printdialog.cpp" line="221"/>
         <source> +%1%</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="printdialog.cpp" line="223"/>
+        <location filename="printdialog.cpp" line="228"/>
         <source> Switch(</source>
         <translation> Interruptor(</translation>
     </message>
     <message>
-        <location filename="printdialog.cpp" line="224"/>
+        <location filename="printdialog.cpp" line="229"/>
         <source> noTrim</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="printdialog.cpp" line="225"/>
+        <location filename="printdialog.cpp" line="230"/>
         <source> Offset(%1%)</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="printdialog.cpp" line="229"/>
+        <location filename="printdialog.cpp" line="234"/>
         <source> Curve(%1)</source>
         <translation> Curva(%1)</translation>
     </message>
     <message>
-        <location filename="printdialog.cpp" line="232"/>
+        <location filename="printdialog.cpp" line="237"/>
         <source> Delay(u%1:d%2)</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="printdialog.cpp" line="233"/>
+        <location filename="printdialog.cpp" line="238"/>
         <source> Slow(u%1:d%2)</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="printdialog.cpp" line="235"/>
+        <location filename="printdialog.cpp" line="240"/>
         <source> Warn(%1)</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="printdialog.cpp" line="256"/>
+        <location filename="printdialog.cpp" line="257"/>
         <source>&lt;h2&gt;Limits&lt;/h2&gt;</source>
         <translation>&lt;h2&gt;Limites&lt;/h2&gt;</translation>
     </message>
     <message>
-        <location filename="printdialog.cpp" line="264"/>
-        <location filename="printdialog.cpp" line="445"/>
+        <location filename="printdialog.cpp" line="265"/>
+        <location filename="printdialog.cpp" line="446"/>
         <source>CH%1</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="printdialog.cpp" line="279"/>
+        <location filename="printdialog.cpp" line="280"/>
         <source>&lt;h2&gt;Curves&lt;/h2&gt;</source>
         <translation>&lt;h2&gt;Curvas&lt;/h2&gt;</translation>
     </message>
     <message>
-        <location filename="printdialog.cpp" line="281"/>
+        <location filename="printdialog.cpp" line="282"/>
         <source>5-point Curves</source>
         <translation>Curvas de 5 puntos</translation>
     </message>
     <message>
-        <location filename="printdialog.cpp" line="285"/>
-        <location filename="printdialog.cpp" line="303"/>
+        <location filename="printdialog.cpp" line="286"/>
+        <location filename="printdialog.cpp" line="304"/>
         <source>pt %1</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="printdialog.cpp" line="290"/>
-        <location filename="printdialog.cpp" line="308"/>
+        <location filename="printdialog.cpp" line="291"/>
+        <location filename="printdialog.cpp" line="309"/>
         <source>Curve %1</source>
         <translation>Curva %1</translation>
     </message>
     <message>
-        <location filename="printdialog.cpp" line="299"/>
+        <location filename="printdialog.cpp" line="300"/>
         <source>9-point Curves</source>
         <translation>Curvas de 9 puntos</translation>
     </message>
     <message>
-        <location filename="printdialog.cpp" line="323"/>
+        <location filename="printdialog.cpp" line="324"/>
         <source>&lt;h2&gt;Custom Switches&lt;/h2&gt;</source>
         <translation>&lt;h2&gt;Interruptores Personalizados&lt;/h2&gt;</translation>
     </message>
     <message>
-        <location filename="printdialog.cpp" line="336"/>
+        <location filename="printdialog.cpp" line="337"/>
         <source>SW%1</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="printdialog.cpp" line="433"/>
+        <location filename="printdialog.cpp" line="434"/>
         <source>&lt;h2&gt;Safety Switches&lt;/h2&gt;</source>
         <translation>&lt;h2&gt;Interruptores de Seguridad&lt;/h2&gt;</translation>
     </message>
     <message>
-        <location filename="printdialog.cpp" line="439"/>
+        <location filename="printdialog.cpp" line="440"/>
         <source>Switch</source>
         <translation>Interruptor</translation>
     </message>
     <message>
-        <location filename="printdialog.cpp" line="440"/>
+        <location filename="printdialog.cpp" line="441"/>
         <source>Value</source>
         <translation>Valor</translation>
     </message>
     <message>
-        <location filename="printdialog.cpp" line="463"/>
+        <location filename="printdialog.cpp" line="464"/>
         <source>Print Document</source>
         <translation>Imprimir Documento</translation>
     </message>
