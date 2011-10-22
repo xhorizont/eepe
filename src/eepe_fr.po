@@ -3229,6 +3229,11 @@ msgctxt "printDialog|"
 msgid "Value"
 msgstr "Valeur"
 
+#, qt-format
+msgctxt "printDialog|"
+msgid "<b>CH%1</b><br>"
+msgstr ""
+
 msgctxt "simulatorDialog|"
 msgid "P1"
 msgstr ""

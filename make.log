@@ -1,18 +1,18 @@
 ===== Starting build =====
 Timestamp
-Thu Oct  6 01:53:32 UTC 2011
+Sat Oct 22 00:26:34 UTC 2011
 ==========================
 
 ===== Updating from SVN =====
-At revision 273.
+At revision 276.
 
 ===== GENERATING VERSION STAMP =====
 //Automatically generated file - do not edit
-#define DATE_STR "06.10.2011"
-#define TIME_STR "01:01:34"
+#define DATE_STR "22.10.2011"
+#define TIME_STR "00:12:40"
 #define SUB_VERS "1-erez"
-#define SVN_VERS "trunk-r274"
-#define SVN_VER_NUM 274
+#define SVN_VERS "trunk-r277"
+#define SVN_VER_NUM 277
 ====================================
 
 
@@ -1951,41 +1951,41 @@ make[1]: Leaving directory `/home/erez/eepe/src'
 /usr/include/qt4/QtGui/qlayout.h:236: circular inclusion of /usr/include/qt4/QtGui/qboxlayout.h
 /usr/include/qt4/QtGui/qgridlayout.h:45: circular inclusion of /usr/include/qt4/QtGui/qlayout.h
 Updating 'eepe_.ts'...
-    Found 610 source text(s) (0 new and 610 already existing)
+    Found 611 source text(s) (1 new and 610 already existing)
 Updating 'eepe_he.ts'...
-    Found 610 source text(s) (0 new and 610 already existing)
+    Found 611 source text(s) (1 new and 610 already existing)
 Updating 'eepe_pt.ts'...
-    Found 610 source text(s) (0 new and 610 already existing)
+    Found 611 source text(s) (1 new and 610 already existing)
 Updating 'eepe_ru.ts'...
-    Found 610 source text(s) (0 new and 610 already existing)
+    Found 611 source text(s) (1 new and 610 already existing)
 Updating 'eepe_de.ts'...
-    Found 610 source text(s) (0 new and 610 already existing)
+    Found 611 source text(s) (1 new and 610 already existing)
 Updating 'eepe_es.ts'...
-    Found 610 source text(s) (0 new and 610 already existing)
+    Found 611 source text(s) (1 new and 610 already existing)
 Updating 'eepe_fr.ts'...
-    Found 610 source text(s) (0 new and 610 already existing)
+    Found 611 source text(s) (1 new and 610 already existing)
 /usr/share/qt4/mkspecs/features/default_post.prf(5):Function 'system' is not implemented
 Updating '/home/erez/eepe/src/eepe_.qm'...
     Generated 0 translation(s) (0 finished and 0 unfinished)
-    Ignored 610 untranslated source text(s)
+    Ignored 611 untranslated source text(s)
 Updating '/home/erez/eepe/src/eepe_he.qm'...
     Generated 0 translation(s) (0 finished and 0 unfinished)
-    Ignored 610 untranslated source text(s)
+    Ignored 611 untranslated source text(s)
 Updating '/home/erez/eepe/src/eepe_pt.qm'...
     Generated 420 translation(s) (389 finished and 31 unfinished)
-    Ignored 190 untranslated source text(s)
+    Ignored 191 untranslated source text(s)
 Updating '/home/erez/eepe/src/eepe_ru.qm'...
     Generated 397 translation(s) (369 finished and 28 unfinished)
-    Ignored 213 untranslated source text(s)
+    Ignored 214 untranslated source text(s)
 Updating '/home/erez/eepe/src/eepe_de.qm'...
     Generated 545 translation(s) (533 finished and 12 unfinished)
-    Ignored 65 untranslated source text(s)
+    Ignored 66 untranslated source text(s)
 Updating '/home/erez/eepe/src/eepe_es.qm'...
     Generated 546 translation(s) (543 finished and 3 unfinished)
-    Ignored 64 untranslated source text(s)
+    Ignored 65 untranslated source text(s)
 Updating '/home/erez/eepe/src/eepe_fr.qm'...
     Generated 536 translation(s) (533 finished and 3 unfinished)
-    Ignored 74 untranslated source text(s)
+    Ignored 75 untranslated source text(s)
 make -f Makefile.Release clean
 make[1]: Entering directory `/home/erez/eepe/src'
 rm -f release/moc_mainwindow.cpp release/moc_modeledit.cpp release/moc_generaledit.cpp release/moc_mdichild.cpp release/moc_mixerdialog.cpp release/moc_burnconfigdialog.cpp release/moc_avroutputdialog.cpp release/moc_simulatordialog.cpp release/moc_donatorsdialog.cpp release/moc_printdialog.cpp release/moc_preferencesdialog.cpp release/moc_fusesdialog.cpp release/moc_mixerslist.cpp release/moc_downloaddialog.cpp
@@ -2131,7 +2131,7 @@ Var: "StartMenuFolder"
 Section: "eePe" ->(SecDummy)
 SetOutPath: "$INSTDIR"
 File: "license.txt" 832 bytes
-File: "eepe.exe" 1474048 bytes
+File: "eepe.exe" 1475072 bytes
 File: "libgcc_s_dw2-1.dll" 43008 bytes
 File: "mingwm10.dll" 11362 bytes
 File: "QtCore4.dll" 2555392 bytes
@@ -2232,9 +2232,9 @@ Using lzma (compress whole) compression.
 
 EXE header size:               65024 / 49664 bytes
 Install code:                          (20943 bytes)
-Install data:                          (16905951 bytes)
+Install data:                          (16906975 bytes)
 Uninstall code+data:                   (20637 bytes)
-Compressed data:             5583091 / 16947531 bytes
-CRC (0x4B3CEC7A):                  4 / 4 bytes
+Compressed data:             5584210 / 16948555 bytes
+CRC (0xC8CFC550):                  4 / 4 bytes
 
-Total size:                  5648119 / 16997199 bytes (33.2%)
+Total size:                  5649238 / 16998223 bytes (33.2%)
