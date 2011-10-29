@@ -3158,14 +3158,18 @@ Mode 4:
     </message>
     <message>
         <location filename="printdialog.cpp" line="194"/>
-        <location filename="printdialog.cpp" line="208"/>
-        <location filename="printdialog.cpp" line="248"/>
+        <location filename="printdialog.cpp" line="250"/>
         <source>&lt;b&gt;CH%1&lt;/b&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="printdialog.cpp" line="205"/>
-        <source>&lt;b&gt;CH%1&lt;/b&gt;&lt;br&gt;</source>
+        <source>&lt;font size=+1 face=&apos;Courier New&apos;&gt;&lt;b&gt;CH%1&lt;/b&gt;&lt;br&gt;&lt;/font&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="printdialog.cpp" line="208"/>
+        <source>&lt;font size=+1 face=&apos;Courier New&apos;&gt;&lt;b&gt;CH%1&lt;/b&gt;&lt;/font&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3194,65 +3198,65 @@ Mode 4:
         <translation type="unfinished">Смещение(%1%)</translation>
     </message>
     <message>
-        <location filename="printdialog.cpp" line="234"/>
+        <location filename="printdialog.cpp" line="236"/>
         <source> Curve(%1)</source>
         <translation type="unfinished">Кривая(%1)</translation>
     </message>
     <message>
-        <location filename="printdialog.cpp" line="237"/>
+        <location filename="printdialog.cpp" line="239"/>
         <source> Delay(u%1:d%2)</source>
         <translation type="unfinished"> Задержка(u%1:d%2)</translation>
     </message>
     <message>
-        <location filename="printdialog.cpp" line="238"/>
+        <location filename="printdialog.cpp" line="240"/>
         <source> Slow(u%1:d%2)</source>
         <translation type="unfinished"> Задержка(u%1:d%2)</translation>
     </message>
     <message>
-        <location filename="printdialog.cpp" line="240"/>
+        <location filename="printdialog.cpp" line="242"/>
         <source> Warn(%1)</source>
         <translation type="unfinished"> Пред(%1)</translation>
     </message>
     <message>
-        <location filename="printdialog.cpp" line="257"/>
+        <location filename="printdialog.cpp" line="259"/>
         <source>&lt;h2&gt;Limits&lt;/h2&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="printdialog.cpp" line="265"/>
-        <location filename="printdialog.cpp" line="446"/>
+        <location filename="printdialog.cpp" line="267"/>
+        <location filename="printdialog.cpp" line="448"/>
         <source>CH%1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="printdialog.cpp" line="280"/>
+        <location filename="printdialog.cpp" line="282"/>
         <source>&lt;h2&gt;Curves&lt;/h2&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="printdialog.cpp" line="282"/>
+        <location filename="printdialog.cpp" line="284"/>
         <source>5-point Curves</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="printdialog.cpp" line="286"/>
-        <location filename="printdialog.cpp" line="304"/>
+        <location filename="printdialog.cpp" line="288"/>
+        <location filename="printdialog.cpp" line="306"/>
         <source>pt %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="printdialog.cpp" line="291"/>
-        <location filename="printdialog.cpp" line="309"/>
+        <location filename="printdialog.cpp" line="293"/>
+        <location filename="printdialog.cpp" line="311"/>
         <source>Curve %1</source>
         <translation type="unfinished">Кривая %1</translation>
     </message>
     <message>
-        <location filename="printdialog.cpp" line="300"/>
+        <location filename="printdialog.cpp" line="302"/>
         <source>9-point Curves</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="printdialog.cpp" line="324"/>
+        <location filename="printdialog.cpp" line="326"/>
         <source>&lt;h2&gt;Custom Switches&lt;/h2&gt;</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3265,27 +3269,27 @@ Mode 4:
         <translation type="obsolete">Функция</translation>
     </message>
     <message>
-        <location filename="printdialog.cpp" line="337"/>
+        <location filename="printdialog.cpp" line="339"/>
         <source>SW%1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="printdialog.cpp" line="434"/>
+        <location filename="printdialog.cpp" line="436"/>
         <source>&lt;h2&gt;Safety Switches&lt;/h2&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="printdialog.cpp" line="440"/>
+        <location filename="printdialog.cpp" line="442"/>
         <source>Switch</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="printdialog.cpp" line="441"/>
+        <location filename="printdialog.cpp" line="443"/>
         <source>Value</source>
         <translation type="unfinished">Значение</translation>
     </message>
     <message>
-        <location filename="printdialog.cpp" line="464"/>
+        <location filename="printdialog.cpp" line="466"/>
         <source>Print Document</source>
         <translation type="unfinished"></translation>
     </message>

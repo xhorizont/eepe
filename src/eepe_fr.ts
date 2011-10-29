@@ -2746,7 +2746,11 @@ Indique l&apos;affectation voie / numéro de canal par défaut utilisée lors de
         <translation>Valeur</translation>
     </message>
     <message>
-        <source>&lt;b&gt;CH%1&lt;/b&gt;&lt;br&gt;</source>
+        <source>&lt;font size=+1 face=&apos;Courier New&apos;&gt;&lt;b&gt;CH%1&lt;/b&gt;&lt;br&gt;&lt;/font&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&lt;font size=+1 face=&apos;Courier New&apos;&gt;&lt;b&gt;CH%1&lt;/b&gt;&lt;/font&gt;</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

@@ -3231,7 +3231,12 @@ msgstr "Valeur"
 
 #, qt-format
 msgctxt "printDialog|"
-msgid "<b>CH%1</b><br>"
+msgid "<font size=+1 face='Courier New'><b>CH%1</b><br></font>"
+msgstr ""
+
+#, qt-format
+msgctxt "printDialog|"
+msgid "<font size=+1 face='Courier New'><b>CH%1</b></font>"
 msgstr ""
 
 msgctxt "simulatorDialog|"

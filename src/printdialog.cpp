@@ -202,10 +202,10 @@ void printDialog::printMixes()
             str.append("<br>");
             lastCHN++;
             for (int k=lastCHN; k<md->destCh; k++) {
-                str.append(tr("<b>CH%1</b><br>").arg(lastCHN,2,10,QChar('0')));
+                str.append(tr("<font size=+1 face='Courier New'><b>CH%1</b><br></font>").arg(lastCHN,2,10,QChar('0')));
                 lastCHN++;        
             }   
-            str.append(tr("<b>CH%1</b>").arg(lastCHN,2,10,QChar('0')));
+            str.append(tr("<font size=+1 face='Courier New'><b>CH%1</b></font>").arg(lastCHN,2,10,QChar('0')));
         } 
 
         str.append("<font size=+1 face='Courier New' color=green>");
@@ -231,7 +231,9 @@ void printDialog::printMixes()
         if(md->curve)
         {
             QString crvStr = CURV_STR;
-            str += tr(" Curve(%1)").arg(crvStr.mid(md->curve*3,3).remove(' '));
+            crvStr=crvStr.mid(md->curve*3,3);
+            crvStr.replace(QString("<") ,QString("&lt;"));
+            str += tr(" Curve(%1)").arg(crvStr.remove(' '));
         }
 
         if(md->delayDown || md->delayUp) str += tr(" Delay(u%1:d%2)").arg(md->delayUp).arg(md->delayDown);

@@ -1,18 +1,18 @@
 ===== Starting build =====
 Timestamp
-Sat Oct 22 00:26:34 UTC 2011
+Sat Oct 29 14:08:05 UTC 2011
 ==========================
 
 ===== Updating from SVN =====
-At revision 276.
+At revision 278.
 
 ===== GENERATING VERSION STAMP =====
 //Automatically generated file - do not edit
-#define DATE_STR "22.10.2011"
-#define TIME_STR "00:12:40"
+#define DATE_STR "29.10.2011"
+#define TIME_STR "14:02:06"
 #define SUB_VERS "1-erez"
-#define SVN_VERS "trunk-r277"
-#define SVN_VER_NUM 277
+#define SVN_VERS "trunk-r279"
+#define SVN_VER_NUM 279
 ====================================
 
 
@@ -1951,41 +1951,48 @@ make[1]: Leaving directory `/home/erez/eepe/src'
 /usr/include/qt4/QtGui/qlayout.h:236: circular inclusion of /usr/include/qt4/QtGui/qboxlayout.h
 /usr/include/qt4/QtGui/qgridlayout.h:45: circular inclusion of /usr/include/qt4/QtGui/qlayout.h
 Updating 'eepe_.ts'...
-    Found 611 source text(s) (1 new and 610 already existing)
+    Found 612 source text(s) (2 new and 610 already existing)
+    Kept 1 obsolete entries
 Updating 'eepe_he.ts'...
-    Found 611 source text(s) (1 new and 610 already existing)
+    Found 612 source text(s) (2 new and 610 already existing)
+    Kept 1 obsolete entries
 Updating 'eepe_pt.ts'...
-    Found 611 source text(s) (1 new and 610 already existing)
+    Found 612 source text(s) (2 new and 610 already existing)
+    Kept 1 obsolete entries
 Updating 'eepe_ru.ts'...
-    Found 611 source text(s) (1 new and 610 already existing)
+    Found 612 source text(s) (2 new and 610 already existing)
+    Kept 1 obsolete entries
 Updating 'eepe_de.ts'...
-    Found 611 source text(s) (1 new and 610 already existing)
+    Found 612 source text(s) (2 new and 610 already existing)
+    Kept 1 obsolete entries
 Updating 'eepe_es.ts'...
-    Found 611 source text(s) (1 new and 610 already existing)
+    Found 612 source text(s) (2 new and 610 already existing)
+    Kept 1 obsolete entries
 Updating 'eepe_fr.ts'...
-    Found 611 source text(s) (1 new and 610 already existing)
+    Found 612 source text(s) (2 new and 610 already existing)
+    Kept 1 obsolete entries
 /usr/share/qt4/mkspecs/features/default_post.prf(5):Function 'system' is not implemented
 Updating '/home/erez/eepe/src/eepe_.qm'...
     Generated 0 translation(s) (0 finished and 0 unfinished)
-    Ignored 611 untranslated source text(s)
+    Ignored 612 untranslated source text(s)
 Updating '/home/erez/eepe/src/eepe_he.qm'...
     Generated 0 translation(s) (0 finished and 0 unfinished)
-    Ignored 611 untranslated source text(s)
+    Ignored 612 untranslated source text(s)
 Updating '/home/erez/eepe/src/eepe_pt.qm'...
     Generated 420 translation(s) (389 finished and 31 unfinished)
-    Ignored 191 untranslated source text(s)
+    Ignored 192 untranslated source text(s)
 Updating '/home/erez/eepe/src/eepe_ru.qm'...
     Generated 397 translation(s) (369 finished and 28 unfinished)
-    Ignored 214 untranslated source text(s)
+    Ignored 215 untranslated source text(s)
 Updating '/home/erez/eepe/src/eepe_de.qm'...
     Generated 545 translation(s) (533 finished and 12 unfinished)
-    Ignored 66 untranslated source text(s)
+    Ignored 67 untranslated source text(s)
 Updating '/home/erez/eepe/src/eepe_es.qm'...
     Generated 546 translation(s) (543 finished and 3 unfinished)
-    Ignored 65 untranslated source text(s)
+    Ignored 66 untranslated source text(s)
 Updating '/home/erez/eepe/src/eepe_fr.qm'...
     Generated 536 translation(s) (533 finished and 3 unfinished)
-    Ignored 75 untranslated source text(s)
+    Ignored 76 untranslated source text(s)
 make -f Makefile.Release clean
 make[1]: Entering directory `/home/erez/eepe/src'
 rm -f release/moc_mainwindow.cpp release/moc_modeledit.cpp release/moc_generaledit.cpp release/moc_mdichild.cpp release/moc_mixerdialog.cpp release/moc_burnconfigdialog.cpp release/moc_avroutputdialog.cpp release/moc_simulatordialog.cpp release/moc_donatorsdialog.cpp release/moc_printdialog.cpp release/moc_preferencesdialog.cpp release/moc_fusesdialog.cpp release/moc_mixerslist.cpp release/moc_downloaddialog.cpp
@@ -2131,7 +2138,7 @@ Var: "StartMenuFolder"
 Section: "eePe" ->(SecDummy)
 SetOutPath: "$INSTDIR"
 File: "license.txt" 832 bytes
-File: "eepe.exe" 1475072 bytes
+File: "eepe.exe" 1476096 bytes
 File: "libgcc_s_dw2-1.dll" 43008 bytes
 File: "mingwm10.dll" 11362 bytes
 File: "QtCore4.dll" 2555392 bytes
@@ -2232,9 +2239,9 @@ Using lzma (compress whole) compression.
 
 EXE header size:               65024 / 49664 bytes
 Install code:                          (20943 bytes)
-Install data:                          (16906975 bytes)
+Install data:                          (16907999 bytes)
 Uninstall code+data:                   (20637 bytes)
-Compressed data:             5584210 / 16948555 bytes
-CRC (0xC8CFC550):                  4 / 4 bytes
+Compressed data:             5584297 / 16949579 bytes
+CRC (0x56286FF0):                  4 / 4 bytes
 
-Total size:                  5649238 / 16998223 bytes (33.2%)
+Total size:                  5649325 / 16999247 bytes (33.2%)
