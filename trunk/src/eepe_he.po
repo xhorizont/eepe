@@ -3158,7 +3158,7 @@ msgctxt "printDialog|"
 msgid "<h2>Mixers</h2><br>"
 msgstr ""
 
-#: printdialog.cpp:194 printdialog.cpp:208 printdialog.cpp:248
+#: printdialog.cpp:194 printdialog.cpp:250
 #, qt-format
 msgctxt "printDialog|"
 msgid "<b>CH%1</b>"
@@ -3167,7 +3167,13 @@ msgstr ""
 #: printdialog.cpp:205
 #, qt-format
 msgctxt "printDialog|"
-msgid "<b>CH%1</b><br>"
+msgid "<font size=+1 face='Courier New'><b>CH%1</b><br></font>"
+msgstr ""
+
+#: printdialog.cpp:208
+#, qt-format
+msgctxt "printDialog|"
+msgid "<font size=+1 face='Courier New'><b>CH%1</b></font>"
 msgstr ""
 
 #: printdialog.cpp:220
@@ -3198,95 +3204,95 @@ msgctxt "printDialog|"
 msgid " Offset(%1%)"
 msgstr ""
 
-#: printdialog.cpp:234
+#: printdialog.cpp:236
 #, qt-format
 msgctxt "printDialog|"
 msgid " Curve(%1)"
 msgstr ""
 
-#: printdialog.cpp:237
+#: printdialog.cpp:239
 #, qt-format
 msgctxt "printDialog|"
 msgid " Delay(u%1:d%2)"
 msgstr ""
 
-#: printdialog.cpp:238
+#: printdialog.cpp:240
 #, qt-format
 msgctxt "printDialog|"
 msgid " Slow(u%1:d%2)"
 msgstr ""
 
-#: printdialog.cpp:240
+#: printdialog.cpp:242
 #, qt-format
 msgctxt "printDialog|"
 msgid " Warn(%1)"
 msgstr ""
 
-#: printdialog.cpp:257
+#: printdialog.cpp:259
 msgctxt "printDialog|"
 msgid "<h2>Limits</h2>"
 msgstr ""
 
-#: printdialog.cpp:265 printdialog.cpp:446
+#: printdialog.cpp:267 printdialog.cpp:448
 #, qt-format
 msgctxt "printDialog|"
 msgid "CH%1"
 msgstr ""
 
-#: printdialog.cpp:280
+#: printdialog.cpp:282
 msgctxt "printDialog|"
 msgid "<h2>Curves</h2>"
 msgstr ""
 
-#: printdialog.cpp:282
+#: printdialog.cpp:284
 msgctxt "printDialog|"
 msgid "5-point Curves"
 msgstr ""
 
-#: printdialog.cpp:286 printdialog.cpp:304
+#: printdialog.cpp:288 printdialog.cpp:306
 #, qt-format
 msgctxt "printDialog|"
 msgid "pt %1"
 msgstr ""
 
-#: printdialog.cpp:291 printdialog.cpp:309
+#: printdialog.cpp:293 printdialog.cpp:311
 #, qt-format
 msgctxt "printDialog|"
 msgid "Curve %1"
 msgstr ""
 
-#: printdialog.cpp:300
+#: printdialog.cpp:302
 msgctxt "printDialog|"
 msgid "9-point Curves"
 msgstr ""
 
-#: printdialog.cpp:324
+#: printdialog.cpp:326
 msgctxt "printDialog|"
 msgid "<h2>Custom Switches</h2>"
 msgstr ""
 
-#: printdialog.cpp:337
+#: printdialog.cpp:339
 #, qt-format
 msgctxt "printDialog|"
 msgid "SW%1"
 msgstr ""
 
-#: printdialog.cpp:434
+#: printdialog.cpp:436
 msgctxt "printDialog|"
 msgid "<h2>Safety Switches</h2>"
 msgstr ""
 
-#: printdialog.cpp:440
+#: printdialog.cpp:442
 msgctxt "printDialog|"
 msgid "Switch"
 msgstr ""
 
-#: printdialog.cpp:441
+#: printdialog.cpp:443
 msgctxt "printDialog|"
 msgid "Value"
 msgstr ""
 
-#: printdialog.cpp:464
+#: printdialog.cpp:466
 msgctxt "printDialog|"
 msgid "Print Document"
 msgstr ""
