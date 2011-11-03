@@ -2853,11 +2853,6 @@ This is used by the templated to determine which channel goes to what number out
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="preferencesdialog.ui" line="120"/>
-        <source>er9x - NMEA</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="preferencesdialog.ui" line="297"/>
         <source>Mode selection:
 
