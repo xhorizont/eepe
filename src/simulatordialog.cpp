@@ -801,7 +801,7 @@ void simulatorDialog::perOut(bool init)
             {
                 if ( md.srcRaw <= 4 )
                 {
-                    trimptr[md.srcRaw-1] = (qint16 *)&md.sOffset ;		// Use the value stored here for the trim
+                    trimptr[md.srcRaw-1] = &md.sOffset ;		// Use the value stored here for the trim
                     ui->trimHLeft->setValue( *trimptr[0]);  // mode=(0 || 1) -> rud trim else -> ail trim
                     ui->trimVLeft->setValue( *trimptr[1]);  // mode=(0 || 2) -> thr trim else -> ele trim
                     ui->trimVRight->setValue(*trimptr[2]);  // mode=(0 || 2) -> ele trim else -> thr trim
