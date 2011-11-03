@@ -49,6 +49,11 @@ simulatorDialog::simulatorDialog(QWidget *parent) :
 
     memset(&swOn,0,sizeof(swOn));
 
+		trimptr[0] = &trim[0] ;
+		trimptr[1] = &trim[1] ;
+		trimptr[2] = &trim[2] ;
+		trimptr[3] = &trim[3] ;
+
     setupSticks();
     setupTimer();
 }
@@ -170,10 +175,10 @@ void simulatorDialog::getValues()
     calibratedStick[2] = -1024*nodeRight->getY(); //THR
     calibratedStick[3] = 1024*nodeRight->getX(); //AIL
 
-    trim[0] = ui->trimHLeft->value();
-    trim[1] = ui->trimVLeft->value();
-    trim[2] = ui->trimVRight->value();
-    trim[3] = ui->trimHRight->value();
+    *trimptr[0] = ui->trimHLeft->value();
+    *trimptr[1] = ui->trimVLeft->value();
+    *trimptr[2] = ui->trimVRight->value();
+    *trimptr[3] = ui->trimHRight->value();
 
     calibratedStick[4] = ui->dialP_1->value();
     calibratedStick[5] = ui->dialP_2->value();
@@ -182,7 +187,7 @@ void simulatorDialog::getValues()
     if(g_eeGeneral.throttleReversed)
     {
         calibratedStick[THR_STICK] *= -1;
-        trim[THR_STICK] *= -1;
+        *trimptr[THR_STICK] *= -1;
     }
 }
 
@@ -675,10 +680,10 @@ void simulatorDialog::perOut(bool init)
 
       //do trim -> throttle trim if applicable
       int32_t vv = 2*RESX;
-      if(IS_THROTTLE(i) && g_model.thrTrim) vv = ((int32_t)trim[i]+125)*(RESX-v)/(2*RESX);
+      if(IS_THROTTLE(i) && g_model.thrTrim) vv = ((int32_t)*trimptr[i]+125)*(RESX-v)/(2*RESX);
 
       //trim
-      trimA[i] = (vv==2*RESX) ? trim[i]*2 : (int16_t)vv*2; //    if throttle trim -> trim low end
+      trimA[i] = (vv==2*RESX) ? *trimptr[i]*2 : (int16_t)vv*2; //    if throttle trim -> trim low end
     }
     anas[i] = v; //set values for mixer
   }
@@ -755,6 +760,17 @@ void simulatorDialog::perOut(bool init)
 
    uint8_t mixWarning = 0;
     //========== MIXER LOOP ===============
+
+    // Set the trim pointers back to the master set
+    trimptr[0] = &trim[0] ;
+    trimptr[1] = &trim[1] ;
+    trimptr[2] = &trim[2] ;
+    trimptr[3] = &trim[3] ;
+    ui->trimHLeft->setValue( *trimptr[0]);  // mode=(0 || 1) -> rud trim else -> ail trim
+    ui->trimVLeft->setValue( *trimptr[1]);  // mode=(0 || 2) -> thr trim else -> ele trim
+    ui->trimVRight->setValue(*trimptr[2]);  // mode=(0 || 2) -> ele trim else -> thr trim
+    ui->trimHRight->setValue(*trimptr[3]);  // mode=(0 || 1) -> ail trim else -> rud trim
+
     for(uint8_t i=0;i<MAX_MIXERS;i++){
       MixData &md = g_model.mixData[i];
 
@@ -781,10 +797,24 @@ void simulatorDialog::perOut(bool init)
         v = anas[k]; //Switch is on. MAX=FULL=512 or value.
         if(k>=CHOUT_BASE && (k<i)) v = chans[k];
         if(md.mixWarn) mixWarning |= 1<<(md.mixWarn-1); // Mix warning
+        if ( md.enableFmTrim )
+        {
+            if ( md.srcRaw <= 4 )
+            {
+                trimptr[md.srcRaw-1] = &md.sOffset ;		// Use the value stored here for the trim
+    ui->trimHLeft->setValue( *trimptr[0]);  // mode=(0 || 1) -> rud trim else -> ail trim
+    ui->trimVLeft->setValue( *trimptr[1]);  // mode=(0 || 2) -> thr trim else -> ele trim
+    ui->trimVRight->setValue(*trimptr[2]);  // mode=(0 || 2) -> ele trim else -> thr trim
+    ui->trimHRight->setValue(*trimptr[3]);  // mode=(0 || 1) -> ail trim else -> rud trim
+            }
+        }
       }
 
       //========== INPUT OFFSET ===============
-      if(md.sOffset) v += calc100toRESX(md.sOffset);
+      if ( md.enableFmTrim == 0 )
+      {
+        if(md.sOffset) v += calc100toRESX(md.sOffset);
+      }
 
       //========== DELAY and PAUSE ===============
       if (md.speedUp || md.speedDown || md.delayUp || md.delayDown)  // there are delay values

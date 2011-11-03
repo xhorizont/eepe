@@ -16,6 +16,7 @@ MixerDialog::MixerDialog(QWidget *parent, MixData *mixdata, int stickMode, QStri
     ui->weightSB->setValue(md->weight);
     ui->offsetSB->setValue(md->sOffset);
     ui->trimChkB->setChecked(md->carryTrim==0);
+    ui->FMtrimChkB->setChecked(md->enableFmTrim);
     populateCurvesCB(ui->curvesCB,md->curve);
     populateSwitchCB(ui->switchesCB,md->swtch);
     ui->warningCB->setCurrentIndex(md->mixWarn);
