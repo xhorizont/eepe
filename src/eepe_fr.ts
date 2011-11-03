@@ -2026,6 +2026,14 @@ Droite</translation>
         <source>T2throttleTrig</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>PXX</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>DSM2</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>QObject</name>
@@ -2496,22 +2504,6 @@ Indique l&apos;affectation voie / numéro de canal par défaut utilisée lors de
     </message>
     <message>
         <source>Current Version - er9x</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>er9x - SPKR</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>er9x - NOHT, SPKR</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>er9x - FrSky, SPKR</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>er9x - FrSky, NOHT, SPKR</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

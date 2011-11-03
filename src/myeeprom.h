@@ -60,15 +60,15 @@
 
 
 typedef struct t_TrainerMix {
-  uint8_t srcChn:3; //0-7 = ch1-8
-  int8_t  swtch:5;
-  int8_t  studWeight:6;
-  uint8_t mode:2;   //off,add-mode,subst-mode
+    uint8_t srcChn:3; //0-7 = ch1-8
+    int8_t  swtch:5;
+    int8_t  studWeight:6;
+    uint8_t mode:2;   //off,add-mode,subst-mode
 } __attribute__((packed)) TrainerMix; //
 
 typedef struct t_TrainerData {
-  int16_t        calib[4];
-  TrainerMix     mix[4];
+    int16_t        calib[4];
+    TrainerMix     mix[4];
 } __attribute__((packed)) TrainerData;
 
 //typedef struct t_FrSkyRSSIAlarm {
@@ -110,10 +110,11 @@ typedef struct t_EEGeneral {
     uint8_t   lightAutoOff;
     uint8_t   templateSetup;  //RETA order according to chout_ar array
     int8_t    PPM_Multiplier;
-    //  FrSkyRSSIAlarm frskyRssiAlarms[2];
     uint8_t   respre[2];
     uint8_t   speakerPitch;
-    uint8_t   res[3];
+    uint8_t	hapticStrength;
+    uint8_t	speakerMode;
+    uint8_t   res[1];
     char      ownerName[GENERAL_OWNER_NAME_LEN];
 } __attribute__((packed)) EEGeneral;
 
@@ -125,17 +126,17 @@ typedef struct t_EEGeneral {
 //expo[3][2][2] //[Norm/Dr][expo/weight][R/L]
 
 typedef struct t_ExpoData {
-  int8_t  expo[3][2][2];
-  int8_t  drSw1;
-  int8_t  drSw2;
+    int8_t  expo[3][2][2];
+    int8_t  drSw1;
+    int8_t  drSw2;
 } __attribute__((packed)) ExpoData;
 
 
 typedef struct t_LimitData {
-  int8_t  min;
-  int8_t  max;
-  bool    revert;
-  int16_t  offset;
+    int8_t  min;
+    int8_t  max;
+    bool    revert;
+    int16_t  offset;
 } __attribute__((packed)) LimitData;
 
 #define MLTPX_ADD  0
@@ -143,84 +144,87 @@ typedef struct t_LimitData {
 #define MLTPX_REP  2
 
 typedef struct t_MixData {
-  uint8_t destCh;            //        1..NUM_CHNOUT
-  uint8_t srcRaw;            //
-  int8_t  weight;
-  int8_t  swtch;
-  uint8_t curve;             //0=symmetrisch 1=no neg 2=no pos
-  uint8_t delayUp:4;
-  uint8_t delayDown:4;
-  uint8_t speedUp:4;         // Servogeschwindigkeit aus Tabelle (10ms Cycle)
-  uint8_t speedDown:4;       // 0 nichts
-  uint8_t carryTrim:1;
-  uint8_t mltpx:3;           // multiplex method 0=+ 1=* 2=replace
-  uint8_t mixWarn:2;         // mixer warning
-  uint8_t enableFmTrim:1;
-  uint8_t mixres:1;
-  int8_t  sOffset;
-  int8_t  res;
+    uint8_t destCh;            //        1..NUM_CHNOUT
+    uint8_t srcRaw;            //
+    int8_t  weight;
+    int8_t  swtch;
+    uint8_t curve;             //0=symmetrisch 1=no neg 2=no pos
+    uint8_t delayUp:4;
+    uint8_t delayDown:4;
+    uint8_t speedUp:4;         // Servogeschwindigkeit aus Tabelle (10ms Cycle)
+    uint8_t speedDown:4;       // 0 nichts
+    uint8_t carryTrim:1;
+    uint8_t mltpx:3;           // multiplex method 0=+ 1=* 2=replace
+    uint8_t mixWarn:2;         // mixer warning
+    uint8_t enableFmTrim:1;
+    uint8_t mixres:1;
+    int8_t  sOffset;
+    int8_t  res;
 } __attribute__((packed)) MixData;
 
 
 typedef struct t_CSwData { // Custom Switches data
-  int8_t  v1; //input
-  int8_t  v2; //offset
-  uint8_t func;
+    int8_t  v1; //input
+    int8_t  v2; //offset
+    uint8_t func;
 } __attribute__((packed)) CSwData;
 
 typedef struct t_SafetySwData { // Custom Switches data
-  int8_t  swtch;
-  int8_t  val;
+    int8_t  swtch;
+    int8_t  val;
 } __attribute__((packed)) SafetySwData;
 
 typedef struct t_FrSkyChannelData {
-  uint8_t   ratio;                // 0.0 means not used, 0.1V steps EG. 6.6 Volts = 66. 25.1V = 251, etc.
-  uint8_t   alarms_value[2];      // 0.1V steps EG. 6.6 Volts = 66. 25.1V = 251, etc.
-  uint8_t   alarms_level:4;
-  uint8_t   alarms_greater:2;     // 0=LT(<), 1=GT(>)
-  uint8_t   type:2;               // future use: 0=volts, ...
+    uint8_t   ratio;                // 0.0 means not used, 0.1V steps EG. 6.6 Volts = 66. 25.1V = 251, etc.
+    uint8_t   alarms_value[2];      // 0.1V steps EG. 6.6 Volts = 66. 25.1V = 251, etc.
+    uint8_t   alarms_level:4;
+    uint8_t   alarms_greater:2;     // 0=LT(<), 1=GT(>)
+    uint8_t   type:2;               // future use: 0=volts, ...
 } __attribute__((packed)) FrSkyChannelData;
 
 typedef struct t_FrSkyData {
-  FrSkyChannelData channels[2];
+    FrSkyChannelData channels[2];
 } __attribute__((packed)) FrSkyData;
 
 typedef struct t_ModelData {
-  char      name[MODEL_NAME_LEN];             // 10 must be first for eeLoadModelName
-  uint8_t   mdVers;
-  int8_t    tmrMode;              // timer trigger source -> off, abs, stk, stk%, sw/!sw, !m_sw/!m_sw
-  uint8_t   tmrDir:1;    //0=>Count Down, 1=>Count Up
-  uint8_t   traineron:1;  // 0 disable trainer, 1 allow trainer
-  uint8_t   t2throttle:1 ;  // Start timer2 using throttle
-  uint8_t   spare:5;
-  uint16_t  tmrVal;
-  uint8_t   protocol;
-  int8_t    ppmNCH;
-  int8_t    thrTrim:4;            // Enable Throttle Trim
-  int8_t    thrExpo:4;            // Enable Throttle Expo
-  int8_t    trimInc;              // Trim Increments
-  int8_t    ppmDelay;
-  int8_t    trimSw;
-  uint8_t   beepANACenter;        // 1<<0->A1.. 1<<6->A7
-  uint8_t   pulsePol:1;
-  uint8_t   extendedLimits:1;
-  uint8_t   swashInvertELE:1;
-  uint8_t   swashInvertAIL:1;
-  uint8_t   swashInvertCOL:1;
-  uint8_t   swashType:3;
-  uint8_t   swashCollectiveSource;
-  uint8_t   swashRingValue;
-  int8_t    ppmFrameLength;    //0=22.5  (10msec-30msec) 0.5msec increments
-  MixData   mixData[MAX_MIXERS];
-  LimitData limitData[NUM_CHNOUT];
-  ExpoData  expoData[4];
-  int8_t    trim[4];
-  int8_t    curves5[MAX_CURVE5][5];
-  int8_t    curves9[MAX_CURVE9][9];
-  CSwData   customSw[NUM_CSW];
-  uint8_t   res3[3];
-  SafetySwData  safetySw[NUM_CHNOUT];
-  FrSkyData frsky;
+    char      name[MODEL_NAME_LEN];             // 10 must be first for eeLoadModelName
+    uint8_t   mdVers;
+    int8_t    tmrMode;              // timer trigger source -> off, abs, stk, stk%, sw/!sw, !m_sw/!m_sw
+    uint8_t   tmrDir:1;    //0=>Count Down, 1=>Count Up
+    uint8_t   traineron:1;  // 0 disable trainer, 1 allow trainer
+    uint8_t   t2throttle:1 ;  // Start timer2 using throttle
+    uint8_t   FrSkyUsrProto:2 ;  // Protocol in FrSky User Data, 0=FrSky Hub, 1=WS HowHigh
+    uint8_t   FrSkyImperial:1 ;  // Convert FrSky values to imperial units
+    uint8_t   spare:2;
+    uint16_t  tmrVal;
+    uint8_t   protocol;
+    int8_t    ppmNCH;
+    int8_t    thrTrim:4;            // Enable Throttle Trim
+    int8_t    thrExpo:4;            // Enable Throttle Expo
+    int8_t    trimInc;              // Trim Increments
+    int8_t    ppmDelay;
+    int8_t    trimSw;
+    uint8_t   beepANACenter;        // 1<<0->A1.. 1<<6->A7
+    uint8_t   pulsePol:1;
+    uint8_t   extendedLimits:1;
+    uint8_t   swashInvertELE:1;
+    uint8_t   swashInvertAIL:1;
+    uint8_t   swashInvertCOL:1;
+    uint8_t   swashType:3;
+    uint8_t   swashCollectiveSource;
+    uint8_t   swashRingValue;
+    int8_t    ppmFrameLength;    //0=22.5  (10msec-30msec) 0.5msec increments
+    MixData   mixData[MAX_MIXERS];
+    LimitData limitData[NUM_CHNOUT];
+    ExpoData  expoData[4];
+    int8_t    trim[4];
+    int8_t    curves5[MAX_CURVE5][5];
+    int8_t    curves9[MAX_CURVE9][9];
+    CSwData   customSw[NUM_CSW];
+    uint8_t   rxnum;
+    uint8_t   res3[2];
+    SafetySwData  safetySw[NUM_CHNOUT];
+    FrSkyData frsky;
 } __attribute__((packed)) ModelData;
 
 

@@ -40,6 +40,7 @@ private:
     qint16  g_ppmIns[8];
     qint16  ex_chans[NUM_CHNOUT];
     qint16  trim[4];
+    qint16 *trimptr[4];
     qint16  sDelay[MAX_MIXERS];
     qint32  act[MAX_MIXERS];
     qint16  anas [NUM_XCHNRAW];
