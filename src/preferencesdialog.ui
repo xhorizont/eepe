@@ -117,26 +117,6 @@
      </item>
      <item>
       <property name="text">
-       <string>er9x - SPKR</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>er9x - NOHT, SPKR</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>er9x - FrSky, SPKR</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>er9x - FrSky, NOHT, SPKR</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
        <string>er9x - NMEA</string>
       </property>
      </item>

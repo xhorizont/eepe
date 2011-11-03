@@ -64,21 +64,21 @@
 #define DNLD_VER_ER9X_FRSKY_NOHT 4
 #define DNLD_VER_ER9X_NOHT       5
 
-#define DNLD_VER_ER9X_SPKR            6
-#define DNLD_VER_ER9X_NOHT_SPKR       7
-#define DNLD_VER_ER9X_FRSKY_SPKR      8
-#define DNLD_VER_ER9X_FRSKY_NOHT_SPKR 9
-#define DNLD_VER_ER9X_NMEA            10
+//#define DNLD_VER_ER9X_SPKR            6
+//#define DNLD_VER_ER9X_NOHT_SPKR       7
+//#define DNLD_VER_ER9X_FRSKY_SPKR      8
+//#define DNLD_VER_ER9X_FRSKY_NOHT_SPKR 9
+#define DNLD_VER_ER9X_NMEA            7
 
 #define ER9X_URL   "http://er9x.googlecode.com/svn/trunk/er9x.hex"
 #define ER9X_NOHT_URL   "http://er9x.googlecode.com/svn/trunk/er9x-noht.hex"
-#define ER9X_SPKR_URL   "http://er9x.googlecode.com/svn/trunk/er9x-spkr.hex"
-#define ER9X_NOHT_SPKR_URL   "http://er9x.googlecode.com/svn/trunk/er9x-noht-spkr.hex"
+//#define ER9X_SPKR_URL   "http://er9x.googlecode.com/svn/trunk/er9x-spkr.hex"
+//#define ER9X_NOHT_SPKR_URL   "http://er9x.googlecode.com/svn/trunk/er9x-noht-spkr.hex"
 #define ER9X_JETI_URL   "http://er9x.googlecode.com/svn/trunk/er9x-jeti.hex"
 #define ER9X_FRSKY_URL   "http://er9x.googlecode.com/svn/trunk/er9x-frsky.hex"
 #define ER9X_FRSKY_NOHT_URL   "http://er9x.googlecode.com/svn/trunk/er9x-frsky-noht.hex"
-#define ER9X_FRSKY_SPKR_URL   "http://er9x.googlecode.com/svn/trunk/er9x-frsky-spkr.hex"
-#define ER9X_FRSKY_NOHT_SPKR_URL   "http://er9x.googlecode.com/svn/trunk/er9x-frsky-noht-spkr.hex"
+//#define ER9X_FRSKY_SPKR_URL   "http://er9x.googlecode.com/svn/trunk/er9x-frsky-spkr.hex"
+//#define ER9X_FRSKY_NOHT_SPKR_URL   "http://er9x.googlecode.com/svn/trunk/er9x-frsky-noht-spkr.hex"
 #define ER9X_ARDUPILOT_URL   "http://er9x.googlecode.com/svn/trunk/er9x-ardupilot.hex"
 #define ER9X_NMEA_URL   "http://er9x.googlecode.com/svn/trunk/er9x-nmea.hex"
 #define ER9X_STAMP "http://er9x.googlecode.com/svn/trunk/src/stamp-er9x.h"
@@ -228,7 +228,7 @@ void MainWindow::reply1Finished(QNetworkReply * reply)
                 dnldURL = ER9X_NOHT_URL;
                 baseFileName = "er9x-noht.hex";
                 break;
-
+/*
             case (DNLD_VER_ER9X_SPKR):
                 dnldURL = ER9X_SPKR_URL;
                 baseFileName = "er9x-spkr.hex";
@@ -245,7 +245,7 @@ void MainWindow::reply1Finished(QNetworkReply * reply)
                 dnldURL = ER9X_FRSKY_NOHT_SPKR_URL;
                 baseFileName = "er9x-frsky-noht-spkr.hex";
                 break;
-
+*/
 
             default:
                 dnldURL = ER9X_URL;
@@ -327,6 +327,7 @@ void MainWindow::downloadLatester9x()
         baseFileName = "er9x-noht.hex";
         break;
 
+ /*
     case (DNLD_VER_ER9X_SPKR):
         dnldURL = ER9X_SPKR_URL;
         baseFileName = "er9x-spkr.hex";
@@ -343,6 +344,7 @@ void MainWindow::downloadLatester9x()
         dnldURL = ER9X_FRSKY_NOHT_SPKR_URL;
         baseFileName = "er9x-frsky-noht-spkr.hex";
         break;
+ */
     }
 
     QString fileName = QFileDialog::getSaveFileName(this, tr("Save As"),settings.value("lastDir").toString() + "/" + baseFileName,tr(HEX_FILES_FILTER));
