@@ -2984,11 +2984,6 @@ Mache nur weiter, wenn Du weißt was Du machst</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="preferencesdialog.ui" line="120"/>
-        <source>er9x - NMEA</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="preferencesdialog.ui" line="151"/>
         <source>Default Channel Order</source>
         <translation>Standardeinstellung Kanalzuordnung</translation>

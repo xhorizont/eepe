@@ -3013,11 +3013,6 @@ Se usa para determinar que canal se asigna por defecto a un número de salida en
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="preferencesdialog.ui" line="120"/>
-        <source>er9x - NMEA</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="preferencesdialog.ui" line="297"/>
         <source>Mode selection:
 
