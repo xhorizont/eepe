@@ -34,14 +34,13 @@ private:
     QTimer *timer;
     QString modelName;
 
-		qint8   *trimptr[4];
+    qint8   *trimptr[4];
     quint16 g_tmr10ms;
     qint16  chanOut[NUM_CHNOUT];
     qint16  calibratedStick[7+2+3];
     qint16  g_ppmIns[8];
     qint16  ex_chans[NUM_CHNOUT];
     qint8   trim[4];
-    qint16 *trimptr[4];
     qint16  sDelay[MAX_MIXERS];
     qint32  act[MAX_MIXERS];
     qint16  anas [NUM_XCHNRAW];
