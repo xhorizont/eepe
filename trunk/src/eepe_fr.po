@@ -2273,6 +2273,14 @@ msgctxt "ModelEdit|"
 msgid "T2throttleTrig"
 msgstr ""
 
+msgctxt "ModelEdit|"
+msgid "PXX"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "DSM2"
+msgstr ""
+
 msgctxt "QObject|"
 msgid "Checking for updates..."
 msgstr ""
@@ -2968,22 +2976,6 @@ msgstr ""
 
 msgctxt "preferencesDialog|"
 msgid "Current Version - er9x"
-msgstr ""
-
-msgctxt "preferencesDialog|"
-msgid "er9x - SPKR"
-msgstr ""
-
-msgctxt "preferencesDialog|"
-msgid "er9x - NOHT, SPKR"
-msgstr ""
-
-msgctxt "preferencesDialog|"
-msgid "er9x - FrSky, SPKR"
-msgstr ""
-
-msgctxt "preferencesDialog|"
-msgid "er9x - FrSky, NOHT, SPKR"
 msgstr ""
 
 msgctxt "preferencesDialog|"

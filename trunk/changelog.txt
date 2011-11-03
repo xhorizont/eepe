@@ -1,0 +1,23 @@
+====================================================================================
+ER9x changelog
+Please insert a short description of a change by inserting it below this header and 
+above the previous change.
+
+Format is as follows:
+******************************************
+CHANGELOG: 1-11-2011
+description here
+====================================================================================
+
+
+******************************************
+CHANGELOG: 03-11-2011
+1) Fixed compile issue
+2) Removed surplus and old comunication protocols from the drop boxes.
+3) Removed surplus "-speaker" downloads
+
+
+
+
+
+

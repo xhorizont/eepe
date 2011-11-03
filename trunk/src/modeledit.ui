@@ -35,7 +35,7 @@
    <item row="4" column="1">
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
-      <number>8</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="tabModelSetup">
       <attribute name="title">
@@ -295,22 +295,12 @@
          </item>
          <item>
           <property name="text">
-           <string notr="true">Silver A</string>
+           <string>PXX</string>
           </property>
          </item>
          <item>
           <property name="text">
-           <string notr="true">Silver B</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string notr="true">Silver C</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string notr="true">Trac 09</string>
+           <string>DSM2</string>
           </property>
          </item>
         </widget>
