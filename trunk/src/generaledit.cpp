@@ -37,7 +37,11 @@ GeneralEdit::GeneralEdit(EEPFILE *eFile, QWidget *parent) :
     ui->battCalib->setValue((double)g_eeGeneral.vBatCalib/10);
     ui->backlightautoSB->setValue(g_eeGeneral.lightAutoOff*5);
     ui->inactimerSB->setValue(g_eeGeneral.inactivityTimer+10);
+
+    ui->soundModeCB->setCurrentIndex(g_eeGeneral.speakerMode);
     ui->speakerPitchSB->setValue(g_eeGeneral.speakerPitch);
+    ui->hapticStengthSB->setValue(g_eeGeneral.hapticStrength);
+
     ui->thrrevChkB->setChecked(g_eeGeneral.throttleReversed);
     ui->inputfilterCB->setCurrentIndex(g_eeGeneral.filterInput);
     ui->thrwarnChkB->setChecked(!g_eeGeneral.disableThrottleWarning);   //Default is zero=checked
@@ -516,6 +520,18 @@ void GeneralEdit::on_ownerNameLE_editingFinished()
 void GeneralEdit::on_speakerPitchSB_editingFinished()
 {
     g_eeGeneral.speakerPitch = ui->speakerPitchSB->value();
+    updateSettings();
+}
+
+void GeneralEdit::on_hapticStengthSB_editingFinished()
+{
+    g_eeGeneral.hapticStrength = ui->hapticStengthSB->value();
+    updateSettings();
+}
+
+void GeneralEdit::on_soundModeCB_currentIndexChanged(int index)
+{
+    g_eeGeneral.speakerMode = index;
     updateSettings();
 }
 
