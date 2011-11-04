@@ -1571,25 +1571,25 @@ void ModelEdit::on_bcP3ChkB_toggled(bool checked)
 
 void ModelEdit::on_spinBox_S1_valueChanged(int value)
 {
-        g_model.trim[CONVERT_MODE(RUD)-1] = value;
+        g_model.trim[0] = value;
         updateSettings();
 }
 
 void ModelEdit::on_spinBox_S2_valueChanged(int value)
 {
-        g_model.trim[CONVERT_MODE(ELE)-1] = value;
+        g_model.trim[1] = value;
         updateSettings();
 }
 
 void ModelEdit::on_spinBox_S3_valueChanged(int value)
 {
-        g_model.trim[CONVERT_MODE(THR)-1] = value;
+        g_model.trim[2] = value;
         updateSettings();
 }
 
 void ModelEdit::on_spinBox_S4_valueChanged(int value)
 {
-        g_model.trim[CONVERT_MODE(AIL)-1] = value;
+        g_model.trim[3] = value;
         updateSettings();
 }
 
