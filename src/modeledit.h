@@ -19,6 +19,7 @@ public:
     ~ModelEdit();
 
     void applyBaseTemplate();
+    bool redrawCurve;
 
 
 private:
@@ -68,6 +69,7 @@ private:
 
     void drawCurve();
     int currentCurve;
+    void setCurrentCurve(int curveId);
 
     QSpinBox *getNodeSB(int i);
 
