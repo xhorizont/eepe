@@ -10,6 +10,14 @@ description here
 ====================================================================================
 
 ******************************************
+CHANGELOG: 09-11-2011 MPB
+Curve editing updated
+Fix delay problem
+Fix Reversed throttle with throttle trim bug
+Fix getswitch() bug when using !SWn
+Change getswitch() to use previous result when recursing deeply
+
+******************************************
 CHANGELOG: 04-11-2011 MPB
 1) Fix issue 110
 2) General edit speaker and Haptic options

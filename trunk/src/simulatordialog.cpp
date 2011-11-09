@@ -187,7 +187,7 @@ void simulatorDialog::getValues()
     if(g_eeGeneral.throttleReversed)
     {
         calibratedStick[THR_STICK] *= -1;
-        *trimptr[THR_STICK] *= -1;
+//        *trimptr[THR_STICK] *= -1;
     }
 }
 
@@ -372,9 +372,14 @@ qint16 simulatorDialog::getValue(qint8 i)
     return 0;
 }
 
+bool Last_switch[NUM_CSW] ;
+
 bool simulatorDialog::getSwitch(int swtch, bool nc, qint8 level)
 {
-    if(level>5) return false; //prevent recursive loop going too deep
+    bool ret_value ;
+    uint8_t cs_index ;
+    
+		if(level>5) return false; //prevent recursive loop going too deep
 
     switch(swtch){
     case  0:            return  nc;
@@ -393,9 +398,15 @@ bool simulatorDialog::getSwitch(int swtch, bool nc, qint8 level)
     //input -> 1..4 -> sticks,  5..8 pots
     //MAX,FULL - disregard
     //ppm
-    CSwData &cs = g_model.customSw[abs(swtch)-(MAX_DRSWITCH-NUM_CSW)];
+    cs_index = abs(swtch)-(MAX_DRSWITCH-NUM_CSW);
+    CSwData &cs = g_model.customSw[cs_index];
     if(!cs.func) return false;
-
+		
+    if ( level>4 )
+    {
+      ret_value = Last_switch[cs_index] ;
+      return swtch>0 ? ret_value : !ret_value ;
+    }
 
     int8_t a = cs.v1;
     int8_t b = cs.v2;
@@ -417,50 +428,52 @@ bool simulatorDialog::getSwitch(int swtch, bool nc, qint8 level)
 
     switch (cs.func) {
     case (CS_VPOS):
-        return swtch>0 ? (x>y) : !(x>y);
+        ret_value = (x>y);
         break;
     case (CS_VNEG):
-        return swtch>0 ? (x<y) : !(x<y);
+        ret_value = (x<y) ;
         break;
     case (CS_APOS):
-        return swtch>0 ? (abs(x)>y) : !(abs(x)>y);
+        ret_value = (abs(x)>y) ;
         break;
     case (CS_ANEG):
-        return swtch>0 ? (abs(x)<y) : !(abs(x)<y);
+        ret_value = (abs(x)<y) ;
         break;
 
     case (CS_AND):
-        return (getSwitch(a,0,level+1) && getSwitch(b,0,level+1));
+        ret_value = (getSwitch(a,0,level+1) && getSwitch(b,0,level+1));
         break;
     case (CS_OR):
-        return (getSwitch(a,0,level+1) || getSwitch(b,0,level+1));
+        ret_value = (getSwitch(a,0,level+1) || getSwitch(b,0,level+1));
         break;
     case (CS_XOR):
-        return (getSwitch(a,0,level+1) ^ getSwitch(b,0,level+1));
+        ret_value = (getSwitch(a,0,level+1) ^ getSwitch(b,0,level+1));
         break;
 
     case (CS_EQUAL):
-        return (x==y);
+        ret_value = (x==y);
         break;
     case (CS_NEQUAL):
-        return (x!=y);
+        ret_value = (x!=y);
         break;
     case (CS_GREATER):
-        return (x>y);
+        ret_value = (x>y);
         break;
     case (CS_LESS):
-        return (x<y);
+        ret_value = (x<y);
         break;
     case (CS_EGREATER):
-        return (x>=y);
+        ret_value = (x>=y);
         break;
     case (CS_ELESS):
-        return (x<=y);
+        ret_value = (x<=y);
         break;
     default:
         return false;
         break;
     }
+		Last_switch[cs_index] = ret_value ;
+		return swtch>0 ? ret_value : !ret_value ;
 }
 
 
@@ -680,7 +693,16 @@ void simulatorDialog::perOut(bool init)
 
             //do trim -> throttle trim if applicable
             int32_t vv = 2*RESX;
-            if(IS_THROTTLE(i) && g_model.thrTrim) vv = ((int32_t)*trimptr[i]+125)*(RESX-v)/(2*RESX);
+            if(IS_THROTTLE(i) && g_model.thrTrim)
+						{
+							int8_t ttrim ;
+							ttrim = *trimptr[i] ;
+							if(g_eeGeneral.throttleReversed)
+							{
+								ttrim = -ttrim ;
+							}
+							vv = ((int32_t)ttrim+125)*(RESX-v)/(2*RESX);
+						}
 
             //trim
             trimA[i] = (vv==2*RESX) ? *trimptr[i]*2 : (int16_t)vv*2; //    if throttle trim -> trim low end
