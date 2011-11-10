@@ -21,13 +21,13 @@ Dieses sind für alle Modelle im gleichen EEPROM gültig.</translation>
         <translation>Einstellungen</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="44"/>
+        <location filename="generaledit.ui" line="792"/>
         <source>Contrast</source>
         <translation>Kontrast</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="57"/>
-        <location filename="generaledit.ui" line="782"/>
+        <location filename="generaledit.ui" line="174"/>
+        <location filename="generaledit.ui" line="464"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
@@ -38,12 +38,12 @@ p, li { white-space: pre-wrap; }
 Die Werte können sein</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="81"/>
+        <location filename="generaledit.ui" line="495"/>
         <source>Battery Warning</source>
         <translation>Batteriewarnung</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="94"/>
+        <location filename="generaledit.ui" line="275"/>
         <source>Battery warning voltage.
 This is the threashhold where the battery warning sounds.
 
@@ -54,25 +54,25 @@ Dies ist die Warnschwelle bei der die  Batteriewarnung piepst
 Mögliche Werte von 5V..10V</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="125"/>
-        <location filename="generaledit.ui" line="1578"/>
+        <location filename="generaledit.ui" line="580"/>
+        <location filename="generaledit.ui" line="1628"/>
         <source>Battery Calibration</source>
         <translation>Kalibrierung Batteriespannung</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="138"/>
+        <location filename="generaledit.ui" line="312"/>
         <source>Battery calibration:
 This value will be added to the measured battery voltage.  Use this value to calibrate the meter with an external meter.</source>
         <translation>Kalibrierung Batteriespannung:
 Dieser Wert wird zur gemessenen Batteriespannung addiert. Dieser Wert wird zur Kalibrierung der Anzeige mittels externen Messgerät genutzt.</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="164"/>
+        <location filename="generaledit.ui" line="587"/>
         <source>Backlight Switch</source>
         <translation>Schalter Hintergrundbeleuchtung</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="177"/>
+        <location filename="generaledit.ui" line="257"/>
         <source>This is the switch selectrion for turning on the backlight (if installed).
 
 </source>
@@ -81,43 +81,43 @@ Dieser Wert wird zur gemessenen Batteriespannung addiert. Dieser Wert wird zur K
 </translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="189"/>
+        <location filename="generaledit.ui" line="614"/>
         <source>Backlight Auto On/OFF after</source>
         <translation>Automatische Hintergrundbeleuchtung EIN/AUS nach</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="202"/>
+        <location filename="generaledit.ui" line="531"/>
         <source>If this value is not 0, any keypress will turn on the backlight and turn it off after the specified number of seconds.</source>
         <translation>Wenn dieser Wert ungleich 0 ist, wird die Hintergrundbeleuchtung nach irgendeinem Tastendruck eingeschaltet
 und nach einer eingestellten Zeit in Sekunden ausgeschaltet</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="205"/>
+        <location filename="generaledit.ui" line="534"/>
         <source> sec</source>
         <translation>sek</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="218"/>
+        <location filename="generaledit.ui" line="621"/>
         <source>Inactivity Timer</source>
         <translation>Inaktivitätstimer</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="231"/>
+        <location filename="generaledit.ui" line="560"/>
         <source>If not zero will sound beeps if the transmitter has been left without inputs for the specified number of minutes.</source>
         <translation>Falls ungleich 0 ertönt ein Piepston wenn der Sender für eine bestimmte Anzahl Minuten nicht bedient wurde</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="234"/>
+        <location filename="generaledit.ui" line="563"/>
         <source> min</source>
         <translation>Min</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="244"/>
+        <location filename="generaledit.ui" line="421"/>
         <source>Timer Beeps</source>
         <translation>Piepston Timer</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="253"/>
+        <location filename="generaledit.ui" line="43"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
@@ -126,22 +126,22 @@ p, li { white-space: pre-wrap; }
         <translation>Einzelton jede volle Minute</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="260"/>
+        <location filename="generaledit.ui" line="50"/>
         <source>Every Minute</source>
         <translation>Jede Minute</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="267"/>
+        <location filename="generaledit.ui" line="57"/>
         <source>Beeps at 30, 15, 10, and down from5 seconds</source>
         <translation>Piepston bei 30, 15, 10 und 5 Sekunden</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="270"/>
+        <location filename="generaledit.ui" line="60"/>
         <source>Count Down to Zero</source>
         <translation>Countdown bis 0</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="277"/>
+        <location filename="generaledit.ui" line="67"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
@@ -150,17 +150,42 @@ p, li { white-space: pre-wrap; }
         <translation>Blinken der Hintergrundbeleuchtung nach Timerablauf</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="284"/>
+        <location filename="generaledit.ui" line="74"/>
         <source>Flash on beep</source>
         <translation>Blinken während Piepsen</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="293"/>
+        <location filename="generaledit.ui" line="116"/>
+        <source>xShort</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="generaledit.ui" line="121"/>
+        <source>Short</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="generaledit.ui" line="126"/>
+        <source>Norm</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="generaledit.ui" line="136"/>
+        <source>xLong</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="generaledit.ui" line="161"/>
+        <source>Speaker Pitch (spkr only)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="generaledit.ui" line="573"/>
         <source>Reverse Throttle Operation</source>
         <translation>Gasminimum vorne</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="300"/>
+        <location filename="generaledit.ui" line="378"/>
         <source>Reverse throttle operation.
 If this is checked the throttle will be reversed.  Idle will be forward, trim will also be reversed and the throttle warning will be reversed as well.
 
@@ -169,28 +194,28 @@ If this is checked the throttle will be reversed.  Idle will be forward, trim wi
 Wenn dieses angewählt wurde ist der Knüppelweg für Gas reversiert. Leerlaufstellung ist vorne, die Trimmung sowie die Knüppelstellungswarnung ist ebenfalls umgedreht</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="313"/>
+        <location filename="generaledit.ui" line="195"/>
         <source>Show Splash Screen on Startup</source>
         <translation>Zeige Startbildschirm während Start</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="320"/>
-        <location filename="generaledit.ui" line="323"/>
+        <location filename="generaledit.ui" line="601"/>
+        <location filename="generaledit.ui" line="604"/>
         <source>Show splash screen on startup</source>
         <translation>Zeige Startbildschirm während Start</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="333"/>
+        <location filename="generaledit.ui" line="485"/>
         <source>Throttle Startup Warning</source>
         <translation>Warnung Gasknüppelstellung</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="340"/>
-        <location filename="generaledit.ui" line="373"/>
-        <location filename="generaledit.ui" line="403"/>
-        <location filename="generaledit.ui" line="433"/>
-        <location filename="generaledit.ui" line="817"/>
-        <location filename="generaledit.ui" line="840"/>
+        <location filename="generaledit.ui" line="209"/>
+        <location filename="generaledit.ui" line="345"/>
+        <location filename="generaledit.ui" line="391"/>
+        <location filename="generaledit.ui" line="435"/>
+        <location filename="generaledit.ui" line="502"/>
+        <location filename="generaledit.ui" line="766"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
@@ -211,27 +236,27 @@ Warnung stummer Betrieb - Wird angezeigt, wenn der Piepser ausgeschaltet ist
 </translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="366"/>
+        <location filename="generaledit.ui" line="428"/>
         <source>Switch Startup Warning</source>
         <translation>Warnung Schalterstellung beim Einschalten</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="396"/>
+        <location filename="generaledit.ui" line="371"/>
         <source>Memory Startup Warning</source>
         <translation>Warnung Speicherplatz beim Einschalten</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="426"/>
+        <location filename="generaledit.ui" line="594"/>
         <source>Alarm Warning</source>
         <translation>Warnung Alarm</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="456"/>
+        <location filename="generaledit.ui" line="338"/>
         <source>Channel Order (For Templates)</source>
         <translation>Kanalanordnung</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="469"/>
+        <location filename="generaledit.ui" line="634"/>
         <source>Channel order
 
 This is used by the templated to determine which channel goes to what number output.</source>
@@ -240,12 +265,12 @@ This is used by the templated to determine which channel goes to what number out
 Damit werden die Kanäle den Ausgängen zugeordnet.</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="601"/>
+        <location filename="generaledit.ui" line="866"/>
         <source>Stick Mode</source>
         <translation>Knüppelmodus</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="614"/>
+        <location filename="generaledit.ui" line="818"/>
         <source>Mode selection:
 
 Mode 1:
@@ -286,32 +311,32 @@ Mode 4:
 </translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="639"/>
+        <location filename="generaledit.ui" line="843"/>
         <source>Mode 1 (RUD ELE THR AIL)</source>
         <translation>Mode 1 (RUD ELE THR AIL)</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="644"/>
+        <location filename="generaledit.ui" line="848"/>
         <source>Mode 2 (RUD THR ELE AIL)</source>
         <translation>Mode 2 (RUD THR ELE AIL)</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="649"/>
+        <location filename="generaledit.ui" line="853"/>
         <source>Mode 3 (AIL ELE THR RUD)</source>
         <translation>Mode 3 (AIL ELE THR RUD)</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="654"/>
+        <location filename="generaledit.ui" line="858"/>
         <source>Mode 4 (AIL THR ELE RUD)</source>
         <translation>Mode 4 (AIL THR ELE RUD)</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="675"/>
+        <location filename="generaledit.ui" line="83"/>
         <source>Beeper Mode</source>
         <translation>Modus Piepser</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="688"/>
+        <location filename="generaledit.ui" line="96"/>
         <source>Beeper volume
 
 0 - Quiet.  No beeps at all.
@@ -328,193 +353,211 @@ Mode 4:
 4 - Sehr laut.</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="698"/>
+        <location filename="generaledit.ui" line="106"/>
         <source>Quiet</source>
         <translation>Stumm</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="703"/>
+        <location filename="generaledit.ui" line="111"/>
         <source>No Keys</source>
         <translation>Kein Tastaturpieps</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="708"/>
         <source>Normal</source>
-        <translation>Normal</translation>
+        <translation type="obsolete">Normal</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="713"/>
+        <location filename="generaledit.ui" line="131"/>
         <source>Long</source>
         <translation>Lange</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="718"/>
         <source>Extra Long</source>
-        <translation>Sehr lange</translation>
+        <translation type="obsolete">Sehr lange</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="726"/>
+        <location filename="generaledit.ui" line="414"/>
         <source>Input Filter</source>
         <translation>Filter Eingang</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="734"/>
+        <location filename="generaledit.ui" line="233"/>
         <source>Single</source>
         <translation>Einfach</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="739"/>
+        <location filename="generaledit.ui" line="238"/>
         <source>Oversample</source>
         <translation>Oversample</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="744"/>
+        <location filename="generaledit.ui" line="243"/>
         <source>Filter</source>
         <translation>Filter</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="755"/>
+        <location filename="generaledit.ui" line="147"/>
         <source>Owner Name</source>
         <translation>Besitzer</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="769"/>
-        <source>Speaker Pitch (spkr versions)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="generaledit.ui" line="803"/>
+        <location filename="generaledit.ui" line="202"/>
         <source>Pot Scrolling Enable</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="810"/>
+        <location filename="generaledit.ui" line="547"/>
         <source>Bandgap Measuring Enable</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="864"/>
+        <location filename="generaledit.ui" line="873"/>
+        <source>Sound Mode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="generaledit.ui" line="880"/>
+        <source>Haptic Strength (spkr only)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="generaledit.ui" line="895"/>
+        <source>Beeper</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="generaledit.ui" line="900"/>
+        <source>PiSpkr</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="generaledit.ui" line="905"/>
+        <source>PcmWav</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="generaledit.ui" line="914"/>
         <source>Trainer</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="872"/>
-        <location filename="generaledit.ui" line="912"/>
-        <location filename="generaledit.ui" line="938"/>
-        <location filename="generaledit.ui" line="978"/>
-        <location filename="generaledit.ui" line="1004"/>
-        <location filename="generaledit.ui" line="1044"/>
-        <location filename="generaledit.ui" line="1070"/>
-        <location filename="generaledit.ui" line="1110"/>
+        <location filename="generaledit.ui" line="922"/>
+        <location filename="generaledit.ui" line="962"/>
+        <location filename="generaledit.ui" line="988"/>
+        <location filename="generaledit.ui" line="1028"/>
+        <location filename="generaledit.ui" line="1054"/>
+        <location filename="generaledit.ui" line="1094"/>
+        <location filename="generaledit.ui" line="1120"/>
+        <location filename="generaledit.ui" line="1160"/>
         <source>CH1</source>
         <translation type="unfinished">CH1</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="880"/>
-        <location filename="generaledit.ui" line="946"/>
-        <location filename="generaledit.ui" line="1012"/>
-        <location filename="generaledit.ui" line="1078"/>
+        <location filename="generaledit.ui" line="930"/>
+        <location filename="generaledit.ui" line="996"/>
+        <location filename="generaledit.ui" line="1062"/>
+        <location filename="generaledit.ui" line="1128"/>
         <source>Off</source>
         <translation type="unfinished">Aus</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="885"/>
-        <location filename="generaledit.ui" line="951"/>
-        <location filename="generaledit.ui" line="1017"/>
-        <location filename="generaledit.ui" line="1083"/>
+        <location filename="generaledit.ui" line="935"/>
+        <location filename="generaledit.ui" line="1001"/>
+        <location filename="generaledit.ui" line="1067"/>
+        <location filename="generaledit.ui" line="1133"/>
         <source>Add</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="890"/>
-        <location filename="generaledit.ui" line="956"/>
-        <location filename="generaledit.ui" line="1022"/>
-        <location filename="generaledit.ui" line="1088"/>
+        <location filename="generaledit.ui" line="940"/>
+        <location filename="generaledit.ui" line="1006"/>
+        <location filename="generaledit.ui" line="1072"/>
+        <location filename="generaledit.ui" line="1138"/>
         <source>Substitute</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="917"/>
-        <location filename="generaledit.ui" line="983"/>
-        <location filename="generaledit.ui" line="1049"/>
-        <location filename="generaledit.ui" line="1115"/>
+        <location filename="generaledit.ui" line="967"/>
+        <location filename="generaledit.ui" line="1033"/>
+        <location filename="generaledit.ui" line="1099"/>
+        <location filename="generaledit.ui" line="1165"/>
         <source>CH2</source>
         <translation type="unfinished">CH2</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="922"/>
-        <location filename="generaledit.ui" line="988"/>
-        <location filename="generaledit.ui" line="1054"/>
-        <location filename="generaledit.ui" line="1120"/>
+        <location filename="generaledit.ui" line="972"/>
+        <location filename="generaledit.ui" line="1038"/>
+        <location filename="generaledit.ui" line="1104"/>
+        <location filename="generaledit.ui" line="1170"/>
         <source>CH3</source>
         <translation type="unfinished">CH3</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="927"/>
-        <location filename="generaledit.ui" line="993"/>
-        <location filename="generaledit.ui" line="1059"/>
-        <location filename="generaledit.ui" line="1125"/>
+        <location filename="generaledit.ui" line="977"/>
+        <location filename="generaledit.ui" line="1043"/>
+        <location filename="generaledit.ui" line="1109"/>
+        <location filename="generaledit.ui" line="1175"/>
         <source>CH4</source>
         <translation type="unfinished">CH4</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="1158"/>
-        <location filename="generaledit.ui" line="1223"/>
+        <location filename="generaledit.ui" line="1208"/>
+        <location filename="generaledit.ui" line="1273"/>
         <source>Calibration</source>
         <translation>Kalibrierung</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="1229"/>
+        <location filename="generaledit.ui" line="1279"/>
         <source>Negative</source>
         <translation>Negativ</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="1236"/>
+        <location filename="generaledit.ui" line="1286"/>
         <source>Mid</source>
         <translation>Mitte</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="1243"/>
+        <location filename="generaledit.ui" line="1293"/>
         <source>Positive</source>
         <translation>Positiv</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="1250"/>
+        <location filename="generaledit.ui" line="1300"/>
         <source>ANALOG 1</source>
         <translation>ANALOG 1</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="1299"/>
+        <location filename="generaledit.ui" line="1349"/>
         <source>ANALOG 2</source>
         <translation>ANALOG 2</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="1345"/>
+        <location filename="generaledit.ui" line="1395"/>
         <source>ANALOG 3</source>
         <translation>ANALOG 3</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="1391"/>
+        <location filename="generaledit.ui" line="1441"/>
         <source>ANALOG 4</source>
         <translation>ANALOG 4</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="1440"/>
+        <location filename="generaledit.ui" line="1490"/>
         <source>ANALOG 5</source>
         <translation>ANALOG 5</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="1486"/>
+        <location filename="generaledit.ui" line="1536"/>
         <source>ANALOG 6</source>
         <translation>ANALOG 6</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="1532"/>
+        <location filename="generaledit.ui" line="1582"/>
         <source>ANALOG 7</source>
         <translation>ANALOG 7</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="1588"/>
+        <location filename="generaledit.ui" line="1638"/>
         <source>v</source>
         <translation>v</translation>
     </message>
@@ -523,7 +566,7 @@ Mode 4:
         <translation type="obsolete">PPM In</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="1138"/>
+        <location filename="generaledit.ui" line="1188"/>
         <source>PPM Multiplier</source>
         <translation>PPM Multiplikator</translation>
     </message>
@@ -2443,129 +2486,129 @@ Right</source>
         <translation>Warnung(%1)</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="1747"/>
+        <location filename="modeledit.cpp" line="1803"/>
         <source>Curve %1</source>
         <translation>Kurve %1</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="1981"/>
+        <location filename="modeledit.cpp" line="2037"/>
         <source>Delete Selected Mixes?</source>
         <translation>Lösche ausgewählte Mischer ?</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2114"/>
+        <location filename="modeledit.cpp" line="2170"/>
         <source>&amp;Add</source>
         <translation>&amp;Addieren</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2114"/>
+        <location filename="modeledit.cpp" line="2170"/>
         <source>Ctrl+A</source>
         <translation>CTRL+A</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2115"/>
+        <location filename="modeledit.cpp" line="2171"/>
         <source>&amp;Edit</source>
         <translation>&amp;Editieren</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2115"/>
+        <location filename="modeledit.cpp" line="2171"/>
         <source>Enter</source>
         <translation>Eingabe</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2117"/>
+        <location filename="modeledit.cpp" line="2173"/>
         <source>&amp;Delete</source>
         <translation>&amp;Löschen</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2117"/>
+        <location filename="modeledit.cpp" line="2173"/>
         <source>Delete</source>
         <translation>Löschen</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2118"/>
+        <location filename="modeledit.cpp" line="2174"/>
         <source>&amp;Copy</source>
         <translation>&amp;Kopieren</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2118"/>
+        <location filename="modeledit.cpp" line="2174"/>
         <source>Ctrl+C</source>
         <translation>Ctrl*C</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2119"/>
+        <location filename="modeledit.cpp" line="2175"/>
         <source>&amp;Cut</source>
         <translation>&amp;Ausschneiden</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2119"/>
+        <location filename="modeledit.cpp" line="2175"/>
         <source>Ctrl+X</source>
         <translation>Ctrl+X</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2120"/>
+        <location filename="modeledit.cpp" line="2176"/>
         <source>&amp;Paste</source>
         <translation>&amp;Einfügen</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2120"/>
+        <location filename="modeledit.cpp" line="2176"/>
         <source>Ctrl+V</source>
         <translation>Ctrl+V</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2121"/>
+        <location filename="modeledit.cpp" line="2177"/>
         <source>Du&amp;plicate</source>
         <translation>D&amp;uplizieren</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2123"/>
+        <location filename="modeledit.cpp" line="2179"/>
         <source>Move Up</source>
         <translation>Nach oben</translation>
     </message>
     <message>
         <location filename="modeledit.cpp" line="91"/>
-        <location filename="modeledit.cpp" line="2123"/>
+        <location filename="modeledit.cpp" line="2179"/>
         <source>Ctrl+Up</source>
         <translation>Ctrl+Up</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2124"/>
+        <location filename="modeledit.cpp" line="2180"/>
         <source>Move Down</source>
         <translation>Nach unten</translation>
     </message>
     <message>
         <location filename="modeledit.cpp" line="94"/>
-        <location filename="modeledit.cpp" line="2124"/>
+        <location filename="modeledit.cpp" line="2180"/>
         <source>Ctrl+Down</source>
         <translation>Ctrl+Down</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2443"/>
+        <location filename="modeledit.cpp" line="2499"/>
         <source>Apply Template?</source>
         <translation>Vorlage anwenden ?</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2443"/>
+        <location filename="modeledit.cpp" line="2499"/>
         <source>Apply template &quot;%1&quot;?</source>
         <translation>Vorlage anwenden &quot;%1&quot;?</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2470"/>
+        <location filename="modeledit.cpp" line="2526"/>
         <source>Clear Mixes?</source>
         <translation>Mischer löschen ?</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2470"/>
+        <location filename="modeledit.cpp" line="2526"/>
         <source>Really clear all the mixes?</source>
         <translation>Wirklich alle Mischer löschen ?</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2482"/>
+        <location filename="modeledit.cpp" line="2538"/>
         <source>Clear Curves?</source>
         <translation>Kurven löschen ?</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2482"/>
+        <location filename="modeledit.cpp" line="2538"/>
         <source>Really clear all the curves?</source>
         <translation>Wirklich alle Kurven löschen ?</translation>
     </message>
@@ -2574,7 +2617,7 @@ Right</source>
         <translation type="obsolete">D&amp;uplizieren</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2121"/>
+        <location filename="modeledit.cpp" line="2177"/>
         <source>Ctrl+U</source>
         <translation>Ctrl+U</translation>
     </message>
