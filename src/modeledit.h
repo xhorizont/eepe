@@ -3,6 +3,7 @@
 
 #include <QDialog>
 #include <QtGui>
+#include <QPen>
 #include "pers.h"
 #include "mixerslist.h"
 
@@ -37,8 +38,9 @@ private:
 
     bool switchEditLock;
     bool heliEditLock;
-
-    QSpinBox  * cswitchOffset[NUM_CSW];
+		bool plot_curve[16];
+    
+		QSpinBox  * cswitchOffset[NUM_CSW];
     QComboBox * cswitchSource1[NUM_CSW];
     QComboBox * cswitchSource2[NUM_CSW];
 
@@ -148,6 +150,23 @@ private slots:
     void on_curveEdit_15_clicked();
     void on_curveEdit_16_clicked();
 
+    void on_plotCB_1_toggled(bool checked);
+    void on_plotCB_2_toggled(bool checked);
+    void on_plotCB_3_toggled(bool checked);
+    void on_plotCB_4_toggled(bool checked);
+    void on_plotCB_5_toggled(bool checked);
+    void on_plotCB_6_toggled(bool checked);
+    void on_plotCB_7_toggled(bool checked);
+    void on_plotCB_8_toggled(bool checked);
+    void on_plotCB_9_toggled(bool checked);
+    void on_plotCB_10_toggled(bool checked);
+    void on_plotCB_11_toggled(bool checked);
+    void on_plotCB_12_toggled(bool checked);
+    void on_plotCB_13_toggled(bool checked);
+    void on_plotCB_14_toggled(bool checked);
+    void on_plotCB_15_toggled(bool checked);
+    void on_plotCB_16_toggled(bool checked);
+
     void curvePointEdited();
     void limitEdited();
     void switchesEdited();
@@ -188,6 +207,7 @@ private slots:
     void on_tabWidget_currentChanged(int index);
     void on_templateList_doubleClicked(QModelIndex index);
     void on_ppmFrameLengthDSB_editingFinished();
+    void ControlCurveSignal(bool flag);
 };
 
 

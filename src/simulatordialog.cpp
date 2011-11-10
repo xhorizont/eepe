@@ -141,8 +141,8 @@ void simulatorDialog::loadParams(const EEGeneral gg, const ModelData gm)
 
 
     ui->trimHLeft->setValue( g_model.trim[(g_eeGeneral.stickMode>2)   ? 3 : 0]);  // mode=(0 || 1) -> rud trim else -> ail trim
-    ui->trimVLeft->setValue( g_model.trim[(g_eeGeneral.stickMode & 1) ? 2 : 1]);  // mode=(0 || 2) -> thr trim else -> ele trim
-    ui->trimVRight->setValue(g_model.trim[(g_eeGeneral.stickMode & 1) ? 1 : 2]);  // mode=(0 || 2) -> ele trim else -> thr trim
+    ui->trimVLeft->setValue( g_model.trim[(g_eeGeneral.stickMode & 1) ? 1 : 2]);  // mode=(0 || 2) -> thr trim else -> ele trim
+    ui->trimVRight->setValue(g_model.trim[(g_eeGeneral.stickMode & 1) ? 2 : 1]);  // mode=(0 || 2) -> ele trim else -> thr trim
     ui->trimHRight->setValue(g_model.trim[(g_eeGeneral.stickMode>2)   ? 0 : 3]);  // mode=(0 || 1) -> ail trim else -> rud trim
 
 
@@ -187,7 +187,10 @@ void simulatorDialog::getValues()
     if(g_eeGeneral.throttleReversed)
     {
         calibratedStick[THR_STICK] *= -1;
-//        *trimptr[THR_STICK] *= -1;
+        if( !g_model.thrTrim)
+        {
+          *trimptr[THR_STICK] *= -1;
+        }
     }
 }
 
@@ -788,10 +791,19 @@ void simulatorDialog::perOut(bool init)
     trimptr[1] = &trim[1] ;
     trimptr[2] = &trim[2] ;
     trimptr[3] = &trim[3] ;
-    ui->trimHLeft->setValue( *trimptr[0]);  // mode=(0 || 1) -> rud trim else -> ail trim
+        
+    if( (g_eeGeneral.throttleReversed) && (!g_model.thrTrim))
+    {
+        *trimptr[THR_STICK] *= -1;
+    }
+		ui->trimHLeft->setValue( *trimptr[0]);  // mode=(0 || 1) -> rud trim else -> ail trim
     ui->trimVLeft->setValue( *trimptr[1]);  // mode=(0 || 2) -> thr trim else -> ele trim
     ui->trimVRight->setValue(*trimptr[2]);  // mode=(0 || 2) -> ele trim else -> thr trim
     ui->trimHRight->setValue(*trimptr[3]);  // mode=(0 || 1) -> ail trim else -> rud trim
+    if( (g_eeGeneral.throttleReversed) && (!g_model.thrTrim))
+    {
+        *trimptr[THR_STICK] *= -1;
+    }
 
     for(uint8_t i=0;i<MAX_MIXERS;i++){
         MixData &md = g_model.mixData[i];
@@ -824,10 +836,18 @@ void simulatorDialog::perOut(bool init)
                 if ( md.srcRaw <= 4 )
                 {
                     trimptr[md.srcRaw-1] = &md.sOffset ;		// Use the value stored here for the trim
+                    if( (g_eeGeneral.throttleReversed) && (!g_model.thrTrim))
+                    {
+                      *trimptr[THR_STICK] *= -1;
+                    }
                     ui->trimHLeft->setValue( *trimptr[0]);  // mode=(0 || 1) -> rud trim else -> ail trim
                     ui->trimVLeft->setValue( *trimptr[1]);  // mode=(0 || 2) -> thr trim else -> ele trim
                     ui->trimVRight->setValue(*trimptr[2]);  // mode=(0 || 2) -> ele trim else -> thr trim
                     ui->trimHRight->setValue(*trimptr[3]);  // mode=(0 || 1) -> ail trim else -> rud trim
+                    if( (g_eeGeneral.throttleReversed) && (!g_model.thrTrim))
+                    {
+                      *trimptr[THR_STICK] *= -1;
+                    }
                 }
             }
         }
@@ -863,9 +883,11 @@ void simulatorDialog::perOut(bool init)
             }
 
             if(sDelay[i]){ // perform delay
-                sDelay[i]--;
-                v = act[i]/DEL_MULT;
+              if (--sDelay[i] != 0)
+              { // At end of delay, use new V and diff
+                v = act[i]/DEL_MULT;    // Stay in old position until delay over
                 diff = 0;
+              }
             }
 
             if(diff && (md.speedUp || md.speedDown)){
@@ -881,6 +903,10 @@ void simulatorDialog::perOut(bool init)
 
                 if(((diff>0) && (v<(act[i]/DEL_MULT))) || ((diff<0) && (v>(act[i]/DEL_MULT)))) act[i]=(int32_t)v*DEL_MULT; //deal with overflow
                 v = act[i]/DEL_MULT;
+            }
+            else if (diff)
+            {
+              act[i]=(int32_t)v*DEL_MULT;
             }
         }
 

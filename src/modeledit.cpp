@@ -610,7 +610,25 @@ void ModelEdit::tabLimits()
 
 void ModelEdit::updateCurvesTab()
 {
-   ui->curvePt1_1->setValue(g_model.curves5[0][0]);
+   ControlCurveSignal(true);
+   ui->plotCB_1->setChecked(plot_curve[0]);
+   ui->plotCB_2->setChecked(plot_curve[1]);
+   ui->plotCB_3->setChecked(plot_curve[2]);
+   ui->plotCB_4->setChecked(plot_curve[3]);
+   ui->plotCB_5->setChecked(plot_curve[4]);
+   ui->plotCB_6->setChecked(plot_curve[5]);
+   ui->plotCB_7->setChecked(plot_curve[6]);
+   ui->plotCB_8->setChecked(plot_curve[7]);
+   ui->plotCB_9->setChecked(plot_curve[8]);
+   ui->plotCB_10->setChecked(plot_curve[9]);
+   ui->plotCB_11->setChecked(plot_curve[10]);
+   ui->plotCB_12->setChecked(plot_curve[11]);
+   ui->plotCB_13->setChecked(plot_curve[12]);
+   ui->plotCB_14->setChecked(plot_curve[13]);
+   ui->plotCB_15->setChecked(plot_curve[14]);
+   ui->plotCB_16->setChecked(plot_curve[15]);
+   
+	 ui->curvePt1_1->setValue(g_model.curves5[0][0]);
    ui->curvePt2_1->setValue(g_model.curves5[0][1]);
    ui->curvePt3_1->setValue(g_model.curves5[0][2]);
    ui->curvePt4_1->setValue(g_model.curves5[0][3]);
@@ -737,11 +755,16 @@ void ModelEdit::updateCurvesTab()
    ui->curvePt7_16->setValue(g_model.curves9[7][6]);
    ui->curvePt8_16->setValue(g_model.curves9[7][7]);
    ui->curvePt9_16->setValue(g_model.curves9[7][8]);
+   ControlCurveSignal(false);
 }
 
 
 void ModelEdit::tabCurves()
 {
+   for (int i=0; i<16;i++)
+	 {
+     plot_curve[i]=FALSE;
+   }
    updateCurvesTab();
 
    QGraphicsScene *scene = new QGraphicsScene(ui->curvePreview);
@@ -1137,7 +1160,6 @@ void ModelEdit::curvePointEdited()
     g_model.curves9[7][7] = ui->curvePt8_16->value();
     g_model.curves9[7][8] = ui->curvePt9_16->value();
 
-    //drawCurve();
     if (redrawCurve)
     {
         drawCurve();
@@ -1785,12 +1807,33 @@ QSpinBox *ModelEdit::getNodeSB(int i)   // get the SpinBox that corresponds to t
 
 void ModelEdit::drawCurve()
 {
-    if(currentCurve<0 || currentCurve>15) return;
+    int k,i;
+    QColor * plot_color[16];
+    plot_color[0]=new QColor(0,0,127);
+    plot_color[1]=new QColor(0,127,0);
+    plot_color[2]=new QColor(127,0,0);
+    plot_color[3]=new QColor(0,127,127);
+    plot_color[4]=new QColor(127,0,127);
+    plot_color[5]=new QColor(127,127,0);
+    plot_color[6]=new QColor(127,127,127);
+    plot_color[7]=new QColor(0,0,255);
+    plot_color[8]=new QColor(0,127,255);
+    plot_color[9]=new QColor(127,0,255);
+    plot_color[10]=new QColor(0,255,0);
+    plot_color[11]=new QColor(0,255,127);
+    plot_color[12]=new QColor(127,255,0);
+    plot_color[13]=new QColor(255,0,0);
+    plot_color[14]=new QColor(255,0,127);
+    plot_color[15]=new QColor(255,127,0);
+    
+		if(currentCurve<0 || currentCurve>15) return;
 
     Node *nodel = 0;
     Node *nodex = 0;
 
     QGraphicsScene *scene = ui->curvePreview->scene();
+    QPen pen;
+    QColor color;
     scene->clear();
 
     qreal width  = scene->sceneRect().width();
@@ -1800,15 +1843,33 @@ void ModelEdit::drawCurve()
     qreal centerY = scene->sceneRect().top() + height/2; //center Y
 
     QGraphicsSimpleTextItem *ti;
-    ti = scene->addSimpleText(tr("Curve %1").arg(currentCurve+1));
+    ti = scene->addSimpleText(tr("Editing curve %1").arg(currentCurve+1));
     ti->setPos(3,3);
 
     scene->addLine(centerX,GFX_MARGIN,centerX,height+GFX_MARGIN);
     scene->addLine(GFX_MARGIN,centerY,width+GFX_MARGIN,centerY);
 
+    pen.setWidth(2);
+    pen.setStyle(Qt::SolidLine);
+    for(k=0; k<8; k++) {
+        pen.setColor(*plot_color[k]);
+        if ((currentCurve!=k) && (plot_curve[k])) {
+           for(i=0; i<4; i++) {
+                scene->addLine(GFX_MARGIN + i*width/(5-1),centerY - (qreal)g_model.curves5[k][i]*height/200,GFX_MARGIN + (i+1)*width/(5-1),centerY - (qreal)g_model.curves5[k][i+1]*height/200,pen);    
+           }
+        }
+    }
+    for(k=0; k<8; k++) {
+        pen.setColor(*plot_color[k+8]);
+        if ((currentCurve!=(k+8)) && (plot_curve[k+8])) {
+           for(i=0; i<8; i++) {
+                scene->addLine(GFX_MARGIN + i*width/(9-1),centerY - (qreal)g_model.curves9[k][i]*height/200,GFX_MARGIN + (i+1)*width/(9-1),centerY - (qreal)g_model.curves9[k][i+1]*height/200,pen);    
+           }
+        }
+    }
 
     if(currentCurve<8)
-        for(int i=0; i<5; i++)
+        for(i=0; i<5; i++)
         {
             nodel = nodex;
             nodex = new Node(getNodeSB(i));
@@ -1819,7 +1880,7 @@ void ModelEdit::drawCurve()
             if(i>0) scene->addItem(new Edge(nodel, nodex));
         }
     else
-        for(int i=0; i<9; i++)
+        for(i=0; i<9; i++)
         {
             nodel = nodex;
             nodex = new Node(getNodeSB(i));
@@ -2585,6 +2646,10 @@ void ModelEdit::applyTemplate(uint8_t idx)
     //Simple 4-Ch
     if(idx==j++)
     {
+        if (md->destCh)
+        {
+          clearMixes();
+        }
         md=setDest(ICC(STK_RUD));  md->srcRaw=CM(STK_RUD);  md->weight=100;
         md=setDest(ICC(STK_ELE));  md->srcRaw=CM(STK_ELE);  md->weight=100;
         md=setDest(ICC(STK_THR));  md->srcRaw=CM(STK_THR);  md->weight=100;
@@ -2713,4 +2778,217 @@ void ModelEdit::on_ppmFrameLengthDSB_editingFinished()
     g_model.ppmFrameLength = (ui->ppmFrameLengthDSB->value()-22.5)/0.5;
     updateSettings();
 }
+
+void ModelEdit::on_plotCB_1_toggled(bool checked)
+{
+    plot_curve[0] = checked;
+    drawCurve();
+}
+
+void ModelEdit::on_plotCB_2_toggled(bool checked)
+{
+    plot_curve[1] = checked;
+    drawCurve();
+}
+
+void ModelEdit::on_plotCB_3_toggled(bool checked)
+{
+    plot_curve[2] = checked;
+    drawCurve();
+}
+
+void ModelEdit::on_plotCB_4_toggled(bool checked)
+{
+    plot_curve[3] = checked;
+    drawCurve();
+}
+
+void ModelEdit::on_plotCB_5_toggled(bool checked)
+{
+    plot_curve[4] = checked;
+    drawCurve();
+}
+
+void ModelEdit::on_plotCB_6_toggled(bool checked)
+{
+    plot_curve[5] = checked;
+    drawCurve();
+}
+
+void ModelEdit::on_plotCB_7_toggled(bool checked)
+{
+    plot_curve[6] = checked;
+    drawCurve();
+}
+
+void ModelEdit::on_plotCB_8_toggled(bool checked)
+{
+    plot_curve[7] = checked;
+    drawCurve();
+}
+
+void ModelEdit::on_plotCB_9_toggled(bool checked)
+{
+    plot_curve[8] = checked;
+    drawCurve();
+}
+
+void ModelEdit::on_plotCB_10_toggled(bool checked)
+{
+    plot_curve[9] = checked;
+    drawCurve();
+}
+
+void ModelEdit::on_plotCB_11_toggled(bool checked)
+{
+    plot_curve[10] = checked;
+    drawCurve();
+}
+
+void ModelEdit::on_plotCB_12_toggled(bool checked)
+{
+    plot_curve[11] = checked;
+    drawCurve();
+}
+
+void ModelEdit::on_plotCB_13_toggled(bool checked)
+{
+    plot_curve[12] = checked;
+    drawCurve();
+}
+
+void ModelEdit::on_plotCB_14_toggled(bool checked)
+{
+    plot_curve[13] = checked;
+    drawCurve();
+}
+
+void ModelEdit::on_plotCB_15_toggled(bool checked)
+{
+    plot_curve[14] = checked;
+    drawCurve();
+}
+
+void ModelEdit::on_plotCB_16_toggled(bool checked)
+{
+    plot_curve[15] = checked;
+    drawCurve();
+}
+
+void ModelEdit::ControlCurveSignal(bool flag)
+{
+  ui->curvePt1_1->blockSignals(flag);
+  ui->curvePt2_1->blockSignals(flag);
+  ui->curvePt3_1->blockSignals(flag);
+  ui->curvePt4_1->blockSignals(flag);
+  ui->curvePt5_1->blockSignals(flag);
+  ui->curvePt1_2->blockSignals(flag);
+  ui->curvePt2_2->blockSignals(flag);
+  ui->curvePt3_2->blockSignals(flag);
+  ui->curvePt4_2->blockSignals(flag);
+  ui->curvePt5_2->blockSignals(flag);
+  ui->curvePt1_3->blockSignals(flag);
+  ui->curvePt2_3->blockSignals(flag);
+  ui->curvePt3_3->blockSignals(flag);
+  ui->curvePt4_3->blockSignals(flag);
+  ui->curvePt5_3->blockSignals(flag);
+  ui->curvePt1_4->blockSignals(flag);
+  ui->curvePt2_4->blockSignals(flag);
+  ui->curvePt3_4->blockSignals(flag);
+  ui->curvePt4_4->blockSignals(flag);
+  ui->curvePt5_4->blockSignals(flag);
+  ui->curvePt1_5->blockSignals(flag);
+  ui->curvePt2_5->blockSignals(flag);
+  ui->curvePt3_5->blockSignals(flag);
+  ui->curvePt4_5->blockSignals(flag);
+  ui->curvePt1_6->blockSignals(flag);
+  ui->curvePt2_6->blockSignals(flag);
+  ui->curvePt3_6->blockSignals(flag);
+  ui->curvePt4_6->blockSignals(flag);
+  ui->curvePt5_6->blockSignals(flag);
+  ui->curvePt1_7->blockSignals(flag);
+  ui->curvePt2_7->blockSignals(flag);
+  ui->curvePt3_7->blockSignals(flag);
+  ui->curvePt4_7->blockSignals(flag);
+  ui->curvePt5_7->blockSignals(flag);
+  ui->curvePt1_8->blockSignals(flag);
+  ui->curvePt2_8->blockSignals(flag);
+  ui->curvePt3_8->blockSignals(flag);
+  ui->curvePt4_8->blockSignals(flag);
+  ui->curvePt5_8->blockSignals(flag);
+  ui->curvePt1_9->blockSignals(flag);
+  ui->curvePt2_9->blockSignals(flag);
+  ui->curvePt3_9->blockSignals(flag);
+  ui->curvePt4_9->blockSignals(flag);
+  ui->curvePt5_9->blockSignals(flag);
+  ui->curvePt6_9->blockSignals(flag);
+  ui->curvePt7_9->blockSignals(flag);
+  ui->curvePt8_9->blockSignals(flag);
+  ui->curvePt9_9->blockSignals(flag);
+  ui->curvePt1_10->blockSignals(flag);
+  ui->curvePt2_10->blockSignals(flag);
+  ui->curvePt3_10->blockSignals(flag);
+  ui->curvePt4_10->blockSignals(flag);
+  ui->curvePt5_10->blockSignals(flag);
+  ui->curvePt6_10->blockSignals(flag);
+  ui->curvePt7_10->blockSignals(flag);
+  ui->curvePt8_10->blockSignals(flag);
+  ui->curvePt9_10->blockSignals(flag);
+  ui->curvePt1_11->blockSignals(flag);
+  ui->curvePt2_11->blockSignals(flag);
+  ui->curvePt3_11->blockSignals(flag);
+  ui->curvePt4_11->blockSignals(flag);
+  ui->curvePt5_11->blockSignals(flag);
+  ui->curvePt6_11->blockSignals(flag);
+  ui->curvePt7_11->blockSignals(flag);
+  ui->curvePt8_11->blockSignals(flag);
+  ui->curvePt9_11->blockSignals(flag);
+  ui->curvePt1_12->blockSignals(flag);
+  ui->curvePt2_12->blockSignals(flag);
+  ui->curvePt3_12->blockSignals(flag);
+  ui->curvePt4_12->blockSignals(flag);
+  ui->curvePt5_12->blockSignals(flag);
+  ui->curvePt6_12->blockSignals(flag);
+  ui->curvePt7_12->blockSignals(flag);
+  ui->curvePt8_12->blockSignals(flag);
+  ui->curvePt9_12->blockSignals(flag);
+  ui->curvePt1_13->blockSignals(flag);
+  ui->curvePt2_13->blockSignals(flag);
+  ui->curvePt3_13->blockSignals(flag);
+  ui->curvePt4_13->blockSignals(flag);
+  ui->curvePt5_13->blockSignals(flag);
+  ui->curvePt6_13->blockSignals(flag);
+  ui->curvePt7_13->blockSignals(flag);
+  ui->curvePt8_13->blockSignals(flag);
+  ui->curvePt9_13->blockSignals(flag);
+  ui->curvePt1_14->blockSignals(flag);
+  ui->curvePt2_14->blockSignals(flag);
+  ui->curvePt3_14->blockSignals(flag);
+  ui->curvePt4_14->blockSignals(flag);
+  ui->curvePt5_14->blockSignals(flag);
+  ui->curvePt6_14->blockSignals(flag);
+  ui->curvePt7_14->blockSignals(flag);
+  ui->curvePt8_14->blockSignals(flag);
+  ui->curvePt9_14->blockSignals(flag);
+  ui->curvePt1_15->blockSignals(flag);
+  ui->curvePt2_15->blockSignals(flag);
+  ui->curvePt3_15->blockSignals(flag);
+  ui->curvePt4_15->blockSignals(flag);
+  ui->curvePt5_15->blockSignals(flag);
+  ui->curvePt6_15->blockSignals(flag);
+  ui->curvePt7_15->blockSignals(flag);
+  ui->curvePt8_15->blockSignals(flag);
+  ui->curvePt9_15->blockSignals(flag);
+  ui->curvePt1_16->blockSignals(flag);
+  ui->curvePt2_16->blockSignals(flag);
+  ui->curvePt3_16->blockSignals(flag);
+  ui->curvePt4_16->blockSignals(flag);
+  ui->curvePt5_16->blockSignals(flag);
+  ui->curvePt6_16->blockSignals(flag);
+  ui->curvePt7_16->blockSignals(flag);
+  ui->curvePt8_16->blockSignals(flag);
+  ui->curvePt9_16->blockSignals(flag);
+}
+
+
 

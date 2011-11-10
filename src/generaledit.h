@@ -22,6 +22,7 @@ private:
     EEPFILE *eeFile;
 
     EEGeneral g_eeGeneral;
+    int StudWeight1,StudWeight2, StudWeight3, StudWeight4;
 
 signals:
     void modelValuesChanged();
