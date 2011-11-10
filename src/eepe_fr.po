@@ -2011,9 +2011,9 @@ msgid "Function"
 msgstr "Fonction"
 
 #, qt-format
-msgctxt "ModelEdit|"
-msgid "Curve %1"
-msgstr "Courbe %1"
+#~ msgctxt "ModelEdit|"
+#~ msgid "Curve %1"
+#~ msgstr "Courbe %1"
 
 msgctxt "ModelEdit|"
 msgid "Curve 10"
@@ -2315,6 +2315,11 @@ msgstr ""
 
 msgctxt "ModelEdit|"
 msgid "DSM2"
+msgstr ""
+
+#, qt-format
+msgctxt "ModelEdit|"
+msgid "Editing curve %1"
 msgstr ""
 
 msgctxt "QObject|"

@@ -1770,7 +1770,7 @@ Gauche</translation>
     </message>
     <message>
         <source>Curve %1</source>
-        <translation>Courbe %1</translation>
+        <translation type="obsolete">Courbe %1</translation>
     </message>
     <message>
         <source>Curve 10</source>
@@ -2068,6 +2068,10 @@ Droite</translation>
     </message>
     <message>
         <source>DSM2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Editing curve %1</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
