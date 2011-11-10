@@ -490,17 +490,17 @@ msgctxt "GeneralEdit|"
 msgid "No Keys"
 msgstr "Touches silencieuses"
 
-msgctxt "GeneralEdit|"
-msgid "Normal"
-msgstr "Normal"
+#~ msgctxt "GeneralEdit|"
+#~ msgid "Normal"
+#~ msgstr "Normal"
 
 msgctxt "GeneralEdit|"
 msgid "Long"
 msgstr "Long"
 
-msgctxt "GeneralEdit|"
-msgid "Extra Long"
-msgstr "Extra long"
+#~ msgctxt "GeneralEdit|"
+#~ msgid "Extra Long"
+#~ msgstr "Extra long"
 
 msgctxt "GeneralEdit|"
 msgid "PPM Multiplier"
@@ -509,10 +509,6 @@ msgstr "Coeff. multiplicateur PPM"
 msgctxt "GeneralEdit|"
 msgid "Owner Name"
 msgstr "Nom du propriétaire"
-
-msgctxt "GeneralEdit|"
-msgid "Speaker Pitch (spkr versions)"
-msgstr ""
 
 msgctxt "GeneralEdit|"
 msgid "Trainer"
@@ -553,6 +549,46 @@ msgstr ""
 
 msgctxt "GeneralEdit|"
 msgid "Bandgap Measuring Enable"
+msgstr ""
+
+msgctxt "GeneralEdit|"
+msgid "xShort"
+msgstr ""
+
+msgctxt "GeneralEdit|"
+msgid "Short"
+msgstr ""
+
+msgctxt "GeneralEdit|"
+msgid "Norm"
+msgstr ""
+
+msgctxt "GeneralEdit|"
+msgid "xLong"
+msgstr ""
+
+msgctxt "GeneralEdit|"
+msgid "Speaker Pitch (spkr only)"
+msgstr ""
+
+msgctxt "GeneralEdit|"
+msgid "Sound Mode"
+msgstr ""
+
+msgctxt "GeneralEdit|"
+msgid "Haptic Strength (spkr only)"
+msgstr ""
+
+msgctxt "GeneralEdit|"
+msgid "Beeper"
+msgstr ""
+
+msgctxt "GeneralEdit|"
+msgid "PiSpkr"
+msgstr ""
+
+msgctxt "GeneralEdit|"
+msgid "PcmWav"
 msgstr ""
 
 msgctxt "MainWindow|"

@@ -389,7 +389,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Normal</source>
-        <translation>Normal</translation>
+        <translation type="obsolete">Normal</translation>
     </message>
     <message>
         <source>Long</source>
@@ -397,7 +397,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Extra Long</source>
-        <translation>Extra long</translation>
+        <translation type="obsolete">Extra long</translation>
     </message>
     <message>
         <source>PPM Multiplier</source>
@@ -406,10 +406,6 @@ p, li { white-space: pre-wrap; }
     <message>
         <source>Owner Name</source>
         <translation>Nom du propriétaire</translation>
-    </message>
-    <message>
-        <source>Speaker Pitch (spkr versions)</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Trainer</source>
@@ -449,6 +445,46 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Bandgap Measuring Enable</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>xShort</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Short</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Norm</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>xLong</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Speaker Pitch (spkr only)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Sound Mode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Haptic Strength (spkr only)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Beeper</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>PiSpkr</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>PcmWav</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
