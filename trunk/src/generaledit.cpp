@@ -82,6 +82,11 @@ GeneralEdit::GeneralEdit(EEPFILE *eFile, QWidget *parent) :
     ui->ana5Pos->setValue(g_eeGeneral.calibSpanPos[4]);
     ui->ana6Pos->setValue(g_eeGeneral.calibSpanPos[5]);
     ui->ana7Pos->setValue(g_eeGeneral.calibSpanPos[6]);
+    
+		ui->weightSB_1->findChild<QLineEdit*>()->setReadOnly(true);
+    ui->weightSB_2->findChild<QLineEdit*>()->setReadOnly(true);
+    ui->weightSB_3->findChild<QLineEdit*>()->setReadOnly(true);
+    ui->weightSB_4->findChild<QLineEdit*>()->setReadOnly(true);
 
     updateTrianerTab();
 
@@ -142,21 +147,25 @@ void GeneralEdit::updateTrianerTab()
     ui->weightSB_1->setValue(g_eeGeneral.trainer.mix[0].studWeight*13/4);
     ui->sourceCB_1->setCurrentIndex(g_eeGeneral.trainer.mix[0].srcChn);
     populateSwitchCB(ui->swtchCB_1,g_eeGeneral.trainer.mix[0].swtch);
+    StudWeight1=g_eeGeneral.trainer.mix[0].studWeight*13/4;
 
     ui->modeCB_2->setCurrentIndex(g_eeGeneral.trainer.mix[1].mode);
     ui->weightSB_2->setValue(g_eeGeneral.trainer.mix[1].studWeight*13/4);
     ui->sourceCB_2->setCurrentIndex(g_eeGeneral.trainer.mix[1].srcChn);
     populateSwitchCB(ui->swtchCB_2,g_eeGeneral.trainer.mix[1].swtch);
+    StudWeight2=g_eeGeneral.trainer.mix[1].studWeight*13/4;
 
     ui->modeCB_3->setCurrentIndex(g_eeGeneral.trainer.mix[2].mode);
     ui->weightSB_3->setValue(g_eeGeneral.trainer.mix[2].studWeight*13/4);
     ui->sourceCB_3->setCurrentIndex(g_eeGeneral.trainer.mix[2].srcChn);
     populateSwitchCB(ui->swtchCB_3,g_eeGeneral.trainer.mix[2].swtch);
+    StudWeight3=g_eeGeneral.trainer.mix[2].studWeight*13/4;
 
     ui->modeCB_4->setCurrentIndex(g_eeGeneral.trainer.mix[0].mode);
     ui->weightSB_4->setValue(g_eeGeneral.trainer.mix[3].studWeight*13/4);
     ui->sourceCB_4->setCurrentIndex(g_eeGeneral.trainer.mix[3].srcChn);
     populateSwitchCB(ui->swtchCB_4,g_eeGeneral.trainer.mix[3].swtch);
+    StudWeight4=g_eeGeneral.trainer.mix[3].studWeight*13/4;
 
     ui->trainerCalib_1->setValue(g_eeGeneral.trainer.calib[0]);
     ui->trainerCalib_2->setValue(g_eeGeneral.trainer.calib[1]);
@@ -169,22 +178,22 @@ void GeneralEdit::updateTrianerTab()
 void GeneralEdit::trainerTabValueChanged()
 {
     g_eeGeneral.trainer.mix[0].mode       = ui->modeCB_1->currentIndex();
-    g_eeGeneral.trainer.mix[0].studWeight = ui->weightSB_1->value()*4/13;
+//    g_eeGeneral.trainer.mix[0].studWeight = ui->weightSB_1->value()*4/13;
     g_eeGeneral.trainer.mix[0].srcChn     = ui->sourceCB_1->currentIndex();
     g_eeGeneral.trainer.mix[0].swtch      = ui->swtchCB_1->currentIndex()-MAX_DRSWITCH;
 
     g_eeGeneral.trainer.mix[1].mode       = ui->modeCB_2->currentIndex();
-    g_eeGeneral.trainer.mix[1].studWeight = ui->weightSB_2->value()*4/13;
+//    g_eeGeneral.trainer.mix[1].studWeight = ui->weightSB_2->value()*4/13;
     g_eeGeneral.trainer.mix[1].srcChn     = ui->sourceCB_2->currentIndex();
     g_eeGeneral.trainer.mix[1].swtch      = ui->swtchCB_2->currentIndex()-MAX_DRSWITCH;
 
     g_eeGeneral.trainer.mix[2].mode       = ui->modeCB_3->currentIndex();
-    g_eeGeneral.trainer.mix[2].studWeight = ui->weightSB_3->value()*4/13;
+//    g_eeGeneral.trainer.mix[2].studWeight = ui->weightSB_3->value()*4/13;
     g_eeGeneral.trainer.mix[2].srcChn     = ui->sourceCB_3->currentIndex();
     g_eeGeneral.trainer.mix[2].swtch      = ui->swtchCB_3->currentIndex()-MAX_DRSWITCH;
 
     g_eeGeneral.trainer.mix[3].mode       = ui->modeCB_4->currentIndex();
-    g_eeGeneral.trainer.mix[3].studWeight = ui->weightSB_4->value()*4/13;
+//    g_eeGeneral.trainer.mix[3].studWeight = ui->weightSB_4->value()*4/13;
     g_eeGeneral.trainer.mix[3].srcChn     = ui->sourceCB_4->currentIndex();
     g_eeGeneral.trainer.mix[3].swtch      = ui->swtchCB_4->currentIndex()-MAX_DRSWITCH;
 
@@ -200,26 +209,56 @@ void GeneralEdit::trainerTabValueChanged()
 
 void GeneralEdit::validateWeightSB()
 {
-    int i;
-
     ui->weightSB_1->blockSignals(true);
     ui->weightSB_2->blockSignals(true);
     ui->weightSB_3->blockSignals(true);
     ui->weightSB_4->blockSignals(true);
 
-    i = ui->weightSB_1->value()*4/13;
-    ui->weightSB_1->setValue(i*13/4);
-
-    i = ui->weightSB_2->value()*4/13;
-    ui->weightSB_2->setValue(i*13/4);
-
-    i = ui->weightSB_3->value()*4/13;
-    ui->weightSB_3->setValue(i*13/4);
-
-    i = ui->weightSB_4->value()*4/13;
-    ui->weightSB_4->setValue(i*13/4);
-
-    ui->weightSB_1->blockSignals(false);
+    if ((ui->weightSB_1->value()>StudWeight1) && (g_eeGeneral.trainer.mix[0].studWeight<31))
+    {
+      g_eeGeneral.trainer.mix[0].studWeight++;
+    }
+    else if ((ui->weightSB_1->value()<StudWeight1) && (g_eeGeneral.trainer.mix[0].studWeight>-31))
+    {
+      g_eeGeneral.trainer.mix[0].studWeight--;
+    }
+    ui->weightSB_1->setValue(g_eeGeneral.trainer.mix[0].studWeight*13/4);
+    StudWeight1=ui->weightSB_1->value();
+    
+    if ((ui->weightSB_2->value()>StudWeight2) && (g_eeGeneral.trainer.mix[1].studWeight<31))
+		{
+      g_eeGeneral.trainer.mix[1].studWeight++;
+    }
+		else if ((ui->weightSB_2->value()<StudWeight2) && (g_eeGeneral.trainer.mix[1].studWeight>-31))
+		{
+      g_eeGeneral.trainer.mix[1].studWeight--;
+    }
+    ui->weightSB_2->setValue(g_eeGeneral.trainer.mix[1].studWeight*13/4);
+    StudWeight2=ui->weightSB_2->value();
+ 
+    if ((ui->weightSB_3->value()>StudWeight3) && (g_eeGeneral.trainer.mix[2].studWeight<31))
+		{
+      g_eeGeneral.trainer.mix[2].studWeight++;
+    }
+		else if ((ui->weightSB_3->value()<StudWeight3) && (g_eeGeneral.trainer.mix[2].studWeight>-31))
+		{
+      g_eeGeneral.trainer.mix[2].studWeight--;
+    }
+    ui->weightSB_3->setValue(g_eeGeneral.trainer.mix[2].studWeight*13/4);
+    StudWeight3=ui->weightSB_3->value();
+    
+    if ((ui->weightSB_4->value()>StudWeight4) && (g_eeGeneral.trainer.mix[3].studWeight<31))
+		{
+      g_eeGeneral.trainer.mix[3].studWeight++;
+    }
+		else if ((ui->weightSB_4->value()<StudWeight4)  && (g_eeGeneral.trainer.mix[3].studWeight>-31))
+		{
+      g_eeGeneral.trainer.mix[3].studWeight--;
+    }
+    ui->weightSB_4->setValue(g_eeGeneral.trainer.mix[3].studWeight*13/4);
+    StudWeight4=ui->weightSB_4->value();    
+    
+		ui->weightSB_1->blockSignals(false);
     ui->weightSB_2->blockSignals(false);
     ui->weightSB_3->blockSignals(false);
     ui->weightSB_4->blockSignals(false);

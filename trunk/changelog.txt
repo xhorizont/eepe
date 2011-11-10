@@ -11,6 +11,13 @@ description here
 
 ******************************************
 CHANGELOG: 09-11-2011 MPB
+Really fix the delay problem
+Tidy up reversed throttle and trim settings
+Trainer weight setting changed (RM)
+Enhanced Curve Editing (RM)
+
+******************************************
+CHANGELOG: 09-11-2011 MPB
 Curve editing updated
 Fix delay problem
 Fix Reversed throttle with throttle trim bug
