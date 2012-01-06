@@ -51,6 +51,7 @@
 #include <QtGui>
 #include "pers.h"
 #include "myeeprom.h"
+#include "helpers.h"
 
 #define EEPE_EEPROM_FILE_HEADER  "EEPE EEPROM FILE"
 #define EEPE_MODEL_FILE_HEADER  "EEPE MODEL FILE"
@@ -113,8 +114,8 @@ protected:
 private slots:
     void documentWasModified();
     void refreshList();
-    bool saveiHEX(QString fileName, quint8 * data, int datalen, QString header="", int notesIndex=NOTES_NONE);
-    bool loadiHEX(QString fileName, quint8 * data, int datalen, QString header="");
+//    bool saveiHEX(QString fileName, quint8 * data, int datalen, QString header="", int notesIndex=NOTES_NONE);
+//    bool loadiHEX(QString fileName, quint8 * data, int datalen, QString header="");
 
 
 

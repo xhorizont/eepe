@@ -54,6 +54,7 @@
 #include "preferencesdialog.h"
 #include "fusesdialog.h"
 #include "downloaddialog.h"
+#include "customizesplashdialog.h"
 #include "stamp-eepe.h"
 
 #define DONATE_STR "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=B9RNATGH7DTQ6"
@@ -750,6 +751,12 @@ void MainWindow::saveModelToFile()
         activeMdiChild()->saveModelToFile();
 }
 
+void MainWindow::customizeSplash()
+{
+    customizeSplashDialog *csd = new customizeSplashDialog(this);
+    csd->show();
+}
+
 void MainWindow::about()
 {
     QString aboutStr = "<center><img src=\":/images/eepe-title.png\"><br>";
@@ -998,6 +1005,10 @@ void MainWindow::createActions()
     saveModelToFileAct = new QAction(QIcon(":/images/save_model.png"), tr("S&ave Model/Settings"), this);
     saveModelToFileAct->setStatusTip(tr("Save Model/Settings To File"));
     connect(saveModelToFileAct, SIGNAL(triggered()), this, SLOT(saveModelToFile()));
+
+    customizeSplashAct = new QAction(QIcon(":/images/c_home.png"), tr("Cu&stomize Splash Screen"), this);
+    customizeSplashAct->setStatusTip(tr("Customize Splash Screen"));
+    connect(customizeSplashAct, SIGNAL(triggered()), this, SLOT(customizeSplash()));
 }
 
 void MainWindow::createMenus()
@@ -1046,6 +1057,8 @@ void MainWindow::createMenus()
     helpMenu = menuBar()->addMenu(tr("&Help"));
     helpMenu->addAction(showEr9xManualAct);
     helpMenu->addSeparator();
+    helpMenu->addAction(customizeSplashAct);
+    helpMenu->addSeparator();
     helpMenu->addAction(aboutAct);
     helpMenu->addAction(donatorsAct);
     helpMenu->addSeparator();
@@ -1084,6 +1097,7 @@ void MainWindow::createToolBars()
 
     helpToolBar = addToolBar(tr("Help"));
     helpToolBar->addAction(showEr9xManualAct);
+    helpToolBar->addAction(customizeSplashAct);
     helpToolBar->addAction(aboutAct);
     helpToolBar->addAction(donatorsAct);
     helpToolBar->addAction(checkForUpdatesAct);

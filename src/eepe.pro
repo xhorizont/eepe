@@ -19,7 +19,8 @@ HEADERS += mainwindow.h \
     fusesdialog.h \
     mixerslist.h \
     downloaddialog.h \
-    stamp-eepe.h
+    stamp-eepe.h \
+    customizesplashdialog.h
 SOURCES += main.cpp \
     mainwindow.cpp \
     file.cpp \
@@ -39,7 +40,8 @@ SOURCES += main.cpp \
     preferencesdialog.cpp \
     fusesdialog.cpp \
     mixerslist.cpp \
-    downloaddialog.cpp
+    downloaddialog.cpp \
+    customizesplashdialog.cpp
 RESOURCES += eepe.qrc
 TARGET = eepe
 
@@ -63,7 +65,8 @@ FORMS += modeledit.ui \
     printdialog.ui \
     preferencesdialog.ui \
     fusesdialog.ui \
-    downloaddialog.ui
+    downloaddialog.ui \
+    customizesplashdialog.ui
 win32:RC_FILE += icon.rc
 
 
