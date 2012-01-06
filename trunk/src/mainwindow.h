@@ -107,6 +107,7 @@ private slots:
     void setActiveSubWindow(QWidget *window);
     void loadModelFromFile();
     void saveModelToFile();
+    void customizeSplash();
 
 
 private:
@@ -180,6 +181,7 @@ private:
     QAction *showEr9xManualAct;
     QAction *loadModelFromFileAct;
     QAction *saveModelToFileAct;
+    QAction *customizeSplashAct;
 
     //QAction *aboutQtAct;
 };

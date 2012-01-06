@@ -162,14 +162,6 @@ void MdiChild::refreshList()
 
 }
 
-int getValueFromLine(const QString &line, int pos, int len=2)
-{
-    bool ok;
-    int hex = line.mid(pos,len).toInt(&ok, 16);
-    return ok ? hex : -1;
-}
-
-
 void MdiChild::cut()
 {
     copy();
@@ -293,178 +285,6 @@ void MdiChild::paste()
 
 }
 
-QString iHEXLine(quint8 * data, quint16 addr, quint8 len)
-{
-    QString str = QString(":%1%2000").arg(len,2,16,QChar('0')).arg(addr,4,16,QChar('0')); //write start, bytecount (32), address and record type
-    quint8 chkSum = 0;
-    chkSum = -len; //-bytecount; recordtype is zero
-    chkSum -= addr & 0xFF;
-    chkSum -= addr >> 8;
-    for(int j=0; j<len; j++)
-    {
-        str += QString("%1").arg(data[addr+j],2,16,QChar('0'));
-        chkSum -= data[addr+j];
-    }
-
-    str += QString("%1").arg(chkSum,2,16,QChar('0'));
-    return str.toUpper(); // output to file and lf;
-}
-
-bool MdiChild::loadiHEX(QString fileName, quint8 * data, int datalen, QString header)
-{
-    //load from intel hex type file
-    QFile file(fileName);
-
-    if(!file.exists())
-    {
-        QMessageBox::critical(this, tr("Error"),tr("Unable to find file %1!").arg(fileName));
-        return false;
-    }
-
-    if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {  //reading HEX TEXT file
-        QMessageBox::critical(this, tr("Error"),
-                              tr("Error opening file %1:\n%2.")
-                              .arg(fileName)
-                              .arg(file.errorString()));
-        return false;
-    }
-
-    memset(data,0,datalen);
-
-    QTextStream in(&file);
-
-    if(!header.isEmpty())
-    {
-        QString hline = in.readLine();
-
-        if(hline!=header)
-        {
-            QMessageBox::critical(this, tr("Error"),
-                                  tr("Invalid EEPE File Format %1")
-                                  .arg(fileName));
-            file.close();
-            return false;
-        }
-    }
-
-    while (!in.atEnd())
-    {
-        QString line = in.readLine();
-
-        if(line.left(1)!=":") continue;
-
-        int byteCount = getValueFromLine(line,1);
-        int address = getValueFromLine(line,3,4);
-        int recType = getValueFromLine(line,7);
-
-        if(byteCount<0 || address<0 || recType<0)
-        {
-            QMessageBox::critical(this, tr("Error"),tr("Error reading file %1!").arg(fileName));
-            file.close();
-            return false;
-        }
-
-        QByteArray ba;
-        ba.clear();
-
-        quint8 chkSum = 0;
-        chkSum -= byteCount;
-        chkSum -= recType;
-        chkSum -= address & 0xFF;
-        chkSum -= address >> 8;
-        for(int i=0; i<byteCount; i++)
-        {
-            quint8 v = getValueFromLine(line,(i*2)+9) & 0xFF;
-            chkSum -= v;
-            ba.append(v);
-        }
-
-
-        quint8 retV = getValueFromLine(line,(byteCount*2)+9) & 0xFF;
-        if(chkSum!=retV) {
-            QMessageBox::critical(this, tr("Error"),tr("Checksum Error reading file %1!").arg(fileName));
-            file.close();
-            return false;
-        }
-
-        if((recType == 0x00) && ((address+byteCount)<=datalen)) //data record - ba holds record
-            memcpy(&data[address],ba.data(),byteCount);
-
-    }
-
-    file.close();
-    return true;
-}
-
-bool MdiChild::saveiHEX(QString fileName, quint8 * data, int datalen, QString header, int notesIndex)
-{
-    QFile file(fileName);
-
-
-    //open file
-    if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
-        QMessageBox::warning(this, tr("Error"),
-                             tr("Cannot write file %1:\n%2.")
-                             .arg(fileName)
-                             .arg(file.errorString()));
-        return false;
-    }
-
-    QTextStream out(&file);
-
-    //write file header in Intel HEX format
-    if(!header.isEmpty())
-    {
-        out << header << "\n";
-    }
-
-    int addr = 0;
-
-    while (addr<datalen)
-    {
-        int llen = 32;
-        if((datalen-addr)<llen)
-            llen = datalen-addr;
-
-        out << iHEXLine(data, addr, llen) << "\n";
-
-        addr += llen;
-    }
-
-    out << ":00000001FF";  // write EOF
-
-//    if(notesIndex==NOTES_ALL)
-//    {
-//        out << "\n" << QString("%1 LISTS").arg(fNotes.size()) << "\n";
-
-//        int idx = 0;
-//        foreach(QStringList qsl, fNotes)
-//        {
-//            out << QString("%1 ITEM#").arg(idx) << "\n";
-//            out << QString("%1 ITEM SIZE").arg(qsl.size()) << "\n";
-//            foreach(QString nt, qsl)
-//            {
-//                out << nt << "\n";
-//            }
-//            idx++;
-//        }
-//    }
-//    else if(notesIndex>NOTES_NONE)
-//    {
-//        out << "\n";
-//        out << QString("1 LISTS") << "\n";
-//        out << QString("0 ITEM#") << "\n";
-//        out << QString("%1 ITEM SIZE").arg(fNotes[notesIndex].size()) << "\n";
-//        foreach(QString nt, fNotes[notesIndex])
-//        {
-//            out << nt << "\n";
-//        }
-//    }
-
-    file.close();
-
-    return true;
-}
 
 bool MdiChild::loadModelFromFile(QString fn)
 {
@@ -533,7 +353,7 @@ bool MdiChild::loadModelFromFile(QString fn)
 
     if(genfile)
     {
-        if(!loadiHEX(fileName, (quint8*)&temp, sizeof(EEGeneral), EEPE_GENERAL_FILE_HEADER))
+        if(!loadiHEX(this, fileName, (quint8*)&temp, sizeof(EEGeneral), EEPE_GENERAL_FILE_HEADER))
             return false;
 
         if(!eeFile.putGeneralSettings((EEGeneral*)&temp))
@@ -545,7 +365,7 @@ bool MdiChild::loadModelFromFile(QString fn)
     }
     else
     {
-        if(!loadiHEX(fileName, (quint8*)&temp, sizeof(ModelData), EEPE_MODEL_FILE_HEADER))
+        if(!loadiHEX(this, fileName, (quint8*)&temp, sizeof(ModelData), EEPE_MODEL_FILE_HEADER))
             return false;
 
         if(!eeFile.putModel((ModelData*)&temp,cmod))
@@ -610,9 +430,9 @@ void MdiChild::saveModelToFile()
     settings.setValue("lastDir",QFileInfo(fileName).dir().absolutePath());
 
     if(genfile)
-        saveiHEX(fileName, (quint8*)&tgen, sizeof(tgen), EEPE_GENERAL_FILE_HEADER);
+        saveiHEX(this, fileName, (quint8*)&tgen, sizeof(tgen), EEPE_GENERAL_FILE_HEADER);
     else
-        saveiHEX(fileName, (quint8*)&tmod, sizeof(tmod), EEPE_MODEL_FILE_HEADER, cmod);
+        saveiHEX(this, fileName, (quint8*)&tmod, sizeof(tmod), EEPE_MODEL_FILE_HEADER, cmod);
 }
 
 void MdiChild::duplicate()
@@ -776,7 +596,7 @@ bool MdiChild::loadFile(const QString &fileName, bool resetCurrentFile)
         if(fileType==FILE_TYPE_EEPE)   // read EEPE file header
             header=EEPE_EEPROM_FILE_HEADER;
 
-        if(!loadiHEX(fileName, (quint8*)&temp, EESIZE, header))
+        if(!loadiHEX(this, fileName, (quint8*)&temp, EESIZE, header))
             return false;
 
 
@@ -878,7 +698,7 @@ bool MdiChild::saveFile(const QString &fileName, bool setCurrent)
         QString header = "";
         if(fileType==FILE_TYPE_EEPE)
             header = EEPE_EEPROM_FILE_HEADER;
-        saveiHEX(fileName, (quint8*)&temp, EESIZE, header, NOTES_ALL);
+        saveiHEX(this, fileName, (quint8*)&temp, EESIZE, header, NOTES_ALL);
 
 
         if(setCurrent) setCurrentFile(fileName);
