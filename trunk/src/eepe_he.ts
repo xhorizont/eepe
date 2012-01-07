@@ -520,541 +520,551 @@ Mode 4:
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="mainwindow.cpp" line="109"/>
+        <location filename="mainwindow.cpp" line="110"/>
         <source>eePe - EEPROM Editor</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="134"/>
-        <location filename="mainwindow.cpp" line="469"/>
+        <location filename="mainwindow.cpp" line="135"/>
+        <location filename="mainwindow.cpp" line="470"/>
         <source>File loaded</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="263"/>
-        <location filename="mainwindow.cpp" line="350"/>
-        <location filename="mainwindow.cpp" line="391"/>
+        <location filename="mainwindow.cpp" line="264"/>
+        <location filename="mainwindow.cpp" line="351"/>
+        <location filename="mainwindow.cpp" line="392"/>
         <source>Save As</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="287"/>
-        <location filename="mainwindow.cpp" line="403"/>
+        <location filename="mainwindow.cpp" line="288"/>
+        <location filename="mainwindow.cpp" line="404"/>
         <source>No updates available at this time.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="196"/>
-        <location filename="mainwindow.cpp" line="293"/>
-        <location filename="mainwindow.cpp" line="376"/>
-        <location filename="mainwindow.cpp" line="409"/>
+        <location filename="mainwindow.cpp" line="197"/>
+        <location filename="mainwindow.cpp" line="294"/>
+        <location filename="mainwindow.cpp" line="377"/>
+        <location filename="mainwindow.cpp" line="410"/>
         <source>Unable to check for updates.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="174"/>
+        <location filename="mainwindow.cpp" line="175"/>
         <source>Checking for updates</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="257"/>
+        <location filename="mainwindow.cpp" line="258"/>
         <source>A new version of ER9x (%2) is available (r%1)&lt;br&gt;Would you like to download it?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="391"/>
+        <location filename="mainwindow.cpp" line="392"/>
         <source>Executable (*.exe)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="422"/>
+        <location filename="mainwindow.cpp" line="423"/>
         <source>Would you like to launch the installer?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="455"/>
+        <location filename="mainwindow.cpp" line="456"/>
         <source>Open</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="479"/>
-        <location filename="mainwindow.cpp" line="485"/>
+        <location filename="mainwindow.cpp" line="480"/>
+        <location filename="mainwindow.cpp" line="486"/>
         <source>File saved</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="554"/>
+        <location filename="mainwindow.cpp" line="555"/>
         <source>Read EEPROM From Tx</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="577"/>
+        <location filename="mainwindow.cpp" line="578"/>
         <source>Choose file to write to EEPROM memory</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="582"/>
+        <location filename="mainwindow.cpp" line="583"/>
         <source>Write %1 to EEPROM memory?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="611"/>
+        <location filename="mainwindow.cpp" line="612"/>
         <source>Choose file to write to flash memory</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="619"/>
+        <location filename="mainwindow.cpp" line="620"/>
         <source>Write %1 to flash memory?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="647"/>
+        <location filename="mainwindow.cpp" line="648"/>
         <source>Read EEPROM memory to File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="678"/>
+        <location filename="mainwindow.cpp" line="679"/>
         <source>Read Flash to File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="756"/>
+        <location filename="mainwindow.cpp" line="763"/>
         <source>Copyright</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="758"/>
+        <location filename="mainwindow.cpp" line="765"/>
         <source>If you&apos;ve found this program and/or the er9x firmware useful please support by</source>
         <oldsource>If you&apos;ve found this program and/or the Firmware useful please support by</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="760"/>
+        <location filename="mainwindow.cpp" line="767"/>
         <source>donating</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="762"/>
+        <location filename="mainwindow.cpp" line="769"/>
         <source>About eePe</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="809"/>
+        <location filename="mainwindow.cpp" line="816"/>
         <source>&amp;%1 %2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="812"/>
+        <location filename="mainwindow.cpp" line="819"/>
         <source>%1 %2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="839"/>
+        <location filename="mainwindow.cpp" line="846"/>
         <source>&amp;New</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="841"/>
+        <location filename="mainwindow.cpp" line="848"/>
         <source>Create a new file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="844"/>
+        <location filename="mainwindow.cpp" line="851"/>
         <source>&amp;Open...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="846"/>
+        <location filename="mainwindow.cpp" line="853"/>
         <source>Open an existing file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="849"/>
+        <location filename="mainwindow.cpp" line="856"/>
         <source>&amp;Save</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="851"/>
+        <location filename="mainwindow.cpp" line="858"/>
         <source>Save the document to disk</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="854"/>
+        <location filename="mainwindow.cpp" line="861"/>
         <source>Save &amp;As...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="856"/>
+        <location filename="mainwindow.cpp" line="863"/>
         <source>Save the document under a new name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="859"/>
+        <location filename="mainwindow.cpp" line="866"/>
         <source>&amp;Preferences...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="860"/>
+        <location filename="mainwindow.cpp" line="867"/>
         <source>Edit general preferences</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="863"/>
+        <location filename="mainwindow.cpp" line="870"/>
         <source>&amp;Check for updates...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="864"/>
+        <location filename="mainwindow.cpp" line="871"/>
         <source>Check for new version of eePe/er9x</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="868"/>
+        <location filename="mainwindow.cpp" line="875"/>
         <source>E&amp;xit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="870"/>
+        <location filename="mainwindow.cpp" line="877"/>
         <source>Exit the application</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="874"/>
+        <location filename="mainwindow.cpp" line="881"/>
         <source>Cu&amp;t</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="876"/>
+        <location filename="mainwindow.cpp" line="883"/>
         <source>Cut the current selection&apos;s contents to the clipboard</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="880"/>
+        <location filename="mainwindow.cpp" line="887"/>
         <source>&amp;Copy</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="882"/>
+        <location filename="mainwindow.cpp" line="889"/>
         <source>Copy the current selection&apos;s contents to the clipboard</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="886"/>
+        <location filename="mainwindow.cpp" line="893"/>
         <source>&amp;Paste</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="888"/>
+        <location filename="mainwindow.cpp" line="895"/>
         <source>Paste the clipboard&apos;s contents into the current selection</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="893"/>
+        <location filename="mainwindow.cpp" line="900"/>
         <source>&amp;Write EEPROM To Tx</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="894"/>
+        <location filename="mainwindow.cpp" line="901"/>
         <source>Ctrl+Alt+W</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="895"/>
+        <location filename="mainwindow.cpp" line="902"/>
         <source>Write EEPROM to transmitter</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="898"/>
+        <location filename="mainwindow.cpp" line="905"/>
         <source>&amp;Read EEPROM From Tx</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="899"/>
+        <location filename="mainwindow.cpp" line="906"/>
         <source>Ctrl+Alt+R</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="900"/>
+        <location filename="mainwindow.cpp" line="907"/>
         <source>Read EEPROM from transmitter</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="903"/>
+        <location filename="mainwindow.cpp" line="910"/>
         <source>Write Flash memory</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="904"/>
+        <location filename="mainwindow.cpp" line="911"/>
         <source>Write flash memory to transmitter</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="907"/>
+        <location filename="mainwindow.cpp" line="914"/>
         <source>Write EEPROM memory from file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="908"/>
+        <location filename="mainwindow.cpp" line="915"/>
         <source>Write EEPROM memory from file to transmitter</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="911"/>
+        <location filename="mainwindow.cpp" line="918"/>
         <source>Read EEPROM memory to file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="912"/>
+        <location filename="mainwindow.cpp" line="919"/>
         <source>Read EEPROM memory from transmitter to file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="915"/>
+        <location filename="mainwindow.cpp" line="922"/>
         <source>Read Flash memory</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="916"/>
+        <location filename="mainwindow.cpp" line="923"/>
         <source>Read flash memory to transmitter</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="919"/>
+        <location filename="mainwindow.cpp" line="926"/>
         <source>&amp;Configure...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="920"/>
+        <location filename="mainwindow.cpp" line="927"/>
         <source>Configure burning software</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="923"/>
+        <location filename="mainwindow.cpp" line="930"/>
         <source>&amp;List programmers</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="924"/>
+        <location filename="mainwindow.cpp" line="931"/>
         <source>List available programmers</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="927"/>
+        <location filename="mainwindow.cpp" line="934"/>
         <source>&amp;Fuses...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="928"/>
+        <location filename="mainwindow.cpp" line="935"/>
         <source>Show fuses dialog</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="931"/>
+        <location filename="mainwindow.cpp" line="938"/>
         <source>&amp;Simulate</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="932"/>
+        <location filename="mainwindow.cpp" line="939"/>
         <source>Alt+S</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="933"/>
+        <location filename="mainwindow.cpp" line="940"/>
         <source>Simulate selected model.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="937"/>
+        <location filename="mainwindow.cpp" line="944"/>
         <source>&amp;Print</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="938"/>
+        <location filename="mainwindow.cpp" line="945"/>
         <source>Ctrl+P</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="939"/>
+        <location filename="mainwindow.cpp" line="946"/>
         <source>Print current model.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="943"/>
+        <location filename="mainwindow.cpp" line="950"/>
         <source>Cl&amp;ose</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="944"/>
+        <location filename="mainwindow.cpp" line="951"/>
         <source>Close the active window</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="948"/>
+        <location filename="mainwindow.cpp" line="955"/>
         <source>Close &amp;All</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="949"/>
+        <location filename="mainwindow.cpp" line="956"/>
         <source>Close all the windows</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="953"/>
+        <location filename="mainwindow.cpp" line="960"/>
         <source>&amp;Tile</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="954"/>
+        <location filename="mainwindow.cpp" line="961"/>
         <source>Tile the windows</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="957"/>
+        <location filename="mainwindow.cpp" line="964"/>
         <source>&amp;Cascade</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="958"/>
+        <location filename="mainwindow.cpp" line="965"/>
         <source>Cascade the windows</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="961"/>
+        <location filename="mainwindow.cpp" line="968"/>
         <source>Ne&amp;xt</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="963"/>
+        <location filename="mainwindow.cpp" line="970"/>
         <source>Move the focus to the next window</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="967"/>
+        <location filename="mainwindow.cpp" line="974"/>
         <source>Pre&amp;vious</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="969"/>
+        <location filename="mainwindow.cpp" line="976"/>
         <source>Move the focus to the previous window</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="977"/>
+        <location filename="mainwindow.cpp" line="984"/>
         <source>&amp;About</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="978"/>
+        <location filename="mainwindow.cpp" line="985"/>
         <source>Show the application&apos;s About box</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="981"/>
+        <location filename="mainwindow.cpp" line="988"/>
         <source>&amp;Contributors</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="982"/>
+        <location filename="mainwindow.cpp" line="989"/>
         <source>List er9x/eePe Contributors</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="986"/>
+        <location filename="mainwindow.cpp" line="993"/>
         <source>Switch layout Left/Right</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="989"/>
+        <location filename="mainwindow.cpp" line="996"/>
         <source>&amp;ER9x Users Guide</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="990"/>
+        <location filename="mainwindow.cpp" line="997"/>
         <source>Show ER9x Users Guide</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="994"/>
+        <location filename="mainwindow.cpp" line="1001"/>
         <source>&amp;Load Model/Settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="995"/>
+        <location filename="mainwindow.cpp" line="1002"/>
         <source>Load Model/Settings From File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="998"/>
+        <location filename="mainwindow.cpp" line="1005"/>
         <source>S&amp;ave Model/Settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="999"/>
+        <location filename="mainwindow.cpp" line="1006"/>
         <source>Save Model/Settings To File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1005"/>
+        <location filename="mainwindow.cpp" line="1009"/>
+        <source>Cu&amp;stomize Splash Screen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="1010"/>
+        <source>Customize Splash Screen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="1016"/>
         <source>&amp;File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="985"/>
+        <location filename="mainwindow.cpp" line="992"/>
         <source>Switch layout direction</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="275"/>
+        <location filename="mainwindow.cpp" line="276"/>
         <source>Ignore this version (r%1)?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="383"/>
+        <location filename="mainwindow.cpp" line="384"/>
         <source>A new version of eePe is available (r%1)&lt;br&gt;Would you like to download it?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1021"/>
+        <location filename="mainwindow.cpp" line="1032"/>
         <source>&amp;Edit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1026"/>
+        <location filename="mainwindow.cpp" line="1037"/>
         <source>&amp;Burn</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1040"/>
+        <location filename="mainwindow.cpp" line="1051"/>
         <source>&amp;Window</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1046"/>
+        <location filename="mainwindow.cpp" line="1057"/>
         <source>&amp;Help</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1057"/>
+        <location filename="mainwindow.cpp" line="1070"/>
         <source>File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1068"/>
+        <location filename="mainwindow.cpp" line="1081"/>
         <source>Edit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1073"/>
+        <location filename="mainwindow.cpp" line="1086"/>
         <source>Burn</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1085"/>
+        <location filename="mainwindow.cpp" line="1098"/>
         <source>Help</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1094"/>
+        <location filename="mainwindow.cpp" line="1108"/>
         <source>Ready</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1067,182 +1077,166 @@ Mode 4:
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="185"/>
+        <location filename="mdichild.cpp" line="177"/>
         <source>Delete Selected Models?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="254"/>
-        <location filename="mdichild.cpp" line="264"/>
-        <location filename="mdichild.cpp" line="320"/>
-        <location filename="mdichild.cpp" line="325"/>
-        <location filename="mdichild.cpp" line="342"/>
-        <location filename="mdichild.cpp" line="362"/>
-        <location filename="mdichild.cpp" line="385"/>
-        <location filename="mdichild.cpp" line="406"/>
-        <location filename="mdichild.cpp" line="482"/>
-        <location filename="mdichild.cpp" line="541"/>
-        <location filename="mdichild.cpp" line="553"/>
-        <location filename="mdichild.cpp" line="580"/>
-        <location filename="mdichild.cpp" line="598"/>
-        <location filename="mdichild.cpp" line="715"/>
-        <location filename="mdichild.cpp" line="734"/>
-        <location filename="mdichild.cpp" line="749"/>
-        <location filename="mdichild.cpp" line="766"/>
-        <location filename="mdichild.cpp" line="785"/>
-        <location filename="mdichild.cpp" line="804"/>
-        <location filename="mdichild.cpp" line="810"/>
-        <location filename="mdichild.cpp" line="823"/>
-        <location filename="mdichild.cpp" line="833"/>
-        <location filename="mdichild.cpp" line="891"/>
-        <location filename="mdichild.cpp" line="904"/>
-        <location filename="mdichild.cpp" line="1001"/>
+        <location filename="mdichild.cpp" line="246"/>
+        <location filename="mdichild.cpp" line="256"/>
+        <location filename="mdichild.cpp" line="302"/>
+        <location filename="mdichild.cpp" line="361"/>
+        <location filename="mdichild.cpp" line="373"/>
+        <location filename="mdichild.cpp" line="400"/>
+        <location filename="mdichild.cpp" line="418"/>
+        <location filename="mdichild.cpp" line="535"/>
+        <location filename="mdichild.cpp" line="554"/>
+        <location filename="mdichild.cpp" line="569"/>
+        <location filename="mdichild.cpp" line="586"/>
+        <location filename="mdichild.cpp" line="605"/>
+        <location filename="mdichild.cpp" line="624"/>
+        <location filename="mdichild.cpp" line="630"/>
+        <location filename="mdichild.cpp" line="643"/>
+        <location filename="mdichild.cpp" line="653"/>
+        <location filename="mdichild.cpp" line="711"/>
+        <location filename="mdichild.cpp" line="724"/>
+        <location filename="mdichild.cpp" line="821"/>
         <source>Error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="254"/>
+        <location filename="mdichild.cpp" line="246"/>
         <source>Unable set data!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="264"/>
+        <location filename="mdichild.cpp" line="256"/>
         <source>Unable set model!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="343"/>
-        <source>Invalid EEPE File Format %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="mdichild.cpp" line="385"/>
-        <source>Checksum Error reading file %1!</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="mdichild.cpp" line="483"/>
+        <location filename="mdichild.cpp" line="303"/>
         <source>Coulden&apos;t find %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="499"/>
+        <location filename="mdichild.cpp" line="319"/>
         <source>Overwrite Current Settings?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="506"/>
-        <location filename="mdichild.cpp" line="524"/>
+        <location filename="mdichild.cpp" line="326"/>
+        <location filename="mdichild.cpp" line="344"/>
         <source>Open</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="517"/>
+        <location filename="mdichild.cpp" line="337"/>
         <source>Overwrite %1?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="542"/>
-        <location filename="mdichild.cpp" line="554"/>
+        <location filename="mdichild.cpp" line="362"/>
+        <location filename="mdichild.cpp" line="374"/>
         <source>Error writing to container</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="580"/>
+        <location filename="mdichild.cpp" line="400"/>
         <source>Error Getting General Settings Data</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="586"/>
+        <location filename="mdichild.cpp" line="406"/>
         <source>Save Settings As</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="598"/>
+        <location filename="mdichild.cpp" line="418"/>
         <source>Error Getting Model #%1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="604"/>
+        <location filename="mdichild.cpp" line="424"/>
         <source>Save Model As</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="699"/>
+        <location filename="mdichild.cpp" line="519"/>
         <source>Editing model %1: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="715"/>
+        <location filename="mdichild.cpp" line="535"/>
         <source>Unable to read settings!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="725"/>
+        <location filename="mdichild.cpp" line="545"/>
         <source>document%1.eepe</source>
         <oldsource>document%1.hex</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="750"/>
-        <location filename="mdichild.cpp" line="786"/>
-        <location filename="mdichild.cpp" line="834"/>
+        <location filename="mdichild.cpp" line="570"/>
+        <location filename="mdichild.cpp" line="606"/>
+        <location filename="mdichild.cpp" line="654"/>
         <source>Error loading file %1:
 File may be corrupted, old or from a different system.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="1041"/>
+        <location filename="mdichild.cpp" line="861"/>
         <source>&amp;Load Model/Settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="1041"/>
+        <location filename="mdichild.cpp" line="861"/>
         <source>Ctrl+L</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="1042"/>
+        <location filename="mdichild.cpp" line="862"/>
         <source>&amp;Save Model/Settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="1042"/>
+        <location filename="mdichild.cpp" line="862"/>
         <source>Ctrl+S</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="320"/>
-        <location filename="mdichild.cpp" line="734"/>
+        <location filename="mdichild.cpp" line="554"/>
         <source>Unable to find file %1!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="mdichild.cpp" line="362"/>
-        <source>Error reading file %1!</source>
+        <location filename="mdichild.cpp" line="374"/>
+        <source>Error writing to container</source>
+        <oldsource>Error reading file %1!</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="824"/>
+        <location filename="mdichild.cpp" line="644"/>
         <source>Error reading file %1:
 %2.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="804"/>
+        <location filename="mdichild.cpp" line="624"/>
         <source>Error reading file:
 File wrong size - %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="326"/>
-        <location filename="mdichild.cpp" line="811"/>
+        <location filename="mdichild.cpp" line="631"/>
         <source>Error opening file %1:
 %2.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="766"/>
+        <location filename="mdichild.cpp" line="586"/>
         <source>Error reading file:
 File wrong size - %1
 This might be a FW file. You might want to try burning it to the TX.
@@ -1250,118 +1244,117 @@ This might be a FW file. You might want to try burning it to the TX.
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="860"/>
+        <location filename="mdichild.cpp" line="680"/>
         <source>Save As</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="407"/>
-        <location filename="mdichild.cpp" line="892"/>
+        <location filename="mdichild.cpp" line="712"/>
         <source>Cannot write file %1:
 %2.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="905"/>
+        <location filename="mdichild.cpp" line="725"/>
         <source>Error writing file %1:
 %2.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="941"/>
-        <location filename="mdichild.cpp" line="983"/>
+        <location filename="mdichild.cpp" line="761"/>
+        <location filename="mdichild.cpp" line="803"/>
         <source>eePe</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="942"/>
+        <location filename="mdichild.cpp" line="762"/>
         <source>&apos;%1&apos; has been modified.
 Do you want to save your changes?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="984"/>
+        <location filename="mdichild.cpp" line="804"/>
         <source>Write %1 to EEPROM memory?</source>
         <oldsource>Burn %1 to transmitter?</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="1001"/>
+        <location filename="mdichild.cpp" line="821"/>
         <source>Cannot write temporary file!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="1033"/>
+        <location filename="mdichild.cpp" line="853"/>
         <source>&amp;Edit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="1035"/>
+        <location filename="mdichild.cpp" line="855"/>
         <source>&amp;Delete</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="1035"/>
+        <location filename="mdichild.cpp" line="855"/>
         <source>Delete</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="1036"/>
+        <location filename="mdichild.cpp" line="856"/>
         <source>&amp;Copy</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="1036"/>
+        <location filename="mdichild.cpp" line="856"/>
         <source>Ctrl+C</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="1037"/>
+        <location filename="mdichild.cpp" line="857"/>
         <source>&amp;Cut</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="1037"/>
+        <location filename="mdichild.cpp" line="857"/>
         <source>Ctrl+X</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="1038"/>
+        <location filename="mdichild.cpp" line="858"/>
         <source>&amp;Paste</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="1038"/>
+        <location filename="mdichild.cpp" line="858"/>
         <source>Ctrl+V</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="1039"/>
+        <location filename="mdichild.cpp" line="859"/>
         <source>D&amp;uplicate</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="1039"/>
+        <location filename="mdichild.cpp" line="859"/>
         <source>Ctrl+U</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="1044"/>
+        <location filename="mdichild.cpp" line="864"/>
         <source>Alt+S</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="1044"/>
+        <location filename="mdichild.cpp" line="864"/>
         <source>Simulate</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="1046"/>
+        <location filename="mdichild.cpp" line="866"/>
         <source>&amp;Write To Tx</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="1046"/>
+        <location filename="mdichild.cpp" line="866"/>
         <source>Ctrl+Alt+W</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2495,6 +2488,48 @@ Right</source>
         <source>Checking for updates...</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="helpers.cpp" line="151"/>
+        <location filename="helpers.cpp" line="156"/>
+        <location filename="helpers.cpp" line="173"/>
+        <location filename="helpers.cpp" line="193"/>
+        <location filename="helpers.cpp" line="216"/>
+        <location filename="helpers.cpp" line="240"/>
+        <source>Error</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="helpers.cpp" line="151"/>
+        <source>Unable to find file %1!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="helpers.cpp" line="157"/>
+        <source>Error opening file %1:
+%2.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="helpers.cpp" line="174"/>
+        <source>Invalid EEPE File Format %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="helpers.cpp" line="193"/>
+        <source>Error reading file %1!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="helpers.cpp" line="216"/>
+        <source>Checksum Error reading file %1!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="helpers.cpp" line="241"/>
+        <source>Cannot write file %1:
+%2.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>avrOutputDialog</name>
@@ -2682,6 +2717,100 @@ Please only use this if you know what you are doing.  There are no error checks 
     <message>
         <location filename="burnconfigdialog.cpp" line="186"/>
         <source>&lt;b&gt;&lt;u&gt;WARNING!&lt;/u&gt;&lt;/b&gt;&lt;br&gt;This will reset the fuses to the factory settings.&lt;br&gt;Writing fuses can mess up your radio.&lt;br&gt;Do this only if you are sure they are wrong!&lt;br&gt;Are you sure you want to continue?</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>customizeSplashDialog</name>
+    <message>
+        <location filename="customizesplashdialog.ui" line="14"/>
+        <source>Customize Splash</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="customizesplashdialog.ui" line="59"/>
+        <source>Load From HEX</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="customizesplashdialog.ui" line="66"/>
+        <source>Load Image</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="customizesplashdialog.ui" line="73"/>
+        <source>Save To Hex</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="customizesplashdialog.ui" line="84"/>
+        <source>Invert Color</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="customizesplashdialog.cpp" line="35"/>
+        <source>Open</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="customizesplashdialog.cpp" line="35"/>
+        <location filename="customizesplashdialog.cpp" line="101"/>
+        <source>HEX files (*.hex);;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="customizesplashdialog.cpp" line="45"/>
+        <location filename="customizesplashdialog.cpp" line="55"/>
+        <location filename="customizesplashdialog.cpp" line="86"/>
+        <location filename="customizesplashdialog.cpp" line="111"/>
+        <location filename="customizesplashdialog.cpp" line="123"/>
+        <source>Error</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="customizesplashdialog.cpp" line="46"/>
+        <location filename="customizesplashdialog.cpp" line="112"/>
+        <source>Error reading file %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="customizesplashdialog.cpp" line="56"/>
+        <source>Error reading image from file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="customizesplashdialog.cpp" line="81"/>
+        <source>Open Image to load</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="customizesplashdialog.cpp" line="81"/>
+        <source>Images (%1)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="customizesplashdialog.cpp" line="87"/>
+        <source>Cannot load %1.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="customizesplashdialog.cpp" line="101"/>
+        <source>Write to file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="customizesplashdialog.cpp" line="124"/>
+        <source>Could not find bitmap to replace in file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="customizesplashdialog.cpp" line="141"/>
+        <source>Save To File</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="customizesplashdialog.cpp" line="142"/>
+        <source>Successfully updated %1</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

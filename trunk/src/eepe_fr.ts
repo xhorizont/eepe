@@ -946,6 +946,14 @@ p, li { white-space: pre-wrap; }
         <source>Save Model/Settings To File</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Cu&amp;stomize Splash Screen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Customize Splash Screen</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>MdiChild</name>
@@ -1029,7 +1037,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Error reading file %1!</source>
-        <translation>Fichier %1 corrompu!</translation>
+        <translation type="obsolete">Fichier %1 corrompu!</translation>
     </message>
     <message>
         <source>Unable set model!</source>
@@ -1129,14 +1137,6 @@ File wrong size - %1</source>
 File wrong size - %1
 This might be a FW file. You might want to try burning it to the TX.
 (Burn-&gt;Write Flash Memory)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Invalid EEPE File Format %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Checksum Error reading file %1!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2081,6 +2081,38 @@ Droite</translation>
         <source>Checking for updates...</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Error</source>
+        <translation type="unfinished">Erreur</translation>
+    </message>
+    <message>
+        <source>Unable to find file %1!</source>
+        <translation type="unfinished">Fichier %1 introuvable!</translation>
+    </message>
+    <message>
+        <source>Error opening file %1:
+%2.</source>
+        <translation type="unfinished">Erreur à l&apos;ouverture du fichier %1:
+%2.</translation>
+    </message>
+    <message>
+        <source>Invalid EEPE File Format %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Error reading file %1!</source>
+        <translation type="unfinished">Fichier %1 corrompu!</translation>
+    </message>
+    <message>
+        <source>Checksum Error reading file %1!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cannot write file %1:
+%2.</source>
+        <translation type="unfinished">Ecriture fichier %1 impossible:
+%2.</translation>
+    </message>
 </context>
 <context>
     <name>avrOutputDialog</name>
@@ -2250,6 +2282,77 @@ Assurez-vous de posséder les droits en écriture sur ce dossier.</translation>
     </message>
     <message>
         <source>m328p</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>customizeSplashDialog</name>
+    <message>
+        <source>Customize Splash</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Load From HEX</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Load Image</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Save To Hex</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Invert Color</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Open</source>
+        <translation type="unfinished">Ouvrir</translation>
+    </message>
+    <message>
+        <source>HEX files (*.hex);;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Error</source>
+        <translation type="unfinished">Erreur</translation>
+    </message>
+    <message>
+        <source>Error reading file %1</source>
+        <translation type="unfinished">Fichier %1 corrompu! {1?}</translation>
+    </message>
+    <message>
+        <source>Error reading image from file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Open Image to load</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Images (%1)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cannot load %1.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Write to file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Could not find bitmap to replace in file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Save To File</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Successfully updated %1</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
