@@ -140,15 +140,16 @@ QString iHEXLine(quint8 * data, quint16 addr, quint8 len)
     return str.toUpper(); // output to file and lf;
 }
 
-bool loadiHEX(QWidget *parent, QString fileName, quint8 * data, int datalen, QString header)
+int loadiHEX(QWidget *parent, QString fileName, quint8 * data, int datalen, QString header)
 {
     //load from intel hex type file
     QFile file(fileName);
+    int finalSize = 0;
 
     if(!file.exists())
     {
         QMessageBox::critical(parent, QObject::tr("Error"),QObject::tr("Unable to find file %1!").arg(fileName));
-        return false;
+        return 0;
     }
 
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {  //reading HEX TEXT file
@@ -156,7 +157,7 @@ bool loadiHEX(QWidget *parent, QString fileName, quint8 * data, int datalen, QSt
                               QObject::tr("Error opening file %1:\n%2.")
                               .arg(fileName)
                               .arg(file.errorString()));
-        return false;
+        return 0;
     }
 
     memset(data,0,datalen);
@@ -173,7 +174,7 @@ bool loadiHEX(QWidget *parent, QString fileName, quint8 * data, int datalen, QSt
                                   QObject::tr("Invalid EEPE File Format %1")
                                   .arg(fileName));
             file.close();
-            return false;
+            return 0;
         }
     }
 
@@ -191,7 +192,7 @@ bool loadiHEX(QWidget *parent, QString fileName, quint8 * data, int datalen, QSt
         {
             QMessageBox::critical(parent, QObject::tr("Error"),QObject::tr("Error reading file %1!").arg(fileName));
             file.close();
-            return false;
+            return 0;
         }
 
         QByteArray ba;
@@ -214,16 +215,19 @@ bool loadiHEX(QWidget *parent, QString fileName, quint8 * data, int datalen, QSt
         if(chkSum!=retV) {
             QMessageBox::critical(parent, QObject::tr("Error"),QObject::tr("Checksum Error reading file %1!").arg(fileName));
             file.close();
-            return false;
+            return 0;
         }
 
         if((recType == 0x00) && ((address+byteCount)<=datalen)) //data record - ba holds record
+        {
             memcpy(&data[address],ba.data(),byteCount);
+            finalSize += byteCount;
+        }
 
     }
 
     file.close();
-    return true;
+    return finalSize;
 }
 
 bool saveiHEX(QWidget *parent, QString fileName, quint8 * data, int datalen, QString header, int notesIndex)
@@ -249,6 +253,8 @@ bool saveiHEX(QWidget *parent, QString fileName, quint8 * data, int datalen, QSt
     }
 
     int addr = 0;
+    if(notesIndex>0)
+        addr =0;
 
     while (addr<datalen)
     {

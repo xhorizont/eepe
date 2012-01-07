@@ -35,5 +35,6 @@
         <file>images/load_model.png</file>
         <file>images/save_model.png</file>
         <file>images/c_home.png</file>
+        <file>images/s9xsplash.png</file>
     </qresource>
 </RCC>

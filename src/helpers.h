@@ -17,7 +17,7 @@ QString getTimerMode(int tm);
 QString getSWName(int val);
 QString getCSWFunc(int val);
 
-bool loadiHEX(QWidget *parent, QString fileName, quint8 * data, int datalen, QString header);
+int  loadiHEX(QWidget *parent, QString fileName, quint8 * data, int datalen, QString header);
 bool saveiHEX(QWidget *parent, QString fileName, quint8 * data, int datalen, QString header, int notesIndex=0);
 
 
