@@ -10,6 +10,10 @@ description here
 ====================================================================================
 
 ******************************************
+CHANGELOG: 7-1-2012 
+Add a dialog to replace splash screen without recompiling
+
+******************************************
 CHANGELOG: 09-11-2011 MPB
 Really fix the delay problem
 Tidy up reversed throttle and trim settings
