@@ -1260,13 +1260,6 @@ File may be corrupted, old or from a different system.</source>
 %2.</translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="362"/>
-        <location filename="mdichild.cpp" line="374"/>
-        <source>Error writing to container</source>
-        <oldsource>Error reading file %1!</oldsource>
-        <translation type="unfinished">Ошибка при считывании файла %1!</translation>
-    </message>
-    <message>
         <location filename="mdichild.cpp" line="644"/>
         <source>Error reading file %1:
 %2.</source>

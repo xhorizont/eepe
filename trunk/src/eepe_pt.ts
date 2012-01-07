@@ -1273,13 +1273,6 @@ This might be a FW file. You might want to try burning it to the TX.
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="362"/>
-        <location filename="mdichild.cpp" line="374"/>
-        <source>Error writing to container</source>
-        <oldsource>Error reading file %1!</oldsource>
-        <translation type="unfinished">Erro ao ler o ficheiro %1!</translation>
-    </message>
-    <message>
         <location filename="mdichild.cpp" line="644"/>
         <source>Error reading file %1:
 %2.</source>
