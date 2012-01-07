@@ -1075,6 +1075,14 @@ msgctxt "MainWindow|"
 msgid "Save Model/Settings To File"
 msgstr ""
 
+msgctxt "MainWindow|"
+msgid "Cu&stomize Splash Screen"
+msgstr ""
+
+msgctxt "MainWindow|"
+msgid "Customize Splash Screen"
+msgstr ""
+
 msgctxt "MdiChild|"
 msgid "&Cut"
 msgstr "&Couper"
@@ -1158,9 +1166,9 @@ msgid "Delete"
 msgstr "Supprimer"
 
 #, qt-format
-msgctxt "MdiChild|"
-msgid "Error reading file %1!"
-msgstr "Fichier %1 corrompu!"
+#~ msgctxt "MdiChild|"
+#~ msgid "Error reading file %1!"
+#~ msgstr "Fichier %1 corrompu!"
 
 msgctxt "MdiChild|"
 msgid "Unable set model!"
@@ -1287,16 +1295,6 @@ msgid ""
 "File wrong size - %1\n"
 "This might be a FW file. You might want to try burning it to the TX.\n"
 "(Burn->Write Flash Memory)"
-msgstr ""
-
-#, qt-format
-msgctxt "MdiChild|"
-msgid "Invalid EEPE File Format %1"
-msgstr ""
-
-#, qt-format
-msgctxt "MdiChild|"
-msgid "Checksum Error reading file %1!"
 msgstr ""
 
 msgctxt "MdiChild|"
@@ -2326,6 +2324,49 @@ msgctxt "QObject|"
 msgid "Checking for updates..."
 msgstr ""
 
+#, fuzzy
+msgctxt "QObject|"
+msgid "Error"
+msgstr "Erreur"
+
+#, fuzzy, qt-format
+msgctxt "QObject|"
+msgid "Unable to find file %1!"
+msgstr "Fichier %1 introuvable!"
+
+#, fuzzy, qt-format
+msgctxt "QObject|"
+msgid ""
+"Error opening file %1:\n"
+"%2."
+msgstr ""
+"Erreur à l'ouverture du fichier %1:\n"
+"%2."
+
+#, qt-format
+msgctxt "QObject|"
+msgid "Invalid EEPE File Format %1"
+msgstr ""
+
+#, fuzzy, qt-format
+msgctxt "QObject|"
+msgid "Error reading file %1!"
+msgstr "Fichier %1 corrompu!"
+
+#, qt-format
+msgctxt "QObject|"
+msgid "Checksum Error reading file %1!"
+msgstr ""
+
+#, fuzzy, qt-format
+msgctxt "QObject|"
+msgid ""
+"Cannot write file %1:\n"
+"%2."
+msgstr ""
+"Ecriture fichier %1 impossible:\n"
+"%2."
+
 #, qt-format
 msgctxt "avrOutputDialog|"
 msgid "AVRDUDE done - exit code %1"
@@ -2513,6 +2554,80 @@ msgstr ""
 
 msgctxt "burnConfigDialog|"
 msgid "m328p"
+msgstr ""
+
+msgctxt "customizeSplashDialog|"
+msgid "Customize Splash"
+msgstr ""
+
+msgctxt "customizeSplashDialog|"
+msgid "Load From HEX"
+msgstr ""
+
+msgctxt "customizeSplashDialog|"
+msgid "Load Image"
+msgstr ""
+
+msgctxt "customizeSplashDialog|"
+msgid "Save To Hex"
+msgstr ""
+
+msgctxt "customizeSplashDialog|"
+msgid "Invert Color"
+msgstr ""
+
+#, fuzzy
+msgctxt "customizeSplashDialog|"
+msgid "Open"
+msgstr "Ouvrir"
+
+msgctxt "customizeSplashDialog|"
+msgid "HEX files (*.hex);;"
+msgstr ""
+
+#, fuzzy
+msgctxt "customizeSplashDialog|"
+msgid "Error"
+msgstr "Erreur"
+
+#, fuzzy, qt-format
+msgctxt "customizeSplashDialog|"
+msgid "Error reading file %1"
+msgstr "Fichier %1 corrompu! {1?}"
+
+msgctxt "customizeSplashDialog|"
+msgid "Error reading image from file"
+msgstr ""
+
+msgctxt "customizeSplashDialog|"
+msgid "Open Image to load"
+msgstr ""
+
+#, qt-format
+msgctxt "customizeSplashDialog|"
+msgid "Images (%1)"
+msgstr ""
+
+#, qt-format
+msgctxt "customizeSplashDialog|"
+msgid "Cannot load %1."
+msgstr ""
+
+msgctxt "customizeSplashDialog|"
+msgid "Write to file"
+msgstr ""
+
+msgctxt "customizeSplashDialog|"
+msgid "Could not find bitmap to replace in file"
+msgstr ""
+
+msgctxt "customizeSplashDialog|"
+msgid "Save To File"
+msgstr ""
+
+#, qt-format
+msgctxt "customizeSplashDialog|"
+msgid "Successfully updated %1"
 msgstr ""
 
 msgctxt "donatorsDialog|"
