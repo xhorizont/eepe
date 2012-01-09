@@ -1,9 +1,21 @@
 ===== Starting build =====
 Timestamp
-Sat Jan  7 09:29:56 UTC 2012
+Mon Jan  9 23:23:33 UTC 2012
 ==========================
 
-./domake: line 8: ./stamp-eepe-gen: Permission denied
+===== Updating from SVN =====
+At revision 295.
+
+===== GENERATING VERSION STAMP =====
+//Automatically generated file - do not edit
+#define DATE_STR "09.01.2012"
+#define TIME_STR "23:11:34"
+#define SUB_VERS "1-erez"
+#define SVN_VERS "trunk-r296"
+#define SVN_VER_NUM 296
+====================================
+
+
 make -f Makefile.Release clean
 make[1]: Entering directory `/home/erez/eepe/src'
 rm -f release/moc_mainwindow.cpp release/moc_modeledit.cpp release/moc_generaledit.cpp release/moc_mdichild.cpp release/moc_mixerdialog.cpp release/moc_burnconfigdialog.cpp release/moc_avroutputdialog.cpp release/moc_simulatordialog.cpp release/moc_donatorsdialog.cpp release/moc_printdialog.cpp release/moc_preferencesdialog.cpp release/moc_fusesdialog.cpp release/moc_mixerslist.cpp release/moc_downloaddialog.cpp release/moc_customizesplashdialog.cpp
@@ -2175,7 +2187,7 @@ Var: "StartMenuFolder"
 Section: "eePe" ->(SecDummy)
 SetOutPath: "$INSTDIR"
 File: "license.txt" 832 bytes
-File: "eepe.exe" 1549824 bytes
+File: "eepe.exe" 1548800 bytes
 File: "libgcc_s_dw2-1.dll" 43008 bytes
 File: "mingwm10.dll" 11362 bytes
 File: "QtCore4.dll" 2555392 bytes
@@ -2266,7 +2278,7 @@ Removing unused resources... Done!
 Generating language tables... Done!
 Generating uninstaller... Done!
 
-Output: "/home/erez/eepe/winbuild/eePeInstall.exe"
+Output: "eePeInstall.exe"
 Install: 7 pages (448 bytes), 1 section (1048 bytes), 485 instructions (13580 bytes), 264 strings (5125 bytes), 1 language table (366 bytes).
 Uninstall: 3 pages (192 bytes), 
 1 section (1048 bytes), 112 instructions (3136 bytes), 130 strings (1671 bytes), 1 language table (250 bytes).
@@ -2276,9 +2288,9 @@ Using lzma (compress whole) compression.
 
 EXE header size:               71168 / 55808 bytes
 Install code:                          (20943 bytes)
-Install data:                          (16987960 bytes)
+Install data:                          (16986936 bytes)
 Uninstall code+data:                   (20637 bytes)
-Compressed data:             5615706 / 17029540 bytes
-CRC (0x56A1A91B):                  4 / 4 bytes
+Compressed data:             5615897 / 17028516 bytes
+CRC (0x20863A28):                  4 / 4 bytes
 
-Total size:                  5686878 / 17085352 bytes (33.2%)
+Total size:                  5687069 / 17084328 bytes (33.2%)
