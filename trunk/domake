@@ -1,27 +1,82 @@
 #! /bin/bash
-echo "===== Starting build ====="
+echo "#================================================"
+echo "Starting Build"
 echo "Timestamp"
 date -u
-echo "=========================="
+echo "#================================================"
 echo
 
 ./stamp-eepe-gen
 
 
+VER=$(svn info | awk '/^Revision:/{print $2}')
+let "VER+=1"
+
 cd src
+
+echo
+echo "#================================================"
+echo "Generate Translation Files"
+echo "#================================================"
+echo
+./gen_ts
+
+
+echo
+echo "#================================================"
+echo "Build Windows Version"
+echo "#================================================"
+echo
 make clean
 qmake -spec win32-g++-cross
-make clean
 make
 
 mv release/eepe.exe ../winbuild
 
-./gen_ts
-
-make clean
-
 cd ../winbuild
 
+echo
+echo "#================================================"
+echo "Package Windows Version"
+echo "#================================================"
+echo
 makensis eePe.nsi
-
 mv eePeInstall.exe ../
+
+cd ../src
+
+echo
+echo "#================================================"
+echo "Build Linux i386 Version"
+echo "#================================================"
+echo
+#make clean
+#qmake -spec linux-g++-32 
+#sudo checkinstall -D --nodoc -y --pkgname=eepe --arch=i386 --pkgrelease=1 --pkgversion=1 --maintainer=erazz --backup=no --install=no\
+#                --requires=libqt4-gui, libqt4-network, avrdude
+
+#mv eepe_1-1_i386.deb ../eepe-i386.deb
+
+
+echo
+echo "#================================================"
+echo "Build Linux amd64 Version"
+echo "#================================================"
+echo
+#make clean
+#qmake -spec linux-g++-64
+#sudo checkinstall -D --nodoc -y --pkgname=eepe -A amd64 --pkgrelease=1 --pkgversion=1 --maintainer=erazz --backup=no --install=no\
+#                --requires="libqt4-gui, libqt4-network, avrdude"
+
+#mv eepe_1-1_amd64.deb ../eepe-amd64.deb
+
+
+echo
+echo "#================================================"
+echo "Cleaning up"
+echo "#================================================"
+echo
+make clean
+
+
+
