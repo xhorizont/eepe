@@ -5,7 +5,7 @@
 #include "helpers.h"
 
 
-#define SPLASH_MARKER "Splash"
+#define SPLASH_MARKER "Splash\0"
 #define SPLASH_WIDTH (128)
 #define SPLASH_HEIGHT (64)
 #define SPLASH_SIZE (SPLASH_WIDTH*SPLASH_HEIGHT/8)

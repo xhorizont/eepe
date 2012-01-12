@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Name=eePe
+GenericName=eePe
+Comment=EEPROM editor for er9x
+Icon=/usr/bin/eepe/icon.svg
+Exec=/usr/bin/eepe/eepe
+Terminal=false
+Type=Application
+Categories=Qt;Utility;
+
+
