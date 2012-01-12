@@ -46,12 +46,22 @@ RESOURCES += eepe.qrc
 TARGET = eepe
 
 unix {
-TARGET.path = /usr/bin/eepe
-INSTALLS = TARGET
-
 LANGS.path = /usr/bin/eepe/lang
 LANGS.files = lang/*.qm
+
+ICON.path = /usr/bin/eepe
+ICON.files += icon.svg
+
+SHORTCUT.path = /usr/share/applications/
+SHORTCUT.files += eepe.desktop
+
+BINFILE.files += eepe
+BINFILE.path = /usr/bin/eepe
+
+INSTALLS = BINFILE
 INSTALLS += LANGS
+INSTALLS += ICON
+INSTALLS += SHORTCUT
 }
 
 TEMPLATE = app

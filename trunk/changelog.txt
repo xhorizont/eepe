@@ -10,6 +10,10 @@ description here
 ====================================================================================
 
 ******************************************
+CHANGELOG: 12-1-2012 
+Fix string search for splash screen replace dialog
+
+******************************************
 CHANGELOG: 7-1-2012 
 Add a dialog to replace splash screen without recompiling
 
