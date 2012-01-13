@@ -9,9 +9,6 @@ echo
 ./stamp-eepe-gen
 
 
-VER=$(svn info | awk '/^Revision:/{print $2}')
-let "VER+=1"
-
 cd src
 
 echo
@@ -21,19 +18,20 @@ echo "#================================================"
 echo
 ./gen_ts
 
+cd ..
 
 echo
 echo "#================================================"
 echo "Build Windows Version"
 echo "#================================================"
 echo
-make clean
-qmake -spec win32-g++-cross
+cd winbuild
+qmake ../src/eepe.pro -spec win32-g++-cross
 make
+mv release/eepe.exe .
 
-mv release/eepe.exe ../winbuild
+#must copy win32-g++-cross directory to Qt mkspec directory (/usr/share/qt4/mkspecs)
 
-cd ../winbuild
 
 echo
 echo "#================================================"
@@ -43,40 +41,49 @@ echo
 makensis eePe.nsi
 mv eePeInstall.exe ../
 
-cd ../src
+#must copy .nsh file to correct position
+cd ..
 
 echo
 echo "#================================================"
 echo "Build Linux i386 Version"
 echo "#================================================"
 echo
-#make clean
-#qmake -spec linux-g++-32 
-#sudo checkinstall -D --nodoc -y --pkgname=eepe --arch=i386 --pkgrelease=1 --pkgversion=1 --maintainer=erazz --backup=no --install=no\
-#                --requires=libqt4-gui, libqt4-network, avrdude
+cd linux32build
+qmake ../src/eepe.pro -spec linux-g++-32
+make
 
-#mv eepe_1-1_i386.deb ../eepe-i386.deb
+#If build doesn't work you might need to link libraries in to /usr/bin/i386_blah/
 
+echo
+echo "#================================================"
+echo "Package Linux i386 Version"
+echo "#================================================"
+echo
+sudo checkinstall -D --nodoc -y --pkgname=eepe --arch=i386 --pkgrelease=1 --pkgversion=1 --maintainer=erazz --backup=no --install=no
+mv eepe_1-1_i386.deb ../eepe-i386.deb
+
+
+cd ..
 
 echo
 echo "#================================================"
 echo "Build Linux amd64 Version"
 echo "#================================================"
 echo
-#make clean
-#qmake -spec linux-g++-64
-#sudo checkinstall -D --nodoc -y --pkgname=eepe -A amd64 --pkgrelease=1 --pkgversion=1 --maintainer=erazz --backup=no --install=no\
-#                --requires="libqt4-gui, libqt4-network, avrdude"
-
-#mv eepe_1-1_amd64.deb ../eepe-amd64.deb
-
+cd linux64build
+qmake ../src/eepe.pro -spec linux-g++-64
+make
 
 echo
 echo "#================================================"
-echo "Cleaning up"
+echo "Package Linux amd64 Version"
 echo "#================================================"
 echo
-make clean
+sudo checkinstall -D --nodoc -y --pkgname=eepe -A amd64 --pkgrelease=1 --pkgversion=1 --maintainer=erazz --backup=no --install=no
+mv eepe_1-1_amd64.deb ../eepe-amd64.deb
+
+cd ..
 
 
 
