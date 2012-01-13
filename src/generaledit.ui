@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>662</width>
-    <height>646</height>
+    <width>667</width>
+    <height>778</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -196,14 +196,14 @@ p, li { white-space: pre-wrap; }
          </property>
         </widget>
        </item>
-       <item row="21" column="0">
+       <item row="22" column="0">
         <widget class="QLabel" name="label_30">
          <property name="text">
           <string>Pot Scrolling Enable</string>
          </property>
         </widget>
        </item>
-       <item row="17" column="2">
+       <item row="18" column="2">
         <widget class="QCheckBox" name="switchwarnChkB">
          <property name="whatsThis">
           <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
@@ -332,14 +332,14 @@ This value will be added to the measured battery voltage.  Use this value to cal
          </property>
         </widget>
        </item>
-       <item row="23" column="0">
+       <item row="24" column="0">
         <widget class="QLabel" name="label_13">
          <property name="text">
           <string>Channel Order (For Templates)</string>
          </property>
         </widget>
        </item>
-       <item row="16" column="2">
+       <item row="17" column="2">
         <widget class="QCheckBox" name="thrwarnChkB">
          <property name="whatsThis">
           <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
@@ -365,7 +365,7 @@ p, li { white-space: pre-wrap; }
          </property>
         </widget>
        </item>
-       <item row="18" column="0">
+       <item row="19" column="0">
         <widget class="QLabel" name="label_11">
          <property name="text">
           <string>Memory Startup Warning</string>
@@ -385,7 +385,7 @@ If this is checked the throttle will be reversed.  Idle will be forward, trim wi
          </property>
         </widget>
        </item>
-       <item row="21" column="2">
+       <item row="22" column="2">
         <widget class="QCheckBox" name="PotScrollEnableChkB">
          <property name="whatsThis">
           <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
@@ -422,14 +422,14 @@ p, li { white-space: pre-wrap; }
          </property>
         </widget>
        </item>
-       <item row="17" column="0">
+       <item row="18" column="0">
         <widget class="QLabel" name="label_10">
          <property name="text">
           <string>Switch Startup Warning</string>
          </property>
         </widget>
        </item>
-       <item row="19" column="2">
+       <item row="20" column="2">
         <widget class="QCheckBox" name="alarmwarnChkB">
          <property name="whatsThis">
           <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
@@ -479,7 +479,7 @@ p, li { white-space: pre-wrap; }
          </property>
         </widget>
        </item>
-       <item row="16" column="0">
+       <item row="17" column="0">
         <widget class="QLabel" name="label_9">
          <property name="text">
           <string>Throttle Startup Warning</string>
@@ -496,7 +496,7 @@ p, li { white-space: pre-wrap; }
          </property>
         </widget>
        </item>
-       <item row="22" column="2">
+       <item row="23" column="2">
         <widget class="QCheckBox" name="BandGapEnableChkB">
          <property name="whatsThis">
           <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
@@ -541,7 +541,7 @@ p, li { white-space: pre-wrap; }
          </property>
         </widget>
        </item>
-       <item row="22" column="0">
+       <item row="23" column="0">
         <widget class="QLabel" name="label_35">
          <property name="text">
           <string>Bandgap Measuring Enable</string>
@@ -588,7 +588,7 @@ p, li { white-space: pre-wrap; }
          </property>
         </widget>
        </item>
-       <item row="19" column="0">
+       <item row="20" column="0">
         <widget class="QLabel" name="label_27">
          <property name="text">
           <string>Alarm Warning</string>
@@ -622,7 +622,7 @@ p, li { white-space: pre-wrap; }
          </property>
         </widget>
        </item>
-       <item row="23" column="2">
+       <item row="24" column="2">
         <widget class="QComboBox" name="channelorderCB">
          <property name="toolTip">
           <string/>
@@ -760,7 +760,7 @@ This is used by the templated to determine which channel goes to what number out
          </item>
         </widget>
        </item>
-       <item row="18" column="2">
+       <item row="19" column="2">
         <widget class="QCheckBox" name="memwarnChkB">
          <property name="whatsThis">
           <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
@@ -793,7 +793,7 @@ p, li { white-space: pre-wrap; }
          </property>
         </widget>
        </item>
-       <item row="25" column="2">
+       <item row="26" column="2">
         <spacer name="verticalSpacer_2">
          <property name="orientation">
           <enum>Qt::Vertical</enum>
@@ -806,7 +806,7 @@ p, li { white-space: pre-wrap; }
          </property>
         </spacer>
        </item>
-       <item row="24" column="2">
+       <item row="25" column="2">
         <widget class="QComboBox" name="stickmodeCB">
          <property name="toolTip">
           <string/>
@@ -860,7 +860,7 @@ Mode 4:
          </item>
         </widget>
        </item>
-       <item row="24" column="0">
+       <item row="25" column="0">
         <widget class="QLabel" name="label_14">
          <property name="text">
           <string>Stick Mode</string>
@@ -905,6 +905,26 @@ Mode 4:
            <string>PcmWav</string>
           </property>
          </item>
+        </widget>
+       </item>
+       <item row="16" column="0">
+        <widget class="QLabel" name="label_37">
+         <property name="text">
+          <string>Show Name On Splash Sceen</string>
+         </property>
+        </widget>
+       </item>
+       <item row="16" column="2">
+        <widget class="QCheckBox" name="splashScreenNameChkB">
+         <property name="toolTip">
+          <string>Show splash screen on startup</string>
+         </property>
+         <property name="whatsThis">
+          <string>Show splash screen on startup</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
         </widget>
        </item>
       </layout>

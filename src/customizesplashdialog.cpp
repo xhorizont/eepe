@@ -26,7 +26,7 @@ customizeSplashDialog::~customizeSplashDialog()
     delete ui;
 }
 
-void customizeSplashDialog::on_pushButton_clicked()
+void customizeSplashDialog::on_loadFromHexButton_clicked()
 {
     QString fileName;
     QSettings settings("er9x-eePe", "eePe");
@@ -47,8 +47,15 @@ void customizeSplashDialog::on_pushButton_clicked()
         return;
     }
 
+//    QByteArray rawData = QByteArray::fromRawData((const char *)&temp, HEX_FILE_SIZE);
+//    int pos = rawData.indexOf(QString(SPLASH_MARKER));
+
     QByteArray rawData = QByteArray::fromRawData((const char *)&temp, HEX_FILE_SIZE);
-    int pos = rawData.indexOf(QString(SPLASH_MARKER));
+    QString mark;
+    mark.clear();
+    mark.append(SPLASH_MARKER);
+    mark.append('\0');
+    int pos = rawData.indexOf(mark);
 
     if(pos<0)
     {
@@ -69,7 +76,7 @@ void customizeSplashDialog::on_pushButton_clicked()
     ui->imageLabel->setPixmap(QPixmap::fromImage(image));
 }
 
-void customizeSplashDialog::on_pushButton_2_clicked()
+void customizeSplashDialog::on_loadFromImageButton_clicked()
 {
     QString supportedImageFormats;
      for (int formatIndex = 0; formatIndex < QImageReader::supportedImageFormats().count(); formatIndex++) {
@@ -92,7 +99,7 @@ void customizeSplashDialog::on_pushButton_2_clicked()
     }
 }
 
-void customizeSplashDialog::on_pushButton_3_clicked()
+void customizeSplashDialog::on_saveToHexButton_clicked()
 {    
     QString fileName;
     QSettings settings("er9x-eePe", "eePe");
@@ -145,7 +152,7 @@ void customizeSplashDialog::on_pushButton_3_clicked()
 
 }
 
-void customizeSplashDialog::on_buttonInvertColor_clicked()
+void customizeSplashDialog::on_invertColorButton_clicked()
 {
     QImage image = ui->imageLabel->pixmap()->toImage();
     image.invertPixels();

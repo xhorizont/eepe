@@ -12,6 +12,7 @@ description here
 ******************************************
 CHANGELOG: 12-1-2012 
 Fix string search for splash screen replace dialog
+Allow hiding of owner name on splash screen
 
 ******************************************
 CHANGELOG: 7-1-2012 
