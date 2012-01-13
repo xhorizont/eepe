@@ -153,7 +153,10 @@ void MainWindow::checkForUpdates(bool ignoreSettings)
     {
         manager1 = new QNetworkAccessManager(this);
         connect(manager1, SIGNAL(finished(QNetworkReply*)),this, SLOT(reply1Finished(QNetworkReply*)));
-        manager1->get(QNetworkRequest(QUrl(ER9X_STAMP)));
+        //manager1->get(QNetworkRequest(QUrl(ER9X_STAMP)));
+        QNetworkRequest request(QUrl(ER9X_STAMP));
+        request.setAttribute(QNetworkRequest::CacheLoadControlAttribute, QNetworkRequest::AlwaysNetwork);
+        manager1->get(request);
         check1done = false;
     }
 
@@ -162,7 +165,10 @@ void MainWindow::checkForUpdates(bool ignoreSettings)
     {
         manager2 = new QNetworkAccessManager(this);
         connect(manager2, SIGNAL(finished(QNetworkReply*)),this, SLOT(reply2Finished(QNetworkReply*)));
-        manager2->get(QNetworkRequest(QUrl(EEPE_STAMP)));
+        //manager2->get(QNetworkRequest(QUrl(EEPE_STAMP)));
+		QNetworkRequest request(QUrl(EEPE_STAMP));
+        request.setAttribute(QNetworkRequest::CacheLoadControlAttribute, QNetworkRequest::AlwaysNetwork);
+        manager2->get(request);
         check2done = false;
     }
 #endif
