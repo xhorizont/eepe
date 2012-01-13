@@ -17,13 +17,13 @@ public:
     ~customizeSplashDialog();
 
 private slots:
-    void on_pushButton_clicked();
+    void on_loadFromHexButton_clicked();
 
-    void on_pushButton_2_clicked();
+    void on_loadFromImageButton_clicked();
 
-    void on_pushButton_3_clicked();
+    void on_saveToHexButton_clicked();
 
-    void on_buttonInvertColor_clicked();
+    void on_invertColorButton_clicked();
 
 
 private:

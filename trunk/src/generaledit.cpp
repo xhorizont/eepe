@@ -58,6 +58,7 @@ GeneralEdit::GeneralEdit(EEPFILE *eFile, QWidget *parent) :
     ui->beepCountDownChkB->setChecked(g_eeGeneral.preBeep);
     ui->beepFlashChkB->setChecked(g_eeGeneral.flashBeep);
     ui->splashScreenChkB->setChecked(!g_eeGeneral.disableSplashScreen);
+    ui->splashScreenNameChkB->setChecked(!g_eeGeneral.hideNameOnSplash);
 
     ui->ana1Neg->setValue(g_eeGeneral.calibSpanNeg[0]);
     ui->ana2Neg->setValue(g_eeGeneral.calibSpanNeg[1]);
@@ -583,3 +584,9 @@ void GeneralEdit::on_tabWidget_selected(QString )
 }
 
 
+
+void GeneralEdit::on_splashScreenNameChkB_stateChanged(int )
+{
+    g_eeGeneral.hideNameOnSplash = ui->splashScreenNameChkB->isChecked() ? 0 : 1;
+    updateSettings();
+}

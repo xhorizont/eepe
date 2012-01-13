@@ -54,21 +54,21 @@
      <item>
       <layout class="QVBoxLayout" name="verticalLayout">
        <item>
-        <widget class="QPushButton" name="pushButton">
+        <widget class="QPushButton" name="loadFromHexButton">
          <property name="text">
           <string>Load From HEX</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton_2">
+        <widget class="QPushButton" name="loadFromImageButton">
          <property name="text">
           <string>Load Image</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton_3">
+        <widget class="QPushButton" name="saveToHexButton">
          <property name="text">
           <string>Save To Hex</string>
          </property>
@@ -79,7 +79,7 @@
      <item>
       <layout class="QVBoxLayout" name="verticalLayout_2">
        <item>
-        <widget class="QPushButton" name="buttonInvertColor">
+        <widget class="QPushButton" name="invertColorButton">
          <property name="text">
           <string>Invert Color</string>
          </property>

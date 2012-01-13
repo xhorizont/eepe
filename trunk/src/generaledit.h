@@ -86,6 +86,7 @@ private slots:
     void on_tabWidget_selected(QString );
     void on_PotScrollEnableChkB_stateChanged(int );
     void on_BandGapEnableChkB_stateChanged(int );
+    void on_splashScreenNameChkB_stateChanged(int arg1);
 };
 
 #endif // GENERALEDIT_H
