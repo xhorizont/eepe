@@ -57,13 +57,13 @@ Es el voltaje en el que se dispara la alarma de la batería.
 Los valores aceptables son: 5v...10v</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="1638"/>
+        <location filename="generaledit.ui" line="1658"/>
         <source>v</source>
         <translation>v</translation>
     </message>
     <message>
         <location filename="generaledit.ui" line="580"/>
-        <location filename="generaledit.ui" line="1628"/>
+        <location filename="generaledit.ui" line="1648"/>
         <source>Battery Calibration</source>
         <translation>Calibaración Batería</translation>
     </message>
@@ -297,72 +297,77 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="914"/>
+        <location filename="generaledit.ui" line="913"/>
+        <source>Show Name On Splash Sceen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="generaledit.ui" line="934"/>
         <source>Trainer</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="922"/>
-        <location filename="generaledit.ui" line="962"/>
-        <location filename="generaledit.ui" line="988"/>
-        <location filename="generaledit.ui" line="1028"/>
-        <location filename="generaledit.ui" line="1054"/>
-        <location filename="generaledit.ui" line="1094"/>
-        <location filename="generaledit.ui" line="1120"/>
-        <location filename="generaledit.ui" line="1160"/>
+        <location filename="generaledit.ui" line="942"/>
+        <location filename="generaledit.ui" line="982"/>
+        <location filename="generaledit.ui" line="1008"/>
+        <location filename="generaledit.ui" line="1048"/>
+        <location filename="generaledit.ui" line="1074"/>
+        <location filename="generaledit.ui" line="1114"/>
+        <location filename="generaledit.ui" line="1140"/>
+        <location filename="generaledit.ui" line="1180"/>
         <source>CH1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="930"/>
-        <location filename="generaledit.ui" line="996"/>
-        <location filename="generaledit.ui" line="1062"/>
-        <location filename="generaledit.ui" line="1128"/>
+        <location filename="generaledit.ui" line="950"/>
+        <location filename="generaledit.ui" line="1016"/>
+        <location filename="generaledit.ui" line="1082"/>
+        <location filename="generaledit.ui" line="1148"/>
         <source>Off</source>
         <translation type="unfinished">Ninguno</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="935"/>
-        <location filename="generaledit.ui" line="1001"/>
-        <location filename="generaledit.ui" line="1067"/>
-        <location filename="generaledit.ui" line="1133"/>
+        <location filename="generaledit.ui" line="955"/>
+        <location filename="generaledit.ui" line="1021"/>
+        <location filename="generaledit.ui" line="1087"/>
+        <location filename="generaledit.ui" line="1153"/>
         <source>Add</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="940"/>
-        <location filename="generaledit.ui" line="1006"/>
-        <location filename="generaledit.ui" line="1072"/>
-        <location filename="generaledit.ui" line="1138"/>
+        <location filename="generaledit.ui" line="960"/>
+        <location filename="generaledit.ui" line="1026"/>
+        <location filename="generaledit.ui" line="1092"/>
+        <location filename="generaledit.ui" line="1158"/>
         <source>Substitute</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="967"/>
-        <location filename="generaledit.ui" line="1033"/>
-        <location filename="generaledit.ui" line="1099"/>
-        <location filename="generaledit.ui" line="1165"/>
+        <location filename="generaledit.ui" line="987"/>
+        <location filename="generaledit.ui" line="1053"/>
+        <location filename="generaledit.ui" line="1119"/>
+        <location filename="generaledit.ui" line="1185"/>
         <source>CH2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="972"/>
-        <location filename="generaledit.ui" line="1038"/>
-        <location filename="generaledit.ui" line="1104"/>
-        <location filename="generaledit.ui" line="1170"/>
+        <location filename="generaledit.ui" line="992"/>
+        <location filename="generaledit.ui" line="1058"/>
+        <location filename="generaledit.ui" line="1124"/>
+        <location filename="generaledit.ui" line="1190"/>
         <source>CH3</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="977"/>
-        <location filename="generaledit.ui" line="1043"/>
-        <location filename="generaledit.ui" line="1109"/>
-        <location filename="generaledit.ui" line="1175"/>
+        <location filename="generaledit.ui" line="997"/>
+        <location filename="generaledit.ui" line="1063"/>
+        <location filename="generaledit.ui" line="1129"/>
+        <location filename="generaledit.ui" line="1195"/>
         <source>CH4</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="1188"/>
+        <location filename="generaledit.ui" line="1208"/>
         <source>PPM Multiplier</source>
         <translation>Multiplicador PPM</translation>
     </message>
@@ -521,47 +526,49 @@ Stick Der Elevador y Timón
     <message>
         <location filename="generaledit.ui" line="601"/>
         <location filename="generaledit.ui" line="604"/>
+        <location filename="generaledit.ui" line="920"/>
+        <location filename="generaledit.ui" line="923"/>
         <source>Show splash screen on startup</source>
         <translation>Mostar la pantalla de inicio al encender</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="1208"/>
-        <location filename="generaledit.ui" line="1273"/>
+        <location filename="generaledit.ui" line="1228"/>
+        <location filename="generaledit.ui" line="1293"/>
         <source>Calibration</source>
         <translation>Calibración</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="1582"/>
+        <location filename="generaledit.ui" line="1602"/>
         <source>ANALOG 7</source>
         <translation>ANALOGICO 7</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="1536"/>
+        <location filename="generaledit.ui" line="1556"/>
         <source>ANALOG 6</source>
         <translation>ANALOGICO 6</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="1490"/>
+        <location filename="generaledit.ui" line="1510"/>
         <source>ANALOG 5</source>
         <translation>ANALOGICO 5</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="1441"/>
+        <location filename="generaledit.ui" line="1461"/>
         <source>ANALOG 4</source>
         <translation>ANALOGICO 4</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="1395"/>
+        <location filename="generaledit.ui" line="1415"/>
         <source>ANALOG 3</source>
         <translation>ANALOGICO 3</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="1349"/>
+        <location filename="generaledit.ui" line="1369"/>
         <source>ANALOG 2</source>
         <translation>ANALOGICO 2</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="1300"/>
+        <location filename="generaledit.ui" line="1320"/>
         <source>ANALOG 1</source>
         <translation>ANALOGICO 1</translation>
     </message>
@@ -570,17 +577,17 @@ Stick Der Elevador y Timón
         <translation type="obsolete">Entrada PPM</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="1279"/>
+        <location filename="generaledit.ui" line="1299"/>
         <source>Negative</source>
         <translation>Negativo</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="1286"/>
+        <location filename="generaledit.ui" line="1306"/>
         <source>Mid</source>
         <translation>Medio</translation>
     </message>
     <message>
-        <location filename="generaledit.ui" line="1293"/>
+        <location filename="generaledit.ui" line="1313"/>
         <source>Positive</source>
         <translation>Positivo</translation>
     </message>
@@ -2872,62 +2879,62 @@ Por favor, usalo solo si sabes lo que estas haciendo. No hay control de errores 
     </message>
     <message>
         <location filename="customizesplashdialog.cpp" line="35"/>
-        <location filename="customizesplashdialog.cpp" line="101"/>
+        <location filename="customizesplashdialog.cpp" line="108"/>
         <source>HEX files (*.hex);;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="customizesplashdialog.cpp" line="45"/>
-        <location filename="customizesplashdialog.cpp" line="55"/>
-        <location filename="customizesplashdialog.cpp" line="86"/>
-        <location filename="customizesplashdialog.cpp" line="111"/>
-        <location filename="customizesplashdialog.cpp" line="123"/>
+        <location filename="customizesplashdialog.cpp" line="62"/>
+        <location filename="customizesplashdialog.cpp" line="93"/>
+        <location filename="customizesplashdialog.cpp" line="118"/>
+        <location filename="customizesplashdialog.cpp" line="130"/>
         <source>Error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="customizesplashdialog.cpp" line="46"/>
-        <location filename="customizesplashdialog.cpp" line="112"/>
+        <location filename="customizesplashdialog.cpp" line="119"/>
         <source>Error reading file %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="customizesplashdialog.cpp" line="56"/>
+        <location filename="customizesplashdialog.cpp" line="63"/>
         <source>Error reading image from file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="customizesplashdialog.cpp" line="81"/>
+        <location filename="customizesplashdialog.cpp" line="88"/>
         <source>Open Image to load</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="customizesplashdialog.cpp" line="81"/>
+        <location filename="customizesplashdialog.cpp" line="88"/>
         <source>Images (%1)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="customizesplashdialog.cpp" line="87"/>
+        <location filename="customizesplashdialog.cpp" line="94"/>
         <source>Cannot load %1.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="customizesplashdialog.cpp" line="101"/>
+        <location filename="customizesplashdialog.cpp" line="108"/>
         <source>Write to file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="customizesplashdialog.cpp" line="124"/>
+        <location filename="customizesplashdialog.cpp" line="131"/>
         <source>Could not find bitmap to replace in file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="customizesplashdialog.cpp" line="141"/>
+        <location filename="customizesplashdialog.cpp" line="148"/>
         <source>Save To File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="customizesplashdialog.cpp" line="142"/>
+        <location filename="customizesplashdialog.cpp" line="149"/>
         <source>Successfully updated %1</source>
         <translation type="unfinished"></translation>
     </message>

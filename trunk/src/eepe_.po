@@ -61,12 +61,12 @@ msgid ""
 "Acceptable values are 5v..10v"
 msgstr ""
 
-#: generaledit.ui:1638
+#: generaledit.ui:1658
 msgctxt "GeneralEdit|"
 msgid "v"
 msgstr ""
 
-#: generaledit.ui:580 generaledit.ui:1628
+#: generaledit.ui:580 generaledit.ui:1648
 msgctxt "GeneralEdit|"
 msgid "Battery Calibration"
 msgstr ""
@@ -300,54 +300,60 @@ msgctxt "GeneralEdit|"
 msgid "PcmWav"
 msgstr ""
 
-#: generaledit.ui:914
+#: generaledit.ui:913
+msgctxt "GeneralEdit|"
+msgid "Show Name On Splash Sceen"
+msgstr ""
+
+#: generaledit.ui:934
 msgctxt "GeneralEdit|"
 msgid "Trainer"
 msgstr ""
 
-#: generaledit.ui:922 generaledit.ui:962 generaledit.ui:988 generaledit.ui:1028
-#: generaledit.ui:1054 generaledit.ui:1094 generaledit.ui:1120
-#: generaledit.ui:1160
+#: generaledit.ui:942 generaledit.ui:982 generaledit.ui:1008
+#: generaledit.ui:1048 generaledit.ui:1074 generaledit.ui:1114
+#: generaledit.ui:1140 generaledit.ui:1180
 msgctxt "GeneralEdit|"
 msgid "CH1"
 msgstr ""
 
-#: generaledit.ui:930 generaledit.ui:996 generaledit.ui:1062 generaledit.ui:1128
+#: generaledit.ui:950 generaledit.ui:1016 generaledit.ui:1082
+#: generaledit.ui:1148
 msgctxt "GeneralEdit|"
 msgid "Off"
 msgstr ""
 
-#: generaledit.ui:935 generaledit.ui:1001 generaledit.ui:1067
-#: generaledit.ui:1133
+#: generaledit.ui:955 generaledit.ui:1021 generaledit.ui:1087
+#: generaledit.ui:1153
 msgctxt "GeneralEdit|"
 msgid "Add"
 msgstr ""
 
-#: generaledit.ui:940 generaledit.ui:1006 generaledit.ui:1072
-#: generaledit.ui:1138
+#: generaledit.ui:960 generaledit.ui:1026 generaledit.ui:1092
+#: generaledit.ui:1158
 msgctxt "GeneralEdit|"
 msgid "Substitute"
 msgstr ""
 
-#: generaledit.ui:967 generaledit.ui:1033 generaledit.ui:1099
-#: generaledit.ui:1165
+#: generaledit.ui:987 generaledit.ui:1053 generaledit.ui:1119
+#: generaledit.ui:1185
 msgctxt "GeneralEdit|"
 msgid "CH2"
 msgstr ""
 
-#: generaledit.ui:972 generaledit.ui:1038 generaledit.ui:1104
-#: generaledit.ui:1170
+#: generaledit.ui:992 generaledit.ui:1058 generaledit.ui:1124
+#: generaledit.ui:1190
 msgctxt "GeneralEdit|"
 msgid "CH3"
 msgstr ""
 
-#: generaledit.ui:977 generaledit.ui:1043 generaledit.ui:1109
-#: generaledit.ui:1175
+#: generaledit.ui:997 generaledit.ui:1063 generaledit.ui:1129
+#: generaledit.ui:1195
 msgctxt "GeneralEdit|"
 msgid "CH4"
 msgstr ""
 
-#: generaledit.ui:1188
+#: generaledit.ui:1208
 msgctxt "GeneralEdit|"
 msgid "PPM Multiplier"
 msgstr ""
@@ -485,62 +491,62 @@ msgctxt "GeneralEdit|"
 msgid "Show Splash Screen on Startup"
 msgstr ""
 
-#: generaledit.ui:601 generaledit.ui:604
+#: generaledit.ui:601 generaledit.ui:604 generaledit.ui:920 generaledit.ui:923
 msgctxt "GeneralEdit|"
 msgid "Show splash screen on startup"
 msgstr ""
 
-#: generaledit.ui:1208 generaledit.ui:1273
+#: generaledit.ui:1228 generaledit.ui:1293
 msgctxt "GeneralEdit|"
 msgid "Calibration"
 msgstr ""
 
-#: generaledit.ui:1582
+#: generaledit.ui:1602
 msgctxt "GeneralEdit|"
 msgid "ANALOG 7"
 msgstr ""
 
-#: generaledit.ui:1536
+#: generaledit.ui:1556
 msgctxt "GeneralEdit|"
 msgid "ANALOG 6"
 msgstr ""
 
-#: generaledit.ui:1490
+#: generaledit.ui:1510
 msgctxt "GeneralEdit|"
 msgid "ANALOG 5"
 msgstr ""
 
-#: generaledit.ui:1441
+#: generaledit.ui:1461
 msgctxt "GeneralEdit|"
 msgid "ANALOG 4"
 msgstr ""
 
-#: generaledit.ui:1395
+#: generaledit.ui:1415
 msgctxt "GeneralEdit|"
 msgid "ANALOG 3"
 msgstr ""
 
-#: generaledit.ui:1349
+#: generaledit.ui:1369
 msgctxt "GeneralEdit|"
 msgid "ANALOG 2"
 msgstr ""
 
-#: generaledit.ui:1300
+#: generaledit.ui:1320
 msgctxt "GeneralEdit|"
 msgid "ANALOG 1"
 msgstr ""
 
-#: generaledit.ui:1279
+#: generaledit.ui:1299
 msgctxt "GeneralEdit|"
 msgid "Negative"
 msgstr ""
 
-#: generaledit.ui:1286
+#: generaledit.ui:1306
 msgctxt "GeneralEdit|"
 msgid "Mid"
 msgstr ""
 
-#: generaledit.ui:1293
+#: generaledit.ui:1313
 msgctxt "GeneralEdit|"
 msgid "Positive"
 msgstr ""
@@ -2733,62 +2739,62 @@ msgctxt "customizeSplashDialog|"
 msgid "Open"
 msgstr ""
 
-#: customizesplashdialog.cpp:35 customizesplashdialog.cpp:101
+#: customizesplashdialog.cpp:35 customizesplashdialog.cpp:108
 msgctxt "customizeSplashDialog|"
 msgid "HEX files (*.hex);;"
 msgstr ""
 
-#: customizesplashdialog.cpp:45 customizesplashdialog.cpp:55
-#: customizesplashdialog.cpp:86 customizesplashdialog.cpp:111
-#: customizesplashdialog.cpp:123
+#: customizesplashdialog.cpp:45 customizesplashdialog.cpp:62
+#: customizesplashdialog.cpp:93 customizesplashdialog.cpp:118
+#: customizesplashdialog.cpp:130
 msgctxt "customizeSplashDialog|"
 msgid "Error"
 msgstr ""
 
-#: customizesplashdialog.cpp:46 customizesplashdialog.cpp:112
+#: customizesplashdialog.cpp:46 customizesplashdialog.cpp:119
 #, qt-format
 msgctxt "customizeSplashDialog|"
 msgid "Error reading file %1"
 msgstr ""
 
-#: customizesplashdialog.cpp:56
+#: customizesplashdialog.cpp:63
 msgctxt "customizeSplashDialog|"
 msgid "Error reading image from file"
 msgstr ""
 
-#: customizesplashdialog.cpp:81
+#: customizesplashdialog.cpp:88
 msgctxt "customizeSplashDialog|"
 msgid "Open Image to load"
 msgstr ""
 
-#: customizesplashdialog.cpp:81
+#: customizesplashdialog.cpp:88
 #, qt-format
 msgctxt "customizeSplashDialog|"
 msgid "Images (%1)"
 msgstr ""
 
-#: customizesplashdialog.cpp:87
+#: customizesplashdialog.cpp:94
 #, qt-format
 msgctxt "customizeSplashDialog|"
 msgid "Cannot load %1."
 msgstr ""
 
-#: customizesplashdialog.cpp:101
+#: customizesplashdialog.cpp:108
 msgctxt "customizeSplashDialog|"
 msgid "Write to file"
 msgstr ""
 
-#: customizesplashdialog.cpp:124
+#: customizesplashdialog.cpp:131
 msgctxt "customizeSplashDialog|"
 msgid "Could not find bitmap to replace in file"
 msgstr ""
 
-#: customizesplashdialog.cpp:141
+#: customizesplashdialog.cpp:148
 msgctxt "customizeSplashDialog|"
 msgid "Save To File"
 msgstr ""
 
-#: customizesplashdialog.cpp:142
+#: customizesplashdialog.cpp:149
 #, qt-format
 msgctxt "customizeSplashDialog|"
 msgid "Successfully updated %1"
