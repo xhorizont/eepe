@@ -91,7 +91,7 @@ Section "eePe" SecDummy
   File "avrdude.exe"
   File "avrdude.conf"
   File "libusb0.dll"
-  File "..\..\..\er9x\doc\ER9x Users Guide.pdf"
+  File "../../er9x/doc/ER9x Users Guide.pdf"
   
   CreateDirectory "$INSTDIR\lang"
   SetOutPath "$INSTDIR\lang"
@@ -107,6 +107,7 @@ Section "eePe" SecDummy
   ${registerExtension} "$INSTDIR\eepe.exe" ".hex" "HEX_File"
   ${registerExtension} "$INSTDIR\eepe.exe" ".eepe" "EEPE_File"
   ${registerExtension} "$INSTDIR\eepe.exe" ".eepm" "EEPM_File"
+  ${registerExtension} "$INSTDIR\eepe.exe" ".eepg" "EEPG_File"
 
   
   ;Create uninstaller
@@ -162,8 +163,9 @@ Section "Uninstall"
   
   ${unregisterExtension} ".bin" "BIN File"
   ${unregisterExtension} ".hex" "HEX File"
-  ${unregisterExtension} ".eepm" "EEPE File"
-  ${unregisterExtension} ".eepe" "EEPM File"
+  ${unregisterExtension} ".eepe" "EEPE File"
+  ${unregisterExtension} ".eepm" "EEPM File"
+  ${unregisterExtension} ".eepg" "EEPG File"
   
   !insertmacro MUI_STARTMENU_GETFOLDER Application $StartMenuFolder
     
