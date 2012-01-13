@@ -591,6 +591,10 @@ msgctxt "GeneralEdit|"
 msgid "PcmWav"
 msgstr ""
 
+msgctxt "GeneralEdit|"
+msgid "Show Name On Splash Sceen"
+msgstr ""
+
 msgctxt "MainWindow|"
 msgid "&New"
 msgstr "&Nouveau"
