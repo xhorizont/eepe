@@ -1,19 +1,19 @@
 #================================================
 Starting Build
 Timestamp
-Fri Jan 13 03:38:27 UTC 2012
+Sat Jan 14 04:28:54 UTC 2012
 #================================================
 
 ===== Updating from SVN =====
-At revision 301.
+At revision 303.
 
 ===== GENERATING VERSION STAMP =====
 //Automatically generated file - do not edit
-#define DATE_STR "13.01.2012"
-#define TIME_STR "03:03:27"
+#define DATE_STR "14.01.2012"
+#define TIME_STR "04:04:55"
 #define SUB_VERS "1-erez"
-#define SVN_VERS "trunk-r302"
-#define SVN_VER_NUM 302
+#define SVN_VERS "trunk-r304"
+#define SVN_VER_NUM 304
 ====================================
 
 
@@ -322,7 +322,7 @@ Var: "StartMenuFolder"
 Section: "eePe" ->(SecDummy)
 SetOutPath: "$INSTDIR"
 File: "license.txt" 832 bytes
-File: "eepe.exe" 1551872 bytes
+File: "eepe.exe" 1552384 bytes
 File: "libgcc_s_dw2-1.dll" 43008 bytes
 File: "mingwm10.dll" 11362 bytes
 File: "QtCore4.dll" 2555392 bytes
@@ -423,19 +423,19 @@ Using lzma (compress whole) compression.
 
 EXE header size:               71168 / 55808 bytes
 Install code:                          (20943 bytes)
-Install data:                          (16990008 bytes)
+Install data:                          (16990520 bytes)
 Uninstall code+data:                   (20637 bytes)
-Compressed data:             5615830 / 17031588 bytes
-CRC (0xC3D88761):                  4 / 4 bytes
+Compressed data:             5616076 / 17032100 bytes
+CRC (0xABA4714B):                  4 / 4 bytes
 
-Total size:                  5687002 / 17087400 bytes (33.2%)
+Total size:                  5687248 / 17087912 bytes (33.2%)
 
 #================================================
 Build Linux i386 Version
 #================================================
 
-g++ -c -m32 -pipe -O2 -Wall -W -D_REENTRANT -DQT_WEBKIT -DQT_NO_DEBUG -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -I/usr/share/qt4/mkspecs/linux-g++-32 -I../src -I/usr/include/qt4/QtCore -I/usr/include/qt4/QtNetwork -I/usr/include/qt4/QtGui -I/usr/include/qt4 -I. -I. -I../src -I. -o mainwindow.o ../src/mainwindow.cpp
-g++ -c -m32 -pipe -O2 -Wall -W -D_REENTRANT -DQT_WEBKIT -DQT_NO_DEBUG -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -I/usr/share/qt4/mkspecs/linux-g++-32 -I../src -I/usr/include/qt4/QtCore -I/usr/include/qt4/QtNetwork -I/usr/include/qt4/QtGui -I/usr/include/qt4 -I. -I. -I../src -I. -o preferencesdialog.o ../src/preferencesdialog.cpp
+g++ -c -m32 -pipe -O2 -Wall -W -D_REENTRANT -DQT_WEBKIT -DQT_NO_DEBUG -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_SHARED -I/usr/share/qt4/mkspecs/linux-g++-32 -I../src -I/usr/include/qt4/QtCore -I/usr/include/qt4/QtNetwork -I/usr/include/qt4/QtGui -I/usr/include/qt4 -I. -I. -I../src -I. -o mainwindow.o ../src/mainwindow.cpp
+g++ -c -m32 -pipe -O2 -Wall -W -D_REENTRANT -DQT_WEBKIT -DQT_NO_DEBUG -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_SHARED -I/usr/share/qt4/mkspecs/linux-g++-32 -I../src -I/usr/include/qt4/QtCore -I/usr/include/qt4/QtNetwork -I/usr/include/qt4/QtGui -I/usr/include/qt4 -I. -I. -I../src -I. -o preferencesdialog.o ../src/preferencesdialog.cpp
 g++ -m32 -Wl,-O1 -o eepe main.o mainwindow.o file.o pers.o modeledit.o generaledit.o mdichild.o helpers.o node.o edge.o mixerdialog.o burnconfigdialog.o avroutputdialog.o simulatordialog.o donatorsdialog.o printdialog.o preferencesdialog.o fusesdialog.o mixerslist.o downloaddialog.o customizesplashdialog.o moc_mainwindow.o moc_modeledit.o moc_generaledit.o moc_mdichild.o moc_mixerdialog.o moc_burnconfigdialog.o moc_avroutputdialog.o moc_simulatordialog.o moc_donatorsdialog.o moc_printdialog.o moc_preferencesdialog.o moc_fusesdialog.o moc_mixerslist.o moc_downloaddialog.o moc_customizesplashdialog.o qrc_eepe.o    -L/usr/lib/i386-linux-gnu -lQtGui -lQtNetwork -lQtCore -lpthread 
 
 #================================================
@@ -521,6 +521,7 @@ Build Linux amd64 Version
 #================================================
 
 g++ -c -m64 -pipe -O2 -Wall -W -D_REENTRANT -DQT_WEBKIT -DQT_NO_DEBUG -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_SHARED -I/usr/share/qt4/mkspecs/linux-g++-64 -I../src -I/usr/include/qt4/QtCore -I/usr/include/qt4/QtNetwork -I/usr/include/qt4/QtGui -I/usr/include/qt4 -I. -I. -I../src -I. -o mainwindow.o ../src/mainwindow.cpp
+g++ -c -m64 -pipe -O2 -Wall -W -D_REENTRANT -DQT_WEBKIT -DQT_NO_DEBUG -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_SHARED -I/usr/share/qt4/mkspecs/linux-g++-64 -I../src -I/usr/include/qt4/QtCore -I/usr/include/qt4/QtNetwork -I/usr/include/qt4/QtGui -I/usr/include/qt4 -I. -I. -I../src -I. -o mdichild.o ../src/mdichild.cpp
 g++ -c -m64 -pipe -O2 -Wall -W -D_REENTRANT -DQT_WEBKIT -DQT_NO_DEBUG -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_SHARED -I/usr/share/qt4/mkspecs/linux-g++-64 -I../src -I/usr/include/qt4/QtCore -I/usr/include/qt4/QtNetwork -I/usr/include/qt4/QtGui -I/usr/include/qt4 -I. -I. -I../src -I. -o preferencesdialog.o ../src/preferencesdialog.cpp
 g++ -m64 -Wl,-O1 -o eepe main.o mainwindow.o file.o pers.o modeledit.o generaledit.o mdichild.o helpers.o node.o edge.o mixerdialog.o burnconfigdialog.o avroutputdialog.o simulatordialog.o donatorsdialog.o printdialog.o preferencesdialog.o fusesdialog.o mixerslist.o downloaddialog.o customizesplashdialog.o moc_mainwindow.o moc_modeledit.o moc_generaledit.o moc_mdichild.o moc_mixerdialog.o moc_burnconfigdialog.o moc_avroutputdialog.o moc_simulatordialog.o moc_donatorsdialog.o moc_printdialog.o moc_preferencesdialog.o moc_fusesdialog.o moc_mixerslist.o moc_downloaddialog.o moc_customizesplashdialog.o qrc_eepe.o    -L/usr/lib/x86_64-linux-gnu -lQtGui -lQtNetwork -lQtCore -lpthread 
 

@@ -50,7 +50,7 @@ echo "Build Linux i386 Version"
 echo "#================================================"
 echo
 cd linux32build
-qmake ../src/eepe.pro -spec linux-g++-32
+qmake ../src/eepe.pro -spec linux-g++-32 -r
 make
 
 #If build doesn't work you might need to link libraries in to /usr/bin/i386_blah/
@@ -61,7 +61,7 @@ echo "Package Linux i386 Version"
 echo "#================================================"
 echo
 sudo checkinstall -D --nodoc -y --pkgname=eepe --arch=i386 --pkgrelease=1 --pkgversion=1 --maintainer=erazz --backup=no --install=no
-mv eepe_1-1_i386.deb ../eepe-i386.deb
+mv -f eepe_1-1_i386.deb ../eepe-i386.deb
 
 
 cd ..
@@ -72,7 +72,7 @@ echo "Build Linux amd64 Version"
 echo "#================================================"
 echo
 cd linux64build
-qmake ../src/eepe.pro -spec linux-g++-64
+qmake ../src/eepe.pro -spec linux-g++-64 -r
 make
 
 echo
@@ -81,7 +81,7 @@ echo "Package Linux amd64 Version"
 echo "#================================================"
 echo
 sudo checkinstall -D --nodoc -y --pkgname=eepe -A amd64 --pkgrelease=1 --pkgversion=1 --maintainer=erazz --backup=no --install=no
-mv eepe_1-1_amd64.deb ../eepe-amd64.deb
+mv -f eepe_1-1_amd64.deb ../eepe-amd64.deb
 
 cd ..
 

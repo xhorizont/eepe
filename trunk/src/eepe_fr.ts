@@ -1137,13 +1137,6 @@ File wrong size - %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Error reading file:
-File wrong size - %1
-This might be a FW file. You might want to try burning it to the TX.
-(Burn-&gt;Write Flash Memory)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Overwrite Current Settings?</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1202,6 +1195,13 @@ This might be a FW file. You might want to try burning it to the TX.
     <message>
         <source>Error loading file %1:
 File may be corrupted, old or from a different system.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Error reading file:
+This might be a FW file (er9x.hex?). 
+You might want to try flashing it to the TX.
+(Burn-&gt;Write Flash Memory)</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
