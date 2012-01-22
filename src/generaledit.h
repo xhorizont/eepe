@@ -24,6 +24,10 @@ private:
     EEGeneral g_eeGeneral;
     int StudWeight1,StudWeight2, StudWeight3, StudWeight4;
 
+    bool switchDefPosEditLock;
+    void getGeneralSwitchDefPos(int i, bool val);
+    void setSwitchDefPos();
+
 signals:
     void modelValuesChanged();
 
@@ -86,7 +90,16 @@ private slots:
     void on_tabWidget_selected(QString );
     void on_PotScrollEnableChkB_stateChanged(int );
     void on_BandGapEnableChkB_stateChanged(int );
-    void on_splashScreenNameChkB_stateChanged(int arg1);
+    void on_splashScreenNameChkB_stateChanged(int );
+    void on_backlightStickMove_editingFinished();
+    void on_switchDefPos_1_stateChanged(int );
+    void on_switchDefPos_2_stateChanged(int );
+    void on_switchDefPos_3_stateChanged(int );
+    void on_switchDefPos_4_stateChanged(int );
+    void on_switchDefPos_5_stateChanged(int );
+    void on_switchDefPos_6_stateChanged(int );
+    void on_switchDefPos_7_stateChanged(int );
+    void on_switchDefPos_8_stateChanged(int );
 };
 
 #endif // GENERALEDIT_H

@@ -99,6 +99,20 @@ enum EnumKeys {
 //#define SWITCHES_STR "  NC  ON THR RUD ELE ID0 ID1 ID2 AILGEARTRNR"
 #define MAX_DRSWITCH (1+SW_Trainer-SW_ThrCt+1+NUM_CSW)
 
+#define SWP_ID0 (SW_ID0-SW_BASE)
+#define SWP_ID1 (SW_ID1-SW_BASE)
+#define SWP_ID2 (SW_ID2-SW_BASE)
+#define SWP_ID0B (1<<SWP_ID0)
+#define SWP_ID1B (1<<SWP_ID1)
+#define SWP_ID2B (1<<SWP_ID2)
+
+//Switch Position Illigal states
+#define SWP_IL1 (0)
+#define SWP_IL2 (SWP_ID0B | SWP_ID1B)
+#define SWP_IL3 (SWP_ID0B | SWP_ID2B)
+#define SWP_IL4 (SWP_ID1B | SWP_ID2B)
+#define SWP_IL5 (SWP_ID0B | SWP_ID1B | SWP_ID2B)
+
 #define CURV_STR     "---x>0x<0|x|f>0f<0|f|c1 c2 c3 c4 c5 c6 c7 c8 c9 c10c11c12c13c14c15c16"
 #define CURVE_BASE 7
 #define CSWITCH_STR  "----   v>ofs  v<ofs  |v|>ofs|v|<ofsAND    OR     XOR    ""v1==v2 ""v1!=v2 ""v1>v2  ""v1<v2  ""v1>=v2 ""v1<=v2 "
@@ -198,13 +212,17 @@ enum EnumKeys {
 #define MAX_ALERT_TIME   60
 
 #define PROTO_PPM        0
-#define PROTO_SILV_A     1
-#define PROTO_SILV_B     2
-#define PROTO_SILV_C     3
-#define PROTO_TRACER_CTP1009 4
-#define PROT_MAX         4
-#define PROT_STR "PPM   SILV_ASILV_BSILV_CTRAC09"
+#define PROTO_PXX        1
+#define PROTO_DSM2       2
+#define PROTO_PPM16			 3
+#define PROT_MAX         3
+#define PROT_STR "PPM   PXX   DSM2  PPM16 "
 #define PROT_STR_LEN     6
+#define DSM2_STR "LP4/LP5  DSM2only DSM2/DSMX"
+#define DSM2_STR_LEN   9
+#define LPXDSM2          0
+#define DSM2only         1
+#define DSM2_DSMX        2
 
 
 

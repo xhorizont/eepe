@@ -595,6 +595,46 @@ msgctxt "GeneralEdit|"
 msgid "Show Name On Splash Sceen"
 msgstr ""
 
+msgctxt "GeneralEdit|"
+msgid "Backlight On Stick Move"
+msgstr ""
+
+#, fuzzy
+msgctxt "GeneralEdit|"
+msgid "THR"
+msgstr "GAZ"
+
+#, fuzzy
+msgctxt "GeneralEdit|"
+msgid "RUD"
+msgstr "DIR"
+
+#, fuzzy
+msgctxt "GeneralEdit|"
+msgid "ELE"
+msgstr "PROF"
+
+#, fuzzy
+msgctxt "GeneralEdit|"
+msgid "AIL"
+msgstr "AIL"
+
+msgctxt "GeneralEdit|"
+msgid "ID0"
+msgstr ""
+
+msgctxt "GeneralEdit|"
+msgid "ID1"
+msgstr ""
+
+msgctxt "GeneralEdit|"
+msgid "ID2"
+msgstr ""
+
+msgctxt "GeneralEdit|"
+msgid "GEA"
+msgstr ""
+
 msgctxt "MainWindow|"
 msgid "&New"
 msgstr "&Nouveau"
@@ -1353,19 +1393,28 @@ msgctxt "MdiChild|"
 msgid "Coulden't find %1"
 msgstr ""
 
-#, qt-format
-msgctxt "MdiChild|"
-msgid ""
-"Error loading file %1:\n"
-"File may be corrupted, old or from a different system."
-msgstr ""
-
 msgctxt "MdiChild|"
 msgid ""
 "Error reading file:\n"
 "This might be a FW file (er9x.hex?). \n"
 "You might want to try flashing it to the TX.\n"
 "(Burn->Write Flash Memory)"
+msgstr ""
+
+#, qt-format
+msgctxt "MdiChild|"
+msgid ""
+"Error loading file %1:\n"
+"File may be corrupted, old or from a different system.\n"
+"You might need to update eePe to read this file."
+msgstr ""
+
+#, qt-format
+msgctxt "MdiChild|"
+msgid ""
+"Error loading file %1:\n"
+"File may be corrupted, old or from a different system.You might need to "
+"update eePe to read this file."
 msgstr ""
 
 msgctxt "MixerDialog|"
@@ -2321,6 +2370,30 @@ msgstr ""
 #, qt-format
 msgctxt "ModelEdit|"
 msgid "Editing curve %1"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "PPM16"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "DSM Type"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "PXX RxNum"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "LP4/LP5"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "DSM2only"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "DSM2/DSMX"
 msgstr ""
 
 msgctxt "QObject|"

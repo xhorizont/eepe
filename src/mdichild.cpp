@@ -568,7 +568,8 @@ bool MdiChild::loadFile(const QString &fileName, bool resetCurrentFile)
         {
             QMessageBox::critical(this, tr("Error"),
                                  tr("Error loading file %1:\n"
-                                    "File may be corrupted, old or from a different system.")
+                                    "File may be corrupted, old or from a different system.\n"
+                                    "You might need to update eePe to read this file.")
                                  .arg(fileName));
             return false;
         }
@@ -604,7 +605,8 @@ bool MdiChild::loadFile(const QString &fileName, bool resetCurrentFile)
         {
             QMessageBox::critical(this, tr("Error"),
                                  tr("Error loading file %1:\n"
-                                    "File may be corrupted, old or from a different system.")
+                                    "File may be corrupted, old or from a different system."
+                                    "You might need to update eePe to read this file.")
                                  .arg(fileName));
             return false;
         }
@@ -652,7 +654,8 @@ bool MdiChild::loadFile(const QString &fileName, bool resetCurrentFile)
         {
             QMessageBox::critical(this, tr("Error"),
                                  tr("Error loading file %1:\n"
-                                    "File may be corrupted, old or from a different system.")
+                                    "File may be corrupted, old or from a different system."
+                                    "You might need to update eePe to read this file.")
                                  .arg(fileName));
             return false;
         }

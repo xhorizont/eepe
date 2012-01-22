@@ -32,7 +32,9 @@
 #define MDVERS_r85  5
 #define MDVERS_r261 6
 #define MDVERS_r352 7
-#define MDVERS      9
+#define MDVERS_r365 8
+#define MDVERS_r668 9
+#define MDVERS      10
 
 //OBSOLETE - USE ONLY MDVERS NOW
 //#define GENERAL_MYVER_r261 3
@@ -78,89 +80,50 @@ typedef struct t_TrainerData {
 
 
 typedef struct t_EEGeneral {
-    uint8_t   myVers;
-    int16_t   calibMid[7];
-    int16_t   calibSpanNeg[7];
-    int16_t   calibSpanPos[7];
-    uint16_t  chkSum;
-    uint8_t   currModel; //0..15
-    uint8_t   contrast;
-    uint8_t   vBatWarn;
-    int8_t    vBatCalib;
-    int8_t    lightSw;
-    TrainerData trainer;
-    uint8_t   view;
-    uint8_t   disableThrottleWarning:1;
-    uint8_t   disableSwitchWarning:1;
-    uint8_t   disableMemoryWarning:1;
-    uint8_t   beeperVal:3;
-    uint8_t   reserveWarning:1;
-    uint8_t   disableAlarmWarning:1;
-    uint8_t   stickMode;
-    int8_t    inactivityTimer;
-    uint8_t   throttleReversed:1;
-    uint8_t   minuteBeep:1;
-    uint8_t   preBeep:1;
-    uint8_t   flashBeep:1;
-    uint8_t   disableSplashScreen:1;
-    uint8_t   disablePotScroll:1;
-    uint8_t   disableBG:1;
-    uint8_t   frskyinternalalarm:1;
-    uint8_t   filterInput;
-    uint8_t   lightAutoOff;
-    uint8_t   templateSetup;  //RETA order according to chout_ar array
-    int8_t    PPM_Multiplier;
-    //uint8_t   respre[2]; //mike please check these are correct
-    uint8_t   FRSkyYellow:4;
-    uint8_t   FRSkyOrange:4;
-    uint8_t   FRSkyRed:4;  //mike please check these are correct
-    uint8_t   hideNameOnSplash:1;
-    uint8_t   spare:3;
-    uint8_t   speakerPitch;
-    uint8_t   hapticStrength;
-    uint8_t   speakerMode;
-    uint8_t   res[1];
-  //  uint8_t	FRSkyRed;  //mike please check these are correct
-    char      ownerName[GENERAL_OWNER_NAME_LEN];
-
-//    uint8_t   myVers;
-//    int16_t   calibMid[7];
-//    int16_t   calibSpanNeg[7];
-//    int16_t   calibSpanPos[7];
-//    uint16_t  chkSum;
-//    uint8_t   currModel; //0..15
-//    uint8_t   contrast;
-//    uint8_t   vBatWarn;
-//    int8_t    vBatCalib;
-//    int8_t    lightSw;
-//    TrainerData trainer;
-//    uint8_t   view;
-//    uint8_t   disableThrottleWarning:1;
-//    uint8_t   disableSwitchWarning:1;
-//    uint8_t   disableMemoryWarning:1;
-//    uint8_t   beeperVal:3;
-//    uint8_t   reserveWarning:1;
-//    uint8_t   disableAlarmWarning:1;
-//    uint8_t   stickMode;
-//    int8_t    inactivityTimer;
-//    uint8_t   throttleReversed:1;
-//    uint8_t   minuteBeep:1;
-//    uint8_t   preBeep:1;
-//    uint8_t   flashBeep:1;
-//    uint8_t   disableSplashScreen:1;
-//    uint8_t   disablePotScroll:1;
-//    uint8_t   disableBG:1;
-//    uint8_t   res1:1;
-//    uint8_t   filterInput;
-//    uint8_t   lightAutoOff;
-//    uint8_t   templateSetup;  //RETA order according to chout_ar array
-//    int8_t    PPM_Multiplier;
-//    uint8_t   respre[2];
-//    uint8_t   speakerPitch;
-//    uint8_t	hapticStrength;
-//    uint8_t	speakerMode;
-//    uint8_t   res[1];
-//    char      ownerName[GENERAL_OWNER_NAME_LEN];
+  uint8_t   myVers;
+  int16_t   calibMid[7];
+  int16_t   calibSpanNeg[7];
+  int16_t   calibSpanPos[7];
+  uint16_t  chkSum;
+  uint8_t   currModel; //0..15
+  uint8_t   contrast;
+  uint8_t   vBatWarn;
+  int8_t    vBatCalib;
+  int8_t    lightSw;
+  TrainerData trainer;
+  uint8_t   view;
+  uint8_t   disableThrottleWarning:1;
+  uint8_t   disableSwitchWarning:1;
+  uint8_t   disableMemoryWarning:1;
+  uint8_t   beeperVal:3;
+  uint8_t   reserveWarning:1;
+  uint8_t   disableAlarmWarning:1;
+  uint8_t   stickMode;
+  int8_t    inactivityTimer;
+  uint8_t   throttleReversed:1;
+  uint8_t   minuteBeep:1;
+  uint8_t   preBeep:1;
+  uint8_t   flashBeep:1;
+  uint8_t   disableSplashScreen:1;
+  uint8_t   disablePotScroll:1;
+  uint8_t   disableBG:1;
+  uint8_t   frskyinternalalarm:1;
+  uint8_t   filterInput;
+  uint8_t   lightAutoOff;
+  uint8_t   templateSetup;  //RETA order according to chout_ar array 
+  int8_t    PPM_Multiplier;
+  uint8_t   FRSkyYellow:4;
+  uint8_t   FRSkyOrange:4;
+  uint8_t   FRSkyRed:4;  
+  uint8_t   hideNameOnSplash:1;
+  uint8_t   spare:3;
+  uint8_t   speakerPitch;
+  uint8_t   hapticStrength;
+  uint8_t   speakerMode;
+  uint8_t   lightOnStickMove;
+  char      ownerName[GENERAL_OWNER_NAME_LEN];
+  uint8_t   switchWarningStates;
+  uint8_t   res[4];
 } __attribute__((packed)) EEGeneral;
 
 
@@ -232,44 +195,43 @@ typedef struct t_FrSkyData {
 } __attribute__((packed)) FrSkyData;
 
 typedef struct t_ModelData {
-    char      name[MODEL_NAME_LEN];             // 10 must be first for eeLoadModelName
-    uint8_t   mdVers;
-    int8_t    tmrMode;              // timer trigger source -> off, abs, stk, stk%, sw/!sw, !m_sw/!m_sw
-    uint8_t   tmrDir:1;    //0=>Count Down, 1=>Count Up
-    uint8_t   traineron:1;  // 0 disable trainer, 1 allow trainer
-    uint8_t   t2throttle:1 ;  // Start timer2 using throttle
-    uint8_t   FrSkyUsrProto:2 ;  // Protocol in FrSky User Data, 0=FrSky Hub, 1=WS HowHigh
-    uint8_t   FrSkyImperial:1 ;  // Convert FrSky values to imperial units
-    uint8_t   spare:2;
-    uint16_t  tmrVal;
-    uint8_t   protocol;
-    int8_t    ppmNCH;
-    int8_t    thrTrim:4;            // Enable Throttle Trim
-    int8_t    thrExpo:4;            // Enable Throttle Expo
-    int8_t    trimInc;              // Trim Increments
-    int8_t    ppmDelay;
-    int8_t    trimSw;
-    uint8_t   beepANACenter;        // 1<<0->A1.. 1<<6->A7
-    uint8_t   pulsePol:1;
-    uint8_t   extendedLimits:1;
-    uint8_t   swashInvertELE:1;
-    uint8_t   swashInvertAIL:1;
-    uint8_t   swashInvertCOL:1;
-    uint8_t   swashType:3;
-    uint8_t   swashCollectiveSource;
-    uint8_t   swashRingValue;
-    int8_t    ppmFrameLength;    //0=22.5  (10msec-30msec) 0.5msec increments
-    MixData   mixData[MAX_MIXERS];
-    LimitData limitData[NUM_CHNOUT];
-    ExpoData  expoData[4];
-    int8_t    trim[4];
-    int8_t    curves5[MAX_CURVE5][5];
-    int8_t    curves9[MAX_CURVE9][9];
-    CSwData   customSw[NUM_CSW];
-    uint8_t   rxnum;
-    uint8_t   res3[2];
-    SafetySwData  safetySw[NUM_CHNOUT];
-    FrSkyData frsky;
+  char      name[MODEL_NAME_LEN];             // 10 must be first for eeLoadModelName
+  uint8_t   mdVers;
+  int8_t    tmrMode;              // timer trigger source -> off, abs, stk, stk%, sw/!sw, !m_sw/!m_sw
+  uint8_t   tmrDir:1;    //0=>Count Down, 1=>Count Up
+  uint8_t   traineron:1;  // 0 disable trainer, 1 allow trainer
+  uint8_t   t2throttle:1 ;  // Start timer2 using throttle
+  uint8_t   FrSkyUsrProto:2 ;  // Protocol in FrSky User Data, 0=FrSky Hub, 1=WS HowHigh
+  uint8_t   FrSkyImperial:1 ;  // Convert FrSky values to imperial units
+  uint8_t   FrSkyAltAlarm:2;
+  uint16_t  tmrVal;
+  uint8_t   protocol;
+  int8_t    ppmNCH;
+  uint8_t   thrTrim:4;            // Enable Throttle Trim
+  uint8_t   thrExpo:4;            // Enable Throttle Expo
+  int8_t    trimInc;              // Trim Increments
+  int8_t    ppmDelay;
+  int8_t    trimSw;
+  uint8_t   beepANACenter;        // 1<<0->A1.. 1<<6->A7
+  uint8_t   pulsePol:1;
+  uint8_t   extendedLimits:1;
+  uint8_t   swashInvertELE:1;
+  uint8_t   swashInvertAIL:1;
+  uint8_t   swashInvertCOL:1;
+  uint8_t   swashType:3;
+  uint8_t   swashCollectiveSource;
+  uint8_t   swashRingValue;
+  int8_t    ppmFrameLength;    //0=22.5  (10msec-30msec) 0.5msec increments
+  MixData   mixData[MAX_MIXERS];
+  LimitData limitData[NUM_CHNOUT];
+  ExpoData  expoData[4];
+  int8_t    trim[4];
+  int8_t    curves5[MAX_CURVE5][5];
+  int8_t    curves9[MAX_CURVE9][9];
+  CSwData   customSw[NUM_CSW];
+  uint8_t   res3[3];
+  SafetySwData  safetySw[NUM_CHNOUT];
+  FrSkyData frsky;
 } __attribute__((packed)) ModelData;
 
 
