@@ -37,6 +37,10 @@ ModelEdit::ModelEdit(EEPFILE *eFile, uint8_t id, QWidget *parent) :
     eeFile = eFile;
     sdptr = 0;
 
+    switchEditLock = false;
+    heliEditLock = false;
+    protocolEditLock = false;
+
     mixNotes.clear();
     for(int i=0; i<MAX_MIXERS; i++)
         mixNotes.append(""); //make sure the list isn't empty.
@@ -179,6 +183,7 @@ void ModelEdit::tabModelEditSetup()
     ui->pulsePolCB->setCurrentIndex(g_model.pulsePol);
 
     //protocol channels ppm delay (disable if needed)
+    protocolEditLock = true;
     ui->protocolCB->setCurrentIndex(g_model.protocol);
     ui->ppmDelaySB->setValue(300+50*g_model.ppmDelay);
     ui->numChannelsSB->setValue(8+2*g_model.ppmNCH);
@@ -186,6 +191,37 @@ void ModelEdit::tabModelEditSetup()
     ui->ppmDelaySB->setEnabled(!g_model.protocol);
     ui->numChannelsSB->setEnabled(!g_model.protocol);
     ui->extendedLimitsChkB->setChecked(g_model.extendedLimits);
+    ui->pxxRxNum->setValue(1);
+    ui->DSM_Type->setCurrentIndex(0);
+
+    switch (g_model.protocol)
+    {
+    case PROTO_PXX:
+        ui->ppmDelaySB->setEnabled(false);
+        ui->numChannelsSB->setEnabled(false);
+        ui->ppmFrameLengthDSB->setEnabled(false);
+        ui->DSM_Type->setEnabled(false);
+        ui->pxxRxNum->setEnabled(true);
+        ui->pxxRxNum->setValue(g_model.ppmNCH+1);
+        break;
+    case PROTO_DSM2:
+        ui->ppmDelaySB->setEnabled(false);
+        ui->numChannelsSB->setEnabled(false);
+        ui->ppmFrameLengthDSB->setEnabled(false);
+        ui->DSM_Type->setEnabled(true);
+        ui->pxxRxNum->setEnabled(false);
+        ui->DSM_Type->setCurrentIndex(g_model.ppmNCH);
+        break;
+    default:
+        ui->ppmDelaySB->setEnabled(true);
+        ui->numChannelsSB->setEnabled(true);
+        ui->ppmFrameLengthDSB->setEnabled(true);
+        ui->DSM_Type->setEnabled(false);
+        ui->pxxRxNum->setEnabled(false);
+        break;
+    }
+
+    protocolEditLock = false;
 }
 
 void ModelEdit::tabExpo()
@@ -1520,11 +1556,40 @@ void ModelEdit::on_pulsePolCB_currentIndexChanged(int index)
 
 void ModelEdit::on_protocolCB_currentIndexChanged(int index)
 {
+    protocolEditLock = true;
     g_model.protocol = index;
+    g_model.ppmNCH = 0;
+    ui->pxxRxNum->setValue(1);
+    ui->DSM_Type->setCurrentIndex(0);
+    ui->numChannelsSB->setValue(8+2*g_model.ppmNCH);
     updateSettings();
 
-    ui->ppmDelaySB->setEnabled(!g_model.protocol);
-    ui->numChannelsSB->setEnabled(!g_model.protocol);
+    switch (g_model.protocol)
+    {
+    case PROTO_PXX:
+        ui->ppmDelaySB->setEnabled(false);
+        ui->numChannelsSB->setEnabled(false);
+        ui->ppmFrameLengthDSB->setEnabled(false);
+        ui->DSM_Type->setEnabled(false);
+        ui->pxxRxNum->setEnabled(true);
+        break;
+    case PROTO_DSM2:
+        ui->ppmDelaySB->setEnabled(false);
+        ui->numChannelsSB->setEnabled(false);
+        ui->ppmFrameLengthDSB->setEnabled(false);
+        ui->DSM_Type->setEnabled(true);
+        ui->pxxRxNum->setEnabled(false);
+        break;
+    default:
+        ui->ppmDelaySB->setEnabled(true);
+        ui->numChannelsSB->setEnabled(true);
+        ui->ppmFrameLengthDSB->setEnabled(true);
+        ui->DSM_Type->setEnabled(false);
+        ui->pxxRxNum->setEnabled(false);
+        break;
+    }
+
+    protocolEditLock = false;
 }
 
 void ModelEdit::on_timerValTE_editingFinished()
@@ -1535,11 +1600,29 @@ void ModelEdit::on_timerValTE_editingFinished()
 
 void ModelEdit::on_numChannelsSB_editingFinished()
 {
+    if(protocolEditLock) return;
     int i = (ui->numChannelsSB->value()-8)/2;
     if((i*2+8)!=ui->numChannelsSB->value()) ui->numChannelsSB->setValue(i*2+8);
     g_model.ppmNCH = i;
     updateSettings();
 }
+
+void ModelEdit::on_DSM_Type_currentIndexChanged(int index)
+{
+    if(protocolEditLock) return;
+
+    g_model.ppmNCH = index;
+    updateSettings();
+}
+
+void ModelEdit::on_pxxRxNum_editingFinished()
+{
+    if(protocolEditLock) return;
+
+    g_model.ppmNCH = ui->pxxRxNum->value()-1;
+    updateSettings();
+}
+
 
 void ModelEdit::on_ppmDelaySB_editingFinished()
 {
@@ -2989,6 +3072,7 @@ void ModelEdit::ControlCurveSignal(bool flag)
   ui->curvePt8_16->blockSignals(flag);
   ui->curvePt9_16->blockSignals(flag);
 }
+
 
 
 

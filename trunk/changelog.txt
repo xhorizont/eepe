@@ -10,6 +10,12 @@ description here
 ====================================================================================
 
 ******************************************
+CHANGELOG: 22-1-2012 ER
+Menu changes for protocols
+Enable light on by moving sticks
+More elaborate sw warning
+
+******************************************
 CHANGELOG: 12-1-2012 
 Fix string search for splash screen replace dialog
 Allow hiding of owner name on splash screen

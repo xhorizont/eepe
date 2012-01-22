@@ -14,7 +14,7 @@ public:
     MixerDialog(QWidget *parent, MixData *mixdata, int stickMode, QString * comment);
     ~MixerDialog();
 
-    QString getComment();
+//    QString getComment();
 
 protected:
     void changeEvent(QEvent *e);

@@ -771,6 +771,7 @@ void MainWindow::about()
     aboutStr.append(tr("If you've found this program and/or the er9x firmware useful please support by"));
     aboutStr.append(" <a href='" DONATE_STR "'>");
     aboutStr.append(tr("donating") + "</a></center>");
+//    aboutStr.append(tr("geegeneral size = %1").arg(sizeof(EEGeneral)));
 
     QMessageBox::about(this, tr("About eePe"),aboutStr);
 }

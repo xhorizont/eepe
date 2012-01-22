@@ -38,9 +38,10 @@ private:
 
     bool switchEditLock;
     bool heliEditLock;
-		bool plot_curve[16];
+    bool protocolEditLock;
+    bool plot_curve[16];
     
-		QSpinBox  * cswitchOffset[NUM_CSW];
+    QSpinBox  * cswitchOffset[NUM_CSW];
     QComboBox * cswitchSource1[NUM_CSW];
     QComboBox * cswitchSource2[NUM_CSW];
 
@@ -208,6 +209,8 @@ private slots:
     void on_templateList_doubleClicked(QModelIndex index);
     void on_ppmFrameLengthDSB_editingFinished();
     void ControlCurveSignal(bool flag);
+    void on_DSM_Type_currentIndexChanged(int index);
+    void on_pxxRxNum_editingFinished();
 };
 
 

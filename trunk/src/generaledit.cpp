@@ -19,6 +19,8 @@ GeneralEdit::GeneralEdit(EEPFILE *eFile, QWidget *parent) :
     this->setWindowIcon(QIcon(":/icon.png"));
     eeFile = eFile;
 
+    switchDefPosEditLock = false;
+
     QSettings settings("er9x-eePe", "eePe");
     ui->tabWidget->setCurrentIndex(settings.value("generalEditTab", 0).toInt());
 
@@ -36,6 +38,7 @@ GeneralEdit::GeneralEdit(EEPFILE *eFile, QWidget *parent) :
     ui->battcalibDSB->setValue((double)g_eeGeneral.vBatCalib/10);
     ui->battCalib->setValue((double)g_eeGeneral.vBatCalib/10);
     ui->backlightautoSB->setValue(g_eeGeneral.lightAutoOff*5);
+    ui->backlightStickMove->setValue(g_eeGeneral.lightOnStickMove*5);
     ui->inactimerSB->setValue(g_eeGeneral.inactivityTimer+10);
 
     ui->soundModeCB->setCurrentIndex(g_eeGeneral.speakerMode);
@@ -83,6 +86,8 @@ GeneralEdit::GeneralEdit(EEPFILE *eFile, QWidget *parent) :
     ui->ana5Pos->setValue(g_eeGeneral.calibSpanPos[4]);
     ui->ana6Pos->setValue(g_eeGeneral.calibSpanPos[5]);
     ui->ana7Pos->setValue(g_eeGeneral.calibSpanPos[6]);
+
+    setSwitchDefPos();
     
 		ui->weightSB_1->findChild<QLineEdit*>()->setReadOnly(true);
     ui->weightSB_2->findChild<QLineEdit*>()->setReadOnly(true);
@@ -127,6 +132,27 @@ GeneralEdit::GeneralEdit(EEPFILE *eFile, QWidget *parent) :
 GeneralEdit::~GeneralEdit()
 {
     delete ui;
+}
+
+void GeneralEdit::setSwitchDefPos()
+{
+    quint8 x = g_eeGeneral.switchWarningStates & SWP_IL5;
+    if(x==SWP_IL1 || x==SWP_IL2 || x==SWP_IL3 || x==SWP_IL4 || x==SWP_IL5) //illegal states for ID0/1/2
+    {
+        g_eeGeneral.switchWarningStates &= ~SWP_IL5; // turn all off, make sure only one is on
+        g_eeGeneral.switchWarningStates |=  SWP_ID0B;
+    }
+
+    switchDefPosEditLock = true;
+    ui->switchDefPos_1->setChecked(g_eeGeneral.switchWarningStates & 0x01);
+    ui->switchDefPos_2->setChecked(g_eeGeneral.switchWarningStates & 0x02);
+    ui->switchDefPos_3->setChecked(g_eeGeneral.switchWarningStates & 0x04);
+    ui->switchDefPos_4->setChecked(g_eeGeneral.switchWarningStates & 0x08);
+    ui->switchDefPos_5->setChecked(g_eeGeneral.switchWarningStates & 0x10);
+    ui->switchDefPos_6->setChecked(g_eeGeneral.switchWarningStates & 0x20);
+    ui->switchDefPos_7->setChecked(g_eeGeneral.switchWarningStates & 0x40);
+    ui->switchDefPos_8->setChecked(g_eeGeneral.switchWarningStates & 0x80);
+    switchDefPosEditLock = false;
 }
 
 void GeneralEdit::updateSettings()
@@ -290,16 +316,25 @@ void GeneralEdit::on_backlightswCB_currentIndexChanged(int index)
     updateSettings();
 }
 
+
 void GeneralEdit::on_backlightautoSB_editingFinished()
 {
     int i = ui->backlightautoSB->value()/5;
     if((i*5)!=ui->backlightautoSB->value())
         ui->backlightautoSB->setValue(i*5);
-    else
-    {
-        g_eeGeneral.lightAutoOff = i;
-        updateSettings();
-    }
+
+    g_eeGeneral.lightAutoOff = i;
+    updateSettings();
+}
+
+void GeneralEdit::on_backlightStickMove_editingFinished()
+{
+    int i = ui->backlightStickMove->value()/5;
+    if((i*5)!=ui->backlightStickMove->value())
+        ui->backlightStickMove->setValue(i*5);
+
+    g_eeGeneral.lightOnStickMove = i;
+    updateSettings();
 }
 
 void GeneralEdit::on_inactimerSB_editingFinished()
@@ -588,5 +623,97 @@ void GeneralEdit::on_tabWidget_selected(QString )
 void GeneralEdit::on_splashScreenNameChkB_stateChanged(int )
 {
     g_eeGeneral.hideNameOnSplash = ui->splashScreenNameChkB->isChecked() ? 0 : 1;
+    updateSettings();
+}
+
+void GeneralEdit::getGeneralSwitchDefPos(int i, bool val)
+{
+    if(val)
+        g_eeGeneral.switchWarningStates |= (1<<(i-1));
+    else
+        g_eeGeneral.switchWarningStates &= ~(1<<(i-1));
+}
+
+void GeneralEdit::on_switchDefPos_1_stateChanged(int )
+{
+    if(switchDefPosEditLock) return;
+    getGeneralSwitchDefPos(1,ui->switchDefPos_1->isChecked());
+    updateSettings();
+}
+void GeneralEdit::on_switchDefPos_2_stateChanged(int )
+{
+    if(switchDefPosEditLock) return;
+    getGeneralSwitchDefPos(2,ui->switchDefPos_2->isChecked());
+    updateSettings();
+}
+void GeneralEdit::on_switchDefPos_3_stateChanged(int )
+{
+    getGeneralSwitchDefPos(3,ui->switchDefPos_3->isChecked());
+    updateSettings();
+}
+void GeneralEdit::on_switchDefPos_4_stateChanged(int )
+{
+    if(switchDefPosEditLock) return;
+
+    if(ui->switchDefPos_4->isChecked())
+    {
+        switchDefPosEditLock = true;
+        ui->switchDefPos_5->setChecked(false);
+        ui->switchDefPos_6->setChecked(false);
+        switchDefPosEditLock = false;
+    }
+    else
+        return;
+
+    g_eeGeneral.switchWarningStates &= ~0x30; //turn off ID1/2
+    getGeneralSwitchDefPos(4,ui->switchDefPos_4->isChecked());
+    updateSettings();
+}
+void GeneralEdit::on_switchDefPos_5_stateChanged(int )
+{
+    if(switchDefPosEditLock) return;
+
+    if(ui->switchDefPos_5->isChecked())
+    {
+        switchDefPosEditLock = true;
+        ui->switchDefPos_4->setChecked(false);
+        ui->switchDefPos_6->setChecked(false);
+        switchDefPosEditLock = false;
+    }
+    else
+        return;
+
+    g_eeGeneral.switchWarningStates &= ~0x28; //turn off ID0/2
+    getGeneralSwitchDefPos(5,ui->switchDefPos_5->isChecked());
+    updateSettings();
+}
+void GeneralEdit::on_switchDefPos_6_stateChanged(int )
+{
+    if(switchDefPosEditLock) return;
+
+    if(ui->switchDefPos_6->isChecked())
+    {
+        switchDefPosEditLock = true;
+        ui->switchDefPos_4->setChecked(false);
+        ui->switchDefPos_5->setChecked(false);
+        switchDefPosEditLock = false;
+    }
+    else
+        return;
+
+    g_eeGeneral.switchWarningStates &= ~0x18; //turn off ID1/2
+    getGeneralSwitchDefPos(6,ui->switchDefPos_6->isChecked());
+    updateSettings();
+}
+void GeneralEdit::on_switchDefPos_7_stateChanged(int )
+{
+    if(switchDefPosEditLock) return;
+    getGeneralSwitchDefPos(7,ui->switchDefPos_7->isChecked());
+    updateSettings();
+}
+void GeneralEdit::on_switchDefPos_8_stateChanged(int )
+{
+    if(switchDefPosEditLock) return;
+    getGeneralSwitchDefPos(8,ui->switchDefPos_8->isChecked());
     updateSettings();
 }

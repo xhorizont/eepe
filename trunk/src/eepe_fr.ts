@@ -491,6 +491,42 @@ p, li { white-space: pre-wrap; }
         <source>Show Name On Splash Sceen</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Backlight On Stick Move</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>THR</source>
+        <translation type="unfinished">GAZ</translation>
+    </message>
+    <message>
+        <source>RUD</source>
+        <translation type="unfinished">DIR</translation>
+    </message>
+    <message>
+        <source>ELE</source>
+        <translation type="unfinished">PROF</translation>
+    </message>
+    <message>
+        <source>AIL</source>
+        <translation type="unfinished">AIL</translation>
+    </message>
+    <message>
+        <source>ID0</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>ID1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>ID2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>GEA</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>MainWindow</name>
@@ -1193,15 +1229,21 @@ File wrong size - %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Error loading file %1:
-File may be corrupted, old or from a different system.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Error reading file:
 This might be a FW file (er9x.hex?). 
 You might want to try flashing it to the TX.
 (Burn-&gt;Write Flash Memory)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Error loading file %1:
+File may be corrupted, old or from a different system.
+You might need to update eePe to read this file.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Error loading file %1:
+File may be corrupted, old or from a different system.You might need to update eePe to read this file.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2076,6 +2118,30 @@ Droite</translation>
     </message>
     <message>
         <source>Editing curve %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>PPM16</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>DSM Type</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>PXX RxNum</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>LP4/LP5</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>DSM2only</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>DSM2/DSMX</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
