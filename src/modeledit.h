@@ -70,6 +70,8 @@ private:
     void launchSimulation();
     void resizeEvent(QResizeEvent *event  = 0);
 
+    void setProtocolBoxes();
+
     void drawCurve();
     int currentCurve;
     void setCurrentCurve(int curveId);

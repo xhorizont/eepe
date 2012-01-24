@@ -179,38 +179,49 @@ void ModelEdit::tabModelEditSetup()
     ui->bcP2ChkB->setChecked(g_model.beepANACenter & BC_BIT_P2);
     ui->bcP3ChkB->setChecked(g_model.beepANACenter & BC_BIT_P3);
 
+    ui->extendedLimitsChkB->setChecked(g_model.extendedLimits);
+
     //pulse polarity
     ui->pulsePolCB->setCurrentIndex(g_model.pulsePol);
 
     //protocol channels ppm delay (disable if needed)
+    setProtocolBoxes();
+}
+
+void ModelEdit::setProtocolBoxes()
+{
     protocolEditLock = true;
     ui->protocolCB->setCurrentIndex(g_model.protocol);
-    ui->ppmDelaySB->setValue(300+50*g_model.ppmDelay);
-    ui->numChannelsSB->setValue(8+2*g_model.ppmNCH);
-    ui->ppmFrameLengthDSB->setValue(22.5+((double)g_model.ppmFrameLength)*0.5);
-    ui->ppmDelaySB->setEnabled(!g_model.protocol);
-    ui->numChannelsSB->setEnabled(!g_model.protocol);
-    ui->extendedLimitsChkB->setChecked(g_model.extendedLimits);
-    ui->pxxRxNum->setValue(1);
-    ui->DSM_Type->setCurrentIndex(0);
 
     switch (g_model.protocol)
     {
-    case PROTO_PXX:
+    case (PROTO_PXX):
         ui->ppmDelaySB->setEnabled(false);
         ui->numChannelsSB->setEnabled(false);
         ui->ppmFrameLengthDSB->setEnabled(false);
         ui->DSM_Type->setEnabled(false);
         ui->pxxRxNum->setEnabled(true);
+
         ui->pxxRxNum->setValue(g_model.ppmNCH+1);
+
+        ui->DSM_Type->setCurrentIndex(0);
+        ui->ppmDelaySB->setValue(300);
+        ui->numChannelsSB->setValue(8);
+        ui->ppmFrameLengthDSB->setValue(22.5);
         break;
-    case PROTO_DSM2:
+    case (PROTO_DSM2):
         ui->ppmDelaySB->setEnabled(false);
         ui->numChannelsSB->setEnabled(false);
         ui->ppmFrameLengthDSB->setEnabled(false);
         ui->DSM_Type->setEnabled(true);
         ui->pxxRxNum->setEnabled(false);
+
         ui->DSM_Type->setCurrentIndex(g_model.ppmNCH);
+
+        ui->pxxRxNum->setValue(1);
+        ui->ppmDelaySB->setValue(300);
+        ui->numChannelsSB->setValue(8);
+        ui->ppmFrameLengthDSB->setValue(22.5);
         break;
     default:
         ui->ppmDelaySB->setEnabled(true);
@@ -218,6 +229,13 @@ void ModelEdit::tabModelEditSetup()
         ui->ppmFrameLengthDSB->setEnabled(true);
         ui->DSM_Type->setEnabled(false);
         ui->pxxRxNum->setEnabled(false);
+
+        ui->ppmDelaySB->setValue(300+50*g_model.ppmDelay);
+        ui->numChannelsSB->setValue(8+2*g_model.ppmNCH);
+        ui->ppmFrameLengthDSB->setValue(22.5+((double)g_model.ppmFrameLength)*0.5);
+
+        ui->pxxRxNum->setValue(1);
+        ui->DSM_Type->setCurrentIndex(0);
         break;
     }
 
@@ -1556,40 +1574,13 @@ void ModelEdit::on_pulsePolCB_currentIndexChanged(int index)
 
 void ModelEdit::on_protocolCB_currentIndexChanged(int index)
 {
-    protocolEditLock = true;
+    if(protocolEditLock) return;
     g_model.protocol = index;
     g_model.ppmNCH = 0;
-    ui->pxxRxNum->setValue(1);
-    ui->DSM_Type->setCurrentIndex(0);
-    ui->numChannelsSB->setValue(8+2*g_model.ppmNCH);
+
+    setProtocolBoxes();
+
     updateSettings();
-
-    switch (g_model.protocol)
-    {
-    case PROTO_PXX:
-        ui->ppmDelaySB->setEnabled(false);
-        ui->numChannelsSB->setEnabled(false);
-        ui->ppmFrameLengthDSB->setEnabled(false);
-        ui->DSM_Type->setEnabled(false);
-        ui->pxxRxNum->setEnabled(true);
-        break;
-    case PROTO_DSM2:
-        ui->ppmDelaySB->setEnabled(false);
-        ui->numChannelsSB->setEnabled(false);
-        ui->ppmFrameLengthDSB->setEnabled(false);
-        ui->DSM_Type->setEnabled(true);
-        ui->pxxRxNum->setEnabled(false);
-        break;
-    default:
-        ui->ppmDelaySB->setEnabled(true);
-        ui->numChannelsSB->setEnabled(true);
-        ui->ppmFrameLengthDSB->setEnabled(true);
-        ui->DSM_Type->setEnabled(false);
-        ui->pxxRxNum->setEnabled(false);
-        break;
-    }
-
-    protocolEditLock = false;
 }
 
 void ModelEdit::on_timerValTE_editingFinished()
@@ -1626,6 +1617,7 @@ void ModelEdit::on_pxxRxNum_editingFinished()
 
 void ModelEdit::on_ppmDelaySB_editingFinished()
 {
+    if(protocolEditLock) return;
     int i = (ui->ppmDelaySB->value()-300)/50;
     if((i*50+300)!=ui->ppmDelaySB->value()) ui->ppmDelaySB->setValue(i*50+300);
     g_model.ppmDelay = i;
@@ -2858,6 +2850,7 @@ void ModelEdit::applyTemplate(uint8_t idx)
 
 void ModelEdit::on_ppmFrameLengthDSB_editingFinished()
 {
+    if(protocolEditLock) return;
     g_model.ppmFrameLength = (ui->ppmFrameLengthDSB->value()-22.5)/0.5;
     updateSettings();
 }
