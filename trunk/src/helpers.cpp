@@ -507,37 +507,6 @@ QDomElement getModelDataXML(QDomDocument * qdoc, ModelData * tmod, int modelNum)
     md.setAttribute("number", modelNum);
 
 
-
-
-
-
-
-
-    //    typedef struct t_CSwData { // Custom Switches data
-    //        int8_t  v1; //input
-    //        int8_t  v2; //offset
-    //        uint8_t func;
-    //    } __attribute__((packed)) CSwData;
-
-    //    typedef struct t_SafetySwData { // Custom Switches data
-    //        int8_t  swtch;
-    //        int8_t  val;
-    //    } __attribute__((packed)) SafetySwData;
-
-    //    typedef struct t_FrSkyChannelData {
-    //        uint8_t   ratio;                // 0.0 means not used, 0.1V steps EG. 6.6 Volts = 66. 25.1V = 251, etc.
-    //        uint8_t   alarms_value[2];      // 0.1V steps EG. 6.6 Volts = 66. 25.1V = 251, etc.
-    //        uint8_t   alarms_level:4;
-    //        uint8_t   alarms_greater:2;     // 0=LT(<), 1=GT(>)
-    //        uint8_t   type:2;               // future use: 0=volts, ...
-    //    } __attribute__((packed)) FrSkyChannelData;
-
-    //    typedef struct t_FrSkyData {
-    //        FrSkyChannelData channels[2];
-    //    } __attribute__((packed)) FrSkyData;
-
-
-
     //      char      name[MODEL_NAME_LEN];             // 10 must be first for eeLoadModelName
     appendTextElement(qdoc, &md, "name", QString::fromAscii(tmod->name,sizeof(tmod->name)).trimmed());
 
@@ -646,7 +615,7 @@ QDomElement getModelDataXML(QDomDocument * qdoc, ModelData * tmod, int modelNum)
 
 
     //      ExpoData  expoData[4];
-    if(!isArrayZero((quint8 *)&tmod->limitData,sizeof(tmod->limitData)))
+    if(!isArrayZero((quint8 *)&tmod->expoData,sizeof(tmod->expoData)))
     {
         QDomElement expoData = appendEmptyElement(qdoc, &md, "expoData");
         for(int i=0; i<4; i++)
@@ -655,7 +624,22 @@ QDomElement getModelDataXML(QDomDocument * qdoc, ModelData * tmod, int modelNum)
                 QDomElement singleExpo = appendEmptyElement(qdoc, &expoData, QString("%1").arg(i));
 
                 //        int8_t  expo[3][2][2];
-
+                QDomElement expo = appendEmptyElement(qdoc, &singleExpo, "expo");
+                if(!isArrayZero((quint8 *)&tmod->expoData[i],sizeof(tmod->expoData[i])))
+                {
+                    for(int a=0; a<3; a++)
+                        if(!isArrayZero((quint8 *)&tmod->expoData[i].expo[a],sizeof(tmod->expoData[i].expo[a])))
+                        {
+                            QDomElement expo_a = appendEmptyElement(qdoc, &expo, QString("%1").arg(a));
+                            for(int b=0; b<2; b++)
+                                if(!isArrayZero((quint8 *)&tmod->expoData[i].expo[a][b],sizeof(tmod->expoData[i].expo[a][b])))
+                                {
+                                    QDomElement expo_b = appendEmptyElement(qdoc, &expo_a, QString("%1").arg(b));
+                                    for(int c=0; c<2; c++)
+                                        appendNumberElement(qdoc, &expo_b, QString("%1").arg(c), tmod->expoData[i].expo[a][b][c]);
+                                }
+                        }
+                }
 
                 //        int8_t  drSw1;
                 appendNumberElement(qdoc, &singleExpo, "drSw1", tmod->expoData[i].drSw1);
@@ -728,9 +712,9 @@ QDomElement getModelDataXML(QDomDocument * qdoc, ModelData * tmod, int modelNum)
     //      int8_t    trim[4];
     if(!isArrayZero((quint8 *)&tmod->trim,sizeof(tmod->trim)))
     {
-    QDomElement trim = appendEmptyElement(qdoc, &md, "trim");
-    for(int i=0; i<4; i++)
-        appendNumberElement(qdoc, &trim, QString("%1").arg(i), tmod->trim[i]);
+        QDomElement trim = appendEmptyElement(qdoc, &md, "trim");
+        for(int i=0; i<4; i++)
+            appendNumberElement(qdoc, &trim, QString("%1").arg(i), tmod->trim[i]);
     }
 
     //      int8_t    curves5[MAX_CURVE5][5];
@@ -738,14 +722,12 @@ QDomElement getModelDataXML(QDomDocument * qdoc, ModelData * tmod, int modelNum)
     {
         QDomElement curves5a = appendEmptyElement(qdoc, &md, "curves5");
         for(int a=0; a<MAX_CURVE5; a++)
-        {
             if(!isArrayZero((quint8 *)&tmod->curves5[a],sizeof(tmod->curves5[a])))
             {
                 QDomElement curves5b = appendEmptyElement(qdoc, &curves5a, QString("%1").arg(a));
                 for(int b=0; b<5; b++)
                     appendNumberElement(qdoc, &curves5b, QString("%1").arg(b), tmod->curves5[a][b]);
             }
-        }
     }
 
     //      int8_t    curves9[MAX_CURVE9][9];
@@ -753,22 +735,90 @@ QDomElement getModelDataXML(QDomDocument * qdoc, ModelData * tmod, int modelNum)
     {
         QDomElement curves9a = appendEmptyElement(qdoc, &md, "curves9");
         for(int a=0; a<MAX_CURVE9; a++)
-        {
             if(!isArrayZero((quint8 *)&tmod->curves9[a],sizeof(tmod->curves9[a])))
             {
                 QDomElement curves9b = appendEmptyElement(qdoc, &curves9a, QString("%1").arg(a));
                 for(int b=0; b<9; b++)
                     appendNumberElement(qdoc, &curves9b, QString("%1").arg(b), tmod->curves9[a][b]);
             }
-        }
     }
 
 
 
     //      CSwData   customSw[NUM_CSW];
+    if(!isArrayZero((quint8 *)&tmod->customSw,sizeof(tmod->customSw)))
+    {
+        QDomElement customSw = appendEmptyElement(qdoc, &md, "customSw");
+        for(int i=0; i<NUM_CSW; i++)
+            if(!isArrayZero((quint8 *)&tmod->customSw[i],sizeof(tmod->customSw[i])))
+            {
+                QDomElement singleCSW = appendEmptyElement(qdoc, &customSw, QString("%1").arg(i));
+
+                //        int8_t  v1; //input
+                appendNumberElement(qdoc, &singleCSW, "v1", tmod->customSw[i].v1);
+
+                //        int8_t  v2; //offset
+                appendNumberElement(qdoc, &singleCSW, "v2", tmod->customSw[i].v2);
+
+                //        uint8_t func;
+                appendNumberElement(qdoc, &singleCSW, "func", tmod->customSw[i].func);
+            }
+    }
+
+
+
     //      SafetySwData  safetySw[NUM_CHNOUT];
+    if(!isArrayZero((quint8 *)&tmod->safetySw,sizeof(tmod->safetySw)))
+    {
+        QDomElement safetySw = appendEmptyElement(qdoc, &md, "safetySw");
+        for(int i=0; i<NUM_CHNOUT; i++)
+            if(!isArrayZero((quint8 *)&tmod->safetySw[i],sizeof(tmod->safetySw[i])))
+            {
+                QDomElement singleSSW = appendEmptyElement(qdoc, &safetySw, QString("%1").arg(i));
+
+                //        int8_t  swtch;
+                appendNumberElement(qdoc, &singleSSW, "swtch", tmod->safetySw[i].swtch);
+
+                //        int8_t  val;
+                appendNumberElement(qdoc, &singleSSW, "val", tmod->safetySw[i].val);
+            }
+    }
+
+
     //      FrSkyData frsky;
-    //    } __attribute__((packed)) ModelData;
+    if(!isArrayZero((quint8 *)&tmod->frsky,sizeof(tmod->frsky)))
+    {
+        QDomElement frsky = appendEmptyElement(qdoc, &md, "frsky");
+        QDomElement channels = appendEmptyElement(qdoc, &frsky, "channels");
+
+        for(int i=0; i<2; i++)
+            if(!isArrayZero((quint8 *)&tmod->frsky.channels[i],sizeof(tmod->frsky.channels[i])))
+            {
+                QDomElement singleFrsky = appendEmptyElement(qdoc, &channels, QString("%1").arg(i));
+
+                //        uint8_t   ratio;                // 0.0 means not used, 0.1V steps EG. 6.6 Volts = 66. 25.1V = 251, etc.
+                appendNumberElement(qdoc, &singleFrsky, "ratio", tmod->frsky.channels[i].ratio);
+
+                //        uint8_t   alarms_value[2];      // 0.1V steps EG. 6.6 Volts = 66. 25.1V = 251, etc.
+                if(!isArrayZero((quint8 *)&tmod->frsky.channels[i].alarms_value,sizeof(tmod->frsky.channels[i].alarms_value)))
+                {
+                    QDomElement alarms_value = appendEmptyElement(qdoc, &singleFrsky, "alarms_value");
+                    for(int a=0; a<2; a++)
+                        appendNumberElement(qdoc, &alarms_value, QString("%1").arg(a), tmod->frsky.channels[i].alarms_value[a]);
+                }
+
+                //        uint8_t   alarms_level:4;
+                appendNumberElement(qdoc, &singleFrsky, "alarms_level", tmod->frsky.channels[i].alarms_level);
+
+                //        uint8_t   alarms_greater:2;     // 0=LT(<), 1=GT(>)
+                appendNumberElement(qdoc, &singleFrsky, "alarms_greater", tmod->frsky.channels[i].alarms_greater);
+
+                //        uint8_t   type:2;               // future use: 0=volts, ...
+                appendNumberElement(qdoc, &singleFrsky, "type", tmod->frsky.channels[i].type);
+
+            }
+    }
+
 
     return md;
 }
