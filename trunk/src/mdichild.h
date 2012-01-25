@@ -49,9 +49,15 @@
 #define FILE_TYPE_EEPG 5
 
 #include <QtGui>
+#include <QtXml>
 #include "pers.h"
 #include "myeeprom.h"
 #include "helpers.h"
+
+
+#define ER9X_EEPROM_FILE_TYPE        "ER9X_EEPROM_FILE"
+#define ER9X_MODEL_FILE_TYPE         "ER9X_MODEL_FILE"
+#define ER9X_GENERAL_FILE_TYPE       "ER9X_GENERAL_FILE"
 
 #define EEPE_EEPROM_FILE_HEADER  "EEPE EEPROM FILE"
 #define EEPE_MODEL_FILE_HEADER  "EEPE MODEL FILE"
@@ -141,6 +147,9 @@ private:
     void doPaste(QByteArray *gmData, int index);
     void doCopy(QByteArray *gmData);
     QString strippedName(const QString &fullFileName);
+
+    bool getGeneralData(QByteArray * qba);
+    bool getModelData(QByteArray * qba, int modelNumber);
 
     QPoint dragStartPosition;
 
