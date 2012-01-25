@@ -5,9 +5,13 @@ above the previous change.
 
 Format is as follows:
 ******************************************
-CHANGELOG: 1-11-2011
+CHANGELOG: 1-24-2011 (Notice US notation!)
 description here
 ====================================================================================
+
+******************************************
+CHANGELOG: 1-24-2012 ER
+Fixed issue with protocol box and data resetting
 
 ******************************************
 CHANGELOG: 22-1-2012 ER
