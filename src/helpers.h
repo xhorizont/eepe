@@ -22,9 +22,10 @@ int  loadiHEX(QWidget *parent, QString fileName, quint8 * data, int datalen, QSt
 bool saveiHEX(QWidget *parent, QString fileName, quint8 * data, int datalen, QString header, int notesIndex=0);
 
 
-QDomElement getGeneralDataXML(QDomDocument * qdoc, EEGeneral * tgen);
-QDomElement getModelDataXML(QDomDocument * qdoc, ModelData * tmod, int modelNum);
+QDomElement getGeneralDataXML(QDomDocument * qdoc, EEGeneral * tgen);   //parse out data to XML format
+QDomElement getModelDataXML(QDomDocument * qdoc, ModelData * tmod, int modelNum); //parse out data to XML format
 
-
+bool loadGeneralDataXML(QDomDocument * qdoc, EEGeneral * tgen); // get data from XML
+bool loadModelDataXML(QDomDocument * qdoc, ModelData * tmod); // get data from XML
 
 #endif // HELPERS_H
