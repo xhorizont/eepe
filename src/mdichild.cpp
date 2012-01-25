@@ -348,14 +348,35 @@ bool MdiChild::loadModelFromFile(QString fn)
 
     settings.setValue("lastDir",QFileInfo(fileName).dir().absolutePath());
 
-    quint8 temp[WRITESIZE];
+//    quint8 temp[WRITESIZE];
 
     if(genfile)
     {
-        if(!loadiHEX(this, fileName, (quint8*)&temp, sizeof(EEGeneral), EEPE_GENERAL_FILE_HEADER))
-            return false;
+        EEGeneral tgen;
 
-        if(!eeFile.putGeneralSettings((EEGeneral*)&temp))
+        //get general data from XML file, if not, get it from iHEX
+
+        QDomDocument doc(ER9X_EEPROM_FILE_TYPE);
+        QFile file(fileName);
+        bool xmlOK = file.open(QIODevice::ReadOnly);
+        if(xmlOK)
+        {
+            xmlOK = doc.setContent(&file);
+            if(xmlOK)
+            {
+                xmlOK = loadGeneralDataXML(&doc, &tgen);
+            }
+            file.close();
+        }
+
+        if(!xmlOK) //if can't get XML - load iHEX
+        {
+            quint8 temp[sizeof(EEGeneral)];
+            if(!loadiHEX(this, fileName, (quint8*)&temp, sizeof(EEGeneral), EEPE_GENERAL_FILE_HEADER))
+                return false;
+            memcpy(&temp, &tgen, sizeof(tgen));
+        }
+        if(!eeFile.putGeneralSettings(&tgen))
         {
             QMessageBox::critical(this, tr("Error"),
                                   tr("Error writing to container"));
@@ -364,10 +385,32 @@ bool MdiChild::loadModelFromFile(QString fn)
     }
     else
     {
-        if(!loadiHEX(this, fileName, (quint8*)&temp, sizeof(ModelData), EEPE_MODEL_FILE_HEADER))
-            return false;
+        ModelData tmod;
 
-        if(!eeFile.putModel((ModelData*)&temp,cmod))
+        QDomDocument doc(ER9X_EEPROM_FILE_TYPE);
+        QFile file(fileName);
+        bool xmlOK = file.open(QIODevice::ReadOnly);
+        if(xmlOK)
+        {
+            xmlOK = doc.setContent(&file);
+            if(xmlOK)
+            {
+                xmlOK = loadModelDataXML(&doc, &tmod);
+            }
+            file.close();
+        }
+
+        if(!xmlOK) //if can't get XML - load iHEX
+        {
+
+            //if can't load XML load from iHex
+            quint8 temp[sizeof(ModelData)];
+            if(!loadiHEX(this, fileName, (quint8*)&temp, sizeof(ModelData), EEPE_MODEL_FILE_HEADER))
+                return false;
+            memcpy(&temp, &tmod, sizeof(tmod));
+
+        }
+        if(!eeFile.putModel(&tmod,cmod))
         {
             QMessageBox::critical(this, tr("Error"),
                                   tr("Error writing to container"));
@@ -625,33 +668,72 @@ bool MdiChild::loadFile(const QString &fileName, bool resetCurrentFile)
 
     if(fileType==FILE_TYPE_HEX || fileType==FILE_TYPE_EEPE) //read HEX file
     {
-        if((QFileInfo(fileName).size()>(6*1024)) || (QFileInfo(fileName).size()<(4*1024)))  //if filesize> 6k and <4kb
+        //if file is XML read and exit saying true;
+        //else process as iHex
+        QDomDocument doc(ER9X_EEPROM_FILE_TYPE);
+        QFile file(fileName);
+        bool xmlOK = file.open(QIODevice::ReadOnly);
+        if(xmlOK)
         {
-            QMessageBox::critical(this, tr("Error"),tr("Error reading file:\n"
-                                                       "This might be a FW file (er9x.hex?). \n"
-                                                       "You might want to try flashing it to the TX.\n"
-                                                       "(Burn->Write Flash Memory)").arg(fileName));
-            return false;
+            xmlOK = doc.setContent(&file);
+            if(xmlOK)
+            {
+                //read general data
+                EEGeneral tgen;
+                if(!loadGeneralDataXML(&doc, &tgen))
+                {
+                    QMessageBox::critical(this, tr("Error"),tr("Error reading file:\n"
+                                                               "Cannot read General Settings from file %1").arg(fileName));
+                    return false;
+                }
+                if(!eeFile.putGeneralSettings(&tgen))
+                {
+                    QMessageBox::critical(this, tr("Error"),tr("Error reading file:\n"
+                                                               "Cannot set General Settings"));
+                    return false;
+                }
+
+                //read model data
+                for(int i=0; i<MAX_MODELS; i++)
+                {
+                    ModelData tmod;
+                    if(loadModelDataXML(&doc, &tmod, i))
+                        eeFile.putModel(&tmod,i);
+                }
+            }
+            file.close();
         }
 
-        quint8 temp[EESIZE];
-
-        QString header ="";
-        if(fileType==FILE_TYPE_EEPE)   // read EEPE file header
-            header=EEPE_EEPROM_FILE_HEADER;
-
-        if(!loadiHEX(this, fileName, (quint8*)&temp, EESIZE, header))
-            return false;
-
-
-        if(!eeFile.loadFile(&temp))
+        if(!xmlOK)
         {
-            QMessageBox::critical(this, tr("Error"),
-                                 tr("Error loading file %1:\n"
-                                    "File may be corrupted, old or from a different system."
-                                    "You might need to update eePe to read this file.")
-                                 .arg(fileName));
-            return false;
+            if((QFileInfo(fileName).size()>(6*1024)) || (QFileInfo(fileName).size()<(4*1024)))  //if filesize> 6k and <4kb
+            {
+                QMessageBox::critical(this, tr("Error"),tr("Error reading file:\n"
+                                                           "This might be a FW file (er9x.hex?). \n"
+                                                           "You might want to try flashing it to the TX.\n"
+                                                           "(Burn->Write Flash Memory)").arg(fileName));
+                return false;
+            }
+
+            quint8 temp[EESIZE];
+
+            QString header ="";
+            if(fileType==FILE_TYPE_EEPE)   // read EEPE file header
+                header=EEPE_EEPROM_FILE_HEADER;
+
+            if(!loadiHEX(this, fileName, (quint8*)&temp, EESIZE, header))
+                return false;
+
+
+            if(!eeFile.loadFile(&temp))
+            {
+                QMessageBox::critical(this, tr("Error"),
+                                      tr("Error loading file %1:\n"
+                                         "File may be corrupted, old or from a different system."
+                                         "You might need to update eePe to read this file.")
+                                      .arg(fileName));
+                return false;
+            }
         }
         refreshList();
         if(resetCurrentFile) setCurrentFile(fileName);
@@ -752,6 +834,7 @@ bool MdiChild::saveFile(const QString &fileName, bool setCurrent)
             QMessageBox::critical(this, tr("Error"),tr("Error Getting General Settings Data"));
             return false;
         }
+        tgen.myVers = MDVERS; //make sure we're at the current rev
         QDomElement genData = getGeneralDataXML(&doc, &tgen);
         root.appendChild(genData);
 
@@ -763,6 +846,7 @@ bool MdiChild::saveFile(const QString &fileName, bool setCurrent)
                 ModelData tmod;
                 if(!eeFile.getModel(&tmod,i))  // if can't get model - go to next one
                     continue;
+                tmod.mdVers = MDVERS; //bring every model up to the same rev
                 QDomElement modData = getModelDataXML(&doc, &tmod, i);
                 root.appendChild(modData);
             }
