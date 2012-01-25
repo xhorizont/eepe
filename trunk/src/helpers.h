@@ -26,6 +26,6 @@ QDomElement getGeneralDataXML(QDomDocument * qdoc, EEGeneral * tgen);   //parse 
 QDomElement getModelDataXML(QDomDocument * qdoc, ModelData * tmod, int modelNum); //parse out data to XML format
 
 bool loadGeneralDataXML(QDomDocument * qdoc, EEGeneral * tgen); // get data from XML
-bool loadModelDataXML(QDomDocument * qdoc, ModelData * tmod); // get data from XML
+bool loadModelDataXML(QDomDocument * qdoc, ModelData * tmod, int modelNum = -1); // get data from XML
 
 #endif // HELPERS_H
