@@ -148,9 +148,6 @@ private:
     void doCopy(QByteArray *gmData);
     QString strippedName(const QString &fullFileName);
 
-    bool getGeneralData(QByteArray * qba);
-    bool getModelData(QByteArray * qba, int modelNumber);
-
     QPoint dragStartPosition;
 
     QString curFile;

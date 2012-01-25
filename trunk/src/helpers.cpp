@@ -822,3 +822,16 @@ QDomElement getModelDataXML(QDomDocument * qdoc, ModelData * tmod, int modelNum)
 
     return md;
 }
+
+
+
+bool loadGeneralDataXML(QDomDocument * qdoc, EEGeneral * tgen)
+{
+    return true;
+}
+
+bool loadModelDataXML(QDomDocument * qdoc, ModelData * tmod)
+{
+    return true;
+}
+

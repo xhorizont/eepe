@@ -428,10 +428,54 @@ void MdiChild::saveModelToFile()
 
     settings.setValue("lastDir",QFileInfo(fileName).dir().absolutePath());
 
-    if(genfile)
-        saveiHEX(this, fileName, (quint8*)&tgen, sizeof(tgen), EEPE_GENERAL_FILE_HEADER);
-    else
-        saveiHEX(this, fileName, (quint8*)&tmod, sizeof(tmod), EEPE_MODEL_FILE_HEADER, cmod);
+//    if(genfile)
+//        saveiHEX(this, fileName, (quint8*)&tgen, sizeof(tgen), EEPE_GENERAL_FILE_HEADER);
+//    else
+//        saveiHEX(this, fileName, (quint8*)&tmod, sizeof(tmod), EEPE_MODEL_FILE_HEADER, cmod);
+
+    QFile file(fileName);
+
+    QDomDocument doc(ER9X_EEPROM_FILE_TYPE);
+    QDomElement root = doc.createElement(ER9X_EEPROM_FILE_TYPE);
+    doc.appendChild(root);
+
+    if(genfile) // general data
+    {
+            EEGeneral tgen;
+            if(!eeFile.getGeneralSettings(&tgen))
+            {
+                QMessageBox::critical(this, tr("Error"),tr("Error Getting General Settings Data"));
+                return;
+            }
+            QDomElement genData = getGeneralDataXML(&doc, &tgen);
+            root.appendChild(genData);
+    }
+    else  // model data - cmod
+    {
+            if(eeFile.eeModelExists(cmod))
+            {
+                ModelData tmod;
+                if(!eeFile.getModel(&tmod,cmod))  // if can't get model - exit
+                {
+                    QMessageBox::critical(this, tr("Error"),tr("Error Getting Model Data"));
+                    return;
+                }
+                QDomElement modData = getModelDataXML(&doc, &tmod, cmod);
+                root.appendChild(modData);
+            }
+    }
+
+    if (!file.open(QFile::WriteOnly)) {
+        QMessageBox::warning(this, tr("Error"),
+                             tr("Cannot write file %1:\n%2.")
+                             .arg(fileName)
+                             .arg(file.errorString()));
+        return;
+    }
+
+    QTextStream ts( &file );
+    ts << doc.toString();
+    file.close();
 }
 
 void MdiChild::duplicate()
@@ -687,44 +731,6 @@ bool MdiChild::saveAs()
     return saveFile(fileName);
 }
 
-bool MdiChild::getGeneralData(QByteArray * qba)
-{
-    //    ModelData tmod;
-    EEGeneral tgen;
-
-    if(!eeFile.getGeneralSettings(&tgen))
-    {
-        QMessageBox::critical(this, tr("Error"),tr("Error Getting General Settings Data"));
-        return false;
-    }
-
-    qba->clear();
-    qba->append((const char *)&tgen, sizeof(EEGeneral));
-
-    return true;
-}
-
-bool MdiChild::getModelData(QByteArray * qba, int modelNumber)
-{
-    ModelData tmod;
-
-    if(!eeFile.eeModelExists(modelNumber))
-    {
-        //            QMessageBox::critical(this, tr("Error"),tr("Error Getting Model #%1").arg(cmod+1));
-        return false;
-    }
-
-    if(!eeFile.getModel(&tmod,modelNumber))
-    {
-        //            QMessageBox::critical(this, tr("Error"),tr("Error Getting Model #%1").arg(cmod+1));
-        return false;
-    }
-
-    qba->clear();
-    qba->append((const char *)&tmod, sizeof(ModelData));
-
-    return true;
-}
 
 bool MdiChild::saveFile(const QString &fileName, bool setCurrent)
 {
