@@ -1306,6 +1306,13 @@ Stick Der Elevador y Timón
         <translation>documento%1.eepe</translation>
     </message>
     <message>
+        <location filename="mdichild.cpp" line="570"/>
+        <source>Error loading file %1:
+File may be corrupted, old or from a different system.
+You might need to update eePe to read this file.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="mdichild.cpp" line="587"/>
         <source>Error reading file:
 This might be a FW file (er9x.hex?). 
@@ -2498,44 +2505,44 @@ Derecha</translation>
         <translation>Simular</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="459"/>
-        <location filename="modeledit.cpp" line="469"/>
-        <location filename="modeledit.cpp" line="519"/>
+        <location filename="modeledit.cpp" line="477"/>
+        <location filename="modeledit.cpp" line="487"/>
+        <location filename="modeledit.cpp" line="537"/>
         <source>CH%1%2</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="490"/>
+        <location filename="modeledit.cpp" line="508"/>
         <source> Switch(</source>
         <translation>Interruptor(</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="491"/>
+        <location filename="modeledit.cpp" line="509"/>
         <source> noTrim</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="492"/>
+        <location filename="modeledit.cpp" line="510"/>
         <source> Offset(%1%)</source>
         <translation> Compensación(%1%)</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="496"/>
+        <location filename="modeledit.cpp" line="514"/>
         <source> Curve(%1)</source>
         <translation> Curva(%1)</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="499"/>
+        <location filename="modeledit.cpp" line="517"/>
         <source> Delay(u%1:d%2)</source>
         <translation> Retardo(u%1:d%2)</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="500"/>
+        <location filename="modeledit.cpp" line="518"/>
         <source> Slow(u%1:d%2)</source>
         <translation> Ralentización(u%1:d%2)</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="502"/>
+        <location filename="modeledit.cpp" line="520"/>
         <source> Warn(%1)</source>
         <translation> Alerta(%1)</translation>
     </message>
@@ -2544,134 +2551,134 @@ Derecha</translation>
         <translation type="obsolete">Curva %1</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2181"/>
+        <location filename="modeledit.cpp" line="2173"/>
         <source>Delete Selected Mixes?</source>
         <translation>¿Borrar la mezcla Seleccionada?</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2314"/>
+        <location filename="modeledit.cpp" line="2306"/>
         <source>&amp;Add</source>
         <translation>&amp;Añadir</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2314"/>
+        <location filename="modeledit.cpp" line="2306"/>
         <source>Ctrl+A</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2315"/>
+        <location filename="modeledit.cpp" line="2307"/>
         <source>&amp;Edit</source>
         <translation>&amp;Editar</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2315"/>
+        <location filename="modeledit.cpp" line="2307"/>
         <source>Enter</source>
         <translation>Entrada</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2317"/>
+        <location filename="modeledit.cpp" line="2309"/>
         <source>&amp;Delete</source>
         <translation>(&amp;Delete)  Borrar</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2317"/>
+        <location filename="modeledit.cpp" line="2309"/>
         <source>Delete</source>
         <translation>Borrar</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2318"/>
+        <location filename="modeledit.cpp" line="2310"/>
         <source>&amp;Copy</source>
         <translation>&amp;Copiar</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2318"/>
+        <location filename="modeledit.cpp" line="2310"/>
         <source>Ctrl+C</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2319"/>
+        <location filename="modeledit.cpp" line="2311"/>
         <source>&amp;Cut</source>
         <translation>&amp;Cortar</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2319"/>
+        <location filename="modeledit.cpp" line="2311"/>
         <source>Ctrl+X</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2320"/>
+        <location filename="modeledit.cpp" line="2312"/>
         <source>&amp;Paste</source>
         <translation>&amp;Pegar</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2320"/>
+        <location filename="modeledit.cpp" line="2312"/>
         <source>Ctrl+V</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2321"/>
+        <location filename="modeledit.cpp" line="2313"/>
         <source>Du&amp;plicate</source>
         <translation>Du&amp;plicar</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2323"/>
+        <location filename="modeledit.cpp" line="2315"/>
         <source>Move Up</source>
         <translation>Ascender</translation>
     </message>
     <message>
         <location filename="modeledit.cpp" line="95"/>
-        <location filename="modeledit.cpp" line="2323"/>
+        <location filename="modeledit.cpp" line="2315"/>
         <source>Ctrl+Up</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2324"/>
+        <location filename="modeledit.cpp" line="2316"/>
         <source>Move Down</source>
         <translation>Descender</translation>
     </message>
     <message>
         <location filename="modeledit.cpp" line="98"/>
-        <location filename="modeledit.cpp" line="2324"/>
+        <location filename="modeledit.cpp" line="2316"/>
         <source>Ctrl+Down</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="1929"/>
+        <location filename="modeledit.cpp" line="1921"/>
         <source>Editing curve %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2643"/>
+        <location filename="modeledit.cpp" line="2635"/>
         <source>Apply Template?</source>
         <translation>¿Aplicar Plantilla?</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2643"/>
+        <location filename="modeledit.cpp" line="2635"/>
         <source>Apply template &quot;%1&quot;?</source>
         <translation>¿Aplicar Plantilla &quot;%1&quot;?</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2670"/>
+        <location filename="modeledit.cpp" line="2662"/>
         <source>Clear Mixes?</source>
         <translation>¿Borrar Mezclas?</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2670"/>
+        <location filename="modeledit.cpp" line="2662"/>
         <source>Really clear all the mixes?</source>
         <translation>¿Preparado para borrar todas las mezclas?</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2682"/>
+        <location filename="modeledit.cpp" line="2674"/>
         <source>Clear Curves?</source>
         <translation>¿Borrar Curvas?</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2682"/>
+        <location filename="modeledit.cpp" line="2674"/>
         <source>Really clear all the curves?</source>
         <translation>¿Preparado para borrar todas las curvas?</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2321"/>
+        <location filename="modeledit.cpp" line="2313"/>
         <source>Ctrl+U</source>
         <translation></translation>
     </message>

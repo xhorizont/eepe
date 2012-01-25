@@ -1301,6 +1301,15 @@ msgid ""
 "File wrong size - %1"
 msgstr ""
 
+#: mdichild.cpp:570
+#, qt-format
+msgctxt "MdiChild|"
+msgid ""
+"Error loading file %1:\n"
+"File may be corrupted, old or from a different system.\n"
+"You might need to update eePe to read this file."
+msgstr ""
+
 #: mdichild.cpp:607 mdichild.cpp:656
 #, qt-format
 msgctxt "MdiChild|"
@@ -2364,180 +2373,180 @@ msgctxt "ModelEdit|"
 msgid "Simulate"
 msgstr ""
 
-#: modeledit.cpp:459 modeledit.cpp:469 modeledit.cpp:519
+#: modeledit.cpp:477 modeledit.cpp:487 modeledit.cpp:537
 #, qt-format
 msgctxt "ModelEdit|"
 msgid "CH%1%2"
 msgstr ""
 
-#: modeledit.cpp:490
+#: modeledit.cpp:508
 msgctxt "ModelEdit|"
 msgid " Switch("
 msgstr ""
 
-#: modeledit.cpp:491
+#: modeledit.cpp:509
 msgctxt "ModelEdit|"
 msgid " noTrim"
 msgstr ""
 
-#: modeledit.cpp:492
+#: modeledit.cpp:510
 #, qt-format
 msgctxt "ModelEdit|"
 msgid " Offset(%1%)"
 msgstr ""
 
-#: modeledit.cpp:496
+#: modeledit.cpp:514
 #, qt-format
 msgctxt "ModelEdit|"
 msgid " Curve(%1)"
 msgstr ""
 
-#: modeledit.cpp:499
+#: modeledit.cpp:517
 #, qt-format
 msgctxt "ModelEdit|"
 msgid " Delay(u%1:d%2)"
 msgstr ""
 
-#: modeledit.cpp:500
+#: modeledit.cpp:518
 #, qt-format
 msgctxt "ModelEdit|"
 msgid " Slow(u%1:d%2)"
 msgstr ""
 
-#: modeledit.cpp:502
+#: modeledit.cpp:520
 #, qt-format
 msgctxt "ModelEdit|"
 msgid " Warn(%1)"
 msgstr ""
 
-#: modeledit.cpp:2181
+#: modeledit.cpp:2173
 msgctxt "ModelEdit|"
 msgid "Delete Selected Mixes?"
 msgstr ""
 
-#: modeledit.cpp:2314
+#: modeledit.cpp:2306
 msgctxt "ModelEdit|"
 msgid "&Add"
 msgstr ""
 
-#: modeledit.cpp:2314
+#: modeledit.cpp:2306
 msgctxt "ModelEdit|"
 msgid "Ctrl+A"
 msgstr ""
 
-#: modeledit.cpp:2315
+#: modeledit.cpp:2307
 msgctxt "ModelEdit|"
 msgid "&Edit"
 msgstr ""
 
-#: modeledit.cpp:2315
+#: modeledit.cpp:2307
 msgctxt "ModelEdit|"
 msgid "Enter"
 msgstr ""
 
-#: modeledit.cpp:2317
+#: modeledit.cpp:2309
 msgctxt "ModelEdit|"
 msgid "&Delete"
 msgstr ""
 
-#: modeledit.cpp:2317
+#: modeledit.cpp:2309
 msgctxt "ModelEdit|"
 msgid "Delete"
 msgstr ""
 
-#: modeledit.cpp:2318
+#: modeledit.cpp:2310
 msgctxt "ModelEdit|"
 msgid "&Copy"
 msgstr ""
 
-#: modeledit.cpp:2318
+#: modeledit.cpp:2310
 msgctxt "ModelEdit|"
 msgid "Ctrl+C"
 msgstr ""
 
-#: modeledit.cpp:2319
+#: modeledit.cpp:2311
 msgctxt "ModelEdit|"
 msgid "&Cut"
 msgstr ""
 
-#: modeledit.cpp:2319
+#: modeledit.cpp:2311
 msgctxt "ModelEdit|"
 msgid "Ctrl+X"
 msgstr ""
 
-#: modeledit.cpp:2320
+#: modeledit.cpp:2312
 msgctxt "ModelEdit|"
 msgid "&Paste"
 msgstr ""
 
-#: modeledit.cpp:2320
+#: modeledit.cpp:2312
 msgctxt "ModelEdit|"
 msgid "Ctrl+V"
 msgstr ""
 
-#: modeledit.cpp:2321
+#: modeledit.cpp:2313
 msgctxt "ModelEdit|"
 msgid "Du&plicate"
 msgstr ""
 
-#: modeledit.cpp:2323
+#: modeledit.cpp:2315
 msgctxt "ModelEdit|"
 msgid "Move Up"
 msgstr ""
 
-#: modeledit.cpp:95 modeledit.cpp:2323
+#: modeledit.cpp:95 modeledit.cpp:2315
 msgctxt "ModelEdit|"
 msgid "Ctrl+Up"
 msgstr ""
 
-#: modeledit.cpp:2324
+#: modeledit.cpp:2316
 msgctxt "ModelEdit|"
 msgid "Move Down"
 msgstr ""
 
-#: modeledit.cpp:98 modeledit.cpp:2324
+#: modeledit.cpp:98 modeledit.cpp:2316
 msgctxt "ModelEdit|"
 msgid "Ctrl+Down"
 msgstr ""
 
-#: modeledit.cpp:1929
+#: modeledit.cpp:1921
 #, qt-format
 msgctxt "ModelEdit|"
 msgid "Editing curve %1"
 msgstr ""
 
-#: modeledit.cpp:2643
+#: modeledit.cpp:2635
 msgctxt "ModelEdit|"
 msgid "Apply Template?"
 msgstr ""
 
-#: modeledit.cpp:2643
+#: modeledit.cpp:2635
 #, qt-format
 msgctxt "ModelEdit|"
 msgid "Apply template \"%1\"?"
 msgstr ""
 
-#: modeledit.cpp:2670
+#: modeledit.cpp:2662
 msgctxt "ModelEdit|"
 msgid "Clear Mixes?"
 msgstr ""
 
-#: modeledit.cpp:2670
+#: modeledit.cpp:2662
 msgctxt "ModelEdit|"
 msgid "Really clear all the mixes?"
 msgstr ""
 
-#: modeledit.cpp:2682
+#: modeledit.cpp:2674
 msgctxt "ModelEdit|"
 msgid "Clear Curves?"
 msgstr ""
 
-#: modeledit.cpp:2682
+#: modeledit.cpp:2674
 msgctxt "ModelEdit|"
 msgid "Really clear all the curves?"
 msgstr ""
 
-#: modeledit.cpp:2321
+#: modeledit.cpp:2313
 msgctxt "ModelEdit|"
 msgid "Ctrl+U"
 msgstr ""
