@@ -40,7 +40,6 @@
 ****************************************************************************/
 
 #include <QtGui>
-
 #include "mdichild.h"
 #include "pers.h"
 #include "modeledit.h"
@@ -688,19 +687,102 @@ bool MdiChild::saveAs()
     return saveFile(fileName);
 }
 
+bool MdiChild::getGeneralData(QByteArray * qba)
+{
+    //    ModelData tmod;
+    EEGeneral tgen;
+
+    if(!eeFile.getGeneralSettings(&tgen))
+    {
+        QMessageBox::critical(this, tr("Error"),tr("Error Getting General Settings Data"));
+        return false;
+    }
+
+    qba->clear();
+    qba->append((const char *)&tgen, sizeof(EEGeneral));
+
+    return true;
+}
+
+bool MdiChild::getModelData(QByteArray * qba, int modelNumber)
+{
+    ModelData tmod;
+
+    if(!eeFile.eeModelExists(modelNumber))
+    {
+        //            QMessageBox::critical(this, tr("Error"),tr("Error Getting Model #%1").arg(cmod+1));
+        return false;
+    }
+
+    if(!eeFile.getModel(&tmod,modelNumber))
+    {
+        //            QMessageBox::critical(this, tr("Error"),tr("Error Getting Model #%1").arg(cmod+1));
+        return false;
+    }
+
+    qba->clear();
+    qba->append((const char *)&tmod, sizeof(ModelData));
+
+    return true;
+}
+
 bool MdiChild::saveFile(const QString &fileName, bool setCurrent)
 {
     QFile file(fileName);
 
     int fileType = getFileType(fileName);
 
-    if(fileType==FILE_TYPE_HEX || fileType==FILE_TYPE_EEPE) //write hex
+
+    if(fileType==FILE_TYPE_EEPE) //write hex
+    {
+        QDomDocument doc(ER9X_EEPROM_FILE_TYPE);
+        QDomElement root = doc.createElement(ER9X_EEPROM_FILE_TYPE);
+        doc.appendChild(root);
+
+        //Save General Data
+        EEGeneral tgen;
+        if(!eeFile.getGeneralSettings(&tgen))
+        {
+            QMessageBox::critical(this, tr("Error"),tr("Error Getting General Settings Data"));
+            return false;
+        }
+        QDomElement genData = getGeneralDataXML(&doc, &tgen);
+        root.appendChild(genData);
+
+        //Save model data one by one
+        for(int i=0; i<MAX_MODELS; i++)
+        {
+            if(eeFile.eeModelExists(i))
+            {
+                ModelData tmod;
+                if(!eeFile.getModel(&tmod,i))  // if can't get model - go to next one
+                    continue;
+                QDomElement modData = getModelDataXML(&doc, &tmod, i);
+                root.appendChild(modData);
+            }
+        }
+
+        if (!file.open(QFile::WriteOnly)) {
+            QMessageBox::warning(this, tr("Error"),
+                                 tr("Cannot write file %1:\n%2.")
+                                 .arg(fileName)
+                                 .arg(file.errorString()));
+            return false;
+        }
+
+        QTextStream ts( &file );
+        ts << doc.toString();
+        file.close();
+
+        return true;
+    }
+
+
+    if(fileType==FILE_TYPE_HEX) //write hex
     {
         quint8 temp[EESIZE];
         eeFile.saveFile(&temp);
         QString header = "";
-        if(fileType==FILE_TYPE_EEPE)
-            header = EEPE_EEPROM_FILE_HEADER;
         saveiHEX(this, fileName, (quint8*)&temp, EESIZE, header, NOTES_ALL);
 
 

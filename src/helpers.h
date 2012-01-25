@@ -2,6 +2,7 @@
 #define HELPERS_H
 
 #include <QtGui>
+#include <QtXml>
 #include "pers.h"
 
 #define TMR_NUM_OPTION  (TMR_VAROFS+2*MAX_DRSWITCH-3)
@@ -19,6 +20,10 @@ QString getCSWFunc(int val);
 
 int  loadiHEX(QWidget *parent, QString fileName, quint8 * data, int datalen, QString header);
 bool saveiHEX(QWidget *parent, QString fileName, quint8 * data, int datalen, QString header, int notesIndex=0);
+
+
+QDomElement getGeneralDataXML(QDomDocument * qdoc, EEGeneral * tgen);
+QDomElement getModelDataXML(QDomDocument * qdoc, ModelData * tmod, int modelNum);
 
 
 

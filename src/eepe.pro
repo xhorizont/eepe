@@ -1,4 +1,5 @@
-QT += network
+QT += network \
+      xml
 HEADERS += mainwindow.h \
     file.h \
     pers.h \

@@ -273,3 +273,502 @@ bool saveiHEX(QWidget *parent, QString fileName, quint8 * data, int datalen, QSt
 
     return true;
 }
+
+void appendTextElement(QDomDocument * qdoc, QDomElement * pe, QString name, QString value)
+{
+    QDomElement e = qdoc->createElement(name);
+    QDomText t = qdoc->createTextNode(name);
+    t.setNodeValue(value);
+    e.appendChild(t);
+    pe->appendChild(e);
+}
+
+void appendNumberElement(QDomDocument * qdoc, QDomElement * pe,QString name, int value, bool forceZeroWrite = false)
+{
+    if(value || forceZeroWrite)
+    {
+        QDomElement e = qdoc->createElement(name);
+        QDomText t = qdoc->createTextNode(name);
+        t.setNodeValue(QString("%1").arg(value));
+        e.appendChild(t);
+        pe->appendChild(e);
+    }
+}
+
+QDomElement appendEmptyElement(QDomDocument * qdoc, QDomElement * pe,QString name)
+{
+    QDomElement e = qdoc->createElement(name);
+    pe->appendChild(e);
+    return e;
+}
+
+bool isArrayZero(quint8 * ar, int size)
+{
+    for(int i=0; i<size; i++)
+    {
+        if(ar[i])
+            return false;
+    }
+
+    return true;
+}
+
+QDomElement getGeneralDataXML(QDomDocument * qdoc, EEGeneral * tgen)
+{
+    QDomElement gd = qdoc->createElement("GENERAL_DATA");
+
+    //    uint8_t   myVers;
+    appendNumberElement(qdoc, &gd, "myVers", tgen->myVers, true); // have to write value here
+
+    //    int16_t   calibMid[7];
+    if(!isArrayZero((quint8 *)&tgen->calibMid,sizeof(tgen->calibMid)))
+    {
+        QDomElement calibMid = appendEmptyElement(qdoc, &gd, "calibMid");
+        for(int i=0; i<7; i++)
+            appendNumberElement(qdoc, &calibMid, QString("%1").arg(i), tgen->calibMid[i]);
+    }
+
+    //    int16_t   calibSpanNeg[7];
+    if(!isArrayZero((quint8 *)&tgen->calibSpanNeg,sizeof(tgen->calibSpanNeg)))
+    {
+        QDomElement calibSpanNeg = appendEmptyElement(qdoc, &gd, "calibSpanNeg");
+        for(int i=0; i<7; i++)
+            appendNumberElement(qdoc, &calibSpanNeg, QString("%1").arg(i), tgen->calibSpanNeg[i]);
+    }
+
+    //    int16_t   calibSpanPos[7];
+    if(!isArrayZero((quint8 *)&tgen->calibSpanPos,sizeof(tgen->calibSpanPos)))
+    {
+        QDomElement calibSpanPos = appendEmptyElement(qdoc, &gd, "calibSpanPos");
+        for(int i=0; i<7; i++)
+            appendNumberElement(qdoc, &calibSpanPos, QString("%1").arg(i), tgen->calibSpanPos[i]);
+    }
+
+    //    uint16_t  chkSum;
+    appendNumberElement(qdoc, &gd, "chkSum", tgen->chkSum);
+
+    //    uint8_t   currModel; //0..15
+    appendNumberElement(qdoc, &gd, "currModel", tgen->currModel);
+
+    //    uint8_t   contrast;
+    appendNumberElement(qdoc, &gd, "contrast", tgen->contrast);
+
+    //    uint8_t   vBatWarn;
+    appendNumberElement(qdoc, &gd, "vBatWarn", tgen->vBatWarn);
+
+    //    int8_t    vBatCalib;
+    appendNumberElement(qdoc, &gd, "vBatCalib", tgen->vBatCalib);
+
+    //    int8_t    lightSw;
+    appendNumberElement(qdoc, &gd, "lightSw", tgen->lightSw);
+
+    //    TrainerData trainer;
+    //    typedef struct t_TrainerMix {
+    //        uint8_t srcChn:3; //0-7 = ch1-8
+    //        int8_t  swtch:5;
+    //        int8_t  studWeight:6;
+    //        uint8_t mode:2;   //off,add-mode,subst-mode
+    //    } __attribute__((packed)) TrainerMix; //
+
+    //    typedef struct t_TrainerData {
+    //        int16_t        calib[4];
+    //        TrainerMix     mix[4];
+    //    } __attribute__((packed)) TrainerData;
+    if(!isArrayZero((quint8 *)&tgen->trainer,sizeof(tgen->trainer)))
+    {
+        QDomElement trainer = appendEmptyElement(qdoc, &gd, "trainer");
+
+        if(!isArrayZero((quint8 *)&tgen->trainer.calib,sizeof(tgen->trainer.calib)))
+        {
+            QDomElement trainer_calib = appendEmptyElement(qdoc, &trainer, "calib");
+            for(int i=0; i<4; i++)
+                appendNumberElement(qdoc, &trainer_calib, QString("%1").arg(i), tgen->trainer.calib[i]);
+        }
+
+        if(!isArrayZero((quint8 *)&tgen->trainer.mix,sizeof(tgen->trainer.mix)))
+        {
+            QDomElement trainer_mix = appendEmptyElement(qdoc, &trainer, "calib");
+            for(int i=0; i<4; i++)
+            {
+                if(!isArrayZero((quint8 *)&tgen->trainer.mix[i],sizeof(tgen->trainer.mix[i])))
+                {
+                    QDomElement mix = appendEmptyElement(qdoc, &trainer_mix, "mix");
+                    mix.setAttribute("id",i);
+
+                    appendNumberElement(qdoc, &mix, "srcChn", tgen->trainer.mix[i].srcChn);
+                    appendNumberElement(qdoc, &mix, "swtch", tgen->trainer.mix[i].swtch);
+                    appendNumberElement(qdoc, &mix, "studWeight", tgen->trainer.mix[i].studWeight);
+                    appendNumberElement(qdoc, &mix, "mode", tgen->trainer.mix[i].mode);
+                }
+            }
+        }
+    }
+
+
+    //    uint8_t   view;
+    appendNumberElement(qdoc, &gd, "view", tgen->view);
+
+    //    uint8_t   disableThrottleWarning:1;
+    appendNumberElement(qdoc, &gd, "disableThrottleWarning", tgen->disableThrottleWarning);
+
+    //    uint8_t   disableSwitchWarning:1;
+    appendNumberElement(qdoc, &gd, "disableSwitchWarning", tgen->disableSwitchWarning);
+
+    //    uint8_t   disableMemoryWarning:1;
+    appendNumberElement(qdoc, &gd, "disableMemoryWarning", tgen->disableMemoryWarning);
+
+    //    uint8_t   beeperVal:3;
+    appendNumberElement(qdoc, &gd, "beeperVal", tgen->beeperVal);
+
+    //    uint8_t   reserveWarning:1;
+    appendNumberElement(qdoc, &gd, "reserveWarning", tgen->reserveWarning);
+
+    //    uint8_t   disableAlarmWarning:1;
+    appendNumberElement(qdoc, &gd, "disableAlarmWarning", tgen->disableAlarmWarning);
+
+    //    uint8_t   stickMode;
+    appendNumberElement(qdoc, &gd, "stickMode", tgen->stickMode);
+
+    //    int8_t    inactivityTimer;
+    appendNumberElement(qdoc, &gd, "inactivityTimer", tgen->inactivityTimer);
+
+    //    uint8_t   throttleReversed:1;
+    appendNumberElement(qdoc, &gd, "throttleReversed", tgen->throttleReversed);
+
+    //    uint8_t   minuteBeep:1;
+    appendNumberElement(qdoc, &gd, "minuteBeep", tgen->minuteBeep);
+
+    //    uint8_t   preBeep:1;
+    appendNumberElement(qdoc, &gd, "preBeep", tgen->preBeep);
+
+    //    uint8_t   flashBeep:1;
+    appendNumberElement(qdoc, &gd, "flashBeep", tgen->flashBeep);
+
+    //    uint8_t   disableSplashScreen:1;
+    appendNumberElement(qdoc, &gd, "disableSplashScreen", tgen->disableSplashScreen);
+
+    //    uint8_t   disablePotScroll:1;
+    appendNumberElement(qdoc, &gd, "disablePotScroll", tgen->disablePotScroll);
+
+    //    uint8_t   disableBG:1;
+    appendNumberElement(qdoc, &gd, "disableBG", tgen->disableBG);
+
+    //    uint8_t   frskyinternalalarm:1;
+    appendNumberElement(qdoc, &gd, "frskyinternalalarm", tgen->frskyinternalalarm);
+
+    //    uint8_t   filterInput;
+    appendNumberElement(qdoc, &gd, "filterInput", tgen->filterInput);
+
+    //    uint8_t   lightAutoOff;
+    appendNumberElement(qdoc, &gd, "lightAutoOff", tgen->lightAutoOff);
+
+    //    uint8_t   templateSetup;  //RETA order according to chout_ar array
+    appendNumberElement(qdoc, &gd, "templateSetup", tgen->templateSetup);
+
+    //    int8_t    PPM_Multiplier;
+    appendNumberElement(qdoc, &gd, "PPM_Multiplier", tgen->PPM_Multiplier);
+
+    //    uint8_t   FRSkyYellow:4;
+    appendNumberElement(qdoc, &gd, "FRSkyYellow", tgen->FRSkyYellow);
+
+    //    uint8_t   FRSkyOrange:4;
+    appendNumberElement(qdoc, &gd, "FRSkyOrange", tgen->FRSkyOrange);
+
+    //    uint8_t   FRSkyRed:4;
+    appendNumberElement(qdoc, &gd, "FRSkyRed", tgen->FRSkyRed);
+
+    //    uint8_t   hideNameOnSplash:1;
+    appendNumberElement(qdoc, &gd, "hideNameOnSplash", tgen->hideNameOnSplash);
+
+    //    uint8_t   speakerPitch;
+    appendNumberElement(qdoc, &gd, "speakerPitch", tgen->speakerPitch);
+
+    //    uint8_t   hapticStrength;
+    appendNumberElement(qdoc, &gd, "hapticStrength", tgen->hapticStrength);
+
+    //    uint8_t   speakerMode;
+    appendNumberElement(qdoc, &gd, "speakerMode", tgen->speakerMode);
+
+    //    uint8_t   lightOnStickMove;
+    appendNumberElement(qdoc, &gd, "lightOnStickMove", tgen->lightOnStickMove);
+
+    //    char      ownerName[GENERAL_OWNER_NAME_LEN];
+    appendTextElement(qdoc, &gd, "ownerName", QString::fromAscii(tgen->ownerName,sizeof(tgen->ownerName)).trimmed());
+
+    //    uint8_t   switchWarningStates;
+    appendNumberElement(qdoc, &gd, "switchWarningStates", tgen->switchWarningStates);
+
+    return gd;
+}
+
+QDomElement getModelDataXML(QDomDocument * qdoc, ModelData * tmod, int modelNum)
+{
+    QDomElement md = qdoc->createElement("MODEL_DATA");
+    md.setAttribute("number", modelNum);
+
+
+
+
+
+
+
+
+    //    typedef struct t_CSwData { // Custom Switches data
+    //        int8_t  v1; //input
+    //        int8_t  v2; //offset
+    //        uint8_t func;
+    //    } __attribute__((packed)) CSwData;
+
+    //    typedef struct t_SafetySwData { // Custom Switches data
+    //        int8_t  swtch;
+    //        int8_t  val;
+    //    } __attribute__((packed)) SafetySwData;
+
+    //    typedef struct t_FrSkyChannelData {
+    //        uint8_t   ratio;                // 0.0 means not used, 0.1V steps EG. 6.6 Volts = 66. 25.1V = 251, etc.
+    //        uint8_t   alarms_value[2];      // 0.1V steps EG. 6.6 Volts = 66. 25.1V = 251, etc.
+    //        uint8_t   alarms_level:4;
+    //        uint8_t   alarms_greater:2;     // 0=LT(<), 1=GT(>)
+    //        uint8_t   type:2;               // future use: 0=volts, ...
+    //    } __attribute__((packed)) FrSkyChannelData;
+
+    //    typedef struct t_FrSkyData {
+    //        FrSkyChannelData channels[2];
+    //    } __attribute__((packed)) FrSkyData;
+
+
+
+    //      char      name[MODEL_NAME_LEN];             // 10 must be first for eeLoadModelName
+    appendTextElement(qdoc, &md, "name", QString::fromAscii(tmod->name,sizeof(tmod->name)).trimmed());
+
+    //      uint8_t   mdVers;
+    appendNumberElement(qdoc, &md, "mdVers", tmod->mdVers, true);
+
+    //      int8_t    tmrMode;              // timer trigger source -> off, abs, stk, stk%, sw/!sw, !m_sw/!m_sw
+    appendNumberElement(qdoc, &md, "tmrMode", tmod->tmrMode);
+
+    //      uint8_t   tmrDir:1;    //0=>Count Down, 1=>Count Up
+    appendNumberElement(qdoc, &md, "tmrDir", tmod->tmrDir);
+
+    //      uint8_t   traineron:1;  // 0 disable trainer, 1 allow trainer
+    appendNumberElement(qdoc, &md, "traineron", tmod->traineron);
+
+    //      uint8_t   t2throttle:1 ;  // Start timer2 using throttle
+    appendNumberElement(qdoc, &md, "t2throttle", tmod->t2throttle);
+
+    //      uint8_t   FrSkyUsrProto:2 ;  // Protocol in FrSky User Data, 0=FrSky Hub, 1=WS HowHigh
+    appendNumberElement(qdoc, &md, "FrSkyUsrProto", tmod->FrSkyUsrProto);
+
+    //      uint8_t   FrSkyImperial:1 ;  // Convert FrSky values to imperial units
+    appendNumberElement(qdoc, &md, "FrSkyImperial", tmod->FrSkyImperial);
+
+    //      uint8_t   FrSkyAltAlarm:2;
+    appendNumberElement(qdoc, &md, "FrSkyAltAlarm", tmod->FrSkyAltAlarm);
+
+    //      uint16_t  tmrVal;
+    appendNumberElement(qdoc, &md, "tmrVal", tmod->tmrVal);
+
+    //      uint8_t   protocol;
+    appendNumberElement(qdoc, &md, "protocol", tmod->protocol);
+
+    //      int8_t    ppmNCH;
+    appendNumberElement(qdoc, &md, "ppmNCH", tmod->ppmNCH);
+
+    //      uint8_t   thrTrim:4;            // Enable Throttle Trim
+    appendNumberElement(qdoc, &md, "thrTrim", tmod->thrTrim);
+
+    //      uint8_t   thrExpo:4;            // Enable Throttle Expo
+    appendNumberElement(qdoc, &md, "thrExpo", tmod->thrExpo);
+
+    //      int8_t    trimInc;              // Trim Increments
+    appendNumberElement(qdoc, &md, "trimInc", tmod->trimInc);
+
+    //      int8_t    ppmDelay;
+    appendNumberElement(qdoc, &md, "ppmDelay", tmod->ppmDelay);
+
+    //      int8_t    trimSw;
+    appendNumberElement(qdoc, &md, "trimSw", tmod->trimSw);
+
+    //      uint8_t   beepANACenter;        // 1<<0->A1.. 1<<6->A7
+    appendNumberElement(qdoc, &md, "beepANACenter", tmod->beepANACenter);
+
+    //      uint8_t   pulsePol:1;
+    appendNumberElement(qdoc, &md, "pulsePol", tmod->pulsePol);
+
+    //      uint8_t   extendedLimits:1;
+    appendNumberElement(qdoc, &md, "extendedLimits", tmod->extendedLimits);
+
+    //      uint8_t   swashInvertELE:1;
+    appendNumberElement(qdoc, &md, "swashInvertELE", tmod->swashInvertELE);
+
+    //      uint8_t   swashInvertAIL:1;
+    appendNumberElement(qdoc, &md, "swashInvertAIL", tmod->swashInvertAIL);
+
+    //      uint8_t   swashInvertCOL:1;
+    appendNumberElement(qdoc, &md, "swashInvertCOL", tmod->swashInvertCOL);
+
+    //      uint8_t   swashType:3;
+    appendNumberElement(qdoc, &md, "swashType", tmod->swashType);
+
+    //      uint8_t   swashCollectiveSource;
+    appendNumberElement(qdoc, &md, "swashCollectiveSource", tmod->swashCollectiveSource);
+
+    //      uint8_t   swashRingValue;
+    appendNumberElement(qdoc, &md, "swashRingValue", tmod->swashRingValue);
+
+    //      int8_t    ppmFrameLength;    //0=22.5  (10msec-30msec) 0.5msec increments
+    appendNumberElement(qdoc, &md, "ppmFrameLength", tmod->ppmFrameLength);
+
+
+    //      LimitData limitData[NUM_CHNOUT];
+    if(!isArrayZero((quint8 *)&tmod->limitData,sizeof(tmod->limitData)))
+    {
+        QDomElement limitData = appendEmptyElement(qdoc, &md, "limitData");
+        for(int i=0; i<NUM_CHNOUT; i++)
+            if(!isArrayZero((quint8 *)&tmod->limitData[i],sizeof(tmod->limitData[i])))
+            {
+                QDomElement singleLimit = appendEmptyElement(qdoc, &limitData, QString("%1").arg(i));
+
+                //        int8_t  min;
+                appendNumberElement(qdoc, &singleLimit, "min", tmod->limitData[i].min);
+
+                //        int8_t  max;
+                appendNumberElement(qdoc, &singleLimit, "max", tmod->limitData[i].max);
+
+                //        bool    revert;
+                appendNumberElement(qdoc, &singleLimit, "revert", tmod->limitData[i].revert);
+
+                //        int16_t  offset;
+                appendNumberElement(qdoc, &singleLimit, "offset", tmod->limitData[i].offset);
+            }
+    }
+
+
+
+    //      ExpoData  expoData[4];
+    if(!isArrayZero((quint8 *)&tmod->limitData,sizeof(tmod->limitData)))
+    {
+        QDomElement expoData = appendEmptyElement(qdoc, &md, "expoData");
+        for(int i=0; i<4; i++)
+            if(!isArrayZero((quint8 *)&tmod->expoData[i],sizeof(tmod->expoData[i])))
+            {
+                QDomElement singleExpo = appendEmptyElement(qdoc, &expoData, QString("%1").arg(i));
+
+                //        int8_t  expo[3][2][2];
+
+
+                //        int8_t  drSw1;
+                appendNumberElement(qdoc, &singleExpo, "drSw1", tmod->expoData[i].drSw1);
+
+                //        int8_t  drSw2;
+                appendNumberElement(qdoc, &singleExpo, "drSw2", tmod->expoData[i].drSw2);
+
+            }
+    }
+
+
+    //      MixData   mixData[MAX_MIXERS];
+    if(!isArrayZero((quint8 *)&tmod->mixData,sizeof(tmod->mixData)))
+    {
+        QDomElement mixData = appendEmptyElement(qdoc, &md, "mixData");
+        for(int i=0; i<MAX_MIXERS; i++)
+            if(!isArrayZero((quint8 *)&tmod->mixData[i],sizeof(tmod->mixData[i])))
+            {
+                QDomElement singleMix = appendEmptyElement(qdoc, &mixData, QString("%1").arg(i));
+
+                //        uint8_t destCh;            //        1..NUM_CHNOUT
+                appendNumberElement(qdoc, &singleMix, "destCh", tmod->mixData[i].destCh);
+
+                //        uint8_t srcRaw;            //
+                appendNumberElement(qdoc, &singleMix, "srcRaw", tmod->mixData[i].srcRaw);
+
+                //        int8_t  weight;
+                appendNumberElement(qdoc, &singleMix, "weight", tmod->mixData[i].weight);
+
+                //        int8_t  swtch;
+                appendNumberElement(qdoc, &singleMix, "swtch", tmod->mixData[i].swtch);
+
+                //        uint8_t curve;             //0=symmetrisch 1=no neg 2=no pos
+                appendNumberElement(qdoc, &singleMix, "curve", tmod->mixData[i].curve);
+
+                //        uint8_t delayUp:4;
+                appendNumberElement(qdoc, &singleMix, "delayUp", tmod->mixData[i].delayUp);
+
+                //        uint8_t delayDown:4;
+                appendNumberElement(qdoc, &singleMix, "delayDown", tmod->mixData[i].delayDown);
+
+                //        uint8_t speedUp:4;         // Servogeschwindigkeit aus Tabelle (10ms Cycle)
+                appendNumberElement(qdoc, &singleMix, "speedUp", tmod->mixData[i].speedUp);
+
+                //        uint8_t speedDown:4;       // 0 nichts
+                appendNumberElement(qdoc, &singleMix, "speedDown", tmod->mixData[i].speedDown);
+
+                //        uint8_t carryTrim:1;
+                appendNumberElement(qdoc, &singleMix, "carryTrim", tmod->mixData[i].carryTrim);
+
+                //        uint8_t mltpx:3;           // multiplex method 0=+ 1=* 2=replace
+                appendNumberElement(qdoc, &singleMix, "mltpx", tmod->mixData[i].mltpx);
+
+                //        uint8_t mixWarn:2;         // mixer warning
+                appendNumberElement(qdoc, &singleMix, "mixWarn", tmod->mixData[i].mixWarn);
+
+                //        uint8_t enableFmTrim:1;
+                appendNumberElement(qdoc, &singleMix, "enableFmTrim", tmod->mixData[i].enableFmTrim);
+
+                //        uint8_t mixres:1;
+                appendNumberElement(qdoc, &singleMix, "mixres", tmod->mixData[i].mixres);
+
+                //        int8_t  sOffset;
+                appendNumberElement(qdoc, &singleMix, "sOffset", tmod->mixData[i].sOffset);
+            }
+    }
+
+
+
+    //      int8_t    trim[4];
+    if(!isArrayZero((quint8 *)&tmod->trim,sizeof(tmod->trim)))
+    {
+    QDomElement trim = appendEmptyElement(qdoc, &md, "trim");
+    for(int i=0; i<4; i++)
+        appendNumberElement(qdoc, &trim, QString("%1").arg(i), tmod->trim[i]);
+    }
+
+    //      int8_t    curves5[MAX_CURVE5][5];
+    if(!isArrayZero((quint8 *)&tmod->curves5,sizeof(tmod->curves5)))
+    {
+        QDomElement curves5a = appendEmptyElement(qdoc, &md, "curves5");
+        for(int a=0; a<MAX_CURVE5; a++)
+        {
+            if(!isArrayZero((quint8 *)&tmod->curves5[a],sizeof(tmod->curves5[a])))
+            {
+                QDomElement curves5b = appendEmptyElement(qdoc, &curves5a, QString("%1").arg(a));
+                for(int b=0; b<5; b++)
+                    appendNumberElement(qdoc, &curves5b, QString("%1").arg(b), tmod->curves5[a][b]);
+            }
+        }
+    }
+
+    //      int8_t    curves9[MAX_CURVE9][9];
+    if(!isArrayZero((quint8 *)&tmod->curves9,sizeof(tmod->curves9)))
+    {
+        QDomElement curves9a = appendEmptyElement(qdoc, &md, "curves9");
+        for(int a=0; a<MAX_CURVE9; a++)
+        {
+            if(!isArrayZero((quint8 *)&tmod->curves9[a],sizeof(tmod->curves9[a])))
+            {
+                QDomElement curves9b = appendEmptyElement(qdoc, &curves9a, QString("%1").arg(a));
+                for(int b=0; b<9; b++)
+                    appendNumberElement(qdoc, &curves9b, QString("%1").arg(b), tmod->curves9[a][b]);
+            }
+        }
+    }
+
+
+
+    //      CSwData   customSw[NUM_CSW];
+    //      SafetySwData  safetySw[NUM_CHNOUT];
+    //      FrSkyData frsky;
+    //    } __attribute__((packed)) ModelData;
+
+    return md;
+}
