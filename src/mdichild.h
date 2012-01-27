@@ -85,6 +85,8 @@ class MdiChild : public QListWidget//QMdiSubWindow
 
 private:
     EEPFILE eeFile;
+    EEGeneral generalSettings;
+    ModelData modelSettings[MAX_MODELS];
 
 public:
     MdiChild();
@@ -101,6 +103,8 @@ public:
     bool hasPasteData();
     static int getFileType(const QString &fullFileName);
     bool saveToFileEnabled();
+
+    void optimizeEEPROM();
 
     QList<QStringList> fNotes;
 

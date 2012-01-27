@@ -198,9 +198,10 @@ bool EEPFILE::putModel(ModelData* model, uint8_t id)
 
     if(id<MAX_MODELS)
     {
-        sz = theFile->writeRlc(FILE_TMP, FILE_TYP_MODEL, (uint8_t*)model, sizeof(ModelData));
-        if(sz == sizeof(ModelData))
-            theFile->swap(FILE_MODEL(id),FILE_TMP);
+        sz = theFile->writeRlc(FILE_MODEL(id), FILE_TYP_MODEL, (uint8_t*)model, sizeof(ModelData));
+//        sz = theFile->writeRlc(FILE_TMP, FILE_TYP_MODEL, (uint8_t*)model, sizeof(ModelData));
+//        if(sz == sizeof(ModelData))
+//            theFile->swap(FILE_MODEL(id),FILE_TMP); // do not need temp file, writeRlc should write the actual file
     }
 
     return (sz == sizeof(ModelData));
@@ -214,12 +215,20 @@ int EEPFILE::getGeneralSettings(EEGeneral* setData)
     return sz;
 }
 
+void EEPFILE::formatEFile()
+{
+    theFile->format();
+    generalDefault();
+    fileChanged = true;
+}
+
 bool EEPFILE::putGeneralSettings(EEGeneral* setData)
 {
     int sz = 0;
 
-    sz = theFile->writeRlc(FILE_TMP, FILE_TYP_GENERAL, (uint8_t*)setData, sizeof(EEGeneral));
-    if(sz == sizeof(EEGeneral)) theFile->swap(FILE_GENERAL,FILE_TMP);
+    sz = theFile->writeRlc(FILE_GENERAL, FILE_TYP_GENERAL, (uint8_t*)setData, sizeof(EEGeneral));
+//    sz = theFile->writeRlc(FILE_TMP, FILE_TYP_GENERAL, (uint8_t*)setData, sizeof(EEGeneral));
+//    if(sz == sizeof(EEGeneral)) theFile->swap(FILE_GENERAL,FILE_TMP);
 
     return (sz == sizeof(EEGeneral));
 }

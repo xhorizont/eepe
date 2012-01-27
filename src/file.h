@@ -109,6 +109,8 @@ public:
   ///remove contents of given file
   void rm(uint8_t i_fileId);
 
+  void format();
+
   ///swap contents of file1 with them of file2
   void swap(uint8_t i_fileId1,uint8_t i_fileId2);
 

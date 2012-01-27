@@ -160,6 +160,12 @@ int8_t EFile::EeFsck()
   //  }
   return ret;
 }
+
+void EFile::format()
+{
+    EeFsFormat();
+}
+
 void EFile::EeFsFormat()
 {
 //  if(sizeof(eeFs) != RESV){

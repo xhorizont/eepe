@@ -108,6 +108,7 @@ private slots:
     void loadModelFromFile();
     void saveModelToFile();
     void customizeSplash();
+    void setFuses();
 
 
 private:
@@ -182,6 +183,7 @@ private:
     QAction *loadModelFromFileAct;
     QAction *saveModelToFileAct;
     QAction *customizeSplashAct;
+    QAction *setFusesAct;
 
     //QAction *aboutQtAct;
 };
