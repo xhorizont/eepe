@@ -972,6 +972,29 @@ int MdiChild::getFileType(const QString &fullFileName)
     return 0;
 }
 
+void MdiChild::optimizeEEPROM()
+{
+    //save general settings and model data in external buffer
+    //format eeprom
+    //write settings back to eeprom
+
+    EEGeneral tgen;
+    ModelData mgen[MAX_MODELS];
+
+    memset(&tgen, 0, sizeof(tgen));
+    memset(&mgen, 0, sizeof(mgen));
+
+    eeFile.getGeneralSettings(&tgen);
+    for(int i=0; i<MAX_MODELS; i++)
+        eeFile.getModel(&mgen[i],i);
+
+    eeFile.formatEFile();
+
+    eeFile.putGeneralSettings(&tgen);
+    for(int i=0; i<MAX_MODELS; i++)
+        eeFile.putModel(&mgen[i],i);
+}
+
 void MdiChild::burnTo()  // write to Tx
 {
 
@@ -979,6 +1002,7 @@ void MdiChild::burnTo()  // write to Tx
                  tr("Write %1 to EEPROM memory?").arg(strippedName(curFile)),
                  QMessageBox::Yes | QMessageBox::No);
 
+//    optimizeEEPROM();
 
     if (ret == QMessageBox::Yes)
     {

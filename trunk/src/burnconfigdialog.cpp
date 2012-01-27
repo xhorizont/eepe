@@ -182,9 +182,17 @@ void burnConfigDialog::restFuses(bool eeProtect)
 
     QMessageBox::StandardButton ret = QMessageBox::No;
 
-    ret = QMessageBox::warning(this, tr("eePe"),
-                               tr("<b><u>WARNING!</u></b><br>This will reset the fuses to the factory settings.<br>Writing fuses can mess up your radio.<br>Do this only if you are sure they are wrong!<br>Are you sure you want to continue?"),
-                               QMessageBox::Yes | QMessageBox::No);
+    QString msg = "<b><u>WARNING!</u></b><br>";
+
+    if(eeProtect)
+        msg.append(tr("This will set the fuses to protect the EEPROM from being deleted when flashing.<br>"));
+    else
+        msg.append(tr("This will reset the fuses to the factory settings.<br>"));
+
+    msg.append(tr("Before continuing make sure your programmer works reliably.<br>"));
+    msg.append(tr("Are you sure you want to continue?"));
+
+    ret = QMessageBox::warning(this, tr("eePe"), msg, QMessageBox::Yes | QMessageBox::No);
     if (ret == QMessageBox::Yes)
     {
         QStringList args   = avrArgs;

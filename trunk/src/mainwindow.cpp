@@ -679,6 +679,7 @@ void MainWindow::burnExtenalFromEEPROM()
 
 }
 
+
 void MainWindow::burnFromFlash()
 {
     QSettings settings("er9x-eePe", "eePe");
@@ -727,6 +728,13 @@ void MainWindow::burnFuses()
     fusesDialog *fd = new fusesDialog(this);
     fd->exec();
 }
+
+void MainWindow::setFuses()
+{
+    burnConfigDialog *bcd = new burnConfigDialog(this);
+    bcd->restFuses(true);
+}
+
 
 void MainWindow::donators()
 {
@@ -1016,6 +1024,10 @@ void MainWindow::createActions()
     customizeSplashAct = new QAction(QIcon(":/images/c_home.png"), tr("Cu&stomize Splash Screen"), this);
     customizeSplashAct->setStatusTip(tr("Customize Splash Screen"));
     connect(customizeSplashAct, SIGNAL(triggered()), this, SLOT(customizeSplash()));
+
+    setFusesAct = new QAction(QIcon(":/images/fuses_set.png"), tr("Set Fuses"), this);
+    setFusesAct->setStatusTip(tr("Sets the fuses to protect EEPROM from being erased."));
+    connect(setFusesAct, SIGNAL(triggered()), this, SLOT(setFuses()));
 }
 
 void MainWindow::createMenus()
@@ -1052,8 +1064,10 @@ void MainWindow::createMenus()
     burnMenu->addAction(burnFromFlashAct);
     burnMenu->addSeparator();
     burnMenu->addAction(burnConfigAct);
-    burnMenu->addAction(burnFusesAct);
     burnMenu->addAction(burnListAct);
+    burnMenu->addSeparator();
+    burnMenu->addAction(burnFusesAct);
+    burnMenu->addAction(setFusesAct);
 
     windowMenu = menuBar()->addMenu(tr("&Window"));
     updateWindowMenu();
@@ -1101,13 +1115,14 @@ void MainWindow::createToolBars()
     burnToolBar->addAction(burnFromFlashAct);
     burnToolBar->addSeparator();
     burnToolBar->addAction(burnConfigAct);
+    burnToolBar->addAction(setFusesAct);
 
     helpToolBar = addToolBar(tr("Help"));
-    helpToolBar->addAction(showEr9xManualAct);
+//    helpToolBar->addAction(showEr9xManualAct);
     helpToolBar->addAction(customizeSplashAct);
     helpToolBar->addAction(aboutAct);
-    helpToolBar->addAction(donatorsAct);
-    helpToolBar->addAction(checkForUpdatesAct);
+//    helpToolBar->addAction(donatorsAct);
+//    helpToolBar->addAction(checkForUpdatesAct);
 }
 
 void MainWindow::createStatusBar()

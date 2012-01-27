@@ -300,6 +300,8 @@ public:
     int  getGeneralSettings(EEGeneral* setData);
     bool putGeneralSettings(EEGeneral* setData);
 
+    void formatEFile();
+
 };
 
 
