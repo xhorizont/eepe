@@ -1295,10 +1295,6 @@ File may be corrupted, old or from a different system.You might need to update e
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Error Getting Model Data</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Error reading file:
 Cannot read General Settings from file %1</source>
         <translation type="unfinished"></translation>

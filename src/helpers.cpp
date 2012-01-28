@@ -283,7 +283,7 @@ void appendTextElement(QDomDocument * qdoc, QDomElement * pe, QString name, QStr
     pe->appendChild(e);
 }
 
-void appendNumberElement(QDomDocument * qdoc, QDomElement * pe,QString name, int value, bool forceZeroWrite = false)
+void appendNumberElement(QDomDocument * qdoc, QDomElement * pe,QString name, int value, bool forceZeroWrite)
 {
     if(value || forceZeroWrite)
     {
@@ -380,6 +380,7 @@ bool loadModelDataXML(QDomDocument * qdoc, ModelData * tmod, int modelNum)
 
     if(k.isNull()) // couldn't find
         return false;
+
 
     //load cdata into tgen
     QDomNode n = k.toElement().elementsByTagName("Data").at(0).firstChild();// get all children in Data

@@ -11,6 +11,10 @@ description here
 
 ******************************************
 CHANGELOG: 1-27-2012 ER
+Notes functional
+
+******************************************
+CHANGELOG: 1-27-2012 ER
 XML structured data saving in EEPE/EEPM/EEPG files
 Added file info
 Removed fuses dialog and replace with simpler "Set Fuses"

@@ -21,6 +21,9 @@ QString getCSWFunc(int val);
 int  loadiHEX(QWidget *parent, QString fileName, quint8 * data, int datalen, QString header);
 bool saveiHEX(QWidget *parent, QString fileName, quint8 * data, int datalen, QString header, int notesIndex=0);
 
+void appendTextElement(QDomDocument * qdoc, QDomElement * pe, QString name, QString value);
+void appendNumberElement(QDomDocument * qdoc, QDomElement * pe,QString name, int value, bool forceZeroWrite = false);
+void appendCDATAElement(QDomDocument * qdoc, QDomElement * pe,QString name, const char * data, int size);
 
 QDomElement getGeneralDataXML(QDomDocument * qdoc, EEGeneral * tgen);   //parse out data to XML format
 QDomElement getModelDataXML(QDomDocument * qdoc, ModelData * tmod, int modelNum); //parse out data to XML format
