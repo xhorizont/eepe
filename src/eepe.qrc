@@ -36,5 +36,6 @@
         <file>images/save_model.png</file>
         <file>images/c_home.png</file>
         <file>images/fuses_set.png</file>
+        <file>images/info.png</file>
     </qresource>
 </RCC>

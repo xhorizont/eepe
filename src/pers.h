@@ -301,6 +301,7 @@ public:
     bool putGeneralSettings(EEGeneral* setData);
 
     void formatEFile();
+    int size(int id) {return theFile->size(id);}
 
 };
 

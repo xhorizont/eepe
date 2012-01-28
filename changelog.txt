@@ -10,6 +10,13 @@ description here
 ====================================================================================
 
 ******************************************
+CHANGELOG: 1-27-2012 ER
+XML structured data saving in EEPE/EEPM/EEPG files
+Added file info
+Removed fuses dialog and replace with simpler "Set Fuses"
+Fixed model size show on main list
+
+******************************************
 CHANGELOG: 1-24-2012 ER
 Fixed issue with protocol box and data resetting
 

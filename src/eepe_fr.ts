@@ -560,7 +560,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Show fuses dialog</source>
-        <translation>Affiche les réglages des fusibles</translation>
+        <translation type="obsolete">Affiche les réglages des fusibles</translation>
     </message>
     <message>
         <source>&amp;Write EEPROM To Tx</source>
@@ -812,7 +812,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>&amp;Fuses...</source>
-        <translation>&amp;Fusibles...</translation>
+        <translation type="obsolete">&amp;Fusibles...</translation>
     </message>
     <message>
         <source>Copy the current selection&apos;s contents to the clipboard</source>
@@ -992,6 +992,54 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Customize Splash Screen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Set Fuses</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Sets the fuses to protect EEPROM from being erased.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&lt;tr&gt;&lt;td&gt;Owner: &lt;/td&gt;&lt;td align=right&gt;%1&lt;/td&gt;&lt;/tr&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&lt;tr&gt;&lt;td&gt;Version: &lt;/td&gt;&lt;td align=right&gt;%1&lt;/td&gt;&lt;/tr&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&lt;tr&gt;&lt;td&gt;Bytes Used: &lt;/td&gt;&lt;td align=right&gt;%1&lt;/td&gt;&lt;/tr&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&lt;tr&gt;&lt;td&gt;Bytes Free: &lt;/td&gt;&lt;td align=right&gt;%1&lt;/td&gt;&lt;/tr&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&lt;tr&gt;&lt;td&gt;Bytes Total:&lt;/td&gt;&lt;td align=right&gt; %1&lt;/td&gt;&lt;/tr&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Details:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&lt;tr&gt;&lt;td&gt;Settings: &lt;/td&gt;&lt;td align=right&gt;%1 Bytes&lt;/td&gt;&lt;/tr&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&lt;tr&gt;&lt;td&gt;%2: &lt;/td&gt;&lt;td align=right&gt;%1 Bytes&lt;/td&gt;&lt;/tr&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>EEPROM Info</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show information about current EEPROM.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1244,6 +1292,20 @@ You might need to update eePe to read this file.</source>
     <message>
         <source>Error loading file %1:
 File may be corrupted, old or from a different system.You might need to update eePe to read this file.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Error Getting Model Data</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Error reading file:
+Cannot read General Settings from file %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Error reading file:
+Cannot set General Settings</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2239,7 +2301,7 @@ Droite</translation>
     </message>
     <message>
         <source>&lt;b&gt;&lt;u&gt;WARNING!&lt;/u&gt;&lt;/b&gt;&lt;br&gt;This will reset the fuses to the factory settings.&lt;br&gt;Writing fuses can mess up your radio.&lt;br&gt;Do this only if you are sure they are wrong!&lt;br&gt;Are you sure you want to continue?</source>
-        <translation>&lt;b&gt;&lt;u&gt;AVERTISSEMENT!&lt;/u&gt;&lt;/b&gt;&lt;br&gt;Ceci réinitialisera les fusibles à leur valeur par défaut.&lt;br&gt;Modifier les fusibles peut entraîner le blocage de votre émetteur.&lt;br&gt;Ne l&apos;effectuer que si vous êtes certain qu&apos;ils sont incorrects!&lt;br&gt;Etes-vous sûr de vouloir continuer?</translation>
+        <translation type="obsolete">&lt;b&gt;&lt;u&gt;AVERTISSEMENT!&lt;/u&gt;&lt;/b&gt;&lt;br&gt;Ceci réinitialisera les fusibles à leur valeur par défaut.&lt;br&gt;Modifier les fusibles peut entraîner le blocage de votre émetteur.&lt;br&gt;Ne l&apos;effectuer que si vous êtes certain qu&apos;ils sont incorrects!&lt;br&gt;Etes-vous sûr de vouloir continuer?</translation>
     </message>
     <message>
         <source>The location of the AVRDUDE.EXE executable.</source>
@@ -2354,6 +2416,22 @@ Assurez-vous de posséder les droits en écriture sur ce dossier.</translation>
         <source>m328p</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>This will set the fuses to protect the EEPROM from being deleted when flashing.&lt;br&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>This will reset the fuses to the factory settings.&lt;br&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Before continuing make sure your programmer works reliably.&lt;br&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Are you sure you want to continue?</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>customizeSplashDialog</name>
@@ -2456,12 +2534,12 @@ Assurez-vous de posséder les droits en écriture sur ce dossier.</translation>
     <name>fusesDialog</name>
     <message>
         <source>Fuses</source>
-        <translation>Fusibles</translation>
+        <translation type="obsolete">Fusibles</translation>
     </message>
     <message>
         <source>Reset Fuses
 EEPROM - DELETE</source>
-        <translation>Réinitialiser Fusibles
+        <translation type="obsolete">Réinitialiser Fusibles
 EFFACEMENT EEPROM</translation>
     </message>
     <message>
@@ -2474,7 +2552,7 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;Proper states:&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;EEPROM erase fuse not set: 0E, 81, FF&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;EEPROM erase fuse set: 0E, 89, FF&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+        <translation type="obsolete">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
@@ -2487,7 +2565,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <source>Reset Fuses
 EEPROM - PROTECT</source>
-        <translation>Réinitialiser Fusibles
+        <translation type="obsolete">Réinitialiser Fusibles
 PROTECTION EEPROM</translation>
     </message>
     <message>
@@ -2499,7 +2577,7 @@ p, li { white-space: pre-wrap; }
 &lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-weight:600; text-decoration: underline;&quot;&gt;&lt;/p&gt;
 &lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Changing the fuses can mess up your radio.&lt;/p&gt;
 &lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Proceed only if you know what you are doing.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+        <translation type="obsolete">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Ubuntu&apos;; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
@@ -2510,7 +2588,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Read Fuses</source>
-        <translation>Lire Fusibles</translation>
+        <translation type="obsolete">Lire Fusibles</translation>
     </message>
     <message>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
@@ -2529,7 +2607,7 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;When in doubt consult either the project&apos;s page or the forums @ RCG and RXModelreviews.&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:8pt;&quot;&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;If you do get locked out - go to the project&apos;s homepage and lookup &amp;quot;dealing with Fuse Bricks&amp;quot;.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+        <translation type="obsolete">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
@@ -2563,7 +2641,7 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;When in doubt consult either the project&apos;s page or the forums @ RCG and RXModelreviews.&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:8pt;&quot;&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;If you do get locked out - go to the project&apos;s homepage and lookup &amp;quot;dealing with Fuse Bricks&amp;quot;.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+        <translation type="obsolete">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;

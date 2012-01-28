@@ -104,6 +104,11 @@ public:
     static int getFileType(const QString &fullFileName);
     bool saveToFileEnabled();
 
+    int modelSize(int id);
+    int eepromVersion();
+    QString modelName(int id);
+    QString ownerName();
+
     void optimizeEEPROM();
 
     QList<QStringList> fNotes;

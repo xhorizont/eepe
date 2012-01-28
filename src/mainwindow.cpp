@@ -52,7 +52,6 @@
 #include "avroutputdialog.h"
 #include "donatorsdialog.h"
 #include "preferencesdialog.h"
-#include "fusesdialog.h"
 #include "downloaddialog.h"
 #include "customizesplashdialog.h"
 #include "stamp-eepe.h"
@@ -723,18 +722,66 @@ void MainWindow::burnList()
     bcd->listProgrammers();
 }
 
-void MainWindow::burnFuses()
-{
-    fusesDialog *fd = new fusesDialog(this);
-    fd->exec();
-}
-
 void MainWindow::setFuses()
 {
     burnConfigDialog *bcd = new burnConfigDialog(this);
     bcd->restFuses(true);
 }
 
+void MainWindow::showEEPROMInfo()
+{
+    //show info about:
+    // eeprom size
+    // available models
+    // model sizes
+    // EEPROM version
+    // Free space
+
+    if(activeMdiChild() == 0)
+        return;
+
+    QString msg = "<table cellspacing=0 cellpadding=0 border=0>";
+    msg.append("<tr><td colspan=2><u><b>");
+    msg.append(QString("%1").arg(QFileInfo(activeMdiChild()->currentFile()).fileName()));
+    msg.append("</b></u></td></tr>");
+
+    int modelSizes[MAX_MODELS+1] = {0};
+    int totalSize = 0;
+
+    for(int i=0; i<=MAX_MODELS; i++)
+    {
+        modelSizes[i] = activeMdiChild()->modelSize(i);
+        totalSize += modelSizes[i];
+    }
+
+    msg.append(tr("<tr><td>Owner: </td><td align=right>%1</td></tr>").arg(activeMdiChild()->ownerName()));
+    msg.append(tr("<tr><td>Version: </td><td align=right>%1</td></tr>").arg(activeMdiChild()->eepromVersion()));
+
+    msg.append(tr("<tr><td>Bytes Used: </td><td align=right>%1</td></tr>").arg(totalSize));
+    msg.append(tr("<tr><td>Bytes Free: </td><td align=right>%1</td></tr>").arg(EESIZE - totalSize));
+    msg.append(tr("<tr><td>Bytes Total:</td><td align=right> %1</td></tr>").arg(EESIZE));
+
+    msg.append("<tr><td colspan=2><br><u><b>");
+    msg.append(tr("Details:"));
+    msg.append("</b></u></td></tr>");
+
+    for(int i=0; i<MAX_MODELS; i++)
+    {
+        if(modelSizes[i]>0)
+        {
+            if(i==0)
+                msg.append(tr("<tr><td>Settings: </td><td align=right>%1 Bytes</td></tr>").arg(modelSizes[i]));
+            else
+                msg.append(tr("<tr><td>%2: </td><td align=right>%1 Bytes</td></tr>").arg(modelSizes[i]).arg(activeMdiChild()->modelName(i)));
+        }
+    }
+
+    msg.append("</table>");
+
+
+    QMessageBox::information(this, "eePe", msg);
+
+}
 
 void MainWindow::donators()
 {
@@ -789,6 +836,7 @@ void MainWindow::updateMenus()
     bool hasMdiChild = (activeMdiChild() != 0);
     saveAct->setEnabled(hasMdiChild);
     saveAsAct->setEnabled(hasMdiChild);
+    eepromInfoAct->setEnabled(hasMdiChild);
     pasteAct->setEnabled(hasMdiChild ? activeMdiChild()->hasPasteData() : false);
     closeAct->setEnabled(hasMdiChild);
     closeAllAct->setEnabled(hasMdiChild);
@@ -946,10 +994,6 @@ void MainWindow::createActions()
     burnListAct->setStatusTip(tr("List available programmers"));
     connect(burnListAct,SIGNAL(triggered()),this,SLOT(burnList()));
 
-    burnFusesAct = new QAction(QIcon(":/images/fuses.png"), tr("&Fuses..."), this);
-    burnFusesAct->setStatusTip(tr("Show fuses dialog"));
-    connect(burnFusesAct,SIGNAL(triggered()),this,SLOT(burnFuses()));
-
     simulateAct = new QAction(QIcon(":/images/simulate.png"), tr("&Simulate"), this);
     simulateAct->setShortcut(tr("Alt+S"));
     simulateAct->setStatusTip(tr("Simulate selected model."));
@@ -1028,6 +1072,10 @@ void MainWindow::createActions()
     setFusesAct = new QAction(QIcon(":/images/fuses_set.png"), tr("Set Fuses"), this);
     setFusesAct->setStatusTip(tr("Sets the fuses to protect EEPROM from being erased."));
     connect(setFusesAct, SIGNAL(triggered()), this, SLOT(setFuses()));
+
+    eepromInfoAct = new QAction(QIcon(":/images/info.png"), tr("EEPROM Info"), this);
+    eepromInfoAct->setStatusTip(tr("Show information about current EEPROM."));
+    connect(eepromInfoAct, SIGNAL(triggered()), this, SLOT(showEEPROMInfo()));
 }
 
 void MainWindow::createMenus()
@@ -1052,6 +1100,7 @@ void MainWindow::createMenus()
     editMenu->addAction(cutAct);
     editMenu->addAction(copyAct);
     editMenu->addAction(pasteAct);
+    editMenu->addAction(eepromInfoAct);
 
     burnMenu = menuBar()->addMenu(tr("&Burn"));
     burnMenu->addAction(burnToAct);
@@ -1066,7 +1115,6 @@ void MainWindow::createMenus()
     burnMenu->addAction(burnConfigAct);
     burnMenu->addAction(burnListAct);
     burnMenu->addSeparator();
-    burnMenu->addAction(burnFusesAct);
     burnMenu->addAction(setFusesAct);
 
     windowMenu = menuBar()->addMenu(tr("&Window"));
@@ -1103,6 +1151,7 @@ void MainWindow::createToolBars()
     editToolBar->addAction(cutAct);
     editToolBar->addAction(copyAct);
     editToolBar->addAction(pasteAct);
+    editToolBar->addAction(eepromInfoAct);
 
     burnToolBar = addToolBar(tr("Burn"));
     burnToolBar->addAction(burnToAct);

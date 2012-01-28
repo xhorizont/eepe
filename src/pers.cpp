@@ -52,7 +52,6 @@ bool EEPFILE::loadFile(void* buf)
     return g_eeGeneral.chkSum == sum;
 }
 
-
 void EEPFILE::saveFile(void* buf)
 {
     theFile->save(buf);
