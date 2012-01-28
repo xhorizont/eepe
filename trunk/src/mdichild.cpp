@@ -156,7 +156,7 @@ void MdiChild::refreshList()
     for(uint8_t i=0; i<MAX_MODELS; i++)
     {
         eeFile.eeLoadModelName(i,buf,sizeof(buf));
-        addItem(QString::fromAscii(buf,MODEL_NAME_LEN+4));
+        addItem(QString(buf));
     }
 
 }
@@ -187,6 +187,39 @@ void MdiChild::deleteSelected(bool ask=true)
     }
 }
 
+int MdiChild::modelSize(int id)
+{
+    if(eeFile.eeModelExists(id))
+        return eeFile.size(id);
+    else
+        return 0;
+}
+
+QString MdiChild::modelName(int id)
+{
+    if(eeFile.eeModelExists(id))
+    {
+        char buf[sizeof(ModelData().name)+1];
+        eeFile.getModelName(id,(char*)&buf);
+        return QString(buf).trimmed();
+    }
+    else
+        return "";
+}
+
+QString MdiChild::ownerName()
+{
+    EEGeneral tgen;
+    eeFile.getGeneralSettings(&tgen);
+    return QString::fromAscii(tgen.ownerName,sizeof(tgen.ownerName)).trimmed();
+}
+
+int MdiChild::eepromVersion()
+{
+    EEGeneral tgen;
+    eeFile.getGeneralSettings(&tgen);
+    return tgen.myVers;
+}
 
 void MdiChild::doCopy(QByteArray *gmData)
 {
@@ -678,8 +711,11 @@ bool MdiChild::loadFile(const QString &fileName, bool resetCurrentFile)
             xmlOK = doc.setContent(&file);
             if(xmlOK)
             {
+                //format eefile
+                eeFile.formatEFile();
                 //read general data
                 EEGeneral tgen;
+                memset(&tgen,0,sizeof(tgen));
                 if(!loadGeneralDataXML(&doc, &tgen))
                 {
                     QMessageBox::critical(this, tr("Error"),tr("Error reading file:\n"
@@ -697,6 +733,7 @@ bool MdiChild::loadFile(const QString &fileName, bool resetCurrentFile)
                 for(int i=0; i<MAX_MODELS; i++)
                 {
                     ModelData tmod;
+                    memset(&tmod,0,sizeof(tmod));
                     if(loadModelDataXML(&doc, &tmod, i))
                         eeFile.putModel(&tmod,i);
                 }
@@ -735,6 +772,7 @@ bool MdiChild::loadFile(const QString &fileName, bool resetCurrentFile)
                 return false;
             }
         }
+
         refreshList();
         if(resetCurrentFile) setCurrentFile(fileName);
 
@@ -864,6 +902,7 @@ bool MdiChild::saveFile(const QString &fileName, bool setCurrent)
         ts << doc.toString();
         file.close();
 
+        if(setCurrent) setCurrentFile(fileName);
         return true;
     }
 

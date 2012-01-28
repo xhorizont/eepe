@@ -345,7 +345,9 @@ bool loadGeneralDataXML(QDomDocument * qdoc, EEGeneral * tgen)
     {
         if (n.isCDATASection())
         {
-            const char * data = QByteArray::fromBase64(n.toCDATASection().data().toAscii()).data();
+            QString ds = n.toCDATASection().data();
+            QByteArray ba = QByteArray::fromBase64(ds.toAscii());
+            const char * data = ba.data();
             memcpy(tgen, data, sizeof(EEGeneral));
             break;
         }
@@ -385,7 +387,9 @@ bool loadModelDataXML(QDomDocument * qdoc, ModelData * tmod, int modelNum)
     {
         if (n.isCDATASection())
         {
-            const char * data = QByteArray::fromBase64(n.toCDATASection().data().toAscii()).data();
+            QString ds = n.toCDATASection().data();
+            QByteArray ba = QByteArray::fromBase64(ds.toAscii());
+            const char * data = ba.data();
             memcpy(tmod, data, sizeof(ModelData));
             break;
         }

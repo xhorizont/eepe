@@ -1,0 +1,11 @@
+#! /bin/bash
+
+cd winbuild
+make clean
+
+cd ../linux32build
+make clean
+
+cd ../linux64build
+make clean
+

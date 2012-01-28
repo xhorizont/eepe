@@ -1,19 +1,19 @@
 #================================================
 Starting Build
 Timestamp
-Wed Jan 25 00:24:15 UTC 2012
+Sat Jan 28 03:49:30 UTC 2012
 #================================================
 
 ===== Updating from SVN =====
-At revision 307.
+At revision 315.
 
 ===== GENERATING VERSION STAMP =====
 //Automatically generated file - do not edit
-#define DATE_STR "25.01.2012"
-#define TIME_STR "00:12:17"
+#define DATE_STR "28.01.2012"
+#define TIME_STR "03:03:31"
 #define SUB_VERS "1-erez"
-#define SVN_VERS "trunk-r308"
-#define SVN_VER_NUM 308
+#define SVN_VERS "trunk-r316"
+#define SVN_VER_NUM 316
 ====================================
 
 
@@ -29,41 +29,41 @@ Generate Translation Files
 /usr/include/qt4/QtGui/qlayout.h:236: circular inclusion of /usr/include/qt4/QtGui/qboxlayout.h
 /usr/include/qt4/QtGui/qgridlayout.h:45: circular inclusion of /usr/include/qt4/QtGui/qlayout.h
 Updating 'eepe_.ts'...
-    Found 657 source text(s) (1 new and 656 already existing)
+    Found 665 source text(s) (0 new and 665 already existing)
 Updating 'eepe_he.ts'...
-    Found 657 source text(s) (1 new and 656 already existing)
+    Found 665 source text(s) (0 new and 665 already existing)
 Updating 'eepe_pt.ts'...
-    Found 657 source text(s) (1 new and 656 already existing)
+    Found 665 source text(s) (0 new and 665 already existing)
 Updating 'eepe_ru.ts'...
-    Found 657 source text(s) (1 new and 656 already existing)
+    Found 665 source text(s) (0 new and 665 already existing)
 Updating 'eepe_de.ts'...
-    Found 657 source text(s) (1 new and 656 already existing)
+    Found 665 source text(s) (0 new and 665 already existing)
 Updating 'eepe_es.ts'...
-    Found 657 source text(s) (1 new and 656 already existing)
+    Found 665 source text(s) (0 new and 665 already existing)
 Updating 'eepe_fr.ts'...
-    Found 657 source text(s) (0 new and 657 already existing)
+    Found 665 source text(s) (0 new and 665 already existing)
 /usr/share/qt4/mkspecs/features/default_post.prf(5):Function 'system' is not implemented
 Updating '/home/erez/eepe/src/eepe_.qm'...
     Generated 0 translation(s) (0 finished and 0 unfinished)
-    Ignored 657 untranslated source text(s)
+    Ignored 665 untranslated source text(s)
 Updating '/home/erez/eepe/src/eepe_he.qm'...
     Generated 0 translation(s) (0 finished and 0 unfinished)
-    Ignored 657 untranslated source text(s)
+    Ignored 665 untranslated source text(s)
 Updating '/home/erez/eepe/src/eepe_pt.qm'...
-    Generated 431 translation(s) (387 finished and 44 unfinished)
-    Ignored 226 untranslated source text(s)
+    Generated 430 translation(s) (387 finished and 43 unfinished)
+    Ignored 235 untranslated source text(s)
 Updating '/home/erez/eepe/src/eepe_ru.qm'...
-    Generated 399 translation(s) (365 finished and 34 unfinished)
-    Ignored 258 untranslated source text(s)
+    Generated 394 translation(s) (360 finished and 34 unfinished)
+    Ignored 271 untranslated source text(s)
 Updating '/home/erez/eepe/src/eepe_de.qm'...
-    Generated 556 translation(s) (529 finished and 27 unfinished)
-    Ignored 101 untranslated source text(s)
+    Generated 545 translation(s) (518 finished and 27 unfinished)
+    Ignored 120 untranslated source text(s)
 Updating '/home/erez/eepe/src/eepe_es.qm'...
-    Generated 550 translation(s) (539 finished and 11 unfinished)
-    Ignored 107 untranslated source text(s)
+    Generated 539 translation(s) (528 finished and 11 unfinished)
+    Ignored 126 untranslated source text(s)
 Updating '/home/erez/eepe/src/eepe_fr.qm'...
-    Generated 544 translation(s) (529 finished and 15 unfinished)
-    Ignored 113 untranslated source text(s)
+    Generated 533 translation(s) (518 finished and 15 unfinished)
+    Ignored 132 untranslated source text(s)
 
 #================================================
 Build Windows Version
@@ -71,7 +71,7 @@ Build Windows Version
 
 make -f Makefile.Release
 make[1]: Entering directory `/home/erez/eepe/winbuild'
-i586-mingw32msvc-g++ -c -pipe -O2 -fexceptions -mthreads -Wall -fno-rtti -DUNICODE -DQT_LARGEFILE_SUPPORT -DQT_WEBKIT -DQT_NO_DEBUG -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -DQT_NO_DYNAMIC_CAST -I'../../.wine/drive_c/Qt/4.7.4/include/QtCore' -I'../../.wine/drive_c/Qt/4.7.4/include/QtNetwork' -I'../../.wine/drive_c/Qt/4.7.4/include/QtGui' -I'../../.wine/drive_c/Qt/4.7.4/include' -I'../../.wine/drive_c/Qt/4.7.4/include/ActiveQt' -I'release' -I'.' -I'../src' -I'/usr/i586-mingw32msvc/include' -I'.' -I'/usr/share/qt4/mkspecs/win32-g++-cross' -o release/mainwindow.o ../src/mainwindow.cpp
+i586-mingw32msvc-g++ -c -pipe -O2 -fexceptions -mthreads -Wall -fno-rtti -DUNICODE -DQT_LARGEFILE_SUPPORT -DQT_WEBKIT -DQT_NO_DEBUG -DQT_XML_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -DQT_NO_DYNAMIC_CAST -I'../../.wine/drive_c/Qt/4.7.4/include/QtCore' -I'../../.wine/drive_c/Qt/4.7.4/include/QtNetwork' -I'../../.wine/drive_c/Qt/4.7.4/include/QtGui' -I'../../.wine/drive_c/Qt/4.7.4/include/QtXml' -I'../../.wine/drive_c/Qt/4.7.4/include' -I'../../.wine/drive_c/Qt/4.7.4/include/ActiveQt' -I'release' -I'.' -I'../src' -I'/usr/i586-mingw32msvc/include' -I'.' -I'/usr/share/qt4/mkspecs/win32-g++-cross' -o release/mainwindow.o ../src/mainwindow.cpp
 In file included from ../../.wine/drive_c/Qt/4.7.4/include/QtCore/qbitarray.h:1,
                  from ../../.wine/drive_c/Qt/4.7.4/include/QtCore/QtCore:100,
                  from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/QtGui:3,
@@ -122,74 +122,7 @@ In file included from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/qtextformat.h:1
 ../../.wine/drive_c/Qt/4.7.4/include/QtGui/../../src/gui/text/qtextformat.h:118: warning: ‘QDataStream& operator>>(QDataStream&, QTextLength&)’ redeclared without dllimport attribute: previous dllimport ignored
 ../../.wine/drive_c/Qt/4.7.4/include/QtGui/../../src/gui/text/qtextformat.h:358: warning: ‘QDataStream& operator<<(QDataStream&, const QTextFormat&)’ redeclared without dllimport attribute: previous dllimport ignored
 ../../.wine/drive_c/Qt/4.7.4/include/QtGui/../../src/gui/text/qtextformat.h:359: warning: ‘QDataStream& operator>>(QDataStream&, QTextFormat&)’ redeclared without dllimport attribute: previous dllimport ignored
-i586-mingw32msvc-g++ -c -pipe -O2 -fexceptions -mthreads -Wall -fno-rtti -DUNICODE -DQT_LARGEFILE_SUPPORT -DQT_WEBKIT -DQT_NO_DEBUG -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -DQT_NO_DYNAMIC_CAST -I'../../.wine/drive_c/Qt/4.7.4/include/QtCore' -I'../../.wine/drive_c/Qt/4.7.4/include/QtNetwork' -I'../../.wine/drive_c/Qt/4.7.4/include/QtGui' -I'../../.wine/drive_c/Qt/4.7.4/include' -I'../../.wine/drive_c/Qt/4.7.4/include/ActiveQt' -I'release' -I'.' -I'../src' -I'/usr/i586-mingw32msvc/include' -I'.' -I'/usr/share/qt4/mkspecs/win32-g++-cross' -o release/modeledit.o ../src/modeledit.cpp
-In file included from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/qcolor.h:1,
-                 from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/../../src/gui/kernel/qpalette.h:46,
-                 from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/qpalette.h:1,
-                 from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/../../src/gui/kernel/qwidget.h:49,
-                 from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/qwidget.h:1,
-                 from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/../../src/gui/dialogs/qdialog.h:45,
-                 from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/qdialog.h:1,
-                 from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/QDialog:1,
-                 from ../src/modeledit.h:4,
-                 from ../src/modeledit.cpp:1:
-../../.wine/drive_c/Qt/4.7.4/include/QtGui/../../src/gui/painting/qcolor.h:274: warning: ‘QDataStream& operator<<(QDataStream&, const QColor&)’ redeclared without dllimport attribute: previous dllimport ignored
-../../.wine/drive_c/Qt/4.7.4/include/QtGui/../../src/gui/painting/qcolor.h:275: warning: ‘QDataStream& operator>>(QDataStream&, QColor&)’ redeclared without dllimport attribute: previous dllimport ignored
-In file included from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/qpainterpath.h:1,
-                 from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/../../src/gui/painting/qtransform.h:45,
-                 from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/qtransform.h:1,
-                 from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/../../src/gui/painting/qbrush.h:51,
-                 from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/qbrush.h:1,
-                 from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/../../src/gui/kernel/qpalette.h:47,
-                 from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/qpalette.h:1,
-                 from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/../../src/gui/kernel/qwidget.h:49,
-                 from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/qwidget.h:1,
-                 from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/../../src/gui/dialogs/qdialog.h:45,
-                 from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/qdialog.h:1,
-                 from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/QDialog:1,
-                 from ../src/modeledit.h:4,
-                 from ../src/modeledit.cpp:1:
-../../.wine/drive_c/Qt/4.7.4/include/QtGui/../../src/gui/painting/qpainterpath.h:244: warning: ‘QDataStream& operator<<(QDataStream&, const QPainterPath&)’ redeclared without dllimport attribute: previous dllimport ignored
-../../.wine/drive_c/Qt/4.7.4/include/QtGui/../../src/gui/painting/qpainterpath.h:245: warning: ‘QDataStream& operator>>(QDataStream&, QPainterPath&)’ redeclared without dllimport attribute: previous dllimport ignored
-In file included from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/qkeysequence.h:1,
-                 from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/../../src/gui/kernel/qwidget.h:57,
-                 from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/qwidget.h:1,
-                 from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/../../src/gui/dialogs/qdialog.h:45,
-                 from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/qdialog.h:1,
-                 from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/QDialog:1,
-                 from ../src/modeledit.h:4,
-                 from ../src/modeledit.cpp:1:
-../../.wine/drive_c/Qt/4.7.4/include/QtGui/../../src/gui/kernel/qkeysequence.h:203: warning: ‘QDataStream& operator<<(QDataStream&, const QKeySequence&)’ redeclared without dllimport attribute: previous dllimport ignored
-../../.wine/drive_c/Qt/4.7.4/include/QtGui/../../src/gui/kernel/qkeysequence.h:204: warning: ‘QDataStream& operator>>(QDataStream&, QKeySequence&)’ redeclared without dllimport attribute: previous dllimport ignored
-In file included from ../../.wine/drive_c/Qt/4.7.4/include/QtCore/qbitarray.h:1,
-                 from ../../.wine/drive_c/Qt/4.7.4/include/QtCore/QtCore:100,
-                 from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/QtGui:3,
-                 from ../src/modeledit.h:5,
-                 from ../src/modeledit.cpp:1:
-../../.wine/drive_c/Qt/4.7.4/include/QtCore/../../src/corelib/tools/qbitarray.h:58: warning: ‘uint qHash(const QBitArray&)’ redeclared without dllimport attribute: previous dllimport ignored
-In file included from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/qpen.h:1,
-                 from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/../../src/gui/painting/qpainter.h:56,
-                 from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/qpainter.h:1,
-                 from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/../../src/gui/painting/qpaintengine.h:48,
-                 from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/qpaintengine.h:1,
-                 from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/QtGui:10,
-                 from ../src/modeledit.h:5,
-                 from ../src/modeledit.cpp:1:
-../../.wine/drive_c/Qt/4.7.4/include/QtGui/../../src/gui/painting/qpen.h:119: warning: ‘QDataStream& operator>>(QDataStream&, QPen&)’ redeclared without dllimport attribute: previous dllimport ignored
-../../.wine/drive_c/Qt/4.7.4/include/QtGui/../../src/gui/painting/qpen.h:120: warning: ‘QDataStream& operator<<(QDataStream&, const QPen&)’ redeclared without dllimport attribute: previous dllimport ignored
-In file included from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/qtextformat.h:1,
-                 from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/../../src/gui/text/qtextlayout.h:51,
-                 from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/qtextlayout.h:1,
-                 from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/../../src/gui/text/qabstracttextdocumentlayout.h:46,
-                 from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/qabstracttextdocumentlayout.h:1,
-                 from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/QtGui:79,
-                 from ../src/modeledit.h:5,
-                 from ../src/modeledit.cpp:1:
-../../.wine/drive_c/Qt/4.7.4/include/QtGui/../../src/gui/text/qtextformat.h:117: warning: ‘QDataStream& operator<<(QDataStream&, const QTextLength&)’ redeclared without dllimport attribute: previous dllimport ignored
-../../.wine/drive_c/Qt/4.7.4/include/QtGui/../../src/gui/text/qtextformat.h:118: warning: ‘QDataStream& operator>>(QDataStream&, QTextLength&)’ redeclared without dllimport attribute: previous dllimport ignored
-../../.wine/drive_c/Qt/4.7.4/include/QtGui/../../src/gui/text/qtextformat.h:358: warning: ‘QDataStream& operator<<(QDataStream&, const QTextFormat&)’ redeclared without dllimport attribute: previous dllimport ignored
-../../.wine/drive_c/Qt/4.7.4/include/QtGui/../../src/gui/text/qtextformat.h:359: warning: ‘QDataStream& operator>>(QDataStream&, QTextFormat&)’ redeclared without dllimport attribute: previous dllimport ignored
-i586-mingw32msvc-g++ -c -pipe -O2 -fexceptions -mthreads -Wall -fno-rtti -DUNICODE -DQT_LARGEFILE_SUPPORT -DQT_WEBKIT -DQT_NO_DEBUG -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -DQT_NO_DYNAMIC_CAST -I'../../.wine/drive_c/Qt/4.7.4/include/QtCore' -I'../../.wine/drive_c/Qt/4.7.4/include/QtNetwork' -I'../../.wine/drive_c/Qt/4.7.4/include/QtGui' -I'../../.wine/drive_c/Qt/4.7.4/include' -I'../../.wine/drive_c/Qt/4.7.4/include/ActiveQt' -I'release' -I'.' -I'../src' -I'/usr/i586-mingw32msvc/include' -I'.' -I'/usr/share/qt4/mkspecs/win32-g++-cross' -o release/mdichild.o ../src/mdichild.cpp
+i586-mingw32msvc-g++ -c -pipe -O2 -fexceptions -mthreads -Wall -fno-rtti -DUNICODE -DQT_LARGEFILE_SUPPORT -DQT_WEBKIT -DQT_NO_DEBUG -DQT_XML_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -DQT_NO_DYNAMIC_CAST -I'../../.wine/drive_c/Qt/4.7.4/include/QtCore' -I'../../.wine/drive_c/Qt/4.7.4/include/QtNetwork' -I'../../.wine/drive_c/Qt/4.7.4/include/QtGui' -I'../../.wine/drive_c/Qt/4.7.4/include/QtXml' -I'../../.wine/drive_c/Qt/4.7.4/include' -I'../../.wine/drive_c/Qt/4.7.4/include/ActiveQt' -I'release' -I'.' -I'../src' -I'/usr/i586-mingw32msvc/include' -I'.' -I'/usr/share/qt4/mkspecs/win32-g++-cross' -o release/mdichild.o ../src/mdichild.cpp
 In file included from ../../.wine/drive_c/Qt/4.7.4/include/QtCore/qbitarray.h:1,
                  from ../../.wine/drive_c/Qt/4.7.4/include/QtCore/QtCore:100,
                  from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/QtGui:3,
@@ -240,64 +173,7 @@ In file included from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/qtextformat.h:1
 ../../.wine/drive_c/Qt/4.7.4/include/QtGui/../../src/gui/text/qtextformat.h:118: warning: ‘QDataStream& operator>>(QDataStream&, QTextLength&)’ redeclared without dllimport attribute: previous dllimport ignored
 ../../.wine/drive_c/Qt/4.7.4/include/QtGui/../../src/gui/text/qtextformat.h:358: warning: ‘QDataStream& operator<<(QDataStream&, const QTextFormat&)’ redeclared without dllimport attribute: previous dllimport ignored
 ../../.wine/drive_c/Qt/4.7.4/include/QtGui/../../src/gui/text/qtextformat.h:359: warning: ‘QDataStream& operator>>(QDataStream&, QTextFormat&)’ redeclared without dllimport attribute: previous dllimport ignored
-i586-mingw32msvc-g++ -c -pipe -O2 -fexceptions -mthreads -Wall -fno-rtti -DUNICODE -DQT_LARGEFILE_SUPPORT -DQT_WEBKIT -DQT_NO_DEBUG -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -DQT_NO_DYNAMIC_CAST -I'../../.wine/drive_c/Qt/4.7.4/include/QtCore' -I'../../.wine/drive_c/Qt/4.7.4/include/QtNetwork' -I'../../.wine/drive_c/Qt/4.7.4/include/QtGui' -I'../../.wine/drive_c/Qt/4.7.4/include' -I'../../.wine/drive_c/Qt/4.7.4/include/ActiveQt' -I'release' -I'.' -I'../src' -I'/usr/i586-mingw32msvc/include' -I'.' -I'/usr/share/qt4/mkspecs/win32-g++-cross' -o release/node.o ../src/node.cpp
-In file included from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/qcolor.h:1,
-                 from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/../../src/gui/painting/qbrush.h:49,
-                 from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/qbrush.h:1,
-                 from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/../../src/gui/graphicsview/qgraphicsscene.h:48,
-                 from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/qgraphicsscene.h:1,
-                 from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/QGraphicsScene:1,
-                 from ../src/node.cpp:42:
-../../.wine/drive_c/Qt/4.7.4/include/QtGui/../../src/gui/painting/qcolor.h:274: warning: ‘QDataStream& operator<<(QDataStream&, const QColor&)’ redeclared without dllimport attribute: previous dllimport ignored
-../../.wine/drive_c/Qt/4.7.4/include/QtGui/../../src/gui/painting/qcolor.h:275: warning: ‘QDataStream& operator>>(QDataStream&, QColor&)’ redeclared without dllimport attribute: previous dllimport ignored
-In file included from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/qpainterpath.h:1,
-                 from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/../../src/gui/painting/qtransform.h:45,
-                 from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/qtransform.h:1,
-                 from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/../../src/gui/painting/qbrush.h:51,
-                 from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/qbrush.h:1,
-                 from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/../../src/gui/graphicsview/qgraphicsscene.h:48,
-                 from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/qgraphicsscene.h:1,
-                 from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/QGraphicsScene:1,
-                 from ../src/node.cpp:42:
-../../.wine/drive_c/Qt/4.7.4/include/QtGui/../../src/gui/painting/qpainterpath.h:244: warning: ‘QDataStream& operator<<(QDataStream&, const QPainterPath&)’ redeclared without dllimport attribute: previous dllimport ignored
-../../.wine/drive_c/Qt/4.7.4/include/QtGui/../../src/gui/painting/qpainterpath.h:245: warning: ‘QDataStream& operator>>(QDataStream&, QPainterPath&)’ redeclared without dllimport attribute: previous dllimport ignored
-In file included from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/qpen.h:1,
-                 from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/../../src/gui/graphicsview/qgraphicsscene.h:52,
-                 from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/qgraphicsscene.h:1,
-                 from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/QGraphicsScene:1,
-                 from ../src/node.cpp:42:
-../../.wine/drive_c/Qt/4.7.4/include/QtGui/../../src/gui/painting/qpen.h:119: warning: ‘QDataStream& operator>>(QDataStream&, QPen&)’ redeclared without dllimport attribute: previous dllimport ignored
-../../.wine/drive_c/Qt/4.7.4/include/QtGui/../../src/gui/painting/qpen.h:120: warning: ‘QDataStream& operator<<(QDataStream&, const QPen&)’ redeclared without dllimport attribute: previous dllimport ignored
-In file included from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/qkeysequence.h:1,
-                 from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/../../src/gui/kernel/qwidget.h:57,
-                 from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/qwidget.h:1,
-                 from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/../../src/gui/widgets/qabstractspinbox.h:45,
-                 from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/qabstractspinbox.h:1,
-                 from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/../../src/gui/styles/qstyleoption.h:46,
-                 from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/qstyleoption.h:1,
-                 from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/QStyleOption:1,
-                 from ../src/node.cpp:45:
-../../.wine/drive_c/Qt/4.7.4/include/QtGui/../../src/gui/kernel/qkeysequence.h:203: warning: ‘QDataStream& operator<<(QDataStream&, const QKeySequence&)’ redeclared without dllimport attribute: previous dllimport ignored
-../../.wine/drive_c/Qt/4.7.4/include/QtGui/../../src/gui/kernel/qkeysequence.h:204: warning: ‘QDataStream& operator>>(QDataStream&, QKeySequence&)’ redeclared without dllimport attribute: previous dllimport ignored
-In file included from ../../.wine/drive_c/Qt/4.7.4/include/QtCore/qbitarray.h:1,
-                 from ../../.wine/drive_c/Qt/4.7.4/include/QtCore/QtCore:100,
-                 from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/QtGui:3,
-                 from ../src/node.h:45,
-                 from ../src/node.cpp:48:
-../../.wine/drive_c/Qt/4.7.4/include/QtCore/../../src/corelib/tools/qbitarray.h:58: warning: ‘uint qHash(const QBitArray&)’ redeclared without dllimport attribute: previous dllimport ignored
-In file included from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/qtextformat.h:1,
-                 from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/../../src/gui/text/qtextlayout.h:51,
-                 from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/qtextlayout.h:1,
-                 from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/../../src/gui/text/qabstracttextdocumentlayout.h:46,
-                 from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/qabstracttextdocumentlayout.h:1,
-                 from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/QtGui:79,
-                 from ../src/node.h:45,
-                 from ../src/node.cpp:48:
-../../.wine/drive_c/Qt/4.7.4/include/QtGui/../../src/gui/text/qtextformat.h:117: warning: ‘QDataStream& operator<<(QDataStream&, const QTextLength&)’ redeclared without dllimport attribute: previous dllimport ignored
-../../.wine/drive_c/Qt/4.7.4/include/QtGui/../../src/gui/text/qtextformat.h:118: warning: ‘QDataStream& operator>>(QDataStream&, QTextLength&)’ redeclared without dllimport attribute: previous dllimport ignored
-../../.wine/drive_c/Qt/4.7.4/include/QtGui/../../src/gui/text/qtextformat.h:358: warning: ‘QDataStream& operator<<(QDataStream&, const QTextFormat&)’ redeclared without dllimport attribute: previous dllimport ignored
-../../.wine/drive_c/Qt/4.7.4/include/QtGui/../../src/gui/text/qtextformat.h:359: warning: ‘QDataStream& operator>>(QDataStream&, QTextFormat&)’ redeclared without dllimport attribute: previous dllimport ignored
-i586-mingw32msvc-g++ -c -pipe -O2 -fexceptions -mthreads -Wall -fno-rtti -DUNICODE -DQT_LARGEFILE_SUPPORT -DQT_WEBKIT -DQT_NO_DEBUG -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -DQT_NO_DYNAMIC_CAST -I'../../.wine/drive_c/Qt/4.7.4/include/QtCore' -I'../../.wine/drive_c/Qt/4.7.4/include/QtNetwork' -I'../../.wine/drive_c/Qt/4.7.4/include/QtGui' -I'../../.wine/drive_c/Qt/4.7.4/include' -I'../../.wine/drive_c/Qt/4.7.4/include/ActiveQt' -I'release' -I'.' -I'../src' -I'/usr/i586-mingw32msvc/include' -I'.' -I'/usr/share/qt4/mkspecs/win32-g++-cross' -o release/preferencesdialog.o ../src/preferencesdialog.cpp
+i586-mingw32msvc-g++ -c -pipe -O2 -fexceptions -mthreads -Wall -fno-rtti -DUNICODE -DQT_LARGEFILE_SUPPORT -DQT_WEBKIT -DQT_NO_DEBUG -DQT_XML_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -DQT_NO_DYNAMIC_CAST -I'../../.wine/drive_c/Qt/4.7.4/include/QtCore' -I'../../.wine/drive_c/Qt/4.7.4/include/QtNetwork' -I'../../.wine/drive_c/Qt/4.7.4/include/QtGui' -I'../../.wine/drive_c/Qt/4.7.4/include/QtXml' -I'../../.wine/drive_c/Qt/4.7.4/include' -I'../../.wine/drive_c/Qt/4.7.4/include/ActiveQt' -I'release' -I'.' -I'../src' -I'/usr/i586-mingw32msvc/include' -I'.' -I'/usr/share/qt4/mkspecs/win32-g++-cross' -o release/preferencesdialog.o ../src/preferencesdialog.cpp
 In file included from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/qcolor.h:1,
                  from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/../../src/gui/kernel/qpalette.h:46,
                  from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/qpalette.h:1,
@@ -361,77 +237,7 @@ In file included from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/qtextformat.h:1
 ../../.wine/drive_c/Qt/4.7.4/include/QtGui/../../src/gui/text/qtextformat.h:118: warning: ‘QDataStream& operator>>(QDataStream&, QTextLength&)’ redeclared without dllimport attribute: previous dllimport ignored
 ../../.wine/drive_c/Qt/4.7.4/include/QtGui/../../src/gui/text/qtextformat.h:358: warning: ‘QDataStream& operator<<(QDataStream&, const QTextFormat&)’ redeclared without dllimport attribute: previous dllimport ignored
 ../../.wine/drive_c/Qt/4.7.4/include/QtGui/../../src/gui/text/qtextformat.h:359: warning: ‘QDataStream& operator>>(QDataStream&, QTextFormat&)’ redeclared without dllimport attribute: previous dllimport ignored
-moc -DUNICODE -DQT_LARGEFILE_SUPPORT -DQT_WEBKIT -DQT_NO_DEBUG -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -DQT_NO_DYNAMIC_CAST -I'../../.wine/drive_c/Qt/4.7.4/include/QtCore' -I'../../.wine/drive_c/Qt/4.7.4/include/QtNetwork' -I'../../.wine/drive_c/Qt/4.7.4/include/QtGui' -I'../../.wine/drive_c/Qt/4.7.4/include' -I'../../.wine/drive_c/Qt/4.7.4/include/ActiveQt' -I'release' -I'.' -I'../src' -I'/usr/i586-mingw32msvc/include' -I'.' -I'/usr/share/qt4/mkspecs/win32-g++-cross' -D__GNUC__ -DWIN32 ../src/modeledit.h -o release/moc_modeledit.cpp
-i586-mingw32msvc-g++ -c -pipe -O2 -fexceptions -mthreads -Wall -fno-rtti -DUNICODE -DQT_LARGEFILE_SUPPORT -DQT_WEBKIT -DQT_NO_DEBUG -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -DQT_NO_DYNAMIC_CAST -I'../../.wine/drive_c/Qt/4.7.4/include/QtCore' -I'../../.wine/drive_c/Qt/4.7.4/include/QtNetwork' -I'../../.wine/drive_c/Qt/4.7.4/include/QtGui' -I'../../.wine/drive_c/Qt/4.7.4/include' -I'../../.wine/drive_c/Qt/4.7.4/include/ActiveQt' -I'release' -I'.' -I'../src' -I'/usr/i586-mingw32msvc/include' -I'.' -I'/usr/share/qt4/mkspecs/win32-g++-cross' -o release/moc_modeledit.o release/moc_modeledit.cpp
-In file included from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/qcolor.h:1,
-                 from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/../../src/gui/kernel/qpalette.h:46,
-                 from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/qpalette.h:1,
-                 from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/../../src/gui/kernel/qwidget.h:49,
-                 from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/qwidget.h:1,
-                 from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/../../src/gui/dialogs/qdialog.h:45,
-                 from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/qdialog.h:1,
-                 from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/QDialog:1,
-                 from release/../../src/modeledit.h:4,
-                 from release/moc_modeledit.cpp:10:
-../../.wine/drive_c/Qt/4.7.4/include/QtGui/../../src/gui/painting/qcolor.h:274: warning: ‘QDataStream& operator<<(QDataStream&, const QColor&)’ redeclared without dllimport attribute: previous dllimport ignored
-../../.wine/drive_c/Qt/4.7.4/include/QtGui/../../src/gui/painting/qcolor.h:275: warning: ‘QDataStream& operator>>(QDataStream&, QColor&)’ redeclared without dllimport attribute: previous dllimport ignored
-In file included from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/qpainterpath.h:1,
-                 from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/../../src/gui/painting/qtransform.h:45,
-                 from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/qtransform.h:1,
-                 from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/../../src/gui/painting/qbrush.h:51,
-                 from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/qbrush.h:1,
-                 from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/../../src/gui/kernel/qpalette.h:47,
-                 from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/qpalette.h:1,
-                 from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/../../src/gui/kernel/qwidget.h:49,
-                 from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/qwidget.h:1,
-                 from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/../../src/gui/dialogs/qdialog.h:45,
-                 from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/qdialog.h:1,
-                 from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/QDialog:1,
-                 from release/../../src/modeledit.h:4,
-                 from release/moc_modeledit.cpp:10:
-../../.wine/drive_c/Qt/4.7.4/include/QtGui/../../src/gui/painting/qpainterpath.h:244: warning: ‘QDataStream& operator<<(QDataStream&, const QPainterPath&)’ redeclared without dllimport attribute: previous dllimport ignored
-../../.wine/drive_c/Qt/4.7.4/include/QtGui/../../src/gui/painting/qpainterpath.h:245: warning: ‘QDataStream& operator>>(QDataStream&, QPainterPath&)’ redeclared without dllimport attribute: previous dllimport ignored
-In file included from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/qkeysequence.h:1,
-                 from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/../../src/gui/kernel/qwidget.h:57,
-                 from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/qwidget.h:1,
-                 from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/../../src/gui/dialogs/qdialog.h:45,
-                 from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/qdialog.h:1,
-                 from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/QDialog:1,
-                 from release/../../src/modeledit.h:4,
-                 from release/moc_modeledit.cpp:10:
-../../.wine/drive_c/Qt/4.7.4/include/QtGui/../../src/gui/kernel/qkeysequence.h:203: warning: ‘QDataStream& operator<<(QDataStream&, const QKeySequence&)’ redeclared without dllimport attribute: previous dllimport ignored
-../../.wine/drive_c/Qt/4.7.4/include/QtGui/../../src/gui/kernel/qkeysequence.h:204: warning: ‘QDataStream& operator>>(QDataStream&, QKeySequence&)’ redeclared without dllimport attribute: previous dllimport ignored
-In file included from ../../.wine/drive_c/Qt/4.7.4/include/QtCore/qbitarray.h:1,
-                 from ../../.wine/drive_c/Qt/4.7.4/include/QtCore/QtCore:100,
-                 from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/QtGui:3,
-                 from release/../../src/modeledit.h:5,
-                 from release/moc_modeledit.cpp:10:
-../../.wine/drive_c/Qt/4.7.4/include/QtCore/../../src/corelib/tools/qbitarray.h:58: warning: ‘uint qHash(const QBitArray&)’ redeclared without dllimport attribute: previous dllimport ignored
-In file included from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/qpen.h:1,
-                 from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/../../src/gui/painting/qpainter.h:56,
-                 from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/qpainter.h:1,
-                 from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/../../src/gui/painting/qpaintengine.h:48,
-                 from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/qpaintengine.h:1,
-                 from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/QtGui:10,
-                 from release/../../src/modeledit.h:5,
-                 from release/moc_modeledit.cpp:10:
-../../.wine/drive_c/Qt/4.7.4/include/QtGui/../../src/gui/painting/qpen.h:119: warning: ‘QDataStream& operator>>(QDataStream&, QPen&)’ redeclared without dllimport attribute: previous dllimport ignored
-../../.wine/drive_c/Qt/4.7.4/include/QtGui/../../src/gui/painting/qpen.h:120: warning: ‘QDataStream& operator<<(QDataStream&, const QPen&)’ redeclared without dllimport attribute: previous dllimport ignored
-In file included from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/qtextformat.h:1,
-                 from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/../../src/gui/text/qtextlayout.h:51,
-                 from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/qtextlayout.h:1,
-                 from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/../../src/gui/text/qabstracttextdocumentlayout.h:46,
-                 from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/qabstracttextdocumentlayout.h:1,
-                 from ../../.wine/drive_c/Qt/4.7.4/include/QtGui/QtGui:79,
-                 from release/../../src/modeledit.h:5,
-                 from release/moc_modeledit.cpp:10:
-../../.wine/drive_c/Qt/4.7.4/include/QtGui/../../src/gui/text/qtextformat.h:117: warning: ‘QDataStream& operator<<(QDataStream&, const QTextLength&)’ redeclared without dllimport attribute: previous dllimport ignored
-../../.wine/drive_c/Qt/4.7.4/include/QtGui/../../src/gui/text/qtextformat.h:118: warning: ‘QDataStream& operator>>(QDataStream&, QTextLength&)’ redeclared without dllimport attribute: previous dllimport ignored
-../../.wine/drive_c/Qt/4.7.4/include/QtGui/../../src/gui/text/qtextformat.h:358: warning: ‘QDataStream& operator<<(QDataStream&, const QTextFormat&)’ redeclared without dllimport attribute: previous dllimport ignored
-../../.wine/drive_c/Qt/4.7.4/include/QtGui/../../src/gui/text/qtextformat.h:359: warning: ‘QDataStream& operator>>(QDataStream&, QTextFormat&)’ redeclared without dllimport attribute: previous dllimport ignored
-/usr/bin/rcc -name eepe ../src/eepe.qrc -o release/qrc_eepe.cpp
-i586-mingw32msvc-g++ -c -pipe -O2 -fexceptions -mthreads -Wall -fno-rtti -DUNICODE -DQT_LARGEFILE_SUPPORT -DQT_WEBKIT -DQT_NO_DEBUG -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_THREAD_SUPPORT -DQT_NO_DYNAMIC_CAST -I'../../.wine/drive_c/Qt/4.7.4/include/QtCore' -I'../../.wine/drive_c/Qt/4.7.4/include/QtNetwork' -I'../../.wine/drive_c/Qt/4.7.4/include/QtGui' -I'../../.wine/drive_c/Qt/4.7.4/include' -I'../../.wine/drive_c/Qt/4.7.4/include/ActiveQt' -I'release' -I'.' -I'../src' -I'/usr/i586-mingw32msvc/include' -I'.' -I'/usr/share/qt4/mkspecs/win32-g++-cross' -o release/qrc_eepe.o release/qrc_eepe.cpp
-i586-mingw32msvc-g++ -mthreads -Wl,-enable-stdcall-fixup -Wl,-enable-auto-import -Wl,-enable-runtime-pseudo-reloc -mwindows -Wl,-s -Wl -Wl,-subsystem,windows -o release/eepe.exe object_script.eepe.Release  -L'/home/erez/.wine/drive_c/Qt/4.7.4/lib' -lmingw32 -lqtmain release/icon_res.o -lQtGui4 -lQtNetwork4 -lQtCore4 
+i586-mingw32msvc-g++ -mthreads -Wl,-enable-stdcall-fixup -Wl,-enable-auto-import -Wl,-enable-runtime-pseudo-reloc -mwindows -Wl,-s -Wl -Wl,-subsystem,windows -o release/eepe.exe object_script.eepe.Release  -L'/home/erez/.wine/drive_c/Qt/4.7.4/lib' -lmingw32 -lqtmain release/icon_res.o -lQtXml4 -lQtGui4 -lQtNetwork4 -lQtCore4 
 make[1]: Leaving directory `/home/erez/eepe/winbuild'
 
 #================================================
@@ -520,7 +326,7 @@ NSIS Modern User Interface version 2.0 - Copyright 2002-2009 Joost Verburg (/usr
 !define: "MUI_VERBOSE"="3"
 !include: closed: "/usr/share/nsis/Contrib/Modern UI 2/MUI2.nsh"
 !include: closed: "/usr/share/nsis/Include/MUI2.nsh"
-!include: "FileAssociation.nsh"
+!include: "/usr/share/nsis/Include/FileAssociation.nsh"
 !define: "FileAssociation_INCLUDED"=""
 !include: "/usr/share/nsis/Include/Util.nsh"
 !include: closed: "/usr/share/nsis/Include/Util.nsh"
@@ -528,7 +334,7 @@ NSIS Modern User Interface version 2.0 - Copyright 2002-2009 Joost Verburg (/usr
 !define: "un.RegisterExtension"="!insertmacro RegisterExtensionCall"
 !define: "UnRegisterExtension"="!insertmacro UnRegisterExtensionCall"
 !define: "un.UnRegisterExtension"="!insertmacro UnRegisterExtensionCall"
-!include: closed: "FileAssociation.nsh"
+!include: closed: "/usr/share/nsis/Include/FileAssociation.nsh"
 Name: "eePe"
 OutFile: "eePeInstall.exe"
 InstallDir: "$PROGRAMFILES\eePe"
@@ -567,24 +373,25 @@ Var: "StartMenuFolder"
 Section: "eePe" ->(SecDummy)
 SetOutPath: "$INSTDIR"
 File: "license.txt" 832 bytes
-File: "eepe.exe" 1561088 bytes
+File: "eepe.exe" 1592832 bytes
 File: "libgcc_s_dw2-1.dll" 43008 bytes
 File: "mingwm10.dll" 11362 bytes
 File: "QtCore4.dll" 2555392 bytes
 File: "QtGui4.dll" 9913344 bytes
 File: "QtNetwork4.dll" 1209344 bytes
+File: "QtXml4.dll" 399360 bytes
 File: "avrdude.exe" 313344 bytes
 File: "avrdude.conf" 515855 bytes
 File: "libusb0.dll" 43520 bytes
 File: "ER9x Users Guide.pdf" 426302 bytes
 CreateDirectory: "$INSTDIR\lang"
 SetOutPath: "$INSTDIR\lang"
-File: "eepe_de.qm" 72651 bytes
-File: "eepe_es.qm" 95086 bytes
-File: "eepe_fr.qm" 94864 bytes
+File: "eepe_de.qm" 59781 bytes
+File: "eepe_es.qm" 68388 bytes
+File: "eepe_fr.qm" 67728 bytes
 File: "eepe_he.qm" 23 bytes
-File: "eepe_pt.qm" 33238 bytes
-File: "eepe_ru.qm" 42026 bytes
+File: "eepe_pt.qm" 33164 bytes
+File: "eepe_ru.qm" 41263 bytes
 SetOutPath: "$INSTDIR"
 WriteRegStr: HKCU\Software\er9x-eePe\=$INSTDIR
 !insertmacro: RegisterExtensionCall
@@ -622,6 +429,7 @@ Delete: "$INSTDIR\mingwm10.dll"
 Delete: "$INSTDIR\QtCore4.dll"
 Delete: "$INSTDIR\QtGui4.dll"
 Delete: "$INSTDIR\QtNetwork4.dll"
+Delete: "$INSTDIR\QtXml4.dll"
 Delete: "$INSTDIR\avrdude.exe"
 Delete: "$INSTDIR\avrdude.conf"
 Delete: "$INSTDIR\libusb0.dll"
@@ -659,43 +467,35 @@ Generating language tables... Done!
 Generating uninstaller... Done!
 
 Output: "eePeInstall.exe"
-Install: 7 pages (448 bytes), 1 section (1048 bytes), 485 instructions (13580 bytes), 264 strings (5125 bytes), 1 language table (366 bytes).
+Install: 7 pages (448 bytes), 1 section (1048 bytes), 486 instructions (13608 bytes), 265 strings (5136 bytes), 1 language table (366 bytes).
 Uninstall: 3 pages (192 bytes), 
-1 section (1048 bytes), 112 instructions (3136 bytes), 130 strings (1671 bytes), 1 language table (250 bytes).
+1 section (1048 bytes), 113 instructions (3164 bytes), 131 strings (1686 bytes), 1 language table (250 bytes).
 Datablock optimizer saved 65044 bytes (~0.3%).
 
 Using lzma (compress whole) compression.
 
 EXE header size:               71168 / 55808 bytes
-Install code:                          (20943 bytes)
-Install data:                          (17000353 bytes)
-Uninstall code+data:                   (20637 bytes)
-Compressed data:             5617326 / 17041933 bytes
-CRC (0x56901031):                  4 / 4 bytes
+Install code:                          (20982 bytes)
+Install data:                          (17363920 bytes)
+Uninstall code+data:                   (20680 bytes)
+Compressed data:             5724438 / 17405582 bytes
+CRC (0xC26F95BE):                  4 / 4 bytes
 
-Total size:                  5688498 / 17097745 bytes (33.2%)
+Total size:                  5795610 / 17461394 bytes (33.1%)
 
 #================================================
 Build Linux i386 Version
 #================================================
 
-g++ -c -m32 -pipe -O2 -Wall -W -D_REENTRANT -DQT_WEBKIT -DQT_NO_DEBUG -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_SHARED -I/usr/share/qt4/mkspecs/linux-g++-32 -I../src -I/usr/include/qt4/QtCore -I/usr/include/qt4/QtNetwork -I/usr/include/qt4/QtGui -I/usr/include/qt4 -I. -I. -I../src -I. -o mainwindow.o ../src/mainwindow.cpp
-g++ -c -m32 -pipe -O2 -Wall -W -D_REENTRANT -DQT_WEBKIT -DQT_NO_DEBUG -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_SHARED -I/usr/share/qt4/mkspecs/linux-g++-32 -I../src -I/usr/include/qt4/QtCore -I/usr/include/qt4/QtNetwork -I/usr/include/qt4/QtGui -I/usr/include/qt4 -I. -I. -I../src -I. -o modeledit.o ../src/modeledit.cpp
-g++ -c -m32 -pipe -O2 -Wall -W -D_REENTRANT -DQT_WEBKIT -DQT_NO_DEBUG -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_SHARED -I/usr/share/qt4/mkspecs/linux-g++-32 -I../src -I/usr/include/qt4/QtCore -I/usr/include/qt4/QtNetwork -I/usr/include/qt4/QtGui -I/usr/include/qt4 -I. -I. -I../src -I. -o mdichild.o ../src/mdichild.cpp
-g++ -c -m32 -pipe -O2 -Wall -W -D_REENTRANT -DQT_WEBKIT -DQT_NO_DEBUG -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_SHARED -I/usr/share/qt4/mkspecs/linux-g++-32 -I../src -I/usr/include/qt4/QtCore -I/usr/include/qt4/QtNetwork -I/usr/include/qt4/QtGui -I/usr/include/qt4 -I. -I. -I../src -I. -o node.o ../src/node.cpp
-g++ -c -m32 -pipe -O2 -Wall -W -D_REENTRANT -DQT_WEBKIT -DQT_NO_DEBUG -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_SHARED -I/usr/share/qt4/mkspecs/linux-g++-32 -I../src -I/usr/include/qt4/QtCore -I/usr/include/qt4/QtNetwork -I/usr/include/qt4/QtGui -I/usr/include/qt4 -I. -I. -I../src -I. -o preferencesdialog.o ../src/preferencesdialog.cpp
-/usr/bin/moc-qt4 -DQT_WEBKIT -DQT_NO_DEBUG -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_SHARED -I/usr/share/qt4/mkspecs/linux-g++-32 -I../src -I/usr/include/qt4/QtCore -I/usr/include/qt4/QtNetwork -I/usr/include/qt4/QtGui -I/usr/include/qt4 -I. -I. -I../src -I. ../src/modeledit.h -o moc_modeledit.cpp
-g++ -c -m32 -pipe -O2 -Wall -W -D_REENTRANT -DQT_WEBKIT -DQT_NO_DEBUG -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_SHARED -I/usr/share/qt4/mkspecs/linux-g++-32 -I../src -I/usr/include/qt4/QtCore -I/usr/include/qt4/QtNetwork -I/usr/include/qt4/QtGui -I/usr/include/qt4 -I. -I. -I../src -I. -o moc_modeledit.o moc_modeledit.cpp
-/usr/bin/rcc -name eepe ../src/eepe.qrc -o qrc_eepe.cpp
-g++ -c -m32 -pipe -O2 -Wall -W -D_REENTRANT -DQT_WEBKIT -DQT_NO_DEBUG -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_SHARED -I/usr/share/qt4/mkspecs/linux-g++-32 -I../src -I/usr/include/qt4/QtCore -I/usr/include/qt4/QtNetwork -I/usr/include/qt4/QtGui -I/usr/include/qt4 -I. -I. -I../src -I. -o qrc_eepe.o qrc_eepe.cpp
-g++ -m32 -Wl,-O1 -o eepe main.o mainwindow.o file.o pers.o modeledit.o generaledit.o mdichild.o helpers.o node.o edge.o mixerdialog.o burnconfigdialog.o avroutputdialog.o simulatordialog.o donatorsdialog.o printdialog.o preferencesdialog.o fusesdialog.o mixerslist.o downloaddialog.o customizesplashdialog.o moc_mainwindow.o moc_modeledit.o moc_generaledit.o moc_mdichild.o moc_mixerdialog.o moc_burnconfigdialog.o moc_avroutputdialog.o moc_simulatordialog.o moc_donatorsdialog.o moc_printdialog.o moc_preferencesdialog.o moc_fusesdialog.o moc_mixerslist.o moc_downloaddialog.o moc_customizesplashdialog.o qrc_eepe.o    -L/usr/lib/i386-linux-gnu -lQtGui -lQtNetwork -lQtCore -lpthread 
+g++ -c -m32 -pipe -O2 -Wall -W -D_REENTRANT -DQT_WEBKIT -DQT_NO_DEBUG -DQT_XML_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_SHARED -I/usr/share/qt4/mkspecs/linux-g++-32 -I../src -I/usr/include/qt4/QtCore -I/usr/include/qt4/QtNetwork -I/usr/include/qt4/QtGui -I/usr/include/qt4/QtXml -I/usr/include/qt4 -I. -I. -I../src -I. -o mainwindow.o ../src/mainwindow.cpp
+g++ -c -m32 -pipe -O2 -Wall -W -D_REENTRANT -DQT_WEBKIT -DQT_NO_DEBUG -DQT_XML_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_SHARED -I/usr/share/qt4/mkspecs/linux-g++-32 -I../src -I/usr/include/qt4/QtCore -I/usr/include/qt4/QtNetwork -I/usr/include/qt4/QtGui -I/usr/include/qt4/QtXml -I/usr/include/qt4 -I. -I. -I../src -I. -o mdichild.o ../src/mdichild.cpp
+g++ -c -m32 -pipe -O2 -Wall -W -D_REENTRANT -DQT_WEBKIT -DQT_NO_DEBUG -DQT_XML_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_SHARED -I/usr/share/qt4/mkspecs/linux-g++-32 -I../src -I/usr/include/qt4/QtCore -I/usr/include/qt4/QtNetwork -I/usr/include/qt4/QtGui -I/usr/include/qt4/QtXml -I/usr/include/qt4 -I. -I. -I../src -I. -o preferencesdialog.o ../src/preferencesdialog.cpp
+g++ -m32 -Wl,-O1 -o eepe main.o mainwindow.o file.o pers.o modeledit.o generaledit.o mdichild.o helpers.o node.o edge.o mixerdialog.o burnconfigdialog.o avroutputdialog.o simulatordialog.o donatorsdialog.o printdialog.o preferencesdialog.o mixerslist.o downloaddialog.o customizesplashdialog.o moc_mainwindow.o moc_modeledit.o moc_generaledit.o moc_mdichild.o moc_mixerdialog.o moc_burnconfigdialog.o moc_avroutputdialog.o moc_simulatordialog.o moc_donatorsdialog.o moc_printdialog.o moc_preferencesdialog.o moc_mixerslist.o moc_downloaddialog.o moc_customizesplashdialog.o qrc_eepe.o    -L/usr/lib/i386-linux-gnu/ -lQtXml -lQtGui -lQtNetwork -lQtCore -lpthread 
 
 #================================================
 Package Linux i386 Version
 #================================================
 
-Sorry, try again.
-Sorry, try again.
 
 checkinstall 1.6.2, Copyright 2009 Felipe Eduardo Sanchez Diaz Duran
            This software is released under the GNU GPL.
@@ -774,16 +574,10 @@ Deleting temp dir...OK
 Build Linux amd64 Version
 #================================================
 
-g++ -c -m64 -pipe -O2 -Wall -W -D_REENTRANT -DQT_WEBKIT -DQT_NO_DEBUG -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_SHARED -I/usr/share/qt4/mkspecs/linux-g++-64 -I../src -I/usr/include/qt4/QtCore -I/usr/include/qt4/QtNetwork -I/usr/include/qt4/QtGui -I/usr/include/qt4 -I. -I. -I../src -I. -o mainwindow.o ../src/mainwindow.cpp
-g++ -c -m64 -pipe -O2 -Wall -W -D_REENTRANT -DQT_WEBKIT -DQT_NO_DEBUG -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_SHARED -I/usr/share/qt4/mkspecs/linux-g++-64 -I../src -I/usr/include/qt4/QtCore -I/usr/include/qt4/QtNetwork -I/usr/include/qt4/QtGui -I/usr/include/qt4 -I. -I. -I../src -I. -o modeledit.o ../src/modeledit.cpp
-g++ -c -m64 -pipe -O2 -Wall -W -D_REENTRANT -DQT_WEBKIT -DQT_NO_DEBUG -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_SHARED -I/usr/share/qt4/mkspecs/linux-g++-64 -I../src -I/usr/include/qt4/QtCore -I/usr/include/qt4/QtNetwork -I/usr/include/qt4/QtGui -I/usr/include/qt4 -I. -I. -I../src -I. -o mdichild.o ../src/mdichild.cpp
-g++ -c -m64 -pipe -O2 -Wall -W -D_REENTRANT -DQT_WEBKIT -DQT_NO_DEBUG -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_SHARED -I/usr/share/qt4/mkspecs/linux-g++-64 -I../src -I/usr/include/qt4/QtCore -I/usr/include/qt4/QtNetwork -I/usr/include/qt4/QtGui -I/usr/include/qt4 -I. -I. -I../src -I. -o node.o ../src/node.cpp
-g++ -c -m64 -pipe -O2 -Wall -W -D_REENTRANT -DQT_WEBKIT -DQT_NO_DEBUG -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_SHARED -I/usr/share/qt4/mkspecs/linux-g++-64 -I../src -I/usr/include/qt4/QtCore -I/usr/include/qt4/QtNetwork -I/usr/include/qt4/QtGui -I/usr/include/qt4 -I. -I. -I../src -I. -o preferencesdialog.o ../src/preferencesdialog.cpp
-/usr/bin/moc-qt4 -DQT_WEBKIT -DQT_NO_DEBUG -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_SHARED -I/usr/share/qt4/mkspecs/linux-g++-64 -I../src -I/usr/include/qt4/QtCore -I/usr/include/qt4/QtNetwork -I/usr/include/qt4/QtGui -I/usr/include/qt4 -I. -I. -I../src -I. ../src/modeledit.h -o moc_modeledit.cpp
-g++ -c -m64 -pipe -O2 -Wall -W -D_REENTRANT -DQT_WEBKIT -DQT_NO_DEBUG -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_SHARED -I/usr/share/qt4/mkspecs/linux-g++-64 -I../src -I/usr/include/qt4/QtCore -I/usr/include/qt4/QtNetwork -I/usr/include/qt4/QtGui -I/usr/include/qt4 -I. -I. -I../src -I. -o moc_modeledit.o moc_modeledit.cpp
-/usr/bin/rcc -name eepe ../src/eepe.qrc -o qrc_eepe.cpp
-g++ -c -m64 -pipe -O2 -Wall -W -D_REENTRANT -DQT_WEBKIT -DQT_NO_DEBUG -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_SHARED -I/usr/share/qt4/mkspecs/linux-g++-64 -I../src -I/usr/include/qt4/QtCore -I/usr/include/qt4/QtNetwork -I/usr/include/qt4/QtGui -I/usr/include/qt4 -I. -I. -I../src -I. -o qrc_eepe.o qrc_eepe.cpp
-g++ -m64 -Wl,-O1 -o eepe main.o mainwindow.o file.o pers.o modeledit.o generaledit.o mdichild.o helpers.o node.o edge.o mixerdialog.o burnconfigdialog.o avroutputdialog.o simulatordialog.o donatorsdialog.o printdialog.o preferencesdialog.o fusesdialog.o mixerslist.o downloaddialog.o customizesplashdialog.o moc_mainwindow.o moc_modeledit.o moc_generaledit.o moc_mdichild.o moc_mixerdialog.o moc_burnconfigdialog.o moc_avroutputdialog.o moc_simulatordialog.o moc_donatorsdialog.o moc_printdialog.o moc_preferencesdialog.o moc_fusesdialog.o moc_mixerslist.o moc_downloaddialog.o moc_customizesplashdialog.o qrc_eepe.o    -L/usr/lib/x86_64-linux-gnu -lQtGui -lQtNetwork -lQtCore -lpthread 
+g++ -c -m64 -pipe -O2 -Wall -W -D_REENTRANT -DQT_WEBKIT -DQT_NO_DEBUG -DQT_XML_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_SHARED -I/usr/share/qt4/mkspecs/linux-g++-64 -I../src -I/usr/include/qt4/QtCore -I/usr/include/qt4/QtNetwork -I/usr/include/qt4/QtGui -I/usr/include/qt4/QtXml -I/usr/include/qt4 -I. -I. -I../src -I. -o mainwindow.o ../src/mainwindow.cpp
+g++ -c -m64 -pipe -O2 -Wall -W -D_REENTRANT -DQT_WEBKIT -DQT_NO_DEBUG -DQT_XML_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_SHARED -I/usr/share/qt4/mkspecs/linux-g++-64 -I../src -I/usr/include/qt4/QtCore -I/usr/include/qt4/QtNetwork -I/usr/include/qt4/QtGui -I/usr/include/qt4/QtXml -I/usr/include/qt4 -I. -I. -I../src -I. -o mdichild.o ../src/mdichild.cpp
+g++ -c -m64 -pipe -O2 -Wall -W -D_REENTRANT -DQT_WEBKIT -DQT_NO_DEBUG -DQT_XML_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_SHARED -I/usr/share/qt4/mkspecs/linux-g++-64 -I../src -I/usr/include/qt4/QtCore -I/usr/include/qt4/QtNetwork -I/usr/include/qt4/QtGui -I/usr/include/qt4/QtXml -I/usr/include/qt4 -I. -I. -I../src -I. -o preferencesdialog.o ../src/preferencesdialog.cpp
+g++ -m64 -Wl,-O1 -o eepe main.o mainwindow.o file.o pers.o modeledit.o generaledit.o mdichild.o helpers.o node.o edge.o mixerdialog.o burnconfigdialog.o avroutputdialog.o simulatordialog.o donatorsdialog.o printdialog.o preferencesdialog.o mixerslist.o downloaddialog.o customizesplashdialog.o moc_mainwindow.o moc_modeledit.o moc_generaledit.o moc_mdichild.o moc_mixerdialog.o moc_burnconfigdialog.o moc_avroutputdialog.o moc_simulatordialog.o moc_donatorsdialog.o moc_printdialog.o moc_preferencesdialog.o moc_mixerslist.o moc_downloaddialog.o moc_customizesplashdialog.o qrc_eepe.o    -L/usr/lib/x86_64-linux-gnu -lQtXml -lQtGui -lQtNetwork -lQtCore -lpthread 
 
 #================================================
 Package Linux amd64 Version

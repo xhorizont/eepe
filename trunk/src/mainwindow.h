@@ -93,7 +93,6 @@ private slots:
     void burnExtenalFromEEPROM();
     void burnConfig();
     void burnList();
-    void burnFuses();
     void simulate();
     void about();
     void print();
@@ -109,6 +108,7 @@ private slots:
     void saveModelToFile();
     void customizeSplash();
     void setFuses();
+    void showEEPROMInfo();
 
 
 private:
@@ -162,7 +162,6 @@ private:
     QAction *burnFromAct;
     QAction *burnConfigAct;
     QAction *burnListAct;
-    QAction *burnFusesAct;
     QAction *burnToFlashAct;
     QAction *burnFromFlashAct;
     QAction *burnExtenalToEEPROMAct;
@@ -184,6 +183,7 @@ private:
     QAction *saveModelToFileAct;
     QAction *customizeSplashAct;
     QAction *setFusesAct;
+    QAction *eepromInfoAct;
 
     //QAction *aboutQtAct;
 };

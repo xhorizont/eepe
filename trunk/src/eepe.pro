@@ -17,7 +17,6 @@ HEADERS += mainwindow.h \
     donatorsdialog.h \
     printdialog.h \
     preferencesdialog.h \
-    fusesdialog.h \
     mixerslist.h \
     downloaddialog.h \
     stamp-eepe.h \
@@ -39,7 +38,6 @@ SOURCES += main.cpp \
     donatorsdialog.cpp \
     printdialog.cpp \
     preferencesdialog.cpp \
-    fusesdialog.cpp \
     mixerslist.cpp \
     downloaddialog.cpp \
     customizesplashdialog.cpp
@@ -75,13 +73,9 @@ FORMS += modeledit.ui \
     donatorsdialog.ui \
     printdialog.ui \
     preferencesdialog.ui \
-    fusesdialog.ui \
     downloaddialog.ui \
     customizesplashdialog.ui
 win32:RC_FILE += icon.rc
-
-
-
 
 
 TRANSLATIONS = eepe_.ts    \
