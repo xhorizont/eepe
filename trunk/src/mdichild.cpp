@@ -182,14 +182,6 @@ void MdiChild::deleteSelected(bool ask=true)
     }
 }
 
-int MdiChild::modelSize(int id)
-{
-    if(eeFile.eeModelExists(id))
-        return eeFile.size(id);
-    else
-        return 0;
-}
-
 QString MdiChild::modelName(int id)
 {
     if(eeFile.eeModelExists(id))
