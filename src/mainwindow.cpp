@@ -765,14 +765,14 @@ void MainWindow::showEEPROMInfo()
     msg.append(tr("Details:"));
     msg.append("</b></u></td></tr>");
 
-    for(int i=0; i<MAX_MODELS; i++)
+    for(int i=0; i<=MAX_MODELS; i++)
     {
         if(modelSizes[i]>0)
         {
             if(i==0)
                 msg.append(tr("<tr><td>Settings: </td><td align=right>%1 Bytes</td></tr>").arg(modelSizes[i]));
             else
-                msg.append(tr("<tr><td>%2: </td><td align=right>%1 Bytes</td></tr>").arg(modelSizes[i]).arg(activeMdiChild()->modelName(i)));
+                msg.append(tr("<tr><td>%2: </td><td align=right>%1 Bytes</td></tr>").arg(modelSizes[i]).arg(activeMdiChild()->modelName(i-1)));
         }
     }
 

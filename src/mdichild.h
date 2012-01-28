@@ -124,7 +124,7 @@ public:
     static int getFileType(const QString &fullFileName);
     bool saveToFileEnabled();
 
-    int modelSize(int id);
+    int modelSize(int id) {return eeFile.size(id);}
     int eepromVersion();
     QString modelName(int id);
     QString ownerName();
