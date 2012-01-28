@@ -22,6 +22,11 @@ public:
     void applyBaseTemplate();
     bool redrawCurve;
 
+    QString getNote(int i) { return mixNotes[i]; }
+    void setNote(int i, QString s);
+    int getModelID() { return id_model; }
+    void refreshMixerList() { tabMixes(); }
+
 
 private:
     Ui::ModelEdit *ui;
@@ -30,7 +35,7 @@ private:
 
     MixersList *MixerlistWidget;
 
-    QStringList mixNotes;
+    QString mixNotes[MAX_MIXERS];
 
     EEGeneral g_eeGeneral;
     ModelData g_model;
@@ -93,7 +98,7 @@ private:
     void setSwitch(uint8_t idx, uint8_t func, int8_t v1, int8_t v2);
 
 signals:
-    void modelValuesChanged();
+    void modelValuesChanged(ModelEdit * = 0);
 
 private slots:
     void clearMixes(bool ask=true);

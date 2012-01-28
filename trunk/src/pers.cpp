@@ -131,11 +131,19 @@ void EEPFILE::eeLoadModelName(uint8_t id,char*buf,uint8_t len)
   if(id<MAX_MODELS)
   {
     //eeprom_read_block(buf,(void*)modelEeOfs(id),sizeof(g_model.name));
-    theFile->openRd(FILE_MODEL(id));
+
     memset(buf,' ',len);
     *buf='0'+(id+1)/10; buf++;
     *buf='0'+(id+1)%10; buf++;
     *buf=':';           buf++;buf++;
+
+    if(!eeModelExists(id))  // make sure we don't add junk
+    {
+        *buf=0; //terminate str
+        return;
+    }
+
+    theFile->openRd(FILE_MODEL(id));
     uint16_t res = theFile->readRlc((uint8_t*)buf,sizeof(ModelData().name));
     if(res == sizeof(ModelData().name) )
     {

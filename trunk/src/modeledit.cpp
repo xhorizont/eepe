@@ -41,10 +41,6 @@ ModelEdit::ModelEdit(EEPFILE *eFile, uint8_t id, QWidget *parent) :
     heliEditLock = false;
     protocolEditLock = false;
 
-    mixNotes.clear();
-    for(int i=0; i<MAX_MIXERS; i++)
-        mixNotes.append(""); //make sure the list isn't empty.
-
     if(!eeFile->eeLoadGeneral())  eeFile->generalDefault();
     eeFile->getGeneralSettings(&g_eeGeneral);
     eeFile->getModel(&g_model,id);
@@ -140,7 +136,7 @@ void ModelEdit::applyBaseTemplate()
 void ModelEdit::updateSettings()
 {
     eeFile->putModel(&g_model,id_model);
-    emit modelValuesChanged();
+    emit modelValuesChanged(this);
 }
 
 void ModelEdit::on_tabWidget_currentChanged(int index)
@@ -528,7 +524,7 @@ void ModelEdit::tabMixes()
         QListWidgetItem *itm = new QListWidgetItem(str);
         itm->setData(Qt::UserRole,qba);  // mix number
         MixerlistWidget->addItem(itm);//(str);
-        MixerlistWidget->item(MixerlistWidget->count()-1)->setToolTip(mixNotes.at(i));
+        MixerlistWidget->item(MixerlistWidget->count()-1)->setToolTip(mixNotes[i]);
     }
 
     while(curDest<NUM_XCHNOUT)
@@ -2270,6 +2266,15 @@ void ModelEdit::mixerOpen()
         g_model.mixData[idx].destCh = i;
     }
     gm_openMix(idx);
+}
+
+void ModelEdit::setNote(int i, QString s)
+{
+    if(!s.isEmpty())
+    {
+        mixNotes[i].clear();
+        mixNotes[i].append(s);
+    }
 }
 
 void ModelEdit::mixerAdd()

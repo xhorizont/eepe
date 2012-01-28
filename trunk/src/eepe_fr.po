@@ -1472,10 +1472,6 @@ msgid ""
 "update eePe to read this file."
 msgstr ""
 
-msgctxt "MdiChild|"
-msgid "Error Getting Model Data"
-msgstr ""
-
 #, qt-format
 msgctxt "MdiChild|"
 msgid ""

@@ -53,6 +53,8 @@
 #include "pers.h"
 #include "myeeprom.h"
 #include "helpers.h"
+#include "modeledit.h"
+
 
 
 #define ER9X_EEPROM_FILE_TYPE        "ER9X_EEPROM_FILE"
@@ -85,8 +87,26 @@ class MdiChild : public QListWidget//QMdiSubWindow
 
 private:
     EEPFILE eeFile;
-    EEGeneral generalSettings;
-    ModelData modelSettings[MAX_MODELS];
+//    EEGeneral generalSettings;
+//    ModelData modelSettings[MAX_MODELS];
+
+    bool maybeSave();
+    void setCurrentFile(const QString &fileName);
+    void doPaste(QByteArray *gmData, int index);
+    void doCopy(QByteArray *gmData);
+    QString strippedName(const QString &fullFileName);
+
+    QPoint dragStartPosition;
+
+    QString curFile;
+    bool isUntitled;
+
+    void saveModelToXML(QDomDocument * qdoc, QDomElement * pe, int model_id);
+    void getNotesFromXML(QDomDocument * qdoc, int model_id);
+
+//    ModelData g_model;
+//    EEGeneral g_eeGeneral;
+
 
 public:
     MdiChild();
@@ -111,7 +131,7 @@ public:
 
     void optimizeEEPROM();
 
-    QList<QStringList> fNotes;
+    QString modelNotes[MAX_MODELS][MAX_MIXERS];
 
 signals:
     void copyAvailable(bool val);
@@ -147,23 +167,10 @@ public slots:
     void print();
     void duplicate();
     void deleteSelected(bool ask);
-    void setModified();
+    void setModified(ModelEdit * me = 0);
     void viableModelSelected(int idx);
 
-private:
-    bool maybeSave();
-    void setCurrentFile(const QString &fileName);
-    void doPaste(QByteArray *gmData, int index);
-    void doCopy(QByteArray *gmData);
-    QString strippedName(const QString &fullFileName);
 
-    QPoint dragStartPosition;
-
-    QString curFile;
-    bool isUntitled;
-
-//    ModelData g_model;
-//    EEGeneral g_eeGeneral;
 
 };
 

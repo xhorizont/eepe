@@ -1176,139 +1176,133 @@ Mode 4:
 <context>
     <name>MdiChild</name>
     <message>
-        <location filename="mdichild.cpp" line="154"/>
+        <location filename="mdichild.cpp" line="150"/>
         <source>General Settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="176"/>
+        <location filename="mdichild.cpp" line="171"/>
         <source>Delete Selected Models?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="278"/>
-        <location filename="mdichild.cpp" line="288"/>
-        <location filename="mdichild.cpp" line="334"/>
-        <location filename="mdichild.cpp" line="414"/>
-        <location filename="mdichild.cpp" line="448"/>
-        <location filename="mdichild.cpp" line="475"/>
-        <location filename="mdichild.cpp" line="493"/>
-        <location filename="mdichild.cpp" line="523"/>
-        <location filename="mdichild.cpp" line="536"/>
-        <location filename="mdichild.cpp" line="545"/>
-        <location filename="mdichild.cpp" line="654"/>
-        <location filename="mdichild.cpp" line="673"/>
-        <location filename="mdichild.cpp" line="688"/>
-        <location filename="mdichild.cpp" line="721"/>
-        <location filename="mdichild.cpp" line="727"/>
-        <location filename="mdichild.cpp" line="748"/>
-        <location filename="mdichild.cpp" line="767"/>
-        <location filename="mdichild.cpp" line="789"/>
-        <location filename="mdichild.cpp" line="795"/>
-        <location filename="mdichild.cpp" line="808"/>
-        <location filename="mdichild.cpp" line="818"/>
-        <location filename="mdichild.cpp" line="872"/>
-        <location filename="mdichild.cpp" line="894"/>
-        <location filename="mdichild.cpp" line="925"/>
-        <location filename="mdichild.cpp" line="938"/>
-        <location filename="mdichild.cpp" line="1059"/>
+        <location filename="mdichild.cpp" line="273"/>
+        <location filename="mdichild.cpp" line="283"/>
+        <location filename="mdichild.cpp" line="329"/>
+        <location filename="mdichild.cpp" line="409"/>
+        <location filename="mdichild.cpp" line="445"/>
+        <location filename="mdichild.cpp" line="472"/>
+        <location filename="mdichild.cpp" line="490"/>
+        <location filename="mdichild.cpp" line="520"/>
+        <location filename="mdichild.cpp" line="532"/>
+        <location filename="mdichild.cpp" line="646"/>
+        <location filename="mdichild.cpp" line="665"/>
+        <location filename="mdichild.cpp" line="680"/>
+        <location filename="mdichild.cpp" line="713"/>
+        <location filename="mdichild.cpp" line="719"/>
+        <location filename="mdichild.cpp" line="743"/>
+        <location filename="mdichild.cpp" line="762"/>
+        <location filename="mdichild.cpp" line="784"/>
+        <location filename="mdichild.cpp" line="790"/>
+        <location filename="mdichild.cpp" line="803"/>
+        <location filename="mdichild.cpp" line="813"/>
+        <location filename="mdichild.cpp" line="936"/>
+        <location filename="mdichild.cpp" line="950"/>
+        <location filename="mdichild.cpp" line="981"/>
+        <location filename="mdichild.cpp" line="994"/>
+        <location filename="mdichild.cpp" line="1115"/>
         <source>Error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="278"/>
+        <location filename="mdichild.cpp" line="273"/>
         <source>Unable set data!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="288"/>
+        <location filename="mdichild.cpp" line="283"/>
         <source>Unable set model!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="335"/>
+        <location filename="mdichild.cpp" line="330"/>
         <source>Coulden&apos;t find %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="351"/>
+        <location filename="mdichild.cpp" line="346"/>
         <source>Overwrite Current Settings?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="358"/>
-        <location filename="mdichild.cpp" line="376"/>
+        <location filename="mdichild.cpp" line="353"/>
+        <location filename="mdichild.cpp" line="371"/>
         <source>Open</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="369"/>
+        <location filename="mdichild.cpp" line="364"/>
         <source>Overwrite %1?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="415"/>
-        <location filename="mdichild.cpp" line="449"/>
+        <location filename="mdichild.cpp" line="410"/>
+        <location filename="mdichild.cpp" line="446"/>
         <source>Error writing to container</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="475"/>
-        <location filename="mdichild.cpp" line="523"/>
-        <location filename="mdichild.cpp" line="872"/>
+        <location filename="mdichild.cpp" line="472"/>
+        <location filename="mdichild.cpp" line="520"/>
+        <location filename="mdichild.cpp" line="936"/>
         <source>Error Getting General Settings Data</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="481"/>
+        <location filename="mdichild.cpp" line="478"/>
         <source>Save Settings As</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="493"/>
+        <location filename="mdichild.cpp" line="490"/>
         <source>Error Getting Model #%1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="499"/>
+        <location filename="mdichild.cpp" line="496"/>
         <source>Save Model As</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="536"/>
-        <source>Error Getting Model Data</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="mdichild.cpp" line="638"/>
+        <location filename="mdichild.cpp" line="625"/>
         <source>Editing model %1: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="654"/>
+        <location filename="mdichild.cpp" line="646"/>
         <source>Unable to read settings!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="664"/>
+        <location filename="mdichild.cpp" line="656"/>
         <source>document%1.eepe</source>
         <oldsource>document%1.hex</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="721"/>
+        <location filename="mdichild.cpp" line="713"/>
         <source>Error reading file:
 Cannot read General Settings from file %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="727"/>
+        <location filename="mdichild.cpp" line="719"/>
         <source>Error reading file:
 Cannot set General Settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="748"/>
+        <location filename="mdichild.cpp" line="743"/>
         <source>Error reading file:
 This might be a FW file (er9x.hex?). 
 You might want to try flashing it to the TX.
@@ -1316,176 +1310,176 @@ You might want to try flashing it to the TX.
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="1099"/>
+        <location filename="mdichild.cpp" line="1155"/>
         <source>&amp;Load Model/Settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="1099"/>
+        <location filename="mdichild.cpp" line="1155"/>
         <source>Ctrl+L</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="1100"/>
+        <location filename="mdichild.cpp" line="1156"/>
         <source>&amp;Save Model/Settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="1100"/>
+        <location filename="mdichild.cpp" line="1156"/>
         <source>Ctrl+S</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="673"/>
+        <location filename="mdichild.cpp" line="665"/>
         <source>Unable to find file %1!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="809"/>
+        <location filename="mdichild.cpp" line="804"/>
         <source>Error reading file %1:
 %2.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="789"/>
+        <location filename="mdichild.cpp" line="784"/>
         <source>Error reading file:
 File wrong size - %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="689"/>
+        <location filename="mdichild.cpp" line="681"/>
         <source>Error loading file %1:
 File may be corrupted, old or from a different system.
 You might need to update eePe to read this file.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="768"/>
-        <location filename="mdichild.cpp" line="819"/>
+        <location filename="mdichild.cpp" line="763"/>
+        <location filename="mdichild.cpp" line="814"/>
         <source>Error loading file %1:
 File may be corrupted, old or from a different system.You might need to update eePe to read this file.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="796"/>
+        <location filename="mdichild.cpp" line="791"/>
         <source>Error opening file %1:
 %2.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="846"/>
+        <location filename="mdichild.cpp" line="841"/>
         <source>Save As</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="546"/>
-        <location filename="mdichild.cpp" line="895"/>
-        <location filename="mdichild.cpp" line="926"/>
+        <location filename="mdichild.cpp" line="533"/>
+        <location filename="mdichild.cpp" line="951"/>
+        <location filename="mdichild.cpp" line="982"/>
         <source>Cannot write file %1:
 %2.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="939"/>
+        <location filename="mdichild.cpp" line="995"/>
         <source>Error writing file %1:
 %2.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="975"/>
-        <location filename="mdichild.cpp" line="1040"/>
+        <location filename="mdichild.cpp" line="1031"/>
+        <location filename="mdichild.cpp" line="1096"/>
         <source>eePe</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="976"/>
+        <location filename="mdichild.cpp" line="1032"/>
         <source>&apos;%1&apos; has been modified.
 Do you want to save your changes?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="1041"/>
+        <location filename="mdichild.cpp" line="1097"/>
         <source>Write %1 to EEPROM memory?</source>
         <oldsource>Burn %1 to transmitter?</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="1059"/>
+        <location filename="mdichild.cpp" line="1115"/>
         <source>Cannot write temporary file!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="1091"/>
+        <location filename="mdichild.cpp" line="1147"/>
         <source>&amp;Edit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="1093"/>
+        <location filename="mdichild.cpp" line="1149"/>
         <source>&amp;Delete</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="1093"/>
+        <location filename="mdichild.cpp" line="1149"/>
         <source>Delete</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="1094"/>
+        <location filename="mdichild.cpp" line="1150"/>
         <source>&amp;Copy</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="1094"/>
+        <location filename="mdichild.cpp" line="1150"/>
         <source>Ctrl+C</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="1095"/>
+        <location filename="mdichild.cpp" line="1151"/>
         <source>&amp;Cut</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="1095"/>
+        <location filename="mdichild.cpp" line="1151"/>
         <source>Ctrl+X</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="1096"/>
+        <location filename="mdichild.cpp" line="1152"/>
         <source>&amp;Paste</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="1096"/>
+        <location filename="mdichild.cpp" line="1152"/>
         <source>Ctrl+V</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="1097"/>
+        <location filename="mdichild.cpp" line="1153"/>
         <source>D&amp;uplicate</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="1097"/>
+        <location filename="mdichild.cpp" line="1153"/>
         <source>Ctrl+U</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="1102"/>
+        <location filename="mdichild.cpp" line="1158"/>
         <source>Alt+S</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="1102"/>
+        <location filename="mdichild.cpp" line="1158"/>
         <source>Simulate</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="1104"/>
+        <location filename="mdichild.cpp" line="1160"/>
         <source>&amp;Write To Tx</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="1104"/>
+        <location filename="mdichild.cpp" line="1160"/>
         <source>Ctrl+Alt+W</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2468,176 +2462,176 @@ Right</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="477"/>
-        <location filename="modeledit.cpp" line="487"/>
-        <location filename="modeledit.cpp" line="537"/>
+        <location filename="modeledit.cpp" line="473"/>
+        <location filename="modeledit.cpp" line="483"/>
+        <location filename="modeledit.cpp" line="533"/>
         <source>CH%1%2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="508"/>
+        <location filename="modeledit.cpp" line="504"/>
         <source> Switch(</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="509"/>
+        <location filename="modeledit.cpp" line="505"/>
         <source> noTrim</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="510"/>
+        <location filename="modeledit.cpp" line="506"/>
         <source> Offset(%1%)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="514"/>
+        <location filename="modeledit.cpp" line="510"/>
         <source> Curve(%1)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="517"/>
+        <location filename="modeledit.cpp" line="513"/>
         <source> Delay(u%1:d%2)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="518"/>
+        <location filename="modeledit.cpp" line="514"/>
         <source> Slow(u%1:d%2)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="520"/>
+        <location filename="modeledit.cpp" line="516"/>
         <source> Warn(%1)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2173"/>
+        <location filename="modeledit.cpp" line="2169"/>
         <source>Delete Selected Mixes?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2306"/>
+        <location filename="modeledit.cpp" line="2311"/>
         <source>&amp;Add</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2306"/>
+        <location filename="modeledit.cpp" line="2311"/>
         <source>Ctrl+A</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2307"/>
+        <location filename="modeledit.cpp" line="2312"/>
         <source>&amp;Edit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2307"/>
+        <location filename="modeledit.cpp" line="2312"/>
         <source>Enter</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2309"/>
+        <location filename="modeledit.cpp" line="2314"/>
         <source>&amp;Delete</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2309"/>
+        <location filename="modeledit.cpp" line="2314"/>
         <source>Delete</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2310"/>
+        <location filename="modeledit.cpp" line="2315"/>
         <source>&amp;Copy</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2310"/>
+        <location filename="modeledit.cpp" line="2315"/>
         <source>Ctrl+C</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2311"/>
+        <location filename="modeledit.cpp" line="2316"/>
         <source>&amp;Cut</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2311"/>
+        <location filename="modeledit.cpp" line="2316"/>
         <source>Ctrl+X</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2312"/>
+        <location filename="modeledit.cpp" line="2317"/>
         <source>&amp;Paste</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2312"/>
+        <location filename="modeledit.cpp" line="2317"/>
         <source>Ctrl+V</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2313"/>
+        <location filename="modeledit.cpp" line="2318"/>
         <source>Du&amp;plicate</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2315"/>
+        <location filename="modeledit.cpp" line="2320"/>
         <source>Move Up</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="95"/>
-        <location filename="modeledit.cpp" line="2315"/>
+        <location filename="modeledit.cpp" line="91"/>
+        <location filename="modeledit.cpp" line="2320"/>
         <source>Ctrl+Up</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2316"/>
+        <location filename="modeledit.cpp" line="2321"/>
         <source>Move Down</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="98"/>
-        <location filename="modeledit.cpp" line="2316"/>
+        <location filename="modeledit.cpp" line="94"/>
+        <location filename="modeledit.cpp" line="2321"/>
         <source>Ctrl+Down</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="1921"/>
+        <location filename="modeledit.cpp" line="1917"/>
         <source>Editing curve %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2635"/>
+        <location filename="modeledit.cpp" line="2640"/>
         <source>Apply Template?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2635"/>
+        <location filename="modeledit.cpp" line="2640"/>
         <source>Apply template &quot;%1&quot;?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2662"/>
+        <location filename="modeledit.cpp" line="2667"/>
         <source>Clear Mixes?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2662"/>
+        <location filename="modeledit.cpp" line="2667"/>
         <source>Really clear all the mixes?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2674"/>
+        <location filename="modeledit.cpp" line="2679"/>
         <source>Clear Curves?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2674"/>
+        <location filename="modeledit.cpp" line="2679"/>
         <source>Really clear all the curves?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="2313"/>
+        <location filename="modeledit.cpp" line="2318"/>
         <source>Ctrl+U</source>
         <translation type="unfinished"></translation>
     </message>

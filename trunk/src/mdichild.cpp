@@ -55,10 +55,6 @@ MdiChild::MdiChild()
     setAttribute(Qt::WA_DeleteOnClose);
     //setWindowFlags(Qt::WindowTitleHint | Qt::WindowSystemMenuHint);
 
-    fNotes.clear();
-    for(int i=0; i<MAX_MODELS; i++)
-        fNotes.append(QStringList("")); //make sure the list isn't empty.
-
     this->setFont(QFont("Courier New",12));
     refreshList();
     if(!(this->isMaximized() || this->isMinimized())) this->adjustSize();
@@ -145,7 +141,7 @@ void MdiChild::dropEvent(QDropEvent *event)
 void MdiChild::refreshList()
 {
     clear();
-    char buf[20];
+    char buf[20] = {0};
 
     eeFile.eeLoadOwnerName(buf,sizeof(buf));
     QString str = QString(buf).trimmed();
@@ -155,10 +151,9 @@ void MdiChild::refreshList()
 
     for(uint8_t i=0; i<MAX_MODELS; i++)
     {
-        eeFile.eeLoadModelName(i,buf,sizeof(buf));
-        addItem(QString(buf));
+            eeFile.eeLoadModelName(i,buf,sizeof(buf));
+            addItem(QString(buf));
     }
-
 }
 
 void MdiChild::cut()
@@ -428,7 +423,9 @@ bool MdiChild::loadModelFromFile(QString fn)
             xmlOK = doc.setContent(&file);
             if(xmlOK)
             {
+                QDomNode notes;
                 xmlOK = loadModelDataXML(&doc, &tmod);
+                getNotesFromXML(&doc, cmod);
             }
             file.close();
         }
@@ -528,17 +525,7 @@ void MdiChild::saveModelToFile()
     }
     else  // model data - cmod
     {
-            if(eeFile.eeModelExists(cmod))
-            {
-                ModelData tmod;
-                if(!eeFile.getModel(&tmod,cmod))  // if can't get model - exit
-                {
-                    QMessageBox::critical(this, tr("Error"),tr("Error Getting Model Data"));
-                    return;
-                }
-                QDomElement modData = getModelDataXML(&doc, &tmod, cmod);
-                root.appendChild(modData);
-            }
+        saveModelToXML(&doc, &root, cmod);
     }
 
     if (!file.open(QFile::WriteOnly)) {
@@ -636,7 +623,12 @@ void MdiChild::OpenEditWindow()
         ModelEdit *t = new ModelEdit(&eeFile,(i-1),this);
         if(isNew) t->applyBaseTemplate();
         t->setWindowTitle(tr("Editing model %1: ").arg(i) + QString(buf));
-        connect(t,SIGNAL(modelValuesChanged()),this,SLOT(setModified()));
+
+        for(int j=0; j<MAX_MIXERS; j++)
+            t->setNote(j,modelNotes[i-1][j]);
+        t->refreshMixerList();
+
+        connect(t,SIGNAL(modelValuesChanged(ModelEdit*)),this,SLOT(setModified(ModelEdit*)));
         //t->exec();
         t->show();
     }
@@ -735,7 +727,10 @@ bool MdiChild::loadFile(const QString &fileName, bool resetCurrentFile)
                     ModelData tmod;
                     memset(&tmod,0,sizeof(tmod));
                     if(loadModelDataXML(&doc, &tmod, i))
+                    {
                         eeFile.putModel(&tmod,i);
+                        getNotesFromXML(&doc, i);
+                    }
                 }
             }
             file.close();
@@ -852,6 +847,75 @@ bool MdiChild::saveAs()
 }
 
 
+void MdiChild::getNotesFromXML(QDomDocument * qdoc, int model_id)
+{
+    //look for MODEL_DATA with modelNum attribute.
+    //if modelNum = -1 then just pick the first one
+    QDomNodeList ndl = qdoc->elementsByTagName("MODEL_DATA");
+
+    //cycle through nodes to find correct model number
+    QDomNode k = ndl.at(0);
+    if(model_id>=0) //if we should look for SPECIFIC model cycle through models
+    {
+        while(!k.isNull())
+        {
+            int a = k.toElement().attribute("number").toInt();
+            if(a==model_id)
+                break;
+            k = k.nextSibling();
+        }
+    }
+
+    if(k.isNull()) // couldn't find
+        return;
+
+    QDomNode n = k.toElement().elementsByTagName("Notes").at(0).firstChild();// get all children under "Notes"
+    while (!n.isNull())
+    {
+        if(n.nodeName()=="note")
+        {
+            QDomElement e = n.toElement();
+            int mixNum = QString(e.attribute("mix")).toInt();
+            modelNotes[model_id][mixNum] = e.firstChild().toText().data();
+        }
+        n = n.nextSibling();
+    }
+}
+
+void MdiChild::saveModelToXML(QDomDocument * qdoc, QDomElement * pe, int model_id)
+{
+    if(eeFile.eeModelExists(model_id))
+    {
+        ModelData tmod;
+        if(!eeFile.getModel(&tmod,model_id))  // if can't get model - exit
+        {
+            return;
+        }
+        QDomElement modData = getModelDataXML(qdoc, &tmod, model_id);
+        pe->appendChild(modData);
+
+        //add notes to model data
+        QDomElement eNotes = qdoc->createElement("Notes");
+
+        int numNodes = 0;
+        for(int i=0; i<MAX_MIXERS; i++)
+            if(!modelNotes[model_id][i].isEmpty())
+            {
+                numNodes++;
+                QDomElement e = qdoc->createElement("note");
+                QDomText t = qdoc->createTextNode("note");
+                t.setNodeValue(modelNotes[model_id][i]);
+                e.appendChild(t);
+                e.setAttribute("model", model_id);
+                e.setAttribute("mix", i);
+                eNotes.appendChild(e);
+            }
+
+        if(numNodes)  // add only if non-empty
+            modData.appendChild(eNotes);
+    }
+}
+
 bool MdiChild::saveFile(const QString &fileName, bool setCurrent)
 {
     QFile file(fileName);
@@ -879,15 +943,7 @@ bool MdiChild::saveFile(const QString &fileName, bool setCurrent)
         //Save model data one by one
         for(int i=0; i<MAX_MODELS; i++)
         {
-            if(eeFile.eeModelExists(i))
-            {
-                ModelData tmod;
-                if(!eeFile.getModel(&tmod,i))  // if can't get model - go to next one
-                    continue;
-                tmod.mdVers = MDVERS; //bring every model up to the same rev
-                QDomElement modData = getModelDataXML(&doc, &tmod, i);
-                root.appendChild(modData);
-            }
+            saveModelToXML(&doc, &root, i);
         }
 
         if (!file.open(QFile::WriteOnly)) {
@@ -1106,11 +1162,18 @@ void MdiChild::ShowContextMenu(const QPoint& pos)
     contextMenu.exec(globalPos);
 }
 
-void MdiChild::setModified()
+void MdiChild::setModified(ModelEdit * me)
 {
     refreshList();
     eeFile.setChanged(true);
     documentWasModified();
+
+    if(me)
+    {
+        int id = me->getModelID();
+        for(int j=0; j<MAX_MIXERS; j++)
+            modelNotes[id][j] = me->getNote(j);
+    }
 }
 
 void MdiChild::simulate()
