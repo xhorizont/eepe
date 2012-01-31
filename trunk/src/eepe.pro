@@ -45,22 +45,25 @@ RESOURCES += eepe.qrc
 TARGET = eepe
 
 unix {
-LANGS.path = /usr/bin/eepe/lang
+LANGS.path = /usr/bin/eepefiles
 LANGS.files = lang/*.qm
 
-ICON.path = /usr/bin/eepe
+ICON.path = /usr/bin/eepefiles
 ICON.files += icon.svg
 
 SHORTCUT.path = /usr/share/applications/
 SHORTCUT.files += eepe.desktop
 
 BINFILE.files += eepe
-BINFILE.path = /usr/bin/eepe
+BINFILE.path = /usr/bin
+BINFILE.commands = rm -rf /usr/bin/eepe
+#This removes old eepe file or directory
 
 INSTALLS = BINFILE
 INSTALLS += LANGS
 INSTALLS += ICON
 INSTALLS += SHORTCUT
+
 }
 
 TEMPLATE = app
