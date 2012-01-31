@@ -159,7 +159,6 @@ void MainWindow::checkForUpdates(bool ignoreSettings)
         check1done = false;
     }
 
-#ifdef Q_OS_WIN32
     if(checkEEPE || ignoreSettings)
     {
         manager2 = new QNetworkAccessManager(this);
@@ -170,7 +169,6 @@ void MainWindow::checkForUpdates(bool ignoreSettings)
         manager2->get(request);
         check2done = false;
     }
-#endif
 
     if(downloadDialog_forWait!=0)
         downloadDialog_forWait = 0;
@@ -386,6 +384,8 @@ void MainWindow::reply2Finished(QNetworkReply * reply)
         if(rev>currentEEPErev)
         {
             showcheckForUpdatesResult = false; // update is available - do not show dialog
+
+#ifdef Q_OS_WIN32
             int ret = QMessageBox::question(this, "eePe", tr("A new version of eePe is available (r%1)<br>"
                                                                 "Would you like to download it?").arg(rev) ,
                                             QMessageBox::Yes | QMessageBox::No);
@@ -402,6 +402,11 @@ void MainWindow::reply2Finished(QNetworkReply * reply)
                 connect(dd,SIGNAL(accepted()),this,SLOT(reply2Accepted()));
                 dd->show();
             }
+#else
+            QMessageBox::information(this, "eePe", tr("A new version of eePe is available (r%1)\n"
+                                                      "To update please visit the eepe code page\n"
+                                                      "http://code.google.com/p/eepe/").arg(rev) );
+#endif
         }
         else
         {

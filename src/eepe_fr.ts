@@ -1042,6 +1042,12 @@ p, li { white-space: pre-wrap; }
         <source>Show information about current EEPROM.</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>A new version of eePe is available (r%1)
+To update please visit the eepe code page
+http://code.google.com/p/eepe/</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>MdiChild</name>
