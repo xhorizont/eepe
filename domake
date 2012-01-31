@@ -65,7 +65,7 @@ echo "#================================================"
 echo
 cp eepe ../src/
 #install copies eepe from src folder.
-sudo checkinstall -D --nodoc -y --pkgname=eepe --arch=i386 --pkgrelease=1 --pkgversion=1 --maintainer=erazz --backup=no --install=no
+sudo checkinstall -D --nodoc -y --pkgname=eepe --arch=i386 --pkgrelease=1 --pkgversion=1 --maintainer=erazz --backup=no --install=no --requires="libqt4-gui ,libqt4-network ,libqt4-core ,libqt4-xml ,avrdude"
 mv -f eepe_1-1_i386.deb ../eepe-i386.deb
 
 
@@ -87,7 +87,7 @@ echo "#================================================"
 echo
 cp eepe ../src/
 #install copies eepe from src folder.
-sudo checkinstall -D --nodoc -y --pkgname=eepe --arch=amd64 --pkgrelease=1 --pkgversion=1 --maintainer=erazz --backup=no --install=no
+sudo checkinstall -D --nodoc -y --pkgname=eepe --arch=amd64 --pkgrelease=1 --pkgversion=1 --maintainer=erazz --backup=no --install=no --requires="libqt4-gui ,libqt4-network ,libqt4-core ,libqt4-xml ,avrdude"
 mv -f eepe_1-1_amd64.deb ../eepe-amd64.deb
 
 cd ..

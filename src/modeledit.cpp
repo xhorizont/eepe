@@ -539,6 +539,12 @@ void ModelEdit::tabMixes()
         MixerlistWidget->addItem(itm);
     }
 
+    if(MixerlistWidget->selectedItems().isEmpty())
+    {
+        MixerlistWidget->setCurrentRow(0);
+        MixerlistWidget->item(0)->setSelected(true);
+    }
+
 }
 
 void ModelEdit::mixesEdited()
@@ -2062,9 +2068,10 @@ void ModelEdit::on_curveEdit_16_clicked()
 }
 
 
-void ModelEdit::gm_insertMix(int idx)
+bool ModelEdit::gm_insertMix(int idx)
 {
-    if(idx<0 || idx>=MAX_MIXERS) return;
+    if(idx<0 || idx>=MAX_MIXERS) return false;
+    if(g_model.mixData[MAX_MIXERS-1].destCh) return false; //if last mixer isn't empty - can't add more
 
     int i = g_model.mixData[idx].destCh;
     memmove(&g_model.mixData[idx+1],&g_model.mixData[idx],
@@ -2072,6 +2079,15 @@ void ModelEdit::gm_insertMix(int idx)
     memset(&g_model.mixData[idx],0,sizeof(MixData));
     g_model.mixData[idx].destCh = i;
     g_model.mixData[idx].weight = 100;
+
+    for(int j=(MAX_MIXERS-1); j>idx; j--)
+    {
+        mixNotes[j].clear();
+        mixNotes[j].append(mixNotes[j-1]);
+    }
+    mixNotes[idx].clear();
+
+    return true;
 }
 
 void ModelEdit::gm_deleteMix(int index)
@@ -2079,6 +2095,13 @@ void ModelEdit::gm_deleteMix(int index)
   memmove(&g_model.mixData[index],&g_model.mixData[index+1],
             (MAX_MIXERS-(index+1))*sizeof(MixData));
   memset(&g_model.mixData[MAX_MIXERS-1],0,sizeof(MixData));
+
+  for(int j=index; j<(MAX_MIXERS-1); j++)
+  {
+      mixNotes[j].clear();
+      mixNotes[j].append(mixNotes[j+1]);
+  }
+  mixNotes[MAX_MIXERS-1].clear();
 }
 
 void ModelEdit::gm_openMix(int index)
@@ -2120,7 +2143,8 @@ void ModelEdit::mixerlistWidget_doubleClicked(QModelIndex index)
     {
         int i = -idx;
         idx = getMixerIndex(i); //get mixer index to insert
-        gm_insertMix(idx);
+        if(!gm_insertMix(idx))
+            return; //if full - don't add any more mixes
         g_model.mixData[idx].destCh = i;
     }
     gm_openMix(idx);
@@ -2162,6 +2186,8 @@ void ModelEdit::setSelectedByList(QList<int> list)
 
 void ModelEdit::mixersDelete(bool ask)
 {
+    int curpos = MixerlistWidget->currentRow();
+
     QMessageBox::StandardButton ret = QMessageBox::No;
 
     if(ask)
@@ -2175,6 +2201,8 @@ void ModelEdit::mixersDelete(bool ask)
         mixersDeleteList(createListFromSelected());
         updateSettings();
         tabMixes();
+
+        MixerlistWidget->setCurrentRow(curpos);
     }
 }
 
@@ -2207,6 +2235,8 @@ void ModelEdit::mimeDropped(int index, const QMimeData *data, Qt::DropAction act
 
 void ModelEdit::pasteMIMEData(const QMimeData * mimeData, int destIdx)
 {
+    int curpos = MixerlistWidget->currentRow();
+
     if(mimeData->hasFormat("application/x-eepe-mix"))
     {
         int idx = MixerlistWidget->currentItem()->data(Qt::UserRole).toByteArray().at(0);
@@ -2228,7 +2258,8 @@ void ModelEdit::pasteMIMEData(const QMimeData * mimeData, int destIdx)
             idx++;
             if(idx==MAX_MIXERS) break;
 
-            gm_insertMix(idx);
+            if(!gm_insertMix(idx))
+                break; //memory full - can't add any more
             MixData *md = &g_model.mixData[idx];
             memcpy(md,mxData.mid(i,sizeof(MixData)).constData(),sizeof(MixData));
             md->destCh = dch;
@@ -2238,6 +2269,8 @@ void ModelEdit::pasteMIMEData(const QMimeData * mimeData, int destIdx)
 
         updateSettings();
         tabMixes();
+
+        MixerlistWidget->setCurrentRow(curpos);
     }
 }
 
@@ -2262,7 +2295,8 @@ void ModelEdit::mixerOpen()
     {
         int i = -idx;
         idx = getMixerIndex(i); //get mixer index to insert
-        gm_insertMix(idx);
+        if(!gm_insertMix(idx))
+            return;
         g_model.mixData[idx].destCh = i;
     }
     gm_openMix(idx);
@@ -2285,13 +2319,15 @@ void ModelEdit::mixerAdd()
     {
         int i = -index;
         index = getMixerIndex(i); //get mixer index to insert
-        gm_insertMix(index);
+        if(!gm_insertMix(index))
+            return;
         g_model.mixData[index].destCh = i;
     }
     else
     {
         index++;
-        gm_insertMix(index);
+        if(!gm_insertMix(index))
+            return;
         g_model.mixData[index].destCh = g_model.mixData[index-1].destCh;
     }
 
@@ -2360,6 +2396,15 @@ int ModelEdit::gm_moveMix(int idx, bool dir) //true=inc=down false=dec=up
     memcpy(&temp,&src,sizeof(MixData));
     memcpy(&src,&tgt,sizeof(MixData));
     memcpy(&tgt,&temp,sizeof(MixData));
+
+    //do the same for the notes
+    QString ix = mixNotes[idx];
+    mixNotes[idx].clear();
+    mixNotes[idx].append(mixNotes[tdx]);
+    mixNotes[tdx].clear();
+    mixNotes[tdx].append(ix);
+
+
     return tdx;
 }
 
