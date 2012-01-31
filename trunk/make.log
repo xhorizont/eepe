@@ -1,19 +1,19 @@
 #================================================
 Starting Build
 Timestamp
-Tue Jan 31 03:10:40 UTC 2012
+Tue Jan 31 04:40:36 UTC 2012
 #================================================
 
 ===== Updating from SVN =====
-At revision 318.
+At revision 320.
 
 ===== GENERATING VERSION STAMP =====
 //Automatically generated file - do not edit
 #define DATE_STR "31.01.2012"
-#define TIME_STR "03:03:41"
+#define TIME_STR "04:04:39"
 #define SUB_VERS "1-erez"
-#define SVN_VERS "trunk-r319"
-#define SVN_VER_NUM 319
+#define SVN_VERS "trunk-r321"
+#define SVN_VER_NUM 321
 ====================================
 
 
@@ -29,41 +29,41 @@ Generate Translation Files
 /usr/include/qt4/QtGui/qlayout.h:236: circular inclusion of /usr/include/qt4/QtGui/qboxlayout.h
 /usr/include/qt4/QtGui/qgridlayout.h:45: circular inclusion of /usr/include/qt4/QtGui/qlayout.h
 Updating 'eepe_.ts'...
-    Found 664 source text(s) (0 new and 664 already existing)
+    Found 665 source text(s) (1 new and 664 already existing)
 Updating 'eepe_he.ts'...
-    Found 664 source text(s) (0 new and 664 already existing)
+    Found 665 source text(s) (1 new and 664 already existing)
 Updating 'eepe_pt.ts'...
-    Found 664 source text(s) (0 new and 664 already existing)
+    Found 665 source text(s) (1 new and 664 already existing)
 Updating 'eepe_ru.ts'...
-    Found 664 source text(s) (0 new and 664 already existing)
+    Found 665 source text(s) (1 new and 664 already existing)
 Updating 'eepe_de.ts'...
-    Found 664 source text(s) (0 new and 664 already existing)
+    Found 665 source text(s) (1 new and 664 already existing)
 Updating 'eepe_es.ts'...
-    Found 664 source text(s) (0 new and 664 already existing)
+    Found 665 source text(s) (1 new and 664 already existing)
 Updating 'eepe_fr.ts'...
-    Found 664 source text(s) (0 new and 664 already existing)
+    Found 665 source text(s) (1 new and 664 already existing)
 /usr/share/qt4/mkspecs/features/default_post.prf(5):Function 'system' is not implemented
 Updating '/home/erez/eepe/src/eepe_.qm'...
     Generated 0 translation(s) (0 finished and 0 unfinished)
-    Ignored 664 untranslated source text(s)
+    Ignored 665 untranslated source text(s)
 Updating '/home/erez/eepe/src/eepe_he.qm'...
     Generated 0 translation(s) (0 finished and 0 unfinished)
-    Ignored 664 untranslated source text(s)
+    Ignored 665 untranslated source text(s)
 Updating '/home/erez/eepe/src/eepe_pt.qm'...
     Generated 430 translation(s) (387 finished and 43 unfinished)
-    Ignored 234 untranslated source text(s)
+    Ignored 235 untranslated source text(s)
 Updating '/home/erez/eepe/src/eepe_ru.qm'...
     Generated 394 translation(s) (360 finished and 34 unfinished)
-    Ignored 270 untranslated source text(s)
+    Ignored 271 untranslated source text(s)
 Updating '/home/erez/eepe/src/eepe_de.qm'...
     Generated 545 translation(s) (518 finished and 27 unfinished)
-    Ignored 119 untranslated source text(s)
+    Ignored 120 untranslated source text(s)
 Updating '/home/erez/eepe/src/eepe_es.qm'...
     Generated 539 translation(s) (528 finished and 11 unfinished)
-    Ignored 125 untranslated source text(s)
+    Ignored 126 untranslated source text(s)
 Updating '/home/erez/eepe/src/eepe_fr.qm'...
     Generated 533 translation(s) (518 finished and 15 unfinished)
-    Ignored 131 untranslated source text(s)
+    Ignored 132 untranslated source text(s)
 
 #================================================
 Build Windows Version
@@ -427,10 +427,10 @@ EXE header size:               71168 / 55808 bytes
 Install code:                          (20982 bytes)
 Install data:                          (17368528 bytes)
 Uninstall code+data:                   (20680 bytes)
-Compressed data:             5726095 / 17410190 bytes
-CRC (0xA290F52B):                  4 / 4 bytes
+Compressed data:             5727048 / 17410190 bytes
+CRC (0x5255D8DB):                  4 / 4 bytes
 
-Total size:                  5797267 / 17466002 bytes (33.1%)
+Total size:                  5798220 / 17466002 bytes (33.1%)
 
 #================================================
 Build Linux i386 Version
@@ -476,15 +476,16 @@ Enter a number to change any of them or press ENTER to continue:
 Installing with make install...
 
 ========================= Installation results ===========================
-install -m 755 -p /home/erez/eepe/src/eepe /usr/bin/eepe/
-strip /usr/bin/eepe/eepe
-install -m 644 -p /home/erez/eepe/src/lang/eepe_de.qm /usr/bin/eepe/lang/
-install -m 644 -p /home/erez/eepe/src/lang/eepe_es.qm /usr/bin/eepe/lang/
-install -m 644 -p /home/erez/eepe/src/lang/eepe_fr.qm /usr/bin/eepe/lang/
-install -m 644 -p /home/erez/eepe/src/lang/eepe_he.qm /usr/bin/eepe/lang/
-install -m 644 -p /home/erez/eepe/src/lang/eepe_pt.qm /usr/bin/eepe/lang/
-install -m 644 -p /home/erez/eepe/src/lang/eepe_ru.qm /usr/bin/eepe/lang/
-install -m 644 -p /home/erez/eepe/src/icon.svg /usr/bin/eepe/
+rm -rf /usr/bin/eepe
+install -m 755 -p /home/erez/eepe/src/eepe /usr/bin/
+strip /usr/bin/eepe
+install -m 644 -p /home/erez/eepe/src/lang/eepe_de.qm /usr/bin/eepefiles/
+install -m 644 -p /home/erez/eepe/src/lang/eepe_es.qm /usr/bin/eepefiles/
+install -m 644 -p /home/erez/eepe/src/lang/eepe_fr.qm /usr/bin/eepefiles/
+install -m 644 -p /home/erez/eepe/src/lang/eepe_he.qm /usr/bin/eepefiles/
+install -m 644 -p /home/erez/eepe/src/lang/eepe_pt.qm /usr/bin/eepefiles/
+install -m 644 -p /home/erez/eepe/src/lang/eepe_ru.qm /usr/bin/eepefiles/
+install -m 644 -p /home/erez/eepe/src/icon.svg /usr/bin/eepefiles/
 install -m 644 -p /home/erez/eepe/src/eepe.desktop /usr/share/applications/
 
 ======================== Installation successful ==========================
@@ -562,15 +563,16 @@ Enter a number to change any of them or press ENTER to continue:
 Installing with make install...
 
 ========================= Installation results ===========================
-install -m 755 -p /home/erez/eepe/src/eepe /usr/bin/eepe/
-strip /usr/bin/eepe/eepe
-install -m 644 -p /home/erez/eepe/src/lang/eepe_de.qm /usr/bin/eepe/lang/
-install -m 644 -p /home/erez/eepe/src/lang/eepe_es.qm /usr/bin/eepe/lang/
-install -m 644 -p /home/erez/eepe/src/lang/eepe_fr.qm /usr/bin/eepe/lang/
-install -m 644 -p /home/erez/eepe/src/lang/eepe_he.qm /usr/bin/eepe/lang/
-install -m 644 -p /home/erez/eepe/src/lang/eepe_pt.qm /usr/bin/eepe/lang/
-install -m 644 -p /home/erez/eepe/src/lang/eepe_ru.qm /usr/bin/eepe/lang/
-install -m 644 -p /home/erez/eepe/src/icon.svg /usr/bin/eepe/
+rm -rf /usr/bin/eepe
+install -m 755 -p /home/erez/eepe/src/eepe /usr/bin/
+strip /usr/bin/eepe
+install -m 644 -p /home/erez/eepe/src/lang/eepe_de.qm /usr/bin/eepefiles/
+install -m 644 -p /home/erez/eepe/src/lang/eepe_es.qm /usr/bin/eepefiles/
+install -m 644 -p /home/erez/eepe/src/lang/eepe_fr.qm /usr/bin/eepefiles/
+install -m 644 -p /home/erez/eepe/src/lang/eepe_he.qm /usr/bin/eepefiles/
+install -m 644 -p /home/erez/eepe/src/lang/eepe_pt.qm /usr/bin/eepefiles/
+install -m 644 -p /home/erez/eepe/src/lang/eepe_ru.qm /usr/bin/eepefiles/
+install -m 644 -p /home/erez/eepe/src/icon.svg /usr/bin/eepefiles/
 install -m 644 -p /home/erez/eepe/src/eepe.desktop /usr/share/applications/
 
 ======================== Installation successful ==========================

@@ -65,7 +65,12 @@ void preferencesDialog::populateLocale()
     if(!strl.count()) return;
 
     QString path = ".";
+#ifdef Q_OS_WIN32
     if(strl.count()) path = QFileInfo(strl[0]).canonicalPath() + "/lang";
+#else
+    if(strl.count()) path = QFileInfo(strl[0]).canonicalPath() + "/eepefiles";
+#endif
+
 
     QDir directory = QDir(path);
     QStringList files = directory.entryList(QStringList("eepe_*.qm"), QDir::Files | QDir::NoSymLinks);

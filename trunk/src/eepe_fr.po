@@ -1182,6 +1182,14 @@ msgctxt "MainWindow|"
 msgid "Show information about current EEPROM."
 msgstr ""
 
+#, qt-format
+msgctxt "MainWindow|"
+msgid ""
+"A new version of eePe is available (r%1)\n"
+"To update please visit the eepe code page\n"
+"http://code.google.com/p/eepe/"
+msgstr ""
+
 msgctxt "MdiChild|"
 msgid "&Cut"
 msgstr "&Couper"
