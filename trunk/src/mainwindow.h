@@ -64,8 +64,11 @@ class MainWindow : public QMainWindow
 public:
     MainWindow();
 
-    void checkForUpdates(bool ignoreSettings=true);
     void downloadLatester9x();
+
+public slots:
+    void checkForUpdates(bool ignoreSettings=true);
+
 
 protected:
     void closeEvent(QCloseEvent *event);
