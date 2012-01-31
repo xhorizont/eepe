@@ -83,7 +83,7 @@ private:
 
     QSpinBox *getNodeSB(int i);
 
-    void gm_insertMix(int idx);
+    bool gm_insertMix(int idx);
     int getMixerIndex(int dch);
     void gm_deleteMix(int index);
     void gm_openMix(int index);
