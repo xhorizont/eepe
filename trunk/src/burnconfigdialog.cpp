@@ -23,7 +23,13 @@ burnConfigDialog::~burnConfigDialog()
 void burnConfigDialog::getSettings()
 {
     QSettings settings("er9x-eePe", "eePe");
+
+#ifdef Q_OS_WIN32
     avrLoc = settings.value("avrdude_location", QFileInfo("avrdude.exe").absoluteFilePath()).toString();
+#else
+    avrLoc = settings.value("avrdude_location", "avrdude").toString();
+#endif
+
     QString str = settings.value("avr_arguments").toString();
     avrArgs = str.split(" ", QString::SkipEmptyParts);
     avrProgrammer =  settings.value("programmer", QString("usbasp")).toString();
