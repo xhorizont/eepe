@@ -3013,32 +3013,32 @@ Bitte nutze dies nur wenn Du weißt was Du machst. Es gibt keine Plausibilitäts
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="burnconfigdialog.cpp" line="122"/>
+        <location filename="burnconfigdialog.cpp" line="128"/>
         <source>Select Location</source>
         <translation>Wähle Speicherort</translation>
     </message>
     <message>
-        <location filename="burnconfigdialog.cpp" line="188"/>
+        <location filename="burnconfigdialog.cpp" line="194"/>
         <source>This will set the fuses to protect the EEPROM from being deleted when flashing.&lt;br&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="burnconfigdialog.cpp" line="190"/>
+        <location filename="burnconfigdialog.cpp" line="196"/>
         <source>This will reset the fuses to the factory settings.&lt;br&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="burnconfigdialog.cpp" line="192"/>
+        <location filename="burnconfigdialog.cpp" line="198"/>
         <source>Before continuing make sure your programmer works reliably.&lt;br&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="burnconfigdialog.cpp" line="193"/>
+        <location filename="burnconfigdialog.cpp" line="199"/>
         <source>Are you sure you want to continue?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="burnconfigdialog.cpp" line="195"/>
+        <location filename="burnconfigdialog.cpp" line="201"/>
         <source>eePe</source>
         <translation>eePe</translation>
     </message>
