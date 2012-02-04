@@ -30,7 +30,7 @@ echo
 cd winbuild
 qmake ../src/eepe.pro -spec win32-g++-cross
 make
-mv release/eepe.exe .
+mv -v release/eepe.exe .
 
 #must copy win32-g++-cross directory to Qt mkspec directory (/usr/share/qt4/mkspecs)
 
@@ -41,7 +41,7 @@ echo "Package Windows Version"
 echo "#================================================"
 echo
 makensis eePe.nsi
-mv eePeInstall.exe ../
+mv -v eePeInstall.exe ../
 
 #must copy .nsh file to correct position
 cd ..
@@ -65,11 +65,11 @@ echo "#================================================"
 echo "Package Linux i386 Version"
 echo "#================================================"
 echo
-cp eepe ../src/
+cp -v eepe ../src/
 #install copies eepe from src folder.
-cp -f ../description-pak .
+cp -vf ../description-pak .
 sudo checkinstall -D --nodoc -y --pkgname=eepe --arch=i386 --pkgrelease=1 --pkgversion=$VER --maintainer=erazz --backup=no --install=no --requires="libqt4-gui ,libqt4-network ,libqt4-core ,libqt4-xml ,avrdude"
-mv -f "eepe_"$VER"-1_i386.deb" ../eepe-i386.deb
+mv -vf "eepe_"$VER"-1_i386.deb" ../eepe-i386.deb
 
 
 cd ..
@@ -88,11 +88,12 @@ echo "#================================================"
 echo "Package Linux amd64 Version"
 echo "#================================================"
 echo
-cp eepe ../src/
+cp -v eepe ../src/
 #install copies eepe from src folder.
-cp -f ../description-pak .
+cp -vf ../description-pak .
 sudo checkinstall -D --nodoc -y --pkgname=eepe --arch=amd64 --pkgrelease=1 --pkgversion=$VER --maintainer=erazz --backup=no --install=no --requires="libqt4-gui ,libqt4-network ,libqt4-core ,libqt4-xml ,avrdude"
-mv -f "eepe_"$VER"-1_amd64.deb" ../eepe-amd64.deb
+mv -vf "eepe_"$VER"-1_amd64.deb" ../eepe-amd64.deb
+
 
 cd ..
 

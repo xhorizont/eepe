@@ -2858,34 +2858,34 @@ msgctxt "burnConfigDialog|"
 msgid "m328p"
 msgstr ""
 
-#: burnconfigdialog.cpp:122
+#: burnconfigdialog.cpp:128
 msgctxt "burnConfigDialog|"
 msgid "Select Location"
 msgstr ""
 
-#: burnconfigdialog.cpp:188
+#: burnconfigdialog.cpp:194
 msgctxt "burnConfigDialog|"
 msgid ""
 "This will set the fuses to protect the EEPROM from being deleted when "
 "flashing.<br>"
 msgstr ""
 
-#: burnconfigdialog.cpp:190
+#: burnconfigdialog.cpp:196
 msgctxt "burnConfigDialog|"
 msgid "This will reset the fuses to the factory settings.<br>"
 msgstr ""
 
-#: burnconfigdialog.cpp:192
+#: burnconfigdialog.cpp:198
 msgctxt "burnConfigDialog|"
 msgid "Before continuing make sure your programmer works reliably.<br>"
 msgstr ""
 
-#: burnconfigdialog.cpp:193
+#: burnconfigdialog.cpp:199
 msgctxt "burnConfigDialog|"
 msgid "Are you sure you want to continue?"
 msgstr ""
 
-#: burnconfigdialog.cpp:195
+#: burnconfigdialog.cpp:201
 msgctxt "burnConfigDialog|"
 msgid "eePe"
 msgstr ""
