@@ -193,7 +193,7 @@ void MainWindow::reply1Finished(QNetworkReply * reply)
     if(i>0)
     {
         bool cres;
-        int rev = QString::fromAscii(qba.mid(i+16,3)).toInt(&cres);
+        int rev = QString::fromAscii(qba.mid(i+16,4)).replace(QChar('"'), "").toInt(&cres);
 
         if(!cres)
         {
@@ -373,7 +373,7 @@ void MainWindow::reply2Finished(QNetworkReply * reply)
     if(i>0)
     {
         bool cres;
-        int rev = QString::fromAscii(qba.mid(i+17,3)).toInt(&cres);
+        int rev = QString::fromAscii(qba.mid(i+17,4)).replace(QChar('"'), "").toInt(&cres);
 
         if(!cres)
         {

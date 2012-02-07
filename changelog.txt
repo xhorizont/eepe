@@ -10,6 +10,11 @@ description here
 ====================================================================================
 
 ******************************************
+CHANGELOG: 2-7-2012 ER
+Fixed load model and general settings files error
+Allow revision numbers to be 4 digit
+
+******************************************
 CHANGELOG: 1-30-2012 ER
 Minor tweaks and fixes
 

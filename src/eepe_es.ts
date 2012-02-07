@@ -1274,7 +1274,7 @@ http://code.google.com/p/eepe/</source>
         <location filename="mdichild.cpp" line="265"/>
         <location filename="mdichild.cpp" line="275"/>
         <location filename="mdichild.cpp" line="321"/>
-        <location filename="mdichild.cpp" line="401"/>
+        <location filename="mdichild.cpp" line="402"/>
         <location filename="mdichild.cpp" line="437"/>
         <location filename="mdichild.cpp" line="464"/>
         <location filename="mdichild.cpp" line="482"/>
@@ -1331,7 +1331,7 @@ http://code.google.com/p/eepe/</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mdichild.cpp" line="402"/>
+        <location filename="mdichild.cpp" line="403"/>
         <location filename="mdichild.cpp" line="438"/>
         <source>Error writing to container</source>
         <translation type="unfinished">¡Error leyendo el archivo %1!</translation>

@@ -1231,7 +1231,7 @@ msgctxt "MdiChild|"
 msgid "Delete Selected Models?"
 msgstr ""
 
-#: mdichild.cpp:265 mdichild.cpp:275 mdichild.cpp:321 mdichild.cpp:401
+#: mdichild.cpp:265 mdichild.cpp:275 mdichild.cpp:321 mdichild.cpp:402
 #: mdichild.cpp:437 mdichild.cpp:464 mdichild.cpp:482 mdichild.cpp:512
 #: mdichild.cpp:524 mdichild.cpp:638 mdichild.cpp:657 mdichild.cpp:672
 #: mdichild.cpp:705 mdichild.cpp:711 mdichild.cpp:735 mdichild.cpp:754
@@ -1274,7 +1274,7 @@ msgctxt "MdiChild|"
 msgid "Overwrite %1?"
 msgstr ""
 
-#: mdichild.cpp:402 mdichild.cpp:438
+#: mdichild.cpp:403 mdichild.cpp:438
 msgctxt "MdiChild|"
 msgid "Error writing to container"
 msgstr ""
