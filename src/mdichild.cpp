@@ -394,8 +394,9 @@ bool MdiChild::loadModelFromFile(QString fn)
             quint8 temp[sizeof(EEGeneral)];
             if(!loadiHEX(this, fileName, (quint8*)&temp, sizeof(EEGeneral), EEPE_GENERAL_FILE_HEADER))
                 return false;
-            memcpy(&temp, &tgen, sizeof(tgen));
+            memcpy(&tgen, &temp, sizeof(tgen));
         }
+
         if(!eeFile.putGeneralSettings(&tgen))
         {
             QMessageBox::critical(this, tr("Error"),
@@ -415,7 +416,6 @@ bool MdiChild::loadModelFromFile(QString fn)
             xmlOK = doc.setContent(&file);
             if(xmlOK)
             {
-                QDomNode notes;
                 xmlOK = loadModelDataXML(&doc, &tmod);
                 getNotesFromXML(&doc, cmod);
             }
@@ -429,9 +429,9 @@ bool MdiChild::loadModelFromFile(QString fn)
             quint8 temp[sizeof(ModelData)];
             if(!loadiHEX(this, fileName, (quint8*)&temp, sizeof(ModelData), EEPE_MODEL_FILE_HEADER))
                 return false;
-            memcpy(&temp, &tmod, sizeof(tmod));
-
+            memcpy(&tmod, &temp, sizeof(tmod));
         }
+
         if(!eeFile.putModel(&tmod,cmod))
         {
             QMessageBox::critical(this, tr("Error"),
