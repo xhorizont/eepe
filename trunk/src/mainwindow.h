@@ -111,6 +111,7 @@ private slots:
     void saveModelToFile();
     void customizeSplash();
     void setFuses();
+    void resetFuses();
     void showEEPROMInfo();
 
 
@@ -186,6 +187,7 @@ private:
     QAction *saveModelToFileAct;
     QAction *customizeSplashAct;
     QAction *setFusesAct;
+    QAction *resetFusesAct;
     QAction *eepromInfoAct;
 
     //QAction *aboutQtAct;

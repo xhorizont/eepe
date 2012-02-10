@@ -26,6 +26,8 @@ void burnConfigDialog::getSettings()
 
 #ifdef Q_OS_WIN32
     avrLoc = settings.value("avrdude_location", QFileInfo("avrdude.exe").absoluteFilePath()).toString();
+#elif Q_OS_MAC
+    avrLoc = settings.value("avrdude_location", "/usr/local/bin/avrdude").toString();
 #else
     avrLoc = settings.value("avrdude_location", "avrdude").toString();
 #endif
@@ -186,20 +188,21 @@ void burnConfigDialog::restFuses(bool eeProtect)
     //avrdude -c usbasp -p m64 -U hfuse:w:<0x89>:m  0x81 for eeprom protection
     //avrdude -c usbasp -p m64 -U efuse:w:<0xFF>:m
 
-    QMessageBox::StandardButton ret = QMessageBox::No;
+    QMessageBox::StandardButton ret = QMessageBox::Cancel;
 
-    QString msg = "<b><u>WARNING!</u></b><br>";
+    QString msg = "<b><u>SET FUSES</u></b><br>";
 
     if(eeProtect)
-        msg.append(tr("This will set the fuses to protect the EEPROM from being deleted when flashing.<br>"));
+        msg.append(tr("The following action will protect the EEPROM from being deleted when flashing new Firmware. "));
     else
-        msg.append(tr("This will reset the fuses to the factory settings.<br>"));
+        msg.append(tr("This will reset the fuses to the factory settings. "));
 
-    msg.append(tr("Before continuing make sure your programmer works reliably.<br>"));
-    msg.append(tr("Are you sure you want to continue?"));
+    msg.append(tr("Before continuing make sure that your radio is connected and the programmer works reliably.<p>"));
+    msg.append(tr("<font color=red>DO NOT DISCONNECT OR POWER DOWN UNTIL THE PROGRAM COMPLETES!</font><p>"));
+    msg.append(tr("Click 'Ok' to continue or 'Cancel' to quit."));
 
-    ret = QMessageBox::warning(this, tr("eePe"), msg, QMessageBox::Yes | QMessageBox::No);
-    if (ret == QMessageBox::Yes)
+    ret = QMessageBox::information(this, tr("eePe"), msg, QMessageBox::Cancel | QMessageBox::Ok);
+    if (ret == QMessageBox::Ok)
     {
         QStringList args   = avrArgs;
         if(!avrPort.isEmpty()) args << "-P" << avrPort;
@@ -218,7 +221,5 @@ void burnConfigDialog::restFuses(bool eeProtect)
     }
 
 }
-
-
 
 

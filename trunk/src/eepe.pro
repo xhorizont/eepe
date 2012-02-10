@@ -41,6 +41,25 @@ SOURCES += main.cpp \
     mixerslist.cpp \
     downloaddialog.cpp \
     customizesplashdialog.cpp
+TEMPLATE = app
+FORMS += modeledit.ui \
+    generaledit.ui \
+    mixerdialog.ui \
+    burnconfigdialog.ui \
+    avroutputdialog.ui \
+    simulatordialog.ui \
+    donatorsdialog.ui \
+    printdialog.ui \
+    preferencesdialog.ui \
+    downloaddialog.ui \
+    customizesplashdialog.ui
+TRANSLATIONS = eepe_.ts    \
+               eepe_he.ts  \
+               eepe_pt.ts  \
+               eepe_ru.ts  \
+               eepe_de.ts  \
+               eepe_es.ts  \
+               eepe_fr.ts
 RESOURCES += eepe.qrc
 TARGET = eepe
 
@@ -63,28 +82,14 @@ INSTALLS = BINFILE
 INSTALLS += LANGS
 INSTALLS += ICON
 INSTALLS += SHORTCUT
-
 }
 
-TEMPLATE = app
-FORMS += modeledit.ui \
-    generaledit.ui \
-    mixerdialog.ui \
-    burnconfigdialog.ui \
-    avroutputdialog.ui \
-    simulatordialog.ui \
-    donatorsdialog.ui \
-    printdialog.ui \
-    preferencesdialog.ui \
-    downloaddialog.ui \
-    customizesplashdialog.ui
-win32:RC_FILE += icon.rc
+win32 {
+RC_FILE += icon.rc
+}
+
+mac {
+ICON = eepe.icns
+}
 
 
-TRANSLATIONS = eepe_.ts    \
-               eepe_he.ts  \
-               eepe_pt.ts  \
-               eepe_ru.ts  \
-               eepe_de.ts  \
-               eepe_es.ts  \
-               eepe_fr.ts

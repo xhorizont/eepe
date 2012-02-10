@@ -1128,10 +1128,6 @@ msgid "Customize Splash Screen"
 msgstr ""
 
 msgctxt "MainWindow|"
-msgid "Set Fuses"
-msgstr ""
-
-msgctxt "MainWindow|"
 msgid "Sets the fuses to protect EEPROM from being erased."
 msgstr ""
 
@@ -1188,6 +1184,18 @@ msgid ""
 "A new version of eePe is available (r%1)\n"
 "To update please visit the eepe code page\n"
 "http://code.google.com/p/eepe/"
+msgstr ""
+
+msgctxt "MainWindow|"
+msgid "Set fuses to protect EEPROM"
+msgstr ""
+
+msgctxt "MainWindow|"
+msgid "Reset fuses to factory default"
+msgstr ""
+
+msgctxt "MainWindow|"
+msgid "Resets the fuses to factory default - EEPROM erase."
 msgstr ""
 
 msgctxt "MdiChild|"
@@ -2710,20 +2718,28 @@ msgstr ""
 
 msgctxt "burnConfigDialog|"
 msgid ""
-"This will set the fuses to protect the EEPROM from being deleted when "
-"flashing.<br>"
+"The following action will protect the EEPROM from being deleted when "
+"flashing new Firmware. "
 msgstr ""
 
 msgctxt "burnConfigDialog|"
-msgid "This will reset the fuses to the factory settings.<br>"
+msgid "This will reset the fuses to the factory settings. "
 msgstr ""
 
 msgctxt "burnConfigDialog|"
-msgid "Before continuing make sure your programmer works reliably.<br>"
+msgid ""
+"Before continuing make sure that your radio is connected and the programmer "
+"works reliably.<p>"
 msgstr ""
 
 msgctxt "burnConfigDialog|"
-msgid "Are you sure you want to continue?"
+msgid ""
+"<font color=red>DO NOT DISCONNECT OR POWER DOWN UNTIL THE PROGRAM "
+"COMPLETES!</font><p>"
+msgstr ""
+
+msgctxt "burnConfigDialog|"
+msgid "Click 'Ok' to continue or 'Cancel' to quit."
 msgstr ""
 
 msgctxt "customizeSplashDialog|"

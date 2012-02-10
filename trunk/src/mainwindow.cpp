@@ -733,6 +733,12 @@ void MainWindow::setFuses()
     bcd->restFuses(true);
 }
 
+void MainWindow::resetFuses()
+{
+    burnConfigDialog *bcd = new burnConfigDialog(this);
+    bcd->restFuses(false);
+}
+
 void MainWindow::showEEPROMInfo()
 {
     //show info about:
@@ -1074,9 +1080,13 @@ void MainWindow::createActions()
     customizeSplashAct->setStatusTip(tr("Customize Splash Screen"));
     connect(customizeSplashAct, SIGNAL(triggered()), this, SLOT(customizeSplash()));
 
-    setFusesAct = new QAction(QIcon(":/images/fuses_set.png"), tr("Set Fuses"), this);
+    setFusesAct = new QAction(QIcon(":/images/fuses_set.png"), tr("Set fuses to protect EEPROM"), this);
     setFusesAct->setStatusTip(tr("Sets the fuses to protect EEPROM from being erased."));
     connect(setFusesAct, SIGNAL(triggered()), this, SLOT(setFuses()));
+
+    resetFusesAct = new QAction(QIcon(":/images/fuses_set.png"), tr("Reset fuses to factory default"), this);
+    resetFusesAct->setStatusTip(tr("Resets the fuses to factory default - EEPROM erase."));
+    connect(resetFusesAct, SIGNAL(triggered()), this, SLOT(resetFuses()));
 
     eepromInfoAct = new QAction(QIcon(":/images/info.png"), tr("EEPROM Info"), this);
     eepromInfoAct->setStatusTip(tr("Show information about current EEPROM."));
@@ -1121,6 +1131,7 @@ void MainWindow::createMenus()
     burnMenu->addAction(burnListAct);
     burnMenu->addSeparator();
     burnMenu->addAction(setFusesAct);
+    burnMenu->addAction(resetFusesAct);
 
     windowMenu = menuBar()->addMenu(tr("&Window"));
     updateWindowMenu();

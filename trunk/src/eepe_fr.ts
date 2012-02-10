@@ -995,10 +995,6 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Set Fuses</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Sets the fuses to protect EEPROM from being erased.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1046,6 +1042,18 @@ p, li { white-space: pre-wrap; }
         <source>A new version of eePe is available (r%1)
 To update please visit the eepe code page
 http://code.google.com/p/eepe/</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Set fuses to protect EEPROM</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Reset fuses to factory default</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Resets the fuses to factory default - EEPROM erase.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2419,19 +2427,23 @@ Assurez-vous de posséder les droits en écriture sur ce dossier.</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>This will set the fuses to protect the EEPROM from being deleted when flashing.&lt;br&gt;</source>
+        <source>The following action will protect the EEPROM from being deleted when flashing new Firmware. </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>This will reset the fuses to the factory settings.&lt;br&gt;</source>
+        <source>This will reset the fuses to the factory settings. </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Before continuing make sure your programmer works reliably.&lt;br&gt;</source>
+        <source>Before continuing make sure that your radio is connected and the programmer works reliably.&lt;p&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Are you sure you want to continue?</source>
+        <source>&lt;font color=red&gt;DO NOT DISCONNECT OR POWER DOWN UNTIL THE PROGRAM COMPLETES!&lt;/font&gt;&lt;p&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Click &apos;Ok&apos; to continue or &apos;Cancel&apos; to quit.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
