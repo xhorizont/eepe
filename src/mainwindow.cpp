@@ -401,7 +401,7 @@ void MainWindow::reply2Finished(QNetworkReply * reply)
                 installer_fileName = fileName;
                 connect(dd,SIGNAL(accepted()),this,SLOT(reply2Accepted()));
                 dd->show();
-            }
+            }           
 #else
             QMessageBox::information(this, "eePe", tr("A new version of eePe is available (r%1)\n"
                                                       "To update please visit the eepe code page\n"
