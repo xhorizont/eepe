@@ -26,7 +26,7 @@ void burnConfigDialog::getSettings()
 
 #ifdef Q_OS_WIN32
     avrLoc = settings.value("avrdude_location", QFileInfo("avrdude.exe").absoluteFilePath()).toString();
-#elif Q_OS_MAC
+#elif __APPLE__
     avrLoc = settings.value("avrdude_location", "/usr/local/bin/avrdude").toString();
 #else
     avrLoc = settings.value("avrdude_location", "avrdude").toString();
