@@ -5,14 +5,6 @@
 #include "helpers.h"
 
 
-#define SPLASH_MARKER "Splash\0"
-#define SPLASH_WIDTH (128)
-#define SPLASH_HEIGHT (64)
-#define SPLASH_SIZE (SPLASH_WIDTH*SPLASH_HEIGHT/8)
-#define SPLASH_OFFSET (6+1+3) // "Splash" + zero + 3 header bytes
-#define HEX_FILE_SIZE (1024*64)
-
-
 
 customizeSplashDialog::customizeSplashDialog(QWidget *parent) :
     QDialog(parent),
@@ -30,7 +22,7 @@ void customizeSplashDialog::on_loadFromHexButton_clicked()
 {
     QString fileName;
     QSettings settings("er9x-eePe", "eePe");
-    quint8 temp[HEX_FILE_SIZE] = {0};
+//    quint8 temp[HEX_FILE_SIZE] = {0};
 
     fileName = QFileDialog::getOpenFileName(this,tr("Open"),settings.value("lastDir").toString(),tr("HEX files (*.hex);;"));
     if(fileName.isEmpty())
@@ -39,7 +31,15 @@ void customizeSplashDialog::on_loadFromHexButton_clicked()
     }
 
     settings.setValue("lastDir",QFileInfo(fileName).dir().absolutePath());
-
+    QImage image(128, 64, QImage::Format_Mono);
+    uchar b[SPLASH_SIZE] = {0};
+    if(!getSplashHEX(fileName, (uchar *)&b, this))
+    {
+        QMessageBox::critical(this, tr("Error"),
+                              tr("Error reading file %1").arg(fileName));
+        return;
+    }
+/*
     if(!loadiHEX(this, fileName, (quint8*)&temp, HEX_FILE_SIZE, ""))
     {
         QMessageBox::critical(this, tr("Error"),
@@ -68,6 +68,7 @@ void customizeSplashDialog::on_loadFromHexButton_clicked()
 //    image.loadFromData((const uchar *)&temp[pos + SPLASH_OFFSET],QImage::Format_MonoLSB);
     uchar b[SPLASH_SIZE] = {0};
     memcpy(&b, (const uchar *)&temp[pos + SPLASH_OFFSET], SPLASH_SIZE);
+    */
 
     for(int y=0; y<SPLASH_HEIGHT; y++)
         for(int x=0; x<SPLASH_WIDTH; x++)
@@ -103,7 +104,7 @@ void customizeSplashDialog::on_saveToHexButton_clicked()
 {    
     QString fileName;
     QSettings settings("er9x-eePe", "eePe");
-    quint8 temp[HEX_FILE_SIZE] = {0};
+//    quint8 temp[HEX_FILE_SIZE] = {0};
 
     fileName = QFileDialog::getSaveFileName(this,tr("Write to file"),settings.value("lastDir").toString(),tr("HEX files (*.hex);;"),0,QFileDialog::DontConfirmOverwrite);
     if(fileName.isEmpty())
@@ -111,26 +112,26 @@ void customizeSplashDialog::on_saveToHexButton_clicked()
         return;
     }
 
-    int fileSize = loadiHEX(this, fileName, (quint8*)&temp, HEX_FILE_SIZE, "");
+//    int fileSize = loadiHEX(this, fileName, (quint8*)&temp, HEX_FILE_SIZE, "");
 
-    if(!fileSize)
-    {
-        QMessageBox::critical(this, tr("Error"),
-                              tr("Error reading file %1").arg(fileName));
-        return;
-    }
+//    if(!fileSize)
+//    {
+//        QMessageBox::critical(this, tr("Error"),
+//                              tr("Error reading file %1").arg(fileName));
+//        return;
+//    }
 
-    settings.setValue("lastDir",QFileInfo(fileName).dir().absolutePath());
+//    settings.setValue("lastDir",QFileInfo(fileName).dir().absolutePath());
 
-    QByteArray rawData = QByteArray::fromRawData((const char *)&temp, HEX_FILE_SIZE);
-    int pos = rawData.indexOf(QString(SPLASH_MARKER));
+//    QByteArray rawData = QByteArray::fromRawData((const char *)&temp, HEX_FILE_SIZE);
+//    int pos = rawData.indexOf(QString(SPLASH_MARKER));
 
-    if(pos<0)
-    {
-        QMessageBox::information(this, tr("Error"),
-                              tr("Could not find bitmap to replace in file"));
-        return;
-    }
+//    if(pos<0)
+//    {
+//        QMessageBox::information(this, tr("Error"),
+//                              tr("Could not find bitmap to replace in file"));
+//        return;
+//    }
 
 
     QImage image = ui->imageLabel->pixmap()->toImage().scaled(SPLASH_WIDTH, SPLASH_HEIGHT).convertToFormat(QImage::Format_MonoLSB);
@@ -141,13 +142,24 @@ void customizeSplashDialog::on_saveToHexButton_clicked()
         for(int x=0; x<SPLASH_WIDTH; x++)
             b[SPLASH_WIDTH*(y/8) + x] |= ((p[(y*SPLASH_WIDTH + x)/8] & (1<<(x%8))) ? 1 : 0)<<(y % 8);
 
-    memcpy((uchar *)&temp[pos + SPLASH_OFFSET], &b, SPLASH_SIZE);
-
-    if(saveiHEX(this, fileName, (quint8*)&temp, fileSize, "", 0))
+    if(putSplashHEX(fileName, (uchar *)b, this))
     {
         QMessageBox::information(this, tr("Save To File"),
-                              tr("Successfully updated %1").arg(fileName));
+                                 tr("Successfully updated %1").arg(fileName));
     }
+    else
+    {
+        QMessageBox::critical(this, tr("Error"),
+                              tr("Error reading file %1").arg(fileName));
+    }
+
+    //    memcpy((uchar *)&temp[pos + SPLASH_OFFSET], &b, SPLASH_SIZE);
+
+//    if(saveiHEX(this, fileName, (quint8*)&temp, fileSize, "", 0))
+//    {
+//        QMessageBox::information(this, tr("Save To File"),
+//                              tr("Successfully updated %1").arg(fileName));
+//    }
 
 
 }

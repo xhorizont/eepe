@@ -630,6 +630,45 @@ void MainWindow::burnToFlash(QString fileToFlash)
         int ret = QMessageBox::question(this, "eePe", tr("Write %1 to flash memory?").arg(QFileInfo(fileName).fileName()), QMessageBox::Yes | QMessageBox::No);
         if(ret!=QMessageBox::Yes) return;
 
+//        ret = QMessageBox::question(this, "eePe", tr("Preserve installed spash screen"), QMessageBox::Yes | QMessageBox::No);
+//        if(ret==QMessageBox::Yes)
+//        {
+
+//            QString tempDir    = QDir::tempPath();
+//            QString tempFileOld = tempDir + "/temp.hex";
+//            QString tempFileNew = tempDir + "/tempNew.hex";
+
+
+//            if(QFile::remove(tempFileOld) && QFile::remove(tempFileNew))
+//            {
+//                if(QFile::copy(fileName, tempFileNew)) //copy new hex to temp
+//                {
+//                    //get HEX file from tx to temp folder
+//                    burnConfigDialog bcd;
+//                    QString avrdudeLoc = bcd.getAVRDUDE();
+//                    QString programmer = bcd.getProgrammer();
+//                    QString mcu        = bcd.getMCU();
+//                    QStringList args   = bcd.getAVRArgs();
+//                    if(!bcd.getPort().isEmpty()) args << "-P" << bcd.getPort();
+
+//                    QString str = "flash:r:" + tempFileOld + ":i";
+//                    QStringList arguments;
+//                    arguments << "-c" << programmer << "-p" << mcu << args << "-U" << str;
+
+//                    avrOutputDialog *ad = new avrOutputDialog(this, avrdudeLoc, arguments, "Read Flash From Tx", AVR_DIALOG_FORCE_CLOSE);
+//                    ad->setWindowIcon(QIcon(":/images/read_flash.png"));
+//                    ad->exec();
+
+
+//                    uchar b[SPLASH_SIZE] = {0};
+//                    if(getSplashHEX(tempFileOld, (uchar *)&b, this)) //get screen from hex
+//                        if(putSplashHEX(tempFileNew, (uchar *)b, this)) //put screen to new hex
+//                            fileName = tempFileNew; //make sure we burn the new version.
+//                }
+//            }
+//        }
+
+
         burnConfigDialog bcd;
         QString avrdudeLoc = bcd.getAVRDUDE();
         QString programmer = bcd.getProgrammer();
@@ -686,8 +725,10 @@ void MainWindow::burnExtenalFromEEPROM()
 
 void MainWindow::burnFromFlash()
 {
+
     QSettings settings("er9x-eePe", "eePe");
     QString fileName = QFileDialog::getSaveFileName(this,tr("Read Flash to File"),settings.value("lastDir").toString(),tr(FLASH_FILES_FILTER));
+
     if (!fileName.isEmpty())
     {
         settings.setValue("lastDir",QFileInfo(fileName).dir().absolutePath());

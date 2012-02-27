@@ -6,6 +6,12 @@
 #include "pers.h"
 
 #define TMR_NUM_OPTION  (TMR_VAROFS+2*MAX_DRSWITCH-3)
+#define SPLASH_MARKER "Splash\0"
+#define SPLASH_WIDTH (128)
+#define SPLASH_HEIGHT (64)
+#define SPLASH_SIZE (SPLASH_WIDTH*SPLASH_HEIGHT/8)
+#define SPLASH_OFFSET (6+1+3) // "Splash" + zero + 3 header bytes
+#define HEX_FILE_SIZE (1024*64)
 
 
 void populateSwitchCB(QComboBox *b, int value);
@@ -30,5 +36,8 @@ QDomElement getModelDataXML(QDomDocument * qdoc, ModelData * tmod, int modelNum)
 
 bool loadGeneralDataXML(QDomDocument * qdoc, EEGeneral * tgen); // get data from XML
 bool loadModelDataXML(QDomDocument * qdoc, ModelData * tmod, int modelNum = -1); // get data from XML
+
+bool getSplashHEX(QString fileName, uchar * b, QWidget *parent = 0);
+bool putSplashHEX(QString fileName, uchar * b, QWidget *parent = 0);
 
 #endif // HELPERS_H
