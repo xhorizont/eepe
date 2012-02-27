@@ -274,6 +274,55 @@ bool saveiHEX(QWidget *parent, QString fileName, quint8 * data, int datalen, QSt
     return true;
 }
 
+
+bool getSplashHEX(QString fileName, uchar * b, QWidget *parent)
+{
+    quint8 temp[HEX_FILE_SIZE] = {0};
+
+    if(!loadiHEX(parent, fileName, (quint8*)&temp, HEX_FILE_SIZE, ""))
+        return false;
+
+    QByteArray rawData = QByteArray::fromRawData((const char *)&temp, HEX_FILE_SIZE);
+    QString mark;
+    mark.clear();
+    mark.append(SPLASH_MARKER);
+    mark.append('\0');
+    int pos = rawData.indexOf(mark);
+
+    if(pos<0)
+        return false;
+
+    memcpy(b, (const uchar *)&temp[pos + SPLASH_OFFSET], SPLASH_SIZE);
+    return true;
+}
+
+bool putSplashHEX(QString fileName, uchar * b, QWidget *parent)
+{
+    quint8 temp[HEX_FILE_SIZE] = {0};
+    int fileSize = loadiHEX(parent, fileName, (quint8*)&temp, HEX_FILE_SIZE, "");
+
+    if(!fileSize)
+        return false;
+
+    QByteArray rawData = QByteArray::fromRawData((const char *)&temp, HEX_FILE_SIZE);
+    QString mark;
+    mark.clear();
+    mark.append(SPLASH_MARKER);
+    mark.append('\0');
+    int pos = rawData.indexOf(QString(mark));
+
+    if(pos<0)
+        return false;
+
+    memcpy((uchar *)&temp[pos + SPLASH_OFFSET], b, SPLASH_SIZE);
+
+    if(!saveiHEX(parent, fileName, (quint8*)&temp, fileSize, "", 0))
+        return false;
+
+    return true;
+}
+
+
 void appendTextElement(QDomDocument * qdoc, QDomElement * pe, QString name, QString value)
 {
     QDomElement e = qdoc->createElement(name);
