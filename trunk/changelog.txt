@@ -5,38 +5,43 @@ above the previous change.
 
 Format is as follows:
 ******************************************
-CHANGELOG: 1-24-2011 (Notice US notation!)
+CHANGELOG: 24-JAN-2011
 description here
 ====================================================================================
 
 ******************************************
-CHANGELOG: 2-9-2012 ER
+CHANGELOG: 2-FEB-2012 ER
+Moved menus around and change the nomeclature to make it more newcomer friendly
+Changed MAX to HALF to follow er9x nomeclature
+
+******************************************
+CHANGELOG: 9-FEB-2012 ER
 Added default avrdude location for MAC
 Changed fuse set warning to be more user friendly
 Restored the ability to set fuses back to factory default.
 
 ******************************************
-CHANGELOG: 2-7-2012 ER
+CHANGELOG: 7-FEB-2012 ER
 Fixed load model and general settings files error
 Allow revision numbers to be 4 digit
 
 ******************************************
-CHANGELOG: 1-30-2012 ER
+CHANGELOG: 30-JAN-2012 ER
 Minor tweaks and fixes
 
 ******************************************
-CHANGELOG: 1-27-2012 ER
+CHANGELOG: 27-JAN-2012 ER
 Notes functional
 
 ******************************************
-CHANGELOG: 1-27-2012 ER
+CHANGELOG: 27-JAN-2012 ER
 XML structured data saving in EEPE/EEPM/EEPG files
 Added file info
 Removed fuses dialog and replace with simpler "Set Fuses"
 Fixed model size show on main list
 
 ******************************************
-CHANGELOG: 1-24-2012 ER
+CHANGELOG: 24-JAN-2012 ER
 Fixed issue with protocol box and data resetting
 
 ******************************************

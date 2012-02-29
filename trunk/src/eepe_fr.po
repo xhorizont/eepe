@@ -668,9 +668,9 @@ msgstr ""
 #~ msgid "Show fuses dialog"
 #~ msgstr "Affiche les réglages des fusibles"
 
-msgctxt "MainWindow|"
-msgid "&Write EEPROM To Tx"
-msgstr "&Transférer l'EEPROM vers l'émetteur"
+#~ msgctxt "MainWindow|"
+#~ msgid "&Write EEPROM To Tx"
+#~ msgstr "&Transférer l'EEPROM vers l'émetteur"
 
 msgctxt "MainWindow|"
 msgid "&Burn"
@@ -763,9 +763,9 @@ msgstr "Dispose les fenêtres en cascade"
 #~ msgstr ""
 #~ "Fichiers EEPROM (*.bin *.hex);;fichiers BIN (*.bin);;fichiers HEX (*.hex)"
 
-msgctxt "MainWindow|"
-msgid "Read Flash memory"
-msgstr "Lire la mémoire Flash"
+#~ msgctxt "MainWindow|"
+#~ msgid "Read Flash memory"
+#~ msgstr "Lire la mémoire Flash"
 
 msgctxt "MainWindow|"
 msgid "Paste the clipboard's contents into the current selection"
@@ -798,17 +798,17 @@ msgctxt "MainWindow|"
 msgid "Print current model."
 msgstr "Imprime les données du modèle sélectionné."
 
-msgctxt "MainWindow|"
-msgid "Read EEPROM from transmitter"
-msgstr "Charge l'EEPROM de l'émetteur"
+#~ msgctxt "MainWindow|"
+#~ msgid "Read EEPROM from transmitter"
+#~ msgstr "Charge l'EEPROM de l'émetteur"
 
 msgctxt "MainWindow|"
 msgid "Close all the windows"
 msgstr "Ferme toutes les fenêtres"
 
-msgctxt "MainWindow|"
-msgid "Write flash memory to transmitter"
-msgstr "Écrit dans la mémoire Flash de l'émetteur"
+#~ msgctxt "MainWindow|"
+#~ msgid "Write flash memory to transmitter"
+#~ msgstr "Écrit dans la mémoire Flash de l'émetteur"
 
 msgctxt "MainWindow|"
 msgid "&Contributors"
@@ -867,9 +867,9 @@ msgctxt "MainWindow|"
 msgid "Exit the application"
 msgstr "Quitte l'application"
 
-msgctxt "MainWindow|"
-msgid "Write Flash memory"
-msgstr "Écrire la mémoire Flash"
+#~ msgctxt "MainWindow|"
+#~ msgid "Write Flash memory"
+#~ msgstr "Écrire la mémoire Flash"
 
 msgctxt "MainWindow|"
 msgid "List available programmers"
@@ -899,9 +899,9 @@ msgctxt "MainWindow|"
 msgid "Tile the windows"
 msgstr "Dispose les fenêtres en mosaïque"
 
-msgctxt "MainWindow|"
-msgid "Read flash memory to transmitter"
-msgstr "Lit la mémoire Flash de l'émetteur"
+#~ msgctxt "MainWindow|"
+#~ msgid "Read flash memory to transmitter"
+#~ msgstr "Lit la mémoire Flash de l'émetteur"
 
 msgctxt "MainWindow|"
 msgid "Save the document under a new name"
@@ -939,9 +939,9 @@ msgctxt "MainWindow|"
 msgid "&List programmers"
 msgstr "&Programmateurs supportés"
 
-msgctxt "MainWindow|"
-msgid "Write EEPROM to transmitter"
-msgstr "Transfère l'EEPROM vers l'émetteur"
+#~ msgctxt "MainWindow|"
+#~ msgid "Write EEPROM to transmitter"
+#~ msgstr "Transfère l'EEPROM vers l'émetteur"
 
 msgctxt "MainWindow|"
 msgid "Cut the current selection's contents to the clipboard"
@@ -959,9 +959,9 @@ msgctxt "MainWindow|"
 msgid "Configure burning software"
 msgstr "Configure le logiciel de flashage"
 
-msgctxt "MainWindow|"
-msgid "&Read EEPROM From Tx"
-msgstr "&Charger l'EEPROM de l'émetteur"
+#~ msgctxt "MainWindow|"
+#~ msgid "&Read EEPROM From Tx"
+#~ msgstr "&Charger l'EEPROM de l'émetteur"
 
 msgctxt "MainWindow|"
 msgid "Read EEPROM From Tx"
@@ -1196,6 +1196,38 @@ msgstr ""
 
 msgctxt "MainWindow|"
 msgid "Resets the fuses to factory default - EEPROM erase."
+msgstr ""
+
+msgctxt "MainWindow|"
+msgid "&Write Memory To Tx"
+msgstr ""
+
+msgctxt "MainWindow|"
+msgid "Write EEPROM memory to transmitter"
+msgstr ""
+
+msgctxt "MainWindow|"
+msgid "&Read Memory From Tx"
+msgstr ""
+
+msgctxt "MainWindow|"
+msgid "Read EEPROM memory from transmitter"
+msgstr ""
+
+msgctxt "MainWindow|"
+msgid "Flash Firmware to Tx"
+msgstr ""
+
+msgctxt "MainWindow|"
+msgid "Write flash firmware to transmitter"
+msgstr ""
+
+msgctxt "MainWindow|"
+msgid "Read flash memory from transmitter"
+msgstr ""
+
+msgctxt "MainWindow|"
+msgid "Read Firmware from Tx"
 msgstr ""
 
 msgctxt "MdiChild|"
@@ -2782,10 +2814,6 @@ msgid "Error reading file %1"
 msgstr "Fichier %1 corrompu! {1?}"
 
 msgctxt "customizeSplashDialog|"
-msgid "Error reading image from file"
-msgstr ""
-
-msgctxt "customizeSplashDialog|"
 msgid "Open Image to load"
 msgstr ""
 
@@ -2801,10 +2829,6 @@ msgstr ""
 
 msgctxt "customizeSplashDialog|"
 msgid "Write to file"
-msgstr ""
-
-msgctxt "customizeSplashDialog|"
-msgid "Could not find bitmap to replace in file"
 msgstr ""
 
 msgctxt "customizeSplashDialog|"
