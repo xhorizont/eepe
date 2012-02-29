@@ -564,7 +564,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>&amp;Write EEPROM To Tx</source>
-        <translation>&amp;Transférer l&apos;EEPROM vers l&apos;émetteur</translation>
+        <translation type="obsolete">&amp;Transférer l&apos;EEPROM vers l&apos;émetteur</translation>
     </message>
     <message>
         <source>&amp;Burn</source>
@@ -656,7 +656,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Read Flash memory</source>
-        <translation>Lire la mémoire Flash</translation>
+        <translation type="obsolete">Lire la mémoire Flash</translation>
     </message>
     <message>
         <source>Paste the clipboard&apos;s contents into the current selection</source>
@@ -688,7 +688,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Read EEPROM from transmitter</source>
-        <translation>Charge l&apos;EEPROM de l&apos;émetteur</translation>
+        <translation type="obsolete">Charge l&apos;EEPROM de l&apos;émetteur</translation>
     </message>
     <message>
         <source>Close all the windows</source>
@@ -696,7 +696,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Write flash memory to transmitter</source>
-        <translation>Écrit dans la mémoire Flash de l&apos;émetteur</translation>
+        <translation type="obsolete">Écrit dans la mémoire Flash de l&apos;émetteur</translation>
     </message>
     <message>
         <source>&amp;Contributors</source>
@@ -756,7 +756,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Write Flash memory</source>
-        <translation>Écrire la mémoire Flash</translation>
+        <translation type="obsolete">Écrire la mémoire Flash</translation>
     </message>
     <message>
         <source>List available programmers</source>
@@ -788,7 +788,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Read flash memory to transmitter</source>
-        <translation>Lit la mémoire Flash de l&apos;émetteur</translation>
+        <translation type="obsolete">Lit la mémoire Flash de l&apos;émetteur</translation>
     </message>
     <message>
         <source>Save the document under a new name</source>
@@ -828,7 +828,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Write EEPROM to transmitter</source>
-        <translation>Transfère l&apos;EEPROM vers l&apos;émetteur</translation>
+        <translation type="obsolete">Transfère l&apos;EEPROM vers l&apos;émetteur</translation>
     </message>
     <message>
         <source>Cut the current selection&apos;s contents to the clipboard</source>
@@ -848,7 +848,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>&amp;Read EEPROM From Tx</source>
-        <translation>&amp;Charger l&apos;EEPROM de l&apos;émetteur</translation>
+        <translation type="obsolete">&amp;Charger l&apos;EEPROM de l&apos;émetteur</translation>
     </message>
     <message>
         <source>Read EEPROM From Tx</source>
@@ -1054,6 +1054,38 @@ http://code.google.com/p/eepe/</source>
     </message>
     <message>
         <source>Resets the fuses to factory default - EEPROM erase.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Write Memory To Tx</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Write EEPROM memory to transmitter</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Read Memory From Tx</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Read EEPROM memory from transmitter</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Flash Firmware to Tx</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Write flash firmware to transmitter</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Read flash memory from transmitter</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Read Firmware from Tx</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2486,10 +2518,6 @@ Assurez-vous de posséder les droits en écriture sur ce dossier.</translation>
         <translation type="unfinished">Fichier %1 corrompu! {1?}</translation>
     </message>
     <message>
-        <source>Error reading image from file</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Open Image to load</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2503,10 +2531,6 @@ Assurez-vous de posséder les droits en écriture sur ce dossier.</translation>
     </message>
     <message>
         <source>Write to file</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Could not find bitmap to replace in file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

@@ -1012,19 +1012,23 @@ void MainWindow::createActions()
     connect(pasteAct, SIGNAL(triggered()), this, SLOT(paste()));
 
 
-    burnToAct = new QAction(QIcon(":/images/write_eeprom.png"), tr("&Write EEPROM To Tx"), this);
+    burnToAct = new QAction(QIcon(":/images/write_eeprom.png"), tr("&Write Memory To Tx"), this);
     burnToAct->setShortcut(tr("Ctrl+Alt+W"));
-    burnToAct->setStatusTip(tr("Write EEPROM to transmitter"));
+    burnToAct->setStatusTip(tr("Write EEPROM memory to transmitter"));
     connect(burnToAct,SIGNAL(triggered()),this,SLOT(burnTo()));
 
-    burnFromAct = new QAction(QIcon(":/images/read_eeprom.png"), tr("&Read EEPROM From Tx"), this);
+    burnFromAct = new QAction(QIcon(":/images/read_eeprom.png"), tr("&Read Memory From Tx"), this);
     burnFromAct->setShortcut(tr("Ctrl+Alt+R"));
-    burnFromAct->setStatusTip(tr("Read EEPROM from transmitter"));
+    burnFromAct->setStatusTip(tr("Read EEPROM memory from transmitter"));
     connect(burnFromAct,SIGNAL(triggered()),this,SLOT(burnFrom()));
 
-    burnToFlashAct = new QAction(QIcon(":/images/write_flash.png"), tr("Write Flash memory"), this);
-    burnToFlashAct->setStatusTip(tr("Write flash memory to transmitter"));
+    burnToFlashAct = new QAction(QIcon(":/images/write_flash.png"), tr("Flash Firmware to Tx"), this);
+    burnToFlashAct->setStatusTip(tr("Write flash firmware to transmitter"));
     connect(burnToFlashAct,SIGNAL(triggered()),this,SLOT(burnToFlash()));
+
+    burnFromFlashAct = new QAction(QIcon(":/images/read_flash.png"), tr("Read Firmware from Tx"), this);
+    burnFromFlashAct->setStatusTip(tr("Read flash memory from transmitter"));
+    connect(burnFromFlashAct,SIGNAL(triggered()),this,SLOT(burnFromFlash()));
 
     burnExtenalToEEPROMAct = new QAction(QIcon(":/images/write_eeprom_file.png"), tr("Write EEPROM memory from file"), this);
     burnExtenalToEEPROMAct->setStatusTip(tr("Write EEPROM memory from file to transmitter"));
@@ -1033,10 +1037,6 @@ void MainWindow::createActions()
     burnExtenalFromEEPROMAct = new QAction(QIcon(":/images/read_eeprom_file.png"), tr("Read EEPROM memory to file"), this);
     burnExtenalFromEEPROMAct->setStatusTip(tr("Read EEPROM memory from transmitter to file"));
     connect(burnExtenalFromEEPROMAct,SIGNAL(triggered()),this,SLOT(burnExtenalFromEEPROM()));
-
-    burnFromFlashAct = new QAction(QIcon(":/images/read_flash.png"), tr("Read Flash memory"), this);
-    burnFromFlashAct->setStatusTip(tr("Read flash memory to transmitter"));
-    connect(burnFromFlashAct,SIGNAL(triggered()),this,SLOT(burnFromFlash()));
 
     burnConfigAct = new QAction(QIcon(":/images/configure.png"), tr("&Configure..."), this);
     burnConfigAct->setStatusTip(tr("Configure burning software"));
@@ -1162,11 +1162,11 @@ void MainWindow::createMenus()
     burnMenu->addAction(burnToAct);
     burnMenu->addAction(burnFromAct);
     burnMenu->addSeparator();
-    burnMenu->addAction(burnExtenalToEEPROMAct);
-    burnMenu->addAction(burnExtenalFromEEPROMAct);
-    burnMenu->addSeparator();
     burnMenu->addAction(burnToFlashAct);
     burnMenu->addAction(burnFromFlashAct);
+    burnMenu->addSeparator();
+    burnMenu->addAction(burnExtenalToEEPROMAct);
+    burnMenu->addAction(burnExtenalFromEEPROMAct);
     burnMenu->addSeparator();
     burnMenu->addAction(burnConfigAct);
     burnMenu->addAction(burnListAct);
@@ -1213,9 +1213,9 @@ void MainWindow::createToolBars()
     burnToolBar = addToolBar(tr("Burn"));
     burnToolBar->addAction(burnToAct);
     burnToolBar->addAction(burnFromAct);
-    burnToolBar->addSeparator();
-    burnToolBar->addAction(burnExtenalToEEPROMAct);
-    burnToolBar->addAction(burnExtenalFromEEPROMAct);
+//    burnToolBar->addSeparator();
+//    burnToolBar->addAction(burnExtenalToEEPROMAct);
+//    burnToolBar->addAction(burnExtenalFromEEPROMAct);
     burnToolBar->addSeparator();
     burnToolBar->addAction(burnToFlashAct);
     burnToolBar->addAction(burnFromFlashAct);
