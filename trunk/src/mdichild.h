@@ -102,7 +102,7 @@ private:
     QString curFile;
     bool isUntitled;
 
-    void saveModelToXML(QDomDocument * qdoc, QDomElement * pe, int model_id);
+    void saveModelToXML(QDomDocument * qdoc, QDomElement * pe, int model_id, int mdver);
     void getNotesFromXML(QDomDocument * qdoc, int model_id);
 
 //    ModelData g_model;

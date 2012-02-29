@@ -1534,11 +1534,11 @@ void ModelEdit::tabTemplates()
 
 void ModelEdit::on_modelNameLE_editingFinished()
 {
-    uint8_t temp = g_model.mdVers;
+//    uint8_t temp = g_model.mdVers;
     memset(&g_model.name,' ',sizeof(g_model.name));
     const char *c = ui->modelNameLE->text().left(10).toAscii();
     strcpy((char*)&g_model.name,c);
-    g_model.mdVers = temp;  //in case strcpy overruns
+//    g_model.mdVers = temp;  //in case strcpy overruns
     for(int i=0; i<10; i++) if(!g_model.name[i]) g_model.name[i] = ' ';
     updateSettings();
 
