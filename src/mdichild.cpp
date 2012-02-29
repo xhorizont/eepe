@@ -517,7 +517,7 @@ void MdiChild::saveModelToFile()
     }
     else  // model data - cmod
     {
-        saveModelToXML(&doc, &root, cmod);
+        saveModelToXML(&doc, &root, cmod, MDVERS);
     }
 
     if (!file.open(QFile::WriteOnly)) {
@@ -874,7 +874,7 @@ void MdiChild::getNotesFromXML(QDomDocument * qdoc, int model_id)
     }
 }
 
-void MdiChild::saveModelToXML(QDomDocument * qdoc, QDomElement * pe, int model_id)
+void MdiChild::saveModelToXML(QDomDocument * qdoc, QDomElement * pe, int model_id, int mdver)
 {
     if(eeFile.eeModelExists(model_id))
     {
@@ -883,7 +883,7 @@ void MdiChild::saveModelToXML(QDomDocument * qdoc, QDomElement * pe, int model_i
         {
             return;
         }
-        QDomElement modData = getModelDataXML(qdoc, &tmod, model_id);
+        QDomElement modData = getModelDataXML(qdoc, &tmod, model_id, mdver);
         pe->appendChild(modData);
 
         //add notes to model data
@@ -935,7 +935,7 @@ bool MdiChild::saveFile(const QString &fileName, bool setCurrent)
         //Save model data one by one
         for(int i=0; i<MAX_MODELS; i++)
         {
-            saveModelToXML(&doc, &root, i);
+            saveModelToXML(&doc, &root, i, MDVERS);
         }
 
         if (!file.open(QFile::WriteOnly)) {

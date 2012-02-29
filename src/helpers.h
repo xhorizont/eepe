@@ -32,7 +32,7 @@ void appendNumberElement(QDomDocument * qdoc, QDomElement * pe,QString name, int
 void appendCDATAElement(QDomDocument * qdoc, QDomElement * pe,QString name, const char * data, int size);
 
 QDomElement getGeneralDataXML(QDomDocument * qdoc, EEGeneral * tgen);   //parse out data to XML format
-QDomElement getModelDataXML(QDomDocument * qdoc, ModelData * tmod, int modelNum); //parse out data to XML format
+QDomElement getModelDataXML(QDomDocument * qdoc, ModelData * tmod, int modelNum, int mdver); //parse out data to XML format
 
 bool loadGeneralDataXML(QDomDocument * qdoc, EEGeneral * tgen); // get data from XML
 bool loadModelDataXML(QDomDocument * qdoc, ModelData * tmod, int modelNum = -1); // get data from XML

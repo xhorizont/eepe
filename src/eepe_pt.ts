@@ -1200,12 +1200,6 @@ http://code.google.com/p/eepe/</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="1037"/>
-        <source>Read EEPROM memory to file</source>
-        <oldsource>Read Flash from Tx</oldsource>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="mainwindow.cpp" line="1030"/>
         <source>Read flash memory from transmitter</source>
         <translation type="unfinished"></translation>

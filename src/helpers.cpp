@@ -366,12 +366,12 @@ QDomElement getGeneralDataXML(QDomDocument * qdoc, EEGeneral * tgen)
 
 
 
-QDomElement getModelDataXML(QDomDocument * qdoc, ModelData * tmod, int modelNum)
+QDomElement getModelDataXML(QDomDocument * qdoc, ModelData * tmod, int modelNum, int mdver)
 {
     QDomElement md = qdoc->createElement("MODEL_DATA");
     md.setAttribute("number", modelNum);
 
-    appendNumberElement(qdoc, &md, "Version", tmod->mdVers, true); // have to write value here
+    appendNumberElement(qdoc, &md, "Version", mdver, true); // have to write value here
     appendTextElement(qdoc, &md, "Name", QString::fromAscii(tmod->name,sizeof(tmod->name)).trimmed());
     appendCDATAElement(qdoc, &md, "Data", (const char *)tmod,sizeof(ModelData));
     return md;
