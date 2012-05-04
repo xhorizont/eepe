@@ -86,7 +86,7 @@ void burnConfigDialog::populateProgrammers()
         prevline = line;
         line = in.readLine();
 
-        if(prevline.left(10).toLower()=="programmer")
+        if(prevline.left(10).toLower().replace(" ","")=="programmer")
             items << line.section('"',1,1);
     }
     file.close();
