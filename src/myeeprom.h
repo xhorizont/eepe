@@ -201,14 +201,18 @@ typedef struct t_ModelData {
   uint8_t   tmrDir:1;    //0=>Count Down, 1=>Count Up
   uint8_t   traineron:1;  // 0 disable trainer, 1 allow trainer
   uint8_t   t2throttle:1 ;  // Start timer2 using throttle
-  uint8_t   FrSkyUsrProto:2 ;  // Protocol in FrSky User Data, 0=FrSky Hub, 1=WS HowHigh
+  uint8_t   FrSkyUsrProto:1 ;  // Protocol in FrSky User Data, 0=FrSky Hub, 1=WS HowHigh
+  uint8_t   FrSkyGpsAlt:1 ;  	// Use Gps Altitude as main altitude reading
   uint8_t   FrSkyImperial:1 ;  // Convert FrSky values to imperial units
   uint8_t   FrSkyAltAlarm:2;
   uint16_t  tmrVal;
   uint8_t   protocol;
   int8_t    ppmNCH;
-  uint8_t   thrTrim:4;            // Enable Throttle Trim
-  uint8_t   thrExpo:4;            // Enable Throttle Expo
+  uint8_t   thrTrim:1;            // Enable Throttle Trim
+  uint8_t   numBlades:2;					// RPM scaling
+  uint8_t   spare10:1;
+  uint8_t   thrExpo:1;            // Enable Throttle Expo
+  uint8_t   spare11:3;
   int8_t    trimInc;              // Trim Increments
   int8_t    ppmDelay;
   int8_t    trimSw;
@@ -230,7 +234,8 @@ typedef struct t_ModelData {
   int8_t    curves9[MAX_CURVE9][9];
   CSwData   customSw[NUM_CSW];
   uint8_t   frSkyVoltThreshold ;
-  uint8_t   res3[2];
+  int8_t    tmrModeB;
+  uint8_t   res3;
   SafetySwData  safetySw[NUM_CHNOUT];
   FrSkyData frsky;
 } __attribute__((packed)) ModelData;

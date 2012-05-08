@@ -153,6 +153,7 @@ void ModelEdit::tabModelEditSetup()
 
     //timer mode direction value
     populateTimerSwitchCB(ui->timerModeCB,g_model.tmrMode);
+    populateTmrBSwitchCB(ui->timerModeBCB,g_model.tmrModeB);
     int min = g_model.tmrVal/60;
     int sec = g_model.tmrVal%60;
     ui->timerValTE->setTime(QTime(0,min,sec));
@@ -821,6 +822,7 @@ void ModelEdit::tabCurves()
 	 {
      plot_curve[i]=FALSE;
    }
+   redrawCurve=true;
    updateCurvesTab();
 
    QGraphicsScene *scene = new QGraphicsScene(ui->curvePreview);
@@ -1475,6 +1477,11 @@ void ModelEdit::tabFrsky()
     ui->frsky_gr_1_0->setCurrentIndex(ALARM_GREATER(1,0));
     ui->frsky_gr_1_1->setCurrentIndex(ALARM_GREATER(1,1));
 
+    ui->GpsAltMain->setChecked(g_model.FrSkyGpsAlt);
+    ui->HubComboBox->setCurrentIndex(g_model.FrSkyUsrProto);
+    ui->UnitsComboBox->setCurrentIndex(g_model.FrSkyImperial);
+    ui->BladesSpinBox->setValue(g_model.numBlades + 2);
+
     connect(ui->frsky_ratio_0,SIGNAL(editingFinished()),this,SLOT(FrSkyEdited()));
     connect(ui->frsky_ratio_1,SIGNAL(editingFinished()),this,SLOT(FrSkyEdited()));
     connect(ui->frsky_type_0,SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
@@ -1494,6 +1501,11 @@ void ModelEdit::tabFrsky()
     connect(ui->frsky_gr_0_1,SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
     connect(ui->frsky_gr_1_0,SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
     connect(ui->frsky_gr_1_1,SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
+    
+		connect(ui->GpsAltMain,SIGNAL(stateChanged(int)),this,SLOT(FrSkyEdited()));
+		connect(ui->HubComboBox,SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
+		connect(ui->UnitsComboBox,SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
+		connect(ui->BladesSpinBox,SIGNAL(editingFinished()),this,SLOT(FrSkyEdited()));
 }
 
 void ModelEdit::FrSkyEdited()
@@ -1513,6 +1525,11 @@ void ModelEdit::FrSkyEdited()
 
     g_model.frsky.channels[0].alarms_greater = (ui->frsky_gr_0_0->currentIndex() & 1) + ((ui->frsky_gr_0_1->currentIndex() & 1) << 1);
     g_model.frsky.channels[1].alarms_greater = (ui->frsky_gr_1_1->currentIndex() & 1) + ((ui->frsky_gr_1_1->currentIndex() & 1) << 1);
+
+    g_model.FrSkyGpsAlt = ui->GpsAltMain->isChecked();
+    g_model.FrSkyUsrProto = ui->HubComboBox->currentIndex();
+    g_model.FrSkyImperial = ui->UnitsComboBox->currentIndex();
+    g_model.numBlades = ui->BladesSpinBox->value() - 2 ;
 
     updateSettings();
 }
@@ -1547,6 +1564,12 @@ void ModelEdit::on_modelNameLE_editingFinished()
 void ModelEdit::on_timerModeCB_currentIndexChanged(int index)
 {
     g_model.tmrMode = index-TMR_NUM_OPTION;
+    updateSettings();
+}
+
+void ModelEdit::on_timerModeBCB_currentIndexChanged(int index)
+{
+    g_model.tmrModeB = index-(MAX_DRSWITCH-1);
     updateSettings();
 }
 

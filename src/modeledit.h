@@ -211,6 +211,7 @@ private slots:
     void on_trimIncCB_currentIndexChanged(int index);
     void on_timerDirCB_currentIndexChanged(int index);
     void on_timerModeCB_currentIndexChanged(int index);
+    void on_timerModeBCB_currentIndexChanged(int index);
     void on_modelNameLE_editingFinished();
     void on_tabWidget_currentChanged(int index);
     void on_templateList_doubleClicked(QModelIndex index);
