@@ -22,6 +22,15 @@ void populateSwitchCB(QComboBox *b, int value=0)
     b->setMaxVisibleItems(10);
 }
 
+void populateTmrBSwitchCB(QComboBox *b, int value=0)
+{
+    b->clear();
+    for(int i=-(MAX_DRSWITCH-1); i<MAX_DRSWITCH; i++)
+        b->addItem(getSWName(i));
+    b->setCurrentIndex(value+MAX_DRSWITCH-1);
+    b->setMaxVisibleItems(10);
+}
+
 void populateCurvesCB(QComboBox *b, int value)
 {
     QString str = CURV_STR;
