@@ -34,6 +34,7 @@ simulatorDialog::simulatorDialog(QWidget *parent) :
 
     bpanaCenter = 0;
     g_tmr10ms = 0;
+		one_sec_precount = 0 ;
 
     memset(&chanOut,0,sizeof(chanOut));
     memset(&calibratedStick,0,sizeof(calibratedStick));
@@ -80,6 +81,7 @@ void simulatorDialog::setupTimer()
 
 void simulatorDialog::timerEvent()
 {
+		uint8_t i ;
     g_tmr10ms++;
 
     getValues();
@@ -109,6 +111,39 @@ void simulatorDialog::timerEvent()
 
     ui->label_beep->setStyleSheet(beepShow ? CBEEP_ON : CBEEP_OFF);
     if(beepShow) beepShow--;
+
+
+		if ( ++one_sec_precount >= 100 )
+		{
+			one_sec_precount -= 100 ;
+			// One second has elapsed			
+			for ( i = 0 ; i < NUM_CSW ; i += 1 )
+			{
+    		CSwData &cs = g_model.customSw[i];
+    		uint8_t cstate = CS_STATE(cs.func);
+
+    		if(cstate == CS_TIMER)
+				{
+					if ( CsTimer[i] == 0 )
+					{
+						CsTimer[i] = -cs.v1-1 ;
+					}
+					else if ( CsTimer[i] < 0 )
+					{
+						if ( ++CsTimer[i] == 0 )
+						{
+							CsTimer[i] = cs.v2 ;
+						}
+					}
+					else  // if ( CsTimer[i] > 0 )
+					{
+						CsTimer[i] -= 1 ;
+					}
+				}
+			}
+		}
+		
+
 }
 
 void simulatorDialog::centerSticks()
@@ -470,6 +505,9 @@ bool simulatorDialog::getSwitch(int swtch, bool nc, qint8 level)
         break;
     case (CS_ELESS):
         ret_value = (x<=y);
+        break;
+    case (CS_TIME):
+        ret_value = CsTimer[cs_index] >= 0 ;
         break;
     default:
         return false;

@@ -1234,6 +1234,9 @@ void ModelEdit::setSwitchWidgetVisibility(int i)
         cswitchSource1[i]->setVisible(true);
         cswitchSource2[i]->setVisible(false);
         cswitchOffset[i]->setVisible(true);
+        cswitchOffset[i]->setMaximum(125);
+        cswitchOffset[i]->setMinimum(-125);
+        cswitchOffset0[i]->setVisible(false);
         populateSourceCB(cswitchSource1[i],g_eeGeneral.stickMode,g_model.customSw[i].v1);
         cswitchOffset[i]->setValue(g_model.customSw[i].v2);
         break;
@@ -1241,6 +1244,7 @@ void ModelEdit::setSwitchWidgetVisibility(int i)
         cswitchSource1[i]->setVisible(true);
         cswitchSource2[i]->setVisible(true);
         cswitchOffset[i]->setVisible(false);
+        cswitchOffset0[i]->setVisible(false);
         populateSwitchCB(cswitchSource1[i],g_model.customSw[i].v1);
         populateSwitchCB(cswitchSource2[i],g_model.customSw[i].v2);
         break;
@@ -1248,8 +1252,19 @@ void ModelEdit::setSwitchWidgetVisibility(int i)
         cswitchSource1[i]->setVisible(true);
         cswitchSource2[i]->setVisible(true);
         cswitchOffset[i]->setVisible(false);
+        cswitchOffset0[i]->setVisible(false);
         populateSourceCB(cswitchSource1[i],g_eeGeneral.stickMode,g_model.customSw[i].v1);
         populateSourceCB(cswitchSource2[i],g_eeGeneral.stickMode,g_model.customSw[i].v2);
+        break;
+    case CS_TIMER:
+        cswitchOffset[i]->setMaximum(101);
+        cswitchOffset[i]->setMinimum(1);
+        cswitchSource1[i]->setVisible(false);
+        cswitchSource2[i]->setVisible(false);
+        cswitchOffset[i]->setVisible(true);
+        cswitchOffset0[i]->setVisible(true);
+        cswitchOffset[i]->setValue(g_model.customSw[i].v2+1);
+        cswitchOffset0[i]->setValue(g_model.customSw[i].v1+1);
         break;
     default:
         break;
@@ -1302,6 +1317,15 @@ void ModelEdit::tabSwitches()
         connect(cswitchOffset[i],SIGNAL(editingFinished()),this,SLOT(switchesEdited()));
         ui->gridLayout_8->addWidget(cswitchOffset[i],i+1,3);
         cswitchOffset[i]->setVisible(false);
+
+        cswitchOffset0[i] = new QSpinBox(this);
+        cswitchOffset0[i]->setMaximum(101);
+        cswitchOffset0[i]->setMinimum(1);
+        cswitchOffset0[i]->setAccelerated(true);
+        connect(cswitchOffset0[i],SIGNAL(editingFinished()),this,SLOT(switchesEdited()));
+        ui->gridLayout_8->addWidget(cswitchOffset0[i],i+1,2);
+        cswitchOffset0[i]->setVisible(false);
+
     }
 
     updateSwitchesTab();
@@ -1399,6 +1423,10 @@ void ModelEdit::switchesEdited()
         case (CS_VCOMP):
             g_model.customSw[i].v1 = cswitchSource1[i]->currentIndex();
             g_model.customSw[i].v2 = cswitchSource2[i]->currentIndex();
+            break;
+        case (CS_TIMER):
+            g_model.customSw[i].v2 = cswitchOffset[i]->value()-1;
+            g_model.customSw[i].v1 = cswitchOffset0[i]->value()-1;
             break;
         default:
             break;
