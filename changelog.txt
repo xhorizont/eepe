@@ -10,6 +10,10 @@ description here
 ====================================================================================
 
 ******************************************
+CHANGELOG: 23-07-2011 MPB
+Add Custom switches TIMER option
+
+******************************************
 CHANGELOG: 2-FEB-2012 ER
 Moved menus around and change the nomeclature to make it more newcomer friendly
 Changed MAX to HALF to follow er9x nomeclature

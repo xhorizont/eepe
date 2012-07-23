@@ -47,6 +47,8 @@ private:
     qint32  chans[NUM_CHNOUT];
     quint8  bpanaCenter;
     bool    swOn[MAX_MIXERS];
+    quint16 one_sec_precount;
+		qint8		CsTimer[NUM_CSW] ;
 
     quint16 s_timeCumTot;
     quint16 s_timeCumAbs;

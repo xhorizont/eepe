@@ -115,8 +115,8 @@ enum EnumKeys {
 
 #define CURV_STR     "---x>0x<0|x|f>0f<0|f|c1 c2 c3 c4 c5 c6 c7 c8 c9 c10c11c12c13c14c15c16"
 #define CURVE_BASE 7
-#define CSWITCH_STR  "----   v>ofs  v<ofs  |v|>ofs|v|<ofsAND    OR     XOR    ""v1==v2 ""v1!=v2 ""v1>v2  ""v1<v2  ""v1>=v2 ""v1<=v2 "
-#define CSW_NUM_FUNC 14
+#define CSWITCH_STR  "----   v>ofs  v<ofs  |v|>ofs|v|<ofsAND    OR     XOR    ""v1==v2 ""v1!=v2 ""v1>v2  ""v1<v2  ""v1>=v2 ""v1<=v2 Timer  "
+#define CSW_NUM_FUNC 15
 #define CSW_LEN_FUNC 7
 
 #define CS_OFF       0
@@ -133,12 +133,14 @@ enum EnumKeys {
 #define CS_LESS      11
 #define CS_EGREATER  12
 #define CS_ELESS     13
-#define CS_MAXF      13  //max function
+#define CS_TIME	     14
+#define CS_MAXF      14  //max function
 
 #define CS_VOFS       0
 #define CS_VBOOL      1
 #define CS_VCOMP      2
-#define CS_STATE(x)   ((x)<CS_AND ? CS_VOFS : ((x)<CS_EQUAL ? CS_VBOOL : CS_VCOMP))
+#define CS_TIMER			3
+#define CS_STATE(x)   ((x)<CS_AND ? CS_VOFS : ((x)<CS_EQUAL ? CS_VBOOL : ((x)<CS_TIME ? CS_VCOMP : CS_TIMER)))
 
 #define CHAR_FOR_NAMES " ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_-."
 #define CHAR_FOR_NAMES_REGEX "[ A-Za-z0-9_.-]*"

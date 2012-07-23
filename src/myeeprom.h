@@ -18,6 +18,9 @@
 
 #include <inttypes.h>
 
+#ifndef PACK
+#define PACK( __Declaration__ ) __Declaration__ __attribute__((__packed__))
+#endif
 
 //eeprom data
 //#define EE_VERSION 2
@@ -60,71 +63,67 @@
 #define GENERAL_OWNER_NAME_LEN 10
 #define MODEL_NAME_LEN         10
 
+PACK(typedef struct t_TrainerMix {
+  uint8_t srcChn:3; //0-7 = ch1-8
+  int8_t  swtch:5;
+  int8_t  studWeight:6;
+  uint8_t mode:2;   //off,add-mode,subst-mode
+}) TrainerMix; //
 
-typedef struct t_TrainerMix {
-    uint8_t srcChn:3; //0-7 = ch1-8
-    int8_t  swtch:5;
-    int8_t  studWeight:6;
-    uint8_t mode:2;   //off,add-mode,subst-mode
-} __attribute__((packed)) TrainerMix; //
+PACK(typedef struct t_TrainerData {
+  int16_t        calib[4];
+  TrainerMix     mix[4];
+}) TrainerData;
 
-typedef struct t_TrainerData {
-    int16_t        calib[4];
-    TrainerMix     mix[4];
-} __attribute__((packed)) TrainerData;
-
-//typedef struct t_FrSkyRSSIAlarm {
-//  uint8_t       level:2;
-//  int8_t        value:6;
-//} __attribute__((packed)) FrSkyRSSIAlarm;
-
-
-typedef struct t_EEGeneral {
-  uint8_t   myVers;
-  int16_t   calibMid[7];
-  int16_t   calibSpanNeg[7];
-  int16_t   calibSpanPos[7];
-  uint16_t  chkSum;
-  uint8_t   currModel; //0..15
-  uint8_t   contrast;
-  uint8_t   vBatWarn;
-  int8_t    vBatCalib;
-  int8_t    lightSw;
-  TrainerData trainer;
-  uint8_t   view;
-  uint8_t   disableThrottleWarning:1;
-  uint8_t   disableSwitchWarning:1;
-  uint8_t   disableMemoryWarning:1;
-  uint8_t   beeperVal:3;
-  uint8_t   reserveWarning:1;
-  uint8_t   disableAlarmWarning:1;
-  uint8_t   stickMode;
-  int8_t    inactivityTimer;
-  uint8_t   throttleReversed:1;
-  uint8_t   minuteBeep:1;
-  uint8_t   preBeep:1;
-  uint8_t   flashBeep:1;
-  uint8_t   disableSplashScreen:1;
-  uint8_t   disablePotScroll:1;
-  uint8_t   disableBG:1;
-  uint8_t   frskyinternalalarm:1;
-  uint8_t   filterInput;
-  uint8_t   lightAutoOff;
-  uint8_t   templateSetup;  //RETA order according to chout_ar array 
-  int8_t    PPM_Multiplier;
-  uint8_t   FRSkyYellow:4;
-  uint8_t   FRSkyOrange:4;
-  uint8_t   FRSkyRed:4;  
-  uint8_t   hideNameOnSplash:1;
-  uint8_t   spare:3;
-  uint8_t   speakerPitch;
-  uint8_t   hapticStrength;
-  uint8_t   speakerMode;
-  uint8_t   lightOnStickMove;
-  char      ownerName[GENERAL_OWNER_NAME_LEN];
-  uint8_t   switchWarningStates;
-  uint8_t   res[4];
-} __attribute__((packed)) EEGeneral;
+PACK(typedef struct t_EEGeneral {
+    uint8_t   myVers;
+    int16_t   calibMid[7];
+    int16_t   calibSpanNeg[7];
+    int16_t   calibSpanPos[7];
+    uint16_t  chkSum;
+    uint8_t   currModel; //0..15
+    uint8_t   contrast;
+    uint8_t   vBatWarn;
+    int8_t    vBatCalib;
+    int8_t    lightSw;
+    TrainerData trainer;
+    uint8_t   view;
+    uint8_t   disableThrottleWarning:1;
+    uint8_t   disableSwitchWarning:1;
+    uint8_t   disableMemoryWarning:1;
+    uint8_t   beeperVal:3;
+    uint8_t   reserveWarning:1;
+    uint8_t   disableAlarmWarning:1;
+    uint8_t   stickMode;
+    int8_t    inactivityTimer;
+    uint8_t   throttleReversed:1;
+    uint8_t   minuteBeep:1;
+    uint8_t   preBeep:1;
+    uint8_t   flashBeep:1;
+    uint8_t   disableSplashScreen:1;
+    uint8_t   disablePotScroll:1;
+    uint8_t   disableBG:1;
+    uint8_t   frskyinternalalarm:1;
+    uint8_t   filterInput;
+    uint8_t   lightAutoOff;
+    uint8_t   templateSetup;  //RETA order according to chout_ar array
+    int8_t    PPM_Multiplier;
+    uint8_t   FRSkyYellow:4;
+    uint8_t   FRSkyOrange:4;
+    uint8_t   FRSkyRed:4;
+    uint8_t   hideNameOnSplash:1;
+    uint8_t   enablePpmsim:1;
+    uint8_t   blightinv:1;
+    uint8_t   spare:1;
+    uint8_t   speakerPitch;
+    uint8_t   hapticStrength;
+    uint8_t   speakerMode;
+    uint8_t   lightOnStickMove;
+    char      ownerName[GENERAL_OWNER_NAME_LEN];
+    uint8_t   switchWarningStates;
+		int8_t		volume ;
+    uint8_t   res[3];
+}) EEGeneral;
 
 
 
@@ -133,70 +132,85 @@ typedef struct t_EEGeneral {
 //eeprom modelspec
 //expo[3][2][2] //[Norm/Dr][expo/weight][R/L]
 
-typedef struct t_ExpoData {
-    int8_t  expo[3][2][2];
-    int8_t  drSw1;
-    int8_t  drSw2;
-} __attribute__((packed)) ExpoData;
+PACK(typedef struct t_ExpoData {
+  int8_t  expo[3][2][2];
+  int8_t  drSw1;
+  int8_t  drSw2;
+}) ExpoData;
 
 
-typedef struct t_LimitData {
-    int8_t  min;
-    int8_t  max;
-    bool    revert;
-    int16_t  offset;
-} __attribute__((packed)) LimitData;
+PACK(typedef struct t_LimitData {
+  int8_t  min;
+  int8_t  max;
+  bool    revert;
+  int16_t  offset;
+}) LimitData;
 
 #define MLTPX_ADD  0
 #define MLTPX_MUL  1
 #define MLTPX_REP  2
 
-typedef struct t_MixData {
-    uint8_t destCh;            //        1..NUM_CHNOUT
-    uint8_t srcRaw;            //
-    int8_t  weight;
-    int8_t  swtch;
-    uint8_t curve;             //0=symmetrisch 1=no neg 2=no pos
-    uint8_t delayUp:4;
-    uint8_t delayDown:4;
-    uint8_t speedUp:4;         // Servogeschwindigkeit aus Tabelle (10ms Cycle)
-    uint8_t speedDown:4;       // 0 nichts
-    uint8_t carryTrim:1;
-    uint8_t mltpx:3;           // multiplex method 0=+ 1=* 2=replace
-    uint8_t mixWarn:2;         // mixer warning
-    uint8_t enableFmTrim:1;
-    uint8_t mixres:1;
-    int8_t  sOffset;
-    int8_t  res;
-} __attribute__((packed)) MixData;
+PACK(typedef struct t_MixData {
+  uint8_t destCh;            //        1..NUM_CHNOUT
+  uint8_t srcRaw;            //
+  int8_t  weight;
+  int8_t  swtch;
+  uint8_t curve;             //0=symmetrisch 1=no neg 2=no pos
+  uint8_t delayUp:4;
+  uint8_t delayDown:4;
+  uint8_t speedUp:4;         // Servogeschwindigkeit aus Tabelle (10ms Cycle)
+  uint8_t speedDown:4;       // 0 nichts
+  uint8_t carryTrim:1;
+  uint8_t mltpx:3;           // multiplex method 0=+ 1=* 2=replace
+  uint8_t mixWarn:2;         // mixer warning
+  uint8_t enableFmTrim:1;
+  uint8_t mixres:1;
+  int8_t  sOffset;
+  int8_t  res;
+}) MixData;
 
 
-typedef struct t_CSwData { // Custom Switches data
-    int8_t  v1; //input
-    int8_t  v2; //offset
-    uint8_t func;
-} __attribute__((packed)) CSwData;
+PACK(typedef struct t_CSwData { // Custom Switches data
+  int8_t  v1; //input
+  int8_t  v2; 		//offset
+  uint8_t func;
+}) CSwData;
 
 typedef struct t_SafetySwData { // Custom Switches data
     int8_t  swtch;
     int8_t  val;
 } __attribute__((packed)) SafetySwData;
 
-typedef struct t_FrSkyChannelData {
-    uint8_t   ratio;                // 0.0 means not used, 0.1V steps EG. 6.6 Volts = 66. 25.1V = 251, etc.
-    uint8_t   alarms_value[2];      // 0.1V steps EG. 6.6 Volts = 66. 25.1V = 251, etc.
-    uint8_t   alarms_level:4;
-    uint8_t   alarms_greater:2;     // 0=LT(<), 1=GT(>)
-    uint8_t   type:2;               // future use: 0=volts, ...
-} __attribute__((packed)) FrSkyChannelData;
+PACK(typedef struct t_FrSkyChannelData {
+  uint8_t   ratio;                // 0.0 means not used, 0.1V steps EG. 6.6 Volts = 66. 25.1V = 251, etc.
+  uint8_t   alarms_value[2];      // 0.1V steps EG. 6.6 Volts = 66. 25.1V = 251, etc.
+  uint8_t   alarms_level:4;
+  uint8_t   alarms_greater:2;     // 0=LT(<), 1=GT(>)
+  uint8_t   type:2;               // 0=volts, 1=raw, 2=volts*2, 3=Amps
+}) FrSkyChannelData;
 
-typedef struct t_FrSkyData {
+PACK(typedef struct t_FrSkyalarms
+{
+	uint8_t frskyAlarmType ;
+	uint8_t frskyAlarmLimit ;
+	uint8_t frskyAlarmSound ;
+}) FrSkyAlarmData;
+
+PACK(typedef struct t_FrSkyData {
     FrSkyChannelData channels[2];
-} __attribute__((packed)) FrSkyData;
+		FrSkyAlarmData alarmData[4] ;
+}) FrSkyData;
+
+PACK(typedef struct t_swVoice {
+  uint8_t  vswtch:5 ;
+	uint8_t vmode:3 ; // ON, OFF, BOTH, 15Secs, 30Secs, 60Secs, Varibl
+  uint8_t  val ;
+}) voiceSwData ;
 
 typedef struct t_ModelData {
   char      name[MODEL_NAME_LEN];             // 10 must be first for eeLoadModelName
-  uint8_t   reserved_spare;
+//    uint8_t   reserved_spare;  //used to be MDVERS - now depreciated
+  uint8_t   modelVoice ;		// Index to model name voice (261+value)
   int8_t    tmrMode;              // timer trigger source -> off, abs, stk, stk%, sw/!sw, !m_sw/!m_sw
   uint8_t   tmrDir:1;    //0=>Count Down, 1=>Count Up
   uint8_t   traineron:1;  // 0 disable trainer, 1 allow trainer
@@ -235,7 +249,7 @@ typedef struct t_ModelData {
   CSwData   customSw[NUM_CSW];
   uint8_t   frSkyVoltThreshold ;
   int8_t    tmrModeB;
-  uint8_t   res3;
+  uint8_t   numVoice;		// 0-16, rest are Safety switches
   SafetySwData  safetySw[NUM_CHNOUT];
   FrSkyData frsky;
 } __attribute__((packed)) ModelData;
