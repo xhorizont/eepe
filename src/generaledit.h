@@ -83,6 +83,7 @@ private slots:
     void on_battcalibDSB_editingFinished();
     void on_battwarningDSB_editingFinished();
     void on_contrastSB_editingFinished();
+		void on_volumeSB_editingFinished();
     void on_beepFlashChkB_stateChanged(int );
     void on_speakerPitchSB_editingFinished();
     void on_hapticStengthSB_editingFinished();
@@ -92,6 +93,9 @@ private slots:
     void on_BandGapEnableChkB_stateChanged(int );
     void on_splashScreenNameChkB_stateChanged(int );
     void on_backlightStickMove_editingFinished();
+		void on_enablePpmsimChkB_stateChanged(int );
+		void on_internalFrskyAlarmChkB_stateChanged(int );
+		void on_backlightinvertChkB_stateChanged(int );
     void on_switchDefPos_1_stateChanged(int );
     void on_switchDefPos_2_stateChanged(int );
     void on_switchDefPos_3_stateChanged(int );

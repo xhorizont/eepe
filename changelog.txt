@@ -10,7 +10,12 @@ description here
 ====================================================================================
 
 ******************************************
-CHANGELOG: 23-07-2011 MPB
+CHANGELOG: 08-08-2012 MPB
+Add backlightinvert, volume, PPMSIM and InternalFrskyAlarms
+  to general edit
+
+******************************************
+CHANGELOG: 23-07-2012 MPB
 Add Custom switches TIMER option
 
 ******************************************
