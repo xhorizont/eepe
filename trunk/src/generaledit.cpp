@@ -56,6 +56,11 @@ GeneralEdit::GeneralEdit(EEPFILE *eFile, QWidget *parent) :
     ui->beeperCB->setCurrentIndex(g_eeGeneral.beeperVal);
     ui->channelorderCB->setCurrentIndex(g_eeGeneral.templateSetup);
     ui->stickmodeCB->setCurrentIndex(g_eeGeneral.stickMode);
+    
+		ui->volumeSB->setValue(g_eeGeneral.volume+7);
+    ui->enablePpmsimChkB->setChecked(g_eeGeneral.enablePpmsim);
+    ui->internalFrskyAlarmChkB->setChecked(g_eeGeneral.frskyinternalalarm);
+    ui->backlightinvertChkB->setChecked(g_eeGeneral.blightinv);
 
     ui->beepMinuteChkB->setChecked(g_eeGeneral.minuteBeep);
     ui->beepCountDownChkB->setChecked(g_eeGeneral.preBeep);
@@ -297,6 +302,12 @@ void GeneralEdit::on_contrastSB_editingFinished()
     updateSettings();
 }
 
+void GeneralEdit::on_volumeSB_editingFinished()
+{
+    g_eeGeneral.volume = ui->volumeSB->value()-7;
+    updateSettings();
+}
+
 void GeneralEdit::on_battwarningDSB_editingFinished()
 {
     g_eeGeneral.vBatWarn = (int)(ui->battwarningDSB->value()*10);
@@ -346,6 +357,24 @@ void GeneralEdit::on_inactimerSB_editingFinished()
 void GeneralEdit::on_thrrevChkB_stateChanged(int )
 {
     g_eeGeneral.throttleReversed = ui->thrrevChkB->isChecked() ? 1 : 0;
+    updateSettings();
+}
+
+void GeneralEdit::on_enablePpmsimChkB_stateChanged(int )
+{
+    g_eeGeneral.enablePpmsim = ui->enablePpmsimChkB->isChecked() ? 1 : 0;
+    updateSettings();
+}
+
+void GeneralEdit::on_internalFrskyAlarmChkB_stateChanged(int )
+{
+    g_eeGeneral.frskyinternalalarm = ui->internalFrskyAlarmChkB->isChecked() ? 1 : 0;
+    updateSettings();
+}
+		
+void GeneralEdit::on_backlightinvertChkB_stateChanged(int )
+{
+    g_eeGeneral.blightinv = ui->backlightinvertChkB->isChecked() ? 1 : 0;
     updateSettings();
 }
 
