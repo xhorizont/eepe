@@ -513,6 +513,13 @@ bool simulatorDialog::getSwitch(int swtch, bool nc, qint8 level)
         return false;
         break;
     }
+		if ( ret_value )
+		{
+			if ( cs.andsw )
+			{
+        ret_value = getSwitch( cs.andsw + 9, 0, level+1) ;
+			}
+		}
 		Last_switch[cs_index] = ret_value ;
 		return swtch>0 ? ret_value : !ret_value ;
 }
@@ -1047,9 +1054,19 @@ void simulatorDialog::perOut(bool init)
         if(q<lim_n) q = lim_n;
         if(g_model.limitData[i].revert) q=-q;// finally do the reverse.
 
-        if(g_model.safetySw[i].swtch)  //if safety sw available for channel check and replace val if needed
-            if(getSwitch(g_model.safetySw[i].swtch,0)) q = calc100toRESX(g_model.safetySw[i].val);
-
+				{
+					uint8_t numSafety = 16 - g_model.numVoice ;
+					if ( i < numSafety )
+					{
+        		if(g_model.safetySw[i].opt.ss.swtch)  //if safety sw available for channel check and replace val if needed
+						{
+							if ( ( g_model.safetySw[i].opt.ss.mode != 1 ) && ( g_model.safetySw[i].opt.ss.mode != 2 ) )	// And not used as an alarm
+							{
+        		    if(getSwitch(g_model.safetySw[i].opt.ss.swtch,0)) q = calc100toRESX(g_model.safetySw[i].opt.ss.val) ;
+							}
+						}
+					}
+				}
         //cli();
         chanOut[i] = q; //copy consistent word to int-level
         //sei();

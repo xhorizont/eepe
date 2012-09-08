@@ -15,8 +15,13 @@
 
 
 void populateSwitchCB(QComboBox *b, int value);
+void populateSafetySwitchCB(QComboBox *b, int type, int value) ;
+void populateSafetyVoiceTypeCB(QComboBox *b, int type, int value);
+void populateTelItemsCB(QComboBox *b, int value) ;
+void populateAlarmCB(QComboBox *b, int value);
 void populateCurvesCB(QComboBox *b, int value);
 void populateTimerSwitchCB(QComboBox *b, int value);
+void populateSwitchAndCB(QComboBox *b, int value) ;
 void populateTmrBSwitchCB(QComboBox *b, int value) ;
 void populateSourceCB(QComboBox *b, int stickMode=1, int value=0);
 void populateCSWCB(QComboBox *b, int value);

@@ -173,13 +173,32 @@ PACK(typedef struct t_MixData {
 PACK(typedef struct t_CSwData { // Custom Switches data
   int8_t  v1; //input
   int8_t  v2; 		//offset
-  uint8_t func;
+  uint8_t func:4;
+  uint8_t andsw:4;
 }) CSwData;
 
-typedef struct t_SafetySwData { // Custom Switches data
-    int8_t  swtch;
-    int8_t  val;
-} __attribute__((packed)) SafetySwData;
+PACK(typedef struct t_SafetySwData { // Custom Switches data
+	union opt
+	{
+		struct ss
+		{	
+	    int8_t  swtch:6;
+			uint8_t mode:2;
+    	int8_t  val;
+		} ss ;
+		struct vs
+		{
+  		uint8_t vswtch:5 ;
+			uint8_t vmode:3 ; // ON, OFF, BOTH, 15Secs, 30Secs, 60Secs, Varibl
+    	uint8_t vval;
+		} vs ;
+	} opt ;
+}) SafetySwData;
+
+//typedef struct t_SafetySwData { // Custom Switches data
+//    int8_t  swtch;
+//    int8_t  val;
+//} __attribute__((packed)) SafetySwData;
 
 PACK(typedef struct t_FrSkyChannelData {
   uint8_t   ratio;                // 0.0 means not used, 0.1V steps EG. 6.6 Volts = 66. 25.1V = 251, etc.
@@ -252,6 +271,7 @@ typedef struct t_ModelData {
   uint8_t   numVoice;		// 0-16, rest are Safety switches
   SafetySwData  safetySw[NUM_CHNOUT];
   FrSkyData frsky;
+	uint8_t CustomDisplayIndex[6] ;
 } __attribute__((packed)) ModelData;
 
 

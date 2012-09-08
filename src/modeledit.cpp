@@ -1310,6 +1310,12 @@ void ModelEdit::tabSwitches()
         ui->gridLayout_8->addWidget(cswitchSource2[i],i+1,3);
         cswitchSource2[i]->setVisible(false);
 
+        cswitchAndSwitch[i] = new QComboBox(this);
+        connect(cswitchAndSwitch[i],SIGNAL(currentIndexChanged(int)),this,SLOT(switchesEdited()));
+        ui->gridLayout_8->addWidget(cswitchAndSwitch[i],i+1,4);
+        cswitchAndSwitch[i]->setVisible(true);
+				populateSwitchAndCB(cswitchAndSwitch[i], g_model.customSw[i].andsw) ;
+
         cswitchOffset[i] = new QSpinBox(this);
         cswitchOffset[i]->setMaximum(125);
         cswitchOffset[i]->setMinimum(-125);
@@ -1347,25 +1353,249 @@ void ModelEdit::tabSwitches()
     switchEditLock = false;
 }
 
+
+void ModelEdit::setSafetyLabels()
+{
+	ui->SS1->setText(g_model.numVoice < 16 ? "CH1" : "VS1");
+	ui->SS2->setText(g_model.numVoice < 15 ? "CH2" : "VS2");
+	ui->SS3->setText(g_model.numVoice < 14 ? "CH3" : "VS3");
+	ui->SS4->setText(g_model.numVoice < 13 ? "CH4" : "VS4");
+	ui->SS5->setText(g_model.numVoice < 12 ? "CH5" : "VS5");
+	ui->SS6->setText(g_model.numVoice < 11 ? "CH6" : "VS6");
+	ui->SS7->setText(g_model.numVoice < 10 ? "CH7" : "VS7");
+	ui->SS8->setText(g_model.numVoice < 9 ? "CH8" : "VS8");
+	ui->SS9->setText(g_model.numVoice < 8 ? "CH9" : "VS9");
+	ui->SS10->setText(g_model.numVoice < 7 ? "CH10" : "VS10");
+	ui->SS11->setText(g_model.numVoice < 6 ? "CH11" : "VS11");
+	ui->SS12->setText(g_model.numVoice < 5 ? "CH12" : "VS12");
+	ui->SS13->setText(g_model.numVoice < 4 ? "CH13" : "VS13");
+	ui->SS14->setText(g_model.numVoice < 3 ? "CH14" : "VS14");
+	ui->SS15->setText(g_model.numVoice < 2 ? "CH15" : "VS15");
+	ui->SS16->setText(g_model.numVoice < 1 ? "CH16" : "VS16");
+}
+
+void ModelEdit::setSafetyWidgetVisibility(int i)
+{
+	if ( g_model.numVoice < 16-i )
+	{
+  	switch (g_model.safetySw[i].opt.ss.mode)
+		{
+			case 0 :		// 'S'
+			case 3 :		// 'S'
+  	    safetySwitchValue[i]->setVisible(true);
+  	    safetySwitchAlarm[i]->setVisible(false);
+				safetySwitchValue[i]->setMaximum(125);
+  	    safetySwitchValue[i]->setMinimum(-125);
+			break ;
+			case 2 :		// 'V'
+				if ( g_model.safetySw[i].opt.ss.swtch > MAX_DRSWITCH )
+				{
+		      safetySwitchValue[i]->setVisible(false);
+  		    safetySwitchAlarm[i]->setVisible(true);
+				}
+				else
+				{
+  	    	safetySwitchValue[i]->setVisible(true);
+  	    	safetySwitchAlarm[i]->setVisible(false);
+				}	 
+			break ;
+		
+			case 1 :		// 'A'
+  	    safetySwitchValue[i]->setVisible(false);
+  	    safetySwitchAlarm[i]->setVisible(true);
+			break ;
+		}
+	}
+	else
+	{
+		safetySwitchValue[i]->setMaximum(249);
+    safetySwitchValue[i]->setMinimum(0);
+
+		if ( g_model.safetySw[i].opt.vs.vmode > 5 )
+		{
+			safetySwitchValue[i]->setVisible(false);
+  		safetySwitchAlarm[i]->setVisible(true);
+		} 
+		else
+		{
+			safetySwitchValue[i]->setVisible(true);
+  	  safetySwitchAlarm[i]->setVisible(false);
+		}
+	}
+}
+
+
+
 void ModelEdit::tabSafetySwitches()
 {
+//		g_model.numVoice
+		ui->NumVoiceSwSB->setValue(g_model.numVoice);
+		setSafetyLabels() ;
+
     for(int i=0; i<NUM_CHNOUT; i++)
     {
+        safetySwitchType[i] = new QComboBox(this);
         safetySwitchSwtch[i] = new QComboBox(this);
-        populateSwitchCB(safetySwitchSwtch[i],g_model.safetySw[i].swtch);
-        ui->grid_tabSafetySwitches->addWidget(safetySwitchSwtch[i],i+1,1);
-        connect(safetySwitchSwtch[i],SIGNAL(currentIndexChanged(int)),this,SLOT(safetySwitchesEdited()));
-
+				safetySwitchAlarm[i] = new QComboBox(this);
         safetySwitchValue[i] = new QSpinBox(this);
+				
         safetySwitchValue[i]->setAlignment(Qt::AlignRight | Qt::AlignVCenter);
-        safetySwitchValue[i]->setMaximum(125);
-        safetySwitchValue[i]->setMinimum(-125);
         safetySwitchValue[i]->setAccelerated(true);
-        safetySwitchValue[i]->setValue(g_model.safetySw[i].val);
-        ui->grid_tabSafetySwitches->addWidget(safetySwitchValue[i],i+1,2);
+				
+				if ( g_model.numVoice < 16-i )	// Normal switch
+				{
+        	populateSafetyVoiceTypeCB(safetySwitchType[i], 0, g_model.safetySw[i].opt.ss.mode);
+        	populateSafetySwitchCB(safetySwitchSwtch[i],g_model.safetySw[i].opt.ss.mode,g_model.safetySw[i].opt.ss.swtch);
+					populateAlarmCB(safetySwitchAlarm[i],g_model.safetySw[i].opt.ss.val);
+					if ( g_model.safetySw[i].opt.ss.mode == 2 )		// 'V'
+					{
+						if ( g_model.safetySw[i].opt.ss.swtch > MAX_DRSWITCH )
+						{
+							populateTelItemsCB( safetySwitchAlarm[i],g_model.safetySw[i].opt.ss.val ) ;
+						}
+						safetySwitchValue[i]->setMaximum(239);
+       			safetySwitchValue[i]->setMinimum(0);
+       			safetySwitchValue[i]->setValue(g_model.safetySw[i].opt.ss.val+128);
+					}
+					else
+					{
+						safetySwitchValue[i]->setMaximum(125);
+        		safetySwitchValue[i]->setMinimum(-125);
+        		safetySwitchValue[i]->setValue(g_model.safetySw[i].opt.ss.val);
+					}
+				}	 
+				else
+				{
+        	populateSafetyVoiceTypeCB(safetySwitchType[i], 1, g_model.safetySw[i].opt.vs.vmode);
+        	populateSafetySwitchCB(safetySwitchSwtch[i],0,g_model.safetySw[i].opt.vs.vswtch);
+					safetySwitchValue[i]->setMaximum(249);
+     			safetySwitchValue[i]->setMinimum(0);
+       		safetySwitchValue[i]->setValue(g_model.safetySw[i].opt.vs.vval);
+					populateTelItemsCB( safetySwitchAlarm[i],g_model.safetySw[i].opt.vs.vval ) ;
+				}
+        ui->grid_tabSafetySwitches->addWidget(safetySwitchType[i],i+2,1);
+        ui->grid_tabSafetySwitches->addWidget(safetySwitchSwtch[i],i+2,2);
+
+        ui->grid_tabSafetySwitches->addWidget(safetySwitchAlarm[i],i+2,3);
+        ui->grid_tabSafetySwitches->addWidget(safetySwitchValue[i],i+2,3);
+        setSafetyWidgetVisibility(i);
+        connect(safetySwitchType[i],SIGNAL(currentIndexChanged(int)),this,SLOT(safetySwitchesEdited()));
+        connect(safetySwitchSwtch[i],SIGNAL(currentIndexChanged(int)),this,SLOT(safetySwitchesEdited()));
+        connect(safetySwitchAlarm[i],SIGNAL(currentIndexChanged(int)),this,SLOT(safetySwitchesEdited()));
         connect(safetySwitchValue[i],SIGNAL(editingFinished()),this,SLOT(safetySwitchesEdited()));
     }
+    connect(ui->NumVoiceSwSB,SIGNAL(valueChanged(int)),this,SLOT(safetySwitchesEdited()));
 }
+
+static int EditedNesting = 0 ;
+
+void ModelEdit::safetySwitchesEdited()
+{
+		int val ;
+		int modechange[NUM_CHNOUT] ;
+		int numVoice ;
+//		int voiceindexchange[NUM_CHNOUT] ;
+
+		if ( EditedNesting )
+		{
+			return ;
+		}
+		EditedNesting = 1 ;
+		
+		numVoice = g_model.numVoice ;
+
+    for(int i=0; i<NUM_CHNOUT; i++)
+    {
+      val = safetySwitchValue[i]->value();
+			if ( numVoice < 16-i )	// Normal switch
+			{
+				modechange[i] = g_model.safetySw[i].opt.ss.mode ;	// Previous value
+				if ( g_model.safetySw[i].opt.ss.mode == 2)	// Voice
+				{
+					val -= 128 ;
+					if ( g_model.safetySw[i].opt.ss.swtch > MAX_DRSWITCH )
+					{
+						val = safetySwitchAlarm[i]->currentIndex() ;
+					}
+				}
+				if ( g_model.safetySw[i].opt.ss.mode == 1)	// Alarm
+				{
+					val = safetySwitchAlarm[i]->currentIndex() ;
+				}
+        g_model.safetySw[i].opt.ss.val = val ;
+
+        g_model.safetySw[i].opt.ss.mode  = safetySwitchType[i]->currentIndex() ;
+        g_model.safetySw[i].opt.ss.swtch = safetySwitchSwtch[i]->currentIndex()-MAX_DRSWITCH;
+			}
+			else
+			{
+				if ( g_model.safetySw[i].opt.vs.vmode > 5 )
+				{
+					val = safetySwitchAlarm[i]->currentIndex() ;
+        }	
+        g_model.safetySw[i].opt.vs.vval = val ;
+        g_model.safetySw[i].opt.vs.vswtch = safetySwitchSwtch[i]->currentIndex()-MAX_DRSWITCH;
+				g_model.safetySw[i].opt.vs.vmode = safetySwitchType[i]->currentIndex() ;
+			}	
+		}
+    g_model.numVoice = ui->NumVoiceSwSB->value() ;
+    updateSettings();
+		
+		if ( g_model.numVoice != numVoice )
+		{
+			setSafetyLabels() ;
+		}
+    
+		for(int i=0; i<NUM_CHNOUT; i++)
+		{
+			if ( g_model.numVoice < 16-i )		// Normal switch
+			{
+        populateSafetyVoiceTypeCB(safetySwitchType[i], 0, g_model.safetySw[i].opt.ss.mode);
+				if ( modechange[i] != g_model.safetySw[i].opt.ss.mode )
+				{
+	    		populateSafetySwitchCB(safetySwitchSwtch[i],g_model.safetySw[i].opt.ss.mode,g_model.safetySw[i].opt.ss.swtch);
+					if ( g_model.safetySw[i].opt.ss.mode != 2 )
+					{
+						if ( g_model.safetySw[i].opt.ss.swtch > MAX_DRSWITCH )
+						{
+							g_model.safetySw[i].opt.ss.swtch = MAX_DRSWITCH ;
+    					safetySwitchSwtch[i]->setCurrentIndex(MAX_DRSWITCH+MAX_DRSWITCH) ;
+						}					
+					}
+					populateAlarmCB(safetySwitchAlarm[i],g_model.safetySw[i].opt.ss.val);
+					if ( g_model.safetySw[i].opt.ss.mode == 2 )
+					{
+						safetySwitchValue[i]->setMaximum(239);
+  	  		  safetySwitchValue[i]->setMinimum(0);
+      		 	safetySwitchValue[i]->setValue(g_model.safetySw[i].opt.ss.val+128);
+					}
+					else
+					{
+      		  safetySwitchValue[i]->setValue(g_model.safetySw[i].opt.ss.val);
+					}
+				}
+				if ( g_model.safetySw[i].opt.ss.swtch > MAX_DRSWITCH )
+				{
+					populateTelItemsCB( safetySwitchAlarm[i],g_model.safetySw[i].opt.ss.val ) ;
+				}
+			}
+			else
+			{
+        populateSafetyVoiceTypeCB(safetySwitchType[i], 1, g_model.safetySw[i].opt.vs.vmode);
+				safetySwitchValue[i]->setMaximum(249);
+     		safetySwitchValue[i]->setMinimum(0);
+       	safetySwitchValue[i]->setValue(g_model.safetySw[i].opt.vs.vval);
+				if ( g_model.safetySw[i].opt.vs.vmode > 5 )
+				{
+					populateTelItemsCB( safetySwitchAlarm[i],g_model.safetySw[i].opt.ss.val ) ;
+				}
+			}
+      setSafetyWidgetVisibility(i);
+		}
+		EditedNesting = 0 ;
+
+}
+
 
 void ModelEdit::switchesEdited()
 {
@@ -1400,9 +1630,13 @@ void ModelEdit::switchesEdited()
     g_model.customSw[10].func = ui->cswitchFunc_11->currentIndex();
     g_model.customSw[11].func = ui->cswitchFunc_12->currentIndex();
 
+    for(int i=0; i<NUM_CSW; i++)
+        setSwitchWidgetVisibility(i);
+
 
     for(int i=0; i<NUM_CSW; i++)
     {
+			g_model.customSw[i].andsw = cswitchAndSwitch[i]->currentIndex();
         if(chAr[i])
         {
             g_model.customSw[i].v1 = 0;
@@ -1485,6 +1719,29 @@ void ModelEdit::tabTrims()
 
 void ModelEdit::tabFrsky()
 {
+//	char text[60] ;
+		ui->CT1Holder->setVisible(false);
+		ui->CT2Holder->setVisible(false);
+//    for(int i=0; i<6; i++)
+//    {
+//      customTel[i] = new QComboBox(this);
+//			populateTelItemsCB( customTel[i], g_model.CustomDisplayIndex[i] ) ;
+//	    ui->gridLayout_25->addWidget(customTel[i],i/2,(i&1) ? 3 : 1);
+//	  }
+
+//		sprintf( text, "%d,%d,%d,%d,%d,%d", g_model.CustomDisplayIndex[0],
+//		g_model.CustomDisplayIndex[1],g_model.CustomDisplayIndex[2],
+//		g_model.CustomDisplayIndex[3],g_model.CustomDisplayIndex[4],
+//		g_model.CustomDisplayIndex[5] ) ;
+//		ui->label_92->setText(text) ;
+
+	
+//		sprintf( text, "%d,%d,%d,%d,%d,%d", customTel[0]->currentIndex(),
+//		customTel[1]->currentIndex(), customTel[2]->currentIndex(),
+//		customTel[3]->currentIndex(), customTel[4]->currentIndex(),
+//		customTel[5]->currentIndex() ) ;
+//		ui->label_93->setText(text) ;
+
     ui->frsky_ratio_0->setValue(g_model.frsky.channels[0].ratio);
     ui->frsky_type_0->setCurrentIndex(g_model.frsky.channels[0].type);
     ui->frsky_ratio_1->setValue(g_model.frsky.channels[1].ratio);
@@ -1534,10 +1791,18 @@ void ModelEdit::tabFrsky()
 		connect(ui->HubComboBox,SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
 		connect(ui->UnitsComboBox,SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
 		connect(ui->BladesSpinBox,SIGNAL(editingFinished()),this,SLOT(FrSkyEdited()));
+    
+//		connect(customTel[0],SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
+//		connect(customTel[1],SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
+//		connect(customTel[2],SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
+//		connect(customTel[3],SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
+//		connect(customTel[4],SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
+//		connect(customTel[5],SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
 }
 
 void ModelEdit::FrSkyEdited()
 {
+//	char text[60] ;
     g_model.frsky.channels[0].ratio = ui->frsky_ratio_0->value();
     g_model.frsky.channels[1].ratio = ui->frsky_ratio_1->value();
     g_model.frsky.channels[0].type  = ui->frsky_type_0->currentIndex();
@@ -1559,7 +1824,22 @@ void ModelEdit::FrSkyEdited()
     g_model.FrSkyImperial = ui->UnitsComboBox->currentIndex();
     g_model.numBlades = ui->BladesSpinBox->value() - 2 ;
 
-    updateSettings();
+
+//		g_model.CustomDisplayIndex[0] = customTel[0]->currentIndex() ;
+//		g_model.CustomDisplayIndex[1] = customTel[1]->currentIndex() ;
+//		g_model.CustomDisplayIndex[2] = customTel[2]->currentIndex() ;
+//		g_model.CustomDisplayIndex[3] = customTel[3]->currentIndex() ;
+//		g_model.CustomDisplayIndex[4] = customTel[4]->currentIndex() ;
+//		g_model.CustomDisplayIndex[5] = customTel[5]->currentIndex() ;
+    
+//		sprintf( text, "%d,%d,%d,%d,%d,%d", customTel[0]->currentIndex(),
+//		customTel[1]->currentIndex(), customTel[2]->currentIndex(),
+//		customTel[3]->currentIndex(), customTel[4]->currentIndex(),
+//		customTel[5]->currentIndex() ) ;
+//		ui->label_93->setText(text) ;
+
+		
+		updateSettings();
 }
 
 void ModelEdit::tabTemplates()
@@ -2714,17 +2994,6 @@ void ModelEdit::setLimitMinMax()
     ui->maxSB_14->setMinimum(-v);
     ui->maxSB_15->setMinimum(-v);
     ui->maxSB_16->setMinimum(-v);
-}
-
-
-void ModelEdit::safetySwitchesEdited()
-{
-    for(int i=0; i<NUM_CHNOUT; i++)
-    {
-        g_model.safetySw[i].swtch = safetySwitchSwtch[i]->currentIndex()-MAX_DRSWITCH;
-        g_model.safetySw[i].val   = safetySwitchValue[i]->value();
-    }
-    updateSettings();
 }
 
 
