@@ -9004,12 +9004,18 @@ Right</string>
            <property name="text">
             <string>Custom Telemetry 1</string>
            </property>
+           <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+           </property>
           </widget>
          </item>
          <item row="2" column="0">
           <widget class="QLabel" name="label_88">
            <property name="text">
             <string>Custom Telemetry 3</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
            </property>
           </widget>
          </item>
@@ -9018,12 +9024,18 @@ Right</string>
            <property name="text">
             <string>Custom Telemetry 5</string>
            </property>
+           <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+           </property>
           </widget>
          </item>
          <item row="0" column="2">
           <widget class="QLabel" name="label_87">
            <property name="text">
             <string>Custom Telemetry 2</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
            </property>
           </widget>
          </item>
@@ -9032,6 +9044,9 @@ Right</string>
            <property name="text">
             <string>Custom Telemetry 4</string>
            </property>
+           <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+           </property>
           </widget>
          </item>
          <item row="4" column="2">
@@ -9039,21 +9054,28 @@ Right</string>
            <property name="text">
             <string>Custom Telemetry 6</string>
            </property>
+           <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+           </property>
           </widget>
          </item>
          <item row="0" column="1">
-          <widget class="QLabel" name="CT1Holder">
-           <property name="text">
-            <string>TextLabel</string>
-           </property>
-          </widget>
+          <widget class="QComboBox" name="Ct1"/>
          </item>
          <item row="0" column="3">
-          <widget class="QLabel" name="CT2Holder">
-           <property name="text">
-            <string>TextLabel</string>
-           </property>
-          </widget>
+          <widget class="QComboBox" name="Ct2"/>
+         </item>
+         <item row="2" column="1">
+          <widget class="QComboBox" name="Ct3"/>
+         </item>
+         <item row="2" column="3">
+          <widget class="QComboBox" name="Ct4"/>
+         </item>
+         <item row="4" column="1">
+          <widget class="QComboBox" name="Ct5"/>
+         </item>
+         <item row="4" column="3">
+          <widget class="QComboBox" name="Ct6"/>
          </item>
         </layout>
        </item>

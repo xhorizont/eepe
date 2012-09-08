@@ -32,6 +32,7 @@ ModelEdit::ModelEdit(EEPFILE *eFile, uint8_t id, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::ModelEdit)
 {
+		int size ;
     ui->setupUi(this);
 
     eeFile = eFile;
@@ -43,7 +44,17 @@ ModelEdit::ModelEdit(EEPFILE *eFile, uint8_t id, QWidget *parent) :
 
     if(!eeFile->eeLoadGeneral())  eeFile->generalDefault();
     eeFile->getGeneralSettings(&g_eeGeneral);
-    eeFile->getModel(&g_model,id);
+    size = eeFile->getModel(&g_model,id);
+		if ( size < sizeof(g_model) )
+		{
+			uint8_t *p ;
+			p = (uint8_t *) &g_model + size ;
+			while( size < sizeof(g_model) )
+			{
+				*p++ = 0 ;
+				size += 1 ;
+			}
+		}
     id_model = id;
 
     setupMixerListWidget();
@@ -1719,29 +1730,13 @@ void ModelEdit::tabTrims()
 
 void ModelEdit::tabFrsky()
 {
-//	char text[60] ;
-		ui->CT1Holder->setVisible(false);
-		ui->CT2Holder->setVisible(false);
-//    for(int i=0; i<6; i++)
-//    {
-//      customTel[i] = new QComboBox(this);
-//			populateTelItemsCB( customTel[i], g_model.CustomDisplayIndex[i] ) ;
-//	    ui->gridLayout_25->addWidget(customTel[i],i/2,(i&1) ? 3 : 1);
-//	  }
-
-//		sprintf( text, "%d,%d,%d,%d,%d,%d", g_model.CustomDisplayIndex[0],
-//		g_model.CustomDisplayIndex[1],g_model.CustomDisplayIndex[2],
-//		g_model.CustomDisplayIndex[3],g_model.CustomDisplayIndex[4],
-//		g_model.CustomDisplayIndex[5] ) ;
-//		ui->label_92->setText(text) ;
-
-	
-//		sprintf( text, "%d,%d,%d,%d,%d,%d", customTel[0]->currentIndex(),
-//		customTel[1]->currentIndex(), customTel[2]->currentIndex(),
-//		customTel[3]->currentIndex(), customTel[4]->currentIndex(),
-//		customTel[5]->currentIndex() ) ;
-//		ui->label_93->setText(text) ;
-
+		populateTelItemsCB( ui->Ct1, g_model.CustomDisplayIndex[0] ) ;
+		populateTelItemsCB( ui->Ct2, g_model.CustomDisplayIndex[1] ) ;
+		populateTelItemsCB( ui->Ct3, g_model.CustomDisplayIndex[2] ) ;
+		populateTelItemsCB( ui->Ct4, g_model.CustomDisplayIndex[3] ) ;
+		populateTelItemsCB( ui->Ct5, g_model.CustomDisplayIndex[4] ) ;
+		populateTelItemsCB( ui->Ct6, g_model.CustomDisplayIndex[5] ) ;
+		
     ui->frsky_ratio_0->setValue(g_model.frsky.channels[0].ratio);
     ui->frsky_type_0->setCurrentIndex(g_model.frsky.channels[0].type);
     ui->frsky_ratio_1->setValue(g_model.frsky.channels[1].ratio);
@@ -1792,17 +1787,16 @@ void ModelEdit::tabFrsky()
 		connect(ui->UnitsComboBox,SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
 		connect(ui->BladesSpinBox,SIGNAL(editingFinished()),this,SLOT(FrSkyEdited()));
     
-//		connect(customTel[0],SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
-//		connect(customTel[1],SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
-//		connect(customTel[2],SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
-//		connect(customTel[3],SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
-//		connect(customTel[4],SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
-//		connect(customTel[5],SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
+		connect( ui->Ct1,SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
+		connect( ui->Ct2,SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
+		connect( ui->Ct3,SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
+		connect( ui->Ct4,SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
+		connect( ui->Ct5,SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
+		connect( ui->Ct6,SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
 }
 
 void ModelEdit::FrSkyEdited()
 {
-//	char text[60] ;
     g_model.frsky.channels[0].ratio = ui->frsky_ratio_0->value();
     g_model.frsky.channels[1].ratio = ui->frsky_ratio_1->value();
     g_model.frsky.channels[0].type  = ui->frsky_type_0->currentIndex();
@@ -1825,20 +1819,13 @@ void ModelEdit::FrSkyEdited()
     g_model.numBlades = ui->BladesSpinBox->value() - 2 ;
 
 
-//		g_model.CustomDisplayIndex[0] = customTel[0]->currentIndex() ;
-//		g_model.CustomDisplayIndex[1] = customTel[1]->currentIndex() ;
-//		g_model.CustomDisplayIndex[2] = customTel[2]->currentIndex() ;
-//		g_model.CustomDisplayIndex[3] = customTel[3]->currentIndex() ;
-//		g_model.CustomDisplayIndex[4] = customTel[4]->currentIndex() ;
-//		g_model.CustomDisplayIndex[5] = customTel[5]->currentIndex() ;
+		g_model.CustomDisplayIndex[0] = ui->Ct1->currentIndex() ;
+		g_model.CustomDisplayIndex[1] = ui->Ct2->currentIndex() ;
+		g_model.CustomDisplayIndex[2] = ui->Ct3->currentIndex() ;
+		g_model.CustomDisplayIndex[3] = ui->Ct4->currentIndex() ;
+		g_model.CustomDisplayIndex[4] = ui->Ct5->currentIndex() ;
+		g_model.CustomDisplayIndex[5] = ui->Ct6->currentIndex() ;
     
-//		sprintf( text, "%d,%d,%d,%d,%d,%d", customTel[0]->currentIndex(),
-//		customTel[1]->currentIndex(), customTel[2]->currentIndex(),
-//		customTel[3]->currentIndex(), customTel[4]->currentIndex(),
-//		customTel[5]->currentIndex() ) ;
-//		ui->label_93->setText(text) ;
-
-		
 		updateSettings();
 }
 
