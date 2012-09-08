@@ -446,8 +446,8 @@ void printDialog::printSafetySwitches()
     {
         str.append("<tr>");
         str.append(doTC(tr("CH%1").arg(i+1),"",true));
-        str.append(doTC(getSWName(g_model->safetySw[i].swtch),"green"));
-        str.append(doTC(QString::number(g_model->safetySw[i].val),"green"));
+        str.append(doTC(getSWName(g_model->safetySw[i].opt.ss.swtch),"green"));
+        str.append(doTC(QString::number(g_model->safetySw[i].opt.ss.val),"green"));
         str.append("</tr>");
     }
     str.append("</table>");

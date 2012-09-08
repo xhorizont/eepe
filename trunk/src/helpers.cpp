@@ -2,6 +2,69 @@
 #include "pers.h"
 #include "helpers.h"
 
+QString AudioAlarms[] = {
+	"Warn1",
+	"Warn2",
+	"Cheap",
+	"Ring",
+	"SciFi",
+	"Robot",
+	"Chirp",
+	"Tada",
+	"Crickt",
+	"Siren",
+	"AlmClk",
+	"Ratata",
+	"Tick",
+	"Haptc1",
+	"Haptc2",
+	"Haptc3"
+} ;
+
+QString TelemItems[] = {
+	"----",
+	"A1= ",
+	"A2= ",
+	"RSSI",
+	"TSSI",
+	"Tim1",
+	"Tim2",
+	"Alt ",
+	"Galt",
+	"Gspd",
+	"T1= ",
+	"T2= ",
+	"RPM ",
+	"FUEL",
+	"Mah1",
+	"Mah2",
+	"Cvlt",
+	"Batt",
+	"Amps",
+	"Mah ",
+	"Ctot",
+	"FasV"
+} ;
+
+
+void populateTelItemsCB(QComboBox *b, int value=0)
+{
+    b->clear();
+    for(int i=0; i<=21; i++)
+        b->addItem(TelemItems[i]);
+    b->setCurrentIndex(value);
+    b->setMaxVisibleItems(22);
+}
+
+
+void populateAlarmCB(QComboBox *b, int value=0)
+{
+    b->clear();
+    for(int i=0; i<=15; i++)
+        b->addItem(AudioAlarms[i]);
+    b->setCurrentIndex(value);
+    b->setMaxVisibleItems(16);
+}
 
 QString getSWName(int val)
 {
@@ -20,6 +83,66 @@ void populateSwitchCB(QComboBox *b, int value=0)
         b->addItem(getSWName(i));
     b->setCurrentIndex(value+MAX_DRSWITCH);
     b->setMaxVisibleItems(10);
+}
+
+void populateSwitchAndCB(QComboBox *b, int value=0)
+{
+	char name[4] ;
+	name[0] = 'C' ;
+	name[1] = 'S' ;
+	name[3] = 0 ;
+    b->clear();
+    b->addItem("---");
+
+    for(int i=0; i<=NUM_CSW; i++)
+		{
+			name[2] = i + '0' ;
+			if ( i > 9 )
+			{
+				name[2] += 'A' - '9' - 1 ;
+			}
+        b->addItem(name);
+		}
+    b->setCurrentIndex(value);
+    b->setMaxVisibleItems(10);
+}
+
+void populateSafetySwitchCB(QComboBox *b, int type, int value=0)
+{
+    b->clear();
+    for(int i=-MAX_DRSWITCH; i<=MAX_DRSWITCH; i++)
+        b->addItem(getSWName(i));
+    b->setCurrentIndex(value+MAX_DRSWITCH);
+    b->setMaxVisibleItems(10);
+		if (type == 2 )
+		{
+      	b->addItem(" 8 seconds");
+      	b->addItem("12 seconds");
+      	b->addItem("16 seconds");
+		}
+}
+
+
+QString SafetyType[] = {"S","A","V"};
+QString VoiceType[] = {"ON", "OFF", "BOTH", "15Secs", "30Secs", "60Secs", "Varibl"} ;
+
+void populateSafetyVoiceTypeCB(QComboBox *b, int type, int value=0)
+{
+    b->clear();
+		if ( type == 0 )
+		{
+    	for(int i= 0 ; i<=2; i++)
+        b->addItem(SafetyType[i]);
+    	b->setCurrentIndex(value);
+    	b->setMaxVisibleItems(3);
+		}
+		else
+		{
+    	for(int i= 0 ; i<=6; i++)
+        b->addItem(VoiceType[i]);
+    	b->setCurrentIndex(value);
+    	b->setMaxVisibleItems(7);
+		}
 }
 
 void populateTmrBSwitchCB(QComboBox *b, int value=0)

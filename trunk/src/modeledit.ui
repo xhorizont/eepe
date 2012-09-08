@@ -7767,7 +7767,7 @@ Right</string>
       <attribute name="title">
        <string>Switches</string>
       </attribute>
-      <layout class="QGridLayout" name="gridLayout_8" rowstretch="0,0,0,0,0,0,0,0,0,0,0,0,0,0" columnstretch="0,0,0,0">
+      <layout class="QGridLayout" name="gridLayout_8" rowstretch="0,0,0,0,0,0,0,0,0,0,0,0,0,0" columnstretch="0,0,0,0,0">
        <item row="1" column="0">
         <widget class="QLabel" name="label_30">
          <property name="frameShape">
@@ -8012,14 +8012,36 @@ Right</string>
        <item row="12" column="1">
         <widget class="QComboBox" name="cswitchFunc_12"/>
        </item>
+       <item row="0" column="4">
+        <widget class="QLabel" name="label_85">
+         <property name="frameShape">
+          <enum>QFrame::Panel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <property name="text">
+          <string>AND Switch</string>
+         </property>
+        </widget>
+       </item>
       </layout>
      </widget>
      <widget class="QWidget" name="tabSafetySwitches">
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
       <attribute name="title">
        <string>Safety Switches</string>
       </attribute>
-      <layout class="QGridLayout" name="grid_tabSafetySwitches" rowstretch="0,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10" columnstretch="0,10,10">
-       <item row="0" column="0">
+      <layout class="QGridLayout" name="grid_tabSafetySwitches" rowstretch="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,10" columnstretch="0,2,9,9">
+       <property name="topMargin">
+        <number>7</number>
+       </property>
+       <property name="verticalSpacing">
+        <number>6</number>
+       </property>
+       <item row="1" column="0">
         <widget class="QLabel" name="label_56">
          <property name="frameShape">
           <enum>QFrame::Panel</enum>
@@ -8041,7 +8063,7 @@ Right</string>
          </property>
         </widget>
        </item>
-       <item row="0" column="1">
+       <item row="1" column="2">
         <widget class="QLabel" name="label_66">
          <property name="frameShape">
           <enum>QFrame::Panel</enum>
@@ -8063,7 +8085,7 @@ Right</string>
          </property>
         </widget>
        </item>
-       <item row="0" column="2">
+       <item row="1" column="3">
         <widget class="QLabel" name="label_80">
          <property name="frameShape">
           <enum>QFrame::Panel</enum>
@@ -8085,115 +8107,150 @@ Right</string>
          </property>
         </widget>
        </item>
-       <item row="1" column="0">
-        <widget class="QLabel" name="label_97">
+       <item row="2" column="0">
+        <widget class="QLabel" name="SS1">
          <property name="text">
           <string notr="true">CH1</string>
          </property>
         </widget>
        </item>
-       <item row="2" column="0">
-        <widget class="QLabel" name="label_88">
+       <item row="3" column="0">
+        <widget class="QLabel" name="SS2">
          <property name="text">
           <string notr="true">CH2</string>
          </property>
         </widget>
        </item>
-       <item row="3" column="0">
-        <widget class="QLabel" name="label_85">
+       <item row="4" column="0">
+        <widget class="QLabel" name="SS3">
          <property name="text">
           <string notr="true">CH3</string>
          </property>
         </widget>
        </item>
-       <item row="4" column="0">
-        <widget class="QLabel" name="label_84">
+       <item row="5" column="0">
+        <widget class="QLabel" name="SS4">
          <property name="text">
           <string notr="true">CH4</string>
          </property>
         </widget>
        </item>
-       <item row="5" column="0">
-        <widget class="QLabel" name="label_89">
+       <item row="6" column="0">
+        <widget class="QLabel" name="SS5">
          <property name="text">
           <string notr="true">CH5</string>
          </property>
         </widget>
        </item>
-       <item row="6" column="0">
-        <widget class="QLabel" name="label_90">
+       <item row="7" column="0">
+        <widget class="QLabel" name="SS6">
          <property name="text">
           <string notr="true">CH6</string>
          </property>
         </widget>
        </item>
-       <item row="7" column="0">
-        <widget class="QLabel" name="label_86">
+       <item row="8" column="0">
+        <widget class="QLabel" name="SS7">
          <property name="text">
           <string notr="true">CH7</string>
          </property>
         </widget>
        </item>
-       <item row="8" column="0">
-        <widget class="QLabel" name="label_98">
+       <item row="9" column="0">
+        <widget class="QLabel" name="SS8">
          <property name="text">
           <string notr="true">CH8</string>
          </property>
         </widget>
        </item>
-       <item row="9" column="0">
-        <widget class="QLabel" name="label_91">
+       <item row="10" column="0">
+        <widget class="QLabel" name="SS9">
          <property name="text">
           <string notr="true">CH9</string>
          </property>
         </widget>
        </item>
-       <item row="10" column="0">
-        <widget class="QLabel" name="label_92">
+       <item row="11" column="0">
+        <widget class="QLabel" name="SS10">
          <property name="text">
           <string notr="true">CH10</string>
          </property>
         </widget>
        </item>
-       <item row="11" column="0">
-        <widget class="QLabel" name="label_83">
+       <item row="12" column="0">
+        <widget class="QLabel" name="SS11">
          <property name="text">
           <string notr="true">CH11</string>
          </property>
         </widget>
        </item>
-       <item row="12" column="0">
-        <widget class="QLabel" name="label_93">
+       <item row="13" column="0">
+        <widget class="QLabel" name="SS12">
          <property name="text">
           <string notr="true">CH12</string>
          </property>
         </widget>
        </item>
-       <item row="13" column="0">
-        <widget class="QLabel" name="label_94">
+       <item row="14" column="0">
+        <widget class="QLabel" name="SS13">
          <property name="text">
           <string notr="true">CH13</string>
          </property>
         </widget>
        </item>
-       <item row="14" column="0">
-        <widget class="QLabel" name="label_95">
+       <item row="15" column="0">
+        <widget class="QLabel" name="SS14">
          <property name="text">
           <string notr="true">CH14</string>
          </property>
         </widget>
        </item>
-       <item row="15" column="0">
-        <widget class="QLabel" name="label_87">
+       <item row="16" column="0">
+        <widget class="QLabel" name="SS15">
          <property name="text">
           <string notr="true">CH15</string>
          </property>
         </widget>
        </item>
-       <item row="16" column="0">
-        <widget class="QLabel" name="label_96">
+       <item row="17" column="0">
+        <widget class="QLabel" name="SS16">
          <property name="text">
           <string notr="true">CH16</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="3">
+        <widget class="QSpinBox" name="NumVoiceSwSB">
+         <property name="maximum">
+          <number>16</number>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="2">
+        <widget class="QLabel" name="label_83">
+         <property name="font">
+          <font>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Number of Voice Switches</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QLabel" name="label_84">
+         <property name="frameShape">
+          <enum>QFrame::Panel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <property name="text">
+          <string>Type</string>
          </property>
         </widget>
        </item>
@@ -8935,6 +8992,66 @@ Right</string>
            </property>
            <property name="text">
             <string/>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QGridLayout" name="gridLayout_25" columnstretch="0,0,0,0">
+         <item row="0" column="0">
+          <widget class="QLabel" name="label_86">
+           <property name="text">
+            <string>Custom Telemetry 1</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLabel" name="label_88">
+           <property name="text">
+            <string>Custom Telemetry 3</string>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="0">
+          <widget class="QLabel" name="label_89">
+           <property name="text">
+            <string>Custom Telemetry 5</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="2">
+          <widget class="QLabel" name="label_87">
+           <property name="text">
+            <string>Custom Telemetry 2</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="2">
+          <widget class="QLabel" name="label_90">
+           <property name="text">
+            <string>Custom Telemetry 4</string>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="2">
+          <widget class="QLabel" name="label_91">
+           <property name="text">
+            <string>Custom Telemetry 6</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QLabel" name="CT1Holder">
+           <property name="text">
+            <string>TextLabel</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="3">
+          <widget class="QLabel" name="CT2Holder">
+           <property name="text">
+            <string>TextLabel</string>
            </property>
           </widget>
          </item>

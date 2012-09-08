@@ -50,9 +50,14 @@ private:
     QSpinBox  * cswitchOffset0[NUM_CSW];
     QComboBox * cswitchSource1[NUM_CSW];
     QComboBox * cswitchSource2[NUM_CSW];
+    QComboBox * cswitchAndSwitch[NUM_CSW];
 
     QSpinBox  * safetySwitchValue[NUM_CHNOUT];
     QComboBox * safetySwitchSwtch[NUM_CHNOUT];
+		QComboBox * safetySwitchType[NUM_CHNOUT];
+    QComboBox * safetySwitchAlarm[NUM_CHNOUT];
+
+//    QComboBox * customTel[6];
 
     void setupMixerListWidget();
     void updateSettings();
@@ -69,9 +74,11 @@ private:
     void tabTemplates();
     void updateCurvesTab();
     void setSwitchWidgetVisibility(int i);
+		void setSafetyWidgetVisibility(int i);
     void setLimitMinMax();
     void updateSwitchesTab();
     void updateHeliTab();
+		void setSafetyLabels() ;
 
     void launchSimulation();
     void resizeEvent(QResizeEvent *event  = 0);
