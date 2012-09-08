@@ -9,6 +9,11 @@ CHANGELOG: 24-JAN-2011
 description here
 ====================================================================================
 
+
+******************************************
+CHANGELOG: 08-09-2012 MPB
+Add Custom telemetry editing on frsky tab
+
 ******************************************
 CHANGELOG: 08-09-2012 MPB
 On screen editing of custom switches and safety/voice switches updated

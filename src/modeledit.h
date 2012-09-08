@@ -57,8 +57,6 @@ private:
 		QComboBox * safetySwitchType[NUM_CHNOUT];
     QComboBox * safetySwitchAlarm[NUM_CHNOUT];
 
-//    QComboBox * customTel[6];
-
     void setupMixerListWidget();
     void updateSettings();
     void tabModelEditSetup();
