@@ -11,6 +11,10 @@ description here
 
 
 ******************************************
+CHANGELOG: 09-09-2012 MPB
+Fix bug added in Cswitch editing
+
+******************************************
 CHANGELOG: 08-09-2012 MPB
 Add Custom telemetry editing on frsky tab
 
