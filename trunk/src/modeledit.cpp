@@ -1641,9 +1641,6 @@ void ModelEdit::switchesEdited()
     g_model.customSw[10].func = ui->cswitchFunc_11->currentIndex();
     g_model.customSw[11].func = ui->cswitchFunc_12->currentIndex();
 
-    for(int i=0; i<NUM_CSW; i++)
-        setSwitchWidgetVisibility(i);
-
 
     for(int i=0; i<NUM_CSW; i++)
     {
@@ -1678,7 +1675,10 @@ void ModelEdit::switchesEdited()
         }
     }
 
-    updateSettings();
+    for(int i=0; i<NUM_CSW; i++)
+        setSwitchWidgetVisibility(i);
+    
+		updateSettings();
 
     switchEditLock = false;
 }
