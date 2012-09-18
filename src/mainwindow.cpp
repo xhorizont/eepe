@@ -68,7 +68,7 @@
 //#define DNLD_VER_ER9X_NOHT_SPKR       7
 //#define DNLD_VER_ER9X_FRSKY_SPKR      8
 //#define DNLD_VER_ER9X_FRSKY_NOHT_SPKR 9
-#define DNLD_VER_ER9X_NMEA            7
+#define DNLD_VER_ER9X_NMEA            6
 
 #define ER9X_URL   "http://er9x.googlecode.com/svn/trunk/er9x.hex"
 #define ER9X_NOHT_URL   "http://er9x.googlecode.com/svn/trunk/er9x-noht.hex"
@@ -349,6 +349,10 @@ void MainWindow::downloadLatester9x()
         baseFileName = "er9x-frsky-noht-spkr.hex";
         break;
  */
+    default:
+        dnldURL = ER9X_URL;
+        baseFileName = "er9x.hex";
+        break;
     }
 
     QString fileName = QFileDialog::getSaveFileName(this, tr("Save As"),settings.value("lastDir").toString() + "/" + baseFileName,tr(HEX_FILES_FILTER));

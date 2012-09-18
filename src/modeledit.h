@@ -51,6 +51,7 @@ private:
     QComboBox * cswitchSource1[NUM_CSW];
     QComboBox * cswitchSource2[NUM_CSW];
     QComboBox * cswitchAndSwitch[NUM_CSW];
+    QLabel		* cswitchTlabel[NUM_CSW];
 
     QSpinBox  * safetySwitchValue[NUM_CHNOUT];
     QComboBox * safetySwitchSwtch[NUM_CHNOUT];

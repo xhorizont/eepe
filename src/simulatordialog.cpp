@@ -767,6 +767,9 @@ void simulatorDialog::perOut(bool init)
     calibratedStick[MIX_MAX-1]=calibratedStick[MIX_FULL-1]=1024;
     anas[MIX_MAX-1]  = RESX;     // MAX
     anas[MIX_FULL-1] = RESX;     // FULL
+		anas[MIX_3POS-1] = keyState(SW_ID0) ? -1024 : (keyState(SW_ID1) ? 0 : 1024) ;
+
+
     for(uint8_t i=0;i<NUM_PPM;i++)    anas[i+PPM_BASE]   = g_ppmIns[i];// - g_eeGeneral.ppmInCalib[i]; //add ppm channels
     for(uint8_t i=0;i<NUM_CHNOUT;i++) anas[i+CHOUT_BASE] = chans[i]; //other mixes previous outputs
 

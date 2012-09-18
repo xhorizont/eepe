@@ -35,7 +35,7 @@
    <item row="0" column="1">
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
-      <number>9</number>
+      <number>6</number>
      </property>
      <widget class="QWidget" name="tabModelSetup">
       <attribute name="title">
@@ -7767,7 +7767,7 @@ Right</string>
       <attribute name="title">
        <string>Switches</string>
       </attribute>
-      <layout class="QGridLayout" name="gridLayout_8" rowstretch="0,0,0,0,0,0,0,0,0,0,0,0,0,0" columnstretch="0,0,0,0,0">
+      <layout class="QGridLayout" name="gridLayout_8" rowstretch="0,0,0,0,0,0,0,0,0,0,0,0,0,0" columnstretch="0,0,0,0,0,0">
        <item row="1" column="0">
         <widget class="QLabel" name="label_30">
          <property name="frameShape">
@@ -8012,7 +8012,7 @@ Right</string>
        <item row="12" column="1">
         <widget class="QComboBox" name="cswitchFunc_12"/>
        </item>
-       <item row="0" column="4">
+       <item row="0" column="5">
         <widget class="QLabel" name="label_85">
          <property name="frameShape">
           <enum>QFrame::Panel</enum>
@@ -8022,6 +8022,19 @@ Right</string>
          </property>
          <property name="text">
           <string>AND Switch</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="4">
+        <widget class="QLabel" name="label_92">
+         <property name="frameShape">
+          <enum>QFrame::Panel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <property name="text">
+          <string>Telemetry Value</string>
          </property>
         </widget>
        </item>

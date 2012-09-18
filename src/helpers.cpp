@@ -22,38 +22,252 @@ QString AudioAlarms[] = {
 } ;
 
 QString TelemItems[] = {
-	"----",
+//	"----",
 	"A1= ",
 	"A2= ",
 	"RSSI",
 	"TSSI",
-	"Tim1",
+	"Tim1",	// 4
 	"Tim2",
 	"Alt ",
 	"Galt",
-	"Gspd",
+	"Gspd", // 8
 	"T1= ",
 	"T2= ",
 	"RPM ",
-	"FUEL",
+	"FUEL", // 12
 	"Mah1",
 	"Mah2",
 	"Cvlt",
-	"Batt",
+	"Batt", // 16
 	"Amps",
 	"Mah ",
 	"Ctot",
-	"FasV"
+	"FasV"	// 20
 } ;
+
+
+
+// This routine converts an 8 bit value for custom switch use
+int16_t convertTelemConstant( int8_t index, int8_t value)
+{
+  int16_t result;
+
+	result = value + 125 ;
+  switch (index)
+	{
+    case 4 :	// Timer1
+    case 5 :	// Timer2
+      result *= 10 ;
+    break;
+		case 6:		// Alt
+    case 7:		// Gpa Alt
+			if ( result > 63 )
+			{
+      	result *= 2 ;
+      	result -= 64 ;
+			}
+			if ( result > 192 )
+			{
+      	result *= 2 ;
+      	result -= 192 ;
+			}
+			if ( result > 448 )
+			{
+      	result *= 2 ;
+      	result -= 488 ;
+			}
+    break;
+    case 11:	// RPM
+      result *= 100;
+    break;
+    case 9:   // Temp1
+    case 10:	// temp2
+      result -= 30;
+    break;
+    case 13:	// Mah1
+    case 14:	// Mah2
+    case 18:	// Mah
+      result *= 50;
+    break;
+
+		case 15:	// Cell volts
+      result *= 2;
+		break ;
+		case 19 :	// Cells total
+		case 20 :	// FAS100 volts
+      result *= 2;
+		break ;
+  }
+  return result;
+}
+
+#define PREC1		1
+#define PREC2		2
+
+void stringTelemetryChannel( char *string, int8_t index, int16_t val, ModelData *model )
+{
+	uint8_t unit = ' ' ;
+	uint8_t displayed = 0 ;
+	uint8_t att = 0 ;
+
+  switch (index)
+	{
+    case 4 :
+    case 5 :
+			{	
+				int16_t rem ;
+
+        rem = val % 60 ;
+				val /= 60 ;
+				sprintf( string, "%d:%02d", val, rem ) ;
+//      putsTime(x-FW, y, val, att, att) ;
+        displayed = 1 ;
+//    	unit = channel + 2 + '1';
+			}
+		break ;
+    
+		case 0:
+    case 1:
+    	{
+    	  uint32_t value = val ;
+    	  uint8_t times2 ;
+			  FrSkyChannelData *fd ;
+
+  			fd = &model->frsky.channels[index] ;
+    	  value = val ;
+    		if (fd->type == 2/*V*/)
+    		{
+    		    times2 = 1 ;
+    		}
+    		else
+    		{
+    		    times2 = 0 ;
+    		}
+				uint16_t ratio ;
+	
+  			ratio = fd->ratio ;
+  			if ( times2 )
+  			{
+  			    ratio <<= 1 ;
+  			}
+  			value *= ratio ;
+				if ( fd->type == 3/*A*/)
+  			{
+  			    value /= 100 ;
+  			    att = PREC1 ;
+  			}
+  			else if ( ratio < 100 )
+  			{
+  			    value *= 2 ;
+  			    value /= 51 ;  // Same as *10 /255 but without overflow
+  			    att = PREC2 ;
+  			}
+  			else
+  			{
+  			    value /= 255 ;
+  			}
+
+    	  if ( (fd->type == 0/*v*/) || (fd->type == 2/*v*/) )
+    	  {
+ 			    att = PREC1 ;
+					unit = 'v' ;
+    	  }
+    	  else
+    	  {
+			    if (fd->type == 3/*A*/)
+					{
+						unit = 'A' ;
+					}
+    	  }
+				val = value ;
+    	}
+    break ;
+
+    case 9:
+    case 10:
+			unit = 'C' ;
+  		if ( model->FrSkyImperial )
+  		{
+  		  val += 18 ;
+  		  val *= 115 ;
+  		  val >>= 6 ;
+  		  unit = 'F' ;
+  		}
+    break;
+    
+		case 6:
+      unit = 'm' ;
+			if (model->FrSkyUsrProto == 1)  // WS How High
+			{
+      	if ( model->FrSkyImperial )
+        	unit = 'f' ;
+				break ;
+			}
+    case 7:
+      unit = 'm' ;
+      if ( model->FrSkyImperial )
+      {
+        // m to ft *105/32
+        val *= 105 ;
+				val /= 32 ;
+        unit = 'f' ;
+      }
+    break;
+		
+		case 17 :
+			att |= PREC1 ;
+      unit = 'A' ;
+		break ;
+
+		case 15:
+			att |= PREC2 ;
+      unit = 'v' ;
+		break ;
+		case 19 :
+		case 20 :
+			att |= PREC1 ;
+      unit = 'v' ;
+		break ;
+		case 16:
+			att |= PREC1 ;
+      unit = 'v' ;
+		break ;
+    default:
+    break;
+  }
+	if ( !displayed )
+	{
+		int16_t rem ;
+
+		switch( att )
+		{
+			case PREC1 :
+				rem = val % 10 ;
+				val /= 10 ;
+				sprintf( string, "%d.%01d %c", val, rem, unit ) ;
+			break ;
+			case PREC2 :
+				rem = val % 100 ;
+				val /= 100 ;
+				sprintf( string, "%d.%02d %c", val, rem, unit ) ;
+			break ;
+			default :
+				sprintf( string, "%d %c", val, unit ) ;
+			break ;
+		}
+	}
+}
+
 
 
 void populateTelItemsCB(QComboBox *b, int value=0)
 {
     b->clear();
-    for(int i=0; i<=21; i++)
+    for(int i=0; i<=20; i++)
         b->addItem(TelemItems[i]);
     b->setCurrentIndex(value);
-    b->setMaxVisibleItems(22);
+    b->setMaxVisibleItems(21);
 }
 
 
@@ -94,7 +308,7 @@ void populateSwitchAndCB(QComboBox *b, int value=0)
     b->clear();
     b->addItem("---");
 
-    for(int i=0; i<=NUM_CSW; i++)
+    for(int i=1; i<=NUM_CSW; i++)
 		{
 			name[2] = i + '0' ;
 			if ( i > 9 )
@@ -225,10 +439,15 @@ QString getSourceStr(int stickMode=1, int idx=0)
     return "";
 }
 
-void populateSourceCB(QComboBox *b, int stickMode, int value)
+void populateSourceCB(QComboBox *b, int stickMode, int telem, int value)
 {
     b->clear();
     for(int i=0; i<37; i++) b->addItem(getSourceStr(stickMode,i));
+		if ( telem )
+		{
+    	for(int i=0; i<=20; i++)
+    	    b->addItem(TelemItems[i]);
+		}
     b->setCurrentIndex(value);
     b->setMaxVisibleItems(10);
 }
