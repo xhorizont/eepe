@@ -257,6 +257,7 @@ bool eeLoadGeneral();
 ///number of real output channels (CH1-CH8) plus virtual output channels X1-X4
 #define NUM_XCHNOUT (NUM_CHNOUT) //(NUM_CHNOUT)//+NUM_VIRT)
 
+#define MIX_3POS	(NUM_XCHNRAW+1)
 
 
 #define TMR_VAROFS  16

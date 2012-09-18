@@ -23,12 +23,15 @@ void populateCurvesCB(QComboBox *b, int value);
 void populateTimerSwitchCB(QComboBox *b, int value);
 void populateSwitchAndCB(QComboBox *b, int value) ;
 void populateTmrBSwitchCB(QComboBox *b, int value) ;
-void populateSourceCB(QComboBox *b, int stickMode=1, int value=0);
+void populateSourceCB(QComboBox *b, int stickMode=1, int telem = 0, int value=0);
 void populateCSWCB(QComboBox *b, int value);
+int16_t convertTelemConstant( int8_t index, int8_t value) ;
 QString getSourceStr(int stickMode, int idx);
 QString getTimerMode(int tm);
 QString getSWName(int val);
 QString getCSWFunc(int val);
+
+void stringTelemetryChannel( char *string, int8_t index, int16_t val, ModelData *model ) ;
 
 int  loadiHEX(QWidget *parent, QString fileName, quint8 * data, int datalen, QString header);
 bool saveiHEX(QWidget *parent, QString fileName, quint8 * data, int datalen, QString header, int notesIndex=0);

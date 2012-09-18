@@ -32,7 +32,7 @@ ModelEdit::ModelEdit(EEPFILE *eFile, uint8_t id, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::ModelEdit)
 {
-		int size ;
+		unsigned int size ;
     ui->setupUi(this);
 
     eeFile = eFile;
@@ -511,7 +511,14 @@ void ModelEdit::tabMixes()
 
         //QString srcStr = SRC_STR;
         //str += " " + srcStr.mid(CONVERT_MODE(md->srcRaw+1)*4,4);
-        str += getSourceStr(g_eeGeneral.stickMode,md->srcRaw);
+				if ( md->srcRaw == MIX_3POS )
+				{
+					str+= "3POS" ;					
+				}
+				else
+				{
+        	str += getSourceStr(g_eeGeneral.stickMode,md->srcRaw);
+				}
 
         if(md->swtch) str += tr(" Switch(") + getSWName(md->swtch) + ")";
         if(md->carryTrim) str += tr(" noTrim");
@@ -582,7 +589,7 @@ void ModelEdit::updateHeliTab()
     heliEditLock = true;
 
     ui->swashTypeCB->setCurrentIndex(g_model.swashType);
-    populateSourceCB(ui->swashCollectiveCB,g_eeGeneral.stickMode,g_model.swashCollectiveSource);
+    populateSourceCB(ui->swashCollectiveCB,g_eeGeneral.stickMode,0,g_model.swashCollectiveSource);
     ui->swashRingValSB->setValue(g_model.swashRingValue);
     ui->swashInvertELE->setChecked(g_model.swashInvertELE);
     ui->swashInvertAIL->setChecked(g_model.swashInvertAIL);
@@ -1239,6 +1246,9 @@ void ModelEdit::curvePointEdited()
 
 void ModelEdit::setSwitchWidgetVisibility(int i)
 {
+	char telText[20] ;
+	int16_t value ;
+
     switch CS_STATE(g_model.customSw[i].func)
     {
     case CS_VOFS:
@@ -1248,8 +1258,20 @@ void ModelEdit::setSwitchWidgetVisibility(int i)
         cswitchOffset[i]->setMaximum(125);
         cswitchOffset[i]->setMinimum(-125);
         cswitchOffset0[i]->setVisible(false);
-        populateSourceCB(cswitchSource1[i],g_eeGeneral.stickMode,g_model.customSw[i].v1);
+        populateSourceCB(cswitchSource1[i],g_eeGeneral.stickMode,1,g_model.customSw[i].v1);
         cswitchOffset[i]->setValue(g_model.customSw[i].v2);
+				if ( cswitchSource1[i]->currentIndex() > 36 )
+				{
+        	cswitchTlabel[i]->setVisible(true);
+					value = convertTelemConstant( cswitchSource1[i]->currentIndex() - 37, g_model.customSw[i].v2 ) ;
+          stringTelemetryChannel( telText, g_model.customSw[i].v1 - 37, value, &g_model ) ;
+//					sprintf( telText, "%d", value ) ;
+        	cswitchTlabel[i]->setText(telText);
+				}
+				else
+				{
+        	cswitchTlabel[i]->setVisible(false);
+				}
         break;
     case CS_VBOOL:
         cswitchSource1[i]->setVisible(true);
@@ -1264,8 +1286,8 @@ void ModelEdit::setSwitchWidgetVisibility(int i)
         cswitchSource2[i]->setVisible(true);
         cswitchOffset[i]->setVisible(false);
         cswitchOffset0[i]->setVisible(false);
-        populateSourceCB(cswitchSource1[i],g_eeGeneral.stickMode,g_model.customSw[i].v1);
-        populateSourceCB(cswitchSource2[i],g_eeGeneral.stickMode,g_model.customSw[i].v2);
+        populateSourceCB(cswitchSource1[i],g_eeGeneral.stickMode,0,g_model.customSw[i].v1);
+        populateSourceCB(cswitchSource2[i],g_eeGeneral.stickMode,0,g_model.customSw[i].v2);
         break;
     case CS_TIMER:
         cswitchOffset[i]->setMaximum(101);
@@ -1323,15 +1345,20 @@ void ModelEdit::tabSwitches()
 
         cswitchAndSwitch[i] = new QComboBox(this);
         connect(cswitchAndSwitch[i],SIGNAL(currentIndexChanged(int)),this,SLOT(switchesEdited()));
-        ui->gridLayout_8->addWidget(cswitchAndSwitch[i],i+1,4);
+        ui->gridLayout_8->addWidget(cswitchAndSwitch[i],i+1,5);
         cswitchAndSwitch[i]->setVisible(true);
 				populateSwitchAndCB(cswitchAndSwitch[i], g_model.customSw[i].andsw) ;
+
+				cswitchTlabel[i] = new QLabel(this) ;
+        ui->gridLayout_8->addWidget(cswitchTlabel[i],i+1,4);
+        cswitchTlabel[i]->setVisible(false);
+        cswitchTlabel[i]->setText("");
 
         cswitchOffset[i] = new QSpinBox(this);
         cswitchOffset[i]->setMaximum(125);
         cswitchOffset[i]->setMinimum(-125);
         cswitchOffset[i]->setAccelerated(true);
-        connect(cswitchOffset[i],SIGNAL(editingFinished()),this,SLOT(switchesEdited()));
+        connect(cswitchOffset[i],SIGNAL(valueChanged(int)),this,SLOT(switchesEdited()));
         ui->gridLayout_8->addWidget(cswitchOffset[i],i+1,3);
         cswitchOffset[i]->setVisible(false);
 
@@ -1610,7 +1637,9 @@ void ModelEdit::safetySwitchesEdited()
 
 void ModelEdit::switchesEdited()
 {
-    if(switchEditLock) return;
+	char telText[20] ;
+	int16_t value ;
+		if(switchEditLock) return;
     switchEditLock = true;
 
     bool chAr[NUM_CSW];
@@ -1657,6 +1686,13 @@ void ModelEdit::switchesEdited()
         case (CS_VOFS):
             g_model.customSw[i].v1 = cswitchSource1[i]->currentIndex();
             g_model.customSw[i].v2 = cswitchOffset[i]->value();
+						if ( g_model.customSw[i].v1 > 36 )
+						{
+							value = convertTelemConstant( g_model.customSw[i].v1 - 37, g_model.customSw[i].v2 ) ;
+              stringTelemetryChannel( telText, g_model.customSw[i].v1 - 37, value, &g_model ) ;
+							//sprintf( telText, "%d", value ) ;
+        			cswitchTlabel[i]->setText(telText);
+						}
             break;
         case (CS_VBOOL):
             g_model.customSw[i].v1 = cswitchSource1[i]->currentIndex() - MAX_DRSWITCH;

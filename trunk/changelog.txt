@@ -9,6 +9,11 @@ CHANGELOG: 24-JAN-2011
 description here
 ====================================================================================
 
+******************************************
+CHANGELOG: 18-09-2012 MPB
+Add 3POS switch as input to mixer
+Add support for telemetry value in custom switch
+Fix update bug (Thanks Crucial)
 
 ******************************************
 CHANGELOG: 09-09-2012 MPB
