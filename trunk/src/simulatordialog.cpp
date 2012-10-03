@@ -517,7 +517,13 @@ bool simulatorDialog::getSwitch(int swtch, bool nc, qint8 level)
 		{
 			if ( cs.andsw )
 			{
-        ret_value = getSwitch( cs.andsw + 9, 0, level+1) ;
+				int8_t x ;
+				x = cs.andsw ;
+				if ( x > 8 )
+				{
+					x += 1 ;
+				}
+        ret_value = getSwitch( x, 0, level+1) ;
 			}
 		}
 		Last_switch[cs_index] = ret_value ;
