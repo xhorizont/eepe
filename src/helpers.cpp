@@ -306,16 +306,13 @@ void populateSwitchAndCB(QComboBox *b, int value=0)
 	name[1] = 'S' ;
 	name[3] = 0 ;
     b->clear();
-    b->addItem("---");
+    for(int i=0 ; i<=8; i++)
+        b->addItem(getSWName(i));
 
-    for(int i=1; i<=NUM_CSW; i++)
+    for(int i=1; i<=7; i++)
 		{
 			name[2] = i + '0' ;
-			if ( i > 9 )
-			{
-				name[2] += 'A' - '9' - 1 ;
-			}
-        b->addItem(name);
+      b->addItem(name);
 		}
     b->setCurrentIndex(value);
     b->setMaxVisibleItems(10);

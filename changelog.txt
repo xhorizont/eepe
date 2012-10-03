@@ -10,6 +10,10 @@ description here
 ====================================================================================
 
 ******************************************
+CHANGELOG: 03-10-2012 MPB
+Change switches used for extra AND in custom switches
+
+******************************************
 CHANGELOG: 18-09-2012 MPB
 Add 3POS switch as input to mixer
 Add support for telemetry value in custom switch
