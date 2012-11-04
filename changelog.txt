@@ -10,6 +10,10 @@ description here
 ====================================================================================
 
 ******************************************
+CHANGELOG: 04-11-2012 MPB
+Fix model name buffer overflow bug
+
+******************************************
 CHANGELOG: 03-10-2012 MPB
 Change switches used for extra AND in custom switches
 
