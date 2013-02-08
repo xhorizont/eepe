@@ -26,6 +26,7 @@ EEPFILE::EEPFILE()
 {
     fileChanged = false;
     theFile = new EFile();
+		mee_type = theFile->m_type ;
     generalDefault();
 }
 
@@ -36,6 +37,7 @@ bool EEPFILE::Changed()
 
 bool EEPFILE::loadFile(void* buf)
 {
+    theFile->m_type = mee_type ;
     theFile->load(buf);
 
 

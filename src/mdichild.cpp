@@ -208,6 +208,11 @@ int MdiChild::eepromVersion()
     return tgen.myVers;
 }
 
+int MdiChild::eesize()
+{
+    return eeFile.eesize();
+}
+
 void MdiChild::doCopy(QByteArray *gmData)
 {
     foreach(QModelIndex index, this->selectionModel()->selectedIndexes())
@@ -643,10 +648,12 @@ void MdiChild::OpenEditWindow()
 void MdiChild::newFile()
 {
     static int sequenceNumber = 1;
+    QSettings settings("er9x-eePe", "eePe");
+    QString type = settings.value("processor", 1).toInt() ? " (M128)" : " (M64)";
 
     isUntitled = true;
     curFile = tr("document%1.eepe").arg(sequenceNumber++);
-    setWindowTitle(curFile + "[*]");
+    setWindowTitle(curFile + "[*]" + type);
 
 }
 
@@ -685,16 +692,28 @@ bool MdiChild::loadFile(const QString &fileName, bool resetCurrentFile)
 
     if(fileType==FILE_TYPE_HEX || fileType==FILE_TYPE_EEPE) //read HEX file
     {
-        //if file is XML read and exit saying true;
+				uint m128 = 0 ;
+        
+				//if file is XML read and exit saying true;
         //else process as iHex
         QDomDocument doc(ER9X_EEPROM_FILE_TYPE);
         QFile file(fileName);
         bool xmlOK = file.open(QIODevice::ReadOnly);
         if(xmlOK)
         {
+					
             xmlOK = doc.setContent(&file);
             if(xmlOK)
             {
+              QDomElement gde = doc.elementsByTagName("Type").at(0).toElement();
+
+              if(!gde.isNull()) // couldn't find
+							{
+		            m128 = 1 ;
+							}
+							
+								eeFile.setSize( m128 ) ;
+							
                 //format eefile
                 eeFile.formatEFile();
                 //read general data
@@ -730,24 +749,32 @@ bool MdiChild::loadFile(const QString &fileName, bool resetCurrentFile)
 
         if(!xmlOK)
         {
+					// 9K to 11K for '128
             if((QFileInfo(fileName).size()>(6*1024)) || (QFileInfo(fileName).size()<(4*1024)))  //if filesize> 6k and <4kb
             {
+							
+            	if((QFileInfo(fileName).size()>(11*1024)) || (QFileInfo(fileName).size()<(9*1024)))  //if filesize> 6k and <4kb
+							{
+							
                 QMessageBox::critical(this, tr("Error"),tr("Error reading file:\n"
                                                            "This might be a FW file (er9x.hex?). \n"
                                                            "You might want to try flashing it to the TX.\n"
                                                            "(Burn->Write Flash Memory)").arg(fileName));
                 return false;
+							}
             }
 
-            quint8 temp[EESIZE];
+
+            quint8 temp[EESIZE128];
 
             QString header ="";
             if(fileType==FILE_TYPE_EEPE)   // read EEPE file header
                 header=EEPE_EEPROM_FILE_HEADER;
 
-            if(!loadiHEX(this, fileName, (quint8*)&temp, EESIZE, header))
+            if(!loadiHEX(this, fileName, (quint8*)&temp, EESIZE128, header))
                 return false;
 
+						eeFile.setSize( (QFileInfo(fileName).size()>(9*1024)) ) ;
 
             if(!eeFile.loadFile(&temp))
             {
@@ -771,7 +798,7 @@ bool MdiChild::loadFile(const QString &fileName, bool resetCurrentFile)
     {
         QFile file(fileName);
 
-        if(file.size()!=EESIZE)
+        if ( (file.size()!=EESIZE64) || (file.size()!=EESIZE128) )
         {
             QMessageBox::critical(this, tr("Error"),tr("Error reading file:\n"
                                                        "File wrong size - %1").arg(fileName));
@@ -786,11 +813,11 @@ bool MdiChild::loadFile(const QString &fileName, bool resetCurrentFile)
             return false;
         }
 
-        uint8_t temp[EESIZE];
-        long result = file.read((char*)&temp,EESIZE);
+        uint8_t temp[EESIZE128];
+        long result = file.read((char*)&temp,file.size());
         file.close();
 
-        if (result!=EESIZE)
+        if (result!=file.size())
         {
             QMessageBox::critical(this, tr("Error"),
                                  tr("Error reading file %1:\n%2.")
@@ -917,9 +944,14 @@ bool MdiChild::saveFile(const QString &fileName, bool setCurrent)
 
     if(fileType==FILE_TYPE_EEPE) //write hex
     {
-        QDomDocument doc(ER9X_EEPROM_FILE_TYPE);
+        QDomDocument doc( ER9X_EEPROM_FILE_TYPE );
         QDomElement root = doc.createElement(ER9X_EEPROM_FILE_TYPE);
         doc.appendChild(root);
+        
+				if ( (eesize()== EESIZE128) )
+				{
+          appendNumberElement( &doc, &root, "Type", 128, true); // have to write value here
+				}
 
         //Save General Data
         EEGeneral tgen;
@@ -957,10 +989,10 @@ bool MdiChild::saveFile(const QString &fileName, bool setCurrent)
 
     if(fileType==FILE_TYPE_HEX) //write hex
     {
-        quint8 temp[EESIZE];
+        quint8 temp[EESIZE128];
         eeFile.saveFile(&temp);
         QString header = "";
-        saveiHEX(this, fileName, (quint8*)&temp, EESIZE, header, NOTES_ALL);
+        saveiHEX(this, fileName, (quint8*)&temp, eeFile.mee_type ? EESIZE128 : EESIZE64, header, NOTES_ALL);
 
 
         if(setCurrent) setCurrentFile(fileName);
@@ -977,11 +1009,20 @@ bool MdiChild::saveFile(const QString &fileName, bool setCurrent)
             return false;
         }
 
-        uint8_t temp[EESIZE];
+        uint8_t temp[EESIZE128];
         eeFile.saveFile(&temp);
 
-        long result = file.write((char*)&temp,EESIZE);
-        if(result!=EESIZE)
+        long result = file.write((char*)&temp,eeFile.mee_type ? EESIZE128 : EESIZE64);
+				{
+					char value[20] ;
+          sprintf( value, "%ld,%d", result, eeFile.mee_type ) ;
+        	QMessageBox::warning(this, tr("Info"),
+                                 tr("Writing file %1:\n%2.")
+                                 .arg(fileName)
+                                 .arg(value));
+
+				}	
+        if(result!= (eeFile.mee_type ? EESIZE128 : EESIZE64) )
         {
             QMessageBox::warning(this, tr("Error"),
                                  tr("Error writing file %1:\n%2.")
@@ -1037,11 +1078,14 @@ bool MdiChild::maybeSave()
 
 void MdiChild::setCurrentFile(const QString &fileName)
 {
+    
+    QString type = (eeFile.eesize() == EESIZE128) ? " (M128)" : " (M64)";
+	
     curFile = QFileInfo(fileName).canonicalFilePath();
     isUntitled = false;
     eeFile.setChanged(false);
     setWindowModified(false);
-    setWindowTitle(userFriendlyCurrentFile() + "[*]");
+    setWindowTitle(userFriendlyCurrentFile() + "[*]" + type ) ;
 }
 
 QString MdiChild::strippedName(const QString &fullFileName)
@@ -1084,6 +1128,8 @@ void MdiChild::optimizeEEPROM()
 
 void MdiChild::burnTo()  // write to Tx
 {
+// Add towards eeprom checking, don't write a '128 to a '64 etc.
+//    int size = eesize() ;
 
     QMessageBox::StandardButton ret = QMessageBox::question(this, tr("eePe"),
                  tr("Write %1 to EEPROM memory?").arg(strippedName(curFile)),
@@ -1097,8 +1143,14 @@ void MdiChild::burnTo()  // write to Tx
         QString avrdudeLoc = bcd.getAVRDUDE();
         QString tempDir    = QDir::tempPath();
         QString programmer = bcd.getProgrammer();
+    		QString mcu        = bcd.getMCU();
         QStringList args   = bcd.getAVRArgs();
-        if(!bcd.getPort().isEmpty()) args << "-P" << bcd.getPort();
+        
+				
+				
+				
+				
+				if(!bcd.getPort().isEmpty()) args << "-P" << bcd.getPort();
 
         QString tempFile = tempDir + "/temp.hex";
         saveFile(tempFile, false);
@@ -1110,7 +1162,7 @@ void MdiChild::burnTo()  // write to Tx
         QString str = "eeprom:w:" + tempFile + ":i"; // writing eeprom -> MEM:OPR:FILE:FTYPE"
 
         QStringList arguments;
-        arguments << "-c" << programmer << "-p" << "m64" << args << "-U" << str;
+        arguments << "-c" << programmer << "-p" << mcu << args << "-U" << str;
 
         avrOutputDialog *ad = new avrOutputDialog(this, avrdudeLoc, arguments, "Write EEPROM To Tx", AVR_DIALOG_SHOW_DONE);
         ad->setWindowIcon(QIcon(":/images/write_eeprom.png"));

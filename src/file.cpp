@@ -20,25 +20,27 @@
 #include "string.h"
 #include "pers.h"
 #include "file.h"
+#include <QSettings>
 
 
 
 EFile::EFile()
 {
+    QSettings settings("er9x-eePe", "eePe");
     memset(&eeprom,0,sizeof(eeprom));
     eeFs = (EeFs*)&eeprom;
-
+		m_type = settings.value("processor", 1).toInt() ;
     EeFsFormat();
 }
 
 void EFile::load(void* buf)
 {
-    memcpy(&eeprom,buf,EESIZE);
+    memcpy(&eeprom,buf,m_type ? EESIZE128 : EESIZE64 ) ;
 }
 
 void EFile::save(void* buf)
 {
-    memcpy(buf,&eeprom,EESIZE);
+    memcpy(buf,&eeprom, m_type ? EESIZE128 : EESIZE64 ) ;
 }
 
 void EFile::eeprom_read_block (void *pointer_ram, uint16_t pointer_eeprom, size_t size)
@@ -112,10 +114,10 @@ uint8_t EFile::EeFsAlloc(){ ///alloc one block from freelist
 int8_t EFile::EeFsck()
 {
   uint8_t *bufp;
-  static uint8_t buffer[BLOCKS];
+  static uint8_t buffer[BLOCKS128];
   bufp = buffer;
-  memset(bufp,0,BLOCKS);
-  uint8_t blk ;
+  memset(bufp,0,BLOCKS128);
+  uint16_t blk ;
   int8_t ret=0;
   for(uint8_t i = 0; i <= MAXFILES; i++){
     uint8_t *startP = i==MAXFILES ? &(eeFs->freeList) : &(eeFs->files[i].startBlk);
@@ -128,7 +130,7 @@ int8_t EFile::EeFsck()
       //      if(blk >= BLOCKS   ) goto err_2; //bad blk index
       //      if(bufp[blk])        goto err_3; //blk double usage
       if( (   blk <  FIRSTBLK ) //goto err_1; //bad blk index
-          || (blk >= BLOCKS   ) //goto err_2; //bad blk index
+          || (blk >= (m_type ? BLOCKS128 : BLOCKS64)   ) //goto err_2; //bad blk index
           || (bufp[blk]       ))//goto err_3; //blk double usage
       {
         if(lastBlk){
@@ -145,7 +147,7 @@ int8_t EFile::EeFsck()
       }
     }
   }
-  for(blk = FIRSTBLK; blk < BLOCKS; blk++){
+  for(blk = FIRSTBLK; blk < (m_type ? BLOCKS128 : BLOCKS64); blk++){
     if(bufp[blk]==0) {       //goto err_4; //unused block
       EeFsSetLink(blk,eeFs->freeList);
       eeFs->freeList = blk; //chain in front
@@ -173,20 +175,22 @@ void EFile::EeFsFormat()
 //    eeprom_RESV_mismatch();
 //  }
   memset(eeFs,0, sizeof(EeFs));
-  eeFs->version  = EEFS_VERS;
+  eeFs->version  = m_type ? EEFS_VERS128 : EEFS_VERS ;
   eeFs->mySize   = sizeof(EeFs);
   eeFs->freeList = 0;
   eeFs->bs       = BS;
-  for(uint8_t i = FIRSTBLK; i < BLOCKS; i++) EeFsSetLink(i,i+1);
-  EeFsSetLink(BLOCKS-1, 0);
+  for(uint8_t i = FIRSTBLK; i < (m_type ? BLOCKS128 : BLOCKS64) - 1 ; i++) EeFsSetLink(i,i+1);
+  EeFsSetLink((m_type ? BLOCKS128 : BLOCKS64)-1, 0);
   eeFs->freeList = FIRSTBLK;
   EeFsFlush();
 }
 bool EFile::EeFsOpen()
 {
+	uint8_t eefs_vers ;
   eeprom_read_block(&eeFs,0,sizeof(eeFs));
 
-  return eeFs->version == EEFS_VERS && eeFs->mySize  == sizeof(eeFs);
+	eefs_vers = m_type ? EEFS_VERS128 : EEFS_VERS ;
+  return eeFs->version == eefs_vers && eeFs->mySize  == sizeof(eeFs);
 }
 
 bool EFile::exists(uint8_t i_fileId)

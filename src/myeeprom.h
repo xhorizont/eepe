@@ -63,6 +63,8 @@
 #define GENERAL_OWNER_NAME_LEN 10
 #define MODEL_NAME_LEN         10
 
+#define MAX_GVARS 5
+
 PACK(typedef struct t_TrainerMix {
   uint8_t srcChn:3; //0-7 = ch1-8
   int8_t  swtch:5;
@@ -226,6 +228,13 @@ PACK(typedef struct t_swVoice {
   uint8_t  val ;
 }) voiceSwData ;
 
+PACK(typedef struct t_gvar {
+	int8_t gvar ;
+	uint8_t gvsource ;
+//	int8_t gvswitch ;
+}) GvarData ;
+
+
 typedef struct t_ModelData {
   char      name[MODEL_NAME_LEN];             // 10 must be first for eeLoadModelName
 //    uint8_t   reserved_spare;  //used to be MDVERS - now depreciated
@@ -272,6 +281,7 @@ typedef struct t_ModelData {
   SafetySwData  safetySw[NUM_CHNOUT];
   FrSkyData frsky;
 	uint8_t CustomDisplayIndex[6] ;
+	GvarData gvars[MAX_GVARS] ;
 } __attribute__((packed)) ModelData;
 
 

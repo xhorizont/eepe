@@ -68,7 +68,8 @@
 //#define DNLD_VER_ER9X_NOHT_SPKR       7
 //#define DNLD_VER_ER9X_FRSKY_SPKR      8
 //#define DNLD_VER_ER9X_FRSKY_NOHT_SPKR 9
-#define DNLD_VER_ER9X_NMEA            6
+#define DNLD_VER_ER9X_NMEA       6
+#define DNLD_VER_ER9X_128				 7
 
 #define ER9X_URL   "http://er9x.googlecode.com/svn/trunk/er9x.hex"
 #define ER9X_NOHT_URL   "http://er9x.googlecode.com/svn/trunk/er9x-noht.hex"
@@ -81,6 +82,7 @@
 //#define ER9X_FRSKY_NOHT_SPKR_URL   "http://er9x.googlecode.com/svn/trunk/er9x-frsky-noht-spkr.hex"
 #define ER9X_ARDUPILOT_URL   "http://er9x.googlecode.com/svn/trunk/er9x-ardupilot.hex"
 #define ER9X_NMEA_URL   "http://er9x.googlecode.com/svn/trunk/er9x-nmea.hex"
+#define ER9X_128_URL   "http://er9x.googlecode.com/svn/trunk/er9x-128.hex"
 #define ER9X_STAMP "http://er9x.googlecode.com/svn/trunk/src/stamp-er9x.h"
 #define EEPE_URL   "http://eepe.googlecode.com/svn/trunk/eePeInstall.exe"
 #define EEPE_STAMP "http://eepe.googlecode.com/svn/trunk/src/stamp-eepe.h"
@@ -232,6 +234,10 @@ void MainWindow::reply1Finished(QNetworkReply * reply)
                 dnldURL = ER9X_NOHT_URL;
                 baseFileName = "er9x-noht.hex";
                 break;
+				    case (DNLD_VER_ER9X_128):
+        				dnldURL = ER9X_128_URL;
+        				baseFileName = "er9x-128.hex";
+        				break;
 /*
             case (DNLD_VER_ER9X_SPKR):
                 dnldURL = ER9X_SPKR_URL;
@@ -329,6 +335,10 @@ void MainWindow::downloadLatester9x()
     case (DNLD_VER_ER9X_NOHT):
         dnldURL = ER9X_NOHT_URL;
         baseFileName = "er9x-noht.hex";
+        break;
+    case (DNLD_VER_ER9X_128):
+        dnldURL = ER9X_128_URL;
+        baseFileName = "er9x-128.hex";
         break;
 
  /*
@@ -504,6 +514,7 @@ void MainWindow::preferences()
 {
     preferencesDialog *pd = new preferencesDialog(this);
     pd->exec();
+    readSettings();
 }
 
 void MainWindow::cut()
@@ -793,6 +804,12 @@ void MainWindow::showEEPROMInfo()
     // EEPROM version
     // Free space
 
+	int eesize ;
+	int free ;
+
+	eesize = activeMdiChild()->eesize() ;
+  free = activeMdiChild()->free() ;
+
     if(activeMdiChild() == 0)
         return;
 
@@ -814,8 +831,8 @@ void MainWindow::showEEPROMInfo()
     msg.append(tr("<tr><td>Version: </td><td align=right>%1</td></tr>").arg(activeMdiChild()->eepromVersion()));
 
     msg.append(tr("<tr><td>Bytes Used: </td><td align=right>%1</td></tr>").arg(totalSize));
-    msg.append(tr("<tr><td>Bytes Free: </td><td align=right>%1</td></tr>").arg(EESIZE - totalSize));
-    msg.append(tr("<tr><td>Bytes Total:</td><td align=right> %1</td></tr>").arg(EESIZE));
+    msg.append(tr("<tr><td>Bytes Free: </td><td align=right>%1</td></tr>").arg(free));
+    msg.append(tr("<tr><td>Bytes Total:</td><td align=right> %1</td></tr>").arg(eesize));
 
     msg.append("<tr><td colspan=2><br><u><b>");
     msg.append(tr("Details:"));
@@ -1249,6 +1266,7 @@ void MainWindow::readSettings()
 
     currentER9Xrev = settings.value("currentER9Xrev", 1).toInt();
     currentEEPErev = SVN_VER_NUM;
+    processor = settings.value("processor", 1).toInt();
 
     checkER9X  = settings.value("startup_check_er9x", true).toBool();
     checkEEPE  = settings.value("startup_check_eepe", true).toBool();

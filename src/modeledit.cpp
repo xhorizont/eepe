@@ -76,6 +76,7 @@ ModelEdit::ModelEdit(EEPFILE *eFile, uint8_t id, QWidget *parent) :
     tabFrsky();
     tabTemplates();
     tabHeli();
+		tabGvar();
 
     ui->curvePreview->setMinimumWidth(260);
     ui->curvePreview->setMinimumHeight(260);
@@ -1763,6 +1764,53 @@ void ModelEdit::tabTrims()
     }
 
 }
+
+void ModelEdit::tabGvar()
+{
+	printf("tabGvar\n");
+		populateGvarCB( ui->Gvar1CB, g_model.gvars[0].gvsource ) ;
+    populateGvarCB( ui->Gvar2CB, g_model.gvars[1].gvsource ) ;
+    populateGvarCB( ui->Gvar3CB, g_model.gvars[2].gvsource ) ;
+    populateGvarCB( ui->Gvar4CB, g_model.gvars[3].gvsource ) ;
+    populateGvarCB( ui->Gvar5CB, g_model.gvars[4].gvsource ) ;
+    ui->Gv1SB->setValue(g_model.gvars[0].gvar);
+    ui->Gv2SB->setValue(g_model.gvars[1].gvar);
+    ui->Gv3SB->setValue(g_model.gvars[2].gvar);
+    ui->Gv4SB->setValue(g_model.gvars[3].gvar);
+    ui->Gv5SB->setValue(g_model.gvars[4].gvar);
+
+    connect(ui->Gvar1CB,SIGNAL(currentIndexChanged(int)),this,SLOT(GvarEdited()));
+    connect(ui->Gvar2CB,SIGNAL(currentIndexChanged(int)),this,SLOT(GvarEdited()));
+    connect(ui->Gvar3CB,SIGNAL(currentIndexChanged(int)),this,SLOT(GvarEdited()));
+    connect(ui->Gvar4CB,SIGNAL(currentIndexChanged(int)),this,SLOT(GvarEdited()));
+    connect(ui->Gvar5CB,SIGNAL(currentIndexChanged(int)),this,SLOT(GvarEdited()));
+
+    connect(ui->Gv1SB,SIGNAL(editingFinished()),this,SLOT(GvarEdited()));
+    connect(ui->Gv2SB,SIGNAL(editingFinished()),this,SLOT(GvarEdited()));
+    connect(ui->Gv3SB,SIGNAL(editingFinished()),this,SLOT(GvarEdited()));
+    connect(ui->Gv4SB,SIGNAL(editingFinished()),this,SLOT(GvarEdited()));
+    connect(ui->Gv5SB,SIGNAL(editingFinished()),this,SLOT(GvarEdited()));
+
+}
+
+void ModelEdit::GvarEdited()
+{
+	printf("GvarEdited\n");
+	  g_model.gvars[0].gvsource = ui->Gvar1CB->currentIndex() ;
+	  g_model.gvars[1].gvsource = ui->Gvar2CB->currentIndex() ;
+	  g_model.gvars[2].gvsource = ui->Gvar3CB->currentIndex() ;
+  	g_model.gvars[3].gvsource = ui->Gvar4CB->currentIndex() ;
+ 	  g_model.gvars[4].gvsource = ui->Gvar5CB->currentIndex() ;
+
+    g_model.gvars[0].gvar = ui->Gv1SB->value();
+    g_model.gvars[1].gvar = ui->Gv2SB->value();
+    g_model.gvars[2].gvar = ui->Gv3SB->value();
+    g_model.gvars[3].gvar = ui->Gv4SB->value();
+    g_model.gvars[4].gvar = ui->Gv5SB->value();
+	
+		updateSettings();
+}
+
 
 void ModelEdit::tabFrsky()
 {

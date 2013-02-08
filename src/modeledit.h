@@ -71,6 +71,7 @@ private:
     void tabTrims();
     void tabFrsky();
     void tabTemplates();
+		void tabGvar();
     void updateCurvesTab();
     void setSwitchWidgetVisibility(int i);
 		void setSafetyWidgetVisibility(int i);
@@ -190,6 +191,7 @@ private slots:
     void mixesEdited();
     void heliEdited();
     void FrSkyEdited();
+		void GvarEdited() ;
 
     void on_spinBox_S1_valueChanged(int value);
     void on_spinBox_S2_valueChanged(int value);
