@@ -46,6 +46,32 @@ QString TelemItems[] = {
 	"FasV"	// 20
 } ;
 
+QString GvarItems[] = {
+	"---", // 0
+	"Rtm",
+	"Etm",
+	"Ttm",
+	"Atm",
+	"REN",	// 5
+	"RUD",
+	"ELE",
+	"THR",
+	"AIL", // 9
+	"P1 ",
+	"P2 ",
+	"P3 "  //12
+} ;
+
+
+void populateGvarCB(QComboBox *b, int value)
+{
+    b->clear();
+    for(int i=0; i<=12; i++)
+        b->addItem(GvarItems[i]);
+    b->setCurrentIndex(value);
+    b->setMaxVisibleItems(13);
+}
+
 
 
 // This routine converts an 8 bit value for custom switch use
@@ -724,8 +750,6 @@ QDomElement getModelDataXML(QDomDocument * qdoc, ModelData * tmod, int modelNum,
     appendCDATAElement(qdoc, &md, "Data", (const char *)tmod,sizeof(ModelData));
     return md;
 }
-
-
 
 
 bool loadGeneralDataXML(QDomDocument * qdoc, EEGeneral * tgen)

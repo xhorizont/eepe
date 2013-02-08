@@ -14,6 +14,7 @@
 #define HEX_FILE_SIZE (1024*64)
 
 
+void populateGvarCB(QComboBox *b, int value=0) ;
 void populateSwitchCB(QComboBox *b, int value);
 void populateSafetySwitchCB(QComboBox *b, int type, int value) ;
 void populateSafetyVoiceTypeCB(QComboBox *b, int type, int value);

@@ -279,7 +279,6 @@ class EEPFILE
     EFile *theFile;
     bool fileChanged;
 
-
 public:
     EEPFILE();
 
@@ -303,8 +302,13 @@ public:
     int  getGeneralSettings(EEGeneral* setData);
     bool putGeneralSettings(EEGeneral* setData);
 
-    void formatEFile();
+    int eesize() {return theFile->m_type ? EESIZE128 : EESIZE64;}
+    void setSize( int size) { mee_type = size ; theFile->m_type = mee_type ; }
+		
+		void formatEFile();
     int size(int id) {return theFile->size(id);}
+    int freespace() {return theFile->freespace();}
+  	uint8_t  mee_type ;     // 0 = M64, 1 = M128
 
 };
 

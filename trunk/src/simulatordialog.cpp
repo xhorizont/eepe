@@ -139,6 +139,19 @@ void simulatorDialog::timerEvent()
 					{
 						CsTimer[i] -= 1 ;
 					}
+					if ( cs.andsw )
+					{
+						int8_t x ;
+						x = cs.andsw ;
+						if ( x > 8 )
+						{
+							x += 1 ;
+						}
+	      	  if (getSwitch( x, 0, 0) == 0 )
+					  {
+							CsTimer[i] = -1 ;
+						}	
+					}
 				}
 			}
 		}

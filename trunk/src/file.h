@@ -32,12 +32,18 @@
 // bs=16  128 blocks    verlust link:128  16files:16*8  128     sum 256
 // bs=32   64 blocks    verlust link: 64  16files:16*16 256     sum 320
 //
-#  define EESIZE   2048
+#  define EESIZE64		2048
+#  define EESIZE128   4096
 #  define BS       16
 #  define RESV     64  //reserv for eeprom header with directory (eeFs)
 #define FIRSTBLK (RESV/BS)
-#define BLOCKS   (EESIZE/BS)
-#define EEFS_VERS 4
+#define BLOCKS64   (EESIZE64/BS)
+#define BLOCKS128  (EESIZE128/BS)
+#define EEFS_VERS 		4
+#define EEFS_VERS128	6
+
+//#define EESIZE	EESIZE64
+//#define BLOCKS	BLOCKS64
 
 #define MAX_MODELS 16
 #define MAXFILES (1+MAX_MODELS+3)
@@ -67,8 +73,9 @@ class EFile
   uint8_t  m_err;       //error reasons
   //uint16_t m_stopTime10ms; //maximum point of time for writing
 
+	uint8_t	 m_blocks ;		// BLOCKS64 or BLOCKS128
 
-  uint8_t eeprom[EESIZE];
+  uint8_t eeprom[EESIZE128];
   EeFs    *eeFs;
 
   //bool EeFsOpen();
@@ -103,6 +110,7 @@ class EFile
 public:
 
   EFile();
+  uint8_t  m_type ;     // 0 = M64, 1 = M128
 
   void load(void* buf);
   void save(void* buf);
@@ -140,9 +148,7 @@ public:
   uint16_t size(uint8_t id);
   ///read from opened file and decode rlc-coded data
   uint16_t readRlc(uint8_t*buf,uint16_t i_len);
-
-
-
+  int freespace() {return EeFsGetFree();}
 
 
 };

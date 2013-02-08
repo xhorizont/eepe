@@ -134,6 +134,7 @@ private:
     int currentER9Xrev;
     int currentER9Xrev_temp;
     int currentEEPErev;
+    int processor;
     bool checkER9X;
     bool checkEEPE;
     bool showcheckForUpdatesResult;

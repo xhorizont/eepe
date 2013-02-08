@@ -31,6 +31,7 @@ void preferencesDialog::write_values()
     settings.setValue("startup_check_eepe", ui->startupCheck_eepe->isChecked());
     settings.setValue("show_splash", ui->showSplash->isChecked());
     settings.setValue("download-version", ui->downloadVerCB->currentIndex());
+    settings.setValue("processor", ui->ProcessorCB->currentIndex());
 }
 
 
@@ -44,6 +45,7 @@ void preferencesDialog::initSettings()
     ui->channelorderCB->setCurrentIndex(settings.value("default_channel_order", 0).toInt());
     ui->stickmodeCB->setCurrentIndex(settings.value("default_mode", 1).toInt());
     ui->downloadVerCB->setCurrentIndex(settings.value("download-version", 0).toInt());
+    ui->ProcessorCB->setCurrentIndex(settings.value("processor", 0).toInt());
 
     ui->startupCheck_er9x->setChecked(settings.value("startup_check_er9x", true).toBool());
     ui->startupCheck_eepe->setChecked(settings.value("startup_check_eepe", true).toBool());

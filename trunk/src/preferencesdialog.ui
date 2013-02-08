@@ -120,9 +120,14 @@
        <string>er9x - NMEA</string>
       </property>
      </item>
+     <item>
+      <property name="text">
+       <string>er9x - 128 - FrSky</string>
+      </property>
+     </item>
     </widget>
    </item>
-   <item row="8" column="1">
+   <item row="9" column="1">
     <spacer name="verticalSpacer">
      <property name="orientation">
       <enum>Qt::Vertical</enum>
@@ -135,7 +140,7 @@
      </property>
     </spacer>
    </item>
-   <item row="9" column="1">
+   <item row="10" column="1">
     <widget class="QDialogButtonBox" name="buttonBox">
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
@@ -352,7 +357,7 @@ Mode 4:
      </property>
     </spacer>
    </item>
-   <item row="7" column="1">
+   <item row="8" column="1">
     <layout class="QGridLayout" name="gridLayout_3" columnstretch="0,10,10" columnminimumwidth="0,0,0">
      <item row="0" column="2">
       <widget class="QPushButton" name="er9x_dnld">
@@ -377,10 +382,31 @@ Mode 4:
      </item>
     </layout>
    </item>
-   <item row="7" column="0">
+   <item row="8" column="0">
     <widget class="QLabel" name="label_5">
      <property name="text">
       <string>Current Version - er9x</string>
+     </property>
+    </widget>
+   </item>
+   <item row="7" column="1">
+    <widget class="QComboBox" name="ProcessorCB">
+     <item>
+      <property name="text">
+       <string>M64</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>M128</string>
+      </property>
+     </item>
+    </widget>
+   </item>
+   <item row="7" column="0">
+    <widget class="QLabel" name="label_6">
+     <property name="text">
+      <string>Processor</string>
      </property>
     </widget>
    </item>

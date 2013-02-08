@@ -537,6 +537,11 @@ Please consult the programmer's documentation and the AVRDUDE documentation to s
          <string>m328p</string>
         </property>
        </item>
+       <item>
+        <property name="text">
+         <string>M88</string>
+        </property>
+       </item>
       </widget>
      </item>
     </layout>
