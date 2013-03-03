@@ -163,6 +163,7 @@ void ModelEdit::tabModelEditSetup()
     //name
     ui->modelNameLE->setText(g_model.name);
 
+		ui->VoiceNumberSB->setValue(g_model.modelVoice+260) ;
     //timer mode direction value
     populateTimerSwitchCB(ui->timerModeCB,g_model.tmrMode);
     populateTmrBSwitchCB(ui->timerModeBCB,g_model.tmrModeB);
@@ -201,6 +202,7 @@ void ModelEdit::setProtocolBoxes()
 {
     protocolEditLock = true;
     ui->protocolCB->setCurrentIndex(g_model.protocol);
+		ui->PPM1stChan->setValue( g_model.ppmStart + 1 ) ;
 
     switch (g_model.protocol)
     {
@@ -247,7 +249,6 @@ void ModelEdit::setProtocolBoxes()
         ui->DSM_Type->setCurrentIndex(0);
         break;
     }
-
     protocolEditLock = false;
 }
 
@@ -512,14 +513,14 @@ void ModelEdit::tabMixes()
 
         //QString srcStr = SRC_STR;
         //str += " " + srcStr.mid(CONVERT_MODE(md->srcRaw+1)*4,4);
-				if ( md->srcRaw == MIX_3POS )
-				{
-					str+= "3POS" ;					
-				}
-				else
-				{
+//				if ( md->srcRaw == MIX_3POS )
+//				{
+//					str+= "3POS" ;					
+//				}
+//				else
+//				{
         	str += getSourceStr(g_eeGeneral.stickMode,md->srcRaw);
-				}
+//				}
 
         if(md->swtch) str += tr(" Switch(") + getSWName(md->swtch) + ")";
         if(md->carryTrim) str += tr(" noTrim");
@@ -1844,7 +1845,7 @@ void ModelEdit::tabFrsky()
     ui->GpsAltMain->setChecked(g_model.FrSkyGpsAlt);
     ui->HubComboBox->setCurrentIndex(g_model.FrSkyUsrProto);
     ui->UnitsComboBox->setCurrentIndex(g_model.FrSkyImperial);
-    ui->BladesSpinBox->setValue(g_model.numBlades + 2);
+    ui->BladesSpinBox->setValue(g_model.numBlades);
 
     connect(ui->frsky_ratio_0,SIGNAL(editingFinished()),this,SLOT(FrSkyEdited()));
     connect(ui->frsky_ratio_1,SIGNAL(editingFinished()),this,SLOT(FrSkyEdited()));
@@ -2011,11 +2012,25 @@ void ModelEdit::on_DSM_Type_currentIndexChanged(int index)
     updateSettings();
 }
 
+void ModelEdit::on_VoiceNumberSB_editingFinished()
+{
+    g_model.modelVoice = ui->VoiceNumberSB->value()-260;
+    updateSettings();
+}
+
+
 void ModelEdit::on_pxxRxNum_editingFinished()
 {
     if(protocolEditLock) return;
 
     g_model.ppmNCH = ui->pxxRxNum->value()-1;
+    updateSettings();
+}
+
+void ModelEdit::on_PPM1stChan_editingFinished()
+{
+    if(protocolEditLock) return;
+    g_model.ppmStart = ui->PPM1stChan->value()-1 ;
     updateSettings();
 }
 

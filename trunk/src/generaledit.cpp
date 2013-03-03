@@ -46,7 +46,7 @@ GeneralEdit::GeneralEdit(EEPFILE *eFile, QWidget *parent) :
     ui->hapticStengthSB->setValue(g_eeGeneral.hapticStrength);
 
     ui->thrrevChkB->setChecked(g_eeGeneral.throttleReversed);
-    ui->inputfilterCB->setCurrentIndex(g_eeGeneral.filterInput);
+//    ui->inputfilterCB->setCurrentIndex(g_eeGeneral.filterInput);
     ui->thrwarnChkB->setChecked(!g_eeGeneral.disableThrottleWarning);   //Default is zero=checked
     ui->switchwarnChkB->setChecked(!g_eeGeneral.disableSwitchWarning); //Default is zero=checked
     ui->memwarnChkB->setChecked(!g_eeGeneral.disableMemoryWarning);   //Default is zero=checked
@@ -378,11 +378,11 @@ void GeneralEdit::on_backlightinvertChkB_stateChanged(int )
     updateSettings();
 }
 
-void GeneralEdit::on_inputfilterCB_currentIndexChanged(int index)
-{
-    g_eeGeneral.filterInput = index;
-    updateSettings();
-}
+//void GeneralEdit::on_inputfilterCB_currentIndexChanged(int index)
+//{
+//    g_eeGeneral.filterInput = index;
+//    updateSettings();
+//}
 
 void GeneralEdit::on_thrwarnChkB_stateChanged(int )
 {

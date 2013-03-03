@@ -101,6 +101,7 @@ void preferencesDialog::on_er9x_dnld_clicked()
 {
     MainWindow * mw = (MainWindow *)this->parent();
 
+		write_values() ;		// In case changed
     mw->downloadLatester9x();
 }
 

@@ -35,7 +35,7 @@
    <item row="3" column="1">
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
-      <number>11</number>
+      <number>9</number>
      </property>
      <widget class="QWidget" name="tabModelSetup">
       <attribute name="title">
@@ -59,24 +59,24 @@
          </property>
         </widget>
        </item>
-       <item row="1" column="0">
+       <item row="3" column="0">
         <widget class="QLabel" name="label_2">
          <property name="text">
           <string>Timer Mode</string>
          </property>
         </widget>
        </item>
-       <item row="1" column="1">
+       <item row="3" column="1">
         <widget class="QComboBox" name="timerModeCB"/>
        </item>
-       <item row="4" column="0">
+       <item row="6" column="0">
         <widget class="QLabel" name="label_3">
          <property name="text">
           <string>Timer Direction</string>
          </property>
         </widget>
        </item>
-       <item row="4" column="1">
+       <item row="6" column="1">
         <widget class="QComboBox" name="timerDirCB">
          <item>
           <property name="text">
@@ -90,14 +90,14 @@
          </item>
         </widget>
        </item>
-       <item row="5" column="0">
+       <item row="7" column="0">
         <widget class="QLabel" name="label_4">
          <property name="text">
           <string>Timer Value</string>
          </property>
         </widget>
        </item>
-       <item row="5" column="1">
+       <item row="7" column="1">
         <widget class="QTimeEdit" name="timerValTE">
          <property name="accelerated">
           <bool>true</bool>
@@ -110,14 +110,14 @@
          </property>
         </widget>
        </item>
-       <item row="6" column="0">
+       <item row="8" column="0">
         <widget class="QLabel" name="label_10">
          <property name="text">
           <string>Trim Increment</string>
          </property>
         </widget>
        </item>
-       <item row="6" column="1">
+       <item row="8" column="1">
         <widget class="QComboBox" name="trimIncCB">
          <item>
           <property name="text">
@@ -146,52 +146,52 @@
          </item>
         </widget>
        </item>
-       <item row="7" column="0">
+       <item row="9" column="0">
         <widget class="QLabel" name="label_7">
          <property name="text">
           <string>Throttle Trim</string>
          </property>
         </widget>
        </item>
-       <item row="7" column="1">
+       <item row="9" column="1">
         <widget class="QCheckBox" name="thrTrimChkB">
          <property name="text">
           <string/>
          </property>
         </widget>
        </item>
-       <item row="8" column="0">
+       <item row="10" column="0">
         <widget class="QLabel" name="label_8">
          <property name="text">
           <string>Throttle Expo</string>
          </property>
         </widget>
        </item>
-       <item row="8" column="1">
+       <item row="10" column="1">
         <widget class="QCheckBox" name="thrExpoChkB">
          <property name="text">
           <string/>
          </property>
         </widget>
        </item>
-       <item row="9" column="0">
+       <item row="11" column="0">
         <widget class="QLabel" name="label_11">
          <property name="text">
           <string>instaTrim Switch</string>
          </property>
         </widget>
        </item>
-       <item row="9" column="1">
+       <item row="11" column="1">
         <widget class="QComboBox" name="trimSWCB"/>
        </item>
-       <item row="10" column="0">
+       <item row="12" column="0">
         <widget class="QLabel" name="label_12">
          <property name="text">
           <string>Center beep</string>
          </property>
         </widget>
        </item>
-       <item row="10" column="1">
+       <item row="12" column="1">
         <layout class="QGridLayout" name="gridLayout_2">
          <item row="0" column="0">
           <widget class="QCheckBox" name="bcRUDChkB">
@@ -244,14 +244,14 @@
          </item>
         </layout>
        </item>
-       <item row="11" column="0">
+       <item row="13" column="0">
         <widget class="QLabel" name="label_13">
          <property name="text">
           <string>Pulse Shift (polarity)</string>
          </property>
         </widget>
        </item>
-       <item row="11" column="1">
+       <item row="13" column="1">
         <widget class="QComboBox" name="pulsePolCB">
          <item>
           <property name="text">
@@ -265,28 +265,28 @@
          </item>
         </widget>
        </item>
-       <item row="12" column="0">
+       <item row="14" column="0">
         <widget class="QLabel" name="label_55">
          <property name="text">
           <string>Extended Limits</string>
          </property>
         </widget>
        </item>
-       <item row="12" column="1">
+       <item row="14" column="1">
         <widget class="QCheckBox" name="extendedLimitsChkB">
          <property name="text">
           <string/>
          </property>
         </widget>
        </item>
-       <item row="13" column="0">
+       <item row="15" column="0">
         <widget class="QLabel" name="label_5">
          <property name="text">
           <string>Protocol</string>
          </property>
         </widget>
        </item>
-       <item row="13" column="1">
+       <item row="15" column="1">
         <widget class="QComboBox" name="protocolCB">
          <item>
           <property name="text">
@@ -315,14 +315,14 @@
          </item>
         </widget>
        </item>
-       <item row="15" column="0">
+       <item row="17" column="0">
         <widget class="QLabel" name="label_6">
          <property name="text">
           <string>Channels</string>
          </property>
         </widget>
        </item>
-       <item row="15" column="1">
+       <item row="17" column="1">
         <widget class="QSpinBox" name="numChannelsSB">
          <property name="suffix">
           <string>ch</string>
@@ -341,14 +341,14 @@
          </property>
         </widget>
        </item>
-       <item row="16" column="0">
+       <item row="18" column="0">
         <widget class="QLabel" name="label_9">
          <property name="text">
           <string>ppm Delay</string>
          </property>
         </widget>
        </item>
-       <item row="16" column="1">
+       <item row="18" column="1">
         <widget class="QSpinBox" name="ppmDelaySB">
          <property name="suffix">
           <string> uSec</string>
@@ -367,7 +367,7 @@
          </property>
         </widget>
        </item>
-       <item row="14" column="1">
+       <item row="16" column="1">
         <widget class="QDoubleSpinBox" name="ppmFrameLengthDSB">
          <property name="suffix">
           <string> mSec</string>
@@ -389,56 +389,56 @@
          </property>
         </widget>
        </item>
-       <item row="14" column="0">
+       <item row="16" column="0">
         <widget class="QLabel" name="label_113">
          <property name="text">
           <string>PPM Frame Length</string>
          </property>
         </widget>
        </item>
-       <item row="19" column="0">
+       <item row="22" column="0">
         <widget class="QLabel" name="label_114">
          <property name="text">
           <string>Trainer</string>
          </property>
         </widget>
        </item>
-       <item row="20" column="0">
+       <item row="23" column="0">
         <widget class="QLabel" name="label_115">
          <property name="text">
           <string>T2throttleTrig</string>
          </property>
         </widget>
        </item>
-       <item row="19" column="1">
+       <item row="22" column="1">
         <widget class="QCheckBox" name="TrainerChkB">
          <property name="text">
           <string/>
          </property>
         </widget>
        </item>
-       <item row="20" column="1">
+       <item row="23" column="1">
         <widget class="QCheckBox" name="T2ThrTrgChkB">
          <property name="text">
           <string/>
          </property>
         </widget>
        </item>
-       <item row="17" column="0">
+       <item row="19" column="0">
         <widget class="QLabel" name="label_116">
          <property name="text">
           <string>DSM Type</string>
          </property>
         </widget>
        </item>
-       <item row="18" column="0">
+       <item row="20" column="0">
         <widget class="QLabel" name="label_117">
          <property name="text">
           <string>PXX RxNum</string>
          </property>
         </widget>
        </item>
-       <item row="17" column="1">
+       <item row="19" column="1">
         <widget class="QComboBox" name="DSM_Type">
          <item>
           <property name="text">
@@ -457,7 +457,7 @@
          </item>
         </widget>
        </item>
-       <item row="18" column="1">
+       <item row="20" column="1">
         <widget class="QSpinBox" name="pxxRxNum">
          <property name="suffix">
           <string/>
@@ -476,13 +476,65 @@
          </property>
         </widget>
        </item>
-       <item row="2" column="1">
+       <item row="4" column="1">
         <widget class="QComboBox" name="timerModeBCB"/>
        </item>
-       <item row="2" column="0">
+       <item row="4" column="0">
         <widget class="QLabel" name="label_118">
          <property name="text">
           <string>Timer ModeB</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QSpinBox" name="VoiceNumberSB">
+         <property name="suffix">
+          <string/>
+         </property>
+         <property name="minimum">
+          <number>260</number>
+         </property>
+         <property name="maximum">
+          <number>309</number>
+         </property>
+         <property name="singleStep">
+          <number>1</number>
+         </property>
+         <property name="value">
+          <number>260</number>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="label_121">
+         <property name="text">
+          <string>Voice Number</string>
+         </property>
+        </widget>
+       </item>
+       <item row="21" column="1">
+        <widget class="QSpinBox" name="PPM1stChan">
+         <property name="suffix">
+          <string/>
+         </property>
+         <property name="minimum">
+          <number>1</number>
+         </property>
+         <property name="maximum">
+          <number>8</number>
+         </property>
+         <property name="singleStep">
+          <number>1</number>
+         </property>
+         <property name="value">
+          <number>1</number>
+         </property>
+        </widget>
+       </item>
+       <item row="21" column="0">
+        <widget class="QLabel" name="label_126">
+         <property name="text">
+          <string>PPM Start Channel</string>
          </property>
         </widget>
        </item>
@@ -8977,10 +9029,10 @@ Right</string>
             </size>
            </property>
            <property name="minimum">
-            <number>2</number>
+            <number>1</number>
            </property>
            <property name="maximum">
-            <number>4</number>
+            <number>50</number>
            </property>
           </widget>
          </item>

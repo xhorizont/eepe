@@ -211,6 +211,7 @@ private slots:
     void on_TrainerChkB_toggled(bool checked);
     void on_T2ThrTrgChkB_toggled(bool checked);
 		
+		void on_PPM1stChan_editingFinished() ;
     void on_ppmDelaySB_editingFinished();
     void on_numChannelsSB_editingFinished();
     void on_timerValTE_editingFinished();
@@ -228,6 +229,7 @@ private slots:
     void ControlCurveSignal(bool flag);
     void on_DSM_Type_currentIndexChanged(int index);
     void on_pxxRxNum_editingFinished();
+		void on_VoiceNumberSB_editingFinished() ;
 };
 
 

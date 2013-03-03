@@ -244,32 +244,6 @@ p, li { white-space: pre-wrap; }
         </widget>
        </item>
        <item row="7" column="0">
-        <widget class="QLabel" name="label_8">
-         <property name="text">
-          <string>Input Filter</string>
-         </property>
-        </widget>
-       </item>
-       <item row="7" column="1">
-        <widget class="QComboBox" name="inputfilterCB">
-         <item>
-          <property name="text">
-           <string>Single</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Oversample</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Filter</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="8" column="0">
         <widget class="QLabel" name="label_2">
          <property name="toolTip">
           <string extracomment="Low Battery Voltage warning [5v-10v]"/>
@@ -279,7 +253,7 @@ p, li { white-space: pre-wrap; }
          </property>
         </widget>
        </item>
-       <item row="8" column="1">
+       <item row="7" column="1">
         <widget class="QDoubleSpinBox" name="battwarningDSB">
          <property name="toolTip">
           <string/>
@@ -316,14 +290,14 @@ Acceptable values are 5v..10v</string>
          </property>
         </widget>
        </item>
-       <item row="9" column="0">
+       <item row="8" column="0">
         <widget class="QLabel" name="label_3">
          <property name="text">
           <string>Battery Calibration</string>
          </property>
         </widget>
        </item>
-       <item row="9" column="1">
+       <item row="8" column="1">
         <widget class="QDoubleSpinBox" name="battcalibDSB">
          <property name="toolTip">
           <string/>
@@ -355,14 +329,14 @@ This value will be added to the measured battery voltage.  Use this value to cal
          </property>
         </widget>
        </item>
-       <item row="10" column="0">
+       <item row="9" column="0">
         <widget class="QLabel" name="label_4">
          <property name="text">
           <string>Backlight Switch</string>
          </property>
         </widget>
        </item>
-       <item row="10" column="1">
+       <item row="9" column="1">
         <widget class="QComboBox" name="backlightswCB">
          <property name="toolTip">
           <string/>
@@ -380,14 +354,14 @@ This value will be added to the measured battery voltage.  Use this value to cal
          </property>
         </widget>
        </item>
-       <item row="11" column="0">
+       <item row="10" column="0">
         <widget class="QLabel" name="label_5">
          <property name="text">
           <string>Backlight Auto On/OFF after</string>
          </property>
         </widget>
        </item>
-       <item row="11" column="1">
+       <item row="10" column="1">
         <widget class="QSpinBox" name="backlightautoSB">
          <property name="toolTip">
           <string/>
@@ -409,14 +383,14 @@ This value will be added to the measured battery voltage.  Use this value to cal
          </property>
         </widget>
        </item>
-       <item row="12" column="0">
+       <item row="11" column="0">
         <widget class="QLabel" name="label_38">
          <property name="text">
           <string>Backlight On Stick Move</string>
          </property>
         </widget>
        </item>
-       <item row="12" column="1">
+       <item row="11" column="1">
         <widget class="QSpinBox" name="backlightStickMove">
          <property name="toolTip">
           <string/>
@@ -438,14 +412,14 @@ This value will be added to the measured battery voltage.  Use this value to cal
          </property>
         </widget>
        </item>
-       <item row="13" column="0">
+       <item row="12" column="0">
         <widget class="QLabel" name="label_6">
          <property name="text">
           <string>Inactivity Timer</string>
          </property>
         </widget>
        </item>
-       <item row="13" column="1">
+       <item row="12" column="1">
         <widget class="QSpinBox" name="inactimerSB">
          <property name="toolTip">
           <string/>
@@ -464,7 +438,7 @@ This value will be added to the measured battery voltage.  Use this value to cal
          </property>
         </widget>
        </item>
-       <item row="14" column="0">
+       <item row="13" column="0">
         <widget class="QLabel" name="label_28">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
@@ -477,7 +451,7 @@ This value will be added to the measured battery voltage.  Use this value to cal
          </property>
         </widget>
        </item>
-       <item row="14" column="1">
+       <item row="13" column="1">
         <layout class="QHBoxLayout" name="horizontalLayout">
          <property name="spacing">
           <number>6</number>
@@ -522,7 +496,7 @@ p, li { white-space: pre-wrap; }
          </item>
         </layout>
        </item>
-       <item row="15" column="0" colspan="2">
+       <item row="14" column="0" colspan="2">
         <layout class="QGridLayout" name="gridLayout_3">
          <property name="sizeConstraint">
           <enum>QLayout::SetNoConstraint</enum>
@@ -849,14 +823,14 @@ p, li { white-space: pre-wrap; }
          </item>
         </layout>
        </item>
-       <item row="16" column="0">
+       <item row="15" column="0">
         <widget class="QLabel" name="label_13">
          <property name="text">
           <string>Channel Order (For Templates)</string>
          </property>
         </widget>
        </item>
-       <item row="16" column="1">
+       <item row="15" column="1">
         <widget class="QComboBox" name="channelorderCB">
          <property name="toolTip">
           <string/>
@@ -994,14 +968,14 @@ This is used by the templated to determine which channel goes to what number out
          </item>
         </widget>
        </item>
-       <item row="17" column="0">
+       <item row="16" column="0">
         <widget class="QLabel" name="label_14">
          <property name="text">
           <string>Stick Mode</string>
          </property>
         </widget>
        </item>
-       <item row="17" column="1">
+       <item row="16" column="1">
         <widget class="QComboBox" name="stickmodeCB">
          <property name="toolTip">
           <string/>

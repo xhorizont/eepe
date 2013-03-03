@@ -106,7 +106,7 @@ PACK(typedef struct t_EEGeneral {
     uint8_t   disablePotScroll:1;
     uint8_t   disableBG:1;
     uint8_t   frskyinternalalarm:1;
-    uint8_t   filterInput;
+    uint8_t   spare_filter;
     uint8_t   lightAutoOff;
     uint8_t   templateSetup;  //RETA order according to chout_ar array
     int8_t    PPM_Multiplier;
@@ -157,7 +157,7 @@ PACK(typedef struct t_MixData {
   uint8_t srcRaw;            //
   int8_t  weight;
   int8_t  swtch;
-  uint8_t curve;             //0=symmetrisch 1=no neg 2=no pos
+  int8_t	curve;             //0=symmetrisch 1=no neg 2=no pos
   uint8_t delayUp:4;
   uint8_t delayDown:4;
   uint8_t speedUp:4;         // Servogeschwindigkeit aus Tabelle (10ms Cycle)
@@ -254,7 +254,7 @@ typedef struct t_ModelData {
   uint8_t   numBlades:2;					// RPM scaling
   uint8_t   spare10:1;
   uint8_t   thrExpo:1;            // Enable Throttle Expo
-  uint8_t   spare11:3;
+	uint8_t   ppmStart:3 ;					// Start channel for PPM
   int8_t    trimInc;              // Trim Increments
   int8_t    ppmDelay;
   int8_t    trimSw;
