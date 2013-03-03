@@ -75,7 +75,7 @@ private slots:
     void on_memwarnChkB_stateChanged(int );
     void on_switchwarnChkB_stateChanged(int );
     void on_thrwarnChkB_stateChanged(int );
-    void on_inputfilterCB_currentIndexChanged(int index);
+//    void on_inputfilterCB_currentIndexChanged(int index);
     void on_thrrevChkB_stateChanged(int );
     void on_inactimerSB_editingFinished();
     void on_backlightautoSB_editingFinished();

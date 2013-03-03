@@ -29,6 +29,7 @@ simulatorDialog::simulatorDialog(QWidget *parent) :
 {
     ui->setupUi(this);
 
+		current_limits = 2 ;
     beepVal = 0;
     beepShow = 0;
 
@@ -242,13 +243,66 @@ void simulatorDialog::getValues()
     }
 }
 
-inline int chVal(int val)
+int simulatorDialog::chVal(int val)
 {
+	if ( current_limits == 1 )
+	{
+    return qMin(1280, qMax(-1280, val));
+	}
+	else
+	{
     return qMin(1024, qMax(-1024, val));
+	}
 }
 
 void simulatorDialog::setValues()
 {
+  if ( current_limits != g_model.extendedLimits )
+	{
+		int limit ;
+    current_limits = g_model.extendedLimits ;
+		if ( current_limits )
+		{
+      limit = 1280 ;
+		}
+		else
+		{
+      limit = 1024 ;
+		}
+    ui->chnout_1->setMinimum( - limit ) ;
+    ui->chnout_1->setMaximum( limit ) ;
+    ui->chnout_2->setMinimum( - limit ) ;
+    ui->chnout_2->setMaximum( limit ) ;
+    ui->chnout_3->setMinimum( - limit ) ;
+    ui->chnout_3->setMaximum( limit ) ;
+    ui->chnout_4->setMinimum( - limit ) ;
+    ui->chnout_4->setMaximum( limit ) ;
+    ui->chnout_5->setMinimum( - limit ) ;
+    ui->chnout_5->setMaximum( limit ) ;
+    ui->chnout_6->setMinimum( - limit ) ;
+    ui->chnout_6->setMaximum( limit ) ;
+    ui->chnout_7->setMinimum( - limit ) ;
+    ui->chnout_7->setMaximum( limit ) ;
+    ui->chnout_8->setMinimum( - limit ) ;
+    ui->chnout_8->setMaximum( limit ) ;
+    ui->chnout_9->setMinimum( - limit ) ;
+    ui->chnout_9->setMaximum( limit ) ;
+    ui->chnout_10->setMinimum( - limit ) ;
+    ui->chnout_10->setMaximum( limit ) ;
+    ui->chnout_11->setMinimum( - limit ) ;
+    ui->chnout_11->setMaximum( limit ) ;
+    ui->chnout_12->setMinimum( - limit ) ;
+    ui->chnout_12->setMaximum( limit ) ;
+    ui->chnout_13->setMinimum( - limit ) ;
+    ui->chnout_13->setMaximum( limit ) ;
+    ui->chnout_14->setMinimum( - limit ) ;
+    ui->chnout_14->setMaximum( limit ) ;
+    ui->chnout_15->setMinimum( - limit ) ;
+    ui->chnout_15->setMaximum( limit ) ;
+    ui->chnout_16->setMinimum( - limit ) ;
+    ui->chnout_16->setMaximum( limit ) ;
+		
+	}
     ui->chnout_1->setValue(chVal(chanOut[0]));
     ui->chnout_2->setValue(chVal(chanOut[1]));
     ui->chnout_3->setValue(chVal(chanOut[2]));
@@ -304,6 +358,41 @@ void simulatorDialog::setValues()
     ui->labelCSW_10->setStyleSheet(getSwitch(DSW_SWA,0)  ? CSWITCH_ON : CSWITCH_OFF);
     ui->labelCSW_11->setStyleSheet(getSwitch(DSW_SWB,0)  ? CSWITCH_ON : CSWITCH_OFF);
     ui->labelCSW_12->setStyleSheet(getSwitch(DSW_SWC,0)  ? CSWITCH_ON : CSWITCH_OFF);
+
+#define CRED  "QSlider::handle:horizontal:disabled { background: #CC0000;border: 1px solid #aaa;border-radius: 4px; }"
+#define CBLUE "QSlider::handle:horizontal:disabled { background: #0000CC;border: 1px solid #aaa;border-radius: 4px; }"
+	int onoff[16] ;
+	int i ;
+	for ( i = 0 ; i < 16 ; i += 1 )
+	{
+		onoff[i] = 0 ;
+    if ( ( g_model.protocol == PROTO_PPM ) || ( g_model.protocol == PROTO_PPM16 ) )
+		{
+			if ( i >= g_model.ppmStart )
+			{
+				if ( i < g_model.ppmStart + g_model.ppmNCH*2+8 )
+				{
+					onoff[i] = 1 ;				
+				}
+			}
+		}
+	}
+  ui->chnout_1->setStyleSheet( onoff[0] ? CRED : CBLUE ) ;
+  ui->chnout_2->setStyleSheet( onoff[1] ? CRED : CBLUE ) ;
+  ui->chnout_3->setStyleSheet( onoff[2] ? CRED : CBLUE ) ;
+  ui->chnout_4->setStyleSheet( onoff[3] ? CRED : CBLUE ) ;
+  ui->chnout_5->setStyleSheet( onoff[4] ? CRED : CBLUE ) ;
+  ui->chnout_6->setStyleSheet( onoff[5] ? CRED : CBLUE ) ;
+  ui->chnout_7->setStyleSheet( onoff[6] ? CRED : CBLUE ) ;
+  ui->chnout_8->setStyleSheet( onoff[7] ? CRED : CBLUE ) ;
+  ui->chnout_9->setStyleSheet( onoff[8] ? CRED : CBLUE ) ;
+  ui->chnout_10->setStyleSheet( onoff[9] ? CRED : CBLUE ) ;
+  ui->chnout_11->setStyleSheet( onoff[10] ? CRED : CBLUE ) ;
+  ui->chnout_12->setStyleSheet( onoff[11] ? CRED : CBLUE ) ;
+  ui->chnout_13->setStyleSheet( onoff[12] ? CRED : CBLUE ) ;
+  ui->chnout_14->setStyleSheet( onoff[13] ? CRED : CBLUE ) ;
+  ui->chnout_15->setStyleSheet( onoff[14] ? CRED : CBLUE ) ;
+  ui->chnout_16->setStyleSheet( onoff[14] ? CRED : CBLUE ) ;
 }
 
 void simulatorDialog::beepWarn1()
@@ -703,6 +792,32 @@ void simulatorDialog::timerTick()
 
 }
 
+// GVARS helpers
+
+int8_t simulatorDialog::REG100_100(int8_t x)
+{
+	return REG( x, -100, 100 ) ;
+}
+
+int8_t simulatorDialog::REG(int8_t x, int8_t min, int8_t max)
+{
+  int8_t result = x;
+  if (x >= 126 || x <= -126) {
+    x = (uint8_t)x - 126;
+    result = g_model.gvars[x].gvar ;
+    if (result < min) {
+      g_model.gvars[x].gvar = result = min;
+//      eeDirty( EE_MODEL | EE_TRIM ) ;
+    }
+    if (result > max) {
+      g_model.gvars[x].gvar = result = max;
+//      eeDirty( EE_MODEL | EE_TRIM ) ;
+    }
+  }
+  return result;
+}
+
+
 void simulatorDialog::perOut(bool init)
 {
     int16_t trimA[4];
@@ -1013,7 +1128,13 @@ void simulatorDialog::perOut(bool init)
             v = v>0 ? RESX : -RESX;
             break;
         default: //c1..c16
-            v = intpol(v, md.curve - 7);
+            int8_t idx = md.curve ;
+						if ( idx < 0 )
+						{
+							v = -v ;
+							idx = 6 - idx ;								
+						}
+           	v = intpol(v, idx - 7);
         }
 
         //========== TRIM ===============

@@ -64,9 +64,12 @@ private:
     quint16 s_sum;
     quint8  sw_toggled;
 
+		quint8  current_limits ;
+
     ModelData g_model;
     EEGeneral g_eeGeneral;
 
+		int chVal(int val) ;
     void setupSticks();
     void setupTimer();
     void resizeEvent(QResizeEvent *event  = 0);
@@ -88,6 +91,8 @@ private:
     int beepShow;
 
     int16_t intpol(int16_t x, uint8_t idx);
+		int8_t REG100_100(int8_t x) ;
+		int8_t REG(int8_t x, int8_t min, int8_t max) ;
 
 protected:
     void closeEvent (  );

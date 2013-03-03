@@ -22,7 +22,7 @@ QString AudioAlarms[] = {
 } ;
 
 QString TelemItems[] = {
-//	"----",
+	"----",
 	"A1= ",
 	"A2= ",
 	"RSSI",
@@ -43,7 +43,16 @@ QString TelemItems[] = {
 	"Amps",
 	"Mah ",
 	"Ctot",
-	"FasV"	// 20
+	"FasV",	// 20
+	"AccX",
+	"AccY",
+	"AccZ",
+	"Vspd",
+	"Gvr1",
+	"Gvr2",
+	"Gvr3",
+	"Gvr4",
+	"Gvr5"
 } ;
 
 QString GvarItems[] = {
@@ -290,10 +299,10 @@ void stringTelemetryChannel( char *string, int8_t index, int16_t val, ModelData 
 void populateTelItemsCB(QComboBox *b, int value=0)
 {
     b->clear();
-    for(int i=0; i<=20; i++)
+    for(int i=1; i<=30; i++)
         b->addItem(TelemItems[i]);
     b->setCurrentIndex(value);
-    b->setMaxVisibleItems(21);
+    b->setMaxVisibleItems(30);
 }
 
 
@@ -395,8 +404,13 @@ void populateCurvesCB(QComboBox *b, int value)
 {
     QString str = CURV_STR;
     b->clear();
+
+    for(int i=(str.length()/3)-1; i >= 7 ; i -= 1)
+		{
+			b->addItem(str.mid(i*3,3).replace("c","!Curve "));
+		}
     for(int i=0; i<(str.length()/3); i++)  b->addItem(str.mid(i*3,3).replace("c","Curve "));
-    b->setCurrentIndex(value);
+    b->setCurrentIndex(value+16);
     b->setMaxVisibleItems(10);
 }
 
@@ -442,7 +456,9 @@ QString getTimerMode(int tm)
 
 
 #define MODI_STR  "RUD ELE THR AIL RUD THR ELE AIL AIL ELE THR RUD AIL THR ELE RUD "
-#define SRCP_STR  "P1  P2  P3  HALFFULLCYC1CYC2CYC3PPM1PPM2PPM3PPM4PPM5PPM6PPM7PPM8CH1 CH2 CH3 CH4 CH5 CH6 CH7 CH8 CH9 CH10CH11CH12CH13CH14CH15CH16CH17CH18CH19CH20CH21CH22CH23CH24CH25CH26CH27CH28CH29CH30"
+#define SRCP_STR  "P1  P2  P3  HALFFULLCYC1CYC2CYC3PPM1PPM2PPM3PPM4PPM5PPM6PPM7PPM8CH1 CH2 CH3 CH4 CH5 CH6 CH7 CH8 CH9 CH10CH11CH12CH13CH14CH15CH163POSGV1 GV2 GV3 GV4 GV5 "
+
+//CH17CH18CH19CH20CH21CH22CH23CH24CH25CH26CH27CH28CH29CH30"
 
 QString getSourceStr(int stickMode=1, int idx=0)
 {
@@ -468,7 +484,7 @@ void populateSourceCB(QComboBox *b, int stickMode, int telem, int value)
     for(int i=0; i<37; i++) b->addItem(getSourceStr(stickMode,i));
 		if ( telem )
 		{
-    	for(int i=0; i<=20; i++)
+    	for(int i=1; i<=24; i++)
     	    b->addItem(TelemItems[i]);
 		}
     b->setCurrentIndex(value);

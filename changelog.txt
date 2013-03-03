@@ -10,6 +10,20 @@ description here
 ====================================================================================
 
 ******************************************
+CHANGELOG: 03-03-2013 MPB
+Scale simulator sliders when extended limits on
+Colour sliders of transmitted channels
+Implement !Curve in mixes
+Allow Gvars as voice sources
+Handle Gvars as mix sources
+Allow choice of 1st PPM channel to transmit
+
+******************************************
+CHANGELOG: 08-02-2013 MPB
+Add gvars, extra AND on CSwitch.
+Add support for Mega128 version.
+
+******************************************
 CHANGELOG: 04-11-2012 MPB
 Fix model name buffer overflow bug
 

@@ -857,7 +857,7 @@ bool MdiChild::save()
 bool MdiChild::saveAs()
 {
     QSettings settings("er9x-eePe", "eePe");
-    QString fileName = QFileDialog::getSaveFileName(this, tr("Save As"),settings.value("lastDir").toString() + "/" +curFile,tr(EEPROM_FILES_FILTER));
+    QString fileName = QFileDialog::getSaveFileName(this, tr("Save As"),settings.value("lastDir").toString() + "/" +strippedName(curFile),tr(EEPROM_FILES_FILTER));
     if (fileName.isEmpty())
         return false;
 

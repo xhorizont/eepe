@@ -13,6 +13,11 @@ MixerDialog::MixerDialog(QWidget *parent, MixData *mixdata, int stickMode, QStri
     this->setWindowTitle(tr("DEST -> CH%1%2").arg(md->destCh/10).arg(md->destCh%10));
     populateSourceCB(ui->sourceCB, stickMode, 0, md->srcRaw);
     ui->sourceCB->addItem("3POS");
+    ui->sourceCB->addItem("GV1 ");
+    ui->sourceCB->addItem("GV2 ");
+    ui->sourceCB->addItem("GV3 ");
+    ui->sourceCB->addItem("GV4 ");
+    ui->sourceCB->addItem("GV5 ");
     ui->sourceCB->setCurrentIndex(md->srcRaw);
 
     ui->sourceCB->removeItem(0);
@@ -76,7 +81,7 @@ void MixerDialog::valuesChanged()
     md->weight       = ui->weightSB->value();
     md->sOffset      = ui->offsetSB->value();
     md->carryTrim    = ui->trimChkB->checkState() ? 0 : 1;
-    md->curve        = ui->curvesCB->currentIndex();
+    md->curve        = ui->curvesCB->currentIndex()-16;
     md->swtch        = ui->switchesCB->currentIndex()-MAX_DRSWITCH;
     md->mixWarn      = ui->warningCB->currentIndex();
     md->mltpx        = ui->mltpxCB->currentIndex();
