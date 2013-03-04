@@ -389,26 +389,42 @@ int decodePhaseTrim( int16_t *existing, int which, int index )
 
 void populateSwitchAndCB(QComboBox *b, int value=0)
 {
-	char name[4] ;
+	char name[6] ;
+	name[0] = '!' ;
+	name[1] = 'C' ;
+	name[2] = 'S' ;
+	name[4] = 0 ;
+	
+	b->clear();
+  
+	for(int i='O' ; i>= 'A' ; i -= 1 )
+	{
+		name[3] = i ;
+     b->addItem(name);
+	}
+  for(int i='9'; i>='1'; i -= 1 )
+	{
+		name[3] = i ;
+    b->addItem(name);
+	}
+  	for(int i=-8 ; i<=8; i += 1)
+      b->addItem(getSWName(i));
+
 	name[0] = 'C' ;
 	name[1] = 'S' ;
 	name[3] = 0 ;
-    b->clear();
-    for(int i=0 ; i<=8; i++)
-        b->addItem(getSWName(i));
-
-    for(int i='0'; i<='9'; i++)
-		{
-			name[2] = i ;
-      b->addItem(name);
-		}
-    for(int i='A' ; i<= 'O' ; i++)
-		{
-			name[2] = i ;
-      b->addItem(name);
-		}
-    b->setCurrentIndex(value);
-    b->setMaxVisibleItems(10);
+  for(int i='1'; i<='9'; i++)
+	{
+		name[2] = i ;
+    b->addItem(name);
+	}
+  for(int i='A' ; i<= 'O' ; i++)
+	{
+		name[2] = i ;
+    b->addItem(name);
+	}
+  b->setCurrentIndex(value);
+  b->setMaxVisibleItems(10);
 }
 
 void populateSafetySwitchCB(QComboBox *b, int type, int value=0)
