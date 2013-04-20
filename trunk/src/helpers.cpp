@@ -52,7 +52,9 @@ QString TelemItems[] = {
 	"Gvr2",
 	"Gvr3",
 	"Gvr4",
-	"Gvr5"
+	"Gvr5",
+	"Gvr6",
+	"Gvr7"
 } ;
 
 QString GvarItems[] = {
@@ -68,19 +70,107 @@ QString GvarItems[] = {
 	"AIL", // 9
 	"P1 ",
 	"P2 ",
-	"P3 "  //12
+	"P3 ", //12
+	"C1 ",
+	"C2 ",
+	"C3 ",
+	"C4 ",
+	"C5 ",
+	"C6 ",
+	"C7 ",
+	"C8 ",
+	"C9 ",
+	"C10",
+	"C11",
+	"C12",
+	"C13",
+	"C14",
+	"C15",
+	"C16",
+	"C17",
+	"C18",
+	"C19",
+	"C20",
+	"C21",
+	"C22",
+	"C23",
+	"C24"
 } ;
 
 
 void populateGvarCB(QComboBox *b, int value)
 {
     b->clear();
-    for(int i=0; i<=12; i++)
+#ifdef SKY
+    for(int i=0; i<=36; i++)
+#else
+    for(int i=0; i<=28; i++)
+#endif
         b->addItem(GvarItems[i]);
     b->setCurrentIndex(value);
     b->setMaxVisibleItems(13);
 }
 
+void populateNumericGVarCB( QComboBox *b, int value, int min, int max)
+{
+  b->clear();
+  
+	if ( ( value < -125 ) || ( value > 125) )
+	{
+		// A GVAR
+		if ( value < 0 )
+		{
+			value += 128+2 ;			
+		}
+		else
+		{
+			value -= 126 ;
+		}
+		// value is now 0-4 for GVAR 1-5
+		value += max+1 ;		
+	}
+	else
+	{
+		value -= min ;
+	}
+
+	for (int i=min; i<=max; i++)
+	{
+    b->addItem(QString::number(i, 10), i);
+//    if (value == i)
+//      b->setCurrentIndex(b->count()-1);
+  }
+  for (int i=1; i<=5; i++)
+	{
+//    int16_t gval = (int16_t)(10000+i);
+    b->addItem(QObject::tr("GV%1").arg(i));
+//    if (value == gval)
+//      b->setCurrentIndex(b->count()-1);
+  }
+   b->setCurrentIndex(value) ;
+}
+
+int numericGvarValue( QComboBox *b, int min, int max )
+{
+	int value ;
+
+	value = b->currentIndex() ;
+	value += min ;
+	if ( value > max )
+	{
+		// A GVAR
+		value -= max ;	// value is now 0-4 for GVAR 1-5 (126,127,-128,-127,-126
+    if ( value <= 2 )
+		{
+			value += 125 ;			
+		}
+		else
+		{
+			value -= 128+3 ;
+		}
+	}
+	return value ;	
+}
 
 
 // This routine converts an 8 bit value for custom switch use
@@ -140,7 +230,11 @@ int16_t convertTelemConstant( int8_t index, int8_t value)
 #define PREC1		1
 #define PREC2		2
 
+#ifdef SKY
+void stringTelemetryChannel( char *string, int8_t index, int16_t val, SKYModelData *model )
+#else
 void stringTelemetryChannel( char *string, int8_t index, int16_t val, ModelData *model )
+#endif
 {
 	uint8_t unit = ' ' ;
 	uint8_t displayed = 0 ;
@@ -167,7 +261,11 @@ void stringTelemetryChannel( char *string, int8_t index, int16_t val, ModelData 
     	{
     	  uint32_t value = val ;
     	  uint8_t times2 ;
+#ifdef SKY
+        SKYFrSkyChannelData *fd ;
+#else
 			  FrSkyChannelData *fd ;
+#endif
 
   			fd = &model->frsky.channels[index] ;
     	  value = val ;
@@ -296,10 +394,14 @@ void stringTelemetryChannel( char *string, int8_t index, int16_t val, ModelData 
 
 
 
-void populateTelItemsCB(QComboBox *b, int value=0)
+void populateTelItemsCB(QComboBox *b, int start, int value)
 {
     b->clear();
-    for(int i=1; i<=30; i++)
+		if ( start )
+		{
+			start = 1 ;			
+		}
+    for(int i=start; i<=32; i++)
         b->addItem(TelemItems[i]);
     b->setCurrentIndex(value);
     b->setMaxVisibleItems(30);
@@ -334,31 +436,151 @@ void populateSwitchCB(QComboBox *b, int value=0)
     b->setMaxVisibleItems(10);
 }
 
-void populateSwitchAndCB(QComboBox *b, int value=0)
+void populateSwitchShortCB(QComboBox *b, int value)
 {
-	char name[4] ;
-	name[0] = 'C' ;
-	name[1] = 'S' ;
-	name[3] = 0 ;
     b->clear();
-    for(int i=0 ; i<=8; i++)
+    for(int i=-MAX_DRSWITCH+1; i<MAX_DRSWITCH; i++)
         b->addItem(getSWName(i));
-
-    for(int i=1; i<=7; i++)
-		{
-			name[2] = i + '0' ;
-      b->addItem(name);
-		}
-    b->setCurrentIndex(value);
+    b->setCurrentIndex(value+MAX_DRSWITCH-1);
     b->setMaxVisibleItems(10);
 }
 
+void populatePhasetrim(QComboBox *b, int which, int value)
+{	// which i s0 for FP1, 1 for FP2 etc.
+	char name[4] ;
+	name[0] = 'F' ;
+	name[1] = 'M' ;
+	name[3] = 0 ;
+	
+	b->clear();
+#ifdef SKY
+#else
+		value += TRIM_EXTENDED_MAX+1 ;
+#endif
+	if ( value > TRIM_EXTENDED_MAX )
+	{
+		value -= TRIM_EXTENDED_MAX ;
+	}
+	else
+	{
+		value = 0 ;
+	}
+ 	b->addItem( "Own trim" ) ;
+#ifdef SKY
+ 	for( int i= 0 ; i < 7 ; i += 1 )
+#else
+ 	for( int i= 0 ; i < 5 ; i += 1 )
+#endif
+	{
+		if ( i == which )
+		{
+			continue ;			
+		}
+		name[2] = i + '0' ;
+   	b->addItem( name ) ;
+	}
+	b->setCurrentIndex(value);
+	b->setMaxVisibleItems( 7 ) ;
+}
+
+int decodePhaseTrim( int16_t *existing, int which, int index )
+{
+	if ( index == 0 )
+	{
+#ifdef SKY
+		if ( *existing > TRIM_EXTENDED_MAX )
+		{
+			*existing = 0 ;			
+		}
+#else
+		if ( *existing >= 0 )
+		{
+			*existing = -(TRIM_EXTENDED_MAX+1) ;
+		}
+#endif
+		return -1 ;
+	}
+#ifdef SKY
+	*existing = TRIM_EXTENDED_MAX + index ;
+#else
+	*existing = TRIM_EXTENDED_MAX + index - (TRIM_EXTENDED_MAX+1) ;
+#endif
+	return index ;
+}
+
+void populateSwitchAndCB(QComboBox *b, int value=0)
+{
+	char name[6] ;
+	name[0] = '!' ;
+	name[1] = 'C' ;
+	name[2] = 'S' ;
+	name[4] = 0 ;
+	
+	b->clear();
+  
+	for(int i='O' ; i>= 'A' ; i -= 1 )
+	{
+		name[3] = i ;
+     b->addItem(name);
+	}
+  for(int i='9'; i>='1'; i -= 1 )
+	{
+		name[3] = i ;
+    b->addItem(name);
+	}
+  	for(int i=-8 ; i<=8; i += 1)
+      b->addItem(getSWName(i));
+
+	name[0] = 'C' ;
+	name[1] = 'S' ;
+	name[3] = 0 ;
+  for(int i='1'; i<='9'; i++)
+	{
+		name[2] = i ;
+    b->addItem(name);
+	}
+  for(int i='A' ; i<= 'O' ; i++)
+	{
+		name[2] = i ;
+    b->addItem(name);
+	}
+  b->setCurrentIndex(value);
+  b->setMaxVisibleItems(10);
+}
+//void populateSwitchAndCB(QComboBox *b, int value=0)
+//{
+//	char name[4] ;
+//	name[0] = 'C' ;
+//	name[1] = 'S' ;
+//	name[3] = 0 ;
+//    b->clear();
+//    for(int i=0 ; i<=8; i++)
+//        b->addItem(getSWName(i));
+
+//    for(int i=1; i<=7; i++)
+//		{
+//			name[2] = i + '0' ;
+//      b->addItem(name);
+//		}
+//    b->setCurrentIndex(value);
+//    b->setMaxVisibleItems(10);
+//}
+
 void populateSafetySwitchCB(QComboBox *b, int type, int value=0)
 {
+	int offset = MAX_DRSWITCH ;
+	int start = -MAX_DRSWITCH ;
+	int last = MAX_DRSWITCH ;
+	if ( type == VOICE_SWITCH )
+	{
+		offset = 0 ;
+		start = 0 ;		
+		last = MAX_DRSWITCH - 1 ;
+	}
     b->clear();
-    for(int i=-MAX_DRSWITCH; i<=MAX_DRSWITCH; i++)
+    for(int i= start ; i<=last; i++)
         b->addItem(getSWName(i));
-    b->setCurrentIndex(value+MAX_DRSWITCH);
+    b->setCurrentIndex(value+ offset ) ;
     b->setMaxVisibleItems(10);
 		if (type == 2 )
 		{
@@ -393,10 +615,15 @@ void populateSafetyVoiceTypeCB(QComboBox *b, int type, int value=0)
 
 void populateTmrBSwitchCB(QComboBox *b, int value=0)
 {
+	int i ;
     b->clear();
-    for(int i=-(MAX_DRSWITCH-1); i<MAX_DRSWITCH; i++)
+    for( i=-(MAX_DRSWITCH-1); i<MAX_DRSWITCH; i++)
         b->addItem(getSWName(i));
-    b->setCurrentIndex(value+MAX_DRSWITCH-1);
+#ifdef SKY    
+		for( i=1 ; i<MAX_DRSWITCH; i++)
+        b->addItem('m'+getSWName(i));
+#endif    
+		b->setCurrentIndex(value+MAX_DRSWITCH-1);
     b->setMaxVisibleItems(10);
 }
 
@@ -404,13 +631,16 @@ void populateCurvesCB(QComboBox *b, int value)
 {
     QString str = CURV_STR;
     b->clear();
-
     for(int i=(str.length()/3)-1; i >= 7 ; i -= 1)
 		{
 			b->addItem(str.mid(i*3,3).replace("c","!Curve "));
 		}
     for(int i=0; i<(str.length()/3); i++)  b->addItem(str.mid(i*3,3).replace("c","Curve "));
+#ifdef SKY    
+		b->setCurrentIndex(value+24);
+#else
     b->setCurrentIndex(value+16);
+#endif
     b->setMaxVisibleItems(10);
 }
 
@@ -418,19 +648,54 @@ void populateCurvesCB(QComboBox *b, int value)
 void populateTimerSwitchCB(QComboBox *b, int value=0)
 {
     b->clear();
+#ifdef SKY    
+    for(int i=0 ; i<TMR_NUM_OPTION; i++)
+        b->addItem(getTimerMode(i));
+    b->setCurrentIndex(value);
+#else
     for(int i=-TMR_NUM_OPTION; i<=TMR_NUM_OPTION; i++)
         b->addItem(getTimerMode(i));
     b->setCurrentIndex(value+TMR_NUM_OPTION);
+#endif
     b->setMaxVisibleItems(10);
 }
 
 QString getTimerMode(int tm)
 {
 
+#ifdef SKY    
+    QString str = CURV_STR;
+    QString stt = "OFFABSTHsTH%";
+#else
     QString str = SWITCHES_STR;
     QString stt = "OFFABSRUsRU%ELsEL%THsTH%ALsAL%P1 P1%P2 P2%P3 P3%";
+#endif
 
     QString s;
+#ifdef SKY    
+    if(tm<TMR_VAROFS)
+    {
+        s = stt.mid(abs(tm)*3,3);
+//        if(tm<-1) s.prepend("!");
+        return s;
+    }
+		tm -= TMR_VAROFS ;
+
+		if ( tm < 9 )
+		{
+       s = str.mid(tm*3+21,2) ;
+		}
+		else
+		{
+       s = str.mid(tm*3+21,3) ;
+		}
+     return s +'%' ;
+
+
+//    s = "m" + str.mid((abs(tm)-(TMR_VAROFS+MAX_DRSWITCH-1))*3,3);
+//    if(tm<0) s.prepend("!");
+//    return s;
+#else
     if(abs(tm)<TMR_VAROFS)
     {
         s = stt.mid(abs(tm)*3,3);
@@ -449,6 +714,7 @@ QString getTimerMode(int tm)
     s = "m" + str.mid((abs(tm)-(TMR_VAROFS+MAX_DRSWITCH-1))*3,3);
     if(tm<0) s.prepend("!");
     return s;
+#endif
 
 }
 
@@ -456,9 +722,11 @@ QString getTimerMode(int tm)
 
 
 #define MODI_STR  "RUD ELE THR AIL RUD THR ELE AIL AIL ELE THR RUD AIL THR ELE RUD "
+#ifdef SKY    
+#define SRCP_STR  "P1  P2  P3  HALFFULLCYC1CYC2CYC3PPM1PPM2PPM3PPM4PPM5PPM6PPM7PPM8CH1 CH2 CH3 CH4 CH5 CH6 CH7 CH8 CH9 CH10CH11CH12CH13CH14CH15CH16CH17CH18CH19CH20CH21CH22CH23CH243POSGV1 GV2 GV3 GV4 GV5 "
+#else
 #define SRCP_STR  "P1  P2  P3  HALFFULLCYC1CYC2CYC3PPM1PPM2PPM3PPM4PPM5PPM6PPM7PPM8CH1 CH2 CH3 CH4 CH5 CH6 CH7 CH8 CH9 CH10CH11CH12CH13CH14CH15CH163POSGV1 GV2 GV3 GV4 GV5 "
-
-//CH17CH18CH19CH20CH21CH22CH23CH24CH25CH26CH27CH28CH29CH30"
+#endif
 
 QString getSourceStr(int stickMode=1, int idx=0)
 {
@@ -481,7 +749,11 @@ QString getSourceStr(int stickMode=1, int idx=0)
 void populateSourceCB(QComboBox *b, int stickMode, int telem, int value)
 {
     b->clear();
+#ifdef SKY    
+    for(int i=0; i<45; i++) b->addItem(getSourceStr(stickMode,i));
+#else
     for(int i=0; i<37; i++) b->addItem(getSourceStr(stickMode,i));
+#endif
 		if ( telem )
 		{
     	for(int i=1; i<=24; i++)
@@ -755,15 +1027,22 @@ QDomElement getGeneralDataXML(QDomDocument * qdoc, EEGeneral * tgen)
 }
 
 
-
+#ifdef SKY
+QDomElement getModelDataXML(QDomDocument * qdoc, SKYModelData * tmod, int modelNum, int mdver)
+#else
 QDomElement getModelDataXML(QDomDocument * qdoc, ModelData * tmod, int modelNum, int mdver)
+#endif
 {
     QDomElement md = qdoc->createElement("MODEL_DATA");
     md.setAttribute("number", modelNum);
 
     appendNumberElement(qdoc, &md, "Version", mdver, true); // have to write value here
     appendTextElement(qdoc, &md, "Name", QString::fromAscii(tmod->name,sizeof(tmod->name)).trimmed());
+#ifdef SKY
+    appendCDATAElement(qdoc, &md, "Data", (const char *)tmod,sizeof(SKYModelData));
+#else
     appendCDATAElement(qdoc, &md, "Data", (const char *)tmod,sizeof(ModelData));
+#endif
     return md;
 }
 
@@ -796,7 +1075,11 @@ bool loadGeneralDataXML(QDomDocument * qdoc, EEGeneral * tgen)
     return true;
 }
 
+#ifdef SKY
+bool loadModelDataXML(QDomDocument * qdoc, SKYModelData * tmod, int modelNum)
+#else
 bool loadModelDataXML(QDomDocument * qdoc, ModelData * tmod, int modelNum)
+#endif
 {
     //look for MODEL_DATA with modelNum attribute.
     //if modelNum = -1 then just pick the first one
@@ -828,7 +1111,11 @@ bool loadModelDataXML(QDomDocument * qdoc, ModelData * tmod, int modelNum)
             QString ds = n.toCDATASection().data();
             QByteArray ba = QByteArray::fromBase64(ds.toAscii());
             const char * data = ba.data();
+#ifdef SKY
+            memcpy(tmod, data, sizeof(SKYModelData));
+#else
             memcpy(tmod, data, sizeof(ModelData));
+#endif
             break;
         }
         n = n.nextSibling();

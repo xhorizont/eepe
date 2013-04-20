@@ -597,6 +597,32 @@ void MainWindow::burnFrom()
     }
 }
 
+int MainWindow::backupEeprom()
+{
+    burnConfigDialog bcd;
+    QString avrdudeLoc = bcd.getAVRDUDE();
+    QString tempDir    = QDir::tempPath();
+    QString programmer = bcd.getProgrammer();
+    QString mcu        = bcd.getMCU();
+    QStringList args   = bcd.getAVRArgs();
+    if(!bcd.getPort().isEmpty()) args << "-P" << bcd.getPort();
+
+
+    QString tempFile = tempDir + "/eebackup.hex";
+    QString str = "eeprom:r:" + tempFile + ":i"; // writing eeprom -> MEM:OPR:FILE:FTYPE"
+
+    QStringList arguments;
+    arguments << "-c" << programmer << "-p" << mcu << args << "-U" << str;
+
+    avrOutputDialog *ad = new avrOutputDialog(this, avrdudeLoc, arguments,tr("Backing up EEPROM From Tx")); //, AVR_DIALOG_KEEP_OPEN);
+    ad->setWindowIcon(QIcon(":/images/read_eeprom.png"));
+    int res = ad->exec();
+//    ad->show();
+//		ad->waitForFinish() ;
+		return res ;
+}
+
+
 void MainWindow::burnExtenalToEEPROM()
 {
     QSettings settings("er9x-eePe", "eePe");
@@ -644,6 +670,15 @@ void MainWindow::burnToFlash(QString fileToFlash)
 
         int ret = QMessageBox::question(this, "eePe", tr("Write %1 to flash memory?").arg(QFileInfo(fileName).fileName()), QMessageBox::Yes | QMessageBox::No);
         if(ret!=QMessageBox::Yes) return;
+
+				ret = backupEeprom() ;
+
+				if ( ret )
+				{
+          QMessageBox::warning(this, "eePe", tr("Backup failed, abandoning flash operation") ) ;
+					return ;
+				}
+
 
 //        ret = QMessageBox::question(this, "eePe", tr("Preserve installed spash screen"), QMessageBox::Yes | QMessageBox::No);
 //        if(ret==QMessageBox::Yes)

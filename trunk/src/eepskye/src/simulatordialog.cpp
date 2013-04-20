@@ -148,7 +148,7 @@ void simulatorDialog::timerEvent()
 						{
 							x += 1 ;
 						}
-						if ( x - -8 )
+						if ( x < -8 )
 						{
 							x -= 1 ;
 						}
@@ -199,10 +199,6 @@ void simulatorDialog::loadParams(const EEGeneral gg, const SKYModelData gm)
     ui->trimVRight->setValue(getTrimValue( CurrentPhase, 2 ));  // mode=(0 || 2) -> ele trim else -> thr trim
     ui->trimHRight->setValue(getTrimValue( CurrentPhase, 3 ));  // mode=(0 || 1) -> ail trim else -> rud trim
 
-//    ui->trimHLeft->setValue( g_model.trim[(g_eeGeneral.stickMode>2)   ? 3 : 0]);  // mode=(0 || 1) -> rud trim else -> ail trim
-//    ui->trimVLeft->setValue( g_model.trim[(g_eeGeneral.stickMode & 1) ? 1 : 2]);  // mode=(0 || 2) -> thr trim else -> ele trim
-//    ui->trimVRight->setValue(g_model.trim[(g_eeGeneral.stickMode & 1) ? 2 : 1]);  // mode=(0 || 2) -> ele trim else -> thr trim
-//    ui->trimHRight->setValue(g_model.trim[(g_eeGeneral.stickMode>2)   ? 0 : 3]);  // mode=(0 || 1) -> ail trim else -> rud trim
 
 
 
@@ -302,9 +298,9 @@ void simulatorDialog::setTrimValue(uint8_t phase, uint8_t idx, int16_t trim)
 
 
 
-
 void simulatorDialog::getValues()
 {
+		int8_t trims[4] ;
 
     calibratedStick[0] = 1024*nodeLeft->getX(); //RUD
     calibratedStick[1] = -1024*nodeLeft->getY(); //ELE
@@ -312,15 +308,21 @@ void simulatorDialog::getValues()
     calibratedStick[3] = 1024*nodeRight->getX(); //AIL
 
 		uint32_t phase ;
-		
+
+    trims[g_eeGeneral.crosstrim ? 3 : 0] = ui->trimHLeft->value();
+    trims[g_eeGeneral.crosstrim ? 2 : 1] = ui->trimVLeft->value();
+    trims[g_eeGeneral.crosstrim ? 1 : 2] = ui->trimVRight->value();
+    trims[g_eeGeneral.crosstrim ? 0 : 3] = ui->trimHRight->value();
+
+		 
 		phase = getTrimFlightPhase( CurrentPhase, 0 ) ;
-    setTrimValue( phase, 0, ui->trimHLeft->value() ) ;
+    setTrimValue( phase, 0, trims[0] ) ;
 		phase = getTrimFlightPhase( CurrentPhase, 1 ) ;
-    setTrimValue( phase, 1, ui->trimVLeft->value() ) ;
+    setTrimValue( phase, 1, trims[1] ) ;
 		phase = getTrimFlightPhase( CurrentPhase, 2 ) ;
-    setTrimValue( phase, 2, ui->trimVRight->value() ) ;
+    setTrimValue( phase, 2, trims[2] ) ;
 		phase = getTrimFlightPhase( CurrentPhase, 3 ) ;
-    setTrimValue( phase, 3, ui->trimHRight->value() ) ;
+    setTrimValue( phase, 3, trims[3] ) ;
     
     calibratedStick[4] = ui->dialP_1->value();
     calibratedStick[5] = ui->dialP_2->value();
@@ -334,6 +336,64 @@ void simulatorDialog::getValues()
           *trimptr[THR_STICK] *= -1;
         }
     }
+	for( uint8_t i = 0 ; i < MAX_GVARS ; i += 1 )
+	{
+		int x ;
+		// ToDo, test for trim inputs here
+		if ( g_model.gvars[i].gvsource )
+		{
+			if ( g_model.gvars[i].gvsource <= 4 )
+			{
+				uint32_t phaseNo = getTrimFlightPhase( CurrentPhase, g_model.gvars[i].gvsource - 1 ) ;
+				g_model.gvars[i].gvar = getTrimValue( phaseNo, g_model.gvars[i].gvsource - 1 ) ;
+				 
+			}
+			else if ( g_model.gvars[i].gvsource == 5 )	// REN
+			{
+				//g_model.gvars[i].gvar = RotaryControl ;
+			}
+			else if ( g_model.gvars[i].gvsource <= 9 )	// Stick
+			{
+        x = calibratedStick[ g_model.gvars[i].gvsource-5 - 1 ] / 8 ;
+				if ( x < -125 )
+				{
+					x = -125 ;					
+				}
+				if ( x > 125 )
+				{
+					x = 125 ;					
+				}
+        g_model.gvars[i].gvar = x ;
+			}
+			else if ( g_model.gvars[i].gvsource <= 12 )	// Pot
+			{
+				x = calibratedStick[ (g_model.gvars[i].gvsource-6)] / 8 ;
+				if ( x < -125 )
+				{
+					x = -125 ;					
+				}
+				if ( x > 125 )
+				{
+					x = 125 ;					
+				}
+        g_model.gvars[i].gvar = x ;
+			}
+			else if ( g_model.gvars[i].gvsource <= 36 )	// Chans
+			{
+				x = ex_chans[g_model.gvars[i].gvsource-13] / 10 ;
+				if ( x < -125 )
+				{
+					x = -125 ;					
+				}
+				if ( x > 125 )
+				{
+					x = 125 ;					
+				}
+        g_model.gvars[i].gvar = x ;
+			}
+		}
+	}
+
 }
 
 int simulatorDialog::chVal(int val)
@@ -396,7 +456,6 @@ void simulatorDialog::setValues()
     ui->chnout_16->setMaximum( limit ) ;
 		
 	}
-	
     ui->chnout_1->setValue(chVal(chanOut[0]));
     ui->chnout_2->setValue(chVal(chanOut[1]));
     ui->chnout_3->setValue(chVal(chanOut[2]));
@@ -1035,7 +1094,10 @@ void simulatorDialog::perOut(bool init)
     calibratedStick[MIX_MAX-1]=calibratedStick[MIX_FULL-1]=1024;
     anas[MIX_MAX-1]  = RESX;     // MAX
     anas[MIX_FULL-1] = RESX;     // FULL
-    for(uint8_t i=0;i<NUM_PPM;i++)    anas[i+PPM_BASE]   = g_ppmIns[i];// - g_eeGeneral.ppmInCalib[i]; //add ppm channels
+		anas[MIX_3POS-1] = keyState(SW_ID0) ? -1024 : (keyState(SW_ID1) ? 0 : 1024) ;
+    
+		
+		for(uint8_t i=0;i<NUM_PPM;i++)    anas[i+PPM_BASE]   = g_ppmIns[i];// - g_eeGeneral.ppmInCalib[i]; //add ppm channels
     for(uint8_t i=0;i<NUM_SKYCHNOUT;i++) anas[i+CHOUT_BASE] = chans[i]; //other mixes previous outputs
 
 
@@ -1109,11 +1171,27 @@ void simulatorDialog::perOut(bool init)
     {
         *trimptr[THR_STICK] *= -1;
     }
-		ui->trimHLeft->setValue( getTrimValue( CurrentPhase, 0 ));  // mode=(0 || 1) -> rud trim else -> ail trim
-    ui->trimVLeft->setValue( getTrimValue( CurrentPhase, 1 ));  // mode=(0 || 2) -> thr trim else -> ele trim
-    ui->trimVRight->setValue(getTrimValue( CurrentPhase, 2 ));  // mode=(0 || 2) -> ele trim else -> thr trim
-    ui->trimHRight->setValue(getTrimValue( CurrentPhase, 3 ));  // mode=(0 || 1) -> ail trim else -> rud trim
-    if( (g_eeGeneral.throttleReversed) && (!g_model.thrTrim))
+		{
+			int8_t trims[4] ;
+			int i ;
+			int idx ;
+	
+      for ( i = 0 ;  i <= 3 ; i += 1 )
+			{
+				idx = i ;
+				if ( g_eeGeneral.crosstrim )
+				{
+					idx = 3 - idx ;			
+				}
+        trims[i] = getTrimValue( CurrentPhase, idx ) ;
+			}
+		
+			ui->trimHLeft->setValue( trims[0]);  // mode=(0 || 1) -> rud trim else -> ail trim
+  	  ui->trimVLeft->setValue( trims[1]);  // mode=(0 || 2) -> thr trim else -> ele trim
+	    ui->trimVRight->setValue(trims[2]);  // mode=(0 || 2) -> ele trim else -> thr trim
+  	  ui->trimHRight->setValue(trims[3]);  // mode=(0 || 1) -> ail trim else -> rud trim
+		}		
+		if( (g_eeGeneral.throttleReversed) && (!g_model.thrTrim))
     {
         *trimptr[THR_STICK] *= -1;
     }
@@ -1166,9 +1244,13 @@ void simulatorDialog::perOut(bool init)
         }
 
         //========== INPUT OFFSET ===============
-        if ( md.enableFmTrim == 0 )
+        if ( ( md.enableFmTrim == 0 ) && ( md.lateOffset == 0 ) )
         {
+#if GVARS
+            if(md.sOffset) v += calc100toRESX( REG( md.sOffset, -125, 125 )	) ;
+#else
             if(md.sOffset) v += calc100toRESX(md.sOffset);
+#endif
         }
 
         //========== DELAY and PAUSE ===============
@@ -1225,48 +1307,78 @@ void simulatorDialog::perOut(bool init)
 
 
         //========== CURVES ===============
-        switch(md.curve){
-        case 0:
-            break;
-        case 1:
-            if(md.srcRaw == MIX_FULL) //FUL
-            {
-                if( v<0 ) v=-RESX;   //x|x>0
-                else      v=-RESX+2*v;
-            }else{
-                if( v<0 ) v=0;   //x|x>0
-            }
-            break;
-        case 2:
-            if(md.srcRaw == MIX_FULL) //FUL
-            {
-                if( v>0 ) v=RESX;   //x|x<0
-                else      v=RESX+2*v;
-            }else{
-                if( v>0 ) v=0;   //x|x<0
-            }
-            break;
-        case 3:       // x|abs(x)
-            v = abs(v);
-            break;
-        case 4:       //f|f>0
-            v = v>0 ? RESX : 0;
-            break;
-        case 5:       //f|f<0
-            v = v<0 ? -RESX : 0;
-            break;
-        case 6:       //f|abs(f)
-            v = v>0 ? RESX : -RESX;
-            break;
-        default: //c1..c16
-            v = intpol(v, md.curve - 7);
-        }
+        if ( md.differential )
+				{
+      		//========== DIFFERENTIAL =========
+          int16_t curveParam = REG( md.curve, -100, 100 ) ;
+      		if (curveParam > 0 && v < 0)
+      		  v = ((int32_t)v * (100 - curveParam)) / 100;
+      		else if (curveParam < 0 && v > 0)
+      		  v = ((int32_t)v * (100 + curveParam)) / 100;
+				}
+				else
+				{
+        	switch(md.curve){
+        	case 0:
+        	    break;
+        	case 1:
+        	    if(md.srcRaw == MIX_FULL) //FUL
+        	    {
+        	        if( v<0 ) v=-RESX;   //x|x>0
+        	        else      v=-RESX+2*v;
+        	    }else{
+        	        if( v<0 ) v=0;   //x|x>0
+        	    }
+        	    break;
+        	case 2:
+        	    if(md.srcRaw == MIX_FULL) //FUL
+        	    {
+        	        if( v>0 ) v=RESX;   //x|x<0
+        	        else      v=RESX+2*v;
+        	    }else{
+        	        if( v>0 ) v=0;   //x|x<0
+        	    }
+        	    break;
+        	case 3:       // x|abs(x)
+        	    v = abs(v);
+        	    break;
+        	case 4:       //f|f>0
+        	    v = v>0 ? RESX : 0;
+        	    break;
+        	case 5:       //f|f<0
+        	    v = v<0 ? -RESX : 0;
+        	    break;
+        	case 6:       //f|abs(f)
+        	    v = v>0 ? RESX : -RESX;
+        	    break;
+        	default: //c1..c16
+						{
+        	    int8_t idx = md.curve ;
+							if ( idx < 0 )
+							{
+								v = -v ;
+								idx = 6 - idx ;								
+							}
+        	   	v = intpol(v, idx - 7);
+						}
+        	}
+				}
 
         //========== TRIM ===============
         if((md.carryTrim==0) && (md.srcRaw>0) && (md.srcRaw<=4)) v += trimA[md.srcRaw-1];  //  0 = Trim ON  =  Default
 
         //========== MULTIPLEX ===============
         int32_t dv = (int32_t)v*md.weight;
+        
+				//========== lateOffset ===============
+        if ( ( md.enableFmTrim == 0 ) && ( md.lateOffset ) )
+        {
+#if GVARS
+            if(md.sOffset) dv += calc100toRESX( REG( md.sOffset, -125, 125 )	) * 100  ;
+#else
+            if(md.sOffset) dv += calc100toRESX(md.sOffset) * 100 ;
+#endif
+        }
         switch(md.mltpx){
         case MLTPX_REP:
             chans[md.destCh-1] = dv;

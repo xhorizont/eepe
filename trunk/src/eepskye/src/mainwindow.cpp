@@ -587,7 +587,6 @@ void MainWindow::burnFrom()
 //    QStringList args   = bcd.getAVRArgs();
 //    if(!bcd.getPort().isEmpty()) args << "-P" << bcd.getPort();
 
-		printf("In burnFrom()\n" ) ;
     QString tempFile = tempDir + "/temp.bin";
 //    QString str = "eeprom:r:" + tempFile + ":i"; // writing eeprom -> MEM:OPR:FILE:FTYPE"
 

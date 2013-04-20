@@ -56,6 +56,10 @@ ModelEdit::ModelEdit(EEPFILE *eFile, uint8_t id, QWidget *parent) :
 			}
 		}
     id_model = id;
+		if ( g_model.numBlades == 0 )
+		{
+			g_model.numBlades = g_model.xnumBlades + 2 ;				
+		}
 
     setupMixerListWidget();
 
@@ -76,6 +80,7 @@ ModelEdit::ModelEdit(EEPFILE *eFile, uint8_t id, QWidget *parent) :
     tabFrsky();
     tabTemplates();
     tabHeli();
+    tabPhase();
 		tabGvar();
 
     ui->curvePreview->setMinimumWidth(260);
@@ -527,8 +532,28 @@ void ModelEdit::tabMixes()
         if(md->sOffset)  str += tr(" Offset(%1\%)").arg(md->sOffset);
         if(md->curve)
         {
+					if ( md->differential )
+					{
+						if ( ( md->curve >= -100 ) && ( md->curve <= 100) )
+						{
+            	str += tr(" Diff(%1)").arg(md->curve);
+						}
+						else
+						{ // GVAR
+							int x = md->curve ;
+							if ( x < 0 )
+							{
+								x += 256 ;								
+							}
+							x -= 125 ;
+            	str += tr(" Diff(GV%1)").arg(x) ;
+						}
+					}
+					else
+					{
             QString crvStr = CURV_STR;
             str += tr(" Curve(%1)").arg(crvStr.mid(md->curve*3,3).remove(' '));
+					}
         }
 
         if(md->delayDown || md->delayUp) str += tr(" Delay(u%1:d%2)").arg(md->delayUp).arg(md->delayDown);
@@ -573,6 +598,136 @@ void ModelEdit::mixesEdited()
     updateSettings();
 }
 
+void ModelEdit::tabPhase()
+{
+	updatePhaseTab() ;
+	
+	connect(ui->FP1_sw,SIGNAL(currentIndexChanged(int)),this,SLOT(phaseEdited())); 
+	connect(ui->FP2_sw,SIGNAL(currentIndexChanged(int)),this,SLOT(phaseEdited())); 
+	connect(ui->FP3_sw,SIGNAL(currentIndexChanged(int)),this,SLOT(phaseEdited())); 
+	connect(ui->FP4_sw,SIGNAL(currentIndexChanged(int)),this,SLOT(phaseEdited())); 
+
+	connect(ui->FP1_RudCB,SIGNAL(currentIndexChanged(int)),this,SLOT(phaseEdited())); 
+	connect(ui->FP1_EleCB,SIGNAL(currentIndexChanged(int)),this,SLOT(phaseEdited())); 
+	connect(ui->FP1_ThrCB,SIGNAL(currentIndexChanged(int)),this,SLOT(phaseEdited())); 
+	connect(ui->FP1_AilCB,SIGNAL(currentIndexChanged(int)),this,SLOT(phaseEdited())); 
+	connect(ui->FP2_RudCB,SIGNAL(currentIndexChanged(int)),this,SLOT(phaseEdited())); 
+	connect(ui->FP2_EleCB,SIGNAL(currentIndexChanged(int)),this,SLOT(phaseEdited())); 
+	connect(ui->FP2_ThrCB,SIGNAL(currentIndexChanged(int)),this,SLOT(phaseEdited())); 
+	connect(ui->FP2_AilCB,SIGNAL(currentIndexChanged(int)),this,SLOT(phaseEdited())); 
+	connect(ui->FP3_RudCB,SIGNAL(currentIndexChanged(int)),this,SLOT(phaseEdited())); 
+	connect(ui->FP3_EleCB,SIGNAL(currentIndexChanged(int)),this,SLOT(phaseEdited())); 
+	connect(ui->FP3_ThrCB,SIGNAL(currentIndexChanged(int)),this,SLOT(phaseEdited())); 
+	connect(ui->FP3_AilCB,SIGNAL(currentIndexChanged(int)),this,SLOT(phaseEdited())); 
+	connect(ui->FP4_RudCB,SIGNAL(currentIndexChanged(int)),this,SLOT(phaseEdited())); 
+	connect(ui->FP4_EleCB,SIGNAL(currentIndexChanged(int)),this,SLOT(phaseEdited())); 
+	connect(ui->FP4_ThrCB,SIGNAL(currentIndexChanged(int)),this,SLOT(phaseEdited())); 
+	connect(ui->FP4_AilCB,SIGNAL(currentIndexChanged(int)),this,SLOT(phaseEdited())); 
+}
+
+void ModelEdit::updatePhaseTab()
+{
+	populateSwitchShortCB( ui->FP1_sw, g_model.phaseData[0].swtch ) ;
+	populateSwitchShortCB( ui->FP2_sw, g_model.phaseData[1].swtch ) ;
+	populateSwitchShortCB( ui->FP3_sw, g_model.phaseData[2].swtch ) ;
+	populateSwitchShortCB( ui->FP4_sw, g_model.phaseData[3].swtch ) ;
+
+	populatePhasetrim( ui->FP1_RudCB, 1,  g_model.phaseData[0].trim[0] ) ;
+	populatePhasetrim( ui->FP1_EleCB, 1,  g_model.phaseData[0].trim[1] ) ;
+	populatePhasetrim( ui->FP1_ThrCB, 1,  g_model.phaseData[0].trim[2] ) ;
+	populatePhasetrim( ui->FP1_AilCB, 1,  g_model.phaseData[0].trim[3] ) ;
+	populatePhasetrim( ui->FP2_RudCB, 2,  g_model.phaseData[1].trim[0] ) ;
+	populatePhasetrim( ui->FP2_EleCB, 2,  g_model.phaseData[1].trim[1] ) ;
+	populatePhasetrim( ui->FP2_ThrCB, 2,  g_model.phaseData[1].trim[2] ) ;
+	populatePhasetrim( ui->FP2_AilCB, 2,  g_model.phaseData[1].trim[3] ) ;
+	populatePhasetrim( ui->FP3_RudCB, 3,  g_model.phaseData[2].trim[0] ) ;
+	populatePhasetrim( ui->FP3_EleCB, 3,  g_model.phaseData[2].trim[1] ) ;
+	populatePhasetrim( ui->FP3_ThrCB, 3,  g_model.phaseData[2].trim[2] ) ;
+	populatePhasetrim( ui->FP3_AilCB, 3,  g_model.phaseData[2].trim[3] ) ;
+	populatePhasetrim( ui->FP4_RudCB, 4,  g_model.phaseData[3].trim[0] ) ;
+	populatePhasetrim( ui->FP4_EleCB, 4,  g_model.phaseData[3].trim[1] ) ;
+	populatePhasetrim( ui->FP4_ThrCB, 4,  g_model.phaseData[3].trim[2] ) ;
+	populatePhasetrim( ui->FP4_AilCB, 4,  g_model.phaseData[3].trim[3] ) ;
+
+	ui->FP1rudTrimSB->setValue(g_model.phaseData[0].trim[0]) ;
+	ui->FP1eleTrimSB->setValue(g_model.phaseData[0].trim[1]) ;
+	ui->FP1thrTrimSB->setValue(g_model.phaseData[0].trim[2]) ;
+	ui->FP1ailTrimSB->setValue(g_model.phaseData[0].trim[3]) ;
+	ui->FP2rudTrimSB->setValue(g_model.phaseData[1].trim[0]) ;
+	ui->FP2eleTrimSB->setValue(g_model.phaseData[1].trim[1]) ;
+	ui->FP2thrTrimSB->setValue(g_model.phaseData[1].trim[2]) ;
+	ui->FP2ailTrimSB->setValue(g_model.phaseData[1].trim[3]) ;
+	ui->FP3rudTrimSB->setValue(g_model.phaseData[2].trim[0]) ;
+	ui->FP3eleTrimSB->setValue(g_model.phaseData[2].trim[1]) ;
+	ui->FP3thrTrimSB->setValue(g_model.phaseData[2].trim[2]) ;
+	ui->FP3ailTrimSB->setValue(g_model.phaseData[2].trim[3]) ;
+	ui->FP4rudTrimSB->setValue(g_model.phaseData[3].trim[0]) ;
+	ui->FP4eleTrimSB->setValue(g_model.phaseData[3].trim[1]) ;
+	ui->FP4thrTrimSB->setValue(g_model.phaseData[3].trim[2]) ;
+	ui->FP4ailTrimSB->setValue(g_model.phaseData[3].trim[3]) ;
+
+	ui->FP1rudTrimSB->setDisabled( true ) ;
+	ui->FP1eleTrimSB->setDisabled( true ) ;
+	ui->FP1thrTrimSB->setDisabled( true ) ;
+	ui->FP1ailTrimSB->setDisabled( true ) ;
+	ui->FP2rudTrimSB->setDisabled( true ) ;
+	ui->FP2eleTrimSB->setDisabled( true ) ;
+	ui->FP2thrTrimSB->setDisabled( true ) ;
+	ui->FP2ailTrimSB->setDisabled( true ) ;
+	ui->FP3rudTrimSB->setDisabled( true ) ;
+	ui->FP3eleTrimSB->setDisabled( true ) ;
+	ui->FP3thrTrimSB->setDisabled( true ) ;
+	ui->FP3ailTrimSB->setDisabled( true ) ;
+	ui->FP4rudTrimSB->setDisabled( true ) ;
+	ui->FP4eleTrimSB->setDisabled( true ) ;
+	ui->FP4thrTrimSB->setDisabled( true ) ;
+	ui->FP4ailTrimSB->setDisabled( true ) ;
+}
+
+void ModelEdit::phaseEdited()
+{
+  g_model.phaseData[0].swtch = ui->FP1_sw->currentIndex() - MAX_DRSWITCH+1 ;
+  g_model.phaseData[1].swtch = ui->FP2_sw->currentIndex() - MAX_DRSWITCH+1 ;
+  g_model.phaseData[2].swtch = ui->FP3_sw->currentIndex() - MAX_DRSWITCH+1 ;
+  g_model.phaseData[3].swtch = ui->FP4_sw->currentIndex() - MAX_DRSWITCH+1 ;
+
+//  if ( (idx = decodePhaseTrim( &g_model.phaseData[0].trim[0], 1, ui->FP1_RudCB->currentIndex() ) < 0 ) )
+//	{
+//		ui->FP1rudTrimSB->setValue(g_model.phaseData[0].trim[0]) ;
+//		ui->FP1rudTrimSB->setEnabled( true ) ;
+//	}
+//	else
+//	{
+//    ui->FP1rudTrimSB->setValue( idx ? g_model.phaseData[idx-1].trim[0] : g_model.trim[0] ) ;		// Needs recursion added
+//		ui->FP1rudTrimSB->setDisabled( true ) ;
+//	}
+//	decodePhaseTrim( &g_model.phaseData[0].trim[1], 1, ui->FP1_EleCB->currentIndex() ) ;
+	
+//	ui->FP1eleTrimSB->setValue(g_model.phaseData[0].trim[1]) ;
+//	ui->FP1eleTrimSB->setDisabled( true ) ;
+
+	decodePhaseTrim( &g_model.phaseData[0].trim[0], 1, ui->FP1_RudCB->currentIndex() ) ;
+	decodePhaseTrim( &g_model.phaseData[0].trim[1], 1, ui->FP1_EleCB->currentIndex() ) ;
+	decodePhaseTrim( &g_model.phaseData[0].trim[2], 1, ui->FP1_ThrCB->currentIndex() ) ;
+	decodePhaseTrim( &g_model.phaseData[0].trim[3], 1, ui->FP1_AilCB->currentIndex() ) ;
+	decodePhaseTrim( &g_model.phaseData[1].trim[0], 2, ui->FP2_RudCB->currentIndex() ) ;
+	decodePhaseTrim( &g_model.phaseData[1].trim[1], 2, ui->FP2_EleCB->currentIndex() ) ;
+	decodePhaseTrim( &g_model.phaseData[1].trim[2], 2, ui->FP2_ThrCB->currentIndex() ) ;
+	decodePhaseTrim( &g_model.phaseData[1].trim[3], 2, ui->FP2_AilCB->currentIndex() ) ;
+	decodePhaseTrim( &g_model.phaseData[2].trim[0], 3, ui->FP3_RudCB->currentIndex() ) ;
+	decodePhaseTrim( &g_model.phaseData[2].trim[1], 3, ui->FP3_EleCB->currentIndex() ) ;
+	decodePhaseTrim( &g_model.phaseData[2].trim[2], 3, ui->FP3_ThrCB->currentIndex() ) ;
+	decodePhaseTrim( &g_model.phaseData[2].trim[3], 3, ui->FP3_AilCB->currentIndex() ) ;
+	decodePhaseTrim( &g_model.phaseData[3].trim[0], 4, ui->FP4_RudCB->currentIndex() ) ;
+	decodePhaseTrim( &g_model.phaseData[3].trim[1], 4, ui->FP4_EleCB->currentIndex() ) ;
+	decodePhaseTrim( &g_model.phaseData[3].trim[2], 4, ui->FP4_ThrCB->currentIndex() ) ;
+	decodePhaseTrim( &g_model.phaseData[3].trim[3], 4, ui->FP4_AilCB->currentIndex() ) ;
+
+
+
+
+  updateSettings();
+}
 
 void ModelEdit::tabHeli()
 {
@@ -1491,7 +1646,7 @@ void ModelEdit::tabSafetySwitches()
 					{
 						if ( g_model.safetySw[i].opt.ss.swtch > MAX_DRSWITCH )
 						{
-							populateTelItemsCB( safetySwitchAlarm[i],g_model.safetySw[i].opt.ss.val ) ;
+							populateTelItemsCB( safetySwitchAlarm[i], 1,g_model.safetySw[i].opt.ss.val ) ;
 						}
 						safetySwitchValue[i]->setMaximum(239);
        			safetySwitchValue[i]->setMinimum(0);
@@ -1504,14 +1659,14 @@ void ModelEdit::tabSafetySwitches()
         		safetySwitchValue[i]->setValue(g_model.safetySw[i].opt.ss.val);
 					}
 				}	 
-				else
+				else // voice switch
 				{
         	populateSafetyVoiceTypeCB(safetySwitchType[i], 1, g_model.safetySw[i].opt.vs.vmode);
-        	populateSafetySwitchCB(safetySwitchSwtch[i],0,g_model.safetySw[i].opt.vs.vswtch);
+        	populateSafetySwitchCB(safetySwitchSwtch[i],VOICE_SWITCH,g_model.safetySw[i].opt.vs.vswtch);
 					safetySwitchValue[i]->setMaximum(249);
      			safetySwitchValue[i]->setMinimum(0);
        		safetySwitchValue[i]->setValue(g_model.safetySw[i].opt.vs.vval);
-					populateTelItemsCB( safetySwitchAlarm[i],g_model.safetySw[i].opt.vs.vval ) ;
+					populateTelItemsCB( safetySwitchAlarm[i], 1,g_model.safetySw[i].opt.vs.vval ) ;
 				}
         ui->grid_tabSafetySwitches->addWidget(safetySwitchType[i],i+2,1);
         ui->grid_tabSafetySwitches->addWidget(safetySwitchSwtch[i],i+2,2);
@@ -1543,11 +1698,12 @@ void ModelEdit::safetySwitchesEdited()
 		EditedNesting = 1 ;
 		
 		numVoice = g_model.numVoice ;
+    g_model.numVoice = ui->NumVoiceSwSB->value() ;
 
     for(int i=0; i<NUM_CHNOUT; i++)
     {
       val = safetySwitchValue[i]->value();
-			if ( numVoice < 16-i )	// Normal switch
+			if ( numVoice < NUM_CHNOUT-i )	// Normal switch
 			{
 				modechange[i] = g_model.safetySw[i].opt.ss.mode ;	// Previous value
 				if ( g_model.safetySw[i].opt.ss.mode == 2)	// Voice
@@ -1574,11 +1730,10 @@ void ModelEdit::safetySwitchesEdited()
 					val = safetySwitchAlarm[i]->currentIndex() ;
         }	
         g_model.safetySw[i].opt.vs.vval = val ;
-        g_model.safetySw[i].opt.vs.vswtch = safetySwitchSwtch[i]->currentIndex()-MAX_DRSWITCH;
+        g_model.safetySw[i].opt.vs.vswtch = safetySwitchSwtch[i]->currentIndex() ;
 				g_model.safetySw[i].opt.vs.vmode = safetySwitchType[i]->currentIndex() ;
 			}	
 		}
-    g_model.numVoice = ui->NumVoiceSwSB->value() ;
     updateSettings();
 		
 		if ( g_model.numVoice != numVoice )
@@ -1588,8 +1743,13 @@ void ModelEdit::safetySwitchesEdited()
     
 		for(int i=0; i<NUM_CHNOUT; i++)
 		{
-			if ( g_model.numVoice < 16-i )		// Normal switch
+			if ( g_model.numVoice < NUM_CHNOUT-i )		// Normal switch
 			{
+		    if ( i >= NUM_CHNOUT-numVoice-1 && i < NUM_CHNOUT-g_model.numVoice )
+				{
+					g_model.safetySw[i].opt.ss.swtch = 0 ;
+	    		populateSafetySwitchCB(safetySwitchSwtch[i],g_model.safetySw[i].opt.ss.mode,g_model.safetySw[i].opt.ss.swtch);
+				}
         populateSafetyVoiceTypeCB(safetySwitchType[i], 0, g_model.safetySw[i].opt.ss.mode);
 				if ( modechange[i] != g_model.safetySw[i].opt.ss.mode )
 				{
@@ -1616,18 +1776,25 @@ void ModelEdit::safetySwitchesEdited()
 				}
 				if ( g_model.safetySw[i].opt.ss.swtch > MAX_DRSWITCH )
 				{
-					populateTelItemsCB( safetySwitchAlarm[i],g_model.safetySw[i].opt.ss.val ) ;
+					populateTelItemsCB( safetySwitchAlarm[i], 1,g_model.safetySw[i].opt.ss.val ) ;
 				}
 			}
 			else
 			{
+		    if ( i >= NUM_CHNOUT-g_model.numVoice-1 && i < NUM_CHNOUT-numVoice )
+				{
+					g_model.safetySw[i].opt.vs.vswtch = 0 ;
+          g_model.safetySw[i].opt.vs.vval = 0 ;
+					g_model.safetySw[i].opt.vs.vmode = 0 ;
+				}
+       	populateSafetySwitchCB(safetySwitchSwtch[i],VOICE_SWITCH,g_model.safetySw[i].opt.vs.vswtch);
         populateSafetyVoiceTypeCB(safetySwitchType[i], 1, g_model.safetySw[i].opt.vs.vmode);
 				safetySwitchValue[i]->setMaximum(249);
      		safetySwitchValue[i]->setMinimum(0);
        	safetySwitchValue[i]->setValue(g_model.safetySw[i].opt.vs.vval);
 				if ( g_model.safetySw[i].opt.vs.vmode > 5 )
 				{
-					populateTelItemsCB( safetySwitchAlarm[i],g_model.safetySw[i].opt.ss.val ) ;
+					populateTelItemsCB( safetySwitchAlarm[i], 1,g_model.safetySw[i].opt.ss.val ) ;
 				}
 			}
       setSafetyWidgetVisibility(i);
@@ -1815,12 +1982,12 @@ void ModelEdit::GvarEdited()
 
 void ModelEdit::tabFrsky()
 {
-		populateTelItemsCB( ui->Ct1, g_model.CustomDisplayIndex[0] ) ;
-		populateTelItemsCB( ui->Ct2, g_model.CustomDisplayIndex[1] ) ;
-		populateTelItemsCB( ui->Ct3, g_model.CustomDisplayIndex[2] ) ;
-		populateTelItemsCB( ui->Ct4, g_model.CustomDisplayIndex[3] ) ;
-		populateTelItemsCB( ui->Ct5, g_model.CustomDisplayIndex[4] ) ;
-		populateTelItemsCB( ui->Ct6, g_model.CustomDisplayIndex[5] ) ;
+    populateTelItemsCB( ui->Ct1, 0, g_model.CustomDisplayIndex[0] ) ;
+    populateTelItemsCB( ui->Ct2, 0, g_model.CustomDisplayIndex[1] ) ;
+    populateTelItemsCB( ui->Ct3, 0, g_model.CustomDisplayIndex[2] ) ;
+    populateTelItemsCB( ui->Ct4, 0, g_model.CustomDisplayIndex[3] ) ;
+    populateTelItemsCB( ui->Ct5, 0, g_model.CustomDisplayIndex[4] ) ;
+    populateTelItemsCB( ui->Ct6, 0, g_model.CustomDisplayIndex[5] ) ;
 		
     ui->frsky_ratio_0->setValue(g_model.frsky.channels[0].ratio);
     ui->frsky_type_0->setCurrentIndex(g_model.frsky.channels[0].type);
@@ -1901,8 +2068,7 @@ void ModelEdit::FrSkyEdited()
     g_model.FrSkyGpsAlt = ui->GpsAltMain->isChecked();
     g_model.FrSkyUsrProto = ui->HubComboBox->currentIndex();
     g_model.FrSkyImperial = ui->UnitsComboBox->currentIndex();
-    g_model.numBlades = ui->BladesSpinBox->value() - 2 ;
-
+    g_model.numBlades = ui->BladesSpinBox->value() ;
 
 		g_model.CustomDisplayIndex[0] = ui->Ct1->currentIndex() ;
 		g_model.CustomDisplayIndex[1] = ui->Ct2->currentIndex() ;
@@ -1925,6 +2091,7 @@ void ModelEdit::tabTemplates()
     ui->templateList->addItem("Heli Setup");
     ui->templateList->addItem("Heli Gyro Setup");
     ui->templateList->addItem("Servo Test");
+    ui->templateList->addItem("Range Test");
 
 
 }
@@ -3151,6 +3318,7 @@ void ModelEdit::setSwitch(uint8_t idx, uint8_t func, int8_t v1, int8_t v2)
     g_model.customSw[idx-1].func = func;
     g_model.customSw[idx-1].v1   = v1;
     g_model.customSw[idx-1].v2   = v2;
+    g_model.customSw[idx-1].andsw   = 0;
 }
 
 void ModelEdit::applyTemplate(uint8_t idx)
@@ -3298,8 +3466,16 @@ void ModelEdit::applyTemplate(uint8_t idx)
         updateSwitchesTab();
     }
 
+    // Range Test
+    if(idx==j++)
+    {
+        md=setDest(16); md->srcRaw=MIX_FULL; md->weight= 100; md->swtch=DSW_SW1; md->speedUp = 4; md->speedDown = 4;
 
+        setSwitch(1,CS_TIME, 4, 4 ) ;
 
+        // redraw switches tab
+        updateSwitchesTab();
+    }
 }
 
 

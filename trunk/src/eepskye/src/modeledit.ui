@@ -1116,7 +1116,7 @@
            <bool>true</bool>
           </property>
           <property name="minimum">
-           <number>-127</number>
+           <number>-1024</number>
           </property>
           <property name="maximum">
            <number>510</number>
@@ -1132,7 +1132,7 @@
            <bool>true</bool>
           </property>
           <property name="minimum">
-           <number>-127</number>
+           <number>-1024</number>
           </property>
           <property name="maximum">
            <number>510</number>
@@ -1148,7 +1148,7 @@
            <bool>true</bool>
           </property>
           <property name="minimum">
-           <number>-127</number>
+           <number></number>
           </property>
           <property name="maximum">
            <number>510</number>
@@ -1164,7 +1164,7 @@
            <bool>true</bool>
           </property>
           <property name="minimum">
-           <number>-127</number>
+           <number></number>
           </property>
           <property name="maximum">
            <number>510</number>
@@ -1180,7 +1180,7 @@
            <bool>true</bool>
           </property>
           <property name="minimum">
-           <number>-127</number>
+           <number></number>
           </property>
           <property name="maximum">
            <number>510</number>
@@ -1196,7 +1196,7 @@
            <bool>true</bool>
           </property>
           <property name="minimum">
-           <number>-127</number>
+           <number></number>
           </property>
           <property name="maximum">
            <number>510</number>
@@ -1212,7 +1212,7 @@
            <bool>true</bool>
           </property>
           <property name="minimum">
-           <number>-127</number>
+           <number></number>
           </property>
           <property name="maximum">
            <number>510</number>
@@ -1228,7 +1228,7 @@
            <bool>true</bool>
           </property>
           <property name="minimum">
-           <number>-127</number>
+           <number></number>
           </property>
           <property name="maximum">
            <number>510</number>
@@ -1244,7 +1244,7 @@
            <bool>true</bool>
           </property>
           <property name="minimum">
-           <number>-127</number>
+           <number></number>
           </property>
           <property name="maximum">
            <number>510</number>
@@ -1260,7 +1260,7 @@
            <bool>true</bool>
           </property>
           <property name="minimum">
-           <number>-127</number>
+           <number></number>
           </property>
           <property name="maximum">
            <number>510</number>
@@ -1276,7 +1276,7 @@
            <bool>true</bool>
           </property>
           <property name="minimum">
-           <number>-127</number>
+           <number></number>
           </property>
           <property name="maximum">
            <number>510</number>
@@ -1292,7 +1292,7 @@
            <bool>true</bool>
           </property>
           <property name="minimum">
-           <number>-127</number>
+           <number></number>
           </property>
           <property name="maximum">
            <number>510</number>
@@ -1308,7 +1308,7 @@
            <bool>true</bool>
           </property>
           <property name="minimum">
-           <number>-127</number>
+           <number></number>
           </property>
           <property name="maximum">
            <number>510</number>
@@ -1324,7 +1324,7 @@
            <bool>true</bool>
           </property>
           <property name="minimum">
-           <number>-127</number>
+           <number></number>
           </property>
           <property name="maximum">
            <number>510</number>
@@ -1340,7 +1340,7 @@
            <bool>true</bool>
           </property>
           <property name="minimum">
-           <number>-127</number>
+           <number></number>
           </property>
           <property name="maximum">
            <number>510</number>
@@ -1356,7 +1356,7 @@
            <bool>true</bool>
           </property>
           <property name="minimum">
-           <number>-127</number>
+           <number></number>
           </property>
           <property name="maximum">
            <number>510</number>
@@ -1372,7 +1372,7 @@
            <bool>true</bool>
           </property>
           <property name="minimum">
-           <number>-127</number>
+           <number></number>
           </property>
           <property name="maximum">
            <number>510</number>
@@ -1388,7 +1388,7 @@
            <bool>true</bool>
           </property>
           <property name="minimum">
-           <number>-127</number>
+           <number></number>
           </property>
           <property name="maximum">
            <number>510</number>
@@ -1404,7 +1404,7 @@
            <bool>true</bool>
           </property>
           <property name="minimum">
-           <number>-127</number>
+           <number></number>
           </property>
           <property name="maximum">
            <number>510</number>
@@ -1420,7 +1420,7 @@
            <bool>true</bool>
           </property>
           <property name="minimum">
-           <number>-127</number>
+           <number></number>
           </property>
           <property name="maximum">
            <number>510</number>
@@ -1436,7 +1436,7 @@
            <bool>true</bool>
           </property>
           <property name="minimum">
-           <number>-127</number>
+           <number></number>
           </property>
           <property name="maximum">
            <number>510</number>
@@ -1452,7 +1452,7 @@
            <bool>true</bool>
           </property>
           <property name="minimum">
-           <number>-127</number>
+           <number></number>
           </property>
           <property name="maximum">
            <number>510</number>

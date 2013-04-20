@@ -546,8 +546,28 @@ void ModelEdit::tabMixes()
         if(md->sOffset)  str += tr(" Offset(%1\%)").arg(md->sOffset);
         if(md->curve)
         {
+					if ( md->differential )
+					{
+						if ( ( md->curve >= -100 ) && ( md->curve <= 100) )
+						{
+            	str += tr(" Diff(%1)").arg(md->curve);
+						}
+						else
+						{ // GVAR
+							int x = md->curve ;
+							if ( x < 0 )
+							{
+								x += 256 ;								
+							}
+							x -= 125 ;
+            	str += tr(" Diff(GV%1)").arg(x) ;
+						}
+					}
+					else
+					{
             QString crvStr = CURV_STR;
             str += tr(" Curve(%1)").arg(crvStr.mid(md->curve*3,3).remove(' '));
+					}
         }
 
         if(md->delayDown || md->delayUp) str += tr(" Delay(u%1:d%2)").arg(md->delayUp).arg(md->delayDown);
@@ -1719,7 +1739,7 @@ void ModelEdit::tabSafetySwitches()
 					{
 						if ( g_model.safetySw[i].opt.ss.swtch > MAX_DRSWITCH )
 						{
-							populateTelItemsCB( safetySwitchAlarm[i],g_model.safetySw[i].opt.ss.val ) ;
+							populateTelItemsCB( safetySwitchAlarm[i], 1,g_model.safetySw[i].opt.ss.val ) ;
 						}
 						safetySwitchValue[i]->setMaximum(239);
        			safetySwitchValue[i]->setMinimum(0);
@@ -1739,7 +1759,7 @@ void ModelEdit::tabSafetySwitches()
 					safetySwitchValue[i]->setMaximum(250);
      			safetySwitchValue[i]->setMinimum(0);
        		safetySwitchValue[i]->setValue(g_model.safetySw[i].opt.vs.vval);
-					populateTelItemsCB( safetySwitchAlarm[i],g_model.safetySw[i].opt.vs.vval ) ;
+					populateTelItemsCB( safetySwitchAlarm[i], 1,g_model.safetySw[i].opt.vs.vval ) ;
 				}
         ui->grid_tabSafetySwitches->addWidget(safetySwitchType[i],i+2,1);
         ui->grid_tabSafetySwitches->addWidget(safetySwitchSwtch[i],i+2,2);
@@ -1771,6 +1791,7 @@ void ModelEdit::safetySwitchesEdited()
 		EditedNesting = 1 ;
 		
 		numVoice = g_model.numVoice ;
+    g_model.numVoice = ui->NumVoiceSwSB->value() ;
 
     for(int i=0; i<NUM_SKYCHNOUT; i++)
     {
@@ -1806,7 +1827,6 @@ void ModelEdit::safetySwitchesEdited()
 				g_model.safetySw[i].opt.vs.vmode = safetySwitchType[i]->currentIndex() ;
 			}	
 		}
-    g_model.numVoice = ui->NumVoiceSwSB->value() ;
     updateSettings();
 		
 		if ( g_model.numVoice != numVoice )
@@ -1818,6 +1838,11 @@ void ModelEdit::safetySwitchesEdited()
 		{
 			if ( g_model.numVoice < NUM_SKYCHNOUT-i )		// Normal switch
 			{
+		    if ( i >= NUM_SKYCHNOUT-numVoice-1 && i < NUM_SKYCHNOUT-g_model.numVoice )
+				{
+					g_model.safetySw[i].opt.ss.swtch = 0 ;
+	    		populateSafetySwitchCB(safetySwitchSwtch[i],g_model.safetySw[i].opt.ss.mode,g_model.safetySw[i].opt.ss.swtch);
+				}
         populateSafetyVoiceTypeCB(safetySwitchType[i], 0, g_model.safetySw[i].opt.ss.mode);
 				if ( modechange[i] != g_model.safetySw[i].opt.ss.mode )
 				{
@@ -1844,18 +1869,24 @@ void ModelEdit::safetySwitchesEdited()
 				}
 				if ( g_model.safetySw[i].opt.ss.swtch > MAX_DRSWITCH )
 				{
-					populateTelItemsCB( safetySwitchAlarm[i],g_model.safetySw[i].opt.ss.val ) ;
+					populateTelItemsCB( safetySwitchAlarm[i], 1,g_model.safetySw[i].opt.ss.val ) ;
 				}
 			}
 			else
 			{
+		    if ( i >= NUM_SKYCHNOUT-g_model.numVoice-1 && i < NUM_SKYCHNOUT-numVoice )
+				{
+					g_model.safetySw[i].opt.vs.vswtch = 0 ;
+          g_model.safetySw[i].opt.vs.vval = 0 ;
+					g_model.safetySw[i].opt.vs.vmode = 0 ;
+				}
         populateSafetyVoiceTypeCB(safetySwitchType[i], 1, g_model.safetySw[i].opt.vs.vmode);
 				safetySwitchValue[i]->setMaximum(250);
      		safetySwitchValue[i]->setMinimum(0);
        	safetySwitchValue[i]->setValue(g_model.safetySw[i].opt.vs.vval);
 				if ( g_model.safetySw[i].opt.vs.vmode > 5 )
 				{
-					populateTelItemsCB( safetySwitchAlarm[i],g_model.safetySw[i].opt.ss.val ) ;
+					populateTelItemsCB( safetySwitchAlarm[i], 1,g_model.safetySw[i].opt.ss.val ) ;
 				}
 			}
       setSafetyWidgetVisibility(i);
@@ -2020,7 +2051,6 @@ void ModelEdit::tabTrims()
 
 void ModelEdit::tabGvar()
 {
-	printf("tabGvar\n");
 		populateGvarCB( ui->Gvar1CB, g_model.gvars[0].gvsource ) ;
     populateGvarCB( ui->Gvar2CB, g_model.gvars[1].gvsource ) ;
     populateGvarCB( ui->Gvar3CB, g_model.gvars[2].gvsource ) ;
@@ -2048,7 +2078,6 @@ void ModelEdit::tabGvar()
 
 void ModelEdit::GvarEdited()
 {
-	printf("GvarEdited\n");
 	  g_model.gvars[0].gvsource = ui->Gvar1CB->currentIndex() ;
 	  g_model.gvars[1].gvsource = ui->Gvar2CB->currentIndex() ;
 	  g_model.gvars[2].gvsource = ui->Gvar3CB->currentIndex() ;
@@ -2066,12 +2095,12 @@ void ModelEdit::GvarEdited()
 
 void ModelEdit::tabFrsky()
 {
-    populateTelItemsCB( ui->Ct1, g_model.customDisplayIndex[0] ) ;
-    populateTelItemsCB( ui->Ct2, g_model.customDisplayIndex[1] ) ;
-    populateTelItemsCB( ui->Ct3, g_model.customDisplayIndex[2] ) ;
-    populateTelItemsCB( ui->Ct4, g_model.customDisplayIndex[3] ) ;
-    populateTelItemsCB( ui->Ct5, g_model.customDisplayIndex[4] ) ;
-    populateTelItemsCB( ui->Ct6, g_model.customDisplayIndex[5] ) ;
+    populateTelItemsCB( ui->Ct1, 0, g_model.customDisplayIndex[0] ) ;
+    populateTelItemsCB( ui->Ct2, 0, g_model.customDisplayIndex[1] ) ;
+    populateTelItemsCB( ui->Ct3, 0, g_model.customDisplayIndex[2] ) ;
+    populateTelItemsCB( ui->Ct4, 0, g_model.customDisplayIndex[3] ) ;
+    populateTelItemsCB( ui->Ct5, 0, g_model.customDisplayIndex[4] ) ;
+    populateTelItemsCB( ui->Ct6, 0, g_model.customDisplayIndex[5] ) ;
 		
     ui->frsky_ratio_0->setValue(g_model.frsky.channels[0].ratio);
     ui->frsky_type_0->setCurrentIndex(g_model.frsky.channels[0].type);

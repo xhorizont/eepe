@@ -291,7 +291,7 @@ bool eeLoadGeneral();
 
 
 
-
+#ifndef SKY
 #include "myeeprom.h"
 
 
@@ -327,7 +327,7 @@ public:
 //    int size(int id) {return theFile->size(id);}
 
 };
-
+#endif
 
 
 

@@ -55,6 +55,8 @@ GeneralEdit::GeneralEdit( struct t_radioData *radioData, QWidget *parent) :
 //    ui->memwarnChkB->setChecked(!g_eeGeneral.disableMemoryWarning);   //Default is zero=checked
     ui->alarmwarnChkB->setChecked(!g_eeGeneral.disableAlarmWarning);//Default is zero=checked
     ui->PotScrollEnableChkB->setChecked(!g_eeGeneral.disablePotScroll);//Default is zero=checked
+    ui->StickScrollEnableChkB->setChecked(g_eeGeneral.stickScroll);
+    ui->CrossTrimChkB->setChecked(g_eeGeneral.crosstrim);
 //    ui->BandGapEnableChkB->setChecked(!g_eeGeneral.disableBG);//Default is zero=checked
     ui->beeperCB->setCurrentIndex(g_eeGeneral.beeperVal);
     ui->channelorderCB->setCurrentIndex(g_eeGeneral.templateSetup);
@@ -490,6 +492,18 @@ void GeneralEdit::on_alarmwarnChkB_stateChanged(int )
 void GeneralEdit::on_PotScrollEnableChkB_stateChanged(int )
 {
     g_eeGeneral.disablePotScroll = ui->PotScrollEnableChkB->isChecked() ? 0 : 1;
+    updateSettings();
+}
+
+void GeneralEdit::on_StickScrollEnableChkB_stateChanged(int )
+{
+    g_eeGeneral.stickScroll = ui->StickScrollEnableChkB->isChecked() ? 1 : 0 ;
+    updateSettings();
+}
+
+void GeneralEdit::on_CrossTrimChkB_stateChanged(int )
+{
+    g_eeGeneral.crosstrim = ui->CrossTrimChkB->isChecked() ? 1 : 0 ;
     updateSettings();
 }
 

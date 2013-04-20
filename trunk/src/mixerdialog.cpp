@@ -25,10 +25,19 @@ MixerDialog::MixerDialog(QWidget *parent, MixData *mixdata, int stickMode, QStri
     ui->offsetSB->setValue(md->sOffset);
     ui->trimChkB->setChecked(md->carryTrim==0);
     ui->FMtrimChkB->setChecked(md->enableFmTrim);
-    populateCurvesCB(ui->curvesCB,md->curve);
+    ui->lateOffsetChkB->setChecked(md->lateOffset);
     populateSwitchCB(ui->switchesCB,md->swtch);
     ui->warningCB->setCurrentIndex(md->mixWarn);
     ui->mltpxCB->setCurrentIndex(md->mltpx);
+		ui->diffcurveCB->setCurrentIndex(md->differential) ;
+		if (md->differential)
+		{
+			populateNumericGVarCB( ui->curvesCB, md->curve, -100, 100 ) ;
+		}
+		else
+		{
+			populateCurvesCB(ui->curvesCB, md->curve ) ;
+		}
 
     ui->delayDownSB->setValue(md->delayDown);
     ui->delayUpSB->setValue(md->delayUp);
@@ -54,7 +63,9 @@ MixerDialog::MixerDialog(QWidget *parent, MixData *mixdata, int stickMode, QStri
     connect(ui->slowDownSB,SIGNAL(valueChanged(int)),this,SLOT(valuesChanged()));
     connect(ui->slowUpSB,SIGNAL(valueChanged(int)),this,SLOT(valuesChanged()));
     connect(ui->FMtrimChkB,SIGNAL(stateChanged(int)),this,SLOT(valuesChanged()));
+    connect(ui->diffcurveCB,SIGNAL(currentIndexChanged(int)),this,SLOT(valuesChanged()));
     connect(ui->mixerComment,SIGNAL(textChanged()),this,SLOT(valuesChanged()));
+    connect(ui->lateOffsetChkB,SIGNAL(stateChanged(int)),this,SLOT(valuesChanged()));
 }
 
 MixerDialog::~MixerDialog()
@@ -77,11 +88,11 @@ void MixerDialog::changeEvent(QEvent *e)
 
 void MixerDialog::valuesChanged()
 {
+	int oldcurvemode ;
     md->srcRaw       = ui->sourceCB->currentIndex()+1;
     md->weight       = ui->weightSB->value();
     md->sOffset      = ui->offsetSB->value();
     md->carryTrim    = ui->trimChkB->checkState() ? 0 : 1;
-    md->curve        = ui->curvesCB->currentIndex()-16;
     md->swtch        = ui->switchesCB->currentIndex()-MAX_DRSWITCH;
     md->mixWarn      = ui->warningCB->currentIndex();
     md->mltpx        = ui->mltpxCB->currentIndex();
@@ -90,6 +101,31 @@ void MixerDialog::valuesChanged()
     md->speedDown    = ui->slowDownSB->value();
     md->speedUp      = ui->slowUpSB->value();
     md->enableFmTrim = ui->FMtrimChkB->checkState() ? 1 : 0;
+    md->lateOffset   = ui->lateOffsetChkB->checkState() ? 1 : 0;
+		
+		oldcurvemode = md->differential ;
+		md->differential = ui->diffcurveCB->currentIndex() ;
+
+		if ( md->differential != oldcurvemode )
+		{
+			if (md->differential)
+			{
+				populateNumericGVarCB( ui->curvesCB, 0, -100, 100 ) ;
+			}
+			else
+			{
+				populateCurvesCB(ui->curvesCB, 0 ) ;
+			}
+		}
+		if (md->differential)
+		{
+			md->curve = numericGvarValue( ui->curvesCB, -100, 100 ) ;			
+		}
+		else
+		{
+    	md->curve        = ui->curvesCB->currentIndex()-16;
+		}
+
 
     if(ui->FMtrimChkB->checkState())
         ui->offset_label->setText("FmTrimVal");

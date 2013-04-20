@@ -119,7 +119,7 @@ PACK(typedef struct t_EEGeneral {
     uint8_t   flashBeep:1;
     uint8_t   disableSplashScreen:1;
     uint8_t   disablePotScroll:1;
-    uint8_t   spare3:1;
+  	uint8_t   stickScroll:1 ;
     uint8_t   frskyinternalalarm:1;
     uint8_t   filterInput;
     uint8_t   lightAutoOff;
@@ -146,6 +146,8 @@ PACK(typedef struct t_EEGeneral {
 	int8_t		current_calib ;
 	uint8_t		bt_baudrate ;
 	uint8_t		rotaryDivisor ;
+	uint8_t   crosstrim:1;
+	uint8_t   spare9:7;
 }) EEGeneral;
 
 
@@ -328,16 +330,17 @@ PACK(typedef struct te_MixData {
   uint8_t srcRaw;            //
   int8_t  weight;
   int8_t  swtch;
-  uint8_t curve;             //0=symmetrisch 1=no neg 2=no pos
+  int8_t curve;             //0=symmetrisch 1=no neg 2=no pos
   uint8_t delayUp;
   uint8_t delayDown;
   uint8_t speedUp;         // Servogeschwindigkeit aus Tabelle (10ms Cycle)
   uint8_t speedDown;       // 0 nichts
   uint8_t carryTrim:1;
-  uint8_t mltpx:3;           // multiplex method 0=+ 1=* 2=replace
+  uint8_t mltpx:2;           // multiplex method 0=+ 1=* 2=replace
+  uint8_t lateOffset:1;      // Add offset later
   uint8_t mixWarn:2;         // mixer warning
   uint8_t enableFmTrim:1;
-  uint8_t mixres:1;
+  uint8_t differential:1;
   int8_t  sOffset;
   uint8_t  res[4];
 }) SKYMixData;
