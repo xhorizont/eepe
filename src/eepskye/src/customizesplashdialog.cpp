@@ -2,6 +2,8 @@
 #include "ui_customizesplashdialog.h"
 
 #include <QtGui>
+#include "pers.h"
+#include "myeeprom.h"
 #include "helpers.h"
 
 

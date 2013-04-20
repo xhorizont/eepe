@@ -92,7 +92,7 @@ Section "eePe" SecDummy
   File "avrdude.exe"
   File "avrdude.conf"
   File "libusb0.dll"
-  File "../../er9x/doc/ER9x Users Guide.pdf"
+  File "ER9x Users Manual.pdf"
   
   CreateDirectory "$INSTDIR\lang"
   SetOutPath "$INSTDIR\lang"
@@ -119,7 +119,7 @@ Section "eePe" SecDummy
     ;Create shortcuts
     CreateDirectory "$SMPROGRAMS\$StartMenuFolder"
 	CreateShortCut "$SMPROGRAMS\$StartMenuFolder\eePe.lnk" "$INSTDIR\eePe.exe"
-	CreateShortCut "$SMPROGRAMS\$StartMenuFolder\er9x Users Guide.lnk" "$INSTDIR\ER9x Users Guide.pdf"
+	CreateShortCut "$SMPROGRAMS\$StartMenuFolder\er9x Users Manual.lnk" "$INSTDIR\ER9x Users Manual.pdf"
     CreateShortCut "$SMPROGRAMS\$StartMenuFolder\Uninstall.lnk" "$INSTDIR\Uninstall.exe"
   
   !insertmacro MUI_STARTMENU_WRITE_END

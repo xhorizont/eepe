@@ -63,6 +63,7 @@ private:
     quint16 s_cnt;
     quint16 s_sum;
     quint8  sw_toggled;
+		quint8	CurrentPhase ;
 
 		quint8  current_limits ;
 
@@ -93,6 +94,12 @@ private:
     int16_t intpol(int16_t x, uint8_t idx);
 		int8_t REG100_100(int8_t x) ;
 		int8_t REG(int8_t x, int8_t min, int8_t max) ;
+
+		uint32_t getFlightPhase() ;
+		int16_t getRawTrimValue( uint8_t phase, uint8_t idx ) ;
+		uint32_t getTrimFlightPhase( uint8_t phase, uint8_t idx ) ;
+		int16_t getTrimValue( uint8_t phase, uint8_t idx ) ;
+		void setTrimValue(uint8_t phase, uint8_t idx, int16_t trim) ;
 
 protected:
     void closeEvent (  );

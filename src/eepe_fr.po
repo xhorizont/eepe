@@ -61,9 +61,9 @@ msgctxt "GeneralEdit|"
 msgid "Backlight Auto On/OFF after"
 msgstr "Rétroéclairage, extinction auto après"
 
-msgctxt "GeneralEdit|"
-msgid "Input Filter"
-msgstr "Conversion"
+#~ msgctxt "GeneralEdit|"
+#~ msgid "Input Filter"
+#~ msgstr "Conversion"
 
 msgctxt "GeneralEdit|"
 msgid "Inactivity Timer"
@@ -172,9 +172,9 @@ msgctxt "GeneralEdit|"
 msgid "Mode 2 (RUD THR ELE AIL)"
 msgstr "Mode 2 (DIR GAZ PROF AIL)"
 
-msgctxt "GeneralEdit|"
-msgid "Filter"
-msgstr "Filtre (si 'jitter' - Latence +30msec)"
+#~ msgctxt "GeneralEdit|"
+#~ msgid "Filter"
+#~ msgstr "Filtre (si 'jitter' - Latence +30msec)"
 
 #~ msgctxt "GeneralEdit|"
 #~ msgid "1 - No Keys"
@@ -211,9 +211,9 @@ msgctxt "GeneralEdit|"
 msgid "Throttle Startup Warning"
 msgstr "Alerte gaz"
 
-msgctxt "GeneralEdit|"
-msgid "Single"
-msgstr "Simple conversion (1024 bits)"
+#~ msgctxt "GeneralEdit|"
+#~ msgid "Single"
+#~ msgstr "Simple conversion (1024 bits)"
 
 msgctxt "GeneralEdit|"
 msgid "Battery Warning"
@@ -295,9 +295,9 @@ msgctxt "GeneralEdit|"
 msgid "Flash on beep"
 msgstr "Clignotement avec les bips"
 
-msgctxt "GeneralEdit|"
-msgid "Oversample"
-msgstr "Suréchantillonnage (2048 bits)"
+#~ msgctxt "GeneralEdit|"
+#~ msgid "Oversample"
+#~ msgstr "Suréchantillonnage (2048 bits)"
 
 msgctxt "GeneralEdit|"
 msgid ""
@@ -588,10 +588,6 @@ msgid "PiSpkr"
 msgstr ""
 
 msgctxt "GeneralEdit|"
-msgid "PcmWav"
-msgstr ""
-
-msgctxt "GeneralEdit|"
 msgid "Show Name On Splash Sceen"
 msgstr ""
 
@@ -633,6 +629,38 @@ msgstr ""
 
 msgctxt "GeneralEdit|"
 msgid "GEA"
+msgstr ""
+
+msgctxt "GeneralEdit|"
+msgid "BeeperVoice"
+msgstr ""
+
+msgctxt "GeneralEdit|"
+msgid "PiSpkrVoice"
+msgstr ""
+
+msgctxt "GeneralEdit|"
+msgid "Volume"
+msgstr ""
+
+msgctxt "GeneralEdit|"
+msgid "Backlight Invert"
+msgstr ""
+
+msgctxt "GeneralEdit|"
+msgid "EnablePPMsim"
+msgstr ""
+
+msgctxt "GeneralEdit|"
+msgid "Internal FrSky Alarm"
+msgstr ""
+
+msgctxt "GeneralEdit|"
+msgid "Stick Scrolling Enable"
+msgstr ""
+
+msgctxt "GeneralEdit|"
+msgid "Cross Trims"
 msgstr ""
 
 msgctxt "MainWindow|"
@@ -1230,6 +1258,14 @@ msgctxt "MainWindow|"
 msgid "Read Firmware from Tx"
 msgstr ""
 
+msgctxt "MainWindow|"
+msgid "Backing up EEPROM From Tx"
+msgstr ""
+
+msgctxt "MainWindow|"
+msgid "Backup failed, abandoning flash operation"
+msgstr ""
+
 msgctxt "MdiChild|"
 msgid "&Cut"
 msgstr "&Couper"
@@ -1533,6 +1569,17 @@ msgid ""
 "Cannot set General Settings"
 msgstr ""
 
+msgctxt "MdiChild|"
+msgid "Info"
+msgstr ""
+
+#, qt-format
+msgctxt "MdiChild|"
+msgid ""
+"Writing file %1:\n"
+"%2."
+msgstr ""
+
 msgctxt "MixerDialog|"
 msgid "Up"
 msgstr "Haut"
@@ -1773,6 +1820,14 @@ msgstr ""
 
 msgctxt "MixerDialog|"
 msgid "Comment"
+msgstr ""
+
+msgctxt "MixerDialog|"
+msgid "Differential"
+msgstr ""
+
+msgctxt "MixerDialog|"
+msgid "Late Offset"
 msgstr ""
 
 msgctxt "ModelEdit|"
@@ -2416,10 +2471,6 @@ msgid "Channel 1"
 msgstr ""
 
 msgctxt "ModelEdit|"
-msgid "V"
-msgstr ""
-
-msgctxt "ModelEdit|"
 msgid "---"
 msgstr ""
 
@@ -2512,6 +2563,188 @@ msgctxt "ModelEdit|"
 msgid "DSM2/DSMX"
 msgstr ""
 
+msgctxt "ModelEdit|"
+msgid "PPMSIM"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "Timer ModeB"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "Voice Number"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "PPM Start Channel"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "Modes"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "FM0"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "FM1"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "FM2"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "FM3"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "FM4"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "Own Trim"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "AND Switch"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "Telemetry Value"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "Number of Voice Switches"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "Type"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "v    volts"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "---  raw"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "V    volts x 2"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "A    Amps"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "---   raw"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "V     volts x 2"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "A     Amps"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "FrSky Hub"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "WingShadow How High"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "Units"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "Metric"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "Imperial"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "Num Blades"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "GpsAltMain"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "Custom Telemetry 1"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "Custom Telemetry 3"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "Custom Telemetry 5"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "Custom Telemetry 2"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "Custom Telemetry 4"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "Custom Telemetry 6"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "GVARS"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "GVAR"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "Input"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "GVAR1"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "GVAR2"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "GVAR3"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "GVAR4"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "GVAR5"
+msgstr ""
+
+#, qt-format
+msgctxt "ModelEdit|"
+msgid " Diff(%1)"
+msgstr ""
+
+#, qt-format
+msgctxt "ModelEdit|"
+msgid " Diff(GV%1)"
+msgstr ""
+
 msgctxt "QObject|"
 msgid "Checking for updates..."
 msgstr ""
@@ -2558,6 +2791,11 @@ msgid ""
 msgstr ""
 "Ecriture fichier %1 impossible:\n"
 "%2."
+
+#, qt-format
+msgctxt "QObject|"
+msgid "GV%1"
+msgstr ""
 
 #, qt-format
 msgctxt "avrOutputDialog|"
@@ -2772,6 +3010,10 @@ msgstr ""
 
 msgctxt "burnConfigDialog|"
 msgid "Click 'Ok' to continue or 'Cancel' to quit."
+msgstr ""
+
+msgctxt "burnConfigDialog|"
+msgid "M88"
 msgstr ""
 
 msgctxt "customizeSplashDialog|"
@@ -3348,6 +3590,22 @@ msgstr ""
 
 msgctxt "preferencesDialog|"
 msgid "er9x - NMEA"
+msgstr ""
+
+msgctxt "preferencesDialog|"
+msgid "er9x - 128 - FrSky"
+msgstr ""
+
+msgctxt "preferencesDialog|"
+msgid "M64"
+msgstr ""
+
+msgctxt "preferencesDialog|"
+msgid "M128"
+msgstr ""
+
+msgctxt "preferencesDialog|"
+msgid "Processor"
 msgstr ""
 
 msgctxt "printDialog|"

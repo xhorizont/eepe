@@ -35,7 +35,7 @@
    <item row="3" column="1">
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
-      <number>9</number>
+      <number>2</number>
      </property>
      <widget class="QWidget" name="tabModelSetup">
       <attribute name="title">
@@ -663,6 +663,442 @@
         </layout>
        </item>
       </layout>
+     </widget>
+     <widget class="QWidget" name="tabModes">
+      <attribute name="title">
+       <string>Modes</string>
+      </attribute>
+      <widget class="QWidget" name="gridLayoutWidget">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>20</y>
+         <width>701</width>
+         <height>261</height>
+        </rect>
+       </property>
+       <layout class="QGridLayout" name="gridLayout_30">
+        <item row="1" column="0">
+         <widget class="QLabel" name="label_147">
+          <property name="text">
+           <string>FM0</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="0">
+         <widget class="QLabel" name="label_146">
+          <property name="text">
+           <string>FM1</string>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="0">
+         <widget class="QLabel" name="label_148">
+          <property name="text">
+           <string>FM2</string>
+          </property>
+         </widget>
+        </item>
+        <item row="6" column="0">
+         <widget class="QLabel" name="label_149">
+          <property name="text">
+           <string>FM3</string>
+          </property>
+         </widget>
+        </item>
+        <item row="8" column="0">
+         <widget class="QLabel" name="label_150">
+          <property name="text">
+           <string>FM4</string>
+          </property>
+         </widget>
+        </item>
+        <item row="8" column="1">
+         <widget class="QComboBox" name="FP4_sw"/>
+        </item>
+        <item row="6" column="1">
+         <widget class="QComboBox" name="FP3_sw"/>
+        </item>
+        <item row="4" column="1">
+         <widget class="QComboBox" name="FP2_sw"/>
+        </item>
+        <item row="2" column="1">
+         <widget class="QComboBox" name="FP1_sw"/>
+        </item>
+        <item row="0" column="3">
+         <widget class="QLabel" name="label_153">
+          <property name="text">
+           <string>Rudder</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="4">
+         <widget class="QLabel" name="label_154">
+          <property name="text">
+           <string>Elevator</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="5">
+         <widget class="QLabel" name="label_155">
+          <property name="text">
+           <string>Throttle</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="6">
+         <widget class="QLabel" name="label_156">
+          <property name="text">
+           <string>Aileron</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="3">
+         <widget class="QLabel" name="label_157">
+          <property name="text">
+           <string>Own Trim</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="4">
+         <widget class="QLabel" name="label_158">
+          <property name="text">
+           <string>Own Trim</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="5">
+         <widget class="QLabel" name="label_159">
+          <property name="text">
+           <string>Own Trim</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="6">
+         <widget class="QLabel" name="label_160">
+          <property name="text">
+           <string>Own Trim</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="3">
+         <widget class="QComboBox" name="FP1_RudCB"/>
+        </item>
+        <item row="2" column="4">
+         <widget class="QComboBox" name="FP1_EleCB"/>
+        </item>
+        <item row="2" column="5">
+         <widget class="QComboBox" name="FP1_ThrCB"/>
+        </item>
+        <item row="2" column="6">
+         <widget class="QComboBox" name="FP1_AilCB"/>
+        </item>
+        <item row="4" column="3">
+         <widget class="QComboBox" name="FP2_RudCB"/>
+        </item>
+        <item row="4" column="4">
+         <widget class="QComboBox" name="FP2_EleCB"/>
+        </item>
+        <item row="4" column="5">
+         <widget class="QComboBox" name="FP2_ThrCB"/>
+        </item>
+        <item row="4" column="6">
+         <widget class="QComboBox" name="FP2_AilCB"/>
+        </item>
+        <item row="6" column="3">
+         <widget class="QComboBox" name="FP3_RudCB"/>
+        </item>
+        <item row="6" column="4">
+         <widget class="QComboBox" name="FP3_EleCB"/>
+        </item>
+        <item row="6" column="5">
+         <widget class="QComboBox" name="FP3_ThrCB"/>
+        </item>
+        <item row="6" column="6">
+         <widget class="QComboBox" name="FP3_AilCB"/>
+        </item>
+        <item row="8" column="3">
+         <widget class="QComboBox" name="FP4_RudCB"/>
+        </item>
+        <item row="8" column="4">
+         <widget class="QComboBox" name="FP4_EleCB"/>
+        </item>
+        <item row="8" column="5">
+         <widget class="QComboBox" name="FP4_ThrCB"/>
+        </item>
+        <item row="8" column="6">
+         <widget class="QComboBox" name="FP4_AilCB"/>
+        </item>
+        <item row="3" column="4">
+         <widget class="QSpinBox" name="FP1eleTrimSB">
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+          <property name="accelerated">
+           <bool>true</bool>
+          </property>
+          <property name="minimum">
+           <number>-125</number>
+          </property>
+          <property name="maximum">
+           <number>510</number>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="3">
+         <widget class="QSpinBox" name="FP1rudTrimSB">
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+          <property name="accelerated">
+           <bool>true</bool>
+          </property>
+          <property name="minimum">
+           <number>-125</number>
+          </property>
+          <property name="maximum">
+           <number>510</number>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="5">
+         <widget class="QSpinBox" name="FP1thrTrimSB">
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+          <property name="accelerated">
+           <bool>true</bool>
+          </property>
+          <property name="minimum">
+           <number>-1024</number>
+          </property>
+          <property name="maximum">
+           <number>510</number>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="6">
+         <widget class="QSpinBox" name="FP1ailTrimSB">
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+          <property name="accelerated">
+           <bool>true</bool>
+          </property>
+          <property name="minimum">
+           <number>-1024</number>
+          </property>
+          <property name="maximum">
+           <number>510</number>
+          </property>
+         </widget>
+        </item>
+        <item row="5" column="3">
+         <widget class="QSpinBox" name="FP2rudTrimSB">
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+          <property name="accelerated">
+           <bool>true</bool>
+          </property>
+          <property name="minimum">
+           <number>-1024</number>
+          </property>
+          <property name="maximum">
+           <number>510</number>
+          </property>
+         </widget>
+        </item>
+        <item row="5" column="4">
+         <widget class="QSpinBox" name="FP2eleTrimSB">
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+          <property name="accelerated">
+           <bool>true</bool>
+          </property>
+          <property name="minimum">
+           <number>-1024</number>
+          </property>
+          <property name="maximum">
+           <number>510</number>
+          </property>
+         </widget>
+        </item>
+        <item row="5" column="5">
+         <widget class="QSpinBox" name="FP2thrTrimSB">
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+          <property name="accelerated">
+           <bool>true</bool>
+          </property>
+          <property name="minimum">
+           <number>-1024</number>
+          </property>
+          <property name="maximum">
+           <number>510</number>
+          </property>
+         </widget>
+        </item>
+        <item row="5" column="6">
+         <widget class="QSpinBox" name="FP2ailTrimSB">
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+          <property name="accelerated">
+           <bool>true</bool>
+          </property>
+          <property name="minimum">
+           <number>-1024</number>
+          </property>
+          <property name="maximum">
+           <number>510</number>
+          </property>
+         </widget>
+        </item>
+        <item row="7" column="3">
+         <widget class="QSpinBox" name="FP3rudTrimSB">
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+          <property name="accelerated">
+           <bool>true</bool>
+          </property>
+          <property name="minimum">
+           <number>-1024</number>
+          </property>
+          <property name="maximum">
+           <number>510</number>
+          </property>
+         </widget>
+        </item>
+        <item row="7" column="4">
+         <widget class="QSpinBox" name="FP3eleTrimSB">
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+          <property name="accelerated">
+           <bool>true</bool>
+          </property>
+          <property name="minimum">
+           <number>-1024</number>
+          </property>
+          <property name="maximum">
+           <number>510</number>
+          </property>
+         </widget>
+        </item>
+        <item row="7" column="5">
+         <widget class="QSpinBox" name="FP3thrTrimSB">
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+          <property name="accelerated">
+           <bool>true</bool>
+          </property>
+          <property name="minimum">
+           <number>-1024</number>
+          </property>
+          <property name="maximum">
+           <number>510</number>
+          </property>
+         </widget>
+        </item>
+        <item row="7" column="6">
+         <widget class="QSpinBox" name="FP3ailTrimSB">
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+          <property name="accelerated">
+           <bool>true</bool>
+          </property>
+          <property name="minimum">
+           <number>-1024</number>
+          </property>
+          <property name="maximum">
+           <number>510</number>
+          </property>
+         </widget>
+        </item>
+        <item row="9" column="3">
+         <widget class="QSpinBox" name="FP4rudTrimSB">
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+          <property name="accelerated">
+           <bool>true</bool>
+          </property>
+          <property name="minimum">
+           <number>-1024</number>
+          </property>
+          <property name="maximum">
+           <number>510</number>
+          </property>
+         </widget>
+        </item>
+        <item row="9" column="4">
+         <widget class="QSpinBox" name="FP4eleTrimSB">
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+          <property name="accelerated">
+           <bool>true</bool>
+          </property>
+          <property name="minimum">
+           <number>-1024</number>
+          </property>
+          <property name="maximum">
+           <number>510</number>
+          </property>
+         </widget>
+        </item>
+        <item row="9" column="5">
+         <widget class="QSpinBox" name="FP4thrTrimSB">
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+          <property name="accelerated">
+           <bool>true</bool>
+          </property>
+          <property name="minimum">
+           <number>-1024</number>
+          </property>
+          <property name="maximum">
+           <number>510</number>
+          </property>
+         </widget>
+        </item>
+        <item row="9" column="6">
+         <widget class="QSpinBox" name="FP4ailTrimSB">
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+          <property name="accelerated">
+           <bool>true</bool>
+          </property>
+          <property name="minimum">
+           <number>-1024</number>
+          </property>
+          <property name="maximum">
+           <number>510</number>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
      </widget>
      <widget class="QWidget" name="tabExpo">
       <attribute name="title">

@@ -91,6 +91,8 @@ private slots:
     void on_soundModeCB_currentIndexChanged(int index);
     void on_tabWidget_selected(QString );
     void on_PotScrollEnableChkB_stateChanged(int );
+		void on_StickScrollEnableChkB_stateChanged(int ) ;
+		void on_CrossTrimChkB_stateChanged(int ) ;
 //    void on_BandGapEnableChkB_stateChanged(int );
     void on_splashScreenNameChkB_stateChanged(int );
     void on_backlightStickMove_editingFinished();

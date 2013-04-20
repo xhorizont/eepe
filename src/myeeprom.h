@@ -63,7 +63,9 @@
 #define GENERAL_OWNER_NAME_LEN 10
 #define MODEL_NAME_LEN         10
 
-#define MAX_GVARS 5
+#define MAX_GVARS 7
+
+#define MAX_PHASES		4
 
 PACK(typedef struct t_TrainerMix {
   uint8_t srcChn:3; //0-7 = ch1-8
@@ -110,13 +112,12 @@ PACK(typedef struct t_EEGeneral {
     uint8_t   lightAutoOff;
     uint8_t   templateSetup;  //RETA order according to chout_ar array
     int8_t    PPM_Multiplier;
-    uint8_t   FRSkyYellow:4;
-    uint8_t   FRSkyOrange:4;
-    uint8_t   FRSkyRed:4;
+    uint8_t   unused1;
+    uint8_t   unused2:4;
     uint8_t   hideNameOnSplash:1;
     uint8_t   enablePpmsim:1;
     uint8_t   blightinv:1;
-    uint8_t   spare:1;
+    uint8_t   stickScroll:1;
     uint8_t   speakerPitch;
     uint8_t   hapticStrength;
     uint8_t   speakerMode;
@@ -125,6 +126,8 @@ PACK(typedef struct t_EEGeneral {
     uint8_t   switchWarningStates;
 		int8_t		volume ;
     uint8_t   res[3];
+    uint8_t   crosstrim:1;
+    uint8_t   spare1:7;
 }) EEGeneral;
 
 
@@ -163,10 +166,11 @@ PACK(typedef struct t_MixData {
   uint8_t speedUp:4;         // Servogeschwindigkeit aus Tabelle (10ms Cycle)
   uint8_t speedDown:4;       // 0 nichts
   uint8_t carryTrim:1;
-  uint8_t mltpx:3;           // multiplex method 0=+ 1=* 2=replace
+  uint8_t mltpx:2;           // multiplex method 0=+ 1=* 2=replace
+  uint8_t lateOffset:1;      // 
   uint8_t mixWarn:2;         // mixer warning
   uint8_t enableFmTrim:1;
-  uint8_t mixres:1;
+  uint8_t differential:1;
   int8_t  sOffset;
   int8_t  res;
 }) MixData;
@@ -197,11 +201,6 @@ PACK(typedef struct t_SafetySwData { // Custom Switches data
 	} opt ;
 }) SafetySwData;
 
-//typedef struct t_SafetySwData { // Custom Switches data
-//    int8_t  swtch;
-//    int8_t  val;
-//} __attribute__((packed)) SafetySwData;
-
 PACK(typedef struct t_FrSkyChannelData {
   uint8_t   ratio;                // 0.0 means not used, 0.1V steps EG. 6.6 Volts = 66. 25.1V = 251, etc.
   uint8_t   alarms_value[2];      // 0.1V steps EG. 6.6 Volts = 66. 25.1V = 251, etc.
@@ -219,20 +218,25 @@ PACK(typedef struct t_FrSkyalarms
 
 PACK(typedef struct t_FrSkyData {
     FrSkyChannelData channels[2];
-		FrSkyAlarmData alarmData[4] ;
+		uint8_t unused0 ;
+		uint8_t frskyAlarmLimit ;
+		uint8_t frskyAlarmSound ;
+//		FrSkyAlarmData alarmData[4] ;
 }) FrSkyData;
-
-PACK(typedef struct t_swVoice {
-  uint8_t  vswtch:5 ;
-	uint8_t vmode:3 ; // ON, OFF, BOTH, 15Secs, 30Secs, 60Secs, Varibl
-  uint8_t  val ;
-}) voiceSwData ;
 
 PACK(typedef struct t_gvar {
 	int8_t gvar ;
 	uint8_t gvsource ;
 //	int8_t gvswitch ;
 }) GvarData ;
+
+PACK(typedef struct t_PhaseData {
+	// Trim store as -1001 to -1, trim value-501, 0-5 use trim of phase 0-5
+  int16_t trim[4];     // -500..500 => trim value, 501 => use trim of phase 0, 502, 503, 504 => use trim of modes 1|2|3|4 instead
+  int8_t swtch;        // Try 0-5 use trim of phase 0-5, 1000-2000, trim + 1500 ???
+  uint8_t fadeIn:4;
+  uint8_t fadeOut:4;
+}) PhaseData;
 
 
 typedef struct t_ModelData {
@@ -251,7 +255,7 @@ typedef struct t_ModelData {
   uint8_t   protocol;
   int8_t    ppmNCH;
   uint8_t   thrTrim:1;            // Enable Throttle Trim
-  uint8_t   numBlades:2;					// RPM scaling
+  uint8_t   xnumBlades:2;					// RPM scaling
   uint8_t   spare10:1;
   uint8_t   thrExpo:1;            // Enable Throttle Expo
 	uint8_t   ppmStart:3 ;					// Start channel for PPM
@@ -280,8 +284,11 @@ typedef struct t_ModelData {
   uint8_t   numVoice;		// 0-16, rest are Safety switches
   SafetySwData  safetySw[NUM_CHNOUT];
   FrSkyData frsky;
+	uint8_t numBlades ;
+	uint8_t unused1[8] ;
 	uint8_t CustomDisplayIndex[6] ;
 	GvarData gvars[MAX_GVARS] ;
+		PhaseData phaseData[MAX_PHASES] ;
 } __attribute__((packed)) ModelData;
 
 

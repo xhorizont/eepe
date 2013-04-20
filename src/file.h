@@ -45,7 +45,6 @@
 //#define EESIZE	EESIZE64
 //#define BLOCKS	BLOCKS64
 
-#define MAX_MODELS 16
 #define MAXFILES (1+MAX_MODELS+3)
 
 struct DirEnt{

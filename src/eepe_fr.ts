@@ -43,7 +43,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Input Filter</source>
-        <translation>Conversion</translation>
+        <translation type="obsolete">Conversion</translation>
     </message>
     <message>
         <source>Inactivity Timer</source>
@@ -140,7 +140,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Filter</source>
-        <translation>Filtre (si &apos;jitter&apos; - Latence +30msec)</translation>
+        <translation type="obsolete">Filtre (si &apos;jitter&apos; - Latence +30msec)</translation>
     </message>
     <message>
         <source>1 - No Keys</source>
@@ -176,7 +176,7 @@ Extra long : bips extra longs.</translation>
     </message>
     <message>
         <source>Single</source>
-        <translation>Simple conversion (1024 bits)</translation>
+        <translation type="obsolete">Simple conversion (1024 bits)</translation>
     </message>
     <message>
         <source>Battery Warning</source>
@@ -258,7 +258,7 @@ Communs à tous les modèles d&apos;une même EEPROM.</translation>
     </message>
     <message>
         <source>Oversample</source>
-        <translation>Suréchantillonnage (2048 bits)</translation>
+        <translation type="obsolete">Suréchantillonnage (2048 bits)</translation>
     </message>
     <message>
         <source>Battery warning voltage.
@@ -484,10 +484,6 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>PcmWav</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Show Name On Splash Sceen</source>
         <translation type="unfinished"></translation>
     </message>
@@ -525,6 +521,38 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>GEA</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>BeeperVoice</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>PiSpkrVoice</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Volume</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Backlight Invert</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>EnablePPMsim</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Internal FrSky Alarm</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Stick Scrolling Enable</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cross Trims</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1088,6 +1116,14 @@ http://code.google.com/p/eepe/</source>
         <source>Read Firmware from Tx</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Backing up EEPROM From Tx</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Backup failed, abandoning flash operation</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>MdiChild</name>
@@ -1350,6 +1386,15 @@ Cannot read General Settings from file %1</source>
 Cannot set General Settings</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Info</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Writing file %1:
+%2.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>MixerDialog</name>
@@ -1523,6 +1568,14 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Comment</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Differential</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Late Offset</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2153,10 +2206,6 @@ Droite</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>V</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>---</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2248,6 +2297,186 @@ Droite</translation>
         <source>DSM2/DSMX</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>PPMSIM</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Timer ModeB</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Voice Number</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>PPM Start Channel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Modes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>FM0</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>FM1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>FM2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>FM3</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>FM4</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Own Trim</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>AND Switch</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Telemetry Value</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Number of Voice Switches</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Type</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>v    volts</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>---  raw</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>V    volts x 2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>A    Amps</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>---   raw</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>V     volts x 2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>A     Amps</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>FrSky Hub</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>WingShadow How High</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Units</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Metric</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Imperial</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Num Blades</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>GpsAltMain</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Custom Telemetry 1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Custom Telemetry 3</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Custom Telemetry 5</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Custom Telemetry 2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Custom Telemetry 4</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Custom Telemetry 6</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>GVARS</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>GVAR</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Input</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>GVAR1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>GVAR2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>GVAR3</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>GVAR4</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>GVAR5</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source> Diff(%1)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source> Diff(GV%1)</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>QObject</name>
@@ -2286,6 +2515,10 @@ Droite</translation>
 %2.</source>
         <translation type="unfinished">Ecriture fichier %1 impossible:
 %2.</translation>
+    </message>
+    <message>
+        <source>GV%1</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2476,6 +2709,10 @@ Assurez-vous de posséder les droits en écriture sur ce dossier.</translation>
     </message>
     <message>
         <source>Click &apos;Ok&apos; to continue or &apos;Cancel&apos; to quit.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>M88</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2837,6 +3074,22 @@ Indique l&apos;affectation voie / numéro de canal par défaut utilisée lors de
     </message>
     <message>
         <source>er9x - NMEA</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>er9x - 128 - FrSky</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>M64</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>M128</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Processor</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

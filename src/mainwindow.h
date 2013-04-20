@@ -92,6 +92,7 @@ private slots:
     void burnFrom();
     void burnToFlash(QString fileToFlash="");
     void burnFromFlash();
+		int backupEeprom() ;
     void burnExtenalToEEPROM();
     void burnExtenalFromEEPROM();
     void burnConfig();

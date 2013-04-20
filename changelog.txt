@@ -10,6 +10,24 @@ description here
 ====================================================================================
 
 ******************************************
+CHANGELOG: 03-04-2013 MPB
+Add flight modes, cross trims
+Add mix offset option
+Add differential
+Add channels as inputs to GVARS
+Start to merge code for eepe and eepskye
+Add Stick Scrolling option
+Add automatic EEPROM backup when flashing
+Update donators list
+
+******************************************
+CHANGELOG: 03-04-2013 MPB
+Gvars6&7 on telemitems
+Handle curves/differential in mix editing
+Channels as inputs to gvars
+Small bug fixes
+
+******************************************
 CHANGELOG: 03-03-2013 MPB
 Scale simulator sliders when extended limits on
 Colour sliders of transmitted channels
