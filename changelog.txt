@@ -10,7 +10,11 @@ description here
 ====================================================================================
 
 ******************************************
-CHANGELOG: 03-04-2013 MPB
+CHANGELOG: 21-04-2013 MPB
+Fix EEPROM backup bug
+
+******************************************
+CHANGELOG: 20-04-2013 MPB
 Add flight modes, cross trims
 Add mix offset option
 Add differential
