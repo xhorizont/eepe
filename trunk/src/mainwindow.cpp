@@ -619,7 +619,11 @@ int MainWindow::backupEeprom()
     int res = ad->exec();
 //    ad->show();
 //		ad->waitForFinish() ;
-		return res ;
+    if(QFileInfo(tempFile).exists() && res)
+		{
+			return 0 ;
+		}
+		return 1 ;
 }
 
 
