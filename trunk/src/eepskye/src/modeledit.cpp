@@ -1577,7 +1577,7 @@ void ModelEdit::tabSwitches()
         connect(cswitchAndSwitch[i],SIGNAL(currentIndexChanged(int)),this,SLOT(switchesEdited()));
         ui->gridLayout_8->addWidget(cswitchAndSwitch[i],i+1,5);
         cswitchAndSwitch[i]->setVisible(true);
-				populateSwitchAndCB(cswitchAndSwitch[i], g_model.customSw[i].andsw+32) ;
+				populateSwitchAndCB(cswitchAndSwitch[i], g_model.customSw[i].andsw+(9+NUM_SKYCSW)) ;
 
 				cswitchTlabel[i] = new QLabel(this) ;
         ui->gridLayout_8->addWidget(cswitchTlabel[i],i+1,4);
@@ -1958,7 +1958,7 @@ void ModelEdit::switchesEdited()
     
 		for(int i=0; i<NUM_SKYCSW; i++)
     {
-			g_model.customSw[i].andsw = cswitchAndSwitch[i]->currentIndex()-32;
+			g_model.customSw[i].andsw = cswitchAndSwitch[i]->currentIndex()-(9+NUM_SKYCSW);
         if(chAr[i])
         {
             g_model.customSw[i].v1 = 0;
@@ -2056,23 +2056,31 @@ void ModelEdit::tabGvar()
     populateGvarCB( ui->Gvar3CB, g_model.gvars[2].gvsource ) ;
     populateGvarCB( ui->Gvar4CB, g_model.gvars[3].gvsource ) ;
     populateGvarCB( ui->Gvar5CB, g_model.gvars[4].gvsource ) ;
+    populateGvarCB( ui->Gvar6CB, g_model.gvars[5].gvsource ) ;
+    populateGvarCB( ui->Gvar7CB, g_model.gvars[6].gvsource ) ;
     ui->Gv1SB->setValue(g_model.gvars[0].gvar);
     ui->Gv2SB->setValue(g_model.gvars[1].gvar);
     ui->Gv3SB->setValue(g_model.gvars[2].gvar);
     ui->Gv4SB->setValue(g_model.gvars[3].gvar);
     ui->Gv5SB->setValue(g_model.gvars[4].gvar);
+    ui->Gv6SB->setValue(g_model.gvars[5].gvar);
+    ui->Gv7SB->setValue(g_model.gvars[6].gvar);
 
     connect(ui->Gvar1CB,SIGNAL(currentIndexChanged(int)),this,SLOT(GvarEdited()));
     connect(ui->Gvar2CB,SIGNAL(currentIndexChanged(int)),this,SLOT(GvarEdited()));
     connect(ui->Gvar3CB,SIGNAL(currentIndexChanged(int)),this,SLOT(GvarEdited()));
     connect(ui->Gvar4CB,SIGNAL(currentIndexChanged(int)),this,SLOT(GvarEdited()));
     connect(ui->Gvar5CB,SIGNAL(currentIndexChanged(int)),this,SLOT(GvarEdited()));
+    connect(ui->Gvar6CB,SIGNAL(currentIndexChanged(int)),this,SLOT(GvarEdited()));
+    connect(ui->Gvar7CB,SIGNAL(currentIndexChanged(int)),this,SLOT(GvarEdited()));
 
     connect(ui->Gv1SB,SIGNAL(editingFinished()),this,SLOT(GvarEdited()));
     connect(ui->Gv2SB,SIGNAL(editingFinished()),this,SLOT(GvarEdited()));
     connect(ui->Gv3SB,SIGNAL(editingFinished()),this,SLOT(GvarEdited()));
     connect(ui->Gv4SB,SIGNAL(editingFinished()),this,SLOT(GvarEdited()));
     connect(ui->Gv5SB,SIGNAL(editingFinished()),this,SLOT(GvarEdited()));
+    connect(ui->Gv6SB,SIGNAL(editingFinished()),this,SLOT(GvarEdited()));
+    connect(ui->Gv7SB,SIGNAL(editingFinished()),this,SLOT(GvarEdited()));
 
 }
 
@@ -2083,12 +2091,16 @@ void ModelEdit::GvarEdited()
 	  g_model.gvars[2].gvsource = ui->Gvar3CB->currentIndex() ;
   	g_model.gvars[3].gvsource = ui->Gvar4CB->currentIndex() ;
  	  g_model.gvars[4].gvsource = ui->Gvar5CB->currentIndex() ;
+ 	  g_model.gvars[5].gvsource = ui->Gvar6CB->currentIndex() ;
+ 	  g_model.gvars[6].gvsource = ui->Gvar7CB->currentIndex() ;
 
     g_model.gvars[0].gvar = ui->Gv1SB->value();
     g_model.gvars[1].gvar = ui->Gv2SB->value();
     g_model.gvars[2].gvar = ui->Gv3SB->value();
     g_model.gvars[3].gvar = ui->Gv4SB->value();
     g_model.gvars[4].gvar = ui->Gv5SB->value();
+    g_model.gvars[5].gvar = ui->Gv6SB->value();
+    g_model.gvars[6].gvar = ui->Gv7SB->value();
 	
 		updateSettings();
 }

@@ -238,7 +238,7 @@ QString MdiChild::modelName(int id)
         char buf[sizeof(SKYModelData().name)+1];
         
         memcpy( buf, radioData.ModelNames[id+1], sizeof(SKYModelData().name) ) ;
-				buf[sizeof(SKYModelData().name)+1] = '\0' ;
+        buf[sizeof(SKYModelData().name)] = '\0' ;
         
 				return QString(buf).trimmed();
     }

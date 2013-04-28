@@ -155,7 +155,7 @@ Section "Uninstall"
   Delete "$INSTDIR\avrdude.exe"
   Delete "$INSTDIR\avrdude.conf"
   Delete "$INSTDIR\libusb0.dll"
-  Delete "$INSTDIR\ER9x Users Guide.pdf"
+  Delete "$INSTDIR\ER9x Users Manual.pdf"
   Delete "$INSTDIR\Uninstall.exe"
   
   Delete "$INSTDIR\lang\*.*"

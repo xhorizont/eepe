@@ -198,7 +198,7 @@ QString MdiChild::ownerName()
 {
     EEGeneral tgen;
     eeFile.getGeneralSettings(&tgen);
-    return QString::fromAscii(tgen.ownerName,sizeof(tgen.ownerName)).trimmed();
+    return QString::fromLatin1(tgen.ownerName,sizeof(tgen.ownerName)).trimmed();
 }
 
 int MdiChild::eepromVersion()
@@ -470,7 +470,7 @@ void MdiChild::saveModelToFile()
             return;
         }
 
-        QString ownerName = QString::fromAscii(tgen.ownerName,sizeof(tgen.ownerName)).trimmed() + ".eepg";
+        QString ownerName = QString::fromLatin1(tgen.ownerName,sizeof(tgen.ownerName)).trimmed() + ".eepg";
 
         fileName = QFileDialog::getSaveFileName(this, tr("Save Settings As"),settings.value("lastDir").toString() + "/" +ownerName,tr(EEPG_FILES_FILTER));
     }
@@ -488,7 +488,7 @@ void MdiChild::saveModelToFile()
             return;
         }
 
-        QString modelName = QString::fromAscii(tmod.name,sizeof(tmod.name)).trimmed() + ".eepm";
+        QString modelName = QString::fromLatin1(tmod.name,sizeof(tmod.name)).trimmed() + ".eepm";
 
         fileName = QFileDialog::getSaveFileName(this, tr("Save Model As"),settings.value("lastDir").toString() + "/" +modelName,tr(EEPM_FILES_FILTER));
     }

@@ -152,6 +152,14 @@ void simulatorDialog::timerEvent()
 						{
 							x -= 1 ;
 						}
+						if ( x > 9+NUM_SKYCSW )
+						{
+							x = 9 ;			// Tag TRN on the end, keep EEPROM values
+						}
+						if ( x < -(9+NUM_SKYCSW) )
+						{
+							x = -9 ;			// Tag TRN on the end, keep EEPROM values
+						}
 	      	  if (getSwitch( x, 0, 0) == 0 )
 					  {
 							CsTimer[i] = -1 ;
