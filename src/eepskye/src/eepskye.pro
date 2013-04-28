@@ -28,7 +28,6 @@ SOURCES += main.cpp \
     modeledit.cpp \
     generaledit.cpp \
     mdichild.cpp \
-    helpers.cpp \
     node.cpp \
     edge.cpp \
     mixerdialog.cpp \
@@ -40,7 +39,8 @@ SOURCES += main.cpp \
     preferencesdialog.cpp \
     mixerslist.cpp \
     downloaddialog.cpp \
-    customizesplashdialog.cpp
+    customizesplashdialog.cpp \
+    helpers.cpp
 TEMPLATE = app
 FORMS += modeledit.ui \
     generaledit.ui \
@@ -91,5 +91,3 @@ RC_FILE += icon.rc
 mac {
 ICON = eepe.icns
 }
-
-

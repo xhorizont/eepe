@@ -515,35 +515,48 @@ void populateSwitchAndCB(QComboBox *b, int value=0)
 	name[1] = 'C' ;
 	name[2] = 'S' ;
 	name[4] = 0 ;
+	int maxsw ;
+
+#ifdef SKY
+	maxsw = '9' ;
+#else
+	maxsw = '7' ;
+#endif
 	
 	b->clear();
   
+#ifdef SKY
+  b->addItem("!TRN");
 	for(int i='O' ; i>= 'A' ; i -= 1 )
 	{
 		name[3] = i ;
      b->addItem(name);
 	}
-  for(int i='9'; i>='1'; i -= 1 )
+  for(int i= maxsw ; i>='1'; i -= 1 )
 	{
 		name[3] = i ;
     b->addItem(name);
 	}
-  	for(int i=-8 ; i<=8; i += 1)
-      b->addItem(getSWName(i));
+#endif
+ 	for(int i=-8 ; i<=8; i += 1)
+    b->addItem(getSWName(i));
 
 	name[0] = 'C' ;
 	name[1] = 'S' ;
 	name[3] = 0 ;
-  for(int i='1'; i<='9'; i++)
+  for(int i='1'; i<= maxsw; i++)
 	{
 		name[2] = i ;
     b->addItem(name);
 	}
+#ifdef SKY
   for(int i='A' ; i<= 'O' ; i++)
 	{
 		name[2] = i ;
     b->addItem(name);
 	}
+  b->addItem("TRN");
+#endif
   b->setCurrentIndex(value);
   b->setMaxVisibleItems(10);
 }
@@ -1020,7 +1033,7 @@ QDomElement getGeneralDataXML(QDomDocument * qdoc, EEGeneral * tgen)
     QDomElement gd = qdoc->createElement("GENERAL_DATA");
 
     appendNumberElement(qdoc, &gd, "Version", tgen->myVers, true); // have to write value here
-    appendTextElement(qdoc, &gd, "Owner", QString::fromAscii(tgen->ownerName,sizeof(tgen->ownerName)).trimmed());
+    appendTextElement(qdoc, &gd, "Owner", QString::fromLatin1(tgen->ownerName,sizeof(tgen->ownerName)).trimmed());
     appendCDATAElement(qdoc, &gd, "Data", (const char *)tgen,sizeof(EEGeneral));
     return gd;
 
@@ -1037,7 +1050,7 @@ QDomElement getModelDataXML(QDomDocument * qdoc, ModelData * tmod, int modelNum,
     md.setAttribute("number", modelNum);
 
     appendNumberElement(qdoc, &md, "Version", mdver, true); // have to write value here
-    appendTextElement(qdoc, &md, "Name", QString::fromAscii(tmod->name,sizeof(tmod->name)).trimmed());
+    appendTextElement(qdoc, &md, "Name", QString::fromLatin1(tmod->name,sizeof(tmod->name)).trimmed());
 #ifdef SKY
     appendCDATAElement(qdoc, &md, "Data", (const char *)tmod,sizeof(SKYModelData));
 #else
@@ -1062,7 +1075,7 @@ bool loadGeneralDataXML(QDomDocument * qdoc, EEGeneral * tgen)
         if (n.isCDATASection())
         {
             QString ds = n.toCDATASection().data();
-            QByteArray ba = QByteArray::fromBase64(ds.toAscii());
+            QByteArray ba = QByteArray::fromBase64(ds.toLatin1());
             const char * data = ba.data();
             memcpy(tgen, data, sizeof(EEGeneral));
             break;
@@ -1109,7 +1122,7 @@ bool loadModelDataXML(QDomDocument * qdoc, ModelData * tmod, int modelNum)
         if (n.isCDATASection())
         {
             QString ds = n.toCDATASection().data();
-            QByteArray ba = QByteArray::fromBase64(ds.toAscii());
+            QByteArray ba = QByteArray::fromBase64(ds.toLatin1());
             const char * data = ba.data();
 #ifdef SKY
             memcpy(tmod, data, sizeof(SKYModelData));

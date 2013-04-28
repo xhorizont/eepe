@@ -18,11 +18,13 @@ MixerDialog::MixerDialog(QWidget *parent, MixData *mixdata, int stickMode, QStri
     ui->sourceCB->addItem("GV3 ");
     ui->sourceCB->addItem("GV4 ");
     ui->sourceCB->addItem("GV5 ");
+    ui->sourceCB->addItem("GV6 ");
+    ui->sourceCB->addItem("GV7 ");
     ui->sourceCB->setCurrentIndex(md->srcRaw);
 
     ui->sourceCB->removeItem(0);
-    ui->weightSB->setValue(md->weight);
-    ui->offsetSB->setValue(md->sOffset);
+    populateNumericGVarCB( ui->weightCB, md->weight, -125, 125 ) ;
+    populateNumericGVarCB( ui->offsetCB, md->sOffset, -125, 125 ) ;
     ui->trimChkB->setChecked(md->carryTrim==0);
     ui->FMtrimChkB->setChecked(md->enableFmTrim);
     ui->lateOffsetChkB->setChecked(md->lateOffset);
@@ -51,8 +53,8 @@ MixerDialog::MixerDialog(QWidget *parent, MixData *mixdata, int stickMode, QStri
     valuesChanged();
 
     connect(ui->sourceCB,SIGNAL(currentIndexChanged(int)),this,SLOT(valuesChanged()));
-    connect(ui->weightSB,SIGNAL(editingFinished()),this,SLOT(valuesChanged()));
-    connect(ui->offsetSB,SIGNAL(editingFinished()),this,SLOT(valuesChanged()));
+    connect(ui->weightCB,SIGNAL(currentIndexChanged(int)),this,SLOT(valuesChanged()));
+    connect(ui->offsetCB,SIGNAL(currentIndexChanged(int)),this,SLOT(valuesChanged()));
     connect(ui->trimChkB,SIGNAL(toggled(bool)),this,SLOT(valuesChanged()));
     connect(ui->curvesCB,SIGNAL(currentIndexChanged(int)),this,SLOT(valuesChanged()));
     connect(ui->switchesCB,SIGNAL(currentIndexChanged(int)),this,SLOT(valuesChanged()));
@@ -90,8 +92,8 @@ void MixerDialog::valuesChanged()
 {
 	int oldcurvemode ;
     md->srcRaw       = ui->sourceCB->currentIndex()+1;
-    md->weight       = ui->weightSB->value();
-    md->sOffset      = ui->offsetSB->value();
+    md->weight       = numericGvarValue( ui->weightCB, -125, 125 ) ;
+    md->sOffset      = numericGvarValue( ui->offsetCB, -125, 125 ) ;
     md->carryTrim    = ui->trimChkB->checkState() ? 0 : 1;
     md->swtch        = ui->switchesCB->currentIndex()-MAX_DRSWITCH;
     md->mixWarn      = ui->warningCB->currentIndex();

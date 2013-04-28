@@ -72,7 +72,7 @@
 #define GENERAL_OWNER_NAME_LEN 10
 #define MODEL_NAME_LEN         10
 
-#define MAX_GVARS 5
+#define MAX_GVARS 7
 
 #define MAX_PHASES		6
 

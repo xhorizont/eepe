@@ -293,26 +293,6 @@ Setting this value will cause a beep to be emmitted when this value is active.</
        </property>
       </widget>
      </item>
-     <item row="2" column="2">
-      <widget class="QSpinBox" name="offsetSB">
-       <property name="whatsThis">
-        <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;This value is added to the &lt;span style=&quot; font-weight:600;&quot;&gt;input &lt;/span&gt;of the mixer.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-       </property>
-       <property name="minimum">
-        <number>-125</number>
-       </property>
-       <property name="maximum">
-        <number>125</number>
-       </property>
-      </widget>
-     </item>
      <item row="1" column="1">
       <widget class="QLabel" name="label_3">
        <property name="text">
@@ -324,22 +304,6 @@ p, li { white-space: pre-wrap; }
       <widget class="QLabel" name="label_2">
        <property name="text">
         <string>Source</string>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="2">
-      <widget class="QSpinBox" name="weightSB">
-       <property name="whatsThis">
-        <string>The value of the mixer is multiplied by this value and divided by 100.</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-       </property>
-       <property name="minimum">
-        <number>-125</number>
-       </property>
-       <property name="maximum">
-        <number>125</number>
        </property>
       </widget>
      </item>
@@ -448,6 +412,20 @@ If blank then the mix is considered to be &quot;ON&quot; all the time.</string>
       <widget class="QLabel" name="label_15">
        <property name="text">
         <string>Late Offset</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="2">
+      <widget class="QComboBox" name="weightCB">
+       <property name="whatsThis">
+        <string>The curve used by the mix</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="2">
+      <widget class="QComboBox" name="offsetCB">
+       <property name="whatsThis">
+        <string>The curve used by the mix</string>
        </property>
       </widget>
      </item>

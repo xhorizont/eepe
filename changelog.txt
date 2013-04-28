@@ -10,6 +10,14 @@ description here
 ====================================================================================
 
 ******************************************
+CHANGELOG: 28-Apr-2013 MPB
+bug fixes
+Linux QT 5.0.2 changes
+Add GVARS 6 and 7
+Add 1 second delay between EEPROM backup and flashing
+Add GVARS to mixer weight and offset
+
+******************************************
 CHANGELOG: 21-04-2013 MPB
 Fix EEPROM backup bug
 

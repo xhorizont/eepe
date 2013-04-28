@@ -43,7 +43,7 @@ private:
     qint8   trim[4];
     qint16  sDelay[MAX_MIXERS];
     qint32  act[MAX_MIXERS];
-    qint16  anas [NUM_SKYXCHNRAW];
+    qint16  anas [NUM_SKYXCHNRAW+1+MAX_GVARS];
     qint32  chans[NUM_SKYCHNOUT];
     quint8  bpanaCenter;
     bool    swOn[MAX_MIXERS];

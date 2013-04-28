@@ -195,7 +195,7 @@ void MainWindow::reply1Finished(QNetworkReply * reply)
     if(i>0)
     {
         bool cres;
-        int rev = QString::fromAscii(qba.mid(i+16,4)).replace(QChar('"'), "").toInt(&cres);
+        int rev = QString::fromLatin1(qba.mid(i+16,4)).replace(QChar('"'), "").toInt(&cres);
 
         if(!cres)
         {
@@ -387,7 +387,7 @@ void MainWindow::reply2Finished(QNetworkReply * reply)
     if(i>0)
     {
         bool cres;
-        int rev = QString::fromAscii(qba.mid(i+17,4)).replace(QChar('"'), "").toInt(&cres);
+        int rev = QString::fromLatin1(qba.mid(i+17,4)).replace(QChar('"'), "").toInt(&cres);
 
         if(!cres)
         {
@@ -683,6 +683,13 @@ void MainWindow::burnToFlash(QString fileToFlash)
 					return ;
 				}
 
+				// delay a bit to allow hardware to settle
+		    QTime dieTime= QTime::currentTime().addSecs(1);
+		    while( QTime::currentTime() < dieTime )
+				{
+			    QCoreApplication::processEvents(QEventLoop::AllEvents, 100);    
+				}
+
 
 //        ret = QMessageBox::question(this, "eePe", tr("Preserve installed spash screen"), QMessageBox::Yes | QMessageBox::No);
 //        if(ret==QMessageBox::Yes)
@@ -721,7 +728,6 @@ void MainWindow::burnToFlash(QString fileToFlash)
 //                }
 //            }
 //        }
-
 
         burnConfigDialog bcd;
         QString avrdudeLoc = bcd.getAVRDUDE();
@@ -906,9 +912,9 @@ void MainWindow::showEr9xManual()
 //    ER9x Users Guide.pdf
     QString cdir = QApplication::applicationDirPath();
 #ifdef Q_WS_WIN
-    QDesktopServices::openUrl(QUrl::fromLocalFile(cdir + "/ER9x Users Guide.pdf")); // WIN
+    QDesktopServices::openUrl(QUrl::fromLocalFile(cdir + "/ER9x Users Manual.pdf")); // WIN
 #else
-    QDesktopServices::openUrl(QUrl("file:///" + cdir + "/ER9x Users Guide.pdf"));   // MAC & Linux (X11)
+    QDesktopServices::openUrl(QUrl("file:///" + cdir + "/ER9x Users Manual.pdf"));   // MAC & Linux (X11)
 #endif
 }
 
