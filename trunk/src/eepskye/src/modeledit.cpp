@@ -533,8 +533,21 @@ void ModelEdit::tabMixes()
         default:  str += "  "; break;
         };
 
-        str += md->weight<0 ? QString(" %1\%").arg(md->weight).rightJustified(6,' ') :
-                              QString(" +%1\%").arg(md->weight).rightJustified(6, ' ');
+				int j ;
+				j = md->weight ;
+				if ( j < -125 )
+				{
+					j += 256 ;					
+				}
+				if ( j > 125 )
+				{
+        	str += QString(" GV%1\%").arg(j-125).rightJustified(6,' ') ;
+				}
+				else
+				{
+        	str += j<0 ? QString(" %1\%").arg(j).rightJustified(6,' ') :
+                              QString(" +%1\%").arg(j).rightJustified(6, ' ');
+				}
 
 
         //QString srcStr = SRC_STR;
@@ -543,7 +556,22 @@ void ModelEdit::tabMixes()
 
         if(md->swtch) str += tr(" Switch(") + getSWName(md->swtch) + ")";
         if(md->carryTrim) str += tr(" noTrim");
-        if(md->sOffset)  str += tr(" Offset(%1\%)").arg(md->sOffset);
+				j = md->sOffset ;
+        if(j)
+				{
+					if ( j < -125 )
+					{
+						j += 256 ;					
+					}
+					if ( j > 125 )
+					{
+            str += tr(" Offset(GV%1)").arg(j-125) ;
+					}
+					else
+					{
+        		str += tr(" Offset(%1\%)").arg(j);
+					}
+				}
         if(md->curve)
         {
 					if ( md->differential )
@@ -1755,7 +1783,7 @@ void ModelEdit::tabSafetySwitches()
 				else
 				{
         	populateSafetyVoiceTypeCB(safetySwitchType[i], 1, g_model.safetySw[i].opt.vs.vmode);
-        	populateSafetySwitchCB(safetySwitchSwtch[i],0,g_model.safetySw[i].opt.vs.vswtch);
+        	populateSafetySwitchCB(safetySwitchSwtch[i],VOICE_SWITCH,g_model.safetySw[i].opt.vs.vswtch);
 					safetySwitchValue[i]->setMaximum(250);
      			safetySwitchValue[i]->setMinimum(0);
        		safetySwitchValue[i]->setValue(g_model.safetySw[i].opt.vs.vval);
@@ -1823,7 +1851,7 @@ void ModelEdit::safetySwitchesEdited()
 					val = safetySwitchAlarm[i]->currentIndex() ;
         }	
         g_model.safetySw[i].opt.vs.vval = val ;
-        g_model.safetySw[i].opt.vs.vswtch = safetySwitchSwtch[i]->currentIndex()-MAX_DRSWITCH;
+        g_model.safetySw[i].opt.vs.vswtch = safetySwitchSwtch[i]->currentIndex() ;
 				g_model.safetySw[i].opt.vs.vmode = safetySwitchType[i]->currentIndex() ;
 			}	
 		}
@@ -1838,7 +1866,7 @@ void ModelEdit::safetySwitchesEdited()
 		{
 			if ( g_model.numVoice < NUM_SKYCHNOUT-i )		// Normal switch
 			{
-		    if ( i >= NUM_SKYCHNOUT-numVoice-1 && i < NUM_SKYCHNOUT-g_model.numVoice )
+		    if ( i > NUM_SKYCHNOUT-numVoice-1 && i < NUM_SKYCHNOUT-g_model.numVoice )
 				{
 					g_model.safetySw[i].opt.ss.swtch = 0 ;
 	    		populateSafetySwitchCB(safetySwitchSwtch[i],g_model.safetySw[i].opt.ss.mode,g_model.safetySw[i].opt.ss.swtch);
@@ -1880,6 +1908,7 @@ void ModelEdit::safetySwitchesEdited()
           g_model.safetySw[i].opt.vs.vval = 0 ;
 					g_model.safetySw[i].opt.vs.vmode = 0 ;
 				}
+       	populateSafetySwitchCB(safetySwitchSwtch[i],VOICE_SWITCH,g_model.safetySw[i].opt.vs.vswtch);
         populateSafetyVoiceTypeCB(safetySwitchType[i], 1, g_model.safetySw[i].opt.vs.vmode);
 				safetySwitchValue[i]->setMaximum(250);
      		safetySwitchValue[i]->setMinimum(0);

@@ -663,6 +663,18 @@ msgctxt "GeneralEdit|"
 msgid "Cross Trims"
 msgstr ""
 
+msgctxt "GeneralEdit|"
+msgid "Beeper - stock beeper only"
+msgstr ""
+
+msgctxt "GeneralEdit|"
+msgid "Voice volume if you have a voice module added"
+msgstr ""
+
+msgctxt "GeneralEdit|"
+msgid "Set the readability of the display"
+msgstr ""
+
 msgctxt "MainWindow|"
 msgid "&New"
 msgstr "&Nouveau"
@@ -2752,6 +2764,11 @@ msgstr ""
 
 msgctxt "ModelEdit|"
 msgid "GVAR7"
+msgstr ""
+
+#, qt-format
+msgctxt "ModelEdit|"
+msgid " Offset(GV%1)"
 msgstr ""
 
 msgctxt "QObject|"

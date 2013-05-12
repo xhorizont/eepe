@@ -24,12 +24,12 @@ msgctxt "GeneralEdit|"
 msgid "Setup"
 msgstr ""
 
-#: generaledit.ui:215
+#: generaledit.ui:221
 msgctxt "GeneralEdit|"
 msgid "Contrast"
 msgstr ""
 
-#: generaledit.ui:163 generaledit.ui:228
+#: generaledit.ui:166 generaledit.ui:234
 msgctxt "GeneralEdit|"
 msgid ""
 "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" "
@@ -47,12 +47,12 @@ msgid ""
 "font-size:8pt;\">Values can be 20-45</span></p></body></html>"
 msgstr ""
 
-#: generaledit.ui:252
+#: generaledit.ui:258
 msgctxt "GeneralEdit|"
 msgid "Battery Warning"
 msgstr ""
 
-#: generaledit.ui:265
+#: generaledit.ui:271
 msgctxt "GeneralEdit|"
 msgid ""
 "Battery warning voltage.\n"
@@ -61,32 +61,32 @@ msgid ""
 "Acceptable values are 5v..10v"
 msgstr ""
 
-#: generaledit.ui:1806
+#: generaledit.ui:1812
 msgctxt "GeneralEdit|"
 msgid "v"
 msgstr ""
 
-#: generaledit.ui:296 generaledit.ui:1796
+#: generaledit.ui:302 generaledit.ui:1802
 msgctxt "GeneralEdit|"
 msgid "Battery Calibration"
 msgstr ""
 
-#: generaledit.ui:137
+#: generaledit.ui:140
 msgctxt "GeneralEdit|"
 msgid "BeeperVoice"
 msgstr ""
 
-#: generaledit.ui:142
+#: generaledit.ui:145
 msgctxt "GeneralEdit|"
 msgid "PiSpkrVoice"
 msgstr ""
 
-#: generaledit.ui:198
+#: generaledit.ui:201
 msgctxt "GeneralEdit|"
 msgid "Volume"
 msgstr ""
 
-#: generaledit.ui:309
+#: generaledit.ui:315
 msgctxt "GeneralEdit|"
 msgid ""
 "Battery calibration:\n"
@@ -94,58 +94,58 @@ msgid ""
 "calibrate the meter with an external meter."
 msgstr ""
 
-#: generaledit.ui:335
+#: generaledit.ui:341
 msgctxt "GeneralEdit|"
 msgid "Backlight Switch"
 msgstr ""
 
-#: generaledit.ui:348
+#: generaledit.ui:354
 msgctxt "GeneralEdit|"
 msgid ""
 "This is the switch selectrion for turning on the backlight (if installed).\n"
 "\n"
 msgstr ""
 
-#: generaledit.ui:360
+#: generaledit.ui:366
 msgctxt "GeneralEdit|"
 msgid "Backlight Auto On/OFF after"
 msgstr ""
 
-#: generaledit.ui:373 generaledit.ui:402
+#: generaledit.ui:379 generaledit.ui:408
 msgctxt "GeneralEdit|"
 msgid ""
 "If this value is not 0, any keypress will turn on the backlight and turn it "
 "off after the specified number of seconds."
 msgstr ""
 
-#: generaledit.ui:376 generaledit.ui:405
+#: generaledit.ui:382 generaledit.ui:411
 msgctxt "GeneralEdit|"
 msgid " sec"
 msgstr ""
 
-#: generaledit.ui:418
+#: generaledit.ui:424
 msgctxt "GeneralEdit|"
 msgid "Inactivity Timer"
 msgstr ""
 
-#: generaledit.ui:431
+#: generaledit.ui:437
 msgctxt "GeneralEdit|"
 msgid ""
 "If not zero will sound beeps if the transmitter has been left without inputs "
 "for the specified number of minutes."
 msgstr ""
 
-#: generaledit.ui:434
+#: generaledit.ui:440
 msgctxt "GeneralEdit|"
 msgid " min"
 msgstr ""
 
-#: generaledit.ui:513
+#: generaledit.ui:519
 msgctxt "GeneralEdit|"
 msgid "Reverse Throttle Operation"
 msgstr ""
 
-#: generaledit.ui:507
+#: generaledit.ui:513
 msgctxt "GeneralEdit|"
 msgid ""
 "Reverse throttle operation.\n"
@@ -155,12 +155,12 @@ msgid ""
 "\n"
 msgstr ""
 
-#: generaledit.ui:450
+#: generaledit.ui:456
 msgctxt "GeneralEdit|"
 msgid "Timer Beeps"
 msgstr ""
 
-#: generaledit.ui:462
+#: generaledit.ui:468
 msgctxt "GeneralEdit|"
 msgid ""
 "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" "
@@ -175,22 +175,22 @@ msgid ""
 "font-size:8pt;\">Single Beep Every whole Minute</span></p></body></html>"
 msgstr ""
 
-#: generaledit.ui:469
+#: generaledit.ui:475
 msgctxt "GeneralEdit|"
 msgid "Every Minute"
 msgstr ""
 
-#: generaledit.ui:476
+#: generaledit.ui:482
 msgctxt "GeneralEdit|"
 msgid "Beeps at 30, 15, 10, and down from5 seconds"
 msgstr ""
 
-#: generaledit.ui:479
+#: generaledit.ui:485
 msgctxt "GeneralEdit|"
 msgid "Count Down to Zero"
 msgstr ""
 
-#: generaledit.ui:486
+#: generaledit.ui:492
 msgctxt "GeneralEdit|"
 msgid ""
 "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" "
@@ -205,7 +205,7 @@ msgid ""
 "font-size:8pt;\">Flash backlight on timer  beep</span></p></body></html>"
 msgstr ""
 
-#: generaledit.ui:493
+#: generaledit.ui:499
 msgctxt "GeneralEdit|"
 msgid "Flash on beep"
 msgstr ""
@@ -230,12 +230,12 @@ msgctxt "GeneralEdit|"
 msgid "xLong"
 msgstr ""
 
-#: generaledit.ui:150
+#: generaledit.ui:153
 msgctxt "GeneralEdit|"
 msgid "Speaker Pitch (spkr only)"
 msgstr ""
 
-#: generaledit.ui:720
+#: generaledit.ui:726
 msgctxt "GeneralEdit|"
 msgid "Alarm Warning"
 msgstr ""
@@ -260,12 +260,12 @@ msgctxt "GeneralEdit|"
 msgid "Owner Name"
 msgstr ""
 
-#: generaledit.ui:546
+#: generaledit.ui:552
 msgctxt "GeneralEdit|"
 msgid "Pot Scrolling Enable"
 msgstr ""
 
-#: generaledit.ui:582
+#: generaledit.ui:588
 msgctxt "GeneralEdit|"
 msgid "Bandgap Measuring Enable"
 msgstr ""
@@ -275,157 +275,172 @@ msgctxt "GeneralEdit|"
 msgid "Sound Mode"
 msgstr ""
 
-#: generaledit.ui:184
+#: generaledit.ui:187
 msgctxt "GeneralEdit|"
 msgid "Haptic Strength (spkr only)"
 msgstr ""
 
-#: generaledit.ui:127
+#: generaledit.ui:130
 msgctxt "GeneralEdit|"
 msgid "Beeper"
 msgstr ""
 
-#: generaledit.ui:132
+#: generaledit.ui:126
+msgctxt "GeneralEdit|"
+msgid "Beeper - stock beeper only"
+msgstr ""
+
+#: generaledit.ui:135
 msgctxt "GeneralEdit|"
 msgid "PiSpkr"
 msgstr ""
 
-#: generaledit.ui:389
+#: generaledit.ui:208
+msgctxt "GeneralEdit|"
+msgid "Voice volume if you have a voice module added"
+msgstr ""
+
+#: generaledit.ui:228
+msgctxt "GeneralEdit|"
+msgid "Set the readability of the display"
+msgstr ""
+
+#: generaledit.ui:395
 msgctxt "GeneralEdit|"
 msgid "Backlight On Stick Move"
 msgstr ""
 
-#: generaledit.ui:562
+#: generaledit.ui:568
 msgctxt "GeneralEdit|"
 msgid "Show Name On Splash Sceen"
 msgstr ""
 
-#: generaledit.ui:643
+#: generaledit.ui:649
 msgctxt "GeneralEdit|"
 msgid "THR"
 msgstr ""
 
-#: generaledit.ui:650
+#: generaledit.ui:656
 msgctxt "GeneralEdit|"
 msgid "RUD"
 msgstr ""
 
-#: generaledit.ui:657
+#: generaledit.ui:663
 msgctxt "GeneralEdit|"
 msgid "ELE"
 msgstr ""
 
-#: generaledit.ui:664
+#: generaledit.ui:670
 msgctxt "GeneralEdit|"
 msgid "AIL"
 msgstr ""
 
-#: generaledit.ui:671
+#: generaledit.ui:677
 msgctxt "GeneralEdit|"
 msgid "ID0"
 msgstr ""
 
-#: generaledit.ui:678
+#: generaledit.ui:684
 msgctxt "GeneralEdit|"
 msgid "ID1"
 msgstr ""
 
-#: generaledit.ui:685
+#: generaledit.ui:691
 msgctxt "GeneralEdit|"
 msgid "ID2"
 msgstr ""
 
-#: generaledit.ui:692
+#: generaledit.ui:698
 msgctxt "GeneralEdit|"
 msgid "GEA"
 msgstr ""
 
-#: generaledit.ui:765
+#: generaledit.ui:771
 msgctxt "GeneralEdit|"
 msgid "Backlight Invert"
 msgstr ""
 
-#: generaledit.ui:785
+#: generaledit.ui:791
 msgctxt "GeneralEdit|"
 msgid "EnablePPMsim"
 msgstr ""
 
-#: generaledit.ui:817
+#: generaledit.ui:823
 msgctxt "GeneralEdit|"
 msgid "Internal FrSky Alarm"
 msgstr ""
 
-#: generaledit.ui:840
+#: generaledit.ui:846
 msgctxt "GeneralEdit|"
 msgid "Stick Scrolling Enable"
 msgstr ""
 
-#: generaledit.ui:863
+#: generaledit.ui:869
 msgctxt "GeneralEdit|"
 msgid "Cross Trims"
 msgstr ""
 
-#: generaledit.ui:1082
+#: generaledit.ui:1088
 msgctxt "GeneralEdit|"
 msgid "Trainer"
 msgstr ""
 
-#: generaledit.ui:1090 generaledit.ui:1130 generaledit.ui:1156
-#: generaledit.ui:1196 generaledit.ui:1222 generaledit.ui:1262
-#: generaledit.ui:1288 generaledit.ui:1328
+#: generaledit.ui:1096 generaledit.ui:1136 generaledit.ui:1162
+#: generaledit.ui:1202 generaledit.ui:1228 generaledit.ui:1268
+#: generaledit.ui:1294 generaledit.ui:1334
 msgctxt "GeneralEdit|"
 msgid "CH1"
 msgstr ""
 
-#: generaledit.ui:1098 generaledit.ui:1164 generaledit.ui:1230
-#: generaledit.ui:1296
+#: generaledit.ui:1104 generaledit.ui:1170 generaledit.ui:1236
+#: generaledit.ui:1302
 msgctxt "GeneralEdit|"
 msgid "Off"
 msgstr ""
 
-#: generaledit.ui:1103 generaledit.ui:1169 generaledit.ui:1235
-#: generaledit.ui:1301
+#: generaledit.ui:1109 generaledit.ui:1175 generaledit.ui:1241
+#: generaledit.ui:1307
 msgctxt "GeneralEdit|"
 msgid "Add"
 msgstr ""
 
-#: generaledit.ui:1108 generaledit.ui:1174 generaledit.ui:1240
-#: generaledit.ui:1306
+#: generaledit.ui:1114 generaledit.ui:1180 generaledit.ui:1246
+#: generaledit.ui:1312
 msgctxt "GeneralEdit|"
 msgid "Substitute"
 msgstr ""
 
-#: generaledit.ui:1135 generaledit.ui:1201 generaledit.ui:1267
-#: generaledit.ui:1333
+#: generaledit.ui:1141 generaledit.ui:1207 generaledit.ui:1273
+#: generaledit.ui:1339
 msgctxt "GeneralEdit|"
 msgid "CH2"
 msgstr ""
 
-#: generaledit.ui:1140 generaledit.ui:1206 generaledit.ui:1272
-#: generaledit.ui:1338
+#: generaledit.ui:1146 generaledit.ui:1212 generaledit.ui:1278
+#: generaledit.ui:1344
 msgctxt "GeneralEdit|"
 msgid "CH3"
 msgstr ""
 
-#: generaledit.ui:1145 generaledit.ui:1211 generaledit.ui:1277
-#: generaledit.ui:1343
+#: generaledit.ui:1151 generaledit.ui:1217 generaledit.ui:1283
+#: generaledit.ui:1349
 msgctxt "GeneralEdit|"
 msgid "CH4"
 msgstr ""
 
-#: generaledit.ui:1356
+#: generaledit.ui:1362
 msgctxt "GeneralEdit|"
 msgid "PPM Multiplier"
 msgstr ""
 
-#: generaledit.ui:605
+#: generaledit.ui:611
 msgctxt "GeneralEdit|"
 msgid "Throttle Startup Warning"
 msgstr ""
 
-#: generaledit.ui:533 generaledit.ui:569 generaledit.ui:592 generaledit.ui:618
-#: generaledit.ui:707 generaledit.ui:736 generaledit.ui:772 generaledit.ui:804
-#: generaledit.ui:827 generaledit.ui:850
+#: generaledit.ui:539 generaledit.ui:575 generaledit.ui:598 generaledit.ui:624
+#: generaledit.ui:713 generaledit.ui:742 generaledit.ui:778 generaledit.ui:810
+#: generaledit.ui:833 generaledit.ui:856
 msgctxt "GeneralEdit|"
 msgid ""
 "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" "
@@ -458,12 +473,12 @@ msgid ""
 "- will alert you if the beeper is set to quiet (0)</p></body></html>"
 msgstr ""
 
-#: generaledit.ui:749
+#: generaledit.ui:755
 msgctxt "GeneralEdit|"
 msgid "Switch Startup Warning"
 msgstr ""
 
-#: generaledit.ui:631
+#: generaledit.ui:637
 msgctxt "GeneralEdit|"
 msgid "Memory Startup Warning"
 msgstr ""
@@ -485,12 +500,12 @@ msgid ""
 "4 - Extra loud."
 msgstr ""
 
-#: generaledit.ui:875
+#: generaledit.ui:881
 msgctxt "GeneralEdit|"
 msgid "Channel Order (For Templates)"
 msgstr ""
 
-#: generaledit.ui:888
+#: generaledit.ui:894
 msgctxt "GeneralEdit|"
 msgid ""
 "Channel order\n"
@@ -499,12 +514,12 @@ msgid ""
 "output."
 msgstr ""
 
-#: generaledit.ui:1020
+#: generaledit.ui:1026
 msgctxt "GeneralEdit|"
 msgid "Stick Mode"
 msgstr ""
 
-#: generaledit.ui:1033
+#: generaledit.ui:1039
 msgctxt "GeneralEdit|"
 msgid ""
 "Mode selection:\n"
@@ -527,88 +542,88 @@ msgid ""
 "\n"
 msgstr ""
 
-#: generaledit.ui:1058
+#: generaledit.ui:1064
 msgctxt "GeneralEdit|"
 msgid "Mode 1 (RUD ELE THR AIL)"
 msgstr ""
 
-#: generaledit.ui:1063
+#: generaledit.ui:1069
 msgctxt "GeneralEdit|"
 msgid "Mode 2 (RUD THR ELE AIL)"
 msgstr ""
 
-#: generaledit.ui:1068
+#: generaledit.ui:1074
 msgctxt "GeneralEdit|"
 msgid "Mode 3 (AIL ELE THR RUD)"
 msgstr ""
 
-#: generaledit.ui:1073
+#: generaledit.ui:1079
 msgctxt "GeneralEdit|"
 msgid "Mode 4 (AIL THR ELE RUD)"
 msgstr ""
 
-#: generaledit.ui:526
+#: generaledit.ui:532
 msgctxt "GeneralEdit|"
 msgid "Show Splash Screen on Startup"
 msgstr ""
 
-#: generaledit.ui:520 generaledit.ui:523 generaledit.ui:556 generaledit.ui:559
-#: generaledit.ui:759 generaledit.ui:762
+#: generaledit.ui:526 generaledit.ui:529 generaledit.ui:562 generaledit.ui:565
+#: generaledit.ui:765 generaledit.ui:768
 msgctxt "GeneralEdit|"
 msgid "Show splash screen on startup"
 msgstr ""
 
-#: generaledit.ui:1376 generaledit.ui:1441
+#: generaledit.ui:1382 generaledit.ui:1447
 msgctxt "GeneralEdit|"
 msgid "Calibration"
 msgstr ""
 
-#: generaledit.ui:1750
+#: generaledit.ui:1756
 msgctxt "GeneralEdit|"
 msgid "ANALOG 7"
 msgstr ""
 
-#: generaledit.ui:1704
+#: generaledit.ui:1710
 msgctxt "GeneralEdit|"
 msgid "ANALOG 6"
 msgstr ""
 
-#: generaledit.ui:1658
+#: generaledit.ui:1664
 msgctxt "GeneralEdit|"
 msgid "ANALOG 5"
 msgstr ""
 
-#: generaledit.ui:1609
+#: generaledit.ui:1615
 msgctxt "GeneralEdit|"
 msgid "ANALOG 4"
 msgstr ""
 
-#: generaledit.ui:1563
+#: generaledit.ui:1569
 msgctxt "GeneralEdit|"
 msgid "ANALOG 3"
 msgstr ""
 
-#: generaledit.ui:1517
+#: generaledit.ui:1523
 msgctxt "GeneralEdit|"
 msgid "ANALOG 2"
 msgstr ""
 
-#: generaledit.ui:1468
+#: generaledit.ui:1474
 msgctxt "GeneralEdit|"
 msgid "ANALOG 1"
 msgstr ""
 
-#: generaledit.ui:1447
+#: generaledit.ui:1453
 msgctxt "GeneralEdit|"
 msgid "Negative"
 msgstr ""
 
-#: generaledit.ui:1454
+#: generaledit.ui:1460
 msgctxt "GeneralEdit|"
 msgid "Mid"
 msgstr ""
 
-#: generaledit.ui:1461
+#: generaledit.ui:1467
 msgctxt "GeneralEdit|"
 msgid "Positive"
 msgstr ""
@@ -2713,192 +2728,198 @@ msgctxt "ModelEdit|"
 msgid "Simulate"
 msgstr ""
 
-#: modeledit.cpp:492 modeledit.cpp:502 modeledit.cpp:579
+#: modeledit.cpp:492 modeledit.cpp:502 modeledit.cpp:607
 #, qt-format
 msgctxt "ModelEdit|"
 msgid "CH%1%2"
 msgstr ""
 
-#: modeledit.cpp:530
+#: modeledit.cpp:543
 msgctxt "ModelEdit|"
 msgid " Switch("
 msgstr ""
 
-#: modeledit.cpp:531
+#: modeledit.cpp:544
 msgctxt "ModelEdit|"
 msgid " noTrim"
 msgstr ""
 
-#: modeledit.cpp:532
+#: modeledit.cpp:554
+#, qt-format
+msgctxt "ModelEdit|"
+msgid " Offset(GV%1)"
+msgstr ""
+
+#: modeledit.cpp:558
 #, qt-format
 msgctxt "ModelEdit|"
 msgid " Offset(%1%)"
 msgstr ""
 
-#: modeledit.cpp:539
+#: modeledit.cpp:567
 #, qt-format
 msgctxt "ModelEdit|"
 msgid " Diff(%1)"
 msgstr ""
 
-#: modeledit.cpp:549
+#: modeledit.cpp:577
 #, qt-format
 msgctxt "ModelEdit|"
 msgid " Diff(GV%1)"
 msgstr ""
 
-#: modeledit.cpp:555
+#: modeledit.cpp:583
 #, qt-format
 msgctxt "ModelEdit|"
 msgid " Curve(%1)"
 msgstr ""
 
-#: modeledit.cpp:559
+#: modeledit.cpp:587
 #, qt-format
 msgctxt "ModelEdit|"
 msgid " Delay(u%1:d%2)"
 msgstr ""
 
-#: modeledit.cpp:560
+#: modeledit.cpp:588
 #, qt-format
 msgctxt "ModelEdit|"
 msgid " Slow(u%1:d%2)"
 msgstr ""
 
-#: modeledit.cpp:562
+#: modeledit.cpp:590
 #, qt-format
 msgctxt "ModelEdit|"
 msgid " Warn(%1)"
 msgstr ""
 
-#: modeledit.cpp:2792
+#: modeledit.cpp:2827
 msgctxt "ModelEdit|"
 msgid "Delete Selected Mixes?"
 msgstr ""
 
-#: modeledit.cpp:2944
+#: modeledit.cpp:2979
 msgctxt "ModelEdit|"
 msgid "&Add"
 msgstr ""
 
-#: modeledit.cpp:2944
+#: modeledit.cpp:2979
 msgctxt "ModelEdit|"
 msgid "Ctrl+A"
 msgstr ""
 
-#: modeledit.cpp:2945
+#: modeledit.cpp:2980
 msgctxt "ModelEdit|"
 msgid "&Edit"
 msgstr ""
 
-#: modeledit.cpp:2945
+#: modeledit.cpp:2980
 msgctxt "ModelEdit|"
 msgid "Enter"
 msgstr ""
 
-#: modeledit.cpp:2947
+#: modeledit.cpp:2982
 msgctxt "ModelEdit|"
 msgid "&Delete"
 msgstr ""
 
-#: modeledit.cpp:2947
+#: modeledit.cpp:2982
 msgctxt "ModelEdit|"
 msgid "Delete"
 msgstr ""
 
-#: modeledit.cpp:2948
+#: modeledit.cpp:2983
 msgctxt "ModelEdit|"
 msgid "&Copy"
 msgstr ""
 
-#: modeledit.cpp:2948
+#: modeledit.cpp:2983
 msgctxt "ModelEdit|"
 msgid "Ctrl+C"
 msgstr ""
 
-#: modeledit.cpp:2949
+#: modeledit.cpp:2984
 msgctxt "ModelEdit|"
 msgid "&Cut"
 msgstr ""
 
-#: modeledit.cpp:2949
+#: modeledit.cpp:2984
 msgctxt "ModelEdit|"
 msgid "Ctrl+X"
 msgstr ""
 
-#: modeledit.cpp:2950
+#: modeledit.cpp:2985
 msgctxt "ModelEdit|"
 msgid "&Paste"
 msgstr ""
 
-#: modeledit.cpp:2950
+#: modeledit.cpp:2985
 msgctxt "ModelEdit|"
 msgid "Ctrl+V"
 msgstr ""
 
-#: modeledit.cpp:2951
+#: modeledit.cpp:2986
 msgctxt "ModelEdit|"
 msgid "Du&plicate"
 msgstr ""
 
-#: modeledit.cpp:2953
+#: modeledit.cpp:2988
 msgctxt "ModelEdit|"
 msgid "Move Up"
 msgstr ""
 
-#: modeledit.cpp:108 modeledit.cpp:2953
+#: modeledit.cpp:108 modeledit.cpp:2988
 msgctxt "ModelEdit|"
 msgid "Ctrl+Up"
 msgstr ""
 
-#: modeledit.cpp:2954
+#: modeledit.cpp:2989
 msgctxt "ModelEdit|"
 msgid "Move Down"
 msgstr ""
 
-#: modeledit.cpp:111 modeledit.cpp:2954
+#: modeledit.cpp:111 modeledit.cpp:2989
 msgctxt "ModelEdit|"
 msgid "Ctrl+Down"
 msgstr ""
 
-#: modeledit.cpp:2520
+#: modeledit.cpp:2555
 #, qt-format
 msgctxt "ModelEdit|"
 msgid "Editing curve %1"
 msgstr ""
 
-#: modeledit.cpp:3271
+#: modeledit.cpp:3306
 msgctxt "ModelEdit|"
 msgid "Apply Template?"
 msgstr ""
 
-#: modeledit.cpp:3271
+#: modeledit.cpp:3306
 #, qt-format
 msgctxt "ModelEdit|"
 msgid "Apply template \"%1\"?"
 msgstr ""
 
-#: modeledit.cpp:3298
+#: modeledit.cpp:3333
 msgctxt "ModelEdit|"
 msgid "Clear Mixes?"
 msgstr ""
 
-#: modeledit.cpp:3298
+#: modeledit.cpp:3333
 msgctxt "ModelEdit|"
 msgid "Really clear all the mixes?"
 msgstr ""
 
-#: modeledit.cpp:3310
+#: modeledit.cpp:3345
 msgctxt "ModelEdit|"
 msgid "Clear Curves?"
 msgstr ""
 
-#: modeledit.cpp:3310
+#: modeledit.cpp:3345
 msgctxt "ModelEdit|"
 msgid "Really clear all the curves?"
 msgstr ""
 
-#: modeledit.cpp:2951
+#: modeledit.cpp:2986
 msgctxt "ModelEdit|"
 msgid "Ctrl+U"
 msgstr ""
@@ -2908,25 +2929,25 @@ msgctxt "QObject|"
 msgid "Checking for updates..."
 msgstr ""
 
-#: helpers.cpp:146
+#: helpers.cpp:144
 #, qt-format
 msgctxt "QObject|"
 msgid "GV%1"
 msgstr ""
 
-#: helpers.cpp:826 helpers.cpp:831 helpers.cpp:848 helpers.cpp:868
-#: helpers.cpp:891 helpers.cpp:915
+#: helpers.cpp:831 helpers.cpp:836 helpers.cpp:853 helpers.cpp:873
+#: helpers.cpp:896 helpers.cpp:920
 msgctxt "QObject|"
 msgid "Error"
 msgstr ""
 
-#: helpers.cpp:826
+#: helpers.cpp:831
 #, qt-format
 msgctxt "QObject|"
 msgid "Unable to find file %1!"
 msgstr ""
 
-#: helpers.cpp:832
+#: helpers.cpp:837
 #, qt-format
 msgctxt "QObject|"
 msgid ""
@@ -2934,25 +2955,25 @@ msgid ""
 "%2."
 msgstr ""
 
-#: helpers.cpp:849
+#: helpers.cpp:854
 #, qt-format
 msgctxt "QObject|"
 msgid "Invalid EEPE File Format %1"
 msgstr ""
 
-#: helpers.cpp:868
+#: helpers.cpp:873
 #, qt-format
 msgctxt "QObject|"
 msgid "Error reading file %1!"
 msgstr ""
 
-#: helpers.cpp:891
+#: helpers.cpp:896
 #, qt-format
 msgctxt "QObject|"
 msgid "Checksum Error reading file %1!"
 msgstr ""
 
-#: helpers.cpp:916
+#: helpers.cpp:921
 #, qt-format
 msgctxt "QObject|"
 msgid ""
@@ -4000,7 +4021,7 @@ msgctxt "simulatorDialog|"
 msgid "-100.1"
 msgstr ""
 
-#: simulatordialog.cpp:177
+#: simulatordialog.cpp:178
 msgctxt "simulatorDialog|"
 msgid "Simulating "
 msgstr ""

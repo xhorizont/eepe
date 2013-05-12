@@ -555,6 +555,18 @@ p, li { white-space: pre-wrap; }
         <source>Cross Trims</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Beeper - stock beeper only</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Voice volume if you have a voice module added</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Set the readability of the display</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>MainWindow</name>
@@ -2483,6 +2495,10 @@ Droite</translation>
     </message>
     <message>
         <source>GVAR7</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source> Offset(GV%1)</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
