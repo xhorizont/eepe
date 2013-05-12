@@ -512,8 +512,21 @@ void ModelEdit::tabMixes()
         default:  str += "  "; break;
         };
 
-        str += md->weight<0 ? QString(" %1\%").arg(md->weight).rightJustified(6,' ') :
-                              QString(" +%1\%").arg(md->weight).rightJustified(6, ' ');
+				int j ;
+				j = md->weight ;
+				if ( j < -125 )
+				{
+					j += 256 ;					
+				}
+				if ( j > 125 )
+				{
+        	str += QString(" GV%1").arg(j-125).rightJustified(6,' ') ;
+				}
+				else
+				{
+        	str += j<0 ? QString(" %1\%").arg(j).rightJustified(6,' ') :
+                              QString(" +%1\%").arg(j).rightJustified(6, ' ');
+				}
 
 
         //QString srcStr = SRC_STR;
@@ -529,7 +542,22 @@ void ModelEdit::tabMixes()
 
         if(md->swtch) str += tr(" Switch(") + getSWName(md->swtch) + ")";
         if(md->carryTrim) str += tr(" noTrim");
-        if(md->sOffset)  str += tr(" Offset(%1\%)").arg(md->sOffset);
+				j = md->sOffset ;
+        if(j)
+				{
+					if ( j < -125 )
+					{
+						j += 256 ;					
+					}
+					if ( j > 125 )
+					{
+            str += tr(" Offset(GV%1)").arg(j-125) ;
+					}
+					else
+					{
+        		str += tr(" Offset(%1\%)").arg(j);
+					}
+				}
         if(md->curve)
         {
 					if ( md->differential )
@@ -1484,6 +1512,13 @@ void ModelEdit::updateSwitchesTab()
     switchEditLock = false;
 }
 
+// Fault report:
+// Also when adjusting safety switches to voice function, in eePe if you specify
+// only 1 safety switch (as I need a lot of Voice switches) it will not take the
+// channel just replaces what I enter "THR" with "----". You can trick it to stay
+// of you expand the safety switches to 2, enter your parameters then switch back
+// to one. But its not a good work around. 
+
 void ModelEdit::tabSwitches()
 {
     switchEditLock = true;
@@ -1637,7 +1672,7 @@ void ModelEdit::tabSafetySwitches()
         safetySwitchValue[i]->setAlignment(Qt::AlignRight | Qt::AlignVCenter);
         safetySwitchValue[i]->setAccelerated(true);
 				
-				if ( g_model.numVoice < 16-i )	// Normal switch
+				if ( g_model.numVoice < NUM_CHNOUT-i )	// Normal switch
 				{
         	populateSafetyVoiceTypeCB(safetySwitchType[i], 0, g_model.safetySw[i].opt.ss.mode);
         	populateSafetySwitchCB(safetySwitchSwtch[i],g_model.safetySw[i].opt.ss.mode,g_model.safetySw[i].opt.ss.swtch);
@@ -1745,7 +1780,7 @@ void ModelEdit::safetySwitchesEdited()
 		{
 			if ( g_model.numVoice < NUM_CHNOUT-i )		// Normal switch
 			{
-		    if ( i >= NUM_CHNOUT-numVoice-1 && i < NUM_CHNOUT-g_model.numVoice )
+		    if ( i > NUM_CHNOUT-numVoice-1 && i < NUM_CHNOUT-g_model.numVoice )
 				{
 					g_model.safetySw[i].opt.ss.swtch = 0 ;
 	    		populateSafetySwitchCB(safetySwitchSwtch[i],g_model.safetySw[i].opt.ss.mode,g_model.safetySw[i].opt.ss.swtch);

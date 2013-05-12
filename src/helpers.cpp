@@ -54,7 +54,8 @@ QString TelemItems[] = {
 	"Gvr4",
 	"Gvr5",
 	"Gvr6",
-	"Gvr7"
+	"Gvr7",
+	"Fwat"
 } ;
 
 QString GvarItems[] = {
@@ -129,10 +130,7 @@ void populateNumericGVarCB( QComboBox *b, int value, int min, int max)
 		// value is now 0-4 for GVAR 1-5
 		value += max+1 ;		
 	}
-	else
-	{
-		value -= min ;
-	}
+	value -= min ;
 
 	for (int i=min; i<=max; i++)
 	{
@@ -159,14 +157,14 @@ int numericGvarValue( QComboBox *b, int min, int max )
 	if ( value > max )
 	{
 		// A GVAR
-		value -= max ;	// value is now 0-4 for GVAR 1-5 (126,127,-128,-127,-126
+		value -= (max+1) ;	// value is now 0-4 for GVAR 1-5 (126,127,-128,-127,-126
     if ( value <= 2 )
 		{
-			value += 125 ;			
+			value += 126 ;
 		}
 		else
 		{
-			value -= 128+3 ;
+			value -= 128+2 ;
 		}
 	}
 	return value ;	
@@ -223,6 +221,9 @@ int16_t convertTelemConstant( int8_t index, int8_t value)
 		case 20 :	// FAS100 volts
       result *= 2;
 		break ;
+    case 32:
+      result *= 8 ;
+    break;
   }
   return result;
 }
@@ -401,7 +402,7 @@ void populateTelItemsCB(QComboBox *b, int start, int value)
 		{
 			start = 1 ;			
 		}
-    for(int i=start; i<=32; i++)
+    for(int i=start; i<=33; i++)
         b->addItem(TelemItems[i]);
     b->setCurrentIndex(value);
     b->setMaxVisibleItems(30);
@@ -538,7 +539,11 @@ void populateSwitchAndCB(QComboBox *b, int value=0)
     b->addItem(name);
 	}
 #endif
+#ifdef SKY
  	for(int i=-8 ; i<=8; i += 1)
+#else 	
+	for(int i=0 ; i<=8; i += 1)
+#endif
     b->addItem(getSWName(i));
 
 	name[0] = 'C' ;

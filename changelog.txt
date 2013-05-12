@@ -10,6 +10,12 @@ description here
 ====================================================================================
 
 ******************************************
+CHANGELOG: 12-May-2013 MPB
+Add GVAR operation
+Fix eepe ANDSW bug
+include eepskye in release
+
+******************************************
 CHANGELOG: 28-Apr-2013 MPB
 bug fixes
 Linux QT 5.0.2 changes

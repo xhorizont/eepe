@@ -122,6 +122,9 @@ These will be relevant for all models in the same EEPROM.</string>
        </item>
        <item row="2" column="1">
         <widget class="QComboBox" name="soundModeCB">
+         <property name="toolTip">
+          <string>Beeper - stock beeper only</string>
+         </property>
          <item>
           <property name="text">
            <string>Beeper</string>
@@ -201,6 +204,9 @@ p, li { white-space: pre-wrap; }
        </item>
        <item row="5" column="1">
         <widget class="QSpinBox" name="volumeSB">
+         <property name="toolTip">
+          <string>Voice volume if you have a voice module added</string>
+         </property>
          <property name="maximum">
           <number>7</number>
          </property>
@@ -219,7 +225,7 @@ p, li { white-space: pre-wrap; }
        <item row="6" column="1">
         <widget class="QSpinBox" name="contrastSB">
          <property name="toolTip">
-          <string/>
+          <string>Set the readability of the display</string>
          </property>
          <property name="statusTip">
           <string/>

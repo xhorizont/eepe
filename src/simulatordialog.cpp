@@ -7,6 +7,7 @@
 #include "helpers.h"
 
 #define GBALL_SIZE  20
+#define GVARS	1
 
 #define RESX    1024
 #define RESXu   1024u
@@ -1014,13 +1015,25 @@ void simulatorDialog::perOut(bool init)
             uint8_t stkDir = v>0 ? DR_RIGHT : DR_LEFT;
 
             if(IS_THROTTLE(i) && g_model.thrExpo){
+#if GVARS
+                v  = 2*expo((v+RESX)/2,REG100_100(g_model.expoData[i].expo[expoDrOn][DR_EXPO][DR_RIGHT]));
+#else
                 v  = 2*expo((v+RESX)/2,g_model.expoData[i].expo[expoDrOn][DR_EXPO][DR_RIGHT]);
+#endif                    
                 stkDir = DR_RIGHT;
             }
             else
+#if GVARS
+                v  = expo(v,REG100_100(g_model.expoData[i].expo[expoDrOn][DR_EXPO][stkDir]));
+#else
                 v  = expo(v,g_model.expoData[i].expo[expoDrOn][DR_EXPO][stkDir]);
+#endif                    
 
+#if GVARS
+            int32_t x = (int32_t)v * (REG(g_model.expoData[i].expo[expoDrOn][DR_WEIGHT][stkDir]+100, 0, 100))/100;
+#else
             int32_t x = (int32_t)v * (g_model.expoData[i].expo[expoDrOn][DR_WEIGHT][stkDir]+100)/100;
+#endif                    
             v = (int16_t)x;
             if (IS_THROTTLE(i) && g_model.thrExpo) v -= RESX;
 
@@ -1059,6 +1072,9 @@ void simulatorDialog::perOut(bool init)
 
     for(uint8_t i=0;i<NUM_PPM;i++)    anas[i+PPM_BASE]   = g_ppmIns[i];// - g_eeGeneral.ppmInCalib[i]; //add ppm channels
     for(uint8_t i=0;i<NUM_CHNOUT;i++) anas[i+CHOUT_BASE] = chans[i]; //other mixes previous outputs
+#if GVARS
+        for(uint8_t i=0;i<MAX_GVARS;i++) anas[i+MIX_3POS] = g_model.gvars[i].gvar * 8 ;
+#endif
 
 
     //===========Swash Mix================
@@ -1158,6 +1174,9 @@ void simulatorDialog::perOut(bool init)
 
     for(uint8_t i=0;i<MAX_MIXERS;i++){
         MixData &md = g_model.mixData[i];
+#if GVARS
+        int8_t mixweight = REG100_100( md.weight) ;
+#endif
 
         if((md.destCh==0) || (md.destCh>NUM_CHNOUT)) break;
 
@@ -1221,7 +1240,8 @@ void simulatorDialog::perOut(bool init)
                 act[i]=(int32_t)v*DEL_MULT;
                 swTog = false;
             }
-            int16_t diff = v-act[i]/DEL_MULT;
+            int32_t tact = act[i] ;
+            int16_t diff = v-tact/DEL_MULT;
 
             if(swTog) {
                 //need to know which "v" will give "anas".
@@ -1229,9 +1249,13 @@ void simulatorDialog::perOut(bool init)
                 // v * weight / 100 = anas => anas*100/weight = v
                 if(md.mltpx==MLTPX_REP)
                 {
-                    act[i] = (int32_t)anas[md.destCh-1+CHOUT_BASE]*DEL_MULT;
-                    act[i] *=100;
-                    if(md.weight) act[i] /= md.weight;
+                    tact = (int32_t)anas[md.destCh-1+CHOUT_BASE]*DEL_MULT * 100 ;
+//                    Output.act[i] *=100;
+#if GVARS
+                    if(mixweight) tact /= mixweight ;
+#else
+                    if(md.weight) tact /= md.weight;
+#endif
                 }
                 diff = v-act[i]/DEL_MULT;
                 if(diff) sDelay[i] = (diff<0 ? md.delayUp :  md.delayDown) * 100;
@@ -1251,7 +1275,11 @@ void simulatorDialog::perOut(bool init)
                 //-100..100 => 32768 ->  100*83886/256 = 32768,   For MAX we divide by 2 since it's asymmetrical
 
                 int32_t rate = (int32_t)DEL_MULT*2048*100;
+#if GVARS
+                if(mixweight) rate /= abs(mixweight);
+#else
                 if(md.weight) rate /= abs(md.weight);
+#endif
                 act[i] = (diff>0) ? ((md.speedUp>0)   ? act[i]+(rate)/((int16_t)100*md.speedUp)   :  (int32_t)v*DEL_MULT) :
                                     ((md.speedDown>0) ? act[i]-(rate)/((int16_t)100*md.speedDown) :  (int32_t)v*DEL_MULT) ;
 
@@ -1328,7 +1356,11 @@ void simulatorDialog::perOut(bool init)
         if((md.carryTrim==0) && (md.srcRaw>0) && (md.srcRaw<=4)) v += trimA[md.srcRaw-1];  //  0 = Trim ON  =  Default
 
         //========== MULTIPLEX ===============
+#if GVARS
+        int32_t dv = (int32_t)v*mixweight ;
+#else
         int32_t dv = (int32_t)v*md.weight;
+#endif
         
         //========== lateOffset ===============
         if ( ( md.enableFmTrim == 0 ) && ( md.lateOffset ) )

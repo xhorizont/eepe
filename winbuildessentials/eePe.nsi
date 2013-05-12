@@ -83,6 +83,7 @@ Section "eePe" SecDummy
   
   File "license.txt"
   File "eepe.exe"
+  File "eepskye.exe"
   File "libgcc_s_dw2-1.dll"
   File "mingwm10.dll"
   File "QtCore4.dll"
@@ -146,6 +147,7 @@ Section "Uninstall"
 
   Delete "$INSTDIR\license.txt"
   Delete "$INSTDIR\eepe.exe"
+  Delete "$INSTDIR\eepskye.exe"
   Delete "$INSTDIR\libgcc_s_dw2-1.dll"
   Delete "$INSTDIR\mingwm10.dll"
   Delete "$INSTDIR\QtCore4.dll"
