@@ -10,6 +10,11 @@ description here
 ====================================================================================
 
 ******************************************
+CHANGELOG: 23-May-2013 MPB
+Add serial SD card update for Megasound
+Include 32-bit linux version again
+
+******************************************
 CHANGELOG: 12-May-2013 MPB
 Add GVAR operation
 Fix eepe ANDSW bug

@@ -1278,6 +1278,14 @@ msgctxt "MainWindow|"
 msgid "Backup failed, abandoning flash operation"
 msgstr ""
 
+msgctxt "MainWindow|"
+msgid "Serial SD"
+msgstr ""
+
+msgctxt "MainWindow|"
+msgid "Update Megasound SD card"
+msgstr ""
+
 msgctxt "MdiChild|"
 msgid "&Cut"
 msgstr "&Couper"
@@ -2823,6 +2831,86 @@ msgctxt "QObject|"
 msgid "GV%1"
 msgstr ""
 
+msgctxt "QextSerialPort|"
+msgid "No Error has occurred"
+msgstr ""
+
+msgctxt "QextSerialPort|"
+msgid "Invalid file descriptor (port was not opened correctly)"
+msgstr ""
+
+msgctxt "QextSerialPort|"
+msgid "Unable to allocate memory tables (POSIX)"
+msgstr ""
+
+msgctxt "QextSerialPort|"
+msgid "Caught a non-blocked signal (POSIX)"
+msgstr ""
+
+msgctxt "QextSerialPort|"
+msgid "Operation timed out (POSIX)"
+msgstr ""
+
+msgctxt "QextSerialPort|"
+msgid "The file opened by the port is not a valid device"
+msgstr ""
+
+msgctxt "QextSerialPort|"
+msgid "The port detected a break condition"
+msgstr ""
+
+msgctxt "QextSerialPort|"
+msgid ""
+"The port detected a framing error (usually caused by incorrect baud rate "
+"settings)"
+msgstr ""
+
+msgctxt "QextSerialPort|"
+msgid "There was an I/O error while communicating with the port"
+msgstr ""
+
+msgctxt "QextSerialPort|"
+msgid "Character buffer overrun"
+msgstr ""
+
+msgctxt "QextSerialPort|"
+msgid "Receive buffer overflow"
+msgstr ""
+
+msgctxt "QextSerialPort|"
+msgid "The port detected a parity error in the received data"
+msgstr ""
+
+msgctxt "QextSerialPort|"
+msgid "Transmit buffer overflow"
+msgstr ""
+
+msgctxt "QextSerialPort|"
+msgid "General read operation failure"
+msgstr ""
+
+msgctxt "QextSerialPort|"
+msgid "General write operation failure"
+msgstr ""
+
+#, qt-format
+msgctxt "QextSerialPort|"
+msgid "The %1 file doesn't exists"
+msgstr ""
+
+msgctxt "QextSerialPort|"
+msgid "Permission denied"
+msgstr ""
+
+msgctxt "QextSerialPort|"
+msgid "Device is already locked"
+msgstr ""
+
+#, qt-format
+msgctxt "QextSerialPort|"
+msgid "Unknown error: %1"
+msgstr ""
+
 #, qt-format
 msgctxt "avrOutputDialog|"
 msgid "AVRDUDE done - exit code %1"
@@ -3881,6 +3969,61 @@ msgstr ""
 #, qt-format
 msgctxt "printDialog|"
 msgid "<font size=+1 face='Courier New'><b>CH%1</b></font>"
+msgstr ""
+
+msgctxt "serialDialog|"
+msgid "Serial SD update"
+msgstr ""
+
+#, fuzzy
+msgctxt "serialDialog|"
+msgid "Port"
+msgstr "Port"
+
+msgctxt "serialDialog|"
+msgid "Cancel"
+msgstr ""
+
+msgctxt "serialDialog|"
+msgid "Filename"
+msgstr ""
+
+msgctxt "serialDialog|"
+msgid "Browse"
+msgstr ""
+
+#, fuzzy
+msgctxt "serialDialog|"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "serialDialog|"
+msgid "Size"
+msgstr ""
+
+msgctxt "serialDialog|"
+msgid "Send"
+msgstr ""
+
+msgctxt "serialDialog|"
+msgid "File To Send"
+msgstr ""
+
+msgctxt "serialDialog|"
+msgid "No files specified"
+msgstr ""
+
+#, qt-format
+msgctxt "serialDialog|"
+msgid "%1"
+msgstr ""
+
+msgctxt "serialDialog|"
+msgid "File not Found"
+msgstr ""
+
+msgctxt "serialDialog|"
+msgid "Communication Failure(1)"
 msgstr ""
 
 msgctxt "simulatorDialog|"
