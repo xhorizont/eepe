@@ -47,16 +47,17 @@ QString TelemItems[] = {
 	"AccX",
 	"AccY",
 	"AccZ",
-	"Vspd",
+	"Vspd", // 24
 	"Gvr1",
 	"Gvr2",
 	"Gvr3",
-	"Gvr4",
+	"Gvr4", // 28
 	"Gvr5",
 	"Gvr6",
 	"Gvr7",
-	"Fwat"
+	"Fwat"  // 32
 } ;
+#define NUM_TELEM_ITEMS	33
 
 QString GvarItems[] = {
 	"---", // 0
@@ -402,7 +403,7 @@ void populateTelItemsCB(QComboBox *b, int start, int value)
 		{
 			start = 1 ;			
 		}
-    for(int i=start; i<=33; i++)
+    for(int i=start; i<=NUM_TELEM_ITEMS; i++)
         b->addItem(TelemItems[i]);
     b->setCurrentIndex(value);
     b->setMaxVisibleItems(30);
@@ -774,7 +775,7 @@ void populateSourceCB(QComboBox *b, int stickMode, int telem, int value)
 #endif
 		if ( telem )
 		{
-    	for(int i=1; i<=24; i++)
+    	for(int i=1; i<=NUM_TELEM_ITEMS; i++)
     	    b->addItem(TelemItems[i]);
 		}
     b->setCurrentIndex(value);

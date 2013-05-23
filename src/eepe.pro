@@ -1,5 +1,6 @@
 QT += network \
       xml
+include(qextserialport.pri)
 HEADERS += mainwindow.h \
     file.h \
     pers.h \
@@ -20,7 +21,8 @@ HEADERS += mainwindow.h \
     mixerslist.h \
     downloaddialog.h \
     stamp-eepe.h \
-    customizesplashdialog.h
+    customizesplashdialog.h \
+    serialdialog.h
 SOURCES += main.cpp \
     mainwindow.cpp \
     file.cpp \
@@ -40,7 +42,8 @@ SOURCES += main.cpp \
     preferencesdialog.cpp \
     mixerslist.cpp \
     downloaddialog.cpp \
-    customizesplashdialog.cpp
+    customizesplashdialog.cpp \
+    serialdialog.cpp
 TEMPLATE = app
 FORMS += modeledit.ui \
     generaledit.ui \
@@ -52,7 +55,8 @@ FORMS += modeledit.ui \
     printdialog.ui \
     preferencesdialog.ui \
     downloaddialog.ui \
-    customizesplashdialog.ui
+    customizesplashdialog.ui \
+    serialdialog.ui
 TRANSLATIONS = eepe_.ts    \
                eepe_he.ts  \
                eepe_pt.ts  \
@@ -92,4 +96,4 @@ mac {
 ICON = eepe.icns
 }
 
-
+OTHER_FILES +=

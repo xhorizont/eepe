@@ -55,6 +55,7 @@
 #include "downloaddialog.h"
 #include "customizesplashdialog.h"
 #include "stamp-eepe.h"
+#include "serialDialog.h"
 
 #define DONATE_STR "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=B9RNATGH7DTQ6"
 #define DNLD_VER_ER9X            0
@@ -515,6 +516,12 @@ void MainWindow::preferences()
     preferencesDialog *pd = new preferencesDialog(this);
     pd->exec();
     readSettings();
+}
+
+void MainWindow::serial()
+{
+    serialDialog *sd = new serialDialog(this);
+    sd->exec();
 }
 
 void MainWindow::cut()
@@ -1052,6 +1059,12 @@ void MainWindow::createActions()
     checkForUpdatesAct->setStatusTip(tr("Check for new version of eePe/er9x"));
     connect(checkForUpdatesAct, SIGNAL(triggered()), this, SLOT(checkForUpdates()));
 
+
+		serialAct = new QAction(tr("Serial SD"), this) ;
+    serialAct->setStatusTip(tr("Update Megasound SD card"));
+    connect(serialAct, SIGNAL(triggered()), this, SLOT(serial()));
+
+
 //! [0]
     exitAct = new QAction(QIcon(":/images/exit.png"), tr("E&xit"), this);
     exitAct->setShortcuts(QKeySequence::Quit);
@@ -1239,6 +1252,8 @@ void MainWindow::createMenus()
     burnMenu->addSeparator();
     burnMenu->addAction(setFusesAct);
     burnMenu->addAction(resetFusesAct);
+    burnMenu->addSeparator();
+    burnMenu->addAction(serialAct);
 
     windowMenu = menuBar()->addMenu(tr("&Window"));
     updateWindowMenu();
