@@ -10,6 +10,10 @@ description here
 ====================================================================================
 
 ******************************************
+CHANGELOG: 24-May-2013 MPB
+Serial SD - multiple files allowed
+
+******************************************
 CHANGELOG: 23-May-2013 MPB
 Add serial SD card update for Megasound
 Include 32-bit linux version again

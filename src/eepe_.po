@@ -3149,7 +3149,7 @@ msgctxt "burnConfigDialog|"
 msgid "AVRDUDE Configuration"
 msgstr ""
 
-#: burnconfigdialog.ui:499
+#: burnconfigdialog.ui:579
 msgctxt "burnConfigDialog|"
 msgid "AVRDUDE Location"
 msgstr ""
@@ -3180,7 +3180,7 @@ msgctxt "burnConfigDialog|"
 msgid "Programmer"
 msgstr ""
 
-#: burnconfigdialog.ui:59 burnconfigdialog.ui:519
+#: burnconfigdialog.ui:59 burnconfigdialog.ui:599
 msgctxt "burnConfigDialog|"
 msgid ""
 "Programmer used for communicating with the controller.\n"
@@ -3238,32 +3238,112 @@ msgctxt "burnConfigDialog|"
 msgid "avrdoper"
 msgstr ""
 
-#: burnconfigdialog.ui:489
+#: burnconfigdialog.ui:486
+msgctxt "burnConfigDialog|"
+msgid "com5"
+msgstr ""
+
+#: burnconfigdialog.ui:491
+msgctxt "burnConfigDialog|"
+msgid "com6"
+msgstr ""
+
+#: burnconfigdialog.ui:496
+msgctxt "burnConfigDialog|"
+msgid "com7"
+msgstr ""
+
+#: burnconfigdialog.ui:501
+msgctxt "burnConfigDialog|"
+msgid "com8"
+msgstr ""
+
+#: burnconfigdialog.ui:506
+msgctxt "burnConfigDialog|"
+msgid "com9"
+msgstr ""
+
+#: burnconfigdialog.ui:511
+msgctxt "burnConfigDialog|"
+msgid "com10"
+msgstr ""
+
+#: burnconfigdialog.ui:516
+msgctxt "burnConfigDialog|"
+msgid "com11"
+msgstr ""
+
+#: burnconfigdialog.ui:521
+msgctxt "burnConfigDialog|"
+msgid "com12"
+msgstr ""
+
+#: burnconfigdialog.ui:526
+msgctxt "burnConfigDialog|"
+msgid "com13"
+msgstr ""
+
+#: burnconfigdialog.ui:531
+msgctxt "burnConfigDialog|"
+msgid "com14"
+msgstr ""
+
+#: burnconfigdialog.ui:536
+msgctxt "burnConfigDialog|"
+msgid "com15"
+msgstr ""
+
+#: burnconfigdialog.ui:541
+msgctxt "burnConfigDialog|"
+msgid "com16"
+msgstr ""
+
+#: burnconfigdialog.ui:546
+msgctxt "burnConfigDialog|"
+msgid "com17"
+msgstr ""
+
+#: burnconfigdialog.ui:551
+msgctxt "burnConfigDialog|"
+msgid "com18"
+msgstr ""
+
+#: burnconfigdialog.ui:556
+msgctxt "burnConfigDialog|"
+msgid "com19"
+msgstr ""
+
+#: burnconfigdialog.ui:561
+msgctxt "burnConfigDialog|"
+msgid "com20"
+msgstr ""
+
+#: burnconfigdialog.ui:569
 msgctxt "burnConfigDialog|"
 msgid "Port"
 msgstr ""
 
-#: burnconfigdialog.ui:509
+#: burnconfigdialog.ui:589
 msgctxt "burnConfigDialog|"
 msgid "mcu"
 msgstr ""
 
-#: burnconfigdialog.ui:527
+#: burnconfigdialog.ui:607
 msgctxt "burnConfigDialog|"
 msgid "m64"
 msgstr ""
 
-#: burnconfigdialog.ui:532
+#: burnconfigdialog.ui:612
 msgctxt "burnConfigDialog|"
 msgid "m128"
 msgstr ""
 
-#: burnconfigdialog.ui:537
+#: burnconfigdialog.ui:617
 msgctxt "burnConfigDialog|"
 msgid "m328p"
 msgstr ""
 
-#: burnconfigdialog.ui:542
+#: burnconfigdialog.ui:622
 msgctxt "burnConfigDialog|"
 msgid "M88"
 msgstr ""
@@ -3896,53 +3976,53 @@ msgctxt "serialDialog|"
 msgid "Cancel"
 msgstr ""
 
-#: serialdialog.ui:70
+#: serialdialog.ui:162
 msgctxt "serialDialog|"
 msgid "Filename"
 msgstr ""
 
-#: serialdialog.ui:77
+#: serialdialog.ui:67
 msgctxt "serialDialog|"
 msgid "Browse"
 msgstr ""
 
-#: serialdialog.ui:100
+#: serialdialog.ui:96
 msgctxt "serialDialog|"
 msgid "Name"
 msgstr ""
 
-#: serialdialog.ui:123
+#: serialdialog.ui:103
 msgctxt "serialDialog|"
 msgid "Size"
 msgstr ""
 
-#: serialdialog.ui:149
+#: serialdialog.ui:129
 msgctxt "serialDialog|"
 msgid "Send"
 msgstr ""
 
-#: serialdialog.cpp:54
+#: serialdialog.cpp:55
 msgctxt "serialDialog|"
-msgid "File To Send"
+msgid "File(s) To Send"
 msgstr ""
 
-#: serialdialog.cpp:186
+#: serialdialog.cpp:223
 msgctxt "serialDialog|"
 msgid "No files specified"
 msgstr ""
 
-#: serialdialog.cpp:239
+#: serialdialog.cpp:282
 #, qt-format
 msgctxt "serialDialog|"
 msgid "%1"
 msgstr ""
 
-#: serialdialog.cpp:244
+#: serialdialog.cpp:287
 msgctxt "serialDialog|"
 msgid "File not Found"
 msgstr ""
 
-#: serialdialog.cpp:307 serialdialog.cpp:366
+#: serialdialog.cpp:357 serialdialog.cpp:416
 msgctxt "serialDialog|"
 msgid "Communication Failure(1)"
 msgstr ""

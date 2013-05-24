@@ -46,18 +46,21 @@ void serialDialog::on_cancelButton_clicked()
 
 void serialDialog::on_FileEdit_editingFinished()
 {
-    fileToSend = ui->FileEdit->text();
+//    fileToSend = ui->FileEdit->text();
 }
 
 void serialDialog::on_browseButton_clicked()
 {
-    QString fileName = QFileDialog::getOpenFileName(this, tr("File To Send"),ui->FileEdit->text());
+//    QString fileName = QFileDialog::getOpenFileName(this, tr("File(s) To Send"),ui->FileEdit->text());
+		QStringList filesList = QFileDialog::getOpenFileNames(this, tr("File(s) To Send"),ui->FileEdit->text());
+		ui->fileList->clear() ;
+		ui->fileList->addItems( filesList ) ;
 
-    if(!fileName.isEmpty())
-    {
-        ui->FileEdit->setText(fileName);
-        fileToSend = fileName;
-    }
+//    if(!fileName.isEmpty())
+//    {
+//        ui->FileEdit->setText(fileName);
+//        fileToSend = fileName;
+//    }
 }
 
 void waitMs( int ms )
@@ -69,6 +72,41 @@ void waitMs( int ms )
 	{
     QCoreApplication::processEvents(QEventLoop::AllEvents, 100);    
 	}
+}
+
+QString to8_3( QString name )
+{
+	int i ;
+	int j ;
+	int dotPos1 ;
+	int dotPosn ;
+	QString output ;
+
+	j = name.length() ;
+
+	dotPos1 = name.indexOf( "." ) ;
+	dotPosn = name.lastIndexOf( ".", -1 ) ;
+
+	if ( dotPos1 == -1 )
+	{
+		output = name.left(8) ;
+	}
+	else
+	{
+		if ( dotPos1 > 8 )
+		{
+			dotPos1 = 8 ;
+		}
+		output = name.left(dotPos1) ;
+		output.append(".") ;
+		i = j - dotPosn ;
+		if ( i > 3 )
+		{
+			i = 3 ;			
+		}
+    output.append( name.mid( dotPosn+1, i ) ) ;
+	}
+	return output.toUpper() ;
 }
 
 void checksumBlock( unsigned char *block )
@@ -172,16 +210,15 @@ void serialDialog::on_sendButton_clicked()
   QString file ;
   QString temp ;
   QByteArray qba ;
+	int i ;
+	int numFiles ;
 
 	ui->sendButton->setDisabled( true ) ;
 	
 	ui->progressBar->setValue( 0 ) ;
 	ui->progressBar->show() ;
 	
-	ui->monitorText->setText("Monitor") ;
-	Monitor.append("Monitor");
-
-	if(fileToSend.isEmpty())
+	if( ( numFiles = ui->fileList->count() ) == 0 )
 	{
     QMessageBox::critical(this, "eePe", tr("No files specified"));
 		ui->sendButton->setDisabled( false ) ;
@@ -203,7 +240,12 @@ void serialDialog::on_sendButton_clicked()
     //set timeouts to 500 ms
   port->setTimeout(100) ;
 
-	sendOneFile( fileToSend ) ;
+	for ( i = 0 ; i < numFiles ; i += 1 )
+	{
+		ui->FileEdit->setText( ui->fileList->item( i )->text() );
+		
+		sendOneFile( ui->fileList->item( i )->text() ) ;
+	}
 
 	if ( port )
 	{
@@ -232,11 +274,12 @@ int serialDialog::sendOneFile( QString fname )
 	char acknak ;
 	int retryCount ;
 	
-	if(QFileInfo(fileToSend).exists())
+	if(QFileInfo(fname).exists())
 	{
-		file = QFileInfo(fileToSend).fileName() ;
-    ui->Name->setText( file ) ;
-    temp = tr("%1").arg(QFileInfo(fileToSend).size() ) ;
+		file = QFileInfo(fname).fileName() ;
+		file = to8_3( file ) ;
+		ui->Name->setText( file ) ;
+    temp = tr("%1").arg(QFileInfo(fname).size() ) ;
     ui->size->setText( temp ) ;
 	}
 	else
@@ -245,7 +288,14 @@ int serialDialog::sendOneFile( QString fname )
 		ui->sendButton->setDisabled( false ) ;
     return 0 ;	// Failed
 	}
-  numBlocks = QFileInfo(fileToSend).size() / 128 + 1 ;
+
+	ui->monitorText->setText("Monitor") ;
+	Monitor = "Monitor" ;
+
+	Monitor.append(file.toLatin1());
+	ui->monitorText->setText(Monitor) ;
+
+  numBlocks = QFileInfo(fname).size() / 128 + 1 ;
 	blockNumber = 0 ;
 
   memset( dataBlock, 0, BLOCK_AREA ) ;
@@ -301,9 +351,9 @@ int serialDialog::sendOneFile( QString fname )
 	if ( acknak != ACK )
 	{
 		// Abort
-	 	port->close();
-	  delete port ;
-		port = NULL ;
+//	 	port->close();
+//	  delete port ;
+//		port = NULL ;
     QMessageBox::critical(this, "eePe", tr("Communication Failure(1)"));
 		ui->sendButton->setDisabled( false ) ;
 		return 0 ;	// Failed
@@ -316,7 +366,7 @@ int serialDialog::sendOneFile( QString fname )
 
 //  ui->receiveText->setText(acknak ? (acknak == ACK ? "ACK" : "NAK" ) : "NULL") ;
 
-  QFile thisfile(fileToSend) ;
+  QFile thisfile(fname) ;
 	thisfile.open(QIODevice::ReadOnly) ;
 	while ( blockNumber < numBlocks )
 	{
@@ -360,11 +410,12 @@ int serialDialog::sendOneFile( QString fname )
 		{
 			// Abort
 	  	port->write( QByteArray::fromRawData ( ( char *)DoubleEsc, 2 ), 2 ) ;
-	 		port->close();
-	  	delete port ;
-			port = NULL ;
+//	 		port->close();
+//	  	delete port ;
+//			port = NULL ;
     	QMessageBox::critical(this, "eePe", tr("Communication Failure(1)"));
 			ui->sendButton->setDisabled( false ) ;
+			thisfile.close() ;
 			return 0 ;	// Failed
 		}
 	ui->progressBar->setValue( ((blockNumber+1)*100)/(numBlocks+1) ) ;

@@ -3174,7 +3174,7 @@ AVRDUDE done - SUCCESSFUL</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="burnconfigdialog.ui" line="499"/>
+        <location filename="burnconfigdialog.ui" line="579"/>
         <source>AVRDUDE Location</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3206,7 +3206,7 @@ AVRDUDE done - SUCCESSFUL</oldsource>
     </message>
     <message>
         <location filename="burnconfigdialog.ui" line="59"/>
-        <location filename="burnconfigdialog.ui" line="519"/>
+        <location filename="burnconfigdialog.ui" line="599"/>
         <source>Programmer used for communicating with the controller.
 Please consult the programmer&apos;s documentation and the AVRDUDE documentation to select the appropriate programmer.</source>
         <translation type="unfinished"></translation>
@@ -3261,32 +3261,112 @@ Please only use this if you know what you are doing.  There are no error checks 
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="burnconfigdialog.ui" line="489"/>
+        <location filename="burnconfigdialog.ui" line="486"/>
+        <source>com5</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="burnconfigdialog.ui" line="491"/>
+        <source>com6</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="burnconfigdialog.ui" line="496"/>
+        <source>com7</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="burnconfigdialog.ui" line="501"/>
+        <source>com8</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="burnconfigdialog.ui" line="506"/>
+        <source>com9</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="burnconfigdialog.ui" line="511"/>
+        <source>com10</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="burnconfigdialog.ui" line="516"/>
+        <source>com11</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="burnconfigdialog.ui" line="521"/>
+        <source>com12</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="burnconfigdialog.ui" line="526"/>
+        <source>com13</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="burnconfigdialog.ui" line="531"/>
+        <source>com14</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="burnconfigdialog.ui" line="536"/>
+        <source>com15</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="burnconfigdialog.ui" line="541"/>
+        <source>com16</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="burnconfigdialog.ui" line="546"/>
+        <source>com17</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="burnconfigdialog.ui" line="551"/>
+        <source>com18</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="burnconfigdialog.ui" line="556"/>
+        <source>com19</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="burnconfigdialog.ui" line="561"/>
+        <source>com20</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="burnconfigdialog.ui" line="569"/>
         <source>Port</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="burnconfigdialog.ui" line="509"/>
+        <location filename="burnconfigdialog.ui" line="589"/>
         <source>mcu</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="burnconfigdialog.ui" line="527"/>
+        <location filename="burnconfigdialog.ui" line="607"/>
         <source>m64</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="burnconfigdialog.ui" line="532"/>
+        <location filename="burnconfigdialog.ui" line="612"/>
         <source>m128</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="burnconfigdialog.ui" line="537"/>
+        <location filename="burnconfigdialog.ui" line="617"/>
         <source>m328p</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="burnconfigdialog.ui" line="542"/>
+        <location filename="burnconfigdialog.ui" line="622"/>
         <source>M88</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3914,53 +3994,53 @@ Mode 4:
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="serialdialog.ui" line="70"/>
+        <location filename="serialdialog.ui" line="162"/>
         <source>Filename</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="serialdialog.ui" line="77"/>
+        <location filename="serialdialog.ui" line="67"/>
         <source>Browse</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="serialdialog.ui" line="100"/>
+        <location filename="serialdialog.ui" line="96"/>
         <source>Name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="serialdialog.ui" line="123"/>
+        <location filename="serialdialog.ui" line="103"/>
         <source>Size</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="serialdialog.ui" line="149"/>
+        <location filename="serialdialog.ui" line="129"/>
         <source>Send</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="serialdialog.cpp" line="54"/>
-        <source>File To Send</source>
+        <location filename="serialdialog.cpp" line="55"/>
+        <source>File(s) To Send</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="serialdialog.cpp" line="186"/>
+        <location filename="serialdialog.cpp" line="223"/>
         <source>No files specified</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="serialdialog.cpp" line="239"/>
+        <location filename="serialdialog.cpp" line="282"/>
         <source>%1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="serialdialog.cpp" line="244"/>
+        <location filename="serialdialog.cpp" line="287"/>
         <source>File not Found</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="serialdialog.cpp" line="307"/>
-        <location filename="serialdialog.cpp" line="366"/>
+        <location filename="serialdialog.cpp" line="357"/>
+        <location filename="serialdialog.cpp" line="416"/>
         <source>Communication Failure(1)</source>
         <translation type="unfinished"></translation>
     </message>

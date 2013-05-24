@@ -3130,6 +3130,70 @@ msgctxt "burnConfigDialog|"
 msgid "M88"
 msgstr ""
 
+msgctxt "burnConfigDialog|"
+msgid "com5"
+msgstr ""
+
+msgctxt "burnConfigDialog|"
+msgid "com6"
+msgstr ""
+
+msgctxt "burnConfigDialog|"
+msgid "com7"
+msgstr ""
+
+msgctxt "burnConfigDialog|"
+msgid "com8"
+msgstr ""
+
+msgctxt "burnConfigDialog|"
+msgid "com9"
+msgstr ""
+
+msgctxt "burnConfigDialog|"
+msgid "com10"
+msgstr ""
+
+msgctxt "burnConfigDialog|"
+msgid "com11"
+msgstr ""
+
+msgctxt "burnConfigDialog|"
+msgid "com12"
+msgstr ""
+
+msgctxt "burnConfigDialog|"
+msgid "com13"
+msgstr ""
+
+msgctxt "burnConfigDialog|"
+msgid "com14"
+msgstr ""
+
+msgctxt "burnConfigDialog|"
+msgid "com15"
+msgstr ""
+
+msgctxt "burnConfigDialog|"
+msgid "com16"
+msgstr ""
+
+msgctxt "burnConfigDialog|"
+msgid "com17"
+msgstr ""
+
+msgctxt "burnConfigDialog|"
+msgid "com18"
+msgstr ""
+
+msgctxt "burnConfigDialog|"
+msgid "com19"
+msgstr ""
+
+msgctxt "burnConfigDialog|"
+msgid "com20"
+msgstr ""
+
 msgctxt "customizeSplashDialog|"
 msgid "Customize Splash"
 msgstr ""
@@ -4006,10 +4070,6 @@ msgid "Send"
 msgstr ""
 
 msgctxt "serialDialog|"
-msgid "File To Send"
-msgstr ""
-
-msgctxt "serialDialog|"
 msgid "No files specified"
 msgstr ""
 
@@ -4024,6 +4084,10 @@ msgstr ""
 
 msgctxt "serialDialog|"
 msgid "Communication Failure(1)"
+msgstr ""
+
+msgctxt "serialDialog|"
+msgid "File(s) To Send"
 msgstr ""
 
 msgctxt "simulatorDialog|"
