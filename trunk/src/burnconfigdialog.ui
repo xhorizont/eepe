@@ -481,6 +481,86 @@ Please only use this if you know what you are doing.  There are no error checks 
          <string>avrdoper</string>
         </property>
        </item>
+       <item>
+        <property name="text">
+         <string>com5</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>com6</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>com7</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>com8</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>com9</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>com10</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>com11</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>com12</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>com13</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>com14</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>com15</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>com16</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>com17</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>com18</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>com19</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>com20</string>
+        </property>
+       </item>
       </widget>
      </item>
      <item row="4" column="0">

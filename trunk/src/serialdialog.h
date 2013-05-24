@@ -20,7 +20,7 @@ private:
 		int waitForAckNak( int mS ) ;
 		int sendOneFile( QString fname ) ;
 
-    QString fileToSend ;
+//    QString fileToSend ;
     
 		QextSerialPort *port ;
 

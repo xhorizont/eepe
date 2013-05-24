@@ -2826,6 +2826,70 @@ Assurez-vous de posséder les droits en écriture sur ce dossier.</translation>
         <source>M88</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>com5</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>com6</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>com7</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>com8</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>com9</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>com10</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>com11</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>com12</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>com13</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>com14</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>com15</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>com16</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>com17</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>com18</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>com19</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>com20</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>customizeSplashDialog</name>
@@ -3474,10 +3538,6 @@ Indique l&apos;affectation voie / numéro de canal par défaut utilisée lors de
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>File To Send</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>No files specified</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3491,6 +3551,10 @@ Indique l&apos;affectation voie / numéro de canal par défaut utilisée lors de
     </message>
     <message>
         <source>Communication Failure(1)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>File(s) To Send</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
