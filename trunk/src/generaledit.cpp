@@ -52,8 +52,8 @@ GeneralEdit::GeneralEdit(EEPFILE *eFile, QWidget *parent) :
     ui->memwarnChkB->setChecked(!g_eeGeneral.disableMemoryWarning);   //Default is zero=checked
     ui->alarmwarnChkB->setChecked(!g_eeGeneral.disableAlarmWarning);//Default is zero=checked
     ui->PotScrollEnableChkB->setChecked(!g_eeGeneral.disablePotScroll);//Default is zero=checked
-    ui->StickScrollEnableChkB->setChecked(g_eeGeneral.stickScroll);//Default is zero=checked
-    ui->CrossTrimChkB->setChecked(g_eeGeneral.crosstrim);//Default is zero=checked
+    ui->StickScrollEnableChkB->setChecked(g_eeGeneral.stickScroll);//Default is zero=not checked
+    ui->CrossTrimChkB->setChecked(g_eeGeneral.crosstrim);//Default is zero=not checked
     ui->BandGapEnableChkB->setChecked(!g_eeGeneral.disableBG);//Default is zero=checked
     ui->beeperCB->setCurrentIndex(g_eeGeneral.beeperVal);
     ui->channelorderCB->setCurrentIndex(g_eeGeneral.templateSetup);
@@ -180,25 +180,25 @@ void GeneralEdit::updateTrianerTab()
     ui->modeCB_1->setCurrentIndex(g_eeGeneral.trainer.mix[0].mode);
     ui->weightSB_1->setValue(g_eeGeneral.trainer.mix[0].studWeight*13/4);
     ui->sourceCB_1->setCurrentIndex(g_eeGeneral.trainer.mix[0].srcChn);
-    populateSwitchCB(ui->swtchCB_1,g_eeGeneral.trainer.mix[0].swtch);
+    populateTrainerSwitchCB(ui->swtchCB_1,g_eeGeneral.trainer.mix[0].swtch);
     StudWeight1=g_eeGeneral.trainer.mix[0].studWeight*13/4;
 
     ui->modeCB_2->setCurrentIndex(g_eeGeneral.trainer.mix[1].mode);
     ui->weightSB_2->setValue(g_eeGeneral.trainer.mix[1].studWeight*13/4);
     ui->sourceCB_2->setCurrentIndex(g_eeGeneral.trainer.mix[1].srcChn);
-    populateSwitchCB(ui->swtchCB_2,g_eeGeneral.trainer.mix[1].swtch);
+    populateTrainerSwitchCB(ui->swtchCB_2,g_eeGeneral.trainer.mix[1].swtch);
     StudWeight2=g_eeGeneral.trainer.mix[1].studWeight*13/4;
 
     ui->modeCB_3->setCurrentIndex(g_eeGeneral.trainer.mix[2].mode);
     ui->weightSB_3->setValue(g_eeGeneral.trainer.mix[2].studWeight*13/4);
     ui->sourceCB_3->setCurrentIndex(g_eeGeneral.trainer.mix[2].srcChn);
-    populateSwitchCB(ui->swtchCB_3,g_eeGeneral.trainer.mix[2].swtch);
+    populateTrainerSwitchCB(ui->swtchCB_3,g_eeGeneral.trainer.mix[2].swtch);
     StudWeight3=g_eeGeneral.trainer.mix[2].studWeight*13/4;
 
     ui->modeCB_4->setCurrentIndex(g_eeGeneral.trainer.mix[0].mode);
     ui->weightSB_4->setValue(g_eeGeneral.trainer.mix[3].studWeight*13/4);
     ui->sourceCB_4->setCurrentIndex(g_eeGeneral.trainer.mix[3].srcChn);
-    populateSwitchCB(ui->swtchCB_4,g_eeGeneral.trainer.mix[3].swtch);
+    populateTrainerSwitchCB(ui->swtchCB_4,g_eeGeneral.trainer.mix[3].swtch);
     StudWeight4=g_eeGeneral.trainer.mix[3].studWeight*13/4;
 
     ui->trainerCalib_1->setValue(g_eeGeneral.trainer.calib[0]);
@@ -214,22 +214,22 @@ void GeneralEdit::trainerTabValueChanged()
     g_eeGeneral.trainer.mix[0].mode       = ui->modeCB_1->currentIndex();
 //    g_eeGeneral.trainer.mix[0].studWeight = ui->weightSB_1->value()*4/13;
     g_eeGeneral.trainer.mix[0].srcChn     = ui->sourceCB_1->currentIndex();
-    g_eeGeneral.trainer.mix[0].swtch      = ui->swtchCB_1->currentIndex()-MAX_DRSWITCH;
+    g_eeGeneral.trainer.mix[0].swtch      = ui->swtchCB_1->currentIndex()-15 ;
 
     g_eeGeneral.trainer.mix[1].mode       = ui->modeCB_2->currentIndex();
 //    g_eeGeneral.trainer.mix[1].studWeight = ui->weightSB_2->value()*4/13;
     g_eeGeneral.trainer.mix[1].srcChn     = ui->sourceCB_2->currentIndex();
-    g_eeGeneral.trainer.mix[1].swtch      = ui->swtchCB_2->currentIndex()-MAX_DRSWITCH;
+    g_eeGeneral.trainer.mix[1].swtch      = ui->swtchCB_2->currentIndex()-15 ;
 
     g_eeGeneral.trainer.mix[2].mode       = ui->modeCB_3->currentIndex();
 //    g_eeGeneral.trainer.mix[2].studWeight = ui->weightSB_3->value()*4/13;
     g_eeGeneral.trainer.mix[2].srcChn     = ui->sourceCB_3->currentIndex();
-    g_eeGeneral.trainer.mix[2].swtch      = ui->swtchCB_3->currentIndex()-MAX_DRSWITCH;
+    g_eeGeneral.trainer.mix[2].swtch      = ui->swtchCB_3->currentIndex()-15 ;
 
     g_eeGeneral.trainer.mix[3].mode       = ui->modeCB_4->currentIndex();
 //    g_eeGeneral.trainer.mix[3].studWeight = ui->weightSB_4->value()*4/13;
     g_eeGeneral.trainer.mix[3].srcChn     = ui->sourceCB_4->currentIndex();
-    g_eeGeneral.trainer.mix[3].swtch      = ui->swtchCB_4->currentIndex()-MAX_DRSWITCH;
+    g_eeGeneral.trainer.mix[3].swtch      = ui->swtchCB_4->currentIndex()-15 ;
 
     g_eeGeneral.trainer.calib[0] = ui->trainerCalib_1->value();
     g_eeGeneral.trainer.calib[1] = ui->trainerCalib_2->value();

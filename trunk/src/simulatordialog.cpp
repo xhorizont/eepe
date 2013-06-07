@@ -115,10 +115,10 @@ void simulatorDialog::timerEvent()
     if(beepShow) beepShow--;
 
 
-		if ( ++one_sec_precount >= 100 )
+		if ( ++one_sec_precount >= 10 )
 		{
-			one_sec_precount -= 100 ;
-			// One second has elapsed			
+			one_sec_precount -= 10 ;
+			// 0.1 second has elapsed			
 			for ( i = 0 ; i < NUM_CSW ; i += 1 )
 			{
     		CSwData &cs = g_model.customSw[i];
@@ -126,20 +126,41 @@ void simulatorDialog::timerEvent()
 
     		if(cstate == CS_TIMER)
 				{
-					if ( CsTimer[i] == 0 )
+					int16_t y ;
+					y = CsTimer[i] ;
+					if ( y == 0 )
 					{
-						CsTimer[i] = -cs.v1-1 ;
-					}
-					else if ( CsTimer[i] < 0 )
-					{
-						if ( ++CsTimer[i] == 0 )
+						int8_t z ;
+						z = cs.v1 ;
+						if ( z >= 0 )
 						{
-							CsTimer[i] = cs.v2 ;
+							z = -z-1 ;
+							y = z * 10 ;					
+						}
+						else
+						{
+							y = z ;
+						}
+					}
+					else if ( y < 0 )
+					{
+						if ( ++y == 0 )
+						{
+							int8_t z ;
+							z = cs.v2 ;
+							if ( z >= 0 )
+							{
+								y = z * 10 ;
+							}
+							else
+							{
+								y = -z-1 ;
+							}
 						}
 					}
 					else  // if ( CsTimer[i] > 0 )
 					{
-						CsTimer[i] -= 1 ;
+						y -= 1 ;
 					}
 					if ( cs.andsw )
 					{
@@ -151,9 +172,10 @@ void simulatorDialog::timerEvent()
 						}
 	      	  if (getSwitch( x, 0, 0) == 0 )
 					  {
-							CsTimer[i] = -1 ;
+							y = -1 ;
 						}	
 					}
+					CsTimer[i] = y ;
 				}
 			}
 		}

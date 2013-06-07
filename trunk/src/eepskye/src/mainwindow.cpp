@@ -597,6 +597,10 @@ void MainWindow::burnFrom()
     avrOutputDialog *ad = new avrOutputDialog(this, avrdudeLoc, arguments,tr("Read EEPROM From Tx")); //, AVR_DIALOG_KEEP_OPEN);
     ad->setWindowIcon(QIcon(":/images/read_eeprom.png"));
     int res = ad->exec();
+		if ( res == 0 )
+		{
+    	QMessageBox::critical(this, "eePskye", tr("SAM-BA did not finish correctly"));
+		}
 
     if(QFileInfo(tempFile).exists() && res)
     {
@@ -741,25 +745,26 @@ void MainWindow::burnExtenalFromEEPROM()
 		    QStringList arguments = GetSambaArguments(QString("SERIALFLASH::Init 0\n") + "receive_file {SerialFlash AT25} \"" + fileName + "\" 0x0 0x2A000 0\n");
 //        arguments << "-c" << programmer << "-p" << mcu << args << "-U" << str;
 
-		    avrOutputDialog *ad = new avrOutputDialog(this, avrdudeLoc, arguments,tr("Read EEPROM From Tx")); //, AVR_DIALOG_KEEP_OPEN);
+		    avrOutputDialog *ad = new avrOutputDialog(this, avrdudeLoc, arguments,tr("Read EEPROM From Tx"), AVR_DIALOG_SHOW_DONE);
 		    ad->setWindowIcon(QIcon(":/images/read_eeprom.png"));
     		int res = ad->exec();
-
-    		if(QFileInfo(fileName).exists() && res)
+				if ( res )
 				{
-        	QFile file(fileName);
-        	if(file.size()!=EESIZE)
+					if( QFileInfo(fileName).exists() )
 					{
-        	  QMessageBox::critical(this, tr("Error"),tr("Error reading file:\n"
+        		QFile file(fileName);
+	        	if(file.size()!=EESIZE)
+						{
+    	    	  QMessageBox::critical(this, tr("Error"),tr("Error reading file:\n"
         	                                               "File wrong size - %1").arg(fileName));
-        	  return ;
+      	  	  return ;
+						}
 					}
-				}
-				else
-				{
-        	QMessageBox::critical(this, tr("Error"),tr("Error reading file:\n").arg(fileName));
-        	return ;
-					
+					else
+					{
+	        	QMessageBox::critical(this, tr("Error"),tr("Error reading file:\n").arg(fileName));
+	        	return ;
+					}
 				}
     }
 
@@ -792,7 +797,7 @@ void MainWindow::burnFromFlash()
         QStringList arguments = GetSambaArguments(QString("receive_file {Flash} \"") + fileName + "\" 0x400000 0x40000 0\n") ;
 //        arguments << "-c" << programmer << "-p" << mcu << args << "-U" << str;
 
-        avrOutputDialog *ad = new avrOutputDialog(this, avrdudeLoc, arguments, "Read Flash From Tx");
+        avrOutputDialog *ad = new avrOutputDialog(this, avrdudeLoc, arguments, "Read Flash From Tx", AVR_DIALOG_SHOW_DONE);
         ad->setWindowIcon(QIcon(":/images/read_flash.png"));
         ad->show();
     }

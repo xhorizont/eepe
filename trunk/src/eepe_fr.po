@@ -1851,6 +1851,10 @@ msgctxt "MixerDialog|"
 msgid "Late Offset"
 msgstr ""
 
+msgctxt "MixerDialog|"
+msgid "Gvar"
+msgstr ""
+
 msgctxt "ModelEdit|"
 msgid "P1"
 msgstr ""
@@ -2777,6 +2781,16 @@ msgstr ""
 #, qt-format
 msgctxt "ModelEdit|"
 msgid " Offset(GV%1)"
+msgstr ""
+
+#, qt-format
+msgctxt "ModelEdit|"
+msgid "!Curve(%1)"
+msgstr ""
+
+#, qt-format
+msgctxt "ModelEdit|"
+msgid "%1.%2"
 msgstr ""
 
 msgctxt "QObject|"
@@ -4088,6 +4102,22 @@ msgstr ""
 
 msgctxt "serialDialog|"
 msgid "File(s) To Send"
+msgstr ""
+
+msgctxt "serialDialog|"
+msgid "Files"
+msgstr ""
+
+msgctxt "serialDialog|"
+msgid "Com Port Unavailable"
+msgstr ""
+
+msgctxt "serialDialog|"
+msgid "No Sync."
+msgstr ""
+
+msgctxt "serialDialog|"
+msgid "Communication Failure(2)"
 msgstr ""
 
 msgctxt "simulatorDialog|"

@@ -23,22 +23,30 @@ MixerDialog::MixerDialog(QWidget *parent, SKYMixData *mixdata, int stickMode, QS
     ui->sourceCB->setCurrentIndex(md->srcRaw);
     
 		ui->sourceCB->removeItem(0);
-    populateNumericGVarCB( ui->weightCB, md->weight, -125, 125 ) ;
-    populateNumericGVarCB( ui->offsetCB, md->sOffset, -125, 125 ) ;
-    ui->trimChkB->setChecked(md->carryTrim==0);
+    
+		populateSpinGVarCB( ui->weightSB, ui->weightCB, ui->weightGvChkB, md->weight, -125, 125 ) ;
+    populateSpinGVarCB( ui->offsetSB, ui->offsetCB, ui->offsetGvChkB, md->sOffset, -125, 125 ) ;
+    
+		ui->trimChkB->setChecked(md->carryTrim==0);
     ui->FMtrimChkB->setChecked(md->enableFmTrim);
     ui->lateOffsetChkB->setChecked(md->lateOffset);
     populateSwitchCB(ui->switchesCB,md->swtch);
     ui->warningCB->setCurrentIndex(md->mixWarn);
     ui->mltpxCB->setCurrentIndex(md->mltpx);
 		ui->diffcurveCB->setCurrentIndex(md->differential) ;
+		
 		if (md->differential)
 		{
-			populateNumericGVarCB( ui->curvesCB, md->curve, -100, 100 ) ;
+			populateSpinGVarCB( ui->curvesSB, ui->curvesCB, ui->curveGvChkB, md->curve, -100, 100 ) ;
+			ui->curveGvChkB->setVisible( true ) ;
 		}
 		else
 		{
 			populateCurvesCB(ui->curvesCB, md->curve ) ;
+			ui->curvesCB->setVisible( true ) ;
+			ui->curvesSB->setVisible( false ) ;
+			ui->curveGvChkB->setVisible( false ) ;
+      ui->curveGvChkB->setChecked( false ) ;
 		}
 
     ui->delayDownSB->setValue((double)md->delayDown/10);
@@ -49,15 +57,21 @@ MixerDialog::MixerDialog(QWidget *parent, SKYMixData *mixdata, int stickMode, QS
     mixCommennt = comment;
     ui->mixerComment->setPlainText(mixCommennt->trimmed());
 
-
     valuesChanged();
 
     connect(ui->sourceCB,SIGNAL(currentIndexChanged(int)),this,SLOT(valuesChanged()));
+    connect(ui->weightSB,SIGNAL(valueChanged(int)),this,SLOT(valuesChanged()));
     connect(ui->weightCB,SIGNAL(currentIndexChanged(int)),this,SLOT(valuesChanged()));
-    connect(ui->offsetCB,SIGNAL(currentIndexChanged(int)),this,SLOT(valuesChanged()));
+    connect(ui->weightGvChkB,SIGNAL(stateChanged(int)),this,SLOT(valuesChanged()));
+    connect(ui->offsetSB,SIGNAL(valueChanged(int)),this,SLOT(valuesChanged()));
+		connect(ui->offsetCB,SIGNAL(currentIndexChanged(int)),this,SLOT(valuesChanged()));
+    connect(ui->offsetGvChkB,SIGNAL(stateChanged(int)),this,SLOT(valuesChanged()));
     connect(ui->trimChkB,SIGNAL(toggled(bool)),this,SLOT(valuesChanged()));
-    connect(ui->curvesCB,SIGNAL(currentIndexChanged(int)),this,SLOT(valuesChanged()));
-    connect(ui->switchesCB,SIGNAL(currentIndexChanged(int)),this,SLOT(valuesChanged()));
+		connect(ui->curvesCB,SIGNAL(currentIndexChanged(int)),this,SLOT(valuesChanged()));
+    connect(ui->curvesSB,SIGNAL(valueChanged(int)),this,SLOT(valuesChanged()));
+    connect(ui->curveGvChkB,SIGNAL(stateChanged(int)),this,SLOT(valuesChanged()));
+		connect(ui->diffcurveCB,SIGNAL(currentIndexChanged(int)),this,SLOT(valuesChanged()));
+		connect(ui->switchesCB,SIGNAL(currentIndexChanged(int)),this,SLOT(valuesChanged()));
     connect(ui->warningCB,SIGNAL(currentIndexChanged(int)),this,SLOT(valuesChanged()));
     connect(ui->mltpxCB,SIGNAL(currentIndexChanged(int)),this,SLOT(valuesChanged()));
     connect(ui->delayDownSB,SIGNAL(valueChanged(double)),this,SLOT(valuesChanged()));
@@ -65,8 +79,7 @@ MixerDialog::MixerDialog(QWidget *parent, SKYMixData *mixdata, int stickMode, QS
     connect(ui->slowDownSB,SIGNAL(valueChanged(double)),this,SLOT(valuesChanged()));
     connect(ui->slowUpSB,SIGNAL(valueChanged(double)),this,SLOT(valuesChanged()));
     connect(ui->FMtrimChkB,SIGNAL(stateChanged(int)),this,SLOT(valuesChanged()));
-    connect(ui->diffcurveCB,SIGNAL(currentIndexChanged(int)),this,SLOT(valuesChanged()));
-    connect(ui->mixerComment,SIGNAL(textChanged()),this,SLOT(valuesChanged()));
+		connect(ui->mixerComment,SIGNAL(textChanged()),this,SLOT(valuesChanged()));
     connect(ui->lateOffsetChkB,SIGNAL(stateChanged(int)),this,SLOT(valuesChanged()));
 }
 
@@ -92,8 +105,8 @@ void MixerDialog::valuesChanged()
 {
 	int oldcurvemode ;
     md->srcRaw       = ui->sourceCB->currentIndex()+1;
-    md->weight       = numericGvarValue( ui->weightCB, -125, 125 ) ;
-    md->sOffset      = numericGvarValue( ui->offsetCB, -125, 125 ) ;
+    md->weight       = numericSpinGvarValue( ui->weightSB, ui->weightCB, ui->weightGvChkB, md->weight, 100 ) ;
+    md->sOffset      = numericSpinGvarValue( ui->offsetSB, ui->offsetCB, ui->offsetGvChkB, md->sOffset, 0 ) ;
     md->carryTrim    = ui->trimChkB->checkState() ? 0 : 1;
     md->swtch        = ui->switchesCB->currentIndex()-MAX_DRSWITCH;
     md->mixWarn      = ui->warningCB->currentIndex();
@@ -112,20 +125,29 @@ void MixerDialog::valuesChanged()
 		{
 			if (md->differential)
 			{
-				populateNumericGVarCB( ui->curvesCB, 0, -100, 100 ) ;
+				populateSpinGVarCB( ui->curvesSB, ui->curvesCB, ui->curveGvChkB, 0, -100, 100 ) ;
+				ui->curveGvChkB->setVisible( true ) ;
 			}
 			else
 			{
+	      ui->curveGvChkB->setChecked( false ) ;
 				populateCurvesCB(ui->curvesCB, 0 ) ;
+				ui->curveGvChkB->setVisible( false ) ;
+				ui->curvesSB->setVisible( false ) ;
+				ui->curvesCB->setVisible( true ) ;
 			}
-		}
-		if (md->differential)
-		{
-			md->curve = numericGvarValue( ui->curvesCB, -100, 100 ) ;			
+	    md->curve = numericSpinGvarValue( ui->curvesSB, ui->curvesCB, ui->curveGvChkB, 0, 0 ) ;
 		}
 		else
 		{
-    	md->curve        = ui->curvesCB->currentIndex()-24;
+			if (md->differential)
+			{
+	   		md->curve = numericSpinGvarValue( ui->curvesSB, ui->curvesCB, ui->curveGvChkB, md->curve, 0 ) ;
+			}
+			else
+			{
+    		md->curve = ui->curvesCB->currentIndex()-24;
+			}
 		}
 
 
@@ -137,3 +159,6 @@ void MixerDialog::valuesChanged()
     mixCommennt->clear();
     mixCommennt->append(ui->mixerComment->toPlainText());
 }
+
+
+

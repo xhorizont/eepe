@@ -113,6 +113,84 @@ void populateGvarCB(QComboBox *b, int value)
     b->setMaxVisibleItems(13);
 }
 
+int numericSpinGvarValue( QSpinBox *sb, QComboBox *cb, QCheckBox *ck, int value, int defvar )
+{
+	if ( ( value < -125 ) || ( value > 125) )
+	{
+		// Was a GVAR
+		if ( ck->checkState() )
+		{ // stil is
+			value = cb->currentIndex() ;
+			value += 126 ;
+			if ( value > 127 )
+			{
+        value -= 256 ;
+			}
+		}
+		else
+		{
+			// Now isn't
+			value = defvar ;		// Default value
+			sb->setValue( value ) ;
+			sb->setVisible( true ) ;
+			cb->setVisible( false ) ;
+		}
+	}
+	else
+	{ // Not a GVAR
+		if ( ck->checkState() )
+		{ // Now is a GVAR
+			value = 126 ;
+			cb->setCurrentIndex( 0 ) ;
+			cb->setVisible( true ) ;
+			sb->setVisible( false ) ;
+		}
+		else
+		{ // Still isn't a GVAR
+			value = sb->value() ;
+		}
+	}
+	return value ;		 
+}
+
+void populateSpinGVarCB( QSpinBox *sb, QComboBox *cb, QCheckBox *ck, int value, int min, int max )
+{
+  cb->clear() ;
+  for (int i=1; i<=5; i++)
+	{
+    cb->addItem(QObject::tr("GV%1").arg(i));
+  }
+	sb->setMinimum( min ) ;
+	sb->setMaximum( max ) ;
+
+	if ( ( value < -125 ) || ( value > 125) )
+	{
+		// A GVAR
+		if ( value < 0 )
+		{
+			value += 128+2 ;			
+		}
+		else
+		{
+			value -= 126 ;
+		}
+		// value is now 0-4 for GVAR 1-5
+		ck->setChecked( true ) ;
+		cb->setCurrentIndex(value) ;
+		cb->setVisible( true ) ;
+		sb->setVisible( false ) ;
+	}
+	else
+	{
+		ck->setChecked( false ) ;
+		sb->setValue( value ) ;
+		sb->setVisible( true ) ;
+		cb->setVisible( false ) ;
+	}
+}
+
+
+
 void populateNumericGVarCB( QComboBox *b, int value, int min, int max)
 {
   b->clear();
@@ -437,6 +515,16 @@ void populateSwitchCB(QComboBox *b, int value=0)
     b->setCurrentIndex(value+MAX_DRSWITCH);
     b->setMaxVisibleItems(10);
 }
+
+void populateTrainerSwitchCB(QComboBox *b, int value=0)
+{
+    b->clear();
+    for(int i=-15; i<=15; i++)
+        b->addItem(getSWName(i));
+    b->setCurrentIndex(value+15);
+    b->setMaxVisibleItems(10);
+}
+
 
 void populateSwitchShortCB(QComboBox *b, int value)
 {

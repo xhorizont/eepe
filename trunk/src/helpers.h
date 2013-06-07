@@ -18,10 +18,13 @@
 #define HEX_FILE_SIZE (1024*64)
 
 
+void populateSpinGVarCB( QSpinBox *sb, QComboBox *cb, QCheckBox *ck, int value, int min, int max) ;
+int numericSpinGvarValue( QSpinBox *sb, QComboBox *cb, QCheckBox *ck, int value, int defvar ) ;
 void populateGvarCB(QComboBox *b, int value=0) ;
 void populateNumericGVarCB( QComboBox *b, int value, int min, int max) ;
 int numericGvarValue( QComboBox *b, int min, int max ) ;
 void populateSwitchCB(QComboBox *b, int value);
+void populateTrainerSwitchCB(QComboBox *b, int value) ;
 void populateSwitchShortCB(QComboBox *b, int value=0);
 void populateSafetySwitchCB(QComboBox *b, int type, int value) ;
 void populateSafetyVoiceTypeCB(QComboBox *b, int type, int value);

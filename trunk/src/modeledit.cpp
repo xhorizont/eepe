@@ -259,6 +259,7 @@ void ModelEdit::setProtocolBoxes()
 
 void ModelEdit::tabExpo()
 {
+	int x ;
     populateSwitchCB(ui->RUD_edrSw1,g_model.expoData[CONVERT_MODE(RUD)-1].drSw1);
     populateSwitchCB(ui->RUD_edrSw2,g_model.expoData[CONVERT_MODE(RUD)-1].drSw2);
     populateSwitchCB(ui->ELE_edrSw1,g_model.expoData[CONVERT_MODE(ELE)-1].drSw1);
@@ -278,68 +279,131 @@ void ModelEdit::tabExpo()
 //#define DR_RIGHT  0
 //#define DR_LEFT   1
 //expo[3][2][2] //[HI/MID/LOW][expo/weight][R/L]
-    ui->RUD_DrLHi->setValue(g_model.expoData[CONVERT_MODE(RUD)-1].expo[DR_HIGH][DR_WEIGHT][DR_LEFT]+100);
-    ui->RUD_DrLLow->setValue(g_model.expoData[CONVERT_MODE(RUD)-1].expo[DR_LOW][DR_WEIGHT][DR_LEFT]+100);
-    ui->RUD_DrLMid->setValue(g_model.expoData[CONVERT_MODE(RUD)-1].expo[DR_MID][DR_WEIGHT][DR_LEFT]+100);
-    ui->RUD_DrRHi->setValue(g_model.expoData[CONVERT_MODE(RUD)-1].expo[DR_HIGH][DR_WEIGHT][DR_RIGHT]+100);
-    ui->RUD_DrRLow->setValue(g_model.expoData[CONVERT_MODE(RUD)-1].expo[DR_LOW][DR_WEIGHT][DR_RIGHT]+100);
-    ui->RUD_DrRMid->setValue(g_model.expoData[CONVERT_MODE(RUD)-1].expo[DR_MID][DR_WEIGHT][DR_RIGHT]+100);
-    ui->RUD_ExpoLHi->setValue(g_model.expoData[CONVERT_MODE(RUD)-1].expo[DR_HIGH][DR_EXPO][DR_LEFT]);
-    ui->RUD_ExpoLLow->setValue(g_model.expoData[CONVERT_MODE(RUD)-1].expo[DR_LOW][DR_EXPO][DR_LEFT]);
-    ui->RUD_ExpoLMid->setValue(g_model.expoData[CONVERT_MODE(RUD)-1].expo[DR_MID][DR_EXPO][DR_LEFT]);
-    ui->RUD_ExpoRHi->setValue(g_model.expoData[CONVERT_MODE(RUD)-1].expo[DR_HIGH][DR_EXPO][DR_RIGHT]);
-    ui->RUD_ExpoRLow->setValue(g_model.expoData[CONVERT_MODE(RUD)-1].expo[DR_LOW][DR_EXPO][DR_RIGHT]);
-    ui->RUD_ExpoRMid->setValue(g_model.expoData[CONVERT_MODE(RUD)-1].expo[DR_MID][DR_EXPO][DR_RIGHT]);
 
-    ui->ELE_DrLHi->setValue(g_model.expoData[CONVERT_MODE(ELE)-1].expo[DR_HIGH][DR_WEIGHT][DR_LEFT]+100);
-    ui->ELE_DrLLow->setValue(g_model.expoData[CONVERT_MODE(ELE)-1].expo[DR_LOW][DR_WEIGHT][DR_LEFT]+100);
-    ui->ELE_DrLMid->setValue(g_model.expoData[CONVERT_MODE(ELE)-1].expo[DR_MID][DR_WEIGHT][DR_LEFT]+100);
-    ui->ELE_DrRHi->setValue(g_model.expoData[CONVERT_MODE(ELE)-1].expo[DR_HIGH][DR_WEIGHT][DR_RIGHT]+100);
-    ui->ELE_DrRLow->setValue(g_model.expoData[CONVERT_MODE(ELE)-1].expo[DR_LOW][DR_WEIGHT][DR_RIGHT]+100);
-    ui->ELE_DrRMid->setValue(g_model.expoData[CONVERT_MODE(ELE)-1].expo[DR_MID][DR_WEIGHT][DR_RIGHT]+100);
-    ui->ELE_ExpoLHi->setValue(g_model.expoData[CONVERT_MODE(ELE)-1].expo[DR_HIGH][DR_EXPO][DR_LEFT]);
-    ui->ELE_ExpoLLow->setValue(g_model.expoData[CONVERT_MODE(ELE)-1].expo[DR_LOW][DR_EXPO][DR_LEFT]);
-    ui->ELE_ExpoLMid->setValue(g_model.expoData[CONVERT_MODE(ELE)-1].expo[DR_MID][DR_EXPO][DR_LEFT]);
-    ui->ELE_ExpoRHi->setValue(g_model.expoData[CONVERT_MODE(ELE)-1].expo[DR_HIGH][DR_EXPO][DR_RIGHT]);
-    ui->ELE_ExpoRLow->setValue(g_model.expoData[CONVERT_MODE(ELE)-1].expo[DR_LOW][DR_EXPO][DR_RIGHT]);
-    ui->ELE_ExpoRMid->setValue(g_model.expoData[CONVERT_MODE(ELE)-1].expo[DR_MID][DR_EXPO][DR_RIGHT]);
+		int i, j, k ;
+		QSpinBox *sb ;
+		QComboBox *cb ;
+		QCheckBox *chkb ;
+		
+		for ( i = 0 ; i < 3 ; i += 1 )
+		{ // 0=High, 1=Mid, 2=Low
+			for ( j = 0 ; j < 2 ; j += 1 )
+			{ // 0=Weight, 1=Expo
+				for ( k = 0 ; k < 2 ; k += 1 )
+				{ // 0=Right, 1=Left
+					int xpos ;
+					xpos = k*2+j ;
+					switch ( xpos )
+					{
+						case 3 :
+							xpos = 1 ;
+						break ;
+						case 2 :
+							xpos = 2 ;
+						break ;
+						case 1 :
+							xpos = 4 ;
+						break ;
+						case 0 :
+							xpos = 3 ;
+						break ;
+					}
+					sb = expoDrSpin[1][i][j][k] = new QSpinBox(this) ;
+					sb->setFixedSize( 64, 20 ) ;
+					cb = expoDrVal[1][i][j][k] = new QComboBox(this) ;
+					cb->setFixedSize( 64, 20 ) ;
+    			ui->gridLayout_Ail->addWidget( sb,i*2+1,xpos);
+    			ui->gridLayout_Ail->addWidget( cb,i*2+1,xpos);
+					chkb = expoDrGvar[1][i][j][k] = new QCheckBox(this) ;
+    			ui->gridLayout_Ail->addWidget( chkb,i*2+2,xpos);
+					chkb->setText( "Gvar" ) ;
 
-    ui->THR_DrLHi->setValue(g_model.expoData[CONVERT_MODE(THR)-1].expo[DR_HIGH][DR_WEIGHT][DR_LEFT]+100);
-    ui->THR_DrLLow->setValue(g_model.expoData[CONVERT_MODE(THR)-1].expo[DR_LOW][DR_WEIGHT][DR_LEFT]+100);
-    ui->THR_DrLMid->setValue(g_model.expoData[CONVERT_MODE(THR)-1].expo[DR_MID][DR_WEIGHT][DR_LEFT]+100);
-    ui->THR_DrRHi->setValue(g_model.expoData[CONVERT_MODE(THR)-1].expo[DR_HIGH][DR_WEIGHT][DR_RIGHT]+100);
-    ui->THR_DrRLow->setValue(g_model.expoData[CONVERT_MODE(THR)-1].expo[DR_LOW][DR_WEIGHT][DR_RIGHT]+100);
-    ui->THR_DrRMid->setValue(g_model.expoData[CONVERT_MODE(THR)-1].expo[DR_MID][DR_WEIGHT][DR_RIGHT]+100);
-    ui->THR_ExpoLHi->setValue(g_model.expoData[CONVERT_MODE(THR)-1].expo[DR_HIGH][DR_EXPO][DR_LEFT]);
-    ui->THR_ExpoLLow->setValue(g_model.expoData[CONVERT_MODE(THR)-1].expo[DR_LOW][DR_EXPO][DR_LEFT]);
-    ui->THR_ExpoLMid->setValue(g_model.expoData[CONVERT_MODE(THR)-1].expo[DR_MID][DR_EXPO][DR_LEFT]);
-    ui->THR_ExpoRHi->setValue(g_model.expoData[CONVERT_MODE(THR)-1].expo[DR_HIGH][DR_EXPO][DR_RIGHT]);
-    ui->THR_ExpoRLow->setValue(g_model.expoData[CONVERT_MODE(THR)-1].expo[DR_LOW][DR_EXPO][DR_RIGHT]);
-    ui->THR_ExpoRMid->setValue(g_model.expoData[CONVERT_MODE(THR)-1].expo[DR_MID][DR_EXPO][DR_RIGHT]);
+					x = g_model.expoData[CONVERT_MODE(AIL)-1].expo[i][j][k] ;
+					if ( j == 0 )
+					{
+    				if ( ( x >= -100 && x <= 100 ) ) x += 100 ;
+					}
+					populateSpinGVarCB( sb, cb, chkb, x, 0, 100 ) ;
+			    
+					connect( sb, SIGNAL(editingFinished()),this,SLOT(expoEdited()));
+			    connect( cb, SIGNAL(currentIndexChanged(int)),this,SLOT(expoEdited()));
+			    connect( chkb,SIGNAL(stateChanged(int)),this,SLOT(expoEdited()));
 
-    ui->AIL_DrLHi->setValue(g_model.expoData[CONVERT_MODE(AIL)-1].expo[DR_HIGH][DR_WEIGHT][DR_LEFT]+100);
-    ui->AIL_DrLLow->setValue(g_model.expoData[CONVERT_MODE(AIL)-1].expo[DR_LOW][DR_WEIGHT][DR_LEFT]+100);
-    ui->AIL_DrLMid->setValue(g_model.expoData[CONVERT_MODE(AIL)-1].expo[DR_MID][DR_WEIGHT][DR_LEFT]+100);
-    ui->AIL_DrRHi->setValue(g_model.expoData[CONVERT_MODE(AIL)-1].expo[DR_HIGH][DR_WEIGHT][DR_RIGHT]+100);
-    ui->AIL_DrRLow->setValue(g_model.expoData[CONVERT_MODE(AIL)-1].expo[DR_LOW][DR_WEIGHT][DR_RIGHT]+100);
-    ui->AIL_DrRMid->setValue(g_model.expoData[CONVERT_MODE(AIL)-1].expo[DR_MID][DR_WEIGHT][DR_RIGHT]+100);
-    ui->AIL_ExpoLHi->setValue(g_model.expoData[CONVERT_MODE(AIL)-1].expo[DR_HIGH][DR_EXPO][DR_LEFT]);
-    ui->AIL_ExpoLLow->setValue(g_model.expoData[CONVERT_MODE(AIL)-1].expo[DR_LOW][DR_EXPO][DR_LEFT]);
-    ui->AIL_ExpoLMid->setValue(g_model.expoData[CONVERT_MODE(AIL)-1].expo[DR_MID][DR_EXPO][DR_LEFT]);
-    ui->AIL_ExpoRHi->setValue(g_model.expoData[CONVERT_MODE(AIL)-1].expo[DR_HIGH][DR_EXPO][DR_RIGHT]);
-    ui->AIL_ExpoRLow->setValue(g_model.expoData[CONVERT_MODE(AIL)-1].expo[DR_LOW][DR_EXPO][DR_RIGHT]);
-    ui->AIL_ExpoRMid->setValue(g_model.expoData[CONVERT_MODE(AIL)-1].expo[DR_MID][DR_EXPO][DR_RIGHT]);
+					sb = expoDrSpin[0][i][j][k] = new QSpinBox(this) ;
+					sb->setFixedSize( 64, 20 ) ;
+					cb = expoDrVal[0][i][j][k] = new QComboBox(this) ;
+					cb->setFixedSize( 64, 20 ) ;
+    			ui->gridLayout_Rud->addWidget( sb,i*2+1,xpos);
+    			ui->gridLayout_Rud->addWidget( cb,i*2+1,xpos);
+					chkb = expoDrGvar[0][i][j][k] = new QCheckBox(this) ;
+    			ui->gridLayout_Rud->addWidget( chkb,i*2+2,xpos);
+					chkb->setText( "Gvar" ) ;
 
+					x = g_model.expoData[CONVERT_MODE(RUD)-1].expo[i][j][k] ;
+					if ( j == 0 )
+					{
+    				if ( ( x >= -100 && x <= 100 ) ) x += 100 ;
+					}
+					populateSpinGVarCB( sb, cb, chkb, x, 0, 100 ) ;
+			    
+					connect( sb, SIGNAL(editingFinished()),this,SLOT(expoEdited()));
+			    connect( cb, SIGNAL(currentIndexChanged(int)),this,SLOT(expoEdited()));
+			    connect( chkb,SIGNAL(stateChanged(int)),this,SLOT(expoEdited()));
 
-    if(g_model.thrExpo)
-    {
-        ui->THR_DrLHi->setEnabled(false);
-        ui->THR_DrLLow->setEnabled(false);
-        ui->THR_DrLMid->setEnabled(false);
-        ui->THR_ExpoLHi->setEnabled(false);
-        ui->THR_ExpoLLow->setEnabled(false);
-        ui->THR_ExpoLMid->setEnabled(false);
-    }
+					sb = expoDrSpin[2][i][j][k] = new QSpinBox(this) ;
+					sb->setFixedSize( 64, 20 ) ;
+					cb = expoDrVal[2][i][j][k] = new QComboBox(this) ;
+					cb->setFixedSize( 64, 20 ) ;
+    			ui->gridLayout_Thr->addWidget( sb,i*2+1,xpos);
+    			ui->gridLayout_Thr->addWidget( cb,i*2+1,xpos);
+					chkb = expoDrGvar[2][i][j][k] = new QCheckBox(this) ;
+    			ui->gridLayout_Thr->addWidget( chkb,i*2+2,xpos);
+					chkb->setText( "Gvar" ) ;
+
+					x = g_model.expoData[CONVERT_MODE(THR)-1].expo[i][j][k] ;
+					if ( j == 0 )
+					{
+    				if ( ( x >= -100 && x <= 100 ) ) x += 100 ;
+					}
+					populateSpinGVarCB( sb, cb, chkb, x, 0, 100 ) ;
+			    
+					connect( sb, SIGNAL(editingFinished()),this,SLOT(expoEdited()));
+			    connect( cb, SIGNAL(currentIndexChanged(int)),this,SLOT(expoEdited()));
+			    connect( chkb,SIGNAL(stateChanged(int)),this,SLOT(expoEdited()));
+			    if(g_model.thrExpo)
+					{
+						if ( k == 1 )
+						{
+			        sb->setEnabled(false);
+      			  cb->setEnabled(false);
+			        chkb->setEnabled(false);
+						}
+					}
+
+					sb = expoDrSpin[3][i][j][k] = new QSpinBox(this) ;
+					sb->setFixedSize( 64, 20 ) ;
+					cb = expoDrVal[3][i][j][k] = new QComboBox(this) ;
+					cb->setFixedSize( 64, 20 ) ;
+    			ui->gridLayout_Ele->addWidget( sb,i*2+1,xpos);
+    			ui->gridLayout_Ele->addWidget( cb,i*2+1,xpos);
+					chkb = expoDrGvar[3][i][j][k] = new QCheckBox(this) ;
+    			ui->gridLayout_Ele->addWidget( chkb,i*2+2,xpos);
+					chkb->setText( "Gvar" ) ;
+
+					x = g_model.expoData[CONVERT_MODE(ELE)-1].expo[i][j][k] ;
+					if ( j == 0 )
+					{
+    				if ( ( x >= -100 && x <= 100 ) ) x += 100 ;
+					}
+					populateSpinGVarCB( sb, cb, chkb, x, 0, 100 ) ;
+			    
+					connect( sb, SIGNAL(editingFinished()),this,SLOT(expoEdited()));
+			    connect( cb, SIGNAL(currentIndexChanged(int)),this,SLOT(expoEdited()));
+			    connect( chkb,SIGNAL(stateChanged(int)),this,SLOT(expoEdited()));
+
+				}
+			}
+		} 
 
     connect(ui->RUD_edrSw1,SIGNAL(currentIndexChanged(int)),this,SLOT(expoEdited()));
     connect(ui->RUD_edrSw2,SIGNAL(currentIndexChanged(int)),this,SLOT(expoEdited()));
@@ -350,64 +414,23 @@ void ModelEdit::tabExpo()
     connect(ui->AIL_edrSw1,SIGNAL(currentIndexChanged(int)),this,SLOT(expoEdited()));
     connect(ui->AIL_edrSw2,SIGNAL(currentIndexChanged(int)),this,SLOT(expoEdited()));
 
-    connect(ui->RUD_DrLHi,SIGNAL(editingFinished()),this,SLOT(expoEdited()));
-    connect(ui->RUD_DrLLow,SIGNAL(editingFinished()),this,SLOT(expoEdited()));
-    connect(ui->RUD_DrLMid,SIGNAL(editingFinished()),this,SLOT(expoEdited()));
-    connect(ui->RUD_DrRHi,SIGNAL(editingFinished()),this,SLOT(expoEdited()));
-    connect(ui->RUD_DrRLow,SIGNAL(editingFinished()),this,SLOT(expoEdited()));
-    connect(ui->RUD_DrRMid,SIGNAL(editingFinished()),this,SLOT(expoEdited()));
-    connect(ui->RUD_ExpoLHi,SIGNAL(editingFinished()),this,SLOT(expoEdited()));
-    connect(ui->RUD_ExpoLLow,SIGNAL(editingFinished()),this,SLOT(expoEdited()));
-    connect(ui->RUD_ExpoLMid,SIGNAL(editingFinished()),this,SLOT(expoEdited()));
-    connect(ui->RUD_ExpoRHi,SIGNAL(editingFinished()),this,SLOT(expoEdited()));
-    connect(ui->RUD_ExpoRLow,SIGNAL(editingFinished()),this,SLOT(expoEdited()));
-    connect(ui->RUD_ExpoRMid,SIGNAL(editingFinished()),this,SLOT(expoEdited()));
+}
 
-    connect(ui->ELE_DrLHi,SIGNAL(editingFinished()),this,SLOT(expoEdited()));
-    connect(ui->ELE_DrLLow,SIGNAL(editingFinished()),this,SLOT(expoEdited()));
-    connect(ui->ELE_DrLMid,SIGNAL(editingFinished()),this,SLOT(expoEdited()));
-    connect(ui->ELE_DrRHi,SIGNAL(editingFinished()),this,SLOT(expoEdited()));
-    connect(ui->ELE_DrRLow,SIGNAL(editingFinished()),this,SLOT(expoEdited()));
-    connect(ui->ELE_DrRMid,SIGNAL(editingFinished()),this,SLOT(expoEdited()));
-    connect(ui->ELE_ExpoLHi,SIGNAL(editingFinished()),this,SLOT(expoEdited()));
-    connect(ui->ELE_ExpoLLow,SIGNAL(editingFinished()),this,SLOT(expoEdited()));
-    connect(ui->ELE_ExpoLMid,SIGNAL(editingFinished()),this,SLOT(expoEdited()));
-    connect(ui->ELE_ExpoRHi,SIGNAL(editingFinished()),this,SLOT(expoEdited()));
-    connect(ui->ELE_ExpoRLow,SIGNAL(editingFinished()),this,SLOT(expoEdited()));
-    connect(ui->ELE_ExpoRMid,SIGNAL(editingFinished()),this,SLOT(expoEdited()));
-
-    connect(ui->THR_DrLHi,SIGNAL(editingFinished()),this,SLOT(expoEdited()));
-    connect(ui->THR_DrLLow,SIGNAL(editingFinished()),this,SLOT(expoEdited()));
-    connect(ui->THR_DrLMid,SIGNAL(editingFinished()),this,SLOT(expoEdited()));
-    connect(ui->THR_DrRHi,SIGNAL(editingFinished()),this,SLOT(expoEdited()));
-    connect(ui->THR_DrRLow,SIGNAL(editingFinished()),this,SLOT(expoEdited()));
-    connect(ui->THR_DrRMid,SIGNAL(editingFinished()),this,SLOT(expoEdited()));
-    connect(ui->THR_ExpoLHi,SIGNAL(editingFinished()),this,SLOT(expoEdited()));
-    connect(ui->THR_ExpoLLow,SIGNAL(editingFinished()),this,SLOT(expoEdited()));
-    connect(ui->THR_ExpoLMid,SIGNAL(editingFinished()),this,SLOT(expoEdited()));
-    connect(ui->THR_ExpoRHi,SIGNAL(editingFinished()),this,SLOT(expoEdited()));
-    connect(ui->THR_ExpoRLow,SIGNAL(editingFinished()),this,SLOT(expoEdited()));
-    connect(ui->THR_ExpoRMid,SIGNAL(editingFinished()),this,SLOT(expoEdited()));
-
-    connect(ui->AIL_DrLHi,SIGNAL(editingFinished()),this,SLOT(expoEdited()));
-    connect(ui->AIL_DrLLow,SIGNAL(editingFinished()),this,SLOT(expoEdited()));
-    connect(ui->AIL_DrLMid,SIGNAL(editingFinished()),this,SLOT(expoEdited()));
-    connect(ui->AIL_DrRHi,SIGNAL(editingFinished()),this,SLOT(expoEdited()));
-    connect(ui->AIL_DrRLow,SIGNAL(editingFinished()),this,SLOT(expoEdited()));
-    connect(ui->AIL_DrRMid,SIGNAL(editingFinished()),this,SLOT(expoEdited()));
-    connect(ui->AIL_ExpoLHi,SIGNAL(editingFinished()),this,SLOT(expoEdited()));
-    connect(ui->AIL_ExpoLLow,SIGNAL(editingFinished()),this,SLOT(expoEdited()));
-    connect(ui->AIL_ExpoLMid,SIGNAL(editingFinished()),this,SLOT(expoEdited()));
-    connect(ui->AIL_ExpoRHi,SIGNAL(editingFinished()),this,SLOT(expoEdited()));
-    connect(ui->AIL_ExpoRLow,SIGNAL(editingFinished()),this,SLOT(expoEdited()));
-    connect(ui->AIL_ExpoRMid,SIGNAL(editingFinished()),this,SLOT(expoEdited()));
-
-
+void expoDrSet( int8_t *pval, int x )
+{
+  if ( ( x >= -100 && x <= 100 ) ) x -= 100 ;
+  *pval = x ;
 }
 
 
 void ModelEdit::expoEdited()
 {
+//  int x ;
+		int i, j, k ;
+		QSpinBox *sb ;
+		QComboBox *cb ;
+		QCheckBox *chkb ;
+  int8_t *pval ;
     g_model.expoData[CONVERT_MODE(RUD)-1].drSw1 = ui->RUD_edrSw1->currentIndex()-MAX_DRSWITCH;
     g_model.expoData[CONVERT_MODE(RUD)-1].drSw2 = ui->RUD_edrSw2->currentIndex()-MAX_DRSWITCH;
     g_model.expoData[CONVERT_MODE(ELE)-1].drSw1 = ui->ELE_edrSw1->currentIndex()-MAX_DRSWITCH;
@@ -416,58 +439,68 @@ void ModelEdit::expoEdited()
     g_model.expoData[CONVERT_MODE(THR)-1].drSw2 = ui->THR_edrSw2->currentIndex()-MAX_DRSWITCH;
     g_model.expoData[CONVERT_MODE(AIL)-1].drSw1 = ui->AIL_edrSw1->currentIndex()-MAX_DRSWITCH;
     g_model.expoData[CONVERT_MODE(AIL)-1].drSw2 = ui->AIL_edrSw2->currentIndex()-MAX_DRSWITCH;
+		
+		for ( i = 0 ; i < 3 ; i += 1 )
+		{ // 0=High, 1=Mid, 2=Low
+			for ( j = 0 ; j < 2 ; j += 1 )
+			{ // 0=Weight, 1=Expo
+				for ( k = 0 ; k < 2 ; k += 1 )
+				{ // 0=Right, 1=Left
+					sb = expoDrSpin[1][i][j][k] ;
+					cb = expoDrVal[1][i][j][k] ;
+					chkb = expoDrGvar[1][i][j][k] ;
+			    pval = &g_model.expoData[CONVERT_MODE(AIL)-1].expo[i][j][k] ;
+					if ( j )
+					{
+    				*pval = numericSpinGvarValue( sb, cb, chkb, *pval, 0 ) ;
+					}
+					else
+					{
+			    	expoDrSet( pval, numericSpinGvarValue( sb, cb, chkb, *pval, 100 ) ) ;
+					}
 
-    g_model.expoData[CONVERT_MODE(RUD)-1].expo[DR_HIGH][DR_WEIGHT][DR_LEFT]  = ui->RUD_DrLHi->value()-100;
-    g_model.expoData[CONVERT_MODE(RUD)-1].expo[DR_LOW][DR_WEIGHT][DR_LEFT]   = ui->RUD_DrLLow->value()-100;
-    g_model.expoData[CONVERT_MODE(RUD)-1].expo[DR_MID][DR_WEIGHT][DR_LEFT]   = ui->RUD_DrLMid->value()-100;
-    g_model.expoData[CONVERT_MODE(RUD)-1].expo[DR_HIGH][DR_WEIGHT][DR_RIGHT] = ui->RUD_DrRHi->value()-100;
-    g_model.expoData[CONVERT_MODE(RUD)-1].expo[DR_LOW][DR_WEIGHT][DR_RIGHT]  = ui->RUD_DrRLow->value()-100;
-    g_model.expoData[CONVERT_MODE(RUD)-1].expo[DR_MID][DR_WEIGHT][DR_RIGHT]  = ui->RUD_DrRMid->value()-100;
-    g_model.expoData[CONVERT_MODE(RUD)-1].expo[DR_HIGH][DR_EXPO][DR_LEFT]    = ui->RUD_ExpoLHi->value();
-    g_model.expoData[CONVERT_MODE(RUD)-1].expo[DR_LOW][DR_EXPO][DR_LEFT]     = ui->RUD_ExpoLLow->value();
-    g_model.expoData[CONVERT_MODE(RUD)-1].expo[DR_MID][DR_EXPO][DR_LEFT]     = ui->RUD_ExpoLMid->value();
-    g_model.expoData[CONVERT_MODE(RUD)-1].expo[DR_HIGH][DR_EXPO][DR_RIGHT]   = ui->RUD_ExpoRHi->value();
-    g_model.expoData[CONVERT_MODE(RUD)-1].expo[DR_LOW][DR_EXPO][DR_RIGHT]    = ui->RUD_ExpoRLow->value();
-    g_model.expoData[CONVERT_MODE(RUD)-1].expo[DR_MID][DR_EXPO][DR_RIGHT]    = ui->RUD_ExpoRMid->value();
+					sb = expoDrSpin[0][i][j][k] ;
+					cb = expoDrVal[0][i][j][k] ;
+          chkb = expoDrGvar[0][i][j][k] ;
+			    pval = &g_model.expoData[CONVERT_MODE(RUD)-1].expo[i][j][k] ;
+					if ( j )
+					{
+    				*pval = numericSpinGvarValue( sb, cb, chkb, *pval, 0 ) ;
+					}
+					else
+					{
+			    	expoDrSet( pval, numericSpinGvarValue( sb, cb, chkb, *pval, 100 ) ) ;
+					}
 
-    g_model.expoData[CONVERT_MODE(ELE)-1].expo[DR_HIGH][DR_WEIGHT][DR_LEFT]  = ui->ELE_DrLHi->value()-100;
-    g_model.expoData[CONVERT_MODE(ELE)-1].expo[DR_LOW][DR_WEIGHT][DR_LEFT]   = ui->ELE_DrLLow->value()-100;
-    g_model.expoData[CONVERT_MODE(ELE)-1].expo[DR_MID][DR_WEIGHT][DR_LEFT]   = ui->ELE_DrLMid->value()-100;
-    g_model.expoData[CONVERT_MODE(ELE)-1].expo[DR_HIGH][DR_WEIGHT][DR_RIGHT] = ui->ELE_DrRHi->value()-100;
-    g_model.expoData[CONVERT_MODE(ELE)-1].expo[DR_LOW][DR_WEIGHT][DR_RIGHT]  = ui->ELE_DrRLow->value()-100;
-    g_model.expoData[CONVERT_MODE(ELE)-1].expo[DR_MID][DR_WEIGHT][DR_RIGHT]  = ui->ELE_DrRMid->value()-100;
-    g_model.expoData[CONVERT_MODE(ELE)-1].expo[DR_HIGH][DR_EXPO][DR_LEFT]    = ui->ELE_ExpoLHi->value();
-    g_model.expoData[CONVERT_MODE(ELE)-1].expo[DR_LOW][DR_EXPO][DR_LEFT]     = ui->ELE_ExpoLLow->value();
-    g_model.expoData[CONVERT_MODE(ELE)-1].expo[DR_MID][DR_EXPO][DR_LEFT]     = ui->ELE_ExpoLMid->value();
-    g_model.expoData[CONVERT_MODE(ELE)-1].expo[DR_HIGH][DR_EXPO][DR_RIGHT]   = ui->ELE_ExpoRHi->value();
-    g_model.expoData[CONVERT_MODE(ELE)-1].expo[DR_LOW][DR_EXPO][DR_RIGHT]    = ui->ELE_ExpoRLow->value();
-    g_model.expoData[CONVERT_MODE(ELE)-1].expo[DR_MID][DR_EXPO][DR_RIGHT]    = ui->ELE_ExpoRMid->value();
+					sb = expoDrSpin[2][i][j][k] ;
+					cb = expoDrVal[2][i][j][k] ;
+          chkb = expoDrGvar[2][i][j][k] ;
+			    pval = &g_model.expoData[CONVERT_MODE(THR)-1].expo[i][j][k] ;
+					if ( j )
+					{
+    				*pval = numericSpinGvarValue( sb, cb, chkb, *pval, 0 ) ;
+					}
+					else
+					{
+			    	expoDrSet( pval, numericSpinGvarValue( sb, cb, chkb, *pval, 100 ) ) ;
+					}
 
-    g_model.expoData[CONVERT_MODE(THR)-1].expo[DR_HIGH][DR_WEIGHT][DR_LEFT]  = ui->THR_DrLHi->value()-100;
-    g_model.expoData[CONVERT_MODE(THR)-1].expo[DR_LOW][DR_WEIGHT][DR_LEFT]   = ui->THR_DrLLow->value()-100;
-    g_model.expoData[CONVERT_MODE(THR)-1].expo[DR_MID][DR_WEIGHT][DR_LEFT]   = ui->THR_DrLMid->value()-100;
-    g_model.expoData[CONVERT_MODE(THR)-1].expo[DR_HIGH][DR_WEIGHT][DR_RIGHT] = ui->THR_DrRHi->value()-100;
-    g_model.expoData[CONVERT_MODE(THR)-1].expo[DR_LOW][DR_WEIGHT][DR_RIGHT]  = ui->THR_DrRLow->value()-100;
-    g_model.expoData[CONVERT_MODE(THR)-1].expo[DR_MID][DR_WEIGHT][DR_RIGHT]  = ui->THR_DrRMid->value()-100;
-    g_model.expoData[CONVERT_MODE(THR)-1].expo[DR_HIGH][DR_EXPO][DR_LEFT]    = ui->THR_ExpoLHi->value();
-    g_model.expoData[CONVERT_MODE(THR)-1].expo[DR_LOW][DR_EXPO][DR_LEFT]     = ui->THR_ExpoLLow->value();
-    g_model.expoData[CONVERT_MODE(THR)-1].expo[DR_MID][DR_EXPO][DR_LEFT]     = ui->THR_ExpoLMid->value();
-    g_model.expoData[CONVERT_MODE(THR)-1].expo[DR_HIGH][DR_EXPO][DR_RIGHT]   = ui->THR_ExpoRHi->value();
-    g_model.expoData[CONVERT_MODE(THR)-1].expo[DR_LOW][DR_EXPO][DR_RIGHT]    = ui->THR_ExpoRLow->value();
-    g_model.expoData[CONVERT_MODE(THR)-1].expo[DR_MID][DR_EXPO][DR_RIGHT]    = ui->THR_ExpoRMid->value();
+					sb = expoDrSpin[3][i][j][k] ;
+					cb = expoDrVal[3][i][j][k] ;
+          chkb = expoDrGvar[3][i][j][k] ;
+			    pval = &g_model.expoData[CONVERT_MODE(ELE)-1].expo[i][j][k] ;
+					if ( j )
+					{
+    				*pval = numericSpinGvarValue( sb, cb, chkb, *pval, 0 ) ;
+					}
+					else
+					{
+			    	expoDrSet( pval, numericSpinGvarValue( sb, cb, chkb, *pval, 100 ) ) ;
+					}
 
-    g_model.expoData[CONVERT_MODE(AIL)-1].expo[DR_HIGH][DR_WEIGHT][DR_LEFT]  = ui->AIL_DrLHi->value()-100;
-    g_model.expoData[CONVERT_MODE(AIL)-1].expo[DR_LOW][DR_WEIGHT][DR_LEFT]   = ui->AIL_DrLLow->value()-100;
-    g_model.expoData[CONVERT_MODE(AIL)-1].expo[DR_MID][DR_WEIGHT][DR_LEFT]   = ui->AIL_DrLMid->value()-100;
-    g_model.expoData[CONVERT_MODE(AIL)-1].expo[DR_HIGH][DR_WEIGHT][DR_RIGHT] = ui->AIL_DrRHi->value()-100;
-    g_model.expoData[CONVERT_MODE(AIL)-1].expo[DR_LOW][DR_WEIGHT][DR_RIGHT]  = ui->AIL_DrRLow->value()-100;
-    g_model.expoData[CONVERT_MODE(AIL)-1].expo[DR_MID][DR_WEIGHT][DR_RIGHT]  = ui->AIL_DrRMid->value()-100;
-    g_model.expoData[CONVERT_MODE(AIL)-1].expo[DR_HIGH][DR_EXPO][DR_LEFT]    = ui->AIL_ExpoLHi->value();
-    g_model.expoData[CONVERT_MODE(AIL)-1].expo[DR_LOW][DR_EXPO][DR_LEFT]     = ui->AIL_ExpoLLow->value();
-    g_model.expoData[CONVERT_MODE(AIL)-1].expo[DR_MID][DR_EXPO][DR_LEFT]     = ui->AIL_ExpoLMid->value();
-    g_model.expoData[CONVERT_MODE(AIL)-1].expo[DR_HIGH][DR_EXPO][DR_RIGHT]   = ui->AIL_ExpoRHi->value();
-    g_model.expoData[CONVERT_MODE(AIL)-1].expo[DR_LOW][DR_EXPO][DR_RIGHT]    = ui->AIL_ExpoRLow->value();
-    g_model.expoData[CONVERT_MODE(AIL)-1].expo[DR_MID][DR_EXPO][DR_RIGHT]    = ui->AIL_ExpoRMid->value();
+				}
+			}
+		} 
 
     updateSettings();
 }
@@ -580,7 +613,17 @@ void ModelEdit::tabMixes()
 					else
 					{
             QString crvStr = CURV_STR;
-            str += tr(" Curve(%1)").arg(crvStr.mid(md->curve*3,3).remove(' '));
+						int x ;
+						x = md->curve ;
+						if ( x < 0 )
+						{
+							x = -x + 6 ;
+            	str += tr("!Curve(%1)").arg(crvStr.mid(x*3,3).remove(' '));
+						}
+						else
+						{
+            	str += tr(" Curve(%1)").arg(crvStr.mid(md->curve*3,3).remove(' '));
+						}
 					}
         }
 
@@ -1440,8 +1483,11 @@ void ModelEdit::setSwitchWidgetVisibility(int i)
         cswitchSource1[i]->setVisible(true);
         cswitchSource2[i]->setVisible(false);
         cswitchOffset[i]->setVisible(true);
-        cswitchOffset[i]->setMaximum(125);
-        cswitchOffset[i]->setMinimum(-125);
+        if ( cswitchOffset[i]->maximum() != 125 )
+				{
+        	cswitchOffset[i]->setMaximum(125);
+        	cswitchOffset[i]->setMinimum(-125);
+				}
         cswitchOffset0[i]->setVisible(false);
         populateSourceCB(cswitchSource1[i],g_eeGeneral.stickMode,1,g_model.customSw[i].v1);
         cswitchOffset[i]->setValue(g_model.customSw[i].v2);
@@ -1457,6 +1503,8 @@ void ModelEdit::setSwitchWidgetVisibility(int i)
 				{
         	cswitchTlabel[i]->setVisible(false);
 				}
+				cswitchText1[i]->setVisible(false) ;
+				cswitchText2[i]->setVisible(false) ;
         break;
     case CS_VBOOL:
         cswitchSource1[i]->setVisible(true);
@@ -1465,6 +1513,8 @@ void ModelEdit::setSwitchWidgetVisibility(int i)
         cswitchOffset0[i]->setVisible(false);
         populateSwitchCB(cswitchSource1[i],g_model.customSw[i].v1);
         populateSwitchCB(cswitchSource2[i],g_model.customSw[i].v2);
+				cswitchText1[i]->setVisible(false) ;
+				cswitchText2[i]->setVisible(false) ;
         break;
     case CS_VCOMP:
         cswitchSource1[i]->setVisible(true);
@@ -1473,16 +1523,47 @@ void ModelEdit::setSwitchWidgetVisibility(int i)
         cswitchOffset0[i]->setVisible(false);
         populateSourceCB(cswitchSource1[i],g_eeGeneral.stickMode,0,g_model.customSw[i].v1);
         populateSourceCB(cswitchSource2[i],g_eeGeneral.stickMode,0,g_model.customSw[i].v2);
+				cswitchText1[i]->setVisible(false) ;
+				cswitchText2[i]->setVisible(false) ;
         break;
     case CS_TIMER:
-        cswitchOffset[i]->setMaximum(101);
-        cswitchOffset[i]->setMinimum(1);
+        if ( cswitchOffset[i]->maximum() != 100 )
+				{
+	        cswitchOffset[i]->setMaximum(100);
+  	      cswitchOffset[i]->setMinimum(-49);
+				}
         cswitchSource1[i]->setVisible(false);
         cswitchSource2[i]->setVisible(false);
         cswitchOffset[i]->setVisible(true);
         cswitchOffset0[i]->setVisible(true);
-        cswitchOffset[i]->setValue(g_model.customSw[i].v2+1);
-        cswitchOffset0[i]->setValue(g_model.customSw[i].v1+1);
+
+				value = g_model.customSw[i].v2+1 ;
+        cswitchOffset[i]->setValue(value);
+				if ( value <= 0 )
+				{
+					cswitchText2[i]->setVisible(true) ;
+					value = -value + 1 ;
+          cswitchText2[i]->setText( tr("%1.%2").arg( value/10 ).arg( value%10 ) ) ;
+					cswitchText2[i]->raise() ;
+				}
+				else
+				{
+					cswitchText2[i]->setVisible(false) ;
+				}
+
+				value = g_model.customSw[i].v1+1 ;
+        cswitchOffset0[i]->setValue(value);
+				if ( value <= 0 )
+				{
+					cswitchText1[i]->setVisible(true) ;
+					value = -value + 1 ;
+          cswitchText1[i]->setText( tr("%1.%2").arg( value/10 ).arg( value%10 ) ) ;
+					cswitchText1[i]->raise() ;
+				}
+				else
+				{
+					cswitchText1[i]->setVisible(false) ;
+				}
         break;
     default:
         break;
@@ -1521,6 +1602,8 @@ void ModelEdit::updateSwitchesTab()
 
 void ModelEdit::tabSwitches()
 {
+	int width ;
+
     switchEditLock = true;
 
     for(int i=0; i<NUM_CSW; i++)
@@ -1553,14 +1636,37 @@ void ModelEdit::tabSwitches()
         connect(cswitchOffset[i],SIGNAL(valueChanged(int)),this,SLOT(switchesEdited()));
         ui->gridLayout_8->addWidget(cswitchOffset[i],i+1,3);
         cswitchOffset[i]->setVisible(false);
+				width = ui->cswCol1->width() ;
+				cswitchOffset[i]->resize( width, 20 );
 
-        cswitchOffset0[i] = new QSpinBox(this);
-        cswitchOffset0[i]->setMaximum(101);
-        cswitchOffset0[i]->setMinimum(1);
+				width -= 18 ;
+        cswitchText2[i] = new QTextBrowser(this);
+        ui->gridLayout_8->addWidget(cswitchText2[i],i+1,3);
+        cswitchText2[i]->setVisible(false);
+        cswitchText2[i]->setMinimumSize( width, 20 );
+        cswitchText2[i]->setMaximumSize( width, 20 );
+        cswitchText2[i]->resize( width, 20 );
+				cswitchText2[i]->setVerticalScrollBarPolicy ( Qt::ScrollBarAlwaysOff ) ;
+
+				cswitchOffset0[i] = new QSpinBox(this);
+        cswitchOffset0[i]->setMaximum(100);
+        cswitchOffset0[i]->setMinimum(-49);
         cswitchOffset0[i]->setAccelerated(true);
-        connect(cswitchOffset0[i],SIGNAL(editingFinished()),this,SLOT(switchesEdited()));
+        connect(cswitchOffset0[i],SIGNAL(valueChanged(int)),this,SLOT(switchesEdited()));
         ui->gridLayout_8->addWidget(cswitchOffset0[i],i+1,2);
         cswitchOffset0[i]->setVisible(false);
+				width = ui->cswCol2->width() ;
+        cswitchOffset0[i]->resize( width, 20 );
+
+				width -= 18 ;
+        cswitchText1[i] = new QTextBrowser(this);
+        ui->gridLayout_8->addWidget(cswitchText1[i],i+1,2);
+        cswitchText1[i]->setVisible(false);
+        cswitchText1[i]->setMinimumSize( width, 20 );
+        cswitchText1[i]->setMaximumSize( width, 20 );
+        cswitchText1[i]->resize( width, 20 );
+				cswitchText1[i]->setVerticalScrollBarPolicy ( Qt::ScrollBarAlwaysOff ) ;
+        
 
     }
 
@@ -2279,17 +2385,23 @@ void ModelEdit::on_T2ThrTrgChkB_toggled(bool checked)
 
 void ModelEdit::on_thrExpoChkB_toggled(bool checked)
 {
-    g_model.thrExpo = checked;
-    if(g_model.thrExpo)
-    {
-        ui->THR_DrLHi->setEnabled(false);
-        ui->THR_DrLLow->setEnabled(false);
-        ui->THR_DrLMid->setEnabled(false);
-        ui->THR_ExpoLHi->setEnabled(false);
-        ui->THR_ExpoLLow->setEnabled(false);
-        ui->THR_ExpoLMid->setEnabled(false);
-    }
-    updateSettings();
+ 	int i, j ;
+	bool x = true ;
+	if ( checked )
+	{
+		x = false ;		
+	}
+  g_model.thrExpo = checked ;
+	for ( i = 0 ; i < 3 ; i += 1 )
+	{ // 0=High, 1=Mid, 2=Low
+		for ( j = 0 ; j < 2 ; j += 1 )
+		{ // 0=Weight, 1=Expo
+			expoDrSpin[2][i][j][1]->setEnabled(x);
+			expoDrVal[2][i][j][1]->setEnabled(x);
+			expoDrGvar[2][i][j][1]->setEnabled(x);
+		}
+	}		
+  updateSettings();
 }
 
 void ModelEdit::on_bcRUDChkB_toggled(bool checked)
@@ -3657,6 +3769,7 @@ void ModelEdit::ControlCurveSignal(bool flag)
   ui->curvePt2_5->blockSignals(flag);
   ui->curvePt3_5->blockSignals(flag);
   ui->curvePt4_5->blockSignals(flag);
+  ui->curvePt5_5->blockSignals(flag);
   ui->curvePt1_6->blockSignals(flag);
   ui->curvePt2_6->blockSignals(flag);
   ui->curvePt3_6->blockSignals(flag);

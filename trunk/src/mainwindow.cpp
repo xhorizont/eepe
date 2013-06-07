@@ -681,21 +681,31 @@ void MainWindow::burnToFlash(QString fileToFlash)
 
         int ret = QMessageBox::question(this, "eePe", tr("Write %1 to flash memory?").arg(QFileInfo(fileName).fileName()), QMessageBox::Yes | QMessageBox::No);
         if(ret!=QMessageBox::Yes) return;
+    
+        burnConfigDialog bcd;
+        QString avrdudeLoc = bcd.getAVRDUDE();
+        QString programmer = bcd.getProgrammer();
+        QString mcu        = bcd.getMCU();
+        QStringList args   = bcd.getAVRArgs();
 
-				ret = backupEeprom() ;
-
-				if ( ret )
+				if ( mcu != "m328p" )
 				{
-          QMessageBox::warning(this, "eePe", tr("Backup failed, abandoning flash operation") ) ;
-					return ;
+					ret = backupEeprom() ;
+
+					if ( ret )
+					{
+        	  QMessageBox::warning(this, "eePe", tr("Backup failed, abandoning flash operation") ) ;
+						return ;
+					}
+
+					// delay a bit to allow hardware to settle
+		    	QTime dieTime= QTime::currentTime().addSecs(1);
+		    	while( QTime::currentTime() < dieTime )
+					{
+			  	  QCoreApplication::processEvents(QEventLoop::AllEvents, 100);    
+					}
 				}
 
-				// delay a bit to allow hardware to settle
-		    QTime dieTime= QTime::currentTime().addSecs(1);
-		    while( QTime::currentTime() < dieTime )
-				{
-			    QCoreApplication::processEvents(QEventLoop::AllEvents, 100);    
-				}
 
 
 //        ret = QMessageBox::question(this, "eePe", tr("Preserve installed spash screen"), QMessageBox::Yes | QMessageBox::No);
@@ -736,11 +746,6 @@ void MainWindow::burnToFlash(QString fileToFlash)
 //            }
 //        }
 
-        burnConfigDialog bcd;
-        QString avrdudeLoc = bcd.getAVRDUDE();
-        QString programmer = bcd.getProgrammer();
-        QString mcu        = bcd.getMCU();
-        QStringList args   = bcd.getAVRArgs();
         if(!bcd.getPort().isEmpty()) args << "-P" << bcd.getPort();
 
         QString str = "flash:w:" + fileName; // writing eeprom -> MEM:OPR:FILE:FTYPE"
