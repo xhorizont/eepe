@@ -51,6 +51,7 @@
 
 #include "mainwindow.h"
 
+int DebugMode = 0 ;
 
 int main(int argc, char *argv[])
 {
@@ -59,6 +60,11 @@ int main(int argc, char *argv[])
 
     QString dir;
     if(argc) dir = QFileInfo(argv[0]).canonicalPath() + "/lang";
+
+    if ( argc > 1 )
+    {
+      DebugMode = 1 ;
+    }
 
     QSettings settings("er9x-eePe", "eePe");
     QString locale = settings.value("locale",QLocale::system().name()).toString();

@@ -45,6 +45,7 @@ private:
     quint8 lfuse;
     quint8 hfuse;
     quint8 efuse;
+		int has_errors ;
 };
 
 #endif // AVROUTPUTDIALOG_H

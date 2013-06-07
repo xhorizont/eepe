@@ -18,6 +18,7 @@ public:
 private:
     Ui::serialDialog *ui;
 		int waitForAckNak( int mS ) ;
+    int waitForCan( int mS ) ;
 		int sendOneFile( QString fname ) ;
 
 //    QString fileToSend ;

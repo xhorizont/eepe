@@ -8,13 +8,20 @@
 #include <QString>
 #include <inttypes.h>
 
+extern int DebugMode ;
+
 serialDialog::serialDialog(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::serialDialog)
 {
+  QString temp ;
   ui->setupUi(this);
 
 	ui->progressBar->hide() ;
+	if ( DebugMode == 0 )
+	{
+//		ui->monitorText->hide() ;
+	}
 
 	QList<QextPortInfo> ports = QextSerialEnumerator::getPorts() ;
 	ui->portCB->clear() ;
@@ -138,6 +145,7 @@ void checksumBlock( unsigned char *block )
 
 uint8_t DoubleEsc[2] = {27,27} ;
 uint8_t DoubleCan[2] = {24,24} ;
+uint8_t Abort[1] = {'a'} ;
 
 QString Monitor ;
 
@@ -194,7 +202,59 @@ int serialDialog::waitForAckNak( int mS )
 				return acknak ;
 			}
 		}
-//		ui->receiveText->append("!") ;
+		timer += 10 ;
+	} while ( timer < mS ) ;
+  return 0 ;
+}
+
+int serialDialog::waitForCan( int mS )
+{
+  char buff[150] ;
+  int numBytes ;
+  QByteArray qba ;
+	int j ;
+  int i ;
+	int timer ;
+  char acknak ;
+
+	timer = 0 ;
+
+	do
+	{
+  	waitMs( 10 ) ;
+		
+  	numBytes = port->bytesAvailable() ;
+		if ( numBytes)
+		{
+  		if(numBytes > 148)
+			{
+  		  numBytes = 148 ;
+			}
+
+  		i = port->read(buff, numBytes);
+  		if (i != -1)
+  		  buff[i] = '\0';
+  		else
+  		  buff[0] = '\0';
+
+  		qba = QByteArray::fromRawData(buff, i ) ;
+			acknak = 0 ;
+			for ( j = 0 ; j < i ; j += 1 )
+			{
+  		  if ( qba[j] == (char)CA )
+				{
+					acknak = CA ;
+					break ;
+				}
+			}
+			qba = qba.toHex() ;
+			Monitor.append(qba);
+			ui->monitorText->setText(Monitor) ;
+			if ( acknak )
+			{
+				return acknak ;
+			}
+		}
 		timer += 10 ;
 	} while ( timer < mS ) ;
   return 0 ;
@@ -258,6 +318,41 @@ void serialDialog::on_sendButton_clicked()
 	ui->sendButton->setDisabled( false ) ;
 }
 
+//			  ((DWORD)(rtc.year - 1980) << 25)
+//			| ((DWORD)rtc.month << 21)
+//			| ((DWORD)rtc.mday << 16)
+//			| ((DWORD)rtc.hour << 11)
+//			| ((DWORD)rtc.min << 5)
+//			| ((DWORD)rtc.sec >> 1);
+
+void getFileTime( uint8_t *p, QString fname )
+{
+	QDateTime dt ;
+	uint32_t udt = 0 ;
+	uint32_t temp ;
+
+  dt = QFileInfo( fname ).lastModified() ;
+	temp = dt.date().year() ;
+	temp -= 1980 ;
+	udt |= temp << 25 ;
+	temp = dt.date().month() ;
+	udt |= temp << 21 ;
+	temp = dt.date().day() ;
+	udt |= temp << 16 ;
+	temp = dt.time().hour() ;
+	udt |= temp << 11 ;
+	temp = dt.time().minute() ;
+	udt |= temp << 5 ;
+	temp = dt.time().second() ;
+	udt |= temp >> 1 ;
+	*p++ = udt ;
+	*p++ = udt >> 8 ;
+	*p++ = udt >> 16 ;
+	*p++ = udt >> 24 ;
+}
+
+
+
 
 int serialDialog::sendOneFile( QString fname )
 {
@@ -305,11 +400,17 @@ int serialDialog::sendOneFile( QString fname )
 	strcpy( (char *)&dataBlock[3], file.toLatin1() ) ;
   j = 4 + strlen( file.toLatin1() ) ;
   strcpy( (char *)&dataBlock[j], temp.toLatin1() ) ;
-//  j += strlen( temp.toAscii() ) ;
+  j += strlen( temp.toLatin1() ) ;
+	getFileTime( &dataBlock[j+1], fname ) ;	
+	
 	checksumBlock( dataBlock ) ;
 
-  port->open(QIODevice::ReadWrite | QIODevice::Unbuffered) ;
-  
+  if (!port->open(QIODevice::ReadWrite | QIODevice::Unbuffered) )
+  {
+    QMessageBox::critical(this, "eePe", tr("Com Port Unavailable"));
+		ui->sendButton->setDisabled( false ) ;
+		return 0 ;	// Failed
+	}
   // Put receiver into file mode
   port->write( QByteArray::fromRawData ( ( char *)DoubleEsc, 2 ), 2 ) ;
   waitMs( 150 ) ;
@@ -328,6 +429,21 @@ int serialDialog::sendOneFile( QString fname )
 //  qba = qba.toHex() ;
 //	ui->receiveText_2->setText(qba) ;
 
+	retryCount = 3 ;
+	do
+	{
+  	port->write( QByteArray::fromRawData ( ( char *)Abort, 1 ), 1 ) ;
+		acknak = waitForCan( 500 ) ;
+		retryCount -= 1 ;
+		
+	} while ( ( acknak != CA ) && retryCount ) ;
+	if ( acknak != CA )
+	{
+    QMessageBox::critical(this, "eePe", tr("No Sync."));
+		ui->sendButton->setDisabled( false ) ;
+		return 0 ;	// Failed
+	}
+
 	retryCount = 10 ;
 	do
 	{
@@ -337,7 +453,7 @@ int serialDialog::sendOneFile( QString fname )
 
   	waitMs( 40 ) ;
 
-		acknak = waitForAckNak( 200 ) ;
+		acknak = waitForAckNak( 500 ) ;
 		retryCount -= 1 ;
 
 		if ( acknak != ACK )
@@ -390,7 +506,7 @@ int serialDialog::sendOneFile( QString fname )
 
 			waitMs( 30 ) ;
 
-			acknak = waitForAckNak( 200 ) ;
+			acknak = waitForAckNak( 500 ) ;
 //  		temp = tr("%1").arg(i) ;
 //  		ui->sizeSent->setText( temp ) ;
   		
@@ -409,11 +525,11 @@ int serialDialog::sendOneFile( QString fname )
 		if ( acknak != ACK )
 		{
 			// Abort
-	  	port->write( QByteArray::fromRawData ( ( char *)DoubleEsc, 2 ), 2 ) ;
+	  	port->write( QByteArray::fromRawData ( ( char *)DoubleCan, 2 ), 2 ) ;
 //	 		port->close();
 //	  	delete port ;
 //			port = NULL ;
-    	QMessageBox::critical(this, "eePe", tr("Communication Failure(1)"));
+    	QMessageBox::critical(this, "eePe", tr("Communication Failure(2)"));
 			ui->sendButton->setDisabled( false ) ;
 			thisfile.close() ;
 			return 0 ;	// Failed
@@ -427,7 +543,7 @@ int serialDialog::sendOneFile( QString fname )
 //	qba = qba.toHex() ;
 //	ui->receiveText_2->setText(qba) ;
 	waitMs( 30 ) ;
-	acknak = waitForAckNak( 200 ) ;
+	acknak = waitForAckNak( 500 ) ;
 //  temp = tr("%1,%2").arg(acknak ? ((acknak == ACK ) ? "ACK" : "NAK" ): "NULL").arg("EOT") ;
 //  ui->receiveText->append(temp) ;
 		return 1 ;	// Success

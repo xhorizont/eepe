@@ -29,6 +29,7 @@ avrOutputDialog::avrOutputDialog(QWidget *parent, QString prog, QStringList arg,
     lfuse = 0;
     hfuse = 0;
     efuse = 0;
+		has_errors = 0 ;
 
     process = new QProcess(this);
 
@@ -166,7 +167,11 @@ void avrOutputDialog::doAddTextStdOut()
             if(!efuse && !ok) efuse = t.left(2).toInt(&ok,16);
         }
     }
-
+    
+		if (text.contains("-E-"))
+		{
+			has_errors = 1 ;
+		}	
 }
 
 
@@ -181,27 +186,32 @@ void avrOutputDialog::doAddTextStdErr()
 void avrOutputDialog::doFinished(int code=0)
 {
     addText("\n" HLINE_SEPARATOR);
+    if (code==1) code=0 ;
     if(code)
         addText("\n" + tr("SAM-BA done - exit code %1").arg(code));
+    else if (has_errors)
+		{
+      addText("\nSAM-BA" + tr(" done with errors"));
+		}
     else
         addText("\n" + tr("SAM-BA done - SUCCESSFUL"));
     addText("\n" HLINE_SEPARATOR "\n");
 
-    if(lfuse || hfuse || efuse) addReadFuses();
+//    if(lfuse || hfuse || efuse) addReadFuses();
 
     switch(closeOpt)
     {
-    case (AVR_DIALOG_CLOSE_IF_SUCCESSFUL): if(!code) accept();break;
-    case (AVR_DIALOG_FORCE_CLOSE): if(code) reject(); else accept(); break;
+    case (AVR_DIALOG_CLOSE_IF_SUCCESSFUL): if(code || has_errors) reject(); else accept(); break;
+    case (AVR_DIALOG_FORCE_CLOSE): if(code || has_errors) reject(); else accept(); break;
     case (AVR_DIALOG_SHOW_DONE):
-        if(code)
+        if(code || has_errors)
         {
-            QMessageBox::critical(this, "eePe", tr("SAM-BA did not finish correctly"));
+            QMessageBox::critical(this, "eePskye", tr("SAM-BA did not finish correctly"));
             reject();
         }
         else
         {
-            QMessageBox::information(this, "eePe", tr("SAM-BA finished correctly"));
+            QMessageBox::information(this, "eePskye", tr("SAM-BA finished correctly"));
             accept();
         }
         break;
@@ -222,10 +232,10 @@ void avrOutputDialog::doProcessStarted()
 
 
 
-void avrOutputDialog::addReadFuses()
-{
-    addText(HLINE_SEPARATOR "\n");
-    addText(tr("FUSES: Low=%1 High=%2 Ext=%3").arg(lfuse,2,16,QChar('0')).arg(hfuse,2,16,QChar('0')).arg(efuse,2,16,QChar('0')));
-    addText("\n" HLINE_SEPARATOR "\n");
-}
+//void avrOutputDialog::addReadFuses()
+//{
+//    addText(HLINE_SEPARATOR "\n");
+//    addText(tr("FUSES: Low=%1 High=%2 Ext=%3").arg(lfuse,2,16,QChar('0')).arg(hfuse,2,16,QChar('0')).arg(efuse,2,16,QChar('0')));
+//    addText("\n" HLINE_SEPARATOR "\n");
+//}
 

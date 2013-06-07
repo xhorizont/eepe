@@ -54,7 +54,7 @@
    <item row="5" column="0">
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
-      <number>8</number>
+      <number>7</number>
      </property>
      <widget class="QWidget" name="tabModelSetup">
       <attribute name="title">
@@ -1483,7 +1483,7 @@
            <widget class="QComboBox" name="RUD_edrSw2"/>
           </item>
           <item row="3" column="0" colspan="4">
-           <layout class="QGridLayout" name="gridLayout_9">
+           <layout class="QGridLayout" name="gridLayout_Rud">
             <item row="1" column="0">
              <widget class="QLabel" name="label_37">
               <property name="text">
@@ -1494,71 +1494,7 @@
               </property>
              </widget>
             </item>
-            <item row="1" column="1">
-             <widget class="QSpinBox" name="RUD_ExpoLHi">
-              <property name="alignment">
-               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-              </property>
-              <property name="accelerated">
-               <bool>true</bool>
-              </property>
-              <property name="minimum">
-               <number>-100</number>
-              </property>
-              <property name="maximum">
-               <number>100</number>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="2">
-             <widget class="QSpinBox" name="RUD_DrLHi">
-              <property name="alignment">
-               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-              </property>
-              <property name="accelerated">
-               <bool>true</bool>
-              </property>
-              <property name="minimum">
-               <number>-100</number>
-              </property>
-              <property name="maximum">
-               <number>100</number>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="3">
-             <widget class="QSpinBox" name="RUD_DrRHi">
-              <property name="alignment">
-               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-              </property>
-              <property name="accelerated">
-               <bool>true</bool>
-              </property>
-              <property name="minimum">
-               <number>-100</number>
-              </property>
-              <property name="maximum">
-               <number>100</number>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="4">
-             <widget class="QSpinBox" name="RUD_ExpoRHi">
-              <property name="alignment">
-               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-              </property>
-              <property name="accelerated">
-               <bool>true</bool>
-              </property>
-              <property name="minimum">
-               <number>-100</number>
-              </property>
-              <property name="maximum">
-               <number>100</number>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="0">
+            <item row="3" column="0">
              <widget class="QLabel" name="label_38">
               <property name="text">
                <string>MID</string>
@@ -1568,71 +1504,7 @@
               </property>
              </widget>
             </item>
-            <item row="2" column="1">
-             <widget class="QSpinBox" name="RUD_ExpoLMid">
-              <property name="alignment">
-               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-              </property>
-              <property name="accelerated">
-               <bool>true</bool>
-              </property>
-              <property name="minimum">
-               <number>-100</number>
-              </property>
-              <property name="maximum">
-               <number>100</number>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="2">
-             <widget class="QSpinBox" name="RUD_DrLMid">
-              <property name="alignment">
-               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-              </property>
-              <property name="accelerated">
-               <bool>true</bool>
-              </property>
-              <property name="minimum">
-               <number>-100</number>
-              </property>
-              <property name="maximum">
-               <number>100</number>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="3">
-             <widget class="QSpinBox" name="RUD_DrRMid">
-              <property name="alignment">
-               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-              </property>
-              <property name="accelerated">
-               <bool>true</bool>
-              </property>
-              <property name="minimum">
-               <number>-100</number>
-              </property>
-              <property name="maximum">
-               <number>100</number>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="4">
-             <widget class="QSpinBox" name="RUD_ExpoRMid">
-              <property name="alignment">
-               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-              </property>
-              <property name="accelerated">
-               <bool>true</bool>
-              </property>
-              <property name="minimum">
-               <number>-100</number>
-              </property>
-              <property name="maximum">
-               <number>100</number>
-              </property>
-             </widget>
-            </item>
-            <item row="3" column="0">
+            <item row="5" column="0">
              <widget class="QLabel" name="label_39">
               <property name="text">
                <string>LOW</string>
@@ -1642,72 +1514,14 @@
               </property>
              </widget>
             </item>
-            <item row="3" column="1">
-             <widget class="QSpinBox" name="RUD_ExpoLLow">
-              <property name="alignment">
-               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-              </property>
-              <property name="accelerated">
-               <bool>true</bool>
-              </property>
-              <property name="minimum">
-               <number>-100</number>
-              </property>
-              <property name="maximum">
-               <number>100</number>
-              </property>
-             </widget>
-            </item>
-            <item row="3" column="2">
-             <widget class="QSpinBox" name="RUD_DrLLow">
-              <property name="alignment">
-               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-              </property>
-              <property name="accelerated">
-               <bool>true</bool>
-              </property>
-              <property name="minimum">
-               <number>-100</number>
-              </property>
-              <property name="maximum">
-               <number>100</number>
-              </property>
-             </widget>
-            </item>
-            <item row="3" column="3">
-             <widget class="QSpinBox" name="RUD_DrRLow">
-              <property name="alignment">
-               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-              </property>
-              <property name="accelerated">
-               <bool>true</bool>
-              </property>
-              <property name="minimum">
-               <number>-100</number>
-              </property>
-              <property name="maximum">
-               <number>100</number>
-              </property>
-             </widget>
-            </item>
-            <item row="3" column="4">
-             <widget class="QSpinBox" name="RUD_ExpoRLow">
-              <property name="alignment">
-               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-              </property>
-              <property name="accelerated">
-               <bool>true</bool>
-              </property>
-              <property name="minimum">
-               <number>-100</number>
-              </property>
-              <property name="maximum">
-               <number>100</number>
-              </property>
-             </widget>
-            </item>
             <item row="0" column="1">
              <widget class="QLabel" name="label_64">
+              <property name="maximumSize">
+               <size>
+                <width>16777215</width>
+                <height>24</height>
+               </size>
+              </property>
               <property name="text">
                <string>Expo
 Left</string>
@@ -1750,10 +1564,64 @@ Right</string>
               </property>
              </widget>
             </item>
+            <item row="2" column="0">
+             <widget class="QLabel" name="label_166">
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>20</height>
+               </size>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item row="4" column="0">
+             <widget class="QLabel" name="label_169">
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>20</height>
+               </size>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item row="6" column="0">
+             <widget class="QLabel" name="label_170">
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>20</height>
+               </size>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
            </layout>
           </item>
           <item row="1" column="0" colspan="2">
            <widget class="QLabel" name="label_42">
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>21</height>
+             </size>
+            </property>
             <property name="text">
              <string>Switch1</string>
             </property>
@@ -1764,6 +1632,12 @@ Right</string>
           </item>
           <item row="1" column="2" colspan="2">
            <widget class="QLabel" name="label_43">
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>21</height>
+             </size>
+            </property>
             <property name="text">
              <string>Switch2</string>
             </property>
@@ -1803,9 +1677,15 @@ Right</string>
            <widget class="QComboBox" name="AIL_edrSw2"/>
           </item>
           <item row="3" column="0" colspan="4">
-           <layout class="QGridLayout" name="gridLayout_12">
+           <layout class="QGridLayout" name="gridLayout_Ail">
             <item row="1" column="0">
              <widget class="QLabel" name="label_51">
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>20</height>
+               </size>
+              </property>
               <property name="text">
                <string>HIGH</string>
               </property>
@@ -1814,71 +1694,7 @@ Right</string>
               </property>
              </widget>
             </item>
-            <item row="1" column="1">
-             <widget class="QSpinBox" name="AIL_ExpoLHi">
-              <property name="alignment">
-               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-              </property>
-              <property name="accelerated">
-               <bool>true</bool>
-              </property>
-              <property name="minimum">
-               <number>-100</number>
-              </property>
-              <property name="maximum">
-               <number>100</number>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="2">
-             <widget class="QSpinBox" name="AIL_DrLHi">
-              <property name="alignment">
-               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-              </property>
-              <property name="accelerated">
-               <bool>true</bool>
-              </property>
-              <property name="minimum">
-               <number>-100</number>
-              </property>
-              <property name="maximum">
-               <number>100</number>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="3">
-             <widget class="QSpinBox" name="AIL_DrRHi">
-              <property name="alignment">
-               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-              </property>
-              <property name="accelerated">
-               <bool>true</bool>
-              </property>
-              <property name="minimum">
-               <number>-100</number>
-              </property>
-              <property name="maximum">
-               <number>100</number>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="4">
-             <widget class="QSpinBox" name="AIL_ExpoRHi">
-              <property name="alignment">
-               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-              </property>
-              <property name="accelerated">
-               <bool>true</bool>
-              </property>
-              <property name="minimum">
-               <number>-100</number>
-              </property>
-              <property name="maximum">
-               <number>100</number>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="0">
+            <item row="3" column="0">
              <widget class="QLabel" name="label_52">
               <property name="text">
                <string>MID</string>
@@ -1888,71 +1704,7 @@ Right</string>
               </property>
              </widget>
             </item>
-            <item row="2" column="1">
-             <widget class="QSpinBox" name="AIL_ExpoLMid">
-              <property name="alignment">
-               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-              </property>
-              <property name="accelerated">
-               <bool>true</bool>
-              </property>
-              <property name="minimum">
-               <number>-100</number>
-              </property>
-              <property name="maximum">
-               <number>100</number>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="2">
-             <widget class="QSpinBox" name="AIL_DrLMid">
-              <property name="alignment">
-               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-              </property>
-              <property name="accelerated">
-               <bool>true</bool>
-              </property>
-              <property name="minimum">
-               <number>-100</number>
-              </property>
-              <property name="maximum">
-               <number>100</number>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="3">
-             <widget class="QSpinBox" name="AIL_DrRMid">
-              <property name="alignment">
-               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-              </property>
-              <property name="accelerated">
-               <bool>true</bool>
-              </property>
-              <property name="minimum">
-               <number>-100</number>
-              </property>
-              <property name="maximum">
-               <number>100</number>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="4">
-             <widget class="QSpinBox" name="AIL_ExpoRMid">
-              <property name="alignment">
-               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-              </property>
-              <property name="accelerated">
-               <bool>true</bool>
-              </property>
-              <property name="minimum">
-               <number>-100</number>
-              </property>
-              <property name="maximum">
-               <number>100</number>
-              </property>
-             </widget>
-            </item>
-            <item row="3" column="0">
+            <item row="5" column="0">
              <widget class="QLabel" name="label_53">
               <property name="text">
                <string>LOW</string>
@@ -1962,72 +1714,14 @@ Right</string>
               </property>
              </widget>
             </item>
-            <item row="3" column="1">
-             <widget class="QSpinBox" name="AIL_ExpoLLow">
-              <property name="alignment">
-               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-              </property>
-              <property name="accelerated">
-               <bool>true</bool>
-              </property>
-              <property name="minimum">
-               <number>-100</number>
-              </property>
-              <property name="maximum">
-               <number>100</number>
-              </property>
-             </widget>
-            </item>
-            <item row="3" column="2">
-             <widget class="QSpinBox" name="AIL_DrLLow">
-              <property name="alignment">
-               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-              </property>
-              <property name="accelerated">
-               <bool>true</bool>
-              </property>
-              <property name="minimum">
-               <number>-100</number>
-              </property>
-              <property name="maximum">
-               <number>100</number>
-              </property>
-             </widget>
-            </item>
-            <item row="3" column="3">
-             <widget class="QSpinBox" name="AIL_DrRLow">
-              <property name="alignment">
-               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-              </property>
-              <property name="accelerated">
-               <bool>true</bool>
-              </property>
-              <property name="minimum">
-               <number>-100</number>
-              </property>
-              <property name="maximum">
-               <number>100</number>
-              </property>
-             </widget>
-            </item>
-            <item row="3" column="4">
-             <widget class="QSpinBox" name="AIL_ExpoRLow">
-              <property name="alignment">
-               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-              </property>
-              <property name="accelerated">
-               <bool>true</bool>
-              </property>
-              <property name="minimum">
-               <number>-100</number>
-              </property>
-              <property name="maximum">
-               <number>100</number>
-              </property>
-             </widget>
-            </item>
             <item row="0" column="1">
              <widget class="QLabel" name="label_67">
+              <property name="maximumSize">
+               <size>
+                <width>16777215</width>
+                <height>24</height>
+               </size>
+              </property>
               <property name="text">
                <string>Expo
 Left</string>
@@ -2070,10 +1764,64 @@ Right</string>
               </property>
              </widget>
             </item>
+            <item row="2" column="0">
+             <widget class="QLabel" name="label_163">
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>20</height>
+               </size>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item row="4" column="0">
+             <widget class="QLabel" name="label_164">
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>20</height>
+               </size>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item row="6" column="0">
+             <widget class="QLabel" name="label_165">
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>20</height>
+               </size>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
            </layout>
           </item>
           <item row="1" column="2" colspan="2">
            <widget class="QLabel" name="label_44">
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>21</height>
+             </size>
+            </property>
             <property name="text">
              <string>Switch2</string>
             </property>
@@ -2084,6 +1832,12 @@ Right</string>
           </item>
           <item row="1" column="0" colspan="2">
            <widget class="QLabel" name="label_48">
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>21</height>
+             </size>
+            </property>
             <property name="text">
              <string>Switch1</string>
             </property>
@@ -2123,7 +1877,7 @@ Right</string>
            <widget class="QComboBox" name="THR_edrSw2"/>
           </item>
           <item row="4" column="0" colspan="4">
-           <layout class="QGridLayout" name="gridLayout_14">
+           <layout class="QGridLayout" name="gridLayout_Thr">
             <item row="0" column="2">
              <widget class="QLabel" name="label_58">
               <property name="text">
@@ -2167,71 +1921,7 @@ Right</string>
               </property>
              </widget>
             </item>
-            <item row="1" column="1">
-             <widget class="QSpinBox" name="THR_ExpoLHi">
-              <property name="alignment">
-               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-              </property>
-              <property name="accelerated">
-               <bool>true</bool>
-              </property>
-              <property name="minimum">
-               <number>-100</number>
-              </property>
-              <property name="maximum">
-               <number>100</number>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="2">
-             <widget class="QSpinBox" name="THR_DrLHi">
-              <property name="alignment">
-               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-              </property>
-              <property name="accelerated">
-               <bool>true</bool>
-              </property>
-              <property name="minimum">
-               <number>-100</number>
-              </property>
-              <property name="maximum">
-               <number>100</number>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="3">
-             <widget class="QSpinBox" name="THR_DrRHi">
-              <property name="alignment">
-               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-              </property>
-              <property name="accelerated">
-               <bool>true</bool>
-              </property>
-              <property name="minimum">
-               <number>-100</number>
-              </property>
-              <property name="maximum">
-               <number>100</number>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="4">
-             <widget class="QSpinBox" name="THR_ExpoRHi">
-              <property name="alignment">
-               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-              </property>
-              <property name="accelerated">
-               <bool>true</bool>
-              </property>
-              <property name="minimum">
-               <number>-100</number>
-              </property>
-              <property name="maximum">
-               <number>100</number>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="0">
+            <item row="3" column="0">
              <widget class="QLabel" name="label_62">
               <property name="text">
                <string>MID</string>
@@ -2241,71 +1931,7 @@ Right</string>
               </property>
              </widget>
             </item>
-            <item row="2" column="1">
-             <widget class="QSpinBox" name="THR_ExpoLMid">
-              <property name="alignment">
-               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-              </property>
-              <property name="accelerated">
-               <bool>true</bool>
-              </property>
-              <property name="minimum">
-               <number>-100</number>
-              </property>
-              <property name="maximum">
-               <number>100</number>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="2">
-             <widget class="QSpinBox" name="THR_DrLMid">
-              <property name="alignment">
-               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-              </property>
-              <property name="accelerated">
-               <bool>true</bool>
-              </property>
-              <property name="minimum">
-               <number>-100</number>
-              </property>
-              <property name="maximum">
-               <number>100</number>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="3">
-             <widget class="QSpinBox" name="THR_DrRMid">
-              <property name="alignment">
-               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-              </property>
-              <property name="accelerated">
-               <bool>true</bool>
-              </property>
-              <property name="minimum">
-               <number>-100</number>
-              </property>
-              <property name="maximum">
-               <number>100</number>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="4">
-             <widget class="QSpinBox" name="THR_ExpoRMid">
-              <property name="alignment">
-               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-              </property>
-              <property name="accelerated">
-               <bool>true</bool>
-              </property>
-              <property name="minimum">
-               <number>-100</number>
-              </property>
-              <property name="maximum">
-               <number>100</number>
-              </property>
-             </widget>
-            </item>
-            <item row="3" column="0">
+            <item row="5" column="0">
              <widget class="QLabel" name="label_63">
               <property name="text">
                <string>LOW</string>
@@ -2315,75 +1941,65 @@ Right</string>
               </property>
              </widget>
             </item>
-            <item row="3" column="1">
-             <widget class="QSpinBox" name="THR_ExpoLLow">
-              <property name="alignment">
-               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-              </property>
-              <property name="accelerated">
-               <bool>true</bool>
-              </property>
-              <property name="minimum">
-               <number>-100</number>
-              </property>
-              <property name="maximum">
-               <number>100</number>
-              </property>
-             </widget>
-            </item>
-            <item row="3" column="2">
-             <widget class="QSpinBox" name="THR_DrLLow">
-              <property name="alignment">
-               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-              </property>
-              <property name="accelerated">
-               <bool>true</bool>
-              </property>
-              <property name="minimum">
-               <number>-100</number>
-              </property>
-              <property name="maximum">
-               <number>100</number>
-              </property>
-             </widget>
-            </item>
-            <item row="3" column="3">
-             <widget class="QSpinBox" name="THR_DrRLow">
-              <property name="alignment">
-               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-              </property>
-              <property name="accelerated">
-               <bool>true</bool>
-              </property>
-              <property name="minimum">
-               <number>-100</number>
-              </property>
-              <property name="maximum">
-               <number>100</number>
-              </property>
-             </widget>
-            </item>
-            <item row="3" column="4">
-             <widget class="QSpinBox" name="THR_ExpoRLow">
-              <property name="alignment">
-               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-              </property>
-              <property name="accelerated">
-               <bool>true</bool>
-              </property>
-              <property name="minimum">
-               <number>-100</number>
-              </property>
-              <property name="maximum">
-               <number>100</number>
-              </property>
-             </widget>
-            </item>
             <item row="0" column="1">
              <widget class="QLabel" name="label_57">
+              <property name="maximumSize">
+               <size>
+                <width>16777215</width>
+                <height>24</height>
+               </size>
+              </property>
               <property name="text">
                <string>Expo
 Left</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="0">
+             <widget class="QLabel" name="label_171">
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>20</height>
+               </size>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item row="4" column="0">
+             <widget class="QLabel" name="label_172">
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>20</height>
+               </size>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item row="6" column="0">
+             <widget class="QLabel" name="label_173">
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>20</height>
+               </size>
+              </property>
+              <property name="text">
+               <string/>
               </property>
               <property name="alignment">
                <set>Qt::AlignCenter</set>
@@ -2394,6 +2010,12 @@ Left</string>
           </item>
           <item row="2" column="0" colspan="2">
            <widget class="QLabel" name="label_40">
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>21</height>
+             </size>
+            </property>
             <property name="text">
              <string>Switch1</string>
             </property>
@@ -2404,6 +2026,12 @@ Left</string>
           </item>
           <item row="2" column="2" colspan="2">
            <widget class="QLabel" name="label_41">
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>21</height>
+             </size>
+            </property>
             <property name="text">
              <string>Switch2</string>
             </property>
@@ -2443,7 +2071,7 @@ Left</string>
            <widget class="QComboBox" name="ELE_edrSw2"/>
           </item>
           <item row="3" column="0" colspan="4">
-           <layout class="QGridLayout" name="gridLayout_16">
+           <layout class="QGridLayout" name="gridLayout_Ele">
             <item row="1" column="0">
              <widget class="QLabel" name="label_71">
               <property name="text">
@@ -2454,71 +2082,7 @@ Left</string>
               </property>
              </widget>
             </item>
-            <item row="1" column="1">
-             <widget class="QSpinBox" name="ELE_ExpoLHi">
-              <property name="alignment">
-               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-              </property>
-              <property name="accelerated">
-               <bool>true</bool>
-              </property>
-              <property name="minimum">
-               <number>-100</number>
-              </property>
-              <property name="maximum">
-               <number>100</number>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="2">
-             <widget class="QSpinBox" name="ELE_DrLHi">
-              <property name="alignment">
-               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-              </property>
-              <property name="accelerated">
-               <bool>true</bool>
-              </property>
-              <property name="minimum">
-               <number>-100</number>
-              </property>
-              <property name="maximum">
-               <number>100</number>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="3">
-             <widget class="QSpinBox" name="ELE_DrRHi">
-              <property name="alignment">
-               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-              </property>
-              <property name="accelerated">
-               <bool>true</bool>
-              </property>
-              <property name="minimum">
-               <number>-100</number>
-              </property>
-              <property name="maximum">
-               <number>100</number>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="4">
-             <widget class="QSpinBox" name="ELE_ExpoRHi">
-              <property name="alignment">
-               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-              </property>
-              <property name="accelerated">
-               <bool>true</bool>
-              </property>
-              <property name="minimum">
-               <number>-100</number>
-              </property>
-              <property name="maximum">
-               <number>100</number>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="0">
+            <item row="3" column="0">
              <widget class="QLabel" name="label_72">
               <property name="text">
                <string>MID</string>
@@ -2528,71 +2092,7 @@ Left</string>
               </property>
              </widget>
             </item>
-            <item row="2" column="1">
-             <widget class="QSpinBox" name="ELE_ExpoLMid">
-              <property name="alignment">
-               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-              </property>
-              <property name="accelerated">
-               <bool>true</bool>
-              </property>
-              <property name="minimum">
-               <number>-100</number>
-              </property>
-              <property name="maximum">
-               <number>100</number>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="2">
-             <widget class="QSpinBox" name="ELE_DrLMid">
-              <property name="alignment">
-               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-              </property>
-              <property name="accelerated">
-               <bool>true</bool>
-              </property>
-              <property name="minimum">
-               <number>-100</number>
-              </property>
-              <property name="maximum">
-               <number>100</number>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="3">
-             <widget class="QSpinBox" name="ELE_DrRMid">
-              <property name="alignment">
-               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-              </property>
-              <property name="accelerated">
-               <bool>true</bool>
-              </property>
-              <property name="minimum">
-               <number>-100</number>
-              </property>
-              <property name="maximum">
-               <number>100</number>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="4">
-             <widget class="QSpinBox" name="ELE_ExpoRMid">
-              <property name="alignment">
-               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-              </property>
-              <property name="accelerated">
-               <bool>true</bool>
-              </property>
-              <property name="minimum">
-               <number>-100</number>
-              </property>
-              <property name="maximum">
-               <number>100</number>
-              </property>
-             </widget>
-            </item>
-            <item row="3" column="0">
+            <item row="5" column="0">
              <widget class="QLabel" name="label_73">
               <property name="text">
                <string>LOW</string>
@@ -2602,72 +2102,14 @@ Left</string>
               </property>
              </widget>
             </item>
-            <item row="3" column="1">
-             <widget class="QSpinBox" name="ELE_ExpoLLow">
-              <property name="alignment">
-               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-              </property>
-              <property name="accelerated">
-               <bool>true</bool>
-              </property>
-              <property name="minimum">
-               <number>-100</number>
-              </property>
-              <property name="maximum">
-               <number>100</number>
-              </property>
-             </widget>
-            </item>
-            <item row="3" column="2">
-             <widget class="QSpinBox" name="ELE_DrLLow">
-              <property name="alignment">
-               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-              </property>
-              <property name="accelerated">
-               <bool>true</bool>
-              </property>
-              <property name="minimum">
-               <number>-100</number>
-              </property>
-              <property name="maximum">
-               <number>100</number>
-              </property>
-             </widget>
-            </item>
-            <item row="3" column="3">
-             <widget class="QSpinBox" name="ELE_DrRLow">
-              <property name="alignment">
-               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-              </property>
-              <property name="accelerated">
-               <bool>true</bool>
-              </property>
-              <property name="minimum">
-               <number>-100</number>
-              </property>
-              <property name="maximum">
-               <number>100</number>
-              </property>
-             </widget>
-            </item>
-            <item row="3" column="4">
-             <widget class="QSpinBox" name="ELE_ExpoRLow">
-              <property name="alignment">
-               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-              </property>
-              <property name="accelerated">
-               <bool>true</bool>
-              </property>
-              <property name="minimum">
-               <number>-100</number>
-              </property>
-              <property name="maximum">
-               <number>100</number>
-              </property>
-             </widget>
-            </item>
             <item row="0" column="1">
              <widget class="QLabel" name="label_68">
+              <property name="maximumSize">
+               <size>
+                <width>16777215</width>
+                <height>24</height>
+               </size>
+              </property>
               <property name="text">
                <string>Expo
 Left</string>
@@ -2710,10 +2152,64 @@ Right</string>
               </property>
              </widget>
             </item>
+            <item row="2" column="0">
+             <widget class="QLabel" name="label_174">
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>20</height>
+               </size>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item row="4" column="0">
+             <widget class="QLabel" name="label_175">
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>20</height>
+               </size>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item row="6" column="0">
+             <widget class="QLabel" name="label_176">
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>20</height>
+               </size>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
            </layout>
           </item>
           <item row="1" column="2" colspan="2">
            <widget class="QLabel" name="label_45">
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>21</height>
+             </size>
+            </property>
             <property name="text">
              <string>Switch2</string>
             </property>
@@ -2724,6 +2220,12 @@ Right</string>
           </item>
           <item row="1" column="0" colspan="2">
            <widget class="QLabel" name="label_47">
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>21</height>
+             </size>
+            </property>
             <property name="text">
              <string>Switch1</string>
             </property>
@@ -8625,6 +8127,12 @@ Right</string>
       <layout class="QGridLayout" name="gridLayout_8" rowstretch="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" columnstretch="0,0,0,0,0,0">
        <item row="1" column="0">
         <widget class="QLabel" name="label_30">
+         <property name="minimumSize">
+          <size>
+           <width>125</width>
+           <height>0</height>
+          </size>
+         </property>
          <property name="frameShape">
           <enum>QFrame::Panel</enum>
          </property>
@@ -8708,6 +8216,12 @@ Right</string>
        </item>
        <item row="0" column="1">
         <widget class="QLabel" name="cswFuncLabel">
+         <property name="minimumSize">
+          <size>
+           <width>125</width>
+           <height>0</height>
+          </size>
+         </property>
          <property name="frameShape">
           <enum>QFrame::Panel</enum>
          </property>
@@ -8721,6 +8235,12 @@ Right</string>
        </item>
        <item row="0" column="2">
         <widget class="QLabel" name="cswCol1">
+         <property name="minimumSize">
+          <size>
+           <width>125</width>
+           <height>0</height>
+          </size>
+         </property>
          <property name="frameShape">
           <enum>QFrame::Panel</enum>
          </property>
@@ -8734,6 +8254,12 @@ Right</string>
        </item>
        <item row="0" column="3">
         <widget class="QLabel" name="cswCol2">
+         <property name="minimumSize">
+          <size>
+           <width>125</width>
+           <height>0</height>
+          </size>
+         </property>
          <property name="frameShape">
           <enum>QFrame::Panel</enum>
          </property>
@@ -8856,6 +8382,12 @@ Right</string>
        </item>
        <item row="0" column="5">
         <widget class="QLabel" name="label_85">
+         <property name="minimumSize">
+          <size>
+           <width>125</width>
+           <height>0</height>
+          </size>
+         </property>
          <property name="frameShape">
           <enum>QFrame::Panel</enum>
          </property>
@@ -9074,6 +8606,12 @@ Right</string>
        </item>
        <item row="0" column="4">
         <widget class="QLabel" name="cswCol2_2">
+         <property name="minimumSize">
+          <size>
+           <width>125</width>
+           <height>0</height>
+          </size>
+         </property>
          <property name="frameShape">
           <enum>QFrame::Panel</enum>
          </property>
@@ -10976,63 +10514,15 @@ Right</string>
   <tabstop>ppmDelaySB</tabstop>
   <tabstop>RUD_edrSw1</tabstop>
   <tabstop>RUD_edrSw2</tabstop>
-  <tabstop>RUD_ExpoLHi</tabstop>
-  <tabstop>RUD_DrLHi</tabstop>
-  <tabstop>RUD_DrRHi</tabstop>
-  <tabstop>RUD_ExpoRHi</tabstop>
-  <tabstop>RUD_ExpoLMid</tabstop>
-  <tabstop>RUD_DrLMid</tabstop>
-  <tabstop>RUD_DrRMid</tabstop>
-  <tabstop>RUD_ExpoRMid</tabstop>
-  <tabstop>RUD_ExpoLLow</tabstop>
-  <tabstop>RUD_DrLLow</tabstop>
-  <tabstop>RUD_DrRLow</tabstop>
-  <tabstop>RUD_ExpoRLow</tabstop>
   <tabstop>pushButton_1</tabstop>
   <tabstop>AIL_edrSw1</tabstop>
   <tabstop>AIL_edrSw2</tabstop>
-  <tabstop>AIL_ExpoLHi</tabstop>
-  <tabstop>AIL_DrLHi</tabstop>
-  <tabstop>AIL_DrRHi</tabstop>
-  <tabstop>AIL_ExpoRHi</tabstop>
-  <tabstop>AIL_ExpoLMid</tabstop>
-  <tabstop>AIL_DrLMid</tabstop>
-  <tabstop>AIL_DrRMid</tabstop>
-  <tabstop>AIL_ExpoRMid</tabstop>
-  <tabstop>AIL_ExpoLLow</tabstop>
-  <tabstop>AIL_DrLLow</tabstop>
-  <tabstop>AIL_DrRLow</tabstop>
-  <tabstop>AIL_ExpoRLow</tabstop>
   <tabstop>pushButton_4</tabstop>
   <tabstop>THR_edrSw1</tabstop>
   <tabstop>THR_edrSw2</tabstop>
-  <tabstop>THR_ExpoLHi</tabstop>
-  <tabstop>THR_DrLHi</tabstop>
-  <tabstop>THR_DrRHi</tabstop>
-  <tabstop>THR_ExpoRHi</tabstop>
-  <tabstop>THR_ExpoLMid</tabstop>
-  <tabstop>THR_DrLMid</tabstop>
-  <tabstop>THR_DrRMid</tabstop>
-  <tabstop>THR_ExpoRMid</tabstop>
-  <tabstop>THR_ExpoLLow</tabstop>
-  <tabstop>THR_DrLLow</tabstop>
-  <tabstop>THR_DrRLow</tabstop>
-  <tabstop>THR_ExpoRLow</tabstop>
   <tabstop>pushButton_2</tabstop>
   <tabstop>ELE_edrSw1</tabstop>
   <tabstop>ELE_edrSw2</tabstop>
-  <tabstop>ELE_ExpoLHi</tabstop>
-  <tabstop>ELE_DrLHi</tabstop>
-  <tabstop>ELE_DrRHi</tabstop>
-  <tabstop>ELE_ExpoRHi</tabstop>
-  <tabstop>ELE_ExpoLMid</tabstop>
-  <tabstop>ELE_DrLMid</tabstop>
-  <tabstop>ELE_DrRMid</tabstop>
-  <tabstop>ELE_ExpoRMid</tabstop>
-  <tabstop>ELE_ExpoLLow</tabstop>
-  <tabstop>ELE_DrLLow</tabstop>
-  <tabstop>ELE_DrRLow</tabstop>
-  <tabstop>ELE_ExpoRLow</tabstop>
   <tabstop>pushButton_3</tabstop>
   <tabstop>curveEdit_1</tabstop>
   <tabstop>curvePt1_1</tabstop>

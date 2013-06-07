@@ -52,11 +52,17 @@ private:
     QComboBox * cswitchSource2[NUM_CSW];
     QComboBox * cswitchAndSwitch[NUM_CSW];
     QLabel		* cswitchTlabel[NUM_CSW];
+		QTextBrowser * cswitchText1[NUM_CSW];
+		QTextBrowser * cswitchText2[NUM_CSW];
 
     QSpinBox  * safetySwitchValue[NUM_CHNOUT];
     QComboBox * safetySwitchSwtch[NUM_CHNOUT];
 		QComboBox * safetySwitchType[NUM_CHNOUT];
     QComboBox * safetySwitchAlarm[NUM_CHNOUT];
+
+    QSpinBox *expoDrSpin[4][3][2][2] ;
+    QComboBox *expoDrVal[4][3][2][2] ;
+		QCheckBox *expoDrGvar[4][3][2][2] ;
 
     void setupMixerListWidget();
     void updateSettings();

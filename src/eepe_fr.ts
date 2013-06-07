@@ -1598,6 +1598,10 @@ p, li { white-space: pre-wrap; }
         <source>Late Offset</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Gvar</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ModelEdit</name>
@@ -2507,6 +2511,14 @@ Droite</translation>
     </message>
     <message>
         <source> Offset(GV%1)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>!Curve(%1)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1.%2</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -3555,6 +3567,22 @@ Indique l&apos;affectation voie / numéro de canal par défaut utilisée lors de
     </message>
     <message>
         <source>File(s) To Send</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Files</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Com Port Unavailable</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No Sync.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Communication Failure(2)</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
