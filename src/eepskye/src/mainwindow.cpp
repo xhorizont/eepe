@@ -87,6 +87,8 @@
 #define ER9X_STAMP "http://er9x.googlecode.com/svn/trunk/src/stamp-er9x.h"
 #define EEPE_URL   "http://eepe.googlecode.com/svn/trunk/eePeInstall.exe"
 #define EEPE_STAMP "http://eepe.googlecode.com/svn/trunk/src/stamp-eepe.h"
+#define EEPSKYE_URL   "http://eepe.googlecode.com/svn/trunk/eePeInstall.exe"
+#define EEPSKYE_STAMP "http://eepe.googlecode.com/svn/trunk/src/eepskye/src/stamp-eepskye.h"
 
 #define ERSKY9X_STAMP "http://ersky9x.googlecode.com/svn/trunk/src/stamp-ersky9x.h"
 #define ERSKY9X_URL "http://ersky9x.googlecode.com/svn/trunk/ersky9x_rom.bin"
@@ -167,8 +169,8 @@ void MainWindow::checkForUpdates(bool ignoreSettings)
     {
         manager2 = new QNetworkAccessManager(this);
         connect(manager2, SIGNAL(finished(QNetworkReply*)),this, SLOT(reply2Finished(QNetworkReply*)));
-        //manager2->get(QNetworkRequest(QUrl(EEPE_STAMP)));
-    QNetworkRequest request(QUrl(EEPE_STAMP));
+        //manager2->get(QNetworkRequest(QUrl(EEPSKYE_STAMP)));
+    QNetworkRequest request(QUrl(EEPSKYE_STAMP));
         request.setAttribute(QNetworkRequest::CacheLoadControlAttribute, QNetworkRequest::AlwaysNetwork);
         manager2->get(request);
         check2done = false;
