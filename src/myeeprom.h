@@ -218,7 +218,9 @@ PACK(typedef struct t_FrSkyalarms
 
 PACK(typedef struct t_FrSkyData {
     FrSkyChannelData channels[2];
-		uint8_t unused0 ;
+		uint8_t voltSource:2 ;
+		uint8_t ampSource:2 ;
+		uint8_t FASoffset:4 ;			// 0.0 to 1.5
 		uint8_t frskyAlarmLimit ;
 		uint8_t frskyAlarmSound ;
 //		FrSkyAlarmData alarmData[4] ;
@@ -285,7 +287,9 @@ typedef struct t_ModelData {
   SafetySwData  safetySw[NUM_CHNOUT];
   FrSkyData frsky;
 	uint8_t numBlades ;
-	uint8_t unused1[8] ;
+	uint8_t frskyoffset[2] ;		// Offsets for A1 and A2
+	uint8_t sub_trim_limit ;
+	uint8_t unused1[5] ;
 	uint8_t CustomDisplayIndex[6] ;
 	GvarData gvars[MAX_GVARS] ;
 		PhaseData phaseData[MAX_PHASES] ;

@@ -1,226 +1,893 @@
+Index: simulatordialog.cpp
+===================================================================
+--- simulatordialog.cpp	(revision 372)
++++ simulatordialog.cpp	(working copy)
+@@ -1457,21 +1457,44 @@
+         ex_chans[i] = chans[i]; //for getswitch
+ 
+         int16_t ofs = g_model.limitData[i].offset;
+-        int16_t lim_p = 10*(g_model.limitData[i].max+100);
+-        int16_t lim_n = 10*(g_model.limitData[i].min-100); //multiply by 10 to get same range as ofs (-1000..1000)
++				int16_t xofs = ofs ;
++				if ( xofs > g_model.sub_trim_limit )
++				{
++					xofs = g_model.sub_trim_limit ;
++				}
++				else if ( xofs < -g_model.sub_trim_limit )
++				{
++					xofs = -g_model.sub_trim_limit ;
++				}
++				int16_t lim_p = 10*(g_model.limitData[i].max+100) + xofs ;
++        int16_t lim_n = 10*(g_model.limitData[i].min-100) + xofs ; //multiply by 10 to get same range as ofs (-1000..1000)
++				if ( lim_p > 1250 )
++				{
++					lim_p = 1250 ;
++				}
++				if ( lim_n < -1250 )
++				{
++					lim_n = -1250 ;
++				}
+         if(ofs>lim_p) ofs = lim_p;
+         if(ofs<lim_n) ofs = lim_n;
+ 
+-        if(q) q = (q>0) ?
+-                    q*((int32_t)lim_p-ofs)/100000 :
+-                    -q*((int32_t)lim_n-ofs)/100000 ; //div by 100000 -> output = -1024..1024
++        if(q)
++				{
++					int16_t temp = (q<0) ? ((int16_t)ofs-lim_n) : ((int16_t)lim_p-ofs) ;
++          q = ( q * temp ) / 100000 ; //div by 100000 -> output = -1024..1024
++				}
+ 
+-        q += calc1000toRESX(ofs);
+-        lim_p = calc1000toRESX(lim_p);
++				int16_t result ;
++				result = calc1000toRESX(ofs);
++  			result += q ; // we convert value to a 16bit value
++        
++				lim_p = calc1000toRESX(lim_p);
+         lim_n = calc1000toRESX(lim_n);
+-        if(q>lim_p) q = lim_p;
+-        if(q<lim_n) q = lim_n;
+-        if(g_model.limitData[i].revert) q=-q;// finally do the reverse.
++        if(result>lim_p) result = lim_p;
++        if(result<lim_n) result = lim_n;
++        
++				if(g_model.limitData[i].revert) result = -result ;// finally do the reverse.
+ 
+ 				{
+ 					uint8_t numSafety = 16 - g_model.numVoice ;
+@@ -1481,13 +1504,13 @@
+ 						{
+ 							if ( ( g_model.safetySw[i].opt.ss.mode != 1 ) && ( g_model.safetySw[i].opt.ss.mode != 2 ) )	// And not used as an alarm
+ 							{
+-        		    if(getSwitch(g_model.safetySw[i].opt.ss.swtch,0)) q = calc100toRESX(g_model.safetySw[i].opt.ss.val) ;
++        		    if(getSwitch(g_model.safetySw[i].opt.ss.swtch,0)) result = calc100toRESX(g_model.safetySw[i].opt.ss.val) ;
+ 							}
+ 						}
+ 					}
+ 				}
+         //cli();
+-        chanOut[i] = q; //copy consistent word to int-level
++        chanOut[i] = result ; //copy consistent word to int-level
+         //sei();
+     }
+ }
 Index: modeledit.h
 ===================================================================
---- modeledit.h	(revision 348)
+--- modeledit.h	(revision 372)
 +++ modeledit.h	(working copy)
-@@ -57,8 +57,6 @@
- 		QComboBox * safetySwitchType[NUM_CHNOUT];
-     QComboBox * safetySwitchAlarm[NUM_CHNOUT];
+@@ -246,6 +246,7 @@
+     void on_DSM_Type_currentIndexChanged(int index);
+     void on_pxxRxNum_editingFinished();
+ 		void on_VoiceNumberSB_editingFinished() ;
++		void on_autoLimitsSB_editingFinished() ;
+ };
  
--//    QComboBox * customTel[6];
--
-     void setupMixerListWidget();
-     void updateSettings();
-     void tabModelEditSetup();
+ 
+Index: mainwindow.cpp
+===================================================================
+--- mainwindow.cpp	(revision 374)
++++ mainwindow.cpp	(working copy)
+@@ -387,38 +387,38 @@
+             return;
+         }
+ 
+-//        if(rev>currentEEPErev)
+-//        {
+-//            showcheckForUpdatesResult = false; // update is available - do not show dialog
++        if(rev>currentEEPSKYErev)
++        {
++            showcheckForUpdatesResult = false; // update is available - do not show dialog
+ 
+-//#ifdef Q_OS_WIN32
+-//            int ret = QMessageBox::question(this, "eePe", tr("A new version of eePe is available (r%1)<br>"
+-//                                                                "Would you like to download it?").arg(rev) ,
+-//                                            QMessageBox::Yes | QMessageBox::No);
++#ifdef Q_OS_WIN32
++            int ret = QMessageBox::question(this, "eePskye", tr("A new version of eePe is available (r%1)<br>"
++                                                                "Would you like to download it?").arg(rev) ,
++                                            QMessageBox::Yes | QMessageBox::No);
+ 
+-//    				QSettings settings("er9x-eePskye", "eePskye");
++    				QSettings settings("erSKY9x-eePskye", "eePskye");
+ 
+-//            if (ret == QMessageBox::Yes)
+-//            {
+-//                QString fileName = QFileDialog::getSaveFileName(this, tr("Save As"),settings.value("lastDir").toString() + "/eePeInstall.exe",tr("Executable (*.exe)"));
+-//                if (fileName.isEmpty()) return;
++            if (ret == QMessageBox::Yes)
++            {
++                QString fileName = QFileDialog::getSaveFileName(this, tr("Save As"),settings.value("lastDir").toString() + "/eePeInstall.exe",tr("Executable (*.exe)"));
++                if (fileName.isEmpty()) return;
+ 
+-//                downloadDialog * dd = new downloadDialog(this,EEPE_URL,fileName);
+-//                installer_fileName = fileName;
+-//                connect(dd,SIGNAL(accepted()),this,SLOT(reply2Accepted()));
+-//                dd->show();
+-//            }           
+-//#else
+-//            QMessageBox::information(this, "eePe", tr("A new version of eePe is available (r%1)\n"
+-//                                                      "To update please visit the eepe code page\n"
+-//                                                      "http://code.google.com/p/eepe/").arg(rev) );
+-//#endif
+-//        }
+-//        else
+-//        {
+-//            if(showcheckForUpdatesResult && check1done && check2done)
+-//                QMessageBox::information(this, "eePe", tr("No updates available at this time."));
+-//        }
++                downloadDialog * dd = new downloadDialog(this,EEPE_URL,fileName);
++                installer_fileName = fileName;
++                connect(dd,SIGNAL(accepted()),this,SLOT(reply2Accepted()));
++                dd->show();
++            }           
++#else
++            QMessageBox::information(this, "eePe", tr("A new version of eePskye is available (r%1)\n"
++                                                      "To update please visit the eepe code page\n"
++                                                      "http://code.google.com/p/eepe/").arg(rev) );
++#endif
++        }
++        else
++        {
++            if(showcheckForUpdatesResult && check1done && check2done)
++                QMessageBox::information(this, "eePskye", tr("No updates available at this time."));
++        }
+     }
+     else
+     {
+Index: diff1.txt
+===================================================================
+--- diff1.txt	(revision 372)
++++ diff1.txt	(working copy)
+@@ -1,226 +1,158 @@
++Index: simulatordialog.cpp
++===================================================================
++--- simulatordialog.cpp	(revision 372)
+++++ simulatordialog.cpp	(working copy)
++@@ -1457,21 +1457,44 @@
++         ex_chans[i] = chans[i]; //for getswitch
++ 
++         int16_t ofs = g_model.limitData[i].offset;
++-        int16_t lim_p = 10*(g_model.limitData[i].max+100);
++-        int16_t lim_n = 10*(g_model.limitData[i].min-100); //multiply by 10 to get same range as ofs (-1000..1000)
+++				int16_t xofs = ofs ;
+++				if ( xofs > g_model.sub_trim_limit )
+++				{
+++					xofs = g_model.sub_trim_limit ;
+++				}
+++				else if ( xofs < -g_model.sub_trim_limit )
+++				{
+++					xofs = -g_model.sub_trim_limit ;
+++				}
+++				int16_t lim_p = 10*(g_model.limitData[i].max+100) + xofs ;
+++        int16_t lim_n = 10*(g_model.limitData[i].min-100) + xofs ; //multiply by 10 to get same range as ofs (-1000..1000)
+++				if ( lim_p > 1250 )
+++				{
+++					lim_p = 1250 ;
+++				}
+++				if ( lim_n < -1250 )
+++				{
+++					lim_n = -1250 ;
+++				}
++         if(ofs>lim_p) ofs = lim_p;
++         if(ofs<lim_n) ofs = lim_n;
++ 
++-        if(q) q = (q>0) ?
++-                    q*((int32_t)lim_p-ofs)/100000 :
++-                    -q*((int32_t)lim_n-ofs)/100000 ; //div by 100000 -> output = -1024..1024
+++        if(q)
+++				{
+++					int16_t temp = (q<0) ? ((int16_t)ofs-lim_n) : ((int16_t)lim_p-ofs) ;
+++          q = ( q * temp ) / 100000 ; //div by 100000 -> output = -1024..1024
+++				}
++ 
++-        q += calc1000toRESX(ofs);
++-        lim_p = calc1000toRESX(lim_p);
+++				int16_t result ;
+++				result = calc1000toRESX(ofs);
+++  			result += q ; // we convert value to a 16bit value
+++        
+++				lim_p = calc1000toRESX(lim_p);
++         lim_n = calc1000toRESX(lim_n);
++-        if(q>lim_p) q = lim_p;
++-        if(q<lim_n) q = lim_n;
++-        if(g_model.limitData[i].revert) q=-q;// finally do the reverse.
+++        if(result>lim_p) result = lim_p;
+++        if(result<lim_n) result = lim_n;
+++        
+++				if(g_model.limitData[i].revert) result = -result ;// finally do the reverse.
++ 
++ 				{
++ 					uint8_t numSafety = 16 - g_model.numVoice ;
++@@ -1481,13 +1504,13 @@
++ 						{
++ 							if ( ( g_model.safetySw[i].opt.ss.mode != 1 ) && ( g_model.safetySw[i].opt.ss.mode != 2 ) )	// And not used as an alarm
++ 							{
++-        		    if(getSwitch(g_model.safetySw[i].opt.ss.swtch,0)) q = calc100toRESX(g_model.safetySw[i].opt.ss.val) ;
+++        		    if(getSwitch(g_model.safetySw[i].opt.ss.swtch,0)) result = calc100toRESX(g_model.safetySw[i].opt.ss.val) ;
++ 							}
++ 						}
++ 					}
++ 				}
++         //cli();
++-        chanOut[i] = q; //copy consistent word to int-level
+++        chanOut[i] = result ; //copy consistent word to int-level
++         //sei();
++     }
++ }
+ Index: modeledit.h
+ ===================================================================
+---- modeledit.h	(revision 348)
++--- modeledit.h	(revision 372)
+ +++ modeledit.h	(working copy)
+-@@ -57,8 +57,6 @@
+- 		QComboBox * safetySwitchType[NUM_CHNOUT];
+-     QComboBox * safetySwitchAlarm[NUM_CHNOUT];
++@@ -246,6 +246,7 @@
++     void on_DSM_Type_currentIndexChanged(int index);
++     void on_pxxRxNum_editingFinished();
++ 		void on_VoiceNumberSB_editingFinished() ;
+++		void on_autoLimitsSB_editingFinished() ;
++ };
+  
+--//    QComboBox * customTel[6];
+--
+-     void setupMixerListWidget();
+-     void updateSettings();
+-     void tabModelEditSetup();
+-Index: modeledit.ui
+-===================================================================
+---- modeledit.ui	(revision 348)
+-+++ modeledit.ui	(working copy)
+-@@ -9004,6 +9004,9 @@
+-            <property name="text">
+-             <string>Custom Telemetry 1</string>
+-            </property>
+-+           <property name="alignment">
+-+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+-+           </property>
+-           </widget>
+-          </item>
+-          <item row="2" column="0">
+-@@ -9011,6 +9014,9 @@
+-            <property name="text">
+-             <string>Custom Telemetry 3</string>
+-            </property>
+-+           <property name="alignment">
+-+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+-+           </property>
+-           </widget>
+-          </item>
+-          <item row="4" column="0">
+-@@ -9018,6 +9024,9 @@
+-            <property name="text">
+-             <string>Custom Telemetry 5</string>
+-            </property>
+-+           <property name="alignment">
+-+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+-+           </property>
+-           </widget>
+-          </item>
+-          <item row="0" column="2">
+-@@ -9025,6 +9034,9 @@
+-            <property name="text">
+-             <string>Custom Telemetry 2</string>
+-            </property>
+-+           <property name="alignment">
+-+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+-+           </property>
+-           </widget>
+-          </item>
+-          <item row="2" column="2">
+-@@ -9032,6 +9044,9 @@
+-            <property name="text">
+-             <string>Custom Telemetry 4</string>
+-            </property>
+-+           <property name="alignment">
+-+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+-+           </property>
+-           </widget>
+-          </item>
+-          <item row="4" column="2">
+-@@ -9039,22 +9054,29 @@
+-            <property name="text">
+-             <string>Custom Telemetry 6</string>
+-            </property>
+-+           <property name="alignment">
+-+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+-+           </property>
+-           </widget>
+-          </item>
+-          <item row="0" column="1">
+--          <widget class="QLabel" name="CT1Holder">
+--           <property name="text">
+--            <string>TextLabel</string>
+--           </property>
+--          </widget>
+-+          <widget class="QComboBox" name="Ct1"/>
+-          </item>
+-          <item row="0" column="3">
+--          <widget class="QLabel" name="CT2Holder">
+--           <property name="text">
+--            <string>TextLabel</string>
+--           </property>
+--          </widget>
+-+          <widget class="QComboBox" name="Ct2"/>
+-          </item>
+-+         <item row="2" column="1">
+-+          <widget class="QComboBox" name="Ct3"/>
+-+         </item>
+-+         <item row="2" column="3">
+-+          <widget class="QComboBox" name="Ct4"/>
+-+         </item>
+-+         <item row="4" column="1">
+-+          <widget class="QComboBox" name="Ct5"/>
+-+         </item>
+-+         <item row="4" column="3">
+-+          <widget class="QComboBox" name="Ct6"/>
+-+         </item>
+-         </layout>
+-        </item>
+-        <item>
+-Index: modeledit.cpp
+-===================================================================
+---- modeledit.cpp	(revision 348)
+-+++ modeledit.cpp	(working copy)
+-@@ -32,6 +32,7 @@
+-     QDialog(parent),
+-     ui(new Ui::ModelEdit)
+- {
+-+		int size ;
+-     ui->setupUi(this);
+  
+-     eeFile = eFile;
+-@@ -43,7 +44,17 @@
+- 
+-     if(!eeFile->eeLoadGeneral())  eeFile->generalDefault();
+-     eeFile->getGeneralSettings(&g_eeGeneral);
+--    eeFile->getModel(&g_model,id);
+-+    size = eeFile->getModel(&g_model,id);
+-+		if ( size < sizeof(g_model) )
+-+		{
+-+			uint8_t *p ;
+-+			p = (uint8_t *) &g_model + size ;
+-+			while( size < sizeof(g_model) )
+-+			{
+-+				*p++ = 0 ;
+-+				size += 1 ;
+-+			}
+-+		}
+-     id_model = id;
+- 
+-     setupMixerListWidget();
+-@@ -1719,29 +1730,13 @@
+- 
+- void ModelEdit::tabFrsky()
+- {
+--//	char text[60] ;
+--		ui->CT1Holder->setVisible(false);
+--		ui->CT2Holder->setVisible(false);
+--//    for(int i=0; i<6; i++)
+--//    {
+--//      customTel[i] = new QComboBox(this);
+--//			populateTelItemsCB( customTel[i], g_model.CustomDisplayIndex[i] ) ;
+--//	    ui->gridLayout_25->addWidget(customTel[i],i/2,(i&1) ? 3 : 1);
+--//	  }
+--
+--//		sprintf( text, "%d,%d,%d,%d,%d,%d", g_model.CustomDisplayIndex[0],
+--//		g_model.CustomDisplayIndex[1],g_model.CustomDisplayIndex[2],
+--//		g_model.CustomDisplayIndex[3],g_model.CustomDisplayIndex[4],
+--//		g_model.CustomDisplayIndex[5] ) ;
+--//		ui->label_92->setText(text) ;
+--
+--	
+--//		sprintf( text, "%d,%d,%d,%d,%d,%d", customTel[0]->currentIndex(),
+--//		customTel[1]->currentIndex(), customTel[2]->currentIndex(),
+--//		customTel[3]->currentIndex(), customTel[4]->currentIndex(),
+--//		customTel[5]->currentIndex() ) ;
+--//		ui->label_93->setText(text) ;
+--
+-+		populateTelItemsCB( ui->Ct1, g_model.CustomDisplayIndex[0] ) ;
+-+		populateTelItemsCB( ui->Ct2, g_model.CustomDisplayIndex[1] ) ;
+-+		populateTelItemsCB( ui->Ct3, g_model.CustomDisplayIndex[2] ) ;
+-+		populateTelItemsCB( ui->Ct4, g_model.CustomDisplayIndex[3] ) ;
+-+		populateTelItemsCB( ui->Ct5, g_model.CustomDisplayIndex[4] ) ;
+-+		populateTelItemsCB( ui->Ct6, g_model.CustomDisplayIndex[5] ) ;
+-+		
+-     ui->frsky_ratio_0->setValue(g_model.frsky.channels[0].ratio);
+-     ui->frsky_type_0->setCurrentIndex(g_model.frsky.channels[0].type);
+-     ui->frsky_ratio_1->setValue(g_model.frsky.channels[1].ratio);
+-@@ -1792,17 +1787,16 @@
+- 		connect(ui->UnitsComboBox,SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
+- 		connect(ui->BladesSpinBox,SIGNAL(editingFinished()),this,SLOT(FrSkyEdited()));
+-     
+--//		connect(customTel[0],SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
+--//		connect(customTel[1],SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
+--//		connect(customTel[2],SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
+--//		connect(customTel[3],SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
+--//		connect(customTel[4],SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
+--//		connect(customTel[5],SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
+-+		connect( ui->Ct1,SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
+-+		connect( ui->Ct2,SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
+-+		connect( ui->Ct3,SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
+-+		connect( ui->Ct4,SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
+-+		connect( ui->Ct5,SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
+-+		connect( ui->Ct6,SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
+- }
+- 
+- void ModelEdit::FrSkyEdited()
+- {
+--//	char text[60] ;
+-     g_model.frsky.channels[0].ratio = ui->frsky_ratio_0->value();
+-     g_model.frsky.channels[1].ratio = ui->frsky_ratio_1->value();
+-     g_model.frsky.channels[0].type  = ui->frsky_type_0->currentIndex();
+-@@ -1825,20 +1819,13 @@
+-     g_model.numBlades = ui->BladesSpinBox->value() - 2 ;
+- 
+- 
+--//		g_model.CustomDisplayIndex[0] = customTel[0]->currentIndex() ;
+--//		g_model.CustomDisplayIndex[1] = customTel[1]->currentIndex() ;
+--//		g_model.CustomDisplayIndex[2] = customTel[2]->currentIndex() ;
+--//		g_model.CustomDisplayIndex[3] = customTel[3]->currentIndex() ;
+--//		g_model.CustomDisplayIndex[4] = customTel[4]->currentIndex() ;
+--//		g_model.CustomDisplayIndex[5] = customTel[5]->currentIndex() ;
+-+		g_model.CustomDisplayIndex[0] = ui->Ct1->currentIndex() ;
+-+		g_model.CustomDisplayIndex[1] = ui->Ct2->currentIndex() ;
+-+		g_model.CustomDisplayIndex[2] = ui->Ct3->currentIndex() ;
+-+		g_model.CustomDisplayIndex[3] = ui->Ct4->currentIndex() ;
+-+		g_model.CustomDisplayIndex[4] = ui->Ct5->currentIndex() ;
+-+		g_model.CustomDisplayIndex[5] = ui->Ct6->currentIndex() ;
+-     
+--//		sprintf( text, "%d,%d,%d,%d,%d,%d", customTel[0]->currentIndex(),
+--//		customTel[1]->currentIndex(), customTel[2]->currentIndex(),
+--//		customTel[3]->currentIndex(), customTel[4]->currentIndex(),
+--//		customTel[5]->currentIndex() ) ;
+--//		ui->label_93->setText(text) ;
+--
+--		
+- 		updateSettings();
+- }
+- 
++Index: mainwindow.cpp
++===================================================================
++--- mainwindow.cpp	(revision 374)
+++++ mainwindow.cpp	(working copy)
++@@ -387,38 +387,38 @@
++             return;
++         }
++ 
++-//        if(rev>currentEEPErev)
++-//        {
++-//            showcheckForUpdatesResult = false; // update is available - do not show dialog
+++        if(rev>currentEEPSKYErev)
+++        {
+++            showcheckForUpdatesResult = false; // update is available - do not show dialog
++ 
++-//#ifdef Q_OS_WIN32
++-//            int ret = QMessageBox::question(this, "eePe", tr("A new version of eePe is available (r%1)<br>"
++-//                                                                "Would you like to download it?").arg(rev) ,
++-//                                            QMessageBox::Yes | QMessageBox::No);
+++#ifdef Q_OS_WIN32
+++            int ret = QMessageBox::question(this, "eePskye", tr("A new version of eePe is available (r%1)<br>"
+++                                                                "Would you like to download it?").arg(rev) ,
+++                                            QMessageBox::Yes | QMessageBox::No);
++ 
++-//    				QSettings settings("er9x-eePskye", "eePskye");
+++    				QSettings settings("erSKY9x-eePskye", "eePskye");
++ 
++-//            if (ret == QMessageBox::Yes)
++-//            {
++-//                QString fileName = QFileDialog::getSaveFileName(this, tr("Save As"),settings.value("lastDir").toString() + "/eePeInstall.exe",tr("Executable (*.exe)"));
++-//                if (fileName.isEmpty()) return;
+++            if (ret == QMessageBox::Yes)
+++            {
+++                QString fileName = QFileDialog::getSaveFileName(this, tr("Save As"),settings.value("lastDir").toString() + "/eePeInstall.exe",tr("Executable (*.exe)"));
+++                if (fileName.isEmpty()) return;
++ 
++-//                downloadDialog * dd = new downloadDialog(this,EEPE_URL,fileName);
++-//                installer_fileName = fileName;
++-//                connect(dd,SIGNAL(accepted()),this,SLOT(reply2Accepted()));
++-//                dd->show();
++-//            }           
++-//#else
++-//            QMessageBox::information(this, "eePe", tr("A new version of eePe is available (r%1)\n"
++-//                                                      "To update please visit the eepe code page\n"
++-//                                                      "http://code.google.com/p/eepe/").arg(rev) );
++-//#endif
++-//        }
++-//        else
++-//        {
++-//            if(showcheckForUpdatesResult && check1done && check2done)
++-//                QMessageBox::information(this, "eePe", tr("No updates available at this time."));
++-//        }
+++                downloadDialog * dd = new downloadDialog(this,EEPE_URL,fileName);
+++                installer_fileName = fileName;
+++                connect(dd,SIGNAL(accepted()),this,SLOT(reply2Accepted()));
+++                dd->show();
+++            }           
+++#else
+++            QMessageBox::information(this, "eePe", tr("A new version of eePskye is available (r%1)\n"
+++                                                      "To update please visit the eepe code page\n"
+++                                                      "http://code.google.com/p/eepe/").arg(rev) );
+++#endif
+++        }
+++        else
+++        {
+++            if(showcheckForUpdatesResult && check1done && check2done)
+++                QMessageBox::information(this, "eePskye", tr("No updates available at this time."));
+++        }
++     }
++     else
++     {
 Index: modeledit.ui
 ===================================================================
---- modeledit.ui	(revision 348)
+--- modeledit.ui	(revision 372)
 +++ modeledit.ui	(working copy)
-@@ -9004,6 +9004,9 @@
-            <property name="text">
-             <string>Custom Telemetry 1</string>
-            </property>
-+           <property name="alignment">
-+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-+           </property>
-           </widget>
+@@ -54,7 +54,7 @@
+    <item row="5" column="0">
+     <widget class="QTabWidget" name="tabWidget">
+      <property name="currentIndex">
+-      <number>7</number>
++      <number>0</number>
+      </property>
+      <widget class="QWidget" name="tabModelSetup">
+       <attribute name="title">
+@@ -78,6 +78,32 @@
+          </property>
+         </widget>
+        </item>
++       <item row="1" column="0">
++        <widget class="QLabel" name="label_145">
++         <property name="text">
++          <string>Voice Number</string>
++         </property>
++        </widget>
++       </item>
++       <item row="1" column="1">
++        <widget class="QSpinBox" name="VoiceNumberSB">
++         <property name="suffix">
++          <string/>
++         </property>
++         <property name="minimum">
++          <number>260</number>
++         </property>
++         <property name="maximum">
++          <number>309</number>
++         </property>
++         <property name="singleStep">
++          <number>1</number>
++         </property>
++         <property name="value">
++          <number>260</number>
++         </property>
++        </widget>
++       </item>
+        <item row="3" column="0">
+         <widget class="QLabel" name="label_95">
+          <property name="text">
+@@ -429,98 +455,6 @@
           </item>
-          <item row="2" column="0">
-@@ -9011,6 +9014,9 @@
-            <property name="text">
-             <string>Custom Telemetry 3</string>
-            </property>
-+           <property name="alignment">
-+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-+           </property>
-           </widget>
+         </widget>
+        </item>
+-       <item row="23" column="0">
+-        <widget class="QLabel" name="label_9">
+-         <property name="text">
+-          <string>ppm Delay</string>
+-         </property>
+-        </widget>
+-       </item>
+-       <item row="23" column="1">
+-        <widget class="QSpinBox" name="ppmDelaySB">
+-         <property name="suffix">
+-          <string> uSec</string>
+-         </property>
+-         <property name="minimum">
+-          <number>100</number>
+-         </property>
+-         <property name="maximum">
+-          <number>800</number>
+-         </property>
+-         <property name="singleStep">
+-          <number>50</number>
+-         </property>
+-         <property name="value">
+-          <number>300</number>
+-         </property>
+-        </widget>
+-       </item>
+-       <item row="24" column="0">
+-        <widget class="QLabel" name="label_116">
+-         <property name="text">
+-          <string>DSM Type</string>
+-         </property>
+-        </widget>
+-       </item>
+-       <item row="24" column="1">
+-        <widget class="QComboBox" name="DSM_Type">
+-         <item>
+-          <property name="text">
+-           <string>LP4/LP5</string>
+-          </property>
+-         </item>
+-         <item>
+-          <property name="text">
+-           <string>DSM2only</string>
+-          </property>
+-         </item>
+-         <item>
+-          <property name="text">
+-           <string>DSM2/DSMX</string>
+-          </property>
+-         </item>
+-        </widget>
+-       </item>
+-       <item row="25" column="0">
+-        <widget class="QLabel" name="label_117">
+-         <property name="text">
+-          <string>PXX RxNum</string>
+-         </property>
+-        </widget>
+-       </item>
+-       <item row="25" column="1">
+-        <widget class="QSpinBox" name="pxxRxNum">
+-         <property name="suffix">
+-          <string/>
+-         </property>
+-         <property name="minimum">
+-          <number>1</number>
+-         </property>
+-         <property name="maximum">
+-          <number>125</number>
+-         </property>
+-         <property name="singleStep">
+-          <number>1</number>
+-         </property>
+-         <property name="value">
+-          <number>1</number>
+-         </property>
+-        </widget>
+-       </item>
+-       <item row="26" column="0">
+-        <widget class="QLabel" name="label_114">
+-         <property name="text">
+-          <string>Trainer</string>
+-         </property>
+-        </widget>
+-       </item>
+-       <item row="26" column="1">
+-        <widget class="QCheckBox" name="TrainerChkB">
+-         <property name="text">
+-          <string/>
+-         </property>
+-        </widget>
+-       </item>
+        <item row="17" column="1">
+         <layout class="QGridLayout" name="gridLayout_28">
+          <item row="0" column="0">
+@@ -592,6 +526,13 @@
           </item>
-          <item row="4" column="0">
-@@ -9018,6 +9024,9 @@
-            <property name="text">
-             <string>Custom Telemetry 5</string>
-            </property>
-+           <property name="alignment">
-+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-+           </property>
-           </widget>
-          </item>
-          <item row="0" column="2">
-@@ -9025,6 +9034,9 @@
-            <property name="text">
-             <string>Custom Telemetry 2</string>
-            </property>
-+           <property name="alignment">
-+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-+           </property>
-           </widget>
-          </item>
-          <item row="2" column="2">
-@@ -9032,6 +9044,9 @@
-            <property name="text">
-             <string>Custom Telemetry 4</string>
-            </property>
-+           <property name="alignment">
-+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-+           </property>
-           </widget>
-          </item>
-          <item row="4" column="2">
-@@ -9039,22 +9054,29 @@
-            <property name="text">
-             <string>Custom Telemetry 6</string>
-            </property>
-+           <property name="alignment">
-+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-+           </property>
-           </widget>
-          </item>
-          <item row="0" column="1">
--          <widget class="QLabel" name="CT1Holder">
--           <property name="text">
--            <string>TextLabel</string>
--           </property>
--          </widget>
-+          <widget class="QComboBox" name="Ct1"/>
-          </item>
-          <item row="0" column="3">
--          <widget class="QLabel" name="CT2Holder">
--           <property name="text">
--            <string>TextLabel</string>
--           </property>
--          </widget>
-+          <widget class="QComboBox" name="Ct2"/>
-          </item>
-+         <item row="2" column="1">
-+          <widget class="QComboBox" name="Ct3"/>
-+         </item>
-+         <item row="2" column="3">
-+          <widget class="QComboBox" name="Ct4"/>
-+         </item>
-+         <item row="4" column="1">
-+          <widget class="QComboBox" name="Ct5"/>
-+         </item>
-+         <item row="4" column="3">
-+          <widget class="QComboBox" name="Ct6"/>
-+         </item>
          </layout>
         </item>
-        <item>
++       <item row="20" column="0">
++        <widget class="QLabel" name="label_120">
++         <property name="text">
++          <string>PPM2</string>
++         </property>
++        </widget>
++       </item>
+        <item row="20" column="1">
+         <layout class="QGridLayout" name="gridLayout_29">
+          <item row="0" column="0">
+@@ -666,13 +607,6 @@
+          </item>
+         </layout>
+        </item>
+-       <item row="20" column="0">
+-        <widget class="QLabel" name="label_120">
+-         <property name="text">
+-          <string>PPM2</string>
+-         </property>
+-        </widget>
+-       </item>
+        <item row="22" column="0">
+         <widget class="QLabel" name="label_113">
+          <property name="text">
+@@ -702,32 +636,115 @@
+          </property>
+         </widget>
+        </item>
+-       <item row="1" column="0">
+-        <widget class="QLabel" name="label_145">
++       <item row="23" column="0">
++        <widget class="QLabel" name="label_9">
+          <property name="text">
+-          <string>Voice Number</string>
++          <string>ppm Delay</string>
+          </property>
+         </widget>
+        </item>
+-       <item row="1" column="1">
+-        <widget class="QSpinBox" name="VoiceNumberSB">
++       <item row="23" column="1">
++        <widget class="QSpinBox" name="ppmDelaySB">
+          <property name="suffix">
++          <string> uSec</string>
++         </property>
++         <property name="minimum">
++          <number>100</number>
++         </property>
++         <property name="maximum">
++          <number>800</number>
++         </property>
++         <property name="singleStep">
++          <number>50</number>
++         </property>
++         <property name="value">
++          <number>300</number>
++         </property>
++        </widget>
++       </item>
++       <item row="24" column="0">
++        <widget class="QLabel" name="label_116">
++         <property name="text">
++          <string>DSM Type</string>
++         </property>
++        </widget>
++       </item>
++       <item row="24" column="1">
++        <widget class="QComboBox" name="DSM_Type">
++         <item>
++          <property name="text">
++           <string>LP4/LP5</string>
++          </property>
++         </item>
++         <item>
++          <property name="text">
++           <string>DSM2only</string>
++          </property>
++         </item>
++         <item>
++          <property name="text">
++           <string>DSM2/DSMX</string>
++          </property>
++         </item>
++        </widget>
++       </item>
++       <item row="25" column="0">
++        <widget class="QLabel" name="label_117">
++         <property name="text">
++          <string>PXX RxNum</string>
++         </property>
++        </widget>
++       </item>
++       <item row="25" column="1">
++        <widget class="QSpinBox" name="pxxRxNum">
++         <property name="suffix">
+           <string/>
+          </property>
+          <property name="minimum">
+-          <number>260</number>
++          <number>1</number>
+          </property>
+          <property name="maximum">
+-          <number>309</number>
++          <number>125</number>
+          </property>
+          <property name="singleStep">
+           <number>1</number>
+          </property>
+          <property name="value">
+-          <number>260</number>
++          <number>1</number>
+          </property>
+         </widget>
+        </item>
++       <item row="26" column="0">
++        <widget class="QLabel" name="label_114">
++         <property name="text">
++          <string>Trainer</string>
++         </property>
++        </widget>
++       </item>
++       <item row="26" column="1">
++        <widget class="QCheckBox" name="TrainerChkB">
++         <property name="text">
++          <string/>
++         </property>
++        </widget>
++       </item>
++       <item row="27" column="0">
++        <widget class="QLabel" name="label_177">
++         <property name="text">
++          <string>Auto Limits</string>
++         </property>
++        </widget>
++       </item>
++       <item row="27" column="1">
++        <widget class="QDoubleSpinBox" name="autoLimitsSB">
++         <property name="decimals">
++          <number>1</number>
++         </property>
++         <property name="maximum">
++          <double>10.000000000000000</double>
++         </property>
++        </widget>
++       </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tabHeli">
+Index: myeeprom.h
+===================================================================
+--- myeeprom.h	(revision 372)
++++ myeeprom.h	(working copy)
+@@ -467,6 +467,7 @@
+ 	uint8_t		startChannel ;			// for main output 0 = ch1
+ 	uint8_t		startPPM2channel ;	// for PPM2 output 0 follow
+   int8_t		ppm2NCH ;
++	uint8_t sub_trim_limit ;
+ }) SKYModelData ;
+ 
+ 
 Index: modeledit.cpp
 ===================================================================
---- modeledit.cpp	(revision 348)
+--- modeledit.cpp	(revision 372)
 +++ modeledit.cpp	(working copy)
-@@ -32,6 +32,7 @@
-     QDialog(parent),
-     ui(new Ui::ModelEdit)
- {
-+		int size ;
-     ui->setupUi(this);
+@@ -215,6 +215,7 @@
  
-     eeFile = eFile;
-@@ -43,7 +44,17 @@
+     //pulse polarity
+     ui->pulsePolCB->setCurrentIndex(g_model.pulsePol);
++    ui->autoLimitsSB->setValue( (double)g_model.sub_trim_limit/10 ) ;
  
-     if(!eeFile->eeLoadGeneral())  eeFile->generalDefault();
-     eeFile->getGeneralSettings(&g_eeGeneral);
--    eeFile->getModel(&g_model,id);
-+    size = eeFile->getModel(&g_model,id);
-+		if ( size < sizeof(g_model) )
-+		{
-+			uint8_t *p ;
-+			p = (uint8_t *) &g_model + size ;
-+			while( size < sizeof(g_model) )
-+			{
-+				*p++ = 0 ;
-+				size += 1 ;
-+			}
-+		}
-     id_model = id;
- 
-     setupMixerListWidget();
-@@ -1719,29 +1730,13 @@
- 
- void ModelEdit::tabFrsky()
- {
--//	char text[60] ;
--		ui->CT1Holder->setVisible(false);
--		ui->CT2Holder->setVisible(false);
--//    for(int i=0; i<6; i++)
--//    {
--//      customTel[i] = new QComboBox(this);
--//			populateTelItemsCB( customTel[i], g_model.CustomDisplayIndex[i] ) ;
--//	    ui->gridLayout_25->addWidget(customTel[i],i/2,(i&1) ? 3 : 1);
--//	  }
--
--//		sprintf( text, "%d,%d,%d,%d,%d,%d", g_model.CustomDisplayIndex[0],
--//		g_model.CustomDisplayIndex[1],g_model.CustomDisplayIndex[2],
--//		g_model.CustomDisplayIndex[3],g_model.CustomDisplayIndex[4],
--//		g_model.CustomDisplayIndex[5] ) ;
--//		ui->label_92->setText(text) ;
--
--	
--//		sprintf( text, "%d,%d,%d,%d,%d,%d", customTel[0]->currentIndex(),
--//		customTel[1]->currentIndex(), customTel[2]->currentIndex(),
--//		customTel[3]->currentIndex(), customTel[4]->currentIndex(),
--//		customTel[5]->currentIndex() ) ;
--//		ui->label_93->setText(text) ;
--
-+		populateTelItemsCB( ui->Ct1, g_model.CustomDisplayIndex[0] ) ;
-+		populateTelItemsCB( ui->Ct2, g_model.CustomDisplayIndex[1] ) ;
-+		populateTelItemsCB( ui->Ct3, g_model.CustomDisplayIndex[2] ) ;
-+		populateTelItemsCB( ui->Ct4, g_model.CustomDisplayIndex[3] ) ;
-+		populateTelItemsCB( ui->Ct5, g_model.CustomDisplayIndex[4] ) ;
-+		populateTelItemsCB( ui->Ct6, g_model.CustomDisplayIndex[5] ) ;
-+		
-     ui->frsky_ratio_0->setValue(g_model.frsky.channels[0].ratio);
-     ui->frsky_type_0->setCurrentIndex(g_model.frsky.channels[0].type);
-     ui->frsky_ratio_1->setValue(g_model.frsky.channels[1].ratio);
-@@ -1792,17 +1787,16 @@
- 		connect(ui->UnitsComboBox,SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
- 		connect(ui->BladesSpinBox,SIGNAL(editingFinished()),this,SLOT(FrSkyEdited()));
-     
--//		connect(customTel[0],SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
--//		connect(customTel[1],SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
--//		connect(customTel[2],SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
--//		connect(customTel[3],SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
--//		connect(customTel[4],SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
--//		connect(customTel[5],SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
-+		connect( ui->Ct1,SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
-+		connect( ui->Ct2,SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
-+		connect( ui->Ct3,SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
-+		connect( ui->Ct4,SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
-+		connect( ui->Ct5,SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
-+		connect( ui->Ct6,SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
+     //protocol channels ppm delay (disable if needed)
+     setProtocolBoxes();
+@@ -1556,7 +1557,7 @@
+ 				if ( cswitchSource1[i]->currentIndex() > 36 )
+ 				{
+         	cswitchTlabel[i]->setVisible(true);
+-					value = convertTelemConstant( cswitchSource1[i]->currentIndex() - 45, g_model.customSw[i].v2 ) ;
++					value = convertTelemConstant( cswitchSource1[i]->currentIndex() - 45, g_model.customSw[i].v2, &g_model ) ;
+           stringTelemetryChannel( telText, g_model.customSw[i].v1 - 45, value, &g_model ) ;
+ //					sprintf( telText, "%d", value ) ;
+         	cswitchTlabel[i]->setText(telText);
+@@ -2106,7 +2107,7 @@
+             g_model.customSw[i].v2 = cswitchOffset[i]->value();
+ 						if ( g_model.customSw[i].v1 > 36 )
+ 						{
+-							value = convertTelemConstant( g_model.customSw[i].v1 - 37, g_model.customSw[i].v2 ) ;
++							value = convertTelemConstant( g_model.customSw[i].v1 - 37, g_model.customSw[i].v2, &g_model ) ;
+               stringTelemetryChannel( telText, g_model.customSw[i].v1 - 37, value, &g_model ) ;
+ 							//sprintf( telText, "%d", value ) ;
+         			cswitchTlabel[i]->setText(telText);
+@@ -2520,6 +2521,11 @@
  }
  
- void ModelEdit::FrSkyEdited()
+ 
++void ModelEdit::on_autoLimitsSB_editingFinished()
++{
++   g_model.sub_trim_limit = ui->autoLimitsSB->value()*10 ;
++}
++
+ void ModelEdit::on_thrTrimChkB_toggled(bool checked)
  {
--//	char text[60] ;
-     g_model.frsky.channels[0].ratio = ui->frsky_ratio_0->value();
-     g_model.frsky.channels[1].ratio = ui->frsky_ratio_1->value();
-     g_model.frsky.channels[0].type  = ui->frsky_type_0->currentIndex();
-@@ -1825,20 +1819,13 @@
-     g_model.numBlades = ui->BladesSpinBox->value() - 2 ;
- 
- 
--//		g_model.CustomDisplayIndex[0] = customTel[0]->currentIndex() ;
--//		g_model.CustomDisplayIndex[1] = customTel[1]->currentIndex() ;
--//		g_model.CustomDisplayIndex[2] = customTel[2]->currentIndex() ;
--//		g_model.CustomDisplayIndex[3] = customTel[3]->currentIndex() ;
--//		g_model.CustomDisplayIndex[4] = customTel[4]->currentIndex() ;
--//		g_model.CustomDisplayIndex[5] = customTel[5]->currentIndex() ;
-+		g_model.CustomDisplayIndex[0] = ui->Ct1->currentIndex() ;
-+		g_model.CustomDisplayIndex[1] = ui->Ct2->currentIndex() ;
-+		g_model.CustomDisplayIndex[2] = ui->Ct3->currentIndex() ;
-+		g_model.CustomDisplayIndex[3] = ui->Ct4->currentIndex() ;
-+		g_model.CustomDisplayIndex[4] = ui->Ct5->currentIndex() ;
-+		g_model.CustomDisplayIndex[5] = ui->Ct6->currentIndex() ;
-     
--//		sprintf( text, "%d,%d,%d,%d,%d,%d", customTel[0]->currentIndex(),
--//		customTel[1]->currentIndex(), customTel[2]->currentIndex(),
--//		customTel[3]->currentIndex(), customTel[4]->currentIndex(),
--//		customTel[5]->currentIndex() ) ;
--//		ui->label_93->setText(text) ;
--
--		
- 		updateSettings();
- }
- 
+     g_model.thrTrim = checked;

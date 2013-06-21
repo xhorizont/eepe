@@ -1432,21 +1432,44 @@ void simulatorDialog::perOut(bool init)
         ex_chans[i] = chans[i]; //for getswitch
 
         int16_t ofs = g_model.limitData[i].offset;
-        int16_t lim_p = 10*(g_model.limitData[i].max+100);
-        int16_t lim_n = 10*(g_model.limitData[i].min-100); //multiply by 10 to get same range as ofs (-1000..1000)
+				int16_t xofs = ofs ;
+				if ( xofs > g_model.sub_trim_limit )
+				{
+					xofs = g_model.sub_trim_limit ;
+				}
+				else if ( xofs < -g_model.sub_trim_limit )
+				{
+					xofs = -g_model.sub_trim_limit ;
+				}
+        int16_t lim_p = 10*(g_model.limitData[i].max+100) + xofs ;
+        int16_t lim_n = 10*(g_model.limitData[i].min-100) + xofs ; //multiply by 10 to get same range as ofs (-1000..1000)
+				if ( lim_p > 1250 )
+				{
+					lim_p = 1250 ;
+				}
+				if ( lim_n < -1250 )
+				{
+					lim_n = -1250 ;
+				}
         if(ofs>lim_p) ofs = lim_p;
         if(ofs<lim_n) ofs = lim_n;
 
-        if(q) q = (q>0) ?
-                    q*((int32_t)lim_p-ofs)/100000 :
-                    -q*((int32_t)lim_n-ofs)/100000 ; //div by 100000 -> output = -1024..1024
-
-        q += calc1000toRESX(ofs);
-        lim_p = calc1000toRESX(lim_p);
+        if(q)
+				{
+					int16_t temp = (q<0) ? ((int16_t)ofs-lim_n) : ((int16_t)lim_p-ofs) ;
+          q = ( q * temp ) / 100000 ; //div by 100000 -> output = -1024..1024
+				}
+				
+				int16_t result ;
+				result = calc1000toRESX(ofs);
+  			result += q ; // we convert value to a 16bit value
+        
+				lim_p = calc1000toRESX(lim_p);
         lim_n = calc1000toRESX(lim_n);
-        if(q>lim_p) q = lim_p;
-        if(q<lim_n) q = lim_n;
-        if(g_model.limitData[i].revert) q=-q;// finally do the reverse.
+        if(result>lim_p) result = lim_p;
+        if(result<lim_n) result = lim_n;
+
+        if(g_model.limitData[i].revert) result = -result ;// finally do the reverse.
 
 				{
 					uint8_t numSafety = 16 - g_model.numVoice ;
@@ -1456,13 +1479,13 @@ void simulatorDialog::perOut(bool init)
 						{
 							if ( ( g_model.safetySw[i].opt.ss.mode != 1 ) && ( g_model.safetySw[i].opt.ss.mode != 2 ) )	// And not used as an alarm
 							{
-        		    if(getSwitch(g_model.safetySw[i].opt.ss.swtch,0)) q = calc100toRESX(g_model.safetySw[i].opt.ss.val) ;
+        		    if(getSwitch(g_model.safetySw[i].opt.ss.swtch,0)) result = calc100toRESX(g_model.safetySw[i].opt.ss.val) ;
 							}
 						}
 					}
 				}
         //cli();
-        chanOut[i] = q; //copy consistent word to int-level
+        chanOut[i] = result ; //copy consistent word to int-level
         //sei();
     }
 }

@@ -2793,6 +2793,14 @@ msgctxt "ModelEdit|"
 msgid "%1.%2"
 msgstr ""
 
+msgctxt "ModelEdit|"
+msgid "Auto Limits"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "FAS current offset"
+msgstr ""
+
 msgctxt "QObject|"
 msgid "Checking for updates..."
 msgstr ""
