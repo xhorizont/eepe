@@ -198,6 +198,7 @@ void ModelEdit::tabModelEditSetup()
 
     //pulse polarity
     ui->pulsePolCB->setCurrentIndex(g_model.pulsePol);
+    ui->autoLimitsSB->setValue( (double)g_model.sub_trim_limit/10 ) ;
 
     //protocol channels ppm delay (disable if needed)
     setProtocolBoxes();
@@ -1494,7 +1495,7 @@ void ModelEdit::setSwitchWidgetVisibility(int i)
 				if ( cswitchSource1[i]->currentIndex() > 36 )
 				{
         	cswitchTlabel[i]->setVisible(true);
-					value = convertTelemConstant( cswitchSource1[i]->currentIndex() - 37, g_model.customSw[i].v2 ) ;
+					value = convertTelemConstant( cswitchSource1[i]->currentIndex() - 37, g_model.customSw[i].v2, &g_model ) ;
           stringTelemetryChannel( telText, g_model.customSw[i].v1 - 37, value, &g_model ) ;
 //					sprintf( telText, "%d", value ) ;
         	cswitchTlabel[i]->setText(telText);
@@ -1998,7 +1999,7 @@ void ModelEdit::switchesEdited()
             g_model.customSw[i].v2 = cswitchOffset[i]->value();
 						if ( g_model.customSw[i].v1 > 36 )
 						{
-							value = convertTelemConstant( g_model.customSw[i].v1 - 37, g_model.customSw[i].v2 ) ;
+							value = convertTelemConstant( g_model.customSw[i].v1 - 37, g_model.customSw[i].v2, &g_model ) ;
               stringTelemetryChannel( telText, g_model.customSw[i].v1 - 37, value, &g_model ) ;
 							//sprintf( telText, "%d", value ) ;
         			cswitchTlabel[i]->setText(telText);
@@ -2166,6 +2167,7 @@ void ModelEdit::tabFrsky()
     ui->HubComboBox->setCurrentIndex(g_model.FrSkyUsrProto);
     ui->UnitsComboBox->setCurrentIndex(g_model.FrSkyImperial);
     ui->BladesSpinBox->setValue(g_model.numBlades);
+    ui->FASoffsetSB->setValue( (double)g_model.frsky.FASoffset/10 + 0.049) ;
 
     connect(ui->frsky_ratio_0,SIGNAL(editingFinished()),this,SLOT(FrSkyEdited()));
     connect(ui->frsky_ratio_1,SIGNAL(editingFinished()),this,SLOT(FrSkyEdited()));
@@ -2198,6 +2200,8 @@ void ModelEdit::tabFrsky()
 		connect( ui->Ct4,SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
 		connect( ui->Ct5,SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
 		connect( ui->Ct6,SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
+
+		connect( ui->FASoffsetSB,SIGNAL(editingFinished()),this,SLOT(FrSkyEdited()));
 }
 
 void ModelEdit::FrSkyEdited()
@@ -2229,6 +2233,8 @@ void ModelEdit::FrSkyEdited()
 		g_model.CustomDisplayIndex[3] = ui->Ct4->currentIndex() ;
 		g_model.CustomDisplayIndex[4] = ui->Ct5->currentIndex() ;
 		g_model.CustomDisplayIndex[5] = ui->Ct6->currentIndex() ;
+
+		g_model.frsky.FASoffset = ui->FASoffsetSB->value() * 10 + 0.49 ;
     
 		updateSettings();
 }
@@ -2364,6 +2370,10 @@ void ModelEdit::on_ppmDelaySB_editingFinished()
     updateSettings();
 }
 
+void ModelEdit::on_autoLimitsSB_editingFinished()
+{
+   g_model.sub_trim_limit = ui->autoLimitsSB->value()*10 ;
+}
 
 void ModelEdit::on_thrTrimChkB_toggled(bool checked)
 {

@@ -35,7 +35,7 @@
    <item row="3" column="1">
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
-      <number>7</number>
+      <number>10</number>
      </property>
      <widget class="QWidget" name="tabModelSetup">
       <attribute name="title">
@@ -535,6 +535,23 @@
         <widget class="QLabel" name="label_126">
          <property name="text">
           <string>PPM Start Channel</string>
+         </property>
+        </widget>
+       </item>
+       <item row="24" column="0">
+        <widget class="QLabel" name="label_151">
+         <property name="text">
+          <string>Auto Limits</string>
+         </property>
+        </widget>
+       </item>
+       <item row="24" column="1">
+        <widget class="QDoubleSpinBox" name="autoLimitsSB">
+         <property name="decimals">
+          <number>1</number>
+         </property>
+         <property name="maximum">
+          <double>10.000000000000000</double>
          </property>
         </widget>
        </item>
@@ -9318,6 +9335,42 @@ Right</string>
          </item>
          <item row="4" column="3">
           <widget class="QComboBox" name="Ct6"/>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QFormLayout" name="formLayout_4">
+         <item row="0" column="0">
+          <widget class="QLabel" name="label_152">
+           <property name="maximumSize">
+            <size>
+             <width>100</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>FAS current offset</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QDoubleSpinBox" name="FASoffsetSB">
+           <property name="maximumSize">
+            <size>
+             <width>100</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="decimals">
+            <number>1</number>
+           </property>
+           <property name="maximum">
+            <double>1.500000000000000</double>
+           </property>
+           <property name="singleStep">
+            <double>0.100000000000000</double>
+           </property>
+          </widget>
          </item>
         </layout>
        </item>

@@ -40,7 +40,11 @@ void populateSwitchAndCB(QComboBox *b, int value) ;
 void populateTmrBSwitchCB(QComboBox *b, int value) ;
 void populateSourceCB(QComboBox *b, int stickMode=1, int telem = 0, int value=0);
 void populateCSWCB(QComboBox *b, int value);
-int16_t convertTelemConstant( int8_t index, int8_t value) ;
+#ifdef SKY
+int16_t convertTelemConstant( int8_t index, int8_t value, SKYModelData *model ) ;
+#else
+int16_t convertTelemConstant( int8_t index, int8_t value, ModelData *model ) ;
+#endif
 QString getSourceStr(int stickMode, int idx);
 QString getTimerMode(int tm);
 QString getSWName(int val);

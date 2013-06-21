@@ -246,6 +246,7 @@ private slots:
     void on_DSM_Type_currentIndexChanged(int index);
     void on_pxxRxNum_editingFinished();
 		void on_VoiceNumberSB_editingFinished() ;
+		void on_autoLimitsSB_editingFinished() ;
 };
 
 

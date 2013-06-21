@@ -2521,6 +2521,14 @@ Droite</translation>
         <source>%1.%2</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Auto Limits</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>FAS current offset</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>QObject</name>

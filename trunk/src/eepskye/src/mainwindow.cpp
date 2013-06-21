@@ -387,38 +387,38 @@ void MainWindow::reply2Finished(QNetworkReply * reply)
             return;
         }
 
-//        if(rev>currentEEPErev)
-//        {
-//            showcheckForUpdatesResult = false; // update is available - do not show dialog
+        if(rev>currentEEPSKYErev)
+        {
+            showcheckForUpdatesResult = false; // update is available - do not show dialog
 
-//#ifdef Q_OS_WIN32
-//            int ret = QMessageBox::question(this, "eePe", tr("A new version of eePe is available (r%1)<br>"
-//                                                                "Would you like to download it?").arg(rev) ,
-//                                            QMessageBox::Yes | QMessageBox::No);
+#ifdef Q_OS_WIN32
+            int ret = QMessageBox::question(this, "eePskye", tr("A new version of eePe is available (r%1)<br>"
+                                                                "Would you like to download it?").arg(rev) ,
+                                            QMessageBox::Yes | QMessageBox::No);
 
-//    				QSettings settings("er9x-eePskye", "eePskye");
+    				QSettings settings("erSKY9x-eePskye", "eePskye");
 
-//            if (ret == QMessageBox::Yes)
-//            {
-//                QString fileName = QFileDialog::getSaveFileName(this, tr("Save As"),settings.value("lastDir").toString() + "/eePeInstall.exe",tr("Executable (*.exe)"));
-//                if (fileName.isEmpty()) return;
+            if (ret == QMessageBox::Yes)
+            {
+                QString fileName = QFileDialog::getSaveFileName(this, tr("Save As"),settings.value("lastDir").toString() + "/eePeInstall.exe",tr("Executable (*.exe)"));
+                if (fileName.isEmpty()) return;
 
-//                downloadDialog * dd = new downloadDialog(this,EEPE_URL,fileName);
-//                installer_fileName = fileName;
-//                connect(dd,SIGNAL(accepted()),this,SLOT(reply2Accepted()));
-//                dd->show();
-//            }           
-//#else
-//            QMessageBox::information(this, "eePe", tr("A new version of eePe is available (r%1)\n"
-//                                                      "To update please visit the eepe code page\n"
-//                                                      "http://code.google.com/p/eepe/").arg(rev) );
-//#endif
-//        }
-//        else
-//        {
-//            if(showcheckForUpdatesResult && check1done && check2done)
-//                QMessageBox::information(this, "eePe", tr("No updates available at this time."));
-//        }
+                downloadDialog * dd = new downloadDialog(this,EEPE_URL,fileName);
+                installer_fileName = fileName;
+                connect(dd,SIGNAL(accepted()),this,SLOT(reply2Accepted()));
+                dd->show();
+            }           
+#else
+            QMessageBox::information(this, "eePe", tr("A new version of eePskye is available (r%1)\n"
+                                                      "To update please visit the eepe code page\n"
+                                                      "http://code.google.com/p/eepe/").arg(rev) );
+#endif
+        }
+        else
+        {
+            if(showcheckForUpdatesResult && check1done && check2done)
+                QMessageBox::information(this, "eePskye", tr("No updates available at this time."));
+        }
     }
     else
     {

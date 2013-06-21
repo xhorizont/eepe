@@ -249,21 +249,73 @@ int numericGvarValue( QComboBox *b, int min, int max )
 	return value ;	
 }
 
+int16_t m_to_ft( int16_t metres )
+{
+	int16_t result ;
+
+  // m to ft *105/32
+	result = metres * 3 ;
+	metres >>= 2 ;
+	result += metres ;
+	metres >>= 2 ;
+  return result + (metres >> 1 );
+}
+
+
+//	"A1= ",
+//	"A2= ",
+//	"RSSI",
+//	"TSSI",
+#define TIMER1		4
+#define TIMER2		5
+#define FR_ALT_BARO 6
+#define FR_GPS_ALT 7
+//	"Galt",
+//	"Gspd", // 8
+//	"T1= ",
+//	"T2= ",
+//	"RPM ",
+//	"FUEL", // 12
+//	"Mah1",
+//	"Mah2",
+//	"Cvlt",
+//	"Batt", // 16
+//	"Amps",
+//	"Mah ",
+//	"Ctot",
+//	"FasV",	// 20
+//	"AccX",
+//	"AccY",
+//	"AccZ",
+#define FR_VSPD	24
+//	"Gvr1",
+//	"Gvr2",
+//	"Gvr3",
+//	"Gvr4", // 28
+//	"Gvr5",
+//	"Gvr6",
+//	"Gvr7",
+#define FR_WATT	32
+
 
 // This routine converts an 8 bit value for custom switch use
-int16_t convertTelemConstant( int8_t index, int8_t value)
+#ifdef SKY
+int16_t convertTelemConstant( int8_t index, int8_t value, SKYModelData *model )
+#else
+int16_t convertTelemConstant( int8_t index, int8_t value, ModelData *model )
+#endif
 {
   int16_t result;
 
 	result = value + 125 ;
   switch (index)
 	{
-    case 4 :	// Timer1
-    case 5 :	// Timer2
+    case TIMER1 :	// Timer1
+    case TIMER2 :	// Timer2
       result *= 10 ;
     break;
-		case 6:		// Alt
-    case 7:		// Gpa Alt
+		case FR_ALT_BARO:
+    case FR_GPS_ALT:
 			if ( result > 63 )
 			{
       	result *= 2 ;
@@ -279,6 +331,12 @@ int16_t convertTelemConstant( int8_t index, int8_t value)
       	result *= 2 ;
       	result -= 488 ;
 			}
+			result *= 10 ;		// Allow for decimal place
+      if ( model->FrSkyImperial )
+      {
+        // m to ft *105/32
+        result = m_to_ft( result ) ;
+      }
     break;
     case 11:	// RPM
       result *= 100;
@@ -303,6 +361,9 @@ int16_t convertTelemConstant( int8_t index, int8_t value)
     case 32:
       result *= 8 ;
     break;
+		case FR_VSPD :
+			result = value * 10 ;
+		break ;
   }
   return result;
 }
@@ -445,6 +506,13 @@ void stringTelemetryChannel( char *string, int8_t index, int16_t val, ModelData 
 		case 16:
 			att |= PREC1 ;
       unit = 'v' ;
+		break ;
+		case FR_WATT :
+      unit = 'w' ;
+		break ;
+		case FR_VSPD :
+			att |= PREC1 ;
+			val /= 10 ;
 		break ;
     default:
     break;
