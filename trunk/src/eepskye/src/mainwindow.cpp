@@ -60,38 +60,39 @@
 #include "stamp-eepskye.h"
 
 #define DONATE_STR "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=YHX43JR3J7XGW"
-#define DNLD_VER_ER9X            0
-#define DNLD_VER_ER9X_JETI       1
-#define DNLD_VER_ER9X_FRSKY      2
-#define DNLD_VER_ER9X_ARDUPILOT  3
-#define DNLD_VER_ER9X_FRSKY_NOHT 4
-#define DNLD_VER_ER9X_NOHT       5
+#define DNLD_VER_ERSKY9X         0
+#define DNLD_VER_ERSKY9XR	       1
+//#define DNLD_VER_ER9X_FRSKY      2
+//#define DNLD_VER_ER9X_ARDUPILOT  3
+//#define DNLD_VER_ER9X_FRSKY_NOHT 4
+//#define DNLD_VER_ER9X_NOHT       5
 
 //#define DNLD_VER_ER9X_SPKR            6
 //#define DNLD_VER_ER9X_NOHT_SPKR       7
 //#define DNLD_VER_ER9X_FRSKY_SPKR      8
 //#define DNLD_VER_ER9X_FRSKY_NOHT_SPKR 9
-#define DNLD_VER_ER9X_NMEA            7
+//#define DNLD_VER_ER9X_NMEA            7
 
-#define ER9X_URL   "http://er9x.googlecode.com/svn/trunk/er9x.hex"
-#define ER9X_NOHT_URL   "http://er9x.googlecode.com/svn/trunk/er9x-noht.hex"
+//#define ER9X_URL   "http://er9x.googlecode.com/svn/trunk/er9x.hex"
+//#define ER9X_NOHT_URL   "http://er9x.googlecode.com/svn/trunk/er9x-noht.hex"
 //#define ER9X_SPKR_URL   "http://er9x.googlecode.com/svn/trunk/er9x-spkr.hex"
 //#define ER9X_NOHT_SPKR_URL   "http://er9x.googlecode.com/svn/trunk/er9x-noht-spkr.hex"
-#define ER9X_JETI_URL   "http://er9x.googlecode.com/svn/trunk/er9x-jeti.hex"
-#define ER9X_FRSKY_URL   "http://er9x.googlecode.com/svn/trunk/er9x-frsky.hex"
-#define ER9X_FRSKY_NOHT_URL   "http://er9x.googlecode.com/svn/trunk/er9x-frsky-noht.hex"
+//#define ER9X_JETI_URL   "http://er9x.googlecode.com/svn/trunk/er9x-jeti.hex"
+//#define ER9X_FRSKY_URL   "http://er9x.googlecode.com/svn/trunk/er9x-frsky.hex"
+//#define ER9X_FRSKY_NOHT_URL   "http://er9x.googlecode.com/svn/trunk/er9x-frsky-noht.hex"
 //#define ER9X_FRSKY_SPKR_URL   "http://er9x.googlecode.com/svn/trunk/er9x-frsky-spkr.hex"
 //#define ER9X_FRSKY_NOHT_SPKR_URL   "http://er9x.googlecode.com/svn/trunk/er9x-frsky-noht-spkr.hex"
-#define ER9X_ARDUPILOT_URL   "http://er9x.googlecode.com/svn/trunk/er9x-ardupilot.hex"
-#define ER9X_NMEA_URL   "http://er9x.googlecode.com/svn/trunk/er9x-nmea.hex"
-#define ER9X_STAMP "http://er9x.googlecode.com/svn/trunk/src/stamp-er9x.h"
+//#define ER9X_ARDUPILOT_URL   "http://er9x.googlecode.com/svn/trunk/er9x-ardupilot.hex"
+//#define ER9X_NMEA_URL   "http://er9x.googlecode.com/svn/trunk/er9x-nmea.hex"
+//#define ER9X_STAMP "http://er9x.googlecode.com/svn/trunk/src/stamp-er9x.h"
 #define EEPE_URL   "http://eepe.googlecode.com/svn/trunk/eePeInstall.exe"
-#define EEPE_STAMP "http://eepe.googlecode.com/svn/trunk/src/stamp-eepe.h"
+//#define EEPE_STAMP "http://eepe.googlecode.com/svn/trunk/src/stamp-eepe.h"
 #define EEPSKYE_URL   "http://eepe.googlecode.com/svn/trunk/eePeInstall.exe"
 #define EEPSKYE_STAMP "http://eepe.googlecode.com/svn/trunk/src/eepskye/src/stamp-eepskye.h"
 
 #define ERSKY9X_STAMP "http://ersky9x.googlecode.com/svn/trunk/src/stamp-ersky9x.h"
 #define ERSKY9X_URL "http://ersky9x.googlecode.com/svn/trunk/ersky9x_rom.bin"
+#define ERSKY9XR_URL "http://ersky9x.googlecode.com/svn/trunk/ersky9xr_rom.bin"
 
 MainWindow::MainWindow()
 {
@@ -214,30 +215,30 @@ void MainWindow::reply1Finished(QNetworkReply * reply)
             QString dnldURL, baseFileName;
             switch (settings.value("download-version", 0).toInt())
             {
-            case (DNLD_VER_ER9X_JETI):
-                dnldURL = ER9X_JETI_URL;
-                baseFileName = "er9x-jeti.hex";
+            case (DNLD_VER_ERSKY9XR):
+                dnldURL = ERSKY9XR_URL;
+                baseFileName = "ersky9xr_rom.bin";
                 break;
-            case (DNLD_VER_ER9X_FRSKY):
-                dnldURL = ER9X_FRSKY_URL;
-                baseFileName = "er9x-frsky.hex";
-                break;
-            case (DNLD_VER_ER9X_ARDUPILOT):
-                dnldURL = ER9X_ARDUPILOT_URL;
-                baseFileName = "er9x-ardupilot.hex";
-                break;
-            case (DNLD_VER_ER9X_NMEA):
-                dnldURL = ER9X_NMEA_URL;
-                baseFileName = "er9x-nmea.hex";
-                break;
-            case (DNLD_VER_ER9X_FRSKY_NOHT):
-                dnldURL = ER9X_FRSKY_NOHT_URL;
-                baseFileName = "er9x-frsky-noht.hex";
-                break;
-            case (DNLD_VER_ER9X_NOHT):
-                dnldURL = ER9X_NOHT_URL;
-                baseFileName = "er9x-noht.hex";
-                break;
+//            case (DNLD_VER_ER9X_FRSKY):
+//                dnldURL = ER9X_FRSKY_URL;
+//                baseFileName = "er9x-frsky.hex";
+//                break;
+//            case (DNLD_VER_ER9X_ARDUPILOT):
+//                dnldURL = ER9X_ARDUPILOT_URL;
+//                baseFileName = "er9x-ardupilot.hex";
+//                break;
+//            case (DNLD_VER_ER9X_NMEA):
+//                dnldURL = ER9X_NMEA_URL;
+//                baseFileName = "er9x-nmea.hex";
+//                break;
+//            case (DNLD_VER_ER9X_FRSKY_NOHT):
+//                dnldURL = ER9X_FRSKY_NOHT_URL;
+//                baseFileName = "er9x-frsky-noht.hex";
+//                break;
+//            case (DNLD_VER_ER9X_NOHT):
+//                dnldURL = ER9X_NOHT_URL;
+//                baseFileName = "er9x-noht.hex";
+//                break;
 /*
             case (DNLD_VER_ER9X_SPKR):
                 dnldURL = ER9X_SPKR_URL;
@@ -312,30 +313,39 @@ void MainWindow::downloadLatester9x()
     QString dnldURL, baseFileName;
     switch (settings.value("download-version", 0).toInt())
     {
-    case (DNLD_VER_ER9X_JETI):
-        dnldURL = ER9X_JETI_URL;
-        baseFileName = "er9x-jeti.hex";
-        break;
-    case (DNLD_VER_ER9X_FRSKY):
-        dnldURL = ER9X_FRSKY_URL;
-        baseFileName = "er9x-frsky.hex";
-        break;
-    case (DNLD_VER_ER9X_ARDUPILOT):
-        dnldURL = ER9X_ARDUPILOT_URL;
-        baseFileName = "er9x-ardupilot.hex";
-        break;
-    case (DNLD_VER_ER9X_NMEA):
-        dnldURL = ER9X_NMEA_URL;
-        baseFileName = "er9x-nmea.hex";
-        break;
-    case (DNLD_VER_ER9X_FRSKY_NOHT):
-        dnldURL = ER9X_FRSKY_NOHT_URL;
-        baseFileName = "er9x-frsky-noht.hex";
-        break;
-    case (DNLD_VER_ER9X_NOHT):
-        dnldURL = ER9X_NOHT_URL;
-        baseFileName = "er9x-noht.hex";
-        break;
+      case (DNLD_VER_ERSKY9X) :
+          dnldURL = ERSKY9X_URL;
+          baseFileName = "ersky9x_rom.bin";
+      break;
+			
+      case (DNLD_VER_ERSKY9XR) :
+          dnldURL = ERSKY9XR_URL;
+          baseFileName = "ersky9xr_rom.bin";
+      break;
+//    case (DNLD_VER_ER9X_JETI):
+//        dnldURL = ER9X_JETI_URL;
+//        baseFileName = "er9x-jeti.hex";
+//        break;
+//    case (DNLD_VER_ER9X_FRSKY):
+//        dnldURL = ER9X_FRSKY_URL;
+//        baseFileName = "er9x-frsky.hex";
+//        break;
+//    case (DNLD_VER_ER9X_ARDUPILOT):
+//        dnldURL = ER9X_ARDUPILOT_URL;
+//        baseFileName = "er9x-ardupilot.hex";
+//        break;
+//    case (DNLD_VER_ER9X_NMEA):
+//        dnldURL = ER9X_NMEA_URL;
+//        baseFileName = "er9x-nmea.hex";
+//        break;
+//    case (DNLD_VER_ER9X_FRSKY_NOHT):
+//        dnldURL = ER9X_FRSKY_NOHT_URL;
+//        baseFileName = "er9x-frsky-noht.hex";
+//        break;
+//    case (DNLD_VER_ER9X_NOHT):
+//        dnldURL = ER9X_NOHT_URL;
+//        baseFileName = "er9x-noht.hex";
+//        break;
 
  /*
     case (DNLD_VER_ER9X_SPKR):
