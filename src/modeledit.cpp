@@ -289,7 +289,7 @@ void ModelEdit::tabExpo()
 		for ( i = 0 ; i < 3 ; i += 1 )
 		{ // 0=High, 1=Mid, 2=Low
 			for ( j = 0 ; j < 2 ; j += 1 )
-			{ // 0=Weight, 1=Expo
+			{ // 0=Weight, 1=Expo - WRONG - 0=expo, 1=weight
 				for ( k = 0 ; k < 2 ; k += 1 )
 				{ // 0=Right, 1=Left
 					int xpos ;
@@ -297,16 +297,16 @@ void ModelEdit::tabExpo()
 					switch ( xpos )
 					{
 						case 3 :
-							xpos = 1 ;
-						break ;
-						case 2 :
 							xpos = 2 ;
 						break ;
+						case 2 :
+							xpos = 1 ;
+						break ;
 						case 1 :
-							xpos = 4 ;
+							xpos = 3 ;
 						break ;
 						case 0 :
-							xpos = 3 ;
+							xpos = 4 ;
 						break ;
 					}
 					sb = expoDrSpin[1][i][j][k] = new QSpinBox(this) ;
@@ -320,7 +320,7 @@ void ModelEdit::tabExpo()
 					chkb->setText( "Gvar" ) ;
 
 					x = g_model.expoData[CONVERT_MODE(AIL)-1].expo[i][j][k] ;
-					if ( j == 0 )
+					if ( j == 1 )
 					{
     				if ( ( x >= -100 && x <= 100 ) ) x += 100 ;
 					}
@@ -341,7 +341,7 @@ void ModelEdit::tabExpo()
 					chkb->setText( "Gvar" ) ;
 
 					x = g_model.expoData[CONVERT_MODE(RUD)-1].expo[i][j][k] ;
-					if ( j == 0 )
+					if ( j == 1 )
 					{
     				if ( ( x >= -100 && x <= 100 ) ) x += 100 ;
 					}
@@ -362,7 +362,7 @@ void ModelEdit::tabExpo()
 					chkb->setText( "Gvar" ) ;
 
 					x = g_model.expoData[CONVERT_MODE(THR)-1].expo[i][j][k] ;
-					if ( j == 0 )
+					if ( j == 1 )
 					{
     				if ( ( x >= -100 && x <= 100 ) ) x += 100 ;
 					}
@@ -392,7 +392,7 @@ void ModelEdit::tabExpo()
 					chkb->setText( "Gvar" ) ;
 
 					x = g_model.expoData[CONVERT_MODE(ELE)-1].expo[i][j][k] ;
-					if ( j == 0 )
+					if ( j == 1 )
 					{
     				if ( ( x >= -100 && x <= 100 ) ) x += 100 ;
 					}
@@ -451,7 +451,7 @@ void ModelEdit::expoEdited()
 					cb = expoDrVal[1][i][j][k] ;
 					chkb = expoDrGvar[1][i][j][k] ;
 			    pval = &g_model.expoData[CONVERT_MODE(AIL)-1].expo[i][j][k] ;
-					if ( j )
+					if ( j==0 )
 					{
     				*pval = numericSpinGvarValue( sb, cb, chkb, *pval, 0 ) ;
 					}
@@ -464,7 +464,7 @@ void ModelEdit::expoEdited()
 					cb = expoDrVal[0][i][j][k] ;
           chkb = expoDrGvar[0][i][j][k] ;
 			    pval = &g_model.expoData[CONVERT_MODE(RUD)-1].expo[i][j][k] ;
-					if ( j )
+					if ( j==0 )
 					{
     				*pval = numericSpinGvarValue( sb, cb, chkb, *pval, 0 ) ;
 					}
@@ -477,7 +477,7 @@ void ModelEdit::expoEdited()
 					cb = expoDrVal[2][i][j][k] ;
           chkb = expoDrGvar[2][i][j][k] ;
 			    pval = &g_model.expoData[CONVERT_MODE(THR)-1].expo[i][j][k] ;
-					if ( j )
+					if ( j==0 )
 					{
     				*pval = numericSpinGvarValue( sb, cb, chkb, *pval, 0 ) ;
 					}
@@ -490,7 +490,7 @@ void ModelEdit::expoEdited()
 					cb = expoDrVal[3][i][j][k] ;
           chkb = expoDrGvar[3][i][j][k] ;
 			    pval = &g_model.expoData[CONVERT_MODE(ELE)-1].expo[i][j][k] ;
-					if ( j )
+					if ( j==0 )
 					{
     				*pval = numericSpinGvarValue( sb, cb, chkb, *pval, 0 ) ;
 					}
