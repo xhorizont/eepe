@@ -282,6 +282,7 @@ void ModelEdit::setProtocolBoxes()
 void ModelEdit::tabExpo()
 {
 	int x ;
+	int y ;
     populateSwitchCB(ui->RUD_edrSw1,g_model.expoData[CONVERT_MODE(RUD)-1].drSw1);
     populateSwitchCB(ui->RUD_edrSw2,g_model.expoData[CONVERT_MODE(RUD)-1].drSw2);
     populateSwitchCB(ui->ELE_edrSw1,g_model.expoData[CONVERT_MODE(ELE)-1].drSw1);
@@ -341,11 +342,13 @@ void ModelEdit::tabExpo()
 					chkb->setText( "Gvar" ) ;
 
 					x = g_model.expoData[CONVERT_MODE(AIL)-1].expo[i][j][k] ;
+					y = -100 ;
 					if ( j == 1 )
 					{
     				if ( ( x >= -100 && x <= 100 ) ) x += 100 ;
+						y = 0 ;
 					}
-					populateSpinGVarCB( sb, cb, chkb, x, 0, 100 ) ;
+					populateSpinGVarCB( sb, cb, chkb, x, y, 100 ) ;
 			    
 					connect( sb, SIGNAL(editingFinished()),this,SLOT(expoEdited()));
 			    connect( cb, SIGNAL(currentIndexChanged(int)),this,SLOT(expoEdited()));
@@ -362,11 +365,13 @@ void ModelEdit::tabExpo()
 					chkb->setText( "Gvar" ) ;
 
 					x = g_model.expoData[CONVERT_MODE(RUD)-1].expo[i][j][k] ;
+					y = -100 ;
 					if ( j == 1 )
 					{
     				if ( ( x >= -100 && x <= 100 ) ) x += 100 ;
+						y = 0 ;
 					}
-					populateSpinGVarCB( sb, cb, chkb, x, 0, 100 ) ;
+					populateSpinGVarCB( sb, cb, chkb, x, y, 100 ) ;
 			    
 					connect( sb, SIGNAL(editingFinished()),this,SLOT(expoEdited()));
 			    connect( cb, SIGNAL(currentIndexChanged(int)),this,SLOT(expoEdited()));
@@ -383,11 +388,13 @@ void ModelEdit::tabExpo()
 					chkb->setText( "Gvar" ) ;
 
 					x = g_model.expoData[CONVERT_MODE(THR)-1].expo[i][j][k] ;
+					y = -100 ;
 					if ( j == 1 )
 					{
     				if ( ( x >= -100 && x <= 100 ) ) x += 100 ;
+						y = 0 ;
 					}
-					populateSpinGVarCB( sb, cb, chkb, x, 0, 100 ) ;
+					populateSpinGVarCB( sb, cb, chkb, x, y, 100 ) ;
 			    
 					connect( sb, SIGNAL(editingFinished()),this,SLOT(expoEdited()));
 			    connect( cb, SIGNAL(currentIndexChanged(int)),this,SLOT(expoEdited()));
@@ -413,11 +420,13 @@ void ModelEdit::tabExpo()
 					chkb->setText( "Gvar" ) ;
 
 					x = g_model.expoData[CONVERT_MODE(ELE)-1].expo[i][j][k] ;
+					y = -100 ;
 					if ( j == 1 )
 					{
     				if ( ( x >= -100 && x <= 100 ) ) x += 100 ;
+						y = 0 ;
 					}
-					populateSpinGVarCB( sb, cb, chkb, x, 0, 100 ) ;
+					populateSpinGVarCB( sb, cb, chkb, x, y, 100 ) ;
 			    
 					connect( sb, SIGNAL(editingFinished()),this,SLOT(expoEdited()));
 			    connect( cb, SIGNAL(currentIndexChanged(int)),this,SLOT(expoEdited()));
