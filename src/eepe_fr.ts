@@ -2529,6 +2529,26 @@ Droite</translation>
         <source>FAS current offset</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Vario Source</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>----</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Vspd</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>A2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Sensitivity</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>QObject</name>
@@ -3285,6 +3305,10 @@ Indique l&apos;affectation voie / numéro de canal par défaut utilisée lors de
     </message>
     <message>
         <source>Processor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>er9x - 128 - Standard</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

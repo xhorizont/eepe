@@ -59,8 +59,10 @@ private:
     QComboBox * safetySwitchSwtch[NUM_CHNOUT];
 		QComboBox * safetySwitchType[NUM_CHNOUT];
     QComboBox * safetySwitchAlarm[NUM_CHNOUT];
-
-    QSpinBox *expoDrSpin[4][3][2][2] ;
+		QCheckBox *safetySwitchGvar[NUM_CHNOUT] ;
+		QComboBox *safetySwitchGindex[NUM_CHNOUT] ;
+    
+		QSpinBox *expoDrSpin[4][3][2][2] ;
     QComboBox *expoDrVal[4][3][2][2] ;
 		QCheckBox *expoDrGvar[4][3][2][2] ;
 

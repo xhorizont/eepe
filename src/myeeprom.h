@@ -240,6 +240,12 @@ PACK(typedef struct t_PhaseData {
   uint8_t fadeOut:4;
 }) PhaseData;
 
+PACK(typedef struct t_Vario
+{
+  uint8_t varioSource ;
+  int8_t  swtch ;
+  uint8_t param ;
+}) VarioData ;
 
 typedef struct t_ModelData {
   char      name[MODEL_NAME_LEN];             // 10 must be first for eeLoadModelName
@@ -292,7 +298,8 @@ typedef struct t_ModelData {
 	uint8_t unused1[5] ;
 	uint8_t CustomDisplayIndex[6] ;
 	GvarData gvars[MAX_GVARS] ;
-		PhaseData phaseData[MAX_PHASES] ;
+	PhaseData phaseData[MAX_PHASES] ;
+	VarioData varioData ;
 } __attribute__((packed)) ModelData;
 
 

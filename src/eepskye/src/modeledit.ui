@@ -54,7 +54,7 @@
    <item row="5" column="0">
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
-      <number>10</number>
+      <number>8</number>
      </property>
      <widget class="QWidget" name="tabModelSetup">
       <attribute name="title">
@@ -8649,7 +8649,7 @@ Right</string>
       <attribute name="title">
        <string>Safety Switches</string>
       </attribute>
-      <layout class="QGridLayout" name="grid_tabSafetySwitches" rowstretch="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" columnstretch="0,0,0,0">
+      <layout class="QGridLayout" name="grid_tabSafetySwitches" rowstretch="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" columnstretch="0,0,0,0,0">
        <property name="topMargin">
         <number>7</number>
        </property>
@@ -8935,6 +8935,31 @@ Right</string>
         <widget class="QLabel" name="SS24">
          <property name="text">
           <string notr="true">CH24</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="4">
+        <widget class="QLabel" name="label_179">
+         <property name="minimumSize">
+          <size>
+           <width>64</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>64</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::NoFrame</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Plain</enum>
+         </property>
+         <property name="text">
+          <string/>
          </property>
         </widget>
        </item>

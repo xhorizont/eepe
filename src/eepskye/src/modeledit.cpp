@@ -1808,6 +1808,8 @@ void ModelEdit::setSafetyWidgetVisibility(int i)
 {
 	if ( g_model.numVoice < NUM_SKYCHNOUT-i )
 	{
+		safetySwitchGvar[i]->setVisible(false) ;
+		safetySwitchGindex[i]->setVisible(false) ;
   	switch (g_model.safetySw[i].opt.ss.mode)
 		{
 			case 0 :		// 'S'
@@ -1845,11 +1847,23 @@ void ModelEdit::setSafetyWidgetVisibility(int i)
 		{
 			safetySwitchValue[i]->setVisible(false);
   		safetySwitchAlarm[i]->setVisible(true);
+			safetySwitchGvar[i]->setVisible(false) ;
+			safetySwitchGindex[i]->setVisible(false) ;
 		} 
 		else
 		{
-			safetySwitchValue[i]->setVisible(true);
   	  safetySwitchAlarm[i]->setVisible(false);
+			safetySwitchGvar[i]->setVisible(true) ;
+			if ( safetySwitchGvar[i]->isChecked() )
+			{
+				safetySwitchValue[i]->setVisible(false) ;
+				safetySwitchGindex[i]->setVisible(true) ;
+			}
+			else
+			{
+				safetySwitchGindex[i]->setVisible(false) ;
+				safetySwitchValue[i]->setVisible(true) ;
+			}
 		}
 	}
 }
@@ -1868,10 +1882,20 @@ void ModelEdit::tabSafetySwitches()
         safetySwitchSwtch[i] = new QComboBox(this);
 				safetySwitchAlarm[i] = new QComboBox(this);
         safetySwitchValue[i] = new QSpinBox(this);
+				safetySwitchGvar[i] = new QCheckBox(this) ;
+				safetySwitchGindex[i] = new QComboBox(this) ;
 				
+  			safetySwitchGindex[i]->clear() ;
+  			for (int j=3; j<=7; j++)
+				{
+  			  safetySwitchGindex[i]->addItem(QObject::tr("GV%1").arg(j));
+  			}
+
         safetySwitchValue[i]->setAlignment(Qt::AlignRight | Qt::AlignVCenter);
         safetySwitchValue[i]->setAccelerated(true);
 				
+				safetySwitchGvar[i]->setText( "Gvar" ) ;
+				 
 				if ( g_model.numVoice < NUM_SKYCHNOUT-i )	// Normal switch
 				{
         	populateSafetyVoiceTypeCB(safetySwitchType[i], 0, g_model.safetySw[i].opt.ss.mode);
@@ -1894,7 +1918,7 @@ void ModelEdit::tabSafetySwitches()
         		safetySwitchValue[i]->setValue(g_model.safetySw[i].opt.ss.val);
 					}
 				}	 
-				else
+				else // voice switch
 				{
         	populateSafetyVoiceTypeCB(safetySwitchType[i], 1, g_model.safetySw[i].opt.vs.vmode);
         	populateSafetySwitchCB(safetySwitchSwtch[i],VOICE_SWITCH,g_model.safetySw[i].opt.vs.vswtch);
@@ -1902,17 +1926,31 @@ void ModelEdit::tabSafetySwitches()
      			safetySwitchValue[i]->setMinimum(0);
        		safetySwitchValue[i]->setValue(g_model.safetySw[i].opt.vs.vval);
 					populateTelItemsCB( safetySwitchAlarm[i], 1,g_model.safetySw[i].opt.vs.vval ) ;
+					if ( g_model.safetySw[i].opt.vs.vval > 250 )
+					{
+            safetySwitchGindex[i]->setCurrentIndex( g_model.safetySw[i].opt.vs.vval - 251 ) ;
+						safetySwitchGvar[i]->setChecked(true) ;
+					}
+					else
+					{
+						safetySwitchGvar[i]->setChecked(false) ;
+					}
 				}
         ui->grid_tabSafetySwitches->addWidget(safetySwitchType[i],i+2,1);
         ui->grid_tabSafetySwitches->addWidget(safetySwitchSwtch[i],i+2,2);
 
         ui->grid_tabSafetySwitches->addWidget(safetySwitchAlarm[i],i+2,3);
         ui->grid_tabSafetySwitches->addWidget(safetySwitchValue[i],i+2,3);
-        setSafetyWidgetVisibility(i);
+        ui->grid_tabSafetySwitches->addWidget(safetySwitchGindex[i],i+2,3);
+        ui->grid_tabSafetySwitches->addWidget(safetySwitchGvar[i],i+2,4);
+        
+				setSafetyWidgetVisibility(i);
         connect(safetySwitchType[i],SIGNAL(currentIndexChanged(int)),this,SLOT(safetySwitchesEdited()));
         connect(safetySwitchSwtch[i],SIGNAL(currentIndexChanged(int)),this,SLOT(safetySwitchesEdited()));
         connect(safetySwitchAlarm[i],SIGNAL(currentIndexChanged(int)),this,SLOT(safetySwitchesEdited()));
         connect(safetySwitchValue[i],SIGNAL(editingFinished()),this,SLOT(safetySwitchesEdited()));
+        connect(safetySwitchGindex[i],SIGNAL(currentIndexChanged(int)),this,SLOT(safetySwitchesEdited()));
+			  connect( safetySwitchGvar[i],SIGNAL(stateChanged(int)),this,SLOT(safetySwitchesEdited()));
     }
     connect(ui->NumVoiceSwSB,SIGNAL(valueChanged(int)),this,SLOT(safetySwitchesEdited()));
 }
@@ -1958,15 +1996,22 @@ void ModelEdit::safetySwitchesEdited()
         g_model.safetySw[i].opt.ss.mode  = safetySwitchType[i]->currentIndex() ;
         g_model.safetySw[i].opt.ss.swtch = safetySwitchSwtch[i]->currentIndex()-MAX_DRSWITCH;
 			}
-			else
+			else // voice switch
 			{
+				g_model.safetySw[i].opt.vs.vmode = safetySwitchType[i]->currentIndex() ;
 				if ( g_model.safetySw[i].opt.vs.vmode > 5 )
 				{
 					val = safetySwitchAlarm[i]->currentIndex() ;
         }	
+				else
+				{
+					if ( safetySwitchGvar[i]->isChecked() )
+					{
+						val = 251 + safetySwitchGindex[i]->currentIndex() ;						
+					}
+				}
         g_model.safetySw[i].opt.vs.vval = val ;
         g_model.safetySw[i].opt.vs.vswtch = safetySwitchSwtch[i]->currentIndex() ;
-				g_model.safetySw[i].opt.vs.vmode = safetySwitchType[i]->currentIndex() ;
 			}	
 		}
     updateSettings();
@@ -2555,22 +2600,22 @@ void ModelEdit::on_TrainerChkB_toggled(bool checked)
 
 void ModelEdit::on_thrExpoChkB_toggled(bool checked)
 {
- 	int i, j ;
+// 	int i, j ;
 	bool x = true ;
 	if ( checked )
 	{
 		x = false ;		
 	}
   g_model.thrExpo = checked ;
-	for ( i = 0 ; i < 3 ; i += 1 )
-	{ // 0=High, 1=Mid, 2=Low
-		for ( j = 0 ; j < 2 ; j += 1 )
-		{ // 0=Weight, 1=Expo
-			expoDrSpin[2][i][j][1]->setEnabled(x);
-			expoDrVal[2][i][j][1]->setEnabled(x);
-			expoDrGvar[2][i][j][1]->setEnabled(x);
-		}
-	}		
+//	for ( i = 0 ; i < 3 ; i += 1 )
+//	{ // 0=High, 1=Mid, 2=Low
+//		for ( j = 0 ; j < 2 ; j += 1 )
+//		{ // 0=Weight, 1=Expo
+//			expoDrSpin[2][i][j][1]->setEnabled(x);
+//			expoDrVal[2][i][j][1]->setEnabled(x);
+//			expoDrGvar[2][i][j][1]->setEnabled(x);
+//		}
+//	}		
   updateSettings();
 }
 

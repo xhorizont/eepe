@@ -10,6 +10,14 @@ description here
 ====================================================================================
 
 ******************************************
+CHANGELOG: 10-Jul-2013 MPB
+Add Gvar as voice source index
+Add er9x-128-standard as download choice
+Add Vario settings
+Fix modelname bug
+Fix threxpo setting bug
+
+******************************************
 CHANGELOG: 25-Jun-2013  MPB
 Fix negative expo bug
 
