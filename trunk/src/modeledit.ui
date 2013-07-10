@@ -35,7 +35,7 @@
    <item row="3" column="1">
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
-      <number>0</number>
+      <number>8</number>
      </property>
      <widget class="QWidget" name="tabModelSetup">
       <attribute name="title">
@@ -8296,7 +8296,7 @@ Right</string>
       <attribute name="title">
        <string>Safety Switches</string>
       </attribute>
-      <layout class="QGridLayout" name="grid_tabSafetySwitches" rowstretch="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,10" columnstretch="0,2,9,9">
+      <layout class="QGridLayout" name="grid_tabSafetySwitches" rowstretch="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,10" columnstretch="0,2,9,9,0">
        <property name="topMargin">
         <number>7</number>
        </property>
@@ -8513,6 +8513,25 @@ Right</string>
          </property>
          <property name="text">
           <string>Type</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="4">
+        <widget class="QLabel" name="label_164">
+         <property name="minimumSize">
+          <size>
+           <width>64</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::NoFrame</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Plain</enum>
+         </property>
+         <property name="text">
+          <string/>
          </property>
         </widget>
        </item>
@@ -9372,6 +9391,78 @@ Right</string>
            </property>
            <property name="singleStep">
             <double>0.100000000000000</double>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QGridLayout" name="gridLayout_9">
+         <item row="0" column="0">
+          <widget class="QLabel" name="label_161">
+           <property name="maximumSize">
+            <size>
+             <width>100</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>Vario Source</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QComboBox" name="VarioSourceCB">
+           <item>
+            <property name="text">
+             <string>----</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Vspd</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>A2</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item row="0" column="2">
+          <widget class="QLabel" name="label_162">
+           <property name="maximumSize">
+            <size>
+             <width>100</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>Switch</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="3">
+          <widget class="QComboBox" name="VarioSwitchCB"/>
+         </item>
+         <item row="0" column="4">
+          <widget class="QLabel" name="label_163">
+           <property name="maximumSize">
+            <size>
+             <width>100</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>Sensitivity</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="5">
+          <widget class="QSpinBox" name="VarioSensitivitySB">
+           <property name="maximum">
+            <number>50</number>
            </property>
           </widget>
          </item>

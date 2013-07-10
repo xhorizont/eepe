@@ -2801,6 +2801,26 @@ msgctxt "ModelEdit|"
 msgid "FAS current offset"
 msgstr ""
 
+msgctxt "ModelEdit|"
+msgid "Vario Source"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "----"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "Vspd"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "A2"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "Sensitivity"
+msgstr ""
+
 msgctxt "QObject|"
 msgid "Checking for updates..."
 msgstr ""
@@ -3806,6 +3826,10 @@ msgstr ""
 
 msgctxt "preferencesDialog|"
 msgid "Processor"
+msgstr ""
+
+msgctxt "preferencesDialog|"
+msgid "er9x - 128 - Standard"
 msgstr ""
 
 msgctxt "printDialog|"

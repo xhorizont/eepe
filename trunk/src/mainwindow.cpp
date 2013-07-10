@@ -71,6 +71,7 @@
 //#define DNLD_VER_ER9X_FRSKY_NOHT_SPKR 9
 #define DNLD_VER_ER9X_NMEA       6
 #define DNLD_VER_ER9X_128				 7
+#define DNLD_VER_ER9X_S128			 8
 
 #define ER9X_URL   "http://er9x.googlecode.com/svn/trunk/er9x.hex"
 #define ER9X_NOHT_URL   "http://er9x.googlecode.com/svn/trunk/er9x-noht.hex"
@@ -84,6 +85,7 @@
 #define ER9X_ARDUPILOT_URL   "http://er9x.googlecode.com/svn/trunk/er9x-ardupilot.hex"
 #define ER9X_NMEA_URL   "http://er9x.googlecode.com/svn/trunk/er9x-nmea.hex"
 #define ER9X_128_URL   "http://er9x.googlecode.com/svn/trunk/er9x-128.hex"
+#define ER9X_128_S_URL   "http://er9x.googlecode.com/svn/trunk/er9x-128-standard.hex"
 #define ER9X_STAMP "http://er9x.googlecode.com/svn/trunk/src/stamp-er9x.h"
 #define EEPE_URL   "http://eepe.googlecode.com/svn/trunk/eePeInstall.exe"
 #define EEPE_STAMP "http://eepe.googlecode.com/svn/trunk/src/stamp-eepe.h"
@@ -238,6 +240,10 @@ void MainWindow::reply1Finished(QNetworkReply * reply)
 				    case (DNLD_VER_ER9X_128):
         				dnldURL = ER9X_128_URL;
         				baseFileName = "er9x-128.hex";
+        				break;
+				    case (DNLD_VER_ER9X_S128):
+        				dnldURL = ER9X_128_S_URL;
+        				baseFileName = "er9x-128-standard.hex";
         				break;
 /*
             case (DNLD_VER_ER9X_SPKR):

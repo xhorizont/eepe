@@ -60,6 +60,8 @@ private:
     QComboBox * safetySwitchSwtch[NUM_SKYCHNOUT];
 		QComboBox * safetySwitchType[NUM_SKYCHNOUT];
     QComboBox * safetySwitchAlarm[NUM_SKYCHNOUT];
+		QCheckBox *safetySwitchGvar[NUM_CHNOUT] ;
+		QComboBox *safetySwitchGindex[NUM_CHNOUT] ;
 
     QSpinBox *expoDrSpin[4][3][2][2] ;
     QComboBox *expoDrVal[4][3][2][2] ;
