@@ -602,8 +602,9 @@ void MainWindow::burnFrom()
     QString tempFile = tempDir + "/temp.bin";
 //    QString str = "eeprom:r:" + tempFile + ":i"; // writing eeprom -> MEM:OPR:FILE:FTYPE"
 
+	QString size = QString("0x%1").arg( (MAX_MODELS+1)*8192,5,16,QChar('0')) ;
 //    QStringList arguments = GetSambaArguments(QString("SERIALFLASH::Init 0\n") + "receive_file {SerialFlash AT25} \"\" 0x0 0x1000 0\n" + "receive_file {SerialFlash AT25} \"" + tempFile + "\" 0x0 0x22000 0\n");
-    QStringList arguments = GetSambaArguments(QString("SERIALFLASH::Init 0\n") + "receive_file {SerialFlash AT25} \"" + tempFile + "\" 0x0 0x2A000 0\n");
+    QStringList arguments = GetSambaArguments(QString("SERIALFLASH::Init 0\n") + "receive_file {SerialFlash AT25} \"" + tempFile + "\" 0x0 " + size + " 0\n");
 //    arguments << "-c" << programmer << "-p" << mcu << args << "-U" << str;
 
     avrOutputDialog *ad = new avrOutputDialog(this, avrdudeLoc, arguments,tr("Read EEPROM From Tx")); //, AVR_DIALOG_KEEP_OPEN);

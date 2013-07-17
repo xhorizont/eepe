@@ -195,6 +195,7 @@ private slots:
 
     void curvePointEdited();
     void limitEdited();
+    void limitAuto();
     void switchesEdited();
     void safetySwitchesEdited();
     void expoEdited();

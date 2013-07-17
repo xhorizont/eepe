@@ -1286,6 +1286,10 @@ msgctxt "MainWindow|"
 msgid "Update Megasound SD card"
 msgstr ""
 
+msgctxt "MainWindow|"
+msgid "&Telemetry"
+msgstr ""
+
 msgctxt "MdiChild|"
 msgid "&Cut"
 msgstr "&Couper"
@@ -2821,6 +2825,19 @@ msgctxt "ModelEdit|"
 msgid "Sensitivity"
 msgstr ""
 
+msgctxt "ModelEdit|"
+msgid "Actual Min"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "Actual Max"
+msgstr ""
+
+#, qt-format
+msgctxt "ModelEdit|"
+msgid "%1"
+msgstr ""
+
 msgctxt "QObject|"
 msgid "Checking for updates..."
 msgstr ""
@@ -2871,6 +2888,11 @@ msgstr ""
 #, qt-format
 msgctxt "QObject|"
 msgid "GV%1"
+msgstr ""
+
+#, qt-format
+msgctxt "QObject|"
+msgid "Error reading file %1:%2. %3 %4"
 msgstr ""
 
 msgctxt "QextSerialPort|"
@@ -4346,4 +4368,34 @@ msgstr ""
 
 msgctxt "simulatorDialog|"
 msgid "SWC"
+msgstr ""
+
+#, fuzzy
+msgctxt "telemetryDialog|"
+msgid "Dialog"
+msgstr "Dialogue"
+
+msgctxt "telemetryDialog|"
+msgid "WS How High"
+msgstr ""
+
+msgctxt "telemetryDialog|"
+msgid "Com Port"
+msgstr ""
+
+msgctxt "telemetryDialog|"
+msgid "Start"
+msgstr ""
+
+msgctxt "telemetryDialog|"
+msgid "Exit"
+msgstr ""
+
+#, qt-format
+msgctxt "telemetryDialog|"
+msgid "%1"
+msgstr ""
+
+msgctxt "telemetryDialog|"
+msgid "Com Port Unavailable"
 msgstr ""

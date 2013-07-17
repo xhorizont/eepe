@@ -115,6 +115,7 @@ private slots:
     void setFuses();
     void resetFuses();
     void showEEPROMInfo();
+    void doTelemetry();
 
 
 private:
@@ -149,6 +150,7 @@ private:
     QMenu *fileMenu;
     QMenu *editMenu;
     QMenu *burnMenu;
+    QMenu *telemetryMenu;
     QMenu *windowMenu;
     QMenu *helpMenu;
     QToolBar *fileToolBar;
@@ -193,6 +195,7 @@ private:
     QAction *setFusesAct;
     QAction *resetFusesAct;
     QAction *eepromInfoAct;
+    QAction *telemetryAct;
 
     //QAction *aboutQtAct;
 };

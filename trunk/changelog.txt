@@ -10,6 +10,15 @@ description here
 ====================================================================================
 
 ******************************************
+CHANGELOG: 17-Jul-2013 MPB
+eepskye - fix custom splash screen
+eepskye - Extend to 32 model memories
+eepskye - Display all 24 channels in limits
+eepe - Add telemetry simulation
+Display changed limits if AutoLimits is enabled
+Fix flight Mode labels
+
+******************************************
 CHANGELOG: 10-Jul-2013 MPB
 Add Gvar as voice source index
 Add er9x-128-standard as download choice

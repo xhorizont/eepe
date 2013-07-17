@@ -1144,6 +1144,10 @@ http://code.google.com/p/eepe/</source>
         <source>Update Megasound SD card</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>&amp;Telemetry</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>MdiChild</name>
@@ -2549,6 +2553,18 @@ Droite</translation>
         <source>Sensitivity</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Actual Min</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Actual Max</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>QObject</name>
@@ -2590,6 +2606,10 @@ Droite</translation>
     </message>
     <message>
         <source>GV%1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Error reading file %1:%2. %3 %4</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -3814,6 +3834,37 @@ Indique l&apos;affectation voie / numéro de canal par défaut utilisée lors de
     </message>
     <message>
         <source>SWC</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>telemetryDialog</name>
+    <message>
+        <source>Dialog</source>
+        <translation type="unfinished">Dialogue</translation>
+    </message>
+    <message>
+        <source>WS How High</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Com Port</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Start</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Exit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Com Port Unavailable</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

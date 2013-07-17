@@ -16,6 +16,7 @@
 #define SPLASH_SIZE (SPLASH_WIDTH*SPLASH_HEIGHT/8)
 #define SPLASH_OFFSET (6+1+3) // "Splash" + zero + 3 header bytes
 #define HEX_FILE_SIZE (1024*64)
+#define BIN_FILE_SIZE (1024*256)
 
 
 void populateSpinGVarCB( QSpinBox *sb, QComboBox *cb, QCheckBox *ck, int value, int min, int max) ;
@@ -82,5 +83,7 @@ QDomElement getModelDataXML(QDomDocument * qdoc, ModelData * tmod, int modelNum,
 
 bool getSplashHEX(QString fileName, uchar * b, QWidget *parent = 0);
 bool putSplashHEX(QString fileName, uchar * b, QWidget *parent = 0);
+
+bool getSplashBIN(QString fileName, uchar * b, QWidget *parent = 0);
 
 #endif // HELPERS_H
