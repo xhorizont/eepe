@@ -1111,6 +1111,59 @@ bool saveiHEX(QWidget *parent, QString fileName, quint8 * data, int datalen, QSt
     return true;
 }
 
+bool getSplashBIN(QString fileName, uchar * b, QWidget *parent)
+{
+    quint8 temp[BIN_FILE_SIZE] = {0};
+
+    QFile file(fileName);
+
+    if(!file.exists())
+    {
+        QMessageBox::critical(parent, QObject::tr("Error"),QObject::tr("Unable to find file %1!").arg(fileName));
+        return 0;
+    }
+
+    if (!file.open(QIODevice::ReadOnly )) {  //reading file
+        QMessageBox::critical(parent, QObject::tr("Error"),
+                              QObject::tr("Error opening file %1:\n%2.")
+                              .arg(fileName)
+                              .arg(file.errorString()));
+        return 0;
+    }
+
+    memset(temp,0,BIN_FILE_SIZE) ;
+
+    long result = file.read((char*)&temp,file.size()) ;
+    file.close();
+
+    if (result!=file.size())
+    {
+      QMessageBox::critical(parent, QObject::tr("Error"),
+                             QObject::tr("Error reading file %1:%2. %3 %4")
+                             .arg(fileName)
+                             .arg(file.errorString())
+                             .arg(result)
+                             .arg(file.size())										 
+													 );
+
+      return false;
+    }
+
+    QByteArray rawData = QByteArray::fromRawData((const char *)&temp, BIN_FILE_SIZE);
+    QString mark;
+    mark.clear();
+    mark.append("SPS");
+    mark.append('\0');
+    int pos = rawData.indexOf(mark);
+
+    if(pos<0)
+        return false;
+
+    memcpy(b, (const uchar *)&temp[pos + 7], SPLASH_SIZE);
+    return true;
+}
+
+
 
 bool getSplashHEX(QString fileName, uchar * b, QWidget *parent)
 {

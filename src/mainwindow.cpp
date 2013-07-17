@@ -56,6 +56,7 @@
 #include "customizesplashdialog.h"
 #include "stamp-eepe.h"
 #include "serialDialog.h"
+#include "telemetry.h"
 
 #define DONATE_STR "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=B9RNATGH7DTQ6"
 #define DNLD_VER_ER9X            0
@@ -528,6 +529,12 @@ void MainWindow::serial()
 {
     serialDialog *sd = new serialDialog(this);
     sd->exec();
+}
+
+void MainWindow::doTelemetry()
+{
+    telemetryDialog *td = new telemetryDialog(this);
+    td->exec();
 }
 
 void MainWindow::cut()
@@ -1222,6 +1229,11 @@ void MainWindow::createActions()
     eepromInfoAct = new QAction(QIcon(":/images/info.png"), tr("EEPROM Info"), this);
     eepromInfoAct->setStatusTip(tr("Show information about current EEPROM."));
     connect(eepromInfoAct, SIGNAL(triggered()), this, SLOT(showEEPROMInfo()));
+
+    telemetryAct = new QAction( tr("&Telemetry"), this);
+//    telemetryAct->setShortcut(tr("Ctrl+Alt+T"));
+//    telemetryAct->setStatusTip(tr("Write EEPROM memory to transmitter"));
+    connect( telemetryAct,SIGNAL(triggered()),this,SLOT(doTelemetry()));
 }
 
 void MainWindow::createMenus()
@@ -1265,6 +1277,9 @@ void MainWindow::createMenus()
     burnMenu->addAction(resetFusesAct);
     burnMenu->addSeparator();
     burnMenu->addAction(serialAct);
+
+    telemetryMenu = menuBar()->addMenu(tr("&Telemetry"));
+    telemetryMenu->addAction(telemetryAct) ;
 
     windowMenu = menuBar()->addMenu(tr("&Window"));
     updateWindowMenu();

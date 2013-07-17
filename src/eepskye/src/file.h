@@ -32,14 +32,16 @@
 // bs=16  128 blocks    verlust link:128  16files:16*8  128     sum 256
 // bs=32   64 blocks    verlust link: 64  16files:16*16 256     sum 320
 //
-#  define EESIZE   (168L*1024L)
+
+#define MAX_MODELS 32
+
+#  define EESIZE   ((MAX_MODELS+1)*8192L)
 #  define BS       16
 #  define RESV     64  //reserv for eeprom header with directory (eeFs)
 #define FIRSTBLK (RESV/BS)
 #define BLOCKS   (2048/BS)
 #define EEFS_VERS 4
 
-#define MAX_MODELS 20
 #define MAXFILES (1+MAX_MODELS+3)
 
 struct DirEnt{

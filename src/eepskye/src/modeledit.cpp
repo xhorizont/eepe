@@ -732,6 +732,37 @@ void ModelEdit::tabPhase()
 
 void ModelEdit::updatePhaseTab()
 {
+	switch ( g_eeGeneral.stickMode )
+	{
+		case 0 :
+			ui->label_M1->setText("Rudder") ;
+			ui->label_M2->setText("Elevator") ;
+			ui->label_M3->setText("Throttle") ;
+			ui->label_M4->setText("Aileron") ;
+		break ;
+
+		case 1 :
+			ui->label_M1->setText("Rudder") ;
+			ui->label_M2->setText("Throttle") ;
+			ui->label_M3->setText("Elevator") ;
+			ui->label_M4->setText("Aileron") ;
+		break ;
+
+		case 2 :
+			ui->label_M1->setText("Aileron") ;
+			ui->label_M2->setText("Elevator") ;
+			ui->label_M3->setText("Throttle") ;
+			ui->label_M4->setText("Rudder") ;
+		break ;
+
+		case 3 :
+			ui->label_M1->setText("Aileron") ;
+			ui->label_M2->setText("Throttle") ;
+			ui->label_M3->setText("Elevator") ;
+			ui->label_M4->setText("Rudder") ;
+		break ;
+	}
+	
 	populateSwitchShortCB( ui->FP1_sw, g_model.phaseData[0].swtch ) ;
 	populateSwitchShortCB( ui->FP2_sw, g_model.phaseData[1].swtch ) ;
 	populateSwitchShortCB( ui->FP3_sw, g_model.phaseData[2].swtch ) ;
@@ -911,56 +942,80 @@ void ModelEdit::heliEdited()
 
 void ModelEdit::tabLimits()
 {
-    ui->offsetDSB_1->setValue((double)g_model.limitData[0].offset/10 + 0.049);   connect(ui->offsetDSB_1,SIGNAL(editingFinished()),this,SLOT(limitEdited()));
-    ui->offsetDSB_2->setValue((double)g_model.limitData[1].offset/10 + 0.049);   connect(ui->offsetDSB_2,SIGNAL(editingFinished()),this,SLOT(limitEdited()));
-    ui->offsetDSB_3->setValue((double)g_model.limitData[2].offset/10 + 0.049);   connect(ui->offsetDSB_3,SIGNAL(editingFinished()),this,SLOT(limitEdited()));
-    ui->offsetDSB_4->setValue((double)g_model.limitData[3].offset/10 + 0.049);   connect(ui->offsetDSB_4,SIGNAL(editingFinished()),this,SLOT(limitEdited()));
-    ui->offsetDSB_5->setValue((double)g_model.limitData[4].offset/10 + 0.049);   connect(ui->offsetDSB_5,SIGNAL(editingFinished()),this,SLOT(limitEdited()));
-    ui->offsetDSB_6->setValue((double)g_model.limitData[5].offset/10 + 0.049);   connect(ui->offsetDSB_6,SIGNAL(editingFinished()),this,SLOT(limitEdited()));
-    ui->offsetDSB_7->setValue((double)g_model.limitData[6].offset/10 + 0.049);   connect(ui->offsetDSB_7,SIGNAL(editingFinished()),this,SLOT(limitEdited()));
-    ui->offsetDSB_8->setValue((double)g_model.limitData[7].offset/10 + 0.049);   connect(ui->offsetDSB_8,SIGNAL(editingFinished()),this,SLOT(limitEdited()));
-    ui->offsetDSB_9->setValue((double)g_model.limitData[8].offset/10 + 0.049);   connect(ui->offsetDSB_9,SIGNAL(editingFinished()),this,SLOT(limitEdited()));
-    ui->offsetDSB_10->setValue((double)g_model.limitData[9].offset/10 + 0.049);  connect(ui->offsetDSB_10,SIGNAL(editingFinished()),this,SLOT(limitEdited()));
-    ui->offsetDSB_11->setValue((double)g_model.limitData[10].offset/10 + 0.049); connect(ui->offsetDSB_11,SIGNAL(editingFinished()),this,SLOT(limitEdited()));
-    ui->offsetDSB_12->setValue((double)g_model.limitData[11].offset/10 + 0.049); connect(ui->offsetDSB_12,SIGNAL(editingFinished()),this,SLOT(limitEdited()));
-    ui->offsetDSB_13->setValue((double)g_model.limitData[12].offset/10 + 0.049); connect(ui->offsetDSB_13,SIGNAL(editingFinished()),this,SLOT(limitEdited()));
-    ui->offsetDSB_14->setValue((double)g_model.limitData[13].offset/10 + 0.049); connect(ui->offsetDSB_14,SIGNAL(editingFinished()),this,SLOT(limitEdited()));
-    ui->offsetDSB_15->setValue((double)g_model.limitData[14].offset/10 + 0.049); connect(ui->offsetDSB_15,SIGNAL(editingFinished()),this,SLOT(limitEdited()));
-    ui->offsetDSB_16->setValue((double)g_model.limitData[15].offset/10 + 0.049); connect(ui->offsetDSB_16,SIGNAL(editingFinished()),this,SLOT(limitEdited()));
+    ui->offsetDSB_1->setValue((double)g_model.limitData[0].offset/10 + 0.049);   connect(ui->offsetDSB_1,SIGNAL(valueChanged(double)),this,SLOT(limitEdited()));
+    ui->offsetDSB_2->setValue((double)g_model.limitData[1].offset/10 + 0.049);   connect(ui->offsetDSB_2,SIGNAL(valueChanged(double)),this,SLOT(limitEdited()));
+    ui->offsetDSB_3->setValue((double)g_model.limitData[2].offset/10 + 0.049);   connect(ui->offsetDSB_3,SIGNAL(valueChanged(double)),this,SLOT(limitEdited()));
+    ui->offsetDSB_4->setValue((double)g_model.limitData[3].offset/10 + 0.049);   connect(ui->offsetDSB_4,SIGNAL(valueChanged(double)),this,SLOT(limitEdited()));
+    ui->offsetDSB_5->setValue((double)g_model.limitData[4].offset/10 + 0.049);   connect(ui->offsetDSB_5,SIGNAL(valueChanged(double)),this,SLOT(limitEdited()));
+    ui->offsetDSB_6->setValue((double)g_model.limitData[5].offset/10 + 0.049);   connect(ui->offsetDSB_6,SIGNAL(valueChanged(double)),this,SLOT(limitEdited()));
+    ui->offsetDSB_7->setValue((double)g_model.limitData[6].offset/10 + 0.049);   connect(ui->offsetDSB_7,SIGNAL(valueChanged(double)),this,SLOT(limitEdited()));
+    ui->offsetDSB_8->setValue((double)g_model.limitData[7].offset/10 + 0.049);   connect(ui->offsetDSB_8,SIGNAL(valueChanged(double)),this,SLOT(limitEdited()));
+    ui->offsetDSB_9->setValue((double)g_model.limitData[8].offset/10 + 0.049);   connect(ui->offsetDSB_9,SIGNAL(valueChanged(double)),this,SLOT(limitEdited()));
+    ui->offsetDSB_10->setValue((double)g_model.limitData[9].offset/10 + 0.049);  connect(ui->offsetDSB_10,SIGNAL(valueChanged(double)),this,SLOT(limitEdited()));
+    ui->offsetDSB_11->setValue((double)g_model.limitData[10].offset/10 + 0.049); connect(ui->offsetDSB_11,SIGNAL(valueChanged(double)),this,SLOT(limitEdited()));
+    ui->offsetDSB_12->setValue((double)g_model.limitData[11].offset/10 + 0.049); connect(ui->offsetDSB_12,SIGNAL(valueChanged(double)),this,SLOT(limitEdited()));
+    ui->offsetDSB_13->setValue((double)g_model.limitData[12].offset/10 + 0.049); connect(ui->offsetDSB_13,SIGNAL(valueChanged(double)),this,SLOT(limitEdited()));
+    ui->offsetDSB_14->setValue((double)g_model.limitData[13].offset/10 + 0.049); connect(ui->offsetDSB_14,SIGNAL(valueChanged(double)),this,SLOT(limitEdited()));
+    ui->offsetDSB_15->setValue((double)g_model.limitData[14].offset/10 + 0.049); connect(ui->offsetDSB_15,SIGNAL(valueChanged(double)),this,SLOT(limitEdited()));
+    ui->offsetDSB_16->setValue((double)g_model.limitData[15].offset/10 + 0.049); connect(ui->offsetDSB_16,SIGNAL(valueChanged(double)),this,SLOT(limitEdited()));
+    ui->offsetDSB_17->setValue((double)g_model.limitData[16].offset/10 + 0.049); connect(ui->offsetDSB_17,SIGNAL(valueChanged(double)),this,SLOT(limitEdited()));
+    ui->offsetDSB_18->setValue((double)g_model.limitData[17].offset/10 + 0.049); connect(ui->offsetDSB_18,SIGNAL(valueChanged(double)),this,SLOT(limitEdited()));
+    ui->offsetDSB_19->setValue((double)g_model.limitData[18].offset/10 + 0.049); connect(ui->offsetDSB_19,SIGNAL(valueChanged(double)),this,SLOT(limitEdited()));
+    ui->offsetDSB_20->setValue((double)g_model.limitData[19].offset/10 + 0.049); connect(ui->offsetDSB_20,SIGNAL(valueChanged(double)),this,SLOT(limitEdited()));
+    ui->offsetDSB_21->setValue((double)g_model.limitData[20].offset/10 + 0.049); connect(ui->offsetDSB_21,SIGNAL(valueChanged(double)),this,SLOT(limitEdited()));
+    ui->offsetDSB_22->setValue((double)g_model.limitData[21].offset/10 + 0.049); connect(ui->offsetDSB_22,SIGNAL(valueChanged(double)),this,SLOT(limitEdited()));
+    ui->offsetDSB_23->setValue((double)g_model.limitData[22].offset/10 + 0.049); connect(ui->offsetDSB_23,SIGNAL(valueChanged(double)),this,SLOT(limitEdited()));
+    ui->offsetDSB_24->setValue((double)g_model.limitData[23].offset/10 + 0.049); connect(ui->offsetDSB_24,SIGNAL(valueChanged(double)),this,SLOT(limitEdited()));
 
-    ui->minSB_1->setValue(g_model.limitData[0].min-100);   connect(ui->minSB_1,SIGNAL(editingFinished()),this,SLOT(limitEdited()));
-    ui->minSB_2->setValue(g_model.limitData[1].min-100);   connect(ui->minSB_2,SIGNAL(editingFinished()),this,SLOT(limitEdited()));
-    ui->minSB_3->setValue(g_model.limitData[2].min-100);   connect(ui->minSB_3,SIGNAL(editingFinished()),this,SLOT(limitEdited()));
-    ui->minSB_4->setValue(g_model.limitData[3].min-100);   connect(ui->minSB_4,SIGNAL(editingFinished()),this,SLOT(limitEdited()));
-    ui->minSB_5->setValue(g_model.limitData[4].min-100);   connect(ui->minSB_5,SIGNAL(editingFinished()),this,SLOT(limitEdited()));
-    ui->minSB_6->setValue(g_model.limitData[5].min-100);   connect(ui->minSB_6,SIGNAL(editingFinished()),this,SLOT(limitEdited()));
-    ui->minSB_7->setValue(g_model.limitData[6].min-100);   connect(ui->minSB_7,SIGNAL(editingFinished()),this,SLOT(limitEdited()));
-    ui->minSB_8->setValue(g_model.limitData[7].min-100);   connect(ui->minSB_8,SIGNAL(editingFinished()),this,SLOT(limitEdited()));
-    ui->minSB_9->setValue(g_model.limitData[8].min-100);   connect(ui->minSB_9,SIGNAL(editingFinished()),this,SLOT(limitEdited()));
-    ui->minSB_10->setValue(g_model.limitData[9].min-100);  connect(ui->minSB_10,SIGNAL(editingFinished()),this,SLOT(limitEdited()));
-    ui->minSB_11->setValue(g_model.limitData[10].min-100); connect(ui->minSB_11,SIGNAL(editingFinished()),this,SLOT(limitEdited()));
-    ui->minSB_12->setValue(g_model.limitData[11].min-100); connect(ui->minSB_12,SIGNAL(editingFinished()),this,SLOT(limitEdited()));
-    ui->minSB_13->setValue(g_model.limitData[12].min-100); connect(ui->minSB_13,SIGNAL(editingFinished()),this,SLOT(limitEdited()));
-    ui->minSB_14->setValue(g_model.limitData[13].min-100); connect(ui->minSB_14,SIGNAL(editingFinished()),this,SLOT(limitEdited()));
-    ui->minSB_15->setValue(g_model.limitData[14].min-100); connect(ui->minSB_15,SIGNAL(editingFinished()),this,SLOT(limitEdited()));
-    ui->minSB_16->setValue(g_model.limitData[15].min-100); connect(ui->minSB_16,SIGNAL(editingFinished()),this,SLOT(limitEdited()));
+    ui->minSB_1->setValue(g_model.limitData[0].min-100);   connect(ui->minSB_1,SIGNAL(valueChanged(int)),this,SLOT(limitEdited()));
+    ui->minSB_2->setValue(g_model.limitData[1].min-100);   connect(ui->minSB_2,SIGNAL(valueChanged(int)),this,SLOT(limitEdited()));
+    ui->minSB_3->setValue(g_model.limitData[2].min-100);   connect(ui->minSB_3,SIGNAL(valueChanged(int)),this,SLOT(limitEdited()));
+    ui->minSB_4->setValue(g_model.limitData[3].min-100);   connect(ui->minSB_4,SIGNAL(valueChanged(int)),this,SLOT(limitEdited()));
+    ui->minSB_5->setValue(g_model.limitData[4].min-100);   connect(ui->minSB_5,SIGNAL(valueChanged(int)),this,SLOT(limitEdited()));
+    ui->minSB_6->setValue(g_model.limitData[5].min-100);   connect(ui->minSB_6,SIGNAL(valueChanged(int)),this,SLOT(limitEdited()));
+    ui->minSB_7->setValue(g_model.limitData[6].min-100);   connect(ui->minSB_7,SIGNAL(valueChanged(int)),this,SLOT(limitEdited()));
+    ui->minSB_8->setValue(g_model.limitData[7].min-100);   connect(ui->minSB_8,SIGNAL(valueChanged(int)),this,SLOT(limitEdited()));
+    ui->minSB_9->setValue(g_model.limitData[8].min-100);   connect(ui->minSB_9,SIGNAL(valueChanged(int)),this,SLOT(limitEdited()));
+    ui->minSB_10->setValue(g_model.limitData[9].min-100);  connect(ui->minSB_10,SIGNAL(valueChanged(int)),this,SLOT(limitEdited()));
+    ui->minSB_11->setValue(g_model.limitData[10].min-100); connect(ui->minSB_11,SIGNAL(valueChanged(int)),this,SLOT(limitEdited()));
+    ui->minSB_12->setValue(g_model.limitData[11].min-100); connect(ui->minSB_12,SIGNAL(valueChanged(int)),this,SLOT(limitEdited()));
+    ui->minSB_13->setValue(g_model.limitData[12].min-100); connect(ui->minSB_13,SIGNAL(valueChanged(int)),this,SLOT(limitEdited()));
+    ui->minSB_14->setValue(g_model.limitData[13].min-100); connect(ui->minSB_14,SIGNAL(valueChanged(int)),this,SLOT(limitEdited()));
+    ui->minSB_15->setValue(g_model.limitData[14].min-100); connect(ui->minSB_15,SIGNAL(valueChanged(int)),this,SLOT(limitEdited()));
+    ui->minSB_16->setValue(g_model.limitData[15].min-100); connect(ui->minSB_16,SIGNAL(valueChanged(int)),this,SLOT(limitEdited()));
+    ui->minSB_17->setValue(g_model.limitData[16].min-100); connect(ui->minSB_17,SIGNAL(valueChanged(int)),this,SLOT(limitEdited()));
+    ui->minSB_18->setValue(g_model.limitData[17].min-100); connect(ui->minSB_18,SIGNAL(valueChanged(int)),this,SLOT(limitEdited()));
+    ui->minSB_19->setValue(g_model.limitData[18].min-100); connect(ui->minSB_19,SIGNAL(valueChanged(int)),this,SLOT(limitEdited()));
+    ui->minSB_20->setValue(g_model.limitData[19].min-100); connect(ui->minSB_20,SIGNAL(valueChanged(int)),this,SLOT(limitEdited()));
+    ui->minSB_21->setValue(g_model.limitData[20].min-100); connect(ui->minSB_21,SIGNAL(valueChanged(int)),this,SLOT(limitEdited()));
+    ui->minSB_22->setValue(g_model.limitData[21].min-100); connect(ui->minSB_22,SIGNAL(valueChanged(int)),this,SLOT(limitEdited()));
+    ui->minSB_23->setValue(g_model.limitData[22].min-100); connect(ui->minSB_23,SIGNAL(valueChanged(int)),this,SLOT(limitEdited()));
+    ui->minSB_24->setValue(g_model.limitData[23].min-100); connect(ui->minSB_24,SIGNAL(valueChanged(int)),this,SLOT(limitEdited()));
 
-    ui->maxSB_1->setValue(g_model.limitData[0].max+100);   connect(ui->maxSB_1,SIGNAL(editingFinished()),this,SLOT(limitEdited()));
-    ui->maxSB_2->setValue(g_model.limitData[1].max+100);   connect(ui->maxSB_2,SIGNAL(editingFinished()),this,SLOT(limitEdited()));
-    ui->maxSB_3->setValue(g_model.limitData[2].max+100);   connect(ui->maxSB_3,SIGNAL(editingFinished()),this,SLOT(limitEdited()));
-    ui->maxSB_4->setValue(g_model.limitData[3].max+100);   connect(ui->maxSB_4,SIGNAL(editingFinished()),this,SLOT(limitEdited()));
-    ui->maxSB_5->setValue(g_model.limitData[4].max+100);   connect(ui->maxSB_5,SIGNAL(editingFinished()),this,SLOT(limitEdited()));
-    ui->maxSB_6->setValue(g_model.limitData[5].max+100);   connect(ui->maxSB_6,SIGNAL(editingFinished()),this,SLOT(limitEdited()));
-    ui->maxSB_7->setValue(g_model.limitData[6].max+100);   connect(ui->maxSB_7,SIGNAL(editingFinished()),this,SLOT(limitEdited()));
-    ui->maxSB_8->setValue(g_model.limitData[7].max+100);   connect(ui->maxSB_8,SIGNAL(editingFinished()),this,SLOT(limitEdited()));
-    ui->maxSB_9->setValue(g_model.limitData[8].max+100);   connect(ui->maxSB_9,SIGNAL(editingFinished()),this,SLOT(limitEdited()));
-    ui->maxSB_10->setValue(g_model.limitData[9].max+100);  connect(ui->maxSB_10,SIGNAL(editingFinished()),this,SLOT(limitEdited()));
-    ui->maxSB_11->setValue(g_model.limitData[10].max+100); connect(ui->maxSB_11,SIGNAL(editingFinished()),this,SLOT(limitEdited()));
-    ui->maxSB_12->setValue(g_model.limitData[11].max+100); connect(ui->maxSB_12,SIGNAL(editingFinished()),this,SLOT(limitEdited()));
-    ui->maxSB_13->setValue(g_model.limitData[12].max+100); connect(ui->maxSB_13,SIGNAL(editingFinished()),this,SLOT(limitEdited()));
-    ui->maxSB_14->setValue(g_model.limitData[13].max+100); connect(ui->maxSB_14,SIGNAL(editingFinished()),this,SLOT(limitEdited()));
-    ui->maxSB_15->setValue(g_model.limitData[14].max+100); connect(ui->maxSB_15,SIGNAL(editingFinished()),this,SLOT(limitEdited()));
-    ui->maxSB_16->setValue(g_model.limitData[15].max+100); connect(ui->maxSB_16,SIGNAL(editingFinished()),this,SLOT(limitEdited()));
+    ui->maxSB_1->setValue(g_model.limitData[0].max+100);   connect(ui->maxSB_1,SIGNAL(valueChanged(int)),this,SLOT(limitEdited()));
+    ui->maxSB_2->setValue(g_model.limitData[1].max+100);   connect(ui->maxSB_2,SIGNAL(valueChanged(int)),this,SLOT(limitEdited()));
+    ui->maxSB_3->setValue(g_model.limitData[2].max+100);   connect(ui->maxSB_3,SIGNAL(valueChanged(int)),this,SLOT(limitEdited()));
+    ui->maxSB_4->setValue(g_model.limitData[3].max+100);   connect(ui->maxSB_4,SIGNAL(valueChanged(int)),this,SLOT(limitEdited()));
+    ui->maxSB_5->setValue(g_model.limitData[4].max+100);   connect(ui->maxSB_5,SIGNAL(valueChanged(int)),this,SLOT(limitEdited()));
+    ui->maxSB_6->setValue(g_model.limitData[5].max+100);   connect(ui->maxSB_6,SIGNAL(valueChanged(int)),this,SLOT(limitEdited()));
+    ui->maxSB_7->setValue(g_model.limitData[6].max+100);   connect(ui->maxSB_7,SIGNAL(valueChanged(int)),this,SLOT(limitEdited()));
+    ui->maxSB_8->setValue(g_model.limitData[7].max+100);   connect(ui->maxSB_8,SIGNAL(valueChanged(int)),this,SLOT(limitEdited()));
+    ui->maxSB_9->setValue(g_model.limitData[8].max+100);   connect(ui->maxSB_9,SIGNAL(valueChanged(int)),this,SLOT(limitEdited()));
+    ui->maxSB_10->setValue(g_model.limitData[9].max+100);  connect(ui->maxSB_10,SIGNAL(valueChanged(int)),this,SLOT(limitEdited()));
+    ui->maxSB_11->setValue(g_model.limitData[10].max+100); connect(ui->maxSB_11,SIGNAL(valueChanged(int)),this,SLOT(limitEdited()));
+    ui->maxSB_12->setValue(g_model.limitData[11].max+100); connect(ui->maxSB_12,SIGNAL(valueChanged(int)),this,SLOT(limitEdited()));
+    ui->maxSB_13->setValue(g_model.limitData[12].max+100); connect(ui->maxSB_13,SIGNAL(valueChanged(int)),this,SLOT(limitEdited()));
+    ui->maxSB_14->setValue(g_model.limitData[13].max+100); connect(ui->maxSB_14,SIGNAL(valueChanged(int)),this,SLOT(limitEdited()));
+    ui->maxSB_15->setValue(g_model.limitData[14].max+100); connect(ui->maxSB_15,SIGNAL(valueChanged(int)),this,SLOT(limitEdited()));
+    ui->maxSB_16->setValue(g_model.limitData[15].max+100); connect(ui->maxSB_16,SIGNAL(valueChanged(int)),this,SLOT(limitEdited()));
+    ui->maxSB_17->setValue(g_model.limitData[16].max+100); connect(ui->maxSB_17,SIGNAL(valueChanged(int)),this,SLOT(limitEdited()));
+    ui->maxSB_18->setValue(g_model.limitData[17].max+100); connect(ui->maxSB_18,SIGNAL(valueChanged(int)),this,SLOT(limitEdited()));
+    ui->maxSB_19->setValue(g_model.limitData[18].max+100); connect(ui->maxSB_19,SIGNAL(valueChanged(int)),this,SLOT(limitEdited()));
+    ui->maxSB_20->setValue(g_model.limitData[19].max+100); connect(ui->maxSB_20,SIGNAL(valueChanged(int)),this,SLOT(limitEdited()));
+    ui->maxSB_21->setValue(g_model.limitData[20].max+100); connect(ui->maxSB_21,SIGNAL(valueChanged(int)),this,SLOT(limitEdited()));
+    ui->maxSB_22->setValue(g_model.limitData[21].max+100); connect(ui->maxSB_22,SIGNAL(valueChanged(int)),this,SLOT(limitEdited()));
+    ui->maxSB_23->setValue(g_model.limitData[22].max+100); connect(ui->maxSB_23,SIGNAL(valueChanged(int)),this,SLOT(limitEdited()));
+    ui->maxSB_24->setValue(g_model.limitData[23].max+100); connect(ui->maxSB_24,SIGNAL(valueChanged(int)),this,SLOT(limitEdited()));
 
     ui->chInvCB_1->setCurrentIndex((g_model.limitData[0].revert) ? 1 : 0);   connect(ui->chInvCB_1,SIGNAL(currentIndexChanged(int)),this,SLOT(limitEdited()));
     ui->chInvCB_2->setCurrentIndex((g_model.limitData[1].revert) ? 1 : 0);   connect(ui->chInvCB_2,SIGNAL(currentIndexChanged(int)),this,SLOT(limitEdited()));
@@ -978,6 +1033,16 @@ void ModelEdit::tabLimits()
     ui->chInvCB_14->setCurrentIndex((g_model.limitData[13].revert) ? 1 : 0); connect(ui->chInvCB_14,SIGNAL(currentIndexChanged(int)),this,SLOT(limitEdited()));
     ui->chInvCB_15->setCurrentIndex((g_model.limitData[14].revert) ? 1 : 0); connect(ui->chInvCB_15,SIGNAL(currentIndexChanged(int)),this,SLOT(limitEdited()));
     ui->chInvCB_16->setCurrentIndex((g_model.limitData[15].revert) ? 1 : 0); connect(ui->chInvCB_16,SIGNAL(currentIndexChanged(int)),this,SLOT(limitEdited()));
+    ui->chInvCB_17->setCurrentIndex((g_model.limitData[16].revert) ? 1 : 0); connect(ui->chInvCB_17,SIGNAL(currentIndexChanged(int)),this,SLOT(limitEdited()));
+    ui->chInvCB_18->setCurrentIndex((g_model.limitData[17].revert) ? 1 : 0); connect(ui->chInvCB_18,SIGNAL(currentIndexChanged(int)),this,SLOT(limitEdited()));
+    ui->chInvCB_19->setCurrentIndex((g_model.limitData[18].revert) ? 1 : 0); connect(ui->chInvCB_19,SIGNAL(currentIndexChanged(int)),this,SLOT(limitEdited()));
+    ui->chInvCB_20->setCurrentIndex((g_model.limitData[19].revert) ? 1 : 0); connect(ui->chInvCB_20,SIGNAL(currentIndexChanged(int)),this,SLOT(limitEdited()));
+    ui->chInvCB_21->setCurrentIndex((g_model.limitData[20].revert) ? 1 : 0); connect(ui->chInvCB_21,SIGNAL(currentIndexChanged(int)),this,SLOT(limitEdited()));
+    ui->chInvCB_22->setCurrentIndex((g_model.limitData[21].revert) ? 1 : 0); connect(ui->chInvCB_22,SIGNAL(currentIndexChanged(int)),this,SLOT(limitEdited()));
+    ui->chInvCB_23->setCurrentIndex((g_model.limitData[22].revert) ? 1 : 0); connect(ui->chInvCB_23,SIGNAL(currentIndexChanged(int)),this,SLOT(limitEdited()));
+    ui->chInvCB_24->setCurrentIndex((g_model.limitData[23].revert) ? 1 : 0); connect(ui->chInvCB_24,SIGNAL(currentIndexChanged(int)),this,SLOT(limitEdited()));
+
+		limitAuto() ;
 
     setLimitMinMax();
 }
@@ -1278,6 +1343,95 @@ void ModelEdit::tabCurves()
    connect(ui->curvePt9_16,SIGNAL(valueChanged(int)),this,SLOT(curvePointEdited()));
 }
 
+void ModelEdit::limitAuto()
+{ // Set the values on the amin and Amax labels
+	int value ;
+	int i ;
+	QLabel *Amin[24] ;
+	QLabel *Amax[24] ;
+	Amin[0] = ui->CH1Amin ;
+	Amin[1] = ui->CH2Amin ;
+	Amin[2] = ui->CH3Amin ;
+	Amin[3] = ui->CH4Amin ;
+	Amin[4] = ui->CH5Amin ;
+	Amin[5] = ui->CH6Amin ;
+	Amin[6] = ui->CH7Amin ;
+	Amin[7] = ui->CH8Amin ;
+	Amin[8] = ui->CH9Amin ;
+	Amin[9] = ui->CH10Amin ;
+	Amin[10] = ui->CH11Amin ;
+	Amin[11] = ui->CH12Amin ;
+	Amin[12] = ui->CH13Amin ;
+	Amin[13] = ui->CH14Amin ;
+	Amin[14] = ui->CH15Amin ;
+	Amin[15] = ui->CH16Amin ;
+	Amin[16] = ui->CH17Amin ;
+	Amin[17] = ui->CH18Amin ;
+	Amin[18] = ui->CH19Amin ;
+	Amin[19] = ui->CH20Amin ;
+	Amin[20] = ui->CH21Amin ;
+	Amin[21] = ui->CH22Amin ;
+	Amin[22] = ui->CH23Amin ;
+	Amin[23] = ui->CH24Amin ;
+	Amax[0] = ui->CH1Amax ;
+	Amax[1] = ui->CH2Amax ;
+	Amax[2] = ui->CH3Amax ;
+	Amax[3] = ui->CH4Amax ;
+	Amax[4] = ui->CH5Amax ;
+	Amax[5] = ui->CH6Amax ;
+	Amax[6] = ui->CH7Amax ;
+	Amax[7] = ui->CH8Amax ;
+	Amax[8] = ui->CH9Amax ;
+	Amax[9] = ui->CH10Amax ;
+	Amax[10] = ui->CH11Amax ;
+	Amax[11] = ui->CH12Amax ;
+	Amax[12] = ui->CH13Amax ;
+	Amax[13] = ui->CH14Amax ;
+	Amax[14] = ui->CH15Amax ;
+	Amax[15] = ui->CH16Amax ;
+	Amax[16] = ui->CH17Amax ;
+	Amax[17] = ui->CH18Amax ;
+	Amax[18] = ui->CH19Amax ;
+	Amax[19] = ui->CH20Amax ;
+	Amax[20] = ui->CH21Amax ;
+	Amax[21] = ui->CH22Amax ;
+	Amax[22] = ui->CH23Amax ;
+	Amax[23] = ui->CH24Amax ;
+
+	for ( i = 0 ; i < 24 ; i += 1 )
+	{
+		if (g_model.sub_trim_limit)
+		{
+			if ( ( value = g_model.limitData[i].offset ) )
+			{
+				if ( value > g_model.sub_trim_limit )
+				{
+					value = g_model.sub_trim_limit ;				
+				}
+				if ( value < -g_model.sub_trim_limit )
+				{
+					value = -g_model.sub_trim_limit ;				
+				}
+				Amin[i]->setText(tr("%1").arg( g_model.limitData[i].min-100+value/10 )) ;
+				Amax[i]->setText(tr("%1").arg( g_model.limitData[i].max+100+value/10 )) ;
+  	    Amin[i]->setVisible(true) ;
+  	    Amax[i]->setVisible(true) ;
+			}
+			else
+			{
+  	  	Amin[i]->setVisible(false) ;
+		    Amax[i]->setVisible(false) ;
+			}
+		}
+		else
+		{
+  	  Amin[i]->setVisible(false) ;
+  	  Amax[i]->setVisible(false) ;
+		}
+	}
+}
+
+
 
 void ModelEdit::limitEdited()
 {
@@ -1297,6 +1451,14 @@ void ModelEdit::limitEdited()
     g_model.limitData[13].offset = ui->offsetDSB_14->value()*10 + 0.49;
     g_model.limitData[14].offset = ui->offsetDSB_15->value()*10 + 0.49;
     g_model.limitData[15].offset = ui->offsetDSB_16->value()*10 + 0.49;
+    g_model.limitData[16].offset = ui->offsetDSB_17->value()*10 + 0.49;
+    g_model.limitData[17].offset = ui->offsetDSB_18->value()*10 + 0.49;
+    g_model.limitData[18].offset = ui->offsetDSB_19->value()*10 + 0.49;
+    g_model.limitData[19].offset = ui->offsetDSB_20->value()*10 + 0.49;
+    g_model.limitData[20].offset = ui->offsetDSB_21->value()*10 + 0.49;
+    g_model.limitData[21].offset = ui->offsetDSB_22->value()*10 + 0.49;
+    g_model.limitData[22].offset = ui->offsetDSB_23->value()*10 + 0.49;
+    g_model.limitData[23].offset = ui->offsetDSB_24->value()*10 + 0.49;
 
     g_model.limitData[0].min = ui->minSB_1->value()+100;
     g_model.limitData[1].min = ui->minSB_2->value()+100;
@@ -1314,6 +1476,14 @@ void ModelEdit::limitEdited()
     g_model.limitData[13].min = ui->minSB_14->value()+100;
     g_model.limitData[14].min = ui->minSB_15->value()+100;
     g_model.limitData[15].min = ui->minSB_16->value()+100;
+    g_model.limitData[16].min = ui->minSB_17->value()+100;
+    g_model.limitData[17].min = ui->minSB_18->value()+100;
+    g_model.limitData[18].min = ui->minSB_19->value()+100;
+    g_model.limitData[19].min = ui->minSB_20->value()+100;
+    g_model.limitData[20].min = ui->minSB_21->value()+100;
+    g_model.limitData[21].min = ui->minSB_22->value()+100;
+    g_model.limitData[22].min = ui->minSB_23->value()+100;
+    g_model.limitData[23].min = ui->minSB_24->value()+100;
 
     g_model.limitData[0].max = ui->maxSB_1->value()-100;
     g_model.limitData[1].max = ui->maxSB_2->value()-100;
@@ -1331,6 +1501,14 @@ void ModelEdit::limitEdited()
     g_model.limitData[13].max = ui->maxSB_14->value()-100;
     g_model.limitData[14].max = ui->maxSB_15->value()-100;
     g_model.limitData[15].max = ui->maxSB_16->value()-100;
+    g_model.limitData[16].max = ui->maxSB_17->value()-100;
+    g_model.limitData[17].max = ui->maxSB_18->value()-100;
+    g_model.limitData[18].max = ui->maxSB_19->value()-100;
+    g_model.limitData[19].max = ui->maxSB_20->value()-100;
+    g_model.limitData[20].max = ui->maxSB_21->value()-100;
+    g_model.limitData[21].max = ui->maxSB_22->value()-100;
+    g_model.limitData[22].max = ui->maxSB_23->value()-100;
+    g_model.limitData[23].max = ui->maxSB_24->value()-100;
 
     g_model.limitData[0].revert = ui->chInvCB_1->currentIndex();
     g_model.limitData[1].revert = ui->chInvCB_2->currentIndex();
@@ -1348,6 +1526,16 @@ void ModelEdit::limitEdited()
     g_model.limitData[13].revert = ui->chInvCB_14->currentIndex();
     g_model.limitData[14].revert = ui->chInvCB_15->currentIndex();
     g_model.limitData[15].revert = ui->chInvCB_16->currentIndex();
+    g_model.limitData[16].revert = ui->chInvCB_17->currentIndex();
+    g_model.limitData[17].revert = ui->chInvCB_18->currentIndex();
+    g_model.limitData[18].revert = ui->chInvCB_19->currentIndex();
+    g_model.limitData[19].revert = ui->chInvCB_20->currentIndex();
+    g_model.limitData[20].revert = ui->chInvCB_21->currentIndex();
+    g_model.limitData[21].revert = ui->chInvCB_22->currentIndex();
+    g_model.limitData[22].revert = ui->chInvCB_23->currentIndex();
+    g_model.limitData[23].revert = ui->chInvCB_24->currentIndex();
+
+		limitAuto() ;
 
     updateSettings();
 }
@@ -2583,6 +2771,7 @@ void ModelEdit::on_ppmDelaySB_editingFinished()
 void ModelEdit::on_autoLimitsSB_editingFinished()
 {
    g_model.sub_trim_limit = ui->autoLimitsSB->value()*10 + 0.49 ;
+	 limitAuto() ;
    updateSettings();
 }
 
