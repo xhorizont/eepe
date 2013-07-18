@@ -35,6 +35,8 @@
 
 #define MAX_MODELS 32
 
+#  define EE20MSIZE   (168L*1024L)
+
 #  define EESIZE   ((MAX_MODELS+1)*8192L)
 #  define BS       16
 #  define RESV     64  //reserv for eeprom header with directory (eeFs)

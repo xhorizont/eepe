@@ -878,12 +878,14 @@ bool MdiChild::loadFile(const QString &fileName, bool resetCurrentFile)
     {
         QFile file(fileName);
 
-        if(file.size()!=EESIZE)
+        if( (file.size()!=EESIZE) && (file.size()!=EE20MSIZE) )
         {
             QMessageBox::critical(this, tr("Error"),tr("Error reading file:\n"
                                                        "File wrong size - %1").arg(fileName));
             return false;
         }
+
+				memset( temp, 0xFF, EESIZE ) ;	// Default in case only 20 models loading
 
         if (!file.open(QFile::ReadOnly)) {  //reading binary file   - TODO HEX support
             QMessageBox::critical(this, tr("Error"),
@@ -895,6 +897,12 @@ bool MdiChild::loadFile(const QString &fileName, bool resetCurrentFile)
 
         long result = file.read((char*)&temp,EESIZE);
         file.close();
+
+        if (result==EE20MSIZE)
+				{
+					result = EESIZE ;
+				}
+
 
         if (result!=EESIZE)
         {

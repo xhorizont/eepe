@@ -10,6 +10,10 @@ description here
 ====================================================================================
 
 ******************************************
+CHANGELOG: 18-Jul-2013 MPB
+eepskye - fix reading old (20 model) files
+
+******************************************
 CHANGELOG: 17-Jul-2013 MPB
 eepskye - fix custom splash screen
 eepskye - Extend to 32 model memories
