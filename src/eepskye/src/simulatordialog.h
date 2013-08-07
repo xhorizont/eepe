@@ -75,6 +75,7 @@ private:
     void setupTimer();
     void resizeEvent(QResizeEvent *event  = 0);
 
+		uint32_t adjustMode( uint32_t x ) ;
     void getValues();
     void setValues();
     void perOut(bool init=false);

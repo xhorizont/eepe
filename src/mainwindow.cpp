@@ -59,6 +59,50 @@
 #include "telemetry.h"
 
 #define DONATE_STR "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=B9RNATGH7DTQ6"
+
+//er9x.hex - with language variants (no templates)
+//er9x-frsky - with language variants
+//er9x-128 - with language variants and an option to choose if the THR and AIL switches have been moved
+
+//The following in English only:
+//er9x-ardupilot
+//er9x-jeti
+//er9x-nmea
+
+
+//#define DNLD_VER_ER9X            0
+//#define DNLD_VER_ER9X_JETI       1
+//#define DNLD_VER_ER9X_FRSKY      2
+//#define DNLD_VER_ER9X_ARDUPILOT  3
+//#define DNLD_VER_ER9X_NMEA       4
+//#define DNLD_VER_ER9X_128				 5
+
+//#define DNLD_VER_ER9X_DE         6
+//#define DNLD_VER_ER9X_FRSKY_DE   7
+//#define DNLD_VER_ER9X_128_DE  	 8
+
+//#define DNLD_VER_ER9X_FR         9
+//#define DNLD_VER_ER9X_FRSKY_FR   10
+//#define DNLD_VER_ER9X_128_FR  	 11
+
+//#define ER9X_URL   "http://er9x.googlecode.com/svn/trunk/er9x.hex"
+//#define ER9X_JETI_URL   "http://er9x.googlecode.com/svn/trunk/er9x-jeti.hex"
+//#define ER9X_FRSKY_URL   "http://er9x.googlecode.com/svn/trunk/er9x-frsky.hex"
+//#define ER9X_ARDUPILOT_URL   "http://er9x.googlecode.com/svn/trunk/er9x-ardupilot.hex"
+//#define ER9X_NMEA_URL   "http://er9x.googlecode.com/svn/trunk/er9x-nmea.hex"
+//#define ER9X_128_URL   "http://er9x.googlecode.com/svn/trunk/er9x-128.hex"
+
+//#define ER9X_DE_URL   "http://er9x.googlecode.com/svn/trunk/er9x_de.hex"
+//#define ER9X_FRSKY_DE_URL   "http://er9x.googlecode.com/svn/trunk/er9x-frsky_de.hex"
+//#define ER9X_128_DE_URL   "http://er9x.googlecode.com/svn/trunk/er9x-128_de.hex"
+
+//#define ER9X_FR_URL   "http://er9x.googlecode.com/svn/trunk/er9x_fr.hex"
+//#define ER9X_FRSKY_FR_URL   "http://er9x.googlecode.com/svn/trunk/er9x-frsky_fr.hex"
+//#define ER9X_128_FR_URL   "http://er9x.googlecode.com/svn/trunk/er9x-128_fr.hex"
+
+
+
+
 #define DNLD_VER_ER9X            0
 #define DNLD_VER_ER9X_JETI       1
 #define DNLD_VER_ER9X_FRSKY      2
@@ -73,6 +117,9 @@
 #define DNLD_VER_ER9X_NMEA       6
 #define DNLD_VER_ER9X_128				 7
 #define DNLD_VER_ER9X_S128			 8
+#define DNLD_VER_ER9X_DE         9
+#define DNLD_VER_ER9X_FRSKY_DE	 10
+#define DNLD_VER_ER9X_128_DE		 11
 
 #define ER9X_URL   "http://er9x.googlecode.com/svn/trunk/er9x.hex"
 #define ER9X_NOHT_URL   "http://er9x.googlecode.com/svn/trunk/er9x-noht.hex"
@@ -80,17 +127,37 @@
 //#define ER9X_NOHT_SPKR_URL   "http://er9x.googlecode.com/svn/trunk/er9x-noht-spkr.hex"
 #define ER9X_JETI_URL   "http://er9x.googlecode.com/svn/trunk/er9x-jeti.hex"
 #define ER9X_FRSKY_URL   "http://er9x.googlecode.com/svn/trunk/er9x-frsky.hex"
-#define ER9X_FRSKY_NOHT_URL   "http://er9x.googlecode.com/svn/trunk/er9x-frsky-noht.hex"
+#define ER9X_FRSKY_NOHT_URL   "http://er9x.googlecode.com/svn/trunk/er9x-frsky.hex"
 //#define ER9X_FRSKY_SPKR_URL   "http://er9x.googlecode.com/svn/trunk/er9x-frsky-spkr.hex"
 //#define ER9X_FRSKY_NOHT_SPKR_URL   "http://er9x.googlecode.com/svn/trunk/er9x-frsky-noht-spkr.hex"
 #define ER9X_ARDUPILOT_URL   "http://er9x.googlecode.com/svn/trunk/er9x-ardupilot.hex"
 #define ER9X_NMEA_URL   "http://er9x.googlecode.com/svn/trunk/er9x-nmea.hex"
 #define ER9X_128_URL   "http://er9x.googlecode.com/svn/trunk/er9x-128.hex"
-#define ER9X_128_S_URL   "http://er9x.googlecode.com/svn/trunk/er9x-128-standard.hex"
+#define ER9X_128_S_URL   "http://er9x.googlecode.com/svn/trunk/er9x-128.hex"
 #define ER9X_STAMP "http://er9x.googlecode.com/svn/trunk/src/stamp-er9x.h"
 #define EEPE_URL   "http://eepe.googlecode.com/svn/trunk/eePeInstall.exe"
 #define EEPE_STAMP "http://eepe.googlecode.com/svn/trunk/src/stamp-eepe.h"
+#define ER9X_DE_URL   "http://er9x.googlecode.com/svn/trunk/er9x-de.hex"
+#define ER9X_FRSKY_DE_URL   "http://er9x.googlecode.com/svn/trunk/er9x-frsky-de.hex"
+#define ER9X_128_DE_URL   "http://er9x.googlecode.com/svn/trunk/er9x-128-de.hex"
 
+
+void populateDownloads( QComboBox *b )
+{
+	b->clear() ;
+  b->addItem( "er9x" ) ;
+  b->addItem( "er9x - JETI" ) ;
+  b->addItem( "er9x - FrSky" ) ;
+  b->addItem( "er9x - Ardupilot" ) ;
+  b->addItem( "er9x - FrSky NOHT" ) ;
+  b->addItem( "er9x - NOHT" ) ;
+  b->addItem( "er9x - NMEA" ) ;
+  b->addItem( "er9x - 128 - FrSky" ) ;
+  b->addItem( "er9x - 128 - Standard" ) ;
+  b->addItem( "er9x - German" ) ;
+  b->addItem( "er9x - FrSky - German" ) ;
+  b->addItem( "er9x - 128 - German" ) ;
+}	
 
 MainWindow::MainWindow()
 {
@@ -227,24 +294,14 @@ void MainWindow::reply1Finished(QNetworkReply * reply)
                 baseFileName = "er9x-ardupilot.hex";
                 break;
             case (DNLD_VER_ER9X_NMEA):
+            case (DNLD_VER_ER9X_FRSKY_NOHT):
                 dnldURL = ER9X_NMEA_URL;
                 baseFileName = "er9x-nmea.hex";
                 break;
-            case (DNLD_VER_ER9X_FRSKY_NOHT):
-                dnldURL = ER9X_FRSKY_NOHT_URL;
-                baseFileName = "er9x-frsky-noht.hex";
-                break;
-            case (DNLD_VER_ER9X_NOHT):
-                dnldURL = ER9X_NOHT_URL;
-                baseFileName = "er9x-noht.hex";
-                break;
 				    case (DNLD_VER_ER9X_128):
+				    case (DNLD_VER_ER9X_S128):
         				dnldURL = ER9X_128_URL;
         				baseFileName = "er9x-128.hex";
-        				break;
-				    case (DNLD_VER_ER9X_S128):
-        				dnldURL = ER9X_128_S_URL;
-        				baseFileName = "er9x-128-standard.hex";
         				break;
 /*
             case (DNLD_VER_ER9X_SPKR):
@@ -264,7 +321,22 @@ void MainWindow::reply1Finished(QNetworkReply * reply)
                 baseFileName = "er9x-frsky-noht-spkr.hex";
                 break;
 */
+				    case (DNLD_VER_ER9X_DE):
+        				dnldURL = ER9X_DE_URL;
+        				baseFileName = "er9x-de.hex";
+        				break;
 
+				    case (DNLD_VER_ER9X_FRSKY_DE):
+        				dnldURL = ER9X_FRSKY_DE_URL;
+        				baseFileName = "er9x-frsky-de.hex";
+        				break;
+
+				    case (DNLD_VER_ER9X_128_DE):
+        				dnldURL = ER9X_128_DE_URL;
+        				baseFileName = "er9x-128-de.hex";
+        				break;
+
+            case (DNLD_VER_ER9X_NOHT):
             default:
                 dnldURL = ER9X_URL;
                 baseFileName = "er9x.hex";

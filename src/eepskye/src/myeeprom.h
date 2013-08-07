@@ -402,6 +402,15 @@ PACK(typedef struct t_FuncSwData { // Function Switches data
   uint8_t spare;
 }) FuncSwData;
 
+PACK(typedef struct t_Vario
+{
+  uint8_t varioSource ;
+  int8_t  swtch ;
+  uint8_t sinkTonesOff:1 ;
+  uint8_t spare:1 ;
+  uint8_t param:6 ;
+}) VarioData ;	
+
 PACK(typedef struct t_gvar {
 	int8_t gvar ;
 	uint8_t gvsource ;
@@ -469,6 +478,7 @@ PACK(typedef struct te_ModelData {
   int8_t		ppm2NCH ;
 	uint8_t sub_trim_limit ;
 	uint8_t 	FASoffset ;			// 0.0 to 1.5
+	VarioData varioData ;
 //	uint8_t   curentSource ;
 //	uint8_t   altSource ;
 }) SKYModelData ;

@@ -675,6 +675,10 @@ msgctxt "GeneralEdit|"
 msgid "Set the readability of the display"
 msgstr ""
 
+msgctxt "GeneralEdit|"
+msgid "FrSky mod done (M128 only)"
+msgstr ""
+
 msgctxt "MainWindow|"
 msgid "&New"
 msgstr "&Nouveau"
@@ -1602,6 +1606,11 @@ msgctxt "MdiChild|"
 msgid ""
 "Writing file %1:\n"
 "%2."
+msgstr ""
+
+#, qt-format
+msgctxt "MdiChild|"
+msgid " free %1"
 msgstr ""
 
 msgctxt "MixerDialog|"
@@ -2836,6 +2845,10 @@ msgstr ""
 #, qt-format
 msgctxt "ModelEdit|"
 msgid "%1"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "Sink Tones Off"
 msgstr ""
 
 msgctxt "QObject|"

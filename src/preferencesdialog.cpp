@@ -4,6 +4,8 @@
 #include "mainwindow.h"
 #include <QtGui>
 
+extern void populateDownloads( QComboBox *b ) ;
+
 preferencesDialog::preferencesDialog(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::preferencesDialog)
@@ -38,6 +40,8 @@ void preferencesDialog::write_values()
 void preferencesDialog::initSettings()
 {
     QSettings settings("er9x-eePe", "eePe");
+		populateDownloads( ui->downloadVerCB ) ;
+
     int i=ui->locale_QB->findData(settings.value("locale",QLocale::system().name()).toString());
     if(i<0) i=0;
     ui->locale_QB->setCurrentIndex(i);

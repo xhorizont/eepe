@@ -307,6 +307,37 @@ void simulatorDialog::setTrimValue(uint8_t phase, uint8_t idx, int16_t trim)
 
 
 
+uint32_t simulatorDialog::adjustMode( uint32_t x )
+{
+	switch (g_eeGeneral.stickMode )
+	{
+		case 1 :
+			if ( x == 2 )
+			{
+				x = 1 ;
+			}
+			else if ( x == 1 )
+			{
+				x = 2 ;
+			}
+		break ;
+		case 2 :
+			if ( x == 3 )
+			{
+				x = 0 ;
+			}
+			else if ( x == 0 )
+			{
+				x = 3 ;
+			}
+		break ;
+		case 3 :
+			x = 3 - x ;
+		break ;
+	}
+	return x ;
+}
+
 void simulatorDialog::getValues()
 {
 		int8_t trims[4] ;
@@ -353,8 +384,13 @@ void simulatorDialog::getValues()
 		{
 			if ( g_model.gvars[i].gvsource <= 4 )
 			{
-				uint32_t phaseNo = getTrimFlightPhase( CurrentPhase, g_model.gvars[i].gvsource - 1 ) ;
-				g_model.gvars[i].gvar = getTrimValue( phaseNo, g_model.gvars[i].gvsource - 1 ) ;
+				uint32_t y ;
+				y = g_model.gvars[i].gvsource - 1 ;
+
+				y = adjustMode( y ) ;
+				
+				uint32_t phaseNo = getTrimFlightPhase( CurrentPhase, y ) ;
+				g_model.gvars[i].gvar = getTrimValue( phaseNo, y ) ;
 				 
 			}
 			else if ( g_model.gvars[i].gvsource == 5 )	// REN
@@ -376,7 +412,12 @@ void simulatorDialog::getValues()
 			}
 			else if ( g_model.gvars[i].gvsource <= 12 )	// Pot
 			{
-				x = calibratedStick[ (g_model.gvars[i].gvsource-6)] / 8 ;
+				uint32_t y ;
+				y = g_model.gvars[i].gvsource - 6 ;
+
+				y = adjustMode( y ) ;
+				
+				x = calibratedStick[ y ] / 8 ;
 				if ( x < -125 )
 				{
 					x = -125 ;					

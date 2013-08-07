@@ -127,7 +127,8 @@ PACK(typedef struct t_EEGeneral {
 		int8_t		volume ;
     uint8_t   res[3];
     uint8_t   crosstrim:1;
-    uint8_t   spare1:7;
+    uint8_t   FrskyPins:1 ;
+    uint8_t   spare1:6 ;
 }) EEGeneral;
 
 
@@ -244,7 +245,9 @@ PACK(typedef struct t_Vario
 {
   uint8_t varioSource ;
   int8_t  swtch ;
-  uint8_t param ;
+  uint8_t sinkTonesOff:1 ;
+  uint8_t spare:1 ;
+  uint8_t param:6 ;
 }) VarioData ;
 
 typedef struct t_ModelData {

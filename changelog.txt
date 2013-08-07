@@ -10,6 +10,13 @@ description here
 ====================================================================================
 
 ******************************************
+CHANGELOG: 07-Aug-2013 MPB
+Mode fix in simulator
+Language support
+128 Telemetry mod option added
+Vario options added
+
+******************************************
 CHANGELOG: 18-Jul-2013 MPB
 eepskye - fix reading old (20 model) files
 

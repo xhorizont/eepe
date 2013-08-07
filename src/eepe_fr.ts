@@ -567,6 +567,10 @@ p, li { white-space: pre-wrap; }
         <source>Set the readability of the display</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>FrSky mod done (M128 only)</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>MainWindow</name>
@@ -1417,6 +1421,10 @@ Cannot set General Settings</source>
     <message>
         <source>Writing file %1:
 %2.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source> free %1</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2563,6 +2571,10 @@ Droite</translation>
     </message>
     <message>
         <source>%1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Sink Tones Off</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
