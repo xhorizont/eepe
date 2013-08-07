@@ -146,8 +146,11 @@ void MdiChild::refreshList()
     eeFile.eeLoadOwnerName(buf,sizeof(buf));
     QString str = QString(buf).trimmed();
     if(!str.isEmpty())
-        str.prepend(" - ");
-    addItem(tr("General Settings") + str);
+        str.prepend("-");
+    
+		QString efree = tr(" free %1").arg(free());
+
+    addItem(tr("General Settings") + str + efree );
 
     for(uint8_t i=0; i<MAX_MODELS; i++)
     {
@@ -653,7 +656,7 @@ void MdiChild::newFile()
 
     isUntitled = true;
     curFile = tr("document%1.eepe").arg(sequenceNumber++);
-    setWindowTitle(curFile + "[*]" + type);
+    setWindowTitle(curFile + "[*]" + type );
 
 }
 

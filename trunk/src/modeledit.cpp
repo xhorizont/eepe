@@ -714,35 +714,26 @@ void ModelEdit::tabPhase()
 
 void ModelEdit::updatePhaseTab()
 {
-	switch ( g_eeGeneral.stickMode )
+	if ( g_eeGeneral.stickMode & 1 )
 	{
-		case 0 :
-			ui->label_M1->setText("Rudder") ;
-			ui->label_M2->setText("Elevator") ;
-			ui->label_M3->setText("Throttle") ;
-			ui->label_M4->setText("Aileron") ;
-		break ;
-
-		case 1 :
-			ui->label_M1->setText("Rudder") ;
-			ui->label_M2->setText("Throttle") ;
-			ui->label_M3->setText("Elevator") ;
-			ui->label_M4->setText("Aileron") ;
-		break ;
-
-		case 2 :
-			ui->label_M1->setText("Aileron") ;
-			ui->label_M2->setText("Elevator") ;
-			ui->label_M3->setText("Throttle") ;
-			ui->label_M4->setText("Rudder") ;
-		break ;
-
-		case 3 :
-			ui->label_M1->setText("Aileron") ;
-			ui->label_M2->setText("Throttle") ;
-			ui->label_M3->setText("Elevator") ;
-			ui->label_M4->setText("Rudder") ;
-		break ;
+		ui->label_M2->setText("Throttle") ;
+		ui->label_M3->setText("Elevator") ;
+	}
+	else
+	{
+		ui->label_M2->setText("Elevator") ;
+		ui->label_M3->setText("Throttle") ;
+	}
+	
+	if ( g_eeGeneral.stickMode & 2 )
+	{
+		ui->label_M1->setText("Aileron") ;
+		ui->label_M4->setText("Rudder") ;
+	}
+	else
+	{
+		ui->label_M1->setText("Rudder") ;
+		ui->label_M4->setText("Aileron") ;
 	}
 
 	populateSwitchShortCB( ui->FP1_sw, g_model.phaseData[0].swtch ) ;
@@ -2339,6 +2330,7 @@ void ModelEdit::tabFrsky()
     populateSwitchCB(ui->VarioSwitchCB, g_model.varioData.swtch ) ;
     ui->VarioSourceCB->setCurrentIndex( g_model.varioData.varioSource ) ;
     ui->VarioSensitivitySB->setValue( g_model.varioData.param ) ;
+    ui->SinkTonesOff->setChecked(g_model.varioData.sinkTonesOff);
 
     connect(ui->frsky_ratio_0,SIGNAL(editingFinished()),this,SLOT(FrSkyEdited()));
     connect(ui->frsky_ratio_1,SIGNAL(editingFinished()),this,SLOT(FrSkyEdited()));
@@ -2377,7 +2369,7 @@ void ModelEdit::tabFrsky()
 		connect( ui->VarioSensitivitySB,SIGNAL(editingFinished()),this,SLOT(FrSkyEdited()));
 		connect( ui->VarioSourceCB,SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
 		connect( ui->VarioSwitchCB,SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
-
+		connect( ui->SinkTonesOff,SIGNAL(stateChanged(int)),this,SLOT(FrSkyEdited()));
 }
 
 void ModelEdit::FrSkyEdited()
@@ -2415,7 +2407,7 @@ void ModelEdit::FrSkyEdited()
 		g_model.varioData.swtch = ui->VarioSwitchCB->currentIndex() - MAX_DRSWITCH ;
 		g_model.varioData.varioSource = ui->VarioSourceCB->currentIndex() ;
 		g_model.varioData.param = ui->VarioSensitivitySB->value() ;
-
+    g_model.varioData.sinkTonesOff = ui->SinkTonesOff->isChecked();
 		updateSettings();
 }
 

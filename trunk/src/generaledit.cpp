@@ -54,6 +54,7 @@ GeneralEdit::GeneralEdit(EEPFILE *eFile, QWidget *parent) :
     ui->PotScrollEnableChkB->setChecked(!g_eeGeneral.disablePotScroll);//Default is zero=checked
     ui->StickScrollEnableChkB->setChecked(g_eeGeneral.stickScroll);//Default is zero=not checked
     ui->CrossTrimChkB->setChecked(g_eeGeneral.crosstrim);//Default is zero=not checked
+    ui->FrskyPinsChkB->setChecked(g_eeGeneral.FrskyPins);//Default is zero=not checked
     ui->BandGapEnableChkB->setChecked(!g_eeGeneral.disableBG);//Default is zero=checked
     ui->beeperCB->setCurrentIndex(g_eeGeneral.beeperVal);
     ui->channelorderCB->setCurrentIndex(g_eeGeneral.templateSetup);
@@ -425,6 +426,12 @@ void GeneralEdit::on_StickScrollEnableChkB_stateChanged(int )
 void GeneralEdit::on_CrossTrimChkB_stateChanged(int )
 {
     g_eeGeneral.crosstrim = ui->CrossTrimChkB->isChecked() ? 1 : 0 ;
+    updateSettings();
+}
+
+void GeneralEdit::on_FrskyPinsChkB_stateChanged(int )
+{
+    g_eeGeneral.FrskyPins = ui->FrskyPinsChkB->isChecked() ? 1 : 0 ;
     updateSettings();
 }
 
