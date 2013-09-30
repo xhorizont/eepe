@@ -235,6 +235,7 @@ private slots:
     void on_pulsePolCB_currentIndexChanged(int index);
     void on_trimSWCB_currentIndexChanged(int index);
     void on_trimIncCB_currentIndexChanged(int index);
+    void on_volumeControlCB_currentIndexChanged(int index) ;
     void on_timerDirCB_currentIndexChanged(int index);
     void on_timerModeCB_currentIndexChanged(int index);
     void on_timerModeBCB_currentIndexChanged(int index);
@@ -250,6 +251,8 @@ private slots:
     void on_pxxRxNum_editingFinished();
 		void on_VoiceNumberSB_editingFinished() ;
 		void on_autoLimitsSB_editingFinished() ;
+		void on_countryCB_currentIndexChanged(int index) ;
+		void on_typeCB_currentIndexChanged(int index) ;
 };
 
 

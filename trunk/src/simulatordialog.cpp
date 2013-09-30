@@ -58,7 +58,8 @@ simulatorDialog::simulatorDialog(QWidget *parent) :
     trimptr[3] = &trim[3] ;
 
     setupSticks();
-    setupTimer();
+		timer = 0 ;
+//    setupTimer();
 }
 
 simulatorDialog::~simulatorDialog()
@@ -70,15 +71,19 @@ void simulatorDialog::closeEvent ( )
 {
     timer->stop();
     delete timer;
+		timer = 0 ;
 }
 
 void simulatorDialog::setupTimer()
 {
+  if (timer == 0)
+  {
     timer = new QTimer(this);
     connect(timer,SIGNAL(timeout()),this,SLOT(timerEvent()));
-    getValues();
-    perOut(true);
-    timer->start(10);
+  }
+  getValues();
+  perOut(true);
+  timer->start(10);
 }
 
 void simulatorDialog::timerEvent()
@@ -98,7 +103,7 @@ void simulatorDialog::timerEvent()
     setWindowTitle(modelName + QString(" - Timer: (%3, %4) %1:%2")
                    .arg(abs(-s_timerVal)/60, 2, 10, QChar('0'))
                    .arg(abs(-s_timerVal)%60, 2, 10, QChar('0'))
-                   .arg(getTimerMode(g_model.tmrMode))
+                   .arg(getTimerMode(g_model.tmrMode, g_model.modelVersion))
                    .arg(g_model.tmrDir ? "Count Up" : "Count Down"));
 
     if(beepVal)
@@ -179,7 +184,84 @@ void simulatorDialog::timerEvent()
 				}
 			}
 		}
-		
+
+		if ( ee_type )
+		{
+			
+			for ( i = NUM_CSW ; i < NUM_CSW+EXTRA_CSW ; i += 1 )
+			{
+    		CxSwData *cs = &g_model.xcustomSw[i-NUM_CSW];
+    	
+				uint8_t cstate = CS_STATE(cs->func);
+
+    		if(cstate == CS_TIMER)
+				{
+					int16_t y ;
+					y = CsTimer[i] ;
+					if ( y == 0 )
+					{
+						int8_t z ;
+						z = cs->v1 ;
+						if ( z >= 0 )
+						{
+							z = -z-1 ;
+							y = z * 10 ;					
+						}
+						else
+						{
+							y = z ;
+						}
+					}
+					else if ( y < 0 )
+					{
+						if ( ++y == 0 )
+						{
+							int8_t z ;
+							z = cs->v2 ;
+							if ( z >= 0 )
+							{
+								z += 1 ;
+								y = z * 10 - 1  ;
+							}
+							else
+							{
+								y = -z-1 ;
+							}
+						}
+					}
+					else  // if ( CsTimer[i] > 0 )
+					{
+						y -= 1 ;
+					}
+					if ( cs->andsw )
+					{
+						int8_t x ;
+						x = cs->andsw ;
+						if ( x > 8 )
+						{
+							x += 1 ;
+						}
+						if ( x < -8 )
+						{
+							x -= 1 ;
+						}
+						if ( x > 9+NUM_CSW+EXTRA_CSW )
+						{
+							x = 9 ;			// Tag TRN on the end, keep EEPROM values
+						}
+						if ( x < -(9+NUM_CSW+EXTRA_CSW) )
+						{
+							x = -9 ;			// Tag TRN on the end, keep EEPROM values
+						}
+	  	      if (getSwitch( x, 0, 0) == 0 )
+					  {
+							y = -1 ;
+						}	
+					}
+					CsTimer[i] = y ;
+				}
+			}
+		} 
 
 }
 
@@ -187,6 +269,11 @@ void simulatorDialog::centerSticks()
 {
     if(ui->leftStick->scene()) nodeLeft->stepToCenter();
     if(ui->rightStick->scene()) nodeRight->stepToCenter();
+}
+
+void simulatorDialog::setType( uint8_t type )
+{
+	ee_type = type ;
 }
 
 void simulatorDialog::loadParams(const EEGeneral gg, const ModelData gm)
@@ -218,9 +305,6 @@ void simulatorDialog::loadParams(const EEGeneral gg, const ModelData gm)
     ui->trimVRight->setValue(g_model.trim[(g_eeGeneral.stickMode & 1) ? 2 : 1]);  // mode=(0 || 2) -> ele trim else -> thr trim
     ui->trimHRight->setValue(g_model.trim[(g_eeGeneral.stickMode>2)   ? 0 : 3]);  // mode=(0 || 1) -> ail trim else -> rud trim
 
-
-
-
     beepVal = 0;
     beepShow = 0;
     bpanaCenter = 0;
@@ -239,6 +323,8 @@ void simulatorDialog::loadParams(const EEGeneral gg, const ModelData gm)
     s_cnt = 0;
     s_sum = 0;
     sw_toggled = 0;
+
+    setupTimer();
 }
 
 
@@ -346,22 +432,52 @@ uint32_t simulatorDialog::adjustMode( uint32_t x )
 	return x ;
 }
 
+const uint8_t stickScramble[] =
+{
+    0, 1, 2, 3,
+    0, 2, 1, 3,
+    3, 1, 2, 0,
+    3, 2, 1, 0 } ;
+
 void simulatorDialog::getValues()
 {
 		int8_t trims[4] ;
-	
+
+  if ( g_model.modelVersion >= 2 )
+	{
+		uint8_t stickIndex = g_eeGeneral.stickMode*4 ;
+		
+    calibratedStick[stickScramble[stickIndex+0]] = 1024*nodeLeft->getX(); //RUD
+    calibratedStick[stickScramble[stickIndex+1]] = -1024*nodeLeft->getY(); //ELE
+    calibratedStick[stickScramble[stickIndex+2]] = -1024*nodeRight->getY(); //THR
+    calibratedStick[stickScramble[stickIndex+3]] = 1024*nodeRight->getX(); //AIL
+    
+		uint8_t index ;
+		index =g_eeGeneral.crosstrim ? 3 : 0 ;
+		index =  stickScramble[stickIndex+index] ;
+		trims[index] = ui->trimHLeft->value();
+		index =g_eeGeneral.crosstrim ? 2 : 1 ;
+		index =  stickScramble[stickIndex+index] ;
+		trims[index] = ui->trimVLeft->value();
+		index =g_eeGeneral.crosstrim ? 1 : 2 ;
+		index =  stickScramble[stickIndex+index] ;
+		trims[index] = ui->trimVRight->value();
+		index =g_eeGeneral.crosstrim ? 0 : 3 ;
+		index =  stickScramble[stickIndex+index] ;
+		trims[index] = ui->trimHRight->value();
+	}
+	else
+	{
     calibratedStick[0] = 1024*nodeLeft->getX(); //RUD
     calibratedStick[1] = -1024*nodeLeft->getY(); //ELE
     calibratedStick[2] = -1024*nodeRight->getY(); //THR
     calibratedStick[3] = 1024*nodeRight->getX(); //AIL
-
-		uint32_t phase ;
-
     trims[g_eeGeneral.crosstrim ? 3 : 0] = ui->trimHLeft->value();
     trims[g_eeGeneral.crosstrim ? 2 : 1] = ui->trimVLeft->value();
     trims[g_eeGeneral.crosstrim ? 1 : 2] = ui->trimVRight->value();
     trims[g_eeGeneral.crosstrim ? 0 : 3] = ui->trimHRight->value();
-
+	}
+		uint32_t phase ;
 		
 		phase = getTrimFlightPhase( CurrentPhase, 0 ) ;
     setTrimValue( phase, 0, trims[0] ) ;
@@ -397,8 +513,8 @@ void simulatorDialog::getValues()
 
 				y = adjustMode( y ) ;
 				
-				uint32_t phaseNo = getTrimFlightPhase( CurrentPhase, y ) ;
-				g_model.gvars[i].gvar = getTrimValue( phaseNo, y ) ;
+//				uint32_t phaseNo = getTrimFlightPhase( CurrentPhase, y ) ;
+				g_model.gvars[i].gvar = getTrimValue( CurrentPhase, y ) ;
 				 
 			}
 			else if ( g_model.gvars[i].gvsource == 5 )	// REN
@@ -587,6 +703,16 @@ void simulatorDialog::setValues()
 				}
 			}
 		}
+		else if ( g_model.protocol == PROTO_PXX )
+		{
+			if ( i >= g_model.ppmStart )
+			{
+				if ( i < g_model.ppmStart + 8 )
+				{
+					onoff[i] = 1 ;				
+				}
+			}
+		}
 	}
   ui->chnout_1->setStyleSheet( onoff[0] ? CRED : CBLUE ) ;
   ui->chnout_2->setStyleSheet( onoff[1] ? CRED : CBLUE ) ;
@@ -723,7 +849,7 @@ qint16 simulatorDialog::getValue(qint8 i)
     return 0;
 }
 
-bool Last_switch[NUM_CSW] ;
+bool Last_switch[NUM_CSW+EXTRA_CSW] ;
 
 bool simulatorDialog::getSwitch(int swtch, bool nc, qint8 level)
 {
@@ -732,14 +858,32 @@ bool simulatorDialog::getSwitch(int swtch, bool nc, qint8 level)
     
 		if(level>5) return false; //prevent recursive loop going too deep
 
-    switch(swtch){
-    case  0:            return  nc;
-    case  MAX_DRSWITCH: return  true;
-    case -MAX_DRSWITCH: return  false;
-    }
+		if ( swtch == 0 )
+		{
+			return  nc ;
+		}
+
+		if ( ee_type )
+		{
+    	switch(swtch)
+			{
+    	case  MAX_DRSWITCH+EXTRA_CSW: return  true;
+    	case -MAX_DRSWITCH-EXTRA_CSW: return  false;
+    	}
+		}
+		else
+		{
+    	switch(swtch)
+			{
+    	case  MAX_DRSWITCH: return  true;
+    	case -MAX_DRSWITCH: return  false;
+    	}
+		}
 
     uint8_t dir = swtch>0;
-    if(abs(swtch)<(MAX_DRSWITCH-NUM_CSW)) {
+		
+		if(abs(swtch)<(PHY_SWITCH))
+		{
         if(!dir) return ! keyState((EnumKeys)(SW_BASE-swtch-1));
         return            keyState((EnumKeys)(SW_BASE+swtch-1));
     }
@@ -749,8 +893,120 @@ bool simulatorDialog::getSwitch(int swtch, bool nc, qint8 level)
     //input -> 1..4 -> sticks,  5..8 pots
     //MAX,FULL - disregard
     //ppm
-    cs_index = abs(swtch)-(MAX_DRSWITCH-NUM_CSW);
-    CSwData &cs = g_model.customSw[cs_index];
+    cs_index = abs(swtch)-(PHY_SWITCH);
+
+		if ( ee_type )
+		{
+			if ( cs_index >= NUM_CSW )
+			{
+				CxSwData &cs = g_model.xcustomSw[cs_index-NUM_CSW];
+
+    		if(!cs.func) return false;
+		
+    		if ( level>4 )
+    		{
+    		  ret_value = Last_switch[cs_index] ;
+    		  return swtch>0 ? ret_value : !ret_value ;
+    		}
+
+    		int8_t a = cs.v1;
+    		int8_t b = cs.v2;
+    		int16_t x = 0;
+    		int16_t y = 0;
+
+    		// init values only if needed
+    		uint8_t s = CS_STATE(cs.func);
+    		if(s == CS_VOFS)
+    		{
+    		    x = getValue(cs.v1-1);
+    		    y = calc100toRESX(cs.v2);
+    		}
+    		else if(s == CS_VCOMP)
+    		{
+    		    x = getValue(cs.v1-1);
+    		    y = getValue(cs.v2-1);
+    		}
+
+    		switch (cs.func) {
+    		case (CS_VPOS):
+    		    ret_value = (x>y);
+    		    break;
+    		case (CS_VNEG):
+    		    ret_value = (x<y) ;
+    		    break;
+    		case (CS_APOS):
+    		    ret_value = (abs(x)>y) ;
+    		    break;
+    		case (CS_ANEG):
+    		    ret_value = (abs(x)<y) ;
+    		    break;
+
+    		case (CS_AND):
+    		    ret_value = (getSwitch(a,0,level+1) && getSwitch(b,0,level+1));
+    		    break;
+    		case (CS_OR):
+    		    ret_value = (getSwitch(a,0,level+1) || getSwitch(b,0,level+1));
+    		    break;
+    		case (CS_XOR):
+    		    ret_value = (getSwitch(a,0,level+1) ^ getSwitch(b,0,level+1));
+    		    break;
+
+    		case (CS_EQUAL):
+    		    ret_value = (x==y);
+    		    break;
+    		case (CS_NEQUAL):
+    		    ret_value = (x!=y);
+    		    break;
+    		case (CS_GREATER):
+    		    ret_value = (x>y);
+    		    break;
+    		case (CS_LESS):
+    		    ret_value = (x<y);
+    		    break;
+    		case (CS_EGREATER):
+    		    ret_value = (x>=y);
+    		    break;
+    		case (CS_ELESS):
+    		    ret_value = (x<=y);
+    		    break;
+    		case (CS_TIME):
+    		    ret_value = CsTimer[cs_index] >= 0 ;
+    		    break;
+    		default:
+    		    return false;
+    		    break;
+    		}
+				if ( ret_value )
+				{
+					if ( cs.andsw )
+					{
+						int8_t x ;
+						x = cs.andsw ;
+						if ( x > 8 )
+						{
+							x += 1 ;
+						}
+						if ( x < -8 )
+						{
+							x -= 1 ;
+						}
+						if ( x > 9+NUM_CSW )
+						{
+							x = 9 ;			// Tag TRN on the end, keep EEPROM values
+						}
+						if ( x < -(9+NUM_CSW) )
+						{
+							x = -9 ;			// Tag TRN on the end, keep EEPROM values
+						}
+    		    ret_value = getSwitch( x, 0, level+1) ;
+					}
+				}
+				Last_switch[cs_index] = ret_value ;
+				return swtch>0 ? ret_value : !ret_value ;
+			}
+		}
+
+		CSwData &cs = g_model.customSw[cs_index];
     if(!cs.func) return false;
 		
     if ( level>4 )
@@ -917,38 +1173,55 @@ void simulatorDialog::timerTick()
 {
     int16_t val = 0;
     if((abs(g_model.tmrMode)>1) && (abs(g_model.tmrMode)<TMR_VAROFS)) {
-        val = calibratedStick[CONVERT_MODE(abs(g_model.tmrMode)/2)-1];
+        val = calibratedStick[CONVERT_MODE(abs(g_model.tmrMode)/2,g_model.modelVersion,g_eeGeneral.stickMode)-1];
         val = (g_model.tmrMode<0 ? RESX-val : val+RESX ) / (RESX/16);  // only used for %
     }
 
     int8_t tm = g_model.tmrMode;
+  	int8_t tmb ;
+		uint8_t switch_b ;
+		uint8_t max_drswitch ;
+		max_drswitch = ( ee_type ) ? MAX_DRSWITCH+EXTRA_CSW : MAX_DRSWITCH ;
+    tmb = g_model.tmrModeB ;
 
-    if(abs(tm)>=(TMR_VAROFS+MAX_DRSWITCH-1)){ //toggeled switch//abs(g_model.tmrMode)<(10+MAX_DRSWITCH-1)
+    if(abs(tm)>=(TMR_VAROFS+max_drswitch-1)){ //toggeled switch//abs(g_model.tmrMode)<(10+MAX_DRSWITCH-1)
         static uint8_t lastSwPos;
         if(!(sw_toggled | s_sum | s_cnt | s_time | lastSwPos)) lastSwPos = tm < 0;  // if initializing then init the lastSwPos
-        uint8_t swPos = getSwitch(tm>0 ? tm-(TMR_VAROFS+MAX_DRSWITCH-1-1) : tm+(TMR_VAROFS+MAX_DRSWITCH-1-1) ,0);
+        uint8_t swPos = getSwitch(tm>0 ? tm-(TMR_VAROFS+max_drswitch-1-1) : tm+(TMR_VAROFS+MAX_DRSWITCH-1-1) ,0);
         if(swPos && !lastSwPos)  sw_toggled = !sw_toggled;  //if switcdh is flipped first time -> change counter state
         lastSwPos = swPos;
     }
 
+   	switch_b = tmb ? getSwitch( tmb ,0) : 1 ; //normal switch
+		
+		if ( switch_b == 0 )
+		{
+			val = 0 ;		// Stop TH%
+		}
+
     s_time++;
     if(s_time<100) return; //1 sec
     s_time = 0;
-
     if(abs(tm)<TMR_VAROFS) sw_toggled = false; // not switch - sw timer off
-    else if(abs(tm)<(TMR_VAROFS+MAX_DRSWITCH-1)) sw_toggled = getSwitch((tm>0 ? tm-(TMR_VAROFS-1) : tm+(TMR_VAROFS-1)) ,0); //normal switch
+    else if(abs(tm)<(TMR_VAROFS+max_drswitch-1)) sw_toggled = getSwitch((tm>0 ? tm-(TMR_VAROFS-1) : tm+(TMR_VAROFS-1)) ,0); //normal switch
 
     s_timeCumTot               += 1;
     s_timeCumAbs               += 1;
     if(val) s_timeCumThr       += 1;
-    if(sw_toggled) s_timeCumSw += 1;
+    if(abs(g_model.tmrMode)==TMRMODE_ABS) sw_toggled = true ;
+    
+		if(sw_toggled && switch_b) s_timeCumSw += 1;
     s_timeCum16ThrP            += val/2;
 
     s_timerVal = g_model.tmrVal;
     uint8_t tmrM = abs(g_model.tmrMode);
     if(tmrM==TMRMODE_NONE) s_timerState = TMR_OFF;
-    else if(tmrM==TMRMODE_ABS) s_timerVal -= s_timeCumAbs;
-    else if(tmrM<TMR_VAROFS) s_timerVal -= (tmrM&1) ? s_timeCum16ThrP/16 : s_timeCumThr;// stick% : stick
+    else if(tmrM==TMRMODE_ABS)
+		{
+			if ( tmb == 0 ) s_timerVal -= s_timeCumAbs ;
+    	else s_timerVal -= s_timeCumSw ; //switch
+    }
+		else if(tmrM<TMR_VAROFS) s_timerVal -= (tmrM&1) ? s_timeCum16ThrP/16 : s_timeCumThr;// stick% : stick
     else s_timerVal -= s_timeCumSw; //switch
 
     switch(s_timerState)
@@ -1063,7 +1336,7 @@ void simulatorDialog::perOut(bool init)
         //    if(v >=  RESX) v =  RESX;
         //    calibratedStick[i] = v; //for show in expo
 
-        if(!(v/16)) anaCenter |= 1<<(CONVERT_MODE((i+1))-1);
+        if(!(v/16)) anaCenter |= 1<<(CONVERT_MODE((i+1),g_model.modelVersion,g_eeGeneral.stickMode)-1);
 
         //===========Swash Ring================
         if(d && (i==ELE_STICK || i==AIL_STICK))
@@ -1223,11 +1496,34 @@ void simulatorDialog::perOut(bool init)
         trims[i] = getTrimValue( CurrentPhase, idx ) ;
 			}
 		
-			ui->trimHLeft->setValue( trims[0]);  // mode=(0 || 1) -> rud trim else -> ail trim
-    	ui->trimVLeft->setValue( trims[1]);  // mode=(0 || 2) -> thr trim else -> ele trim
-    	ui->trimVRight->setValue(trims[2]);  // mode=(0 || 2) -> ele trim else -> thr trim
-    	ui->trimHRight->setValue(trims[3]);  // mode=(0 || 1) -> ail trim else -> rud trim
-    }
+			
+      if ( g_model.modelVersion >= 1 )
+			{
+				uint8_t stickIndex = g_eeGeneral.stickMode*4 ;
+		
+				uint8_t index ;
+				index =g_eeGeneral.crosstrim ? 3 : 0 ;
+				index =  stickScramble[stickIndex+index] ;
+				ui->trimHLeft->setValue( trims[index]);  // mode=(0 || 1) -> rud trim else -> ail trim
+				index =g_eeGeneral.crosstrim ? 2 : 1 ;
+				index =  stickScramble[stickIndex+index] ;
+    		ui->trimVLeft->setValue( trims[index]);  // mode=(0 || 2) -> thr trim else -> ele trim
+				index =g_eeGeneral.crosstrim ? 1 : 2 ;
+				index =  stickScramble[stickIndex+index] ;
+    		ui->trimVRight->setValue(trims[index]);  // mode=(0 || 2) -> ele trim else -> thr trim
+				index =g_eeGeneral.crosstrim ? 0 : 3 ;
+				index =  stickScramble[stickIndex+index] ;
+    		ui->trimHRight->setValue(trims[index]);  // mode=(0 || 1) -> ail trim else -> rud trim
+			}
+			else
+			{
+				ui->trimHLeft->setValue( trims[0]);  // mode=(0 || 1) -> rud trim else -> ail trim
+    		ui->trimVLeft->setValue( trims[1]);  // mode=(0 || 2) -> thr trim else -> ele trim
+    		ui->trimVRight->setValue(trims[2]);  // mode=(0 || 2) -> ele trim else -> thr trim
+    		ui->trimHRight->setValue(trims[3]);  // mode=(0 || 1) -> ail trim else -> rud trim
+      }
+		
+		}
 		if( (g_eeGeneral.throttleReversed) && (!g_model.thrTrim))
     {
         *trimptr[THR_STICK] *= -1;

@@ -26,6 +26,7 @@ public:
     ~simulatorDialog();
 
     void loadParams(const EEGeneral gg, const ModelData gm);
+		void setType( uint8_t type ) ;
 
 private:
     Ui::simulatorDialog *ui;
@@ -33,6 +34,7 @@ private:
     Node *nodeRight;
     QTimer *timer;
     QString modelName;
+    qint16	ee_type ;
 
     qint8   *trimptr[4];
     quint16 g_tmr10ms;
@@ -48,7 +50,7 @@ private:
     quint8  bpanaCenter;
     bool    swOn[MAX_MIXERS];
     quint16 one_sec_precount;
-		qint16		CsTimer[NUM_CSW] ;
+		qint16		CsTimer[NUM_CSW+EXTRA_CSW] ;
 
     quint16 s_timeCumTot;
     quint16 s_timeCumAbs;

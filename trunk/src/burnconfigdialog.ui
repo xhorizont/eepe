@@ -622,6 +622,16 @@ Please consult the programmer's documentation and the AVRDUDE documentation to s
          <string>M88</string>
         </property>
        </item>
+       <item>
+        <property name="text">
+         <string>m1281</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>m2561</string>
+        </property>
+       </item>
       </widget>
      </item>
     </layout>

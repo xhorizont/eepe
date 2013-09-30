@@ -21,7 +21,6 @@
 #define FILE_TYP_GENERAL 1
 #define FILE_TYP_MODEL   2
 
-
 EEPFILE::EEPFILE()
 {
     fileChanged = false;
@@ -40,13 +39,18 @@ bool EEPFILE::loadFile(void* buf)
     theFile->m_type = mee_type ;
     theFile->load(buf);
 
-
     EEGeneral g_eeGeneral;
     int sz = getGeneralSettings(&g_eeGeneral);
 
-    if(sz<40) return false; //if it's too small then we have a corrupted memory
+    if(sz<40)
+		{
+			return false ; //if it's too small then we have a corrupted memory
+		}
 
-    if(g_eeGeneral.myVers>MDVERS || (g_eeGeneral.myVers<MDVERS_r261 && g_eeGeneral.myVers!=4)) return false;
+    if(g_eeGeneral.myVers>MDVERS || (g_eeGeneral.myVers<MDVERS_r261 && g_eeGeneral.myVers!=4))
+		{
+			return false ;
+		}
 
     int16_t sum=0;
     for(int i=0; i<12;i++) sum+=g_eeGeneral.calibMid[i];
@@ -115,8 +119,8 @@ void EEPFILE::modelDefault(uint8_t id)
 
   for(uint8_t i= 0; i<4; i++){
     g_model.mixData[i].destCh = i+1;
-    g_model.mixData[i].srcRaw = i+1;
-    g_model.mixData[i].weight = 100;
+		g_model.mixData[i].srcRaw = i+1 ;
+		g_model.mixData[i].weight = 100;
   }
 
   putModel(&g_model,id);

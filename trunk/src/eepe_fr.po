@@ -862,9 +862,9 @@ msgstr "&Contributeurs"
 #~ msgid "Write Flash Memory"
 #~ msgstr "Sélectionner le fichier à flasher"
 
-msgctxt "MainWindow|"
-msgid "donating"
-msgstr "don"
+#~ msgctxt "MainWindow|"
+#~ msgid "donating"
+#~ msgstr "don"
 
 #~ msgctxt "MainWindow|"
 #~ msgid "HEX files (*.hex);;BIN files (*.bin);;FLASH files (*.bin *.hex)"
@@ -1089,13 +1089,13 @@ msgctxt "MainWindow|"
 msgid "Copyright"
 msgstr "Copyright"
 
-msgctxt "MainWindow|"
-msgid ""
-"If you've found this program and/or the er9x firmware useful please support "
-"by"
-msgstr ""
-"Si vous trouvez ce programme et/ou ce firmware utiles, merci d'apporter "
-"votre soutien en effectuant un <a href='"
+#~ msgctxt "MainWindow|"
+#~ msgid ""
+#~ "If you've found this program and/or the er9x firmware useful please "
+#~ "support by"
+#~ msgstr ""
+#~ "Si vous trouvez ce programme et/ou ce firmware utiles, merci d'apporter "
+#~ "votre soutien en effectuant un <a href='"
 
 msgctxt "MainWindow|"
 msgid "Switch layout Left/Right"
@@ -1292,6 +1292,20 @@ msgstr ""
 
 msgctxt "MainWindow|"
 msgid "&Telemetry"
+msgstr ""
+
+msgctxt "MainWindow|"
+msgid ""
+"If you've found this program and/or the er9x firmware useful please support "
+"by donating<br>"
+msgstr ""
+
+msgctxt "MainWindow|"
+msgid "to Mike Blandford (current maintainer)"
+msgstr ""
+
+msgctxt "MainWindow|"
+msgid "to Erez Raviv (original author)"
 msgstr ""
 
 msgctxt "MdiChild|"
@@ -2851,6 +2865,66 @@ msgctxt "ModelEdit|"
 msgid "Sink Tones Off"
 msgstr ""
 
+msgctxt "ModelEdit|"
+msgid "Volume Control"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "America"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "Japan"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "Europe"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "D16"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "D8"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "LR12"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "Country(PXX)"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "Type(PXX)"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "CSwitchD"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "CSwitchE"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "CSwitchG"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "CSwitchH"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "CSwitchI"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "CSwitchF"
+msgstr ""
+
 msgctxt "QObject|"
 msgid "Checking for updates..."
 msgstr ""
@@ -3269,6 +3343,14 @@ msgstr ""
 
 msgctxt "burnConfigDialog|"
 msgid "com20"
+msgstr ""
+
+msgctxt "burnConfigDialog|"
+msgid "m1281"
+msgstr ""
+
+msgctxt "burnConfigDialog|"
+msgid "m2561"
 msgstr ""
 
 msgctxt "customizeSplashDialog|"
@@ -3865,6 +3947,14 @@ msgstr ""
 
 msgctxt "preferencesDialog|"
 msgid "er9x - 128 - Standard"
+msgstr ""
+
+msgctxt "preferencesDialog|"
+msgid "M1281"
+msgstr ""
+
+msgctxt "preferencesDialog|"
+msgid "M2561"
 msgstr ""
 
 msgctxt "printDialog|"

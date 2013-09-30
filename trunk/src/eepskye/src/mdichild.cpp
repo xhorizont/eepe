@@ -51,7 +51,6 @@
 #include "simulatordialog.h"
 #include "printdialog.h"
 
-
 MdiChild::MdiChild()
 {
     setAttribute(Qt::WA_DeleteOnClose);
@@ -1220,7 +1219,7 @@ QStringList MdiChild::GetSambaArguments(const QString &tcl)
 
   QString tclFilename = QDir::tempPath() + "/temp.tcl";
   if (QFile::exists(tclFilename)) {
-    unlink(tclFilename.toAscii());
+    remove(tclFilename.toAscii());
   }
   QFile tclFile(tclFilename);
   if (!tclFile.open(QIODevice::WriteOnly | QIODevice::Text)) {

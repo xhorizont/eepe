@@ -29,7 +29,7 @@ void burnConfigDialog::getSettings()
 #elif __APPLE__
     avrLoc = settings.value("avrdude_location", "/usr/local/bin/avrdude").toString();
 #else
-    avrLoc = settings.value("avrdude_location", "avrdude").toString();
+    sambaLoc = settings.value("avrdude_location", QFileInfo("avrdude.exe").absoluteFilePath()).toString();
 #endif
 
     QString str = settings.value("avr_arguments").toString();

@@ -19,15 +19,30 @@
 #define BIN_FILE_SIZE (1024*256)
 
 
+void populateAnaVolumeCB( QComboBox *b, int value ) ;
 void populateSpinGVarCB( QSpinBox *sb, QComboBox *cb, QCheckBox *ck, int value, int min, int max) ;
 int numericSpinGvarValue( QSpinBox *sb, QComboBox *cb, QCheckBox *ck, int value, int defvar ) ;
 void populateGvarCB(QComboBox *b, int value=0) ;
 void populateNumericGVarCB( QComboBox *b, int value, int min, int max) ;
 int numericGvarValue( QComboBox *b, int min, int max ) ;
+#ifdef SKY
 void populateSwitchCB(QComboBox *b, int value);
+#else
+void populateSwitchCB(QComboBox *b, int value, int modelType) ;
+#endif
 void populateTrainerSwitchCB(QComboBox *b, int value) ;
-void populateSwitchShortCB(QComboBox *b, int value=0);
+
+#ifdef SKY
+void populateSwitchShortCB(QComboBox *b, int value) ;
+#else
+void populateSwitchShortCB(QComboBox *b, int value, int modelType) ;
+#endif
+
+#ifdef SKY
 void populateSafetySwitchCB(QComboBox *b, int type, int value) ;
+#else
+void populateSafetySwitchCB(QComboBox *b, int type, int value, int extra ) ;
+#endif
 void populateSafetyVoiceTypeCB(QComboBox *b, int type, int value);
 #ifdef SKY
 void populateTelItemsCB(QComboBox *b, int start, int value=0) ;
@@ -36,19 +51,38 @@ void populateTelItemsCB(QComboBox *b, int start, int value) ;
 #endif
 void populateAlarmCB(QComboBox *b, int value);
 void populateCurvesCB(QComboBox *b, int value);
-void populateTimerSwitchCB(QComboBox *b, int value);
+#ifdef SKY
+void populateTimerSwitchCB(QComboBox *b, int value ) ;
+#else
+void populateTimerSwitchCB(QComboBox *b, int value, int modelType) ;
+#endif
+void populateSwitchxAndCB(QComboBox *b, int value) ;
 void populateSwitchAndCB(QComboBox *b, int value) ;
+
+#ifdef SKY
 void populateTmrBSwitchCB(QComboBox *b, int value) ;
-void populateSourceCB(QComboBox *b, int stickMode=1, int telem = 0, int value=0);
+#else
+void populateTmrBSwitchCB(QComboBox *b, int value, int extra ) ;
+#endif
+
+void populateSourceCB(QComboBox *b, int stickMode, int telem, int value, int modelVersion) ;
 void populateCSWCB(QComboBox *b, int value);
 #ifdef SKY
 int16_t convertTelemConstant( int8_t index, int8_t value, SKYModelData *model ) ;
 #else
 int16_t convertTelemConstant( int8_t index, int8_t value, ModelData *model ) ;
 #endif
-QString getSourceStr(int stickMode, int idx);
-QString getTimerMode(int tm);
+QString getSourceStr(int stickMode=1, int idx=0, int modelVersion=0 ) ;
+#ifdef SKY
+QString getTimerMode(int tm) ;
+#else
+QString getTimerMode(int tm, int modelVersion ) ;
+#endif
+#ifdef SKY
 QString getSWName(int val);
+#else
+QString getSWName(int val, int extra ) ;
+#endif
 QString getCSWFunc(int val);
 
 // Safety switch types
@@ -85,5 +119,11 @@ bool getSplashHEX(QString fileName, uchar * b, QWidget *parent = 0);
 bool putSplashHEX(QString fileName, uchar * b, QWidget *parent = 0);
 
 bool getSplashBIN(QString fileName, uchar * b, QWidget *parent = 0);
+
+//#ifdef SKY
+//uint8_t CONVERT_MODE( uint8_t x ) ;
+//#else
+uint8_t CONVERT_MODE( uint8_t x, int modelVersion, int stickMode ) ;
+//#endif
 
 #endif // HELPERS_H

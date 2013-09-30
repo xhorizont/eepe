@@ -49,7 +49,6 @@
 #include "simulatordialog.h"
 #include "printdialog.h"
 
-
 MdiChild::MdiChild()
 {
     setAttribute(Qt::WA_DeleteOnClose);
@@ -652,8 +651,23 @@ void MdiChild::newFile()
 {
     static int sequenceNumber = 1;
     QSettings settings("er9x-eePe", "eePe");
-    QString type = settings.value("processor", 1).toInt() ? " (M128)" : " (M64)";
-
+		int ptype = settings.value("processor", 1).toInt() ;
+    QString type ;
+		switch (ptype)
+		{
+			case 1 :
+				type = " (M128)" ;
+			break ;
+			case 2 :
+				type = " (M1281)" ;
+			break ;
+			case 3 :
+				type = " (M2561)" ;
+			break ;
+			default :
+				type = " (M64)" ;
+			break ;
+		}
     isUntitled = true;
     curFile = tr("document%1.eepe").arg(sequenceNumber++);
     setWindowTitle(curFile + "[*]" + type );
@@ -753,10 +767,10 @@ bool MdiChild::loadFile(const QString &fileName, bool resetCurrentFile)
         if(!xmlOK)
         {
 					// 9K to 11K for '128
-            if((QFileInfo(fileName).size()>(6*1024)) || (QFileInfo(fileName).size()<(4*1024)))  //if filesize> 6k and <4kb
+            if((QFileInfo(fileName).size()>(6*1024)) || (QFileInfo(fileName).size()<(4*1024)))  //if filesize> 6k or <4kb
             {
 							
-            	if((QFileInfo(fileName).size()>(11*1024)) || (QFileInfo(fileName).size()<(9*1024)))  //if filesize> 6k and <4kb
+            	if((QFileInfo(fileName).size()>(11*1024)) || (QFileInfo(fileName).size()<(9*1024)))  //if filesize> 11k or <9kb
 							{
 							
                 QMessageBox::critical(this, tr("Error"),tr("Error reading file:\n"

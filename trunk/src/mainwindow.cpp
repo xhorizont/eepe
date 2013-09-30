@@ -58,7 +58,8 @@
 #include "serialDialog.h"
 #include "telemetry.h"
 
-#define DONATE_STR "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=B9RNATGH7DTQ6"
+#define DONATE_ER_STR "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=B9RNATGH7DTQ6"
+#define DONATE_MB_STR "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=YHX43JR3J7XGW"
 
 //er9x.hex - with language variants (no templates)
 //er9x-frsky - with language variants
@@ -120,6 +121,8 @@
 #define DNLD_VER_ER9X_DE         9
 #define DNLD_VER_ER9X_FRSKY_DE	 10
 #define DNLD_VER_ER9X_128_DE		 11
+#define DNLD_VER_ER9X_NO         12
+#define DNLD_VER_ER9X_2561       13
 
 #define ER9X_URL   "http://er9x.googlecode.com/svn/trunk/er9x.hex"
 #define ER9X_NOHT_URL   "http://er9x.googlecode.com/svn/trunk/er9x-noht.hex"
@@ -140,6 +143,8 @@
 #define ER9X_DE_URL   "http://er9x.googlecode.com/svn/trunk/er9x-de.hex"
 #define ER9X_FRSKY_DE_URL   "http://er9x.googlecode.com/svn/trunk/er9x-frsky-de.hex"
 #define ER9X_128_DE_URL   "http://er9x.googlecode.com/svn/trunk/er9x-128-de.hex"
+#define ER9X_NO_URL   "http://er9x.googlecode.com/svn/trunk/er9x-no.hex"
+#define ER9X_2561_URL   "http://er9x.googlecode.com/svn/trunk/er9x-2561.hex"
 
 
 void populateDownloads( QComboBox *b )
@@ -157,6 +162,8 @@ void populateDownloads( QComboBox *b )
   b->addItem( "er9x - German" ) ;
   b->addItem( "er9x - FrSky - German" ) ;
   b->addItem( "er9x - 128 - German" ) ;
+  b->addItem( "er9x - Norwegian" ) ;
+  b->addItem( "er9x - 2561" ) ;
 }	
 
 MainWindow::MainWindow()
@@ -326,6 +333,11 @@ void MainWindow::reply1Finished(QNetworkReply * reply)
         				baseFileName = "er9x-de.hex";
         				break;
 
+				    case (DNLD_VER_ER9X_NO):
+        				dnldURL = ER9X_NO_URL;
+        				baseFileName = "er9x-no.hex";
+        				break;
+
 				    case (DNLD_VER_ER9X_FRSKY_DE):
         				dnldURL = ER9X_FRSKY_DE_URL;
         				baseFileName = "er9x-frsky-de.hex";
@@ -334,6 +346,11 @@ void MainWindow::reply1Finished(QNetworkReply * reply)
 				    case (DNLD_VER_ER9X_128_DE):
         				dnldURL = ER9X_128_DE_URL;
         				baseFileName = "er9x-128-de.hex";
+        				break;
+
+				    case (DNLD_VER_ER9X_2561):
+        				dnldURL = ER9X_2561_URL;
+        				baseFileName = "er9x-2561.hex";
         				break;
 
             case (DNLD_VER_ER9X_NOHT):
@@ -1038,9 +1055,13 @@ void MainWindow::about()
     QString aboutStr = "<center><img src=\":/images/eepe-title.png\"><br>";
     aboutStr.append(tr("Copyright") +" Erez Raviv &copy;2010<br>");
     aboutStr.append(QString("<a href='http://code.google.com/p/eepe/'>http://code.google.com/p/eepe/</a><br>Revision: %1, %2<br><br>").arg(currentEEPErev).arg(__DATE__));
-    aboutStr.append(tr("If you've found this program and/or the er9x firmware useful please support by"));
-    aboutStr.append(" <a href='" DONATE_STR "'>");
-    aboutStr.append(tr("donating") + "</a></center>");
+    aboutStr.append(tr("If you've found this program and/or the er9x firmware useful please support by donating<br>"));
+		aboutStr.append(" <a href='" DONATE_MB_STR "'>");
+    aboutStr.append(tr("to Mike Blandford (current maintainer)") + "</a><br>");
+		aboutStr.append(" <a href='" DONATE_ER_STR "'>");
+    aboutStr.append(tr("to Erez Raviv (original author)") + "</a></center><br>");
+
+
 //    aboutStr.append(tr("geegeneral size = %1").arg(sizeof(EEGeneral)));
 
     QMessageBox::about(this, tr("About eePe"),aboutStr);

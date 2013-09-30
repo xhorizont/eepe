@@ -3,7 +3,7 @@
 #include "pers.h"
 #include "helpers.h"
 
-MixerDialog::MixerDialog(QWidget *parent, SKYMixData *mixdata, int stickMode, QString * comment) :
+MixerDialog::MixerDialog(QWidget *parent, SKYMixData *mixdata, int stickMode, QString * comment, int modelVersion) :
     QDialog(parent),
     ui(new Ui::MixerDialog)
 {
@@ -11,7 +11,7 @@ MixerDialog::MixerDialog(QWidget *parent, SKYMixData *mixdata, int stickMode, QS
     md = mixdata;
 
     this->setWindowTitle(tr("DEST -> CH%1%2").arg(md->destCh/10).arg(md->destCh%10));
-    populateSourceCB(ui->sourceCB, stickMode, 0, md->srcRaw);
+    populateSourceCB(ui->sourceCB, stickMode, 0, md->srcRaw, modelVersion);
     ui->sourceCB->addItem("3POS");
     ui->sourceCB->addItem("GV1 ");
     ui->sourceCB->addItem("GV2 ");

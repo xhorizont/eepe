@@ -10,6 +10,12 @@ description here
 ====================================================================================
 
 ******************************************
+CHANGELOG: 30-Sep-2013 MPB
+Language Norwegian hex support
+Support for r804 er9x, with stick mode changes
+2561 support added
+
+******************************************
 CHANGELOG: 07-Aug-2013 MPB
 Mode fix in simulator
 Language support

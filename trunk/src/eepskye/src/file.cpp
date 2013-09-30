@@ -573,7 +573,7 @@ void convertModel( SKYModelData *dest, ModelData *source )
 	dest->FrSkyGpsAlt = source->FrSkyGpsAlt ;
 	dest->FrSkyImperial = source->FrSkyImperial ;
 	dest->FrSkyAltAlarm = source->FrSkyAltAlarm ;
-	dest->version = source->version ;
+  dest->modelVersion = source->version ;
 	dest->protocol = source->protocol ;
 	dest->ppmNCH = source->ppmNCH ;
 	dest->thrTrim = source->thrTrim ;
@@ -807,7 +807,7 @@ void ee32LoadModel(struct t_radioData *radioData, uint8_t id)
 				
 				if ( version != 255 )
 				{
-					radioData->models[id].version = 0 ;					// default version number
+          radioData->models[id].modelVersion = 0 ;					// default version number
 				}
 			}
 
@@ -817,7 +817,7 @@ void ee32LoadModel(struct t_radioData *radioData, uint8_t id)
 //          radioData->models[id].name[i] = idx2char(idx);
 //      }
       
-			radioData->models[id].version = MDSKYVERS ; //update mdvers
+      radioData->models[id].modelVersion = MDSKYVERS ; //update mdvers
 
 			if ( radioData->models[id].numBlades == 0 )
 			{

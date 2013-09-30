@@ -752,7 +752,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>donating</source>
-        <translation>don</translation>
+        <translation type="obsolete">don</translation>
     </message>
     <message>
         <source>HEX files (*.hex);;BIN files (*.bin);;FLASH files (*.bin *.hex)</source>
@@ -976,7 +976,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>If you&apos;ve found this program and/or the er9x firmware useful please support by</source>
-        <translation>Si vous trouvez ce programme et/ou ce firmware utiles, merci d&apos;apporter votre soutien en effectuant un &lt;a href=&apos;</translation>
+        <translation type="obsolete">Si vous trouvez ce programme et/ou ce firmware utiles, merci d&apos;apporter votre soutien en effectuant un &lt;a href=&apos;</translation>
     </message>
     <message>
         <source>Switch layout Left/Right</source>
@@ -1150,6 +1150,18 @@ http://code.google.com/p/eepe/</source>
     </message>
     <message>
         <source>&amp;Telemetry</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>If you&apos;ve found this program and/or the er9x firmware useful please support by donating&lt;br&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>to Mike Blandford (current maintainer)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>to Erez Raviv (original author)</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2577,6 +2589,66 @@ Droite</translation>
         <source>Sink Tones Off</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Volume Control</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>America</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Japan</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Europe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>D16</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>D8</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>LR12</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Country(PXX)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Type(PXX)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>CSwitchD</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>CSwitchE</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>CSwitchG</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>CSwitchH</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>CSwitchI</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>CSwitchF</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>QObject</name>
@@ -2962,6 +3034,14 @@ Assurez-vous de posséder les droits en écriture sur ce dossier.</translation>
         <source>com20</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>m1281</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>m2561</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>customizeSplashDialog</name>
@@ -3341,6 +3421,14 @@ Indique l&apos;affectation voie / numéro de canal par défaut utilisée lors de
     </message>
     <message>
         <source>er9x - 128 - Standard</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>M1281</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>M2561</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

@@ -37,7 +37,8 @@
 #define MDVERS_r352 7
 #define MDVERS_r365 8
 #define MDVERS_r668 9
-#define MDVERS      10
+#define MDVERS_r803 10
+#define MDVERS      11
 
 //OBSOLETE - USE ONLY MDVERS NOW
 //#define GENERAL_MYVER_r261 3
@@ -184,6 +185,13 @@ PACK(typedef struct t_CSwData { // Custom Switches data
   uint8_t andsw:4;
 }) CSwData;
 
+PACK(typedef struct t_CxSwData { // Extra Custom Switches data
+    int8_t  v1; //input
+    int8_t  v2; //offset
+    uint8_t func ;
+    int8_t andsw ;
+}) CxSwData ;
+
 PACK(typedef struct t_SafetySwData { // Custom Switches data
 	union opt
 	{
@@ -263,7 +271,9 @@ typedef struct t_ModelData {
   uint8_t   FrSkyImperial:1 ;  // Convert FrSky values to imperial units
   uint8_t   FrSkyAltAlarm:2;
   uint16_t  tmrVal;
-  uint8_t   protocol;
+  uint8_t   protocol:4 ;
+  uint8_t   country:2 ;
+  uint8_t   sub_protocol:2 ;
   int8_t    ppmNCH;
   uint8_t   thrTrim:1;            // Enable Throttle Trim
   uint8_t   xnumBlades:2;					// RPM scaling
@@ -292,7 +302,8 @@ typedef struct t_ModelData {
   CSwData   customSw[NUM_CSW];
   uint8_t   frSkyVoltThreshold ;
   int8_t    tmrModeB;
-  uint8_t   numVoice;		// 0-16, rest are Safety switches
+  uint8_t   numVoice:5;		// 0-16, rest are Safety switches
+	uint8_t		anaVolume:3 ;	// analog volume control
   SafetySwData  safetySw[NUM_CHNOUT];
   FrSkyData frsky;
 	uint8_t numBlades ;
@@ -303,6 +314,10 @@ typedef struct t_ModelData {
 	GvarData gvars[MAX_GVARS] ;
 	PhaseData phaseData[MAX_PHASES] ;
 	VarioData varioData ;
+	uint8_t modelVersion ;
+	int8_t pxxFailsafe[16] ;
+  CxSwData xcustomSw[EXTRA_CSW];
+	SafetySwData xvoiceSw[EXTRA_VOICE_SW] ;
 } __attribute__((packed)) ModelData;
 
 
