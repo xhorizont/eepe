@@ -32,7 +32,7 @@ const uint8_t modn12x3[4][4]= {
 
 //convert from mode 1 to mode g_eeGeneral.stickMode
 //NOTICE!  =>  1..4 -> 1..4
-#define CONVERT_MODE(x) (((x)<=4) ? modn12x3[g_eeGeneral.stickMode][((x)-1)] : (x))
+//#define CONVERT_MODE(x) (((x)<=4) ? modn12x3[g_eeGeneral.stickMode][((x)-1)] : (x))
 #define CHANNEL_ORDER(x) (chout_ar[g_eeGeneral.templateSetup*4 + (x)-1])
 #define THR_STICK       (2-(g_eeGeneral.stickMode&1))
 #define ELE_STICK       (1+(g_eeGeneral.stickMode&1))
@@ -91,14 +91,18 @@ enum EnumKeys {
   SW_Trainer
 };
 
-#define SWITCHES_STR "THR""RUD""ELE""ID0""ID1""ID2""AIL""GEA""TRN""SW1""SW2""SW3""SW4""SW5""SW6""SW7""SW8""SW9""SWA""SWB""SWC"
+#define SWITCHES_STR "THR""RUD""ELE""ID0""ID1""ID2""AIL""GEA""TRN""SW1""SW2""SW3""SW4""SW5""SW6""SW7""SW8""SW9""SWA""SWB""SWCSWDSWESWFSWGSWHSWI"
 #define NUM_CSW  12 //number of custom switches
+#define EXTRA_CSW	6
+#define EXTRA_VOICE_SW	8
+
 
 //#define SW_BASE      SW_NC
 #define SW_BASE      SW_ThrCt
 #define SW_BASE_DIAG SW_ThrCt
 //#define SWITCHES_STR "  NC  ON THR RUD ELE ID0 ID1 ID2 AILGEARTRNR"
 #define MAX_DRSWITCH (1+SW_Trainer-SW_ThrCt+1+NUM_CSW)
+#define PHY_SWITCH		(1+SW_Trainer-SW_ThrCt+1)
 
 #define SWP_ID0 (SW_ID0-SW_BASE)
 #define SWP_ID1 (SW_ID1-SW_BASE)
@@ -163,7 +167,7 @@ enum EnumKeys {
 #define PPM_BASE   (MIX_CYC3)
 #define CHOUT_BASE (PPM_BASE+NUM_PPM)
 
-#define CM(x) (CONVERT_MODE(x))  //good for SRC
+#define CM(x,y,z) (CONVERT_MODE(x,y,z))  //good for SRC
 #define CH(x) (CHOUT_BASE+(x))
 #define CV(x) (CURVE_BASE+(x)-1)
 #define CC(x) (CHANNEL_ORDER(x)) //need to invert this to work with dest

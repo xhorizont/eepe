@@ -29,7 +29,7 @@ GeneralEdit::GeneralEdit(EEPFILE *eFile, QWidget *parent) :
     QRegExp rx(CHAR_FOR_NAMES_REGEX);
     ui->ownerNameLE->setValidator(new QRegExpValidator(rx, this));
 
-    populateSwitchCB(ui->backlightswCB,g_eeGeneral.lightSw);
+    populateSwitchCB(ui->backlightswCB,g_eeGeneral.lightSw,eeFile->mee_type);
 
     ui->ownerNameLE->setText(g_eeGeneral.ownerName);
 

@@ -46,21 +46,21 @@ private:
     bool protocolEditLock;
     bool plot_curve[16];
     
-    QSpinBox  * cswitchOffset[NUM_CSW];
-    QSpinBox  * cswitchOffset0[NUM_CSW];
-    QComboBox * cswitchSource1[NUM_CSW];
-    QComboBox * cswitchSource2[NUM_CSW];
-    QComboBox * cswitchAndSwitch[NUM_CSW];
-    QLabel		* cswitchTlabel[NUM_CSW];
-		QTextBrowser * cswitchText1[NUM_CSW];
-		QTextBrowser * cswitchText2[NUM_CSW];
+    QSpinBox  * cswitchOffset[NUM_CSW+EXTRA_CSW];
+    QSpinBox  * cswitchOffset0[NUM_CSW+EXTRA_CSW];
+    QComboBox * cswitchSource1[NUM_CSW+EXTRA_CSW];
+    QComboBox * cswitchSource2[NUM_CSW+EXTRA_CSW];
+    QComboBox * cswitchAndSwitch[NUM_CSW+EXTRA_CSW];
+    QLabel		* cswitchTlabel[NUM_CSW+EXTRA_CSW];
+		QTextBrowser * cswitchText1[NUM_CSW+EXTRA_CSW];
+		QTextBrowser * cswitchText2[NUM_CSW+EXTRA_CSW];
 
-    QSpinBox  * safetySwitchValue[NUM_CHNOUT];
-    QComboBox * safetySwitchSwtch[NUM_CHNOUT];
-		QComboBox * safetySwitchType[NUM_CHNOUT];
-    QComboBox * safetySwitchAlarm[NUM_CHNOUT];
-		QCheckBox *safetySwitchGvar[NUM_CHNOUT] ;
-		QComboBox *safetySwitchGindex[NUM_CHNOUT] ;
+    QSpinBox  * safetySwitchValue[NUM_CHNOUT+EXTRA_VOICE_SW];
+    QComboBox * safetySwitchSwtch[NUM_CHNOUT+EXTRA_VOICE_SW];
+		QComboBox * safetySwitchType[NUM_CHNOUT+EXTRA_VOICE_SW];
+    QComboBox * safetySwitchAlarm[NUM_CHNOUT+EXTRA_VOICE_SW];
+		QCheckBox *safetySwitchGvar[NUM_CHNOUT+EXTRA_VOICE_SW] ;
+		QComboBox *safetySwitchGindex[NUM_CHNOUT+EXTRA_VOICE_SW] ;
     
 		QSpinBox *expoDrSpin[4][3][2][2] ;
     QComboBox *expoDrVal[4][3][2][2] ;
@@ -231,6 +231,7 @@ private slots:
     void on_pulsePolCB_currentIndexChanged(int index);
     void on_trimSWCB_currentIndexChanged(int index);
     void on_trimIncCB_currentIndexChanged(int index);
+		void on_volumeControlCB_currentIndexChanged(int index) ;
     void on_timerDirCB_currentIndexChanged(int index);
     void on_timerModeCB_currentIndexChanged(int index);
     void on_timerModeBCB_currentIndexChanged(int index);
@@ -243,6 +244,9 @@ private slots:
     void on_pxxRxNum_editingFinished();
 		void on_VoiceNumberSB_editingFinished() ;
 		void on_autoLimitsSB_editingFinished() ;
+		void on_countryCB_currentIndexChanged(int index) ;
+		void on_typeCB_currentIndexChanged(int index) ;
+
 };
 
 

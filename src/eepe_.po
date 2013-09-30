@@ -633,37 +633,37 @@ msgctxt "GeneralEdit|"
 msgid "Positive"
 msgstr ""
 
-#: mainwindow.cpp:182
+#: mainwindow.cpp:189
 msgctxt "MainWindow|"
 msgid "eePe - EEPROM Editor"
 msgstr ""
 
-#: mainwindow.cpp:207 mainwindow.cpp:574
+#: mainwindow.cpp:214 mainwindow.cpp:591
 msgctxt "MainWindow|"
 msgid "File loaded"
 msgstr ""
 
-#: mainwindow.cpp:353 mainwindow.cpp:448 mainwindow.cpp:491
+#: mainwindow.cpp:370 mainwindow.cpp:465 mainwindow.cpp:508
 msgctxt "MainWindow|"
 msgid "Save As"
 msgstr ""
 
-#: mainwindow.cpp:377 mainwindow.cpp:508
+#: mainwindow.cpp:394 mainwindow.cpp:525
 msgctxt "MainWindow|"
 msgid "No updates available at this time."
 msgstr ""
 
-#: mainwindow.cpp:273 mainwindow.cpp:383 mainwindow.cpp:474 mainwindow.cpp:514
+#: mainwindow.cpp:280 mainwindow.cpp:400 mainwindow.cpp:491 mainwindow.cpp:531
 msgctxt "MainWindow|"
 msgid "Unable to check for updates."
 msgstr ""
 
-#: mainwindow.cpp:251
+#: mainwindow.cpp:258
 msgctxt "MainWindow|"
 msgid "Checking for updates"
 msgstr ""
 
-#: mainwindow.cpp:347
+#: mainwindow.cpp:364
 #, qt-format
 msgctxt "MainWindow|"
 msgid ""
@@ -671,12 +671,12 @@ msgid ""
 "it?"
 msgstr ""
 
-#: mainwindow.cpp:491
+#: mainwindow.cpp:508
 msgctxt "MainWindow|"
 msgid "Executable (*.exe)"
 msgstr ""
 
-#: mainwindow.cpp:500
+#: mainwindow.cpp:517
 #, qt-format
 msgctxt "MainWindow|"
 msgid ""
@@ -685,718 +685,721 @@ msgid ""
 "http://code.google.com/p/eepe/"
 msgstr ""
 
-#: mainwindow.cpp:527
+#: mainwindow.cpp:544
 msgctxt "MainWindow|"
 msgid "Would you like to launch the installer?"
 msgstr ""
 
-#: mainwindow.cpp:560
+#: mainwindow.cpp:577
 msgctxt "MainWindow|"
 msgid "Open"
 msgstr ""
 
-#: mainwindow.cpp:584 mainwindow.cpp:590
+#: mainwindow.cpp:601 mainwindow.cpp:607
 msgctxt "MainWindow|"
 msgid "File saved"
 msgstr ""
 
-#: mainwindow.cpp:672
+#: mainwindow.cpp:689
 msgctxt "MainWindow|"
 msgid "Read EEPROM From Tx"
 msgstr ""
 
-#: mainwindow.cpp:709
+#: mainwindow.cpp:726
 msgctxt "MainWindow|"
 msgid "Backing up EEPROM From Tx"
 msgstr ""
 
-#: mainwindow.cpp:725
+#: mainwindow.cpp:742
 msgctxt "MainWindow|"
 msgid "Choose file to write to EEPROM memory"
 msgstr ""
 
-#: mainwindow.cpp:730
+#: mainwindow.cpp:747
 #, qt-format
 msgctxt "MainWindow|"
 msgid "Write %1 to EEPROM memory?"
 msgstr ""
 
-#: mainwindow.cpp:759
+#: mainwindow.cpp:776
 msgctxt "MainWindow|"
 msgid "Choose file to write to flash memory"
 msgstr ""
 
-#: mainwindow.cpp:767
+#: mainwindow.cpp:784
 #, qt-format
 msgctxt "MainWindow|"
 msgid "Write %1 to flash memory?"
 msgstr ""
 
-#: mainwindow.cpp:782
+#: mainwindow.cpp:799
 msgctxt "MainWindow|"
 msgid "Backup failed, abandoning flash operation"
 msgstr ""
 
-#: mainwindow.cpp:854
+#: mainwindow.cpp:871
 msgctxt "MainWindow|"
 msgid "Read EEPROM memory to File"
 msgstr ""
 
-#: mainwindow.cpp:887
+#: mainwindow.cpp:904
 msgctxt "MainWindow|"
 msgid "Read Flash to File"
 msgstr ""
 
-#: mainwindow.cpp:972
+#: mainwindow.cpp:989
 #, qt-format
 msgctxt "MainWindow|"
 msgid "<tr><td>Owner: </td><td align=right>%1</td></tr>"
 msgstr ""
 
-#: mainwindow.cpp:973
+#: mainwindow.cpp:990
 #, qt-format
 msgctxt "MainWindow|"
 msgid "<tr><td>Version: </td><td align=right>%1</td></tr>"
 msgstr ""
 
-#: mainwindow.cpp:975
+#: mainwindow.cpp:992
 #, qt-format
 msgctxt "MainWindow|"
 msgid "<tr><td>Bytes Used: </td><td align=right>%1</td></tr>"
 msgstr ""
 
-#: mainwindow.cpp:976
+#: mainwindow.cpp:993
 #, qt-format
 msgctxt "MainWindow|"
 msgid "<tr><td>Bytes Free: </td><td align=right>%1</td></tr>"
 msgstr ""
 
-#: mainwindow.cpp:977
+#: mainwindow.cpp:994
 #, qt-format
 msgctxt "MainWindow|"
 msgid "<tr><td>Bytes Total:</td><td align=right> %1</td></tr>"
 msgstr ""
 
-#: mainwindow.cpp:980
+#: mainwindow.cpp:997
 msgctxt "MainWindow|"
 msgid "Details:"
 msgstr ""
 
-#: mainwindow.cpp:988
+#: mainwindow.cpp:1005
 #, qt-format
 msgctxt "MainWindow|"
 msgid "<tr><td>Settings: </td><td align=right>%1 Bytes</td></tr>"
 msgstr ""
 
-#: mainwindow.cpp:990
+#: mainwindow.cpp:1007
 #, qt-format
 msgctxt "MainWindow|"
 msgid "<tr><td>%2: </td><td align=right>%1 Bytes</td></tr>"
 msgstr ""
 
-#: mainwindow.cpp:1039
+#: mainwindow.cpp:1056
 msgctxt "MainWindow|"
 msgid "Copyright"
 msgstr ""
 
-#: mainwindow.cpp:1041
-#| msgid ""
-#| "If you've found this program and/or the Firmware useful please support by"
-msgctxt "MainWindow|"
-msgid ""
-"If you've found this program and/or the er9x firmware useful please support "
-"by"
-msgstr ""
-
-#: mainwindow.cpp:1043
-msgctxt "MainWindow|"
-msgid "donating"
-msgstr ""
-
-#: mainwindow.cpp:1046
+#: mainwindow.cpp:1067
 msgctxt "MainWindow|"
 msgid "About eePe"
 msgstr ""
 
-#: mainwindow.cpp:1094
+#: mainwindow.cpp:1115
 #, qt-format
 msgctxt "MainWindow|"
 msgid "&%1 %2"
 msgstr ""
 
-#: mainwindow.cpp:1097
+#: mainwindow.cpp:1118
 #, qt-format
 msgctxt "MainWindow|"
 msgid "%1 %2"
 msgstr ""
 
-#: mainwindow.cpp:1124
+#: mainwindow.cpp:1145
 msgctxt "MainWindow|"
 msgid "&New"
 msgstr ""
 
-#: mainwindow.cpp:1126
+#: mainwindow.cpp:1147
 msgctxt "MainWindow|"
 msgid "Create a new file"
 msgstr ""
 
-#: mainwindow.cpp:1129
+#: mainwindow.cpp:1150
 msgctxt "MainWindow|"
 msgid "&Open..."
 msgstr ""
 
-#: mainwindow.cpp:1131
+#: mainwindow.cpp:1152
 msgctxt "MainWindow|"
 msgid "Open an existing file"
 msgstr ""
 
-#: mainwindow.cpp:1134
+#: mainwindow.cpp:1155
 msgctxt "MainWindow|"
 msgid "&Save"
 msgstr ""
 
-#: mainwindow.cpp:1136
+#: mainwindow.cpp:1157
 msgctxt "MainWindow|"
 msgid "Save the document to disk"
 msgstr ""
 
-#: mainwindow.cpp:1139
+#: mainwindow.cpp:1160
 msgctxt "MainWindow|"
 msgid "Save &As..."
 msgstr ""
 
-#: mainwindow.cpp:1141
+#: mainwindow.cpp:1162
 msgctxt "MainWindow|"
 msgid "Save the document under a new name"
 msgstr ""
 
-#: mainwindow.cpp:1144
+#: mainwindow.cpp:1165
 msgctxt "MainWindow|"
 msgid "&Preferences..."
 msgstr ""
 
-#: mainwindow.cpp:1145
+#: mainwindow.cpp:1166
 msgctxt "MainWindow|"
 msgid "Edit general preferences"
 msgstr ""
 
-#: mainwindow.cpp:1148
+#: mainwindow.cpp:1169
 msgctxt "MainWindow|"
 msgid "&Check for updates..."
 msgstr ""
 
-#: mainwindow.cpp:1149
+#: mainwindow.cpp:1170
 msgctxt "MainWindow|"
 msgid "Check for new version of eePe/er9x"
 msgstr ""
 
-#: mainwindow.cpp:1153
+#: mainwindow.cpp:1174
 msgctxt "MainWindow|"
 msgid "Serial SD"
 msgstr ""
 
-#: mainwindow.cpp:1154
+#: mainwindow.cpp:1175
 msgctxt "MainWindow|"
 msgid "Update Megasound SD card"
 msgstr ""
 
-#: mainwindow.cpp:1159
+#: mainwindow.cpp:1180
 msgctxt "MainWindow|"
 msgid "E&xit"
 msgstr ""
 
-#: mainwindow.cpp:1161
+#: mainwindow.cpp:1182
 msgctxt "MainWindow|"
 msgid "Exit the application"
 msgstr ""
 
-#: mainwindow.cpp:1165
+#: mainwindow.cpp:1186
 msgctxt "MainWindow|"
 msgid "Cu&t"
 msgstr ""
 
-#: mainwindow.cpp:1167
+#: mainwindow.cpp:1188
 msgctxt "MainWindow|"
 msgid "Cut the current selection's contents to the clipboard"
 msgstr ""
 
-#: mainwindow.cpp:1171
+#: mainwindow.cpp:1192
 msgctxt "MainWindow|"
 msgid "&Copy"
 msgstr ""
 
-#: mainwindow.cpp:1173
+#: mainwindow.cpp:1194
 msgctxt "MainWindow|"
 msgid "Copy the current selection's contents to the clipboard"
 msgstr ""
 
-#: mainwindow.cpp:1177
+#: mainwindow.cpp:1198
 msgctxt "MainWindow|"
 msgid "&Paste"
 msgstr ""
 
-#: mainwindow.cpp:1179
+#: mainwindow.cpp:1200
 msgctxt "MainWindow|"
 msgid "Paste the clipboard's contents into the current selection"
 msgstr ""
 
-#: mainwindow.cpp:1185
+#: mainwindow.cpp:1206
 msgctxt "MainWindow|"
 msgid "Ctrl+Alt+W"
 msgstr ""
 
-#: mainwindow.cpp:1190
+#: mainwindow.cpp:1211
 msgctxt "MainWindow|"
 msgid "Ctrl+Alt+R"
 msgstr ""
 
-#: mainwindow.cpp:1198
+#: mainwindow.cpp:1219
 msgctxt "MainWindow|"
 msgid "Read Firmware from Tx"
 msgstr ""
 
-#: mainwindow.cpp:1202
+#: mainwindow.cpp:1223
 msgctxt "MainWindow|"
 msgid "Write EEPROM memory from file"
 msgstr ""
 
-#: mainwindow.cpp:1203
+#: mainwindow.cpp:1224
 msgctxt "MainWindow|"
 msgid "Write EEPROM memory from file to transmitter"
 msgstr ""
 
-#: mainwindow.cpp:1206
+#: mainwindow.cpp:1227
 msgctxt "MainWindow|"
 msgid "Read EEPROM memory to file"
 msgstr ""
 
-#: mainwindow.cpp:1207
+#: mainwindow.cpp:1228
 msgctxt "MainWindow|"
 msgid "Read EEPROM memory from transmitter to file"
 msgstr ""
 
-#: mainwindow.cpp:1210
+#: mainwindow.cpp:1231
 msgctxt "MainWindow|"
 msgid "&Configure..."
 msgstr ""
 
-#: mainwindow.cpp:1211
+#: mainwindow.cpp:1232
 msgctxt "MainWindow|"
 msgid "Configure burning software"
 msgstr ""
 
-#: mainwindow.cpp:1214
+#: mainwindow.cpp:1235
 msgctxt "MainWindow|"
 msgid "&List programmers"
 msgstr ""
 
-#: mainwindow.cpp:1215
+#: mainwindow.cpp:1236
 msgctxt "MainWindow|"
 msgid "List available programmers"
 msgstr ""
 
-#: mainwindow.cpp:1218
+#: mainwindow.cpp:1239
 msgctxt "MainWindow|"
 msgid "&Simulate"
 msgstr ""
 
-#: mainwindow.cpp:1219
+#: mainwindow.cpp:1240
 msgctxt "MainWindow|"
 msgid "Alt+S"
 msgstr ""
 
-#: mainwindow.cpp:1220
+#: mainwindow.cpp:1241
 msgctxt "MainWindow|"
 msgid "Simulate selected model."
 msgstr ""
 
-#: mainwindow.cpp:1224
+#: mainwindow.cpp:1245
 msgctxt "MainWindow|"
 msgid "&Print"
 msgstr ""
 
-#: mainwindow.cpp:1225
+#: mainwindow.cpp:1246
 msgctxt "MainWindow|"
 msgid "Ctrl+P"
 msgstr ""
 
-#: mainwindow.cpp:1226
+#: mainwindow.cpp:1247
 msgctxt "MainWindow|"
 msgid "Print current model."
 msgstr ""
 
-#: mainwindow.cpp:1230
+#: mainwindow.cpp:1251
 msgctxt "MainWindow|"
 msgid "Cl&ose"
 msgstr ""
 
-#: mainwindow.cpp:1231
+#: mainwindow.cpp:1252
 msgctxt "MainWindow|"
 msgid "Close the active window"
 msgstr ""
 
-#: mainwindow.cpp:1235
+#: mainwindow.cpp:1256
 msgctxt "MainWindow|"
 msgid "Close &All"
 msgstr ""
 
-#: mainwindow.cpp:1236
+#: mainwindow.cpp:1257
 msgctxt "MainWindow|"
 msgid "Close all the windows"
 msgstr ""
 
-#: mainwindow.cpp:1240
+#: mainwindow.cpp:1261
 msgctxt "MainWindow|"
 msgid "&Tile"
 msgstr ""
 
-#: mainwindow.cpp:1241
+#: mainwindow.cpp:1262
 msgctxt "MainWindow|"
 msgid "Tile the windows"
 msgstr ""
 
-#: mainwindow.cpp:1244
+#: mainwindow.cpp:1265
 msgctxt "MainWindow|"
 msgid "&Cascade"
 msgstr ""
 
-#: mainwindow.cpp:1245
+#: mainwindow.cpp:1266
 msgctxt "MainWindow|"
 msgid "Cascade the windows"
 msgstr ""
 
-#: mainwindow.cpp:1248
+#: mainwindow.cpp:1269
 msgctxt "MainWindow|"
 msgid "Ne&xt"
 msgstr ""
 
-#: mainwindow.cpp:1250
+#: mainwindow.cpp:1271
 msgctxt "MainWindow|"
 msgid "Move the focus to the next window"
 msgstr ""
 
-#: mainwindow.cpp:1254
+#: mainwindow.cpp:1275
 msgctxt "MainWindow|"
 msgid "Pre&vious"
 msgstr ""
 
-#: mainwindow.cpp:1256
+#: mainwindow.cpp:1277
 msgctxt "MainWindow|"
 msgid "Move the focus to the previous window"
 msgstr ""
 
-#: mainwindow.cpp:1264
+#: mainwindow.cpp:1285
 msgctxt "MainWindow|"
 msgid "&About"
 msgstr ""
 
-#: mainwindow.cpp:1265
+#: mainwindow.cpp:1286
 msgctxt "MainWindow|"
 msgid "Show the application's About box"
 msgstr ""
 
-#: mainwindow.cpp:1268
+#: mainwindow.cpp:1289
 msgctxt "MainWindow|"
 msgid "&Contributors"
 msgstr ""
 
-#: mainwindow.cpp:1269
+#: mainwindow.cpp:1290
 msgctxt "MainWindow|"
 msgid "List er9x/eePe Contributors"
 msgstr ""
 
-#: mainwindow.cpp:1273
+#: mainwindow.cpp:1294
 msgctxt "MainWindow|"
 msgid "Switch layout Left/Right"
 msgstr ""
 
-#: mainwindow.cpp:1276
+#: mainwindow.cpp:1297
 msgctxt "MainWindow|"
 msgid "&ER9x Users Guide"
 msgstr ""
 
-#: mainwindow.cpp:1277
+#: mainwindow.cpp:1298
 msgctxt "MainWindow|"
 msgid "Show ER9x Users Guide"
 msgstr ""
 
-#: mainwindow.cpp:1281
+#: mainwindow.cpp:1302
 msgctxt "MainWindow|"
 msgid "&Load Model/Settings"
 msgstr ""
 
-#: mainwindow.cpp:1282
+#: mainwindow.cpp:1303
 msgctxt "MainWindow|"
 msgid "Load Model/Settings From File"
 msgstr ""
 
-#: mainwindow.cpp:1285
+#: mainwindow.cpp:1306
 msgctxt "MainWindow|"
 msgid "S&ave Model/Settings"
 msgstr ""
 
-#: mainwindow.cpp:1286
+#: mainwindow.cpp:1307
 msgctxt "MainWindow|"
 msgid "Save Model/Settings To File"
 msgstr ""
 
-#: mainwindow.cpp:1289
+#: mainwindow.cpp:1310
 msgctxt "MainWindow|"
 msgid "Cu&stomize Splash Screen"
 msgstr ""
 
-#: mainwindow.cpp:1290
+#: mainwindow.cpp:1311
 msgctxt "MainWindow|"
 msgid "Customize Splash Screen"
 msgstr ""
 
-#: mainwindow.cpp:1294
+#: mainwindow.cpp:1315
 msgctxt "MainWindow|"
 msgid "Sets the fuses to protect EEPROM from being erased."
 msgstr ""
 
-#: mainwindow.cpp:1301
+#: mainwindow.cpp:1322
 msgctxt "MainWindow|"
 msgid "EEPROM Info"
 msgstr ""
 
-#: mainwindow.cpp:1302
+#: mainwindow.cpp:1323
 msgctxt "MainWindow|"
 msgid "Show information about current EEPROM."
 msgstr ""
 
-#: mainwindow.cpp:1305 mainwindow.cpp:1353
+#: mainwindow.cpp:1326 mainwindow.cpp:1374
 msgctxt "MainWindow|"
 msgid "&Telemetry"
 msgstr ""
 
-#: mainwindow.cpp:1313
+#: mainwindow.cpp:1334
 msgctxt "MainWindow|"
 msgid "&File"
 msgstr ""
 
-#: mainwindow.cpp:1272
+#: mainwindow.cpp:1293
 msgctxt "MainWindow|"
 msgid "Switch layout direction"
 msgstr ""
 
-#: mainwindow.cpp:365
+#: mainwindow.cpp:382
 #, qt-format
 msgctxt "MainWindow|"
 msgid "Ignore this version (r%1)?"
 msgstr ""
 
-#: mainwindow.cpp:483
+#: mainwindow.cpp:500
 #, qt-format
 msgctxt "MainWindow|"
 msgid ""
 "A new version of eePe is available (r%1)<br>Would you like to download it?"
 msgstr ""
 
-#: mainwindow.cpp:1184
+#: mainwindow.cpp:1058
+msgctxt "MainWindow|"
+msgid ""
+"If you've found this program and/or the er9x firmware useful please support "
+"by donating<br>"
+msgstr ""
+
+#: mainwindow.cpp:1060
+msgctxt "MainWindow|"
+msgid "to Mike Blandford (current maintainer)"
+msgstr ""
+
+#: mainwindow.cpp:1062
+msgctxt "MainWindow|"
+msgid "to Erez Raviv (original author)"
+msgstr ""
+
+#: mainwindow.cpp:1205
 msgctxt "MainWindow|"
 msgid "&Write Memory To Tx"
 msgstr ""
 
-#: mainwindow.cpp:1186
+#: mainwindow.cpp:1207
 msgctxt "MainWindow|"
 msgid "Write EEPROM memory to transmitter"
 msgstr ""
 
-#: mainwindow.cpp:1189
+#: mainwindow.cpp:1210
 msgctxt "MainWindow|"
 msgid "&Read Memory From Tx"
 msgstr ""
 
-#: mainwindow.cpp:1191
+#: mainwindow.cpp:1212
 msgctxt "MainWindow|"
 msgid "Read EEPROM memory from transmitter"
 msgstr ""
 
-#: mainwindow.cpp:1194
+#: mainwindow.cpp:1215
 msgctxt "MainWindow|"
 msgid "Flash Firmware to Tx"
 msgstr ""
 
-#: mainwindow.cpp:1195
+#: mainwindow.cpp:1216
 msgctxt "MainWindow|"
 msgid "Write flash firmware to transmitter"
 msgstr ""
 
-#: mainwindow.cpp:1199
+#: mainwindow.cpp:1220
 msgctxt "MainWindow|"
 msgid "Read flash memory from transmitter"
 msgstr ""
 
-#: mainwindow.cpp:1293
+#: mainwindow.cpp:1314
 msgctxt "MainWindow|"
 msgid "Set fuses to protect EEPROM"
 msgstr ""
 
-#: mainwindow.cpp:1297
+#: mainwindow.cpp:1318
 msgctxt "MainWindow|"
 msgid "Reset fuses to factory default"
 msgstr ""
 
-#: mainwindow.cpp:1298
+#: mainwindow.cpp:1319
 msgctxt "MainWindow|"
 msgid "Resets the fuses to factory default - EEPROM erase."
 msgstr ""
 
-#: mainwindow.cpp:1329
+#: mainwindow.cpp:1350
 msgctxt "MainWindow|"
 msgid "&Edit"
 msgstr ""
 
-#: mainwindow.cpp:1335
+#: mainwindow.cpp:1356
 msgctxt "MainWindow|"
 msgid "&Burn"
 msgstr ""
 
-#: mainwindow.cpp:1356
+#: mainwindow.cpp:1377
 msgctxt "MainWindow|"
 msgid "&Window"
 msgstr ""
 
-#: mainwindow.cpp:1362
+#: mainwindow.cpp:1383
 msgctxt "MainWindow|"
 msgid "&Help"
 msgstr ""
 
-#: mainwindow.cpp:1375
+#: mainwindow.cpp:1396
 msgctxt "MainWindow|"
 msgid "File"
 msgstr ""
 
-#: mainwindow.cpp:1386
+#: mainwindow.cpp:1407
 msgctxt "MainWindow|"
 msgid "Edit"
 msgstr ""
 
-#: mainwindow.cpp:1392
+#: mainwindow.cpp:1413
 msgctxt "MainWindow|"
 msgid "Burn"
 msgstr ""
 
-#: mainwindow.cpp:1405
+#: mainwindow.cpp:1426
 msgctxt "MainWindow|"
 msgid "Help"
 msgstr ""
 
-#: mainwindow.cpp:1415
+#: mainwindow.cpp:1436
 msgctxt "MainWindow|"
 msgid "Ready"
 msgstr ""
 
-#: mdichild.cpp:153
+#: mdichild.cpp:152
 msgctxt "MdiChild|"
 msgid "General Settings"
 msgstr ""
 
-#: mdichild.cpp:1067 mdichild.cpp:1137
+#: mdichild.cpp:1081 mdichild.cpp:1151
 msgctxt "MdiChild|"
 msgid "eePe"
 msgstr ""
 
-#: mdichild.cpp:174
+#: mdichild.cpp:173
 msgctxt "MdiChild|"
 msgid "Delete Selected Models?"
 msgstr ""
 
-#: mdichild.cpp:151
+#: mdichild.cpp:150
 #, qt-format
 msgctxt "MdiChild|"
 msgid " free %1"
 msgstr ""
 
-#: mdichild.cpp:273 mdichild.cpp:283 mdichild.cpp:329 mdichild.cpp:410
-#: mdichild.cpp:445 mdichild.cpp:472 mdichild.cpp:490 mdichild.cpp:520
-#: mdichild.cpp:532 mdichild.cpp:646 mdichild.cpp:667 mdichild.cpp:682
-#: mdichild.cpp:727 mdichild.cpp:733 mdichild.cpp:762 mdichild.cpp:784
-#: mdichild.cpp:806 mdichild.cpp:812 mdichild.cpp:825 mdichild.cpp:835
-#: mdichild.cpp:963 mdichild.cpp:977 mdichild.cpp:1008 mdichild.cpp:1030
-#: mdichild.cpp:1162
+#: mdichild.cpp:272 mdichild.cpp:282 mdichild.cpp:328 mdichild.cpp:409
+#: mdichild.cpp:444 mdichild.cpp:471 mdichild.cpp:489 mdichild.cpp:519
+#: mdichild.cpp:531 mdichild.cpp:645 mdichild.cpp:681 mdichild.cpp:696
+#: mdichild.cpp:741 mdichild.cpp:747 mdichild.cpp:776 mdichild.cpp:798
+#: mdichild.cpp:820 mdichild.cpp:826 mdichild.cpp:839 mdichild.cpp:849
+#: mdichild.cpp:977 mdichild.cpp:991 mdichild.cpp:1022 mdichild.cpp:1044
+#: mdichild.cpp:1176
 msgctxt "MdiChild|"
 msgid "Error"
 msgstr ""
 
-#: mdichild.cpp:273
+#: mdichild.cpp:272
 msgctxt "MdiChild|"
 msgid "Unable set data!"
 msgstr ""
 
-#: mdichild.cpp:283
+#: mdichild.cpp:282
 msgctxt "MdiChild|"
 msgid "Unable set model!"
 msgstr ""
 
-#: mdichild.cpp:330
+#: mdichild.cpp:329
 #, qt-format
 msgctxt "MdiChild|"
 msgid "Coulden't find %1"
 msgstr ""
 
-#: mdichild.cpp:346
+#: mdichild.cpp:345
 msgctxt "MdiChild|"
 msgid "Overwrite Current Settings?"
 msgstr ""
 
-#: mdichild.cpp:353 mdichild.cpp:371
+#: mdichild.cpp:352 mdichild.cpp:370
 msgctxt "MdiChild|"
 msgid "Open"
 msgstr ""
 
-#: mdichild.cpp:364
+#: mdichild.cpp:363
 #, qt-format
 msgctxt "MdiChild|"
 msgid "Overwrite %1?"
 msgstr ""
 
-#: mdichild.cpp:411 mdichild.cpp:446
+#: mdichild.cpp:410 mdichild.cpp:445
 msgctxt "MdiChild|"
 msgid "Error writing to container"
 msgstr ""
 
-#: mdichild.cpp:472 mdichild.cpp:520 mdichild.cpp:963
+#: mdichild.cpp:471 mdichild.cpp:519 mdichild.cpp:977
 msgctxt "MdiChild|"
 msgid "Error Getting General Settings Data"
 msgstr ""
 
-#: mdichild.cpp:478
+#: mdichild.cpp:477
 msgctxt "MdiChild|"
 msgid "Save Settings As"
 msgstr ""
 
-#: mdichild.cpp:490
+#: mdichild.cpp:489
 #, qt-format
 msgctxt "MdiChild|"
 msgid "Error Getting Model #%1"
 msgstr ""
 
-#: mdichild.cpp:496
+#: mdichild.cpp:495
 msgctxt "MdiChild|"
 msgid "Save Model As"
 msgstr ""
 
-#: mdichild.cpp:625
+#: mdichild.cpp:624
 #, qt-format
 msgctxt "MdiChild|"
 msgid "Editing model %1: "
 msgstr ""
 
-#: mdichild.cpp:646
+#: mdichild.cpp:645
 msgctxt "MdiChild|"
 msgid "Unable to read settings!"
 msgstr ""
 
-#: mdichild.cpp:658
+#: mdichild.cpp:672
 #, qt-format
 #| msgid "document%1.hex"
 msgctxt "MdiChild|"
 msgid "document%1.eepe"
 msgstr ""
 
-#: mdichild.cpp:727
+#: mdichild.cpp:741
 #, qt-format
 msgctxt "MdiChild|"
 msgid ""
@@ -1404,14 +1407,14 @@ msgid ""
 "Cannot read General Settings from file %1"
 msgstr ""
 
-#: mdichild.cpp:733
+#: mdichild.cpp:747
 msgctxt "MdiChild|"
 msgid ""
 "Error reading file:\n"
 "Cannot set General Settings"
 msgstr ""
 
-#: mdichild.cpp:762
+#: mdichild.cpp:776
 msgctxt "MdiChild|"
 msgid ""
 "Error reading file:\n"
@@ -1420,12 +1423,12 @@ msgid ""
 "(Burn->Write Flash Memory)"
 msgstr ""
 
-#: mdichild.cpp:1022
+#: mdichild.cpp:1036
 msgctxt "MdiChild|"
 msgid "Info"
 msgstr ""
 
-#: mdichild.cpp:1023
+#: mdichild.cpp:1037
 #, qt-format
 msgctxt "MdiChild|"
 msgid ""
@@ -1433,33 +1436,33 @@ msgid ""
 "%2."
 msgstr ""
 
-#: mdichild.cpp:1202
+#: mdichild.cpp:1216
 msgctxt "MdiChild|"
 msgid "&Load Model/Settings"
 msgstr ""
 
-#: mdichild.cpp:1202
+#: mdichild.cpp:1216
 msgctxt "MdiChild|"
 msgid "Ctrl+L"
 msgstr ""
 
-#: mdichild.cpp:1203
+#: mdichild.cpp:1217
 msgctxt "MdiChild|"
 msgid "&Save Model/Settings"
 msgstr ""
 
-#: mdichild.cpp:1203
+#: mdichild.cpp:1217
 msgctxt "MdiChild|"
 msgid "Ctrl+S"
 msgstr ""
 
-#: mdichild.cpp:667
+#: mdichild.cpp:681
 #, qt-format
 msgctxt "MdiChild|"
 msgid "Unable to find file %1!"
 msgstr ""
 
-#: mdichild.cpp:826
+#: mdichild.cpp:840
 #, qt-format
 msgctxt "MdiChild|"
 msgid ""
@@ -1467,7 +1470,7 @@ msgid ""
 "%2."
 msgstr ""
 
-#: mdichild.cpp:806
+#: mdichild.cpp:820
 #, qt-format
 msgctxt "MdiChild|"
 msgid ""
@@ -1475,7 +1478,7 @@ msgid ""
 "File wrong size - %1"
 msgstr ""
 
-#: mdichild.cpp:683
+#: mdichild.cpp:697
 #, qt-format
 msgctxt "MdiChild|"
 msgid ""
@@ -1484,7 +1487,7 @@ msgid ""
 "You might need to update eePe to read this file."
 msgstr ""
 
-#: mdichild.cpp:785 mdichild.cpp:836
+#: mdichild.cpp:799 mdichild.cpp:850
 #, qt-format
 msgctxt "MdiChild|"
 msgid ""
@@ -1493,7 +1496,7 @@ msgid ""
 "update eePe to read this file."
 msgstr ""
 
-#: mdichild.cpp:813
+#: mdichild.cpp:827
 #, qt-format
 msgctxt "MdiChild|"
 msgid ""
@@ -1501,12 +1504,12 @@ msgid ""
 "%2."
 msgstr ""
 
-#: mdichild.cpp:863
+#: mdichild.cpp:877
 msgctxt "MdiChild|"
 msgid "Save As"
 msgstr ""
 
-#: mdichild.cpp:533 mdichild.cpp:978 mdichild.cpp:1009
+#: mdichild.cpp:532 mdichild.cpp:992 mdichild.cpp:1023
 #, qt-format
 msgctxt "MdiChild|"
 msgid ""
@@ -1514,7 +1517,7 @@ msgid ""
 "%2."
 msgstr ""
 
-#: mdichild.cpp:1031
+#: mdichild.cpp:1045
 #, qt-format
 msgctxt "MdiChild|"
 msgid ""
@@ -1522,7 +1525,7 @@ msgid ""
 "%2."
 msgstr ""
 
-#: mdichild.cpp:1068
+#: mdichild.cpp:1082
 #, qt-format
 msgctxt "MdiChild|"
 msgid ""
@@ -1530,89 +1533,89 @@ msgid ""
 "Do you want to save your changes?"
 msgstr ""
 
-#: mdichild.cpp:1138
+#: mdichild.cpp:1152
 #, qt-format
 #| msgid "Burn %1 to transmitter?"
 msgctxt "MdiChild|"
 msgid "Write %1 to EEPROM memory?"
 msgstr ""
 
-#: mdichild.cpp:1162
+#: mdichild.cpp:1176
 msgctxt "MdiChild|"
 msgid "Cannot write temporary file!"
 msgstr ""
 
-#: mdichild.cpp:1194
+#: mdichild.cpp:1208
 msgctxt "MdiChild|"
 msgid "&Edit"
 msgstr ""
 
-#: mdichild.cpp:1196
+#: mdichild.cpp:1210
 msgctxt "MdiChild|"
 msgid "&Delete"
 msgstr ""
 
-#: mdichild.cpp:1196
+#: mdichild.cpp:1210
 msgctxt "MdiChild|"
 msgid "Delete"
 msgstr ""
 
-#: mdichild.cpp:1197
+#: mdichild.cpp:1211
 msgctxt "MdiChild|"
 msgid "&Copy"
 msgstr ""
 
-#: mdichild.cpp:1197
+#: mdichild.cpp:1211
 msgctxt "MdiChild|"
 msgid "Ctrl+C"
 msgstr ""
 
-#: mdichild.cpp:1198
+#: mdichild.cpp:1212
 msgctxt "MdiChild|"
 msgid "&Cut"
 msgstr ""
 
-#: mdichild.cpp:1198
+#: mdichild.cpp:1212
 msgctxt "MdiChild|"
 msgid "Ctrl+X"
 msgstr ""
 
-#: mdichild.cpp:1199
+#: mdichild.cpp:1213
 msgctxt "MdiChild|"
 msgid "&Paste"
 msgstr ""
 
-#: mdichild.cpp:1199
+#: mdichild.cpp:1213
 msgctxt "MdiChild|"
 msgid "Ctrl+V"
 msgstr ""
 
-#: mdichild.cpp:1200
+#: mdichild.cpp:1214
 msgctxt "MdiChild|"
 msgid "D&uplicate"
 msgstr ""
 
-#: mdichild.cpp:1200
+#: mdichild.cpp:1214
 msgctxt "MdiChild|"
 msgid "Ctrl+U"
 msgstr ""
 
-#: mdichild.cpp:1205
+#: mdichild.cpp:1219
 msgctxt "MdiChild|"
 msgid "Alt+S"
 msgstr ""
 
-#: mdichild.cpp:1205
+#: mdichild.cpp:1219
 msgctxt "MdiChild|"
 msgid "Simulate"
 msgstr ""
 
-#: mdichild.cpp:1207
+#: mdichild.cpp:1221
 msgctxt "MdiChild|"
 msgid "&Write To Tx"
 msgstr ""
 
-#: mdichild.cpp:1207
+#: mdichild.cpp:1221
 msgctxt "MdiChild|"
 msgid "Ctrl+Alt+W"
 msgstr ""
@@ -1824,7 +1827,7 @@ msgctxt "MixerDialog|"
 msgid "Comment"
 msgstr ""
 
-#: mixerdialog.cpp:13
+#: mixerdialog.cpp:14
 #, qt-format
 msgctxt "MixerDialog|"
 msgid "DEST -> CH%1%2"
@@ -1975,27 +1978,27 @@ msgctxt "ModelEdit|"
 msgid "Negative"
 msgstr ""
 
-#: modeledit.ui:285 modeledit.ui:9450
+#: modeledit.ui:626 modeledit.ui:9674
 msgctxt "ModelEdit|"
 msgid "Protocol"
 msgstr ""
 
-#: modeledit.ui:321
+#: modeledit.ui:285
 msgctxt "ModelEdit|"
 msgid "Channels"
 msgstr ""
 
-#: modeledit.ui:328
+#: modeledit.ui:292
 msgctxt "ModelEdit|"
 msgid "ch"
 msgstr ""
 
-#: modeledit.ui:347
+#: modeledit.ui:311
 msgctxt "ModelEdit|"
 msgid "ppm Delay"
 msgstr ""
 
-#: modeledit.ui:354
+#: modeledit.ui:318
 #| msgid " usec"
 msgctxt "ModelEdit|"
 msgid " uSec"
@@ -2006,800 +2009,875 @@ msgctxt "ModelEdit|"
 msgid "Extended Limits"
 msgstr ""
 
-#: modeledit.ui:298
+#: modeledit.ui:562
 msgctxt "ModelEdit|"
 msgid "PXX"
 msgstr ""
 
-#: modeledit.ui:303
+#: modeledit.ui:567
 msgctxt "ModelEdit|"
 msgid "DSM2"
 msgstr ""
 
-#: modeledit.ui:308
+#: modeledit.ui:572
 msgctxt "ModelEdit|"
 msgid "PPM16"
 msgstr ""
 
-#: modeledit.ui:313
+#: modeledit.ui:577
 msgctxt "ModelEdit|"
 msgid "PPMSIM"
 msgstr ""
 
-#: modeledit.ui:373
+#: modeledit.ui:337
 msgctxt "ModelEdit|"
 msgid " mSec"
 msgstr ""
 
-#: modeledit.ui:395
+#: modeledit.ui:359
 msgctxt "ModelEdit|"
 msgid "PPM Frame Length"
 msgstr ""
 
-#: modeledit.ui:402
+#: modeledit.ui:366
 msgctxt "ModelEdit|"
 msgid "Trainer"
 msgstr ""
 
-#: modeledit.ui:409
+#: modeledit.ui:373
 msgctxt "ModelEdit|"
 msgid "T2throttleTrig"
 msgstr ""
 
-#: modeledit.ui:430
+#: modeledit.ui:394
 msgctxt "ModelEdit|"
 msgid "DSM Type"
 msgstr ""
 
-#: modeledit.ui:437
+#: modeledit.ui:401
 msgctxt "ModelEdit|"
 msgid "PXX RxNum"
 msgstr ""
 
-#: modeledit.ui:445
+#: modeledit.ui:409
 msgctxt "ModelEdit|"
 msgid "LP4/LP5"
 msgstr ""
 
-#: modeledit.ui:450
+#: modeledit.ui:414
 msgctxt "ModelEdit|"
 msgid "DSM2only"
 msgstr ""
 
-#: modeledit.ui:455
+#: modeledit.ui:419
 msgctxt "ModelEdit|"
 msgid "DSM2/DSMX"
 msgstr ""
 
-#: modeledit.ui:485
+#: modeledit.ui:449
 msgctxt "ModelEdit|"
 msgid "Timer ModeB"
 msgstr ""
 
-#: modeledit.ui:511
+#: modeledit.ui:475
 msgctxt "ModelEdit|"
 msgid "Voice Number"
 msgstr ""
 
-#: modeledit.ui:537
+#: modeledit.ui:501
 msgctxt "ModelEdit|"
 msgid "PPM Start Channel"
 msgstr ""
 
-#: modeledit.ui:544
+#: modeledit.ui:508
 msgctxt "ModelEdit|"
 msgid "Auto Limits"
 msgstr ""
 
-#: modeledit.ui:562
+#: modeledit.ui:528
 msgctxt "ModelEdit|"
-msgid "Heli Setup"
+msgid "Volume Control"
 msgstr ""
 
-#: modeledit.ui:568
+#: modeledit.ui:538
 msgctxt "ModelEdit|"
-msgid "Swash Type"
+msgid "America"
 msgstr ""
 
-#: modeledit.ui:576
+#: modeledit.ui:543
 msgctxt "ModelEdit|"
-msgid "Off"
+msgid "Japan"
 msgstr ""
 
-#: modeledit.ui:581
+#: modeledit.ui:548
 msgctxt "ModelEdit|"
-msgid "120"
+msgid "Europe"
 msgstr ""
 
 #: modeledit.ui:586
 msgctxt "ModelEdit|"
-msgid "120X"
+msgid "D16"
 msgstr ""
 
 #: modeledit.ui:591
 msgctxt "ModelEdit|"
-msgid "140"
+msgid "D8"
 msgstr ""
 
 #: modeledit.ui:596
 msgctxt "ModelEdit|"
-msgid "90"
+msgid "LR12"
 msgstr ""
 
 #: modeledit.ui:604
 msgctxt "ModelEdit|"
-msgid "Collective"
+msgid "Country(PXX)"
 msgstr ""
 
 #: modeledit.ui:614
 msgctxt "ModelEdit|"
-msgid "Swash Ring"
+msgid "Type(PXX)"
 msgstr ""
 
-#: modeledit.ui:649
+#: modeledit.ui:634
 msgctxt "ModelEdit|"
-msgid "Invert Elevator"
+msgid "Heli Setup"
 msgstr ""
 
-#: modeledit.ui:656
+#: modeledit.ui:640
 msgctxt "ModelEdit|"
-msgid "Invert Aileron"
+msgid "Swash Type"
+msgstr ""
+
+#: modeledit.ui:648
+msgctxt "ModelEdit|"
+msgid "Off"
+msgstr ""
+
+#: modeledit.ui:653
+msgctxt "ModelEdit|"
+msgid "120"
+msgstr ""
+
+#: modeledit.ui:658
+msgctxt "ModelEdit|"
+msgid "120X"
 msgstr ""
 
 #: modeledit.ui:663
 msgctxt "ModelEdit|"
-msgid "Invert Collective"
+msgid "140"
+msgstr ""
+
+#: modeledit.ui:668
+msgctxt "ModelEdit|"
+msgid "90"
+msgstr ""
+
+#: modeledit.ui:676
+msgctxt "ModelEdit|"
+msgid "Collective"
 msgstr ""
 
 #: modeledit.ui:686
 msgctxt "ModelEdit|"
+msgid "Swash Ring"
+msgstr ""
+
+#: modeledit.ui:721
+msgctxt "ModelEdit|"
+msgid "Invert Elevator"
+msgstr ""
+
+#: modeledit.ui:728
+msgctxt "ModelEdit|"
+msgid "Invert Aileron"
+msgstr ""
+
+#: modeledit.ui:735
+msgctxt "ModelEdit|"
+msgid "Invert Collective"
+msgstr ""
+
+#: modeledit.ui:758
+msgctxt "ModelEdit|"
 msgid "Modes"
 msgstr ""
 
-#: modeledit.ui:701
+#: modeledit.ui:773
 msgctxt "ModelEdit|"
 msgid "FM0"
 msgstr ""
 
-#: modeledit.ui:708
+#: modeledit.ui:780
 msgctxt "ModelEdit|"
 msgid "FM1"
 msgstr ""
 
-#: modeledit.ui:715
+#: modeledit.ui:787
 msgctxt "ModelEdit|"
 msgid "FM2"
 msgstr ""
 
-#: modeledit.ui:722
+#: modeledit.ui:794
 msgctxt "ModelEdit|"
 msgid "FM3"
 msgstr ""
 
-#: modeledit.ui:729
+#: modeledit.ui:801
 msgctxt "ModelEdit|"
 msgid "FM4"
 msgstr ""
 
-#: modeledit.ui:788 modeledit.ui:795 modeledit.ui:802 modeledit.ui:809
+#: modeledit.ui:860 modeledit.ui:867 modeledit.ui:874 modeledit.ui:881
 msgctxt "ModelEdit|"
 msgid "Own Trim"
 msgstr ""
 
-#: modeledit.ui:1122
+#: modeledit.ui:1194
 msgctxt "ModelEdit|"
 msgid "Expo/Dr"
 msgstr ""
 
-#: modeledit.ui:1157 modeledit.ui:1399 modeledit.ui:1545 modeledit.ui:1916
+#: modeledit.ui:1229 modeledit.ui:1471 modeledit.ui:1617 modeledit.ui:1988
 msgctxt "ModelEdit|"
 msgid "HIGH"
 msgstr ""
 
-#: modeledit.ui:1179 modeledit.ui:1409 modeledit.ui:1619 modeledit.ui:1938
+#: modeledit.ui:1251 modeledit.ui:1481 modeledit.ui:1691 modeledit.ui:2010
 msgctxt "ModelEdit|"
 msgid "MID"
 msgstr ""
 
-#: modeledit.ui:1201 modeledit.ui:1419 modeledit.ui:1693 modeledit.ui:1960
+#: modeledit.ui:1273 modeledit.ui:1491 modeledit.ui:1765 modeledit.ui:2032
 msgctxt "ModelEdit|"
 msgid "LOW"
 msgstr ""
 
-#: modeledit.ui:1217 modeledit.ui:1429 modeledit.ui:1767 modeledit.ui:1976
+#: modeledit.ui:1289 modeledit.ui:1501 modeledit.ui:1839 modeledit.ui:2048
 msgctxt "ModelEdit|"
 msgid ""
 "Expo\n"
 "Left"
 msgstr ""
 
-#: modeledit.ui:1239 modeledit.ui:1366 modeledit.ui:1789 modeledit.ui:1998
+#: modeledit.ui:1311 modeledit.ui:1438 modeledit.ui:1861 modeledit.ui:2070
 msgctxt "ModelEdit|"
 msgid ""
 "D/R\n"
 "Left"
 msgstr ""
 
-#: modeledit.ui:1228 modeledit.ui:1377 modeledit.ui:1778 modeledit.ui:1987
+#: modeledit.ui:1300 modeledit.ui:1449 modeledit.ui:1850 modeledit.ui:2059
 msgctxt "ModelEdit|"
 msgid ""
 "D/R\n"
 "Right"
 msgstr ""
 
-#: modeledit.ui:1250 modeledit.ui:1388 modeledit.ui:1800 modeledit.ui:2009
+#: modeledit.ui:1322 modeledit.ui:1460 modeledit.ui:1872 modeledit.ui:2081
 msgctxt "ModelEdit|"
 msgid ""
 "Expo\n"
 "Right"
 msgstr ""
 
-#: modeledit.ui:1324 modeledit.ui:1487 modeledit.ui:1862 modeledit.ui:2083
+#: modeledit.ui:1396 modeledit.ui:1559 modeledit.ui:1934 modeledit.ui:2155
 msgctxt "ModelEdit|"
 msgid "Switch1"
 msgstr ""
 
-#: modeledit.ui:1308 modeledit.ui:1503 modeledit.ui:1852 modeledit.ui:2067
+#: modeledit.ui:1380 modeledit.ui:1575 modeledit.ui:1924 modeledit.ui:2139
 msgctxt "ModelEdit|"
 msgid "Switch2"
 msgstr ""
 
-#: modeledit.ui:9831
+#: modeledit.ui:10055
 msgctxt "ModelEdit|"
 msgid "GVARS"
 msgstr ""
 
-#: modeledit.ui:9852
+#: modeledit.ui:10076
 msgctxt "ModelEdit|"
 msgid "GVAR"
 msgstr ""
 
-#: modeledit.ui:9880
+#: modeledit.ui:10104
 msgctxt "ModelEdit|"
 msgid "Input"
 msgstr ""
 
-#: modeledit.ui:9936
+#: modeledit.ui:10160
 msgctxt "ModelEdit|"
 msgid "GVAR1"
 msgstr ""
 
-#: modeledit.ui:9964
+#: modeledit.ui:10188
 msgctxt "ModelEdit|"
 msgid "GVAR2"
 msgstr ""
 
-#: modeledit.ui:9992
+#: modeledit.ui:10216
 msgctxt "ModelEdit|"
 msgid "GVAR3"
 msgstr ""
 
-#: modeledit.ui:10020
+#: modeledit.ui:10244
 msgctxt "ModelEdit|"
 msgid "GVAR4"
 msgstr ""
 
-#: modeledit.ui:10048
+#: modeledit.ui:10272
 msgctxt "ModelEdit|"
 msgid "GVAR5"
 msgstr ""
 
-#: modeledit.ui:10236
+#: modeledit.ui:10460
 msgctxt "ModelEdit|"
 msgid "GVAR6"
 msgstr ""
 
-#: modeledit.ui:10264
+#: modeledit.ui:10488
 msgctxt "ModelEdit|"
 msgid "GVAR7"
 msgstr ""
 
-#: modeledit.ui:748 modeledit.ui:2098
+#: modeledit.ui:820 modeledit.ui:2170
 msgctxt "ModelEdit|"
 msgid "Rudder"
 msgstr ""
 
-#: modeledit.ui:778 modeledit.ui:1339
+#: modeledit.ui:850 modeledit.ui:1411
 msgctxt "ModelEdit|"
 msgid "Aileron"
 msgstr ""
 
-#: modeledit.ui:768 modeledit.ui:1518
+#: modeledit.ui:840 modeledit.ui:1590
 msgctxt "ModelEdit|"
 msgid "Throttle"
 msgstr ""
 
-#: modeledit.ui:758 modeledit.ui:1877
+#: modeledit.ui:830 modeledit.ui:1949
 msgctxt "ModelEdit|"
 msgid "Elevator"
 msgstr ""
 
-#: modeledit.ui:2109
+#: modeledit.ui:2181
 msgctxt "ModelEdit|"
 msgid "Mixes"
 msgstr ""
 
-#: modeledit.ui:2119
+#: modeledit.ui:2191
 msgctxt "ModelEdit|"
 msgid "Limits"
 msgstr ""
 
-#: modeledit.ui:2184 modeledit.ui:2253 modeledit.ui:2322 modeledit.ui:2391
-#: modeledit.ui:2460 modeledit.ui:2529 modeledit.ui:2598 modeledit.ui:2667
-#: modeledit.ui:2736 modeledit.ui:2805 modeledit.ui:2874 modeledit.ui:2943
-#: modeledit.ui:3012 modeledit.ui:3081 modeledit.ui:3150 modeledit.ui:3219
+#: modeledit.ui:2256 modeledit.ui:2325 modeledit.ui:2394 modeledit.ui:2463
+#: modeledit.ui:2532 modeledit.ui:2601 modeledit.ui:2670 modeledit.ui:2739
+#: modeledit.ui:2808 modeledit.ui:2877 modeledit.ui:2946 modeledit.ui:3015
+#: modeledit.ui:3084 modeledit.ui:3153 modeledit.ui:3222 modeledit.ui:3291
 msgctxt "ModelEdit|"
 msgid "NOR"
 msgstr ""
 
-#: modeledit.ui:2189 modeledit.ui:2258 modeledit.ui:2327 modeledit.ui:2396
-#: modeledit.ui:2465 modeledit.ui:2534 modeledit.ui:2603 modeledit.ui:2672
-#: modeledit.ui:2741 modeledit.ui:2810 modeledit.ui:2879 modeledit.ui:2948
-#: modeledit.ui:3017 modeledit.ui:3086 modeledit.ui:3155 modeledit.ui:3224
+#: modeledit.ui:2261 modeledit.ui:2330 modeledit.ui:2399 modeledit.ui:2468
+#: modeledit.ui:2537 modeledit.ui:2606 modeledit.ui:2675 modeledit.ui:2744
+#: modeledit.ui:2813 modeledit.ui:2882 modeledit.ui:2951 modeledit.ui:3020
+#: modeledit.ui:3089 modeledit.ui:3158 modeledit.ui:3227 modeledit.ui:3296
 msgctxt "ModelEdit|"
 msgid "INV"
 msgstr ""
 
-#: modeledit.ui:3241 modeledit.ui:8610
+#: modeledit.ui:3313 modeledit.ui:8778
 msgctxt "ModelEdit|"
 msgid "Channel"
 msgstr ""
 
-#: modeledit.ui:3263
+#: modeledit.ui:3335
 msgctxt "ModelEdit|"
 msgid "Offset"
 msgstr ""
 
-#: modeledit.ui:3285
+#: modeledit.ui:3357
 msgctxt "ModelEdit|"
 msgid "Min"
 msgstr ""
 
-#: modeledit.ui:3307
+#: modeledit.ui:3379
 msgctxt "ModelEdit|"
 msgid "Max"
 msgstr ""
 
-#: modeledit.ui:640 modeledit.ui:3329
+#: modeledit.ui:712 modeledit.ui:3401
 msgctxt "ModelEdit|"
 msgid "Invert"
 msgstr ""
 
-#: modeledit.ui:3635
+#: modeledit.ui:3707
 msgctxt "ModelEdit|"
 msgid "Curves"
 msgstr ""
 
-#: modeledit.ui:3641
+#: modeledit.ui:3713
 msgctxt "ModelEdit|"
 msgid "Curve 1"
 msgstr ""
 
-#: modeledit.ui:3731
+#: modeledit.ui:3803
 msgctxt "ModelEdit|"
 msgid "Curve 2"
 msgstr ""
 
-#: modeledit.ui:3818
+#: modeledit.ui:3890
 msgctxt "ModelEdit|"
 msgid "Curve 3"
 msgstr ""
 
-#: modeledit.ui:3905
+#: modeledit.ui:3977
 msgctxt "ModelEdit|"
 msgid "Curve 4"
 msgstr ""
 
-#: modeledit.ui:3992
+#: modeledit.ui:4064
 msgctxt "ModelEdit|"
 msgid "Curve 5"
 msgstr ""
 
-#: modeledit.ui:4079
+#: modeledit.ui:4151
 msgctxt "ModelEdit|"
 msgid "Curve 6"
 msgstr ""
 
-#: modeledit.ui:4166
+#: modeledit.ui:4238
 msgctxt "ModelEdit|"
 msgid "Curve 7"
 msgstr ""
 
-#: modeledit.ui:4253
+#: modeledit.ui:4325
 msgctxt "ModelEdit|"
 msgid "Curve 8"
 msgstr ""
 
-#: modeledit.ui:4340
+#: modeledit.ui:4412
 msgctxt "ModelEdit|"
 msgid "Curve 9"
 msgstr ""
 
-#: modeledit.ui:4491
+#: modeledit.ui:4563
 msgctxt "ModelEdit|"
 msgid "Curve 10"
 msgstr ""
 
-#: modeledit.ui:4642
+#: modeledit.ui:4714
 msgctxt "ModelEdit|"
 msgid "Curve 11"
 msgstr ""
 
-#: modeledit.ui:4793
+#: modeledit.ui:4865
 msgctxt "ModelEdit|"
 msgid "Curve 12"
 msgstr ""
 
-#: modeledit.ui:4944
+#: modeledit.ui:5016
 msgctxt "ModelEdit|"
 msgid "Curve 13"
 msgstr ""
 
-#: modeledit.ui:5095
+#: modeledit.ui:5167
 msgctxt "ModelEdit|"
 msgid "Curve 14"
 msgstr ""
 
-#: modeledit.ui:5246
+#: modeledit.ui:5318
 msgctxt "ModelEdit|"
 msgid "Curve 15"
 msgstr ""
 
-#: modeledit.ui:5397
+#: modeledit.ui:5469
 msgctxt "ModelEdit|"
 msgid "Curve 16"
 msgstr ""
 
-#: modeledit.ui:5820
+#: modeledit.ui:5892
 #| msgid "Clear All Mixes"
 msgctxt "ModelEdit|"
 msgid "Clear All Curves"
 msgstr ""
 
-#: modeledit.ui:8273
+#: modeledit.ui:8345
 msgctxt "ModelEdit|"
 msgid "Switches"
 msgstr ""
 
-#: modeledit.ui:8291
+#: modeledit.ui:8363
 msgctxt "ModelEdit|"
 msgid "CSwitch1"
 msgstr ""
 
-#: modeledit.ui:8307
+#: modeledit.ui:8379
 msgctxt "ModelEdit|"
 msgid "CSwitch2"
 msgstr ""
 
-#: modeledit.ui:8323
+#: modeledit.ui:8395
 msgctxt "ModelEdit|"
 msgid "CSwitch3"
 msgstr ""
 
-#: modeledit.ui:8339
+#: modeledit.ui:8411
 msgctxt "ModelEdit|"
 msgid "CSwitch4"
 msgstr ""
 
-#: modeledit.ui:8355
+#: modeledit.ui:8427
 msgctxt "ModelEdit|"
 msgid "CSwitch5"
 msgstr ""
 
-#: modeledit.ui:8431
+#: modeledit.ui:8503
 msgctxt "ModelEdit|"
 msgid "CSwitch6"
 msgstr ""
 
-#: modeledit.ui:8380
+#: modeledit.ui:8452
 msgctxt "ModelEdit|"
 msgid "Function"
 msgstr ""
 
-#: modeledit.ui:8399
+#: modeledit.ui:8471
 msgctxt "ModelEdit|"
 msgid "V1"
 msgstr ""
 
-#: modeledit.ui:8418
+#: modeledit.ui:8490
 msgctxt "ModelEdit|"
 msgid "V2"
 msgstr ""
 
-#: modeledit.ui:8444
+#: modeledit.ui:8516
 msgctxt "ModelEdit|"
 msgid "CSwitch7"
 msgstr ""
 
-#: modeledit.ui:8457
+#: modeledit.ui:8529
 msgctxt "ModelEdit|"
 msgid "CSwitch8"
 msgstr ""
 
-#: modeledit.ui:8470
+#: modeledit.ui:8542
 msgctxt "ModelEdit|"
 msgid "CSwitch9"
 msgstr ""
 
-#: modeledit.ui:8483
+#: modeledit.ui:8555
 #| msgid "CSwitch10"
 msgctxt "ModelEdit|"
 msgid "CSwitchA"
 msgstr ""
 
-#: modeledit.ui:8496
+#: modeledit.ui:8568
 #| msgid "CSwitch11"
 msgctxt "ModelEdit|"
 msgid "CSwitchB"
 msgstr ""
 
-#: modeledit.ui:8509
+#: modeledit.ui:8581
 #| msgid "CSwitch12"
 msgctxt "ModelEdit|"
 msgid "CSwitchC"
 msgstr ""
 
-#: modeledit.ui:8559
+#: modeledit.ui:8631
 msgctxt "ModelEdit|"
 msgid "AND Switch"
 msgstr ""
 
-#: modeledit.ui:8578
+#: modeledit.ui:8650
 msgctxt "ModelEdit|"
 msgid "Telemetry Value"
 msgstr ""
 
-#: modeledit.ui:8589
+#: modeledit.ui:8757
 msgctxt "ModelEdit|"
 msgid "Safety Switches"
 msgstr ""
 
-#: modeledit.ui:8632 modeledit.ui:9737
+#: modeledit.ui:8800 modeledit.ui:9961
 msgctxt "ModelEdit|"
 msgid "Switch"
 msgstr ""
 
-#: modeledit.ui:8654 modeledit.ui:9908
+#: modeledit.ui:8822 modeledit.ui:10132
 msgctxt "ModelEdit|"
 msgid "Value"
 msgstr ""
 
-#: modeledit.ui:8791
+#: modeledit.ui:8959
 msgctxt "ModelEdit|"
 msgid "Number of Voice Switches"
 msgstr ""
 
-#: modeledit.ui:8807
+#: modeledit.ui:8975
 msgctxt "ModelEdit|"
 msgid "Type"
 msgstr ""
 
-#: modeledit.ui:8834
+#: modeledit.ui:9058
 msgctxt "ModelEdit|"
 msgid "Trims"
 msgstr ""
 
-#: modeledit.ui:8943
+#: modeledit.ui:9167
 msgctxt "ModelEdit|"
 msgid "STICK 1"
 msgstr ""
 
-#: modeledit.ui:8958
+#: modeledit.ui:9182
 msgctxt "ModelEdit|"
 msgid "STICK 2"
 msgstr ""
 
-#: modeledit.ui:9048
+#: modeledit.ui:9272
 msgctxt "ModelEdit|"
 msgid "STICK 4"
 msgstr ""
 
-#: modeledit.ui:9063
+#: modeledit.ui:9287
 msgctxt "ModelEdit|"
 msgid "STICK 3"
 msgstr ""
 
-#: modeledit.ui:9133
+#: modeledit.ui:9357
 msgctxt "ModelEdit|"
 msgid "FrSky"
 msgstr ""
 
-#: modeledit.ui:9141
+#: modeledit.ui:9365
 msgctxt "ModelEdit|"
 msgid "Channel 1"
 msgstr ""
 
-#: modeledit.ui:9182 modeledit.ui:9227 modeledit.ui:9332 modeledit.ui:9377
+#: modeledit.ui:9406 modeledit.ui:9451 modeledit.ui:9556 modeledit.ui:9601
 msgctxt "ModelEdit|"
 msgid "---"
 msgstr ""
 
-#: modeledit.ui:9174 modeledit.ui:9324
+#: modeledit.ui:9398 modeledit.ui:9548
 msgctxt "ModelEdit|"
 msgid "Alarm 1"
 msgstr ""
 
-#: modeledit.ui:3363
+#: modeledit.ui:3435
 msgctxt "ModelEdit|"
 msgid "Actual Min"
 msgstr ""
 
-#: modeledit.ui:3397
+#: modeledit.ui:3469
 msgctxt "ModelEdit|"
 msgid "Actual Max"
 msgstr ""
 
-#: modeledit.ui:9149 modeledit.ui:9299
+#: modeledit.ui:8681
+msgctxt "ModelEdit|"
+msgid "CSwitchD"
+msgstr ""
+
+#: modeledit.ui:8694
+msgctxt "ModelEdit|"
+msgid "CSwitchE"
+msgstr ""
+
+#: modeledit.ui:8707
+msgctxt "ModelEdit|"
+msgid "CSwitchG"
+msgstr ""
+
+#: modeledit.ui:8720
+msgctxt "ModelEdit|"
+msgid "CSwitchH"
+msgstr ""
+
+#: modeledit.ui:8733
+msgctxt "ModelEdit|"
+msgid "CSwitchI"
+msgstr ""
+
+#: modeledit.ui:8746
+msgctxt "ModelEdit|"
+msgid "CSwitchF"
+msgstr ""
+
+#: modeledit.ui:9373 modeledit.ui:9523
 msgctxt "ModelEdit|"
 msgid "v    volts"
 msgstr ""
 
-#: modeledit.ui:9154
+#: modeledit.ui:9378
 msgctxt "ModelEdit|"
 msgid "---  raw"
 msgstr ""
 
-#: modeledit.ui:9159
+#: modeledit.ui:9383
 msgctxt "ModelEdit|"
 msgid "V    volts x 2"
 msgstr ""
 
-#: modeledit.ui:9164
+#: modeledit.ui:9388
 msgctxt "ModelEdit|"
 msgid "A    Amps"
 msgstr ""
 
-#: modeledit.ui:9187 modeledit.ui:9232 modeledit.ui:9337 modeledit.ui:9382
+#: modeledit.ui:9411 modeledit.ui:9456 modeledit.ui:9561 modeledit.ui:9606
 msgctxt "ModelEdit|"
 msgid "Yellow"
 msgstr ""
 
-#: modeledit.ui:9192 modeledit.ui:9237 modeledit.ui:9342 modeledit.ui:9387
+#: modeledit.ui:9416 modeledit.ui:9461 modeledit.ui:9566 modeledit.ui:9611
 msgctxt "ModelEdit|"
 msgid "Orange"
 msgstr ""
 
-#: modeledit.ui:9197 modeledit.ui:9242 modeledit.ui:9347 modeledit.ui:9392
+#: modeledit.ui:9421 modeledit.ui:9466 modeledit.ui:9571 modeledit.ui:9616
 msgctxt "ModelEdit|"
 msgid "Red"
 msgstr ""
 
-#: modeledit.ui:9206 modeledit.ui:9251 modeledit.ui:9356 modeledit.ui:9401
+#: modeledit.ui:9430 modeledit.ui:9475 modeledit.ui:9580 modeledit.ui:9625
 msgctxt "ModelEdit|"
 msgid "<"
 msgstr ""
 
-#: modeledit.ui:9211 modeledit.ui:9256 modeledit.ui:9361 modeledit.ui:9406
+#: modeledit.ui:9435 modeledit.ui:9480 modeledit.ui:9585 modeledit.ui:9630
 msgctxt "ModelEdit|"
 msgid ">"
 msgstr ""
 
-#: modeledit.ui:9219 modeledit.ui:9369
+#: modeledit.ui:9443 modeledit.ui:9593
 msgctxt "ModelEdit|"
 msgid "Alarm 2"
 msgstr ""
 
-#: modeledit.ui:9291
+#: modeledit.ui:9515
 msgctxt "ModelEdit|"
 msgid "Channel 2"
 msgstr ""
 
-#: modeledit.ui:9304
+#: modeledit.ui:9528
 msgctxt "ModelEdit|"
 msgid "---   raw"
 msgstr ""
 
-#: modeledit.ui:9309
+#: modeledit.ui:9533
 msgctxt "ModelEdit|"
 msgid "V     volts x 2"
 msgstr ""
 
-#: modeledit.ui:9314
+#: modeledit.ui:9538
 msgctxt "ModelEdit|"
 msgid "A     Amps"
 msgstr ""
 
-#: modeledit.ui:9467
+#: modeledit.ui:9691
 msgctxt "ModelEdit|"
 msgid "FrSky Hub"
 msgstr ""
 
-#: modeledit.ui:9472
+#: modeledit.ui:9696
 msgctxt "ModelEdit|"
 msgid "WingShadow How High"
 msgstr ""
 
-#: modeledit.ui:9486
+#: modeledit.ui:9710
 msgctxt "ModelEdit|"
 msgid "Units"
 msgstr ""
 
-#: modeledit.ui:9503
+#: modeledit.ui:9727
 msgctxt "ModelEdit|"
 msgid "Metric"
 msgstr ""
 
-#: modeledit.ui:9508
+#: modeledit.ui:9732
 msgctxt "ModelEdit|"
 msgid "Imperial"
 msgstr ""
 
-#: modeledit.ui:9522
+#: modeledit.ui:9746
 msgctxt "ModelEdit|"
 msgid "Num Blades"
 msgstr ""
 
-#: modeledit.ui:9551
+#: modeledit.ui:9775
 msgctxt "ModelEdit|"
 msgid "GpsAltMain"
 msgstr ""
 
-#: modeledit.ui:9578
+#: modeledit.ui:9802
 msgctxt "ModelEdit|"
 msgid "Custom Telemetry 1"
 msgstr ""
 
-#: modeledit.ui:9588
+#: modeledit.ui:9812
 msgctxt "ModelEdit|"
 msgid "Custom Telemetry 3"
 msgstr ""
 
-#: modeledit.ui:9598
+#: modeledit.ui:9822
 msgctxt "ModelEdit|"
 msgid "Custom Telemetry 5"
 msgstr ""
 
-#: modeledit.ui:9608
+#: modeledit.ui:9832
 msgctxt "ModelEdit|"
 msgid "Custom Telemetry 2"
 msgstr ""
 
-#: modeledit.ui:9618
+#: modeledit.ui:9842
 msgctxt "ModelEdit|"
 msgid "Custom Telemetry 4"
 msgstr ""
 
-#: modeledit.ui:9628
+#: modeledit.ui:9852
 msgctxt "ModelEdit|"
 msgid "Custom Telemetry 6"
 msgstr ""
 
-#: modeledit.ui:9666
+#: modeledit.ui:9890
 msgctxt "ModelEdit|"
 msgid "FAS current offset"
 msgstr ""
 
-#: modeledit.ui:9702
+#: modeledit.ui:9926
 msgctxt "ModelEdit|"
 msgid "Vario Source"
 msgstr ""
 
-#: modeledit.ui:9713
+#: modeledit.ui:9937
 msgctxt "ModelEdit|"
 msgid "----"
 msgstr ""
 
-#: modeledit.ui:9718
+#: modeledit.ui:9942
 msgctxt "ModelEdit|"
 msgid "Vspd"
 msgstr ""
 
-#: modeledit.ui:9723
+#: modeledit.ui:9947
 msgctxt "ModelEdit|"
 msgid "A2"
 msgstr ""
 
-#: modeledit.ui:9756
+#: modeledit.ui:9980
 msgctxt "ModelEdit|"
 msgid "Sensitivity"
 msgstr ""
 
-#: modeledit.ui:9795
+#: modeledit.ui:10019
 msgctxt "ModelEdit|"
 msgid "Sink Tones Off"
 msgstr ""
 
-#: modeledit.ui:9821
+#: modeledit.ui:10045
 msgctxt "ModelEdit|"
 msgid "Templates"
 msgstr ""
@@ -2809,216 +2887,216 @@ msgctxt "ModelEdit|"
 msgid "Simulate"
 msgstr ""
 
-#: modeledit.cpp:541 modeledit.cpp:551 modeledit.cpp:666
+#: modeledit.cpp:550 modeledit.cpp:560 modeledit.cpp:675
 #, qt-format
 msgctxt "ModelEdit|"
 msgid "CH%1%2"
 msgstr ""
 
-#: modeledit.cpp:592
+#: modeledit.cpp:601
 msgctxt "ModelEdit|"
 msgid " Switch("
 msgstr ""
 
-#: modeledit.cpp:593
+#: modeledit.cpp:602
 msgctxt "ModelEdit|"
 msgid " noTrim"
 msgstr ""
 
-#: modeledit.cpp:603
+#: modeledit.cpp:612
 #, qt-format
 msgctxt "ModelEdit|"
 msgid " Offset(GV%1)"
 msgstr ""
 
-#: modeledit.cpp:607
+#: modeledit.cpp:616
 #, qt-format
 msgctxt "ModelEdit|"
 msgid " Offset(%1%)"
 msgstr ""
 
-#: modeledit.cpp:616
+#: modeledit.cpp:625
 #, qt-format
 msgctxt "ModelEdit|"
 msgid " Diff(%1)"
 msgstr ""
 
-#: modeledit.cpp:626
+#: modeledit.cpp:635
 #, qt-format
 msgctxt "ModelEdit|"
 msgid " Diff(GV%1)"
 msgstr ""
 
-#: modeledit.cpp:637
+#: modeledit.cpp:646
 #, qt-format
 msgctxt "ModelEdit|"
 msgid "!Curve(%1)"
 msgstr ""
 
-#: modeledit.cpp:641
+#: modeledit.cpp:650
 #, qt-format
 msgctxt "ModelEdit|"
 msgid " Curve(%1)"
 msgstr ""
 
-#: modeledit.cpp:646
+#: modeledit.cpp:655
 #, qt-format
 msgctxt "ModelEdit|"
 msgid " Delay(u%1:d%2)"
 msgstr ""
 
-#: modeledit.cpp:647
+#: modeledit.cpp:656
 #, qt-format
 msgctxt "ModelEdit|"
 msgid " Slow(u%1:d%2)"
 msgstr ""
 
-#: modeledit.cpp:649
+#: modeledit.cpp:658
 #, qt-format
 msgctxt "ModelEdit|"
 msgid " Warn(%1)"
 msgstr ""
 
-#: modeledit.cpp:1304 modeledit.cpp:1305
+#: modeledit.cpp:1319 modeledit.cpp:1320
 #, qt-format
 msgctxt "ModelEdit|"
 msgid "%1"
 msgstr ""
 
-#: modeledit.cpp:1660 modeledit.cpp:1674
+#: modeledit.cpp:1697 modeledit.cpp:1711
 #, qt-format
 msgctxt "ModelEdit|"
 msgid "%1.%2"
 msgstr ""
 
-#: modeledit.cpp:3124
+#: modeledit.cpp:3421
 msgctxt "ModelEdit|"
 msgid "Delete Selected Mixes?"
 msgstr ""
 
-#: modeledit.cpp:3276
+#: modeledit.cpp:3573
 msgctxt "ModelEdit|"
 msgid "&Add"
 msgstr ""
 
-#: modeledit.cpp:3276
+#: modeledit.cpp:3573
 msgctxt "ModelEdit|"
 msgid "Ctrl+A"
 msgstr ""
 
-#: modeledit.cpp:3277
+#: modeledit.cpp:3574
 msgctxt "ModelEdit|"
 msgid "&Edit"
 msgstr ""
 
-#: modeledit.cpp:3277
+#: modeledit.cpp:3574
 msgctxt "ModelEdit|"
 msgid "Enter"
 msgstr ""
 
-#: modeledit.cpp:3279
+#: modeledit.cpp:3576
 msgctxt "ModelEdit|"
 msgid "&Delete"
 msgstr ""
 
-#: modeledit.cpp:3279
+#: modeledit.cpp:3576
 msgctxt "ModelEdit|"
 msgid "Delete"
 msgstr ""
 
-#: modeledit.cpp:3280
+#: modeledit.cpp:3577
 msgctxt "ModelEdit|"
 msgid "&Copy"
 msgstr ""
 
-#: modeledit.cpp:3280
+#: modeledit.cpp:3577
 msgctxt "ModelEdit|"
 msgid "Ctrl+C"
 msgstr ""
 
-#: modeledit.cpp:3281
+#: modeledit.cpp:3578
 msgctxt "ModelEdit|"
 msgid "&Cut"
 msgstr ""
 
-#: modeledit.cpp:3281
+#: modeledit.cpp:3578
 msgctxt "ModelEdit|"
 msgid "Ctrl+X"
 msgstr ""
 
-#: modeledit.cpp:3282
+#: modeledit.cpp:3579
 msgctxt "ModelEdit|"
 msgid "&Paste"
 msgstr ""
 
-#: modeledit.cpp:3282
+#: modeledit.cpp:3579
 msgctxt "ModelEdit|"
 msgid "Ctrl+V"
 msgstr ""
 
-#: modeledit.cpp:3283
+#: modeledit.cpp:3580
 msgctxt "ModelEdit|"
 msgid "Du&plicate"
 msgstr ""
 
-#: modeledit.cpp:3285
+#: modeledit.cpp:3582
 msgctxt "ModelEdit|"
 msgid "Move Up"
 msgstr ""
 
-#: modeledit.cpp:108 modeledit.cpp:3285
+#: modeledit.cpp:108 modeledit.cpp:3582
 msgctxt "ModelEdit|"
 msgid "Ctrl+Up"
 msgstr ""
 
-#: modeledit.cpp:3286
+#: modeledit.cpp:3583
 msgctxt "ModelEdit|"
 msgid "Move Down"
 msgstr ""
 
-#: modeledit.cpp:111 modeledit.cpp:3286
+#: modeledit.cpp:111 modeledit.cpp:3583
 msgctxt "ModelEdit|"
 msgid "Ctrl+Down"
 msgstr ""
 
-#: modeledit.cpp:2852
+#: modeledit.cpp:3149
 #, qt-format
 msgctxt "ModelEdit|"
 msgid "Editing curve %1"
 msgstr ""
 
-#: modeledit.cpp:3603
+#: modeledit.cpp:3901
 msgctxt "ModelEdit|"
 msgid "Apply Template?"
 msgstr ""
 
-#: modeledit.cpp:3603
+#: modeledit.cpp:3901
 #, qt-format
 msgctxt "ModelEdit|"
 msgid "Apply template \"%1\"?"
 msgstr ""
 
-#: modeledit.cpp:3630
+#: modeledit.cpp:3928
 msgctxt "ModelEdit|"
 msgid "Clear Mixes?"
 msgstr ""
 
-#: modeledit.cpp:3630
+#: modeledit.cpp:3928
 msgctxt "ModelEdit|"
 msgid "Really clear all the mixes?"
 msgstr ""
 
-#: modeledit.cpp:3642
+#: modeledit.cpp:3940
 msgctxt "ModelEdit|"
 msgid "Clear Curves?"
 msgstr ""
 
-#: modeledit.cpp:3642
+#: modeledit.cpp:3940
 msgctxt "ModelEdit|"
 msgid "Really clear all the curves?"
 msgstr ""
 
-#: modeledit.cpp:3283
+#: modeledit.cpp:3580
 msgctxt "ModelEdit|"
 msgid "Ctrl+U"
 msgstr ""
@@ -3028,26 +3106,26 @@ msgctxt "QObject|"
 msgid "Checking for updates..."
 msgstr ""
 
-#: helpers.cpp:161 helpers.cpp:223 modeledit.cpp:1911
+#: helpers.cpp:182 helpers.cpp:244 modeledit.cpp:2035
 #, qt-format
 msgctxt "QObject|"
 msgid "GV%1"
 msgstr ""
 
-#: helpers.cpp:988 helpers.cpp:993 helpers.cpp:1010 helpers.cpp:1030
-#: helpers.cpp:1053 helpers.cpp:1077 helpers.cpp:1122 helpers.cpp:1127
-#: helpers.cpp:1141
+#: helpers.cpp:1165 helpers.cpp:1170 helpers.cpp:1187 helpers.cpp:1207
+#: helpers.cpp:1230 helpers.cpp:1254 helpers.cpp:1299 helpers.cpp:1304
+#: helpers.cpp:1318
 msgctxt "QObject|"
 msgid "Error"
 msgstr ""
 
-#: helpers.cpp:988 helpers.cpp:1122
+#: helpers.cpp:1165 helpers.cpp:1299
 #, qt-format
 msgctxt "QObject|"
 msgid "Unable to find file %1!"
 msgstr ""
 
-#: helpers.cpp:994 helpers.cpp:1128
+#: helpers.cpp:1171 helpers.cpp:1305
 #, qt-format
 msgctxt "QObject|"
 msgid ""
@@ -3055,25 +3133,25 @@ msgid ""
 "%2."
 msgstr ""
 
-#: helpers.cpp:1011
+#: helpers.cpp:1188
 #, qt-format
 msgctxt "QObject|"
 msgid "Invalid EEPE File Format %1"
 msgstr ""
 
-#: helpers.cpp:1030
+#: helpers.cpp:1207
 #, qt-format
 msgctxt "QObject|"
 msgid "Error reading file %1!"
 msgstr ""
 
-#: helpers.cpp:1053
+#: helpers.cpp:1230
 #, qt-format
 msgctxt "QObject|"
 msgid "Checksum Error reading file %1!"
 msgstr ""
 
-#: helpers.cpp:1078
+#: helpers.cpp:1255
 #, qt-format
 msgctxt "QObject|"
 msgid ""
@@ -3081,7 +3159,7 @@ msgid ""
 "%2."
 msgstr ""
 
-#: helpers.cpp:1142
+#: helpers.cpp:1319
 #, qt-format
 msgctxt "QObject|"
 msgid "Error reading file %1:%2. %3 %4"
@@ -3444,6 +3522,16 @@ msgctxt "burnConfigDialog|"
 msgid "M88"
 msgstr ""
 
+#: burnconfigdialog.ui:627
+msgctxt "burnConfigDialog|"
+msgid "m1281"
+msgstr ""
+
+#: burnconfigdialog.ui:632
+msgctxt "burnConfigDialog|"
+msgid "m2561"
+msgstr ""
+
 #: burnconfigdialog.cpp:130
 msgctxt "burnConfigDialog|"
 msgid "Select Location"
@@ -3760,7 +3848,17 @@ msgctxt "preferencesDialog|"
 msgid "M128"
 msgstr ""
 
-#: preferencesdialog.ui:414
+#: preferencesdialog.ui:411
+msgctxt "preferencesDialog|"
+msgid "M1281"
+msgstr ""
+
+#: preferencesdialog.ui:416
+msgctxt "preferencesDialog|"
+msgid "M2561"
+msgstr ""
+
+#: preferencesdialog.ui:424
 msgctxt "preferencesDialog|"
 msgid "Processor"
 msgstr ""
@@ -4397,7 +4495,7 @@ msgctxt "simulatorDialog|"
 msgid "-100.1"
 msgstr ""
 
-#: simulatordialog.cpp:200
+#: simulatordialog.cpp:287
 msgctxt "simulatorDialog|"
 msgid "Simulating "
 msgstr ""

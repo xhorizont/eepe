@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>780</width>
-    <height>691</height>
+    <height>704</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -35,7 +35,7 @@
    <item row="3" column="1">
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
-      <number>10</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="tabModelSetup">
       <attribute name="title">
@@ -279,50 +279,14 @@
          </property>
         </widget>
        </item>
-       <item row="15" column="0">
-        <widget class="QLabel" name="label_5">
-         <property name="text">
-          <string>Protocol</string>
-         </property>
-        </widget>
-       </item>
-       <item row="15" column="1">
-        <widget class="QComboBox" name="protocolCB">
-         <item>
-          <property name="text">
-           <string notr="true">PPM</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>PXX</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>DSM2</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>PPM16</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>PPMSIM</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="17" column="0">
+       <item row="19" column="0">
         <widget class="QLabel" name="label_6">
          <property name="text">
           <string>Channels</string>
          </property>
         </widget>
        </item>
-       <item row="17" column="1">
+       <item row="19" column="1">
         <widget class="QSpinBox" name="numChannelsSB">
          <property name="suffix">
           <string>ch</string>
@@ -341,14 +305,14 @@
          </property>
         </widget>
        </item>
-       <item row="18" column="0">
+       <item row="20" column="0">
         <widget class="QLabel" name="label_9">
          <property name="text">
           <string>ppm Delay</string>
          </property>
         </widget>
        </item>
-       <item row="18" column="1">
+       <item row="20" column="1">
         <widget class="QSpinBox" name="ppmDelaySB">
          <property name="suffix">
           <string> uSec</string>
@@ -367,7 +331,7 @@
          </property>
         </widget>
        </item>
-       <item row="16" column="1">
+       <item row="18" column="1">
         <widget class="QDoubleSpinBox" name="ppmFrameLengthDSB">
          <property name="suffix">
           <string> mSec</string>
@@ -389,56 +353,56 @@
          </property>
         </widget>
        </item>
-       <item row="16" column="0">
+       <item row="18" column="0">
         <widget class="QLabel" name="label_113">
          <property name="text">
           <string>PPM Frame Length</string>
          </property>
         </widget>
        </item>
-       <item row="22" column="0">
+       <item row="24" column="0">
         <widget class="QLabel" name="label_114">
          <property name="text">
           <string>Trainer</string>
          </property>
         </widget>
        </item>
-       <item row="23" column="0">
+       <item row="25" column="0">
         <widget class="QLabel" name="label_115">
          <property name="text">
           <string>T2throttleTrig</string>
          </property>
         </widget>
        </item>
-       <item row="22" column="1">
+       <item row="24" column="1">
         <widget class="QCheckBox" name="TrainerChkB">
          <property name="text">
           <string/>
          </property>
         </widget>
        </item>
-       <item row="23" column="1">
+       <item row="25" column="1">
         <widget class="QCheckBox" name="T2ThrTrgChkB">
          <property name="text">
           <string/>
          </property>
         </widget>
        </item>
-       <item row="19" column="0">
+       <item row="21" column="0">
         <widget class="QLabel" name="label_116">
          <property name="text">
           <string>DSM Type</string>
          </property>
         </widget>
        </item>
-       <item row="20" column="0">
+       <item row="22" column="0">
         <widget class="QLabel" name="label_117">
          <property name="text">
           <string>PXX RxNum</string>
          </property>
         </widget>
        </item>
-       <item row="19" column="1">
+       <item row="21" column="1">
         <widget class="QComboBox" name="DSM_Type">
          <item>
           <property name="text">
@@ -457,16 +421,16 @@
          </item>
         </widget>
        </item>
-       <item row="20" column="1">
+       <item row="22" column="1">
         <widget class="QSpinBox" name="pxxRxNum">
          <property name="suffix">
           <string/>
          </property>
          <property name="minimum">
-          <number>1</number>
+          <number>0</number>
          </property>
          <property name="maximum">
-          <number>125</number>
+          <number>124</number>
          </property>
          <property name="singleStep">
           <number>1</number>
@@ -512,7 +476,7 @@
          </property>
         </widget>
        </item>
-       <item row="21" column="1">
+       <item row="23" column="1">
         <widget class="QSpinBox" name="PPM1stChan">
          <property name="suffix">
           <string/>
@@ -531,27 +495,135 @@
          </property>
         </widget>
        </item>
-       <item row="21" column="0">
+       <item row="23" column="0">
         <widget class="QLabel" name="label_126">
          <property name="text">
           <string>PPM Start Channel</string>
          </property>
         </widget>
        </item>
-       <item row="24" column="0">
+       <item row="26" column="0">
         <widget class="QLabel" name="label_151">
          <property name="text">
           <string>Auto Limits</string>
          </property>
         </widget>
        </item>
-       <item row="24" column="1">
+       <item row="26" column="1">
         <widget class="QDoubleSpinBox" name="autoLimitsSB">
          <property name="decimals">
           <number>1</number>
          </property>
          <property name="maximum">
           <double>10.000000000000000</double>
+         </property>
+        </widget>
+       </item>
+       <item row="27" column="1">
+        <widget class="QComboBox" name="volumeControlCB"/>
+       </item>
+       <item row="27" column="0">
+        <widget class="QLabel" name="label_155">
+         <property name="text">
+          <string>Volume Control</string>
+         </property>
+        </widget>
+       </item>
+       <item row="16" column="1">
+        <layout class="QGridLayout" name="gridLayout_10">
+         <item row="0" column="4">
+          <widget class="QComboBox" name="countryCB">
+           <item>
+            <property name="text">
+             <string>America</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Japan</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Europe</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item row="0" column="0">
+          <widget class="QComboBox" name="protocolCB">
+           <item>
+            <property name="text">
+             <string notr="true">PPM</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>PXX</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>DSM2</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>PPM16</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>PPMSIM</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item row="0" column="2">
+          <widget class="QComboBox" name="typeCB">
+           <item>
+            <property name="text">
+             <string>D16</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>D8</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>LR12</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item row="0" column="3">
+          <widget class="QLabel" name="label_38">
+           <property name="text">
+            <string>Country(PXX)</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QLabel" name="label_37">
+           <property name="text">
+            <string>Type(PXX)</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item row="16" column="0">
+        <widget class="QLabel" name="label_5">
+         <property name="text">
+          <string>Protocol</string>
          </property>
         </widget>
        </item>
@@ -8272,7 +8344,7 @@ Right</string>
       <attribute name="title">
        <string>Switches</string>
       </attribute>
-      <layout class="QGridLayout" name="gridLayout_8" rowstretch="0,0,0,0,0,0,0,0,0,0,0,0,0,0" columnstretch="0,0,0,0,0,0">
+      <layout class="QGridLayout" name="gridLayout_8" rowstretch="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" columnstretch="0,0,0,0,0,0">
        <item row="1" column="0">
         <widget class="QLabel" name="label_30">
          <property name="minimumSize">
@@ -8510,7 +8582,7 @@ Right</string>
          </property>
         </widget>
        </item>
-       <item row="13" column="0">
+       <item row="19" column="0">
         <spacer name="verticalSpacer">
          <property name="orientation">
           <enum>Qt::Vertical</enum>
@@ -8579,6 +8651,102 @@ Right</string>
          </property>
         </widget>
        </item>
+       <item row="13" column="1">
+        <widget class="QComboBox" name="cswitchFunc_13"/>
+       </item>
+       <item row="14" column="1">
+        <widget class="QComboBox" name="cswitchFunc_14"/>
+       </item>
+       <item row="15" column="1">
+        <widget class="QComboBox" name="cswitchFunc_15"/>
+       </item>
+       <item row="16" column="1">
+        <widget class="QComboBox" name="cswitchFunc_16"/>
+       </item>
+       <item row="17" column="1">
+        <widget class="QComboBox" name="cswitchFunc_17"/>
+       </item>
+       <item row="18" column="1">
+        <widget class="QComboBox" name="cswitchFunc_18"/>
+       </item>
+       <item row="13" column="0">
+        <widget class="QLabel" name="label_156">
+         <property name="frameShape">
+          <enum>QFrame::Panel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <property name="text">
+          <string>CSwitchD</string>
+         </property>
+        </widget>
+       </item>
+       <item row="14" column="0">
+        <widget class="QLabel" name="label_166">
+         <property name="frameShape">
+          <enum>QFrame::Panel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <property name="text">
+          <string>CSwitchE</string>
+         </property>
+        </widget>
+       </item>
+       <item row="16" column="0">
+        <widget class="QLabel" name="label_168">
+         <property name="frameShape">
+          <enum>QFrame::Panel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <property name="text">
+          <string>CSwitchG</string>
+         </property>
+        </widget>
+       </item>
+       <item row="17" column="0">
+        <widget class="QLabel" name="label_169">
+         <property name="frameShape">
+          <enum>QFrame::Panel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <property name="text">
+          <string>CSwitchH</string>
+         </property>
+        </widget>
+       </item>
+       <item row="18" column="0">
+        <widget class="QLabel" name="label_170">
+         <property name="frameShape">
+          <enum>QFrame::Panel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <property name="text">
+          <string>CSwitchI</string>
+         </property>
+        </widget>
+       </item>
+       <item row="15" column="0">
+        <widget class="QLabel" name="label_167">
+         <property name="frameShape">
+          <enum>QFrame::Panel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <property name="text">
+          <string>CSwitchF</string>
+         </property>
+        </widget>
+       </item>
       </layout>
      </widget>
      <widget class="QWidget" name="tabSafetySwitches">
@@ -8588,7 +8756,7 @@ Right</string>
       <attribute name="title">
        <string>Safety Switches</string>
       </attribute>
-      <layout class="QGridLayout" name="grid_tabSafetySwitches" rowstretch="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,10" columnstretch="0,2,9,9,0">
+      <layout class="QGridLayout" name="grid_tabSafetySwitches" rowstretch="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,10,0,0,0,0,0,0,0,0" columnstretch="0,2,9,9,0">
        <property name="topMargin">
         <number>7</number>
        </property>
@@ -8824,6 +8992,62 @@ Right</string>
          </property>
          <property name="text">
           <string/>
+         </property>
+        </widget>
+       </item>
+       <item row="18" column="0">
+        <widget class="QLabel" name="SS17">
+         <property name="text">
+          <string notr="true">CH17</string>
+         </property>
+        </widget>
+       </item>
+       <item row="19" column="0">
+        <widget class="QLabel" name="SS18">
+         <property name="text">
+          <string notr="true">CH18</string>
+         </property>
+        </widget>
+       </item>
+       <item row="20" column="0">
+        <widget class="QLabel" name="SS19">
+         <property name="text">
+          <string notr="true">CH19</string>
+         </property>
+        </widget>
+       </item>
+       <item row="21" column="0">
+        <widget class="QLabel" name="SS20">
+         <property name="text">
+          <string notr="true">CH20</string>
+         </property>
+        </widget>
+       </item>
+       <item row="22" column="0">
+        <widget class="QLabel" name="SS21">
+         <property name="text">
+          <string notr="true">CH21</string>
+         </property>
+        </widget>
+       </item>
+       <item row="23" column="0">
+        <widget class="QLabel" name="SS22">
+         <property name="text">
+          <string notr="true">CH22</string>
+         </property>
+        </widget>
+       </item>
+       <item row="24" column="0">
+        <widget class="QLabel" name="SS23">
+         <property name="text">
+          <string notr="true">CH23</string>
+         </property>
+        </widget>
+       </item>
+       <item row="25" column="0">
+        <widget class="QLabel" name="SS24">
+         <property name="text">
+          <string notr="true">CH24</string>
          </property>
         </widget>
        </item>
@@ -10500,7 +10724,6 @@ Right</string>
   <tabstop>bcP2ChkB</tabstop>
   <tabstop>bcP3ChkB</tabstop>
   <tabstop>pulsePolCB</tabstop>
-  <tabstop>protocolCB</tabstop>
   <tabstop>numChannelsSB</tabstop>
   <tabstop>ppmDelaySB</tabstop>
   <tabstop>AIL_edrSw1</tabstop>

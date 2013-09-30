@@ -59,7 +59,7 @@
 #include "customizesplashdialog.h"
 #include "stamp-eepskye.h"
 
-#define DONATE_STR "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=YHX43JR3J7XGW"
+#define DONATE_MB_STR "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=YHX43JR3J7XGW"
 #define DNLD_VER_ERSKY9X         0
 #define DNLD_VER_ERSKY9XR	       1
 //#define DNLD_VER_ER9X_FRSKY      2
@@ -567,7 +567,7 @@ QStringList MainWindow::GetSambaArguments(const QString &tcl)
 
   QString tclFilename = QDir::tempPath() + "/temp.tcl";
   if (QFile::exists(tclFilename)) {
-    unlink(tclFilename.toAscii());
+    remove(tclFilename.toAscii());
   }
   QFile tclFile(tclFilename);
   if (!tclFile.open(QIODevice::WriteOnly | QIODevice::Text)) {
@@ -937,7 +937,7 @@ void MainWindow::about()
     aboutStr.append(tr("Copyright") +" Michael Blandford &copy;2013<br>");
     aboutStr.append(QString("<a href='http://code.google.com/p/eepe/'>http://code.google.com/p/eepe/</a><br>Revision: %1, %2<br><br>").arg(currentEEPSKYErev).arg(__DATE__));
     aboutStr.append(tr("If you've found this program and/or the ersky9x firmware useful please support by"));
-    aboutStr.append(" <a href='" DONATE_STR "'>");
+    aboutStr.append(" <a href='" DONATE_MB_STR "'>");
     aboutStr.append(tr("donating") + "</a></center>");
 //    aboutStr.append(tr("geegeneral size = %1").arg(sizeof(EEGeneral)));
 

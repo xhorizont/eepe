@@ -406,6 +406,16 @@ Mode 4:
        <string>M128</string>
       </property>
      </item>
+     <item>
+      <property name="text">
+       <string>M1281</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>M2561</string>
+      </property>
+     </item>
     </widget>
    </item>
    <item row="7" column="0">

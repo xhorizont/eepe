@@ -338,23 +338,53 @@ uint32_t simulatorDialog::adjustMode( uint32_t x )
 	return x ;
 }
 
+const uint8_t stickScramble[] =
+{
+    0, 1, 2, 3,
+    0, 2, 1, 3,
+    3, 1, 2, 0,
+    3, 2, 1, 0 } ;
+
 void simulatorDialog::getValues()
 {
 		int8_t trims[4] ;
 
+  if ( g_model.modelVersion >= 2 )
+	{
+		uint8_t stickIndex = g_eeGeneral.stickMode*4 ;
+		
+    calibratedStick[stickScramble[stickIndex+0]] = 1024*nodeLeft->getX(); //RUD
+    calibratedStick[stickScramble[stickIndex+1]] = -1024*nodeLeft->getY(); //ELE
+    calibratedStick[stickScramble[stickIndex+2]] = -1024*nodeRight->getY(); //THR
+    calibratedStick[stickScramble[stickIndex+3]] = 1024*nodeRight->getX(); //AIL
+    
+		uint8_t index ;
+		index =g_eeGeneral.crosstrim ? 3 : 0 ;
+		index =  stickScramble[stickIndex+index] ;
+		trims[index] = ui->trimHLeft->value();
+		index =g_eeGeneral.crosstrim ? 2 : 1 ;
+		index =  stickScramble[stickIndex+index] ;
+		trims[index] = ui->trimVLeft->value();
+		index =g_eeGeneral.crosstrim ? 1 : 2 ;
+		index =  stickScramble[stickIndex+index] ;
+		trims[index] = ui->trimVRight->value();
+		index =g_eeGeneral.crosstrim ? 0 : 3 ;
+		index =  stickScramble[stickIndex+index] ;
+		trims[index] = ui->trimHRight->value();
+	}
+	else
+	{
     calibratedStick[0] = 1024*nodeLeft->getX(); //RUD
     calibratedStick[1] = -1024*nodeLeft->getY(); //ELE
     calibratedStick[2] = -1024*nodeRight->getY(); //THR
     calibratedStick[3] = 1024*nodeRight->getX(); //AIL
-
-		uint32_t phase ;
-
     trims[g_eeGeneral.crosstrim ? 3 : 0] = ui->trimHLeft->value();
     trims[g_eeGeneral.crosstrim ? 2 : 1] = ui->trimVLeft->value();
     trims[g_eeGeneral.crosstrim ? 1 : 2] = ui->trimVRight->value();
     trims[g_eeGeneral.crosstrim ? 0 : 3] = ui->trimHRight->value();
+	}
+		uint32_t phase ;
 
-		 
 		phase = getTrimFlightPhase( CurrentPhase, 0 ) ;
     setTrimValue( phase, 0, trims[0] ) ;
 		phase = getTrimFlightPhase( CurrentPhase, 1 ) ;
@@ -389,8 +419,8 @@ void simulatorDialog::getValues()
 
 				y = adjustMode( y ) ;
 				
-				uint32_t phaseNo = getTrimFlightPhase( CurrentPhase, y ) ;
-				g_model.gvars[i].gvar = getTrimValue( phaseNo, y ) ;
+//				uint32_t phaseNo = getTrimFlightPhase( CurrentPhase, y ) ;
+				g_model.gvars[i].gvar = getTrimValue( CurrentPhase, y ) ;
 				 
 			}
 			else if ( g_model.gvars[i].gvsource == 5 )	// REN
@@ -945,7 +975,7 @@ void simulatorDialog::timerTick()
 {
     int16_t val = 0;
     if((abs(g_model.timer[0].tmrModeA)>1) && (abs(g_model.timer[0].tmrModeA)<TMR_VAROFS)) {
-        val = calibratedStick[CONVERT_MODE(abs(g_model.timer[0].tmrModeA)/2)-1];
+        val = calibratedStick[CONVERT_MODE(abs(g_model.timer[0].tmrModeA)/2,g_model.modelVersion,g_eeGeneral.stickMode)-1];
         val = (g_model.timer[0].tmrModeA<0 ? RESX-val : val+RESX ) / (RESX/16);  // only used for %
     }
 
@@ -1091,7 +1121,7 @@ void simulatorDialog::perOut(bool init)
         //    if(v >=  RESX) v =  RESX;
         //    calibratedStick[i] = v; //for show in expo
 
-        if(!(v/16)) anaCenter |= 1<<(CONVERT_MODE((i+1))-1);
+        if(!(v/16)) anaCenter |= 1<<(CONVERT_MODE((i+1),g_model.modelVersion,g_eeGeneral.stickMode)-1);
 
         //===========Swash Ring================
         if(d && (i==ELE_STICK || i==AIL_STICK))
@@ -1251,11 +1281,34 @@ void simulatorDialog::perOut(bool init)
         trims[i] = getTrimValue( CurrentPhase, idx ) ;
 			}
 		
-			ui->trimHLeft->setValue( trims[0]);  // mode=(0 || 1) -> rud trim else -> ail trim
-  	  ui->trimVLeft->setValue( trims[1]);  // mode=(0 || 2) -> thr trim else -> ele trim
-	    ui->trimVRight->setValue(trims[2]);  // mode=(0 || 2) -> ele trim else -> thr trim
-  	  ui->trimHRight->setValue(trims[3]);  // mode=(0 || 1) -> ail trim else -> rud trim
-		}		
+  		if ( g_model.modelVersion >= 2 )
+			{
+				uint8_t stickIndex = g_eeGeneral.stickMode*4 ;
+		
+				uint8_t index ;
+				index =g_eeGeneral.crosstrim ? 3 : 0 ;
+				index =  stickScramble[stickIndex+index] ;
+				ui->trimHLeft->setValue( trims[index]);  // mode=(0 || 1) -> rud trim else -> ail trim
+				index =g_eeGeneral.crosstrim ? 2 : 1 ;
+				index =  stickScramble[stickIndex+index] ;
+    		ui->trimVLeft->setValue( trims[index]);  // mode=(0 || 2) -> thr trim else -> ele trim
+				index =g_eeGeneral.crosstrim ? 1 : 2 ;
+				index =  stickScramble[stickIndex+index] ;
+    		ui->trimVRight->setValue(trims[index]);  // mode=(0 || 2) -> ele trim else -> thr trim
+				index =g_eeGeneral.crosstrim ? 0 : 3 ;
+				index =  stickScramble[stickIndex+index] ;
+    		ui->trimHRight->setValue(trims[index]);  // mode=(0 || 1) -> ail trim else -> rud trim
+			}
+			else
+			{
+				ui->trimHLeft->setValue( trims[0]);  // mode=(0 || 1) -> rud trim else -> ail trim
+    		ui->trimVLeft->setValue( trims[1]);  // mode=(0 || 2) -> thr trim else -> ele trim
+    		ui->trimVRight->setValue(trims[2]);  // mode=(0 || 2) -> ele trim else -> thr trim
+    		ui->trimHRight->setValue(trims[3]);  // mode=(0 || 1) -> ail trim else -> rud trim
+      }
+		
+		}
+
 		if( (g_eeGeneral.throttleReversed) && (!g_model.thrTrim))
     {
         *trimptr[THR_STICK] *= -1;

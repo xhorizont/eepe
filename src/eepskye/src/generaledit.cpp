@@ -528,6 +528,7 @@ void GeneralEdit::on_channelorderCB_currentIndexChanged(int index)
 void GeneralEdit::on_stickmodeCB_currentIndexChanged(int index)
 {
     g_eeGeneral.stickMode = index;
+//		StickMode = index ;
     updateSettings();
 }
 

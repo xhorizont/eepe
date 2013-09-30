@@ -3,9 +3,14 @@
 #include <QtGui>
 
 //#if !__GNUC__
+#if defined WIN32 || !defined __GNUC__
 #include <Windows.h>
 #include <WinBase.h>
 #include <tlhelp32.h>
+#else
+#include <unistd.h>
+//#include "mountlist.h"
+#endif
 //#endif
 
 avrOutputDialog::avrOutputDialog(QWidget *parent, QString prog, QStringList arg, QString wTitle, int closeBehaviour) :
@@ -47,7 +52,7 @@ avrOutputDialog::avrOutputDialog(QWidget *parent, QString prog, QStringList arg,
 		process->start(prog,arg);
 }
 
-//# if !__GNUC__
+#if defined WIN32 || !defined __GNUC__
 BOOL KillProcessByName(char *szProcessToKill){
         HANDLE hProcessSnap;
         HANDLE hProcess;
@@ -90,15 +95,15 @@ BOOL KillProcessByName(char *szProcessToKill){
         CloseHandle(hProcessSnap);  // closes the snapshot handle
         return( TRUE );
 }
-//#endif
+#endif
 
 void avrOutputDialog::killTimerElapsed()
 {
   delete kill_timer;
   kill_timer = NULL;
-//# if !__GNUC__
+#if defined WIN32 || !defined __GNUC__
   KillProcessByName( (char *)"tasklist.exe");
-//#endif
+#endif
 }
 
 

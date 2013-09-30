@@ -1,893 +1,1967 @@
 Index: simulatordialog.cpp
 ===================================================================
---- simulatordialog.cpp	(revision 372)
+--- simulatordialog.cpp	(revision 382)
 +++ simulatordialog.cpp	(working copy)
-@@ -1457,21 +1457,44 @@
-         ex_chans[i] = chans[i]; //for getswitch
- 
-         int16_t ofs = g_model.limitData[i].offset;
--        int16_t lim_p = 10*(g_model.limitData[i].max+100);
--        int16_t lim_n = 10*(g_model.limitData[i].min-100); //multiply by 10 to get same range as ofs (-1000..1000)
-+				int16_t xofs = ofs ;
-+				if ( xofs > g_model.sub_trim_limit )
-+				{
-+					xofs = g_model.sub_trim_limit ;
-+				}
-+				else if ( xofs < -g_model.sub_trim_limit )
-+				{
-+					xofs = -g_model.sub_trim_limit ;
-+				}
-+				int16_t lim_p = 10*(g_model.limitData[i].max+100) + xofs ;
-+        int16_t lim_n = 10*(g_model.limitData[i].min-100) + xofs ; //multiply by 10 to get same range as ofs (-1000..1000)
-+				if ( lim_p > 1250 )
-+				{
-+					lim_p = 1250 ;
-+				}
-+				if ( lim_n < -1250 )
-+				{
-+					lim_n = -1250 ;
-+				}
-         if(ofs>lim_p) ofs = lim_p;
-         if(ofs<lim_n) ofs = lim_n;
- 
--        if(q) q = (q>0) ?
--                    q*((int32_t)lim_p-ofs)/100000 :
--                    -q*((int32_t)lim_n-ofs)/100000 ; //div by 100000 -> output = -1024..1024
-+        if(q)
-+				{
-+					int16_t temp = (q<0) ? ((int16_t)ofs-lim_n) : ((int16_t)lim_p-ofs) ;
-+          q = ( q * temp ) / 100000 ; //div by 100000 -> output = -1024..1024
-+				}
- 
--        q += calc1000toRESX(ofs);
--        lim_p = calc1000toRESX(lim_p);
-+				int16_t result ;
-+				result = calc1000toRESX(ofs);
-+  			result += q ; // we convert value to a 16bit value
-+        
-+				lim_p = calc1000toRESX(lim_p);
-         lim_n = calc1000toRESX(lim_n);
--        if(q>lim_p) q = lim_p;
--        if(q<lim_n) q = lim_n;
--        if(g_model.limitData[i].revert) q=-q;// finally do the reverse.
-+        if(result>lim_p) result = lim_p;
-+        if(result<lim_n) result = lim_n;
-+        
-+				if(g_model.limitData[i].revert) result = -result ;// finally do the reverse.
- 
- 				{
- 					uint8_t numSafety = 16 - g_model.numVoice ;
-@@ -1481,13 +1504,13 @@
- 						{
- 							if ( ( g_model.safetySw[i].opt.ss.mode != 1 ) && ( g_model.safetySw[i].opt.ss.mode != 2 ) )	// And not used as an alarm
- 							{
--        		    if(getSwitch(g_model.safetySw[i].opt.ss.swtch,0)) q = calc100toRESX(g_model.safetySw[i].opt.ss.val) ;
-+        		    if(getSwitch(g_model.safetySw[i].opt.ss.swtch,0)) result = calc100toRESX(g_model.safetySw[i].opt.ss.val) ;
- 							}
- 						}
- 					}
- 				}
-         //cli();
--        chanOut[i] = q; //copy consistent word to int-level
-+        chanOut[i] = result ; //copy consistent word to int-level
-         //sei();
-     }
+@@ -338,23 +338,53 @@
+ 	return x ;
  }
+ 
++const uint8_t stickScramble[] =
++{
++    0, 1, 2, 3,
++    0, 2, 1, 3,
++    3, 1, 2, 0,
++    3, 2, 1, 0 } ;
++
+ void simulatorDialog::getValues()
+ {
+ 		int8_t trims[4] ;
+ 
++  if ( g_model.modelVersion >= 2 )
++	{
++		uint8_t stickIndex = g_eeGeneral.stickMode*4 ;
++		
++    calibratedStick[stickScramble[stickIndex+0]] = 1024*nodeLeft->getX(); //RUD
++    calibratedStick[stickScramble[stickIndex+1]] = -1024*nodeLeft->getY(); //ELE
++    calibratedStick[stickScramble[stickIndex+2]] = -1024*nodeRight->getY(); //THR
++    calibratedStick[stickScramble[stickIndex+3]] = 1024*nodeRight->getX(); //AIL
++    
++		uint8_t index ;
++		index =g_eeGeneral.crosstrim ? 3 : 0 ;
++		index =  stickScramble[stickIndex+index] ;
++		trims[index] = ui->trimHLeft->value();
++		index =g_eeGeneral.crosstrim ? 2 : 1 ;
++		index =  stickScramble[stickIndex+index] ;
++		trims[index] = ui->trimVLeft->value();
++		index =g_eeGeneral.crosstrim ? 1 : 2 ;
++		index =  stickScramble[stickIndex+index] ;
++		trims[index] = ui->trimVRight->value();
++		index =g_eeGeneral.crosstrim ? 0 : 3 ;
++		index =  stickScramble[stickIndex+index] ;
++		trims[index] = ui->trimHRight->value();
++	}
++	else
++	{
+     calibratedStick[0] = 1024*nodeLeft->getX(); //RUD
+     calibratedStick[1] = -1024*nodeLeft->getY(); //ELE
+     calibratedStick[2] = -1024*nodeRight->getY(); //THR
+     calibratedStick[3] = 1024*nodeRight->getX(); //AIL
+-
+-		uint32_t phase ;
+-
+     trims[g_eeGeneral.crosstrim ? 3 : 0] = ui->trimHLeft->value();
+     trims[g_eeGeneral.crosstrim ? 2 : 1] = ui->trimVLeft->value();
+     trims[g_eeGeneral.crosstrim ? 1 : 2] = ui->trimVRight->value();
+     trims[g_eeGeneral.crosstrim ? 0 : 3] = ui->trimHRight->value();
++	}
++		uint32_t phase ;
+ 
+-		 
+ 		phase = getTrimFlightPhase( CurrentPhase, 0 ) ;
+     setTrimValue( phase, 0, trims[0] ) ;
+ 		phase = getTrimFlightPhase( CurrentPhase, 1 ) ;
+@@ -389,8 +419,8 @@
+ 
+ 				y = adjustMode( y ) ;
+ 				
+-				uint32_t phaseNo = getTrimFlightPhase( CurrentPhase, y ) ;
+-				g_model.gvars[i].gvar = getTrimValue( phaseNo, y ) ;
++//				uint32_t phaseNo = getTrimFlightPhase( CurrentPhase, y ) ;
++				g_model.gvars[i].gvar = getTrimValue( CurrentPhase, y ) ;
+ 				 
+ 			}
+ 			else if ( g_model.gvars[i].gvsource == 5 )	// REN
+@@ -945,7 +975,7 @@
+ {
+     int16_t val = 0;
+     if((abs(g_model.timer[0].tmrModeA)>1) && (abs(g_model.timer[0].tmrModeA)<TMR_VAROFS)) {
+-        val = calibratedStick[CONVERT_MODE(abs(g_model.timer[0].tmrModeA)/2)-1];
++        val = calibratedStick[CONVERT_MODE(abs(g_model.timer[0].tmrModeA)/2,g_model.modelVersion,g_eeGeneral.stickMode)-1];
+         val = (g_model.timer[0].tmrModeA<0 ? RESX-val : val+RESX ) / (RESX/16);  // only used for %
+     }
+ 
+@@ -1091,7 +1121,7 @@
+         //    if(v >=  RESX) v =  RESX;
+         //    calibratedStick[i] = v; //for show in expo
+ 
+-        if(!(v/16)) anaCenter |= 1<<(CONVERT_MODE((i+1))-1);
++        if(!(v/16)) anaCenter |= 1<<(CONVERT_MODE((i+1),g_model.modelVersion,g_eeGeneral.stickMode)-1);
+ 
+         //===========Swash Ring================
+         if(d && (i==ELE_STICK || i==AIL_STICK))
+@@ -1251,11 +1281,34 @@
+         trims[i] = getTrimValue( CurrentPhase, idx ) ;
+ 			}
+ 		
+-			ui->trimHLeft->setValue( trims[0]);  // mode=(0 || 1) -> rud trim else -> ail trim
+-  	  ui->trimVLeft->setValue( trims[1]);  // mode=(0 || 2) -> thr trim else -> ele trim
+-	    ui->trimVRight->setValue(trims[2]);  // mode=(0 || 2) -> ele trim else -> thr trim
+-  	  ui->trimHRight->setValue(trims[3]);  // mode=(0 || 1) -> ail trim else -> rud trim
+-		}		
++  		if ( g_model.modelVersion >= 2 )
++			{
++				uint8_t stickIndex = g_eeGeneral.stickMode*4 ;
++		
++				uint8_t index ;
++				index =g_eeGeneral.crosstrim ? 3 : 0 ;
++				index =  stickScramble[stickIndex+index] ;
++				ui->trimHLeft->setValue( trims[index]);  // mode=(0 || 1) -> rud trim else -> ail trim
++				index =g_eeGeneral.crosstrim ? 2 : 1 ;
++				index =  stickScramble[stickIndex+index] ;
++    		ui->trimVLeft->setValue( trims[index]);  // mode=(0 || 2) -> thr trim else -> ele trim
++				index =g_eeGeneral.crosstrim ? 1 : 2 ;
++				index =  stickScramble[stickIndex+index] ;
++    		ui->trimVRight->setValue(trims[index]);  // mode=(0 || 2) -> ele trim else -> thr trim
++				index =g_eeGeneral.crosstrim ? 0 : 3 ;
++				index =  stickScramble[stickIndex+index] ;
++    		ui->trimHRight->setValue(trims[index]);  // mode=(0 || 1) -> ail trim else -> rud trim
++			}
++			else
++			{
++				ui->trimHLeft->setValue( trims[0]);  // mode=(0 || 1) -> rud trim else -> ail trim
++    		ui->trimVLeft->setValue( trims[1]);  // mode=(0 || 2) -> thr trim else -> ele trim
++    		ui->trimVRight->setValue(trims[2]);  // mode=(0 || 2) -> ele trim else -> thr trim
++    		ui->trimHRight->setValue(trims[3]);  // mode=(0 || 1) -> ail trim else -> rud trim
++      }
++		
++		}
++
+ 		if( (g_eeGeneral.throttleReversed) && (!g_model.thrTrim))
+     {
+         *trimptr[THR_STICK] *= -1;
+Index: mixerdialog.cpp
+===================================================================
+--- mixerdialog.cpp	(revision 381)
++++ mixerdialog.cpp	(working copy)
+@@ -3,7 +3,7 @@
+ #include "pers.h"
+ #include "helpers.h"
+ 
+-MixerDialog::MixerDialog(QWidget *parent, SKYMixData *mixdata, int stickMode, QString * comment) :
++MixerDialog::MixerDialog(QWidget *parent, SKYMixData *mixdata, int stickMode, QString * comment, int modelVersion) :
+     QDialog(parent),
+     ui(new Ui::MixerDialog)
+ {
+@@ -11,7 +11,7 @@
+     md = mixdata;
+ 
+     this->setWindowTitle(tr("DEST -> CH%1%2").arg(md->destCh/10).arg(md->destCh%10));
+-    populateSourceCB(ui->sourceCB, stickMode, 0, md->srcRaw);
++    populateSourceCB(ui->sourceCB, stickMode, 0, md->srcRaw, modelVersion);
+     ui->sourceCB->addItem("3POS");
+     ui->sourceCB->addItem("GV1 ");
+     ui->sourceCB->addItem("GV2 ");
 Index: modeledit.h
 ===================================================================
---- modeledit.h	(revision 372)
+--- modeledit.h	(revision 381)
 +++ modeledit.h	(working copy)
-@@ -246,6 +246,7 @@
-     void on_DSM_Type_currentIndexChanged(int index);
+@@ -235,6 +235,7 @@
+     void on_pulsePolCB_currentIndexChanged(int index);
+     void on_trimSWCB_currentIndexChanged(int index);
+     void on_trimIncCB_currentIndexChanged(int index);
++    void on_volumeControlCB_currentIndexChanged(int index) ;
+     void on_timerDirCB_currentIndexChanged(int index);
+     void on_timerModeCB_currentIndexChanged(int index);
+     void on_timerModeBCB_currentIndexChanged(int index);
+@@ -250,6 +251,8 @@
      void on_pxxRxNum_editingFinished();
  		void on_VoiceNumberSB_editingFinished() ;
-+		void on_autoLimitsSB_editingFinished() ;
+ 		void on_autoLimitsSB_editingFinished() ;
++		void on_countryCB_currentIndexChanged(int index) ;
++		void on_typeCB_currentIndexChanged(int index) ;
  };
  
  
+Index: pers.h
+===================================================================
+--- pers.h	(revision 381)
++++ pers.h	(working copy)
+@@ -34,7 +34,7 @@
+ 
+ //convert from mode 1 to mode g_eeGeneral.stickMode
+ //NOTICE!  =>  1..4 -> 1..4
+-#define CONVERT_MODE(x) (((x)<=4) ? modn12x3[g_eeGeneral.stickMode][((x)-1)] : (x))
++//#define CONVERT_MODE(x) (((x)<=4) ? modn12x3[g_eeGeneral.stickMode][((x)-1)] : (x))
+ #define CHANNEL_ORDER(x) (chout_ar[g_eeGeneral.templateSetup*4 + (x)-1])
+ #define THR_STICK       (2-(g_eeGeneral.stickMode&1))
+ #define ELE_STICK       (1+(g_eeGeneral.stickMode&1))
+@@ -169,7 +169,7 @@
+ #define PPM_BASE   (MIX_CYC3)
+ #define CHOUT_BASE (PPM_BASE+NUM_PPM)
+ 
+-#define CM(x) (CONVERT_MODE(x))  //good for SRC
++#define CM(x,y,z) (CONVERT_MODE(x,y,z))  //good for SRC
+ #define CH(x) (CHOUT_BASE+(x))
+ #define CV(x) (CURVE_BASE+(x)-1)
+ #define CC(x) (CHANNEL_ORDER(x)) //need to invert this to work with dest
+Index: file.cpp
+===================================================================
+--- file.cpp	(revision 381)
++++ file.cpp	(working copy)
+@@ -573,7 +573,7 @@
+ 	dest->FrSkyGpsAlt = source->FrSkyGpsAlt ;
+ 	dest->FrSkyImperial = source->FrSkyImperial ;
+ 	dest->FrSkyAltAlarm = source->FrSkyAltAlarm ;
+-	dest->version = source->version ;
++  dest->modelVersion = source->version ;
+ 	dest->protocol = source->protocol ;
+ 	dest->ppmNCH = source->ppmNCH ;
+ 	dest->thrTrim = source->thrTrim ;
+@@ -807,7 +807,7 @@
+ 				
+ 				if ( version != 255 )
+ 				{
+-					radioData->models[id].version = 0 ;					// default version number
++          radioData->models[id].modelVersion = 0 ;					// default version number
+ 				}
+ 			}
+ 
+@@ -817,7 +817,7 @@
+ //          radioData->models[id].name[i] = idx2char(idx);
+ //      }
+       
+-			radioData->models[id].version = MDSKYVERS ; //update mdvers
++      radioData->models[id].modelVersion = MDSKYVERS ; //update mdvers
+ 
+ 			if ( radioData->models[id].numBlades == 0 )
+ 			{
+Index: mixerdialog.h
+===================================================================
+--- mixerdialog.h	(revision 381)
++++ mixerdialog.h	(working copy)
+@@ -11,7 +11,7 @@
+ class MixerDialog : public QDialog {
+     Q_OBJECT
+ public:
+-    MixerDialog(QWidget *parent, SKYMixData *mixdata, int stickMode, QString * comment);
++    MixerDialog(QWidget *parent, SKYMixData *mixdata, int stickMode, QString * comment, int modelVersion);
+     ~MixerDialog();
+ 
+ //    QString getComment();
 Index: mainwindow.cpp
 ===================================================================
---- mainwindow.cpp	(revision 374)
+--- mainwindow.cpp	(revision 381)
 +++ mainwindow.cpp	(working copy)
-@@ -387,38 +387,38 @@
-             return;
-         }
+@@ -59,7 +59,7 @@
+ #include "customizesplashdialog.h"
+ #include "stamp-eepskye.h"
  
--//        if(rev>currentEEPErev)
--//        {
--//            showcheckForUpdatesResult = false; // update is available - do not show dialog
-+        if(rev>currentEEPSKYErev)
-+        {
-+            showcheckForUpdatesResult = false; // update is available - do not show dialog
+-#define DONATE_STR "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=YHX43JR3J7XGW"
++#define DONATE_MB_STR "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=YHX43JR3J7XGW"
+ #define DNLD_VER_ERSKY9X         0
+ #define DNLD_VER_ERSKY9XR	       1
+ //#define DNLD_VER_ER9X_FRSKY      2
+@@ -937,7 +937,7 @@
+     aboutStr.append(tr("Copyright") +" Michael Blandford &copy;2013<br>");
+     aboutStr.append(QString("<a href='http://code.google.com/p/eepe/'>http://code.google.com/p/eepe/</a><br>Revision: %1, %2<br><br>").arg(currentEEPSKYErev).arg(__DATE__));
+     aboutStr.append(tr("If you've found this program and/or the ersky9x firmware useful please support by"));
+-    aboutStr.append(" <a href='" DONATE_STR "'>");
++    aboutStr.append(" <a href='" DONATE_MB_STR "'>");
+     aboutStr.append(tr("donating") + "</a></center>");
+ //    aboutStr.append(tr("geegeneral size = %1").arg(sizeof(EEGeneral)));
  
--//#ifdef Q_OS_WIN32
--//            int ret = QMessageBox::question(this, "eePe", tr("A new version of eePe is available (r%1)<br>"
--//                                                                "Would you like to download it?").arg(rev) ,
--//                                            QMessageBox::Yes | QMessageBox::No);
-+#ifdef Q_OS_WIN32
-+            int ret = QMessageBox::question(this, "eePskye", tr("A new version of eePe is available (r%1)<br>"
-+                                                                "Would you like to download it?").arg(rev) ,
-+                                            QMessageBox::Yes | QMessageBox::No);
- 
--//    				QSettings settings("er9x-eePskye", "eePskye");
-+    				QSettings settings("erSKY9x-eePskye", "eePskye");
- 
--//            if (ret == QMessageBox::Yes)
--//            {
--//                QString fileName = QFileDialog::getSaveFileName(this, tr("Save As"),settings.value("lastDir").toString() + "/eePeInstall.exe",tr("Executable (*.exe)"));
--//                if (fileName.isEmpty()) return;
-+            if (ret == QMessageBox::Yes)
-+            {
-+                QString fileName = QFileDialog::getSaveFileName(this, tr("Save As"),settings.value("lastDir").toString() + "/eePeInstall.exe",tr("Executable (*.exe)"));
-+                if (fileName.isEmpty()) return;
- 
--//                downloadDialog * dd = new downloadDialog(this,EEPE_URL,fileName);
--//                installer_fileName = fileName;
--//                connect(dd,SIGNAL(accepted()),this,SLOT(reply2Accepted()));
--//                dd->show();
--//            }           
--//#else
--//            QMessageBox::information(this, "eePe", tr("A new version of eePe is available (r%1)\n"
--//                                                      "To update please visit the eepe code page\n"
--//                                                      "http://code.google.com/p/eepe/").arg(rev) );
--//#endif
--//        }
--//        else
--//        {
--//            if(showcheckForUpdatesResult && check1done && check2done)
--//                QMessageBox::information(this, "eePe", tr("No updates available at this time."));
--//        }
-+                downloadDialog * dd = new downloadDialog(this,EEPE_URL,fileName);
-+                installer_fileName = fileName;
-+                connect(dd,SIGNAL(accepted()),this,SLOT(reply2Accepted()));
-+                dd->show();
-+            }           
-+#else
-+            QMessageBox::information(this, "eePe", tr("A new version of eePskye is available (r%1)\n"
-+                                                      "To update please visit the eepe code page\n"
-+                                                      "http://code.google.com/p/eepe/").arg(rev) );
-+#endif
-+        }
-+        else
-+        {
-+            if(showcheckForUpdatesResult && check1done && check2done)
-+                QMessageBox::information(this, "eePskye", tr("No updates available at this time."));
-+        }
-     }
-     else
-     {
 Index: diff1.txt
 ===================================================================
---- diff1.txt	(revision 372)
+--- diff1.txt	(revision 381)
 +++ diff1.txt	(working copy)
-@@ -1,226 +1,158 @@
-+Index: simulatordialog.cpp
-+===================================================================
-+--- simulatordialog.cpp	(revision 372)
-++++ simulatordialog.cpp	(working copy)
-+@@ -1457,21 +1457,44 @@
-+         ex_chans[i] = chans[i]; //for getswitch
-+ 
-+         int16_t ofs = g_model.limitData[i].offset;
-+-        int16_t lim_p = 10*(g_model.limitData[i].max+100);
-+-        int16_t lim_n = 10*(g_model.limitData[i].min-100); //multiply by 10 to get same range as ofs (-1000..1000)
-++				int16_t xofs = ofs ;
-++				if ( xofs > g_model.sub_trim_limit )
-++				{
-++					xofs = g_model.sub_trim_limit ;
-++				}
-++				else if ( xofs < -g_model.sub_trim_limit )
-++				{
-++					xofs = -g_model.sub_trim_limit ;
-++				}
-++				int16_t lim_p = 10*(g_model.limitData[i].max+100) + xofs ;
-++        int16_t lim_n = 10*(g_model.limitData[i].min-100) + xofs ; //multiply by 10 to get same range as ofs (-1000..1000)
-++				if ( lim_p > 1250 )
-++				{
-++					lim_p = 1250 ;
-++				}
-++				if ( lim_n < -1250 )
-++				{
-++					lim_n = -1250 ;
-++				}
-+         if(ofs>lim_p) ofs = lim_p;
-+         if(ofs<lim_n) ofs = lim_n;
-+ 
-+-        if(q) q = (q>0) ?
-+-                    q*((int32_t)lim_p-ofs)/100000 :
-+-                    -q*((int32_t)lim_n-ofs)/100000 ; //div by 100000 -> output = -1024..1024
-++        if(q)
-++				{
-++					int16_t temp = (q<0) ? ((int16_t)ofs-lim_n) : ((int16_t)lim_p-ofs) ;
-++          q = ( q * temp ) / 100000 ; //div by 100000 -> output = -1024..1024
-++				}
-+ 
-+-        q += calc1000toRESX(ofs);
-+-        lim_p = calc1000toRESX(lim_p);
-++				int16_t result ;
-++				result = calc1000toRESX(ofs);
-++  			result += q ; // we convert value to a 16bit value
-++        
-++				lim_p = calc1000toRESX(lim_p);
-+         lim_n = calc1000toRESX(lim_n);
-+-        if(q>lim_p) q = lim_p;
-+-        if(q<lim_n) q = lim_n;
-+-        if(g_model.limitData[i].revert) q=-q;// finally do the reverse.
-++        if(result>lim_p) result = lim_p;
-++        if(result<lim_n) result = lim_n;
-++        
-++				if(g_model.limitData[i].revert) result = -result ;// finally do the reverse.
-+ 
-+ 				{
-+ 					uint8_t numSafety = 16 - g_model.numVoice ;
-+@@ -1481,13 +1504,13 @@
-+ 						{
-+ 							if ( ( g_model.safetySw[i].opt.ss.mode != 1 ) && ( g_model.safetySw[i].opt.ss.mode != 2 ) )	// And not used as an alarm
-+ 							{
-+-        		    if(getSwitch(g_model.safetySw[i].opt.ss.swtch,0)) q = calc100toRESX(g_model.safetySw[i].opt.ss.val) ;
-++        		    if(getSwitch(g_model.safetySw[i].opt.ss.swtch,0)) result = calc100toRESX(g_model.safetySw[i].opt.ss.val) ;
-+ 							}
-+ 						}
-+ 					}
-+ 				}
-+         //cli();
-+-        chanOut[i] = q; //copy consistent word to int-level
-++        chanOut[i] = result ; //copy consistent word to int-level
-+         //sei();
-+     }
+@@ -1,893 +1,262 @@
+ Index: simulatordialog.cpp
+ ===================================================================
+---- simulatordialog.cpp	(revision 372)
++--- simulatordialog.cpp	(revision 382)
+ +++ simulatordialog.cpp	(working copy)
+-@@ -1457,21 +1457,44 @@
+-         ex_chans[i] = chans[i]; //for getswitch
++@@ -338,23 +338,53 @@
++ 	return x ;
 + }
+  
+-         int16_t ofs = g_model.limitData[i].offset;
+--        int16_t lim_p = 10*(g_model.limitData[i].max+100);
+--        int16_t lim_n = 10*(g_model.limitData[i].min-100); //multiply by 10 to get same range as ofs (-1000..1000)
+-+				int16_t xofs = ofs ;
+-+				if ( xofs > g_model.sub_trim_limit )
+-+				{
+-+					xofs = g_model.sub_trim_limit ;
+-+				}
+-+				else if ( xofs < -g_model.sub_trim_limit )
+-+				{
+-+					xofs = -g_model.sub_trim_limit ;
+-+				}
+-+				int16_t lim_p = 10*(g_model.limitData[i].max+100) + xofs ;
+-+        int16_t lim_n = 10*(g_model.limitData[i].min-100) + xofs ; //multiply by 10 to get same range as ofs (-1000..1000)
+-+				if ( lim_p > 1250 )
+-+				{
+-+					lim_p = 1250 ;
+-+				}
+-+				if ( lim_n < -1250 )
+-+				{
+-+					lim_n = -1250 ;
+-+				}
+-         if(ofs>lim_p) ofs = lim_p;
+-         if(ofs<lim_n) ofs = lim_n;
+++const uint8_t stickScramble[] =
+++{
+++    0, 1, 2, 3,
+++    0, 2, 1, 3,
+++    3, 1, 2, 0,
+++    3, 2, 1, 0 } ;
+++
++ void simulatorDialog::getValues()
++ {
++ 		int8_t trims[4] ;
+  
+--        if(q) q = (q>0) ?
+--                    q*((int32_t)lim_p-ofs)/100000 :
+--                    -q*((int32_t)lim_n-ofs)/100000 ; //div by 100000 -> output = -1024..1024
+-+        if(q)
+-+				{
+-+					int16_t temp = (q<0) ? ((int16_t)ofs-lim_n) : ((int16_t)lim_p-ofs) ;
+-+          q = ( q * temp ) / 100000 ; //div by 100000 -> output = -1024..1024
+-+				}
+++  if ( g_model.modelVersion >= 2 )
+++	{
+++		uint8_t stickIndex = g_eeGeneral.stickMode*4 ;
+++		
+++    calibratedStick[stickScramble[stickIndex+0]] = 1024*nodeLeft->getX(); //RUD
+++    calibratedStick[stickScramble[stickIndex+1]] = -1024*nodeLeft->getY(); //ELE
+++    calibratedStick[stickScramble[stickIndex+2]] = -1024*nodeRight->getY(); //THR
+++    calibratedStick[stickScramble[stickIndex+3]] = 1024*nodeRight->getX(); //AIL
+++    
+++		uint8_t index ;
+++		index =g_eeGeneral.crosstrim ? 3 : 0 ;
+++		index =  stickScramble[stickIndex+index] ;
+++		trims[index] = ui->trimHLeft->value();
+++		index =g_eeGeneral.crosstrim ? 2 : 1 ;
+++		index =  stickScramble[stickIndex+index] ;
+++		trims[index] = ui->trimVLeft->value();
+++		index =g_eeGeneral.crosstrim ? 1 : 2 ;
+++		index =  stickScramble[stickIndex+index] ;
+++		trims[index] = ui->trimVRight->value();
+++		index =g_eeGeneral.crosstrim ? 0 : 3 ;
+++		index =  stickScramble[stickIndex+index] ;
+++		trims[index] = ui->trimHRight->value();
+++	}
+++	else
+++	{
++     calibratedStick[0] = 1024*nodeLeft->getX(); //RUD
++     calibratedStick[1] = -1024*nodeLeft->getY(); //ELE
++     calibratedStick[2] = -1024*nodeRight->getY(); //THR
++     calibratedStick[3] = 1024*nodeRight->getX(); //AIL
++-
++-		uint32_t phase ;
++-
++     trims[g_eeGeneral.crosstrim ? 3 : 0] = ui->trimHLeft->value();
++     trims[g_eeGeneral.crosstrim ? 2 : 1] = ui->trimVLeft->value();
++     trims[g_eeGeneral.crosstrim ? 1 : 2] = ui->trimVRight->value();
++     trims[g_eeGeneral.crosstrim ? 0 : 3] = ui->trimHRight->value();
+++	}
+++		uint32_t phase ;
+  
+--        q += calc1000toRESX(ofs);
+--        lim_p = calc1000toRESX(lim_p);
+-+				int16_t result ;
+-+				result = calc1000toRESX(ofs);
+-+  			result += q ; // we convert value to a 16bit value
+-+        
+-+				lim_p = calc1000toRESX(lim_p);
+-         lim_n = calc1000toRESX(lim_n);
+--        if(q>lim_p) q = lim_p;
+--        if(q<lim_n) q = lim_n;
+--        if(g_model.limitData[i].revert) q=-q;// finally do the reverse.
+-+        if(result>lim_p) result = lim_p;
+-+        if(result<lim_n) result = lim_n;
+-+        
+-+				if(g_model.limitData[i].revert) result = -result ;// finally do the reverse.
++-		 
++ 		phase = getTrimFlightPhase( CurrentPhase, 0 ) ;
++     setTrimValue( phase, 0, trims[0] ) ;
++ 		phase = getTrimFlightPhase( CurrentPhase, 1 ) ;
++@@ -389,8 +419,8 @@
+  
+- 				{
+- 					uint8_t numSafety = 16 - g_model.numVoice ;
+-@@ -1481,13 +1504,13 @@
+- 						{
+- 							if ( ( g_model.safetySw[i].opt.ss.mode != 1 ) && ( g_model.safetySw[i].opt.ss.mode != 2 ) )	// And not used as an alarm
+- 							{
+--        		    if(getSwitch(g_model.safetySw[i].opt.ss.swtch,0)) q = calc100toRESX(g_model.safetySw[i].opt.ss.val) ;
+-+        		    if(getSwitch(g_model.safetySw[i].opt.ss.swtch,0)) result = calc100toRESX(g_model.safetySw[i].opt.ss.val) ;
+- 							}
+- 						}
+- 					}
+- 				}
+-         //cli();
+--        chanOut[i] = q; //copy consistent word to int-level
+-+        chanOut[i] = result ; //copy consistent word to int-level
+-         //sei();
++ 				y = adjustMode( y ) ;
++ 				
++-				uint32_t phaseNo = getTrimFlightPhase( CurrentPhase, y ) ;
++-				g_model.gvars[i].gvar = getTrimValue( phaseNo, y ) ;
+++//				uint32_t phaseNo = getTrimFlightPhase( CurrentPhase, y ) ;
+++				g_model.gvars[i].gvar = getTrimValue( CurrentPhase, y ) ;
++ 				 
++ 			}
++ 			else if ( g_model.gvars[i].gvsource == 5 )	// REN
++@@ -945,7 +975,7 @@
++ {
++     int16_t val = 0;
++     if((abs(g_model.timer[0].tmrModeA)>1) && (abs(g_model.timer[0].tmrModeA)<TMR_VAROFS)) {
++-        val = calibratedStick[CONVERT_MODE(abs(g_model.timer[0].tmrModeA)/2)-1];
+++        val = calibratedStick[CONVERT_MODE(abs(g_model.timer[0].tmrModeA)/2,g_model.modelVersion,g_eeGeneral.stickMode)-1];
++         val = (g_model.timer[0].tmrModeA<0 ? RESX-val : val+RESX ) / (RESX/16);  // only used for %
+      }
+- }
++ 
++@@ -1091,7 +1121,7 @@
++         //    if(v >=  RESX) v =  RESX;
++         //    calibratedStick[i] = v; //for show in expo
++ 
++-        if(!(v/16)) anaCenter |= 1<<(CONVERT_MODE((i+1))-1);
+++        if(!(v/16)) anaCenter |= 1<<(CONVERT_MODE((i+1),g_model.modelVersion,g_eeGeneral.stickMode)-1);
++ 
++         //===========Swash Ring================
++         if(d && (i==ELE_STICK || i==AIL_STICK))
++@@ -1251,11 +1281,34 @@
++         trims[i] = getTrimValue( CurrentPhase, idx ) ;
++ 			}
++ 		
++-			ui->trimHLeft->setValue( trims[0]);  // mode=(0 || 1) -> rud trim else -> ail trim
++-  	  ui->trimVLeft->setValue( trims[1]);  // mode=(0 || 2) -> thr trim else -> ele trim
++-	    ui->trimVRight->setValue(trims[2]);  // mode=(0 || 2) -> ele trim else -> thr trim
++-  	  ui->trimHRight->setValue(trims[3]);  // mode=(0 || 1) -> ail trim else -> rud trim
++-		}		
+++  		if ( g_model.modelVersion >= 2 )
+++			{
+++				uint8_t stickIndex = g_eeGeneral.stickMode*4 ;
+++		
+++				uint8_t index ;
+++				index =g_eeGeneral.crosstrim ? 3 : 0 ;
+++				index =  stickScramble[stickIndex+index] ;
+++				ui->trimHLeft->setValue( trims[index]);  // mode=(0 || 1) -> rud trim else -> ail trim
+++				index =g_eeGeneral.crosstrim ? 2 : 1 ;
+++				index =  stickScramble[stickIndex+index] ;
+++    		ui->trimVLeft->setValue( trims[index]);  // mode=(0 || 2) -> thr trim else -> ele trim
+++				index =g_eeGeneral.crosstrim ? 1 : 2 ;
+++				index =  stickScramble[stickIndex+index] ;
+++    		ui->trimVRight->setValue(trims[index]);  // mode=(0 || 2) -> ele trim else -> thr trim
+++				index =g_eeGeneral.crosstrim ? 0 : 3 ;
+++				index =  stickScramble[stickIndex+index] ;
+++    		ui->trimHRight->setValue(trims[index]);  // mode=(0 || 1) -> ail trim else -> rud trim
+++			}
+++			else
+++			{
+++				ui->trimHLeft->setValue( trims[0]);  // mode=(0 || 1) -> rud trim else -> ail trim
+++    		ui->trimVLeft->setValue( trims[1]);  // mode=(0 || 2) -> thr trim else -> ele trim
+++    		ui->trimVRight->setValue(trims[2]);  // mode=(0 || 2) -> ele trim else -> thr trim
+++    		ui->trimHRight->setValue(trims[3]);  // mode=(0 || 1) -> ail trim else -> rud trim
+++      }
+++		
+++		}
+++
++ 		if( (g_eeGeneral.throttleReversed) && (!g_model.thrTrim))
++     {
++         *trimptr[THR_STICK] *= -1;
++Index: mixerdialog.cpp
++===================================================================
++--- mixerdialog.cpp	(revision 381)
+++++ mixerdialog.cpp	(working copy)
++@@ -3,7 +3,7 @@
++ #include "pers.h"
++ #include "helpers.h"
++ 
++-MixerDialog::MixerDialog(QWidget *parent, SKYMixData *mixdata, int stickMode, QString * comment) :
+++MixerDialog::MixerDialog(QWidget *parent, SKYMixData *mixdata, int stickMode, QString * comment, int modelVersion) :
++     QDialog(parent),
++     ui(new Ui::MixerDialog)
++ {
++@@ -11,7 +11,7 @@
++     md = mixdata;
++ 
++     this->setWindowTitle(tr("DEST -> CH%1%2").arg(md->destCh/10).arg(md->destCh%10));
++-    populateSourceCB(ui->sourceCB, stickMode, 0, md->srcRaw);
+++    populateSourceCB(ui->sourceCB, stickMode, 0, md->srcRaw, modelVersion);
++     ui->sourceCB->addItem("3POS");
++     ui->sourceCB->addItem("GV1 ");
++     ui->sourceCB->addItem("GV2 ");
  Index: modeledit.h
  ===================================================================
----- modeledit.h	(revision 348)
-+--- modeledit.h	(revision 372)
+---- modeledit.h	(revision 372)
++--- modeledit.h	(revision 381)
  +++ modeledit.h	(working copy)
--@@ -57,8 +57,6 @@
-- 		QComboBox * safetySwitchType[NUM_CHNOUT];
--     QComboBox * safetySwitchAlarm[NUM_CHNOUT];
-+@@ -246,6 +246,7 @@
-+     void on_DSM_Type_currentIndexChanged(int index);
-+     void on_pxxRxNum_editingFinished();
-+ 		void on_VoiceNumberSB_editingFinished() ;
-++		void on_autoLimitsSB_editingFinished() ;
-+ };
+-@@ -246,6 +246,7 @@
+-     void on_DSM_Type_currentIndexChanged(int index);
++@@ -235,6 +235,7 @@
++     void on_pulsePolCB_currentIndexChanged(int index);
++     void on_trimSWCB_currentIndexChanged(int index);
++     void on_trimIncCB_currentIndexChanged(int index);
+++    void on_volumeControlCB_currentIndexChanged(int index) ;
++     void on_timerDirCB_currentIndexChanged(int index);
++     void on_timerModeCB_currentIndexChanged(int index);
++     void on_timerModeBCB_currentIndexChanged(int index);
++@@ -250,6 +251,8 @@
+      void on_pxxRxNum_editingFinished();
+  		void on_VoiceNumberSB_editingFinished() ;
+-+		void on_autoLimitsSB_editingFinished() ;
++ 		void on_autoLimitsSB_editingFinished() ;
+++		void on_countryCB_currentIndexChanged(int index) ;
+++		void on_typeCB_currentIndexChanged(int index) ;
+  };
   
---//    QComboBox * customTel[6];
---
--     void setupMixerListWidget();
--     void updateSettings();
--     void tabModelEditSetup();
+  
+-Index: mainwindow.cpp
++Index: pers.h
+ ===================================================================
+---- mainwindow.cpp	(revision 374)
+-+++ mainwindow.cpp	(working copy)
+-@@ -387,38 +387,38 @@
+-             return;
+-         }
+- 
+--//        if(rev>currentEEPErev)
+--//        {
+--//            showcheckForUpdatesResult = false; // update is available - do not show dialog
+-+        if(rev>currentEEPSKYErev)
+-+        {
+-+            showcheckForUpdatesResult = false; // update is available - do not show dialog
+- 
+--//#ifdef Q_OS_WIN32
+--//            int ret = QMessageBox::question(this, "eePe", tr("A new version of eePe is available (r%1)<br>"
+--//                                                                "Would you like to download it?").arg(rev) ,
+--//                                            QMessageBox::Yes | QMessageBox::No);
+-+#ifdef Q_OS_WIN32
+-+            int ret = QMessageBox::question(this, "eePskye", tr("A new version of eePe is available (r%1)<br>"
+-+                                                                "Would you like to download it?").arg(rev) ,
+-+                                            QMessageBox::Yes | QMessageBox::No);
+- 
+--//    				QSettings settings("er9x-eePskye", "eePskye");
+-+    				QSettings settings("erSKY9x-eePskye", "eePskye");
+- 
+--//            if (ret == QMessageBox::Yes)
+--//            {
+--//                QString fileName = QFileDialog::getSaveFileName(this, tr("Save As"),settings.value("lastDir").toString() + "/eePeInstall.exe",tr("Executable (*.exe)"));
+--//                if (fileName.isEmpty()) return;
+-+            if (ret == QMessageBox::Yes)
+-+            {
+-+                QString fileName = QFileDialog::getSaveFileName(this, tr("Save As"),settings.value("lastDir").toString() + "/eePeInstall.exe",tr("Executable (*.exe)"));
+-+                if (fileName.isEmpty()) return;
+- 
+--//                downloadDialog * dd = new downloadDialog(this,EEPE_URL,fileName);
+--//                installer_fileName = fileName;
+--//                connect(dd,SIGNAL(accepted()),this,SLOT(reply2Accepted()));
+--//                dd->show();
+--//            }           
+--//#else
+--//            QMessageBox::information(this, "eePe", tr("A new version of eePe is available (r%1)\n"
+--//                                                      "To update please visit the eepe code page\n"
+--//                                                      "http://code.google.com/p/eepe/").arg(rev) );
+--//#endif
+--//        }
+--//        else
+--//        {
+--//            if(showcheckForUpdatesResult && check1done && check2done)
+--//                QMessageBox::information(this, "eePe", tr("No updates available at this time."));
+--//        }
+-+                downloadDialog * dd = new downloadDialog(this,EEPE_URL,fileName);
+-+                installer_fileName = fileName;
+-+                connect(dd,SIGNAL(accepted()),this,SLOT(reply2Accepted()));
+-+                dd->show();
+-+            }           
+-+#else
+-+            QMessageBox::information(this, "eePe", tr("A new version of eePskye is available (r%1)\n"
+-+                                                      "To update please visit the eepe code page\n"
+-+                                                      "http://code.google.com/p/eepe/").arg(rev) );
+-+#endif
+-+        }
+-+        else
+-+        {
+-+            if(showcheckForUpdatesResult && check1done && check2done)
+-+                QMessageBox::information(this, "eePskye", tr("No updates available at this time."));
+-+        }
+-     }
+-     else
+-     {
+-Index: diff1.txt
+-===================================================================
+---- diff1.txt	(revision 372)
+-+++ diff1.txt	(working copy)
+-@@ -1,226 +1,158 @@
+-+Index: simulatordialog.cpp
+-+===================================================================
+-+--- simulatordialog.cpp	(revision 372)
+-++++ simulatordialog.cpp	(working copy)
+-+@@ -1457,21 +1457,44 @@
+-+         ex_chans[i] = chans[i]; //for getswitch
+-+ 
+-+         int16_t ofs = g_model.limitData[i].offset;
+-+-        int16_t lim_p = 10*(g_model.limitData[i].max+100);
+-+-        int16_t lim_n = 10*(g_model.limitData[i].min-100); //multiply by 10 to get same range as ofs (-1000..1000)
+-++				int16_t xofs = ofs ;
+-++				if ( xofs > g_model.sub_trim_limit )
+-++				{
+-++					xofs = g_model.sub_trim_limit ;
+-++				}
+-++				else if ( xofs < -g_model.sub_trim_limit )
+-++				{
+-++					xofs = -g_model.sub_trim_limit ;
+-++				}
+-++				int16_t lim_p = 10*(g_model.limitData[i].max+100) + xofs ;
+-++        int16_t lim_n = 10*(g_model.limitData[i].min-100) + xofs ; //multiply by 10 to get same range as ofs (-1000..1000)
+-++				if ( lim_p > 1250 )
+-++				{
+-++					lim_p = 1250 ;
+-++				}
+-++				if ( lim_n < -1250 )
+-++				{
+-++					lim_n = -1250 ;
+-++				}
+-+         if(ofs>lim_p) ofs = lim_p;
+-+         if(ofs<lim_n) ofs = lim_n;
+-+ 
+-+-        if(q) q = (q>0) ?
+-+-                    q*((int32_t)lim_p-ofs)/100000 :
+-+-                    -q*((int32_t)lim_n-ofs)/100000 ; //div by 100000 -> output = -1024..1024
+-++        if(q)
+-++				{
+-++					int16_t temp = (q<0) ? ((int16_t)ofs-lim_n) : ((int16_t)lim_p-ofs) ;
+-++          q = ( q * temp ) / 100000 ; //div by 100000 -> output = -1024..1024
+-++				}
+-+ 
+-+-        q += calc1000toRESX(ofs);
+-+-        lim_p = calc1000toRESX(lim_p);
+-++				int16_t result ;
+-++				result = calc1000toRESX(ofs);
+-++  			result += q ; // we convert value to a 16bit value
+-++        
+-++				lim_p = calc1000toRESX(lim_p);
+-+         lim_n = calc1000toRESX(lim_n);
+-+-        if(q>lim_p) q = lim_p;
+-+-        if(q<lim_n) q = lim_n;
+-+-        if(g_model.limitData[i].revert) q=-q;// finally do the reverse.
+-++        if(result>lim_p) result = lim_p;
+-++        if(result<lim_n) result = lim_n;
+-++        
+-++				if(g_model.limitData[i].revert) result = -result ;// finally do the reverse.
+-+ 
+-+ 				{
+-+ 					uint8_t numSafety = 16 - g_model.numVoice ;
+-+@@ -1481,13 +1504,13 @@
+-+ 						{
+-+ 							if ( ( g_model.safetySw[i].opt.ss.mode != 1 ) && ( g_model.safetySw[i].opt.ss.mode != 2 ) )	// And not used as an alarm
+-+ 							{
+-+-        		    if(getSwitch(g_model.safetySw[i].opt.ss.swtch,0)) q = calc100toRESX(g_model.safetySw[i].opt.ss.val) ;
+-++        		    if(getSwitch(g_model.safetySw[i].opt.ss.swtch,0)) result = calc100toRESX(g_model.safetySw[i].opt.ss.val) ;
+-+ 							}
+-+ 						}
+-+ 					}
+-+ 				}
+-+         //cli();
+-+-        chanOut[i] = q; //copy consistent word to int-level
+-++        chanOut[i] = result ; //copy consistent word to int-level
+-+         //sei();
+-+     }
+-+ }
+- Index: modeledit.h
+- ===================================================================
+----- modeledit.h	(revision 348)
+-+--- modeledit.h	(revision 372)
+- +++ modeledit.h	(working copy)
+--@@ -57,8 +57,6 @@
+-- 		QComboBox * safetySwitchType[NUM_CHNOUT];
+--     QComboBox * safetySwitchAlarm[NUM_CHNOUT];
+-+@@ -246,6 +246,7 @@
+-+     void on_DSM_Type_currentIndexChanged(int index);
+-+     void on_pxxRxNum_editingFinished();
+-+ 		void on_VoiceNumberSB_editingFinished() ;
+-++		void on_autoLimitsSB_editingFinished() ;
+-+ };
+-  
+---//    QComboBox * customTel[6];
+---
+--     void setupMixerListWidget();
+--     void updateSettings();
+--     void tabModelEditSetup();
+--Index: modeledit.ui
+--===================================================================
+----- modeledit.ui	(revision 348)
+--+++ modeledit.ui	(working copy)
+--@@ -9004,6 +9004,9 @@
+--            <property name="text">
+--             <string>Custom Telemetry 1</string>
+--            </property>
+--+           <property name="alignment">
+--+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+--+           </property>
+--           </widget>
+--          </item>
+--          <item row="2" column="0">
+--@@ -9011,6 +9014,9 @@
+--            <property name="text">
+--             <string>Custom Telemetry 3</string>
+--            </property>
+--+           <property name="alignment">
+--+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+--+           </property>
+--           </widget>
+--          </item>
+--          <item row="4" column="0">
+--@@ -9018,6 +9024,9 @@
+--            <property name="text">
+--             <string>Custom Telemetry 5</string>
+--            </property>
+--+           <property name="alignment">
+--+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+--+           </property>
+--           </widget>
+--          </item>
+--          <item row="0" column="2">
+--@@ -9025,6 +9034,9 @@
+--            <property name="text">
+--             <string>Custom Telemetry 2</string>
+--            </property>
+--+           <property name="alignment">
+--+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+--+           </property>
+--           </widget>
+--          </item>
+--          <item row="2" column="2">
+--@@ -9032,6 +9044,9 @@
+--            <property name="text">
+--             <string>Custom Telemetry 4</string>
+--            </property>
+--+           <property name="alignment">
+--+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+--+           </property>
+--           </widget>
+--          </item>
+--          <item row="4" column="2">
+--@@ -9039,22 +9054,29 @@
+--            <property name="text">
+--             <string>Custom Telemetry 6</string>
+--            </property>
+--+           <property name="alignment">
+--+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+--+           </property>
+--           </widget>
+--          </item>
+--          <item row="0" column="1">
+---          <widget class="QLabel" name="CT1Holder">
+---           <property name="text">
+---            <string>TextLabel</string>
+---           </property>
+---          </widget>
+--+          <widget class="QComboBox" name="Ct1"/>
+--          </item>
+--          <item row="0" column="3">
+---          <widget class="QLabel" name="CT2Holder">
+---           <property name="text">
+---            <string>TextLabel</string>
+---           </property>
+---          </widget>
+--+          <widget class="QComboBox" name="Ct2"/>
+--          </item>
+--+         <item row="2" column="1">
+--+          <widget class="QComboBox" name="Ct3"/>
+--+         </item>
+--+         <item row="2" column="3">
+--+          <widget class="QComboBox" name="Ct4"/>
+--+         </item>
+--+         <item row="4" column="1">
+--+          <widget class="QComboBox" name="Ct5"/>
+--+         </item>
+--+         <item row="4" column="3">
+--+          <widget class="QComboBox" name="Ct6"/>
+--+         </item>
+--         </layout>
+--        </item>
+--        <item>
+--Index: modeledit.cpp
+--===================================================================
+----- modeledit.cpp	(revision 348)
+--+++ modeledit.cpp	(working copy)
+--@@ -32,6 +32,7 @@
+--     QDialog(parent),
+--     ui(new Ui::ModelEdit)
+-- {
+--+		int size ;
+--     ui->setupUi(this);
+-  
+--     eeFile = eFile;
+--@@ -43,7 +44,17 @@
+-- 
+--     if(!eeFile->eeLoadGeneral())  eeFile->generalDefault();
+--     eeFile->getGeneralSettings(&g_eeGeneral);
+---    eeFile->getModel(&g_model,id);
+--+    size = eeFile->getModel(&g_model,id);
+--+		if ( size < sizeof(g_model) )
+--+		{
+--+			uint8_t *p ;
+--+			p = (uint8_t *) &g_model + size ;
+--+			while( size < sizeof(g_model) )
+--+			{
+--+				*p++ = 0 ;
+--+				size += 1 ;
+--+			}
+--+		}
+--     id_model = id;
+-- 
+--     setupMixerListWidget();
+--@@ -1719,29 +1730,13 @@
+-- 
+-- void ModelEdit::tabFrsky()
+-- {
+---//	char text[60] ;
+---		ui->CT1Holder->setVisible(false);
+---		ui->CT2Holder->setVisible(false);
+---//    for(int i=0; i<6; i++)
+---//    {
+---//      customTel[i] = new QComboBox(this);
+---//			populateTelItemsCB( customTel[i], g_model.CustomDisplayIndex[i] ) ;
+---//	    ui->gridLayout_25->addWidget(customTel[i],i/2,(i&1) ? 3 : 1);
+---//	  }
+---
+---//		sprintf( text, "%d,%d,%d,%d,%d,%d", g_model.CustomDisplayIndex[0],
+---//		g_model.CustomDisplayIndex[1],g_model.CustomDisplayIndex[2],
+---//		g_model.CustomDisplayIndex[3],g_model.CustomDisplayIndex[4],
+---//		g_model.CustomDisplayIndex[5] ) ;
+---//		ui->label_92->setText(text) ;
+---
+---	
+---//		sprintf( text, "%d,%d,%d,%d,%d,%d", customTel[0]->currentIndex(),
+---//		customTel[1]->currentIndex(), customTel[2]->currentIndex(),
+---//		customTel[3]->currentIndex(), customTel[4]->currentIndex(),
+---//		customTel[5]->currentIndex() ) ;
+---//		ui->label_93->setText(text) ;
+---
+--+		populateTelItemsCB( ui->Ct1, g_model.CustomDisplayIndex[0] ) ;
+--+		populateTelItemsCB( ui->Ct2, g_model.CustomDisplayIndex[1] ) ;
+--+		populateTelItemsCB( ui->Ct3, g_model.CustomDisplayIndex[2] ) ;
+--+		populateTelItemsCB( ui->Ct4, g_model.CustomDisplayIndex[3] ) ;
+--+		populateTelItemsCB( ui->Ct5, g_model.CustomDisplayIndex[4] ) ;
+--+		populateTelItemsCB( ui->Ct6, g_model.CustomDisplayIndex[5] ) ;
+--+		
+--     ui->frsky_ratio_0->setValue(g_model.frsky.channels[0].ratio);
+--     ui->frsky_type_0->setCurrentIndex(g_model.frsky.channels[0].type);
+--     ui->frsky_ratio_1->setValue(g_model.frsky.channels[1].ratio);
+--@@ -1792,17 +1787,16 @@
+-- 		connect(ui->UnitsComboBox,SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
+-- 		connect(ui->BladesSpinBox,SIGNAL(editingFinished()),this,SLOT(FrSkyEdited()));
+--     
+---//		connect(customTel[0],SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
+---//		connect(customTel[1],SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
+---//		connect(customTel[2],SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
+---//		connect(customTel[3],SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
+---//		connect(customTel[4],SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
+---//		connect(customTel[5],SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
+--+		connect( ui->Ct1,SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
+--+		connect( ui->Ct2,SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
+--+		connect( ui->Ct3,SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
+--+		connect( ui->Ct4,SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
+--+		connect( ui->Ct5,SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
+--+		connect( ui->Ct6,SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
+-- }
+-- 
+-- void ModelEdit::FrSkyEdited()
+-- {
+---//	char text[60] ;
+--     g_model.frsky.channels[0].ratio = ui->frsky_ratio_0->value();
+--     g_model.frsky.channels[1].ratio = ui->frsky_ratio_1->value();
+--     g_model.frsky.channels[0].type  = ui->frsky_type_0->currentIndex();
+--@@ -1825,20 +1819,13 @@
+--     g_model.numBlades = ui->BladesSpinBox->value() - 2 ;
+-- 
+-- 
+---//		g_model.CustomDisplayIndex[0] = customTel[0]->currentIndex() ;
+---//		g_model.CustomDisplayIndex[1] = customTel[1]->currentIndex() ;
+---//		g_model.CustomDisplayIndex[2] = customTel[2]->currentIndex() ;
+---//		g_model.CustomDisplayIndex[3] = customTel[3]->currentIndex() ;
+---//		g_model.CustomDisplayIndex[4] = customTel[4]->currentIndex() ;
+---//		g_model.CustomDisplayIndex[5] = customTel[5]->currentIndex() ;
+--+		g_model.CustomDisplayIndex[0] = ui->Ct1->currentIndex() ;
+--+		g_model.CustomDisplayIndex[1] = ui->Ct2->currentIndex() ;
+--+		g_model.CustomDisplayIndex[2] = ui->Ct3->currentIndex() ;
+--+		g_model.CustomDisplayIndex[3] = ui->Ct4->currentIndex() ;
+--+		g_model.CustomDisplayIndex[4] = ui->Ct5->currentIndex() ;
+--+		g_model.CustomDisplayIndex[5] = ui->Ct6->currentIndex() ;
+--     
+---//		sprintf( text, "%d,%d,%d,%d,%d,%d", customTel[0]->currentIndex(),
+---//		customTel[1]->currentIndex(), customTel[2]->currentIndex(),
+---//		customTel[3]->currentIndex(), customTel[4]->currentIndex(),
+---//		customTel[5]->currentIndex() ) ;
+---//		ui->label_93->setText(text) ;
+---
+---		
+-- 		updateSettings();
+-- }
+-- 
+-+Index: mainwindow.cpp
+-+===================================================================
+-+--- mainwindow.cpp	(revision 374)
+-++++ mainwindow.cpp	(working copy)
+-+@@ -387,38 +387,38 @@
+-+             return;
+-+         }
+-+ 
+-+-//        if(rev>currentEEPErev)
+-+-//        {
+-+-//            showcheckForUpdatesResult = false; // update is available - do not show dialog
+-++        if(rev>currentEEPSKYErev)
+-++        {
+-++            showcheckForUpdatesResult = false; // update is available - do not show dialog
+-+ 
+-+-//#ifdef Q_OS_WIN32
+-+-//            int ret = QMessageBox::question(this, "eePe", tr("A new version of eePe is available (r%1)<br>"
+-+-//                                                                "Would you like to download it?").arg(rev) ,
+-+-//                                            QMessageBox::Yes | QMessageBox::No);
+-++#ifdef Q_OS_WIN32
+-++            int ret = QMessageBox::question(this, "eePskye", tr("A new version of eePe is available (r%1)<br>"
+-++                                                                "Would you like to download it?").arg(rev) ,
+-++                                            QMessageBox::Yes | QMessageBox::No);
+-+ 
+-+-//    				QSettings settings("er9x-eePskye", "eePskye");
+-++    				QSettings settings("erSKY9x-eePskye", "eePskye");
+-+ 
+-+-//            if (ret == QMessageBox::Yes)
+-+-//            {
+-+-//                QString fileName = QFileDialog::getSaveFileName(this, tr("Save As"),settings.value("lastDir").toString() + "/eePeInstall.exe",tr("Executable (*.exe)"));
+-+-//                if (fileName.isEmpty()) return;
+-++            if (ret == QMessageBox::Yes)
+-++            {
+-++                QString fileName = QFileDialog::getSaveFileName(this, tr("Save As"),settings.value("lastDir").toString() + "/eePeInstall.exe",tr("Executable (*.exe)"));
+-++                if (fileName.isEmpty()) return;
+-+ 
+-+-//                downloadDialog * dd = new downloadDialog(this,EEPE_URL,fileName);
+-+-//                installer_fileName = fileName;
+-+-//                connect(dd,SIGNAL(accepted()),this,SLOT(reply2Accepted()));
+-+-//                dd->show();
+-+-//            }           
+-+-//#else
+-+-//            QMessageBox::information(this, "eePe", tr("A new version of eePe is available (r%1)\n"
+-+-//                                                      "To update please visit the eepe code page\n"
+-+-//                                                      "http://code.google.com/p/eepe/").arg(rev) );
+-+-//#endif
+-+-//        }
+-+-//        else
+-+-//        {
+-+-//            if(showcheckForUpdatesResult && check1done && check2done)
+-+-//                QMessageBox::information(this, "eePe", tr("No updates available at this time."));
+-+-//        }
+-++                downloadDialog * dd = new downloadDialog(this,EEPE_URL,fileName);
+-++                installer_fileName = fileName;
+-++                connect(dd,SIGNAL(accepted()),this,SLOT(reply2Accepted()));
+-++                dd->show();
+-++            }           
+-++#else
+-++            QMessageBox::information(this, "eePe", tr("A new version of eePskye is available (r%1)\n"
+-++                                                      "To update please visit the eepe code page\n"
+-++                                                      "http://code.google.com/p/eepe/").arg(rev) );
+-++#endif
+-++        }
+-++        else
+-++        {
+-++            if(showcheckForUpdatesResult && check1done && check2done)
+-++                QMessageBox::information(this, "eePskye", tr("No updates available at this time."));
+-++        }
+-+     }
+-+     else
+-+     {
 -Index: modeledit.ui
 -===================================================================
----- modeledit.ui	(revision 348)
+---- modeledit.ui	(revision 372)
 -+++ modeledit.ui	(working copy)
--@@ -9004,6 +9004,9 @@
--            <property name="text">
--             <string>Custom Telemetry 1</string>
--            </property>
--+           <property name="alignment">
--+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
--+           </property>
--           </widget>
+-@@ -54,7 +54,7 @@
+-    <item row="5" column="0">
+-     <widget class="QTabWidget" name="tabWidget">
+-      <property name="currentIndex">
+--      <number>7</number>
+-+      <number>0</number>
+-      </property>
+-      <widget class="QWidget" name="tabModelSetup">
+-       <attribute name="title">
+-@@ -78,6 +78,32 @@
+-          </property>
+-         </widget>
+-        </item>
+-+       <item row="1" column="0">
+-+        <widget class="QLabel" name="label_145">
+-+         <property name="text">
+-+          <string>Voice Number</string>
+-+         </property>
+-+        </widget>
+-+       </item>
+-+       <item row="1" column="1">
+-+        <widget class="QSpinBox" name="VoiceNumberSB">
+-+         <property name="suffix">
+-+          <string/>
+-+         </property>
+-+         <property name="minimum">
+-+          <number>260</number>
+-+         </property>
+-+         <property name="maximum">
+-+          <number>309</number>
+-+         </property>
+-+         <property name="singleStep">
+-+          <number>1</number>
+-+         </property>
+-+         <property name="value">
+-+          <number>260</number>
+-+         </property>
+-+        </widget>
+-+       </item>
+-        <item row="3" column="0">
+-         <widget class="QLabel" name="label_95">
+-          <property name="text">
+-@@ -429,98 +455,6 @@
 -          </item>
--          <item row="2" column="0">
--@@ -9011,6 +9014,9 @@
--            <property name="text">
--             <string>Custom Telemetry 3</string>
--            </property>
--+           <property name="alignment">
--+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
--+           </property>
--           </widget>
+-         </widget>
+-        </item>
+--       <item row="23" column="0">
+--        <widget class="QLabel" name="label_9">
+--         <property name="text">
+--          <string>ppm Delay</string>
+--         </property>
+--        </widget>
+--       </item>
+--       <item row="23" column="1">
+--        <widget class="QSpinBox" name="ppmDelaySB">
+--         <property name="suffix">
+--          <string> uSec</string>
+--         </property>
+--         <property name="minimum">
+--          <number>100</number>
+--         </property>
+--         <property name="maximum">
+--          <number>800</number>
+--         </property>
+--         <property name="singleStep">
+--          <number>50</number>
+--         </property>
+--         <property name="value">
+--          <number>300</number>
+--         </property>
+--        </widget>
+--       </item>
+--       <item row="24" column="0">
+--        <widget class="QLabel" name="label_116">
+--         <property name="text">
+--          <string>DSM Type</string>
+--         </property>
+--        </widget>
+--       </item>
+--       <item row="24" column="1">
+--        <widget class="QComboBox" name="DSM_Type">
+--         <item>
+--          <property name="text">
+--           <string>LP4/LP5</string>
+--          </property>
+--         </item>
+--         <item>
+--          <property name="text">
+--           <string>DSM2only</string>
+--          </property>
+--         </item>
+--         <item>
+--          <property name="text">
+--           <string>DSM2/DSMX</string>
+--          </property>
+--         </item>
+--        </widget>
+--       </item>
+--       <item row="25" column="0">
+--        <widget class="QLabel" name="label_117">
+--         <property name="text">
+--          <string>PXX RxNum</string>
+--         </property>
+--        </widget>
+--       </item>
+--       <item row="25" column="1">
+--        <widget class="QSpinBox" name="pxxRxNum">
+--         <property name="suffix">
+--          <string/>
+--         </property>
+--         <property name="minimum">
+--          <number>1</number>
+--         </property>
+--         <property name="maximum">
+--          <number>125</number>
+--         </property>
+--         <property name="singleStep">
+--          <number>1</number>
+--         </property>
+--         <property name="value">
+--          <number>1</number>
+--         </property>
+--        </widget>
+--       </item>
+--       <item row="26" column="0">
+--        <widget class="QLabel" name="label_114">
+--         <property name="text">
+--          <string>Trainer</string>
+--         </property>
+--        </widget>
+--       </item>
+--       <item row="26" column="1">
+--        <widget class="QCheckBox" name="TrainerChkB">
+--         <property name="text">
+--          <string/>
+--         </property>
+--        </widget>
+--       </item>
+-        <item row="17" column="1">
+-         <layout class="QGridLayout" name="gridLayout_28">
+-          <item row="0" column="0">
+-@@ -592,6 +526,13 @@
 -          </item>
--          <item row="4" column="0">
--@@ -9018,6 +9024,9 @@
--            <property name="text">
--             <string>Custom Telemetry 5</string>
--            </property>
--+           <property name="alignment">
--+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
--+           </property>
--           </widget>
--          </item>
--          <item row="0" column="2">
--@@ -9025,6 +9034,9 @@
--            <property name="text">
--             <string>Custom Telemetry 2</string>
--            </property>
--+           <property name="alignment">
--+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
--+           </property>
--           </widget>
--          </item>
--          <item row="2" column="2">
--@@ -9032,6 +9044,9 @@
--            <property name="text">
--             <string>Custom Telemetry 4</string>
--            </property>
--+           <property name="alignment">
--+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
--+           </property>
--           </widget>
--          </item>
--          <item row="4" column="2">
--@@ -9039,22 +9054,29 @@
--            <property name="text">
--             <string>Custom Telemetry 6</string>
--            </property>
--+           <property name="alignment">
--+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
--+           </property>
--           </widget>
--          </item>
--          <item row="0" column="1">
---          <widget class="QLabel" name="CT1Holder">
---           <property name="text">
---            <string>TextLabel</string>
---           </property>
---          </widget>
--+          <widget class="QComboBox" name="Ct1"/>
--          </item>
--          <item row="0" column="3">
---          <widget class="QLabel" name="CT2Holder">
---           <property name="text">
---            <string>TextLabel</string>
---           </property>
---          </widget>
--+          <widget class="QComboBox" name="Ct2"/>
--          </item>
--+         <item row="2" column="1">
--+          <widget class="QComboBox" name="Ct3"/>
--+         </item>
--+         <item row="2" column="3">
--+          <widget class="QComboBox" name="Ct4"/>
--+         </item>
--+         <item row="4" column="1">
--+          <widget class="QComboBox" name="Ct5"/>
--+         </item>
--+         <item row="4" column="3">
--+          <widget class="QComboBox" name="Ct6"/>
--+         </item>
 -         </layout>
 -        </item>
--        <item>
--Index: modeledit.cpp
+-+       <item row="20" column="0">
+-+        <widget class="QLabel" name="label_120">
+-+         <property name="text">
+-+          <string>PPM2</string>
+-+         </property>
+-+        </widget>
+-+       </item>
+-        <item row="20" column="1">
+-         <layout class="QGridLayout" name="gridLayout_29">
+-          <item row="0" column="0">
+-@@ -666,13 +607,6 @@
+-          </item>
+-         </layout>
+-        </item>
+--       <item row="20" column="0">
+--        <widget class="QLabel" name="label_120">
+--         <property name="text">
+--          <string>PPM2</string>
+--         </property>
+--        </widget>
+--       </item>
+-        <item row="22" column="0">
+-         <widget class="QLabel" name="label_113">
+-          <property name="text">
+-@@ -702,32 +636,115 @@
+-          </property>
+-         </widget>
+-        </item>
+--       <item row="1" column="0">
+--        <widget class="QLabel" name="label_145">
+-+       <item row="23" column="0">
+-+        <widget class="QLabel" name="label_9">
+-          <property name="text">
+--          <string>Voice Number</string>
+-+          <string>ppm Delay</string>
+-          </property>
+-         </widget>
+-        </item>
+--       <item row="1" column="1">
+--        <widget class="QSpinBox" name="VoiceNumberSB">
+-+       <item row="23" column="1">
+-+        <widget class="QSpinBox" name="ppmDelaySB">
+-          <property name="suffix">
+-+          <string> uSec</string>
+-+         </property>
+-+         <property name="minimum">
+-+          <number>100</number>
+-+         </property>
+-+         <property name="maximum">
+-+          <number>800</number>
+-+         </property>
+-+         <property name="singleStep">
+-+          <number>50</number>
+-+         </property>
+-+         <property name="value">
+-+          <number>300</number>
+-+         </property>
+-+        </widget>
+-+       </item>
+-+       <item row="24" column="0">
+-+        <widget class="QLabel" name="label_116">
+-+         <property name="text">
+-+          <string>DSM Type</string>
+-+         </property>
+-+        </widget>
+-+       </item>
+-+       <item row="24" column="1">
+-+        <widget class="QComboBox" name="DSM_Type">
+-+         <item>
+-+          <property name="text">
+-+           <string>LP4/LP5</string>
+-+          </property>
+-+         </item>
+-+         <item>
+-+          <property name="text">
+-+           <string>DSM2only</string>
+-+          </property>
+-+         </item>
+-+         <item>
+-+          <property name="text">
+-+           <string>DSM2/DSMX</string>
+-+          </property>
+-+         </item>
+-+        </widget>
+-+       </item>
+-+       <item row="25" column="0">
+-+        <widget class="QLabel" name="label_117">
+-+         <property name="text">
+-+          <string>PXX RxNum</string>
+-+         </property>
+-+        </widget>
+-+       </item>
+-+       <item row="25" column="1">
+-+        <widget class="QSpinBox" name="pxxRxNum">
+-+         <property name="suffix">
+-           <string/>
+-          </property>
+-          <property name="minimum">
+--          <number>260</number>
+-+          <number>1</number>
+-          </property>
+-          <property name="maximum">
+--          <number>309</number>
+-+          <number>125</number>
+-          </property>
+-          <property name="singleStep">
+-           <number>1</number>
+-          </property>
+-          <property name="value">
+--          <number>260</number>
+-+          <number>1</number>
+-          </property>
+-         </widget>
+-        </item>
+-+       <item row="26" column="0">
+-+        <widget class="QLabel" name="label_114">
+-+         <property name="text">
+-+          <string>Trainer</string>
+-+         </property>
+-+        </widget>
+-+       </item>
+-+       <item row="26" column="1">
+-+        <widget class="QCheckBox" name="TrainerChkB">
+-+         <property name="text">
+-+          <string/>
+-+         </property>
+-+        </widget>
+-+       </item>
+-+       <item row="27" column="0">
+-+        <widget class="QLabel" name="label_177">
+-+         <property name="text">
+-+          <string>Auto Limits</string>
+-+         </property>
+-+        </widget>
+-+       </item>
+-+       <item row="27" column="1">
+-+        <widget class="QDoubleSpinBox" name="autoLimitsSB">
+-+         <property name="decimals">
+-+          <number>1</number>
+-+         </property>
+-+         <property name="maximum">
+-+          <double>10.000000000000000</double>
+-+         </property>
+-+        </widget>
+-+       </item>
+-       </layout>
+-      </widget>
+-      <widget class="QWidget" name="tabHeli">
+-Index: myeeprom.h
 -===================================================================
----- modeledit.cpp	(revision 348)
--+++ modeledit.cpp	(working copy)
--@@ -32,6 +32,7 @@
--     QDialog(parent),
--     ui(new Ui::ModelEdit)
-- {
--+		int size ;
--     ui->setupUi(this);
+---- myeeprom.h	(revision 372)
+-+++ myeeprom.h	(working copy)
+-@@ -467,6 +467,7 @@
+- 	uint8_t		startChannel ;			// for main output 0 = ch1
+- 	uint8_t		startPPM2channel ;	// for PPM2 output 0 follow
+-   int8_t		ppm2NCH ;
+-+	uint8_t sub_trim_limit ;
+- }) SKYModelData ;
++--- pers.h	(revision 381)
+++++ pers.h	(working copy)
++@@ -34,7 +34,7 @@
   
--     eeFile = eFile;
--@@ -43,7 +44,17 @@
++ //convert from mode 1 to mode g_eeGeneral.stickMode
++ //NOTICE!  =>  1..4 -> 1..4
++-#define CONVERT_MODE(x) (((x)<=4) ? modn12x3[g_eeGeneral.stickMode][((x)-1)] : (x))
+++//#define CONVERT_MODE(x) (((x)<=4) ? modn12x3[g_eeGeneral.stickMode][((x)-1)] : (x))
++ #define CHANNEL_ORDER(x) (chout_ar[g_eeGeneral.templateSetup*4 + (x)-1])
++ #define THR_STICK       (2-(g_eeGeneral.stickMode&1))
++ #define ELE_STICK       (1+(g_eeGeneral.stickMode&1))
++@@ -169,7 +169,7 @@
++ #define PPM_BASE   (MIX_CYC3)
++ #define CHOUT_BASE (PPM_BASE+NUM_PPM)
+  
+-Index: modeledit.cpp
++-#define CM(x) (CONVERT_MODE(x))  //good for SRC
+++#define CM(x,y,z) (CONVERT_MODE(x,y,z))  //good for SRC
++ #define CH(x) (CHOUT_BASE+(x))
++ #define CV(x) (CURVE_BASE+(x)-1)
++ #define CC(x) (CHANNEL_ORDER(x)) //need to invert this to work with dest
++Index: file.cpp
+ ===================================================================
+---- modeledit.cpp	(revision 372)
+-+++ modeledit.cpp	(working copy)
+-@@ -215,6 +215,7 @@
 - 
--     if(!eeFile->eeLoadGeneral())  eeFile->generalDefault();
--     eeFile->getGeneralSettings(&g_eeGeneral);
---    eeFile->getModel(&g_model,id);
--+    size = eeFile->getModel(&g_model,id);
--+		if ( size < sizeof(g_model) )
--+		{
--+			uint8_t *p ;
--+			p = (uint8_t *) &g_model + size ;
--+			while( size < sizeof(g_model) )
--+			{
--+				*p++ = 0 ;
--+				size += 1 ;
--+			}
--+		}
--     id_model = id;
+-     //pulse polarity
+-     ui->pulsePolCB->setCurrentIndex(g_model.pulsePol);
+-+    ui->autoLimitsSB->setValue( (double)g_model.sub_trim_limit/10 ) ;
 - 
--     setupMixerListWidget();
--@@ -1719,29 +1730,13 @@
-- 
-- void ModelEdit::tabFrsky()
-- {
---//	char text[60] ;
---		ui->CT1Holder->setVisible(false);
---		ui->CT2Holder->setVisible(false);
---//    for(int i=0; i<6; i++)
---//    {
---//      customTel[i] = new QComboBox(this);
---//			populateTelItemsCB( customTel[i], g_model.CustomDisplayIndex[i] ) ;
---//	    ui->gridLayout_25->addWidget(customTel[i],i/2,(i&1) ? 3 : 1);
---//	  }
---
---//		sprintf( text, "%d,%d,%d,%d,%d,%d", g_model.CustomDisplayIndex[0],
---//		g_model.CustomDisplayIndex[1],g_model.CustomDisplayIndex[2],
---//		g_model.CustomDisplayIndex[3],g_model.CustomDisplayIndex[4],
---//		g_model.CustomDisplayIndex[5] ) ;
---//		ui->label_92->setText(text) ;
---
---	
---//		sprintf( text, "%d,%d,%d,%d,%d,%d", customTel[0]->currentIndex(),
---//		customTel[1]->currentIndex(), customTel[2]->currentIndex(),
---//		customTel[3]->currentIndex(), customTel[4]->currentIndex(),
---//		customTel[5]->currentIndex() ) ;
---//		ui->label_93->setText(text) ;
---
--+		populateTelItemsCB( ui->Ct1, g_model.CustomDisplayIndex[0] ) ;
--+		populateTelItemsCB( ui->Ct2, g_model.CustomDisplayIndex[1] ) ;
--+		populateTelItemsCB( ui->Ct3, g_model.CustomDisplayIndex[2] ) ;
--+		populateTelItemsCB( ui->Ct4, g_model.CustomDisplayIndex[3] ) ;
--+		populateTelItemsCB( ui->Ct5, g_model.CustomDisplayIndex[4] ) ;
--+		populateTelItemsCB( ui->Ct6, g_model.CustomDisplayIndex[5] ) ;
--+		
--     ui->frsky_ratio_0->setValue(g_model.frsky.channels[0].ratio);
--     ui->frsky_type_0->setCurrentIndex(g_model.frsky.channels[0].type);
--     ui->frsky_ratio_1->setValue(g_model.frsky.channels[1].ratio);
--@@ -1792,17 +1787,16 @@
-- 		connect(ui->UnitsComboBox,SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
-- 		connect(ui->BladesSpinBox,SIGNAL(editingFinished()),this,SLOT(FrSkyEdited()));
--     
---//		connect(customTel[0],SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
---//		connect(customTel[1],SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
---//		connect(customTel[2],SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
---//		connect(customTel[3],SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
---//		connect(customTel[4],SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
---//		connect(customTel[5],SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
--+		connect( ui->Ct1,SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
--+		connect( ui->Ct2,SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
--+		connect( ui->Ct3,SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
--+		connect( ui->Ct4,SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
--+		connect( ui->Ct5,SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
--+		connect( ui->Ct6,SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
+-     //protocol channels ppm delay (disable if needed)
+-     setProtocolBoxes();
+-@@ -1556,7 +1557,7 @@
+- 				if ( cswitchSource1[i]->currentIndex() > 36 )
++--- file.cpp	(revision 381)
+++++ file.cpp	(working copy)
++@@ -573,7 +573,7 @@
++ 	dest->FrSkyGpsAlt = source->FrSkyGpsAlt ;
++ 	dest->FrSkyImperial = source->FrSkyImperial ;
++ 	dest->FrSkyAltAlarm = source->FrSkyAltAlarm ;
++-	dest->version = source->version ;
+++  dest->modelVersion = source->version ;
++ 	dest->protocol = source->protocol ;
++ 	dest->ppmNCH = source->ppmNCH ;
++ 	dest->thrTrim = source->thrTrim ;
++@@ -807,7 +807,7 @@
++ 				
++ 				if ( version != 255 )
+  				{
+-         	cswitchTlabel[i]->setVisible(true);
+--					value = convertTelemConstant( cswitchSource1[i]->currentIndex() - 45, g_model.customSw[i].v2 ) ;
+-+					value = convertTelemConstant( cswitchSource1[i]->currentIndex() - 45, g_model.customSw[i].v2, &g_model ) ;
+-           stringTelemetryChannel( telText, g_model.customSw[i].v1 - 45, value, &g_model ) ;
+- //					sprintf( telText, "%d", value ) ;
+-         	cswitchTlabel[i]->setText(telText);
+-@@ -2106,7 +2107,7 @@
+-             g_model.customSw[i].v2 = cswitchOffset[i]->value();
+- 						if ( g_model.customSw[i].v1 > 36 )
+- 						{
+--							value = convertTelemConstant( g_model.customSw[i].v1 - 37, g_model.customSw[i].v2 ) ;
+-+							value = convertTelemConstant( g_model.customSw[i].v1 - 37, g_model.customSw[i].v2, &g_model ) ;
+-               stringTelemetryChannel( telText, g_model.customSw[i].v1 - 37, value, &g_model ) ;
+- 							//sprintf( telText, "%d", value ) ;
+-         			cswitchTlabel[i]->setText(telText);
+-@@ -2520,6 +2521,11 @@
 - }
-- 
-- void ModelEdit::FrSkyEdited()
++-					radioData->models[id].version = 0 ;					// default version number
+++          radioData->models[id].modelVersion = 0 ;					// default version number
++ 				}
++ 			}
+  
++@@ -817,7 +817,7 @@
++ //          radioData->models[id].name[i] = idx2char(idx);
++ //      }
++       
++-			radioData->models[id].version = MDSKYVERS ; //update mdvers
+++      radioData->models[id].modelVersion = MDSKYVERS ; //update mdvers
+  
+-+void ModelEdit::on_autoLimitsSB_editingFinished()
+-+{
+-+   g_model.sub_trim_limit = ui->autoLimitsSB->value()*10 ;
+-+}
+-+
+- void ModelEdit::on_thrTrimChkB_toggled(bool checked)
 - {
---//	char text[60] ;
--     g_model.frsky.channels[0].ratio = ui->frsky_ratio_0->value();
--     g_model.frsky.channels[1].ratio = ui->frsky_ratio_1->value();
--     g_model.frsky.channels[0].type  = ui->frsky_type_0->currentIndex();
--@@ -1825,20 +1819,13 @@
--     g_model.numBlades = ui->BladesSpinBox->value() - 2 ;
-- 
-- 
---//		g_model.CustomDisplayIndex[0] = customTel[0]->currentIndex() ;
---//		g_model.CustomDisplayIndex[1] = customTel[1]->currentIndex() ;
---//		g_model.CustomDisplayIndex[2] = customTel[2]->currentIndex() ;
---//		g_model.CustomDisplayIndex[3] = customTel[3]->currentIndex() ;
---//		g_model.CustomDisplayIndex[4] = customTel[4]->currentIndex() ;
---//		g_model.CustomDisplayIndex[5] = customTel[5]->currentIndex() ;
--+		g_model.CustomDisplayIndex[0] = ui->Ct1->currentIndex() ;
--+		g_model.CustomDisplayIndex[1] = ui->Ct2->currentIndex() ;
--+		g_model.CustomDisplayIndex[2] = ui->Ct3->currentIndex() ;
--+		g_model.CustomDisplayIndex[3] = ui->Ct4->currentIndex() ;
--+		g_model.CustomDisplayIndex[4] = ui->Ct5->currentIndex() ;
--+		g_model.CustomDisplayIndex[5] = ui->Ct6->currentIndex() ;
--     
---//		sprintf( text, "%d,%d,%d,%d,%d,%d", customTel[0]->currentIndex(),
---//		customTel[1]->currentIndex(), customTel[2]->currentIndex(),
---//		customTel[3]->currentIndex(), customTel[4]->currentIndex(),
---//		customTel[5]->currentIndex() ) ;
---//		ui->label_93->setText(text) ;
---
---		
-- 		updateSettings();
-- }
-- 
+-     g_model.thrTrim = checked;
++ 			if ( radioData->models[id].numBlades == 0 )
++ 			{
++Index: mixerdialog.h
++===================================================================
++--- mixerdialog.h	(revision 381)
+++++ mixerdialog.h	(working copy)
++@@ -11,7 +11,7 @@
++ class MixerDialog : public QDialog {
++     Q_OBJECT
++ public:
++-    MixerDialog(QWidget *parent, SKYMixData *mixdata, int stickMode, QString * comment);
+++    MixerDialog(QWidget *parent, SKYMixData *mixdata, int stickMode, QString * comment, int modelVersion);
++     ~MixerDialog();
++ 
++ //    QString getComment();
 +Index: mainwindow.cpp
 +===================================================================
-+--- mainwindow.cpp	(revision 374)
++--- mainwindow.cpp	(revision 381)
 ++++ mainwindow.cpp	(working copy)
-+@@ -387,38 +387,38 @@
-+             return;
-+         }
++@@ -59,7 +59,7 @@
++ #include "customizesplashdialog.h"
++ #include "stamp-eepskye.h"
 + 
-+-//        if(rev>currentEEPErev)
-+-//        {
-+-//            showcheckForUpdatesResult = false; // update is available - do not show dialog
-++        if(rev>currentEEPSKYErev)
-++        {
-++            showcheckForUpdatesResult = false; // update is available - do not show dialog
++-#define DONATE_STR "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=YHX43JR3J7XGW"
+++#define DONATE_MB_STR "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=YHX43JR3J7XGW"
++ #define DNLD_VER_ERSKY9X         0
++ #define DNLD_VER_ERSKY9XR	       1
++ //#define DNLD_VER_ER9X_FRSKY      2
++@@ -937,7 +937,7 @@
++     aboutStr.append(tr("Copyright") +" Michael Blandford &copy;2013<br>");
++     aboutStr.append(QString("<a href='http://code.google.com/p/eepe/'>http://code.google.com/p/eepe/</a><br>Revision: %1, %2<br><br>").arg(currentEEPSKYErev).arg(__DATE__));
++     aboutStr.append(tr("If you've found this program and/or the ersky9x firmware useful please support by"));
++-    aboutStr.append(" <a href='" DONATE_STR "'>");
+++    aboutStr.append(" <a href='" DONATE_MB_STR "'>");
++     aboutStr.append(tr("donating") + "</a></center>");
++ //    aboutStr.append(tr("geegeneral size = %1").arg(sizeof(EEGeneral)));
 + 
-+-//#ifdef Q_OS_WIN32
-+-//            int ret = QMessageBox::question(this, "eePe", tr("A new version of eePe is available (r%1)<br>"
-+-//                                                                "Would you like to download it?").arg(rev) ,
-+-//                                            QMessageBox::Yes | QMessageBox::No);
-++#ifdef Q_OS_WIN32
-++            int ret = QMessageBox::question(this, "eePskye", tr("A new version of eePe is available (r%1)<br>"
-++                                                                "Would you like to download it?").arg(rev) ,
-++                                            QMessageBox::Yes | QMessageBox::No);
-+ 
-+-//    				QSettings settings("er9x-eePskye", "eePskye");
-++    				QSettings settings("erSKY9x-eePskye", "eePskye");
-+ 
-+-//            if (ret == QMessageBox::Yes)
-+-//            {
-+-//                QString fileName = QFileDialog::getSaveFileName(this, tr("Save As"),settings.value("lastDir").toString() + "/eePeInstall.exe",tr("Executable (*.exe)"));
-+-//                if (fileName.isEmpty()) return;
-++            if (ret == QMessageBox::Yes)
-++            {
-++                QString fileName = QFileDialog::getSaveFileName(this, tr("Save As"),settings.value("lastDir").toString() + "/eePeInstall.exe",tr("Executable (*.exe)"));
-++                if (fileName.isEmpty()) return;
-+ 
-+-//                downloadDialog * dd = new downloadDialog(this,EEPE_URL,fileName);
-+-//                installer_fileName = fileName;
-+-//                connect(dd,SIGNAL(accepted()),this,SLOT(reply2Accepted()));
-+-//                dd->show();
-+-//            }           
-+-//#else
-+-//            QMessageBox::information(this, "eePe", tr("A new version of eePe is available (r%1)\n"
-+-//                                                      "To update please visit the eepe code page\n"
-+-//                                                      "http://code.google.com/p/eepe/").arg(rev) );
-+-//#endif
-+-//        }
-+-//        else
-+-//        {
-+-//            if(showcheckForUpdatesResult && check1done && check2done)
-+-//                QMessageBox::information(this, "eePe", tr("No updates available at this time."));
-+-//        }
-++                downloadDialog * dd = new downloadDialog(this,EEPE_URL,fileName);
-++                installer_fileName = fileName;
-++                connect(dd,SIGNAL(accepted()),this,SLOT(reply2Accepted()));
-++                dd->show();
-++            }           
-++#else
-++            QMessageBox::information(this, "eePe", tr("A new version of eePskye is available (r%1)\n"
-++                                                      "To update please visit the eepe code page\n"
-++                                                      "http://code.google.com/p/eepe/").arg(rev) );
-++#endif
-++        }
-++        else
-++        {
-++            if(showcheckForUpdatesResult && check1done && check2done)
-++                QMessageBox::information(this, "eePskye", tr("No updates available at this time."));
-++        }
-+     }
-+     else
-+     {
 Index: modeledit.ui
 ===================================================================
---- modeledit.ui	(revision 372)
+--- modeledit.ui	(revision 382)
 +++ modeledit.ui	(working copy)
 @@ -54,7 +54,7 @@
-    <item row="5" column="0">
+    <item row="0" column="0">
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
--      <number>7</number>
+-      <number>2</number>
 +      <number>0</number>
       </property>
       <widget class="QWidget" name="tabModelSetup">
        <attribute name="title">
-@@ -78,6 +78,32 @@
+@@ -429,32 +429,6 @@
           </property>
          </widget>
         </item>
-+       <item row="1" column="0">
-+        <widget class="QLabel" name="label_145">
-+         <property name="text">
-+          <string>Voice Number</string>
-+         </property>
-+        </widget>
-+       </item>
-+       <item row="1" column="1">
-+        <widget class="QSpinBox" name="VoiceNumberSB">
-+         <property name="suffix">
-+          <string/>
-+         </property>
-+         <property name="minimum">
-+          <number>260</number>
-+         </property>
-+         <property name="maximum">
-+          <number>309</number>
-+         </property>
-+         <property name="singleStep">
-+          <number>1</number>
-+         </property>
-+         <property name="value">
-+          <number>260</number>
-+         </property>
-+        </widget>
-+       </item>
-        <item row="3" column="0">
-         <widget class="QLabel" name="label_95">
-          <property name="text">
-@@ -429,98 +455,6 @@
-          </item>
-         </widget>
-        </item>
--       <item row="23" column="0">
--        <widget class="QLabel" name="label_9">
+-       <item row="14" column="0">
+-        <widget class="QLabel" name="label_5">
 -         <property name="text">
--          <string>ppm Delay</string>
+-          <string>Protocol</string>
 -         </property>
 -        </widget>
 -       </item>
--       <item row="23" column="1">
--        <widget class="QSpinBox" name="ppmDelaySB">
--         <property name="suffix">
--          <string> uSec</string>
--         </property>
--         <property name="minimum">
--          <number>100</number>
--         </property>
--         <property name="maximum">
--          <number>800</number>
--         </property>
--         <property name="singleStep">
--          <number>50</number>
--         </property>
--         <property name="value">
--          <number>300</number>
--         </property>
--        </widget>
--       </item>
--       <item row="24" column="0">
--        <widget class="QLabel" name="label_116">
--         <property name="text">
--          <string>DSM Type</string>
--         </property>
--        </widget>
--       </item>
--       <item row="24" column="1">
--        <widget class="QComboBox" name="DSM_Type">
+-       <item row="14" column="1">
+-        <widget class="QComboBox" name="protocolCB">
 -         <item>
 -          <property name="text">
--           <string>LP4/LP5</string>
+-           <string notr="true">PPM</string>
 -          </property>
 -         </item>
 -         <item>
 -          <property name="text">
--           <string>DSM2only</string>
+-           <string>PXX</string>
 -          </property>
 -         </item>
 -         <item>
 -          <property name="text">
--           <string>DSM2/DSMX</string>
+-           <string>DSM2</string>
 -          </property>
 -         </item>
--        </widget>
--       </item>
--       <item row="25" column="0">
--        <widget class="QLabel" name="label_117">
--         <property name="text">
--          <string>PXX RxNum</string>
--         </property>
--        </widget>
--       </item>
--       <item row="25" column="1">
--        <widget class="QSpinBox" name="pxxRxNum">
--         <property name="suffix">
--          <string/>
--         </property>
--         <property name="minimum">
--          <number>1</number>
--         </property>
--         <property name="maximum">
--          <number>125</number>
--         </property>
--         <property name="singleStep">
--          <number>1</number>
--         </property>
--         <property name="value">
--          <number>1</number>
--         </property>
--        </widget>
--       </item>
--       <item row="26" column="0">
--        <widget class="QLabel" name="label_114">
--         <property name="text">
--          <string>Trainer</string>
--         </property>
--        </widget>
--       </item>
--       <item row="26" column="1">
--        <widget class="QCheckBox" name="TrainerChkB">
--         <property name="text">
--          <string/>
--         </property>
 -        </widget>
 -       </item>
         <item row="17" column="1">
          <layout class="QGridLayout" name="gridLayout_28">
           <item row="0" column="0">
-@@ -592,6 +526,13 @@
-          </item>
-         </layout>
-        </item>
-+       <item row="20" column="0">
-+        <widget class="QLabel" name="label_120">
-+         <property name="text">
-+          <string>PPM2</string>
-+         </property>
-+        </widget>
-+       </item>
-        <item row="20" column="1">
-         <layout class="QGridLayout" name="gridLayout_29">
-          <item row="0" column="0">
-@@ -666,13 +607,6 @@
-          </item>
-         </layout>
-        </item>
--       <item row="20" column="0">
--        <widget class="QLabel" name="label_120">
--         <property name="text">
--          <string>PPM2</string>
--         </property>
--        </widget>
--       </item>
-        <item row="22" column="0">
-         <widget class="QLabel" name="label_113">
-          <property name="text">
-@@ -702,32 +636,115 @@
+@@ -745,6 +719,104 @@
           </property>
          </widget>
         </item>
--       <item row="1" column="0">
--        <widget class="QLabel" name="label_145">
-+       <item row="23" column="0">
-+        <widget class="QLabel" name="label_9">
-          <property name="text">
--          <string>Voice Number</string>
-+          <string>ppm Delay</string>
-          </property>
-         </widget>
-        </item>
--       <item row="1" column="1">
--        <widget class="QSpinBox" name="VoiceNumberSB">
-+       <item row="23" column="1">
-+        <widget class="QSpinBox" name="ppmDelaySB">
-          <property name="suffix">
-+          <string> uSec</string>
-+         </property>
-+         <property name="minimum">
-+          <number>100</number>
-+         </property>
-+         <property name="maximum">
-+          <number>800</number>
-+         </property>
-+         <property name="singleStep">
-+          <number>50</number>
-+         </property>
-+         <property name="value">
-+          <number>300</number>
-+         </property>
-+        </widget>
++       <item row="28" column="1">
++        <widget class="QComboBox" name="volumeControlCB"/>
 +       </item>
-+       <item row="24" column="0">
-+        <widget class="QLabel" name="label_116">
++       <item row="28" column="0">
++        <widget class="QLabel" name="label_190">
 +         <property name="text">
-+          <string>DSM Type</string>
++          <string>Volume Control</string>
 +         </property>
 +        </widget>
 +       </item>
-+       <item row="24" column="1">
-+        <widget class="QComboBox" name="DSM_Type">
-+         <item>
-+          <property name="text">
-+           <string>LP4/LP5</string>
-+          </property>
++       <item row="15" column="1">
++        <layout class="QGridLayout" name="gridLayout_12">
++         <item row="0" column="1">
++          <widget class="QComboBox" name="protocolCB">
++           <item>
++            <property name="text">
++             <string notr="true">PPM</string>
++            </property>
++           </item>
++           <item>
++            <property name="text">
++             <string>PXX</string>
++            </property>
++           </item>
++           <item>
++            <property name="text">
++             <string>DSM2</string>
++            </property>
++           </item>
++          </widget>
 +         </item>
-+         <item>
-+          <property name="text">
-+           <string>DSM2only</string>
-+          </property>
++         <item row="0" column="2">
++          <widget class="QLabel" name="label_153">
++           <property name="text">
++            <string>Type</string>
++           </property>
++           <property name="alignment">
++            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
++           </property>
++          </widget>
 +         </item>
-+         <item>
-+          <property name="text">
-+           <string>DSM2/DSMX</string>
-+          </property>
++         <item row="0" column="3">
++          <widget class="QComboBox" name="typeCB">
++           <item>
++            <property name="text">
++             <string>D16</string>
++            </property>
++           </item>
++           <item>
++            <property name="text">
++             <string>D8</string>
++            </property>
++           </item>
++           <item>
++            <property name="text">
++             <string>LRP</string>
++            </property>
++           </item>
++          </widget>
 +         </item>
-+        </widget>
++         <item row="0" column="4">
++          <widget class="QLabel" name="label_154">
++           <property name="text">
++            <string>Country</string>
++           </property>
++           <property name="alignment">
++            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
++           </property>
++          </widget>
++         </item>
++         <item row="0" column="5">
++          <widget class="QComboBox" name="countryCB">
++           <item>
++            <property name="text">
++             <string>America</string>
++            </property>
++           </item>
++           <item>
++            <property name="text">
++             <string>Japan</string>
++            </property>
++           </item>
++           <item>
++            <property name="text">
++             <string>Europe</string>
++            </property>
++           </item>
++          </widget>
++         </item>
++        </layout>
 +       </item>
-+       <item row="25" column="0">
-+        <widget class="QLabel" name="label_117">
++       <item row="15" column="0">
++        <widget class="QLabel" name="label_5">
 +         <property name="text">
-+          <string>PXX RxNum</string>
-+         </property>
-+        </widget>
-+       </item>
-+       <item row="25" column="1">
-+        <widget class="QSpinBox" name="pxxRxNum">
-+         <property name="suffix">
-           <string/>
-          </property>
-          <property name="minimum">
--          <number>260</number>
-+          <number>1</number>
-          </property>
-          <property name="maximum">
--          <number>309</number>
-+          <number>125</number>
-          </property>
-          <property name="singleStep">
-           <number>1</number>
-          </property>
-          <property name="value">
--          <number>260</number>
-+          <number>1</number>
-          </property>
-         </widget>
-        </item>
-+       <item row="26" column="0">
-+        <widget class="QLabel" name="label_114">
-+         <property name="text">
-+          <string>Trainer</string>
-+         </property>
-+        </widget>
-+       </item>
-+       <item row="26" column="1">
-+        <widget class="QCheckBox" name="TrainerChkB">
-+         <property name="text">
-+          <string/>
-+         </property>
-+        </widget>
-+       </item>
-+       <item row="27" column="0">
-+        <widget class="QLabel" name="label_177">
-+         <property name="text">
-+          <string>Auto Limits</string>
-+         </property>
-+        </widget>
-+       </item>
-+       <item row="27" column="1">
-+        <widget class="QDoubleSpinBox" name="autoLimitsSB">
-+         <property name="decimals">
-+          <number>1</number>
-+         </property>
-+         <property name="maximum">
-+          <double>10.000000000000000</double>
++          <string>Protocol</string>
 +         </property>
 +        </widget>
 +       </item>
        </layout>
       </widget>
       <widget class="QWidget" name="tabHeli">
+@@ -11663,7 +11735,6 @@
+   <tabstop>bcP2ChkB</tabstop>
+   <tabstop>bcP3ChkB</tabstop>
+   <tabstop>pulsePolCB</tabstop>
+-  <tabstop>protocolCB</tabstop>
+   <tabstop>ppmDelaySB</tabstop>
+   <tabstop>RUD_edrSw1</tabstop>
+   <tabstop>RUD_edrSw2</tabstop>
+Index: generaledit.cpp
+===================================================================
+--- generaledit.cpp	(revision 381)
++++ generaledit.cpp	(working copy)
+@@ -528,6 +528,7 @@
+ void GeneralEdit::on_stickmodeCB_currentIndexChanged(int index)
+ {
+     g_eeGeneral.stickMode = index;
++//		StickMode = index ;
+     updateSettings();
+ }
+ 
 Index: myeeprom.h
 ===================================================================
---- myeeprom.h	(revision 372)
+--- myeeprom.h	(revision 382)
 +++ myeeprom.h	(working copy)
-@@ -467,6 +467,7 @@
- 	uint8_t		startChannel ;			// for main output 0 = ch1
- 	uint8_t		startPPM2channel ;	// for PPM2 output 0 follow
-   int8_t		ppm2NCH ;
-+	uint8_t sub_trim_limit ;
+@@ -428,8 +428,10 @@
+   uint8_t   FrSkyGpsAlt:1 ;		// Use Gps Altitude as main altitude reading
+   uint8_t   FrSkyImperial:1 ; // Convert FrSky values to imperial units
+   uint8_t   FrSkyAltAlarm:2;
+-	uint8_t		version ;
+-  uint8_t   protocol;
++	uint8_t		modelVersion ;
++  uint8_t   protocol:4 ;
++  uint8_t   country:2 ;
++  uint8_t   sub_protocol:2 ;
+   int8_t    ppmNCH;
+   uint8_t   thrTrim:1;            // Enable Throttle Trim
+ 	uint8_t   xnumBlades:2;					// RPM scaling, now elsewhere as uint8_t
+@@ -479,8 +481,10 @@
+ 	uint8_t sub_trim_limit ;
+ 	uint8_t 	FASoffset ;			// 0.0 to 1.5
+ 	VarioData varioData ;
++	uint8_t		anaVolume ;	// analog volume control
+ //	uint8_t   curentSource ;
+ //	uint8_t   altSource ;
++	int8_t pxxFailsafe[16] ;
  }) SKYModelData ;
  
  
 Index: modeledit.cpp
 ===================================================================
---- modeledit.cpp	(revision 372)
+--- modeledit.cpp	(revision 382)
 +++ modeledit.cpp	(working copy)
-@@ -215,6 +215,7 @@
+@@ -71,6 +71,8 @@
+     QRegExp rx(CHAR_FOR_NAMES_REGEX);
+     ui->modelNameLE->setValidator(new QRegExpValidator(rx, this));
  
-     //pulse polarity
-     ui->pulsePolCB->setCurrentIndex(g_model.pulsePol);
-+    ui->autoLimitsSB->setValue( (double)g_model.sub_trim_limit/10 ) ;
++//		ModelVersion = g_model.modelVersion ;
++
+     tabModelEditSetup();
+     tabExpo();
+     tabMixes();
+@@ -219,6 +221,11 @@
  
      //protocol channels ppm delay (disable if needed)
      setProtocolBoxes();
-@@ -1556,7 +1557,7 @@
- 				if ( cswitchSource1[i]->currentIndex() > 36 )
- 				{
-         	cswitchTlabel[i]->setVisible(true);
--					value = convertTelemConstant( cswitchSource1[i]->currentIndex() - 45, g_model.customSw[i].v2 ) ;
-+					value = convertTelemConstant( cswitchSource1[i]->currentIndex() - 45, g_model.customSw[i].v2, &g_model ) ;
-           stringTelemetryChannel( telText, g_model.customSw[i].v1 - 45, value, &g_model ) ;
- //					sprintf( telText, "%d", value ) ;
-         	cswitchTlabel[i]->setText(telText);
-@@ -2106,7 +2107,7 @@
-             g_model.customSw[i].v2 = cswitchOffset[i]->value();
- 						if ( g_model.customSw[i].v1 > 36 )
- 						{
--							value = convertTelemConstant( g_model.customSw[i].v1 - 37, g_model.customSw[i].v2 ) ;
-+							value = convertTelemConstant( g_model.customSw[i].v1 - 37, g_model.customSw[i].v2, &g_model ) ;
-               stringTelemetryChannel( telText, g_model.customSw[i].v1 - 37, value, &g_model ) ;
- 							//sprintf( telText, "%d", value ) ;
-         			cswitchTlabel[i]->setText(telText);
-@@ -2520,6 +2521,11 @@
++		
++		populateAnaVolumeCB( ui->volumeControlCB, g_model.anaVolume ) ;
++	  ui->countryCB->setCurrentIndex(g_model.country) ;
++	  ui->typeCB->setCurrentIndex(g_model.sub_protocol) ;
++
  }
  
+ void ModelEdit::setProtocolBoxes()
+@@ -234,6 +241,8 @@
+         ui->ppmFrameLengthDSB->setEnabled(false);
+         ui->DSM_Type->setEnabled(false);
+         ui->pxxRxNum->setEnabled(true);
++        ui->countryCB->setEnabled(true);
++        ui->typeCB->setEnabled(true);
  
-+void ModelEdit::on_autoLimitsSB_editingFinished()
+         ui->pxxRxNum->setValue(g_model.ppmNCH+1);
+ 
+@@ -255,6 +264,8 @@
+         ui->ppmDelaySB->setValue(300);
+         ui->numChannelsSB->setValue(8);
+         ui->ppmFrameLengthDSB->setValue(22.5);
++        ui->countryCB->setEnabled(false);
++        ui->typeCB->setEnabled(false);
+         break;
+     default:
+         ui->ppmDelaySB->setEnabled(true);
+@@ -269,6 +280,8 @@
+ 
+         ui->pxxRxNum->setValue(1);
+         ui->DSM_Type->setCurrentIndex(0);
++        ui->countryCB->setEnabled(false);
++        ui->typeCB->setEnabled(false);
+         break;
+     }
+     ui->numChannels2SB->setValue(8+2*g_model.ppm2NCH) ;
+@@ -283,17 +296,16 @@
+ {
+ 	int x ;
+ 	int y ;
+-    populateSwitchCB(ui->RUD_edrSw1,g_model.expoData[CONVERT_MODE(RUD)-1].drSw1);
+-    populateSwitchCB(ui->RUD_edrSw2,g_model.expoData[CONVERT_MODE(RUD)-1].drSw2);
+-    populateSwitchCB(ui->ELE_edrSw1,g_model.expoData[CONVERT_MODE(ELE)-1].drSw1);
+-    populateSwitchCB(ui->ELE_edrSw2,g_model.expoData[CONVERT_MODE(ELE)-1].drSw2);
+-    populateSwitchCB(ui->THR_edrSw1,g_model.expoData[CONVERT_MODE(THR)-1].drSw1);
+-    populateSwitchCB(ui->THR_edrSw2,g_model.expoData[CONVERT_MODE(THR)-1].drSw2);
+-    populateSwitchCB(ui->AIL_edrSw1,g_model.expoData[CONVERT_MODE(AIL)-1].drSw1);
+-    populateSwitchCB(ui->AIL_edrSw2,g_model.expoData[CONVERT_MODE(AIL)-1].drSw2);
++    populateSwitchCB(ui->RUD_edrSw1,g_model.expoData[CONVERT_MODE(RUD,g_model.modelVersion,g_eeGeneral.stickMode)-1].drSw1);
++    populateSwitchCB(ui->RUD_edrSw2,g_model.expoData[CONVERT_MODE(RUD,g_model.modelVersion,g_eeGeneral.stickMode)-1].drSw2);
++    populateSwitchCB(ui->ELE_edrSw1,g_model.expoData[CONVERT_MODE(ELE,g_model.modelVersion,g_eeGeneral.stickMode)-1].drSw1);
++    populateSwitchCB(ui->ELE_edrSw2,g_model.expoData[CONVERT_MODE(ELE,g_model.modelVersion,g_eeGeneral.stickMode)-1].drSw2);
++    populateSwitchCB(ui->THR_edrSw1,g_model.expoData[CONVERT_MODE(THR,g_model.modelVersion,g_eeGeneral.stickMode)-1].drSw1);
++    populateSwitchCB(ui->THR_edrSw2,g_model.expoData[CONVERT_MODE(THR,g_model.modelVersion,g_eeGeneral.stickMode)-1].drSw2);
++    populateSwitchCB(ui->AIL_edrSw1,g_model.expoData[CONVERT_MODE(AIL,g_model.modelVersion,g_eeGeneral.stickMode)-1].drSw1);
++    populateSwitchCB(ui->AIL_edrSw2,g_model.expoData[CONVERT_MODE(AIL,g_model.modelVersion,g_eeGeneral.stickMode)-1].drSw2);
+ 
+ 
+-
+ //#define DR_HIGH   0
+ //#define DR_MID    1
+ //#define DR_LOW    2
+@@ -341,7 +353,7 @@
+     			ui->gridLayout_Ail->addWidget( chkb,i*2+2,xpos);
+ 					chkb->setText( "Gvar" ) ;
+ 
+-					x = g_model.expoData[CONVERT_MODE(AIL)-1].expo[i][j][k] ;
++          x = g_model.expoData[CONVERT_MODE(AIL,g_model.modelVersion,g_eeGeneral.stickMode)-1].expo[i][j][k] ;
+ 					y = -100 ;
+ 					if ( j == 1 )
+ 					{
+@@ -364,7 +376,7 @@
+     			ui->gridLayout_Rud->addWidget( chkb,i*2+2,xpos);
+ 					chkb->setText( "Gvar" ) ;
+ 
+-					x = g_model.expoData[CONVERT_MODE(RUD)-1].expo[i][j][k] ;
++          x = g_model.expoData[CONVERT_MODE(RUD,g_model.modelVersion,g_eeGeneral.stickMode)-1].expo[i][j][k] ;
+ 					y = -100 ;
+ 					if ( j == 1 )
+ 					{
+@@ -387,7 +399,7 @@
+     			ui->gridLayout_Thr->addWidget( chkb,i*2+2,xpos);
+ 					chkb->setText( "Gvar" ) ;
+ 
+-					x = g_model.expoData[CONVERT_MODE(THR)-1].expo[i][j][k] ;
++          x = g_model.expoData[CONVERT_MODE(THR,g_model.modelVersion,g_eeGeneral.stickMode)-1].expo[i][j][k] ;
+ 					y = -100 ;
+ 					if ( j == 1 )
+ 					{
+@@ -419,7 +431,7 @@
+     			ui->gridLayout_Ele->addWidget( chkb,i*2+2,xpos);
+ 					chkb->setText( "Gvar" ) ;
+ 
+-					x = g_model.expoData[CONVERT_MODE(ELE)-1].expo[i][j][k] ;
++          x = g_model.expoData[CONVERT_MODE(ELE,g_model.modelVersion,g_eeGeneral.stickMode)-1].expo[i][j][k] ;
+ 					y = -100 ;
+ 					if ( j == 1 )
+ 					{
+@@ -463,14 +475,14 @@
+ 		QComboBox *cb ;
+ 		QCheckBox *chkb ;
+   int8_t *pval ;
+-    g_model.expoData[CONVERT_MODE(RUD)-1].drSw1 = ui->RUD_edrSw1->currentIndex()-MAX_DRSWITCH;
+-    g_model.expoData[CONVERT_MODE(RUD)-1].drSw2 = ui->RUD_edrSw2->currentIndex()-MAX_DRSWITCH;
+-    g_model.expoData[CONVERT_MODE(ELE)-1].drSw1 = ui->ELE_edrSw1->currentIndex()-MAX_DRSWITCH;
+-    g_model.expoData[CONVERT_MODE(ELE)-1].drSw2 = ui->ELE_edrSw2->currentIndex()-MAX_DRSWITCH;
+-    g_model.expoData[CONVERT_MODE(THR)-1].drSw1 = ui->THR_edrSw1->currentIndex()-MAX_DRSWITCH;
+-    g_model.expoData[CONVERT_MODE(THR)-1].drSw2 = ui->THR_edrSw2->currentIndex()-MAX_DRSWITCH;
+-    g_model.expoData[CONVERT_MODE(AIL)-1].drSw1 = ui->AIL_edrSw1->currentIndex()-MAX_DRSWITCH;
+-    g_model.expoData[CONVERT_MODE(AIL)-1].drSw2 = ui->AIL_edrSw2->currentIndex()-MAX_DRSWITCH;
++    g_model.expoData[CONVERT_MODE(RUD,g_model.modelVersion,g_eeGeneral.stickMode)-1].drSw1 = ui->RUD_edrSw1->currentIndex()-MAX_DRSWITCH;
++    g_model.expoData[CONVERT_MODE(RUD,g_model.modelVersion,g_eeGeneral.stickMode)-1].drSw2 = ui->RUD_edrSw2->currentIndex()-MAX_DRSWITCH;
++    g_model.expoData[CONVERT_MODE(ELE,g_model.modelVersion,g_eeGeneral.stickMode)-1].drSw1 = ui->ELE_edrSw1->currentIndex()-MAX_DRSWITCH;
++    g_model.expoData[CONVERT_MODE(ELE,g_model.modelVersion,g_eeGeneral.stickMode)-1].drSw2 = ui->ELE_edrSw2->currentIndex()-MAX_DRSWITCH;
++    g_model.expoData[CONVERT_MODE(THR,g_model.modelVersion,g_eeGeneral.stickMode)-1].drSw1 = ui->THR_edrSw1->currentIndex()-MAX_DRSWITCH;
++    g_model.expoData[CONVERT_MODE(THR,g_model.modelVersion,g_eeGeneral.stickMode)-1].drSw2 = ui->THR_edrSw2->currentIndex()-MAX_DRSWITCH;
++    g_model.expoData[CONVERT_MODE(AIL,g_model.modelVersion,g_eeGeneral.stickMode)-1].drSw1 = ui->AIL_edrSw1->currentIndex()-MAX_DRSWITCH;
++    g_model.expoData[CONVERT_MODE(AIL,g_model.modelVersion,g_eeGeneral.stickMode)-1].drSw2 = ui->AIL_edrSw2->currentIndex()-MAX_DRSWITCH;
+ 
+ 		for ( i = 0 ; i < 3 ; i += 1 )
+ 		{ // 0=High, 1=Mid, 2=Low
+@@ -481,7 +493,7 @@
+ 					sb = expoDrSpin[1][i][j][k] ;
+ 					cb = expoDrVal[1][i][j][k] ;
+ 					chkb = expoDrGvar[1][i][j][k] ;
+-			    pval = &g_model.expoData[CONVERT_MODE(AIL)-1].expo[i][j][k] ;
++          pval = &g_model.expoData[CONVERT_MODE(AIL,g_model.modelVersion,g_eeGeneral.stickMode)-1].expo[i][j][k] ;
+ 					if ( j==0 )
+ 					{
+     				*pval = numericSpinGvarValue( sb, cb, chkb, *pval, 0 ) ;
+@@ -494,7 +506,7 @@
+ 					sb = expoDrSpin[0][i][j][k] ;
+ 					cb = expoDrVal[0][i][j][k] ;
+           chkb = expoDrGvar[0][i][j][k] ;
+-			    pval = &g_model.expoData[CONVERT_MODE(RUD)-1].expo[i][j][k] ;
++          pval = &g_model.expoData[CONVERT_MODE(RUD,g_model.modelVersion,g_eeGeneral.stickMode)-1].expo[i][j][k] ;
+ 					if ( j==0 )
+ 					{
+     				*pval = numericSpinGvarValue( sb, cb, chkb, *pval, 0 ) ;
+@@ -507,7 +519,7 @@
+ 					sb = expoDrSpin[2][i][j][k] ;
+ 					cb = expoDrVal[2][i][j][k] ;
+           chkb = expoDrGvar[2][i][j][k] ;
+-			    pval = &g_model.expoData[CONVERT_MODE(THR)-1].expo[i][j][k] ;
++          pval = &g_model.expoData[CONVERT_MODE(THR,g_model.modelVersion,g_eeGeneral.stickMode)-1].expo[i][j][k] ;
+ 					if ( j==0 )
+ 					{
+     				*pval = numericSpinGvarValue( sb, cb, chkb, *pval, 0 ) ;
+@@ -520,7 +532,7 @@
+ 					sb = expoDrSpin[3][i][j][k] ;
+ 					cb = expoDrVal[3][i][j][k] ;
+           chkb = expoDrGvar[3][i][j][k] ;
+-			    pval = &g_model.expoData[CONVERT_MODE(ELE)-1].expo[i][j][k] ;
++          pval = &g_model.expoData[CONVERT_MODE(ELE,g_model.modelVersion,g_eeGeneral.stickMode)-1].expo[i][j][k] ;
+ 					if ( j==0 )
+ 					{
+     				*pval = numericSpinGvarValue( sb, cb, chkb, *pval, 0 ) ;
+@@ -732,7 +744,13 @@
+ 
+ void ModelEdit::updatePhaseTab()
+ {
+-	if ( g_eeGeneral.stickMode & 1 )
++	uint8_t smode = g_eeGeneral.stickMode ;
++	if ( g_model.modelVersion >= 2 )
++ 	{
++		smode = 0 ;
++	}
++	
++  if ( smode & 1 )
+ 	{
+ 		ui->label_M2->setText("Throttle") ;
+ 		ui->label_M3->setText("Elevator") ;
+@@ -743,7 +761,7 @@
+ 		ui->label_M3->setText("Throttle") ;
+ 	}
+ 	
+-	if ( g_eeGeneral.stickMode & 2 )
++  if ( smode & 2 )
+ 	{
+ 		ui->label_M1->setText("Aileron") ;
+ 		ui->label_M4->setText("Rudder") ;
+@@ -839,7 +857,7 @@
+ 
+ void ModelEdit::phaseEdited()
+ {
+-  int idx ;
++//  int idx ;
+   g_model.phaseData[0].swtch = ui->FP1_sw->currentIndex() - MAX_DRSWITCH+1 ;
+   g_model.phaseData[1].swtch = ui->FP2_sw->currentIndex() - MAX_DRSWITCH+1 ;
+   g_model.phaseData[2].swtch = ui->FP3_sw->currentIndex() - MAX_DRSWITCH+1 ;
+@@ -910,7 +928,7 @@
+     heliEditLock = true;
+ 
+     ui->swashTypeCB->setCurrentIndex(g_model.swashType);
+-    populateSourceCB(ui->swashCollectiveCB,g_eeGeneral.stickMode,0,g_model.swashCollectiveSource);
++    populateSourceCB(ui->swashCollectiveCB,g_eeGeneral.stickMode,0,g_model.swashCollectiveSource,g_model.modelVersion);
+     ui->swashRingValSB->setValue(g_model.swashRingValue);
+     ui->swashInvertELE->setChecked(g_model.swashInvertELE);
+     ui->swashInvertAIL->setChecked(g_model.swashInvertAIL);
+@@ -1740,7 +1758,7 @@
+ 				}
+         cswitchOffset[i]->setAccelerated(true);
+         cswitchOffset0[i]->setVisible(false);
+-        populateSourceCB(cswitchSource1[i],g_eeGeneral.stickMode,1,g_model.customSw[i].v1);
++        populateSourceCB(cswitchSource1[i],g_eeGeneral.stickMode,1,g_model.customSw[i].v1,g_model.modelVersion);
+         cswitchOffset[i]->setValue(g_model.customSw[i].v2);
+ 				if ( cswitchSource1[i]->currentIndex() > 36 )
+ 				{
+@@ -1772,8 +1790,8 @@
+         cswitchSource2[i]->setVisible(true);
+         cswitchOffset[i]->setVisible(false);
+         cswitchOffset0[i]->setVisible(false);
+-        populateSourceCB(cswitchSource1[i],g_eeGeneral.stickMode,0,g_model.customSw[i].v1);
+-        populateSourceCB(cswitchSource2[i],g_eeGeneral.stickMode,0,g_model.customSw[i].v2);
++        populateSourceCB(cswitchSource1[i],g_eeGeneral.stickMode,0,g_model.customSw[i].v1,g_model.modelVersion);
++        populateSourceCB(cswitchSource2[i],g_eeGeneral.stickMode,0,g_model.customSw[i].v2,g_model.modelVersion);
+ 				cswitchText1[i]->setVisible(false) ;
+ 				cswitchText2[i]->setVisible(false) ;
+         break;
+@@ -2669,12 +2687,30 @@
+     updateSettings();
+ }
+ 
++void ModelEdit::on_volumeControlCB_currentIndexChanged(int index)
 +{
-+   g_model.sub_trim_limit = ui->autoLimitsSB->value()*10 ;
++    g_model.anaVolume = index ;
++    updateSettings();
 +}
 +
- void ModelEdit::on_thrTrimChkB_toggled(bool checked)
+ void ModelEdit::on_trimSWCB_currentIndexChanged(int index)
  {
-     g_model.thrTrim = checked;
+     g_model.trimSw = index-MAX_DRSWITCH;
+     updateSettings();
+ }
+ 
++void ModelEdit::on_countryCB_currentIndexChanged(int index)
++{
++  g_model.country = index ;
++  updateSettings();
++}
++	
++void ModelEdit::on_typeCB_currentIndexChanged(int index)
++{
++  g_model.sub_protocol = index ;
++  updateSettings();
++}
++
+ void ModelEdit::on_pulsePolCB_currentIndexChanged(int index)
+ {
+     g_model.pulsePol = index;
+@@ -3269,7 +3305,7 @@
+ 
+     QString comment = mixNotes[index];
+ 
+-    MixerDialog *g = new MixerDialog(this,&mixd,g_eeGeneral.stickMode, &comment);
++    MixerDialog *g = new MixerDialog(this,&mixd,g_eeGeneral.stickMode, &comment, g_model.modelVersion );
+     if(g->exec())
+     {
+         memcpy(&g_model.mixData[index],&mixd,sizeof(SKYMixData));
+@@ -3917,10 +3953,10 @@
+         {
+           clearMixes();
+         }
+-        md=setDest(ICC(STK_RUD));  md->srcRaw=CM(STK_RUD);  md->weight=100;
+-        md=setDest(ICC(STK_ELE));  md->srcRaw=CM(STK_ELE);  md->weight=100;
+-        md=setDest(ICC(STK_THR));  md->srcRaw=CM(STK_THR);  md->weight=100;
+-        md=setDest(ICC(STK_AIL));  md->srcRaw=CM(STK_AIL);  md->weight=100;
++        md=setDest(ICC(STK_RUD));  md->srcRaw=CM(STK_RUD,g_model.modelVersion,g_eeGeneral.stickMode);  md->weight=100;
++        md=setDest(ICC(STK_ELE));  md->srcRaw=CM(STK_ELE,g_model.modelVersion,g_eeGeneral.stickMode);  md->weight=100;
++        md=setDest(ICC(STK_THR));  md->srcRaw=CM(STK_THR,g_model.modelVersion,g_eeGeneral.stickMode);  md->weight=100;
++        md=setDest(ICC(STK_AIL));  md->srcRaw=CM(STK_AIL,g_model.modelVersion,g_eeGeneral.stickMode);  md->weight=100;
+     }
+ 
+     //T-Cut
+@@ -3937,7 +3973,7 @@
+         md=setDest(14);            md->srcRaw=MIX_MAX;  md->weight=-100;  md->swtch=DSW_SWB;  md->mltpx=MLTPX_REP;
+         md=setDest(14);            md->srcRaw=MIX_MAX;  md->weight= 100;  md->swtch=DSW_THR;  md->mltpx=MLTPX_REP;
+ 
+-        setSwitch(0xB,CS_VNEG, CM(STK_THR), -99);
++        setSwitch(0xB,CS_VNEG, CM(STK_THR,g_model.modelVersion,g_eeGeneral.stickMode), -99);
+         setSwitch(0xC,CS_VPOS, CH(14), 0);
+ 
+         updateSwitchesTab();
+@@ -3947,20 +3983,20 @@
+     if(idx==j++)
+     {
+         clearMixes();
+-        md=setDest(ICC(STK_RUD));  md->srcRaw=CM(STK_RUD);  md->weight= 100;
+-        md=setDest(ICC(STK_RUD));  md->srcRaw=CM(STK_ELE);  md->weight=-100;
+-        md=setDest(ICC(STK_ELE));  md->srcRaw=CM(STK_RUD);  md->weight= 100;
+-        md=setDest(ICC(STK_ELE));  md->srcRaw=CM(STK_ELE);  md->weight= 100;
++        md=setDest(ICC(RUD_STICK+1));  md->srcRaw=CM(STK_RUD,g_model.modelVersion,g_eeGeneral.stickMode);  md->weight= 100;
++        md=setDest(ICC(RUD_STICK+1));  md->srcRaw=CM(STK_ELE,g_model.modelVersion,g_eeGeneral.stickMode);  md->weight=-100;
++        md=setDest(ICC(ELE_STICK+1));  md->srcRaw=CM(STK_RUD,g_model.modelVersion,g_eeGeneral.stickMode);  md->weight= 100;
++        md=setDest(ICC(ELE_STICK+1));  md->srcRaw=CM(STK_ELE,g_model.modelVersion,g_eeGeneral.stickMode);  md->weight= 100;
+     }
+ 
+     //Elevon\\Delta
+     if(idx==j++)
+     {
+         clearMixes();
+-        md=setDest(ICC(STK_ELE));  md->srcRaw=CM(STK_ELE);  md->weight= 100;
+-        md=setDest(ICC(STK_ELE));  md->srcRaw=CM(STK_AIL);  md->weight= 100;
+-        md=setDest(ICC(STK_AIL));  md->srcRaw=CM(STK_ELE);  md->weight= 100;
+-        md=setDest(ICC(STK_AIL));  md->srcRaw=CM(STK_AIL);  md->weight=-100;
++        md=setDest(ICC(ELE_STICK+1));  md->srcRaw=CM(STK_ELE,g_model.modelVersion,g_eeGeneral.stickMode);  md->weight= 100;
++        md=setDest(ICC(ELE_STICK+1));  md->srcRaw=CM(STK_AIL,g_model.modelVersion,g_eeGeneral.stickMode);  md->weight= 100;
++        md=setDest(ICC(AIL_STICK+1));  md->srcRaw=CM(STK_ELE,g_model.modelVersion,g_eeGeneral.stickMode);  md->weight= 100;
++        md=setDest(ICC(AIL_STICK+1));  md->srcRaw=CM(STK_AIL,g_model.modelVersion,g_eeGeneral.stickMode);  md->weight=-100;
+     }
+ 
+ 
+@@ -3977,21 +4013,21 @@
+         md=setDest(3);  md->srcRaw=MIX_CYC3;  md->weight= 100;
+ 
+         //rudder
+-        md=setDest(4);  md->srcRaw=CM(STK_RUD); md->weight=100;
++        md=setDest(4);  md->srcRaw=CM(STK_RUD,g_model.modelVersion,g_eeGeneral.stickMode); md->weight=100;
+ 
+         //Throttle
+-        md=setDest(5);  md->srcRaw=CM(STK_THR);  md->weight= 100; md->swtch= DSW_ID0; md->curve=CV(1); md->carryTrim=TRIM_OFF;
+-        md=setDest(5);  md->srcRaw=CM(STK_THR);  md->weight= 100; md->swtch= DSW_ID1; md->curve=CV(2); md->carryTrim=TRIM_OFF;
+-        md=setDest(5);  md->srcRaw=CM(STK_THR);  md->weight= 100; md->swtch= DSW_ID2; md->curve=CV(3); md->carryTrim=TRIM_OFF;
++        md=setDest(5);  md->srcRaw=CM(STK_THR,g_model.modelVersion,g_eeGeneral.stickMode);  md->weight= 100; md->swtch= DSW_ID0; md->curve=CV(1); md->carryTrim=TRIM_OFF;
++        md=setDest(5);  md->srcRaw=CM(STK_THR,g_model.modelVersion,g_eeGeneral.stickMode);  md->weight= 100; md->swtch= DSW_ID1; md->curve=CV(2); md->carryTrim=TRIM_OFF;
++        md=setDest(5);  md->srcRaw=CM(STK_THR,g_model.modelVersion,g_eeGeneral.stickMode);  md->weight= 100; md->swtch= DSW_ID2; md->curve=CV(3); md->carryTrim=TRIM_OFF;
+         md=setDest(5);  md->srcRaw=MIX_MAX;      md->weight=-100; md->swtch= DSW_THR; md->mltpx=MLTPX_REP;
+ 
+         //gyro gain
+         md=setDest(6);  md->srcRaw=MIX_FULL; md->weight=30; md->swtch=-DSW_GEA;
+ 
+         //collective
+-        md=setDest(11); md->srcRaw=CM(STK_THR);  md->weight=100; md->swtch= DSW_ID0; md->curve=CV(4); md->carryTrim=TRIM_OFF;
+-        md=setDest(11); md->srcRaw=CM(STK_THR);  md->weight=100; md->swtch= DSW_ID1; md->curve=CV(5); md->carryTrim=TRIM_OFF;
+-        md=setDest(11); md->srcRaw=CM(STK_THR);  md->weight=100; md->swtch= DSW_ID2; md->curve=CV(6); md->carryTrim=TRIM_OFF;
++        md=setDest(11); md->srcRaw=CM(STK_THR,g_model.modelVersion,g_eeGeneral.stickMode);  md->weight=100; md->swtch= DSW_ID0; md->curve=CV(4); md->carryTrim=TRIM_OFF;
++        md=setDest(11); md->srcRaw=CM(STK_THR,g_model.modelVersion,g_eeGeneral.stickMode);  md->weight=100; md->swtch= DSW_ID1; md->curve=CV(5); md->carryTrim=TRIM_OFF;
++        md=setDest(11); md->srcRaw=CM(STK_THR,g_model.modelVersion,g_eeGeneral.stickMode);  md->weight=100; md->swtch= DSW_ID2; md->curve=CV(6); md->carryTrim=TRIM_OFF;
+ 
+         g_model.swashType = SWASH_TYPE_120;
+         g_model.swashCollectiveSource = CH(11);
+Index: mdichild.cpp
+===================================================================
+--- mdichild.cpp	(revision 381)
++++ mdichild.cpp	(working copy)
+@@ -51,7 +51,6 @@
+ #include "simulatordialog.h"
+ #include "printdialog.h"
+ 
+-
+ MdiChild::MdiChild()
+ {
+     setAttribute(Qt::WA_DeleteOnClose);

@@ -428,8 +428,10 @@ PACK(typedef struct te_ModelData {
   uint8_t   FrSkyGpsAlt:1 ;		// Use Gps Altitude as main altitude reading
   uint8_t   FrSkyImperial:1 ; // Convert FrSky values to imperial units
   uint8_t   FrSkyAltAlarm:2;
-	uint8_t		version ;
-  uint8_t   protocol;
+	uint8_t		modelVersion ;
+  uint8_t   protocol:4 ;
+  uint8_t   country:2 ;
+  uint8_t   sub_protocol:2 ;
   int8_t    ppmNCH;
   uint8_t   thrTrim:1;            // Enable Throttle Trim
 	uint8_t   xnumBlades:2;					// RPM scaling, now elsewhere as uint8_t
@@ -479,8 +481,10 @@ PACK(typedef struct te_ModelData {
 	uint8_t sub_trim_limit ;
 	uint8_t 	FASoffset ;			// 0.0 to 1.5
 	VarioData varioData ;
+	uint8_t		anaVolume ;	// analog volume control
 //	uint8_t   curentSource ;
 //	uint8_t   altSource ;
+	int8_t pxxFailsafe[16] ;
 }) SKYModelData ;
 
 
