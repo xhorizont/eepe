@@ -455,15 +455,23 @@ void ModelEdit::expoEdited()
 		QSpinBox *sb ;
 		QComboBox *cb ;
 		QCheckBox *chkb ;
+		int limit = MAX_DRSWITCH ;
+#ifndef SKY
+	  if ( eeFile->mee_type )
+		{
+    	limit += EXTRA_CSW ;
+		}
+#endif
+
   int8_t *pval ;
-    g_model.expoData[CONVERT_MODE(RUD,g_model.modelVersion,g_eeGeneral.stickMode)-1].drSw1 = ui->RUD_edrSw1->currentIndex()-MAX_DRSWITCH;
-    g_model.expoData[CONVERT_MODE(RUD,g_model.modelVersion,g_eeGeneral.stickMode)-1].drSw2 = ui->RUD_edrSw2->currentIndex()-MAX_DRSWITCH;
-    g_model.expoData[CONVERT_MODE(ELE,g_model.modelVersion,g_eeGeneral.stickMode)-1].drSw1 = ui->ELE_edrSw1->currentIndex()-MAX_DRSWITCH;
-    g_model.expoData[CONVERT_MODE(ELE,g_model.modelVersion,g_eeGeneral.stickMode)-1].drSw2 = ui->ELE_edrSw2->currentIndex()-MAX_DRSWITCH;
-    g_model.expoData[CONVERT_MODE(THR,g_model.modelVersion,g_eeGeneral.stickMode)-1].drSw1 = ui->THR_edrSw1->currentIndex()-MAX_DRSWITCH;
-    g_model.expoData[CONVERT_MODE(THR,g_model.modelVersion,g_eeGeneral.stickMode)-1].drSw2 = ui->THR_edrSw2->currentIndex()-MAX_DRSWITCH;
-    g_model.expoData[CONVERT_MODE(AIL,g_model.modelVersion,g_eeGeneral.stickMode)-1].drSw1 = ui->AIL_edrSw1->currentIndex()-MAX_DRSWITCH;
-    g_model.expoData[CONVERT_MODE(AIL,g_model.modelVersion,g_eeGeneral.stickMode)-1].drSw2 = ui->AIL_edrSw2->currentIndex()-MAX_DRSWITCH;
+    g_model.expoData[CONVERT_MODE(RUD,g_model.modelVersion,g_eeGeneral.stickMode)-1].drSw1 = ui->RUD_edrSw1->currentIndex()-limit ;
+    g_model.expoData[CONVERT_MODE(RUD,g_model.modelVersion,g_eeGeneral.stickMode)-1].drSw2 = ui->RUD_edrSw2->currentIndex()-limit ;
+    g_model.expoData[CONVERT_MODE(ELE,g_model.modelVersion,g_eeGeneral.stickMode)-1].drSw1 = ui->ELE_edrSw1->currentIndex()-limit ;
+    g_model.expoData[CONVERT_MODE(ELE,g_model.modelVersion,g_eeGeneral.stickMode)-1].drSw2 = ui->ELE_edrSw2->currentIndex()-limit ;
+    g_model.expoData[CONVERT_MODE(THR,g_model.modelVersion,g_eeGeneral.stickMode)-1].drSw1 = ui->THR_edrSw1->currentIndex()-limit ;
+    g_model.expoData[CONVERT_MODE(THR,g_model.modelVersion,g_eeGeneral.stickMode)-1].drSw2 = ui->THR_edrSw2->currentIndex()-limit ;
+    g_model.expoData[CONVERT_MODE(AIL,g_model.modelVersion,g_eeGeneral.stickMode)-1].drSw1 = ui->AIL_edrSw1->currentIndex()-limit ;
+    g_model.expoData[CONVERT_MODE(AIL,g_model.modelVersion,g_eeGeneral.stickMode)-1].drSw2 = ui->AIL_edrSw2->currentIndex()-limit ;
 		
 		for ( i = 0 ; i < 3 ; i += 1 )
 		{ // 0=High, 1=Mid, 2=Low
@@ -595,7 +603,7 @@ void ModelEdit::tabMixes()
 //				}
 //				else
 //				{
-        	str += getSourceStr(g_eeGeneral.stickMode,md->srcRaw);
+        	str += getSourceStr(g_eeGeneral.stickMode,md->srcRaw, g_model.modelVersion ) ;
 //				}
 
         if(md->swtch) str += tr(" Switch(") + getSWName(md->swtch,eeFile->mee_type) + ")";
@@ -810,10 +818,19 @@ void ModelEdit::updatePhaseTab()
 
 void ModelEdit::phaseEdited()
 {
-  g_model.phaseData[0].swtch = ui->FP1_sw->currentIndex() - MAX_DRSWITCH+1 ;
-  g_model.phaseData[1].swtch = ui->FP2_sw->currentIndex() - MAX_DRSWITCH+1 ;
-  g_model.phaseData[2].swtch = ui->FP3_sw->currentIndex() - MAX_DRSWITCH+1 ;
-  g_model.phaseData[3].swtch = ui->FP4_sw->currentIndex() - MAX_DRSWITCH+1 ;
+	
+	int limit = MAX_DRSWITCH-1 ;
+#ifndef SKY
+	if ( eeFile->mee_type )
+	{
+  	limit += EXTRA_CSW ;
+	}
+#endif
+	
+  g_model.phaseData[0].swtch = ui->FP1_sw->currentIndex() - limit ;
+  g_model.phaseData[1].swtch = ui->FP2_sw->currentIndex() - limit ;
+  g_model.phaseData[2].swtch = ui->FP3_sw->currentIndex() - limit ;
+  g_model.phaseData[3].swtch = ui->FP4_sw->currentIndex() - limit ;
 
 //  if ( (idx = decodePhaseTrim( &g_model.phaseData[0].trim[0], 1, ui->FP1_RudCB->currentIndex() ) < 0 ) )
 //	{
