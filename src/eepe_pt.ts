@@ -3122,9 +3122,9 @@ Right</source>
         <translation>Simular</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="550"/>
-        <location filename="modeledit.cpp" line="560"/>
-        <location filename="modeledit.cpp" line="675"/>
+        <location filename="modeledit.cpp" line="558"/>
+        <location filename="modeledit.cpp" line="568"/>
+        <location filename="modeledit.cpp" line="683"/>
         <source>CH%1%2</source>
         <translation>CH%1%2</translation>
     </message>
@@ -3137,37 +3137,37 @@ Right</source>
         <translation type="obsolete">+%1%</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="601"/>
+        <location filename="modeledit.cpp" line="609"/>
         <source> Switch(</source>
         <translation>Interruptor(</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="602"/>
+        <location filename="modeledit.cpp" line="610"/>
         <source> noTrim</source>
         <translation>semAjuste</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="616"/>
+        <location filename="modeledit.cpp" line="624"/>
         <source> Offset(%1%)</source>
         <translation>Atraso(%1%)</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="650"/>
+        <location filename="modeledit.cpp" line="658"/>
         <source> Curve(%1)</source>
         <translation>Curva(%1)</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="655"/>
+        <location filename="modeledit.cpp" line="663"/>
         <source> Delay(u%1:d%2)</source>
         <translation>Atraso(u%1:d%2)</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="656"/>
+        <location filename="modeledit.cpp" line="664"/>
         <source> Slow(u%1:d%2)</source>
         <translation>Lento(u%1:d%2)</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="658"/>
+        <location filename="modeledit.cpp" line="666"/>
         <source> Warn(%1)</source>
         <translation>Aviso(%1)</translation>
     </message>
@@ -3180,161 +3180,161 @@ Right</source>
         <translation type="obsolete">eePe</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="3421"/>
+        <location filename="modeledit.cpp" line="3438"/>
         <source>Delete Selected Mixes?</source>
         <translation>Apagar misturas selecionadas?</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="3573"/>
+        <location filename="modeledit.cpp" line="3590"/>
         <source>&amp;Add</source>
         <translation>&amp;Adicionar</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="3573"/>
+        <location filename="modeledit.cpp" line="3590"/>
         <source>Ctrl+A</source>
         <translation>Ctrl+A</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="3574"/>
+        <location filename="modeledit.cpp" line="3591"/>
         <source>&amp;Edit</source>
         <translation>&amp;Editar</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="3574"/>
+        <location filename="modeledit.cpp" line="3591"/>
         <source>Enter</source>
         <translation>Enter</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="3576"/>
+        <location filename="modeledit.cpp" line="3593"/>
         <source>&amp;Delete</source>
         <translation>&amp;Eliminar</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="3576"/>
+        <location filename="modeledit.cpp" line="3593"/>
         <source>Delete</source>
         <translation>Eliminar</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="3577"/>
+        <location filename="modeledit.cpp" line="3594"/>
         <source>&amp;Copy</source>
         <translation>&amp;Copiar</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="3577"/>
+        <location filename="modeledit.cpp" line="3594"/>
         <source>Ctrl+C</source>
         <translation>Ctrl+C</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="3578"/>
+        <location filename="modeledit.cpp" line="3595"/>
         <source>&amp;Cut</source>
         <translation>&amp;Cor&amp;tar</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="3578"/>
+        <location filename="modeledit.cpp" line="3595"/>
         <source>Ctrl+X</source>
         <translation>Ctrl+X</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="3579"/>
+        <location filename="modeledit.cpp" line="3596"/>
         <source>&amp;Paste</source>
         <translation>Co&amp;lar</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="3579"/>
+        <location filename="modeledit.cpp" line="3596"/>
         <source>Ctrl+V</source>
         <translation>Ctrl+V</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="3580"/>
+        <location filename="modeledit.cpp" line="3597"/>
         <source>Du&amp;plicate</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="3582"/>
+        <location filename="modeledit.cpp" line="3599"/>
         <source>Move Up</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="modeledit.cpp" line="108"/>
-        <location filename="modeledit.cpp" line="3582"/>
+        <location filename="modeledit.cpp" line="3599"/>
         <source>Ctrl+Up</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="3583"/>
+        <location filename="modeledit.cpp" line="3600"/>
         <source>Move Down</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="modeledit.cpp" line="111"/>
-        <location filename="modeledit.cpp" line="3583"/>
+        <location filename="modeledit.cpp" line="3600"/>
         <source>Ctrl+Down</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="612"/>
+        <location filename="modeledit.cpp" line="620"/>
         <source> Offset(GV%1)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="625"/>
+        <location filename="modeledit.cpp" line="633"/>
         <source> Diff(%1)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="635"/>
+        <location filename="modeledit.cpp" line="643"/>
         <source> Diff(GV%1)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="646"/>
+        <location filename="modeledit.cpp" line="654"/>
         <source>!Curve(%1)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="1319"/>
-        <location filename="modeledit.cpp" line="1320"/>
+        <location filename="modeledit.cpp" line="1336"/>
+        <location filename="modeledit.cpp" line="1337"/>
         <source>%1</source>
         <translation type="unfinished">%1</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="1697"/>
-        <location filename="modeledit.cpp" line="1711"/>
+        <location filename="modeledit.cpp" line="1714"/>
+        <location filename="modeledit.cpp" line="1728"/>
         <source>%1.%2</source>
         <translation type="unfinished">%1.%2</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="3149"/>
+        <location filename="modeledit.cpp" line="3166"/>
         <source>Editing curve %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="3901"/>
+        <location filename="modeledit.cpp" line="3918"/>
         <source>Apply Template?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="3901"/>
+        <location filename="modeledit.cpp" line="3918"/>
         <source>Apply template &quot;%1&quot;?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="3928"/>
+        <location filename="modeledit.cpp" line="3945"/>
         <source>Clear Mixes?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="3928"/>
+        <location filename="modeledit.cpp" line="3945"/>
         <source>Really clear all the mixes?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="3940"/>
+        <location filename="modeledit.cpp" line="3957"/>
         <source>Clear Curves?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="3940"/>
+        <location filename="modeledit.cpp" line="3957"/>
         <source>Really clear all the curves?</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3343,7 +3343,7 @@ Right</source>
         <translation type="obsolete">&amp;Duplicar</translation>
     </message>
     <message>
-        <location filename="modeledit.cpp" line="3580"/>
+        <location filename="modeledit.cpp" line="3597"/>
         <source>Ctrl+U</source>
         <translation>Ctrl+U</translation>
     </message>
@@ -3358,7 +3358,7 @@ Right</source>
     <message>
         <location filename="helpers.cpp" line="182"/>
         <location filename="helpers.cpp" line="244"/>
-        <location filename="modeledit.cpp" line="2035"/>
+        <location filename="modeledit.cpp" line="2052"/>
         <source>GV%1</source>
         <translation type="unfinished"></translation>
     </message>

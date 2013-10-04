@@ -10,6 +10,11 @@ description here
 ====================================================================================
 
 ******************************************
+CHANGELOG: 04-Oct-2013 MPB
+Fix expo switch editing bug
+Fix mix source display bug
+
+******************************************
 CHANGELOG: 30-Sep-2013 MPB
 Language Norwegian hex support
 Support for r804 er9x, with stick mode changes
