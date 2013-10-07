@@ -477,6 +477,12 @@ void GeneralEdit::on_switchwarnChkB_stateChanged(int )
     updateSettings();
 }
 
+void GeneralEdit::on_OptrexDisplayChkB_stateChanged(int )
+{
+	g_eeGeneral.optrexDisplay = ui->OptrexDisplayChkB->isChecked() ;
+  updateSettings();
+}
+
 //void GeneralEdit::on_memwarnChkB_stateChanged(int )
 //{
 //    g_eeGeneral.disableMemoryWarning = ui->memwarnChkB->isChecked() ? 0 : 1;

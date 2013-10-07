@@ -195,6 +195,7 @@ bool EEPFILE::eeModelExists(uint8_t id)
 int EEPFILE::getModel(ModelData* model, uint8_t id)
 {
     int sz = 0;
+	  memset(model, 0, sizeof(ModelData));
 
     if(id<MAX_MODELS)
     {
@@ -222,6 +223,7 @@ bool EEPFILE::putModel(ModelData* model, uint8_t id)
 
 int EEPFILE::getGeneralSettings(EEGeneral* setData)
 {
+	  memset(setData, 0, sizeof(EEGeneral));
     theFile->openRd(FILE_GENERAL);
     int sz = theFile->readRlc((uint8_t*)setData, sizeof(EEGeneral));
 

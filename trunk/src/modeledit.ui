@@ -59,6 +59,32 @@
          </property>
         </widget>
        </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="label_121">
+         <property name="text">
+          <string>Voice Number</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QSpinBox" name="VoiceNumberSB">
+         <property name="suffix">
+          <string/>
+         </property>
+         <property name="minimum">
+          <number>260</number>
+         </property>
+         <property name="maximum">
+          <number>309</number>
+         </property>
+         <property name="singleStep">
+          <number>1</number>
+         </property>
+         <property name="value">
+          <number>260</number>
+         </property>
+        </widget>
+       </item>
        <item row="3" column="0">
         <widget class="QLabel" name="label_2">
          <property name="text">
@@ -68,6 +94,16 @@
        </item>
        <item row="3" column="1">
         <widget class="QComboBox" name="timerModeCB"/>
+       </item>
+       <item row="4" column="0">
+        <widget class="QLabel" name="label_118">
+         <property name="text">
+          <string>Timer ModeB</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="1">
+        <widget class="QComboBox" name="timerModeBCB"/>
        </item>
        <item row="6" column="0">
         <widget class="QLabel" name="label_3">
@@ -279,253 +315,10 @@
          </property>
         </widget>
        </item>
-       <item row="19" column="0">
-        <widget class="QLabel" name="label_6">
+       <item row="16" column="0">
+        <widget class="QLabel" name="label_5">
          <property name="text">
-          <string>Channels</string>
-         </property>
-        </widget>
-       </item>
-       <item row="19" column="1">
-        <widget class="QSpinBox" name="numChannelsSB">
-         <property name="suffix">
-          <string>ch</string>
-         </property>
-         <property name="minimum">
-          <number>4</number>
-         </property>
-         <property name="maximum">
-          <number>16</number>
-         </property>
-         <property name="singleStep">
-          <number>2</number>
-         </property>
-         <property name="value">
-          <number>8</number>
-         </property>
-        </widget>
-       </item>
-       <item row="20" column="0">
-        <widget class="QLabel" name="label_9">
-         <property name="text">
-          <string>ppm Delay</string>
-         </property>
-        </widget>
-       </item>
-       <item row="20" column="1">
-        <widget class="QSpinBox" name="ppmDelaySB">
-         <property name="suffix">
-          <string> uSec</string>
-         </property>
-         <property name="minimum">
-          <number>100</number>
-         </property>
-         <property name="maximum">
-          <number>800</number>
-         </property>
-         <property name="singleStep">
-          <number>50</number>
-         </property>
-         <property name="value">
-          <number>300</number>
-         </property>
-        </widget>
-       </item>
-       <item row="18" column="1">
-        <widget class="QDoubleSpinBox" name="ppmFrameLengthDSB">
-         <property name="suffix">
-          <string> mSec</string>
-         </property>
-         <property name="decimals">
-          <number>1</number>
-         </property>
-         <property name="minimum">
-          <double>12.500000000000000</double>
-         </property>
-         <property name="maximum">
-          <double>32.500000000000000</double>
-         </property>
-         <property name="singleStep">
-          <double>0.500000000000000</double>
-         </property>
-         <property name="value">
-          <double>22.500000000000000</double>
-         </property>
-        </widget>
-       </item>
-       <item row="18" column="0">
-        <widget class="QLabel" name="label_113">
-         <property name="text">
-          <string>PPM Frame Length</string>
-         </property>
-        </widget>
-       </item>
-       <item row="24" column="0">
-        <widget class="QLabel" name="label_114">
-         <property name="text">
-          <string>Trainer</string>
-         </property>
-        </widget>
-       </item>
-       <item row="25" column="0">
-        <widget class="QLabel" name="label_115">
-         <property name="text">
-          <string>T2throttleTrig</string>
-         </property>
-        </widget>
-       </item>
-       <item row="24" column="1">
-        <widget class="QCheckBox" name="TrainerChkB">
-         <property name="text">
-          <string/>
-         </property>
-        </widget>
-       </item>
-       <item row="25" column="1">
-        <widget class="QCheckBox" name="T2ThrTrgChkB">
-         <property name="text">
-          <string/>
-         </property>
-        </widget>
-       </item>
-       <item row="21" column="0">
-        <widget class="QLabel" name="label_116">
-         <property name="text">
-          <string>DSM Type</string>
-         </property>
-        </widget>
-       </item>
-       <item row="22" column="0">
-        <widget class="QLabel" name="label_117">
-         <property name="text">
-          <string>PXX RxNum</string>
-         </property>
-        </widget>
-       </item>
-       <item row="21" column="1">
-        <widget class="QComboBox" name="DSM_Type">
-         <item>
-          <property name="text">
-           <string>LP4/LP5</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>DSM2only</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>DSM2/DSMX</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="22" column="1">
-        <widget class="QSpinBox" name="pxxRxNum">
-         <property name="suffix">
-          <string/>
-         </property>
-         <property name="minimum">
-          <number>0</number>
-         </property>
-         <property name="maximum">
-          <number>124</number>
-         </property>
-         <property name="singleStep">
-          <number>1</number>
-         </property>
-         <property name="value">
-          <number>1</number>
-         </property>
-        </widget>
-       </item>
-       <item row="4" column="1">
-        <widget class="QComboBox" name="timerModeBCB"/>
-       </item>
-       <item row="4" column="0">
-        <widget class="QLabel" name="label_118">
-         <property name="text">
-          <string>Timer ModeB</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="1">
-        <widget class="QSpinBox" name="VoiceNumberSB">
-         <property name="suffix">
-          <string/>
-         </property>
-         <property name="minimum">
-          <number>260</number>
-         </property>
-         <property name="maximum">
-          <number>309</number>
-         </property>
-         <property name="singleStep">
-          <number>1</number>
-         </property>
-         <property name="value">
-          <number>260</number>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="0">
-        <widget class="QLabel" name="label_121">
-         <property name="text">
-          <string>Voice Number</string>
-         </property>
-        </widget>
-       </item>
-       <item row="23" column="1">
-        <widget class="QSpinBox" name="PPM1stChan">
-         <property name="suffix">
-          <string/>
-         </property>
-         <property name="minimum">
-          <number>1</number>
-         </property>
-         <property name="maximum">
-          <number>8</number>
-         </property>
-         <property name="singleStep">
-          <number>1</number>
-         </property>
-         <property name="value">
-          <number>1</number>
-         </property>
-        </widget>
-       </item>
-       <item row="23" column="0">
-        <widget class="QLabel" name="label_126">
-         <property name="text">
-          <string>PPM Start Channel</string>
-         </property>
-        </widget>
-       </item>
-       <item row="26" column="0">
-        <widget class="QLabel" name="label_151">
-         <property name="text">
-          <string>Auto Limits</string>
-         </property>
-        </widget>
-       </item>
-       <item row="26" column="1">
-        <widget class="QDoubleSpinBox" name="autoLimitsSB">
-         <property name="decimals">
-          <number>1</number>
-         </property>
-         <property name="maximum">
-          <double>10.000000000000000</double>
-         </property>
-        </widget>
-       </item>
-       <item row="27" column="1">
-        <widget class="QComboBox" name="volumeControlCB"/>
-       </item>
-       <item row="27" column="0">
-        <widget class="QLabel" name="label_155">
-         <property name="text">
-          <string>Volume Control</string>
+          <string>Protocol</string>
          </property>
         </widget>
        </item>
@@ -620,10 +413,231 @@
          </item>
         </layout>
        </item>
-       <item row="16" column="0">
-        <widget class="QLabel" name="label_5">
+       <item row="18" column="0">
+        <widget class="QLabel" name="label_113">
          <property name="text">
-          <string>Protocol</string>
+          <string>PPM Frame Length</string>
+         </property>
+        </widget>
+       </item>
+       <item row="18" column="1">
+        <widget class="QDoubleSpinBox" name="ppmFrameLengthDSB">
+         <property name="suffix">
+          <string> mSec</string>
+         </property>
+         <property name="decimals">
+          <number>1</number>
+         </property>
+         <property name="minimum">
+          <double>12.500000000000000</double>
+         </property>
+         <property name="maximum">
+          <double>32.500000000000000</double>
+         </property>
+         <property name="singleStep">
+          <double>0.500000000000000</double>
+         </property>
+         <property name="value">
+          <double>22.500000000000000</double>
+         </property>
+        </widget>
+       </item>
+       <item row="19" column="0">
+        <widget class="QLabel" name="label_6">
+         <property name="text">
+          <string>Channels</string>
+         </property>
+        </widget>
+       </item>
+       <item row="19" column="1">
+        <widget class="QSpinBox" name="numChannelsSB">
+         <property name="suffix">
+          <string>ch</string>
+         </property>
+         <property name="minimum">
+          <number>4</number>
+         </property>
+         <property name="maximum">
+          <number>16</number>
+         </property>
+         <property name="singleStep">
+          <number>2</number>
+         </property>
+         <property name="value">
+          <number>8</number>
+         </property>
+        </widget>
+       </item>
+       <item row="20" column="0">
+        <widget class="QLabel" name="label_9">
+         <property name="text">
+          <string>ppm Delay</string>
+         </property>
+        </widget>
+       </item>
+       <item row="20" column="1">
+        <widget class="QSpinBox" name="ppmDelaySB">
+         <property name="suffix">
+          <string> uSec</string>
+         </property>
+         <property name="minimum">
+          <number>100</number>
+         </property>
+         <property name="maximum">
+          <number>800</number>
+         </property>
+         <property name="singleStep">
+          <number>50</number>
+         </property>
+         <property name="value">
+          <number>300</number>
+         </property>
+        </widget>
+       </item>
+       <item row="21" column="0">
+        <widget class="QLabel" name="label_116">
+         <property name="text">
+          <string>DSM Type</string>
+         </property>
+        </widget>
+       </item>
+       <item row="21" column="1">
+        <widget class="QComboBox" name="DSM_Type">
+         <item>
+          <property name="text">
+           <string>LP4/LP5</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>DSM2only</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>DSM2/DSMX</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="22" column="0">
+        <widget class="QLabel" name="label_117">
+         <property name="text">
+          <string>PXX RxNum</string>
+         </property>
+        </widget>
+       </item>
+       <item row="22" column="1">
+        <widget class="QSpinBox" name="pxxRxNum">
+         <property name="suffix">
+          <string/>
+         </property>
+         <property name="minimum">
+          <number>0</number>
+         </property>
+         <property name="maximum">
+          <number>124</number>
+         </property>
+         <property name="singleStep">
+          <number>1</number>
+         </property>
+         <property name="value">
+          <number>1</number>
+         </property>
+        </widget>
+       </item>
+       <item row="23" column="0">
+        <widget class="QLabel" name="label_126">
+         <property name="text">
+          <string>PPM Start Channel</string>
+         </property>
+        </widget>
+       </item>
+       <item row="23" column="1">
+        <widget class="QSpinBox" name="PPM1stChan">
+         <property name="suffix">
+          <string/>
+         </property>
+         <property name="minimum">
+          <number>1</number>
+         </property>
+         <property name="maximum">
+          <number>8</number>
+         </property>
+         <property name="singleStep">
+          <number>1</number>
+         </property>
+         <property name="value">
+          <number>1</number>
+         </property>
+        </widget>
+       </item>
+       <item row="24" column="0">
+        <widget class="QLabel" name="label_114">
+         <property name="text">
+          <string>Trainer</string>
+         </property>
+        </widget>
+       </item>
+       <item row="24" column="1">
+        <widget class="QCheckBox" name="TrainerChkB">
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item row="25" column="0">
+        <widget class="QLabel" name="label_115">
+         <property name="text">
+          <string>T2throttleTrig</string>
+         </property>
+        </widget>
+       </item>
+       <item row="25" column="1">
+        <widget class="QCheckBox" name="T2ThrTrgChkB">
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item row="26" column="0">
+        <widget class="QLabel" name="label_151">
+         <property name="text">
+          <string>Auto Limits</string>
+         </property>
+        </widget>
+       </item>
+       <item row="26" column="1">
+        <widget class="QDoubleSpinBox" name="autoLimitsSB">
+         <property name="decimals">
+          <number>1</number>
+         </property>
+         <property name="maximum">
+          <double>10.000000000000000</double>
+         </property>
+        </widget>
+       </item>
+       <item row="27" column="0">
+        <widget class="QLabel" name="label_155">
+         <property name="text">
+          <string>Volume Control</string>
+         </property>
+        </widget>
+       </item>
+       <item row="27" column="1">
+        <widget class="QComboBox" name="volumeControlCB"/>
+       </item>
+       <item row="28" column="0">
+        <widget class="QLabel" name="label_171">
+         <property name="text">
+          <string>Version</string>
+         </property>
+        </widget>
+       </item>
+       <item row="28" column="1">
+        <widget class="QLabel" name="label_version">
+         <property name="text">
+          <string>Version</string>
          </property>
         </widget>
        </item>
@@ -9759,7 +9773,7 @@ Right</string>
             <number>1</number>
            </property>
            <property name="maximum">
-            <number>50</number>
+            <number>150</number>
            </property>
           </widget>
          </item>
