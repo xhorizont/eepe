@@ -212,6 +212,7 @@ void ModelEdit::tabModelEditSetup()
 		populateAnaVolumeCB( ui->volumeControlCB, g_model.anaVolume ) ;
 	  ui->countryCB->setCurrentIndex(g_model.country) ;
 	  ui->typeCB->setCurrentIndex(g_model.sub_protocol) ;
+		ui->label_version->setText( tr("%1").arg( g_model.modelVersion ) ) ;
 }
 	
 void ModelEdit::setProtocolBoxes()
@@ -2694,7 +2695,14 @@ void ModelEdit::FrSkyEdited()
 
 		g_model.frsky.FASoffset = ui->FASoffsetSB->value() * 10 + 0.49 ;
     
-		g_model.varioData.swtch = ui->VarioSwitchCB->currentIndex() - MAX_DRSWITCH ;
+	int limit = MAX_DRSWITCH ;
+#ifndef SKY
+  if ( eeFile->mee_type )
+	{
+   	limit += EXTRA_CSW ;
+	}
+#endif
+		g_model.varioData.swtch = ui->VarioSwitchCB->currentIndex() - limit ;
 		g_model.varioData.varioSource = ui->VarioSourceCB->currentIndex() ;
 		g_model.varioData.param = ui->VarioSensitivitySB->value() ;
     g_model.varioData.sinkTonesOff = ui->SinkTonesOff->isChecked();
@@ -2745,7 +2753,15 @@ void ModelEdit::on_timerModeCB_currentIndexChanged(int index)
 
 void ModelEdit::on_timerModeBCB_currentIndexChanged(int index)
 {
-    g_model.tmrModeB = index-(MAX_DRSWITCH-1);
+	int limit = MAX_DRSWITCH-1 ;
+#ifndef SKY
+  if ( eeFile->mee_type )
+	{
+   	limit += EXTRA_CSW ;
+	}
+#endif
+	
+    g_model.tmrModeB = index-(limit);
     updateSettings();
 }
 
@@ -2769,7 +2785,14 @@ void ModelEdit::on_volumeControlCB_currentIndexChanged(int index)
 
 void ModelEdit::on_trimSWCB_currentIndexChanged(int index)
 {
-    g_model.trimSw = index-MAX_DRSWITCH;
+	int limit = MAX_DRSWITCH ;
+#ifndef SKY
+  if ( eeFile->mee_type )
+	{
+   	limit += EXTRA_CSW ;
+	}
+#endif
+    g_model.trimSw = index-limit ;
     updateSettings();
 }
 

@@ -10,6 +10,15 @@ description here
 ====================================================================================
 
 ******************************************
+CHANGELOG: 07-Oct-2013 MPB
+Fix .eepe loading problem
+Fix backlight switch setting
+Fix vario switch setting
+Fix timer modeB switch setting
+Fix instant trim switch setting
+eepskye - fix optrex display setting bug
+
+******************************************
 CHANGELOG: 04-Oct-2013 MPB
 Fix expo switch editing bug
 Fix mix source display bug

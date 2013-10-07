@@ -2925,6 +2925,10 @@ msgctxt "ModelEdit|"
 msgid "CSwitchF"
 msgstr ""
 
+msgctxt "ModelEdit|"
+msgid "Version"
+msgstr ""
+
 msgctxt "QObject|"
 msgid "Checking for updates..."
 msgstr ""

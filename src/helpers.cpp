@@ -1454,6 +1454,7 @@ QDomElement getModelDataXML(QDomDocument * qdoc, ModelData * tmod, int modelNum,
 
 bool loadGeneralDataXML(QDomDocument * qdoc, EEGeneral * tgen)
 {
+  memset( tgen, 0, sizeof( *tgen) ) ;
     //look for "GENERAL_DATA" tag
     QDomElement gde = qdoc->elementsByTagName("GENERAL_DATA").at(0).toElement();
 
@@ -1468,8 +1469,9 @@ bool loadGeneralDataXML(QDomDocument * qdoc, EEGeneral * tgen)
         {
             QString ds = n.toCDATASection().data();
             QByteArray ba = QByteArray::fromBase64(ds.toLatin1());
+            int size = ba.length() ;
             const char * data = ba.data();
-            memcpy(tgen, data, sizeof(EEGeneral));
+            memcpy(tgen, data, size );
             break;
         }
         n = n.nextSibling();
@@ -1486,6 +1488,8 @@ bool loadModelDataXML(QDomDocument * qdoc, SKYModelData * tmod, int modelNum)
 bool loadModelDataXML(QDomDocument * qdoc, ModelData * tmod, int modelNum)
 #endif
 {
+  memset( tmod, 0, sizeof( *tmod) ) ;
+	
     //look for MODEL_DATA with modelNum attribute.
     //if modelNum = -1 then just pick the first one
     QDomNodeList ndl = qdoc->elementsByTagName("MODEL_DATA");
@@ -1515,11 +1519,12 @@ bool loadModelDataXML(QDomDocument * qdoc, ModelData * tmod, int modelNum)
         {
             QString ds = n.toCDATASection().data();
             QByteArray ba = QByteArray::fromBase64(ds.toLatin1());
+            int size = ba.length() ;
             const char * data = ba.data();
 #ifdef SKY
-            memcpy(tmod, data, sizeof(SKYModelData));
+            memcpy(tmod, data, size) ;
 #else
-            memcpy(tmod, data, sizeof(ModelData));
+            memcpy(tmod, data, size) ;
 #endif
             break;
         }

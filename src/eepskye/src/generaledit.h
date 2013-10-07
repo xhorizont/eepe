@@ -98,6 +98,7 @@ private slots:
     void on_backlightStickMove_editingFinished();
 //		void on_enablePpmsimChkB_stateChanged(int );
 		void on_internalFrskyAlarmChkB_stateChanged(int );
+		void on_OptrexDisplayChkB_stateChanged(int ) ;
 //		void on_backlightinvertChkB_stateChanged(int );
 		void on_RotaryDivisorCB_currentIndexChanged(int ) ;
 		void on_BtBaudrateCB_currentIndexChanged(int ) ;

@@ -326,7 +326,14 @@ void GeneralEdit::on_battcalibDSB_editingFinished()
 
 void GeneralEdit::on_backlightswCB_currentIndexChanged(int index)
 {
-    g_eeGeneral.lightSw = index-MAX_DRSWITCH;
+	int limit = MAX_DRSWITCH ;
+#ifndef SKY
+  if ( eeFile->mee_type )
+	{
+   	limit += EXTRA_CSW ;
+	}
+#endif
+    g_eeGeneral.lightSw = index - limit ;
     updateSettings();
 }
 
