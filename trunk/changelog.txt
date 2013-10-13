@@ -10,6 +10,14 @@ description here
 ====================================================================================
 
 ******************************************
+CHANGELOG: 13-Oct-2013 MPB
+eepe - allow dynamic updates for simulator
+stick mode bug fixes
+RPM blade count up to 127
+Display model version number on setup tab
+eepskye - improve burn configuration dialog for SAM-BA
+
+******************************************
 CHANGELOG: 07-Oct-2013 MPB
 Fix .eepe loading problem
 Fix backlight switch setting

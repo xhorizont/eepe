@@ -225,6 +225,7 @@ void ModelEdit::tabModelEditSetup()
 		populateAnaVolumeCB( ui->volumeControlCB, g_model.anaVolume ) ;
 	  ui->countryCB->setCurrentIndex(g_model.country) ;
 	  ui->typeCB->setCurrentIndex(g_model.sub_protocol) ;
+		ui->label_version->setText( tr("%1").arg( g_model.modelVersion ) ) ;
 
 }
 

@@ -25,11 +25,11 @@ void burnConfigDialog::getSettings()
     QSettings settings("er9x-eePskye", "eePskye");
 
 #ifdef Q_OS_WIN32
-    sambaLoc = settings.value("avrdude_location", QFileInfo("avrdude.exe").absoluteFilePath()).toString();
+    sambaLoc = settings.value("SAM_BA_location", QFileInfo("sam-ba.exe").absoluteFilePath()).toString();
 #elif __APPLE__
-    avrLoc = settings.value("avrdude_location", "/usr/local/bin/avrdude").toString();
+    avrLoc = settings.value("SAM_BA_location", "/usr/local/bin/sam-ba").toString();
 #else
-    sambaLoc = settings.value("avrdude_location", QFileInfo("avrdude.exe").absoluteFilePath()).toString();
+    sambaLoc = settings.value("SAM_BA_location", QFileInfo("sam-ba.exe").absoluteFilePath()).toString();
 #endif
 
     QString str = settings.value("avr_arguments").toString();

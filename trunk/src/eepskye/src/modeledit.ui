@@ -54,7 +54,7 @@
    <item row="0" column="0">
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
-      <number>10</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="tabModelSetup">
       <attribute name="title">
@@ -814,6 +814,20 @@
         <widget class="QLabel" name="label_5">
          <property name="text">
           <string>Protocol</string>
+         </property>
+        </widget>
+       </item>
+       <item row="29" column="0">
+        <widget class="QLabel" name="label_191">
+         <property name="text">
+          <string>Version</string>
+         </property>
+        </widget>
+       </item>
+       <item row="29" column="1">
+        <widget class="QLabel" name="label_version">
+         <property name="text">
+          <string>Version</string>
          </property>
         </widget>
        </item>

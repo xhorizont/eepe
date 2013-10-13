@@ -349,14 +349,18 @@ void simulatorDialog::getValues()
 {
 		int8_t trims[4] ;
 
+  calibratedStick[0] = 1024*nodeLeft->getX(); //RUD
+  calibratedStick[1] = -1024*nodeLeft->getY(); //ELE
+  calibratedStick[2] = -1024*nodeRight->getY(); //THR
+  calibratedStick[3] = 1024*nodeRight->getX(); //AIL
   if ( g_model.modelVersion >= 2 )
 	{
 		uint8_t stickIndex = g_eeGeneral.stickMode*4 ;
 		
-    calibratedStick[stickScramble[stickIndex+0]] = 1024*nodeLeft->getX(); //RUD
-    calibratedStick[stickScramble[stickIndex+1]] = -1024*nodeLeft->getY(); //ELE
-    calibratedStick[stickScramble[stickIndex+2]] = -1024*nodeRight->getY(); //THR
-    calibratedStick[stickScramble[stickIndex+3]] = 1024*nodeRight->getX(); //AIL
+//    calibratedStick[stickScramble[stickIndex+0]] = 1024*nodeLeft->getX(); //RUD
+//    calibratedStick[stickScramble[stickIndex+1]] = -1024*nodeLeft->getY(); //ELE
+//    calibratedStick[stickScramble[stickIndex+2]] = -1024*nodeRight->getY(); //THR
+//    calibratedStick[stickScramble[stickIndex+3]] = 1024*nodeRight->getX(); //AIL
     
 		uint8_t index ;
 		index =g_eeGeneral.crosstrim ? 3 : 0 ;
@@ -374,10 +378,10 @@ void simulatorDialog::getValues()
 	}
 	else
 	{
-    calibratedStick[0] = 1024*nodeLeft->getX(); //RUD
-    calibratedStick[1] = -1024*nodeLeft->getY(); //ELE
-    calibratedStick[2] = -1024*nodeRight->getY(); //THR
-    calibratedStick[3] = 1024*nodeRight->getX(); //AIL
+//    calibratedStick[0] = 1024*nodeLeft->getX(); //RUD
+//    calibratedStick[1] = -1024*nodeLeft->getY(); //ELE
+//    calibratedStick[2] = -1024*nodeRight->getY(); //THR
+//    calibratedStick[3] = 1024*nodeRight->getX(); //AIL
     trims[g_eeGeneral.crosstrim ? 3 : 0] = ui->trimHLeft->value();
     trims[g_eeGeneral.crosstrim ? 2 : 1] = ui->trimVLeft->value();
     trims[g_eeGeneral.crosstrim ? 1 : 2] = ui->trimVRight->value();
@@ -1095,6 +1099,17 @@ void simulatorDialog::perOut(bool init)
 
 		CurrentPhase = getFlightPhase() ;
 
+    uint8_t ele_stick, ail_stick ;
+	  if ( g_model.modelVersion >= 2 )
+		{
+			ele_stick = 1 ; //ELE_STICK ;
+  	  ail_stick = 3 ; //AIL_STICK ;
+		}
+		else
+		{
+			ele_stick = ELE_STICK ;
+  	  ail_stick = AIL_STICK ;
+		}
     //===========Swash Ring================
     if(g_model.swashRingValue)
     {
@@ -1124,38 +1139,53 @@ void simulatorDialog::perOut(bool init)
         if(!(v/16)) anaCenter |= 1<<(CONVERT_MODE((i+1),g_model.modelVersion,g_eeGeneral.stickMode)-1);
 
         //===========Swash Ring================
-        if(d && (i==ELE_STICK || i==AIL_STICK))
+        if(d && (i==ele_stick || i==ail_stick))
             v = (int32_t)v*g_model.swashRingValue*RESX/(d*100);
         //===========Swash Ring================
 
 
+				uint8_t index = i ;
+				if ( g_model.modelVersion >= 2 )
+				{
+					if ( i < 4 )
+					{
+						uint8_t stickIndex = g_eeGeneral.stickMode*4 ;
+  	        index = stickScramble[stickIndex+i] ;
+					}
+				}
         if(i<4) { //only do this for sticks
             uint8_t expoDrOn = GET_DR_STATE(i);
             uint8_t stkDir = v>0 ? DR_RIGHT : DR_LEFT;
 
-            if(IS_THROTTLE(i) && g_model.thrExpo){
+            if(IS_THROTTLE(index) && g_model.thrExpo){
 #if GVARS
-                v  = 2*expo((v+RESX)/2,REG100_100(g_model.expoData[i].expo[expoDrOn][DR_EXPO][DR_RIGHT]));
+                v  = 2*expo((v+RESX)/2,REG100_100(g_model.expoData[index].expo[expoDrOn][DR_EXPO][DR_RIGHT]));
 #else
-                v  = 2*expo((v+RESX)/2,g_model.expoData[i].expo[expoDrOn][DR_EXPO][DR_RIGHT]);
+                v  = 2*expo((v+RESX)/2,g_model.expoData[index].expo[expoDrOn][DR_EXPO][DR_RIGHT]);
 #endif                    
                 stkDir = DR_RIGHT;
             }
             else
 #if GVARS
-                v  = expo(v,REG100_100(g_model.expoData[i].expo[expoDrOn][DR_EXPO][stkDir]));
+                v  = expo(v,REG100_100(g_model.expoData[index].expo[expoDrOn][DR_EXPO][stkDir]));
 #else
-                v  = expo(v,g_model.expoData[i].expo[expoDrOn][DR_EXPO][stkDir]);
+                v  = expo(v,g_model.expoData[index].expo[expoDrOn][DR_EXPO][stkDir]);
 #endif                    
 
 #if GVARS
-            int32_t x = (int32_t)v * (REG(g_model.expoData[i].expo[expoDrOn][DR_WEIGHT][stkDir]+100, 0, 100))/100;
+            int32_t x = (int32_t)v * (REG(g_model.expoData[index].expo[expoDrOn][DR_WEIGHT][stkDir]+100, 0, 100))/100;
 #else
-            int32_t x = (int32_t)v * (g_model.expoData[i].expo[expoDrOn][DR_WEIGHT][stkDir]+100)/100;
+            int32_t x = (int32_t)v * (g_model.expoData[index].expo[expoDrOn][DR_WEIGHT][stkDir]+100)/100;
 #endif                    
             v = (int16_t)x;
-            if (IS_THROTTLE(i) && g_model.thrExpo) v -= RESX;
+            if (IS_THROTTLE(index) && g_model.thrExpo) v -= RESX;
 
+				  if ( g_model.modelVersion >= 2 )
+					{
+          	trimA[i] = getTrimValue( CurrentPhase, i )*2 ;
+					}	
+					else
+					{
             //do trim -> throttle trim if applicable
             int32_t vv = 2*RESX;
             if(IS_THROTTLE(i) && g_model.thrTrim)
@@ -1173,9 +1203,30 @@ void simulatorDialog::perOut(bool init)
             //trim
             trimA[i] = (vv==2*RESX) ? getTrimValue( CurrentPhase, i )*2 : (int16_t)vv*2; //    if throttle trim -> trim low end
 //            trimA[i] = (vv==2*RESX) ? *trimptr[i]*2 : (int16_t)vv*2; //    if throttle trim -> trim low end
-        }
-        anas[i] = v; //set values for mixer
+					}
+				}
+				if ( g_model.modelVersion >= 2 )
+				{
+       		anas[index] = v; //set values for mixer
+				}
+				else
+				{
+       		anas[i] = v; //set values for mixer
+				}
     }
+	  if ( g_model.modelVersion >= 2 )
+		{
+      if(g_model.thrTrim)
+			{
+				int8_t ttrim ;
+				ttrim = getTrimValue( CurrentPhase, 2 ) ;
+				if(g_eeGeneral.throttleReversed)
+				{
+					ttrim = -ttrim ;
+				}
+       	trimA[2] = ((int32_t)ttrim+125)*(RESX-anas[2])/(RESX) ;
+			}
+		}
 
     //===========BEEP CENTER================
     anaCenter &= g_model.beepANACenter;
@@ -1202,8 +1253,8 @@ void simulatorDialog::perOut(bool init)
 
     if(g_model.swashType)
     {
-        int16_t vp = anas[ELE_STICK]+trimA[ELE_STICK];
-        int16_t vr = anas[AIL_STICK]+trimA[AIL_STICK];
+        int16_t vp = anas[ele_stick]+trimA[ele_stick];
+        int16_t vr = anas[ail_stick]+trimA[ail_stick];
         int16_t vc = 0;
         if(g_model.swashCollectiveSource)
             vc = anas[g_model.swashCollectiveSource-1];

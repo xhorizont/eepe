@@ -49,6 +49,7 @@
 #include "simulatordialog.h"
 #include "printdialog.h"
 
+
 MdiChild::MdiChild()
 {
     setAttribute(Qt::WA_DeleteOnClose);
@@ -1236,6 +1237,7 @@ void MdiChild::setModified(ModelEdit * me)
             modelNotes[id][j] = me->getNote(j);
     }
 }
+
 
 void MdiChild::simulate()
 {
