@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>AVRDUDE Configuration</string>
+   <string>SAM-BA Configuration</string>
   </property>
   <property name="windowIcon">
    <iconset resource="eepe.qrc">
@@ -100,6 +100,11 @@ Please consult the programmer's documentation and the AVRDUDE documentation to s
        <item>
         <property name="text">
          <string>at91sam3s2-9x</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>at91sam3s8-9xr</string>
         </property>
        </item>
       </widget>

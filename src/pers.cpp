@@ -116,6 +116,7 @@ void EEPFILE::modelDefault(uint8_t id)
   g_model.name[5]='0'+(id+1)/10;
   g_model.name[6]='0'+(id+1)%10;
 //  g_model.mdVers = MDVERS;
+//	g_model.modelVersion = 2 ;	// temp
 
   for(uint8_t i= 0; i<4; i++){
     g_model.mixData[i].destCh = i+1;

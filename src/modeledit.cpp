@@ -27,6 +27,11 @@
 #define ALARM_GREATER(channel, alarm) ((g_model.frsky.channels[channel].alarms_greater >> alarm) & 1)
 #define ALARM_LEVEL(channel, alarm) ((g_model.frsky.channels[channel].alarms_level >> (2*alarm)) & 3)
 
+int GlobalModified = 0 ;
+EEGeneral Sim_g ;
+int GeneralDataValid = 0 ;
+ModelData Sim_m ;
+int ModelDataValid = 0 ;
 
 ModelEdit::ModelEdit(EEPFILE *eFile, uint8_t id, QWidget *parent) :
     QDialog(parent),
@@ -154,6 +159,12 @@ void ModelEdit::updateSettings()
 {
     eeFile->putModel(&g_model,id_model);
     emit modelValuesChanged(this);
+		
+    memcpy(&Sim_g, &g_eeGeneral,sizeof(EEGeneral));
+    memcpy(&Sim_m,&g_model,sizeof(ModelData));
+		GeneralDataValid = 1 ;
+		ModelDataValid = 1 ;
+		GlobalModified = 1 ;
 }
 
 void ModelEdit::on_tabWidget_currentChanged(int index)
@@ -3698,6 +3709,7 @@ void ModelEdit::moveMixDown()
     tabMixes();
 
     setSelectedByList(highlightList);
+
 }
 
 void ModelEdit::launchSimulation()

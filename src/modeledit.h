@@ -27,7 +27,6 @@ public:
     int getModelID() { return id_model; }
     void refreshMixerList() { tabMixes(); }
 
-
 private:
     Ui::ModelEdit *ui;
     EEPFILE *eeFile;

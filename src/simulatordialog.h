@@ -5,6 +5,7 @@
 #include "node.h"
 #include <inttypes.h>
 #include "pers.h"
+#include "modeledit.h"
 
 #define TMR_OFF     0
 #define TMR_RUNNING 1
@@ -22,7 +23,7 @@ class simulatorDialog : public QDialog
     Q_OBJECT
 
 public:
-    explicit simulatorDialog(QWidget *parent = 0);
+    explicit simulatorDialog( QWidget *parent = 0);
     ~simulatorDialog();
 
     void loadParams(const EEGeneral gg, const ModelData gm);
