@@ -4472,262 +4472,262 @@ Mode 4:
         <translation>ER9x Симулятор</translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="32"/>
+        <location filename="simulatordialog.ui" line="346"/>
         <source>P1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="60"/>
+        <location filename="simulatordialog.ui" line="374"/>
         <source>P2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="91"/>
+        <location filename="simulatordialog.ui" line="405"/>
         <source>P3</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="184"/>
+        <location filename="simulatordialog.ui" line="102"/>
         <source>THR</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="209"/>
+        <location filename="simulatordialog.ui" line="127"/>
         <source>RUD</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="234"/>
+        <location filename="simulatordialog.ui" line="152"/>
         <source>ELE</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="259"/>
+        <location filename="simulatordialog.ui" line="177"/>
         <source>AIL</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="288"/>
-        <location filename="simulatordialog.ui" line="609"/>
+        <location filename="simulatordialog.ui" line="206"/>
+        <location filename="simulatordialog.ui" line="624"/>
         <source>Hold X</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="313"/>
-        <location filename="simulatordialog.ui" line="634"/>
+        <location filename="simulatordialog.ui" line="231"/>
+        <location filename="simulatordialog.ui" line="649"/>
         <source>Fix X</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="338"/>
-        <location filename="simulatordialog.ui" line="659"/>
+        <location filename="simulatordialog.ui" line="256"/>
+        <location filename="simulatordialog.ui" line="674"/>
         <source>Fix Y</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="363"/>
-        <location filename="simulatordialog.ui" line="684"/>
+        <location filename="simulatordialog.ui" line="281"/>
+        <location filename="simulatordialog.ui" line="699"/>
         <source>Hold Y</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="383"/>
-        <location filename="simulatordialog.ui" line="393"/>
-        <location filename="simulatordialog.ui" line="704"/>
-        <location filename="simulatordialog.ui" line="714"/>
+        <location filename="simulatordialog.ui" line="301"/>
+        <location filename="simulatordialog.ui" line="311"/>
+        <location filename="simulatordialog.ui" line="719"/>
+        <location filename="simulatordialog.ui" line="729"/>
         <source>TextLabel</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="468"/>
+        <location filename="simulatordialog.ui" line="483"/>
         <source>TRN</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="490"/>
+        <location filename="simulatordialog.ui" line="505"/>
         <source>GEA</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="518"/>
+        <location filename="simulatordialog.ui" line="533"/>
         <source>ID0</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="549"/>
+        <location filename="simulatordialog.ui" line="564"/>
         <source>ID1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="577"/>
+        <location filename="simulatordialog.ui" line="592"/>
         <source>ID2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="764"/>
+        <location filename="simulatordialog.ui" line="779"/>
         <source>SW1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="795"/>
+        <location filename="simulatordialog.ui" line="810"/>
         <source>SW2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="826"/>
+        <location filename="simulatordialog.ui" line="841"/>
         <source>SW3</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="950"/>
+        <location filename="simulatordialog.ui" line="965"/>
         <source>BEEP</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="857"/>
+        <location filename="simulatordialog.ui" line="872"/>
         <source>SW4</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="888"/>
+        <location filename="simulatordialog.ui" line="903"/>
         <source>SW5</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="919"/>
+        <location filename="simulatordialog.ui" line="934"/>
         <source>SW6</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="981"/>
+        <location filename="simulatordialog.ui" line="996"/>
         <source>SW7</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="1012"/>
+        <location filename="simulatordialog.ui" line="1027"/>
         <source>SW8</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="1043"/>
+        <location filename="simulatordialog.ui" line="1058"/>
         <source>SW9</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="1074"/>
+        <location filename="simulatordialog.ui" line="1089"/>
         <source>SWA</source>
         <oldsource>SW10</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="1105"/>
+        <location filename="simulatordialog.ui" line="1120"/>
         <source>SWB</source>
         <oldsource>SW11</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="1136"/>
+        <location filename="simulatordialog.ui" line="1151"/>
         <source>SWC</source>
         <oldsource>SW12</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="1153"/>
+        <location filename="simulatordialog.ui" line="1168"/>
         <source>CH1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="1160"/>
+        <location filename="simulatordialog.ui" line="1175"/>
         <source>CH9</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="1167"/>
+        <location filename="simulatordialog.ui" line="1182"/>
         <source>CH2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="1174"/>
+        <location filename="simulatordialog.ui" line="1189"/>
         <source>CH10</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="1181"/>
+        <location filename="simulatordialog.ui" line="1196"/>
         <source>CH3</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="1188"/>
+        <location filename="simulatordialog.ui" line="1203"/>
         <source>CH11</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="1195"/>
+        <location filename="simulatordialog.ui" line="1210"/>
         <source>CH4</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="1202"/>
+        <location filename="simulatordialog.ui" line="1217"/>
         <source>CH12</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="1209"/>
+        <location filename="simulatordialog.ui" line="1224"/>
         <source>CH5</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="1216"/>
+        <location filename="simulatordialog.ui" line="1231"/>
         <source>CH13</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="1223"/>
+        <location filename="simulatordialog.ui" line="1238"/>
         <source>CH6</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="1230"/>
+        <location filename="simulatordialog.ui" line="1245"/>
         <source>CH14</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="1237"/>
+        <location filename="simulatordialog.ui" line="1252"/>
         <source>CH7</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="1244"/>
+        <location filename="simulatordialog.ui" line="1259"/>
         <source>CH15</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="1251"/>
+        <location filename="simulatordialog.ui" line="1266"/>
         <source>CH8</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="1258"/>
+        <location filename="simulatordialog.ui" line="1273"/>
         <source>CH16</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="1959"/>
-        <location filename="simulatordialog.ui" line="1975"/>
-        <location filename="simulatordialog.ui" line="1991"/>
-        <location filename="simulatordialog.ui" line="2007"/>
-        <location filename="simulatordialog.ui" line="2023"/>
-        <location filename="simulatordialog.ui" line="2039"/>
-        <location filename="simulatordialog.ui" line="2055"/>
-        <location filename="simulatordialog.ui" line="2071"/>
-        <location filename="simulatordialog.ui" line="2087"/>
-        <location filename="simulatordialog.ui" line="2103"/>
-        <location filename="simulatordialog.ui" line="2119"/>
-        <location filename="simulatordialog.ui" line="2135"/>
-        <location filename="simulatordialog.ui" line="2151"/>
-        <location filename="simulatordialog.ui" line="2167"/>
-        <location filename="simulatordialog.ui" line="2183"/>
-        <location filename="simulatordialog.ui" line="2199"/>
+        <location filename="simulatordialog.ui" line="1974"/>
+        <location filename="simulatordialog.ui" line="1990"/>
+        <location filename="simulatordialog.ui" line="2006"/>
+        <location filename="simulatordialog.ui" line="2022"/>
+        <location filename="simulatordialog.ui" line="2038"/>
+        <location filename="simulatordialog.ui" line="2054"/>
+        <location filename="simulatordialog.ui" line="2070"/>
+        <location filename="simulatordialog.ui" line="2086"/>
+        <location filename="simulatordialog.ui" line="2102"/>
+        <location filename="simulatordialog.ui" line="2118"/>
+        <location filename="simulatordialog.ui" line="2134"/>
+        <location filename="simulatordialog.ui" line="2150"/>
+        <location filename="simulatordialog.ui" line="2166"/>
+        <location filename="simulatordialog.ui" line="2182"/>
+        <location filename="simulatordialog.ui" line="2198"/>
+        <location filename="simulatordialog.ui" line="2214"/>
         <source>-100.1</source>
         <translation type="unfinished"></translation>
     </message>

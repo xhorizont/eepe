@@ -1154,7 +1154,7 @@ void simulatorDialog::perOut(bool init)
 					}
 				}
         if(i<4) { //only do this for sticks
-            uint8_t expoDrOn = GET_DR_STATE(i);
+            uint8_t expoDrOn = GET_DR_STATE(index);
             uint8_t stkDir = v>0 ? DR_RIGHT : DR_LEFT;
 
             if(IS_THROTTLE(index) && g_model.thrExpo){

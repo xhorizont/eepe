@@ -10,6 +10,13 @@ description here
 ====================================================================================
 
 ******************************************
+CHANGELOG: 16-Oct-2013 MPB
+Fix DR/EXPO bug in simulator
+Fix timer mode bug for 128/2561 EEPROMs
+Fix T-CUT template bug
+Change simulator layout to fit smaller displays
+
+******************************************
 CHANGELOG: 13-Oct-2013 MPB
 eepe - allow dynamic updates for simulator
 stick mode bug fixes

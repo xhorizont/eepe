@@ -2753,7 +2753,7 @@ void ModelEdit::on_modelNameLE_editingFinished()
 void ModelEdit::on_timerModeCB_currentIndexChanged(int index)
 {
 		int num_options = TMR_NUM_OPTION ;
-    if ( g_model.modelVersion >= 2 )
+    if ( eeFile->mee_type )
 		{
 			num_options += EXTRA_CSW * 2 ;
 		}
@@ -4053,13 +4053,13 @@ void ModelEdit::applyTemplate(uint8_t idx)
     //T-Cut
     if(idx==j++)
     {
-        md=setDest(ICC(THR_STICK+1));  md->srcRaw=MIX_MAX;  md->weight=-100;  md->swtch=DSW_THR;  md->mltpx=MLTPX_REP;
+        md=setDest(ICC(STK_THR));  md->srcRaw=MIX_MAX;  md->weight=-100;  md->swtch=DSW_THR;  md->mltpx=MLTPX_REP;
     }
 
     //sticky t-cut
     if(idx==j++)
     {
-        md=setDest(ICC(THR_STICK+1));  md->srcRaw=MIX_MAX;  md->weight=-100;  md->swtch=DSW_SWC;  md->mltpx=MLTPX_REP;
+        md=setDest(ICC(STK_THR));  md->srcRaw=MIX_MAX;  md->weight=-100;  md->swtch=DSW_SWC;  md->mltpx=MLTPX_REP;
         md=setDest(14);            md->srcRaw=CH(14);   md->weight= 100;
         md=setDest(14);            md->srcRaw=MIX_MAX;  md->weight=-100;  md->swtch=DSW_SWB;  md->mltpx=MLTPX_REP;
         md=setDest(14);            md->srcRaw=MIX_MAX;  md->weight= 100;  md->swtch=DSW_THR;  md->mltpx=MLTPX_REP;
