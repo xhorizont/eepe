@@ -26,6 +26,7 @@ public:
     void runAgain(QString prog, QStringList arg, int closeBehaviour=AVR_DIALOG_CLOSE_IF_SUCCESSFUL);
     void waitForFinish();
     void addReadFuses();
+    void textStoreAddress( QString *text ) ;
 
 protected slots:
     void doAddTextStdOut();
@@ -42,6 +43,7 @@ private:
     quint8 lfuse;
     quint8 hfuse;
     quint8 efuse;
+		QString *textAddress ;
 };
 
 #endif // AVROUTPUTDIALOG_H
