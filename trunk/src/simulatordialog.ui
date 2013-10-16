@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>757</width>
-    <height>580</height>
+    <height>565</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,7 +19,7 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_9" stretch="0,0,0">
    <property name="margin">
-    <number>6</number>
+    <number>5</number>
    </property>
    <item>
     <widget class="QFrame" name="controlFrame">
@@ -80,6 +80,12 @@
           </property>
           <item>
            <widget class="QPushButton" name="switchTHR">
+            <property name="minimumSize">
+             <size>
+              <width>27</width>
+              <height>0</height>
+             </size>
+            </property>
             <property name="autoFillBackground">
              <bool>false</bool>
             </property>
@@ -464,6 +470,12 @@ QPushButton:checked {
          <layout class="QVBoxLayout" name="verticalLayout_2">
           <item>
            <widget class="QPushButton" name="switchTRN">
+            <property name="minimumSize">
+             <size>
+              <width>27</width>
+              <height>0</height>
+             </size>
+            </property>
             <property name="styleSheet">
              <string notr="true">QPushButton {
      background-color: #EEEEEE;
@@ -1279,6 +1291,12 @@ QPushButton:checked {
        <property name="enabled">
         <bool>false</bool>
        </property>
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>20</height>
+        </size>
+       </property>
        <property name="styleSheet">
         <string notr="true">QSlider::sub-page:horizontal:disabled {
 border-color: #999;
@@ -1321,6 +1339,12 @@ border-radius: 4px;
       <widget class="QSlider" name="chnout_2">
        <property name="enabled">
         <bool>false</bool>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>20</height>
+        </size>
        </property>
        <property name="styleSheet">
         <string notr="true">QSlider::sub-page:horizontal:disabled {
@@ -1365,6 +1389,12 @@ border-radius: 4px;
        <property name="enabled">
         <bool>false</bool>
        </property>
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>20</height>
+        </size>
+       </property>
        <property name="styleSheet">
         <string notr="true">QSlider::sub-page:horizontal:disabled {
 border-color: #999;
@@ -1407,6 +1437,12 @@ border-radius: 4px;
       <widget class="QSlider" name="chnout_4">
        <property name="enabled">
         <bool>false</bool>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>20</height>
+        </size>
        </property>
        <property name="styleSheet">
         <string notr="true">QSlider::sub-page:horizontal:disabled {
@@ -1451,6 +1487,12 @@ border-radius: 4px;
        <property name="enabled">
         <bool>false</bool>
        </property>
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>20</height>
+        </size>
+       </property>
        <property name="styleSheet">
         <string notr="true">QSlider::sub-page:horizontal:disabled {
 border-color: #999;
@@ -1493,6 +1535,12 @@ border-radius: 4px;
       <widget class="QSlider" name="chnout_6">
        <property name="enabled">
         <bool>false</bool>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>20</height>
+        </size>
        </property>
        <property name="styleSheet">
         <string notr="true">QSlider::sub-page:horizontal:disabled {
@@ -1537,6 +1585,12 @@ border-radius: 4px;
        <property name="enabled">
         <bool>false</bool>
        </property>
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>20</height>
+        </size>
+       </property>
        <property name="styleSheet">
         <string notr="true">QSlider::sub-page:horizontal:disabled {
 border-color: #999;
@@ -1579,6 +1633,12 @@ border-radius: 4px;
       <widget class="QSlider" name="chnout_8">
        <property name="enabled">
         <bool>false</bool>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>20</height>
+        </size>
        </property>
        <property name="styleSheet">
         <string notr="true">QSlider::sub-page:horizontal:disabled {
@@ -1623,6 +1683,12 @@ border-radius: 4px;
        <property name="enabled">
         <bool>false</bool>
        </property>
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>20</height>
+        </size>
+       </property>
        <property name="styleSheet">
         <string notr="true">QSlider::sub-page:horizontal:disabled {
 border-color: #999;
@@ -1665,6 +1731,12 @@ border-radius: 4px;
       <widget class="QSlider" name="chnout_10">
        <property name="enabled">
         <bool>false</bool>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>20</height>
+        </size>
        </property>
        <property name="styleSheet">
         <string notr="true">QSlider::sub-page:horizontal:disabled {
@@ -1709,6 +1781,12 @@ border-radius: 4px;
        <property name="enabled">
         <bool>false</bool>
        </property>
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>20</height>
+        </size>
+       </property>
        <property name="styleSheet">
         <string notr="true">QSlider::sub-page:horizontal:disabled {
 border-color: #999;
@@ -1751,6 +1829,12 @@ border-radius: 4px;
       <widget class="QSlider" name="chnout_12">
        <property name="enabled">
         <bool>false</bool>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>20</height>
+        </size>
        </property>
        <property name="styleSheet">
         <string notr="true">QSlider::sub-page:horizontal:disabled {
@@ -1795,6 +1879,12 @@ border-radius: 4px;
        <property name="enabled">
         <bool>false</bool>
        </property>
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>20</height>
+        </size>
+       </property>
        <property name="styleSheet">
         <string notr="true">QSlider::sub-page:horizontal:disabled {
 border-color: #999;
@@ -1837,6 +1927,12 @@ border-radius: 4px;
       <widget class="QSlider" name="chnout_14">
        <property name="enabled">
         <bool>false</bool>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>20</height>
+        </size>
        </property>
        <property name="styleSheet">
         <string notr="true">QSlider::sub-page:horizontal:disabled {
@@ -1881,6 +1977,12 @@ border-radius: 4px;
        <property name="enabled">
         <bool>false</bool>
        </property>
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>20</height>
+        </size>
+       </property>
        <property name="styleSheet">
         <string notr="true">QSlider::sub-page:horizontal:disabled {
 border-color: #999;
@@ -1923,6 +2025,12 @@ border-radius: 4px;
       <widget class="QSlider" name="chnout_16">
        <property name="enabled">
         <bool>false</bool>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>20</height>
+        </size>
        </property>
        <property name="styleSheet">
         <string notr="true">QSlider::sub-page:horizontal:disabled {

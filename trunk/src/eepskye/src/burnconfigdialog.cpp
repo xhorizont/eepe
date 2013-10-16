@@ -60,8 +60,8 @@ void burnConfigDialog::putSettings()
 
 
     QSettings settings("er9x-eePskye", "eePskye");
-    settings.setValue("avrdude_location", sambaLoc);
-    settings.setValue("programmer", avrProgrammer);
+    settings.setValue("SAM_BA_location", sambaLoc ) ;
+    settings.setValue("programmer", avrProgrammer ) ;
     settings.setValue("mcu", avrMCU);
     settings.setValue("avr_port", armPort);
     settings.setValue("avr_arguments", avrArgs.join(" "));

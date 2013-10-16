@@ -10,7 +10,12 @@ description here
 ====================================================================================
 
 ******************************************
-CHANGELOG: 16-Oct-2013 MPB
+CHANGELOG: 16-Oct-2013 MPB (r388)
+eepe - Further change simulator layout to fit smaller displays
+eepskye - save SAM-BA location properly
+
+******************************************
+CHANGELOG: 16-Oct-2013 MPB (r387)
 Fix DR/EXPO bug in simulator
 Fix timer mode bug for 128/2561 EEPROMs
 Fix T-CUT template bug
