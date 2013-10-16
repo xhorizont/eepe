@@ -971,7 +971,7 @@ void populateCurvesCB(QComboBox *b, int value)
 #ifdef SKY
 void populateTimerSwitchCB(QComboBox *b, int value=0 )
 #else
-void populateTimerSwitchCB(QComboBox *b, int value=0, int modelType=0)
+void populateTimerSwitchCB(QComboBox *b, int value=0, int eepromType=0)
 #endif
 {
     b->clear();
@@ -981,12 +981,12 @@ void populateTimerSwitchCB(QComboBox *b, int value=0, int modelType=0)
     b->setCurrentIndex(value);
 #else
 		int num_options = TMR_NUM_OPTION ;
-    if ( modelType )
+    if ( eepromType )
 		{
 			num_options += EXTRA_CSW * 2 ;
 		}
     for(int i=-num_options; i<=num_options; i++)
-        b->addItem(getTimerMode(i,modelType));
+        b->addItem(getTimerMode(i,eepromType));
     b->setCurrentIndex(value+num_options);
 #endif
     b->setMaxVisibleItems(10);
@@ -995,7 +995,7 @@ void populateTimerSwitchCB(QComboBox *b, int value=0, int modelType=0)
 #ifdef SKY
 QString getTimerMode(int tm)
 #else
-QString getTimerMode(int tm, int modelVersion )
+QString getTimerMode(int tm, int eepromType )
 #endif
 {
 
@@ -1040,7 +1040,7 @@ QString getTimerMode(int tm, int modelVersion )
     }
 
 		int max_drswitch = MAX_DRSWITCH ;
-		if ( modelVersion >= 2 )
+		if ( eepromType )
 		{
 			max_drswitch += EXTRA_CSW ;			
 		}

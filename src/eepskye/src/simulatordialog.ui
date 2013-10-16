@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>591</width>
-    <height>662</height>
+    <width>750</width>
+    <height>608</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,134 +17,10 @@
    <iconset resource="eepe.qrc">
     <normaloff>:/images/simulate.png</normaloff>:/images/simulate.png</iconset>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout_9" stretch="0,0,0,0,0">
-   <item>
-    <layout class="QHBoxLayout" name="horizontalLayout_2">
-     <item>
-      <widget class="QDial" name="dialP_1">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="minimumSize">
-        <size>
-         <width>0</width>
-         <height>80</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>16777215</width>
-         <height>80</height>
-        </size>
-       </property>
-       <property name="toolTip">
-        <string>P1</string>
-       </property>
-       <property name="minimum">
-        <number>-1024</number>
-       </property>
-       <property name="maximum">
-        <number>1024</number>
-       </property>
-       <property name="pageStep">
-        <number>128</number>
-       </property>
-       <property name="notchTarget">
-        <double>64.000000000000000</double>
-       </property>
-       <property name="notchesVisible">
-        <bool>true</bool>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QDial" name="dialP_2">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="minimumSize">
-        <size>
-         <width>0</width>
-         <height>80</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>16777215</width>
-         <height>80</height>
-        </size>
-       </property>
-       <property name="toolTip">
-        <string>P2</string>
-       </property>
-       <property name="minimum">
-        <number>-1024</number>
-       </property>
-       <property name="maximum">
-        <number>1024</number>
-       </property>
-       <property name="pageStep">
-        <number>128</number>
-       </property>
-       <property name="invertedAppearance">
-        <bool>false</bool>
-       </property>
-       <property name="notchTarget">
-        <double>64.000000000000000</double>
-       </property>
-       <property name="notchesVisible">
-        <bool>true</bool>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QDial" name="dialP_3">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="minimumSize">
-        <size>
-         <width>0</width>
-         <height>80</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>16777215</width>
-         <height>80</height>
-        </size>
-       </property>
-       <property name="toolTip">
-        <string>P3</string>
-       </property>
-       <property name="minimum">
-        <number>-1024</number>
-       </property>
-       <property name="maximum">
-        <number>1024</number>
-       </property>
-       <property name="pageStep">
-        <number>128</number>
-       </property>
-       <property name="notchTarget">
-        <double>64.000000000000000</double>
-       </property>
-       <property name="notchesVisible">
-        <bool>true</bool>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </item>
+  <layout class="QVBoxLayout" name="verticalLayout_9" stretch="0,0,0,0">
+   <property name="margin">
+    <number>6</number>
+   </property>
    <item>
     <widget class="QFrame" name="controlFrame">
      <property name="frameShape">
@@ -177,10 +53,16 @@
         </item>
         <item row="1" column="1">
          <widget class="QGraphicsView" name="leftStick">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
           <property name="minimumSize">
            <size>
-            <width>200</width>
-            <height>200</height>
+            <width>240</width>
+            <height>240</height>
            </size>
           </property>
           <property name="verticalScrollBarPolicy">
@@ -188,6 +70,9 @@
           </property>
           <property name="horizontalScrollBarPolicy">
            <enum>Qt::ScrollBarAlwaysOff</enum>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
           </property>
          </widget>
         </item>
@@ -437,6 +322,18 @@ QPushButton:checked {
         </item>
         <item row="2" column="1">
          <widget class="QSlider" name="trimHLeft">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>240</width>
+            <height>0</height>
+           </size>
+          </property>
           <property name="minimum">
            <number>-125</number>
           </property>
@@ -445,6 +342,133 @@ QPushButton:checked {
           </property>
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QVBoxLayout" name="verticalLayout_30">
+        <item>
+         <widget class="QDial" name="dialP_1">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>80</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>80</height>
+           </size>
+          </property>
+          <property name="toolTip">
+           <string>P1</string>
+          </property>
+          <property name="minimum">
+           <number>-1024</number>
+          </property>
+          <property name="maximum">
+           <number>1024</number>
+          </property>
+          <property name="pageStep">
+           <number>128</number>
+          </property>
+          <property name="notchTarget">
+           <double>64.000000000000000</double>
+          </property>
+          <property name="notchesVisible">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QDial" name="dialP_2">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>80</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>80</height>
+           </size>
+          </property>
+          <property name="toolTip">
+           <string>P2</string>
+          </property>
+          <property name="minimum">
+           <number>-1024</number>
+          </property>
+          <property name="maximum">
+           <number>1024</number>
+          </property>
+          <property name="pageStep">
+           <number>128</number>
+          </property>
+          <property name="invertedAppearance">
+           <bool>false</bool>
+          </property>
+          <property name="notchTarget">
+           <double>64.000000000000000</double>
+          </property>
+          <property name="notchesVisible">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QDial" name="dialP_3">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>80</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>80</height>
+           </size>
+          </property>
+          <property name="toolTip">
+           <string>P3</string>
+          </property>
+          <property name="minimum">
+           <number>-1024</number>
+          </property>
+          <property name="maximum">
+           <number>1024</number>
+          </property>
+          <property name="pageStep">
+           <number>128</number>
+          </property>
+          <property name="notchTarget">
+           <double>64.000000000000000</double>
+          </property>
+          <property name="notchesVisible">
+           <bool>true</bool>
           </property>
          </widget>
         </item>
@@ -467,10 +491,16 @@ QPushButton:checked {
         </item>
         <item row="1" column="1">
          <widget class="QGraphicsView" name="rightStick">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
           <property name="minimumSize">
            <size>
-            <width>200</width>
-            <height>200</height>
+            <width>240</width>
+            <height>240</height>
            </size>
           </property>
           <property name="verticalScrollBarPolicy">
@@ -478,6 +508,9 @@ QPushButton:checked {
           </property>
           <property name="horizontalScrollBarPolicy">
            <enum>Qt::ScrollBarAlwaysOff</enum>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
           </property>
          </widget>
         </item>
@@ -758,6 +791,18 @@ QPushButton:checked {
         </item>
         <item row="2" column="1">
          <widget class="QSlider" name="trimHRight">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>240</width>
+            <height>0</height>
+           </size>
+          </property>
           <property name="minimum">
            <number>-125</number>
           </property>
@@ -1379,7 +1424,7 @@ QPushButton:checked {
        </property>
        <property name="sizeHint" stdset="0">
         <size>
-         <width>45</width>
+         <width>55</width>
          <height>20</height>
         </size>
        </property>
