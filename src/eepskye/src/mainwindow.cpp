@@ -58,6 +58,7 @@
 #include "downloaddialog.h"
 #include "customizesplashdialog.h"
 #include "stamp-eepskye.h"
+#include "reviewOutput.h"
 
 #define DONATE_MB_STR "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=YHX43JR3J7XGW"
 #define DNLD_VER_ERSKY9X         0
@@ -93,6 +94,8 @@
 #define ERSKY9X_STAMP "http://ersky9x.googlecode.com/svn/trunk/src/stamp-ersky9x.h"
 #define ERSKY9X_URL "http://ersky9x.googlecode.com/svn/trunk/ersky9x_rom.bin"
 #define ERSKY9XR_URL "http://ersky9x.googlecode.com/svn/trunk/ersky9xr_rom.bin"
+
+QString AvrdudeOutput ;
 
 MainWindow::MainWindow()
 {
@@ -152,6 +155,7 @@ void MainWindow::checkForUpdates(bool ignoreSettings)
     showcheckForUpdatesResult = ignoreSettings;
     check1done = true;
     check2done = true;
+    readSettings() ;
 
     QNetworkProxyFactory::setUseSystemConfiguration(true);
 
@@ -199,6 +203,8 @@ void MainWindow::reply1Finished(QNetworkReply * reply)
 
     if(i>0)
     {
+    		QSettings settings("er9x-eePskye", "eePskye");
+			
         bool cres;
         int rev = QString::fromAscii(qba.mid(i+19,4)).replace(QChar('"'), "").toInt(&cres);
 
@@ -207,10 +213,16 @@ void MainWindow::reply1Finished(QNetworkReply * reply)
             QMessageBox::warning(this, "ersky9x", tr("Unable to check for updates."));
             return;
         }
+				int currentRev = currentERSKY9Xrev ;
+        switch (settings.value("download-version", 0).toInt())
+				{
+					case 1 :
+						currentRev = currentERSKY9XRrev ;
+					break ;
+				}
 
-        if(rev>currentERSKY9Xrev)
+        if(rev>currentRev)
         {
-    				QSettings settings("er9x-eePskye", "eePskye");
 
             QString dnldURL, baseFileName;
             switch (settings.value("download-version", 0).toInt())
@@ -288,7 +300,16 @@ void MainWindow::reply1Finished(QNetworkReply * reply)
                 if(res == QMessageBox::Yes)
                 {
                     currentERSKY9Xrev = rev;
-                    settings.setValue("currentERSKY9Xrev", rev);
+				            switch (settings.value("download-version", 0).toInt())
+										{
+											case 0 :
+                    		settings.setValue("currentERSKY9Xrev", rev);
+											break ;
+
+											case 1 :
+                    		settings.setValue("currentERSKY9XRrev", rev);
+											break ;
+										}
                 }
             }
         }
@@ -372,7 +393,15 @@ void MainWindow::downloadLatester9x()
     settings.setValue("lastDir",QFileInfo(fileName).dir().absolutePath());
 
     downloadDialog * dd = new downloadDialog(this,dnldURL,fileName);
-    currentERSKY9Xrev_temp = currentERSKY9Xrev;
+    switch (settings.value("download-version", 0).toInt())
+		{
+			case 0 :
+    		currentERSKY9Xrev_temp = currentERSKY9Xrev;
+			break ;
+			case 1 :
+    		currentERSKY9Xrev_temp = currentERSKY9XRrev ;
+			break ;
+		}
     connect(dd,SIGNAL(accepted()),this,SLOT(reply1Accepted()));
     dd->show();
 }
@@ -441,7 +470,16 @@ void MainWindow::reply1Accepted()
 {
     QSettings settings("er9x-eePskye", "eePskye");
     currentERSKY9Xrev = currentERSKY9Xrev_temp;
-    settings.setValue("currentERSKY9Xrev", currentERSKY9Xrev);
+    switch (settings.value("download-version", 0).toInt())
+		{
+			case 0 :
+    		settings.setValue("currentERSKY9Xrev", currentERSKY9Xrev);
+			break ;
+
+			case 1 :
+    		settings.setValue("currentERSKY9XRrev", currentERSKY9Xrev);
+			break ;
+		}	
 }
 
 void MainWindow::reply2Accepted()
@@ -516,6 +554,12 @@ void MainWindow::preferences()
 {
     preferencesDialog *pd = new preferencesDialog(this);
     pd->exec();
+}
+
+void MainWindow::reviewOut()
+{
+    reviewOutput *rO = new reviewOutput(this);
+    rO->exec();
 }
 
 void MainWindow::cut()
@@ -1047,6 +1091,10 @@ void MainWindow::createActions()
     checkForUpdatesAct->setStatusTip(tr("Check for new version of eePe/er9x"));
     connect(checkForUpdatesAct, SIGNAL(triggered()), this, SLOT(checkForUpdates()));
 
+    reviewBurnOutput = new QAction(tr("review Output"), this) ;
+    reviewBurnOutput->setStatusTip(tr("display last AvrDude output"));
+    connect(reviewBurnOutput, SIGNAL(triggered()), this, SLOT(reviewOut()));
+
 //! [0]
     exitAct = new QAction(QIcon(":/images/exit.png"), tr("E&xit"), this);
     exitAct->setShortcuts(QKeySequence::Quit);
@@ -1234,6 +1282,8 @@ void MainWindow::createMenus()
     burnMenu->addSeparator();
     burnMenu->addAction(setFusesAct);
     burnMenu->addAction(resetFusesAct);
+    burnMenu->addSeparator();
+    burnMenu->addAction(reviewBurnOutput);
 
     windowMenu = menuBar()->addMenu(tr("&Window"));
     updateWindowMenu();
@@ -1305,11 +1355,11 @@ void MainWindow::readSettings()
     QSize size = settings.value("size", QSize(400, 400)).toSize();
 
     currentERSKY9Xrev = settings.value("currentERSKY9Xrev", 1).toInt();
+    currentERSKY9XRrev = settings.value("currentERSKY9XRrev", 1).toInt();
     currentEEPSKYErev = SVN_VER_NUM;
 
     checkERSKY9X  = settings.value("startup_check_ersky9x", true).toBool();
     checkEEPSKYE  = settings.value("startup_check_eepskye", true).toBool();
-
     if(maximized)
     {
          setWindowState(Qt::WindowMaximized);

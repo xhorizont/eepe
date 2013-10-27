@@ -10,6 +10,23 @@ description here
 ====================================================================================
 
 ******************************************
+CHANGELOG: 27-Oct-2013 MPB (r389)
+eepe - simulator stick mode bug fixes
+eepe - Switch settings bug fixes
+eepe - add review Burn Output
+eepe - add model version update button
+eepe - only one copy of simulator allowed
+eepe - fix EEPROM checking bug
+eepskye - stick mode changes
+eepskye - add review Burn Output
+eepskye - tie upddate check to preferred download
+eepskye - add logging editing values
+
+******************************************
+CHANGELOG: 19-Oct-2013 MPB (r389)
+Fix GVAR values in expo/dr
+
+******************************************
 CHANGELOG: 16-Oct-2013 MPB (r388)
 eepe - Further change simulator layout to fit smaller displays
 eepskye - save SAM-BA location properly

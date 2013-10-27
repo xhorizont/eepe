@@ -1308,6 +1308,14 @@ msgctxt "MainWindow|"
 msgid "to Erez Raviv (original author)"
 msgstr ""
 
+msgctxt "MainWindow|"
+msgid "review Output"
+msgstr ""
+
+msgctxt "MainWindow|"
+msgid "display last AvrDude output"
+msgstr ""
+
 msgctxt "MdiChild|"
 msgid "&Cut"
 msgstr "&Couper"
@@ -2929,6 +2937,10 @@ msgctxt "ModelEdit|"
 msgid "Version"
 msgstr ""
 
+msgctxt "ModelEdit|"
+msgid "Update to Version 2"
+msgstr ""
+
 msgctxt "QObject|"
 msgid "Checking for updates..."
 msgstr ""
@@ -4210,6 +4222,10 @@ msgctxt "printDialog|"
 msgid "<font size=+1 face='Courier New'><b>CH%1</b></font>"
 msgstr ""
 
+msgctxt "reviewOutput|"
+msgid "Reviewing Burn Output"
+msgstr ""
+
 msgctxt "serialDialog|"
 msgid "Serial SD update"
 msgstr ""
@@ -4475,6 +4491,10 @@ msgstr ""
 
 msgctxt "simulatorDialog|"
 msgid "SWC"
+msgstr ""
+
+msgctxt "simulatorDialog|"
+msgid "Send Data"
 msgstr ""
 
 #, fuzzy

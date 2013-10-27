@@ -2,6 +2,8 @@
 #include "ui_avroutputdialog.h"
 #include <QtGui>
 
+extern QString AvrdudeOutput ;
+
 avrOutputDialog::avrOutputDialog(QWidget *parent, QString prog, QStringList arg, QString wTitle, int closeBehaviour) :
     QDialog(parent, Qt::WindowTitleHint | Qt::WindowSystemMenuHint),
     ui(new Ui::avrOutputDialog)
@@ -12,9 +14,6 @@ avrOutputDialog::avrOutputDialog(QWidget *parent, QString prog, QStringList arg,
         setWindowTitle(tr("AVRDUDE result"));
     else
         setWindowTitle(tr("AVRDUDE - ") + wTitle);
-
-
-		textAddress = NULL ;
 
     cmdLine = prog;
     foreach(QString str, arg) cmdLine.append(" " + str);
@@ -36,11 +35,6 @@ avrOutputDialog::avrOutputDialog(QWidget *parent, QString prog, QStringList arg,
 avrOutputDialog::~avrOutputDialog()
 {
     delete ui;
-}
-
-void avrOutputDialog::textStoreAddress( QString *text )
-{
-	textAddress = text ;	
 }
 
 void avrOutputDialog::runAgain(QString prog, QStringList arg, int closeBehaviour)
@@ -106,10 +100,8 @@ void avrOutputDialog::doFinished(int code=0)
 
     if(lfuse || hfuse || efuse) addReadFuses();
 
-		if ( textAddress )
-		{
-			*textAddress = ui->plainTextEdit->toPlainText() ;
-		}
+		AvrdudeOutput = ui->plainTextEdit->toPlainText() ;
+
 
     switch(closeOpt)
     {

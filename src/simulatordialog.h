@@ -41,6 +41,7 @@ private:
     quint16 g_tmr10ms;
     qint16  chanOut[NUM_CHNOUT];
     qint16  calibratedStick[7+2+3];
+    qint16  StickValues[4] ;
     qint16  g_ppmIns[8];
     qint16  ex_chans[NUM_CHNOUT];
     qint8   trim[4];
@@ -106,7 +107,7 @@ private:
 		void setTrimValue(uint8_t phase, uint8_t idx, int16_t trim) ;
 
 protected:
-    void closeEvent (  );
+		void closeEvent(QCloseEvent *event) ;
 
 private slots:
     void on_FixRightY_clicked(bool checked);

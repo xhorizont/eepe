@@ -142,6 +142,7 @@ private slots:
     void mimeDropped(int index, const QMimeData *data, Qt::DropAction action);
     void pasteMIMEData(const QMimeData * mimeData, int destIdx=1000);
     void on_pushButton_clicked();
+		void on_updateButton_clicked() ;
     void mixersDelete(bool ask=true);
     void mixersCut();
     void mixersCopy();
@@ -245,6 +246,7 @@ private slots:
 		void on_autoLimitsSB_editingFinished() ;
 		void on_countryCB_currentIndexChanged(int index) ;
 		void on_typeCB_currentIndexChanged(int index) ;
+		void updateToMV2( void ) ;
 
 };
 

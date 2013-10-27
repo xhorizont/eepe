@@ -71,11 +71,12 @@ simulatorDialog::~simulatorDialog()
     delete ui;
 }
 
-void simulatorDialog::closeEvent ( )
+void simulatorDialog::closeEvent(QCloseEvent *event)
 {
-    timer->stop();
-    delete timer;
+    timer->stop() ;
+    delete timer ;
 		timer = 0 ;
+		event->accept() ;
 }
 
 void simulatorDialog::setupTimer()
@@ -487,10 +488,10 @@ void simulatorDialog::getValues()
 {
 		int8_t trims[4] ;
 
-  calibratedStick[0] = 1024*nodeLeft->getX(); //RUD
-  calibratedStick[1] = -1024*nodeLeft->getY(); //ELE
-  calibratedStick[2] = -1024*nodeRight->getY(); //THR
-  calibratedStick[3] = 1024*nodeRight->getX(); //AIL
+  StickValues[0] = 1024*nodeLeft->getX(); //RUD
+  StickValues[1] = -1024*nodeLeft->getY(); //ELE
+  StickValues[2] = -1024*nodeRight->getY(); //THR
+  StickValues[3] = 1024*nodeRight->getX(); //AIL
   if ( g_model.modelVersion >= 2 )
 	{
 		uint8_t stickIndex = g_eeGeneral.stickMode*4 ;
@@ -571,7 +572,7 @@ void simulatorDialog::getValues()
 			}
 			else if ( g_model.gvars[i].gvsource <= 9 )	// Stick
 			{
-        x = calibratedStick[ g_model.gvars[i].gvsource-5 - 1 ] / 8 ;
+        x = calibratedStick[CONVERT_MODE(g_model.gvars[i].gvsource-5,g_model.modelVersion,g_eeGeneral.stickMode)-1] / 8 ;
 				if ( x < -125 )
 				{
 					x = -125 ;					
@@ -587,7 +588,7 @@ void simulatorDialog::getValues()
 				uint32_t y ;
 				y = g_model.gvars[i].gvsource - 6 ;
 
-				y = adjustMode( y ) ;
+//				y = adjustMode( y ) ;
 				
 				x = calibratedStick[ y ] / 8 ;
 				if ( x < -125 )
@@ -1334,8 +1335,16 @@ int8_t simulatorDialog::REG100_100(int8_t x)
 int8_t simulatorDialog::REG(int8_t x, int8_t min, int8_t max)
 {
   int8_t result = x;
-  if (x >= 126 || x <= -126) {
-    x = (uint8_t)x - 126;
+  if (x >= 126 || x <= -126)
+	{
+		uint8_t y ;
+		y = x ;
+		if ( x < 0 )
+		{
+      y = x + 256 ;
+		}
+		y -= 126 ;
+    x = y ;
     result = g_model.gvars[x].gvar ;
     if (result < min) {
       g_model.gvars[x].gvar = result = min;
@@ -1385,8 +1394,23 @@ void simulatorDialog::perOut(bool init)
     for(uint8_t i=0;i<7;i++){        // calc Sticks
 
         //Normalization  [0..2048] ->   [-1024..1024]
+      int16_t v ;
 
-        int16_t v = calibratedStick[i];
+			if ( i < 4 )
+			{
+        v = StickValues[i];
+				uint8_t index = i ;
+			  if ( g_model.modelVersion >= 2 )
+				{
+					uint8_t stickIndex = g_eeGeneral.stickMode*4 ;
+					index = stickScramble[stickIndex+i] ;
+				}
+        calibratedStick[index] = v; //for show in expo
+			}
+			else
+			{
+        v = calibratedStick[i] ;
+			}
         //    v -= g_eeGeneral.calibMid[i];
         //    v  =  v * (int32_t)RESX /  (max((int16_t)100,(v>0 ?
         //                                     g_eeGeneral.calibSpanPos[i] :
@@ -1964,4 +1988,5 @@ void simulatorDialog::on_FixRightY_clicked(bool checked)
 {
     nodeRight->setFixedY(checked);
 }
+
 

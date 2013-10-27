@@ -13,6 +13,8 @@
 #endif
 //#endif
 
+extern QString AvrdudeOutput ;
+
 avrOutputDialog::avrOutputDialog(QWidget *parent, QString prog, QStringList arg, QString wTitle, int closeBehaviour) :
     QDialog(parent, Qt::WindowTitleHint | Qt::WindowSystemMenuHint),
     ui(new Ui::avrOutputDialog),
@@ -203,6 +205,7 @@ void avrOutputDialog::doFinished(int code=0)
     addText("\n" HLINE_SEPARATOR "\n");
 
 //    if(lfuse || hfuse || efuse) addReadFuses();
+		AvrdudeOutput = ui->plainTextEdit->toPlainText() ;
 
     switch(closeOpt)
     {

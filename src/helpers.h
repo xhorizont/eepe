@@ -28,14 +28,14 @@ int numericGvarValue( QComboBox *b, int min, int max ) ;
 #ifdef SKY
 void populateSwitchCB(QComboBox *b, int value);
 #else
-void populateSwitchCB(QComboBox *b, int value, int modelType) ;
+void populateSwitchCB(QComboBox *b, int value, int eepromType) ;
 #endif
 void populateTrainerSwitchCB(QComboBox *b, int value) ;
 
 #ifdef SKY
 void populateSwitchShortCB(QComboBox *b, int value) ;
 #else
-void populateSwitchShortCB(QComboBox *b, int value, int modelType) ;
+void populateSwitchShortCB(QComboBox *b, int value, int eepromType) ;
 #endif
 
 #ifdef SKY
@@ -54,7 +54,7 @@ void populateCurvesCB(QComboBox *b, int value);
 #ifdef SKY
 void populateTimerSwitchCB(QComboBox *b, int value ) ;
 #else
-void populateTimerSwitchCB(QComboBox *b, int value, int modelType) ;
+void populateTimerSwitchCB(QComboBox *b, int value, int eepromType) ;
 #endif
 void populateSwitchxAndCB(QComboBox *b, int value) ;
 void populateSwitchAndCB(QComboBox *b, int value) ;

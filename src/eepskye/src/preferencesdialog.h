@@ -28,6 +28,8 @@ private slots:
     void write_values();
     void on_er9x_dnld_2_clicked();
     void on_er9x_dnld_clicked();
+		void on_downloadVerCB_currentIndexChanged(int index) ;
+		
 };
 
 #endif // PREFERENCESDIALOG_H

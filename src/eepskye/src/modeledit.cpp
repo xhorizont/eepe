@@ -358,7 +358,7 @@ void ModelEdit::tabExpo()
 					y = -100 ;
 					if ( j == 1 )
 					{
-    				if ( ( x >= -100 && x <= 100 ) ) x += 100 ;
+    				/*if ( ( x >= -100 && x <= 100 ) )*/ x += 100 ;
 						y = 0 ;
 					}
 					populateSpinGVarCB( sb, cb, chkb, x, y, 100 ) ;
@@ -381,7 +381,7 @@ void ModelEdit::tabExpo()
 					y = -100 ;
 					if ( j == 1 )
 					{
-    				if ( ( x >= -100 && x <= 100 ) ) x += 100 ;
+    				/*if ( ( x >= -100 && x <= 100 ) )*/ x += 100 ;
 						y = 0 ;
 					}
 					populateSpinGVarCB( sb, cb, chkb, x, y, 100 ) ;
@@ -404,7 +404,7 @@ void ModelEdit::tabExpo()
 					y = -100 ;
 					if ( j == 1 )
 					{
-    				if ( ( x >= -100 && x <= 100 ) ) x += 100 ;
+    				/*if ( ( x >= -100 && x <= 100 ) )*/ x += 100 ;
 						y = 0 ;
 					}
 					populateSpinGVarCB( sb, cb, chkb, x, y, 100 ) ;
@@ -436,7 +436,7 @@ void ModelEdit::tabExpo()
 					y = -100 ;
 					if ( j == 1 )
 					{
-    				if ( ( x >= -100 && x <= 100 ) ) x += 100 ;
+    				/*if ( ( x >= -100 && x <= 100 ) )*/ x += 100 ;
 						y = 0 ;
 					}
 					populateSpinGVarCB( sb, cb, chkb, x, y, 100 ) ;
@@ -464,8 +464,8 @@ void ModelEdit::tabExpo()
 
 void expoDrSet( int8_t *pval, int x )
 {
-  if ( ( x >= -100 && x <= 100 ) ) x -= 100 ;
-  *pval = x ;
+//  if ( ( x >= -100 && x <= 100 ) ) x -= 100 ;
+  *pval = x - 100 ;
 }
 
 
@@ -2533,6 +2533,10 @@ void ModelEdit::tabFrsky()
     ui->VarioSensitivitySB->setValue( g_model.varioData.param ) ;
     ui->SinkTonesOff->setChecked(g_model.varioData.sinkTonesOff);
 
+    populateSwitchCB(ui->LogSwitchCB, g_model.logSwitch ) ;
+    ui->LogRateCB->setCurrentIndex( g_model.logRate ) ;
+
+
     connect(ui->frsky_ratio_0,SIGNAL(editingFinished()),this,SLOT(FrSkyEdited()));
     connect(ui->frsky_ratio_1,SIGNAL(editingFinished()),this,SLOT(FrSkyEdited()));
     connect(ui->frsky_type_0,SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
@@ -2573,6 +2577,10 @@ void ModelEdit::tabFrsky()
 		connect( ui->VarioSourceCB,SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
 		connect( ui->VarioSwitchCB,SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
 		connect( ui->SinkTonesOff,SIGNAL(stateChanged(int)),this,SLOT(FrSkyEdited()));
+
+		connect( ui->LogSwitchCB,SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
+		connect( ui->LogRateCB,SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
+
 }
 
 void ModelEdit::FrSkyEdited()
@@ -2614,6 +2622,10 @@ void ModelEdit::FrSkyEdited()
 		g_model.varioData.varioSource = ui->VarioSourceCB->currentIndex() ;
 		g_model.varioData.param = ui->VarioSensitivitySB->value() ;
     g_model.varioData.sinkTonesOff = ui->SinkTonesOff->isChecked();
+		
+		g_model.logSwitch = ui->LogSwitchCB->currentIndex() - MAX_DRSWITCH ;
+    g_model.logRate = ui->LogRateCB->currentIndex() ;
+		
 		updateSettings();
 }
 

@@ -66,10 +66,12 @@ simulatorDialog::~simulatorDialog()
     delete ui;
 }
 
-void simulatorDialog::closeEvent ( )
+void simulatorDialog::closeEvent(QCloseEvent *event)
 {
-    timer->stop();
-    delete timer;
+    timer->stop() ;
+    delete timer ;
+		timer = 0 ;
+		event->accept() ;
 }
 
 void simulatorDialog::setupTimer()
@@ -433,7 +435,7 @@ void simulatorDialog::getValues()
 			}
 			else if ( g_model.gvars[i].gvsource <= 9 )	// Stick
 			{
-        x = calibratedStick[ g_model.gvars[i].gvsource-5 - 1 ] / 8 ;
+        x = calibratedStick[CONVERT_MODE(g_model.gvars[i].gvsource-5,g_model.modelVersion,g_eeGeneral.stickMode)-1] / 8 ;
 				if ( x < -125 )
 				{
 					x = -125 ;					

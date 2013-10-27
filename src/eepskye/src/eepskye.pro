@@ -20,7 +20,8 @@ HEADERS += mainwindow.h \
     mixerslist.h \
     downloaddialog.h \
     stamp-eepskye.h \
-    customizesplashdialog.h
+    customizesplashdialog.h \
+    reviewOutput.h
 SOURCES += main.cpp \
     mainwindow.cpp \
     file.cpp \
@@ -40,7 +41,8 @@ SOURCES += main.cpp \
     mixerslist.cpp \
     downloaddialog.cpp \
     customizesplashdialog.cpp \
-    helpers.cpp
+    helpers.cpp \
+    reviewOutput.cpp
 TEMPLATE = app
 FORMS += modeledit.ui \
     generaledit.ui \
@@ -52,7 +54,8 @@ FORMS += modeledit.ui \
     printdialog.ui \
     preferencesdialog.ui \
     downloaddialog.ui \
-    customizesplashdialog.ui
+    customizesplashdialog.ui \
+    reviewOutput.ui
 TRANSLATIONS = eepe_.ts    \
                eepe_he.ts  \
                eepe_pt.ts  \
