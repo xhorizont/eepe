@@ -1164,6 +1164,14 @@ http://code.google.com/p/eepe/</source>
         <source>to Erez Raviv (original author)</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>review Output</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>display last AvrDude output</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>MdiChild</name>
@@ -2653,6 +2661,10 @@ Droite</translation>
         <source>Version</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Update to Version 2</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>QObject</name>
@@ -3672,6 +3684,13 @@ Indique l&apos;affectation voie / numéro de canal par défaut utilisée lors de
     </message>
 </context>
 <context>
+    <name>reviewOutput</name>
+    <message>
+        <source>Reviewing Burn Output</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>serialDialog</name>
     <message>
         <source>Serial SD update</source>
@@ -3938,6 +3957,10 @@ Indique l&apos;affectation voie / numéro de canal par défaut utilisée lors de
     </message>
     <message>
         <source>SWC</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Send Data</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

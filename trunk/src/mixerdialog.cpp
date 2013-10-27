@@ -3,13 +3,13 @@
 #include "pers.h"
 #include "helpers.h"
 
-MixerDialog::MixerDialog(QWidget *parent, MixData *mixdata, int stickMode, QString * comment, int modelVersion, int modelType) :
+MixerDialog::MixerDialog(QWidget *parent, MixData *mixdata, int stickMode, QString * comment, int modelVersion, int eepromType) :
     QDialog(parent),
     ui(new Ui::MixerDialog)
 {
     ui->setupUi(this);
     md = mixdata;
-		mType = modelType ;
+		mType = eepromType ;
 
     this->setWindowTitle(tr("DEST -> CH%1%2").arg(md->destCh/10).arg(md->destCh%10));
     populateSourceCB(ui->sourceCB, stickMode, 0, md->srcRaw, modelVersion);
@@ -31,7 +31,7 @@ MixerDialog::MixerDialog(QWidget *parent, MixData *mixdata, int stickMode, QStri
     ui->trimChkB->setChecked(md->carryTrim==0);
     ui->FMtrimChkB->setChecked(md->enableFmTrim);
     ui->lateOffsetChkB->setChecked(md->lateOffset);
-    populateSwitchCB(ui->switchesCB,md->swtch, modelType ) ;
+    populateSwitchCB(ui->switchesCB,md->swtch, eepromType ) ;
     ui->warningCB->setCurrentIndex(md->mixWarn);
     ui->mltpxCB->setCurrentIndex(md->mltpx);
 		ui->diffcurveCB->setCurrentIndex(md->differential) ;

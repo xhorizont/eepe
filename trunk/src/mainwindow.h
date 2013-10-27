@@ -102,6 +102,7 @@ private slots:
     void print();
     void preferences();
     void serial();
+		void reviewOut() ;
     void donators();
     void showEr9xManual();
     void updateMenus();
@@ -164,6 +165,7 @@ private:
     QAction *exitAct;
     QAction *preferencesAct;
     QAction *serialAct;
+    QAction *reviewBurnOutput ;
     QAction *checkForUpdatesAct;
     QAction *cutAct;
     QAction *copyAct;

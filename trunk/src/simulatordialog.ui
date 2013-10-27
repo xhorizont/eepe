@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>757</width>
-    <height>565</height>
+    <height>569</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -340,6 +340,13 @@ QPushButton:checked {
       </item>
       <item>
        <layout class="QVBoxLayout" name="verticalLayout_11">
+        <item>
+         <widget class="QPushButton" name="SendData">
+          <property name="text">
+           <string>Send Data</string>
+          </property>
+         </widget>
+        </item>
         <item>
          <widget class="QDial" name="dialP_1">
           <property name="sizePolicy">

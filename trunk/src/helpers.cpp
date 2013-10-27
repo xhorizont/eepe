@@ -610,13 +610,13 @@ QString getSWName(int val, int extra )
 #ifdef SKY
 void populateSwitchCB(QComboBox *b, int value=0)
 #else
-void populateSwitchCB(QComboBox *b, int value, int modelType)
+void populateSwitchCB(QComboBox *b, int value, int eepromType)
 #endif
 {
     b->clear();
 	int limit = MAX_DRSWITCH ;
 #ifndef SKY
-  if ( modelType )
+  if ( eepromType )
 	{
     limit += EXTRA_CSW ;
 	}
@@ -625,7 +625,7 @@ void populateSwitchCB(QComboBox *b, int value, int modelType)
 #ifdef SKY
         b->addItem(getSWName(i));
 #else
-        b->addItem(getSWName(i,modelType));
+        b->addItem(getSWName(i,eepromType));
 #endif
     b->setCurrentIndex(value+limit);
     b->setMaxVisibleItems(10);
@@ -648,13 +648,13 @@ void populateTrainerSwitchCB(QComboBox *b, int value=0)
 #ifdef SKY
 void populateSwitchShortCB(QComboBox *b, int value)
 #else
-void populateSwitchShortCB(QComboBox *b, int value, int modelType)
+void populateSwitchShortCB(QComboBox *b, int value, int eepromType)
 #endif
 {
     b->clear();
 	int limit = MAX_DRSWITCH-1 ;
 #ifndef SKY
-  if ( modelType )
+  if ( eepromType )
 	{
     limit += EXTRA_CSW ;
 	}
@@ -663,7 +663,7 @@ void populateSwitchShortCB(QComboBox *b, int value, int modelType)
 #ifdef SKY
         b->addItem(getSWName(i));
 #else
-        b->addItem(getSWName(i,modelType));
+        b->addItem(getSWName(i,eepromType));
 #endif
     b->setCurrentIndex(value+limit);
     b->setMaxVisibleItems(10);

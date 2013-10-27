@@ -57,6 +57,7 @@
 #include "stamp-eepe.h"
 #include "serialDialog.h"
 #include "telemetry.h"
+#include "reviewOutput.h"
 
 #define DONATE_ER_STR "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=B9RNATGH7DTQ6"
 #define DONATE_MB_STR "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=YHX43JR3J7XGW"
@@ -145,6 +146,10 @@
 #define ER9X_128_DE_URL   "http://er9x.googlecode.com/svn/trunk/er9x-128-de.hex"
 #define ER9X_NO_URL   "http://er9x.googlecode.com/svn/trunk/er9x-no.hex"
 #define ER9X_2561_URL   "http://er9x.googlecode.com/svn/trunk/er9x-2561.hex"
+
+
+class simulatorDialog *SimPointer = 0 ;
+QString AvrdudeOutput ;
 
 
 void populateDownloads( QComboBox *b )
@@ -618,6 +623,12 @@ void MainWindow::serial()
 {
     serialDialog *sd = new serialDialog(this);
     sd->exec();
+}
+
+void MainWindow::reviewOut()
+{
+    reviewOutput *rO = new reviewOutput(this);
+    rO->exec();
 }
 
 void MainWindow::doTelemetry()
@@ -1175,6 +1186,10 @@ void MainWindow::createActions()
     serialAct->setStatusTip(tr("Update Megasound SD card"));
     connect(serialAct, SIGNAL(triggered()), this, SLOT(serial()));
 
+    reviewBurnOutput = new QAction(tr("review Output"), this) ;
+    reviewBurnOutput->setStatusTip(tr("display last AvrDude output"));
+    connect(reviewBurnOutput, SIGNAL(triggered()), this, SLOT(reviewOut()));
+
 
 //! [0]
     exitAct = new QAction(QIcon(":/images/exit.png"), tr("E&xit"), this);
@@ -1368,6 +1383,8 @@ void MainWindow::createMenus()
     burnMenu->addSeparator();
     burnMenu->addAction(setFusesAct);
     burnMenu->addAction(resetFusesAct);
+    burnMenu->addSeparator();
+    burnMenu->addAction(reviewBurnOutput);
     burnMenu->addSeparator();
     burnMenu->addAction(serialAct);
 

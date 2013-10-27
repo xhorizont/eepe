@@ -49,6 +49,7 @@
 #include "simulatordialog.h"
 #include "printdialog.h"
 
+extern class simulatorDialog *SimPointer ;
 
 MdiChild::MdiChild()
 {
@@ -816,7 +817,7 @@ bool MdiChild::loadFile(const QString &fileName, bool resetCurrentFile)
     {
         QFile file(fileName);
 
-        if ( (file.size()!=EESIZE64) || (file.size()!=EESIZE128) )
+        if ( (file.size()!=EESIZE64) && (file.size()!=EESIZE128) )
         {
             QMessageBox::critical(this, tr("Error"),tr("Error reading file:\n"
                                                        "File wrong size - %1").arg(fileName));
@@ -1249,7 +1250,17 @@ void MdiChild::simulate()
     ModelData gm;
     if(!eeFile.getModel(&gm,currentRow()-1)) return;
 
-    simulatorDialog *sd = new simulatorDialog(this);
+		simulatorDialog *sd ;
+
+		if ( SimPointer == 0 )
+		{
+    	sd = new simulatorDialog(this) ;
+			SimPointer = sd ;
+		}
+		else
+		{
+			sd = SimPointer ;
+		}
     sd->loadParams(gg,gm);
     sd->show();
 }

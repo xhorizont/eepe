@@ -27,6 +27,8 @@
 #define ALARM_GREATER(channel, alarm) ((g_model.frsky.channels[channel].alarms_greater >> alarm) & 1)
 #define ALARM_LEVEL(channel, alarm) ((g_model.frsky.channels[channel].alarms_level >> (2*alarm)) & 3)
 
+extern class simulatorDialog *SimPointer ;
+
 int GlobalModified = 0 ;
 EEGeneral Sim_g ;
 int GeneralDataValid = 0 ;
@@ -224,8 +226,110 @@ void ModelEdit::tabModelEditSetup()
 	  ui->countryCB->setCurrentIndex(g_model.country) ;
 	  ui->typeCB->setCurrentIndex(g_model.sub_protocol) ;
 		ui->label_version->setText( tr("%1").arg( g_model.modelVersion ) ) ;
+		ui->updateButton->setVisible( g_model.modelVersion < 2 ) ;
 }
-	
+
+uint8_t stickScramble[]=
+{
+  0, 1, 2, 3,
+  0, 2, 1, 3,
+  3, 1, 2, 0,
+  3, 2, 1, 0
+} ;
+
+void ModelEdit::updateToMV2()
+{
+	if ( g_model.modelVersion < 2 )
+	{
+    for(uint8_t i=0;i<MAX_MIXERS;i++)
+		{
+      MixData *md = &g_model.mixData[i] ;
+      if (md->srcRaw)
+			{
+        if (md->srcRaw <= 4)		// Stick
+				{
+					md->srcRaw = stickScramble[g_eeGeneral.stickMode*4+md->srcRaw-1] + 1 ;
+				}
+			}
+		}
+		for (uint8_t i = 0 ; i < NUM_CSW ; i += 1 )
+		{
+    	CSwData *cs = &g_model.customSw[i];
+    	uint8_t cstate = CS_STATE(cs->func);
+    	if(cstate == CS_VOFS)
+			{
+      	if (cs->v1)
+				{
+    		  if (cs->v1 <= 4)		// Stick
+					{
+    	    	cs->v1 = stickScramble[g_eeGeneral.stickMode*4+cs->v1-1] + 1 ;
+					}
+				}
+			}
+			else if(cstate == CS_VCOMP)
+			{
+      	if (cs->v1)
+				{
+    		  if (cs->v1 <= 4)		// Stick
+					{
+		    	  cs->v1 = stickScramble[g_eeGeneral.stickMode*4+cs->v1-1] + 1 ;
+    	    }
+				}
+      	if (cs->v2)
+				{
+    		  if (cs->v2 <= 4)		// Stick
+					{
+						cs->v2 = stickScramble[g_eeGeneral.stickMode*4+cs->v2-1] + 1 ;
+				  }
+				}
+			}
+		}
+
+		if ( eeFile->mee_type )
+		{
+			for (uint8_t i = NUM_CSW ; i < NUM_CSW+EXTRA_CSW ; i += 1 )
+			{
+	  	  CxSwData *cs = &g_model.xcustomSw[i-NUM_CSW];
+    		uint8_t cstate = CS_STATE(cs->func);
+    		if(cstate == CS_VOFS)
+				{
+      		if (cs->v1)
+					{
+    		  	if (cs->v1 <= 4)		// Stick
+						{
+    	    		cs->v1 = stickScramble[g_eeGeneral.stickMode*4+cs->v1-1] + 1 ;
+						}
+					}
+				}
+				else if(cstate == CS_VCOMP)
+				{
+      		if (cs->v1)
+					{
+    		  	if (cs->v1 <= 4)		// Stick
+						{
+		    		  cs->v1 = stickScramble[g_eeGeneral.stickMode*4+cs->v1-1] + 1 ;
+    	    	}
+					}
+      		if (cs->v2)
+					{
+    		  	if (cs->v2 <= 4)		// Stick
+						{
+							cs->v2 = stickScramble[g_eeGeneral.stickMode*4+cs->v2-1] + 1 ;
+				  	}
+					}
+				}
+			}
+		}
+		g_model.modelVersion = 2 ;
+		for (uint8_t i = 0 ; i < NUM_CSW+EXTRA_CSW ; i += 1 )
+		{
+      setSwitchWidgetVisibility(i) ;
+		}
+		ui->label_version->setText( tr("%1").arg( g_model.modelVersion ) ) ;
+	}
+	ui->updateButton->setVisible( false ) ;
+}
+	 
 void ModelEdit::setProtocolBoxes()
 {
     protocolEditLock = true;
@@ -351,7 +455,7 @@ void ModelEdit::tabExpo()
 					y = -100 ;
 					if ( j == 1 )
 					{
-    				if ( ( x >= -100 && x <= 100 ) ) x += 100 ;
+    				/*if ( ( x >= -100 && x <= 100 ) )*/ x += 100 ;
 						y = 0 ;
 					}
 					populateSpinGVarCB( sb, cb, chkb, x, y, 100 ) ;
@@ -374,7 +478,7 @@ void ModelEdit::tabExpo()
 					y = -100 ;
 					if ( j == 1 )
 					{
-    				if ( ( x >= -100 && x <= 100 ) ) x += 100 ;
+    				/*if ( ( x >= -100 && x <= 100 ) )*/ x += 100 ;
 						y = 0 ;
 					}
 					populateSpinGVarCB( sb, cb, chkb, x, y, 100 ) ;
@@ -397,7 +501,7 @@ void ModelEdit::tabExpo()
 					y = -100 ;
 					if ( j == 1 )
 					{
-    				if ( ( x >= -100 && x <= 100 ) ) x += 100 ;
+    				/*if ( ( x >= -100 && x <= 100 ) )*/ x += 100 ;
 						y = 0 ;
 					}
 					populateSpinGVarCB( sb, cb, chkb, x, y, 100 ) ;
@@ -429,7 +533,7 @@ void ModelEdit::tabExpo()
 					y = -100 ;
 					if ( j == 1 )
 					{
-    				if ( ( x >= -100 && x <= 100 ) ) x += 100 ;
+    				/*if ( ( x >= -100 && x <= 100 ) )*/ x += 100 ;
 						y = 0 ;
 					}
 					populateSpinGVarCB( sb, cb, chkb, x, y, 100 ) ;
@@ -455,8 +559,8 @@ void ModelEdit::tabExpo()
 
 void expoDrSet( int8_t *pval, int x )
 {
-  if ( ( x >= -100 && x <= 100 ) ) x -= 100 ;
-  *pval = x ;
+//  if ( ( x >= -100 && x <= 100 ) ) x -= 100 ;
+  *pval = x - 100 ;
 }
 
 
@@ -1691,8 +1795,8 @@ void ModelEdit::setSwitchWidgetVisibility(int i)
         cswitchSource2[i]->setVisible(true);
         cswitchOffset[i]->setVisible(false);
         cswitchOffset0[i]->setVisible(false);
-        populateSwitchCB(cswitchSource1[i],v1,g_model.modelVersion);
-        populateSwitchCB(cswitchSource2[i],v2,g_model.modelVersion);
+        populateSwitchCB(cswitchSource1[i],v1, eeFile->mee_type ) ;
+        populateSwitchCB(cswitchSource2[i],v2, eeFile->mee_type ) ;
 				cswitchText1[i]->setVisible(false) ;
 				cswitchText2[i]->setVisible(false) ;
         break;
@@ -3722,11 +3826,24 @@ void ModelEdit::launchSimulation()
 
     if ( sdptr == 0 )
     {
-        sdptr = new simulatorDialog(this);
-    }
+			if ( SimPointer == 0 )
+			{
+        sdptr = new simulatorDialog(this) ;
+				SimPointer = sdptr ;
+			}
+			else
+			{
+				sdptr = SimPointer ;
+			}
+		}
     sdptr->setType( eeFile->mee_type ) ;
     sdptr->loadParams(gg,gm);
     sdptr->show();
+}
+
+void ModelEdit::on_updateButton_clicked()
+{
+	updateToMV2() ;	
 }
 
 void ModelEdit::on_pushButton_clicked()

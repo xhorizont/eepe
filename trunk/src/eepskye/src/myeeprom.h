@@ -148,6 +148,7 @@ PACK(typedef struct t_EEGeneral {
 	uint8_t		rotaryDivisor ;
 	uint8_t   crosstrim:1;
 	uint8_t   spare9:7;
+	int8_t   rtcCal ;
 }) EEGeneral;
 
 
@@ -485,6 +486,8 @@ PACK(typedef struct te_ModelData {
 //	uint8_t   curentSource ;
 //	uint8_t   altSource ;
 	int8_t pxxFailsafe[16] ;
+	int8_t logSwitch ;
+	uint8_t logRate ;
 }) SKYModelData ;
 
 

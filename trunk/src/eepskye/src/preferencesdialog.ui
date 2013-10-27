@@ -353,7 +353,7 @@ Mode 4:
     </layout>
    </item>
    <item row="7" column="0">
-    <widget class="QLabel" name="label_5">
+    <widget class="QLabel" name="label_CurrentVersion">
      <property name="text">
       <string>Current Version - ersky9x</string>
      </property>

@@ -100,6 +100,7 @@ private slots:
     void about();
     void print();
     void preferences();
+		void reviewOut() ;
     void donators();
     void showEr9xManual();
     void updateMenus();
@@ -134,6 +135,7 @@ private:
     downloadDialog * downloadDialog_forWait;
 
     int currentERSKY9Xrev;
+    int currentERSKY9XRrev;
     int currentERSKY9Xrev_temp;
     int currentEEPSKYErev;
     bool checkERSKY9X;
@@ -160,6 +162,7 @@ private:
     QAction *saveAsAct;
     QAction *exitAct;
     QAction *preferencesAct;
+    QAction *reviewBurnOutput ;
     QAction *checkForUpdatesAct;
     QAction *cutAct;
     QAction *copyAct;

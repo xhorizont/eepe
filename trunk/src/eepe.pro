@@ -23,7 +23,8 @@ HEADERS += mainwindow.h \
     stamp-eepe.h \
     customizesplashdialog.h \
     serialdialog.h \
-    telemetry.h
+    telemetry.h \
+    reviewOutput.h
 SOURCES += main.cpp \
     mainwindow.cpp \
     file.cpp \
@@ -45,7 +46,8 @@ SOURCES += main.cpp \
     downloaddialog.cpp \
     customizesplashdialog.cpp \
     serialdialog.cpp \
-    telemetry.cpp
+    telemetry.cpp \
+    reviewOutput.cpp
 TEMPLATE = app
 FORMS += modeledit.ui \
     generaledit.ui \
@@ -59,7 +61,9 @@ FORMS += modeledit.ui \
     downloaddialog.ui \
     customizesplashdialog.ui \
     serialdialog.ui \
-    telemetryDialog.ui
+    telemetryDialog.ui \
+    SimSerialDialog.ui \
+    reviewOutput.ui
 TRANSLATIONS = eepe_.ts    \
                eepe_he.ts  \
                eepe_pt.ts  \

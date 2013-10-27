@@ -36,22 +36,34 @@ void preferencesDialog::write_values()
 
 void preferencesDialog::initSettings()
 {
-    QSettings settings("er9x-eePskye", "eePskye");
+    int dnloadVersion ;
+		QSettings settings("er9x-eePskye", "eePskye");
     int i=ui->locale_QB->findData(settings.value("locale",QLocale::system().name()).toString());
     if(i<0) i=0;
     ui->locale_QB->setCurrentIndex(i);
 
     ui->channelorderCB->setCurrentIndex(settings.value("default_channel_order", 0).toInt());
     ui->stickmodeCB->setCurrentIndex(settings.value("default_mode", 1).toInt());
-    ui->downloadVerCB->setCurrentIndex(settings.value("download-version", 0).toInt());
+
+		dnloadVersion = settings.value("download-version", 0).toInt() ;
+    ui->downloadVerCB->setCurrentIndex( dnloadVersion ) ;
 
     ui->startupCheck_er9x->setChecked(settings.value("startup_check_er9x", true).toBool());
     ui->startupCheck_eepe->setChecked(settings.value("startup_check_eepe", true).toBool());
 
     ui->showSplash->setChecked(settings.value("show_splash", true).toBool());
 
-    currentER9Xrev = settings.value("currentERSKY9Xrev", 1).toInt();
-
+		// download version 0 for ersky9x, 1 for ersky9xR
+		if ( dnloadVersion == 0 )
+		{
+    	currentER9Xrev = settings.value("currentERSKY9Xrev", 1).toInt();
+			ui->label_CurrentVersion->setText( "Current Version - ersky9x" ) ;
+		}
+		else
+		{
+    	currentER9Xrev = settings.value("currentERSKY9XRrev", 1).toInt();
+			ui->label_CurrentVersion->setText( "Current Version - ersky9xr" ) ;
+		}
     ui->er9x_ver_label->setText(QString("r%1").arg(currentER9Xrev));
 }
 
@@ -85,6 +97,23 @@ void preferencesDialog::populateLocale()
     //ui->locale_QB->addItems(files);
 
 
+}
+
+void preferencesDialog::on_downloadVerCB_currentIndexChanged(int index)
+{
+	QSettings settings("er9x-eePskye", "eePskye");
+	if ( index == 0 )
+	{
+    currentER9Xrev = settings.value("currentERSKY9Xrev", 1).toInt();
+		ui->label_CurrentVersion->setText( "Current Version - ersky9x" ) ;
+	}
+	else
+	{
+    currentER9Xrev = settings.value("currentERSKY9XRrev", 1).toInt();
+		ui->label_CurrentVersion->setText( "Current Version - ersky9xr" ) ;
+	}
+  ui->er9x_ver_label->setText(QString("r%1").arg(currentER9Xrev));
+  settings.setValue("download-version", ui->downloadVerCB->currentIndex());
 }
 
 
