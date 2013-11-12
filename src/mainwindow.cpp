@@ -55,7 +55,7 @@
 #include "downloaddialog.h"
 #include "customizesplashdialog.h"
 #include "stamp-eepe.h"
-#include "serialDialog.h"
+#include "serialdialog.h"
 #include "telemetry.h"
 #include "reviewOutput.h"
 
