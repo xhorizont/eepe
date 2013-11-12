@@ -38,6 +38,7 @@ private:
     quint16 g_tmr10ms;
     qint16  chanOut[NUM_SKYCHNOUT];
     qint16  calibratedStick[7+2+3];
+    qint16  StickValues[4] ;
     qint16  g_ppmIns[8];
     qint16  ex_chans[NUM_SKYCHNOUT];
     qint8   trim[4];

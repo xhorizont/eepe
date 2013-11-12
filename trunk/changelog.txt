@@ -10,6 +10,11 @@ description here
 ====================================================================================
 
 ******************************************
+CHANGELOG: 12-Nov-2013 MPB (r390)
+Simulator fix heli bug (eepe & eepskye)
+Add CH% support for timer trigger (eepe)
+
+******************************************
 CHANGELOG: 27-Oct-2013 MPB (r389)
 eepe - simulator stick mode bug fixes
 eepe - Switch settings bug fixes

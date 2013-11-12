@@ -351,10 +351,10 @@ void simulatorDialog::getValues()
 {
 		int8_t trims[4] ;
 
-  calibratedStick[0] = 1024*nodeLeft->getX(); //RUD
-  calibratedStick[1] = -1024*nodeLeft->getY(); //ELE
-  calibratedStick[2] = -1024*nodeRight->getY(); //THR
-  calibratedStick[3] = 1024*nodeRight->getX(); //AIL
+  StickValues[0] = 1024*nodeLeft->getX(); //RUD
+  StickValues[1] = -1024*nodeLeft->getY(); //ELE
+  StickValues[2] = -1024*nodeRight->getY(); //THR
+  StickValues[3] = 1024*nodeRight->getX(); //AIL
   if ( g_model.modelVersion >= 2 )
 	{
 		uint8_t stickIndex = g_eeGeneral.stickMode*4 ;
@@ -1125,11 +1125,27 @@ void simulatorDialog::perOut(bool init)
     //===========Swash Ring================
 
 
-    for(uint8_t i=0;i<7;i++){        // calc Sticks
+    for(uint8_t i=0;i<7;i++)
+		{        // calc Sticks
 
         //Normalization  [0..2048] ->   [-1024..1024]
+      int16_t v ;
+			uint8_t index = i ;
 
-        int16_t v = calibratedStick[i];
+			if ( i < 4 )
+			{
+        v = StickValues[i];
+			  if ( g_model.modelVersion >= 2 )
+				{
+					uint8_t stickIndex = g_eeGeneral.stickMode*4 ;
+					index = stickScramble[stickIndex+i] ;
+				}
+        calibratedStick[index] = v; //for show in expo
+			}
+			else
+			{
+        v = calibratedStick[i] ;
+			}
         //    v -= g_eeGeneral.calibMid[i];
         //    v  =  v * (int32_t)RESX /  (max((int16_t)100,(v>0 ?
         //                                     g_eeGeneral.calibSpanPos[i] :
@@ -1141,21 +1157,21 @@ void simulatorDialog::perOut(bool init)
         if(!(v/16)) anaCenter |= 1<<(CONVERT_MODE((i+1),g_model.modelVersion,g_eeGeneral.stickMode)-1);
 
         //===========Swash Ring================
-        if(d && (i==ele_stick || i==ail_stick))
+        if(d && (index==ele_stick || index==ail_stick))
             v = (int32_t)v*g_model.swashRingValue*RESX/(d*100);
         //===========Swash Ring================
 
 
-				uint8_t index = i ;
-				if ( g_model.modelVersion >= 2 )
-				{
-					if ( i < 4 )
-					{
-						uint8_t stickIndex = g_eeGeneral.stickMode*4 ;
-  	        index = stickScramble[stickIndex+i] ;
-					}
-				}
-        if(i<4) { //only do this for sticks
+//				if ( g_model.modelVersion >= 2 )
+//				{
+//					if ( i < 4 )
+//					{
+//						uint8_t stickIndex = g_eeGeneral.stickMode*4 ;
+//  	        index = stickScramble[stickIndex+i] ;
+//					}
+//				}
+        if(i<4)
+				{ //only do this for sticks
             uint8_t expoDrOn = GET_DR_STATE(index);
             uint8_t stkDir = v>0 ? DR_RIGHT : DR_LEFT;
 
@@ -1248,6 +1264,20 @@ void simulatorDialog::perOut(bool init)
         for(uint8_t i=0;i<MAX_GVARS;i++) anas[i+MIX_3POS] = g_model.gvars[i].gvar * 8 ;
 #endif
 
+    //===========Swash Ring================
+    if(g_model.swashRingValue)
+    {
+      uint32_t v = ((int32_t)anas[ele_stick]*anas[ele_stick] + (int32_t)anas[ail_stick]*anas[ail_stick]);
+		  int16_t tmp = calc100toRESX(g_model.swashRingValue) ;
+      uint32_t q ;
+      q =(int32_t)tmp * tmp ;
+      if(v>q)
+      {
+        uint16_t d = isqrt32(v);
+        anas[ele_stick] = (int32_t)anas[ele_stick]*tmp/((int32_t)d) ;
+        anas[ail_stick] = (int32_t)anas[ail_stick]*tmp/((int32_t)d) ;
+      }
+    }
 
     //===========Swash Mix================
 #define REZ_SWASH_X(x)  ((x) - (x)/8 - (x)/128 - (x)/512)   //  1024*sin(60) ~= 886

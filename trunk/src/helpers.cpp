@@ -985,7 +985,8 @@ void populateTimerSwitchCB(QComboBox *b, int value=0, int eepromType=0)
 		{
 			num_options += EXTRA_CSW * 2 ;
 		}
-    for(int i=-num_options; i<=num_options; i++)
+
+    for(int i=-num_options; i<=num_options+16; i++)
         b->addItem(getTimerMode(i,eepromType));
     b->setCurrentIndex(value+num_options);
 #endif
@@ -1052,10 +1053,25 @@ QString getTimerMode(int tm, int eepromType )
         return s;
     }
 
+    if(abs(tm)<(TMR_VAROFS+max_drswitch-1+max_drswitch-1))
+		{
+	    s = "m" + str.mid((abs(tm)-(TMR_VAROFS+max_drswitch-1))*3,3);
+  	  if(tm<0) s.prepend("!");
+    	return s;
+		}
 
-    s = "m" + str.mid((abs(tm)-(TMR_VAROFS+max_drswitch-1))*3,3);
-    if(tm<0) s.prepend("!");
-    return s;
+    str = CURV_STR ;
+		tm -= TMR_VAROFS+max_drswitch-1+max_drswitch-1 ;
+		if ( tm < 9 )
+		{
+       s = str.mid(tm*3+21,2) ;
+		}
+		else
+		{
+       s = str.mid(tm*3+21,3) ;
+		}
+    return s +'%' ;
+
 #endif
 
 }
