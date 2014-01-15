@@ -10,6 +10,19 @@ description here
 ====================================================================================
 
 ******************************************
+CHANGELOG: 15-Jan-2014 MPB (r392)
+eepskye support for bootloader
+sim support for changed expo/dr method
+support for fast delay/slow timing
+support for "sticky throttle" safety switch
+add eepskye build for linux
+add support for stick reverse
+patches for MAC build
+fix eepskye expo/dr editing bug
+automatically detect model version default
+eepskye support model specific default switch settings
+
+******************************************
 CHANGELOG: 12-Nov-2013 MPB (r390)
 Simulator fix heli bug (eepe & eepskye)
 Add CH% support for timer trigger (eepe)

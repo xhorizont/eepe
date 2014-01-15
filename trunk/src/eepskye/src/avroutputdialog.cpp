@@ -20,16 +20,49 @@ avrOutputDialog::avrOutputDialog(QWidget *parent, QString prog, QStringList arg,
     ui(new Ui::avrOutputDialog),
 		kill_timer(NULL)
 {
-    ui->setupUi(this);
+  ui->setupUi(this);
 
-    if(wTitle.isEmpty())
+
+
+
+  cmdLine = prog;
+
+  if (cmdLine.isEmpty())
+	{
+    setWindowTitle( tr( "Data Transfer" ) ) ;
+		
+		QString sourceFile ;
+		QString destFile ;
+		quint32 size ;
+		quint32 numBlocks ;
+    destFile = arg.at(0) ;
+    sourceFile = arg.at(1) ;
+    size = arg.at(2).toInt() ;
+		numBlocks = size / 4096 ;
+
+    ui->progressBar->setMaximum(numBlocks) ;
+    ui->progressBar->setValue(0) ;
+//		thread()->wait( 400 ) ;
+
+		show() ;
+		if ( doFileCopy( destFile, sourceFile, size ) == 0 )
+		{
+      QMessageBox::critical(this, "eePskye", tr("Operation Failed"));
+      reject();
+		}
+		else
+		{
+      QMessageBox::information(this, "eePskye", tr("Operation Successful"));
+    	accept();
+		}
+	}
+	else
+	{
+		if(wTitle.isEmpty())
         setWindowTitle(tr("SAM-BA result"));
     else
         setWindowTitle(tr("SAM_BA - ") + wTitle);
 
-
-
-    cmdLine = prog;
     foreach(QString str, arg) cmdLine.append(" " + str);
     closeOpt = closeBehaviour;
 
@@ -52,6 +85,7 @@ avrOutputDialog::avrOutputDialog(QWidget *parent, QString prog, QStringList arg,
 //#endif
     
 		process->start(prog,arg);
+	}
 }
 
 #if defined WIN32 || !defined __GNUC__
@@ -238,6 +272,63 @@ void avrOutputDialog::doProcessStarted()
     addText("\n" HLINE_SEPARATOR "\n");
 }
 
+
+int avrOutputDialog::doFileCopy( QString destFile, QString sourceFile, int size )
+{
+  char buf[4096];
+  int hasErrors = 0 ;
+	quint32 bytesCopied = 0 ;
+	quint32 count ;
+	quint32 blocks = 0 ;
+
+	QFile source(sourceFile);
+  QFile dest(destFile);
+  if (!source.open(QIODevice::ReadOnly))
+	{
+    QMessageBox::warning(this, tr("Error"),tr("Cannot open source file"));
+    hasErrors = 1 ;
+  }
+	else
+	{
+    if (!dest.open(QIODevice::ReadWrite))
+		{
+      QMessageBox::warning(this, tr("Error"),tr("Cannot write destination"));
+      hasErrors=true;
+	  }
+		else
+		{
+			do
+			{
+				count = size - bytesCopied ;
+				if ( count > 4096 )
+				{
+					count = 4096 ;
+				}
+				count = source.read( buf, count ) ;
+				if ( count )
+				{
+        	if (dest.write( buf, count ) != count )
+					{
+        	  hasErrors = 1 ;
+						break ;
+					}
+					bytesCopied += count ;
+					blocks += 1 ;
+    			ui->progressBar->setValue(blocks) ;
+				}
+			} while ( count && ( bytesCopied < size ) ) ;
+		}
+		source.close() ;
+    dest.flush() ;
+    dest.close() ;
+  }
+	if ( bytesCopied < size )
+	{
+    QMessageBox::warning(this, tr("Error"),tr("Operation Failed"));
+    hasErrors=true;
+	}
+	return hasErrors ? 0 : 1 ;
+}
 
 
 //void avrOutputDialog::addReadFuses()

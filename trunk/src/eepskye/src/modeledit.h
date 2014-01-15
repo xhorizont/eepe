@@ -33,6 +33,7 @@ private:
     Ui::ModelEdit *ui;
     EEPFILE *eeFile;
     class simulatorDialog *sdptr ;
+    bool switchDefPosEditLock;
 
     MixersList *MixerlistWidget;
 
@@ -60,8 +61,8 @@ private:
     QComboBox * safetySwitchSwtch[NUM_SKYCHNOUT];
 		QComboBox * safetySwitchType[NUM_SKYCHNOUT];
     QComboBox * safetySwitchAlarm[NUM_SKYCHNOUT];
-		QCheckBox *safetySwitchGvar[NUM_CHNOUT] ;
-		QComboBox *safetySwitchGindex[NUM_CHNOUT] ;
+		QCheckBox *safetySwitchGvar[NUM_SKYCHNOUT] ;
+		QComboBox *safetySwitchGindex[NUM_SKYCHNOUT] ;
 
     QSpinBox *expoDrSpin[4][3][2][2] ;
     QComboBox *expoDrVal[4][3][2][2] ;
@@ -144,6 +145,7 @@ private slots:
     void mimeDropped(int index, const QMimeData *data, Qt::DropAction action);
     void pasteMIMEData(const QMimeData * mimeData, int destIdx=1000);
     void on_pushButton_clicked();
+		void on_updateButton_clicked() ;
     void mixersDelete(bool ask=true);
     void mixersCut();
     void mixersCopy();
@@ -205,6 +207,7 @@ private slots:
     void FrSkyEdited();
 		void GvarEdited() ;
 		void phaseEdited() ;
+    void setSwitchDefPos();
 
     void on_spinBox_S1_valueChanged(int value);
     void on_spinBox_S2_valueChanged(int value);
@@ -253,6 +256,19 @@ private slots:
 		void on_autoLimitsSB_editingFinished() ;
 		void on_countryCB_currentIndexChanged(int index) ;
 		void on_typeCB_currentIndexChanged(int index) ;
+		void updateToMV2( void ) ;
+
+		void on_switchwarnChkB_stateChanged(int ) ;
+		void getModelSwitchDefPos(int i, bool val) ;
+    void on_switchDefPos_1_stateChanged(int );
+    void on_switchDefPos_2_stateChanged(int );
+    void on_switchDefPos_3_stateChanged(int );
+    void on_switchDefPos_4_stateChanged(int );
+    void on_switchDefPos_5_stateChanged(int );
+    void on_switchDefPos_6_stateChanged(int );
+    void on_switchDefPos_7_stateChanged(int );
+    void on_switchDefPos_8_stateChanged(int );
+
 };
 
 

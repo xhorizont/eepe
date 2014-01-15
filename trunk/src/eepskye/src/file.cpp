@@ -32,6 +32,7 @@
 uint8_t *Eeprom ;
 
 ModelData g_oldmodel ;
+uint32_t DefaultModelType = 1 ;
 
 struct t_eeprom_buffer
 {
@@ -734,7 +735,13 @@ bool ee32LoadGeneral(struct t_radioData *radioData)
 	
 	size = radioData->File_system[0].size ;
 
-  memset( &radioData->generalSettings, 0, sizeof(EEGeneral));
+	if ( size > sizeof(struct t_OldEEGeneral) )
+	{
+		// models are to default to ver 2
+		DefaultModelType = 2 ;
+	}
+  
+	memset( &radioData->generalSettings, 0, sizeof(EEGeneral));
 
 	if ( size > sizeof(EEGeneral) )
 	{
@@ -817,7 +824,7 @@ void ee32LoadModel(struct t_radioData *radioData, uint8_t id)
 //          radioData->models[id].name[i] = idx2char(idx);
 //      }
       
-      radioData->models[id].modelVersion = MDSKYVERS ; //update mdvers
+//      radioData->models[id].modelVersion = MDSKYVERS ; //update mdvers
 
 			if ( radioData->models[id].numBlades == 0 )
 			{
@@ -837,6 +844,7 @@ uint32_t rawloadFile( struct t_radioData *radioData, uint8_t *eeprom )
 	Eeprom  = eeprom ;
 	fill_file_index(radioData) ;
 	ee32_read_model_names(radioData) ;
+	DefaultModelType = 1 ;
 	ee32LoadGeneral(radioData) ;
 	for ( i = 0 ; i < MAX_MODELS ; i += 1 )
 	{

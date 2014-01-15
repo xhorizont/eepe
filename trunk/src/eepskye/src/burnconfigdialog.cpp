@@ -27,11 +27,12 @@ void burnConfigDialog::getSettings()
 #ifdef Q_OS_WIN32
     sambaLoc = settings.value("SAM_BA_location", QFileInfo("sam-ba.exe").absoluteFilePath()).toString();
 #elif __APPLE__
-    avrLoc = settings.value("SAM_BA_location", "/usr/local/bin/sam-ba").toString();
+    sambaLoc = settings.value("SAM_BA_location", "/usr/local/bin/sam-ba").toString();
 #else
     sambaLoc = settings.value("SAM_BA_location", QFileInfo("sam-ba.exe").absoluteFilePath()).toString();
 #endif
 
+		useSamba = settings.value( "Use_Sam_Ba", 0 ).toInt() ;
     QString str = settings.value("avr_arguments").toString();
     avrArgs = str.split(" ", QString::SkipEmptyParts);
     avrProgrammer =  settings.value("programmer", QString("usbasp")).toString();
@@ -40,6 +41,14 @@ void burnConfigDialog::getSettings()
 
     ui->avrdude_location->setText(getAVRDUDE());
     ui->armPort->setText(getARMPort());
+	  ui->UseSambaCB->setChecked(useSamba) ;
+
+		if ( useSamba == 0 )
+		{
+			ui->avrdude_location->setEnabled(false) ;
+	    ui->armPort->setEnabled(false) ;
+		  ui->avrdude_mcu->setEnabled(false) ;
+		}
 
 //    int idx1 = ui->avrdude_programmer->findText(getProgrammer());
 //    int idx2 = ui->avrdude_port->findText(getPort());
@@ -59,7 +68,8 @@ void burnConfigDialog::putSettings()
 //    avrEraseEEPROM = ui->eraseEEPROM_CB->isChecked();
 
 
-    QSettings settings("er9x-eePskye", "eePskye");
+		QSettings settings("er9x-eePskye", "eePskye");
+    settings.setValue( "Use_Sam_Ba", useSamba ) ;
     settings.setValue("SAM_BA_location", sambaLoc ) ;
     settings.setValue("programmer", avrProgrammer ) ;
     settings.setValue("mcu", avrMCU);
@@ -104,6 +114,23 @@ void burnConfigDialog::populateProgrammers()
 //{
 //    avrProgrammer = ui->avrdude_programmer->currentText();
 //}
+
+void burnConfigDialog::on_UseSambaCB_stateChanged( int )
+{
+	bool state ;
+  useSamba = ui->UseSambaCB->isChecked() ;
+	if ( useSamba == 0 )
+	{
+		state = false ;
+	}
+	else
+	{
+		state = true ;
+	}
+	ui->avrdude_location->setEnabled(state) ;
+  ui->armPort->setEnabled(state) ;
+  ui->avrdude_mcu->setEnabled(state) ;
+}
 
 void burnConfigDialog::on_avrdude_mcu_currentIndexChanged(QString )
 {

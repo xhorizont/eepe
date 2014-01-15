@@ -80,7 +80,7 @@ echo "Build Linux amd64 Version"
 echo "#================================================"
 echo
 cd linux64build
-qmake ../src/eepe.pro -spec linux-g++-64 -r
+qmake ../linux/eepeLinux.pro -spec linux-g++-64 -r
 make
 
 echo

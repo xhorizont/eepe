@@ -1332,6 +1332,38 @@ int8_t simulatorDialog::REG100_100(int8_t x)
 	return REG( x, -100, 100 ) ;
 }
 
+
+int16_t simulatorDialog::calcExpo( uint8_t channel, int16_t value )
+{
+  uint8_t expoDrOn = GET_DR_STATE(channel);
+  uint8_t stkDir = value > 0 ? DR_RIGHT : DR_LEFT;
+
+  if(IS_THROTTLE(channel) && g_model.thrExpo){
+#if GVARS
+      value  = 2*expo((value+RESX)/2,REG100_100(g_model.expoData[channel].expo[expoDrOn][DR_EXPO][DR_RIGHT]));
+#else
+      value  = 2*expo((value+RESX)/2,g_model.expoData[channel].expo[expoDrOn][DR_EXPO][DR_RIGHT]);
+#endif                    
+			stkDir = DR_RIGHT;
+  }
+  else
+#if GVARS
+      value  = expo(value,REG100_100(g_model.expoData[channel].expo[expoDrOn][DR_EXPO][stkDir]));
+#else
+      value  = expo(value,g_model.expoData[channel].expo[expoDrOn][DR_EXPO][stkDir]);
+#endif                    
+
+#if GVARS
+  int32_t x = (int32_t)value * (REG(g_model.expoData[channel].expo[expoDrOn][DR_WEIGHT][stkDir]+100, 0, 100))/100;
+#else
+  int32_t x = (int32_t)value * (g_model.expoData[channel].expo[expoDrOn][DR_WEIGHT][stkDir]+100)/100;
+#endif                    
+  value = (int16_t)x;
+  if (IS_THROTTLE(channel) && g_model.thrExpo) value -= RESX;
+	return value ;
+}
+
+
 int8_t simulatorDialog::REG(int8_t x, int8_t min, int8_t max)
 {
   int8_t result = x;
@@ -1438,31 +1470,32 @@ void simulatorDialog::perOut(bool init)
 //				}
         if(i<4)
 				{ //only do this for sticks
-            uint8_t expoDrOn = GET_DR_STATE(index);
-            uint8_t stkDir = v>0 ? DR_RIGHT : DR_LEFT;
+					v = calcExpo( index, v ) ;
+//            uint8_t expoDrOn = GET_DR_STATE(index);
+//            uint8_t stkDir = v>0 ? DR_RIGHT : DR_LEFT;
 			  
-            if(IS_THROTTLE(index) && g_model.thrExpo){
-#if GVARS
-                v  = 2*expo((v+RESX)/2,REG100_100(g_model.expoData[index].expo[expoDrOn][DR_EXPO][DR_RIGHT]));
-#else
-                v  = 2*expo((v+RESX)/2,g_model.expoData[index].expo[expoDrOn][DR_EXPO][DR_RIGHT]);
-#endif                    
-                stkDir = DR_RIGHT;
-            }
-            else
-#if GVARS
-                v  = expo(v,REG100_100(g_model.expoData[index].expo[expoDrOn][DR_EXPO][stkDir]));
-#else
-                v  = expo(v,g_model.expoData[index].expo[expoDrOn][DR_EXPO][stkDir]);
-#endif                    
+//            if(IS_THROTTLE(index) && g_model.thrExpo){
+//#if GVARS
+//                v  = 2*expo((v+RESX)/2,REG100_100(g_model.expoData[index].expo[expoDrOn][DR_EXPO][DR_RIGHT]));
+//#else
+//                v  = 2*expo((v+RESX)/2,g_model.expoData[index].expo[expoDrOn][DR_EXPO][DR_RIGHT]);
+//#endif                    
+//                stkDir = DR_RIGHT;
+//            }
+//            else
+//#if GVARS
+//                v  = expo(v,REG100_100(g_model.expoData[index].expo[expoDrOn][DR_EXPO][stkDir]));
+//#else
+//                v  = expo(v,g_model.expoData[index].expo[expoDrOn][DR_EXPO][stkDir]);
+//#endif                    
 
-#if GVARS
-            int32_t x = (int32_t)v * (REG(g_model.expoData[index].expo[expoDrOn][DR_WEIGHT][stkDir]+100, 0, 100))/100;
-#else
-            int32_t x = (int32_t)v * (g_model.expoData[index].expo[expoDrOn][DR_WEIGHT][stkDir]+100)/100;
-#endif                    
-            v = (int16_t)x;
-            if (IS_THROTTLE(index) && g_model.thrExpo) v -= RESX;
+//#if GVARS
+//            int32_t x = (int32_t)v * (REG(g_model.expoData[index].expo[expoDrOn][DR_WEIGHT][stkDir]+100, 0, 100))/100;
+//#else
+//            int32_t x = (int32_t)v * (g_model.expoData[index].expo[expoDrOn][DR_WEIGHT][stkDir]+100)/100;
+//#endif                    
+//            v = (int16_t)x;
+//            if (IS_THROTTLE(index) && g_model.thrExpo) v -= RESX;
 
 				  if ( g_model.modelVersion >= 2 )
 					{
@@ -1726,6 +1759,7 @@ void simulatorDialog::perOut(bool init)
         //========== DELAY and PAUSE ===============
         if (md.speedUp || md.speedDown || md.delayUp || md.delayDown)  // there are delay values
         {
+					uint8_t timing = g_model.mixTime ? 20 : 100 ;
             if(init)
             {
                 act[i]=(int32_t)v*DEL_MULT;
@@ -1749,7 +1783,7 @@ void simulatorDialog::perOut(bool init)
 #endif
                 }
                 diff = v-act[i]/DEL_MULT;
-                if(diff) sDelay[i] = (diff<0 ? md.delayUp :  md.delayDown) * 100;
+                if(diff) sDelay[i] = (diff<0 ? md.delayUp :  md.delayDown) * timing ;
             }
 
             if(sDelay[i]){ // perform delay
@@ -1771,8 +1805,8 @@ void simulatorDialog::perOut(bool init)
 #else
                 if(md.weight) rate /= abs(md.weight);
 #endif
-                act[i] = (diff>0) ? ((md.speedUp>0)   ? act[i]+(rate)/((int16_t)100*md.speedUp)   :  (int32_t)v*DEL_MULT) :
-                                    ((md.speedDown>0) ? act[i]-(rate)/((int16_t)100*md.speedDown) :  (int32_t)v*DEL_MULT) ;
+                act[i] = (diff>0) ? ((md.speedUp>0)   ? act[i]+(rate)/((int16_t)timing*md.speedUp)   :  (int32_t)v*DEL_MULT) :
+                                    ((md.speedDown>0) ? act[i]-(rate)/((int16_t)timing*md.speedDown) :  (int32_t)v*DEL_MULT) ;
 
 
                 if(((diff>0) && (v<(act[i]/DEL_MULT))) || ((diff<0) && (v>(act[i]/DEL_MULT)))) act[i]=(int32_t)v*DEL_MULT; //deal with overflow
@@ -1948,7 +1982,45 @@ void simulatorDialog::perOut(bool init)
 						{
 							if ( ( g_model.safetySw[i].opt.ss.mode != 1 ) && ( g_model.safetySw[i].opt.ss.mode != 2 ) )	// And not used as an alarm
 							{
-        		    if(getSwitch(g_model.safetySw[i].opt.ss.swtch,0)) result = calc100toRESX(g_model.safetySw[i].opt.ss.val) ;
+								static uint8_t sticky = 0 ;
+								uint8_t applySafety = 0 ;
+								int8_t sSwitch = g_model.safetySw[i].opt.ss.swtch ;
+								
+								if(getSwitch( sSwitch,0))
+								{
+									applySafety = 1 ;
+								}
+
+								if ( g_model.safetySw[i].opt.ss.mode == 3 )
+								{
+									// Special case, sticky throttle
+									if( applySafety )
+									{
+										sticky = 0 ;
+									}
+									else
+									{
+						  			if ( g_model.modelVersion >= 2 )
+										{
+											if ( calibratedStick[2] < -1010 )
+											{
+												sticky = 1 ;
+											}
+										}
+										else
+										{
+											if ( calibratedStick[THR_STICK] < -1010 )
+											{
+												sticky = 1 ;
+											}
+										}
+									}
+									if ( sticky == 0 )
+									{
+										applySafety = 1 ;
+									}
+								}
+								if ( applySafety ) result = calc100toRESX(g_model.safetySw[i].opt.ss.val) ;
 							}
 						}
 					}

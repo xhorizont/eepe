@@ -214,6 +214,7 @@ void ModelEdit::tabModelEditSetup()
     ui->bcP3ChkB->setChecked(g_model.beepANACenter & BC_BIT_P3);
 
     ui->extendedLimitsChkB->setChecked(g_model.extendedLimits);
+    ui->fastMixDelayCB->setChecked(g_model.mixTime) ;
 
     //pulse polarity
     ui->pulsePolCB->setCurrentIndex(g_model.pulsePol);
@@ -776,8 +777,16 @@ void ModelEdit::tabMixes()
 					}
         }
 
-        if(md->delayDown || md->delayUp) str += tr(" Delay(u%1:d%2)").arg(md->delayUp).arg(md->delayDown);
-        if(md->speedDown || md->speedUp) str += tr(" Slow(u%1:d%2)").arg(md->speedUp).arg(md->speedDown);
+				if ( g_model.mixTime )
+				{
+        	if(md->delayDown || md->delayUp) str += tr(" Delay(u%1:d%2)").arg((double)md->delayUp/5).arg((double)md->delayDown/5) ;
+	        if(md->speedDown || md->speedUp) str += tr(" Slow(u%1:d%2)").arg((double)md->speedUp/5).arg((double)md->speedDown/5) ;
+				}
+				else
+				{
+        	if(md->delayDown || md->delayUp) str += tr(" Delay(u%1:d%2)").arg(md->delayUp).arg(md->delayDown) ;
+	        if(md->speedDown || md->speedUp) str += tr(" Slow(u%1:d%2)").arg(md->speedUp).arg(md->speedDown) ;
+				}
 
         if(md->mixWarn)  str += tr(" Warn(%1)").arg(md->mixWarn);
 
@@ -3023,11 +3032,11 @@ void ModelEdit::on_T2ThrTrgChkB_toggled(bool checked)
 void ModelEdit::on_thrExpoChkB_toggled(bool checked)
 {
 // 	int i, j ;
-	bool x = true ;
-	if ( checked )
-	{
-		x = false ;		
-	}
+//	bool x = true ;
+//	if ( checked )
+//	{
+//		x = false ;		
+//	}
   g_model.thrExpo = checked ;
 //	for ( i = 0 ; i < 3 ; i += 1 )
 //	{ // 0=High, 1=Mid, 2=Low
@@ -3497,7 +3506,7 @@ void ModelEdit::gm_openMix(int index)
 
     QString comment = mixNotes[index];
 
-    MixerDialog *g = new MixerDialog(this,&mixd,g_eeGeneral.stickMode, &comment, g_model.modelVersion, eeFile->mee_type ) ;
+    MixerDialog *g = new MixerDialog(this,&mixd,g_eeGeneral.stickMode, &comment, g_model.modelVersion, eeFile->mee_type, g_model.mixTime ) ;
     if(g->exec())
     {
         memcpy(&g_model.mixData[index],&mixd,sizeof(MixData));
@@ -3986,6 +3995,13 @@ void ModelEdit::on_extendedLimitsChkB_toggled(bool checked)
 {
     g_model.extendedLimits = checked;
     setLimitMinMax();
+    updateSettings();
+}
+
+void ModelEdit::on_fastMixDelayCB_toggled(bool checked)
+{
+    g_model.mixTime = checked ;
+    tabMixes() ;
     updateSettings();
 }
 

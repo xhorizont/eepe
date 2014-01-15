@@ -107,6 +107,11 @@ private slots:
     void on_switchDefPos_6_stateChanged(int );
     void on_switchDefPos_7_stateChanged(int );
     void on_switchDefPos_8_stateChanged(int );
+		
+		void on_StickRevLH_stateChanged(int ) ;
+		void on_StickRevLV_stateChanged(int ) ;
+		void on_StickRevRV_stateChanged(int ) ;
+		void on_StickRevRH_stateChanged(int ) ;
 };
 
 #endif // GENERALEDIT_H

@@ -21,7 +21,7 @@ GeneralEdit::GeneralEdit( struct t_radioData *radioData, QWidget *parent) :
 //    eeFile = eFile;
 
     rData = radioData ;
-    switchDefPosEditLock = false;
+//    switchDefPosEditLock = false;
 
     QSettings settings("er9x-eePskye", "eePskye");
     ui->tabWidget->setCurrentIndex(settings.value("generalEditTab", 0).toInt());
@@ -51,7 +51,7 @@ GeneralEdit::GeneralEdit( struct t_radioData *radioData, QWidget *parent) :
     ui->thrrevChkB->setChecked(g_eeGeneral.throttleReversed);
     ui->inputfilterCB->setCurrentIndex(g_eeGeneral.filterInput);
     ui->thrwarnChkB->setChecked(!g_eeGeneral.disableThrottleWarning);   //Default is zero=checked
-    ui->switchwarnChkB->setChecked(!g_eeGeneral.disableSwitchWarning); //Default is zero=checked
+//    ui->switchwarnChkB->setChecked(!g_eeGeneral.disableSwitchWarning); //Default is zero=checked
 //    ui->memwarnChkB->setChecked(!g_eeGeneral.disableMemoryWarning);   //Default is zero=checked
     ui->alarmwarnChkB->setChecked(!g_eeGeneral.disableAlarmWarning);//Default is zero=checked
     ui->PotScrollEnableChkB->setChecked(!g_eeGeneral.disablePotScroll);//Default is zero=checked
@@ -60,6 +60,7 @@ GeneralEdit::GeneralEdit( struct t_radioData *radioData, QWidget *parent) :
 //    ui->BandGapEnableChkB->setChecked(!g_eeGeneral.disableBG);//Default is zero=checked
     ui->beeperCB->setCurrentIndex(g_eeGeneral.beeperVal);
     ui->channelorderCB->setCurrentIndex(g_eeGeneral.templateSetup);
+    ui->languageCB->setCurrentIndex(g_eeGeneral.language);
     ui->stickmodeCB->setCurrentIndex(g_eeGeneral.stickMode);
     
 		ui->volumeSB->setValue(g_eeGeneral.volume);
@@ -85,6 +86,7 @@ GeneralEdit::GeneralEdit( struct t_radioData *radioData, QWidget *parent) :
     ui->ana5Neg->setValue(g_eeGeneral.calibSpanNeg[4]);
     ui->ana6Neg->setValue(g_eeGeneral.calibSpanNeg[5]);
     ui->ana7Neg->setValue(g_eeGeneral.calibSpanNeg[6]);
+    ui->ana8Neg->setValue(g_eeGeneral.x9dcalibSpanNeg);
 
     ui->ana1Mid->setValue(g_eeGeneral.calibMid[0]);
     ui->ana2Mid->setValue(g_eeGeneral.calibMid[1]);
@@ -93,6 +95,7 @@ GeneralEdit::GeneralEdit( struct t_radioData *radioData, QWidget *parent) :
     ui->ana5Mid->setValue(g_eeGeneral.calibMid[4]);
     ui->ana6Mid->setValue(g_eeGeneral.calibMid[5]);
     ui->ana7Mid->setValue(g_eeGeneral.calibMid[6]);
+    ui->ana8Mid->setValue(g_eeGeneral.x9dcalibMid);
 
     ui->ana1Pos->setValue(g_eeGeneral.calibSpanPos[0]);
     ui->ana2Pos->setValue(g_eeGeneral.calibSpanPos[1]);
@@ -101,9 +104,15 @@ GeneralEdit::GeneralEdit( struct t_radioData *radioData, QWidget *parent) :
     ui->ana5Pos->setValue(g_eeGeneral.calibSpanPos[4]);
     ui->ana6Pos->setValue(g_eeGeneral.calibSpanPos[5]);
     ui->ana7Pos->setValue(g_eeGeneral.calibSpanPos[6]);
+    ui->ana8Pos->setValue(g_eeGeneral.x9dcalibSpanPos);
 
-    setSwitchDefPos();
+//    setSwitchDefPos();
     
+    ui->StickRevLH->setChecked(g_eeGeneral.stickReverse & 0x01);
+    ui->StickRevLV->setChecked(g_eeGeneral.stickReverse & 0x02);
+    ui->StickRevRV->setChecked(g_eeGeneral.stickReverse & 0x04);
+    ui->StickRevRH->setChecked(g_eeGeneral.stickReverse & 0x08);
+
 		ui->weightSB_1->findChild<QLineEdit*>()->setReadOnly(true);
     ui->weightSB_2->findChild<QLineEdit*>()->setReadOnly(true);
     ui->weightSB_3->findChild<QLineEdit*>()->setReadOnly(true);
@@ -154,26 +163,26 @@ GeneralEdit::~GeneralEdit()
     delete ui;
 }
 
-void GeneralEdit::setSwitchDefPos()
-{
-    quint8 x = g_eeGeneral.switchWarningStates & SWP_IL5;
-    if(x==SWP_IL1 || x==SWP_IL2 || x==SWP_IL3 || x==SWP_IL4 || x==SWP_IL5) //illegal states for ID0/1/2
-    {
-        g_eeGeneral.switchWarningStates &= ~SWP_IL5; // turn all off, make sure only one is on
-        g_eeGeneral.switchWarningStates |=  SWP_ID0B;
-    }
+//void GeneralEdit::setSwitchDefPos()
+//{
+//    quint8 x = g_eeGeneral.switchWarningStates & SWP_IL5;
+//    if(x==SWP_IL1 || x==SWP_IL2 || x==SWP_IL3 || x==SWP_IL4 || x==SWP_IL5) //illegal states for ID0/1/2
+//    {
+//        g_eeGeneral.switchWarningStates &= ~SWP_IL5; // turn all off, make sure only one is on
+//        g_eeGeneral.switchWarningStates |=  SWP_ID0B;
+//    }
 
-    switchDefPosEditLock = true;
-    ui->switchDefPos_1->setChecked(g_eeGeneral.switchWarningStates & 0x01);
-    ui->switchDefPos_2->setChecked(g_eeGeneral.switchWarningStates & 0x02);
-    ui->switchDefPos_3->setChecked(g_eeGeneral.switchWarningStates & 0x04);
-    ui->switchDefPos_4->setChecked(g_eeGeneral.switchWarningStates & 0x08);
-    ui->switchDefPos_5->setChecked(g_eeGeneral.switchWarningStates & 0x10);
-    ui->switchDefPos_6->setChecked(g_eeGeneral.switchWarningStates & 0x20);
-    ui->switchDefPos_7->setChecked(g_eeGeneral.switchWarningStates & 0x40);
-    ui->switchDefPos_8->setChecked(g_eeGeneral.switchWarningStates & 0x80);
-    switchDefPosEditLock = false;
-}
+//    switchDefPosEditLock = true;
+//    ui->switchDefPos_1->setChecked(g_eeGeneral.switchWarningStates & 0x01);
+//    ui->switchDefPos_2->setChecked(g_eeGeneral.switchWarningStates & 0x02);
+//    ui->switchDefPos_3->setChecked(g_eeGeneral.switchWarningStates & 0x04);
+//    ui->switchDefPos_4->setChecked(g_eeGeneral.switchWarningStates & 0x08);
+//    ui->switchDefPos_5->setChecked(g_eeGeneral.switchWarningStates & 0x10);
+//    ui->switchDefPos_6->setChecked(g_eeGeneral.switchWarningStates & 0x20);
+//    ui->switchDefPos_7->setChecked(g_eeGeneral.switchWarningStates & 0x40);
+//    ui->switchDefPos_8->setChecked(g_eeGeneral.switchWarningStates & 0x80);
+//    switchDefPosEditLock = false;
+//}
 
 void GeneralEdit::updateSettings()
 {
@@ -471,11 +480,11 @@ void GeneralEdit::on_thrwarnChkB_stateChanged(int )
     updateSettings();
 }
 
-void GeneralEdit::on_switchwarnChkB_stateChanged(int )
-{
-    g_eeGeneral.disableSwitchWarning = ui->switchwarnChkB->isChecked() ? 0 : 1;
-    updateSettings();
-}
+//void GeneralEdit::on_switchwarnChkB_stateChanged(int )
+//{
+//    g_eeGeneral.disableSwitchWarning = ui->switchwarnChkB->isChecked() ? 0 : 1;
+//    updateSettings();
+//}
 
 void GeneralEdit::on_OptrexDisplayChkB_stateChanged(int )
 {
@@ -528,6 +537,12 @@ void GeneralEdit::on_beeperCB_currentIndexChanged(int index)
 void GeneralEdit::on_channelorderCB_currentIndexChanged(int index)
 {
     g_eeGeneral.templateSetup = index;
+    updateSettings();
+}
+
+void GeneralEdit::on_languageCB_currentIndexChanged(int index)
+{
+    g_eeGeneral.language = index;
     updateSettings();
 }
 
@@ -592,6 +607,11 @@ void GeneralEdit::on_ana7Neg_editingFinished()
     updateSettings();
 }
 
+void GeneralEdit::on_ana8Neg_editingFinished()
+{
+    g_eeGeneral.x9dcalibSpanNeg = ui->ana8Neg->value();
+    updateSettings();
+}
 
 
 void GeneralEdit::on_ana1Mid_editingFinished()
@@ -636,6 +656,12 @@ void GeneralEdit::on_ana7Mid_editingFinished()
     updateSettings();
 }
 
+void GeneralEdit::on_ana8Mid_editingFinished()
+{
+    g_eeGeneral.x9dcalibMid = ui->ana8Mid->value();
+    updateSettings();
+}
+
 
 
 void GeneralEdit::on_ana1Pos_editingFinished()
@@ -677,6 +703,12 @@ void GeneralEdit::on_ana6Pos_editingFinished()
 void GeneralEdit::on_ana7Pos_editingFinished()
 {
     g_eeGeneral.calibSpanPos[6] = ui->ana7Pos->value();
+    updateSettings();
+}
+
+void GeneralEdit::on_ana8Pos_editingFinished()
+{
+    g_eeGeneral.x9dcalibSpanPos = ui->ana8Pos->value();
     updateSettings();
 }
 
@@ -765,94 +797,136 @@ void GeneralEdit::on_splashScreenNameChkB_stateChanged(int )
     updateSettings();
 }
 
-void GeneralEdit::getGeneralSwitchDefPos(int i, bool val)
+//void GeneralEdit::getGeneralSwitchDefPos(int i, bool val)
+//{
+//    if(val)
+//        g_eeGeneral.switchWarningStates |= (1<<(i-1));
+//    else
+//        g_eeGeneral.switchWarningStates &= ~(1<<(i-1));
+//}
+
+//void GeneralEdit::on_switchDefPos_1_stateChanged(int )
+//{
+//    if(switchDefPosEditLock) return;
+//    getGeneralSwitchDefPos(1,ui->switchDefPos_1->isChecked());
+//    updateSettings();
+//}
+//void GeneralEdit::on_switchDefPos_2_stateChanged(int )
+//{
+//    if(switchDefPosEditLock) return;
+//    getGeneralSwitchDefPos(2,ui->switchDefPos_2->isChecked());
+//    updateSettings();
+//}
+//void GeneralEdit::on_switchDefPos_3_stateChanged(int )
+//{
+//    getGeneralSwitchDefPos(3,ui->switchDefPos_3->isChecked());
+//    updateSettings();
+//}
+//void GeneralEdit::on_switchDefPos_4_stateChanged(int )
+//{
+//    if(switchDefPosEditLock) return;
+
+//    if(ui->switchDefPos_4->isChecked())
+//    {
+//        switchDefPosEditLock = true;
+//        ui->switchDefPos_5->setChecked(false);
+//        ui->switchDefPos_6->setChecked(false);
+//        switchDefPosEditLock = false;
+//    }
+//    else
+//        return;
+
+//    g_eeGeneral.switchWarningStates &= ~0x30; //turn off ID1/2
+//    getGeneralSwitchDefPos(4,ui->switchDefPos_4->isChecked());
+//    updateSettings();
+//}
+//void GeneralEdit::on_switchDefPos_5_stateChanged(int )
+//{
+//    if(switchDefPosEditLock) return;
+
+//    if(ui->switchDefPos_5->isChecked())
+//    {
+//        switchDefPosEditLock = true;
+//        ui->switchDefPos_4->setChecked(false);
+//        ui->switchDefPos_6->setChecked(false);
+//        switchDefPosEditLock = false;
+//    }
+//    else
+//        return;
+
+//    g_eeGeneral.switchWarningStates &= ~0x28; //turn off ID0/2
+//    getGeneralSwitchDefPos(5,ui->switchDefPos_5->isChecked());
+//    updateSettings();
+//}
+//void GeneralEdit::on_switchDefPos_6_stateChanged(int )
+//{
+//    if(switchDefPosEditLock) return;
+
+//    if(ui->switchDefPos_6->isChecked())
+//    {
+//        switchDefPosEditLock = true;
+//        ui->switchDefPos_4->setChecked(false);
+//        ui->switchDefPos_5->setChecked(false);
+//        switchDefPosEditLock = false;
+//    }
+//    else
+//        return;
+
+//    g_eeGeneral.switchWarningStates &= ~0x18; //turn off ID1/2
+//    getGeneralSwitchDefPos(6,ui->switchDefPos_6->isChecked());
+//    updateSettings();
+//}
+//void GeneralEdit::on_switchDefPos_7_stateChanged(int )
+//{
+//    if(switchDefPosEditLock) return;
+//    getGeneralSwitchDefPos(7,ui->switchDefPos_7->isChecked());
+//    updateSettings();
+//}
+//void GeneralEdit::on_switchDefPos_8_stateChanged(int )
+//{
+//    if(switchDefPosEditLock) return;
+//    getGeneralSwitchDefPos(8,ui->switchDefPos_8->isChecked());
+//    updateSettings();
+//}
+
+void GeneralEdit::on_StickRevLH_stateChanged(int )
 {
-    if(val)
-        g_eeGeneral.switchWarningStates |= (1<<(i-1));
-    else
-        g_eeGeneral.switchWarningStates &= ~(1<<(i-1));
+	g_eeGeneral.stickReverse &= ~0x01 ;
+	if (ui->StickRevLH->isChecked() )
+	{
+		g_eeGeneral.stickReverse |= 0x01 ;
+	}
+  updateSettings();
 }
 
-void GeneralEdit::on_switchDefPos_1_stateChanged(int )
+void GeneralEdit::on_StickRevLV_stateChanged(int )
 {
-    if(switchDefPosEditLock) return;
-    getGeneralSwitchDefPos(1,ui->switchDefPos_1->isChecked());
-    updateSettings();
+	g_eeGeneral.stickReverse &= ~0x02 ;
+	if (ui->StickRevLV->isChecked() )
+	{
+		g_eeGeneral.stickReverse |= 0x02 ;
+	}
+  updateSettings();
 }
-void GeneralEdit::on_switchDefPos_2_stateChanged(int )
-{
-    if(switchDefPosEditLock) return;
-    getGeneralSwitchDefPos(2,ui->switchDefPos_2->isChecked());
-    updateSettings();
-}
-void GeneralEdit::on_switchDefPos_3_stateChanged(int )
-{
-    getGeneralSwitchDefPos(3,ui->switchDefPos_3->isChecked());
-    updateSettings();
-}
-void GeneralEdit::on_switchDefPos_4_stateChanged(int )
-{
-    if(switchDefPosEditLock) return;
 
-    if(ui->switchDefPos_4->isChecked())
-    {
-        switchDefPosEditLock = true;
-        ui->switchDefPos_5->setChecked(false);
-        ui->switchDefPos_6->setChecked(false);
-        switchDefPosEditLock = false;
-    }
-    else
-        return;
-
-    g_eeGeneral.switchWarningStates &= ~0x30; //turn off ID1/2
-    getGeneralSwitchDefPos(4,ui->switchDefPos_4->isChecked());
-    updateSettings();
-}
-void GeneralEdit::on_switchDefPos_5_stateChanged(int )
+void GeneralEdit::on_StickRevRV_stateChanged(int )
 {
-    if(switchDefPosEditLock) return;
-
-    if(ui->switchDefPos_5->isChecked())
-    {
-        switchDefPosEditLock = true;
-        ui->switchDefPos_4->setChecked(false);
-        ui->switchDefPos_6->setChecked(false);
-        switchDefPosEditLock = false;
-    }
-    else
-        return;
-
-    g_eeGeneral.switchWarningStates &= ~0x28; //turn off ID0/2
-    getGeneralSwitchDefPos(5,ui->switchDefPos_5->isChecked());
-    updateSettings();
+	g_eeGeneral.stickReverse &= ~0x04 ;
+	if (ui->StickRevLH->isChecked() )
+	{
+		g_eeGeneral.stickReverse |= 0x04 ;
+	}
+  updateSettings();
 }
-void GeneralEdit::on_switchDefPos_6_stateChanged(int )
+
+void GeneralEdit::on_StickRevRH_stateChanged(int )
 {
-    if(switchDefPosEditLock) return;
+	g_eeGeneral.stickReverse &= ~0x08 ;
+	if (ui->StickRevLH->isChecked() )
+	{
+		g_eeGeneral.stickReverse |= 0x08 ;
+	}
+  updateSettings();
+}
 
-    if(ui->switchDefPos_6->isChecked())
-    {
-        switchDefPosEditLock = true;
-        ui->switchDefPos_4->setChecked(false);
-        ui->switchDefPos_5->setChecked(false);
-        switchDefPosEditLock = false;
-    }
-    else
-        return;
 
-    g_eeGeneral.switchWarningStates &= ~0x18; //turn off ID1/2
-    getGeneralSwitchDefPos(6,ui->switchDefPos_6->isChecked());
-    updateSettings();
-}
-void GeneralEdit::on_switchDefPos_7_stateChanged(int )
-{
-    if(switchDefPosEditLock) return;
-    getGeneralSwitchDefPos(7,ui->switchDefPos_7->isChecked());
-    updateSettings();
-}
-void GeneralEdit::on_switchDefPos_8_stateChanged(int )
-{
-    if(switchDefPosEditLock) return;
-    getGeneralSwitchDefPos(8,ui->switchDefPos_8->isChecked());
-    updateSettings();
-}

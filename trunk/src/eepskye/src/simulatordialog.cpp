@@ -29,7 +29,8 @@ simulatorDialog::simulatorDialog(QWidget *parent) :
     ui(new Ui::simulatorDialog)
 {
     ui->setupUi(this);
-
+		parametersLoaded = 0 ;
+		
 		current_limits = 2 ;
     beepVal = 0;
     beepShow = 0;
@@ -68,25 +69,35 @@ simulatorDialog::~simulatorDialog()
 
 void simulatorDialog::closeEvent(QCloseEvent *event)
 {
+	if ( timer )
+	{
     timer->stop() ;
     delete timer ;
-		timer = 0 ;
-		event->accept() ;
+	}
+	timer = 0 ;
+  parametersLoaded = 0 ;
+	event->accept() ;
 }
 
 void simulatorDialog::setupTimer()
 {
     timer = new QTimer(this);
     connect(timer,SIGNAL(timeout()),this,SLOT(timerEvent()));
-    getValues();
-    perOut(true);
     timer->start(10);
 }
 
 void simulatorDialog::timerEvent()
 {
 		uint8_t i ;
-    g_tmr10ms++;
+
+		if ( parametersLoaded == 0 )
+		{
+// Debug line
+//	    setWindowTitle(modelName + QString(" P%1").arg(parametersLoaded) ) ;
+			return ;
+		}
+    
+		g_tmr10ms++;
 
     getValues();
 
@@ -231,6 +242,20 @@ void simulatorDialog::loadParams(const EEGeneral gg, const SKYModelData gm)
     s_cnt = 0;
     s_sum = 0;
     sw_toggled = 0;
+
+		if ( parametersLoaded )
+		{
+	    getValues();
+  	  perOut(true);
+		}
+		else
+		{
+			parametersLoaded = 1 ;
+		}
+		if ( !timer )
+		{
+      setupTimer() ;
+		}
 }
 
 
@@ -1397,7 +1422,7 @@ void simulatorDialog::perOut(bool init)
         *trimptr[THR_STICK] *= -1;
     }
 
-    for(uint8_t i=0;i<MAX_MIXERS;i++){
+    for(uint8_t i=0;i<MAX_SKYMIXERS;i++){
         SKYMixData &md = g_model.mixData[i];
 #if GVARS
         int8_t mixweight = REG100_100( md.weight) ;
@@ -1681,7 +1706,45 @@ void simulatorDialog::perOut(bool init)
 						{
 							if ( ( g_model.safetySw[i].opt.ss.mode != 1 ) && ( g_model.safetySw[i].opt.ss.mode != 2 ) )	// And not used as an alarm
 							{
-        		    if(getSwitch(g_model.safetySw[i].opt.ss.swtch,0)) result = calc100toRESX(g_model.safetySw[i].opt.ss.val) ;
+								static uint8_t sticky = 0 ;
+								uint8_t applySafety = 0 ;
+								int8_t sSwitch = g_model.safetySw[i].opt.ss.swtch ;
+								
+								if(getSwitch( sSwitch,0))
+								{
+									applySafety = 1 ;
+								}
+
+								if ( g_model.safetySw[i].opt.ss.mode == 3 )
+								{
+									// Special case, sticky throttle
+									if( applySafety )
+									{
+										sticky = 0 ;
+									}
+									else
+									{
+						  			if ( g_model.modelVersion >= 2 )
+										{
+											if ( calibratedStick[2] < -1010 )
+											{
+												sticky = 1 ;
+											}
+										}
+										else
+										{
+											if ( calibratedStick[THR_STICK] < -1010 )
+											{
+												sticky = 1 ;
+											}
+										}
+									}
+									if ( sticky == 0 )
+									{
+										applySafety = 1 ;
+									}
+								}
+								if ( applySafety ) result = calc100toRESX(g_model.safetySw[i].opt.ss.val) ;
 							}
 						}
 					}

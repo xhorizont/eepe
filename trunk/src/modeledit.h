@@ -121,7 +121,8 @@ private slots:
     void clearMixes(bool ask=true);
     void clearCurves(bool ask=true);
 
-    void on_extendedLimitsChkB_toggled(bool checked);
+    void on_extendedLimitsChkB_toggled(bool checked) ;
+		void on_fastMixDelayCB_toggled(bool checked) ;
     void on_resetCurve_1_clicked();
     void on_resetCurve_2_clicked();
     void on_resetCurve_3_clicked();

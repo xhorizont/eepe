@@ -102,6 +102,7 @@ private:
     void doPaste(QByteArray *gmData, int index);
     void doCopy(QByteArray *gmData);
     QString strippedName(const QString &fullFileName);
+		int defaultModelType ;
 
     QPoint dragStartPosition;
 

@@ -58,6 +58,7 @@ MdiChild::MdiChild()
 
 		radioData.valid = 0 ;
 		changed = false ;
+		defaultModelType = 1 ;
 
 	// fill file system
 	uint32_t i ;
@@ -256,7 +257,7 @@ QString MdiChild::ownerName()
     	char buf[sizeof(radioData.generalSettings.ownerName)+1];
       memcpy( buf, (char *)radioData.generalSettings.ownerName, sizeof(radioData.generalSettings.ownerName) ) ;
 			buf[sizeof(radioData.generalSettings.ownerName)] = '\0' ;
-			return QString::fromAscii(buf).trimmed();
+			return QString::fromLatin1(buf).trimmed();
 		}
     else
 			return "";
@@ -556,7 +557,7 @@ void MdiChild::saveModelToFile()
             return;
         }
 
-        QString ownerName = QString::fromAscii(tgen.ownerName,sizeof(tgen.ownerName)).trimmed() + ".eepg";
+        QString ownerName = QString::fromLatin1(tgen.ownerName,sizeof(tgen.ownerName)).trimmed() + ".eepg";
 
         fileName = QFileDialog::getSaveFileName(this, tr("Save Settings As"),settings.value("lastDir").toString() + "/" +ownerName,tr(EEPG_FILES_FILTER));
     }
@@ -721,7 +722,7 @@ void MdiChild::OpenEditWindow()
 				if(isNew) t->applyBaseTemplate();
         t->setWindowTitle(tr("Editing model %1: ").arg(i) + mname ) ;
 
-        for(int j=0; j<MAX_MIXERS; j++)
+        for(int j=0; j<MAX_SKYMIXERS; j++)
             t->setNote(j,modelNotes[i-1][j]);
         t->refreshMixerList();
 
@@ -922,6 +923,7 @@ bool MdiChild::loadFile(const QString &fileName, bool resetCurrentFile)
                                  .arg(fileName));
             return false;
         }
+				defaultModelType = DefaultModelType ;
         refreshList();
         if(resetCurrentFile) setCurrentFile(fileName);
 
@@ -1007,7 +1009,7 @@ void MdiChild::saveModelToXML(QDomDocument * qdoc, QDomElement * pe, int model_i
         QDomElement eNotes = qdoc->createElement("Notes");
 
         int numNodes = 0;
-        for(int i=0; i<MAX_MIXERS; i++)
+        for(int i=0; i<MAX_SKYMIXERS; i++)
             if(!modelNotes[model_id][i].isEmpty())
             {
                 numNodes++;
@@ -1216,10 +1218,16 @@ int MdiChild::getFileType(const QString &fullFileName)
 QStringList MdiChild::GetSambaArguments(const QString &tcl)
 {
   QStringList result;
+  burnConfigDialog bcd ;
 
-  QString tclFilename = QDir::tempPath() + "/temp.tcl";
+	if ( bcd.getUseSamba() == 0 )
+	{
+    return result ;
+	}
+  
+	QString tclFilename = QDir::tempPath() + "/temp.tcl";
   if (QFile::exists(tclFilename)) {
-    remove(tclFilename.toAscii());
+    remove(tclFilename.toLatin1());
   }
   QFile tclFile(tclFilename);
   if (!tclFile.open(QIODevice::WriteOnly | QIODevice::Text)) {
@@ -1233,7 +1241,6 @@ QStringList MdiChild::GetSambaArguments(const QString &tcl)
   QTextStream outputStream(&tclFile);
   outputStream << tcl;
 
-  burnConfigDialog bcd;
   result << bcd.getARMPort() << bcd.getMCU() << tclFilename ;
   return result;
 
@@ -1269,9 +1276,31 @@ void MdiChild::burnTo()  // write to Tx
         QStringList arguments = GetSambaArguments(QString("SERIALFLASH::Init 0\n") + "send_file {SerialFlash AT25} \"" + tempFile + "\" 0x0 0\n");
 //        arguments << "-c" << programmer << "-p" << "m64" << args << "-U" << str;
 
-        avrOutputDialog *ad = new avrOutputDialog(this, avrdudeLoc, arguments, "Write EEPROM To Tx", AVR_DIALOG_SHOW_DONE);
-        ad->setWindowIcon(QIcon(":/images/write_eeprom.png"));
-        ad->show();
+				if ( arguments.isEmpty() )
+				{
+					// Not using SAM-BA
+					QString path ;
+					path = FindErskyPath( 0 ) ;	// EEPROM
+	  			if ( path.isEmpty() )
+					{
+    			  QMessageBox::critical(this, "eePskye", tr("Tx Disk Not Mounted" ) ) ;
+    			  return;
+					}
+					else
+					{
+						avrdudeLoc = "" ;
+    			  arguments << path << tempFile << tr("%1").arg((MAX_MODELS+1)*8192) ;
+	  			  avrOutputDialog *ad = new avrOutputDialog(this, avrdudeLoc, arguments,tr("Read EEPROM From Tx")); //, AVR_DIALOG_KEEP_OPEN);
+//						res = ad->result() ;
+						delete ad ;
+					}
+				}
+  			else
+				{
+        	avrOutputDialog *ad = new avrOutputDialog(this, avrdudeLoc, arguments, "Write EEPROM To Tx", AVR_DIALOG_SHOW_DONE);
+        	ad->setWindowIcon(QIcon(":/images/write_eeprom.png"));
+        	ad->show();
+				}
     }
 }
 
@@ -1323,7 +1352,7 @@ void MdiChild::setModified(ModelEdit * me)
     if(me)
     {
         int id = me->getModelID();
-        for(int j=0; j<MAX_MIXERS; j++)
+        for(int j=0; j<MAX_SKYMIXERS; j++)
             modelNotes[id][j] = me->getNote(j);
     }
 }
@@ -1419,6 +1448,7 @@ void MdiChild::modelDefault(uint8_t id)
   radioData.models[id].name[5]='0'+(id+1)/10;
   radioData.models[id].name[6]='0'+(id+1)%10;
 //  g_model.mdVers = MDVERS;
+  radioData.models[id].trimInc = 2 ;
 
   for(uint8_t i= 0; i<4; i++){
     radioData.models[id].mixData[i].destCh = i+1;
@@ -1426,7 +1456,14 @@ void MdiChild::modelDefault(uint8_t id)
     radioData.models[id].mixData[i].weight = 100;
   }
 
+  radioData.models[id].modelVersion = 1 ; //update mdvers
+	if ( defaultModelType > 1 )
+	{
+    modelConvert1to2( &radioData.generalSettings, &radioData.models[id] ) ;
+	}					 
+
 	setModelFile( id ) ;
+
 //  putModel(&g_model,id);
 }
 

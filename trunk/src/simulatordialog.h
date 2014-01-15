@@ -99,6 +99,7 @@ private:
     int16_t intpol(int16_t x, uint8_t idx);
 		int8_t REG100_100(int8_t x) ;
 		int8_t REG(int8_t x, int8_t min, int8_t max) ;
+		int16_t calcExpo( uint8_t channel, int16_t value ) ;
 
 		uint32_t getFlightPhase() ;
 		int16_t getRawTrimValue( uint8_t phase, uint8_t idx ) ;

@@ -98,6 +98,7 @@ void preferencesDialog::on_er9x_dnld_2_clicked()
 {
     MainWindow * mw = (MainWindow *)this->parent();
 
+		write_values() ;		// In case changed
     mw->checkForUpdates(true);
 }
 

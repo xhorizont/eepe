@@ -45,6 +45,7 @@
 #include <QNetworkReply>
 #include <QNetworkProxy>
 #include <QNetworkProxyFactory>
+#include <QFileInfo>
 
 #include "mainwindow.h"
 #include "pers.h"
@@ -59,6 +60,24 @@
 #include "customizesplashdialog.h"
 #include "stamp-eepskye.h"
 #include "reviewOutput.h"
+#include "helpers.h"
+
+#if defined WIN32 || !defined __GNUC__
+#include <windows.h>
+#endif
+
+//#include "comparedialog.h"
+//#include "logsdialog.h"
+//#include "flashinterface.h"
+//#include "fusesdialog.h"
+//#include "printdialog.h"
+//#include "version.h"
+
+//#include "burndialog.h"
+//#include "hexinterface.h"
+//#include "warnings.h"
+
+
 
 #define DONATE_MB_STR "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=YHX43JR3J7XGW"
 #define DNLD_VER_ERSKY9X         0
@@ -206,7 +225,7 @@ void MainWindow::reply1Finished(QNetworkReply * reply)
     		QSettings settings("er9x-eePskye", "eePskye");
 			
         bool cres;
-        int rev = QString::fromAscii(qba.mid(i+19,4)).replace(QChar('"'), "").toInt(&cres);
+        int rev = QString::fromLatin1(qba.mid(i+19,4)).replace(QChar('"'), "").toInt(&cres);
 
         if(!cres)
         {
@@ -418,7 +437,7 @@ void MainWindow::reply2Finished(QNetworkReply * reply)
     if(i>0)
     {
         bool cres;
-        int rev = QString::fromAscii(qba.mid(i+17,4)).replace(QChar('"'), "").toInt(&cres);
+        int rev = QString::fromLatin1(qba.mid(i+17,4)).replace(QChar('"'), "").toInt(&cres);
 
         if(!cres)
         {
@@ -608,10 +627,16 @@ void MainWindow::print()
 QStringList MainWindow::GetSambaArguments(const QString &tcl)
 {
   QStringList result;
+  burnConfigDialog bcd ;
+
+	if ( bcd.getUseSamba() == 0 )
+	{
+    return result ;
+	}
 
   QString tclFilename = QDir::tempPath() + "/temp.tcl";
   if (QFile::exists(tclFilename)) {
-    remove(tclFilename.toAscii());
+    remove(tclFilename.toLatin1());
   }
   QFile tclFile(tclFilename);
   if (!tclFile.open(QIODevice::WriteOnly | QIODevice::Text)) {
@@ -625,8 +650,7 @@ QStringList MainWindow::GetSambaArguments(const QString &tcl)
   QTextStream outputStream(&tclFile);
   outputStream << tcl;
 
-  burnConfigDialog bcd;
-  result << bcd.getARMPort() << bcd.getMCU() << tclFilename ;
+	result << bcd.getARMPort() << bcd.getMCU() << tclFilename ;
   return result;
 
 }
@@ -635,6 +659,7 @@ QStringList MainWindow::GetSambaArguments(const QString &tcl)
 void MainWindow::burnFrom()
 {
     burnConfigDialog bcd;
+    int res = 0 ;
     QString avrdudeLoc = bcd.getAVRDUDE();
 //    QString avrdudeLoc = bcd.getSAMBA();
     QString tempDir    = QDir::tempPath();
@@ -648,31 +673,53 @@ void MainWindow::burnFrom()
 
 	QString size = QString("0x%1").arg( (MAX_MODELS+1)*8192,5,16,QChar('0')) ;
 //    QStringList arguments = GetSambaArguments(QString("SERIALFLASH::Init 0\n") + "receive_file {SerialFlash AT25} \"\" 0x0 0x1000 0\n" + "receive_file {SerialFlash AT25} \"" + tempFile + "\" 0x0 0x22000 0\n");
-    QStringList arguments = GetSambaArguments(QString("SERIALFLASH::Init 0\n") + "receive_file {SerialFlash AT25} \"" + tempFile + "\" 0x0 " + size + " 0\n");
-//    arguments << "-c" << programmer << "-p" << mcu << args << "-U" << str;
+	
+	QStringList arguments = GetSambaArguments(QString("SERIALFLASH::Init 0\n") + "receive_file {SerialFlash AT25} \"" + tempFile + "\" 0x0 " + size + " 0\n");
 
+	if ( arguments.isEmpty() )
+	{
+		// Not using SAM-BA
+		QString path ;
+		path = FindErskyPath( 0 ) ;	// EEPROM
+	  if ( path.isEmpty() )
+		{
+      QMessageBox::critical(this, "eePskye", tr("Tx Disk Not Mounted" ) ) ;
+      return;
+		}
+		else
+		{
+			avrdudeLoc = "" ;
+      arguments << tempFile << path << tr("%1").arg((MAX_MODELS+1)*8192) ;
+	    avrOutputDialog *ad = new avrOutputDialog(this, avrdudeLoc, arguments,tr("Read EEPROM From Tx")); //, AVR_DIALOG_KEEP_OPEN);
+			res = ad->result() ;
+			delete ad ;
+		}
+	} 
+  else
+	{
     avrOutputDialog *ad = new avrOutputDialog(this, avrdudeLoc, arguments,tr("Read EEPROM From Tx")); //, AVR_DIALOG_KEEP_OPEN);
     ad->setWindowIcon(QIcon(":/images/read_eeprom.png"));
-    int res = ad->exec();
+    res = ad->exec();
 		if ( res == 0 )
 		{
-    	QMessageBox::critical(this, "eePskye", tr("SAM-BA did not finish correctly"));
+      QMessageBox::critical(this, "eePskye", tr("SAM-BA did not finish correctly" ) ) ;
 		}
+	}
 
-    if(QFileInfo(tempFile).exists() && res)
-    {
-        MdiChild *child = createMdiChild();
-        child->newFile();
-        if(!child->loadFile(tempFile,false))
-        {
-            child->close();
-            return;
-        }
+  if(QFileInfo(tempFile).exists() && res)
+  {
+      MdiChild *child = createMdiChild();
+      child->newFile();
+      if(!child->loadFile(tempFile,false))
+      {
+          child->close();
+          return;
+      }
 
-        child->setModified();
-        child->show();
-        if(!child->parentWidget()->isMaximized() && !child->parentWidget()->isMinimized()) child->parentWidget()->resize(400,500);
-    }
+      child->setModified();
+      child->show();
+      if(!child->parentWidget()->isMaximized() && !child->parentWidget()->isMinimized()) child->parentWidget()->resize(400,500);
+  }
 }
 
 void MainWindow::burnExtenalToEEPROM()
@@ -694,10 +741,31 @@ void MainWindow::burnExtenalToEEPROM()
 //        if(!bcd.getPort().isEmpty()) args << "-P" << bcd.getPort();
 
 		    QStringList arguments = GetSambaArguments(QString("SERIALFLASH::Init 0\n") + "send_file {SerialFlash AT25} \"" + fileName + "\" 0x0 0\n");
-
-        avrOutputDialog *ad = new avrOutputDialog(this, avrdudeLoc, arguments, "Write EEPROM To Tx", AVR_DIALOG_SHOW_DONE);
-        ad->setWindowIcon(QIcon(":/images/write_eeprom.png"));
-        ad->show();
+				if ( arguments.isEmpty() )
+				{
+					// Not using SAM-BA
+					QString path ;
+					path = FindErskyPath( 0 ) ;	// EEPROM
+	  			if ( path.isEmpty() )
+					{
+    			  QMessageBox::critical(this, "eePskye", tr("Tx Disk Not Mounted" ) ) ;
+    			  return;
+					}
+					else
+					{
+						avrdudeLoc = "" ;
+    			  arguments << path << fileName << tr("%1").arg((MAX_MODELS+1)*8192) ;
+	  			  avrOutputDialog *ad = new avrOutputDialog(this, avrdudeLoc, arguments,tr("Read EEPROM From Tx")); //, AVR_DIALOG_KEEP_OPEN);
+//						res = ad->result() ;
+						delete ad ;
+					}
+				}
+  			else
+				{
+	        avrOutputDialog *ad = new avrOutputDialog(this, avrdudeLoc, arguments, "Write EEPROM To Tx", AVR_DIALOG_SHOW_DONE);
+  	      ad->setWindowIcon(QIcon(":/images/write_eeprom.png"));
+    	    ad->show();
+				}
     }
 }
 
@@ -770,10 +838,32 @@ void MainWindow::burnToFlash(QString fileToFlash)
 
         QStringList arguments = GetSambaArguments(QString("send_file {Flash} \"") + fileName + "\" 0x400000 0\n" + "FLASH::ScriptGPNMV 2\n");
 //        arguments << "-c" << programmer << "-p" << mcu << args << "-U" << str;
+				if ( arguments.isEmpty() )
+				{
+					// Not using SAM-BA
+					QString path ;
+					path = FindErskyPath( 1 ) ;	// FLASH
+	  			if ( path.isEmpty() )
+					{
+    			  QMessageBox::critical(this, "eePskye", tr("Tx Disk Not Mounted" ) ) ;
+    			  return;
+					}
+					else
+					{
+						avrdudeLoc = "" ;
+    		    arguments << path << fileName << tr("%1").arg(QFileInfo(fileName).size()) ;
+	  			  avrOutputDialog *ad = new avrOutputDialog(this, avrdudeLoc, arguments,tr("Read EEPROM From Tx")); //, AVR_DIALOG_KEEP_OPEN);
+		//				res = ad->result() ;
+						delete ad ;
+					}
+				} 
+  			else
+				{
 
-        avrOutputDialog *ad = new avrOutputDialog(this, avrdudeLoc, arguments, "Write Flash To Tx", AVR_DIALOG_SHOW_DONE);
-        ad->setWindowIcon(QIcon(":/images/write_flash.png"));
-        ad->show();
+		      avrOutputDialog *ad = new avrOutputDialog(this, avrdudeLoc, arguments, "Write Flash To Tx", AVR_DIALOG_SHOW_DONE);
+    	    ad->setWindowIcon(QIcon(":/images/write_flash.png"));
+      	  ad->show();
+				}
     }
 }
 
@@ -801,26 +891,50 @@ void MainWindow::burnExtenalFromEEPROM()
 
 		    QStringList arguments = GetSambaArguments(QString("SERIALFLASH::Init 0\n") + "receive_file {SerialFlash AT25} \"" + fileName + "\" 0x0 0x2A000 0\n");
 //        arguments << "-c" << programmer << "-p" << mcu << args << "-U" << str;
+				int res ;
+				if ( arguments.isEmpty() )
+				{
+					// Not using SAM-BA
+					QString path ;
+					path = FindErskyPath( 0 ) ;	// EEPROM
+				  if ( path.isEmpty() )
+					{
+  			    QMessageBox::critical(this, "eePskye", tr("Tx Disk Not Mounted" ) ) ;
+  			    return;
+					}
+					else
+					{
+						avrdudeLoc = "" ;
+  			    arguments << fileName << path << tr("%1").arg((MAX_MODELS+1)*8192) ;
+				    avrOutputDialog *ad = new avrOutputDialog(this, avrdudeLoc, arguments,tr("Read EEPROM From Tx")); //, AVR_DIALOG_KEEP_OPEN);
+						res = ad->result() ;
+						delete ad ;
+					}
+				} 
+  			else
+				{
 
-		    avrOutputDialog *ad = new avrOutputDialog(this, avrdudeLoc, arguments,tr("Read EEPROM From Tx"), AVR_DIALOG_SHOW_DONE);
-		    ad->setWindowIcon(QIcon(":/images/read_eeprom.png"));
-    		int res = ad->exec();
+		    	avrOutputDialog *ad = new avrOutputDialog(this, avrdudeLoc, arguments,tr("Read EEPROM From Tx"), AVR_DIALOG_SHOW_DONE);
+		    	ad->setWindowIcon(QIcon(":/images/read_eeprom.png"));
+    			res = ad->exec();
+				}	
+					
 				if ( res )
 				{
 					if( QFileInfo(fileName).exists() )
 					{
         		QFile file(fileName);
-	        	if(file.size()!=EESIZE)
+	      	  if(file.size()!=EESIZE)
 						{
-    	    	  QMessageBox::critical(this, tr("Error"),tr("Error reading file:\n"
-        	                                               "File wrong size - %1").arg(fileName));
-      	  	  return ;
+    	  	  	QMessageBox::critical(this, tr("Error"),tr("Error reading file:\n"
+        		                                             "File wrong size - %1").arg(fileName));
+      		  	return ;
 						}
 					}
 					else
 					{
-	        	QMessageBox::critical(this, tr("Error"),tr("Error reading file:\n").arg(fileName));
-	        	return ;
+	      	  QMessageBox::critical(this, tr("Error"),tr("Error reading file:\n").arg(fileName));
+	      	  return ;
 					}
 				}
     }
@@ -831,15 +945,15 @@ void MainWindow::burnExtenalFromEEPROM()
 void MainWindow::burnFromFlash()
 {
 
-    QSettings settings("er9x-eePskye", "eePskye");
-    QString fileName = QFileDialog::getSaveFileName(this,tr("Read Flash to File"),settings.value("lastDir").toString(),tr(FLASH_FILES_FILTER));
+  QSettings settings("er9x-eePskye", "eePskye");
+  QString fileName = QFileDialog::getSaveFileName(this,tr("Read Flash to File"),settings.value("lastDir").toString(),tr(FLASH_FILES_FILTER));
 
-    if (!fileName.isEmpty())
-    {
-        settings.setValue("lastDir",QFileInfo(fileName).dir().absolutePath());
+  if (!fileName.isEmpty())
+  {
+    settings.setValue("lastDir",QFileInfo(fileName).dir().absolutePath());
 
-        burnConfigDialog bcd;
-        QString avrdudeLoc = bcd.getAVRDUDE();
+    burnConfigDialog bcd;
+    QString avrdudeLoc = bcd.getAVRDUDE();
 //        QString programmer = bcd.getProgrammer();
 //        QString mcu        = bcd.getMCU();
 //        QStringList args   = bcd.getAVRArgs();
@@ -851,14 +965,35 @@ void MainWindow::burnFromFlash()
 //        else if(QFileInfo(fileName).suffix().toUpper()=="BIN") str += ":r";
 //        else str += ":a";
 
-        QStringList arguments = GetSambaArguments(QString("receive_file {Flash} \"") + fileName + "\" 0x400000 0x40000 0\n") ;
+    QStringList arguments = GetSambaArguments(QString("receive_file {Flash} \"") + fileName + "\" 0x400000 0x40000 0\n") ;
 //        arguments << "-c" << programmer << "-p" << mcu << args << "-U" << str;
 
-        avrOutputDialog *ad = new avrOutputDialog(this, avrdudeLoc, arguments, "Read Flash From Tx", AVR_DIALOG_SHOW_DONE);
-        ad->setWindowIcon(QIcon(":/images/read_flash.png"));
-        ad->show();
-    }
-
+		if ( arguments.isEmpty() )
+		{
+			// Not using SAM-BA
+			QString path ;
+			path = FindErskyPath( 1 ) ;	// FLASH
+	  	if ( path.isEmpty() )
+			{
+    	  QMessageBox::critical(this, "eePskye", tr("Tx Disk Not Mounted" ) ) ;
+    	  return;
+			}
+			else
+			{
+				avrdudeLoc = "" ;
+        arguments << fileName << path << tr("%1").arg(QFileInfo(path).size()) ;
+	  	  avrOutputDialog *ad = new avrOutputDialog(this, avrdudeLoc, arguments,tr("Read EEPROM From Tx")); //, AVR_DIALOG_KEEP_OPEN);
+//				res = ad->result() ;
+				delete ad ;
+			}
+		} 
+  	else
+		{
+      avrOutputDialog *ad = new avrOutputDialog(this, avrdudeLoc, arguments, "Read Flash From Tx", AVR_DIALOG_SHOW_DONE);
+      ad->setWindowIcon(QIcon(":/images/read_flash.png"));
+      ad->show();
+		}
+  }
 }
 
 void MainWindow::burnConfig()
@@ -1416,3 +1551,12 @@ void MainWindow::setActiveSubWindow(QWidget *window)
         return;
     mdiArea->setActiveSubWindow(qobject_cast<QMdiSubWindow *>(window));
 }
+
+//#define DWORD uint32_t
+//#define WCHAR wchar_t
+
+
+
+
+
+
