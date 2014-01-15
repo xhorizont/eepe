@@ -15,7 +15,7 @@
 #define SPLASH_HEIGHT (64)
 #define SPLASH_SIZE (SPLASH_WIDTH*SPLASH_HEIGHT/8)
 #define SPLASH_OFFSET (6+1+3) // "Splash" + zero + 3 header bytes
-#define HEX_FILE_SIZE (1024*64)
+#define HEX_FILE_SIZE (1024*256)	// Allow for M2561 processor
 #define BIN_FILE_SIZE (1024*256)
 
 
@@ -125,5 +125,10 @@ bool getSplashBIN(QString fileName, uchar * b, QWidget *parent = 0);
 //#else
 uint8_t CONVERT_MODE( uint8_t x, int modelVersion, int stickMode ) ;
 //#endif
+
+#ifdef SKY
+QString FindErskyPath( int type ) ;
+void modelConvert1to2( EEGeneral *g_eeGeneral, SKYModelData *g_model ) ;
+#endif
 
 #endif // HELPERS_H

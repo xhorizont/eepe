@@ -103,6 +103,11 @@ GeneralEdit::GeneralEdit(EEPFILE *eFile, QWidget *parent) :
 
     setSwitchDefPos();
     
+    ui->StickRevLH->setChecked(g_eeGeneral.stickReverse & 0x01);
+    ui->StickRevLV->setChecked(g_eeGeneral.stickReverse & 0x02);
+    ui->StickRevRV->setChecked(g_eeGeneral.stickReverse & 0x04);
+    ui->StickRevRH->setChecked(g_eeGeneral.stickReverse & 0x08);
+
 		ui->weightSB_1->findChild<QLineEdit*>()->setReadOnly(true);
     ui->weightSB_2->findChild<QLineEdit*>()->setReadOnly(true);
     ui->weightSB_3->findChild<QLineEdit*>()->setReadOnly(true);
@@ -522,7 +527,6 @@ void GeneralEdit::on_ana7Neg_editingFinished()
 }
 
 
-
 void GeneralEdit::on_ana1Mid_editingFinished()
 {
     g_eeGeneral.calibMid[0] = ui->ana1Mid->value();
@@ -564,7 +568,6 @@ void GeneralEdit::on_ana7Mid_editingFinished()
     g_eeGeneral.calibMid[6] = ui->ana7Mid->value();
     updateSettings();
 }
-
 
 
 void GeneralEdit::on_ana1Pos_editingFinished()
@@ -785,3 +788,45 @@ void GeneralEdit::on_switchDefPos_8_stateChanged(int )
     getGeneralSwitchDefPos(8,ui->switchDefPos_8->isChecked());
     updateSettings();
 }
+
+void GeneralEdit::on_StickRevLH_stateChanged(int )
+{
+	g_eeGeneral.stickReverse &= ~0x01 ;
+	if (ui->StickRevLH->isChecked() )
+	{
+		g_eeGeneral.stickReverse |= 0x01 ;
+	}
+  updateSettings();
+}
+
+void GeneralEdit::on_StickRevLV_stateChanged(int )
+{
+	g_eeGeneral.stickReverse &= ~0x02 ;
+	if (ui->StickRevLV->isChecked() )
+	{
+		g_eeGeneral.stickReverse |= 0x02 ;
+	}
+  updateSettings();
+}
+
+void GeneralEdit::on_StickRevRV_stateChanged(int )
+{
+	g_eeGeneral.stickReverse &= ~0x04 ;
+	if (ui->StickRevLH->isChecked() )
+	{
+		g_eeGeneral.stickReverse |= 0x04 ;
+	}
+  updateSettings();
+}
+
+void GeneralEdit::on_StickRevRH_stateChanged(int )
+{
+	g_eeGeneral.stickReverse &= ~0x08 ;
+	if (ui->StickRevLH->isChecked() )
+	{
+		g_eeGeneral.stickReverse |= 0x08 ;
+	}
+  updateSettings();
+}
+
+

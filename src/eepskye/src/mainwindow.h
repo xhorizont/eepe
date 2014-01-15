@@ -125,6 +125,7 @@ private:
     void writeSettings();
     MdiChild *activeMdiChild();
     QMdiSubWindow *findMdiChild(const QString &fileName);
+//		QString FindErskyPath( int type ) ;
 
     QStringList GetSambaArguments(const QString &tcl) ;
 

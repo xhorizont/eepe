@@ -679,6 +679,26 @@ msgctxt "GeneralEdit|"
 msgid "FrSky mod done (M128 only)"
 msgstr ""
 
+msgctxt "GeneralEdit|"
+msgid "Stick Reverse"
+msgstr ""
+
+msgctxt "GeneralEdit|"
+msgid "LV"
+msgstr ""
+
+msgctxt "GeneralEdit|"
+msgid "LH"
+msgstr ""
+
+msgctxt "GeneralEdit|"
+msgid "RV"
+msgstr ""
+
+msgctxt "GeneralEdit|"
+msgid "RH"
+msgstr ""
+
 msgctxt "MainWindow|"
 msgid "&New"
 msgstr "&Nouveau"
@@ -2608,10 +2628,6 @@ msgid "DSM Type"
 msgstr ""
 
 msgctxt "ModelEdit|"
-msgid "PXX RxNum"
-msgstr ""
-
-msgctxt "ModelEdit|"
 msgid "LP4/LP5"
 msgstr ""
 
@@ -2938,7 +2954,15 @@ msgid "Version"
 msgstr ""
 
 msgctxt "ModelEdit|"
-msgid "Update to Version 2"
+msgid "RxNum"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "Update to Version 2, only for er9x r804 and later"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "Fast Mix Delay"
 msgstr ""
 
 msgctxt "QObject|"

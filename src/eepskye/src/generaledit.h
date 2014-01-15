@@ -25,9 +25,9 @@ private:
     EEGeneral g_eeGeneral;
     int StudWeight1,StudWeight2, StudWeight3, StudWeight4;
 
-    bool switchDefPosEditLock;
-    void getGeneralSwitchDefPos(int i, bool val);
-    void setSwitchDefPos();
+//    bool switchDefPosEditLock;
+//    void getGeneralSwitchDefPos(int i, bool val);
+//    void setSwitchDefPos();
 
 signals:
     void modelValuesChanged();
@@ -52,6 +52,7 @@ private slots:
     void on_ana5Neg_editingFinished();
     void on_ana6Neg_editingFinished();
     void on_ana7Neg_editingFinished();
+    void on_ana8Neg_editingFinished();
 
     void on_ana1Mid_editingFinished();
     void on_ana2Mid_editingFinished();
@@ -60,6 +61,7 @@ private slots:
     void on_ana5Mid_editingFinished();
     void on_ana6Mid_editingFinished();
     void on_ana7Mid_editingFinished();
+    void on_ana8Mid_editingFinished();
 
     void on_ana1Pos_editingFinished();
     void on_ana2Pos_editingFinished();
@@ -68,13 +70,15 @@ private slots:
     void on_ana5Pos_editingFinished();
     void on_ana6Pos_editingFinished();
     void on_ana7Pos_editingFinished();
+    void on_ana8Pos_editingFinished();
 
 
     void on_stickmodeCB_currentIndexChanged(int index);
     void on_channelorderCB_currentIndexChanged(int index);
+    void on_languageCB_currentIndexChanged(int index);
     void on_beeperCB_currentIndexChanged(int index);
 //    void on_memwarnChkB_stateChanged(int );
-    void on_switchwarnChkB_stateChanged(int );
+//    void on_switchwarnChkB_stateChanged(int );
     void on_thrwarnChkB_stateChanged(int );
     void on_inputfilterCB_currentIndexChanged(int index);
     void on_thrrevChkB_stateChanged(int );
@@ -111,14 +115,20 @@ private slots:
 		void on_stickgainRVCB_currentIndexChanged(int ) ;
 		void on_stickgainRHCB_currentIndexChanged(int ) ;
 
-    void on_switchDefPos_1_stateChanged(int );
-    void on_switchDefPos_2_stateChanged(int );
-    void on_switchDefPos_3_stateChanged(int );
-    void on_switchDefPos_4_stateChanged(int );
-    void on_switchDefPos_5_stateChanged(int );
-    void on_switchDefPos_6_stateChanged(int );
-    void on_switchDefPos_7_stateChanged(int );
-    void on_switchDefPos_8_stateChanged(int );
+//    void on_switchDefPos_1_stateChanged(int );
+//    void on_switchDefPos_2_stateChanged(int );
+//    void on_switchDefPos_3_stateChanged(int );
+//    void on_switchDefPos_4_stateChanged(int );
+//    void on_switchDefPos_5_stateChanged(int );
+//    void on_switchDefPos_6_stateChanged(int );
+//    void on_switchDefPos_7_stateChanged(int );
+//    void on_switchDefPos_8_stateChanged(int );
+
+		void on_StickRevLH_stateChanged(int ) ;
+		void on_StickRevLV_stateChanged(int ) ;
+		void on_StickRevRV_stateChanged(int ) ;
+		void on_StickRevRH_stateChanged(int ) ;
+
 };
 
 #endif // GENERALEDIT_H

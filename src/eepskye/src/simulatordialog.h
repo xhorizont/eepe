@@ -34,6 +34,7 @@ private:
     QTimer *timer;
     QString modelName;
 
+
     qint8   *trimptr[4];
     quint16 g_tmr10ms;
     qint16  chanOut[NUM_SKYCHNOUT];
@@ -42,12 +43,13 @@ private:
     qint16  g_ppmIns[8];
     qint16  ex_chans[NUM_SKYCHNOUT];
     qint8   trim[4];
-    qint16  sDelay[MAX_MIXERS];
-    qint32  act[MAX_MIXERS];
+    qint16  sDelay[MAX_SKYMIXERS];
+    qint32  act[MAX_SKYMIXERS];
     qint16  anas [NUM_SKYXCHNRAW+1+MAX_GVARS];
     qint32  chans[NUM_SKYCHNOUT];
     quint8  bpanaCenter;
-    bool    swOn[MAX_MIXERS];
+    quint16 parametersLoaded ;
+    bool    swOn[MAX_SKYMIXERS];
     quint16 one_sec_precount;
 		qint8		CsTimer[NUM_SKYCSW] ;
 

@@ -20,6 +20,7 @@ public:
     burnConfigDialog(QWidget *parent = 0);
     ~burnConfigDialog();
 
+		int getUseSamba() { return useSamba ; }
     QString getAVRDUDE() {return sambaLoc;}
     QString getARMPort() {return armPort;}
     QString getProgrammer() {return avrProgrammer;}
@@ -35,6 +36,7 @@ private:
 
     void populateProgrammers();
 
+		int useSamba ;
     QString sambaLoc;
     QStringList avrArgs;
     QString avrProgrammer;
@@ -42,6 +44,7 @@ private:
     QString armPort;
 
 private slots:
+		void on_UseSambaCB_stateChanged( int ) ;
     void on_armPort_editingFinished();
     void on_pushButton_4_clicked();
 //    void on_pushButton_3_clicked();

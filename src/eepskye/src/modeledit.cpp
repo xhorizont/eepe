@@ -41,6 +41,7 @@ ModelEdit::ModelEdit( struct t_radioData *radioData, uint8_t id, QWidget *parent
     switchEditLock = false;
     heliEditLock = false;
     protocolEditLock = false;
+    switchDefPosEditLock = false;
 
 //    if(!eeFile->eeLoadGeneral())  eeFile->generalDefault();
     
@@ -226,7 +227,59 @@ void ModelEdit::tabModelEditSetup()
 	  ui->countryCB->setCurrentIndex(g_model.country) ;
 	  ui->typeCB->setCurrentIndex(g_model.sub_protocol) ;
 		ui->label_version->setText( tr("%1").arg( g_model.modelVersion ) ) ;
+		ui->updateButton->setVisible( g_model.modelVersion < 2 ) ;
 
+    ui->switchwarnChkB->setChecked(!(g_model.modelswitchWarningStates&1)); //Default is zero=checked
+
+    setSwitchDefPos() ;
+
+}
+
+void ModelEdit::setSwitchDefPos()
+{
+    quint8 y = (g_model.modelswitchWarningStates >> 1 ) ;
+    quint8 x = y & SWP_IL5 ;
+    if(x==SWP_IL1 || x==SWP_IL2 || x==SWP_IL3 || x==SWP_IL4 || x==SWP_IL5) //illegal states for ID0/1/2
+    {
+      x &= ~SWP_IL5; // turn all off, make sure only one is on
+      x |=  SWP_ID0B;
+    }
+
+    y &= ~SWP_IL5 ;
+		x |= y ;
+		 
+		g_model.modelswitchWarningStates = ( x << 1 ) | (g_model.modelswitchWarningStates & 1 ) ;
+
+    switchDefPosEditLock = true;
+    ui->switchDefPos_1->setChecked(x & 0x01);
+    ui->switchDefPos_2->setChecked(x & 0x02);
+    ui->switchDefPos_3->setChecked(x & 0x04);
+    ui->switchDefPos_4->setChecked(x & 0x08);
+    ui->switchDefPos_5->setChecked(x & 0x10);
+    ui->switchDefPos_6->setChecked(x & 0x20);
+    ui->switchDefPos_7->setChecked(x & 0x40);
+    ui->switchDefPos_8->setChecked(x & 0x80);
+    switchDefPosEditLock = false;
+}
+
+
+uint8_t stickScramble[]=
+{
+  0, 1, 2, 3,
+  0, 2, 1, 3,
+  3, 1, 2, 0,
+  3, 2, 1, 0
+} ;
+
+void ModelEdit::updateToMV2()
+{
+	if ( g_model.modelVersion < 2 )
+	{
+		modelConvert1to2( &g_eeGeneral, &g_model ) ;
+		ui->label_version->setText( tr("%1").arg( g_model.modelVersion ) ) ;
+    updateSettings();
+	}
+	ui->updateButton->setVisible( false ) ;
 }
 
 void ModelEdit::setProtocolBoxes()
@@ -245,9 +298,9 @@ void ModelEdit::setProtocolBoxes()
         ui->countryCB->setEnabled(true);
         ui->typeCB->setEnabled(true);
 
-        ui->pxxRxNum->setValue(g_model.ppmNCH+1);
+        ui->pxxRxNum->setValue(g_model.pxxRxNum);
 
-        ui->DSM_Type->setCurrentIndex(0);
+        ui->typeCB->setCurrentIndex(g_model.sub_protocol) ;
         ui->ppmDelaySB->setValue(300);
         ui->numChannelsSB->setValue(8);
         ui->ppmFrameLengthDSB->setValue(22.5);
@@ -257,11 +310,11 @@ void ModelEdit::setProtocolBoxes()
         ui->numChannelsSB->setEnabled(false);
         ui->ppmFrameLengthDSB->setEnabled(false);
         ui->DSM_Type->setEnabled(true);
-        ui->pxxRxNum->setEnabled(false);
+        ui->pxxRxNum->setEnabled(true);
 
-        ui->DSM_Type->setCurrentIndex(g_model.ppmNCH);
+        ui->DSM_Type->setCurrentIndex(g_model.sub_protocol )	;
 
-        ui->pxxRxNum->setValue(1);
+        ui->pxxRxNum->setValue(g_model.pxxRxNum);
         ui->ppmDelaySB->setValue(300);
         ui->numChannelsSB->setValue(8);
         ui->ppmFrameLengthDSB->setValue(22.5);
@@ -279,7 +332,7 @@ void ModelEdit::setProtocolBoxes()
         ui->numChannelsSB->setValue(8+2*g_model.ppmNCH);
         ui->ppmFrameLengthDSB->setValue(22.5+((double)g_model.ppmFrameLength)*0.5);
 
-        ui->pxxRxNum->setValue(1);
+//        ui->pxxRxNum->setValue(1);
         ui->DSM_Type->setCurrentIndex(0);
         ui->countryCB->setEnabled(false);
         ui->typeCB->setEnabled(false);
@@ -558,7 +611,7 @@ void ModelEdit::tabMixes()
     MixerlistWidget->clear();
     int curDest = 0;
     int i;
-    for(i=0; i<MAX_MIXERS; i++)
+    for(i=0; i<MAX_SKYMIXERS; i++)
     {
         SKYMixData *md = &g_model.mixData[i];
         if((md->destCh==0) || (md->destCh>NUM_SKYCHNOUT)) break;
@@ -664,8 +717,8 @@ void ModelEdit::tabMixes()
 					}
         }
 
-        if(md->delayDown || md->delayUp) str += tr(" Delay(u%1:d%2)").arg(md->delayUp).arg(md->delayDown);
-        if(md->speedDown || md->speedUp) str += tr(" Slow(u%1:d%2)").arg(md->speedUp).arg(md->speedDown);
+        if(md->delayDown || md->delayUp) str += tr(" Delay(u%1:d%2)").arg((double)md->delayUp/10).arg((double)md->delayDown/10) ;
+        if(md->speedDown || md->speedUp) str += tr(" Slow(u%1:d%2)").arg((double)md->speedUp/10).arg((double)md->speedDown/10) ;
 
         if(md->mixWarn)  str += tr(" Warn(%1)").arg(md->mixWarn);
 
@@ -1212,7 +1265,7 @@ void ModelEdit::tabCurves()
 {
    for (int i=0; i<16;i++)
 	 {
-     plot_curve[i]=FALSE;
+     plot_curve[i]=false;
    }
    redrawCurve=true;
    updateCurvesTab();
@@ -2648,8 +2701,13 @@ void ModelEdit::on_modelNameLE_editingFinished()
 {
 //    uint8_t temp = g_model.mdVers;
     memset(&g_model.name,' ',sizeof(g_model.name));
-    const char *c = ui->modelNameLE->text().left(10).toAscii();
-    strcpy((char*)&g_model.name,c);
+    QString str = ui->modelNameLE->text().left(10).toLatin1() ;
+
+    for(quint8 i=0; i<(str.length()); i++)
+    {
+      if(i>=sizeof(g_model.name)) break ;
+      g_model.name[i] = (char)str.data()[i].toLatin1() ;
+    }
 //    g_model.mdVers = temp;  //in case strcpy overruns
 	  memcpy( &rData->ModelNames[id_model+1], &g_model.name, sizeof(g_model.name) ) ;
     rData->ModelNames[id_model+1][sizeof( rData->models[0].name)+1] = '\0' ;
@@ -2807,7 +2865,7 @@ void ModelEdit::on_pxxRxNum_editingFinished()
 {
     if(protocolEditLock) return;
 
-    g_model.ppmNCH = ui->pxxRxNum->value()-1;
+    g_model.pxxRxNum = ui->pxxRxNum->value() ;
     updateSettings();
 }
 
@@ -2925,6 +2983,103 @@ void ModelEdit::on_bcP3ChkB_toggled(bool checked)
     updateSettings();
 }
 
+void ModelEdit::on_switchwarnChkB_stateChanged(int )
+{
+    g_model.modelswitchWarningStates = (g_model.modelswitchWarningStates & ~1) | (ui->switchwarnChkB->isChecked() ? 0 : 1);
+    updateSettings();
+}
+
+void ModelEdit::getModelSwitchDefPos(int i, bool val)
+{
+    if(val)
+        g_model.modelswitchWarningStates |= (1<<(i));
+    else
+        g_model.modelswitchWarningStates &= ~(1<<(i));
+}
+
+void ModelEdit::on_switchDefPos_1_stateChanged(int )
+{
+    if(switchDefPosEditLock) return;
+    getModelSwitchDefPos(1,ui->switchDefPos_1->isChecked());
+    updateSettings();
+}
+void ModelEdit::on_switchDefPos_2_stateChanged(int )
+{
+    if(switchDefPosEditLock) return;
+    getModelSwitchDefPos(2,ui->switchDefPos_2->isChecked());
+    updateSettings();
+}
+void ModelEdit::on_switchDefPos_3_stateChanged(int )
+{
+    getModelSwitchDefPos(3,ui->switchDefPos_3->isChecked());
+    updateSettings();
+}
+void ModelEdit::on_switchDefPos_4_stateChanged(int )
+{
+    if(switchDefPosEditLock) return;
+
+    if(ui->switchDefPos_4->isChecked())
+    {
+        switchDefPosEditLock = true;
+        ui->switchDefPos_5->setChecked(false);
+        ui->switchDefPos_6->setChecked(false);
+        switchDefPosEditLock = false;
+    }
+    else
+        return;
+
+    g_model.modelswitchWarningStates &= ~(0x30<<1); //turn off ID1/2
+    getModelSwitchDefPos(4,ui->switchDefPos_4->isChecked());
+    updateSettings();
+}
+void ModelEdit::on_switchDefPos_5_stateChanged(int )
+{
+    if(switchDefPosEditLock) return;
+
+    if(ui->switchDefPos_5->isChecked())
+    {
+        switchDefPosEditLock = true;
+        ui->switchDefPos_4->setChecked(false);
+        ui->switchDefPos_6->setChecked(false);
+        switchDefPosEditLock = false;
+    }
+    else
+        return;
+
+    g_model.modelswitchWarningStates &= ~(0x28<<1); //turn off ID0/2
+    getModelSwitchDefPos(5,ui->switchDefPos_5->isChecked());
+    updateSettings();
+}
+void ModelEdit::on_switchDefPos_6_stateChanged(int )
+{
+    if(switchDefPosEditLock) return;
+
+    if(ui->switchDefPos_6->isChecked())
+    {
+        switchDefPosEditLock = true;
+        ui->switchDefPos_4->setChecked(false);
+        ui->switchDefPos_5->setChecked(false);
+        switchDefPosEditLock = false;
+    }
+    else
+        return;
+
+    g_model.modelswitchWarningStates &= ~(0x18<<1); //turn off ID1/2
+    getModelSwitchDefPos(6,ui->switchDefPos_6->isChecked());
+    updateSettings();
+}
+void ModelEdit::on_switchDefPos_7_stateChanged(int )
+{
+    if(switchDefPosEditLock) return;
+    getModelSwitchDefPos(7,ui->switchDefPos_7->isChecked());
+    updateSettings();
+}
+void ModelEdit::on_switchDefPos_8_stateChanged(int )
+{
+    if(switchDefPosEditLock) return;
+    getModelSwitchDefPos(8,ui->switchDefPos_8->isChecked());
+    updateSettings();
+}
 
 void ModelEdit::on_spinBox_S1_valueChanged(int value)
 {
@@ -3272,17 +3427,17 @@ void ModelEdit::on_curveEdit_16_clicked()
 
 bool ModelEdit::gm_insertMix(int idx)
 {
-    if(idx<0 || idx>=MAX_MIXERS) return false;
-    if(g_model.mixData[MAX_MIXERS-1].destCh) return false; //if last mixer isn't empty - can't add more
+    if(idx<0 || idx>MAX_SKYMIXERS) return false;
+    if(g_model.mixData[MAX_SKYMIXERS-1].destCh) return false; //if last mixer isn't empty - can't add more
 
     int i = g_model.mixData[idx].destCh;
     memmove(&g_model.mixData[idx+1],&g_model.mixData[idx],
-            (MAX_MIXERS-(idx+1))*sizeof(MixData) );
+            (MAX_SKYMIXERS-(idx+1))*sizeof(MixData) );
     memset(&g_model.mixData[idx],0,sizeof(MixData));
     g_model.mixData[idx].destCh = i;
     g_model.mixData[idx].weight = 100;
 
-    for(int j=(MAX_MIXERS-1); j>idx; j--)
+    for(int j=(MAX_SKYMIXERS-1); j>idx; j--)
     {
         mixNotes[j].clear();
         mixNotes[j].append(mixNotes[j-1]);
@@ -3295,20 +3450,20 @@ bool ModelEdit::gm_insertMix(int idx)
 void ModelEdit::gm_deleteMix(int index)
 {
   memmove(&g_model.mixData[index],&g_model.mixData[index+1],
-            (MAX_MIXERS-(index+1))*sizeof(MixData));
-  memset(&g_model.mixData[MAX_MIXERS-1],0,sizeof(MixData));
+            (MAX_SKYMIXERS-(index+1))*sizeof(MixData));
+  memset(&g_model.mixData[MAX_SKYMIXERS-1],0,sizeof(MixData));
 
-  for(int j=index; j<(MAX_MIXERS-1); j++)
+  for(int j=index; j<(MAX_SKYMIXERS-1); j++)
   {
       mixNotes[j].clear();
       mixNotes[j].append(mixNotes[j+1]);
   }
-  mixNotes[MAX_MIXERS-1].clear();
+  mixNotes[MAX_SKYMIXERS-1].clear();
 }
 
 void ModelEdit::gm_openMix(int index)
 {
-    if(index<0 || index>=MAX_MIXERS) return;
+    if(index<0 || index>MAX_SKYMIXERS) return;
 
     SKYMixData mixd;
     memcpy(&mixd,&g_model.mixData[index],sizeof(SKYMixData));
@@ -3333,8 +3488,8 @@ void ModelEdit::gm_openMix(int index)
 int ModelEdit::getMixerIndex(int dch)
 {
     int i = 0;
-    while ((g_model.mixData[i].destCh<=dch) && (g_model.mixData[i].destCh) && (i<MAX_MIXERS)) i++;
-    if(i==MAX_MIXERS) return -1;
+    while ((g_model.mixData[i].destCh<=dch) && (g_model.mixData[i].destCh) && (i<MAX_SKYMIXERS)) i++;
+    if(i==MAX_SKYMIXERS) return -1;
     return i;
 }
 
@@ -3370,7 +3525,7 @@ QList<int> ModelEdit::createListFromSelected()
     foreach(QListWidgetItem *item, MixerlistWidget->selectedItems())
     {
         int idx= item->data(Qt::UserRole).toByteArray().at(0);
-        if(idx>=0 && idx<MAX_MIXERS) list << idx;
+        if(idx>=0 && idx<MAX_SKYMIXERS) list << idx;
     }
     return list;
 }
@@ -3458,7 +3613,7 @@ void ModelEdit::pasteMIMEData(const QMimeData * mimeData, int destIdx)
         while(i<mxData.size())
         {
             idx++;
-            if(idx==MAX_MIXERS) break;
+            if(idx==MAX_SKYMIXERS) break;
 
             if(!gm_insertMix(idx))
                 break; //memory full - can't add any more
@@ -3579,7 +3734,7 @@ void ModelEdit::mixerlistWidget_KeyPress(QKeyEvent *event)
 
 int ModelEdit::gm_moveMix(int idx, bool dir) //true=inc=down false=dec=up
 {
-    if(idx>MAX_MIXERS || (idx==0 && !dir) || (idx==MAX_MIXERS && dir)) return idx;
+    if(idx>MAX_SKYMIXERS || (idx==0 && !dir) || (idx==MAX_SKYMIXERS && dir)) return idx;
 
     int tdx = dir ? idx+1 : idx-1;
     SKYMixData &src=g_model.mixData[idx];
@@ -3650,6 +3805,11 @@ void ModelEdit::launchSimulation()
     }
     sdptr->loadParams(gg,gm);
     sdptr->show();
+}
+
+void ModelEdit::on_updateButton_clicked()
+{
+	updateToMV2() ;	
 }
 
 void ModelEdit::on_pushButton_clicked()
@@ -3886,11 +4046,11 @@ void ModelEdit::on_templateList_doubleClicked(QModelIndex index)
 SKYMixData* ModelEdit::setDest(uint8_t dch)
 {
     uint8_t i = 0;
-    while ((g_model.mixData[i].destCh<=dch) && (g_model.mixData[i].destCh) && (i<MAX_MIXERS)) i++;
-    if(i==MAX_MIXERS) return &g_model.mixData[0];
+    while ((g_model.mixData[i].destCh<=dch) && (g_model.mixData[i].destCh) && (i<MAX_SKYMIXERS)) i++;
+    if(i==MAX_SKYMIXERS) return &g_model.mixData[0];
 
     memmove(&g_model.mixData[i+1],&g_model.mixData[i],
-            (MAX_MIXERS-(i+1))*sizeof(SKYMixData) );
+            (MAX_SKYMIXERS-(i+1))*sizeof(SKYMixData) );
     memset(&g_model.mixData[i],0,sizeof(SKYMixData));
     g_model.mixData[i].destCh = dch;
     return &g_model.mixData[i];

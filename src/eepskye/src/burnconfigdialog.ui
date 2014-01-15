@@ -20,7 +20,7 @@
   <layout class="QGridLayout" name="gridLayout_2">
    <item row="0" column="0">
     <layout class="QGridLayout" name="gridLayout">
-     <item row="0" column="2">
+     <item row="1" column="2">
       <widget class="QLineEdit" name="avrdude_location">
        <property name="toolTip">
         <string>Location of AVRDUDE executable</string>
@@ -33,7 +33,7 @@
        </property>
       </widget>
      </item>
-     <item row="0" column="4" rowspan="2">
+     <item row="1" column="4" rowspan="2">
       <widget class="QPushButton" name="pushButton">
        <property name="whatsThis">
         <string>Use this button to browse and look for the AVRDUDE.EXE executable file.</string>
@@ -43,7 +43,7 @@
        </property>
       </widget>
      </item>
-     <item row="4" column="4">
+     <item row="5" column="4">
       <widget class="QPushButton" name="pushButton_4">
        <property name="whatsThis">
         <string>Show AVRDUDE help</string>
@@ -53,7 +53,7 @@
        </property>
       </widget>
      </item>
-     <item row="3" column="0">
+     <item row="4" column="0">
       <widget class="QLabel" name="label_5">
        <property name="text">
         <string>Port</string>
@@ -63,17 +63,7 @@
        </property>
       </widget>
      </item>
-     <item row="0" column="0">
-      <widget class="QLabel" name="label">
-       <property name="text">
-        <string>SAM-BA Location</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="0">
+     <item row="3" column="0">
       <widget class="QLabel" name="label_4">
        <property name="text">
         <string>mcu</string>
@@ -83,7 +73,7 @@
        </property>
       </widget>
      </item>
-     <item row="2" column="2">
+     <item row="3" column="2">
       <widget class="QComboBox" name="avrdude_mcu">
        <property name="whatsThis">
         <string>Programmer used for communicating with the controller.
@@ -109,7 +99,7 @@ Please consult the programmer's documentation and the AVRDUDE documentation to s
        </item>
       </widget>
      </item>
-     <item row="3" column="2">
+     <item row="4" column="2">
       <widget class="QLineEdit" name="armPort">
        <property name="toolTip">
         <string>Extra arguments that will be passed to AVRDUDE on every call</string>
@@ -122,6 +112,33 @@ Please only use this if you know what you are doing.  There are no error checks 
        </property>
        <property name="text">
         <string notr="true"/>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="label">
+       <property name="text">
+        <string>SAM-BA Location</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="2">
+      <widget class="QCheckBox" name="UseSambaCB">
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="0">
+      <widget class="QLabel" name="label_2">
+       <property name="text">
+        <string>Use SAM-BA</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
        </property>
       </widget>
      </item>

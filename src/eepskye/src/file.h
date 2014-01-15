@@ -16,6 +16,8 @@
 #ifndef file_h
 #define file_h
 
+extern uint32_t DefaultModelType ;
+
 
 /// fileId of general file
 #define FILE_GENERAL   0
@@ -92,7 +94,7 @@ struct t_radioData
 		struct t_file_entry File_system[MAX_MODELS+1] ;
     EEGeneral generalSettings ;
     SKYModelData models[MAX_MODELS];
-    unsigned char ModelNames[MAX_MODELS+1][sizeof( models[0].name)+2] ;		// Allow for general
+    unsigned char ModelNames[MAX_MODELS+1][MODEL_NAME_LEN+2] ;		// Allow for general
 		uint32_t valid ;
 } ;
 

@@ -54,7 +54,11 @@
 
 int main(int argc, char *argv[])
 {
-    Q_INIT_RESOURCE(eepe);
+#if defined WIN32    
+		Q_INIT_RESOURCE(eepe);
+#else
+		Q_INIT_RESOURCE(eepskye);
+#endif
     QApplication app(argc, argv);
 
     QString dir;

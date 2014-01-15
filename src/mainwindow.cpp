@@ -426,21 +426,36 @@ void MainWindow::downloadLatester9x()
         dnldURL = ER9X_ARDUPILOT_URL;
         baseFileName = "er9x-ardupilot.hex";
         break;
-    case (DNLD_VER_ER9X_NMEA):
-        dnldURL = ER9X_NMEA_URL;
-        baseFileName = "er9x-nmea.hex";
-        break;
     case (DNLD_VER_ER9X_FRSKY_NOHT):
         dnldURL = ER9X_FRSKY_NOHT_URL;
         baseFileName = "er9x-frsky-noht.hex";
         break;
-    case (DNLD_VER_ER9X_NOHT):
+		case (DNLD_VER_ER9X_NOHT):
         dnldURL = ER9X_NOHT_URL;
         baseFileName = "er9x-noht.hex";
         break;
+		case (DNLD_VER_ER9X_NMEA):
+        dnldURL = ER9X_NMEA_URL;
+        baseFileName = "er9x-nmea.hex";
+        break;
     case (DNLD_VER_ER9X_128):
+    case (DNLD_VER_ER9X_S128):
         dnldURL = ER9X_128_URL;
         baseFileName = "er9x-128.hex";
+        break;
+		case (DNLD_VER_ER9X_DE):
+        dnldURL = ER9X_DE_URL;
+        baseFileName = "er9x-de.hex";
+        break;
+    case (DNLD_VER_ER9X_FRSKY_DE):
+        dnldURL = ER9X_FRSKY_DE_URL;
+        baseFileName = "er9x-frsky-de.hex";
+        break;
+    
+
+    case (DNLD_VER_ER9X_2561):
+        dnldURL = ER9X_2561_URL;
+        baseFileName = "er9x-2561.hex";
         break;
 
  /*

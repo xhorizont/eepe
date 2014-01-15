@@ -55,9 +55,11 @@ QString TelemItems[] = {
 	"Gvr5",
 	"Gvr6",
 	"Gvr7",
-	"Fwat"  // 32
+	"Fwat", // 32
+	"RxV ",
+	"Hdg "
 } ;
-#define NUM_TELEM_ITEMS	33
+#define NUM_TELEM_ITEMS	35
 
 QString GvarItems[] = {
 	"---", // 0
@@ -899,7 +901,7 @@ void populateSafetySwitchCB(QComboBox *b, int type, int value, int extra )
 }
 
 
-QString SafetyType[] = {"S","A","V"};
+QString SafetyType[] = {"S","A","V", "X"};
 QString VoiceType[] = {"ON", "OFF", "BOTH", "15Secs", "30Secs", "60Secs", "Varibl"} ;
 
 void populateSafetyVoiceTypeCB(QComboBox *b, int type, int value=0)
@@ -907,10 +909,10 @@ void populateSafetyVoiceTypeCB(QComboBox *b, int type, int value=0)
     b->clear();
 		if ( type == 0 )
 		{
-    	for(int i= 0 ; i<=2; i++)
+    	for(int i= 0 ; i<=3; i++)
         b->addItem(SafetyType[i]);
     	b->setCurrentIndex(value);
-    	b->setMaxVisibleItems(3);
+    	b->setMaxVisibleItems(4);
 		}
 		else
 		{
@@ -1564,5 +1566,137 @@ uint8_t CONVERT_MODE( uint8_t x, int modelVersion, int stickMode )
 	}
   return (((x)<=4) ? modn12x3[stickMode][((x)-1)] : (x)) ;
 }
+
+
+#ifdef SKY
+
+#if defined WIN32 || !defined __GNUC__
+#include <windows.h>
+#else
+#include <unistd.h>
+#include "mountlist.h"
+#endif
+
+QString FindErskyPath( int type )
+{
+    int pathcount=0;
+    QString path;
+    QStringList drives;
+    QString eepromfile;
+    QString fsname;
+#if defined WIN32 || !defined __GNUC__
+    foreach( QFileInfo drive, QDir::drives() ) {
+      WCHAR szVolumeName[256] ;
+      WCHAR szFileSystemName[256];
+      DWORD dwSerialNumber = 0;
+      DWORD dwMaxFileNameLength=256;
+      DWORD dwFileSystemFlags=0;
+      bool ret = GetVolumeInformationW( (WCHAR *) drive.absolutePath().utf16(),szVolumeName,256,&dwSerialNumber,&dwMaxFileNameLength,&dwFileSystemFlags,szFileSystemName,256);
+      if(ret) {
+        QString vName=QString::fromUtf16 ( (const ushort *) szVolumeName) ;
+        if (vName.contains("ERSKY_9X")) {
+          eepromfile=drive.absolutePath();
+					if ( eepromfile.right(1) == "/" )
+					{
+						eepromfile = eepromfile.left( eepromfile.size() - 1 ) ;
+					}
+          eepromfile.append( type ? "/FIRMWARE.BIN" : "/ERSKY9X.BIN");
+          if (QFile::exists(eepromfile)) {
+            pathcount++;
+            path=eepromfile;
+          }
+        }
+      }
+    }
+#else
+    struct mount_entry *entry;
+    entry = read_file_system_list(true);
+    while (entry != NULL) {
+      if (!drives.contains(entry->me_devname)) {
+        drives.append(entry->me_devname);
+        eepromfile=entry->me_mountdir;
+
+        eepromfile.append( type ? "/FIRMWARE.BIN" : "/ERSKY9X.BIN");
+//  #if !defined __APPLE__ && !defined WIN32
+//        QString fstype=entry->me_type;
+//        qDebug() << fstype;
+//        if (QFile::exists(eepromfile) && fstype.contains("fat") ) {
+//  #else
+        if (QFile::exists(eepromfile)) {
+//  #endif
+          pathcount++;
+          path=eepromfile;
+        }
+      }
+      entry = entry->me_next; ;
+    }
+#endif
+    if (pathcount==1) {
+      return path;
+    } else {
+      return "";
+    }
+}
+
+#include "myeeprom.h"
+
+extern uint8_t stickScramble[] ;
+
+void modelConvert1to2( EEGeneral *g_eeGeneral, SKYModelData *g_model )
+{
+	if ( g_model->modelVersion < 2 )
+	{
+    for(uint8_t i=0;i<MAX_MIXERS;i++)
+		{
+      SKYMixData *md = &g_model->mixData[i] ;
+      if (md->srcRaw)
+			{
+        if (md->srcRaw <= 4)		// Stick
+				{
+					md->srcRaw = stickScramble[g_eeGeneral->stickMode*4+md->srcRaw-1] + 1 ;
+				}
+			}
+		}
+		for (uint8_t i = 0 ; i < NUM_SKYCSW ; i += 1 )
+		{
+      SKYCSwData *cs = &g_model->customSw[i];
+    	uint8_t cstate = CS_STATE(cs->func);
+    	if(cstate == CS_VOFS)
+			{
+      	if (cs->v1)
+				{
+    		  if (cs->v1 <= 4)		// Stick
+					{
+    	    	cs->v1 = stickScramble[g_eeGeneral->stickMode*4+cs->v1-1] + 1 ;
+					}
+				}
+			}
+			else if(cstate == CS_VCOMP)
+			{
+      	if (cs->v1)
+				{
+    		  if (cs->v1 <= 4)		// Stick
+					{
+		    	  cs->v1 = stickScramble[g_eeGeneral->stickMode*4+cs->v1-1] + 1 ;
+    	    }
+				}
+      	if (cs->v2)
+				{
+    		  if (cs->v2 <= 4)		// Stick
+					{
+						cs->v2 = stickScramble[g_eeGeneral->stickMode*4+cs->v2-1] + 1 ;
+				  }
+				}
+			}
+		}
+
+		g_model->modelVersion = 2 ;
+	}
+}
+
+
+#endif
+
+
 
 

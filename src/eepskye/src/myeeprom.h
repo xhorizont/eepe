@@ -92,6 +92,66 @@ PACK(typedef struct t_TrainerData {
   TrainerMix     mix[4];
 }) TrainerData;
 
+PACK(typedef struct t_OldEEGeneral {
+    uint8_t   myVers;
+    int16_t   calibMid[7];
+    int16_t   calibSpanNeg[7];
+    int16_t   calibSpanPos[7];
+    uint16_t  chkSum;
+    uint8_t   currModel; //0..15
+    uint8_t   contrast;
+    uint8_t   vBatWarn;
+    int8_t    vBatCalib;
+    int8_t    lightSw;
+    TrainerData trainer;
+    uint8_t   view;
+    uint8_t   disableThrottleWarning:1;
+    uint8_t   disableSwitchWarning:1;
+    uint8_t   disableMemoryWarning:1;
+    uint8_t   beeperVal:3;
+    uint8_t   reserveWarning:1;
+    uint8_t   disableAlarmWarning:1;
+    uint8_t   stickMode;
+    int8_t    inactivityTimer;
+    uint8_t   throttleReversed:1;
+    uint8_t   minuteBeep:1;
+    uint8_t   preBeep:1;
+    uint8_t   flashBeep:1;
+    uint8_t   disableSplashScreen:1;
+    uint8_t   disablePotScroll:1;
+  	uint8_t   stickScroll:1 ;
+    uint8_t   frskyinternalalarm:1;
+    uint8_t   filterInput;
+    uint8_t   lightAutoOff;
+    uint8_t   templateSetup;  //RETA order according to chout_ar array
+    int8_t    PPM_Multiplier;
+    uint8_t   FRSkyYellow:4;
+    uint8_t   FRSkyOrange:4;
+    uint8_t   FRSkyRed:4;
+    uint8_t   hideNameOnSplash:1;
+  	uint8_t   optrexDisplay:1;
+	  uint8_t   unexpectedShutdown:1;
+    uint8_t   spare:1;
+    uint8_t   speakerPitch;
+    uint8_t   hapticStrength;
+    uint8_t   speakerMode;
+    uint8_t   lightOnStickMove;
+    char      ownerName[GENERAL_OWNER_NAME_LEN];
+    uint8_t   switchWarningStates;
+		int8_t		volume ;
+	uint8_t 	bright ;			// backlight
+  uint8_t   stickGain;
+	uint8_t		mAh_alarm ;
+	uint16_t	mAh_used ;
+	uint16_t	run_time ;
+	int8_t		current_calib ;
+	uint8_t		bt_baudrate ;
+	uint8_t		rotaryDivisor ;
+	uint8_t   crosstrim:1;
+	uint8_t   spare9:7;
+}) OldEEGeneral;
+
+
 PACK(typedef struct t_EEGeneral {
     uint8_t   myVers;
     int16_t   calibMid[7];
@@ -130,7 +190,8 @@ PACK(typedef struct t_EEGeneral {
     uint8_t   FRSkyRed:4;
     uint8_t   hideNameOnSplash:1;
   	uint8_t   optrexDisplay:1;
-    uint8_t   spare:2;
+	  uint8_t   unexpectedShutdown:1;
+    uint8_t   spare:1;
     uint8_t   speakerPitch;
     uint8_t   hapticStrength;
     uint8_t   speakerMode;
@@ -149,6 +210,11 @@ PACK(typedef struct t_EEGeneral {
 	uint8_t   crosstrim:1;
 	uint8_t   spare9:7;
 	int8_t   rtcCal ;
+  int16_t   x9dcalibMid ;			// X9D
+  int16_t   x9dcalibSpanNeg ;	// X9D
+  int16_t   x9dcalibSpanPos ;	// X9D
+	uint8_t		stickReverse ;
+	uint8_t		language ;
 }) EEGeneral;
 
 
@@ -483,11 +549,25 @@ PACK(typedef struct te_ModelData {
 	uint8_t 	FASoffset ;			// 0.0 to 1.5
 	VarioData varioData ;
 	uint8_t		anaVolume ;	// analog volume control
-//	uint8_t   curentSource ;
-//	uint8_t   altSource ;
 	int8_t pxxFailsafe[16] ;
 	int8_t logSwitch ;
 	uint8_t logRate ;
+  // X9D ext module
+	uint8_t   xprotocol:4 ;
+  uint8_t   xcountry:2 ;
+  uint8_t   xsub_protocol:2 ;
+  int8_t    xppmNCH ;
+  int8_t    xppmDelay ;
+  uint8_t   xpulsePol ;
+  int8_t    xppmFrameLength;  //0=22.5  (10msec-30msec) 0.5msec increments
+	uint8_t		xstartChannel ;		// for output 0 = ch1
+	uint8_t		pxxRxNum ;
+  int8_t    dsmMode ;
+	uint8_t		xPxxRxNum ;				// For external module
+  uint16_t  modelswitchWarningStates ;	// Enough bits for Taranis
+
+//	uint8_t   curentSource ;
+//	uint8_t   altSource ;
 }) SKYModelData ;
 
 

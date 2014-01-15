@@ -571,6 +571,26 @@ p, li { white-space: pre-wrap; }
         <source>FrSky mod done (M128 only)</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Stick Reverse</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>LV</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>LH</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>RV</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>RH</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>MainWindow</name>
@@ -2338,10 +2358,6 @@ Droite</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>PXX RxNum</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>LP4/LP5</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2662,7 +2678,15 @@ Droite</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Update to Version 2</source>
+        <source>RxNum</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Update to Version 2, only for er9x r804 and later</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fast Mix Delay</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

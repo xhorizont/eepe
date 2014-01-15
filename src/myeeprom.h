@@ -130,6 +130,7 @@ PACK(typedef struct t_EEGeneral {
     uint8_t   crosstrim:1;
     uint8_t   FrskyPins:1 ;
     uint8_t   spare1:6 ;
+		uint8_t		stickReverse ;
 }) EEGeneral;
 
 
@@ -277,7 +278,7 @@ typedef struct t_ModelData {
   int8_t    ppmNCH;
   uint8_t   thrTrim:1;            // Enable Throttle Trim
   uint8_t   xnumBlades:2;					// RPM scaling
-  uint8_t   spare10:1;
+	uint8_t   mixTime:1 ;						// Scaling for slow/delay
   uint8_t   thrExpo:1;            // Enable Throttle Expo
 	uint8_t   ppmStart:3 ;					// Start channel for PPM
   int8_t    trimInc;              // Trim Increments

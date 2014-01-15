@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>820</width>
-    <height>645</height>
+    <height>660</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -44,7 +44,7 @@
    <item row="0" column="1">
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
-      <number>1</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="tabModelSetup">
       <attribute name="title">
@@ -344,21 +344,14 @@
          </property>
         </widget>
        </item>
-       <item row="13" column="1">
-        <widget class="QCheckBox" name="extendedLimitsChkB">
-         <property name="text">
-          <string/>
-         </property>
-        </widget>
-       </item>
-       <item row="14" column="0">
+       <item row="15" column="0">
         <widget class="QLabel" name="label_5">
          <property name="text">
           <string>Protocol</string>
          </property>
         </widget>
        </item>
-       <item row="14" column="1">
+       <item row="15" column="1">
         <layout class="QGridLayout" name="gridLayout_10">
          <item row="0" column="4">
           <widget class="QComboBox" name="countryCB">
@@ -449,14 +442,14 @@
          </item>
         </layout>
        </item>
-       <item row="15" column="0">
+       <item row="16" column="0">
         <widget class="QLabel" name="label_113">
          <property name="text">
           <string>PPM Frame Length</string>
          </property>
         </widget>
        </item>
-       <item row="15" column="1">
+       <item row="16" column="1">
         <layout class="QHBoxLayout" name="horizontalLayout_3">
          <item>
           <widget class="QDoubleSpinBox" name="ppmFrameLengthDSB">
@@ -521,14 +514,14 @@
          </item>
         </layout>
        </item>
-       <item row="16" column="0">
+       <item row="17" column="0">
         <widget class="QLabel" name="label_6">
          <property name="text">
           <string>Channels</string>
          </property>
         </widget>
        </item>
-       <item row="16" column="1">
+       <item row="17" column="1">
         <layout class="QHBoxLayout" name="horizontalLayout_4">
          <item>
           <widget class="QSpinBox" name="numChannelsSB">
@@ -590,14 +583,14 @@
          </item>
         </layout>
        </item>
-       <item row="17" column="0">
+       <item row="18" column="0">
         <widget class="QLabel" name="label_116">
          <property name="text">
           <string>DSM Type</string>
          </property>
         </widget>
        </item>
-       <item row="17" column="1">
+       <item row="18" column="1">
         <widget class="QComboBox" name="DSM_Type">
          <item>
           <property name="text">
@@ -616,14 +609,14 @@
          </item>
         </widget>
        </item>
-       <item row="18" column="0">
+       <item row="19" column="0">
         <widget class="QLabel" name="label_117">
          <property name="text">
-          <string>PXX RxNum</string>
+          <string>RxNum</string>
          </property>
         </widget>
        </item>
-       <item row="18" column="1">
+       <item row="19" column="1">
         <widget class="QSpinBox" name="pxxRxNum">
          <property name="suffix">
           <string/>
@@ -642,14 +635,14 @@
          </property>
         </widget>
        </item>
-       <item row="19" column="0">
+       <item row="20" column="0">
         <widget class="QLabel" name="label_114">
          <property name="text">
           <string>Trainer</string>
          </property>
         </widget>
        </item>
-       <item row="19" column="1">
+       <item row="20" column="1">
         <layout class="QHBoxLayout" name="horizontalLayout_5">
          <item>
           <widget class="QCheckBox" name="TrainerChkB">
@@ -693,14 +686,14 @@
          </item>
         </layout>
        </item>
-       <item row="20" column="0">
+       <item row="21" column="0">
         <widget class="QLabel" name="label_151">
          <property name="text">
           <string>Auto Limits</string>
          </property>
         </widget>
        </item>
-       <item row="20" column="1">
+       <item row="21" column="1">
         <widget class="QDoubleSpinBox" name="autoLimitsSB">
          <property name="decimals">
           <number>1</number>
@@ -710,24 +703,24 @@
          </property>
         </widget>
        </item>
-       <item row="21" column="0">
+       <item row="22" column="0">
         <widget class="QLabel" name="label_155">
          <property name="text">
           <string>Volume Control</string>
          </property>
         </widget>
        </item>
-       <item row="21" column="1">
+       <item row="22" column="1">
         <widget class="QComboBox" name="volumeControlCB"/>
        </item>
-       <item row="22" column="0">
+       <item row="23" column="0">
         <widget class="QLabel" name="label_171">
          <property name="text">
           <string>Version</string>
          </property>
         </widget>
        </item>
-       <item row="22" column="1">
+       <item row="23" column="1">
         <layout class="QHBoxLayout" name="horizontalLayout">
          <item>
           <widget class="QLabel" name="label_version">
@@ -752,18 +745,18 @@
           <widget class="QPushButton" name="updateButton">
            <property name="minimumSize">
             <size>
-             <width>200</width>
+             <width>400</width>
              <height>0</height>
             </size>
            </property>
            <property name="maximumSize">
             <size>
-             <width>200</width>
+             <width>400</width>
              <height>16777215</height>
             </size>
            </property>
            <property name="text">
-            <string>Update to Version 2</string>
+            <string>Update to Version 2, only for er9x r804 and later</string>
            </property>
           </widget>
          </item>
@@ -782,7 +775,7 @@
          </item>
         </layout>
        </item>
-       <item row="23" column="1">
+       <item row="24" column="1">
         <spacer name="verticalSpacer_6">
          <property name="orientation">
           <enum>Qt::Vertical</enum>
@@ -794,6 +787,53 @@
           </size>
          </property>
         </spacer>
+       </item>
+       <item row="13" column="1">
+        <layout class="QGridLayout" name="gridLayout_12">
+         <item row="0" column="0">
+          <widget class="QCheckBox" name="extendedLimitsChkB">
+           <property name="minimumSize">
+            <size>
+             <width>60</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="2">
+          <widget class="QCheckBox" name="fastMixDelayCB">
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QLabel" name="label_145">
+           <property name="text">
+            <string>Fast Mix Delay</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="3">
+          <spacer name="horizontalSpacer_13">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
        </item>
       </layout>
      </widget>
