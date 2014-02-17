@@ -188,6 +188,11 @@ void burnConfigDialog::restFuses(bool eeProtect)
     //avrdude -c usbasp -p m64 -U hfuse:w:<0x89>:m  0x81 for eeprom protection
     //avrdude -c usbasp -p m64 -U efuse:w:<0xFF>:m
 
+    //fuses - M2561
+    //avrdude -c usbasp -p m64 -U lfuse:w:<0xDE>:m
+    //avrdude -c usbasp -p m64 -U hfuse:w:<0xD1>:m
+    //avrdude -c usbasp -p m64 -U efuse:w:<0xFC>:m
+	
     QMessageBox::StandardButton ret = QMessageBox::Cancel;
 
     QString msg = "<b><u>SET FUSES</u></b><br>";
@@ -206,11 +211,19 @@ void burnConfigDialog::restFuses(bool eeProtect)
     {
         QStringList args   = avrArgs;
         if(!avrPort.isEmpty()) args << "-P" << avrPort;
-
-        QString erStr = eeProtect ? "hfuse:w:0x81:m" : "hfuse:w:0x89:m";
+				
         QStringList str;
-        str << "-U" << "lfuse:w:0x0E:m" << "-U" << erStr << "-U" << "efuse:w:0xFF:m";
-        //use hfuse = 0x81 to prevent eeprom being erased with every flashing
+				
+				if ( avrMCU == "m2561" )
+				{
+        	str << "-U" << "lfuse:w:0xDE:m" << "-U" << "hfuse:w:0xD1:m" << "-U" << "efuse:w:0xFC:m";
+				}
+				else
+				{
+        	QString erStr = eeProtect ? "hfuse:w:0x81:m" : "hfuse:w:0x89:m";
+        	str << "-U" << "lfuse:w:0x0E:m" << "-U" << erStr << "-U" << "efuse:w:0xFF:m";
+        	//use hfuse = 0x81 to prevent eeprom being erased with every flashing
+				}
 
         QStringList arguments;
         arguments << "-c" << avrProgrammer << "-p" << avrMCU << args << "-u" << str;

@@ -111,9 +111,10 @@ private slots:
     void loadModelFromFile();
     void saveModelToFile();
     void customizeSplash();
-    void setFuses();
-    void resetFuses();
+//    void setFuses();
+//    void resetFuses();
     void showEEPROMInfo();
+    void doTelemetry();
 
 
 private:
@@ -151,6 +152,7 @@ private:
     QMenu *fileMenu;
     QMenu *editMenu;
     QMenu *burnMenu;
+    QMenu *telemetryMenu;
     QMenu *windowMenu;
     QMenu *helpMenu;
     QToolBar *fileToolBar;
@@ -192,9 +194,10 @@ private:
     QAction *loadModelFromFileAct;
     QAction *saveModelToFileAct;
     QAction *customizeSplashAct;
-    QAction *setFusesAct;
-    QAction *resetFusesAct;
+//    QAction *setFusesAct;
+//    QAction *resetFusesAct;
     QAction *eepromInfoAct;
+    QAction *telemetryAct;
 
     //QAction *aboutQtAct;
 };

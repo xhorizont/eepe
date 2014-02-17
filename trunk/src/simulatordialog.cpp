@@ -46,6 +46,7 @@ simulatorDialog::simulatorDialog( QWidget *parent) :
     memset(&calibratedStick,0,sizeof(calibratedStick));
     memset(&g_ppmIns,0,sizeof(g_ppmIns));
     memset(&ex_chans,0,sizeof(ex_chans));
+    memset(&fade,0,sizeof(ex_chans));
     memset(&trim,0,sizeof(trim));
 
     memset(&sDelay,0,sizeof(sDelay));
@@ -61,6 +62,14 @@ simulatorDialog::simulatorDialog( QWidget *parent) :
     trimptr[2] = &trim[2] ;
     trimptr[3] = &trim[3] ;
 
+		fadeRate = 0 ;
+		fadePhases = 0 ;
+
+		for ( int i = 0 ; i < MAX_PHASES+1 ; i += 1 )
+		{
+			fadeScale[i] = 0 ;
+		}
+
     setupSticks();
 		timer = 0 ;
 //    setupTimer();
@@ -73,8 +82,11 @@ simulatorDialog::~simulatorDialog()
 
 void simulatorDialog::closeEvent(QCloseEvent *event)
 {
+	if ( timer )
+	{
     timer->stop() ;
     delete timer ;
+	}
 		timer = 0 ;
 		event->accept() ;
 }
@@ -87,7 +99,8 @@ void simulatorDialog::setupTimer()
     connect(timer,SIGNAL(timeout()),this,SLOT(timerEvent()));
   }
   getValues();
-  perOut(true);
+	CurrentPhase = getFlightPhase() ;
+  perOut(true,0);
   timer->start(10);
 }
 
@@ -126,7 +139,7 @@ void simulatorDialog::timerEvent()
     		  ui->holdRightY->setChecked(true);
     	}
 
-			CurrentPhase = getFlightPhase() ;
+//			CurrentPhase = getFlightPhase() ;
 
     	ui->trimHLeft->setValue( g_model.trim[(g_eeGeneral.stickMode>2)   ? 3 : 0]);  // mode=(0 || 1) -> rud trim else -> ail trim
     	ui->trimVLeft->setValue( g_model.trim[(g_eeGeneral.stickMode & 1) ? 1 : 2]);  // mode=(0 || 2) -> thr trim else -> ele trim
@@ -137,7 +150,7 @@ void simulatorDialog::timerEvent()
 
     getValues();
 
-    perOut();
+    perOutPhase(false,0);
 
     setValues();
     centerSticks();
@@ -344,10 +357,10 @@ void simulatorDialog::loadParams(const EEGeneral gg, const ModelData gm)
 
 		CurrentPhase = getFlightPhase() ;
 
-    ui->trimHLeft->setValue( g_model.trim[(g_eeGeneral.stickMode>2)   ? 3 : 0]);  // mode=(0 || 1) -> rud trim else -> ail trim
-    ui->trimVLeft->setValue( g_model.trim[(g_eeGeneral.stickMode & 1) ? 1 : 2]);  // mode=(0 || 2) -> thr trim else -> ele trim
-    ui->trimVRight->setValue(g_model.trim[(g_eeGeneral.stickMode & 1) ? 2 : 1]);  // mode=(0 || 2) -> ele trim else -> thr trim
-    ui->trimHRight->setValue(g_model.trim[(g_eeGeneral.stickMode>2)   ? 0 : 3]);  // mode=(0 || 1) -> ail trim else -> rud trim
+		ui->trimHLeft->setValue( getTrimValue( CurrentPhase, 0 ));  // mode=(0 || 1) -> rud trim else -> ail trim
+    ui->trimVLeft->setValue( getTrimValue( CurrentPhase, 1 ));  // mode=(0 || 2) -> thr trim else -> ele trim
+    ui->trimVRight->setValue(getTrimValue( CurrentPhase, 2 ));  // mode=(0 || 2) -> ele trim else -> thr trim
+    ui->trimHRight->setValue(getTrimValue( CurrentPhase, 3 ));  // mode=(0 || 1) -> ail trim else -> rud trim
 
     beepVal = 0;
     beepShow = 0;
@@ -1390,14 +1403,114 @@ int8_t simulatorDialog::REG(int8_t x, int8_t min, int8_t max)
   return result;
 }
 
+void simulatorDialog::perOutPhase( bool init, uint8_t att ) 
+{
+	static uint8_t lastPhase = 0 ;
+	uint8_t thisPhase ;
+	thisPhase = getFlightPhase() ;
+	if ( thisPhase != lastPhase )
+	{
+		uint8_t time1 = 0 ;
+		uint8_t time2 ;
+		
+		if ( lastPhase )
+		{
+      time1 = g_model.phaseData[(uint8_t)(lastPhase-1)].fadeOut ;
+		}
+		if ( thisPhase )
+		{
+      time2= g_model.phaseData[(uint8_t)(thisPhase-1)].fadeIn ;
+			if ( time2 > time1 )
+			{
+        time1 = time2 ;
+			}
+		}
+		if ( time1 )
+		{
+			fadeRate = (25600 / 50) / time1 ;
+			fadePhases |= ( 1 << lastPhase ) | ( 1 << thisPhase ) ;
+		}
+		lastPhase = thisPhase ;
+	}
+	att |= FADE_FIRST ;
+	if ( fadePhases )
+	{
+		fadeWeight = 0 ;
+		uint8_t fadeMask = 1 ;
+    for (uint8_t p=0; p<MAX_PHASES+1; p++)
+		{
+			if ( fadePhases & fadeMask )
+			{
+				if ( p != thisPhase )
+				{
+					CurrentPhase = p ;
+					fadeWeight += fadeScale[p] ;
+					perOut( false, att ) ;
+					att &= ~FADE_FIRST ;				
+				}
+			}
+			fadeMask <<= 1 ;
+		}	
+	}
+	else
+	{
+		fadeScale[thisPhase] = 25600 ;
+	}
+	fadeWeight += fadeScale[thisPhase] ;
+	CurrentPhase = thisPhase ;
+	perOut( false, att | FADE_LAST ) ;
+	
+	if ( fadePhases )
+	{
+		uint8_t fadeMask = 1 ;
+    for (uint8_t p=0; p<MAX_PHASES+1; p+=1)
+		{
+			uint16_t l_fadeScale = fadeScale[p] ;
+			
+			if ( fadePhases & fadeMask )
+			{
+				if ( p != thisPhase )
+				{
+          if ( l_fadeScale > fadeRate )
+					{
+						l_fadeScale -= fadeRate ;
+					}
+					else
+					{
+						l_fadeScale = 0 ;
+						fadePhases &= ~fadeMask ;						
+					}
+				}
+				else
+				{
+          if ( 25600 - l_fadeScale > fadeRate)
+					{
+						l_fadeScale += fadeRate ;
+					}
+					else
+					{
+						l_fadeScale = 25600 ;
+						fadePhases &= ~fadeMask ;						
+					}
+				}
+			}
+			else
+			{
+				l_fadeScale = 0 ;
+			}
+			fadeScale[p] = l_fadeScale ;
+			fadeMask <<= 1 ;
+		}
+	}
+}
 
-void simulatorDialog::perOut(bool init)
+void simulatorDialog::perOut(bool init, uint8_t att)
 {
     int16_t trimA[4];
     uint8_t  anaCenter = 0;
     uint16_t d = 0;
 
-		CurrentPhase = getFlightPhase() ;
+//		CurrentPhase = getFlightPhase() ;
 
     uint8_t ele_stick, ail_stick ;
 	  if ( g_model.modelVersion >= 2 )
@@ -1471,31 +1584,6 @@ void simulatorDialog::perOut(bool init)
         if(i<4)
 				{ //only do this for sticks
 					v = calcExpo( index, v ) ;
-//            uint8_t expoDrOn = GET_DR_STATE(index);
-//            uint8_t stkDir = v>0 ? DR_RIGHT : DR_LEFT;
-			  
-//            if(IS_THROTTLE(index) && g_model.thrExpo){
-//#if GVARS
-//                v  = 2*expo((v+RESX)/2,REG100_100(g_model.expoData[index].expo[expoDrOn][DR_EXPO][DR_RIGHT]));
-//#else
-//                v  = 2*expo((v+RESX)/2,g_model.expoData[index].expo[expoDrOn][DR_EXPO][DR_RIGHT]);
-//#endif                    
-//                stkDir = DR_RIGHT;
-//            }
-//            else
-//#if GVARS
-//                v  = expo(v,REG100_100(g_model.expoData[index].expo[expoDrOn][DR_EXPO][stkDir]));
-//#else
-//                v  = expo(v,g_model.expoData[index].expo[expoDrOn][DR_EXPO][stkDir]);
-//#endif                    
-
-//#if GVARS
-//            int32_t x = (int32_t)v * (REG(g_model.expoData[index].expo[expoDrOn][DR_WEIGHT][stkDir]+100, 0, 100))/100;
-//#else
-//            int32_t x = (int32_t)v * (g_model.expoData[index].expo[expoDrOn][DR_WEIGHT][stkDir]+100)/100;
-//#endif                    
-//            v = (int16_t)x;
-//            if (IS_THROTTLE(index) && g_model.thrExpo) v -= RESX;
 
 				  if ( g_model.modelVersion >= 2 )
 					{
@@ -1522,13 +1610,16 @@ void simulatorDialog::perOut(bool init)
 //            trimA[i] = (vv==2*RESX) ? *trimptr[i]*2 : (int16_t)vv*2; //    if throttle trim -> trim low end
 					}
         }
-				if ( g_model.modelVersion >= 2 )
+				if ( att & FADE_FIRST )
 				{
-       		anas[index] = v; //set values for mixer
-				}
-				else
-				{
-       		anas[i] = v; //set values for mixer
+					if ( g_model.modelVersion >= 2 )
+					{
+       			anas[index] = v; //set values for mixer
+					}
+					else
+					{
+       			anas[i] = v; //set values for mixer
+					}
 				}
     }
 	  if ( g_model.modelVersion >= 2 )
@@ -1544,7 +1635,8 @@ void simulatorDialog::perOut(bool init)
        	trimA[2] = ((int32_t)ttrim+125)*(RESX-anas[2])/(RESX) ;
 			}
 		}
-
+	if ( att & FADE_FIRST )
+	{
     //===========BEEP CENTER================
     anaCenter &= g_model.beepANACenter;
     if(((bpanaCenter ^ anaCenter) & anaCenter)) beepWarn1();
@@ -1632,7 +1724,7 @@ void simulatorDialog::perOut(bool init)
         calibratedStick[MIX_CYC2-1]=anas[MIX_CYC2-1];
         calibratedStick[MIX_CYC3-1]=anas[MIX_CYC3-1];
     }
-
+	}
     memset(chans,0,sizeof(chans));        // All outputs to 0
 
     uint8_t mixWarning = 0;
@@ -1710,20 +1802,36 @@ void simulatorDialog::perOut(bool init)
 
 #define DEL_MULT 256
 
-        //swOn[i]=false;
-        if(!getSwitch(md.swtch,1)){ // switch on?  if no switch selected => on
+        bool t_switch = getSwitch(md.swtch,1) ;
+        if ( t_switch )
+				{
+					if ( md.modeControl & ( 1 << CurrentPhase ) )
+					{
+						t_switch = 0 ;
+					}
+				}
+        
+				uint8_t k = md.srcRaw ;
+        
+				
+				
+				//swOn[i]=false;
+        if(!t_switch)
+				{ // switch on?  if no switch selected => on
             swTog = swOn[i];
             swOn[i] = false;
-            if(md.srcRaw!=MIX_FULL && md.srcRaw!=MIX_MAX) continue;// if not MAX or FULL - next loop
+            if (k == MIX_3POS+MAX_GVARS+1) act[i] = chans[md.destCh-1] * DEL_MULT / 100 ;
+            if( k!=MIX_FULL && k!=MIX_MAX) continue;// if not MAX or FULL - next loop
             if(md.mltpx==MLTPX_REP) continue; // if switch is off and REPLACE then off
             v = md.srcRaw==MIX_FULL ? -RESX : 0; // switch is off => FULL=-RESX
         }
         else {
             swTog = !swOn[i];
             swOn[i] = true;
-            uint8_t k = md.srcRaw-1;
+            k -= 1 ;
             v = anas[k]; //Switch is on. MAX=FULL=512 or value.
             if(k>=CHOUT_BASE && (k<i)) v = chans[k];
+            if (k == MIX_3POS+MAX_GVARS) v = chans[md.destCh-1] / 100 ;
             if(md.mixWarn) mixWarning |= 1<<(md.mixWarn-1); // Mix warning
             if ( md.enableFmTrim )
             {
@@ -1745,7 +1853,6 @@ void simulatorDialog::perOut(bool init)
                 }
             }
         }
-
         //========== INPUT OFFSET ===============
         if ( ( md.enableFmTrim == 0 ) && ( md.lateOffset == 0 ) )
         {
@@ -1765,8 +1872,21 @@ void simulatorDialog::perOut(bool init)
                 act[i]=(int32_t)v*DEL_MULT;
                 swTog = false;
             }
+						int16_t my_delay = sDelay[i] ;
             int32_t tact = act[i] ;
             int16_t diff = v-tact/DEL_MULT;
+
+						if ( ( diff > 10 ) || ( diff < -10 ) )
+						{
+							if ( my_delay == 0 )
+							{
+								swTog = 1 ;
+							}
+						}
+						else
+						{
+							my_delay = 0 ;							
+						}
 
             if(swTog) {
                 //need to know which "v" will give "anas".
@@ -1775,24 +1895,29 @@ void simulatorDialog::perOut(bool init)
                 if(md.mltpx==MLTPX_REP)
                 {
                     tact = (int32_t)anas[md.destCh-1+CHOUT_BASE]*DEL_MULT * 100 ;
-//                    Output.act[i] *=100;
 #if GVARS
                     if(mixweight) tact /= mixweight ;
 #else
                     if(md.weight) tact /= md.weight;
 #endif
                 }
-                diff = v-act[i]/DEL_MULT;
-                if(diff) sDelay[i] = (diff<0 ? md.delayUp :  md.delayDown) * timing ;
+                diff = v-tact/DEL_MULT;
+                if(diff) my_delay = (diff<0 ? md.delayUp :  md.delayDown) * timing ;
             }
 
-            if(sDelay[i]){ // perform delay
-              if (--sDelay[i] != 0)
+            if(my_delay > 0)
+						{ // perform delay
+              if (--my_delay != 0)
               { // At end of delay, use new V and diff
-                v = act[i]/DEL_MULT;    // Stay in old position until delay over
+                v = tact/DEL_MULT;    // Stay in old position until delay over
                 diff = 0;
               }
+							else
+							{
+								my_delay = -1 ;
+							}
             }
+						sDelay[i] = my_delay ;
 
             if(diff && (md.speedUp || md.speedDown)){
                 //rate = steps/sec => 32*1024/100*md.speedUp/Down
@@ -1805,17 +1930,18 @@ void simulatorDialog::perOut(bool init)
 #else
                 if(md.weight) rate /= abs(md.weight);
 #endif
-                act[i] = (diff>0) ? ((md.speedUp>0)   ? act[i]+(rate)/((int16_t)timing*md.speedUp)   :  (int32_t)v*DEL_MULT) :
-                                    ((md.speedDown>0) ? act[i]-(rate)/((int16_t)timing*md.speedDown) :  (int32_t)v*DEL_MULT) ;
+                tact = (diff>0) ? ((md.speedUp>0)   ? tact+(rate)/((int16_t)timing*md.speedUp)   :  (int32_t)v*DEL_MULT) :
+                                    ((md.speedDown>0) ? tact-(rate)/((int16_t)timing*md.speedDown) :  (int32_t)v*DEL_MULT) ;
 
 
-                if(((diff>0) && (v<(act[i]/DEL_MULT))) || ((diff<0) && (v>(act[i]/DEL_MULT)))) act[i]=(int32_t)v*DEL_MULT; //deal with overflow
-                v = act[i]/DEL_MULT;
+                if(((diff>0) && (v<(tact/DEL_MULT))) || ((diff<0) && (v>(act[i]/DEL_MULT)))) tact=(int32_t)v*DEL_MULT; //deal with overflow
+                v = tact/DEL_MULT;
             }
             else if (diff)
             {
-              act[i]=(int32_t)v*DEL_MULT;
+              tact=(int32_t)v*DEL_MULT;
             }
+					act[i] = tact ;
         }
 
 
@@ -1921,18 +2047,37 @@ void simulatorDialog::perOut(bool init)
 
 
     //========== LIMITS ===============
-    for(uint8_t i=0;i<NUM_CHNOUT;i++){
+    for(uint8_t i=0;i<NUM_CHNOUT;i++)
+		{
         // chans[i] holds data from mixer.   chans[i] = v*weight => 1024*100
         // later we multiply by the limit (up to 100) and then we need to normalize
         // at the end chans[i] = chans[i]/100 =>  -1024..1024
         // interpolate value with min/max so we get smooth motion from center to stop
         // this limits based on v original values and min=-1024, max=1024  RESX=1024
 
-
         int32_t q = chans[i];// + (int32_t)g_model.limitData[i].offset*100; // offset before limit
+			
+				if ( fadePhases )
+				{
 
-        chans[i] /= 100; // chans back to -1024..1024
-        ex_chans[i] = chans[i]; //for getswitch
+					int32_t l_fade = fade[i] ;
+					if ( att & FADE_FIRST )
+					{
+						l_fade = 0 ;
+					}
+					l_fade += ( q / 100 ) * fadeScale[CurrentPhase] ;
+					fade[i] = l_fade ;
+			
+					if ( ( att & FADE_LAST ) == 0 )
+					{
+						continue ;
+					}
+					l_fade /= fadeWeight ;
+					q = l_fade * 100 ;
+				}
+        chans[i] = q / 100; // chans back to -1024..1024
+        
+				ex_chans[i] = chans[i]; //for getswitch
 
         int16_t ofs = g_model.limitData[i].offset;
 				int16_t xofs = ofs ;

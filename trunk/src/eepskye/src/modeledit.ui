@@ -41,7 +41,7 @@
    <item row="0" column="0">
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
-      <number>8</number>
+      <number>2</number>
      </property>
      <widget class="QWidget" name="tabModelSetup">
       <attribute name="title">
@@ -1111,86 +1111,86 @@ p, li { white-space: pre-wrap; }
      </widget>
      <widget class="QWidget" name="tab_3">
       <attribute name="title">
-       <string>Phases</string>
+       <string>Modes</string>
       </attribute>
       <widget class="QWidget" name="gridLayoutWidget">
        <property name="geometry">
         <rect>
-         <x>50</x>
+         <x>10</x>
          <y>10</y>
-         <width>701</width>
-         <height>372</height>
+         <width>771</width>
+         <height>387</height>
         </rect>
        </property>
        <layout class="QGridLayout" name="gridLayout_30">
         <item row="1" column="0">
          <widget class="QLabel" name="label_147">
           <property name="text">
-           <string>FP0</string>
+           <string>FM0</string>
           </property>
          </widget>
         </item>
         <item row="2" column="0">
          <widget class="QLabel" name="label_146">
           <property name="text">
-           <string>FP1</string>
+           <string>FM1</string>
           </property>
          </widget>
         </item>
         <item row="4" column="0">
          <widget class="QLabel" name="label_148">
           <property name="text">
-           <string>FP2</string>
+           <string>FM2</string>
           </property>
          </widget>
         </item>
         <item row="6" column="0">
          <widget class="QLabel" name="label_149">
           <property name="text">
-           <string>FP3</string>
+           <string>FM3</string>
           </property>
          </widget>
         </item>
         <item row="8" column="0">
          <widget class="QLabel" name="label_150">
           <property name="text">
-           <string>FP4</string>
+           <string>FM4</string>
           </property>
          </widget>
         </item>
         <item row="10" column="0">
          <widget class="QLabel" name="label_151">
           <property name="text">
-           <string>FP5</string>
+           <string>FM5</string>
           </property>
          </widget>
         </item>
         <item row="12" column="0">
          <widget class="QLabel" name="label_152">
           <property name="text">
-           <string>FP6</string>
+           <string>FM6</string>
           </property>
          </widget>
         </item>
-        <item row="8" column="1">
+        <item row="8" column="2">
          <widget class="QComboBox" name="FP4_sw"/>
         </item>
-        <item row="6" column="1">
+        <item row="6" column="2">
          <widget class="QComboBox" name="FP3_sw"/>
         </item>
-        <item row="4" column="1">
+        <item row="4" column="2">
          <widget class="QComboBox" name="FP2_sw"/>
         </item>
-        <item row="2" column="1">
+        <item row="2" column="2">
          <widget class="QComboBox" name="FP1_sw"/>
         </item>
-        <item row="10" column="1">
+        <item row="10" column="2">
          <widget class="QComboBox" name="FP5_sw"/>
         </item>
-        <item row="12" column="1">
+        <item row="12" column="2">
          <widget class="QComboBox" name="FP6_sw"/>
         </item>
-        <item row="0" column="3">
+        <item row="0" column="4">
          <widget class="QLabel" name="label_M1">
           <property name="text">
            <string>Rudder</string>
@@ -1200,7 +1200,7 @@ p, li { white-space: pre-wrap; }
           </property>
          </widget>
         </item>
-        <item row="0" column="4">
+        <item row="0" column="5">
          <widget class="QLabel" name="label_M2">
           <property name="text">
            <string>Elevator</string>
@@ -1210,7 +1210,7 @@ p, li { white-space: pre-wrap; }
           </property>
          </widget>
         </item>
-        <item row="0" column="5">
+        <item row="0" column="6">
          <widget class="QLabel" name="label_M3">
           <property name="text">
            <string>Throttle</string>
@@ -1220,7 +1220,7 @@ p, li { white-space: pre-wrap; }
           </property>
          </widget>
         </item>
-        <item row="0" column="6">
+        <item row="0" column="7">
          <widget class="QLabel" name="label_M4">
           <property name="text">
            <string>Aileron</string>
@@ -1230,107 +1230,107 @@ p, li { white-space: pre-wrap; }
           </property>
          </widget>
         </item>
-        <item row="1" column="3">
+        <item row="1" column="4">
          <widget class="QLabel" name="label_157">
           <property name="text">
            <string>Own Trim</string>
           </property>
          </widget>
         </item>
-        <item row="1" column="4">
+        <item row="1" column="5">
          <widget class="QLabel" name="label_158">
           <property name="text">
            <string>Own Trim</string>
           </property>
          </widget>
         </item>
-        <item row="1" column="5">
+        <item row="1" column="6">
          <widget class="QLabel" name="label_159">
           <property name="text">
            <string>Own Trim</string>
           </property>
          </widget>
         </item>
-        <item row="1" column="6">
+        <item row="1" column="7">
          <widget class="QLabel" name="label_160">
           <property name="text">
            <string>Own Trim</string>
           </property>
          </widget>
         </item>
-        <item row="2" column="3">
+        <item row="2" column="4">
          <widget class="QComboBox" name="FP1_RudCB"/>
         </item>
-        <item row="2" column="4">
+        <item row="2" column="5">
          <widget class="QComboBox" name="FP1_EleCB"/>
         </item>
-        <item row="2" column="5">
+        <item row="2" column="6">
          <widget class="QComboBox" name="FP1_ThrCB"/>
         </item>
-        <item row="2" column="6">
+        <item row="2" column="7">
          <widget class="QComboBox" name="FP1_AilCB"/>
         </item>
-        <item row="4" column="3">
+        <item row="4" column="4">
          <widget class="QComboBox" name="FP2_RudCB"/>
         </item>
-        <item row="4" column="4">
+        <item row="4" column="5">
          <widget class="QComboBox" name="FP2_EleCB"/>
         </item>
-        <item row="4" column="5">
+        <item row="4" column="6">
          <widget class="QComboBox" name="FP2_ThrCB"/>
         </item>
-        <item row="4" column="6">
+        <item row="4" column="7">
          <widget class="QComboBox" name="FP2_AilCB"/>
         </item>
-        <item row="6" column="3">
+        <item row="6" column="4">
          <widget class="QComboBox" name="FP3_RudCB"/>
         </item>
-        <item row="6" column="4">
+        <item row="6" column="5">
          <widget class="QComboBox" name="FP3_EleCB"/>
         </item>
-        <item row="6" column="5">
+        <item row="6" column="6">
          <widget class="QComboBox" name="FP3_ThrCB"/>
         </item>
-        <item row="6" column="6">
+        <item row="6" column="7">
          <widget class="QComboBox" name="FP3_AilCB"/>
         </item>
-        <item row="8" column="3">
+        <item row="8" column="4">
          <widget class="QComboBox" name="FP4_RudCB"/>
         </item>
-        <item row="8" column="4">
+        <item row="8" column="5">
          <widget class="QComboBox" name="FP4_EleCB"/>
         </item>
-        <item row="8" column="5">
+        <item row="8" column="6">
          <widget class="QComboBox" name="FP4_ThrCB"/>
         </item>
-        <item row="8" column="6">
+        <item row="8" column="7">
          <widget class="QComboBox" name="FP4_AilCB"/>
         </item>
-        <item row="10" column="3">
+        <item row="10" column="4">
          <widget class="QComboBox" name="FP5_RudCB"/>
         </item>
-        <item row="10" column="4">
+        <item row="10" column="5">
          <widget class="QComboBox" name="FP5_EleCB"/>
         </item>
-        <item row="10" column="5">
+        <item row="10" column="6">
          <widget class="QComboBox" name="FP5_ThrCB"/>
         </item>
-        <item row="10" column="6">
+        <item row="10" column="7">
          <widget class="QComboBox" name="FP5_AilCB"/>
         </item>
-        <item row="12" column="3">
+        <item row="12" column="4">
          <widget class="QComboBox" name="FP6_RudCB"/>
         </item>
-        <item row="12" column="4">
+        <item row="12" column="5">
          <widget class="QComboBox" name="FP6_EleCB"/>
         </item>
-        <item row="12" column="5">
+        <item row="12" column="6">
          <widget class="QComboBox" name="FP6_ThrCB"/>
         </item>
-        <item row="12" column="6">
+        <item row="12" column="7">
          <widget class="QComboBox" name="FP6_AilCB"/>
         </item>
-        <item row="3" column="4">
+        <item row="3" column="5">
          <widget class="QSpinBox" name="FP1eleTrimSB">
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -1346,7 +1346,7 @@ p, li { white-space: pre-wrap; }
           </property>
          </widget>
         </item>
-        <item row="3" column="3">
+        <item row="3" column="4">
          <widget class="QSpinBox" name="FP1rudTrimSB">
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -1362,7 +1362,7 @@ p, li { white-space: pre-wrap; }
           </property>
          </widget>
         </item>
-        <item row="3" column="5">
+        <item row="3" column="6">
          <widget class="QSpinBox" name="FP1thrTrimSB">
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -1378,7 +1378,7 @@ p, li { white-space: pre-wrap; }
           </property>
          </widget>
         </item>
-        <item row="3" column="6">
+        <item row="3" column="7">
          <widget class="QSpinBox" name="FP1ailTrimSB">
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -1394,7 +1394,7 @@ p, li { white-space: pre-wrap; }
           </property>
          </widget>
         </item>
-        <item row="5" column="3">
+        <item row="5" column="4">
          <widget class="QSpinBox" name="FP2rudTrimSB">
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -1410,7 +1410,7 @@ p, li { white-space: pre-wrap; }
           </property>
          </widget>
         </item>
-        <item row="5" column="4">
+        <item row="5" column="5">
          <widget class="QSpinBox" name="FP2eleTrimSB">
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -1426,7 +1426,7 @@ p, li { white-space: pre-wrap; }
           </property>
          </widget>
         </item>
-        <item row="5" column="5">
+        <item row="5" column="6">
          <widget class="QSpinBox" name="FP2thrTrimSB">
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -1442,7 +1442,7 @@ p, li { white-space: pre-wrap; }
           </property>
          </widget>
         </item>
-        <item row="5" column="6">
+        <item row="5" column="7">
          <widget class="QSpinBox" name="FP2ailTrimSB">
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -1458,7 +1458,7 @@ p, li { white-space: pre-wrap; }
           </property>
          </widget>
         </item>
-        <item row="7" column="3">
+        <item row="7" column="4">
          <widget class="QSpinBox" name="FP3rudTrimSB">
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -1474,7 +1474,7 @@ p, li { white-space: pre-wrap; }
           </property>
          </widget>
         </item>
-        <item row="7" column="4">
+        <item row="7" column="5">
          <widget class="QSpinBox" name="FP3eleTrimSB">
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -1490,7 +1490,7 @@ p, li { white-space: pre-wrap; }
           </property>
          </widget>
         </item>
-        <item row="7" column="5">
+        <item row="7" column="6">
          <widget class="QSpinBox" name="FP3thrTrimSB">
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -1506,7 +1506,7 @@ p, li { white-space: pre-wrap; }
           </property>
          </widget>
         </item>
-        <item row="7" column="6">
+        <item row="7" column="7">
          <widget class="QSpinBox" name="FP3ailTrimSB">
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -1522,7 +1522,7 @@ p, li { white-space: pre-wrap; }
           </property>
          </widget>
         </item>
-        <item row="9" column="3">
+        <item row="9" column="4">
          <widget class="QSpinBox" name="FP4rudTrimSB">
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -1538,7 +1538,7 @@ p, li { white-space: pre-wrap; }
           </property>
          </widget>
         </item>
-        <item row="9" column="4">
+        <item row="9" column="5">
          <widget class="QSpinBox" name="FP4eleTrimSB">
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -1554,7 +1554,7 @@ p, li { white-space: pre-wrap; }
           </property>
          </widget>
         </item>
-        <item row="9" column="5">
+        <item row="9" column="6">
          <widget class="QSpinBox" name="FP4thrTrimSB">
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -1570,7 +1570,7 @@ p, li { white-space: pre-wrap; }
           </property>
          </widget>
         </item>
-        <item row="9" column="6">
+        <item row="9" column="7">
          <widget class="QSpinBox" name="FP4ailTrimSB">
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -1586,7 +1586,7 @@ p, li { white-space: pre-wrap; }
           </property>
          </widget>
         </item>
-        <item row="11" column="3">
+        <item row="11" column="4">
          <widget class="QSpinBox" name="FP5rudTrimSB">
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -1602,7 +1602,7 @@ p, li { white-space: pre-wrap; }
           </property>
          </widget>
         </item>
-        <item row="11" column="4">
+        <item row="11" column="5">
          <widget class="QSpinBox" name="FP5eleTrimSB">
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -1618,7 +1618,7 @@ p, li { white-space: pre-wrap; }
           </property>
          </widget>
         </item>
-        <item row="11" column="5">
+        <item row="11" column="6">
          <widget class="QSpinBox" name="FP5thrTrimSB">
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -1634,7 +1634,7 @@ p, li { white-space: pre-wrap; }
           </property>
          </widget>
         </item>
-        <item row="11" column="6">
+        <item row="11" column="7">
          <widget class="QSpinBox" name="FP5ailTrimSB">
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -1650,7 +1650,7 @@ p, li { white-space: pre-wrap; }
           </property>
          </widget>
         </item>
-        <item row="13" column="3">
+        <item row="13" column="4">
          <widget class="QSpinBox" name="FP6rudTrimSB">
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -1666,7 +1666,7 @@ p, li { white-space: pre-wrap; }
           </property>
          </widget>
         </item>
-        <item row="13" column="4">
+        <item row="13" column="5">
          <widget class="QSpinBox" name="FP6eleTrimSB">
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -1682,7 +1682,7 @@ p, li { white-space: pre-wrap; }
           </property>
          </widget>
         </item>
-        <item row="13" column="5">
+        <item row="13" column="6">
          <widget class="QSpinBox" name="FP6thrTrimSB">
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -1698,7 +1698,7 @@ p, li { white-space: pre-wrap; }
           </property>
          </widget>
         </item>
-        <item row="13" column="6">
+        <item row="13" column="7">
          <widget class="QSpinBox" name="FP6ailTrimSB">
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -1711,6 +1711,316 @@ p, li { white-space: pre-wrap; }
           </property>
           <property name="maximum">
            <number>510</number>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="2">
+         <widget class="QLabel" name="label_Switch">
+          <property name="text">
+           <string>Switch</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="8">
+         <widget class="QDoubleSpinBox" name="FM1FadeIn">
+          <property name="decimals">
+           <number>1</number>
+          </property>
+          <property name="maximum">
+           <double>7.500000000000000</double>
+          </property>
+          <property name="singleStep">
+           <double>0.500000000000000</double>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="9">
+         <widget class="QDoubleSpinBox" name="FM1FadeOut">
+          <property name="decimals">
+           <number>1</number>
+          </property>
+          <property name="maximum">
+           <double>7.500000000000000</double>
+          </property>
+          <property name="singleStep">
+           <double>0.500000000000000</double>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="8">
+         <widget class="QLabel" name="label_Switch_2">
+          <property name="text">
+           <string>Fade In</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="9">
+         <widget class="QLabel" name="label_Switch_3">
+          <property name="text">
+           <string>Fade Out</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="8">
+         <widget class="QDoubleSpinBox" name="FM2FadeIn">
+          <property name="decimals">
+           <number>1</number>
+          </property>
+          <property name="maximum">
+           <double>7.500000000000000</double>
+          </property>
+          <property name="singleStep">
+           <double>0.500000000000000</double>
+          </property>
+         </widget>
+        </item>
+        <item row="6" column="8">
+         <widget class="QDoubleSpinBox" name="FM3FadeIn">
+          <property name="decimals">
+           <number>1</number>
+          </property>
+          <property name="maximum">
+           <double>7.500000000000000</double>
+          </property>
+          <property name="singleStep">
+           <double>0.500000000000000</double>
+          </property>
+         </widget>
+        </item>
+        <item row="8" column="8">
+         <widget class="QDoubleSpinBox" name="FM4FadeIn">
+          <property name="decimals">
+           <number>1</number>
+          </property>
+          <property name="maximum">
+           <double>7.500000000000000</double>
+          </property>
+          <property name="singleStep">
+           <double>0.500000000000000</double>
+          </property>
+         </widget>
+        </item>
+        <item row="10" column="8">
+         <widget class="QDoubleSpinBox" name="FM5FadeIn">
+          <property name="decimals">
+           <number>1</number>
+          </property>
+          <property name="maximum">
+           <double>7.500000000000000</double>
+          </property>
+          <property name="singleStep">
+           <double>0.500000000000000</double>
+          </property>
+         </widget>
+        </item>
+        <item row="12" column="8">
+         <widget class="QDoubleSpinBox" name="FM6FadeIn">
+          <property name="decimals">
+           <number>1</number>
+          </property>
+          <property name="maximum">
+           <double>7.500000000000000</double>
+          </property>
+          <property name="singleStep">
+           <double>0.500000000000000</double>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="9">
+         <widget class="QDoubleSpinBox" name="FM2FadeOut">
+          <property name="decimals">
+           <number>1</number>
+          </property>
+          <property name="maximum">
+           <double>7.500000000000000</double>
+          </property>
+          <property name="singleStep">
+           <double>0.500000000000000</double>
+          </property>
+         </widget>
+        </item>
+        <item row="6" column="9">
+         <widget class="QDoubleSpinBox" name="FM3FadeOut">
+          <property name="decimals">
+           <number>1</number>
+          </property>
+          <property name="maximum">
+           <double>7.500000000000000</double>
+          </property>
+          <property name="singleStep">
+           <double>0.500000000000000</double>
+          </property>
+         </widget>
+        </item>
+        <item row="8" column="9">
+         <widget class="QDoubleSpinBox" name="FM4FadeOut">
+          <property name="decimals">
+           <number>1</number>
+          </property>
+          <property name="maximum">
+           <double>7.500000000000000</double>
+          </property>
+          <property name="singleStep">
+           <double>0.500000000000000</double>
+          </property>
+         </widget>
+        </item>
+        <item row="10" column="9">
+         <widget class="QDoubleSpinBox" name="FM5FadeOut">
+          <property name="decimals">
+           <number>1</number>
+          </property>
+          <property name="maximum">
+           <double>7.500000000000000</double>
+          </property>
+          <property name="singleStep">
+           <double>0.500000000000000</double>
+          </property>
+         </widget>
+        </item>
+        <item row="12" column="9">
+         <widget class="QDoubleSpinBox" name="FM6FadeOut">
+          <property name="decimals">
+           <number>1</number>
+          </property>
+          <property name="maximum">
+           <double>7.500000000000000</double>
+          </property>
+          <property name="singleStep">
+           <double>0.500000000000000</double>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="1">
+         <widget class="QLineEdit" name="FM1Name">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>80</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="maxLength">
+           <number>6</number>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="1">
+         <widget class="QLineEdit" name="FM2Name">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>80</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="maxLength">
+           <number>6</number>
+          </property>
+         </widget>
+        </item>
+        <item row="6" column="1">
+         <widget class="QLineEdit" name="FM3Name">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>80</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="maxLength">
+           <number>6</number>
+          </property>
+         </widget>
+        </item>
+        <item row="8" column="1">
+         <widget class="QLineEdit" name="FM4Name">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>80</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="maxLength">
+           <number>6</number>
+          </property>
+         </widget>
+        </item>
+        <item row="10" column="1">
+         <widget class="QLineEdit" name="FM5Name">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>80</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="maxLength">
+           <number>6</number>
+          </property>
+         </widget>
+        </item>
+        <item row="12" column="1">
+         <widget class="QLineEdit" name="FM6Name">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>80</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="maxLength">
+           <number>6</number>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QLabel" name="label_Switch_4">
+          <property name="text">
+           <string>Name</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
           </property>
          </widget>
         </item>
@@ -10815,16 +11125,7 @@ Right</string>
         </layout>
        </item>
        <item>
-        <layout class="QFormLayout" name="formLayout_3">
-         <property name="sizeConstraint">
-          <enum>QLayout::SetDefaultConstraint</enum>
-         </property>
-         <property name="fieldGrowthPolicy">
-          <enum>QFormLayout::FieldsStayAtSizeHint</enum>
-         </property>
-         <property name="verticalSpacing">
-          <number>6</number>
-         </property>
+        <layout class="QGridLayout" name="gridLayout_16">
          <item row="0" column="0">
           <widget class="QLabel" name="label_122">
            <property name="maximumSize">
@@ -10932,7 +11233,7 @@ Right</string>
            </property>
           </widget>
          </item>
-         <item row="4" column="0">
+         <item row="3" column="0">
           <widget class="QLabel" name="label_125">
            <property name="maximumSize">
             <size>
@@ -10945,7 +11246,7 @@ Right</string>
            </property>
           </widget>
          </item>
-         <item row="4" column="1">
+         <item row="3" column="1">
           <widget class="QCheckBox" name="GpsAltMain">
            <property name="maximumSize">
             <size>
@@ -10961,7 +11262,7 @@ Right</string>
            </property>
           </widget>
          </item>
-         <item row="5" column="0">
+         <item row="4" column="0">
           <widget class="QLabel" name="label_168">
            <property name="maximumSize">
             <size>
@@ -10974,7 +11275,7 @@ Right</string>
            </property>
           </widget>
          </item>
-         <item row="5" column="1">
+         <item row="4" column="1">
           <widget class="QCheckBox" name="BT_telemetry">
            <property name="maximumSize">
             <size>
@@ -10990,7 +11291,7 @@ Right</string>
            </property>
           </widget>
          </item>
-         <item row="6" column="0">
+         <item row="5" column="0">
           <widget class="QLabel" name="label_167">
            <property name="maximumSize">
             <size>
@@ -11003,7 +11304,7 @@ Right</string>
            </property>
           </widget>
          </item>
-         <item row="6" column="1">
+         <item row="5" column="1">
           <widget class="QComboBox" name="COMportCB">
            <property name="maximumSize">
             <size>
@@ -11024,6 +11325,130 @@ Right</string>
              <string>2</string>
             </property>
            </item>
+          </widget>
+         </item>
+         <item row="0" column="2">
+          <widget class="QLabel" name="label_155">
+           <property name="maximumSize">
+            <size>
+             <width>100</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>RSSI warning</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="2">
+          <widget class="QLabel" name="label_156">
+           <property name="maximumSize">
+            <size>
+             <width>100</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>RSSI Critical</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="2">
+          <widget class="QLabel" name="label_193">
+           <property name="maximumSize">
+            <size>
+             <width>100</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>Rx Voltage Ratio</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="3">
+          <widget class="QSpinBox" name="frsky_RxV_ratio">
+           <property name="maximum">
+            <number>255</number>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="3">
+          <widget class="QSpinBox" name="frsky_RSSI_Warn">
+           <property name="minimum">
+            <number>15</number>
+           </property>
+           <property name="maximum">
+            <number>75</number>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="3">
+          <widget class="QSpinBox" name="frsky_RSSI_Critical">
+           <property name="minimum">
+            <number>12</number>
+           </property>
+           <property name="maximum">
+            <number>72</number>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="4">
+          <widget class="QLabel" name="label_194">
+           <property name="maximumSize">
+            <size>
+             <width>100</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>Enabled</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="5">
+          <widget class="QCheckBox" name="RssiWarnEnabled">
+           <property name="maximumSize">
+            <size>
+             <width>50</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="layoutDirection">
+            <enum>Qt::LeftToRight</enum>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="4">
+          <widget class="QLabel" name="label_195">
+           <property name="maximumSize">
+            <size>
+             <width>100</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>Enabled</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="5">
+          <widget class="QCheckBox" name="RssiCriticalEnabled">
+           <property name="maximumSize">
+            <size>
+             <width>50</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="layoutDirection">
+            <enum>Qt::LeftToRight</enum>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
           </widget>
          </item>
         </layout>

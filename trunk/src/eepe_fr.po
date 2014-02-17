@@ -699,6 +699,10 @@ msgctxt "GeneralEdit|"
 msgid "RH"
 msgstr ""
 
+msgctxt "GeneralEdit|"
+msgid "MegaSound"
+msgstr ""
+
 msgctxt "MainWindow|"
 msgid "&New"
 msgstr "&Nouveau"
@@ -1910,6 +1914,30 @@ msgctxt "MixerDialog|"
 msgid "Gvar"
 msgstr ""
 
+msgctxt "MixerDialog|"
+msgid "Flight Modes"
+msgstr ""
+
+msgctxt "MixerDialog|"
+msgid "0"
+msgstr ""
+
+msgctxt "MixerDialog|"
+msgid "1"
+msgstr ""
+
+msgctxt "MixerDialog|"
+msgid "2"
+msgstr ""
+
+msgctxt "MixerDialog|"
+msgid "3"
+msgstr ""
+
+msgctxt "MixerDialog|"
+msgid "4"
+msgstr ""
+
 msgctxt "ModelEdit|"
 msgid "P1"
 msgstr ""
@@ -2963,6 +2991,14 @@ msgstr ""
 
 msgctxt "ModelEdit|"
 msgid "Fast Mix Delay"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "Fade In"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "Fade Out"
 msgstr ""
 
 msgctxt "QObject|"
@@ -4549,4 +4585,93 @@ msgstr ""
 
 msgctxt "telemetryDialog|"
 msgid "Com Port Unavailable"
+msgstr ""
+
+msgctxt "telemetryDialog|"
+msgid "Telemetry"
+msgstr ""
+
+msgctxt "telemetryDialog|"
+msgid "Module"
+msgstr ""
+
+msgctxt "telemetryDialog|"
+msgid ">"
+msgstr ""
+
+msgctxt "telemetryDialog|"
+msgid "<"
+msgstr ""
+
+msgctxt "telemetryDialog|"
+msgid "A1(1)"
+msgstr ""
+
+#, fuzzy
+msgctxt "telemetryDialog|"
+msgid "Disabled"
+msgstr "Inactif"
+
+msgctxt "telemetryDialog|"
+msgid "Yellow"
+msgstr ""
+
+msgctxt "telemetryDialog|"
+msgid "Orange"
+msgstr ""
+
+msgctxt "telemetryDialog|"
+msgid "Red"
+msgstr ""
+
+msgctxt "telemetryDialog|"
+msgid "A1(2)"
+msgstr ""
+
+msgctxt "telemetryDialog|"
+msgid "A2(1)"
+msgstr ""
+
+msgctxt "telemetryDialog|"
+msgid "A2(2)"
+msgstr ""
+
+msgctxt "telemetryDialog|"
+msgid "Rx RSSI"
+msgstr ""
+
+msgctxt "telemetryDialog|"
+msgid "Read Alarms"
+msgstr ""
+
+msgctxt "telemetryDialog|"
+msgid "Tx RSSI"
+msgstr ""
+
+msgctxt "telemetryDialog|"
+msgid "Set Alarms"
+msgstr ""
+
+msgctxt "telemetryDialog|"
+msgid "Alt"
+msgstr ""
+
+msgctxt "telemetryDialog|"
+msgid "Alt(d)"
+msgstr ""
+
+msgctxt "telemetryDialog|"
+msgid "RxRSSI"
+msgstr ""
+
+msgctxt "telemetryDialog|"
+msgid "A1"
+msgstr ""
+
+msgctxt "telemetryDialog|"
+msgid "TxRSSI"
+msgstr ""
+
+msgctxt "telemetryDialog|"
+msgid "A2"
 msgstr ""

@@ -2,7 +2,7 @@
 #define SIMULATORDIALOG_H
 
 #include <QDialog>
-#include "node.h"
+#include "../../node.h"
 #include <inttypes.h>
 #include "pers.h"
 
@@ -12,6 +12,9 @@
 #define TMR_STOPPED 3
 
 #define FLASH_DURATION 10
+
+#define FADE_FIRST	0x20
+#define FADE_LAST		0x40
 
 namespace Ui {
     class simulatorDialog;
@@ -52,6 +55,13 @@ private:
     bool    swOn[MAX_SKYMIXERS];
     quint16 one_sec_precount;
 		qint8		CsTimer[NUM_SKYCSW] ;
+    quint8  fadePhases ;
+    qint32  fade[NUM_SKYCHNOUT];
+		quint16	fadeScale[MAX_PHASES+1] ;
+		quint16	fadeRate ;
+		quint16 fadeWeight ;
+    
+		qint16 qdebug ;
 
     quint16 s_timeCumTot;
     quint16 s_timeCumAbs;
@@ -81,7 +91,8 @@ private:
 		uint32_t adjustMode( uint32_t x ) ;
     void getValues();
     void setValues();
-    void perOut(bool init=false);
+    void perOut(bool init, uint8_t att);
+		void perOutPhase( bool init, uint8_t att ) ;
     void centerSticks();
     void timerTick();
 

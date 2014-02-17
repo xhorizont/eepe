@@ -51,6 +51,8 @@
 #include "simulatordialog.h"
 #include "printdialog.h"
 
+extern class simulatorDialog *SimPointer ;
+
 MdiChild::MdiChild()
 {
     setAttribute(Qt::WA_DeleteOnClose);
@@ -73,6 +75,7 @@ MdiChild::MdiChild()
 	{
     radioData.ModelNames[i][0] = '\0' ;
 	}
+	generalDefault() ;
 
     this->setFont(QFont("Courier New",12));
     refreshList();
@@ -614,7 +617,7 @@ void MdiChild::saveModelToFile()
     }
     else  // model data - cmod
     {
-        saveModelToXML(&doc, &root, cmod, MDVERS);
+        saveModelToXML(&doc, &root, cmod, MDSKYVERS);
     }
 
     if (!file.open(QFile::WriteOnly)) {
@@ -878,7 +881,7 @@ bool MdiChild::loadFile(const QString &fileName, bool resetCurrentFile)
     {
         QFile file(fileName);
 
-        if( (file.size()!=EESIZE) && (file.size()!=EE20MSIZE) )
+        if( (file.size()!=EESIZE) && (file.size()!=EE20MSIZE) && (file.size()!=EEFULLSIZE) )
         {
             QMessageBox::critical(this, tr("Error"),tr("Error reading file:\n"
                                                        "File wrong size - %1").arg(fileName));
@@ -1369,7 +1372,17 @@ void MdiChild::simulate()
     memcpy( &gg, &radioData.generalSettings, sizeof(EEGeneral) ) ;
     memcpy( &gm, &radioData.models[currentRow()-1], sizeof(SKYModelData) ) ;
 
-    simulatorDialog *sd = new simulatorDialog(this);
+		simulatorDialog *sd ;
+
+		if ( SimPointer == 0 )
+		{
+ 	  	sd = new simulatorDialog(this) ;
+			SimPointer = sd ;
+		}
+		else
+		{
+			sd = SimPointer ;
+		}
     sd->loadParams(gg,gm);
     sd->show();
 }
@@ -1380,12 +1393,14 @@ void MdiChild::print()
 
     EEGeneral gg;
 		//XXXXXXXXXXXXX
-    if(!eeFile.getGeneralSettings(&gg)) return;
+//    if(!eeFile.getGeneralSettings(&gg)) return;
 
-    SKYModelData gm1;
-    ModelData gm;
+    SKYModelData gm;
+//    ModelData gm;
     //XXXXXXXXXXXXX
-    if(!eeFile.getModel(&gm,currentRow()-1)) return;
+//    if(!eeFile.getModel(&gm1,currentRow()-1)) return;
+    memcpy( &gg, &radioData.generalSettings, sizeof(EEGeneral) ) ;
+    memcpy( &gm, &radioData.models[currentRow()-1], sizeof(SKYModelData) ) ;
 
     printDialog *pd = new printDialog(this, &gg, &gm);
     pd->show();
@@ -1409,7 +1424,7 @@ void MdiChild::generalDefault()
 {
   memset(&radioData.generalSettings,0,sizeof(radioData.generalSettings));
   memset(&radioData.generalSettings.ownerName,' ',sizeof(radioData.generalSettings.ownerName));
-  radioData.generalSettings.myVers   =  MDVERS;
+  radioData.generalSettings.myVers   =  MDSKYVERS;
   radioData.generalSettings.currModel=  0;
   radioData.generalSettings.contrast = 30;
   radioData.generalSettings.vBatWarn = 90;

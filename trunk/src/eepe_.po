@@ -24,12 +24,12 @@ msgctxt "GeneralEdit|"
 msgid "Setup"
 msgstr ""
 
-#: generaledit.ui:221
+#: generaledit.ui:226
 msgctxt "GeneralEdit|"
 msgid "Contrast"
 msgstr ""
 
-#: generaledit.ui:166 generaledit.ui:234
+#: generaledit.ui:171 generaledit.ui:239
 msgctxt "GeneralEdit|"
 msgid ""
 "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" "
@@ -47,12 +47,12 @@ msgid ""
 "font-size:8pt;\">Values can be 20-45</span></p></body></html>"
 msgstr ""
 
-#: generaledit.ui:258
+#: generaledit.ui:263
 msgctxt "GeneralEdit|"
 msgid "Battery Warning"
 msgstr ""
 
-#: generaledit.ui:271
+#: generaledit.ui:276
 msgctxt "GeneralEdit|"
 msgid ""
 "Battery warning voltage.\n"
@@ -61,12 +61,12 @@ msgid ""
 "Acceptable values are 5v..10v"
 msgstr ""
 
-#: generaledit.ui:1963
+#: generaledit.ui:1968
 msgctxt "GeneralEdit|"
 msgid "v"
 msgstr ""
 
-#: generaledit.ui:302 generaledit.ui:1953
+#: generaledit.ui:307 generaledit.ui:1958
 msgctxt "GeneralEdit|"
 msgid "Battery Calibration"
 msgstr ""
@@ -81,12 +81,12 @@ msgctxt "GeneralEdit|"
 msgid "PiSpkrVoice"
 msgstr ""
 
-#: generaledit.ui:201
+#: generaledit.ui:206
 msgctxt "GeneralEdit|"
 msgid "Volume"
 msgstr ""
 
-#: generaledit.ui:315
+#: generaledit.ui:320
 msgctxt "GeneralEdit|"
 msgid ""
 "Battery calibration:\n"
@@ -94,58 +94,58 @@ msgid ""
 "calibrate the meter with an external meter."
 msgstr ""
 
-#: generaledit.ui:341
+#: generaledit.ui:346
 msgctxt "GeneralEdit|"
 msgid "Backlight Switch"
 msgstr ""
 
-#: generaledit.ui:354
+#: generaledit.ui:359
 msgctxt "GeneralEdit|"
 msgid ""
 "This is the switch selectrion for turning on the backlight (if installed).\n"
 "\n"
 msgstr ""
 
-#: generaledit.ui:366
+#: generaledit.ui:371
 msgctxt "GeneralEdit|"
 msgid "Backlight Auto On/OFF after"
 msgstr ""
 
-#: generaledit.ui:379 generaledit.ui:408
+#: generaledit.ui:384 generaledit.ui:413
 msgctxt "GeneralEdit|"
 msgid ""
 "If this value is not 0, any keypress will turn on the backlight and turn it "
 "off after the specified number of seconds."
 msgstr ""
 
-#: generaledit.ui:382 generaledit.ui:411
+#: generaledit.ui:387 generaledit.ui:416
 msgctxt "GeneralEdit|"
 msgid " sec"
 msgstr ""
 
-#: generaledit.ui:424
+#: generaledit.ui:429
 msgctxt "GeneralEdit|"
 msgid "Inactivity Timer"
 msgstr ""
 
-#: generaledit.ui:437
+#: generaledit.ui:442
 msgctxt "GeneralEdit|"
 msgid ""
 "If not zero will sound beeps if the transmitter has been left without inputs "
 "for the specified number of minutes."
 msgstr ""
 
-#: generaledit.ui:440
+#: generaledit.ui:445
 msgctxt "GeneralEdit|"
 msgid " min"
 msgstr ""
 
-#: generaledit.ui:519
+#: generaledit.ui:524
 msgctxt "GeneralEdit|"
 msgid "Reverse Throttle Operation"
 msgstr ""
 
-#: generaledit.ui:513
+#: generaledit.ui:518
 msgctxt "GeneralEdit|"
 msgid ""
 "Reverse throttle operation.\n"
@@ -155,12 +155,12 @@ msgid ""
 "\n"
 msgstr ""
 
-#: generaledit.ui:456
+#: generaledit.ui:461
 msgctxt "GeneralEdit|"
 msgid "Timer Beeps"
 msgstr ""
 
-#: generaledit.ui:468
+#: generaledit.ui:473
 msgctxt "GeneralEdit|"
 msgid ""
 "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" "
@@ -175,22 +175,22 @@ msgid ""
 "font-size:8pt;\">Single Beep Every whole Minute</span></p></body></html>"
 msgstr ""
 
-#: generaledit.ui:475
+#: generaledit.ui:480
 msgctxt "GeneralEdit|"
 msgid "Every Minute"
 msgstr ""
 
-#: generaledit.ui:482
+#: generaledit.ui:487
 msgctxt "GeneralEdit|"
 msgid "Beeps at 30, 15, 10, and down from5 seconds"
 msgstr ""
 
-#: generaledit.ui:485
+#: generaledit.ui:490
 msgctxt "GeneralEdit|"
 msgid "Count Down to Zero"
 msgstr ""
 
-#: generaledit.ui:492
+#: generaledit.ui:497
 msgctxt "GeneralEdit|"
 msgid ""
 "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" "
@@ -205,7 +205,7 @@ msgid ""
 "font-size:8pt;\">Flash backlight on timer  beep</span></p></body></html>"
 msgstr ""
 
-#: generaledit.ui:499
+#: generaledit.ui:504
 msgctxt "GeneralEdit|"
 msgid "Flash on beep"
 msgstr ""
@@ -230,12 +230,12 @@ msgctxt "GeneralEdit|"
 msgid "xLong"
 msgstr ""
 
-#: generaledit.ui:153
+#: generaledit.ui:158
 msgctxt "GeneralEdit|"
 msgid "Speaker Pitch (spkr only)"
 msgstr ""
 
-#: generaledit.ui:726
+#: generaledit.ui:731
 msgctxt "GeneralEdit|"
 msgid "Alarm Warning"
 msgstr ""
@@ -260,12 +260,12 @@ msgctxt "GeneralEdit|"
 msgid "Owner Name"
 msgstr ""
 
-#: generaledit.ui:552
+#: generaledit.ui:557
 msgctxt "GeneralEdit|"
 msgid "Pot Scrolling Enable"
 msgstr ""
 
-#: generaledit.ui:588
+#: generaledit.ui:593
 msgctxt "GeneralEdit|"
 msgid "Bandgap Measuring Enable"
 msgstr ""
@@ -275,7 +275,7 @@ msgctxt "GeneralEdit|"
 msgid "Sound Mode"
 msgstr ""
 
-#: generaledit.ui:187
+#: generaledit.ui:192
 msgctxt "GeneralEdit|"
 msgid "Haptic Strength (spkr only)"
 msgstr ""
@@ -295,182 +295,187 @@ msgctxt "GeneralEdit|"
 msgid "PiSpkr"
 msgstr ""
 
-#: generaledit.ui:208
+#: generaledit.ui:150
+msgctxt "GeneralEdit|"
+msgid "MegaSound"
+msgstr ""
+
+#: generaledit.ui:213
 msgctxt "GeneralEdit|"
 msgid "Voice volume if you have a voice module added"
 msgstr ""
 
-#: generaledit.ui:228
+#: generaledit.ui:233
 msgctxt "GeneralEdit|"
 msgid "Set the readability of the display"
 msgstr ""
 
-#: generaledit.ui:395
+#: generaledit.ui:400
 msgctxt "GeneralEdit|"
 msgid "Backlight On Stick Move"
 msgstr ""
 
-#: generaledit.ui:568
+#: generaledit.ui:573
 msgctxt "GeneralEdit|"
 msgid "Show Name On Splash Sceen"
 msgstr ""
 
-#: generaledit.ui:649
+#: generaledit.ui:654
 msgctxt "GeneralEdit|"
 msgid "THR"
 msgstr ""
 
-#: generaledit.ui:656
+#: generaledit.ui:661
 msgctxt "GeneralEdit|"
 msgid "RUD"
 msgstr ""
 
-#: generaledit.ui:663
+#: generaledit.ui:668
 msgctxt "GeneralEdit|"
 msgid "ELE"
 msgstr ""
 
-#: generaledit.ui:670
+#: generaledit.ui:675
 msgctxt "GeneralEdit|"
 msgid "AIL"
 msgstr ""
 
-#: generaledit.ui:677
+#: generaledit.ui:682
 msgctxt "GeneralEdit|"
 msgid "ID0"
 msgstr ""
 
-#: generaledit.ui:684
+#: generaledit.ui:689
 msgctxt "GeneralEdit|"
 msgid "ID1"
 msgstr ""
 
-#: generaledit.ui:691
+#: generaledit.ui:696
 msgctxt "GeneralEdit|"
 msgid "ID2"
 msgstr ""
 
-#: generaledit.ui:698
+#: generaledit.ui:703
 msgctxt "GeneralEdit|"
 msgid "GEA"
 msgstr ""
 
-#: generaledit.ui:771
+#: generaledit.ui:776
 msgctxt "GeneralEdit|"
 msgid "Backlight Invert"
 msgstr ""
 
-#: generaledit.ui:791
+#: generaledit.ui:796
 msgctxt "GeneralEdit|"
 msgid "EnablePPMsim"
 msgstr ""
 
-#: generaledit.ui:823
+#: generaledit.ui:828
 msgctxt "GeneralEdit|"
 msgid "Internal FrSky Alarm"
 msgstr ""
 
-#: generaledit.ui:846
+#: generaledit.ui:851
 msgctxt "GeneralEdit|"
 msgid "Stick Scrolling Enable"
 msgstr ""
 
-#: generaledit.ui:869
+#: generaledit.ui:874
 msgctxt "GeneralEdit|"
 msgid "Cross Trims"
 msgstr ""
 
-#: generaledit.ui:892
+#: generaledit.ui:897
 msgctxt "GeneralEdit|"
 msgid "FrSky mod done (M128 only)"
 msgstr ""
 
-#: generaledit.ui:1124
+#: generaledit.ui:1129
 msgctxt "GeneralEdit|"
 msgid "Stick Reverse"
 msgstr ""
 
-#: generaledit.ui:1137
+#: generaledit.ui:1142
 msgctxt "GeneralEdit|"
 msgid "LV"
 msgstr ""
 
-#: generaledit.ui:1160
+#: generaledit.ui:1165
 msgctxt "GeneralEdit|"
 msgid "LH"
 msgstr ""
 
-#: generaledit.ui:1183
+#: generaledit.ui:1188
 msgctxt "GeneralEdit|"
 msgid "RV"
 msgstr ""
 
-#: generaledit.ui:1206
+#: generaledit.ui:1211
 msgctxt "GeneralEdit|"
 msgid "RH"
 msgstr ""
 
-#: generaledit.ui:1239
+#: generaledit.ui:1244
 msgctxt "GeneralEdit|"
 msgid "Trainer"
 msgstr ""
 
-#: generaledit.ui:1247 generaledit.ui:1287 generaledit.ui:1313
-#: generaledit.ui:1353 generaledit.ui:1379 generaledit.ui:1419
-#: generaledit.ui:1445 generaledit.ui:1485
+#: generaledit.ui:1252 generaledit.ui:1292 generaledit.ui:1318
+#: generaledit.ui:1358 generaledit.ui:1384 generaledit.ui:1424
+#: generaledit.ui:1450 generaledit.ui:1490
 msgctxt "GeneralEdit|"
 msgid "CH1"
-msgstr ""
-
-#: generaledit.ui:1255 generaledit.ui:1321 generaledit.ui:1387
-#: generaledit.ui:1453
-msgctxt "GeneralEdit|"
-msgid "Off"
 msgstr ""
 
 #: generaledit.ui:1260 generaledit.ui:1326 generaledit.ui:1392
 #: generaledit.ui:1458
 msgctxt "GeneralEdit|"
-msgid "Add"
+msgid "Off"
 msgstr ""
 
 #: generaledit.ui:1265 generaledit.ui:1331 generaledit.ui:1397
 #: generaledit.ui:1463
 msgctxt "GeneralEdit|"
-msgid "Substitute"
+msgid "Add"
 msgstr ""
 
-#: generaledit.ui:1292 generaledit.ui:1358 generaledit.ui:1424
-#: generaledit.ui:1490
+#: generaledit.ui:1270 generaledit.ui:1336 generaledit.ui:1402
+#: generaledit.ui:1468
 msgctxt "GeneralEdit|"
-msgid "CH2"
+msgid "Substitute"
 msgstr ""
 
 #: generaledit.ui:1297 generaledit.ui:1363 generaledit.ui:1429
 #: generaledit.ui:1495
 msgctxt "GeneralEdit|"
-msgid "CH3"
+msgid "CH2"
 msgstr ""
 
 #: generaledit.ui:1302 generaledit.ui:1368 generaledit.ui:1434
 #: generaledit.ui:1500
 msgctxt "GeneralEdit|"
+msgid "CH3"
+msgstr ""
+
+#: generaledit.ui:1307 generaledit.ui:1373 generaledit.ui:1439
+#: generaledit.ui:1505
+msgctxt "GeneralEdit|"
 msgid "CH4"
 msgstr ""
 
-#: generaledit.ui:1513
+#: generaledit.ui:1518
 msgctxt "GeneralEdit|"
 msgid "PPM Multiplier"
 msgstr ""
 
-#: generaledit.ui:611
+#: generaledit.ui:616
 msgctxt "GeneralEdit|"
 msgid "Throttle Startup Warning"
 msgstr ""
 
-#: generaledit.ui:539 generaledit.ui:575 generaledit.ui:598 generaledit.ui:624
-#: generaledit.ui:713 generaledit.ui:742 generaledit.ui:778 generaledit.ui:810
-#: generaledit.ui:833 generaledit.ui:856 generaledit.ui:879
+#: generaledit.ui:544 generaledit.ui:580 generaledit.ui:603 generaledit.ui:629
+#: generaledit.ui:718 generaledit.ui:747 generaledit.ui:783 generaledit.ui:815
+#: generaledit.ui:838 generaledit.ui:861 generaledit.ui:884
 msgctxt "GeneralEdit|"
 msgid ""
 "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" "
@@ -503,12 +508,12 @@ msgid ""
 "- will alert you if the beeper is set to quiet (0)</p></body></html>"
 msgstr ""
 
-#: generaledit.ui:755
+#: generaledit.ui:760
 msgctxt "GeneralEdit|"
 msgid "Switch Startup Warning"
 msgstr ""
 
-#: generaledit.ui:637
+#: generaledit.ui:642
 msgctxt "GeneralEdit|"
 msgid "Memory Startup Warning"
 msgstr ""
@@ -530,12 +535,12 @@ msgid ""
 "4 - Extra loud."
 msgstr ""
 
-#: generaledit.ui:904
+#: generaledit.ui:909
 msgctxt "GeneralEdit|"
 msgid "Channel Order (For Templates)"
 msgstr ""
 
-#: generaledit.ui:917
+#: generaledit.ui:922
 msgctxt "GeneralEdit|"
 msgid ""
 "Channel order\n"
@@ -544,12 +549,12 @@ msgid ""
 "output."
 msgstr ""
 
-#: generaledit.ui:1049
+#: generaledit.ui:1054
 msgctxt "GeneralEdit|"
 msgid "Stick Mode"
 msgstr ""
 
-#: generaledit.ui:1062
+#: generaledit.ui:1067
 msgctxt "GeneralEdit|"
 msgid ""
 "Mode selection:\n"
@@ -572,88 +577,88 @@ msgid ""
 "\n"
 msgstr ""
 
-#: generaledit.ui:1087
+#: generaledit.ui:1092
 msgctxt "GeneralEdit|"
 msgid "Mode 1 (RUD ELE THR AIL)"
 msgstr ""
 
-#: generaledit.ui:1092
+#: generaledit.ui:1097
 msgctxt "GeneralEdit|"
 msgid "Mode 2 (RUD THR ELE AIL)"
 msgstr ""
 
-#: generaledit.ui:1097
+#: generaledit.ui:1102
 msgctxt "GeneralEdit|"
 msgid "Mode 3 (AIL ELE THR RUD)"
 msgstr ""
 
-#: generaledit.ui:1102
+#: generaledit.ui:1107
 msgctxt "GeneralEdit|"
 msgid "Mode 4 (AIL THR ELE RUD)"
 msgstr ""
 
-#: generaledit.ui:532
+#: generaledit.ui:537
 msgctxt "GeneralEdit|"
 msgid "Show Splash Screen on Startup"
 msgstr ""
 
-#: generaledit.ui:526 generaledit.ui:529 generaledit.ui:562 generaledit.ui:565
-#: generaledit.ui:765 generaledit.ui:768
+#: generaledit.ui:531 generaledit.ui:534 generaledit.ui:567 generaledit.ui:570
+#: generaledit.ui:770 generaledit.ui:773
 msgctxt "GeneralEdit|"
 msgid "Show splash screen on startup"
 msgstr ""
 
-#: generaledit.ui:1533 generaledit.ui:1598
+#: generaledit.ui:1538 generaledit.ui:1603
 msgctxt "GeneralEdit|"
 msgid "Calibration"
 msgstr ""
 
-#: generaledit.ui:1907
+#: generaledit.ui:1912
 msgctxt "GeneralEdit|"
 msgid "ANALOG 7"
 msgstr ""
 
-#: generaledit.ui:1861
+#: generaledit.ui:1866
 msgctxt "GeneralEdit|"
 msgid "ANALOG 6"
 msgstr ""
 
-#: generaledit.ui:1815
+#: generaledit.ui:1820
 msgctxt "GeneralEdit|"
 msgid "ANALOG 5"
 msgstr ""
 
-#: generaledit.ui:1766
+#: generaledit.ui:1771
 msgctxt "GeneralEdit|"
 msgid "ANALOG 4"
 msgstr ""
 
-#: generaledit.ui:1720
+#: generaledit.ui:1725
 msgctxt "GeneralEdit|"
 msgid "ANALOG 3"
 msgstr ""
 
-#: generaledit.ui:1674
+#: generaledit.ui:1679
 msgctxt "GeneralEdit|"
 msgid "ANALOG 2"
 msgstr ""
 
-#: generaledit.ui:1625
+#: generaledit.ui:1630
 msgctxt "GeneralEdit|"
 msgid "ANALOG 1"
 msgstr ""
 
-#: generaledit.ui:1604
+#: generaledit.ui:1609
 msgctxt "GeneralEdit|"
 msgid "Negative"
 msgstr ""
 
-#: generaledit.ui:1611
+#: generaledit.ui:1616
 msgctxt "GeneralEdit|"
 msgid "Mid"
 msgstr ""
 
-#: generaledit.ui:1618
+#: generaledit.ui:1623
 msgctxt "GeneralEdit|"
 msgid "Positive"
 msgstr ""
@@ -1761,6 +1766,36 @@ msgctxt "MixerDialog|"
 msgid "Gvar"
 msgstr ""
 
+#: mixerdialog.ui:657
+msgctxt "MixerDialog|"
+msgid "Flight Modes"
+msgstr ""
+
+#: mixerdialog.ui:735
+msgctxt "MixerDialog|"
+msgid "0"
+msgstr ""
+
+#: mixerdialog.ui:751
+msgctxt "MixerDialog|"
+msgid "1"
+msgstr ""
+
+#: mixerdialog.ui:767
+msgctxt "MixerDialog|"
+msgid "2"
+msgstr ""
+
+#: mixerdialog.ui:783
+msgctxt "MixerDialog|"
+msgid "3"
+msgstr ""
+
+#: mixerdialog.ui:799
+msgctxt "MixerDialog|"
+msgid "4"
+msgstr ""
+
 #: mixerdialog.ui:307
 msgctxt "MixerDialog|"
 msgid "Multiplex"
@@ -2013,7 +2048,7 @@ msgctxt "ModelEdit|"
 msgid "Negative"
 msgstr ""
 
-#: modeledit.ui:350 modeledit.ui:10002
+#: modeledit.ui:350 modeledit.ui:10126
 msgctxt "ModelEdit|"
 msgid "Protocol"
 msgstr ""
@@ -2279,435 +2314,435 @@ msgctxt "ModelEdit|"
 msgid "Own Trim"
 msgstr ""
 
-#: modeledit.ui:1405
+#: modeledit.ui:1529
 msgctxt "ModelEdit|"
 msgid "Expo/Dr"
 msgstr ""
 
-#: modeledit.ui:1446 modeledit.ui:1700 modeledit.ui:1858 modeledit.ui:2241
+#: modeledit.ui:1570 modeledit.ui:1824 modeledit.ui:1982 modeledit.ui:2365
 msgctxt "ModelEdit|"
 msgid "HIGH"
 msgstr ""
 
-#: modeledit.ui:1468 modeledit.ui:1710 modeledit.ui:1932 modeledit.ui:2263
+#: modeledit.ui:1592 modeledit.ui:1834 modeledit.ui:2056 modeledit.ui:2387
 msgctxt "ModelEdit|"
 msgid "MID"
 msgstr ""
 
-#: modeledit.ui:1490 modeledit.ui:1720 modeledit.ui:2006 modeledit.ui:2285
+#: modeledit.ui:1614 modeledit.ui:1844 modeledit.ui:2130 modeledit.ui:2409
 msgctxt "ModelEdit|"
 msgid "LOW"
 msgstr ""
 
-#: modeledit.ui:1506 modeledit.ui:1730 modeledit.ui:2080 modeledit.ui:2301
+#: modeledit.ui:1630 modeledit.ui:1854 modeledit.ui:2204 modeledit.ui:2425
 msgctxt "ModelEdit|"
 msgid ""
 "Expo\n"
 "Left"
 msgstr ""
 
-#: modeledit.ui:1528 modeledit.ui:1667 modeledit.ui:2102 modeledit.ui:2323
+#: modeledit.ui:1652 modeledit.ui:1791 modeledit.ui:2226 modeledit.ui:2447
 msgctxt "ModelEdit|"
 msgid ""
 "D/R\n"
 "Left"
 msgstr ""
 
-#: modeledit.ui:1517 modeledit.ui:1678 modeledit.ui:2091 modeledit.ui:2312
+#: modeledit.ui:1641 modeledit.ui:1802 modeledit.ui:2215 modeledit.ui:2436
 msgctxt "ModelEdit|"
 msgid ""
 "D/R\n"
 "Right"
 msgstr ""
 
-#: modeledit.ui:1539 modeledit.ui:1689 modeledit.ui:2113 modeledit.ui:2334
+#: modeledit.ui:1663 modeledit.ui:1813 modeledit.ui:2237 modeledit.ui:2458
 msgctxt "ModelEdit|"
 msgid ""
 "Expo\n"
 "Right"
 msgstr ""
 
-#: modeledit.ui:1615 modeledit.ui:1806 modeledit.ui:2189 modeledit.ui:2422
+#: modeledit.ui:1739 modeledit.ui:1930 modeledit.ui:2313 modeledit.ui:2546
 msgctxt "ModelEdit|"
 msgid "Switch1"
 msgstr ""
 
-#: modeledit.ui:1631 modeledit.ui:1822 modeledit.ui:2199 modeledit.ui:2438
+#: modeledit.ui:1755 modeledit.ui:1946 modeledit.ui:2323 modeledit.ui:2562
 msgctxt "ModelEdit|"
 msgid "Switch2"
 msgstr ""
 
-#: modeledit.ui:10383
+#: modeledit.ui:10507
 msgctxt "ModelEdit|"
 msgid "GVARS"
 msgstr ""
 
-#: modeledit.ui:10404
+#: modeledit.ui:10528
 msgctxt "ModelEdit|"
 msgid "GVAR"
 msgstr ""
 
-#: modeledit.ui:10432
+#: modeledit.ui:10556
 msgctxt "ModelEdit|"
 msgid "Input"
 msgstr ""
 
-#: modeledit.ui:10488
+#: modeledit.ui:10612
 msgctxt "ModelEdit|"
 msgid "GVAR1"
 msgstr ""
 
-#: modeledit.ui:10516
+#: modeledit.ui:10640
 msgctxt "ModelEdit|"
 msgid "GVAR2"
 msgstr ""
 
-#: modeledit.ui:10544
+#: modeledit.ui:10668
 msgctxt "ModelEdit|"
 msgid "GVAR3"
 msgstr ""
 
-#: modeledit.ui:10572
+#: modeledit.ui:10696
 msgctxt "ModelEdit|"
 msgid "GVAR4"
 msgstr ""
 
-#: modeledit.ui:10600
+#: modeledit.ui:10724
 msgctxt "ModelEdit|"
 msgid "GVAR5"
 msgstr ""
 
-#: modeledit.ui:10788
+#: modeledit.ui:10912
 msgctxt "ModelEdit|"
 msgid "GVAR6"
 msgstr ""
 
-#: modeledit.ui:10816
+#: modeledit.ui:10940
 msgctxt "ModelEdit|"
 msgid "GVAR7"
 msgstr ""
 
-#: modeledit.ui:1031 modeledit.ui:2409
+#: modeledit.ui:1031 modeledit.ui:2533
 msgctxt "ModelEdit|"
 msgid "Rudder"
 msgstr ""
 
-#: modeledit.ui:1061 modeledit.ui:1602
+#: modeledit.ui:1061 modeledit.ui:1726
 msgctxt "ModelEdit|"
 msgid "Aileron"
 msgstr ""
 
-#: modeledit.ui:1051 modeledit.ui:1793
+#: modeledit.ui:1051 modeledit.ui:1917
 msgctxt "ModelEdit|"
 msgid "Throttle"
 msgstr ""
 
-#: modeledit.ui:1041 modeledit.ui:2176
+#: modeledit.ui:1041 modeledit.ui:2300
 msgctxt "ModelEdit|"
 msgid "Elevator"
 msgstr ""
 
-#: modeledit.ui:2452
+#: modeledit.ui:2576
 msgctxt "ModelEdit|"
 msgid "Mixes"
 msgstr ""
 
-#: modeledit.ui:2462
+#: modeledit.ui:2586
 msgctxt "ModelEdit|"
 msgid "Limits"
 msgstr ""
 
-#: modeledit.ui:2527 modeledit.ui:2596 modeledit.ui:2665 modeledit.ui:2734
-#: modeledit.ui:2803 modeledit.ui:2872 modeledit.ui:2941 modeledit.ui:3010
-#: modeledit.ui:3079 modeledit.ui:3148 modeledit.ui:3217 modeledit.ui:3286
-#: modeledit.ui:3355 modeledit.ui:3424 modeledit.ui:3493 modeledit.ui:3562
+#: modeledit.ui:2651 modeledit.ui:2720 modeledit.ui:2789 modeledit.ui:2858
+#: modeledit.ui:2927 modeledit.ui:2996 modeledit.ui:3065 modeledit.ui:3134
+#: modeledit.ui:3203 modeledit.ui:3272 modeledit.ui:3341 modeledit.ui:3410
+#: modeledit.ui:3479 modeledit.ui:3548 modeledit.ui:3617 modeledit.ui:3686
 msgctxt "ModelEdit|"
 msgid "NOR"
 msgstr ""
 
-#: modeledit.ui:2532 modeledit.ui:2601 modeledit.ui:2670 modeledit.ui:2739
-#: modeledit.ui:2808 modeledit.ui:2877 modeledit.ui:2946 modeledit.ui:3015
-#: modeledit.ui:3084 modeledit.ui:3153 modeledit.ui:3222 modeledit.ui:3291
-#: modeledit.ui:3360 modeledit.ui:3429 modeledit.ui:3498 modeledit.ui:3567
+#: modeledit.ui:2656 modeledit.ui:2725 modeledit.ui:2794 modeledit.ui:2863
+#: modeledit.ui:2932 modeledit.ui:3001 modeledit.ui:3070 modeledit.ui:3139
+#: modeledit.ui:3208 modeledit.ui:3277 modeledit.ui:3346 modeledit.ui:3415
+#: modeledit.ui:3484 modeledit.ui:3553 modeledit.ui:3622 modeledit.ui:3691
 msgctxt "ModelEdit|"
 msgid "INV"
 msgstr ""
 
-#: modeledit.ui:3584 modeledit.ui:9093
+#: modeledit.ui:3708 modeledit.ui:9217
 msgctxt "ModelEdit|"
 msgid "Channel"
 msgstr ""
 
-#: modeledit.ui:3606
+#: modeledit.ui:3730
 msgctxt "ModelEdit|"
 msgid "Offset"
 msgstr ""
 
-#: modeledit.ui:3628
+#: modeledit.ui:3752
 msgctxt "ModelEdit|"
 msgid "Min"
 msgstr ""
 
-#: modeledit.ui:3650
+#: modeledit.ui:3774
 msgctxt "ModelEdit|"
 msgid "Max"
 msgstr ""
 
-#: modeledit.ui:923 modeledit.ui:3672
+#: modeledit.ui:923 modeledit.ui:3796
 msgctxt "ModelEdit|"
 msgid "Invert"
 msgstr ""
 
-#: modeledit.ui:3991
+#: modeledit.ui:4115
 msgctxt "ModelEdit|"
 msgid "Curves"
 msgstr ""
 
-#: modeledit.ui:3997
+#: modeledit.ui:4121
 msgctxt "ModelEdit|"
 msgid "Curve 1"
 msgstr ""
 
-#: modeledit.ui:8652
+#: modeledit.ui:8776
 msgctxt "ModelEdit|"
 msgid "Curve 2"
 msgstr ""
 
-#: modeledit.ui:4087
+#: modeledit.ui:4211
 msgctxt "ModelEdit|"
 msgid "Curve 3"
 msgstr ""
 
-#: modeledit.ui:4174
+#: modeledit.ui:4298
 msgctxt "ModelEdit|"
 msgid "Curve 4"
 msgstr ""
 
-#: modeledit.ui:4261
+#: modeledit.ui:4385
 msgctxt "ModelEdit|"
 msgid "Curve 5"
 msgstr ""
 
-#: modeledit.ui:4348
+#: modeledit.ui:4472
 msgctxt "ModelEdit|"
 msgid "Curve 6"
 msgstr ""
 
-#: modeledit.ui:4435
+#: modeledit.ui:4559
 msgctxt "ModelEdit|"
 msgid "Curve 7"
 msgstr ""
 
-#: modeledit.ui:4522
+#: modeledit.ui:4646
 msgctxt "ModelEdit|"
 msgid "Curve 8"
 msgstr ""
 
-#: modeledit.ui:4609
+#: modeledit.ui:4733
 msgctxt "ModelEdit|"
 msgid "Curve 9"
 msgstr ""
 
-#: modeledit.ui:4760
+#: modeledit.ui:4884
 msgctxt "ModelEdit|"
 msgid "Curve 10"
 msgstr ""
 
-#: modeledit.ui:4911
+#: modeledit.ui:5035
 msgctxt "ModelEdit|"
 msgid "Curve 11"
 msgstr ""
 
-#: modeledit.ui:5062
+#: modeledit.ui:5186
 msgctxt "ModelEdit|"
 msgid "Curve 12"
 msgstr ""
 
-#: modeledit.ui:5213
+#: modeledit.ui:5337
 msgctxt "ModelEdit|"
 msgid "Curve 13"
 msgstr ""
 
-#: modeledit.ui:5364
+#: modeledit.ui:5488
 msgctxt "ModelEdit|"
 msgid "Curve 14"
 msgstr ""
 
-#: modeledit.ui:5515
+#: modeledit.ui:5639
 msgctxt "ModelEdit|"
 msgid "Curve 15"
 msgstr ""
 
-#: modeledit.ui:5672
+#: modeledit.ui:5796
 msgctxt "ModelEdit|"
 msgid "Curve 16"
 msgstr ""
 
-#: modeledit.ui:6090
+#: modeledit.ui:6214
 #| msgid "Clear All Mixes"
 msgctxt "ModelEdit|"
 msgid "Clear All Curves"
 msgstr ""
 
-#: modeledit.ui:8660
+#: modeledit.ui:8784
 msgctxt "ModelEdit|"
 msgid "Switches"
 msgstr ""
 
-#: modeledit.ui:8678
+#: modeledit.ui:8802
 msgctxt "ModelEdit|"
 msgid "CSwitch1"
 msgstr ""
 
-#: modeledit.ui:8694
+#: modeledit.ui:8818
 msgctxt "ModelEdit|"
 msgid "CSwitch2"
 msgstr ""
 
-#: modeledit.ui:8710
+#: modeledit.ui:8834
 msgctxt "ModelEdit|"
 msgid "CSwitch3"
 msgstr ""
 
-#: modeledit.ui:8726
+#: modeledit.ui:8850
 msgctxt "ModelEdit|"
 msgid "CSwitch4"
 msgstr ""
 
-#: modeledit.ui:8742
+#: modeledit.ui:8866
 msgctxt "ModelEdit|"
 msgid "CSwitch5"
 msgstr ""
 
-#: modeledit.ui:8818
+#: modeledit.ui:8942
 msgctxt "ModelEdit|"
 msgid "CSwitch6"
 msgstr ""
 
-#: modeledit.ui:8767
+#: modeledit.ui:8891
 msgctxt "ModelEdit|"
 msgid "Function"
 msgstr ""
 
-#: modeledit.ui:8786
+#: modeledit.ui:8910
 msgctxt "ModelEdit|"
 msgid "V1"
 msgstr ""
 
-#: modeledit.ui:8805
+#: modeledit.ui:8929
 msgctxt "ModelEdit|"
 msgid "V2"
 msgstr ""
 
-#: modeledit.ui:8831
+#: modeledit.ui:8955
 msgctxt "ModelEdit|"
 msgid "CSwitch7"
 msgstr ""
 
-#: modeledit.ui:8844
+#: modeledit.ui:8968
 msgctxt "ModelEdit|"
 msgid "CSwitch8"
 msgstr ""
 
-#: modeledit.ui:8857
+#: modeledit.ui:8981
 msgctxt "ModelEdit|"
 msgid "CSwitch9"
 msgstr ""
 
-#: modeledit.ui:8870
+#: modeledit.ui:8994
 #| msgid "CSwitch10"
 msgctxt "ModelEdit|"
 msgid "CSwitchA"
 msgstr ""
 
-#: modeledit.ui:8883
+#: modeledit.ui:9007
 #| msgid "CSwitch11"
 msgctxt "ModelEdit|"
 msgid "CSwitchB"
 msgstr ""
 
-#: modeledit.ui:8896
+#: modeledit.ui:9020
 #| msgid "CSwitch12"
 msgctxt "ModelEdit|"
 msgid "CSwitchC"
 msgstr ""
 
-#: modeledit.ui:8946
+#: modeledit.ui:9070
 msgctxt "ModelEdit|"
 msgid "AND Switch"
 msgstr ""
 
-#: modeledit.ui:8965
+#: modeledit.ui:9089
 msgctxt "ModelEdit|"
 msgid "Telemetry Value"
 msgstr ""
 
-#: modeledit.ui:9072
+#: modeledit.ui:9196
 msgctxt "ModelEdit|"
 msgid "Safety Switches"
 msgstr ""
 
-#: modeledit.ui:9115 modeledit.ui:10289
+#: modeledit.ui:9239 modeledit.ui:10413
 msgctxt "ModelEdit|"
 msgid "Switch"
 msgstr ""
 
-#: modeledit.ui:9137 modeledit.ui:10460
+#: modeledit.ui:9261 modeledit.ui:10584
 msgctxt "ModelEdit|"
 msgid "Value"
 msgstr ""
 
-#: modeledit.ui:9267
+#: modeledit.ui:9391
 msgctxt "ModelEdit|"
 msgid "Number of Voice Switches"
 msgstr ""
 
-#: modeledit.ui:9283
+#: modeledit.ui:9407
 msgctxt "ModelEdit|"
 msgid "Type"
 msgstr ""
 
-#: modeledit.ui:9386
+#: modeledit.ui:9510
 msgctxt "ModelEdit|"
 msgid "Trims"
 msgstr ""
 
-#: modeledit.ui:9495
+#: modeledit.ui:9619
 msgctxt "ModelEdit|"
 msgid "STICK 1"
 msgstr ""
 
-#: modeledit.ui:9510
+#: modeledit.ui:9634
 msgctxt "ModelEdit|"
 msgid "STICK 2"
 msgstr ""
 
-#: modeledit.ui:9600
+#: modeledit.ui:9724
 msgctxt "ModelEdit|"
 msgid "STICK 4"
 msgstr ""
 
-#: modeledit.ui:9615
+#: modeledit.ui:9739
 msgctxt "ModelEdit|"
 msgid "STICK 3"
 msgstr ""
 
-#: modeledit.ui:9685
+#: modeledit.ui:9809
 msgctxt "ModelEdit|"
 msgid "FrSky"
 msgstr ""
 
-#: modeledit.ui:9693
+#: modeledit.ui:9817
 msgctxt "ModelEdit|"
 msgid "Channel 1"
 msgstr ""
 
-#: modeledit.ui:9734 modeledit.ui:9779 modeledit.ui:9884 modeledit.ui:9929
+#: modeledit.ui:9858 modeledit.ui:9903 modeledit.ui:10008 modeledit.ui:10053
 msgctxt "ModelEdit|"
 msgid "---"
 msgstr ""
 
-#: modeledit.ui:9726 modeledit.ui:9876
+#: modeledit.ui:9850 modeledit.ui:10000
 msgctxt "ModelEdit|"
 msgid "Alarm 1"
 msgstr ""
@@ -2717,217 +2752,227 @@ msgctxt "ModelEdit|"
 msgid "Version"
 msgstr ""
 
-#: modeledit.ui:3706
+#: modeledit.ui:1403
+msgctxt "ModelEdit|"
+msgid "Fade In"
+msgstr ""
+
+#: modeledit.ui:1413
+msgctxt "ModelEdit|"
+msgid "Fade Out"
+msgstr ""
+
+#: modeledit.ui:3830
 msgctxt "ModelEdit|"
 msgid "Actual Min"
 msgstr ""
 
-#: modeledit.ui:3740
+#: modeledit.ui:3864
 msgctxt "ModelEdit|"
 msgid "Actual Max"
 msgstr ""
 
-#: modeledit.ui:8996
+#: modeledit.ui:9120
 msgctxt "ModelEdit|"
 msgid "CSwitchD"
 msgstr ""
 
-#: modeledit.ui:9009
+#: modeledit.ui:9133
 msgctxt "ModelEdit|"
 msgid "CSwitchE"
 msgstr ""
 
-#: modeledit.ui:9022
+#: modeledit.ui:9146
 msgctxt "ModelEdit|"
 msgid "CSwitchG"
 msgstr ""
 
-#: modeledit.ui:9035
+#: modeledit.ui:9159
 msgctxt "ModelEdit|"
 msgid "CSwitchH"
 msgstr ""
 
-#: modeledit.ui:9048
+#: modeledit.ui:9172
 msgctxt "ModelEdit|"
 msgid "CSwitchI"
 msgstr ""
 
-#: modeledit.ui:9061
+#: modeledit.ui:9185
 msgctxt "ModelEdit|"
 msgid "CSwitchF"
 msgstr ""
 
-#: modeledit.ui:9701 modeledit.ui:9851
+#: modeledit.ui:9825 modeledit.ui:9975
 msgctxt "ModelEdit|"
 msgid "v    volts"
 msgstr ""
 
-#: modeledit.ui:9706
+#: modeledit.ui:9830
 msgctxt "ModelEdit|"
 msgid "---  raw"
 msgstr ""
 
-#: modeledit.ui:9711
+#: modeledit.ui:9835
 msgctxt "ModelEdit|"
 msgid "V    volts x 2"
 msgstr ""
 
-#: modeledit.ui:9716
+#: modeledit.ui:9840
 msgctxt "ModelEdit|"
 msgid "A    Amps"
 msgstr ""
 
-#: modeledit.ui:9739 modeledit.ui:9784 modeledit.ui:9889 modeledit.ui:9934
+#: modeledit.ui:9863 modeledit.ui:9908 modeledit.ui:10013 modeledit.ui:10058
 msgctxt "ModelEdit|"
 msgid "Yellow"
 msgstr ""
 
-#: modeledit.ui:9744 modeledit.ui:9789 modeledit.ui:9894 modeledit.ui:9939
+#: modeledit.ui:9868 modeledit.ui:9913 modeledit.ui:10018 modeledit.ui:10063
 msgctxt "ModelEdit|"
 msgid "Orange"
 msgstr ""
 
-#: modeledit.ui:9749 modeledit.ui:9794 modeledit.ui:9899 modeledit.ui:9944
+#: modeledit.ui:9873 modeledit.ui:9918 modeledit.ui:10023 modeledit.ui:10068
 msgctxt "ModelEdit|"
 msgid "Red"
 msgstr ""
 
-#: modeledit.ui:9758 modeledit.ui:9803 modeledit.ui:9908 modeledit.ui:9953
+#: modeledit.ui:9882 modeledit.ui:9927 modeledit.ui:10032 modeledit.ui:10077
 msgctxt "ModelEdit|"
 msgid "<"
 msgstr ""
 
-#: modeledit.ui:9763 modeledit.ui:9808 modeledit.ui:9913 modeledit.ui:9958
+#: modeledit.ui:9887 modeledit.ui:9932 modeledit.ui:10037 modeledit.ui:10082
 msgctxt "ModelEdit|"
 msgid ">"
 msgstr ""
 
-#: modeledit.ui:9771 modeledit.ui:9921
+#: modeledit.ui:9895 modeledit.ui:10045
 msgctxt "ModelEdit|"
 msgid "Alarm 2"
 msgstr ""
 
-#: modeledit.ui:9843
+#: modeledit.ui:9967
 msgctxt "ModelEdit|"
 msgid "Channel 2"
 msgstr ""
 
-#: modeledit.ui:9856
+#: modeledit.ui:9980
 msgctxt "ModelEdit|"
 msgid "---   raw"
 msgstr ""
 
-#: modeledit.ui:9861
+#: modeledit.ui:9985
 msgctxt "ModelEdit|"
 msgid "V     volts x 2"
 msgstr ""
 
-#: modeledit.ui:9866
+#: modeledit.ui:9990
 msgctxt "ModelEdit|"
 msgid "A     Amps"
 msgstr ""
 
-#: modeledit.ui:10019
+#: modeledit.ui:10143
 msgctxt "ModelEdit|"
 msgid "FrSky Hub"
 msgstr ""
 
-#: modeledit.ui:10024
+#: modeledit.ui:10148
 msgctxt "ModelEdit|"
 msgid "WingShadow How High"
 msgstr ""
 
-#: modeledit.ui:10038
+#: modeledit.ui:10162
 msgctxt "ModelEdit|"
 msgid "Units"
 msgstr ""
 
-#: modeledit.ui:10055
+#: modeledit.ui:10179
 msgctxt "ModelEdit|"
 msgid "Metric"
 msgstr ""
 
-#: modeledit.ui:10060
+#: modeledit.ui:10184
 msgctxt "ModelEdit|"
 msgid "Imperial"
 msgstr ""
 
-#: modeledit.ui:10074
+#: modeledit.ui:10198
 msgctxt "ModelEdit|"
 msgid "Num Blades"
 msgstr ""
 
-#: modeledit.ui:10103
+#: modeledit.ui:10227
 msgctxt "ModelEdit|"
 msgid "GpsAltMain"
 msgstr ""
 
-#: modeledit.ui:10130
+#: modeledit.ui:10254
 msgctxt "ModelEdit|"
 msgid "Custom Telemetry 1"
 msgstr ""
 
-#: modeledit.ui:10140
+#: modeledit.ui:10264
 msgctxt "ModelEdit|"
 msgid "Custom Telemetry 3"
 msgstr ""
 
-#: modeledit.ui:10150
+#: modeledit.ui:10274
 msgctxt "ModelEdit|"
 msgid "Custom Telemetry 5"
 msgstr ""
 
-#: modeledit.ui:10160
+#: modeledit.ui:10284
 msgctxt "ModelEdit|"
 msgid "Custom Telemetry 2"
 msgstr ""
 
-#: modeledit.ui:10170
+#: modeledit.ui:10294
 msgctxt "ModelEdit|"
 msgid "Custom Telemetry 4"
 msgstr ""
 
-#: modeledit.ui:10180
+#: modeledit.ui:10304
 msgctxt "ModelEdit|"
 msgid "Custom Telemetry 6"
 msgstr ""
 
-#: modeledit.ui:10218
+#: modeledit.ui:10342
 msgctxt "ModelEdit|"
 msgid "FAS current offset"
 msgstr ""
 
-#: modeledit.ui:10254
+#: modeledit.ui:10378
 msgctxt "ModelEdit|"
 msgid "Vario Source"
 msgstr ""
 
-#: modeledit.ui:10265
+#: modeledit.ui:10389
 msgctxt "ModelEdit|"
 msgid "----"
 msgstr ""
 
-#: modeledit.ui:10270
+#: modeledit.ui:10394
 msgctxt "ModelEdit|"
 msgid "Vspd"
 msgstr ""
 
-#: modeledit.ui:10275
+#: modeledit.ui:10399
 msgctxt "ModelEdit|"
 msgid "A2"
 msgstr ""
 
-#: modeledit.ui:10308
+#: modeledit.ui:10432
 msgctxt "ModelEdit|"
 msgid "Sensitivity"
 msgstr ""
 
-#: modeledit.ui:10347
+#: modeledit.ui:10471
 msgctxt "ModelEdit|"
 msgid "Sink Tones Off"
 msgstr ""
 
-#: modeledit.ui:10373
+#: modeledit.ui:10497
 msgctxt "ModelEdit|"
 msgid "Templates"
 msgstr ""
@@ -3007,146 +3052,146 @@ msgctxt "ModelEdit|"
 msgid " Warn(%1)"
 msgstr ""
 
-#: modeledit.cpp:229 modeledit.cpp:329 modeledit.cpp:1461 modeledit.cpp:1462
+#: modeledit.cpp:229 modeledit.cpp:329 modeledit.cpp:1486 modeledit.cpp:1487
 #, qt-format
 msgctxt "ModelEdit|"
 msgid "%1"
 msgstr ""
 
-#: modeledit.cpp:1839 modeledit.cpp:1853
+#: modeledit.cpp:1864 modeledit.cpp:1878
 #, qt-format
 msgctxt "ModelEdit|"
 msgid "%1.%2"
 msgstr ""
 
-#: modeledit.cpp:3585
+#: modeledit.cpp:3610
 msgctxt "ModelEdit|"
 msgid "Delete Selected Mixes?"
 msgstr ""
 
-#: modeledit.cpp:3737
+#: modeledit.cpp:3762
 msgctxt "ModelEdit|"
 msgid "&Add"
 msgstr ""
 
-#: modeledit.cpp:3737
+#: modeledit.cpp:3762
 msgctxt "ModelEdit|"
 msgid "Ctrl+A"
 msgstr ""
 
-#: modeledit.cpp:3738
+#: modeledit.cpp:3763
 msgctxt "ModelEdit|"
 msgid "&Edit"
 msgstr ""
 
-#: modeledit.cpp:3738
+#: modeledit.cpp:3763
 msgctxt "ModelEdit|"
 msgid "Enter"
 msgstr ""
 
-#: modeledit.cpp:3740
+#: modeledit.cpp:3765
 msgctxt "ModelEdit|"
 msgid "&Delete"
 msgstr ""
 
-#: modeledit.cpp:3740
+#: modeledit.cpp:3765
 msgctxt "ModelEdit|"
 msgid "Delete"
 msgstr ""
 
-#: modeledit.cpp:3741
+#: modeledit.cpp:3766
 msgctxt "ModelEdit|"
 msgid "&Copy"
 msgstr ""
 
-#: modeledit.cpp:3741
+#: modeledit.cpp:3766
 msgctxt "ModelEdit|"
 msgid "Ctrl+C"
 msgstr ""
 
-#: modeledit.cpp:3742
+#: modeledit.cpp:3767
 msgctxt "ModelEdit|"
 msgid "&Cut"
 msgstr ""
 
-#: modeledit.cpp:3742
+#: modeledit.cpp:3767
 msgctxt "ModelEdit|"
 msgid "Ctrl+X"
 msgstr ""
 
-#: modeledit.cpp:3743
+#: modeledit.cpp:3768
 msgctxt "ModelEdit|"
 msgid "&Paste"
 msgstr ""
 
-#: modeledit.cpp:3743
+#: modeledit.cpp:3768
 msgctxt "ModelEdit|"
 msgid "Ctrl+V"
 msgstr ""
 
-#: modeledit.cpp:3744
+#: modeledit.cpp:3769
 msgctxt "ModelEdit|"
 msgid "Du&plicate"
 msgstr ""
 
-#: modeledit.cpp:3746
+#: modeledit.cpp:3771
 msgctxt "ModelEdit|"
 msgid "Move Up"
 msgstr ""
 
-#: modeledit.cpp:115 modeledit.cpp:3746
+#: modeledit.cpp:115 modeledit.cpp:3771
 msgctxt "ModelEdit|"
 msgid "Ctrl+Up"
 msgstr ""
 
-#: modeledit.cpp:3747
+#: modeledit.cpp:3772
 msgctxt "ModelEdit|"
 msgid "Move Down"
 msgstr ""
 
-#: modeledit.cpp:118 modeledit.cpp:3747
+#: modeledit.cpp:118 modeledit.cpp:3772
 msgctxt "ModelEdit|"
 msgid "Ctrl+Down"
 msgstr ""
 
-#: modeledit.cpp:3313
+#: modeledit.cpp:3338
 #, qt-format
 msgctxt "ModelEdit|"
 msgid "Editing curve %1"
 msgstr ""
 
-#: modeledit.cpp:4086
+#: modeledit.cpp:4111
 msgctxt "ModelEdit|"
 msgid "Apply Template?"
 msgstr ""
 
-#: modeledit.cpp:4086
+#: modeledit.cpp:4111
 #, qt-format
 msgctxt "ModelEdit|"
 msgid "Apply template \"%1\"?"
 msgstr ""
 
-#: modeledit.cpp:4113
+#: modeledit.cpp:4138
 msgctxt "ModelEdit|"
 msgid "Clear Mixes?"
 msgstr ""
 
-#: modeledit.cpp:4113
+#: modeledit.cpp:4138
 msgctxt "ModelEdit|"
 msgid "Really clear all the mixes?"
 msgstr ""
 
-#: modeledit.cpp:4125
+#: modeledit.cpp:4150
 msgctxt "ModelEdit|"
 msgid "Clear Curves?"
 msgstr ""
 
-#: modeledit.cpp:4125
+#: modeledit.cpp:4150
 msgctxt "ModelEdit|"
 msgid "Really clear all the curves?"
 msgstr ""
 
-#: modeledit.cpp:3744
+#: modeledit.cpp:3769
 msgctxt "ModelEdit|"
 msgid "Ctrl+U"
 msgstr ""
@@ -3156,26 +3201,26 @@ msgctxt "QObject|"
 msgid "Checking for updates..."
 msgstr ""
 
-#: helpers.cpp:184 helpers.cpp:246 modeledit.cpp:2177
+#: helpers.cpp:184 helpers.cpp:246 modeledit.cpp:2202
 #, qt-format
 msgctxt "QObject|"
 msgid "GV%1"
 msgstr ""
 
-#: helpers.cpp:1183 helpers.cpp:1188 helpers.cpp:1205 helpers.cpp:1225
-#: helpers.cpp:1248 helpers.cpp:1272 helpers.cpp:1317 helpers.cpp:1322
-#: helpers.cpp:1336
+#: helpers.cpp:1185 helpers.cpp:1190 helpers.cpp:1207 helpers.cpp:1231
+#: helpers.cpp:1254 helpers.cpp:1279 helpers.cpp:1337 helpers.cpp:1342
+#: helpers.cpp:1356
 msgctxt "QObject|"
 msgid "Error"
 msgstr ""
 
-#: helpers.cpp:1183 helpers.cpp:1317
+#: helpers.cpp:1185 helpers.cpp:1337
 #, qt-format
 msgctxt "QObject|"
 msgid "Unable to find file %1!"
 msgstr ""
 
-#: helpers.cpp:1189 helpers.cpp:1323
+#: helpers.cpp:1191 helpers.cpp:1343
 #, qt-format
 msgctxt "QObject|"
 msgid ""
@@ -3183,25 +3228,25 @@ msgid ""
 "%2."
 msgstr ""
 
-#: helpers.cpp:1206
+#: helpers.cpp:1208
 #, qt-format
 msgctxt "QObject|"
 msgid "Invalid EEPE File Format %1"
 msgstr ""
 
-#: helpers.cpp:1225
+#: helpers.cpp:1231
 #, qt-format
 msgctxt "QObject|"
 msgid "Error reading file %1!"
 msgstr ""
 
-#: helpers.cpp:1248
+#: helpers.cpp:1254
 #, qt-format
 msgctxt "QObject|"
 msgid "Checksum Error reading file %1!"
 msgstr ""
 
-#: helpers.cpp:1273
+#: helpers.cpp:1280
 #, qt-format
 msgctxt "QObject|"
 msgid ""
@@ -3209,7 +3254,7 @@ msgid ""
 "%2."
 msgstr ""
 
-#: helpers.cpp:1337
+#: helpers.cpp:1357
 #, qt-format
 msgctxt "QObject|"
 msgid "Error reading file %1:%2. %3 %4"
@@ -3587,7 +3632,7 @@ msgctxt "burnConfigDialog|"
 msgid "Select Location"
 msgstr ""
 
-#: burnconfigdialog.cpp:196
+#: burnconfigdialog.cpp:201
 #| msgid ""
 #| "This will set the fuses to protect the EEPROM from being deleted when "
 #| "flashing.<br>"
@@ -3597,13 +3642,13 @@ msgid ""
 "flashing new Firmware. "
 msgstr ""
 
-#: burnconfigdialog.cpp:198
+#: burnconfigdialog.cpp:203
 #| msgid "This will reset the fuses to the factory settings.<br>"
 msgctxt "burnConfigDialog|"
 msgid "This will reset the fuses to the factory settings. "
 msgstr ""
 
-#: burnconfigdialog.cpp:200
+#: burnconfigdialog.cpp:205
 #| msgid "Before continuing make sure your programmer works reliably.<br>"
 msgctxt "burnConfigDialog|"
 msgid ""
@@ -3611,19 +3656,19 @@ msgid ""
 "works reliably.<p>"
 msgstr ""
 
-#: burnconfigdialog.cpp:201
+#: burnconfigdialog.cpp:206
 msgctxt "burnConfigDialog|"
 msgid ""
 "<font color=red>DO NOT DISCONNECT OR POWER DOWN UNTIL THE PROGRAM "
 "COMPLETES!</font><p>"
 msgstr ""
 
-#: burnconfigdialog.cpp:202
+#: burnconfigdialog.cpp:207
 msgctxt "burnConfigDialog|"
 msgid "Click 'Ok' to continue or 'Cancel' to quit."
 msgstr ""
 
-#: burnconfigdialog.cpp:204
+#: burnconfigdialog.cpp:209
 msgctxt "burnConfigDialog|"
 msgid "eePe"
 msgstr ""
@@ -4555,7 +4600,7 @@ msgctxt "simulatorDialog|"
 msgid "-100.1"
 msgstr ""
 
-#: simulatordialog.cpp:115 simulatordialog.cpp:331
+#: simulatordialog.cpp:128 simulatordialog.cpp:344
 msgctxt "simulatorDialog|"
 msgid "Simulating "
 msgstr ""
@@ -4565,33 +4610,150 @@ msgctxt "telemetryDialog|"
 msgid "Dialog"
 msgstr ""
 
-#: telemetryDialog.ui:77
+#: telemetryDialog.ui:30
+msgctxt "telemetryDialog|"
+msgid "Telemetry"
+msgstr ""
+
+#: telemetryDialog.ui:83
 msgctxt "telemetryDialog|"
 msgid "WS How High"
 msgstr ""
 
-#: SimSerialDialog.ui:36 telemetryDialog.ui:90
+#: telemetryDialog.ui:115
+msgctxt "telemetryDialog|"
+msgid "Module"
+msgstr ""
+
+#: telemetryDialog.ui:179 telemetryDialog.ui:252 telemetryDialog.ui:325
+#: telemetryDialog.ui:398
+msgctxt "telemetryDialog|"
+msgid ">"
+msgstr ""
+
+#: telemetryDialog.ui:184 telemetryDialog.ui:257 telemetryDialog.ui:330
+#: telemetryDialog.ui:403
+msgctxt "telemetryDialog|"
+msgid "<"
+msgstr ""
+
+#: telemetryDialog.ui:198
+msgctxt "telemetryDialog|"
+msgid "A1(1)"
+msgstr ""
+
+#: telemetryDialog.ui:209 telemetryDialog.ui:282 telemetryDialog.ui:355
+#: telemetryDialog.ui:428 telemetryDialog.ui:487 telemetryDialog.ui:553
+msgctxt "telemetryDialog|"
+msgid "Disabled"
+msgstr ""
+
+#: telemetryDialog.ui:214 telemetryDialog.ui:287 telemetryDialog.ui:360
+#: telemetryDialog.ui:433 telemetryDialog.ui:492 telemetryDialog.ui:558
+msgctxt "telemetryDialog|"
+msgid "Yellow"
+msgstr ""
+
+#: telemetryDialog.ui:219 telemetryDialog.ui:292 telemetryDialog.ui:365
+#: telemetryDialog.ui:438 telemetryDialog.ui:497 telemetryDialog.ui:563
+msgctxt "telemetryDialog|"
+msgid "Orange"
+msgstr ""
+
+#: telemetryDialog.ui:224 telemetryDialog.ui:297 telemetryDialog.ui:370
+#: telemetryDialog.ui:443 telemetryDialog.ui:502 telemetryDialog.ui:568
+msgctxt "telemetryDialog|"
+msgid "Red"
+msgstr ""
+
+#: telemetryDialog.ui:271
+msgctxt "telemetryDialog|"
+msgid "A1(2)"
+msgstr ""
+
+#: telemetryDialog.ui:344
+msgctxt "telemetryDialog|"
+msgid "A2(1)"
+msgstr ""
+
+#: telemetryDialog.ui:417
+msgctxt "telemetryDialog|"
+msgid "A2(2)"
+msgstr ""
+
+#: telemetryDialog.ui:476
+msgctxt "telemetryDialog|"
+msgid "Rx RSSI"
+msgstr ""
+
+#: telemetryDialog.ui:510
+msgctxt "telemetryDialog|"
+msgid "Read Alarms"
+msgstr ""
+
+#: telemetryDialog.ui:542
+msgctxt "telemetryDialog|"
+msgid "Tx RSSI"
+msgstr ""
+
+#: telemetryDialog.ui:576
+msgctxt "telemetryDialog|"
+msgid "Set Alarms"
+msgstr ""
+
+#: telemetryDialog.ui:593
+msgctxt "telemetryDialog|"
+msgid "Alt"
+msgstr ""
+
+#: telemetryDialog.ui:606
+msgctxt "telemetryDialog|"
+msgid "Alt(d)"
+msgstr ""
+
+#: telemetryDialog.ui:634
+msgctxt "telemetryDialog|"
+msgid "RxRSSI"
+msgstr ""
+
+#: telemetryDialog.ui:673
+msgctxt "telemetryDialog|"
+msgid "A1"
+msgstr ""
+
+#: telemetryDialog.ui:686
+msgctxt "telemetryDialog|"
+msgid "TxRSSI"
+msgstr ""
+
+#: telemetryDialog.ui:725
+msgctxt "telemetryDialog|"
+msgid "A2"
+msgstr ""
+
+#: SimSerialDialog.ui:36 telemetryDialog.ui:777
 msgctxt "telemetryDialog|"
 msgid "Com Port"
 msgstr ""
 
-#: SimSerialDialog.ui:49 telemetryDialog.ui:103
+#: SimSerialDialog.ui:49 telemetryDialog.ui:96 telemetryDialog.ui:127
 msgctxt "telemetryDialog|"
 msgid "Start"
 msgstr ""
 
-#: SimSerialDialog.ui:62 telemetryDialog.ui:116
+#: SimSerialDialog.ui:62 telemetryDialog.ui:109 telemetryDialog.ui:140
 msgctxt "telemetryDialog|"
 msgid "Exit"
 msgstr ""
 
-#: telemetry.cpp:28 telemetry.cpp:116
+#: telemetry.cpp:100 telemetry.cpp:279 telemetry.cpp:435 telemetry.cpp:441
+#: telemetry.cpp:442
 #, qt-format
 msgctxt "telemetryDialog|"
 msgid "%1"
 msgstr ""
 
-#: telemetry.cpp:98
+#: telemetry.cpp:215 telemetry.cpp:262
 msgctxt "telemetryDialog|"
 msgid "Com Port Unavailable"
 msgstr ""

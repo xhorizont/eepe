@@ -22,6 +22,7 @@ MixerDialog::MixerDialog(QWidget *parent, MixData *mixdata, int stickMode, QStri
     ui->sourceCB->addItem("GV5 ");
     ui->sourceCB->addItem("GV6 ");
     ui->sourceCB->addItem("GV7 ");
+    ui->sourceCB->addItem("THIS");
     ui->sourceCB->setCurrentIndex(md->srcRaw);
 
     ui->sourceCB->removeItem(0);
@@ -92,6 +93,12 @@ MixerDialog::MixerDialog(QWidget *parent, MixData *mixdata, int stickMode, QStri
     mixCommennt = comment;
     ui->mixerComment->setPlainText(mixCommennt->trimmed());
 
+		ui->Fm0CB->setChecked( !(md->modeControl & 1) ) ;
+		ui->Fm1CB->setChecked( !(md->modeControl & 2) ) ;
+		ui->Fm2CB->setChecked( !(md->modeControl & 4) ) ;
+		ui->Fm3CB->setChecked( !(md->modeControl & 8) ) ;
+		ui->Fm4CB->setChecked( !(md->modeControl & 16) ) ;
+
     valuesChanged();
 
     connect(ui->sourceCB,SIGNAL(currentIndexChanged(int)),this,SLOT(valuesChanged()));
@@ -116,6 +123,11 @@ MixerDialog::MixerDialog(QWidget *parent, MixData *mixdata, int stickMode, QStri
     connect(ui->FMtrimChkB,SIGNAL(stateChanged(int)),this,SLOT(valuesChanged()));
     connect(ui->mixerComment,SIGNAL(textChanged()),this,SLOT(valuesChanged()));
     connect(ui->lateOffsetChkB,SIGNAL(stateChanged(int)),this,SLOT(valuesChanged()));
+    connect(ui->Fm0CB,SIGNAL(stateChanged(int)),this,SLOT(valuesChanged()));
+    connect(ui->Fm1CB,SIGNAL(stateChanged(int)),this,SLOT(valuesChanged()));
+    connect(ui->Fm2CB,SIGNAL(stateChanged(int)),this,SLOT(valuesChanged()));
+    connect(ui->Fm3CB,SIGNAL(stateChanged(int)),this,SLOT(valuesChanged()));
+    connect(ui->Fm4CB,SIGNAL(stateChanged(int)),this,SLOT(valuesChanged()));
 }
 
 MixerDialog::~MixerDialog()
@@ -204,6 +216,13 @@ void MixerDialog::valuesChanged()
 			}
 		}
 
+		int j = 31 ;
+		j &= ~( ui->Fm0CB->checkState() ? 1 : 0 ) ;
+		j &= ~( ui->Fm1CB->checkState() ? 2 : 0 ) ;
+		j &= ~( ui->Fm2CB->checkState() ? 4 : 0 ) ;
+		j &= ~( ui->Fm3CB->checkState() ? 8 : 0 ) ;
+		j &= ~( ui->Fm4CB->checkState() ? 16 : 0 ) ;
+		md->modeControl = j ;
 
     if(ui->FMtrimChkB->checkState())
         ui->offset_label->setText("FmTrimVal");

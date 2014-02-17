@@ -671,7 +671,7 @@ void populateSwitchShortCB(QComboBox *b, int value, int eepromType)
     b->setMaxVisibleItems(10);
 }
 
-void populatePhasetrim(QComboBox *b, int which, int value)
+int populatePhasetrim(QComboBox *b, int which, int value)
 {	// which i s0 for FP1, 1 for FP2 etc.
 	char name[4] ;
 	name[0] = 'F' ;
@@ -707,6 +707,7 @@ void populatePhasetrim(QComboBox *b, int which, int value)
 	}
 	b->setCurrentIndex(value);
 	b->setMaxVisibleItems( 7 ) ;
+	return value ;
 }
 
 int decodePhaseTrim( int16_t *existing, int which, int index )
@@ -1083,9 +1084,9 @@ QString getTimerMode(int tm, int eepromType )
 
 #define MODI_STR  "RUD ELE THR AIL RUD THR ELE AIL AIL ELE THR RUD AIL THR ELE RUD "
 #ifdef SKY    
-#define SRCP_STR  "P1  P2  P3  HALFFULLCYC1CYC2CYC3PPM1PPM2PPM3PPM4PPM5PPM6PPM7PPM8CH1 CH2 CH3 CH4 CH5 CH6 CH7 CH8 CH9 CH10CH11CH12CH13CH14CH15CH16CH17CH18CH19CH20CH21CH22CH23CH243POSGV1 GV2 GV3 GV4 GV5 "
+#define SRCP_STR  "P1  P2  P3  HALFFULLCYC1CYC2CYC3PPM1PPM2PPM3PPM4PPM5PPM6PPM7PPM8CH1 CH2 CH3 CH4 CH5 CH6 CH7 CH8 CH9 CH10CH11CH12CH13CH14CH15CH16CH17CH18CH19CH20CH21CH22CH23CH243POSGV1 GV2 GV3 GV4 GV5 GV6 GV7 THIS"
 #else
-#define SRCP_STR  "P1  P2  P3  HALFFULLCYC1CYC2CYC3PPM1PPM2PPM3PPM4PPM5PPM6PPM7PPM8CH1 CH2 CH3 CH4 CH5 CH6 CH7 CH8 CH9 CH10CH11CH12CH13CH14CH15CH163POSGV1 GV2 GV3 GV4 GV5 "
+#define SRCP_STR  "P1  P2  P3  HALFFULLCYC1CYC2CYC3PPM1PPM2PPM3PPM4PPM5PPM6PPM7PPM8CH1 CH2 CH3 CH4 CH5 CH6 CH7 CH8 CH9 CH10CH11CH12CH13CH14CH15CH163POSGV1 GV2 GV3 GV4 GV5 GV6 GV7 THIS"
 #endif
 
 QString getSourceStr(int stickMode, int idx, int modelVersion )
@@ -1174,6 +1175,7 @@ QString iHEXLine(quint8 * data, quint16 addr, quint8 len)
 
 int loadiHEX(QWidget *parent, QString fileName, quint8 * data, int datalen, QString header)
 {
+  int offset = 0 ;
     //load from intel hex type file
     QFile file(fileName);
     int finalSize = 0;
@@ -1219,6 +1221,10 @@ int loadiHEX(QWidget *parent, QString fileName, quint8 * data, int datalen, QStr
         int byteCount = getValueFromLine(line,1);
         int address = getValueFromLine(line,3,4);
         int recType = getValueFromLine(line,7);
+				if (recType==0x02)
+				{
+        	offset+=0x010000;
+				}
 
         if(byteCount<0 || address<0 || recType<0)
         {
@@ -1250,9 +1256,9 @@ int loadiHEX(QWidget *parent, QString fileName, quint8 * data, int datalen, QStr
             return 0;
         }
 
-        if((recType == 0x00) && ((address+byteCount)<=datalen)) //data record - ba holds record
+        if((recType == 0x00) && ((address+offset+byteCount)<=datalen)) //data record - ba holds record
         {
-            memcpy(&data[address],ba.data(),byteCount);
+            memcpy(&data[address+offset],ba.data(),byteCount);
             finalSize += byteCount;
         }
 
@@ -1264,6 +1270,7 @@ int loadiHEX(QWidget *parent, QString fileName, quint8 * data, int datalen, QStr
 
 bool saveiHEX(QWidget *parent, QString fileName, quint8 * data, int datalen, QString header, int notesIndex)
 {
+  int nextbank = 1;
     QFile file(fileName);
 
 
@@ -1290,6 +1297,19 @@ bool saveiHEX(QWidget *parent, QString fileName, quint8 * data, int datalen, QSt
 
     while (addr<datalen)
     {
+	    if (addr>(nextbank*0x010000)-1)
+			{
+  			QString str = QString(":02000002"); //write record type 2 record
+  			quint8 chkSum = 0;
+  			chkSum = -2; //-bytecount; recordtype is zero
+  			chkSum -= 2; // type 2 record type
+  			str += QString("%1000").arg((nextbank&0x0f)<<4,1,16,QChar('0'));
+  			chkSum -= ((nextbank&0x0f)<<4); // type 2 record type
+  			str += QString("%1").arg(chkSum, 2, 16, QChar('0'));
+        out << str.toUpper() << "\n";
+    	  nextbank++;
+				data += 0x010000 ;
+    	}
         int llen = 32;
         if((datalen-addr)<llen)
             llen = datalen-addr;
@@ -1367,7 +1387,7 @@ bool getSplashHEX(QString fileName, uchar * b, QWidget *parent)
     if(!loadiHEX(parent, fileName, (quint8*)&temp, HEX_FILE_SIZE, ""))
         return false;
 
-    QByteArray rawData = QByteArray::fromRawData((const char *)&temp, HEX_FILE_SIZE);
+    QByteArray rawData = QByteArray::fromRawData((const char *)&temp, 10000);
     QString mark;
     mark.clear();
     mark.append(SPLASH_MARKER);
@@ -1585,23 +1605,41 @@ QString FindErskyPath( int type )
     QString eepromfile;
     QString fsname;
 #if defined WIN32 || !defined __GNUC__
-    foreach( QFileInfo drive, QDir::drives() ) {
+    foreach( QFileInfo drive, QDir::drives() )
+		{
       WCHAR szVolumeName[256] ;
       WCHAR szFileSystemName[256];
       DWORD dwSerialNumber = 0;
       DWORD dwMaxFileNameLength=256;
       DWORD dwFileSystemFlags=0;
       bool ret = GetVolumeInformationW( (WCHAR *) drive.absolutePath().utf16(),szVolumeName,256,&dwSerialNumber,&dwMaxFileNameLength,&dwFileSystemFlags,szFileSystemName,256);
-      if(ret) {
+      if(ret)
+			{
         QString vName=QString::fromUtf16 ( (const ushort *) szVolumeName) ;
-        if (vName.contains("ERSKY_9X")) {
+        if (vName.contains("ERSKY_9X"))
+				{
           eepromfile=drive.absolutePath();
 					if ( eepromfile.right(1) == "/" )
 					{
 						eepromfile = eepromfile.left( eepromfile.size() - 1 ) ;
 					}
           eepromfile.append( type ? "/FIRMWARE.BIN" : "/ERSKY9X.BIN");
-          if (QFile::exists(eepromfile)) {
+          if (QFile::exists(eepromfile))
+					{
+            pathcount++;
+            path=eepromfile;
+          }
+        }
+				else if (vName.contains("TARANIS"))
+				{
+          eepromfile=drive.absolutePath();
+					if ( eepromfile.right(1) == "/" )
+					{
+						eepromfile = eepromfile.left( eepromfile.size() - 1 ) ;
+					}
+          eepromfile.append( type ? "/FIRMWARE.BIN" : "/TARANIS.BIN");
+          if (QFile::exists(eepromfile))
+					{
             pathcount++;
             path=eepromfile;
           }
@@ -1611,22 +1649,36 @@ QString FindErskyPath( int type )
 #else
     struct mount_entry *entry;
     entry = read_file_system_list(true);
-    while (entry != NULL) {
-      if (!drives.contains(entry->me_devname)) {
+    while (entry != NULL)
+		{
+      if (!drives.contains(entry->me_devname))
+			{
+    		QString saveeepromfile ;
         drives.append(entry->me_devname);
         eepromfile=entry->me_mountdir;
-
+				saveeepromfile = eepromfile ;
         eepromfile.append( type ? "/FIRMWARE.BIN" : "/ERSKY9X.BIN");
 //  #if !defined __APPLE__ && !defined WIN32
 //        QString fstype=entry->me_type;
 //        qDebug() << fstype;
 //        if (QFile::exists(eepromfile) && fstype.contains("fat") ) {
 //  #else
-        if (QFile::exists(eepromfile)) {
+        if (QFile::exists(eepromfile))
+				{
 //  #endif
           pathcount++;
           path=eepromfile;
         }
+				else
+				{
+					eepromfile = saveeepromfile ;
+        	eepromfile.append( type ? "/FIRMWARE.BIN" : "/TARANIS.BIN");
+	        if (QFile::exists(eepromfile))
+					{
+	          pathcount++;
+  	        path=eepromfile;
+    	    }
+				}
       }
       entry = entry->me_next; ;
     }

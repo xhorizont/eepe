@@ -852,6 +852,14 @@ void ModelEdit::tabPhase()
 	connect(ui->FP4_EleCB,SIGNAL(currentIndexChanged(int)),this,SLOT(phaseEdited())); 
 	connect(ui->FP4_ThrCB,SIGNAL(currentIndexChanged(int)),this,SLOT(phaseEdited())); 
 	connect(ui->FP4_AilCB,SIGNAL(currentIndexChanged(int)),this,SLOT(phaseEdited())); 
+	connect(ui->FM1FadeIn,SIGNAL(valueChanged(double)),this,SLOT(phaseEdited())); 
+	connect(ui->FM1FadeOut,SIGNAL(valueChanged(double)),this,SLOT(phaseEdited())); 
+	connect(ui->FM2FadeIn,SIGNAL(valueChanged(double)),this,SLOT(phaseEdited())); 
+	connect(ui->FM2FadeOut,SIGNAL(valueChanged(double)),this,SLOT(phaseEdited())); 
+	connect(ui->FM3FadeIn,SIGNAL(valueChanged(double)),this,SLOT(phaseEdited())); 
+	connect(ui->FM3FadeOut,SIGNAL(valueChanged(double)),this,SLOT(phaseEdited())); 
+	connect(ui->FM4FadeIn,SIGNAL(valueChanged(double)),this,SLOT(phaseEdited())); 
+	connect(ui->FM4FadeOut,SIGNAL(valueChanged(double)),this,SLOT(phaseEdited())); 
 }
 
 void ModelEdit::updatePhaseTab()
@@ -939,6 +947,15 @@ void ModelEdit::updatePhaseTab()
 	ui->FP4eleTrimSB->setDisabled( true ) ;
 	ui->FP4thrTrimSB->setDisabled( true ) ;
 	ui->FP4ailTrimSB->setDisabled( true ) ;
+
+	ui->FM1FadeIn->setValue(g_model.phaseData[0].fadeIn/2.0) ;
+	ui->FM1FadeOut->setValue(g_model.phaseData[0].fadeOut/2.0) ;
+	ui->FM2FadeIn->setValue(g_model.phaseData[1].fadeIn/2.0) ;
+	ui->FM2FadeOut->setValue(g_model.phaseData[1].fadeOut/2.0) ;
+	ui->FM3FadeIn->setValue(g_model.phaseData[2].fadeIn/2.0) ;
+	ui->FM3FadeOut->setValue(g_model.phaseData[2].fadeOut/2.0) ;
+	ui->FM4FadeIn->setValue(g_model.phaseData[3].fadeIn/2.0) ;
+	ui->FM4FadeOut->setValue(g_model.phaseData[3].fadeOut/2.0) ;
 }
 
 void ModelEdit::phaseEdited()
@@ -989,6 +1006,14 @@ void ModelEdit::phaseEdited()
 	decodePhaseTrim( &g_model.phaseData[3].trim[2], 4, ui->FP4_ThrCB->currentIndex() ) ;
 	decodePhaseTrim( &g_model.phaseData[3].trim[3], 4, ui->FP4_AilCB->currentIndex() ) ;
 
+	g_model.phaseData[0].fadeIn = ( ui->FM1FadeIn->value() + 0.01 ) * 2 ;
+	g_model.phaseData[0].fadeOut = ( ui->FM1FadeOut->value() + 0.01 ) * 2 ;
+	g_model.phaseData[1].fadeIn = ( ui->FM2FadeIn->value() + 0.01 ) * 2 ;
+	g_model.phaseData[1].fadeOut = ( ui->FM2FadeOut->value() + 0.01 ) * 2 ;
+	g_model.phaseData[2].fadeIn = ( ui->FM3FadeIn->value() + 0.01 ) * 2 ;
+	g_model.phaseData[2].fadeOut = ( ui->FM3FadeOut->value() + 0.01 ) * 2 ;
+	g_model.phaseData[3].fadeIn = ( ui->FM4FadeIn->value() + 0.01 ) * 2 ;
+	g_model.phaseData[3].fadeOut = ( ui->FM4FadeOut->value() + 0.01 ) * 2 ;
 
 
 
@@ -2606,10 +2631,10 @@ void ModelEdit::switchesEdited()
 
 void ModelEdit::tabTrims()
 {
-    ui->spinBox_S1->setValue(g_model.trim[0]);//CONVERT_MODE(RUD)-1]);
-    ui->spinBox_S2->setValue(g_model.trim[1]);//CONVERT_MODE(ELE)-1]);
-    ui->spinBox_S3->setValue(g_model.trim[2]);//CONVERT_MODE(THR)-1]);
-    ui->spinBox_S4->setValue(g_model.trim[3]);//CONVERT_MODE(AIL)-1]);
+		ui->spinBox_S1->setValue(g_model.trim[(g_eeGeneral.stickMode>1)   ? 3 : 0]);//CONVERT_MODE(RUD)-1]);
+    ui->spinBox_S2->setValue(g_model.trim[(g_eeGeneral.stickMode & 1) ? 2 : 1]);//CONVERT_MODE(ELE)-1]);
+    ui->spinBox_S3->setValue(g_model.trim[(g_eeGeneral.stickMode & 1) ? 1 : 2]);//CONVERT_MODE(THR)-1]);
+    ui->spinBox_S4->setValue(g_model.trim[(g_eeGeneral.stickMode>1)   ? 0 : 3]);//CONVERT_MODE(AIL)-1]);
 
     switch (g_eeGeneral.stickMode)
     {
@@ -3116,25 +3141,25 @@ void ModelEdit::on_bcP3ChkB_toggled(bool checked)
 
 void ModelEdit::on_spinBox_S1_valueChanged(int value)
 {
-        g_model.trim[0] = value;
+        g_model.trim[(g_eeGeneral.stickMode>1) ? 3 : 0] = value;
         updateSettings();
 }
 
 void ModelEdit::on_spinBox_S2_valueChanged(int value)
 {
-        g_model.trim[1] = value;
+        g_model.trim[(g_eeGeneral.stickMode & 1) ? 2 : 1] = value;
         updateSettings();
 }
 
 void ModelEdit::on_spinBox_S3_valueChanged(int value)
 {
-        g_model.trim[2] = value;
+        g_model.trim[(g_eeGeneral.stickMode & 1) ? 1 : 2] = value;
         updateSettings();
 }
 
 void ModelEdit::on_spinBox_S4_valueChanged(int value)
 {
-        g_model.trim[3] = value;
+        g_model.trim[(g_eeGeneral.stickMode>1)   ? 0 : 3] = value;
         updateSettings();
 }
 

@@ -14,6 +14,9 @@
 
 #define FLASH_DURATION 10
 
+#define FADE_FIRST	0x20
+#define FADE_LAST		0x40
+
 namespace Ui {
     class simulatorDialog;
 }
@@ -50,9 +53,15 @@ private:
     qint16  anas [NUM_XCHNRAW+1+MAX_GVARS];
     qint32  chans[NUM_CHNOUT];
     quint8  bpanaCenter;
+    quint16 parametersLoaded ;
     bool    swOn[MAX_MIXERS];
     quint16 one_sec_precount;
 		qint16		CsTimer[NUM_CSW+EXTRA_CSW] ;
+    quint8  fadePhases ;
+    qint32  fade[NUM_CHNOUT];
+		quint16	fadeScale[MAX_PHASES+1] ;
+		quint16	fadeRate ;
+		quint16 fadeWeight ;
 
     quint16 s_timeCumTot;
     quint16 s_timeCumAbs;
@@ -82,7 +91,8 @@ private:
 		uint32_t adjustMode( uint32_t x ) ;
     void getValues();
     void setValues();
-    void perOut(bool init=false);
+    void perOut(bool init, uint8_t att);
+		void perOutPhase( bool init, uint8_t att ) ;
     void centerSticks();
     void timerTick();
 

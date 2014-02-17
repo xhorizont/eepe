@@ -25,7 +25,7 @@ public:
     void addText(const QString &text);
     void runAgain(QString prog, QStringList arg, int closeBehaviour=AVR_DIALOG_CLOSE_IF_SUCCESSFUL);
     void waitForFinish();
-    void addReadFuses();
+//    void addReadFuses();
 		int doFileCopy( QString destFile, QString sourceFile, int size ) ;
 
 protected slots:

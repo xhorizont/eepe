@@ -12,6 +12,12 @@
 #define BIT_BEEP_VAL     ( 0x38 ) // >>3
 #define BEEP_VAL_SHIFT   3
 
+extern int GlobalModified ;
+extern EEGeneral Sim_g ;
+extern int GeneralDataValid ;
+extern ModelData Sim_m ;
+extern int ModelDataValid ;
+
 GeneralEdit::GeneralEdit( struct t_radioData *radioData, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::GeneralEdit)
@@ -194,6 +200,11 @@ void GeneralEdit::updateSettings()
 
 
     emit modelValuesChanged();
+
+		memcpy(&Sim_g, &g_eeGeneral,sizeof(EEGeneral));
+		GeneralDataValid = 1 ;
+		ModelDataValid = 0 ;
+		GlobalModified = 1 ;
 }
 
 

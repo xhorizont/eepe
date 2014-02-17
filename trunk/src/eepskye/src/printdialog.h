@@ -14,10 +14,10 @@ class printDialog : public QDialog
     Q_OBJECT
 
 public:
-    explicit printDialog(QWidget *parent = 0, EEGeneral *gg = 0, ModelData *gm = 0);
+    explicit printDialog(QWidget *parent = 0, EEGeneral *gg = 0, SKYModelData *gm = 0);
     ~printDialog();
 
-    ModelData *g_model;
+    SKYModelData *g_model;
     EEGeneral *g_eeGeneral;
 
 private:
@@ -34,7 +34,7 @@ private:
 
     QString fv(const QString name, const QString value);
     QString getModelName();
-    QString getTimer();
+    QString getTimer( uint8_t timer );
     QString getProtocol();
     QString getCenterBeep();
     QString getTrimInc();

@@ -24,8 +24,13 @@
 
 //eeprom data
 //#define EE_VERSION 2
+#ifdef SKY
+#define MAX_MODELS  32
+#else
 #define MAX_MODELS  16
+#endif
 #define MAX_MIXERS  32
+#define MAX_SKYMIXERS  48
 #define MAX_CURVE5  8
 #define MAX_CURVE9  8
 #define MDVERS_r9   1
@@ -39,6 +44,10 @@
 #define MDVERS_r668 9
 #define MDVERS_r803 10
 #define MDVERS      11
+
+#define MDSKYVERS   1
+
+#define	NUM_VOICE		8
 
 //OBSOLETE - USE ONLY MDVERS NOW
 //#define GENERAL_MYVER_r261 3
@@ -61,12 +70,22 @@
 #define WARN_MEM     (!(g_eeGeneral.warnOpts & WARN_MEM_BIT))
 #define BEEP_VAL     ( (g_eeGeneral.warnOpts & WARN_BVAL_BIT) >>3 )
 
+// Bits in stickGain
+#define STICK_LV_GAIN	0x40
+#define STICK_LH_GAIN	0x10
+#define STICK_RV_GAIN	0x04
+#define STICK_RH_GAIN	0x01
+
 #define GENERAL_OWNER_NAME_LEN 10
 #define MODEL_NAME_LEN         10
 
 #define MAX_GVARS 7
 
+#ifdef SKY
+#define MAX_PHASES		6
+#else
 #define MAX_PHASES		4
+#endif
 
 PACK(typedef struct t_TrainerMix {
   uint8_t srcChn:3; //0-7 = ch1-8
@@ -80,7 +99,11 @@ PACK(typedef struct t_TrainerData {
   TrainerMix     mix[4];
 }) TrainerData;
 
+#ifdef SKY
+PACK(typedef struct t_OldEEGeneral {
+#else
 PACK(typedef struct t_EEGeneral {
+#endif
     uint8_t   myVers;
     int16_t   calibMid[7];
     int16_t   calibSpanNeg[7];
@@ -113,12 +136,24 @@ PACK(typedef struct t_EEGeneral {
     uint8_t   lightAutoOff;
     uint8_t   templateSetup;  //RETA order according to chout_ar array
     int8_t    PPM_Multiplier;
-    uint8_t   unused1;
+#ifdef SKY
+		uint8_t   FRSkyYellow:4;
+    uint8_t   FRSkyOrange:4;
+    uint8_t   FRSkyRed:4;
+#else
+		uint8_t   unused1;
     uint8_t   unused2:4;
+#endif
     uint8_t   hideNameOnSplash:1;
+#ifdef SKY
+  	uint8_t   optrexDisplay:1;
+	  uint8_t   unexpectedShutdown:1;
+    uint8_t   spare:1;
+#else
     uint8_t   enablePpmsim:1;
     uint8_t   blightinv:1;
     uint8_t   stickScroll:1;
+#endif
     uint8_t   speakerPitch;
     uint8_t   hapticStrength;
     uint8_t   speakerMode;
@@ -126,11 +161,24 @@ PACK(typedef struct t_EEGeneral {
     char      ownerName[GENERAL_OWNER_NAME_LEN];
     uint8_t   switchWarningStates;
 		int8_t		volume ;
-    uint8_t   res[3];
+#ifdef SKY
+	uint8_t 	bright ;			// backlight
+  uint8_t   stickGain;
+	uint8_t		mAh_alarm ;
+	uint16_t	mAh_used ;
+	uint16_t	run_time ;
+	int8_t		current_calib ;
+	uint8_t		bt_baudrate ;
+	uint8_t		rotaryDivisor ;
+	uint8_t   crosstrim:1;
+	uint8_t   spare9:7;
+#else
+		uint8_t   res[3];
     uint8_t   crosstrim:1;
     uint8_t   FrskyPins:1 ;
     uint8_t   spare1:6 ;
 		uint8_t		stickReverse ;
+#endif
 }) EEGeneral;
 
 
@@ -175,7 +223,8 @@ PACK(typedef struct t_MixData {
   uint8_t enableFmTrim:1;
   uint8_t differential:1;
   int8_t  sOffset;
-  int8_t  res;
+	uint8_t modeControl:5 ;
+  uint8_t res:3 ;
 }) MixData;
 
 
@@ -218,6 +267,10 @@ PACK(typedef struct t_FrSkyChannelData {
   uint8_t   alarms_greater:2;     // 0=LT(<), 1=GT(>)
   uint8_t   type:2;               // 0=volts, 1=raw, 2=volts*2, 3=Amps
 }) FrSkyChannelData;
+
+//PACK(typedef struct t_FrSkyData {
+//    FrSkyChannelData channels[2];
+//}) FrSkyData;
 
 PACK(typedef struct t_FrSkyalarms
 {

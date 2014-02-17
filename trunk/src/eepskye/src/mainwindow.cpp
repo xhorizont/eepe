@@ -59,8 +59,9 @@
 #include "downloaddialog.h"
 #include "customizesplashdialog.h"
 #include "stamp-eepskye.h"
-#include "reviewOutput.h"
+#include "../../reviewOutput.h"
 #include "helpers.h"
+#include "../../telemetry.h"
 
 #if defined WIN32 || !defined __GNUC__
 #include <windows.h>
@@ -114,6 +115,7 @@
 #define ERSKY9X_URL "http://ersky9x.googlecode.com/svn/trunk/ersky9x_rom.bin"
 #define ERSKY9XR_URL "http://ersky9x.googlecode.com/svn/trunk/ersky9xr_rom.bin"
 
+class simulatorDialog *SimPointer = 0 ;
 QString AvrdudeOutput ;
 
 MainWindow::MainWindow()
@@ -223,9 +225,10 @@ void MainWindow::reply1Finished(QNetworkReply * reply)
     if(i>0)
     {
     		QSettings settings("er9x-eePskye", "eePskye");
-			
+        QByteArray qbb = qba.mid(i+8,20) ;
+        int j = qbb.indexOf("-r");
         bool cres;
-        int rev = QString::fromLatin1(qba.mid(i+19,4)).replace(QChar('"'), "").toInt(&cres);
+        int rev = QString::fromLatin1(qbb.mid(j+2,4)).replace(QChar('"'), "").toInt(&cres);
 
         if(!cres)
         {
@@ -250,44 +253,6 @@ void MainWindow::reply1Finished(QNetworkReply * reply)
                 dnldURL = ERSKY9XR_URL;
                 baseFileName = "ersky9xr_rom.bin";
                 break;
-//            case (DNLD_VER_ER9X_FRSKY):
-//                dnldURL = ER9X_FRSKY_URL;
-//                baseFileName = "er9x-frsky.hex";
-//                break;
-//            case (DNLD_VER_ER9X_ARDUPILOT):
-//                dnldURL = ER9X_ARDUPILOT_URL;
-//                baseFileName = "er9x-ardupilot.hex";
-//                break;
-//            case (DNLD_VER_ER9X_NMEA):
-//                dnldURL = ER9X_NMEA_URL;
-//                baseFileName = "er9x-nmea.hex";
-//                break;
-//            case (DNLD_VER_ER9X_FRSKY_NOHT):
-//                dnldURL = ER9X_FRSKY_NOHT_URL;
-//                baseFileName = "er9x-frsky-noht.hex";
-//                break;
-//            case (DNLD_VER_ER9X_NOHT):
-//                dnldURL = ER9X_NOHT_URL;
-//                baseFileName = "er9x-noht.hex";
-//                break;
-/*
-            case (DNLD_VER_ER9X_SPKR):
-                dnldURL = ER9X_SPKR_URL;
-                baseFileName = "er9x-spkr.hex";
-                break;
-            case (DNLD_VER_ER9X_NOHT_SPKR):
-                dnldURL = ER9X_NOHT_SPKR_URL;
-                baseFileName = "er9x-noht-spkr.hex";
-                break;
-            case (DNLD_VER_ER9X_FRSKY_SPKR):
-                dnldURL = ER9X_FRSKY_SPKR_URL;
-                baseFileName = "er9x-frsky-spkr.hex";
-                break;
-            case (DNLD_VER_ER9X_FRSKY_NOHT_SPKR):
-                dnldURL = ER9X_FRSKY_NOHT_SPKR_URL;
-                baseFileName = "er9x-frsky-noht-spkr.hex";
-                break;
-*/
 
             default:
                 dnldURL = ERSKY9X_URL;
@@ -579,6 +544,12 @@ void MainWindow::reviewOut()
 {
     reviewOutput *rO = new reviewOutput(this);
     rO->exec();
+}
+
+void MainWindow::doTelemetry()
+{
+    telemetryDialog *td = new telemetryDialog(this);
+    td->exec();
 }
 
 void MainWindow::cut()
@@ -1008,17 +979,17 @@ void MainWindow::burnList()
     bcd->listProgrammers();
 }
 
-void MainWindow::setFuses()
-{
-    burnConfigDialog *bcd = new burnConfigDialog(this);
-    bcd->restFuses(true);
-}
+//void MainWindow::setFuses()
+//{
+//    burnConfigDialog *bcd = new burnConfigDialog(this);
+//    bcd->restFuses(true);
+//}
 
-void MainWindow::resetFuses()
-{
-    burnConfigDialog *bcd = new burnConfigDialog(this);
-    bcd->restFuses(false);
-}
+//void MainWindow::resetFuses()
+//{
+//    burnConfigDialog *bcd = new burnConfigDialog(this);
+//    bcd->restFuses(false);
+//}
 
 void MainWindow::showEEPROMInfo()
 {
@@ -1365,17 +1336,22 @@ void MainWindow::createActions()
     customizeSplashAct->setStatusTip(tr("Customize Splash Screen"));
     connect(customizeSplashAct, SIGNAL(triggered()), this, SLOT(customizeSplash()));
 
-    setFusesAct = new QAction(QIcon(":/images/fuses_set.png"), tr("Set fuses to protect EEPROM"), this);
-    setFusesAct->setStatusTip(tr("Sets the fuses to protect EEPROM from being erased."));
-    connect(setFusesAct, SIGNAL(triggered()), this, SLOT(setFuses()));
+//    setFusesAct = new QAction(QIcon(":/images/fuses_set.png"), tr("Set fuses to protect EEPROM"), this);
+//    setFusesAct->setStatusTip(tr("Sets the fuses to protect EEPROM from being erased."));
+//    connect(setFusesAct, SIGNAL(triggered()), this, SLOT(setFuses()));
 
-    resetFusesAct = new QAction(QIcon(":/images/fuses_set.png"), tr("Reset fuses to factory default"), this);
-    resetFusesAct->setStatusTip(tr("Resets the fuses to factory default - EEPROM erase."));
-    connect(resetFusesAct, SIGNAL(triggered()), this, SLOT(resetFuses()));
+//    resetFusesAct = new QAction(QIcon(":/images/fuses_set.png"), tr("Reset fuses to factory default"), this);
+//    resetFusesAct->setStatusTip(tr("Resets the fuses to factory default - EEPROM erase."));
+//    connect(resetFusesAct, SIGNAL(triggered()), this, SLOT(resetFuses()));
 
     eepromInfoAct = new QAction(QIcon(":/images/info.png"), tr("EEPROM Info"), this);
     eepromInfoAct->setStatusTip(tr("Show information about current EEPROM."));
     connect(eepromInfoAct, SIGNAL(triggered()), this, SLOT(showEEPROMInfo()));
+    
+		telemetryAct = new QAction( tr("&Telemetry"), this);
+//    telemetryAct->setShortcut(tr("Ctrl+Alt+T"));
+//    telemetryAct->setStatusTip(tr("Write EEPROM memory to transmitter"));
+    connect( telemetryAct,SIGNAL(triggered()),this,SLOT(doTelemetry()));
 }
 
 void MainWindow::createMenus()
@@ -1415,10 +1391,13 @@ void MainWindow::createMenus()
     burnMenu->addAction(burnConfigAct);
 //    burnMenu->addAction(burnListAct);
     burnMenu->addSeparator();
-    burnMenu->addAction(setFusesAct);
-    burnMenu->addAction(resetFusesAct);
-    burnMenu->addSeparator();
+//    burnMenu->addAction(setFusesAct);
+//    burnMenu->addAction(resetFusesAct);
+//    burnMenu->addSeparator();
     burnMenu->addAction(reviewBurnOutput);
+
+    telemetryMenu = menuBar()->addMenu(tr("&Telemetry"));
+    telemetryMenu->addAction(telemetryAct) ;
 
     windowMenu = menuBar()->addMenu(tr("&Window"));
     updateWindowMenu();
@@ -1467,7 +1446,7 @@ void MainWindow::createToolBars()
     burnToolBar->addAction(burnFromFlashAct);
     burnToolBar->addSeparator();
     burnToolBar->addAction(burnConfigAct);
-    burnToolBar->addAction(setFusesAct);
+//    burnToolBar->addAction(setFusesAct);
 
     helpToolBar = addToolBar(tr("Help"));
 //    helpToolBar->addAction(showEr9xManualAct);
