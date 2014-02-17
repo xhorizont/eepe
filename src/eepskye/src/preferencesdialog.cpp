@@ -4,6 +4,10 @@
 #include "mainwindow.h"
 #include <QtGui>
 
+#ifndef SKY
+extern void populateDownloads( QComboBox *b ) ;
+#endif
+
 preferencesDialog::preferencesDialog(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::preferencesDialog)
@@ -23,12 +27,19 @@ preferencesDialog::~preferencesDialog()
 
 void preferencesDialog::write_values()
 {
+#ifdef SKY
     QSettings settings("er9x-eePskye", "eePskye");
-    settings.setValue("locale", ui->locale_QB->itemData(ui->locale_QB->currentIndex()));
-    settings.setValue("default_channel_order", ui->channelorderCB->currentIndex());
-    settings.setValue("default_mode", ui->stickmodeCB->currentIndex());
     settings.setValue("startup_check_ersky9x", ui->startupCheck_er9x->isChecked());
     settings.setValue("startup_check_eepskye", ui->startupCheck_eepe->isChecked());
+#else
+    QSettings settings("er9x-eePe", "eePe");
+    settings.setValue("startup_check_er9x", ui->startupCheck_er9x->isChecked());
+    settings.setValue("startup_check_eepe", ui->startupCheck_eepe->isChecked());
+    settings.setValue("processor", ui->ProcessorCB->currentIndex());
+#endif
+		settings.setValue("locale", ui->locale_QB->itemData(ui->locale_QB->currentIndex()));
+    settings.setValue("default_channel_order", ui->channelorderCB->currentIndex());
+    settings.setValue("default_mode", ui->stickmodeCB->currentIndex());
     settings.setValue("show_splash", ui->showSplash->isChecked());
     settings.setValue("download-version", ui->downloadVerCB->currentIndex());
 }
@@ -36,8 +47,13 @@ void preferencesDialog::write_values()
 
 void preferencesDialog::initSettings()
 {
+#ifdef SKY
     int dnloadVersion ;
 		QSettings settings("er9x-eePskye", "eePskye");
+#else
+    QSettings settings("er9x-eePe", "eePe");
+		populateDownloads( ui->downloadVerCB ) ;
+#endif    
     int i=ui->locale_QB->findData(settings.value("locale",QLocale::system().name()).toString());
     if(i<0) i=0;
     ui->locale_QB->setCurrentIndex(i);
@@ -99,6 +115,8 @@ void preferencesDialog::populateLocale()
 
 }
 
+
+#ifdef SKY
 void preferencesDialog::on_downloadVerCB_currentIndexChanged(int index)
 {
 	QSettings settings("er9x-eePskye", "eePskye");
@@ -115,18 +133,20 @@ void preferencesDialog::on_downloadVerCB_currentIndexChanged(int index)
   ui->er9x_ver_label->setText(QString("r%1").arg(currentER9Xrev));
   settings.setValue("download-version", ui->downloadVerCB->currentIndex());
 }
-
+#endif
 
 void preferencesDialog::on_er9x_dnld_2_clicked()
 {
     MainWindow * mw = (MainWindow *)this->parent();
 
+		write_values() ;		// In case changed
     mw->checkForUpdates(true);
 }
 
 void preferencesDialog::on_er9x_dnld_clicked()
 {
     MainWindow * mw = (MainWindow *)this->parent();
+		
 		write_values() ;			// In case changed
     mw->downloadLatester9x();
 }

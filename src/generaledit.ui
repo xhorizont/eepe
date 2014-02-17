@@ -145,6 +145,11 @@ These will be relevant for all models in the same EEPROM.</string>
            <string>PiSpkrVoice</string>
           </property>
          </item>
+         <item>
+          <property name="text">
+           <string>MegaSound</string>
+          </property>
+         </item>
         </widget>
        </item>
        <item row="3" column="0">

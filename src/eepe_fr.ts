@@ -591,6 +591,10 @@ p, li { white-space: pre-wrap; }
         <source>RH</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>MegaSound</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>MainWindow</name>
@@ -1654,6 +1658,30 @@ p, li { white-space: pre-wrap; }
         <source>Gvar</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Flight Modes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>0</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>3</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>4</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ModelEdit</name>
@@ -2687,6 +2715,14 @@ Droite</translation>
     </message>
     <message>
         <source>Fast Mix Delay</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fade In</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fade Out</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -4016,6 +4052,94 @@ Indique l&apos;affectation voie / numéro de canal par défaut utilisée lors de
     </message>
     <message>
         <source>Com Port Unavailable</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Telemetry</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Module</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&lt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>A1(1)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Disabled</source>
+        <translation type="unfinished">Inactif</translation>
+    </message>
+    <message>
+        <source>Yellow</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Orange</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Red</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>A1(2)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>A2(1)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>A2(2)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Rx RSSI</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Read Alarms</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Tx RSSI</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Set Alarms</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Alt</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Alt(d)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>RxRSSI</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>A1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>TxRSSI</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>A2</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

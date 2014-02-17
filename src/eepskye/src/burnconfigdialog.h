@@ -28,8 +28,8 @@ public:
     QString getPort() {return armPort;}
 
     void listProgrammers();
-    void restFuses(bool eeProtect);
-    void readFuses();
+//    void restFuses(bool eeProtect);
+//    void readFuses();
 
 private:
     Ui::burnConfigDialog *ui;

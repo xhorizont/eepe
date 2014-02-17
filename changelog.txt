@@ -10,6 +10,17 @@ description here
 ====================================================================================
 
 ******************************************
+CHANGELOG: 16-Jan-2014 MPB (r393)
+eepskye - support 512K EEPROM file
+eepe - fix '128 and '2561 splash update
+both - add 'THIS' mix source
+both - add telemetry alarm setting
+eepe - fuses for M2561
+both - Flight Mode Fading
+eepskye - remove fuse options
+eepskye - dynamic updating of simulator output
+
+******************************************
 CHANGELOG: 15-Jan-2014 MPB (r392)
 eepskye support for bootloader
 sim support for changed expo/dr method

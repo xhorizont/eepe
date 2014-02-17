@@ -46,7 +46,11 @@
 
 #include "edge.h"
 #include "node.h"
+#ifdef SKY
+#include "eepskye/src/modeledit.h"
+#else
 #include "modeledit.h"
+#endif
 
 Node::Node(QSpinBox *sb)
 {

@@ -91,6 +91,10 @@ private:
     void updateHeliTab();
 		void setSafetyLabels() ;
 		void updatePhaseTab() ;
+		void textUpdate( QLineEdit *source, char *dest, int length ) ;
+		int16_t getRawTrimValue( uint8_t phase, uint8_t idx ) ;
+		uint32_t getTrimFlightPhase( uint8_t phase, uint8_t idx ) ;
+		int16_t getTrimValue( uint8_t phase, uint8_t idx ) ;
 
     void launchSimulation();
     void resizeEvent(QResizeEvent *event  = 0);

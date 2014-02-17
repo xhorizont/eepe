@@ -1,5 +1,6 @@
 QT += network \
       xml
+include(../../qextserialport.pri)
 HEADERS += mainwindow.h \
     file.h \
     pers.h \
@@ -7,9 +8,6 @@ HEADERS += mainwindow.h \
     modeledit.h \
     generaledit.h \
     mdichild.h \
-    helpers.h \
-    edge.h \
-    node.h \
     mixerdialog.h \
     burnconfigdialog.h \
     avroutputdialog.h \ 
@@ -21,7 +19,11 @@ HEADERS += mainwindow.h \
     downloaddialog.h \
     stamp-eepskye.h \
     customizesplashdialog.h \
-    reviewOutput.h
+    ../../telemetry.h \
+    ../../reviewOutput.h \
+    helpers.h \
+    ../../node.h \
+    ../../edge.h
 SOURCES += main.cpp \
     mainwindow.cpp \
     file.cpp \
@@ -29,8 +31,6 @@ SOURCES += main.cpp \
     modeledit.cpp \
     generaledit.cpp \
     mdichild.cpp \
-    node.cpp \
-    edge.cpp \
     mixerdialog.cpp \
     burnconfigdialog.cpp \
     avroutputdialog.cpp \ 
@@ -41,8 +41,11 @@ SOURCES += main.cpp \
     mixerslist.cpp \
     downloaddialog.cpp \
     customizesplashdialog.cpp \
+    ../../telemetry.cpp \
+    ../../reviewOutput.cpp \
     helpers.cpp \
-    reviewOutput.cpp
+    ../../node.cpp \
+    ../../edge.cpp
 TEMPLATE = app
 FORMS += modeledit.ui \
     generaledit.ui \
@@ -55,7 +58,8 @@ FORMS += modeledit.ui \
     preferencesdialog.ui \
     downloaddialog.ui \
     customizesplashdialog.ui \
-    reviewOutput.ui
+    ../../telemetryDialog.ui \
+    ../../reviewOutput.ui
 TRANSLATIONS = eepe_.ts    \
                eepe_he.ts  \
                eepe_pt.ts  \
@@ -94,3 +98,5 @@ RC_FILE += icon.rc
 mac {
 ICON = eepe.icns
 }
+
+OTHER_FILES +=

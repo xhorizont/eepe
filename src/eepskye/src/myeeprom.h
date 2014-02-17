@@ -18,10 +18,17 @@
 
 #include <inttypes.h>
 
+#ifndef PACK
+#define PACK( __Declaration__ ) __Declaration__ __attribute__((__packed__))
+#endif
 
 //eeprom data
 //#define EE_VERSION 2
+#ifdef SKY
 #define MAX_MODELS  32
+#else
+#define MAX_MODELS  16
+#endif
 #define MAX_MIXERS  32
 #define MAX_SKYMIXERS  48
 #define MAX_CURVE5  8
@@ -74,10 +81,10 @@
 
 #define MAX_GVARS 7
 
+#ifdef SKY
 #define MAX_PHASES		6
-
-#ifndef PACK
-#define PACK( __Declaration__ ) __Declaration__ __attribute__((__packed__))
+#else
+#define MAX_PHASES		4
 #endif
 
 PACK(typedef struct t_TrainerMix {
@@ -92,7 +99,11 @@ PACK(typedef struct t_TrainerData {
   TrainerMix     mix[4];
 }) TrainerData;
 
+#ifdef SKY
 PACK(typedef struct t_OldEEGeneral {
+#else
+PACK(typedef struct t_EEGeneral {
+#endif
     uint8_t   myVers;
     int16_t   calibMid[7];
     int16_t   calibSpanNeg[7];
@@ -125,13 +136,24 @@ PACK(typedef struct t_OldEEGeneral {
     uint8_t   lightAutoOff;
     uint8_t   templateSetup;  //RETA order according to chout_ar array
     int8_t    PPM_Multiplier;
-    uint8_t   FRSkyYellow:4;
+#ifdef SKY
+		uint8_t   FRSkyYellow:4;
     uint8_t   FRSkyOrange:4;
     uint8_t   FRSkyRed:4;
-    uint8_t   hideNameOnSplash:1;
+#else
+		uint8_t   unused1;
+    uint8_t   unused2:4;
+#endif
+		uint8_t   hideNameOnSplash:1;
+#ifdef SKY
   	uint8_t   optrexDisplay:1;
 	  uint8_t   unexpectedShutdown:1;
     uint8_t   spare:1;
+#else
+    uint8_t   enablePpmsim:1;
+    uint8_t   blightinv:1;
+    uint8_t   stickScroll:1;
+#endif
     uint8_t   speakerPitch;
     uint8_t   hapticStrength;
     uint8_t   speakerMode;
@@ -139,6 +161,7 @@ PACK(typedef struct t_OldEEGeneral {
     char      ownerName[GENERAL_OWNER_NAME_LEN];
     uint8_t   switchWarningStates;
 		int8_t		volume ;
+#ifdef SKY
 	uint8_t 	bright ;			// backlight
   uint8_t   stickGain;
 	uint8_t		mAh_alarm ;
@@ -149,9 +172,17 @@ PACK(typedef struct t_OldEEGeneral {
 	uint8_t		rotaryDivisor ;
 	uint8_t   crosstrim:1;
 	uint8_t   spare9:7;
+#else
+		uint8_t   res[3];
+    uint8_t   crosstrim:1;
+    uint8_t   FrskyPins:1 ;
+    uint8_t   spare1:6 ;
+		uint8_t		stickReverse ;
+#endif
 }) OldEEGeneral;
 
 
+#ifdef SKY
 PACK(typedef struct t_EEGeneral {
     uint8_t   myVers;
     int16_t   calibMid[7];
@@ -216,7 +247,7 @@ PACK(typedef struct t_EEGeneral {
 	uint8_t		stickReverse ;
 	uint8_t		language ;
 }) EEGeneral;
-
+#endif
 
 
 
@@ -253,7 +284,8 @@ PACK(typedef struct t_MixData {
   uint8_t speedUp:4;         // Servogeschwindigkeit aus Tabelle (10ms Cycle)
   uint8_t speedDown:4;       // 0 nichts
   uint8_t carryTrim:1;
-  uint8_t mltpx:3;           // multiplex method 0=+ 1=* 2=replace
+  uint8_t mltpx:2;           // multiplex method 0=+ 1=* 2=replace
+  uint8_t lateOffset:1;      // 
   uint8_t mixWarn:2;         // mixer warning
   uint8_t enableFmTrim:1;
   uint8_t mixres:1;
@@ -268,6 +300,13 @@ PACK(typedef struct t_CSwData { // Custom Switches data
   uint8_t func:4;
   uint8_t andsw:4;
 }) CSwData;
+
+PACK(typedef struct t_CxSwData { // Extra Custom Switches data
+    int8_t  v1; //input
+    int8_t  v2; //offset
+    uint8_t func ;
+    int8_t andsw ;
+}) CxSwData ;
 
 PACK(typedef struct t_SafetySwData { // Custom Switches data
 	union opt
@@ -409,7 +448,8 @@ PACK(typedef struct te_MixData {
   uint8_t enableFmTrim:1;
   uint8_t differential:1;
   int8_t  sOffset;
-  uint8_t  res[4];
+  uint8_t  modeControl;
+  uint8_t  res[3];
 }) SKYMixData;
 
 PACK(typedef struct te_CSwData { // Custom Switches data
@@ -565,6 +605,11 @@ PACK(typedef struct te_ModelData {
   int8_t    dsmMode ;
 	uint8_t		xPxxRxNum ;				// For external module
   uint16_t  modelswitchWarningStates ;	// Enough bits for Taranis
+	int8_t		enRssiOrange:2 ;
+	int8_t		rssiOrange:6 ;
+	uint8_t		enRssiRed:2 ;
+	int8_t		rssiRed:6 ;
+	uint8_t		rxVratio ;
 
 //	uint8_t   curentSource ;
 //	uint8_t   altSource ;

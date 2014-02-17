@@ -192,61 +192,61 @@ void burnConfigDialog::on_pushButton_4_clicked()
 }
 
 
-void burnConfigDialog::readFuses()
-{
-    QStringList args   = avrArgs;
-    if(!armPort.isEmpty()) args << "-P" << armPort;
+//void burnConfigDialog::readFuses()
+//{
+//    QStringList args   = avrArgs;
+//    if(!armPort.isEmpty()) args << "-P" << armPort;
 
-    QStringList str;
-    str << "-U" << "lfuse:r:-:i" << "-U" << "hfuse:r:-:i" << "-U" << "efuse:r:-:i";
+//    QStringList str;
+//    str << "-U" << "lfuse:r:-:i" << "-U" << "hfuse:r:-:i" << "-U" << "efuse:r:-:i";
 
-    QStringList arguments;
-    arguments << "-c" << avrProgrammer << "-p" << avrMCU << args << str;
+//    QStringList arguments;
+//    arguments << "-c" << avrProgrammer << "-p" << avrMCU << args << str;
 
-    avrOutputDialog *ad = new avrOutputDialog(this, sambaLoc, arguments, "Read Fuses",AVR_DIALOG_KEEP_OPEN);
-    ad->setWindowIcon(QIcon(":/images/fuses.png"));
-    ad->show();
-}
+//    avrOutputDialog *ad = new avrOutputDialog(this, sambaLoc, arguments, "Read Fuses",AVR_DIALOG_KEEP_OPEN);
+//    ad->setWindowIcon(QIcon(":/images/fuses.png"));
+//    ad->show();
+//}
 
-void burnConfigDialog::restFuses(bool eeProtect)
-{
-    //fuses
-    //avrdude -c usbasp -p m64 -U lfuse:w:<0x0E>:m
-    //avrdude -c usbasp -p m64 -U hfuse:w:<0x89>:m  0x81 for eeprom protection
-    //avrdude -c usbasp -p m64 -U efuse:w:<0xFF>:m
+//void burnConfigDialog::restFuses(bool eeProtect)
+//{
+//    //fuses
+//    //avrdude -c usbasp -p m64 -U lfuse:w:<0x0E>:m
+//    //avrdude -c usbasp -p m64 -U hfuse:w:<0x89>:m  0x81 for eeprom protection
+//    //avrdude -c usbasp -p m64 -U efuse:w:<0xFF>:m
 
-    QMessageBox::StandardButton ret = QMessageBox::Cancel;
+//    QMessageBox::StandardButton ret = QMessageBox::Cancel;
 
-    QString msg = "<b><u>SET FUSES</u></b><br>";
+//    QString msg = "<b><u>SET FUSES</u></b><br>";
 
-    if(eeProtect)
-        msg.append(tr("The following action will protect the EEPROM from being deleted when flashing new Firmware. "));
-    else
-        msg.append(tr("This will reset the fuses to the factory settings. "));
+//    if(eeProtect)
+//        msg.append(tr("The following action will protect the EEPROM from being deleted when flashing new Firmware. "));
+//    else
+//        msg.append(tr("This will reset the fuses to the factory settings. "));
 
-    msg.append(tr("Before continuing make sure that your radio is connected and the programmer works reliably.<p>"));
-    msg.append(tr("<font color=red>DO NOT DISCONNECT OR POWER DOWN UNTIL THE PROGRAM COMPLETES!</font><p>"));
-    msg.append(tr("Click 'Ok' to continue or 'Cancel' to quit."));
+//    msg.append(tr("Before continuing make sure that your radio is connected and the programmer works reliably.<p>"));
+//    msg.append(tr("<font color=red>DO NOT DISCONNECT OR POWER DOWN UNTIL THE PROGRAM COMPLETES!</font><p>"));
+//    msg.append(tr("Click 'Ok' to continue or 'Cancel' to quit."));
 
-    ret = QMessageBox::information(this, tr("eePe"), msg, QMessageBox::Cancel | QMessageBox::Ok);
-    if (ret == QMessageBox::Ok)
-    {
-        QStringList args   = avrArgs;
-        if(!armPort.isEmpty()) args << "-P" << armPort;
+//    ret = QMessageBox::information(this, tr("eePe"), msg, QMessageBox::Cancel | QMessageBox::Ok);
+//    if (ret == QMessageBox::Ok)
+//    {
+//        QStringList args   = avrArgs;
+//        if(!armPort.isEmpty()) args << "-P" << armPort;
 
-        QString erStr = eeProtect ? "hfuse:w:0x81:m" : "hfuse:w:0x89:m";
-        QStringList str;
-        str << "-U" << "lfuse:w:0x0E:m" << "-U" << erStr << "-U" << "efuse:w:0xFF:m";
-        //use hfuse = 0x81 to prevent eeprom being erased with every flashing
+//        QString erStr = eeProtect ? "hfuse:w:0x81:m" : "hfuse:w:0x89:m";
+//        QStringList str;
+//        str << "-U" << "lfuse:w:0x0E:m" << "-U" << erStr << "-U" << "efuse:w:0xFF:m";
+//        //use hfuse = 0x81 to prevent eeprom being erased with every flashing
 
-        QStringList arguments;
-        arguments << "-c" << avrProgrammer << "-p" << avrMCU << args << "-u" << str;
+//        QStringList arguments;
+//        arguments << "-c" << avrProgrammer << "-p" << avrMCU << args << "-u" << str;
 
-        avrOutputDialog *ad = new avrOutputDialog(this, sambaLoc, arguments, "Reset Fuses",AVR_DIALOG_KEEP_OPEN);
-        ad->setWindowIcon(QIcon(":/images/fuses.png"));
-        ad->show();
-    }
+//        avrOutputDialog *ad = new avrOutputDialog(this, sambaLoc, arguments, "Reset Fuses",AVR_DIALOG_KEEP_OPEN);
+//        ad->setWindowIcon(QIcon(":/images/fuses.png"));
+//        ad->show();
+//    }
 
-}
+//}
 
 

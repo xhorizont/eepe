@@ -4,7 +4,7 @@
 #include "helpers.h"
 #include <QtGui>
 
-printDialog::printDialog(QWidget *parent, EEGeneral *gg, ModelData *gm) :
+printDialog::printDialog(QWidget *parent, EEGeneral *gg, SKYModelData *gm) :
     QDialog(parent, Qt::WindowTitleHint | Qt::WindowSystemMenuHint),
     ui(new Ui::printDialog)
 {
@@ -55,10 +55,10 @@ QString printDialog::fv(const QString name, const QString value)
     return "<b>" + name + ": </b><font color=green>" + value + "</font><br>";
 }
 
-QString printDialog::getTimer()
+QString printDialog::getTimer( uint8_t timer )
 {
-    QString str = ", " + g_model->timer[0].tmrDir==0 ? ", Count Down" : " Count Up";
-    return tr("%1:%2, ").arg(g_model->timer[0].tmrVal/60, 2, 10, QChar('0')).arg(g_model->timer[0].tmrVal%60, 2, 10, QChar('0')) + getTimerMode(g_model->timer[0].tmrModeA) + str;
+    QString str = ", " + g_model->timer[timer].tmrDir==0 ? ", Count Down" : " Count Up";
+    return tr("%1:%2, ").arg(g_model->timer[timer].tmrVal/60, 2, 10, QChar('0')).arg(g_model->timer[0].tmrVal%60, 2, 10, QChar('0')) + getTimerMode(g_model->timer[timer].tmrModeA) + str;
 }
 
 QString printDialog::getProtocol()
@@ -104,18 +104,20 @@ QString printDialog::getTrimInc()
 
 void printDialog::printTitle()
 {
-    te->append(tr("<a name=1></a><h1>ER9x Model: %1</h1><br>").arg(getModelName()));
+    te->append(tr("<a name=1></a><h1>ERSKY9x Model: %1</h1><br>").arg(getModelName()));
 }
 
 void printDialog::printSetup()
 {
     QString str = tr("<h2>General Model Settings</h2><br>");
     str.append(fv(tr("Name"), getModelName()));
-    str.append(fv(tr("Timer"), getTimer()));  //value, mode, count up/down
+    str.append(fv(tr("Timer1"), getTimer(0)));  //value, mode, count up/down
+    str.append(fv(tr("Timer2"), getTimer(1)));  //value, mode, count up/down
     str.append(fv(tr("Protocol"), getProtocol())); //proto, numch, delay,
     str.append(fv(tr("Pulse Polarity"), g_model->pulsePol ? "NEG" : "POS"));
     str.append(fv(tr("Throttle Trim"), g_model->thrTrim ? tr("Enabled") : tr("Disabled")));
     str.append(fv(tr("Throttle Expo"), g_model->thrExpo ? tr("Enabled") : tr("Disabled")));
+    str.append(fv(tr("Trainer"), g_model->traineron ? tr("Enabled") : tr("Disabled")));
     str.append(fv(tr("Trim Switch"), getSWName(g_model->trimSw)));
     str.append(fv(tr("Trim Increment"), getTrimInc()));
     str.append(fv(tr("Center Beep"), getCenterBeep())); // specify which channels beep
@@ -182,9 +184,9 @@ void printDialog::printMixes()
     QString str = tr("<h2>Mixers</h2><br>");
 
     int lastCHN = 0;
-    for(int i=0; i<MAX_MIXERS; i++)
+    for(int i=0; i<MAX_SKYMIXERS; i++)
     {
-        MixData *md = &g_model->mixData[i];
+        SKYMixData *md = &g_model->mixData[i];
         if(!md->destCh) break;
 
         str.append("<font size=+1 face='Courier New'>");
@@ -244,7 +246,7 @@ void printDialog::printMixes()
         str.append("</font><br>");
     }
 
-    for(int j=lastCHN; j<NUM_XCHNOUT; j++)
+    for(int j=lastCHN; j<NUM_SKYCHNOUT; j++)
     {
         str.append("<font size=+1 face='Courier New'>");
         str.append(tr("<b>CH%1</b>").arg(j+1,2,10,QChar('0')));
@@ -260,7 +262,7 @@ void printDialog::printLimits()
 
     str.append("<table border=1 cellspacing=0 cellpadding=3>");
     str.append("<tr><td>&nbsp;</td><td><b>Offset</b></td><td><b>Min</b></td><td><b>Max</b></td><td><b>Invert</b></td></tr>");
-    for(int i=0; i<NUM_XCHNOUT; i++)
+    for(int i=0; i<NUM_SKYCHNOUT; i++)
     {
         str.append("<tr>");
 
@@ -333,7 +335,7 @@ void printDialog::printSwitches()
 //    str.append(doTC(tr("Offset"), "", true));
 //    str.append(doTC(tr("Function"), "", true));
 //    str.append("</tr>");
-    for(int i=0; i<NUM_CSW; i++)
+    for(int i=0; i<NUM_SKYCSW; i++)
     {
         str.append("<tr>");
         str.append(doTC(tr("SW%1").arg(i+1),"",true));
@@ -442,7 +444,7 @@ void printDialog::printSafetySwitches()
     str.append(doTC(tr("Switch"), "", true));
     str.append(doTC(tr("Value"), "", true));
     str.append("</tr>");
-    for(int i=0; i<NUM_CHNOUT; i++)
+    for(int i=0; i<NUM_SKYCHNOUT; i++)
     {
         str.append("<tr>");
         str.append(doTC(tr("CH%1").arg(i+1),"",true));
