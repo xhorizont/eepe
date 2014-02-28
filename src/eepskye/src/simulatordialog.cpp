@@ -33,7 +33,6 @@ simulatorDialog::simulatorDialog(QWidget *parent) :
     ui(new Ui::simulatorDialog)
 {
     ui->setupUi(this);
-//		parametersLoaded = 0 ;
 		
 		current_limits = 2 ;
     beepVal = 0;
@@ -89,7 +88,6 @@ void simulatorDialog::closeEvent(QCloseEvent *event)
     delete timer ;
 	}
 	timer = 0 ;
-//  parametersLoaded = 0 ;
 	event->accept() ;
 }
 
@@ -109,14 +107,6 @@ void simulatorDialog::setupTimer()
 void simulatorDialog::timerEvent()
 {
 		uint8_t i ;
-
-//		if ( parametersLoaded == 0 )
-//		{
-//// Debug line
-////	    setWindowTitle(modelName + QString(" P%1").arg(parametersLoaded) ) ;
-//			return ;
-//		}
-    
 		g_tmr10ms++;
 
 		if ( GlobalModified )
@@ -128,7 +118,7 @@ void simulatorDialog::timerEvent()
 			}
 			if ( ModelDataValid )
 			{
-  	  	memcpy(&g_model,&Sim_m,sizeof(ModelData));
+        memcpy(&g_model,&Sim_m,sizeof(SKYModelData));
 				ModelDataValid = 0 ;
 			}
     	
@@ -160,7 +150,6 @@ void simulatorDialog::timerEvent()
     
 		getValues();
 
-//		CurrentPhase = getFlightPhase() ;
     perOutPhase(false,0);
 
     setValues();
@@ -302,19 +291,6 @@ void simulatorDialog::loadParams(const EEGeneral gg, const SKYModelData gm)
 
     setupTimer();
 		GlobalModified = 0 ;
-//		if ( parametersLoaded )
-//		{
-//	    getValues();
-//  	  perOut(true);
-//		}
-//		else
-//		{
-//			parametersLoaded = 1 ;
-//		}
-//		if ( !timer )
-//		{
-//      setupTimer() ;
-//		}
 }
 
 
@@ -749,7 +725,6 @@ void simulatorDialog::setValues()
   ui->chnout_14->setStyleSheet( color[onoff[13]] ) ;
   ui->chnout_15->setStyleSheet( color[onoff[14]] ) ;
   ui->chnout_16->setStyleSheet( color[onoff[14]] ) ;
-
 }
 
 void simulatorDialog::beepWarn1()

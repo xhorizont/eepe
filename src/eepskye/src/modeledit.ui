@@ -6,14 +6,14 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>820</width>
-    <height>746</height>
+    <width>940</width>
+    <height>700</height>
    </rect>
   </property>
   <property name="maximumSize">
    <size>
     <width>16777215</width>
-    <height>746</height>
+    <height>700</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -41,7 +41,7 @@
    <item row="0" column="0">
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
-      <number>2</number>
+      <number>5</number>
      </property>
      <widget class="QWidget" name="tabModelSetup">
       <attribute name="title">
@@ -671,69 +671,85 @@
          </item>
         </layout>
        </item>
-       <item row="13" column="0">
-        <widget class="QLabel" name="label_113">
-         <property name="text">
-          <string>PPM Frame Length</string>
-         </property>
-        </widget>
-       </item>
        <item row="13" column="1">
-        <widget class="QDoubleSpinBox" name="ppmFrameLengthDSB">
-         <property name="suffix">
-          <string> mSec</string>
-         </property>
-         <property name="decimals">
-          <number>1</number>
-         </property>
-         <property name="minimum">
-          <double>12.500000000000000</double>
-         </property>
-         <property name="maximum">
-          <double>32.500000000000000</double>
-         </property>
-         <property name="singleStep">
-          <double>0.500000000000000</double>
-         </property>
-         <property name="value">
-          <double>22.500000000000000</double>
-         </property>
-        </widget>
+        <layout class="QGridLayout" name="gridLayout_31">
+         <item row="0" column="0">
+          <widget class="QLabel" name="label_113">
+           <property name="maximumSize">
+            <size>
+             <width>100</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>PPM Frame Length</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QDoubleSpinBox" name="ppmFrameLengthDSB">
+           <property name="suffix">
+            <string> mSec</string>
+           </property>
+           <property name="decimals">
+            <number>1</number>
+           </property>
+           <property name="minimum">
+            <double>12.500000000000000</double>
+           </property>
+           <property name="maximum">
+            <double>32.500000000000000</double>
+           </property>
+           <property name="singleStep">
+            <double>0.500000000000000</double>
+           </property>
+           <property name="value">
+            <double>22.500000000000000</double>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="2">
+          <widget class="QLabel" name="label_9">
+           <property name="maximumSize">
+            <size>
+             <width>100</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>ppm Delay</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="3">
+          <widget class="QSpinBox" name="ppmDelaySB">
+           <property name="suffix">
+            <string> uSec</string>
+           </property>
+           <property name="minimum">
+            <number>100</number>
+           </property>
+           <property name="maximum">
+            <number>800</number>
+           </property>
+           <property name="singleStep">
+            <number>50</number>
+           </property>
+           <property name="value">
+            <number>300</number>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </item>
        <item row="14" column="0">
-        <widget class="QLabel" name="label_9">
-         <property name="text">
-          <string>ppm Delay</string>
-         </property>
-        </widget>
-       </item>
-       <item row="14" column="1">
-        <widget class="QSpinBox" name="ppmDelaySB">
-         <property name="suffix">
-          <string> uSec</string>
-         </property>
-         <property name="minimum">
-          <number>100</number>
-         </property>
-         <property name="maximum">
-          <number>800</number>
-         </property>
-         <property name="singleStep">
-          <number>50</number>
-         </property>
-         <property name="value">
-          <number>300</number>
-         </property>
-        </widget>
-       </item>
-       <item row="15" column="0">
-        <widget class="QLabel" name="label_116">
+        <widget class="QLabel" name="label_208">
          <property name="text">
           <string>DSM Type</string>
          </property>
         </widget>
        </item>
-       <item row="15" column="1">
+       <item row="14" column="1">
         <widget class="QComboBox" name="DSM_Type">
          <item>
           <property name="text">
@@ -757,14 +773,14 @@
          </item>
         </widget>
        </item>
-       <item row="16" column="0">
+       <item row="15" column="0">
         <widget class="QLabel" name="label_117">
          <property name="text">
           <string>PXX RxNum</string>
          </property>
         </widget>
        </item>
-       <item row="16" column="1">
+       <item row="15" column="1">
         <widget class="QSpinBox" name="pxxRxNum">
          <property name="suffix">
           <string/>
@@ -783,28 +799,28 @@
          </property>
         </widget>
        </item>
-       <item row="17" column="0">
+       <item row="16" column="0">
         <widget class="QLabel" name="label_114">
          <property name="text">
           <string>Trainer</string>
          </property>
         </widget>
        </item>
-       <item row="17" column="1">
+       <item row="16" column="1">
         <widget class="QCheckBox" name="TrainerChkB">
          <property name="text">
           <string/>
          </property>
         </widget>
        </item>
-       <item row="18" column="0">
+       <item row="17" column="0">
         <widget class="QLabel" name="label_177">
          <property name="text">
           <string>Auto Limits</string>
          </property>
         </widget>
        </item>
-       <item row="18" column="1">
+       <item row="17" column="1">
         <widget class="QDoubleSpinBox" name="autoLimitsSB">
          <property name="decimals">
           <number>1</number>
@@ -814,24 +830,24 @@
          </property>
         </widget>
        </item>
-       <item row="19" column="0">
+       <item row="18" column="0">
         <widget class="QLabel" name="label_190">
          <property name="text">
           <string>Volume Control</string>
          </property>
         </widget>
        </item>
-       <item row="19" column="1">
+       <item row="18" column="1">
         <widget class="QComboBox" name="volumeControlCB"/>
        </item>
-       <item row="20" column="0">
+       <item row="19" column="0">
         <widget class="QLabel" name="label_191">
          <property name="text">
           <string>Version</string>
          </property>
         </widget>
        </item>
-       <item row="20" column="1">
+       <item row="19" column="1">
         <layout class="QHBoxLayout" name="horizontalLayout">
          <item>
           <widget class="QLabel" name="label_version">
@@ -868,14 +884,14 @@
          </item>
         </layout>
        </item>
-       <item row="21" column="0">
+       <item row="20" column="0">
         <widget class="QLabel" name="label_192">
          <property name="text">
           <string>Switch Warning</string>
          </property>
         </widget>
        </item>
-       <item row="21" column="1">
+       <item row="20" column="1">
         <layout class="QGridLayout" name="gridLayout_Swarn" columnstretch="0,0,0,0,0,0,0,0,0" columnminimumwidth="0,0,0,0,0,0,0,0,0">
          <item row="0" column="0">
           <widget class="QCheckBox" name="switchwarnChkB">
@@ -970,7 +986,7 @@ p, li { white-space: pre-wrap; }
          </item>
         </layout>
        </item>
-       <item row="22" column="1">
+       <item row="21" column="1">
         <spacer name="verticalSpacer_9">
          <property name="orientation">
           <enum>Qt::Vertical</enum>
@@ -2843,7 +2859,7 @@ Right</string>
       <attribute name="title">
        <string>Limits</string>
       </attribute>
-      <layout class="QGridLayout" name="gridLayout_6" rowstretch="0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0" columnstretch="0,1,1,1,1,0,0">
+      <layout class="QGridLayout" name="gridLayout_6" rowstretch="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" columnstretch="0,0,0,0,0,0,0,0,0,0,0,0,0,0">
        <item row="1" column="0">
         <widget class="QLabel" name="label_14">
          <property name="text">
@@ -2991,6 +3007,12 @@ Right</string>
        </item>
        <item row="3" column="1">
         <widget class="QDoubleSpinBox" name="offsetDSB_3">
+         <property name="maximumSize">
+          <size>
+           <width>100</width>
+           <height>16777215</height>
+          </size>
+         </property>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
@@ -3007,6 +3029,12 @@ Right</string>
        </item>
        <item row="3" column="2">
         <widget class="QSpinBox" name="minSB_3">
+         <property name="maximumSize">
+          <size>
+           <width>100</width>
+           <height>16777215</height>
+          </size>
+         </property>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
@@ -3023,6 +3051,12 @@ Right</string>
        </item>
        <item row="3" column="4">
         <widget class="QSpinBox" name="maxSB_3">
+         <property name="maximumSize">
+          <size>
+           <width>100</width>
+           <height>16777215</height>
+          </size>
+         </property>
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
@@ -3603,351 +3637,6 @@ Right</string>
          </item>
         </widget>
        </item>
-       <item row="12" column="0">
-        <widget class="QLabel" name="label_25">
-         <property name="text">
-          <string notr="true">CH12</string>
-         </property>
-        </widget>
-       </item>
-       <item row="12" column="1">
-        <widget class="QDoubleSpinBox" name="offsetDSB_12">
-         <property name="alignment">
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-         </property>
-         <property name="accelerated">
-          <bool>true</bool>
-         </property>
-         <property name="decimals">
-          <number>1</number>
-         </property>
-         <property name="minimum">
-          <double>-100.000000000000000</double>
-         </property>
-        </widget>
-       </item>
-       <item row="12" column="2">
-        <widget class="QSpinBox" name="minSB_12">
-         <property name="alignment">
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-         </property>
-         <property name="accelerated">
-          <bool>true</bool>
-         </property>
-         <property name="minimum">
-          <number>-100</number>
-         </property>
-         <property name="maximum">
-          <number>100</number>
-         </property>
-        </widget>
-       </item>
-       <item row="12" column="4">
-        <widget class="QSpinBox" name="maxSB_12">
-         <property name="alignment">
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-         </property>
-         <property name="accelerated">
-          <bool>true</bool>
-         </property>
-         <property name="minimum">
-          <number>-100</number>
-         </property>
-         <property name="maximum">
-          <number>100</number>
-         </property>
-        </widget>
-       </item>
-       <item row="12" column="6">
-        <widget class="QComboBox" name="chInvCB_12">
-         <item>
-          <property name="text">
-           <string>NOR</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>INV</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="13" column="0">
-        <widget class="QLabel" name="label_26">
-         <property name="text">
-          <string notr="true">CH13</string>
-         </property>
-        </widget>
-       </item>
-       <item row="13" column="1">
-        <widget class="QDoubleSpinBox" name="offsetDSB_13">
-         <property name="alignment">
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-         </property>
-         <property name="accelerated">
-          <bool>true</bool>
-         </property>
-         <property name="decimals">
-          <number>1</number>
-         </property>
-         <property name="minimum">
-          <double>-100.000000000000000</double>
-         </property>
-        </widget>
-       </item>
-       <item row="13" column="2">
-        <widget class="QSpinBox" name="minSB_13">
-         <property name="alignment">
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-         </property>
-         <property name="accelerated">
-          <bool>true</bool>
-         </property>
-         <property name="minimum">
-          <number>-100</number>
-         </property>
-         <property name="maximum">
-          <number>100</number>
-         </property>
-        </widget>
-       </item>
-       <item row="13" column="4">
-        <widget class="QSpinBox" name="maxSB_13">
-         <property name="alignment">
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-         </property>
-         <property name="accelerated">
-          <bool>true</bool>
-         </property>
-         <property name="minimum">
-          <number>-100</number>
-         </property>
-         <property name="maximum">
-          <number>100</number>
-         </property>
-        </widget>
-       </item>
-       <item row="13" column="6">
-        <widget class="QComboBox" name="chInvCB_13">
-         <item>
-          <property name="text">
-           <string>NOR</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>INV</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="14" column="0">
-        <widget class="QLabel" name="label_27">
-         <property name="text">
-          <string notr="true">CH14</string>
-         </property>
-        </widget>
-       </item>
-       <item row="14" column="1">
-        <widget class="QDoubleSpinBox" name="offsetDSB_14">
-         <property name="alignment">
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-         </property>
-         <property name="accelerated">
-          <bool>true</bool>
-         </property>
-         <property name="decimals">
-          <number>1</number>
-         </property>
-         <property name="minimum">
-          <double>-100.000000000000000</double>
-         </property>
-        </widget>
-       </item>
-       <item row="14" column="2">
-        <widget class="QSpinBox" name="minSB_14">
-         <property name="alignment">
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-         </property>
-         <property name="accelerated">
-          <bool>true</bool>
-         </property>
-         <property name="minimum">
-          <number>-100</number>
-         </property>
-         <property name="maximum">
-          <number>100</number>
-         </property>
-        </widget>
-       </item>
-       <item row="14" column="4">
-        <widget class="QSpinBox" name="maxSB_14">
-         <property name="alignment">
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-         </property>
-         <property name="accelerated">
-          <bool>true</bool>
-         </property>
-         <property name="minimum">
-          <number>-100</number>
-         </property>
-         <property name="maximum">
-          <number>100</number>
-         </property>
-        </widget>
-       </item>
-       <item row="14" column="6">
-        <widget class="QComboBox" name="chInvCB_14">
-         <item>
-          <property name="text">
-           <string>NOR</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>INV</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="15" column="0">
-        <widget class="QLabel" name="label_28">
-         <property name="text">
-          <string notr="true">CH15</string>
-         </property>
-        </widget>
-       </item>
-       <item row="15" column="1">
-        <widget class="QDoubleSpinBox" name="offsetDSB_15">
-         <property name="alignment">
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-         </property>
-         <property name="accelerated">
-          <bool>true</bool>
-         </property>
-         <property name="decimals">
-          <number>1</number>
-         </property>
-         <property name="minimum">
-          <double>-100.000000000000000</double>
-         </property>
-        </widget>
-       </item>
-       <item row="15" column="2">
-        <widget class="QSpinBox" name="minSB_15">
-         <property name="alignment">
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-         </property>
-         <property name="accelerated">
-          <bool>true</bool>
-         </property>
-         <property name="minimum">
-          <number>-100</number>
-         </property>
-         <property name="maximum">
-          <number>100</number>
-         </property>
-        </widget>
-       </item>
-       <item row="15" column="4">
-        <widget class="QSpinBox" name="maxSB_15">
-         <property name="alignment">
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-         </property>
-         <property name="accelerated">
-          <bool>true</bool>
-         </property>
-         <property name="minimum">
-          <number>-100</number>
-         </property>
-         <property name="maximum">
-          <number>100</number>
-         </property>
-        </widget>
-       </item>
-       <item row="15" column="6">
-        <widget class="QComboBox" name="chInvCB_15">
-         <item>
-          <property name="text">
-           <string>NOR</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>INV</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="16" column="0">
-        <widget class="QLabel" name="label_29">
-         <property name="text">
-          <string notr="true">CH16</string>
-         </property>
-        </widget>
-       </item>
-       <item row="16" column="1">
-        <widget class="QDoubleSpinBox" name="offsetDSB_16">
-         <property name="alignment">
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-         </property>
-         <property name="accelerated">
-          <bool>true</bool>
-         </property>
-         <property name="decimals">
-          <number>1</number>
-         </property>
-         <property name="minimum">
-          <double>-100.000000000000000</double>
-         </property>
-        </widget>
-       </item>
-       <item row="16" column="2">
-        <widget class="QSpinBox" name="minSB_16">
-         <property name="alignment">
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-         </property>
-         <property name="accelerated">
-          <bool>true</bool>
-         </property>
-         <property name="minimum">
-          <number>-100</number>
-         </property>
-         <property name="maximum">
-          <number>100</number>
-         </property>
-        </widget>
-       </item>
-       <item row="16" column="4">
-        <widget class="QSpinBox" name="maxSB_16">
-         <property name="alignment">
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-         </property>
-         <property name="accelerated">
-          <bool>true</bool>
-         </property>
-         <property name="minimum">
-          <number>-100</number>
-         </property>
-         <property name="maximum">
-          <number>100</number>
-         </property>
-        </widget>
-       </item>
-       <item row="16" column="6">
-        <widget class="QComboBox" name="chInvCB_16">
-         <item>
-          <property name="text">
-           <string>NOR</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>INV</string>
-          </property>
-         </item>
-        </widget>
-       </item>
        <item row="0" column="0">
         <widget class="QLabel" name="label_36">
          <property name="frameShape">
@@ -4068,7 +3757,7 @@ Right</string>
          </property>
          <property name="maximumSize">
           <size>
-           <width>80</width>
+           <width>75</width>
            <height>16777215</height>
           </size>
          </property>
@@ -4142,6 +3831,12 @@ Right</string>
        </item>
        <item row="3" column="3">
         <widget class="QLabel" name="CH3Amin">
+         <property name="maximumSize">
+          <size>
+           <width>70</width>
+           <height>16777215</height>
+          </size>
+         </property>
          <property name="text">
           <string/>
          </property>
@@ -4198,97 +3893,6 @@ Right</string>
        </item>
        <item row="11" column="3">
         <widget class="QLabel" name="CH11Amin">
-         <property name="text">
-          <string/>
-         </property>
-        </widget>
-       </item>
-       <item row="12" column="3">
-        <widget class="QLabel" name="CH12Amin">
-         <property name="text">
-          <string/>
-         </property>
-        </widget>
-       </item>
-       <item row="13" column="3">
-        <widget class="QLabel" name="CH13Amin">
-         <property name="text">
-          <string/>
-         </property>
-        </widget>
-       </item>
-       <item row="14" column="3">
-        <widget class="QLabel" name="CH14Amin">
-         <property name="text">
-          <string/>
-         </property>
-        </widget>
-       </item>
-       <item row="15" column="3">
-        <widget class="QLabel" name="CH15Amin">
-         <property name="text">
-          <string/>
-         </property>
-        </widget>
-       </item>
-       <item row="16" column="3">
-        <widget class="QLabel" name="CH16Amin">
-         <property name="text">
-          <string/>
-         </property>
-        </widget>
-       </item>
-       <item row="17" column="3">
-        <widget class="QLabel" name="CH17Amin">
-         <property name="text">
-          <string/>
-         </property>
-        </widget>
-       </item>
-       <item row="18" column="3">
-        <widget class="QLabel" name="CH18Amin">
-         <property name="text">
-          <string/>
-         </property>
-        </widget>
-       </item>
-       <item row="19" column="3">
-        <widget class="QLabel" name="CH19Amin">
-         <property name="text">
-          <string/>
-         </property>
-        </widget>
-       </item>
-       <item row="20" column="3">
-        <widget class="QLabel" name="CH20Amin">
-         <property name="text">
-          <string/>
-         </property>
-        </widget>
-       </item>
-       <item row="21" column="3">
-        <widget class="QLabel" name="CH21Amin">
-         <property name="text">
-          <string/>
-         </property>
-        </widget>
-       </item>
-       <item row="22" column="3">
-        <widget class="QLabel" name="CH22Amin">
-         <property name="text">
-          <string/>
-         </property>
-        </widget>
-       </item>
-       <item row="23" column="3">
-        <widget class="QLabel" name="CH23Amin">
-         <property name="text">
-          <string/>
-         </property>
-        </widget>
-       </item>
-       <item row="24" column="3">
-        <widget class="QLabel" name="CH24Amin">
          <property name="text">
           <string/>
          </property>
@@ -4371,422 +3975,212 @@ Right</string>
          </property>
         </widget>
        </item>
-       <item row="12" column="5">
-        <widget class="QLabel" name="CH12Amax">
-         <property name="text">
-          <string/>
+       <item row="25" column="3">
+        <spacer name="verticalSpacer_7">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
          </property>
-        </widget>
-       </item>
-       <item row="13" column="5">
-        <widget class="QLabel" name="CH13Amax">
-         <property name="text">
-          <string/>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
          </property>
-        </widget>
+        </spacer>
        </item>
-       <item row="14" column="5">
-        <widget class="QLabel" name="CH14Amax">
-         <property name="text">
-          <string/>
+       <item row="0" column="7">
+        <widget class="QLabel" name="label_196">
+         <property name="frameShape">
+          <enum>QFrame::Panel</enum>
          </property>
-        </widget>
-       </item>
-       <item row="15" column="5">
-        <widget class="QLabel" name="CH15Amax">
-         <property name="text">
-          <string/>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
          </property>
-        </widget>
-       </item>
-       <item row="16" column="5">
-        <widget class="QLabel" name="CH16Amax">
-         <property name="text">
-          <string/>
+         <property name="midLineWidth">
+          <number>0</number>
          </property>
-        </widget>
-       </item>
-       <item row="17" column="5">
-        <widget class="QLabel" name="CH17Amax">
          <property name="text">
-          <string/>
+          <string>Channel</string>
          </property>
-        </widget>
-       </item>
-       <item row="18" column="5">
-        <widget class="QLabel" name="CH18Amax">
-         <property name="text">
-          <string/>
-         </property>
-        </widget>
-       </item>
-       <item row="19" column="5">
-        <widget class="QLabel" name="CH19Amax">
-         <property name="text">
-          <string/>
-         </property>
-        </widget>
-       </item>
-       <item row="20" column="5">
-        <widget class="QLabel" name="CH20Amax">
-         <property name="text">
-          <string/>
-         </property>
-        </widget>
-       </item>
-       <item row="21" column="5">
-        <widget class="QLabel" name="CH21Amax">
-         <property name="text">
-          <string/>
-         </property>
-        </widget>
-       </item>
-       <item row="22" column="5">
-        <widget class="QLabel" name="CH22Amax">
-         <property name="text">
-          <string/>
-         </property>
-        </widget>
-       </item>
-       <item row="23" column="5">
-        <widget class="QLabel" name="CH23Amax">
-         <property name="text">
-          <string/>
-         </property>
-        </widget>
-       </item>
-       <item row="24" column="5">
-        <widget class="QLabel" name="CH24Amax">
-         <property name="text">
-          <string/>
-         </property>
-        </widget>
-       </item>
-       <item row="17" column="0">
-        <widget class="QLabel" name="label_182">
-         <property name="text">
-          <string notr="true">CH17</string>
-         </property>
-        </widget>
-       </item>
-       <item row="17" column="2">
-        <widget class="QSpinBox" name="minSB_17">
          <property name="alignment">
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          <set>Qt::AlignCenter</set>
          </property>
-         <property name="accelerated">
-          <bool>true</bool>
-         </property>
-         <property name="minimum">
-          <number>-100</number>
-         </property>
-         <property name="maximum">
-          <number>100</number>
+         <property name="margin">
+          <number>3</number>
          </property>
         </widget>
        </item>
-       <item row="17" column="4">
-        <widget class="QSpinBox" name="maxSB_17">
-         <property name="alignment">
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       <item row="0" column="8">
+        <widget class="QLabel" name="label_197">
+         <property name="frameShape">
+          <enum>QFrame::Panel</enum>
          </property>
-         <property name="accelerated">
-          <bool>true</bool>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
          </property>
-         <property name="minimum">
-          <number>-100</number>
+         <property name="midLineWidth">
+          <number>0</number>
          </property>
-         <property name="maximum">
-          <number>100</number>
-         </property>
-        </widget>
-       </item>
-       <item row="17" column="1">
-        <widget class="QDoubleSpinBox" name="offsetDSB_17">
-         <property name="alignment">
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-         </property>
-         <property name="accelerated">
-          <bool>true</bool>
-         </property>
-         <property name="decimals">
-          <number>1</number>
-         </property>
-         <property name="minimum">
-          <double>-100.000000000000000</double>
-         </property>
-        </widget>
-       </item>
-       <item row="17" column="6">
-        <widget class="QComboBox" name="chInvCB_17">
-         <item>
-          <property name="text">
-           <string>NOR</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>INV</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="18" column="0">
-        <widget class="QLabel" name="label_183">
          <property name="text">
-          <string notr="true">CH18</string>
+          <string>Offset</string>
          </property>
-        </widget>
-       </item>
-       <item row="18" column="1">
-        <widget class="QDoubleSpinBox" name="offsetDSB_18">
          <property name="alignment">
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          <set>Qt::AlignCenter</set>
          </property>
-         <property name="accelerated">
-          <bool>true</bool>
-         </property>
-         <property name="decimals">
-          <number>1</number>
-         </property>
-         <property name="minimum">
-          <double>-100.000000000000000</double>
+         <property name="margin">
+          <number>3</number>
          </property>
         </widget>
        </item>
-       <item row="18" column="2">
-        <widget class="QSpinBox" name="minSB_18">
-         <property name="alignment">
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       <item row="0" column="9">
+        <widget class="QLabel" name="label_198">
+         <property name="frameShape">
+          <enum>QFrame::Panel</enum>
          </property>
-         <property name="accelerated">
-          <bool>true</bool>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
          </property>
-         <property name="minimum">
-          <number>-100</number>
+         <property name="midLineWidth">
+          <number>0</number>
          </property>
-         <property name="maximum">
-          <number>100</number>
-         </property>
-        </widget>
-       </item>
-       <item row="18" column="4">
-        <widget class="QSpinBox" name="maxSB_18">
-         <property name="alignment">
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-         </property>
-         <property name="accelerated">
-          <bool>true</bool>
-         </property>
-         <property name="minimum">
-          <number>-100</number>
-         </property>
-         <property name="maximum">
-          <number>100</number>
-         </property>
-        </widget>
-       </item>
-       <item row="18" column="6">
-        <widget class="QComboBox" name="chInvCB_18">
-         <item>
-          <property name="text">
-           <string>NOR</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>INV</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="19" column="2">
-        <widget class="QSpinBox" name="minSB_19">
-         <property name="alignment">
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-         </property>
-         <property name="accelerated">
-          <bool>true</bool>
-         </property>
-         <property name="minimum">
-          <number>-100</number>
-         </property>
-         <property name="maximum">
-          <number>100</number>
-         </property>
-        </widget>
-       </item>
-       <item row="19" column="1">
-        <widget class="QDoubleSpinBox" name="offsetDSB_19">
-         <property name="alignment">
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-         </property>
-         <property name="accelerated">
-          <bool>true</bool>
-         </property>
-         <property name="decimals">
-          <number>1</number>
-         </property>
-         <property name="minimum">
-          <double>-100.000000000000000</double>
-         </property>
-        </widget>
-       </item>
-       <item row="19" column="0">
-        <widget class="QLabel" name="label_184">
          <property name="text">
-          <string notr="true">CH19</string>
+          <string>Min</string>
          </property>
-        </widget>
-       </item>
-       <item row="19" column="4">
-        <widget class="QSpinBox" name="maxSB_19">
          <property name="alignment">
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          <set>Qt::AlignCenter</set>
          </property>
-         <property name="accelerated">
-          <bool>true</bool>
-         </property>
-         <property name="minimum">
-          <number>-100</number>
-         </property>
-         <property name="maximum">
-          <number>100</number>
+         <property name="margin">
+          <number>3</number>
          </property>
         </widget>
        </item>
-       <item row="19" column="6">
-        <widget class="QComboBox" name="chInvCB_19">
-         <item>
-          <property name="text">
-           <string>NOR</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>INV</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="20" column="0">
-        <widget class="QLabel" name="label_185">
+       <item row="0" column="10">
+        <widget class="QLabel" name="label_199">
+         <property name="minimumSize">
+          <size>
+           <width>80</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>75</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::Panel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <property name="midLineWidth">
+          <number>0</number>
+         </property>
          <property name="text">
-          <string notr="true">CH20</string>
+          <string>Actual Min</string>
          </property>
-        </widget>
-       </item>
-       <item row="20" column="1">
-        <widget class="QDoubleSpinBox" name="offsetDSB_20">
          <property name="alignment">
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          <set>Qt::AlignCenter</set>
          </property>
-         <property name="accelerated">
-          <bool>true</bool>
-         </property>
-         <property name="decimals">
-          <number>1</number>
-         </property>
-         <property name="minimum">
-          <double>-100.000000000000000</double>
+         <property name="margin">
+          <number>3</number>
          </property>
         </widget>
        </item>
-       <item row="20" column="6">
-        <widget class="QComboBox" name="chInvCB_20">
-         <item>
-          <property name="text">
-           <string>NOR</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>INV</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="20" column="2">
-        <widget class="QSpinBox" name="minSB_20">
+       <item row="0" column="11">
+        <widget class="QLabel" name="label_200">
+         <property name="frameShape">
+          <enum>QFrame::Panel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <property name="midLineWidth">
+          <number>0</number>
+         </property>
+         <property name="text">
+          <string>Max</string>
+         </property>
          <property name="alignment">
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          <set>Qt::AlignCenter</set>
          </property>
-         <property name="accelerated">
-          <bool>true</bool>
-         </property>
-         <property name="minimum">
-          <number>-100</number>
-         </property>
-         <property name="maximum">
-          <number>100</number>
+         <property name="margin">
+          <number>3</number>
          </property>
         </widget>
        </item>
-       <item row="20" column="4">
-        <widget class="QSpinBox" name="maxSB_20">
+       <item row="0" column="12">
+        <widget class="QLabel" name="label_201">
+         <property name="minimumSize">
+          <size>
+           <width>80</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>80</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::Panel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <property name="midLineWidth">
+          <number>0</number>
+         </property>
+         <property name="text">
+          <string>Actual Max</string>
+         </property>
          <property name="alignment">
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          <set>Qt::AlignCenter</set>
          </property>
-         <property name="accelerated">
-          <bool>true</bool>
-         </property>
-         <property name="minimum">
-          <number>-100</number>
-         </property>
-         <property name="maximum">
-          <number>100</number>
+         <property name="margin">
+          <number>3</number>
          </property>
         </widget>
        </item>
-       <item row="21" column="1">
-        <widget class="QDoubleSpinBox" name="offsetDSB_21">
+       <item row="0" column="13">
+        <widget class="QLabel" name="label_202">
+         <property name="frameShape">
+          <enum>QFrame::Panel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <property name="midLineWidth">
+          <number>0</number>
+         </property>
+         <property name="text">
+          <string>Invert</string>
+         </property>
          <property name="alignment">
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          <set>Qt::AlignCenter</set>
          </property>
-         <property name="accelerated">
-          <bool>true</bool>
-         </property>
-         <property name="decimals">
-          <number>1</number>
-         </property>
-         <property name="minimum">
-          <double>-100.000000000000000</double>
+         <property name="margin">
+          <number>3</number>
          </property>
         </widget>
        </item>
-       <item row="22" column="1">
-        <widget class="QDoubleSpinBox" name="offsetDSB_22">
-         <property name="alignment">
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-         </property>
-         <property name="accelerated">
-          <bool>true</bool>
-         </property>
-         <property name="decimals">
-          <number>1</number>
-         </property>
-         <property name="minimum">
-          <double>-100.000000000000000</double>
+       <item row="12" column="0">
+        <widget class="QLabel" name="label_25">
+         <property name="text">
+          <string notr="true">CH12</string>
          </property>
         </widget>
        </item>
-       <item row="23" column="1">
-        <widget class="QDoubleSpinBox" name="offsetDSB_23">
-         <property name="alignment">
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-         </property>
-         <property name="accelerated">
-          <bool>true</bool>
-         </property>
-         <property name="decimals">
-          <number>1</number>
-         </property>
-         <property name="minimum">
-          <double>-100.000000000000000</double>
+       <item row="12" column="7">
+        <widget class="QLabel" name="label_189">
+         <property name="text">
+          <string notr="true">CH24</string>
          </property>
         </widget>
        </item>
-       <item row="24" column="1">
+       <item row="12" column="8">
         <widget class="QDoubleSpinBox" name="offsetDSB_24">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -4802,55 +4196,7 @@ Right</string>
          </property>
         </widget>
        </item>
-       <item row="21" column="2">
-        <widget class="QSpinBox" name="minSB_21">
-         <property name="alignment">
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-         </property>
-         <property name="accelerated">
-          <bool>true</bool>
-         </property>
-         <property name="minimum">
-          <number>-100</number>
-         </property>
-         <property name="maximum">
-          <number>100</number>
-         </property>
-        </widget>
-       </item>
-       <item row="22" column="2">
-        <widget class="QSpinBox" name="minSB_22">
-         <property name="alignment">
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-         </property>
-         <property name="accelerated">
-          <bool>true</bool>
-         </property>
-         <property name="minimum">
-          <number>-100</number>
-         </property>
-         <property name="maximum">
-          <number>100</number>
-         </property>
-        </widget>
-       </item>
-       <item row="23" column="2">
-        <widget class="QSpinBox" name="minSB_23">
-         <property name="alignment">
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-         </property>
-         <property name="accelerated">
-          <bool>true</bool>
-         </property>
-         <property name="minimum">
-          <number>-100</number>
-         </property>
-         <property name="maximum">
-          <number>100</number>
-         </property>
-        </widget>
-       </item>
-       <item row="24" column="2">
+       <item row="12" column="9">
         <widget class="QSpinBox" name="minSB_24">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -4866,55 +4212,14 @@ Right</string>
          </property>
         </widget>
        </item>
-       <item row="21" column="4">
-        <widget class="QSpinBox" name="maxSB_21">
-         <property name="alignment">
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-         </property>
-         <property name="accelerated">
-          <bool>true</bool>
-         </property>
-         <property name="minimum">
-          <number>-100</number>
-         </property>
-         <property name="maximum">
-          <number>100</number>
+       <item row="12" column="10">
+        <widget class="QLabel" name="CH24Amin">
+         <property name="text">
+          <string/>
          </property>
         </widget>
        </item>
-       <item row="22" column="4">
-        <widget class="QSpinBox" name="maxSB_22">
-         <property name="alignment">
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-         </property>
-         <property name="accelerated">
-          <bool>true</bool>
-         </property>
-         <property name="minimum">
-          <number>-100</number>
-         </property>
-         <property name="maximum">
-          <number>100</number>
-         </property>
-        </widget>
-       </item>
-       <item row="23" column="4">
-        <widget class="QSpinBox" name="maxSB_23">
-         <property name="alignment">
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-         </property>
-         <property name="accelerated">
-          <bool>true</bool>
-         </property>
-         <property name="minimum">
-          <number>-100</number>
-         </property>
-         <property name="maximum">
-          <number>100</number>
-         </property>
-        </widget>
-       </item>
-       <item row="24" column="4">
+       <item row="12" column="11">
         <widget class="QSpinBox" name="maxSB_24">
          <property name="alignment">
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -4930,49 +4235,14 @@ Right</string>
          </property>
         </widget>
        </item>
-       <item row="21" column="6">
-        <widget class="QComboBox" name="chInvCB_21">
-         <item>
-          <property name="text">
-           <string>NOR</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>INV</string>
-          </property>
-         </item>
+       <item row="12" column="12">
+        <widget class="QLabel" name="CH24Amax">
+         <property name="text">
+          <string/>
+         </property>
         </widget>
        </item>
-       <item row="22" column="6">
-        <widget class="QComboBox" name="chInvCB_22">
-         <item>
-          <property name="text">
-           <string>NOR</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>INV</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="23" column="6">
-        <widget class="QComboBox" name="chInvCB_23">
-         <item>
-          <property name="text">
-           <string>NOR</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>INV</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="24" column="6">
+       <item row="12" column="13">
         <widget class="QComboBox" name="chInvCB_24">
          <item>
           <property name="text">
@@ -4986,46 +4256,994 @@ Right</string>
          </item>
         </widget>
        </item>
-       <item row="21" column="0">
-        <widget class="QLabel" name="label_186">
-         <property name="text">
-          <string notr="true">CH21</string>
+       <item row="12" column="1">
+        <widget class="QDoubleSpinBox" name="offsetDSB_12">
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
+         <property name="decimals">
+          <number>1</number>
+         </property>
+         <property name="minimum">
+          <double>-100.000000000000000</double>
          </property>
         </widget>
        </item>
-       <item row="22" column="0">
-        <widget class="QLabel" name="label_187">
-         <property name="text">
-          <string notr="true">CH22</string>
+       <item row="12" column="2">
+        <widget class="QSpinBox" name="minSB_12">
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
+         <property name="minimum">
+          <number>-100</number>
+         </property>
+         <property name="maximum">
+          <number>100</number>
          </property>
         </widget>
        </item>
-       <item row="23" column="0">
+       <item row="12" column="3">
+        <widget class="QLabel" name="CH12Amin">
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item row="12" column="4">
+        <widget class="QSpinBox" name="maxSB_12">
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
+         <property name="minimum">
+          <number>-100</number>
+         </property>
+         <property name="maximum">
+          <number>100</number>
+         </property>
+        </widget>
+       </item>
+       <item row="12" column="5">
+        <widget class="QLabel" name="CH12Amax">
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item row="12" column="6">
+        <widget class="QComboBox" name="chInvCB_12">
+         <item>
+          <property name="text">
+           <string>NOR</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>INV</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="1" column="8">
+        <widget class="QDoubleSpinBox" name="offsetDSB_13">
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
+         <property name="decimals">
+          <number>1</number>
+         </property>
+         <property name="minimum">
+          <double>-100.000000000000000</double>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="7">
+        <widget class="QLabel" name="label_26">
+         <property name="text">
+          <string notr="true">CH13</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="9">
+        <widget class="QSpinBox" name="minSB_13">
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
+         <property name="minimum">
+          <number>-100</number>
+         </property>
+         <property name="maximum">
+          <number>100</number>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="10">
+        <widget class="QLabel" name="CH13Amin">
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="11">
+        <widget class="QSpinBox" name="maxSB_13">
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
+         <property name="minimum">
+          <number>-100</number>
+         </property>
+         <property name="maximum">
+          <number>100</number>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="12">
+        <widget class="QLabel" name="CH13Amax">
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="13">
+        <widget class="QComboBox" name="chInvCB_13">
+         <item>
+          <property name="text">
+           <string>NOR</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>INV</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="11" column="7">
         <widget class="QLabel" name="label_188">
          <property name="text">
           <string notr="true">CH23</string>
          </property>
         </widget>
        </item>
-       <item row="24" column="0">
-        <widget class="QLabel" name="label_189">
-         <property name="text">
-          <string notr="true">CH24</string>
+       <item row="11" column="8">
+        <widget class="QDoubleSpinBox" name="offsetDSB_23">
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
+         <property name="decimals">
+          <number>1</number>
+         </property>
+         <property name="minimum">
+          <double>-100.000000000000000</double>
          </property>
         </widget>
        </item>
-       <item row="25" column="3">
-        <spacer name="verticalSpacer_7">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
+       <item row="11" column="9">
+        <widget class="QSpinBox" name="minSB_23">
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>40</height>
-          </size>
+         <property name="accelerated">
+          <bool>true</bool>
          </property>
-        </spacer>
+         <property name="minimum">
+          <number>-100</number>
+         </property>
+         <property name="maximum">
+          <number>100</number>
+         </property>
+        </widget>
+       </item>
+       <item row="11" column="10">
+        <widget class="QLabel" name="CH23Amin">
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item row="11" column="11">
+        <widget class="QSpinBox" name="maxSB_23">
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
+         <property name="minimum">
+          <number>-100</number>
+         </property>
+         <property name="maximum">
+          <number>100</number>
+         </property>
+        </widget>
+       </item>
+       <item row="11" column="12">
+        <widget class="QLabel" name="CH23Amax">
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item row="11" column="13">
+        <widget class="QComboBox" name="chInvCB_23">
+         <item>
+          <property name="text">
+           <string>NOR</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>INV</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="10" column="7">
+        <widget class="QLabel" name="label_187">
+         <property name="text">
+          <string notr="true">CH22</string>
+         </property>
+        </widget>
+       </item>
+       <item row="10" column="8">
+        <widget class="QDoubleSpinBox" name="offsetDSB_22">
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
+         <property name="decimals">
+          <number>1</number>
+         </property>
+         <property name="minimum">
+          <double>-100.000000000000000</double>
+         </property>
+        </widget>
+       </item>
+       <item row="10" column="9">
+        <widget class="QSpinBox" name="minSB_22">
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
+         <property name="minimum">
+          <number>-100</number>
+         </property>
+         <property name="maximum">
+          <number>100</number>
+         </property>
+        </widget>
+       </item>
+       <item row="10" column="10">
+        <widget class="QLabel" name="CH22Amin">
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item row="10" column="11">
+        <widget class="QSpinBox" name="maxSB_22">
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
+         <property name="minimum">
+          <number>-100</number>
+         </property>
+         <property name="maximum">
+          <number>100</number>
+         </property>
+        </widget>
+       </item>
+       <item row="10" column="12">
+        <widget class="QLabel" name="CH22Amax">
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item row="10" column="13">
+        <widget class="QComboBox" name="chInvCB_22">
+         <item>
+          <property name="text">
+           <string>NOR</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>INV</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="9" column="7">
+        <widget class="QLabel" name="label_186">
+         <property name="text">
+          <string notr="true">CH21</string>
+         </property>
+        </widget>
+       </item>
+       <item row="8" column="7">
+        <widget class="QLabel" name="label_185">
+         <property name="text">
+          <string notr="true">CH20</string>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="7">
+        <widget class="QLabel" name="label_184">
+         <property name="text">
+          <string notr="true">CH19</string>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="7">
+        <widget class="QLabel" name="label_183">
+         <property name="text">
+          <string notr="true">CH18</string>
+         </property>
+        </widget>
+       </item>
+       <item row="9" column="8">
+        <widget class="QDoubleSpinBox" name="offsetDSB_21">
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
+         <property name="decimals">
+          <number>1</number>
+         </property>
+         <property name="minimum">
+          <double>-100.000000000000000</double>
+         </property>
+        </widget>
+       </item>
+       <item row="8" column="8">
+        <widget class="QDoubleSpinBox" name="offsetDSB_20">
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
+         <property name="decimals">
+          <number>1</number>
+         </property>
+         <property name="minimum">
+          <double>-100.000000000000000</double>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="8">
+        <widget class="QDoubleSpinBox" name="offsetDSB_19">
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
+         <property name="decimals">
+          <number>1</number>
+         </property>
+         <property name="minimum">
+          <double>-100.000000000000000</double>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="8">
+        <widget class="QDoubleSpinBox" name="offsetDSB_18">
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
+         <property name="decimals">
+          <number>1</number>
+         </property>
+         <property name="minimum">
+          <double>-100.000000000000000</double>
+         </property>
+        </widget>
+       </item>
+       <item row="9" column="9">
+        <widget class="QSpinBox" name="minSB_21">
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
+         <property name="minimum">
+          <number>-100</number>
+         </property>
+         <property name="maximum">
+          <number>100</number>
+         </property>
+        </widget>
+       </item>
+       <item row="8" column="9">
+        <widget class="QSpinBox" name="minSB_20">
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
+         <property name="minimum">
+          <number>-100</number>
+         </property>
+         <property name="maximum">
+          <number>100</number>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="9">
+        <widget class="QSpinBox" name="minSB_19">
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
+         <property name="minimum">
+          <number>-100</number>
+         </property>
+         <property name="maximum">
+          <number>100</number>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="9">
+        <widget class="QSpinBox" name="minSB_18">
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
+         <property name="minimum">
+          <number>-100</number>
+         </property>
+         <property name="maximum">
+          <number>100</number>
+         </property>
+        </widget>
+       </item>
+       <item row="9" column="10">
+        <widget class="QLabel" name="CH21Amin">
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item row="8" column="10">
+        <widget class="QLabel" name="CH20Amin">
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item row="9" column="11">
+        <widget class="QSpinBox" name="maxSB_21">
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
+         <property name="minimum">
+          <number>-100</number>
+         </property>
+         <property name="maximum">
+          <number>100</number>
+         </property>
+        </widget>
+       </item>
+       <item row="8" column="11">
+        <widget class="QSpinBox" name="maxSB_20">
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
+         <property name="minimum">
+          <number>-100</number>
+         </property>
+         <property name="maximum">
+          <number>100</number>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="10">
+        <widget class="QLabel" name="CH19Amin">
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="10">
+        <widget class="QLabel" name="CH18Amin">
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="11">
+        <widget class="QSpinBox" name="maxSB_19">
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
+         <property name="minimum">
+          <number>-100</number>
+         </property>
+         <property name="maximum">
+          <number>100</number>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="11">
+        <widget class="QSpinBox" name="maxSB_18">
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
+         <property name="minimum">
+          <number>-100</number>
+         </property>
+         <property name="maximum">
+          <number>100</number>
+         </property>
+        </widget>
+       </item>
+       <item row="9" column="12">
+        <widget class="QLabel" name="CH21Amax">
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item row="8" column="12">
+        <widget class="QLabel" name="CH20Amax">
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="12">
+        <widget class="QLabel" name="CH19Amax">
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="12">
+        <widget class="QLabel" name="CH18Amax">
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item row="9" column="13">
+        <widget class="QComboBox" name="chInvCB_21">
+         <item>
+          <property name="text">
+           <string>NOR</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>INV</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="8" column="13">
+        <widget class="QComboBox" name="chInvCB_20">
+         <item>
+          <property name="text">
+           <string>NOR</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>INV</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="7" column="13">
+        <widget class="QComboBox" name="chInvCB_19">
+         <item>
+          <property name="text">
+           <string>NOR</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>INV</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="6" column="13">
+        <widget class="QComboBox" name="chInvCB_18">
+         <item>
+          <property name="text">
+           <string>NOR</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>INV</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="5" column="7">
+        <widget class="QLabel" name="label_182">
+         <property name="text">
+          <string notr="true">CH17</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="8">
+        <widget class="QDoubleSpinBox" name="offsetDSB_17">
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
+         <property name="decimals">
+          <number>1</number>
+         </property>
+         <property name="minimum">
+          <double>-100.000000000000000</double>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="10">
+        <widget class="QLabel" name="CH17Amin">
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="12">
+        <widget class="QLabel" name="CH17Amax">
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="9">
+        <widget class="QSpinBox" name="minSB_17">
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
+         <property name="minimum">
+          <number>-100</number>
+         </property>
+         <property name="maximum">
+          <number>100</number>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="11">
+        <widget class="QSpinBox" name="maxSB_17">
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
+         <property name="minimum">
+          <number>-100</number>
+         </property>
+         <property name="maximum">
+          <number>100</number>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="13">
+        <widget class="QComboBox" name="chInvCB_17">
+         <item>
+          <property name="text">
+           <string>NOR</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>INV</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="4" column="7">
+        <widget class="QLabel" name="label_29">
+         <property name="text">
+          <string notr="true">CH16</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="10">
+        <widget class="QLabel" name="CH16Amin">
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="11">
+        <widget class="QSpinBox" name="maxSB_16">
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
+         <property name="minimum">
+          <number>-100</number>
+         </property>
+         <property name="maximum">
+          <number>100</number>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="12">
+        <widget class="QLabel" name="CH16Amax">
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="13">
+        <widget class="QComboBox" name="chInvCB_16">
+         <item>
+          <property name="text">
+           <string>NOR</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>INV</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="4" column="9">
+        <widget class="QSpinBox" name="minSB_16">
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
+         <property name="minimum">
+          <number>-100</number>
+         </property>
+         <property name="maximum">
+          <number>100</number>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="8">
+        <widget class="QDoubleSpinBox" name="offsetDSB_16">
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
+         <property name="decimals">
+          <number>1</number>
+         </property>
+         <property name="minimum">
+          <double>-100.000000000000000</double>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="7">
+        <widget class="QLabel" name="label_28">
+         <property name="text">
+          <string notr="true">CH15</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="7">
+        <widget class="QLabel" name="label_27">
+         <property name="text">
+          <string notr="true">CH14</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="8">
+        <widget class="QDoubleSpinBox" name="offsetDSB_15">
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
+         <property name="decimals">
+          <number>1</number>
+         </property>
+         <property name="minimum">
+          <double>-100.000000000000000</double>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="8">
+        <widget class="QDoubleSpinBox" name="offsetDSB_14">
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
+         <property name="decimals">
+          <number>1</number>
+         </property>
+         <property name="minimum">
+          <double>-100.000000000000000</double>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="9">
+        <widget class="QSpinBox" name="minSB_15">
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
+         <property name="minimum">
+          <number>-100</number>
+         </property>
+         <property name="maximum">
+          <number>100</number>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="9">
+        <widget class="QSpinBox" name="minSB_14">
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
+         <property name="minimum">
+          <number>-100</number>
+         </property>
+         <property name="maximum">
+          <number>100</number>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="10">
+        <widget class="QLabel" name="CH15Amin">
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="10">
+        <widget class="QLabel" name="CH14Amin">
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="11">
+        <widget class="QSpinBox" name="maxSB_15">
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
+         <property name="minimum">
+          <number>-100</number>
+         </property>
+         <property name="maximum">
+          <number>100</number>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="11">
+        <widget class="QSpinBox" name="maxSB_14">
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="accelerated">
+          <bool>true</bool>
+         </property>
+         <property name="minimum">
+          <number>-100</number>
+         </property>
+         <property name="maximum">
+          <number>100</number>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="12">
+        <widget class="QLabel" name="CH15Amax">
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="12">
+        <widget class="QLabel" name="CH14Amax">
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="13">
+        <widget class="QComboBox" name="chInvCB_15">
+         <item>
+          <property name="text">
+           <string>NOR</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>INV</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="2" column="13">
+        <widget class="QComboBox" name="chInvCB_14">
+         <item>
+          <property name="text">
+           <string>NOR</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>INV</string>
+          </property>
+         </item>
+        </widget>
        </item>
       </layout>
      </widget>
@@ -9696,13 +9914,19 @@ Right</string>
       <attribute name="title">
        <string>Switches</string>
       </attribute>
-      <layout class="QGridLayout" name="gridLayout_8" rowstretch="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" columnstretch="0,0,0,0,0,0">
+      <layout class="QGridLayout" name="gridLayout_8" rowstretch="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" columnstretch="0,0,0,0,0,0,0,0,0,0,0,0,0">
        <item row="1" column="0">
         <widget class="QLabel" name="label_30">
          <property name="minimumSize">
           <size>
-           <width>125</width>
+           <width>60</width>
            <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>60</width>
+           <height>16777215</height>
           </size>
          </property>
          <property name="frameShape">
@@ -9717,7 +9941,14 @@ Right</string>
         </widget>
        </item>
        <item row="1" column="1">
-        <widget class="QComboBox" name="cswitchFunc_1"/>
+        <widget class="QComboBox" name="cswitchFunc_1">
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>19</height>
+          </size>
+         </property>
+        </widget>
        </item>
        <item row="2" column="0">
         <widget class="QLabel" name="label_31">
@@ -9790,8 +10021,14 @@ Right</string>
         <widget class="QLabel" name="cswFuncLabel">
          <property name="minimumSize">
           <size>
-           <width>125</width>
+           <width>50</width>
            <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>90</width>
+           <height>16777215</height>
           </size>
          </property>
          <property name="frameShape">
@@ -9809,8 +10046,14 @@ Right</string>
         <widget class="QLabel" name="cswCol1">
          <property name="minimumSize">
           <size>
-           <width>125</width>
+           <width>50</width>
            <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>90</width>
+           <height>16777215</height>
           </size>
          </property>
          <property name="frameShape">
@@ -9828,8 +10071,14 @@ Right</string>
         <widget class="QLabel" name="cswCol2">
          <property name="minimumSize">
           <size>
-           <width>125</width>
+           <width>50</width>
            <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>90</width>
+           <height>16777215</height>
           </size>
          </property>
          <property name="frameShape">
@@ -9956,8 +10205,14 @@ Right</string>
         <widget class="QLabel" name="label_85">
          <property name="minimumSize">
           <size>
-           <width>125</width>
+           <width>90</width>
            <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>90</width>
+           <height>16777215</height>
           </size>
          </property>
          <property name="frameShape">
@@ -9971,217 +10226,18 @@ Right</string>
          </property>
         </widget>
        </item>
-       <item row="26" column="0">
-        <spacer name="verticalSpacer_3">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>40</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item row="13" column="0">
-        <widget class="QLabel" name="label_136">
-         <property name="frameShape">
-          <enum>QFrame::Panel</enum>
-         </property>
-         <property name="frameShadow">
-          <enum>QFrame::Raised</enum>
-         </property>
-         <property name="text">
-          <string>CSwitchD</string>
-         </property>
-        </widget>
-       </item>
-       <item row="13" column="1">
-        <widget class="QComboBox" name="cswitchFunc_13"/>
-       </item>
-       <item row="14" column="0">
-        <widget class="QLabel" name="label_135">
-         <property name="frameShape">
-          <enum>QFrame::Panel</enum>
-         </property>
-         <property name="frameShadow">
-          <enum>QFrame::Raised</enum>
-         </property>
-         <property name="text">
-          <string>CSwitchE</string>
-         </property>
-        </widget>
-       </item>
-       <item row="15" column="0">
-        <widget class="QLabel" name="label_134">
-         <property name="frameShape">
-          <enum>QFrame::Panel</enum>
-         </property>
-         <property name="frameShadow">
-          <enum>QFrame::Raised</enum>
-         </property>
-         <property name="text">
-          <string>CSwitchF</string>
-         </property>
-        </widget>
-       </item>
-       <item row="14" column="1">
-        <widget class="QComboBox" name="cswitchFunc_14"/>
-       </item>
-       <item row="15" column="1">
-        <widget class="QComboBox" name="cswitchFunc_15"/>
-       </item>
-       <item row="16" column="0">
-        <widget class="QLabel" name="label_133">
-         <property name="frameShape">
-          <enum>QFrame::Panel</enum>
-         </property>
-         <property name="frameShadow">
-          <enum>QFrame::Raised</enum>
-         </property>
-         <property name="text">
-          <string>CSwitchG</string>
-         </property>
-        </widget>
-       </item>
-       <item row="16" column="1">
-        <widget class="QComboBox" name="cswitchFunc_16"/>
-       </item>
-       <item row="17" column="0">
-        <widget class="QLabel" name="label_132">
-         <property name="frameShape">
-          <enum>QFrame::Panel</enum>
-         </property>
-         <property name="frameShadow">
-          <enum>QFrame::Raised</enum>
-         </property>
-         <property name="text">
-          <string>CSwitchH</string>
-         </property>
-        </widget>
-       </item>
-       <item row="17" column="1">
-        <widget class="QComboBox" name="cswitchFunc_17"/>
-       </item>
-       <item row="18" column="0">
-        <widget class="QLabel" name="label_131">
-         <property name="frameShape">
-          <enum>QFrame::Panel</enum>
-         </property>
-         <property name="frameShadow">
-          <enum>QFrame::Raised</enum>
-         </property>
-         <property name="text">
-          <string>CSwitchI</string>
-         </property>
-        </widget>
-       </item>
-       <item row="18" column="1">
-        <widget class="QComboBox" name="cswitchFunc_18"/>
-       </item>
-       <item row="19" column="0">
-        <widget class="QLabel" name="label_130">
-         <property name="frameShape">
-          <enum>QFrame::Panel</enum>
-         </property>
-         <property name="frameShadow">
-          <enum>QFrame::Raised</enum>
-         </property>
-         <property name="text">
-          <string>CSwitchJ</string>
-         </property>
-        </widget>
-       </item>
-       <item row="19" column="1">
-        <widget class="QComboBox" name="cswitchFunc_19"/>
-       </item>
-       <item row="20" column="0">
-        <widget class="QLabel" name="label_129">
-         <property name="frameShape">
-          <enum>QFrame::Panel</enum>
-         </property>
-         <property name="frameShadow">
-          <enum>QFrame::Raised</enum>
-         </property>
-         <property name="text">
-          <string>CSwitchK</string>
-         </property>
-        </widget>
-       </item>
-       <item row="20" column="1">
-        <widget class="QComboBox" name="cswitchFunc_20"/>
-       </item>
-       <item row="21" column="0">
-        <widget class="QLabel" name="label_128">
-         <property name="frameShape">
-          <enum>QFrame::Panel</enum>
-         </property>
-         <property name="frameShadow">
-          <enum>QFrame::Raised</enum>
-         </property>
-         <property name="text">
-          <string>CSwitchL</string>
-         </property>
-        </widget>
-       </item>
-       <item row="21" column="1">
-        <widget class="QComboBox" name="cswitchFunc_21"/>
-       </item>
-       <item row="22" column="0">
-        <widget class="QLabel" name="label_127">
-         <property name="frameShape">
-          <enum>QFrame::Panel</enum>
-         </property>
-         <property name="frameShadow">
-          <enum>QFrame::Raised</enum>
-         </property>
-         <property name="text">
-          <string>CSwitchM</string>
-         </property>
-        </widget>
-       </item>
-       <item row="22" column="1">
-        <widget class="QComboBox" name="cswitchFunc_22"/>
-       </item>
-       <item row="23" column="0">
-        <widget class="QLabel" name="label_126">
-         <property name="frameShape">
-          <enum>QFrame::Panel</enum>
-         </property>
-         <property name="frameShadow">
-          <enum>QFrame::Raised</enum>
-         </property>
-         <property name="text">
-          <string>CSwitchN</string>
-         </property>
-        </widget>
-       </item>
-       <item row="23" column="1">
-        <widget class="QComboBox" name="cswitchFunc_23"/>
-       </item>
-       <item row="24" column="0">
-        <widget class="QLabel" name="label_121">
-         <property name="frameShape">
-          <enum>QFrame::Panel</enum>
-         </property>
-         <property name="frameShadow">
-          <enum>QFrame::Raised</enum>
-         </property>
-         <property name="text">
-          <string>CSwitchO</string>
-         </property>
-        </widget>
-       </item>
-       <item row="24" column="1">
-        <widget class="QComboBox" name="cswitchFunc_24"/>
-       </item>
        <item row="0" column="4">
         <widget class="QLabel" name="cswCol2_2">
          <property name="minimumSize">
           <size>
-           <width>125</width>
+           <width>90</width>
            <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>90</width>
+           <height>16777215</height>
           </size>
          </property>
          <property name="frameShape">
@@ -10195,6 +10251,349 @@ Right</string>
          </property>
         </widget>
        </item>
+       <item row="25" column="1">
+        <spacer name="verticalSpacer_5">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="12" column="6">
+        <widget class="QLabel" name="label_121">
+         <property name="frameShape">
+          <enum>QFrame::Panel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <property name="text">
+          <string>CSwitchO</string>
+         </property>
+        </widget>
+       </item>
+       <item row="12" column="7">
+        <widget class="QComboBox" name="cswitchFunc_24"/>
+       </item>
+       <item row="0" column="7">
+        <widget class="QLabel" name="cswFuncLabel_2">
+         <property name="minimumSize">
+          <size>
+           <width>50</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>90</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::Panel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <property name="text">
+          <string>Function</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="8">
+        <widget class="QLabel" name="cswCol1_2">
+         <property name="minimumSize">
+          <size>
+           <width>50</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>90</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::Panel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <property name="text">
+          <string>V1</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="9">
+        <widget class="QLabel" name="cswCol2_3">
+         <property name="minimumSize">
+          <size>
+           <width>50</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>90</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::Panel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <property name="text">
+          <string>V2</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="10">
+        <widget class="QLabel" name="cswCol2_4">
+         <property name="minimumSize">
+          <size>
+           <width>90</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>90</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::Panel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <property name="text">
+          <string>Telemetry Value</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="11">
+        <widget class="QLabel" name="label_203">
+         <property name="minimumSize">
+          <size>
+           <width>90</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>90</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::Panel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <property name="text">
+          <string>AND Switch</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="12">
+        <spacer name="horizontalSpacer_9">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="11" column="6">
+        <widget class="QLabel" name="label_126">
+         <property name="frameShape">
+          <enum>QFrame::Panel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <property name="text">
+          <string>CSwitchN</string>
+         </property>
+        </widget>
+       </item>
+       <item row="11" column="7">
+        <widget class="QComboBox" name="cswitchFunc_23"/>
+       </item>
+       <item row="10" column="6">
+        <widget class="QLabel" name="label_127">
+         <property name="frameShape">
+          <enum>QFrame::Panel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <property name="text">
+          <string>CSwitchM</string>
+         </property>
+        </widget>
+       </item>
+       <item row="10" column="7">
+        <widget class="QComboBox" name="cswitchFunc_22"/>
+       </item>
+       <item row="9" column="6">
+        <widget class="QLabel" name="label_128">
+         <property name="frameShape">
+          <enum>QFrame::Panel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <property name="text">
+          <string>CSwitchL</string>
+         </property>
+        </widget>
+       </item>
+       <item row="8" column="6">
+        <widget class="QLabel" name="label_129">
+         <property name="frameShape">
+          <enum>QFrame::Panel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <property name="text">
+          <string>CSwitchK</string>
+         </property>
+        </widget>
+       </item>
+       <item row="9" column="7">
+        <widget class="QComboBox" name="cswitchFunc_21"/>
+       </item>
+       <item row="8" column="7">
+        <widget class="QComboBox" name="cswitchFunc_20"/>
+       </item>
+       <item row="7" column="6">
+        <widget class="QLabel" name="label_130">
+         <property name="frameShape">
+          <enum>QFrame::Panel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <property name="text">
+          <string>CSwitchJ</string>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="7">
+        <widget class="QComboBox" name="cswitchFunc_19"/>
+       </item>
+       <item row="6" column="6">
+        <widget class="QLabel" name="label_131">
+         <property name="frameShape">
+          <enum>QFrame::Panel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <property name="text">
+          <string>CSwitchI</string>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="7">
+        <widget class="QComboBox" name="cswitchFunc_18"/>
+       </item>
+       <item row="5" column="6">
+        <widget class="QLabel" name="label_132">
+         <property name="frameShape">
+          <enum>QFrame::Panel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <property name="text">
+          <string>CSwitchH</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="7">
+        <widget class="QComboBox" name="cswitchFunc_17"/>
+       </item>
+       <item row="4" column="6">
+        <widget class="QLabel" name="label_133">
+         <property name="frameShape">
+          <enum>QFrame::Panel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <property name="text">
+          <string>CSwitchG</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="7">
+        <widget class="QComboBox" name="cswitchFunc_16"/>
+       </item>
+       <item row="3" column="6">
+        <widget class="QLabel" name="label_134">
+         <property name="frameShape">
+          <enum>QFrame::Panel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <property name="text">
+          <string>CSwitchF</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="7">
+        <widget class="QComboBox" name="cswitchFunc_15"/>
+       </item>
+       <item row="2" column="6">
+        <widget class="QLabel" name="label_135">
+         <property name="frameShape">
+          <enum>QFrame::Panel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <property name="text">
+          <string>CSwitchE</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="7">
+        <widget class="QComboBox" name="cswitchFunc_14"/>
+       </item>
+       <item row="1" column="6">
+        <widget class="QLabel" name="label_136">
+         <property name="frameShape">
+          <enum>QFrame::Panel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <property name="text">
+          <string>CSwitchD</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="7">
+        <widget class="QComboBox" name="cswitchFunc_13"/>
+       </item>
       </layout>
      </widget>
      <widget class="QWidget" name="tabSafetySwitches">
@@ -10204,7 +10603,7 @@ Right</string>
       <attribute name="title">
        <string>Safety Switches</string>
       </attribute>
-      <layout class="QGridLayout" name="grid_tabSafetySwitches" rowstretch="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" columnstretch="0,0,0,0,0">
+      <layout class="QGridLayout" name="grid_tabSafetySwitches" rowstretch="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" columnstretch="0,0,0,0,0,0,0,0,0,0,0">
        <property name="topMargin">
         <number>7</number>
        </property>
@@ -10361,27 +10760,6 @@ Right</string>
          </property>
         </widget>
        </item>
-       <item row="14" column="0">
-        <widget class="QLabel" name="SS13">
-         <property name="text">
-          <string notr="true">CH13</string>
-         </property>
-        </widget>
-       </item>
-       <item row="15" column="0">
-        <widget class="QLabel" name="SS14">
-         <property name="text">
-          <string notr="true">CH14</string>
-         </property>
-        </widget>
-       </item>
-       <item row="16" column="0">
-        <widget class="QLabel" name="SS15">
-         <property name="text">
-          <string notr="true">CH15</string>
-         </property>
-        </widget>
-       </item>
        <item row="0" column="3">
         <widget class="QSpinBox" name="NumVoiceSwSB">
          <property name="maximum">
@@ -10430,70 +10808,7 @@ Right</string>
          </property>
         </spacer>
        </item>
-       <item row="17" column="0">
-        <widget class="QLabel" name="SS16">
-         <property name="text">
-          <string notr="true">CH16</string>
-         </property>
-        </widget>
-       </item>
-       <item row="18" column="0">
-        <widget class="QLabel" name="SS17">
-         <property name="text">
-          <string notr="true">CH17</string>
-         </property>
-        </widget>
-       </item>
-       <item row="19" column="0">
-        <widget class="QLabel" name="SS18">
-         <property name="text">
-          <string notr="true">CH18</string>
-         </property>
-        </widget>
-       </item>
-       <item row="20" column="0">
-        <widget class="QLabel" name="SS19">
-         <property name="text">
-          <string notr="true">CH19</string>
-         </property>
-        </widget>
-       </item>
-       <item row="21" column="0">
-        <widget class="QLabel" name="SS20">
-         <property name="text">
-          <string notr="true">CH20</string>
-         </property>
-        </widget>
-       </item>
-       <item row="22" column="0">
-        <widget class="QLabel" name="SS21">
-         <property name="text">
-          <string notr="true">CH21</string>
-         </property>
-        </widget>
-       </item>
-       <item row="23" column="0">
-        <widget class="QLabel" name="SS22">
-         <property name="text">
-          <string notr="true">CH22</string>
-         </property>
-        </widget>
-       </item>
-       <item row="24" column="0">
-        <widget class="QLabel" name="SS23">
-         <property name="text">
-          <string notr="true">CH23</string>
-         </property>
-        </widget>
-       </item>
-       <item row="25" column="0">
-        <widget class="QLabel" name="SS24">
-         <property name="text">
-          <string notr="true">CH24</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="4">
+       <item row="1" column="9">
         <widget class="QLabel" name="label_179">
          <property name="minimumSize">
           <size>
@@ -10515,6 +10830,176 @@ Right</string>
          </property>
          <property name="text">
           <string/>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="5">
+        <widget class="QLabel" name="label_204">
+         <property name="frameShape">
+          <enum>QFrame::Panel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <property name="midLineWidth">
+          <number>0</number>
+         </property>
+         <property name="text">
+          <string>Channel</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+         <property name="margin">
+          <number>3</number>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="6">
+        <widget class="QLabel" name="label_205">
+         <property name="frameShape">
+          <enum>QFrame::Panel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <property name="text">
+          <string>Type</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="7">
+        <widget class="QLabel" name="label_206">
+         <property name="frameShape">
+          <enum>QFrame::Panel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <property name="midLineWidth">
+          <number>0</number>
+         </property>
+         <property name="text">
+          <string>Switch</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+         <property name="margin">
+          <number>3</number>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="8">
+        <widget class="QLabel" name="label_207">
+         <property name="frameShape">
+          <enum>QFrame::Panel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <property name="midLineWidth">
+          <number>0</number>
+         </property>
+         <property name="text">
+          <string>Value</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+         <property name="margin">
+          <number>3</number>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="5">
+        <widget class="QLabel" name="SS13">
+         <property name="text">
+          <string notr="true">CH13</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="5">
+        <widget class="QLabel" name="SS14">
+         <property name="text">
+          <string notr="true">CH14</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="5">
+        <widget class="QLabel" name="SS15">
+         <property name="text">
+          <string notr="true">CH15</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="5">
+        <widget class="QLabel" name="SS16">
+         <property name="text">
+          <string notr="true">CH16</string>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="5">
+        <widget class="QLabel" name="SS17">
+         <property name="text">
+          <string notr="true">CH17</string>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="5">
+        <widget class="QLabel" name="SS18">
+         <property name="text">
+          <string notr="true">CH18</string>
+         </property>
+        </widget>
+       </item>
+       <item row="8" column="5">
+        <widget class="QLabel" name="SS19">
+         <property name="text">
+          <string notr="true">CH19</string>
+         </property>
+        </widget>
+       </item>
+       <item row="9" column="5">
+        <widget class="QLabel" name="SS20">
+         <property name="text">
+          <string notr="true">CH20</string>
+         </property>
+        </widget>
+       </item>
+       <item row="10" column="5">
+        <widget class="QLabel" name="SS21">
+         <property name="text">
+          <string notr="true">CH21</string>
+         </property>
+        </widget>
+       </item>
+       <item row="11" column="5">
+        <widget class="QLabel" name="SS22">
+         <property name="text">
+          <string notr="true">CH22</string>
+         </property>
+        </widget>
+       </item>
+       <item row="12" column="5">
+        <widget class="QLabel" name="SS23">
+         <property name="text">
+          <string notr="true">CH23</string>
+         </property>
+        </widget>
+       </item>
+       <item row="13" column="5">
+        <widget class="QLabel" name="SS24">
+         <property name="text">
+          <string notr="true">CH24</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="4" rowspan="13">
+        <widget class="Line" name="line">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
          </property>
         </widget>
        </item>
@@ -10816,6 +11301,19 @@ Right</string>
           <number>32</number>
          </property>
         </widget>
+       </item>
+       <item row="2" column="2">
+        <spacer name="verticalSpacer">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
        </item>
       </layout>
      </widget>
@@ -12319,26 +12817,6 @@ Right</string>
   <tabstop>minSB_11</tabstop>
   <tabstop>maxSB_11</tabstop>
   <tabstop>chInvCB_11</tabstop>
-  <tabstop>offsetDSB_12</tabstop>
-  <tabstop>minSB_12</tabstop>
-  <tabstop>maxSB_12</tabstop>
-  <tabstop>chInvCB_12</tabstop>
-  <tabstop>offsetDSB_13</tabstop>
-  <tabstop>minSB_13</tabstop>
-  <tabstop>maxSB_13</tabstop>
-  <tabstop>chInvCB_13</tabstop>
-  <tabstop>offsetDSB_14</tabstop>
-  <tabstop>minSB_14</tabstop>
-  <tabstop>maxSB_14</tabstop>
-  <tabstop>chInvCB_14</tabstop>
-  <tabstop>offsetDSB_15</tabstop>
-  <tabstop>minSB_15</tabstop>
-  <tabstop>maxSB_15</tabstop>
-  <tabstop>chInvCB_15</tabstop>
-  <tabstop>offsetDSB_16</tabstop>
-  <tabstop>minSB_16</tabstop>
-  <tabstop>maxSB_16</tabstop>
-  <tabstop>chInvCB_16</tabstop>
   <tabstop>curvePt6_10</tabstop>
   <tabstop>curvePt7_10</tabstop>
   <tabstop>curvePt8_10</tabstop>

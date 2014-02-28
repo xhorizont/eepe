@@ -58,6 +58,7 @@
 #include "serialdialog.h"
 #include "telemetry.h"
 #include "reviewOutput.h"
+#include "simulatordialog.h"
 
 #define DONATE_ER_STR "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=B9RNATGH7DTQ6"
 #define DONATE_MB_STR "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=YHX43JR3J7XGW"
@@ -222,6 +223,9 @@ MainWindow::MainWindow()
             }
         }
     }
+		simulatorDialog *sd ;
+ 	  sd = new simulatorDialog(this) ;
+		SimPointer = sd ;
 }
 
 

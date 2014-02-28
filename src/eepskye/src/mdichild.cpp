@@ -1348,7 +1348,6 @@ void MdiChild::ShowContextMenu(const QPoint& pos)
 void MdiChild::setModified(ModelEdit * me)
 {
     refreshList();
-		//XXXXXXXXXXXXX
 //    eeFile.setChanged(true);
     documentWasModified();
 
@@ -1365,24 +1364,21 @@ void MdiChild::simulate()
     if(currentRow()<1) return;
 
     EEGeneral gg;
+#ifdef SKY
     SKYModelData gm;
 		if( !radioData.File_system[0].size ) return ;
-    if( !radioData.File_system[currentRow()-1].size ) return ;
-
+    if( !radioData.File_system[currentRow()].size ) return ;
     memcpy( &gg, &radioData.generalSettings, sizeof(EEGeneral) ) ;
     memcpy( &gm, &radioData.models[currentRow()-1], sizeof(SKYModelData) ) ;
+#else
+    if(!eeFile.getGeneralSettings(&gg)) return;
 
+    ModelData gm;
+    if(!eeFile.getModel(&gm,currentRow()-1)) return;
+#endif
 		simulatorDialog *sd ;
 
-		if ( SimPointer == 0 )
-		{
- 	  	sd = new simulatorDialog(this) ;
-			SimPointer = sd ;
-		}
-		else
-		{
-			sd = SimPointer ;
-		}
+		sd = SimPointer ;
     sd->loadParams(gg,gm);
     sd->show();
 }
@@ -1392,16 +1388,16 @@ void MdiChild::print()
     if(currentRow()<1) return;
 
     EEGeneral gg;
-		//XXXXXXXXXXXXX
-//    if(!eeFile.getGeneralSettings(&gg)) return;
 
+#ifdef SKY
     SKYModelData gm;
-//    ModelData gm;
-    //XXXXXXXXXXXXX
-//    if(!eeFile.getModel(&gm1,currentRow()-1)) return;
-    memcpy( &gg, &radioData.generalSettings, sizeof(EEGeneral) ) ;
+		memcpy( &gg, &radioData.generalSettings, sizeof(EEGeneral) ) ;
     memcpy( &gm, &radioData.models[currentRow()-1], sizeof(SKYModelData) ) ;
-
+#else
+    ModelData gm;
+    if(!eeFile.getGeneralSettings(&gg)) return;
+    if(!eeFile.getModel(&gm,currentRow()-1)) return;
+#endif
     printDialog *pd = new printDialog(this, &gg, &gm);
     pd->show();
 }
@@ -1413,7 +1409,6 @@ void MdiChild::viableModelSelected(int idx)
     else if(idx<1)
         emit copyAvailable(false);
     else
-		//XXXXXXXXXXXXX
         emit copyAvailable(radioData.File_system[currentRow()-1].size);
 
     emit saveModelToFileAvailable(saveToFileEnabled());

@@ -273,7 +273,7 @@ void avrOutputDialog::doProcessStarted()
 }
 
 
-int avrOutputDialog::doFileCopy( QString destFile, QString sourceFile, int size )
+int avrOutputDialog::doFileCopy( QString destFile, QString sourceFile, quint32 size )
 {
   char buf[4096];
   int hasErrors = 0 ;

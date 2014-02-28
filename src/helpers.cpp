@@ -710,7 +710,7 @@ int populatePhasetrim(QComboBox *b, int which, int value)
 	return value ;
 }
 
-int decodePhaseTrim( int16_t *existing, int which, int index )
+int decodePhaseTrim( int16_t *existing, int index )
 {
 	if ( index == 0 )
 	{

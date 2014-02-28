@@ -184,7 +184,7 @@ void ModelEdit::updateSettings()
     emit modelValuesChanged(this);
     
 		memcpy(&Sim_g, &g_eeGeneral,sizeof(EEGeneral));
-    memcpy(&Sim_m,&g_model,sizeof(ModelData));
+    memcpy(&Sim_m,&g_model,sizeof(SKYModelData));
 		GeneralDataValid = 1 ;
 		ModelDataValid = 1 ;
 		GlobalModified = 1 ;
@@ -1053,30 +1053,30 @@ void ModelEdit::phaseEdited()
 //	ui->FP1eleTrimSB->setValue(g_model.phaseData[0].trim[1]) ;
 //	ui->FP1eleTrimSB->setDisabled( true ) ;
 
-	decodePhaseTrim( &g_model.phaseData[0].trim[0], 1, ui->FP1_RudCB->currentIndex() ) ;
-	decodePhaseTrim( &g_model.phaseData[0].trim[1], 1, ui->FP1_EleCB->currentIndex() ) ;
-	decodePhaseTrim( &g_model.phaseData[0].trim[2], 1, ui->FP1_ThrCB->currentIndex() ) ;
-	decodePhaseTrim( &g_model.phaseData[0].trim[3], 1, ui->FP1_AilCB->currentIndex() ) ;
-	decodePhaseTrim( &g_model.phaseData[1].trim[0], 2, ui->FP2_RudCB->currentIndex() ) ;
-	decodePhaseTrim( &g_model.phaseData[1].trim[1], 2, ui->FP2_EleCB->currentIndex() ) ;
-	decodePhaseTrim( &g_model.phaseData[1].trim[2], 2, ui->FP2_ThrCB->currentIndex() ) ;
-	decodePhaseTrim( &g_model.phaseData[1].trim[3], 2, ui->FP2_AilCB->currentIndex() ) ;
-	decodePhaseTrim( &g_model.phaseData[2].trim[0], 3, ui->FP3_RudCB->currentIndex() ) ;
-	decodePhaseTrim( &g_model.phaseData[2].trim[1], 3, ui->FP3_EleCB->currentIndex() ) ;
-	decodePhaseTrim( &g_model.phaseData[2].trim[2], 3, ui->FP3_ThrCB->currentIndex() ) ;
-	decodePhaseTrim( &g_model.phaseData[2].trim[3], 3, ui->FP3_AilCB->currentIndex() ) ;
-	decodePhaseTrim( &g_model.phaseData[3].trim[0], 4, ui->FP4_RudCB->currentIndex() ) ;
-	decodePhaseTrim( &g_model.phaseData[3].trim[1], 4, ui->FP4_EleCB->currentIndex() ) ;
-	decodePhaseTrim( &g_model.phaseData[3].trim[2], 4, ui->FP4_ThrCB->currentIndex() ) ;
-	decodePhaseTrim( &g_model.phaseData[3].trim[3], 4, ui->FP4_AilCB->currentIndex() ) ;
-	decodePhaseTrim( &g_model.phaseData[4].trim[0], 5, ui->FP5_RudCB->currentIndex() ) ;
-	decodePhaseTrim( &g_model.phaseData[4].trim[1], 5, ui->FP5_EleCB->currentIndex() ) ;
-	decodePhaseTrim( &g_model.phaseData[4].trim[2], 5, ui->FP5_ThrCB->currentIndex() ) ;
-	decodePhaseTrim( &g_model.phaseData[4].trim[3], 5, ui->FP5_AilCB->currentIndex() ) ;
-	decodePhaseTrim( &g_model.phaseData[5].trim[0], 6, ui->FP6_RudCB->currentIndex() ) ;
-	decodePhaseTrim( &g_model.phaseData[5].trim[1], 6, ui->FP6_EleCB->currentIndex() ) ;
-	decodePhaseTrim( &g_model.phaseData[5].trim[2], 6, ui->FP6_ThrCB->currentIndex() ) ;
-	decodePhaseTrim( &g_model.phaseData[5].trim[3], 6, ui->FP6_AilCB->currentIndex() ) ;
+	decodePhaseTrim( &g_model.phaseData[0].trim[0], ui->FP1_RudCB->currentIndex() ) ;
+	decodePhaseTrim( &g_model.phaseData[0].trim[1], ui->FP1_EleCB->currentIndex() ) ;
+	decodePhaseTrim( &g_model.phaseData[0].trim[2], ui->FP1_ThrCB->currentIndex() ) ;
+	decodePhaseTrim( &g_model.phaseData[0].trim[3], ui->FP1_AilCB->currentIndex() ) ;
+	decodePhaseTrim( &g_model.phaseData[1].trim[0], ui->FP2_RudCB->currentIndex() ) ;
+	decodePhaseTrim( &g_model.phaseData[1].trim[1], ui->FP2_EleCB->currentIndex() ) ;
+	decodePhaseTrim( &g_model.phaseData[1].trim[2], ui->FP2_ThrCB->currentIndex() ) ;
+	decodePhaseTrim( &g_model.phaseData[1].trim[3], ui->FP2_AilCB->currentIndex() ) ;
+	decodePhaseTrim( &g_model.phaseData[2].trim[0], ui->FP3_RudCB->currentIndex() ) ;
+	decodePhaseTrim( &g_model.phaseData[2].trim[1], ui->FP3_EleCB->currentIndex() ) ;
+	decodePhaseTrim( &g_model.phaseData[2].trim[2], ui->FP3_ThrCB->currentIndex() ) ;
+	decodePhaseTrim( &g_model.phaseData[2].trim[3], ui->FP3_AilCB->currentIndex() ) ;
+	decodePhaseTrim( &g_model.phaseData[3].trim[0], ui->FP4_RudCB->currentIndex() ) ;
+	decodePhaseTrim( &g_model.phaseData[3].trim[1], ui->FP4_EleCB->currentIndex() ) ;
+	decodePhaseTrim( &g_model.phaseData[3].trim[2], ui->FP4_ThrCB->currentIndex() ) ;
+	decodePhaseTrim( &g_model.phaseData[3].trim[3], ui->FP4_AilCB->currentIndex() ) ;
+	decodePhaseTrim( &g_model.phaseData[4].trim[0], ui->FP5_RudCB->currentIndex() ) ;
+	decodePhaseTrim( &g_model.phaseData[4].trim[1], ui->FP5_EleCB->currentIndex() ) ;
+	decodePhaseTrim( &g_model.phaseData[4].trim[2], ui->FP5_ThrCB->currentIndex() ) ;
+	decodePhaseTrim( &g_model.phaseData[4].trim[3], ui->FP5_AilCB->currentIndex() ) ;
+	decodePhaseTrim( &g_model.phaseData[5].trim[0], ui->FP6_RudCB->currentIndex() ) ;
+	decodePhaseTrim( &g_model.phaseData[5].trim[1], ui->FP6_EleCB->currentIndex() ) ;
+	decodePhaseTrim( &g_model.phaseData[5].trim[2], ui->FP6_ThrCB->currentIndex() ) ;
+	decodePhaseTrim( &g_model.phaseData[5].trim[3], ui->FP6_AilCB->currentIndex() ) ;
 
 	g_model.phaseData[0].fadeIn = ( ui->FM1FadeIn->value() + 0.01 ) * 2 ;
 	g_model.phaseData[0].fadeOut = ( ui->FM1FadeOut->value() + 0.01 ) * 2 ;
@@ -2066,24 +2066,31 @@ void ModelEdit::tabSwitches()
 
     for(int i=0; i<NUM_SKYCSW; i++)
     {
+			int j = i ;
+			int k = 2 ;
+			if ( i > 11 )
+			{
+				j = i - 12 ;
+				k = 8 ;
+			}
         cswitchSource1[i] = new QComboBox(this);
         connect(cswitchSource1[i],SIGNAL(currentIndexChanged(int)),this,SLOT(switchesEdited()));
-        ui->gridLayout_8->addWidget(cswitchSource1[i],i+1,2);
+        ui->gridLayout_8->addWidget(cswitchSource1[i],j+1,k);
         cswitchSource1[i]->setVisible(false);
 
         cswitchSource2[i] = new QComboBox(this);
         connect(cswitchSource2[i],SIGNAL(currentIndexChanged(int)),this,SLOT(switchesEdited()));
-        ui->gridLayout_8->addWidget(cswitchSource2[i],i+1,3);
+        ui->gridLayout_8->addWidget(cswitchSource2[i],j+1,k+1);
         cswitchSource2[i]->setVisible(false);
 
         cswitchAndSwitch[i] = new QComboBox(this);
         connect(cswitchAndSwitch[i],SIGNAL(currentIndexChanged(int)),this,SLOT(switchesEdited()));
-        ui->gridLayout_8->addWidget(cswitchAndSwitch[i],i+1,5);
+        ui->gridLayout_8->addWidget(cswitchAndSwitch[i],j+1,k+3);
         cswitchAndSwitch[i]->setVisible(true);
 				populateSwitchAndCB(cswitchAndSwitch[i], g_model.customSw[i].andsw+(9+NUM_SKYCSW)) ;
 
 				cswitchTlabel[i] = new QLabel(this) ;
-        ui->gridLayout_8->addWidget(cswitchTlabel[i],i+1,4);
+        ui->gridLayout_8->addWidget(cswitchTlabel[i],j+1,k+2);
         cswitchTlabel[i]->setVisible(false);
         cswitchTlabel[i]->setText("");
 
@@ -2092,14 +2099,14 @@ void ModelEdit::tabSwitches()
         cswitchOffset[i]->setMinimum(-125);
         cswitchOffset[i]->setAccelerated(true);
         connect(cswitchOffset[i],SIGNAL(valueChanged(int)),this,SLOT(switchesEdited()));
-        ui->gridLayout_8->addWidget(cswitchOffset[i],i+1,3);
+        ui->gridLayout_8->addWidget(cswitchOffset[i],j+1,k+1);
         cswitchOffset[i]->setVisible(false);
 				width = ui->cswCol1->width() ;
 				cswitchOffset[i]->resize( width, 20 );
         
 				width -= 18 ;
         cswitchText2[i] = new QTextBrowser(this);
-        ui->gridLayout_8->addWidget(cswitchText2[i],i+1,3);
+        ui->gridLayout_8->addWidget(cswitchText2[i],j+1,k+1);
         cswitchText2[i]->setVisible(false);
         cswitchText2[i]->setMinimumSize( width, 20 );
         cswitchText2[i]->setMaximumSize( width, 20 );
@@ -2111,14 +2118,14 @@ void ModelEdit::tabSwitches()
         cswitchOffset0[i]->setMinimum(-49);
         cswitchOffset0[i]->setAccelerated(true);
         connect(cswitchOffset0[i],SIGNAL(valueChanged(int)),this,SLOT(switchesEdited()));
-        ui->gridLayout_8->addWidget(cswitchOffset0[i],i+1,2);
+        ui->gridLayout_8->addWidget(cswitchOffset0[i],j+1,k);
         cswitchOffset0[i]->setVisible(false);
 				width = ui->cswCol2->width() ;
         cswitchOffset0[i]->resize( width, 20 );
 
 				width -= 18 ;
         cswitchText1[i] = new QTextBrowser(this);
-        ui->gridLayout_8->addWidget(cswitchText1[i],i+1,2);
+        ui->gridLayout_8->addWidget(cswitchText1[i],j+1,k);
         cswitchText1[i]->setVisible(false);
         cswitchText1[i]->setMinimumSize( width, 20 );
         cswitchText1[i]->setMaximumSize( width, 20 );
@@ -2260,6 +2267,13 @@ void ModelEdit::tabSafetySwitches()
 
     for(int i=0; i<NUM_SKYCHNOUT; i++)
     {
+			int j = i ;
+			int k = 1 ;
+			if ( i > 11 )
+			{
+				j = i - 12 ;
+				k = 5 ;
+			}
         safetySwitchType[i] = new QComboBox(this);
         safetySwitchSwtch[i] = new QComboBox(this);
 				safetySwitchAlarm[i] = new QComboBox(this);
@@ -2318,13 +2332,13 @@ void ModelEdit::tabSafetySwitches()
 						safetySwitchGvar[i]->setChecked(false) ;
 					}
 				}
-        ui->grid_tabSafetySwitches->addWidget(safetySwitchType[i],i+2,1);
-        ui->grid_tabSafetySwitches->addWidget(safetySwitchSwtch[i],i+2,2);
+        ui->grid_tabSafetySwitches->addWidget(safetySwitchType[i],j+2,k);
+        ui->grid_tabSafetySwitches->addWidget(safetySwitchSwtch[i],j+2,k+1);
 
-        ui->grid_tabSafetySwitches->addWidget(safetySwitchAlarm[i],i+2,3);
-        ui->grid_tabSafetySwitches->addWidget(safetySwitchValue[i],i+2,3);
-        ui->grid_tabSafetySwitches->addWidget(safetySwitchGindex[i],i+2,3);
-        ui->grid_tabSafetySwitches->addWidget(safetySwitchGvar[i],i+2,4);
+        ui->grid_tabSafetySwitches->addWidget(safetySwitchAlarm[i],j+2,k+2);
+        ui->grid_tabSafetySwitches->addWidget(safetySwitchValue[i],j+2,k+2);
+        ui->grid_tabSafetySwitches->addWidget(safetySwitchGindex[i],j+2,k+2);
+        ui->grid_tabSafetySwitches->addWidget(safetySwitchGvar[i],j+2,k+3);
         
 				setSafetyWidgetVisibility(i);
         connect(safetySwitchType[i],SIGNAL(currentIndexChanged(int)),this,SLOT(safetySwitchesEdited()));
@@ -3050,11 +3064,11 @@ void ModelEdit::on_TrainerChkB_toggled(bool checked)
 void ModelEdit::on_thrExpoChkB_toggled(bool checked)
 {
 // 	int i, j ;
-	bool x = true ;
-	if ( checked )
-	{
-		x = false ;		
-	}
+//	bool x = true ;
+//	if ( checked )
+//	{
+//		x = false ;		
+//	}
   g_model.thrExpo = checked ;
 //	for ( i = 0 ; i < 3 ; i += 1 )
 //	{ // 0=High, 1=Mid, 2=Low

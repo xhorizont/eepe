@@ -99,11 +99,7 @@ PACK(typedef struct t_TrainerData {
   TrainerMix     mix[4];
 }) TrainerData;
 
-#ifdef SKY
 PACK(typedef struct t_OldEEGeneral {
-#else
-PACK(typedef struct t_EEGeneral {
-#endif
     uint8_t   myVers;
     int16_t   calibMid[7];
     int16_t   calibSpanNeg[7];
@@ -136,24 +132,13 @@ PACK(typedef struct t_EEGeneral {
     uint8_t   lightAutoOff;
     uint8_t   templateSetup;  //RETA order according to chout_ar array
     int8_t    PPM_Multiplier;
-#ifdef SKY
 		uint8_t   FRSkyYellow:4;
     uint8_t   FRSkyOrange:4;
     uint8_t   FRSkyRed:4;
-#else
-		uint8_t   unused1;
-    uint8_t   unused2:4;
-#endif
 		uint8_t   hideNameOnSplash:1;
-#ifdef SKY
   	uint8_t   optrexDisplay:1;
 	  uint8_t   unexpectedShutdown:1;
     uint8_t   spare:1;
-#else
-    uint8_t   enablePpmsim:1;
-    uint8_t   blightinv:1;
-    uint8_t   stickScroll:1;
-#endif
     uint8_t   speakerPitch;
     uint8_t   hapticStrength;
     uint8_t   speakerMode;
@@ -161,7 +146,6 @@ PACK(typedef struct t_EEGeneral {
     char      ownerName[GENERAL_OWNER_NAME_LEN];
     uint8_t   switchWarningStates;
 		int8_t		volume ;
-#ifdef SKY
 	uint8_t 	bright ;			// backlight
   uint8_t   stickGain;
 	uint8_t		mAh_alarm ;
@@ -172,13 +156,6 @@ PACK(typedef struct t_EEGeneral {
 	uint8_t		rotaryDivisor ;
 	uint8_t   crosstrim:1;
 	uint8_t   spare9:7;
-#else
-		uint8_t   res[3];
-    uint8_t   crosstrim:1;
-    uint8_t   FrskyPins:1 ;
-    uint8_t   spare1:6 ;
-		uint8_t		stickReverse ;
-#endif
 }) OldEEGeneral;
 
 

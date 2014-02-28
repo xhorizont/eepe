@@ -62,6 +62,7 @@
 #include "../../reviewOutput.h"
 #include "helpers.h"
 #include "../../telemetry.h"
+#include "simulatordialog.h"
 
 #if defined WIN32 || !defined __GNUC__
 #include <windows.h>
@@ -168,6 +169,10 @@ MainWindow::MainWindow()
             }
         }
     }
+		simulatorDialog *sd ;
+ 	  sd = new simulatorDialog(this) ;
+		SimPointer = sd ;
+
 }
 
 

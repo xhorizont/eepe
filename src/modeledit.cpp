@@ -989,22 +989,22 @@ void ModelEdit::phaseEdited()
 //	ui->FP1eleTrimSB->setValue(g_model.phaseData[0].trim[1]) ;
 //	ui->FP1eleTrimSB->setDisabled( true ) ;
 
-	decodePhaseTrim( &g_model.phaseData[0].trim[0], 1, ui->FP1_RudCB->currentIndex() ) ;
-	decodePhaseTrim( &g_model.phaseData[0].trim[1], 1, ui->FP1_EleCB->currentIndex() ) ;
-	decodePhaseTrim( &g_model.phaseData[0].trim[2], 1, ui->FP1_ThrCB->currentIndex() ) ;
-	decodePhaseTrim( &g_model.phaseData[0].trim[3], 1, ui->FP1_AilCB->currentIndex() ) ;
-	decodePhaseTrim( &g_model.phaseData[1].trim[0], 2, ui->FP2_RudCB->currentIndex() ) ;
-	decodePhaseTrim( &g_model.phaseData[1].trim[1], 2, ui->FP2_EleCB->currentIndex() ) ;
-	decodePhaseTrim( &g_model.phaseData[1].trim[2], 2, ui->FP2_ThrCB->currentIndex() ) ;
-	decodePhaseTrim( &g_model.phaseData[1].trim[3], 2, ui->FP2_AilCB->currentIndex() ) ;
-	decodePhaseTrim( &g_model.phaseData[2].trim[0], 3, ui->FP3_RudCB->currentIndex() ) ;
-	decodePhaseTrim( &g_model.phaseData[2].trim[1], 3, ui->FP3_EleCB->currentIndex() ) ;
-	decodePhaseTrim( &g_model.phaseData[2].trim[2], 3, ui->FP3_ThrCB->currentIndex() ) ;
-	decodePhaseTrim( &g_model.phaseData[2].trim[3], 3, ui->FP3_AilCB->currentIndex() ) ;
-	decodePhaseTrim( &g_model.phaseData[3].trim[0], 4, ui->FP4_RudCB->currentIndex() ) ;
-	decodePhaseTrim( &g_model.phaseData[3].trim[1], 4, ui->FP4_EleCB->currentIndex() ) ;
-	decodePhaseTrim( &g_model.phaseData[3].trim[2], 4, ui->FP4_ThrCB->currentIndex() ) ;
-	decodePhaseTrim( &g_model.phaseData[3].trim[3], 4, ui->FP4_AilCB->currentIndex() ) ;
+	decodePhaseTrim( &g_model.phaseData[0].trim[0], ui->FP1_RudCB->currentIndex() ) ;
+	decodePhaseTrim( &g_model.phaseData[0].trim[1], ui->FP1_EleCB->currentIndex() ) ;
+	decodePhaseTrim( &g_model.phaseData[0].trim[2], ui->FP1_ThrCB->currentIndex() ) ;
+	decodePhaseTrim( &g_model.phaseData[0].trim[3], ui->FP1_AilCB->currentIndex() ) ;
+	decodePhaseTrim( &g_model.phaseData[1].trim[0], ui->FP2_RudCB->currentIndex() ) ;
+	decodePhaseTrim( &g_model.phaseData[1].trim[1], ui->FP2_EleCB->currentIndex() ) ;
+	decodePhaseTrim( &g_model.phaseData[1].trim[2], ui->FP2_ThrCB->currentIndex() ) ;
+	decodePhaseTrim( &g_model.phaseData[1].trim[3], ui->FP2_AilCB->currentIndex() ) ;
+	decodePhaseTrim( &g_model.phaseData[2].trim[0], ui->FP3_RudCB->currentIndex() ) ;
+	decodePhaseTrim( &g_model.phaseData[2].trim[1], ui->FP3_EleCB->currentIndex() ) ;
+	decodePhaseTrim( &g_model.phaseData[2].trim[2], ui->FP3_ThrCB->currentIndex() ) ;
+	decodePhaseTrim( &g_model.phaseData[2].trim[3], ui->FP3_AilCB->currentIndex() ) ;
+	decodePhaseTrim( &g_model.phaseData[3].trim[0], ui->FP4_RudCB->currentIndex() ) ;
+	decodePhaseTrim( &g_model.phaseData[3].trim[1], ui->FP4_EleCB->currentIndex() ) ;
+	decodePhaseTrim( &g_model.phaseData[3].trim[2], ui->FP4_ThrCB->currentIndex() ) ;
+	decodePhaseTrim( &g_model.phaseData[3].trim[3], ui->FP4_AilCB->currentIndex() ) ;
 
 	g_model.phaseData[0].fadeIn = ( ui->FM1FadeIn->value() + 0.01 ) * 2 ;
 	g_model.phaseData[0].fadeOut = ( ui->FM1FadeOut->value() + 0.01 ) * 2 ;

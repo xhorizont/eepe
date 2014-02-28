@@ -88,7 +88,7 @@ QString getCSWFunc(int val);
 // Safety switch types
 #define VOICE_SWITCH		6
 int populatePhasetrim(QComboBox *b, int which, int value=0) ;
-int decodePhaseTrim( int16_t *existing, int which, int index ) ;
+int decodePhaseTrim( int16_t *existing, int index ) ;
 
 #ifdef SKY
 void stringTelemetryChannel( char *string, int8_t index, int16_t val, SKYModelData *model ) ;
