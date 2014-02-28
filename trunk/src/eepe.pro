@@ -1,5 +1,6 @@
 QT += network \
       xml
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets printsupport
 include(qextserialport.pri)
 HEADERS += mainwindow.h \
     file.h \

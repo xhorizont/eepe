@@ -127,15 +127,15 @@ void printDialog::printSetup()
 
 }
 
+extern uint8_t stickScramble[] ;
+
 void printDialog::printExpo()
 {
     QString str = tr("<h2>Expo/Dr Settings</h2>");
 
     for(int i=0; i<4; i++)
     {
-        str.append("<h3>" + getSourceStr(g_eeGeneral->stickMode, i+1) + "</h3>");
-        //high, mid, low
-        //left right / expo, dr
+        str.append("<h3>" + getSourceStr(1, i+1, 0 ) + "</h3>");
         str.append(fv(tr("Switch 1:"), getSWName(g_model->expoData[i].drSw1)));
         str.append(fv(tr("Switch 2:"), getSWName(g_model->expoData[i].drSw2)));
         str.append("<table border=1 cellspacing=0 cellpadding=3>");
@@ -225,7 +225,7 @@ void printDialog::printMixes()
 
         //QString srcStr = SRC_STR;
         //str += " " + srcStr.mid(CONVERT_MODE(md->srcRaw+1)*4,4);
-        str += getSourceStr(g_eeGeneral->stickMode,md->srcRaw);
+        str += getSourceStr(g_eeGeneral->stickMode,md->srcRaw, g_model->modelVersion);
 
         if(md->swtch) str += tr(" Switch(") + getSWName(md->swtch) + ")";
         if(md->carryTrim) str += tr(" noTrim");
