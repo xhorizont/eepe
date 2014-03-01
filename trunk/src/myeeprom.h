@@ -176,7 +176,10 @@ PACK(typedef struct t_EEGeneral {
 		uint8_t   res[3];
     uint8_t   crosstrim:1;
     uint8_t   FrskyPins:1 ;
-    uint8_t   spare1:6 ;
+    uint8_t   rotateScreen:1 ;
+    uint8_t   serialLCD:1 ;
+    uint8_t   SSD1306:1 ;
+    uint8_t   spare1:3 ;
 		uint8_t		stickReverse ;
 #endif
 }) EEGeneral;

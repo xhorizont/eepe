@@ -2189,6 +2189,13 @@ void ModelEdit::tabSafetySwitches()
 
     for(int i=0; i<NUM_CHNOUT+EXTRA_VOICE_SW; i++)
     {
+			int j = i ;
+			int k = 1 ;
+			if ( i > 15 )
+			{
+				j = i - 16 ;
+				k = 5 ;
+			}
         safetySwitchType[i] = new QComboBox(this);
         safetySwitchSwtch[i] = new QComboBox(this);
 				safetySwitchAlarm[i] = new QComboBox(this);
@@ -2265,13 +2272,13 @@ void ModelEdit::tabSafetySwitches()
 						safetySwitchGvar[i]->setChecked(false) ;
 					}
 				}
-        ui->grid_tabSafetySwitches->addWidget(safetySwitchType[i],i+2,1);
-        ui->grid_tabSafetySwitches->addWidget(safetySwitchSwtch[i],i+2,2);
+        ui->grid_tabSafetySwitches->addWidget(safetySwitchType[i],j+2,k);
+        ui->grid_tabSafetySwitches->addWidget(safetySwitchSwtch[i],j+2,k+1);
 
-        ui->grid_tabSafetySwitches->addWidget(safetySwitchAlarm[i],i+2,3);
-        ui->grid_tabSafetySwitches->addWidget(safetySwitchValue[i],i+2,3);
-        ui->grid_tabSafetySwitches->addWidget(safetySwitchGindex[i],i+2,3);
-        ui->grid_tabSafetySwitches->addWidget(safetySwitchGvar[i],i+2,4);
+        ui->grid_tabSafetySwitches->addWidget(safetySwitchAlarm[i],j+2,k+2);
+        ui->grid_tabSafetySwitches->addWidget(safetySwitchValue[i],j+2,k+2);
+        ui->grid_tabSafetySwitches->addWidget(safetySwitchGindex[i],j+2,k+2);
+        ui->grid_tabSafetySwitches->addWidget(safetySwitchGvar[i],j+2,k+3);
         
 				setSafetyWidgetVisibility(i);
         connect(safetySwitchType[i],SIGNAL(currentIndexChanged(int)),this,SLOT(safetySwitchesEdited()));

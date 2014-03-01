@@ -700,7 +700,23 @@ msgid "RH"
 msgstr ""
 
 msgctxt "GeneralEdit|"
-msgid "MegaSound"
+msgid "Default Switches"
+msgstr ""
+
+msgctxt "GeneralEdit|"
+msgid "Rotate Screen"
+msgstr ""
+
+msgctxt "GeneralEdit|"
+msgid "Serial Interface"
+msgstr ""
+
+msgctxt "GeneralEdit|"
+msgid "SSD1306"
+msgstr ""
+
+msgctxt "GeneralEdit|"
+msgid "Custom LCD"
 msgstr ""
 
 msgctxt "MainWindow|"
