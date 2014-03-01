@@ -592,7 +592,23 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>MegaSound</source>
+        <source>Default Switches</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Rotate Screen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Serial Interface</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SSD1306</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Custom LCD</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

@@ -61,6 +61,9 @@ GeneralEdit::GeneralEdit(EEPFILE *eFile, QWidget *parent) :
     ui->StickScrollEnableChkB->setChecked(g_eeGeneral.stickScroll);//Default is zero=not checked
     ui->CrossTrimChkB->setChecked(g_eeGeneral.crosstrim);//Default is zero=not checked
     ui->FrskyPinsChkB->setChecked(g_eeGeneral.FrskyPins);//Default is zero=not checked
+    ui->RotateScreenChkB->setChecked(g_eeGeneral.rotateScreen);//Default is zero=not checked
+    ui->SerialLCDChkB->setChecked(g_eeGeneral.serialLCD);//Default is zero=not checked
+    ui->SSD1306ChkB->setChecked(g_eeGeneral.SSD1306);//Default is zero=not checked
     ui->BandGapEnableChkB->setChecked(!g_eeGeneral.disableBG);//Default is zero=checked
     ui->beeperCB->setCurrentIndex(g_eeGeneral.beeperVal);
     ui->channelorderCB->setCurrentIndex(g_eeGeneral.templateSetup);
@@ -455,6 +458,24 @@ void GeneralEdit::on_CrossTrimChkB_stateChanged(int )
 void GeneralEdit::on_FrskyPinsChkB_stateChanged(int )
 {
     g_eeGeneral.FrskyPins = ui->FrskyPinsChkB->isChecked() ? 1 : 0 ;
+    updateSettings();
+}
+
+void GeneralEdit::on_RotateScreenChkB_stateChanged(int )
+{
+    g_eeGeneral.rotateScreen = ui->RotateScreenChkB->isChecked() ? 1 : 0 ;
+    updateSettings();
+}
+
+void GeneralEdit::on_SerialLCDChkB_stateChanged(int )
+{
+    g_eeGeneral.serialLCD = ui->SerialLCDChkB->isChecked() ? 1 : 0 ;
+    updateSettings();
+}
+
+void GeneralEdit::on_SSD1306ChkB_stateChanged(int )
+{
+    g_eeGeneral.SSD1306 = ui->SSD1306ChkB->isChecked() ? 1 : 0 ;
     updateSettings();
 }
 
