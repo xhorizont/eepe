@@ -611,6 +611,10 @@ p, li { white-space: pre-wrap; }
         <source>Custom LCD</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>MegaSound</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>MainWindow</name>
@@ -1485,6 +1489,10 @@ Cannot set General Settings</source>
     </message>
     <message>
         <source> free %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Data not Recognised</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2740,6 +2748,118 @@ Droite</translation>
     <message>
         <source>Fade Out</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Current Source</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>A1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>FasV</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SC1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SC2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SC3</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SC4</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Scaler</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Source</source>
+        <translation type="unfinished">Maître</translation>
+    </message>
+    <message>
+        <source>Multiply</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Divide</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Sign</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Decimals</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Offset At</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Feet</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Volts</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Deg_C</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Deg_F</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>mAh</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Amps</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Metre</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Watts</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>-</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>First</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Last</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation type="unfinished">Nom</translation>
     </message>
 </context>
 <context>
@@ -4037,6 +4157,30 @@ Indique l&apos;affectation voie / numéro de canal par défaut utilisée lors de
     </message>
     <message>
         <source>Send Data</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SWD</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SWE</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SWF</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SWG</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SWH</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SWI</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

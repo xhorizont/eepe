@@ -235,7 +235,14 @@ void MdiChild::doCopy(QByteArray *gmData)
             ModelData tmod;
             if(eeFile.getModel(&tmod,index.row()-1))
             {
+							if ( eeFile.mee_type )
+							{
+                gmData->append('M'+0x80);
+							}
+							else
+							{
                 gmData->append('M');
+							}
                 gmData->append((char*)&tmod,sizeof(tmod));
             }
         }
@@ -277,7 +284,7 @@ void MdiChild::doPaste(QByteArray *gmData, int index)
             gData += sizeof(EEGeneral);
             i     += sizeof(EEGeneral);
         }
-        else //model data
+        else if ( ( c & 0x7F) == 'M' ) //model data
         {
             if(!eeFile.putModel((ModelData*)gData,id-1))
             {
@@ -288,6 +295,10 @@ void MdiChild::doPaste(QByteArray *gmData, int index)
             i     += sizeof(ModelData);
             id++;
         }
+				else
+				{
+          QMessageBox::critical(this, tr("Error"),tr("Data not Recognised"));
+				}
     }
     setModified();
 }
@@ -974,6 +985,7 @@ bool MdiChild::saveFile(const QString &fileName, bool setCurrent)
 
         //Save General Data
         EEGeneral tgen;
+        memset(&tgen,0,sizeof(tgen));
         if(!eeFile.getGeneralSettings(&tgen))
         {
             QMessageBox::critical(this, tr("Error"),tr("Error Getting General Settings Data"));

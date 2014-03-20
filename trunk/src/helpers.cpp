@@ -57,9 +57,24 @@ QString TelemItems[] = {
 	"Gvr7",
 	"Fwat", // 32
 	"RxV ",
-	"Hdg "
+	"Hdg ",
+	"A3= ",
+	"A4= ",
+	"SC1 ",
+	"SC2 ",
+	"SC3 ",
+	"SC4 ",
+	"SC5 ",
+	"SC6 ",
+	"SC7 ",
+	"SC8 "
 } ;
-#define NUM_TELEM_ITEMS	35
+
+#ifdef SKY
+#define NUM_TELEM_ITEMS	45
+#else
+#define NUM_TELEM_ITEMS	41
+#endif
 
 QString GvarItems[] = {
 	"---", // 0
@@ -1742,6 +1757,42 @@ void modelConvert1to2( EEGeneral *g_eeGeneral, SKYModelData *g_model )
 			}
 		}
 
+		// EXPO/DR corrections
+		
+		int i, j, k ;
+		int dest, src ;
+	  ExpoData  lexpoData[4];
+		
+		for ( i = 0 ; i < 3 ; i += 1 )
+		{ // 0=High, 1=Mid, 2=Low
+			for ( j = 0 ; j < 2 ; j += 1 )
+			{ // 0=Weight, 1=Expo - WRONG - 0=expo, 1=weight
+				for ( k = 0 ; k < 2 ; k += 1 )
+				{ // 0=Right, 1=Left
+    			dest = CONVERT_MODE(1, 2, g_eeGeneral->stickMode)-1 ;
+    			src = CONVERT_MODE(1, 1, g_eeGeneral->stickMode)-1 ;
+					lexpoData[dest].expo[i][j][k] = g_model->expoData[src].expo[i][j][k] ;
+    			dest = CONVERT_MODE(2, 2, g_eeGeneral->stickMode)-1 ;
+    			src = CONVERT_MODE(2, 1, g_eeGeneral->stickMode)-1 ;
+					lexpoData[dest].expo[i][j][k] = g_model->expoData[src].expo[i][j][k] ;
+    			dest = CONVERT_MODE(3, 2, g_eeGeneral->stickMode)-1 ;
+    			src = CONVERT_MODE(3, 1, g_eeGeneral->stickMode)-1 ;
+					lexpoData[dest].expo[i][j][k] = g_model->expoData[src].expo[i][j][k] ;
+    			dest = CONVERT_MODE(4, 2, g_eeGeneral->stickMode)-1 ;
+    			src = CONVERT_MODE(4, 1, g_eeGeneral->stickMode)-1 ;
+					lexpoData[dest].expo[i][j][k] = g_model->expoData[src].expo[i][j][k] ;
+		    }
+			}
+		}
+		for ( i = 1 ; i < 4 ; i += 1 )
+		{
+ 			dest = CONVERT_MODE(i, 2, g_eeGeneral->stickMode)-1 ;
+ 			src = CONVERT_MODE(i, 1, g_eeGeneral->stickMode)-1 ;
+			lexpoData[dest].drSw1 = g_model->expoData[src].drSw1 ;
+			lexpoData[dest].drSw2 = g_model->expoData[src].drSw2 ;
+		}
+    memmove( &g_model->expoData, &lexpoData, sizeof(lexpoData));
+		 
 		g_model->modelVersion = 2 ;
 	}
 }

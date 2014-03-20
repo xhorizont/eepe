@@ -736,6 +736,16 @@ void MainWindow::burnFrom()
     }
 }
 
+
+// Consider looking for this sort of error
+
+//avrdude.exe: Device signature = 0x1e9702
+//avrdude.exe: Expected signature for ATMEGA64 is 1E 96 02
+//             Double check chip, or use -F to override this check.
+//
+// And prompting for correct device to be set
+
+
 int MainWindow::backupEeprom()
 {
     burnConfigDialog bcd;
@@ -1316,7 +1326,7 @@ void MainWindow::createActions()
     separatorAct = new QAction(this);
     separatorAct->setSeparator(true);
 
-    aboutAct = new QAction(QIcon(":/icon.png"), tr("&About"), this);
+    aboutAct = new QAction(QIcon(":/eepe.png"), tr("&About"), this);
     aboutAct->setStatusTip(tr("Show the application's About box"));
     connect(aboutAct, SIGNAL(triggered()), this, SLOT(about()));
 

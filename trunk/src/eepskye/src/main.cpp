@@ -54,10 +54,10 @@
 
 int main(int argc, char *argv[])
 {
-#if defined WIN32    
+#ifdef WIN32
 		Q_INIT_RESOURCE(eepe);
 #else
-		Q_INIT_RESOURCE(eepskye);
+        Q_INIT_RESOURCE(eepe);
 #endif
     QApplication app(argc, argv);
 

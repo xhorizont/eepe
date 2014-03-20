@@ -369,31 +369,44 @@ void simulatorDialog::setTrimValue(uint8_t phase, uint8_t idx, int16_t trim)
 
 uint32_t simulatorDialog::adjustMode( uint32_t x )
 {
-	switch (g_eeGeneral.stickMode )
+  if ( g_model.modelVersion >= 2 )
 	{
-		case 1 :
-			if ( x == 2 )
-			{
-				x = 1 ;
-			}
-			else if ( x == 1 )
-			{
-				x = 2 ;
-			}
-		break ;
-		case 2 :
-			if ( x == 3 )
-			{
-				x = 0 ;
-			}
-			else if ( x == 0 )
-			{
-				x = 3 ;
-			}
-		break ;
-		case 3 :
-			x = 3 - x ;
-		break ;
+		switch (g_eeGeneral.stickMode )
+		{
+			case 0 :
+				if ( x == 2 )
+				{
+					x = 1 ;
+				}
+				else if ( x == 1 )
+				{
+					x = 2 ;
+				}
+			break ;
+			case 3 :
+				if ( x == 3 )
+				{
+					x = 0 ;
+				}
+				else if ( x == 0 )
+				{
+					x = 3 ;
+				}
+			break ;
+			case 2 :
+				x = 3 - x ;
+			break ;
+		}
+		return x ;
+	}
+	
+	if ( x == 2 )
+	{
+		x = 1 ;
+	}
+	else if ( x == 1 )
+	{
+		x = 2 ;
 	}
 	return x ;
 }

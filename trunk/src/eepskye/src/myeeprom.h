@@ -80,6 +80,7 @@
 #define MODEL_NAME_LEN         10
 
 #define MAX_GVARS 7
+#define NUM_SCALERS	8
 
 #ifdef SKY
 #define MAX_PHASES		6
@@ -501,6 +502,24 @@ PACK(typedef struct t_gvar {
 //	int8_t gvswitch ;
 }) GvarData ;
 
+// Scale a value
+PACK(typedef struct t_scale
+{
+  uint8_t source ;
+	int16_t offset ;
+	uint8_t spare1 ;
+	uint8_t mult ;
+	uint8_t spare2 ;
+	uint8_t div ;
+	uint8_t unit ;
+	uint8_t neg:1 ;
+	uint8_t precision:2 ;
+	uint8_t offsetLast:1 ;
+	uint8_t spare:4 ;
+	uint8_t name[4] ;
+}) ScaleData ;
+
+
 PACK(typedef struct te_ModelData {
   char      name[MODEL_NAME_LEN];             // 10 must be first for eeLoadModelName
   uint8_t   modelVoice ;		// Index to model name voice (261+value)
@@ -587,9 +606,9 @@ PACK(typedef struct te_ModelData {
 	uint8_t		enRssiRed:2 ;
 	int8_t		rssiRed:6 ;
 	uint8_t		rxVratio ;
-
-//	uint8_t   curentSource ;
-//	uint8_t   altSource ;
+	uint8_t   currentSource ;
+	uint8_t   altSource ;
+	ScaleData Scalers[NUM_SCALERS] ;
 }) SKYModelData ;
 
 

@@ -47,7 +47,7 @@ GeneralEdit::GeneralEdit(EEPFILE *eFile, QWidget *parent) :
     ui->backlightStickMove->setValue(g_eeGeneral.lightOnStickMove*5);
     ui->inactimerSB->setValue(g_eeGeneral.inactivityTimer+10);
 
-    ui->soundModeCB->setCurrentIndex(g_eeGeneral.speakerMode);
+    ui->soundModeCB->setCurrentIndex(g_eeGeneral.speakerMode > 3 ? 4 : g_eeGeneral.speakerMode );
     ui->speakerPitchSB->setValue(g_eeGeneral.speakerPitch);
     ui->hapticStengthSB->setValue(g_eeGeneral.hapticStrength);
 
@@ -698,8 +698,12 @@ void GeneralEdit::on_hapticStengthSB_editingFinished()
 
 void GeneralEdit::on_soundModeCB_currentIndexChanged(int index)
 {
-    g_eeGeneral.speakerMode = index;
-    updateSettings();
+	if ( index > 3 )
+	{
+		index = 7 ;
+	}
+  g_eeGeneral.speakerMode = index ;
+  updateSettings() ;
 }
 
 void GeneralEdit::on_tabWidget_selected(QString )
@@ -812,7 +816,7 @@ void GeneralEdit::on_switchDefPos_8_stateChanged(int )
 
 void GeneralEdit::on_StickRevLH_stateChanged(int )
 {
-	g_eeGeneral.stickReverse &= ~0x01 ;
+	g_eeGeneral.stickReverse &= ~0xF1 ;
 	if (ui->StickRevLH->isChecked() )
 	{
 		g_eeGeneral.stickReverse |= 0x01 ;
@@ -822,7 +826,7 @@ void GeneralEdit::on_StickRevLH_stateChanged(int )
 
 void GeneralEdit::on_StickRevLV_stateChanged(int )
 {
-	g_eeGeneral.stickReverse &= ~0x02 ;
+	g_eeGeneral.stickReverse &= ~0xF2 ;
 	if (ui->StickRevLV->isChecked() )
 	{
 		g_eeGeneral.stickReverse |= 0x02 ;
@@ -832,8 +836,8 @@ void GeneralEdit::on_StickRevLV_stateChanged(int )
 
 void GeneralEdit::on_StickRevRV_stateChanged(int )
 {
-	g_eeGeneral.stickReverse &= ~0x04 ;
-	if (ui->StickRevLH->isChecked() )
+	g_eeGeneral.stickReverse &= ~0xF4 ;
+	if (ui->StickRevRV->isChecked() )
 	{
 		g_eeGeneral.stickReverse |= 0x04 ;
 	}
@@ -842,8 +846,8 @@ void GeneralEdit::on_StickRevRV_stateChanged(int )
 
 void GeneralEdit::on_StickRevRH_stateChanged(int )
 {
-	g_eeGeneral.stickReverse &= ~0x08 ;
-	if (ui->StickRevLH->isChecked() )
+	g_eeGeneral.stickReverse &= ~0xF8 ;
+	if (ui->StickRevRH->isChecked() )
 	{
 		g_eeGeneral.stickReverse |= 0x08 ;
 	}

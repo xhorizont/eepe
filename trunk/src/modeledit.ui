@@ -44,7 +44,7 @@
    <item row="0" column="1">
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
-      <number>8</number>
+      <number>10</number>
      </property>
      <widget class="QWidget" name="tabModelSetup">
       <attribute name="title">
@@ -9195,7 +9195,7 @@ Right</string>
       <attribute name="title">
        <string>Safety Switches</string>
       </attribute>
-      <layout class="QGridLayout" name="grid_tabSafetySwitches" rowstretch="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" columnstretch="0,0,0,0,0,0,0,0,0,0,0">
+      <layout class="QGridLayout" name="grid_tabSafetySwitches" rowstretch="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" columnstretch="0,0,0,0,0,0,0,0,0">
        <property name="topMargin">
         <number>7</number>
        </property>
@@ -10408,8 +10408,8 @@ Right</string>
         </layout>
        </item>
        <item>
-        <layout class="QFormLayout" name="formLayout_4">
-         <item row="0" column="0">
+        <layout class="QHBoxLayout" name="horizontalLayout_7">
+         <item>
           <widget class="QLabel" name="label_152">
            <property name="maximumSize">
             <size>
@@ -10420,9 +10420,12 @@ Right</string>
            <property name="text">
             <string>FAS current offset</string>
            </property>
+           <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+           </property>
           </widget>
          </item>
-         <item row="0" column="1">
+         <item>
           <widget class="QDoubleSpinBox" name="FASoffsetSB">
            <property name="maximumSize">
             <size>
@@ -10440,6 +10443,101 @@ Right</string>
             <double>0.100000000000000</double>
            </property>
           </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_14">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_177">
+           <property name="maximumSize">
+            <size>
+             <width>100</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>Current Source</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="currentSource">
+           <property name="maximumSize">
+            <size>
+             <width>150</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="maxVisibleItems">
+            <number>2</number>
+           </property>
+           <item>
+            <property name="text">
+             <string>----</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>A1</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>A2</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>FasV</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>SC1</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>SC2</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>SC3</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>SC4</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_15">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
          </item>
         </layout>
        </item>
@@ -10673,7 +10771,7 @@ Right</string>
        <property name="geometry">
         <rect>
          <x>20</x>
-         <y>60</y>
+         <y>50</y>
          <width>47</width>
          <height>21</height>
         </rect>
@@ -10701,7 +10799,7 @@ Right</string>
        <property name="geometry">
         <rect>
          <x>20</x>
-         <y>100</y>
+         <y>80</y>
          <width>47</width>
          <height>21</height>
         </rect>
@@ -10729,7 +10827,7 @@ Right</string>
        <property name="geometry">
         <rect>
          <x>20</x>
-         <y>140</y>
+         <y>110</y>
          <width>47</width>
          <height>21</height>
         </rect>
@@ -10757,7 +10855,7 @@ Right</string>
        <property name="geometry">
         <rect>
          <x>20</x>
-         <y>180</y>
+         <y>140</y>
          <width>47</width>
          <height>21</height>
         </rect>
@@ -10785,7 +10883,7 @@ Right</string>
        <property name="geometry">
         <rect>
          <x>20</x>
-         <y>220</y>
+         <y>170</y>
          <width>47</width>
          <height>21</height>
         </rect>
@@ -10813,7 +10911,7 @@ Right</string>
        <property name="geometry">
         <rect>
          <x>90</x>
-         <y>60</y>
+         <y>50</y>
          <width>121</width>
          <height>20</height>
         </rect>
@@ -10823,7 +10921,7 @@ Right</string>
        <property name="geometry">
         <rect>
          <x>90</x>
-         <y>100</y>
+         <y>80</y>
          <width>121</width>
          <height>20</height>
         </rect>
@@ -10833,7 +10931,7 @@ Right</string>
        <property name="geometry">
         <rect>
          <x>90</x>
-         <y>140</y>
+         <y>110</y>
          <width>121</width>
          <height>20</height>
         </rect>
@@ -10843,7 +10941,7 @@ Right</string>
        <property name="geometry">
         <rect>
          <x>90</x>
-         <y>180</y>
+         <y>140</y>
          <width>121</width>
          <height>20</height>
         </rect>
@@ -10853,7 +10951,7 @@ Right</string>
        <property name="geometry">
         <rect>
          <x>90</x>
-         <y>220</y>
+         <y>170</y>
          <width>121</width>
          <height>20</height>
         </rect>
@@ -10863,7 +10961,7 @@ Right</string>
        <property name="geometry">
         <rect>
          <x>320</x>
-         <y>60</y>
+         <y>50</y>
          <width>58</width>
          <height>20</height>
         </rect>
@@ -10885,7 +10983,7 @@ Right</string>
        <property name="geometry">
         <rect>
          <x>320</x>
-         <y>100</y>
+         <y>80</y>
          <width>58</width>
          <height>20</height>
         </rect>
@@ -10907,7 +11005,7 @@ Right</string>
        <property name="geometry">
         <rect>
          <x>320</x>
-         <y>140</y>
+         <y>110</y>
          <width>58</width>
          <height>20</height>
         </rect>
@@ -10929,7 +11027,7 @@ Right</string>
        <property name="geometry">
         <rect>
          <x>320</x>
-         <y>220</y>
+         <y>170</y>
          <width>58</width>
          <height>20</height>
         </rect>
@@ -10951,7 +11049,7 @@ Right</string>
        <property name="geometry">
         <rect>
          <x>320</x>
-         <y>180</y>
+         <y>140</y>
          <width>58</width>
          <height>20</height>
         </rect>
@@ -10973,7 +11071,7 @@ Right</string>
        <property name="geometry">
         <rect>
          <x>20</x>
-         <y>260</y>
+         <y>200</y>
          <width>47</width>
          <height>21</height>
         </rect>
@@ -11001,7 +11099,7 @@ Right</string>
        <property name="geometry">
         <rect>
          <x>20</x>
-         <y>300</y>
+         <y>230</y>
          <width>47</width>
          <height>21</height>
         </rect>
@@ -11029,7 +11127,7 @@ Right</string>
        <property name="geometry">
         <rect>
          <x>90</x>
-         <y>260</y>
+         <y>200</y>
          <width>121</width>
          <height>20</height>
         </rect>
@@ -11039,7 +11137,7 @@ Right</string>
        <property name="geometry">
         <rect>
          <x>90</x>
-         <y>300</y>
+         <y>230</y>
          <width>121</width>
          <height>20</height>
         </rect>
@@ -11049,7 +11147,7 @@ Right</string>
        <property name="geometry">
         <rect>
          <x>320</x>
-         <y>260</y>
+         <y>200</y>
          <width>58</width>
          <height>20</height>
         </rect>
@@ -11071,7 +11169,7 @@ Right</string>
        <property name="geometry">
         <rect>
          <x>320</x>
-         <y>300</y>
+         <y>230</y>
          <width>58</width>
          <height>20</height>
         </rect>
@@ -11087,6 +11185,1215 @@ Right</string>
        </property>
        <property name="maximum">
         <number>125</number>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_209">
+       <property name="geometry">
+        <rect>
+         <x>40</x>
+         <y>320</y>
+         <width>47</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::Panel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+       <property name="midLineWidth">
+        <number>0</number>
+       </property>
+       <property name="text">
+        <string>SC1</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+       <property name="margin">
+        <number>3</number>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="Sc1SrcCB">
+       <property name="geometry">
+        <rect>
+         <x>120</x>
+         <y>320</y>
+         <width>121</width>
+         <height>20</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_210">
+       <property name="geometry">
+        <rect>
+         <x>40</x>
+         <y>290</y>
+         <width>47</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::Panel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+       <property name="midLineWidth">
+        <number>0</number>
+       </property>
+       <property name="text">
+        <string>Scaler</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+       <property name="margin">
+        <number>3</number>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_211">
+       <property name="geometry">
+        <rect>
+         <x>120</x>
+         <y>290</y>
+         <width>121</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::Panel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+       <property name="midLineWidth">
+        <number>0</number>
+       </property>
+       <property name="text">
+        <string>Source</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+       <property name="margin">
+        <number>3</number>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_212">
+       <property name="geometry">
+        <rect>
+         <x>250</x>
+         <y>290</y>
+         <width>61</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::Panel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+       <property name="midLineWidth">
+        <number>0</number>
+       </property>
+       <property name="text">
+        <string>Offset</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+       <property name="margin">
+        <number>3</number>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_213">
+       <property name="geometry">
+        <rect>
+         <x>320</x>
+         <y>290</y>
+         <width>61</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::Panel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+       <property name="midLineWidth">
+        <number>0</number>
+       </property>
+       <property name="text">
+        <string>Multiply</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+       <property name="margin">
+        <number>3</number>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_214">
+       <property name="geometry">
+        <rect>
+         <x>390</x>
+         <y>290</y>
+         <width>61</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::Panel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+       <property name="midLineWidth">
+        <number>0</number>
+       </property>
+       <property name="text">
+        <string>Divide</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+       <property name="margin">
+        <number>3</number>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_215">
+       <property name="geometry">
+        <rect>
+         <x>460</x>
+         <y>290</y>
+         <width>61</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::Panel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+       <property name="midLineWidth">
+        <number>0</number>
+       </property>
+       <property name="text">
+        <string>Unit</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+       <property name="margin">
+        <number>3</number>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_216">
+       <property name="geometry">
+        <rect>
+         <x>530</x>
+         <y>290</y>
+         <width>61</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::Panel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+       <property name="midLineWidth">
+        <number>0</number>
+       </property>
+       <property name="text">
+        <string>Sign</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+       <property name="margin">
+        <number>3</number>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_217">
+       <property name="geometry">
+        <rect>
+         <x>600</x>
+         <y>290</y>
+         <width>61</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::Panel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+       <property name="midLineWidth">
+        <number>0</number>
+       </property>
+       <property name="text">
+        <string>Decimals</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+       <property name="margin">
+        <number>3</number>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_218">
+       <property name="geometry">
+        <rect>
+         <x>670</x>
+         <y>290</y>
+         <width>61</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::Panel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+       <property name="midLineWidth">
+        <number>0</number>
+       </property>
+       <property name="text">
+        <string>Offset At</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+       <property name="margin">
+        <number>3</number>
+       </property>
+      </widget>
+      <widget class="Line" name="line_2">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>270</y>
+         <width>891</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+      </widget>
+      <widget class="QSpinBox" name="Sc1OffsetSB">
+       <property name="geometry">
+        <rect>
+         <x>250</x>
+         <y>320</y>
+         <width>58</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+       <property name="accelerated">
+        <bool>true</bool>
+       </property>
+       <property name="minimum">
+        <number>-1024</number>
+       </property>
+       <property name="maximum">
+        <number>1024</number>
+       </property>
+      </widget>
+      <widget class="QSpinBox" name="Sc1MultSB">
+       <property name="geometry">
+        <rect>
+         <x>320</x>
+         <y>320</y>
+         <width>58</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+       <property name="accelerated">
+        <bool>true</bool>
+       </property>
+       <property name="minimum">
+        <number>1</number>
+       </property>
+       <property name="maximum">
+        <number>256</number>
+       </property>
+      </widget>
+      <widget class="QSpinBox" name="Sc1DivSB">
+       <property name="geometry">
+        <rect>
+         <x>390</x>
+         <y>320</y>
+         <width>58</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+       <property name="accelerated">
+        <bool>true</bool>
+       </property>
+       <property name="minimum">
+        <number>1</number>
+       </property>
+       <property name="maximum">
+        <number>256</number>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="Sc1UnitsCB">
+       <property name="geometry">
+        <rect>
+         <x>460</x>
+         <y>320</y>
+         <width>61</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <item>
+        <property name="text">
+         <string>Feet</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Volts</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Deg_C</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Deg_F</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>mAh</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Amps</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Metre</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Watts</string>
+        </property>
+       </item>
+      </widget>
+      <widget class="QComboBox" name="Sc1SignCB">
+       <property name="geometry">
+        <rect>
+         <x>530</x>
+         <y>320</y>
+         <width>61</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <item>
+        <property name="text">
+         <string>+</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>-</string>
+        </property>
+       </item>
+      </widget>
+      <widget class="QComboBox" name="Sc1OffAtCB">
+       <property name="geometry">
+        <rect>
+         <x>670</x>
+         <y>320</y>
+         <width>61</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <item>
+        <property name="text">
+         <string>First</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Last</string>
+        </property>
+       </item>
+      </widget>
+      <widget class="QSpinBox" name="Sc1DecimalsSB">
+       <property name="geometry">
+        <rect>
+         <x>600</x>
+         <y>320</y>
+         <width>58</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+       <property name="accelerated">
+        <bool>true</bool>
+       </property>
+       <property name="minimum">
+        <number>0</number>
+       </property>
+       <property name="maximum">
+        <number>2</number>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_219">
+       <property name="geometry">
+        <rect>
+         <x>740</x>
+         <y>290</y>
+         <width>61</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::Panel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+       <property name="midLineWidth">
+        <number>0</number>
+       </property>
+       <property name="text">
+        <string>Name</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+       <property name="margin">
+        <number>3</number>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="SC1Name">
+       <property name="geometry">
+        <rect>
+         <x>740</x>
+         <y>320</y>
+         <width>61</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="maxLength">
+        <number>4</number>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="Sc2SrcCB">
+       <property name="geometry">
+        <rect>
+         <x>120</x>
+         <y>350</y>
+         <width>121</width>
+         <height>20</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_220">
+       <property name="geometry">
+        <rect>
+         <x>40</x>
+         <y>350</y>
+         <width>47</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::Panel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+       <property name="midLineWidth">
+        <number>0</number>
+       </property>
+       <property name="text">
+        <string>SC2</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+       <property name="margin">
+        <number>3</number>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_221">
+       <property name="geometry">
+        <rect>
+         <x>40</x>
+         <y>380</y>
+         <width>47</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::Panel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+       <property name="midLineWidth">
+        <number>0</number>
+       </property>
+       <property name="text">
+        <string>SC3</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+       <property name="margin">
+        <number>3</number>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_222">
+       <property name="geometry">
+        <rect>
+         <x>40</x>
+         <y>410</y>
+         <width>47</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::Panel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+       <property name="midLineWidth">
+        <number>0</number>
+       </property>
+       <property name="text">
+        <string>SC4</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+       <property name="margin">
+        <number>3</number>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="Sc3SrcCB">
+       <property name="geometry">
+        <rect>
+         <x>120</x>
+         <y>380</y>
+         <width>121</width>
+         <height>20</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="Sc4SrcCB">
+       <property name="geometry">
+        <rect>
+         <x>120</x>
+         <y>410</y>
+         <width>121</width>
+         <height>20</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QSpinBox" name="Sc2MultSB">
+       <property name="geometry">
+        <rect>
+         <x>320</x>
+         <y>350</y>
+         <width>58</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+       <property name="accelerated">
+        <bool>true</bool>
+       </property>
+       <property name="minimum">
+        <number>1</number>
+       </property>
+       <property name="maximum">
+        <number>256</number>
+       </property>
+      </widget>
+      <widget class="QSpinBox" name="Sc2OffsetSB">
+       <property name="geometry">
+        <rect>
+         <x>250</x>
+         <y>350</y>
+         <width>58</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+       <property name="accelerated">
+        <bool>true</bool>
+       </property>
+       <property name="minimum">
+        <number>-1024</number>
+       </property>
+       <property name="maximum">
+        <number>1024</number>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="SC2Name">
+       <property name="geometry">
+        <rect>
+         <x>740</x>
+         <y>350</y>
+         <width>61</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="maxLength">
+        <number>4</number>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="Sc2SignCB">
+       <property name="geometry">
+        <rect>
+         <x>530</x>
+         <y>350</y>
+         <width>61</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <item>
+        <property name="text">
+         <string>+</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>-</string>
+        </property>
+       </item>
+      </widget>
+      <widget class="QComboBox" name="Sc2OffAtCB">
+       <property name="geometry">
+        <rect>
+         <x>670</x>
+         <y>350</y>
+         <width>61</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <item>
+        <property name="text">
+         <string>First</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Last</string>
+        </property>
+       </item>
+      </widget>
+      <widget class="QSpinBox" name="Sc2DecimalsSB">
+       <property name="geometry">
+        <rect>
+         <x>600</x>
+         <y>350</y>
+         <width>58</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+       <property name="accelerated">
+        <bool>true</bool>
+       </property>
+       <property name="minimum">
+        <number>0</number>
+       </property>
+       <property name="maximum">
+        <number>2</number>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="Sc2UnitsCB">
+       <property name="geometry">
+        <rect>
+         <x>460</x>
+         <y>350</y>
+         <width>61</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <item>
+        <property name="text">
+         <string>Feet</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Volts</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Deg_C</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Deg_F</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>mAh</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Amps</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Metre</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Watts</string>
+        </property>
+       </item>
+      </widget>
+      <widget class="QSpinBox" name="Sc2DivSB">
+       <property name="geometry">
+        <rect>
+         <x>390</x>
+         <y>350</y>
+         <width>58</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+       <property name="accelerated">
+        <bool>true</bool>
+       </property>
+       <property name="minimum">
+        <number>1</number>
+       </property>
+       <property name="maximum">
+        <number>256</number>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="SC3Name">
+       <property name="geometry">
+        <rect>
+         <x>740</x>
+         <y>380</y>
+         <width>61</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="maxLength">
+        <number>4</number>
+       </property>
+      </widget>
+      <widget class="QSpinBox" name="Sc3DivSB">
+       <property name="geometry">
+        <rect>
+         <x>390</x>
+         <y>380</y>
+         <width>58</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+       <property name="accelerated">
+        <bool>true</bool>
+       </property>
+       <property name="minimum">
+        <number>1</number>
+       </property>
+       <property name="maximum">
+        <number>256</number>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="Sc3SignCB">
+       <property name="geometry">
+        <rect>
+         <x>530</x>
+         <y>380</y>
+         <width>61</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <item>
+        <property name="text">
+         <string>+</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>-</string>
+        </property>
+       </item>
+      </widget>
+      <widget class="QSpinBox" name="Sc3MultSB">
+       <property name="geometry">
+        <rect>
+         <x>320</x>
+         <y>380</y>
+         <width>58</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+       <property name="accelerated">
+        <bool>true</bool>
+       </property>
+       <property name="minimum">
+        <number>1</number>
+       </property>
+       <property name="maximum">
+        <number>256</number>
+       </property>
+      </widget>
+      <widget class="QSpinBox" name="Sc3DecimalsSB">
+       <property name="geometry">
+        <rect>
+         <x>600</x>
+         <y>380</y>
+         <width>58</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+       <property name="accelerated">
+        <bool>true</bool>
+       </property>
+       <property name="minimum">
+        <number>0</number>
+       </property>
+       <property name="maximum">
+        <number>2</number>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="Sc3OffAtCB">
+       <property name="geometry">
+        <rect>
+         <x>670</x>
+         <y>380</y>
+         <width>61</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <item>
+        <property name="text">
+         <string>First</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Last</string>
+        </property>
+       </item>
+      </widget>
+      <widget class="QSpinBox" name="Sc3OffsetSB">
+       <property name="geometry">
+        <rect>
+         <x>250</x>
+         <y>380</y>
+         <width>58</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+       <property name="accelerated">
+        <bool>true</bool>
+       </property>
+       <property name="minimum">
+        <number>-1024</number>
+       </property>
+       <property name="maximum">
+        <number>1024</number>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="Sc3UnitsCB">
+       <property name="geometry">
+        <rect>
+         <x>460</x>
+         <y>380</y>
+         <width>61</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <item>
+        <property name="text">
+         <string>Feet</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Volts</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Deg_C</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Deg_F</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>mAh</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Amps</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Metre</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Watts</string>
+        </property>
+       </item>
+      </widget>
+      <widget class="QLineEdit" name="SC4Name">
+       <property name="geometry">
+        <rect>
+         <x>740</x>
+         <y>410</y>
+         <width>61</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="maxLength">
+        <number>4</number>
+       </property>
+      </widget>
+      <widget class="QSpinBox" name="Sc4DivSB">
+       <property name="geometry">
+        <rect>
+         <x>390</x>
+         <y>410</y>
+         <width>58</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+       <property name="accelerated">
+        <bool>true</bool>
+       </property>
+       <property name="minimum">
+        <number>1</number>
+       </property>
+       <property name="maximum">
+        <number>256</number>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="Sc4UnitsCB">
+       <property name="geometry">
+        <rect>
+         <x>460</x>
+         <y>410</y>
+         <width>61</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <item>
+        <property name="text">
+         <string>Feet</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Volts</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Deg_C</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Deg_F</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>mAh</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Amps</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Metre</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Watts</string>
+        </property>
+       </item>
+      </widget>
+      <widget class="QSpinBox" name="Sc4DecimalsSB">
+       <property name="geometry">
+        <rect>
+         <x>600</x>
+         <y>410</y>
+         <width>58</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+       <property name="accelerated">
+        <bool>true</bool>
+       </property>
+       <property name="minimum">
+        <number>0</number>
+       </property>
+       <property name="maximum">
+        <number>2</number>
+       </property>
+      </widget>
+      <widget class="QSpinBox" name="Sc4MultSB">
+       <property name="geometry">
+        <rect>
+         <x>320</x>
+         <y>410</y>
+         <width>58</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+       <property name="accelerated">
+        <bool>true</bool>
+       </property>
+       <property name="minimum">
+        <number>1</number>
+       </property>
+       <property name="maximum">
+        <number>256</number>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="Sc4SignCB">
+       <property name="geometry">
+        <rect>
+         <x>530</x>
+         <y>410</y>
+         <width>61</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <item>
+        <property name="text">
+         <string>+</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>-</string>
+        </property>
+       </item>
+      </widget>
+      <widget class="QComboBox" name="Sc4OffAtCB">
+       <property name="geometry">
+        <rect>
+         <x>670</x>
+         <y>410</y>
+         <width>61</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <item>
+        <property name="text">
+         <string>First</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Last</string>
+        </property>
+       </item>
+      </widget>
+      <widget class="QSpinBox" name="Sc4OffsetSB">
+       <property name="geometry">
+        <rect>
+         <x>250</x>
+         <y>410</y>
+         <width>58</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+       <property name="accelerated">
+        <bool>true</bool>
+       </property>
+       <property name="minimum">
+        <number>-1024</number>
+       </property>
+       <property name="maximum">
+        <number>1024</number>
        </property>
       </widget>
      </widget>

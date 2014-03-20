@@ -51,6 +51,17 @@
 #include "simulatordialog.h"
 #include "printdialog.h"
 
+namespace er9x
+{
+#undef eeprom_h
+#undef NUM_SCALERS
+#define EXTRA_CSW	6
+#define EXTRA_VOICE_SW	8
+	#include "..\..\myeeprom.h"
+	ModelData EmodelData ;
+	MixData *srcMix ;
+}	
+
 extern class simulatorDialog *SimPointer ;
 
 MdiChild::MdiChild()
@@ -355,6 +366,18 @@ void MdiChild::doPaste(QByteArray *gmData, int index)
             i     += sizeof(SKYModelData);
             id++;
         }
+        else if( (c& 0x7F)=='M') // er9x model data
+				{
+          memcpy( &er9x::EmodelData, gData, sizeof(er9x::EmodelData ) ) ;
+					convertFromEr9x( &radioData.models[id-1], (c & 0x80) ) ;
+          setModelFile( id-1 ) ;
+          gData += sizeof(er9x::EmodelData);
+          i     += sizeof(er9x::EmodelData);
+          id++;
+          QMessageBox::critical(this, tr("Error"),
+                        tr("Can't paste from er9x file"));
+				}
+
     }
     setModified();
 }
@@ -395,7 +418,7 @@ bool MdiChild::loadModelFromFile(QString fn)
         if(!QFileInfo(fn).exists())
         {
             QMessageBox::critical(this, tr("Error"),
-                                  tr("Coulden't find %1")
+                                  tr("Couldn't find %1")
                                   .arg(fn));
             return false;
         }
@@ -1045,6 +1068,7 @@ bool MdiChild::saveFile(const QString &fileName, bool setCurrent)
 
 //        //Save General Data
 //        EEGeneral tgen;
+//        memset(&tgen,0,sizeof(tgen));
 //        if(!eeFile.getGeneralSettings(&tgen))
 //        {
 //            QMessageBox::critical(this, tr("Error"),tr("Error Getting General Settings Data"));
@@ -1485,6 +1509,195 @@ void MdiChild::setModelFile(uint8_t id)
 	radioData.valid = 1 ;
   refreshList() ;
 }
+
+void convertEr9xSwitch( int8_t *p )
+{
+}
+
+
+void MdiChild::convertFromEr9x( SKYModelData *dest, uint8_t type )
+{
+	uint32_t i ;
+	
+  er9x::ModelData *source ;
+	source = &er9x::EmodelData ;
+
+	memset( dest, 0, sizeof(*dest) ) ;
+  memcpy( dest->name, er9x::EmodelData.name, MODEL_NAME_LEN) ;
+	dest->modelVoice = er9x::EmodelData.modelVoice ;
+//	dest->RxNum = er9x::EmodelData.RxNum ;
+	dest->traineron = er9x::EmodelData.traineron ;
+	dest->FrSkyUsrProto = er9x::EmodelData.FrSkyUsrProto ;
+	dest->FrSkyGpsAlt = er9x::EmodelData.FrSkyGpsAlt ;
+	dest->FrSkyImperial = er9x::EmodelData.FrSkyImperial ;
+	dest->FrSkyAltAlarm = er9x::EmodelData.FrSkyAltAlarm ;
+//	dest->modelVersion = er9x::EmodelData.version ;
+	dest->protocol = er9x::EmodelData.protocol ;
+	dest->ppmNCH = er9x::EmodelData.ppmNCH ;
+	dest->thrTrim = er9x::EmodelData.thrTrim ;
+	dest->xnumBlades = er9x::EmodelData.numBlades ;
+	dest->thrExpo = er9x::EmodelData.thrExpo ;
+	dest->trimInc = er9x::EmodelData.trimInc ;
+	dest->ppmDelay = er9x::EmodelData.ppmDelay ;
+	dest->trimSw = er9x::EmodelData.trimSw ;
+	dest->beepANACenter = er9x::EmodelData.beepANACenter ;
+	dest->pulsePol = er9x::EmodelData.pulsePol ;
+	dest->extendedLimits = er9x::EmodelData.extendedLimits ;
+	dest->swashInvertELE = er9x::EmodelData.swashInvertELE ;
+	dest->swashInvertAIL = er9x::EmodelData.swashInvertAIL ;
+	dest->swashInvertCOL = er9x::EmodelData.swashInvertCOL ;
+	dest->swashType = er9x::EmodelData.swashType ;
+	dest->swashCollectiveSource = er9x::EmodelData.swashCollectiveSource ;
+	dest->swashRingValue = er9x::EmodelData.swashRingValue ;
+	dest->ppmFrameLength = er9x::EmodelData.ppmFrameLength ;
+	dest->startChannel = er9x::EmodelData.ppmStart ;
+
+	for ( i = 0 ; i < MAX_MIXERS ; i += 1 )
+	{
+		er9x::srcMix = &er9x::EmodelData.mixData[i] ;
+		SKYMixData *dst = &dest->mixData[i] ;
+    dst->destCh = er9x::srcMix->destCh ;
+    dst->srcRaw = er9x::srcMix->srcRaw ;
+		if ( dst->srcRaw == NUM_XCHNRAW+1 )		// MIX_3POS
+		{
+			dst->srcRaw += NUM_SKYCHNOUT - NUM_CHNOUT ;
+		}
+
+    dst->weight = er9x::srcMix->weight ;
+    dst->swtch = er9x::srcMix->swtch ;
+		convertEr9xSwitch( &dst->swtch ) ;
+		
+		dst->curve = er9x::srcMix->curve ;
+		dst->delayUp = er9x::srcMix->delayUp * 10 ;
+		dst->delayDown = er9x::srcMix->delayDown * 10 ;
+		dst->speedUp = er9x::srcMix->speedUp * 10 ;
+		dst->speedDown = er9x::srcMix->speedDown * 10 ;
+		dst->carryTrim = er9x::srcMix->carryTrim ;
+		dst->mltpx = er9x::srcMix->mltpx ;
+		dst->mixWarn = er9x::srcMix->mixWarn ;
+		dst->enableFmTrim = er9x::srcMix->enableFmTrim ;
+		dst->sOffset = er9x::srcMix->sOffset ;
+	}
+	for ( i = 0 ; i < NUM_CHNOUT ; i += 1 )
+	{
+		dest->limitData[i].min = er9x::EmodelData.limitData[i].min ;
+		dest->limitData[i].max = er9x::EmodelData.limitData[i].max ;
+		dest->limitData[i].revert = er9x::EmodelData.limitData[i].revert ;
+		dest->limitData[i].offset = er9x::EmodelData.limitData[i].offset ;
+	}
+	for ( i = 0 ; i < 4 ; i += 1 )
+	{
+		
+		dest->expoData[i] = (ExpoData&)er9x::EmodelData.expoData[i] ;
+		convertEr9xSwitch( &dest->expoData[i].drSw1 ) ;
+		convertEr9xSwitch( &dest->expoData[i].drSw2 ) ;
+		dest->trim[i] = er9x::EmodelData.trim[i] ;
+	}
+  memcpy( dest->curves5, er9x::EmodelData.curves5, sizeof(er9x::EmodelData.curves5) ) ;
+  memcpy( dest->curves9, er9x::EmodelData.curves9, sizeof(er9x::EmodelData.curves9) ) ;
+	for ( i = 0 ; i < NUM_CSW ; i += 1 )
+	{
+    er9x::CSwData *src = &er9x::EmodelData.customSw[i] ;
+		SKYCSwData *dst = &dest->customSw[i] ;
+		dst->v1 = src->v1 ;
+		dst->v2 = src->v2 ;
+		dst->func = src->func ;
+  	switch (dst->func)
+		{
+  		case (CS_AND) :
+  		case (CS_OR) :
+  		case (CS_XOR) :
+				convertEr9xSwitch( &dst->v1 ) ;
+				convertEr9xSwitch( &dst->v2 ) ;
+      break;
+  		case (CS_VPOS):
+  		case (CS_VNEG):
+  		case (CS_APOS):
+  		case (CS_ANEG):
+				if ( dst->v1-1 >= CHOUT_BASE+NUM_CHNOUT )
+				{
+					dst->v1 += NUM_SKYCHNOUT - NUM_CHNOUT ;
+				}
+				if ( dst->v2-1 >= CHOUT_BASE+NUM_CHNOUT )
+				{
+					dst->v2 += NUM_SKYCHNOUT - NUM_CHNOUT ;
+				}
+      break;
+		}
+		dst->andsw = src->andsw ;
+	}
+	dest->frSkyVoltThreshold = er9x::EmodelData.frSkyVoltThreshold ;
+//	dest->bt_telemetry = er9x::EmodelData.bt_telemetry ;
+	dest->numVoice = er9x::EmodelData.numVoice ;
+	if ( dest->numVoice )
+	{
+		dest->numVoice += NUM_SKYCHNOUT - NUM_CHNOUT ;
+	}
+	for ( i = 0 ; i < NUM_CHNOUT ; i += 1 )
+	{
+    er9x::SafetySwData *src = &er9x::EmodelData.safetySw[i] ;
+		SKYSafetySwData *dst = &dest->safetySw[i] ;
+		if ( i < (uint32_t)NUM_CHNOUT - dest->numVoice )
+		{
+			dst->opt.ss.swtch = src->opt.ss.swtch ;
+			dst->opt.ss.mode = src->opt.ss.mode ;
+			dst->opt.ss.val = src->opt.ss.val ;
+			if ( dst->opt.ss.mode == 3 )
+			{
+				dst->opt.ss.mode = 0 ;
+			}
+			switch ( dst->opt.ss.mode )
+			{
+				case 0 :
+				case 1 :
+				case 2 :
+					convertEr9xSwitch( &dst->opt.ss.swtch ) ;
+				break ;
+			}
+		}
+		else
+		{
+			dst->opt.vs.vswtch = src->opt.vs.vswtch ;
+			dst->opt.vs.vmode = src->opt.vs.vmode ;
+			dst->opt.vs.vval = src->opt.vs.vval ;
+			convertEr9xSwitch( (int8_t *)&dst->opt.vs.vswtch ) ;
+		}
+	}
+
+	for ( i = 0 ; i < 2 ; i += 1 )
+	{
+    er9x::FrSkyChannelData *src = &er9x::EmodelData.frsky.channels[i] ;
+		SKYFrSkyChannelData *dst = &dest->frsky.channels[i] ;
+		dst->ratio = src->ratio ;
+		dst->alarms_value[0] = src->alarms_value[0] ;
+		dst->alarms_value[1] = src->alarms_value[1] ;
+		dst->alarms_level = src->alarms_level ;
+		dst->alarms_greater = src->alarms_greater ;
+		dst->type = src->type ;
+		dst->gain = 1 ;
+	}
+
+	for ( i = 0 ; i < 2 ; i += 1 )
+	{
+//		dest->timer[i] = er9x::EmodelData.timer[i] ;
+  	if( dest->timer[i].tmrModeB>=(MAX_DRSWITCH))	 //momentary on-off
+		{
+			dest->timer[i].tmrModeB += (NUM_SKYCSW - NUM_CSW) ;
+		}
+	}
+
+//	dest->frskyAlarms = er9x::EmodelData.frskyAlarms ;
+
+  memcpy( &dest->customDisplayIndex[0], &er9x::EmodelData.CustomDisplayIndex[0], 6 ) ;
+
+}
+
+
+
+
+
+
+
 
 
 
