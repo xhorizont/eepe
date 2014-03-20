@@ -72,7 +72,7 @@ TRANSLATIONS = eepe_.ts    \
                eepe_de.ts  \
                eepe_es.ts  \
                eepe_fr.ts
-RESOURCES += eepe.qrc
+RESOURCES += eepskye.qrc
 TARGET = eepskye
 
 unix {

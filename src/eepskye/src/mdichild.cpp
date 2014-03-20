@@ -57,7 +57,7 @@ namespace er9x
 #undef NUM_SCALERS
 #define EXTRA_CSW	6
 #define EXTRA_VOICE_SW	8
-	#include "..\..\myeeprom.h"
+	#include "../../myeeprom.h"
 	ModelData EmodelData ;
 	MixData *srcMix ;
 }	

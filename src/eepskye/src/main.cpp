@@ -55,28 +55,28 @@
 int main(int argc, char *argv[])
 {
 #ifdef WIN32
-		Q_INIT_RESOURCE(eepe);
+		Q_INIT_RESOURCE(eepskye);
 #else
-        Q_INIT_RESOURCE(eepe);
+        Q_INIT_RESOURCE(eepskye);
 #endif
     QApplication app(argc, argv);
 
     QString dir;
     if(argc) dir = QFileInfo(argv[0]).canonicalPath() + "/lang";
 
-    QSettings settings("er9x-eePe", "eePe");
+    QSettings settings("er9x-eePskye", "eePskye");
     QString locale = settings.value("locale",QLocale::system().name()).toString();
     bool showSplash = settings.value("show_splash", true).toBool();
 
 
-    QPixmap pixmap(":/images/eepe-title.png");
+    QPixmap pixmap(":/images/eepskye-title.png");
     QSplashScreen *splash = new QSplashScreen(pixmap);
     if(showSplash)
     {
         splash->show();
 
-        bool checkER9X  = settings.value("startup_check_er9x", true).toBool();
-        bool checkEEPE  = settings.value("startup_check_eepe", true).toBool();
+        bool checkER9X  = settings.value("startup_check_ersky9x", true).toBool();
+        bool checkEEPE  = settings.value("startup_check_eepskye", true).toBool();
 
         if(checkEEPE || checkER9X)
             splash->showMessage(QObject::tr("Checking for updates..."));
