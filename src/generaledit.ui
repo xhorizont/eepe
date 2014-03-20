@@ -1167,6 +1167,11 @@ p, li { white-space: pre-wrap; }
            <string>PiSpkrVoice</string>
           </property>
          </item>
+         <item>
+          <property name="text">
+           <string>MegaSound</string>
+          </property>
+         </item>
         </widget>
        </item>
        <item row="3" column="2">

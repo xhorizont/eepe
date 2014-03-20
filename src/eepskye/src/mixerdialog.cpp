@@ -21,6 +21,14 @@ MixerDialog::MixerDialog(QWidget *parent, SKYMixData *mixdata, int stickMode, QS
     ui->sourceCB->addItem("GV6 ");
     ui->sourceCB->addItem("GV7 ");
     ui->sourceCB->addItem("THIS");
+    ui->sourceCB->addItem("SC1 ");
+    ui->sourceCB->addItem("SC2 ");
+    ui->sourceCB->addItem("SC3 ");
+    ui->sourceCB->addItem("SC4 ");
+    ui->sourceCB->addItem("SC5 ");
+    ui->sourceCB->addItem("SC6 ");
+    ui->sourceCB->addItem("SC7 ");
+    ui->sourceCB->addItem("SC8 ");
     ui->sourceCB->setCurrentIndex(md->srcRaw);
     
 		ui->sourceCB->removeItem(0);

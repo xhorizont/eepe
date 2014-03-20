@@ -902,7 +902,7 @@ void GeneralEdit::on_splashScreenNameChkB_stateChanged(int )
 
 void GeneralEdit::on_StickRevLH_stateChanged(int )
 {
-	g_eeGeneral.stickReverse &= ~0x01 ;
+	g_eeGeneral.stickReverse &= ~0xF1 ;
 	if (ui->StickRevLH->isChecked() )
 	{
 		g_eeGeneral.stickReverse |= 0x01 ;
@@ -912,7 +912,7 @@ void GeneralEdit::on_StickRevLH_stateChanged(int )
 
 void GeneralEdit::on_StickRevLV_stateChanged(int )
 {
-	g_eeGeneral.stickReverse &= ~0x02 ;
+	g_eeGeneral.stickReverse &= ~0xF2 ;
 	if (ui->StickRevLV->isChecked() )
 	{
 		g_eeGeneral.stickReverse |= 0x02 ;
@@ -922,8 +922,8 @@ void GeneralEdit::on_StickRevLV_stateChanged(int )
 
 void GeneralEdit::on_StickRevRV_stateChanged(int )
 {
-	g_eeGeneral.stickReverse &= ~0x04 ;
-	if (ui->StickRevLH->isChecked() )
+	g_eeGeneral.stickReverse &= ~0xF4 ;
+	if (ui->StickRevRV->isChecked() )
 	{
 		g_eeGeneral.stickReverse |= 0x04 ;
 	}
@@ -932,8 +932,8 @@ void GeneralEdit::on_StickRevRV_stateChanged(int )
 
 void GeneralEdit::on_StickRevRH_stateChanged(int )
 {
-	g_eeGeneral.stickReverse &= ~0x08 ;
-	if (ui->StickRevLH->isChecked() )
+	g_eeGeneral.stickReverse &= ~0xF8 ;
+	if (ui->StickRevRH->isChecked() )
 	{
 		g_eeGeneral.stickReverse |= 0x08 ;
 	}

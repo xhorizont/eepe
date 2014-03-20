@@ -1312,7 +1312,7 @@ void MainWindow::createActions()
     separatorAct = new QAction(this);
     separatorAct->setSeparator(true);
 
-    aboutAct = new QAction(QIcon(":/icon.png"), tr("&About"), this);
+    aboutAct = new QAction(QIcon(":/eepskye.png"), tr("&About"), this);
     aboutAct->setStatusTip(tr("Show the application's About box"));
     connect(aboutAct, SIGNAL(triggered()), this, SLOT(about()));
 

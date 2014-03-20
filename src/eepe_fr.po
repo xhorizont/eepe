@@ -719,6 +719,10 @@ msgctxt "GeneralEdit|"
 msgid "Custom LCD"
 msgstr ""
 
+msgctxt "GeneralEdit|"
+msgid "MegaSound"
+msgstr ""
+
 msgctxt "MainWindow|"
 msgid "&New"
 msgstr "&Nouveau"
@@ -1673,6 +1677,10 @@ msgstr ""
 #, qt-format
 msgctxt "MdiChild|"
 msgid " free %1"
+msgstr ""
+
+msgctxt "MdiChild|"
+msgid "Data not Recognised"
 msgstr ""
 
 msgctxt "MixerDialog|"
@@ -3016,6 +3024,120 @@ msgstr ""
 msgctxt "ModelEdit|"
 msgid "Fade Out"
 msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "Current Source"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "A1"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "FasV"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "SC1"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "SC2"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "SC3"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "SC4"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "Scaler"
+msgstr ""
+
+#, fuzzy
+msgctxt "ModelEdit|"
+msgid "Source"
+msgstr "Maître"
+
+msgctxt "ModelEdit|"
+msgid "Multiply"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "Divide"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "Unit"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "Sign"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "Decimals"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "Offset At"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "Feet"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "Volts"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "Deg_C"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "Deg_F"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "mAh"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "Amps"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "Metre"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "Watts"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "+"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "-"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "First"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "Last"
+msgstr ""
+
+#, fuzzy
+msgctxt "ModelEdit|"
+msgid "Name"
+msgstr "Nom"
 
 msgctxt "QObject|"
 msgid "Checking for updates..."
@@ -4571,6 +4693,30 @@ msgstr ""
 
 msgctxt "simulatorDialog|"
 msgid "Send Data"
+msgstr ""
+
+msgctxt "simulatorDialog|"
+msgid "SWD"
+msgstr ""
+
+msgctxt "simulatorDialog|"
+msgid "SWE"
+msgstr ""
+
+msgctxt "simulatorDialog|"
+msgid "SWF"
+msgstr ""
+
+msgctxt "simulatorDialog|"
+msgid "SWG"
+msgstr ""
+
+msgctxt "simulatorDialog|"
+msgid "SWH"
+msgstr ""
+
+msgctxt "simulatorDialog|"
+msgid "SWI"
 msgstr ""
 
 #, fuzzy

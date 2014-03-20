@@ -139,8 +139,9 @@ void burnConfigDialog::on_pushButton_clicked()
 
 void burnConfigDialog::listProgrammers()
 {
+    QStringList args   = avrArgs;
     QStringList arguments;
-    arguments << "-c?";
+    arguments << "-c?" << args ;
 
     avrOutputDialog *ad = new avrOutputDialog(this, ui->avrdude_location->text(), arguments, "List available programmers", AVR_DIALOG_KEEP_OPEN);
     ad->setWindowIcon(QIcon(":/images/list.png"));

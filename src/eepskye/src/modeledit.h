@@ -68,6 +68,16 @@ private:
     QComboBox *expoDrVal[4][3][2][2] ;
 		QCheckBox *expoDrGvar[4][3][2][2] ;
 
+		QSpinBox *posb[NUM_SCALERS] ;
+		QSpinBox *pmsb[NUM_SCALERS] ;
+		QSpinBox *pdivsb[NUM_SCALERS] ;
+		QSpinBox *pdpsb[NUM_SCALERS] ;
+		QComboBox *pucb[NUM_SCALERS] ;
+		QComboBox *psgncb[NUM_SCALERS] ;
+		QComboBox *poffcb[NUM_SCALERS] ;
+		QComboBox *psrccb[NUM_SCALERS] ;
+		QLineEdit *psname[NUM_SCALERS] ;
+
     void setupMixerListWidget();
     void updateSettings();
     void tabModelEditSetup();
@@ -120,6 +130,7 @@ private:
     SKYMixData* setDest(uint8_t dch);
     void setCurve(uint8_t c, int8_t ar[]);
     void setSwitch(uint8_t idx, uint8_t func, int8_t v1, int8_t v2);
+
 
 signals:
     void modelValuesChanged(ModelEdit * = 0);

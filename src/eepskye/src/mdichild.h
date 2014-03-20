@@ -144,7 +144,7 @@ public:
 
 //    void optimizeEEPROM();
 
-    QString modelNotes[MAX_MODELS][MAX_MIXERS];
+    QString modelNotes[MAX_MODELS][MAX_SKYMIXERS];
 
 signals:
     void copyAvailable(bool val);
@@ -162,6 +162,7 @@ protected:
 private slots:
     void documentWasModified();
     void refreshList();
+		void convertFromEr9x( SKYModelData *dest, uint8_t type ) ;
 //    bool saveiHEX(QString fileName, quint8 * data, int datalen, QString header="", int notesIndex=NOTES_NONE);
 //    bool loadiHEX(QString fileName, quint8 * data, int datalen, QString header="");
 

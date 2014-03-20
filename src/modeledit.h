@@ -65,6 +65,16 @@ private:
     QComboBox *expoDrVal[4][3][2][2] ;
 		QCheckBox *expoDrGvar[4][3][2][2] ;
 
+		QSpinBox *posb[NUM_SCALERS] ;
+		QSpinBox *pmsb[NUM_SCALERS] ;
+		QSpinBox *pdivsb[NUM_SCALERS] ;
+		QSpinBox *pdpsb[NUM_SCALERS] ;
+		QComboBox *pucb[NUM_SCALERS] ;
+		QComboBox *psgncb[NUM_SCALERS] ;
+		QComboBox *poffcb[NUM_SCALERS] ;
+		QComboBox *psrccb[NUM_SCALERS] ;
+		QLineEdit *psname[NUM_SCALERS] ;
+
     void setupMixerListWidget();
     void updateSettings();
     void tabModelEditSetup();
@@ -88,6 +98,7 @@ private:
     void updateHeliTab();
 		void setSafetyLabels() ;
 		void updatePhaseTab() ;
+		void textUpdate( QLineEdit *source, char *dest, int length ) ;
 
     void launchSimulation();
     void resizeEvent(QResizeEvent *event  = 0);

@@ -57,6 +57,8 @@ simulatorDialog::simulatorDialog( QWidget *parent) :
 
     memset(&swOn,0,sizeof(swOn));
 
+    memset(&CsTimer,0,sizeof(CsTimer));
+
     trimptr[0] = &trim[0] ;
     trimptr[1] = &trim[1] ;
     trimptr[2] = &trim[2] ;
@@ -72,6 +74,7 @@ simulatorDialog::simulatorDialog( QWidget *parent) :
 
     setupSticks();
 		timer = 0 ;
+
 //    setupTimer();
 }
 
@@ -102,6 +105,24 @@ void simulatorDialog::setupTimer()
 	CurrentPhase = getFlightPhase() ;
   perOut(true,0);
   timer->start(10);
+}
+
+void simulatorDialog::setCsVisibles()
+{
+  ui->labelCSW_13->setVisible( ee_type ) ;
+  ui->labelCSW_14->setVisible( ee_type ) ;
+  ui->labelCSW_15->setVisible( ee_type ) ;
+  ui->labelCSW_16->setVisible( ee_type ) ;
+  ui->labelCSW_17->setVisible( ee_type ) ;
+  ui->labelCSW_18->setVisible( ee_type ) ;
+
+  ui->cswitch_13->setVisible( ee_type ) ;
+  ui->cswitch_14->setVisible( ee_type ) ;
+  ui->cswitch_15->setVisible( ee_type ) ;
+  ui->cswitch_16->setVisible( ee_type ) ;
+  ui->cswitch_17->setVisible( ee_type ) ;
+  ui->cswitch_18->setVisible( ee_type ) ;
+
 }
 
 void simulatorDialog::timerEvent()
@@ -146,6 +167,9 @@ void simulatorDialog::timerEvent()
     	ui->trimVRight->setValue(g_model.trim[(g_eeGeneral.stickMode & 1) ? 2 : 1]);  // mode=(0 || 2) -> ele trim else -> thr trim
     	ui->trimHRight->setValue(g_model.trim[(g_eeGeneral.stickMode>2)   ? 0 : 3]);  // mode=(0 || 1) -> ail trim else -> rud trim
 			GlobalModified = 0 ;
+
+			setCsVisibles() ;
+
 		}
 
     getValues();
@@ -183,73 +207,8 @@ void simulatorDialog::timerEvent()
 			// 0.1 second has elapsed			
 			for ( i = 0 ; i < NUM_CSW ; i += 1 )
 			{
-    		CSwData &cs = g_model.customSw[i];
-    		uint8_t cstate = CS_STATE(cs.func);
-
-    		if(cstate == CS_TIMER)
-				{
-					int16_t y ;
-					y = CsTimer[i] ;
-					if ( y == 0 )
-					{
-						int8_t z ;
-						z = cs.v1 ;
-						if ( z >= 0 )
-						{
-							z = -z-1 ;
-							y = z * 10 ;					
-						}
-						else
-						{
-							y = z ;
-						}
-					}
-					else if ( y < 0 )
-					{
-						if ( ++y == 0 )
-						{
-							int8_t z ;
-							z = cs.v2 ;
-							if ( z >= 0 )
-							{
-								y = z * 10 ;
-							}
-							else
-							{
-								y = -z-1 ;
-							}
-						}
-					}
-					else  // if ( CsTimer[i] > 0 )
-					{
-						y -= 1 ;
-					}
-					if ( cs.andsw )
-					{
-						int8_t x ;
-						x = cs.andsw ;
-						if ( x > 8 )
-						{
-							x += 1 ;
-						}
-	      	  if (getSwitch( x, 0, 0) == 0 )
-					  {
-							y = -1 ;
-						}	
-					}
-					CsTimer[i] = y ;
-				}
-			}
-		}
-
-		if ( ee_type )
-		{
-			
-			for ( i = NUM_CSW ; i < NUM_CSW+EXTRA_CSW ; i += 1 )
-			{
-    		CxSwData *cs = &g_model.xcustomSw[i-NUM_CSW];
-    	
-				uint8_t cstate = CS_STATE(cs->func);
+    		CSwData *cs = &g_model.customSw[i];
+        uint8_t cstate = CS_STATE(cs->func);
 
     		if(cstate == CS_TIMER)
 				{
@@ -278,7 +237,7 @@ void simulatorDialog::timerEvent()
 							if ( z >= 0 )
 							{
 								z += 1 ;
-								y = z * 10 - 1  ;
+								y = z * 10 ;
 							}
 							else
 							{
@@ -298,19 +257,7 @@ void simulatorDialog::timerEvent()
 						{
 							x += 1 ;
 						}
-						if ( x < -8 )
-						{
-							x -= 1 ;
-						}
-						if ( x > 9+NUM_CSW+EXTRA_CSW )
-						{
-							x = 9 ;			// Tag TRN on the end, keep EEPROM values
-						}
-						if ( x < -(9+NUM_CSW+EXTRA_CSW) )
-						{
-							x = -9 ;			// Tag TRN on the end, keep EEPROM values
-						}
-	  	      if (getSwitch( x, 0, 0) == 0 )
+	      	  if (getSwitch( x, 0, 0) == 0 )
 					  {
 							y = -1 ;
 						}	
@@ -318,7 +265,85 @@ void simulatorDialog::timerEvent()
 					CsTimer[i] = y ;
 				}
 			}
-		} 
+
+			if ( ee_type )
+			{
+			
+				for ( i = NUM_CSW ; i < NUM_CSW+EXTRA_CSW ; i += 1 )
+				{
+    			CxSwData *cs = &g_model.xcustomSw[i-NUM_CSW];
+    	
+					uint8_t cstate = CS_STATE(cs->func);
+
+    			if(cstate == CS_TIMER)
+					{
+						int16_t y ;
+						y = CsTimer[i] ;
+						if ( y == 0 )
+						{
+							int8_t z ;
+							z = cs->v1 ;
+							if ( z >= 0 )
+							{
+								z = -z-1 ;
+								y = z * 10 ;					
+							}
+							else
+							{
+								y = z ;
+							}
+						}
+						else if ( y < 0 )
+						{
+							if ( ++y == 0 )
+							{
+								int8_t z ;
+								z = cs->v2 ;
+								if ( z >= 0 )
+								{
+									z += 1 ;
+									y = z * 10 - 1  ;
+								}
+								else
+								{
+									y = -z-1 ;
+								}
+							}
+						}
+						else  // if ( CsTimer[i] > 0 )
+						{
+							y -= 1 ;
+						}
+						if ( cs->andsw )
+						{
+							int8_t x ;
+							x = cs->andsw ;
+							if ( x > 8 )
+							{
+								x += 1 ;
+							}
+							if ( x < -8 )
+							{
+								x -= 1 ;
+							}
+							if ( x > 9+NUM_CSW+EXTRA_CSW )
+							{
+								x = 9 ;			// Tag TRN on the end, keep EEPROM values
+							}
+							if ( x < -(9+NUM_CSW+EXTRA_CSW) )
+							{
+								x = -9 ;			// Tag TRN on the end, keep EEPROM values
+							}
+	  		      if (getSwitch( x, 0, 0) == 0 )
+						  {
+								y = -1 ;
+							}	
+						}
+						CsTimer[i] = y ;
+					}
+				}
+			} 
+		}
 
 }
 
@@ -331,6 +356,7 @@ void simulatorDialog::centerSticks()
 void simulatorDialog::setType( uint8_t type )
 {
 	ee_type = type ;
+	setCsVisibles() ;
 }
 
 void simulatorDialog::loadParams(const EEGeneral gg, const ModelData gm)
@@ -461,31 +487,44 @@ void simulatorDialog::setTrimValue(uint8_t phase, uint8_t idx, int16_t trim)
 
 uint32_t simulatorDialog::adjustMode( uint32_t x )
 {
-	switch (g_eeGeneral.stickMode )
+  if ( g_model.modelVersion >= 2 )
 	{
-		case 1 :
-			if ( x == 2 )
-			{
-				x = 1 ;
-			}
-			else if ( x == 1 )
-			{
-				x = 2 ;
-			}
-		break ;
-		case 2 :
-			if ( x == 3 )
-			{
-				x = 0 ;
-			}
-			else if ( x == 0 )
-			{
-				x = 3 ;
-			}
-		break ;
-		case 3 :
-			x = 3 - x ;
-		break ;
+		switch (g_eeGeneral.stickMode )
+		{
+			case 0 :
+				if ( x == 2 )
+				{
+					x = 1 ;
+				}
+				else if ( x == 1 )
+				{
+					x = 2 ;
+				}
+			break ;
+			case 3 :
+				if ( x == 3 )
+				{
+					x = 0 ;
+				}
+				else if ( x == 0 )
+				{
+					x = 3 ;
+				}
+			break ;
+			case 2 :
+				x = 3 - x ;
+			break ;
+		}
+		return x ;
+	}
+	
+	if ( x == 2 )
+	{
+		x = 1 ;
+	}
+	else if ( x == 1 )
+	{
+		x = 2 ;
 	}
 	return x ;
 }
@@ -629,7 +668,6 @@ void simulatorDialog::getValues()
 			}
 		}
 	}
-
 }
 
 int simulatorDialog::chVal(int val)
@@ -747,7 +785,13 @@ void simulatorDialog::setValues()
     ui->labelCSW_10->setStyleSheet(getSwitch(DSW_SWA,0)  ? CSWITCH_ON : CSWITCH_OFF);
     ui->labelCSW_11->setStyleSheet(getSwitch(DSW_SWB,0)  ? CSWITCH_ON : CSWITCH_OFF);
     ui->labelCSW_12->setStyleSheet(getSwitch(DSW_SWC,0)  ? CSWITCH_ON : CSWITCH_OFF);
-
+    ui->labelCSW_13->setStyleSheet(getSwitch(DSW_SWD,0)  ? CSWITCH_ON : CSWITCH_OFF);
+    ui->labelCSW_14->setStyleSheet(getSwitch(DSW_SWE,0)  ? CSWITCH_ON : CSWITCH_OFF);
+    ui->labelCSW_15->setStyleSheet(getSwitch(DSW_SWF,0)  ? CSWITCH_ON : CSWITCH_OFF);
+    ui->labelCSW_16->setStyleSheet(getSwitch(DSW_SWG,0)  ? CSWITCH_ON : CSWITCH_OFF);
+    ui->labelCSW_17->setStyleSheet(getSwitch(DSW_SWH,0)  ? CSWITCH_ON : CSWITCH_OFF);
+    ui->labelCSW_18->setStyleSheet(getSwitch(DSW_SWI,0)  ? CSWITCH_ON : CSWITCH_OFF);
+		
 #define CRED  "QSlider::handle:horizontal:disabled { background: #CC0000;border: 1px solid #aaa;border-radius: 4px; }"
 #define CBLUE "QSlider::handle:horizontal:disabled { background: #0000CC;border: 1px solid #aaa;border-radius: 4px; }"
 	int onoff[16] ;
@@ -1565,7 +1609,7 @@ void simulatorDialog::perOut(bool init, uint8_t att)
         //    if(v >=  RESX) v =  RESX;
         //    calibratedStick[i] = v; //for show in expo
 
-        if(!(v/16)) anaCenter |= 1<<(CONVERT_MODE((i+1),g_model.modelVersion,g_eeGeneral.stickMode)-1);
+        if(!(v/16)) anaCenter |= 1<<index ;//(CONVERT_MODE((i+1),g_model.modelVersion,g_eeGeneral.stickMode)-1);
 
         //===========Swash Ring================
         if(d && (index==ele_stick || index==ail_stick))

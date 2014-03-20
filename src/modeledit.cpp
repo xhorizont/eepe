@@ -97,6 +97,19 @@ ModelEdit::ModelEdit(EEPFILE *eFile, uint8_t id, QWidget *parent) :
 
 }
 
+void ModelEdit::textUpdate( QLineEdit *source, char *dest, int length )
+{
+    memset( dest,' ', length ) ;
+    QString str = source->text().left(10).toLatin1() ;
+
+    for(quint8 i=0; i<(str.length()); i++)
+    {
+      if(i>= length) break ;
+      dest[i] = (char)str.data()[i].toLatin1() ;
+    }
+    for(int i=0; i<length; i++) if(!dest[i]) dest[i] = ' ';
+}
+
 
 ModelEdit::~ModelEdit()
 {
@@ -321,6 +334,43 @@ void ModelEdit::updateToMV2()
 				}
 			}
 		}
+		
+		// EXPO/DR corrections
+		
+		int i, j, k ;
+		int dest, src ;
+	  ExpoData  lexpoData[4];
+		
+		for ( i = 0 ; i < 3 ; i += 1 )
+		{ // 0=High, 1=Mid, 2=Low
+			for ( j = 0 ; j < 2 ; j += 1 )
+			{ // 0=Weight, 1=Expo - WRONG - 0=expo, 1=weight
+				for ( k = 0 ; k < 2 ; k += 1 )
+				{ // 0=Right, 1=Left
+          dest = CONVERT_MODE(1, 2, g_eeGeneral.stickMode)-1 ;
+          src = CONVERT_MODE(1, 1, g_eeGeneral.stickMode)-1 ;
+          lexpoData[dest].expo[i][j][k] = g_model.expoData[src].expo[i][j][k] ;
+          dest = CONVERT_MODE(2, 2, g_eeGeneral.stickMode)-1 ;
+          src = CONVERT_MODE(2, 1, g_eeGeneral.stickMode)-1 ;
+          lexpoData[dest].expo[i][j][k] = g_model.expoData[src].expo[i][j][k] ;
+          dest = CONVERT_MODE(3, 2, g_eeGeneral.stickMode)-1 ;
+          src = CONVERT_MODE(3, 1, g_eeGeneral.stickMode)-1 ;
+          lexpoData[dest].expo[i][j][k] = g_model.expoData[src].expo[i][j][k] ;
+          dest = CONVERT_MODE(4, 2, g_eeGeneral.stickMode)-1 ;
+          src = CONVERT_MODE(4, 1, g_eeGeneral.stickMode)-1 ;
+          lexpoData[dest].expo[i][j][k] = g_model.expoData[src].expo[i][j][k] ;
+		    }
+			}
+		}
+		for ( i = 1 ; i < 4 ; i += 1 )
+		{
+      dest = CONVERT_MODE(i, 2, g_eeGeneral.stickMode)-1 ;
+      src = CONVERT_MODE(i, 1, g_eeGeneral.stickMode)-1 ;
+      lexpoData[dest].drSw1 = g_model.expoData[src].drSw1 ;
+      lexpoData[dest].drSw2 = g_model.expoData[src].drSw2 ;
+		}
+		memmove( &g_model.expoData, &lexpoData, sizeof(lexpoData));
+		 
 		g_model.modelVersion = 2 ;
 		for (uint8_t i = 0 ; i < NUM_CSW+EXTRA_CSW ; i += 1 )
 		{
@@ -328,6 +378,12 @@ void ModelEdit::updateToMV2()
 		}
 		ui->label_version->setText( tr("%1").arg( g_model.modelVersion ) ) ;
 	}
+
+
+
+
+
+  updateSettings();
 	ui->updateButton->setVisible( false ) ;
 }
 	 
@@ -362,7 +418,7 @@ void ModelEdit::setProtocolBoxes()
         ui->DSM_Type->setEnabled(true);
         ui->pxxRxNum->setEnabled(false);
 
-        ui->DSM_Type->setCurrentIndex(g_model.ppmNCH);
+        ui->DSM_Type->setCurrentIndex(g_model.sub_protocol);
 
         ui->pxxRxNum->setValue(1);
         ui->ppmDelaySB->setValue(300);
@@ -1839,8 +1895,8 @@ void ModelEdit::setSwitchWidgetVisibility(int i)
         cswitchSource2[i]->setVisible(true);
         cswitchOffset[i]->setVisible(false);
         cswitchOffset0[i]->setVisible(false);
-        populateSourceCB(cswitchSource1[i],g_eeGeneral.stickMode,0,v1,g_model.modelVersion);
-        populateSourceCB(cswitchSource2[i],g_eeGeneral.stickMode,0,v2,g_model.modelVersion);
+        populateSourceCB(cswitchSource1[i],g_eeGeneral.stickMode,1,v1,g_model.modelVersion);
+        populateSourceCB(cswitchSource2[i],g_eeGeneral.stickMode,1,v2,g_model.modelVersion);
 				cswitchText1[i]->setVisible(false) ;
 				cswitchText2[i]->setVisible(false) ;
         break;
@@ -2683,6 +2739,80 @@ void ModelEdit::tabTrims()
 
 void ModelEdit::tabGvar()
 {
+		posb[0] = ui->Sc1OffsetSB ;
+		posb[1] = ui->Sc2OffsetSB ;
+		posb[2] = ui->Sc3OffsetSB ;
+		posb[3] = ui->Sc4OffsetSB ;
+
+		pmsb[0] = ui->Sc1MultSB ;
+		pmsb[1] = ui->Sc2MultSB ;
+		pmsb[2] = ui->Sc3MultSB ;
+		pmsb[3] = ui->Sc4MultSB ;
+
+		pdivsb[0] = ui->Sc1DivSB ;
+		pdivsb[1] = ui->Sc2DivSB ;
+		pdivsb[2] = ui->Sc3DivSB ;
+		pdivsb[3] = ui->Sc4DivSB ;
+		
+		pdpsb[0] = ui->Sc1DecimalsSB ;
+		pdpsb[1] = ui->Sc2DecimalsSB ;
+		pdpsb[2] = ui->Sc3DecimalsSB ;
+		pdpsb[3] = ui->Sc4DecimalsSB ;
+
+		pucb[0] = ui->Sc1UnitsCB ;
+		pucb[1] = ui->Sc2UnitsCB ;
+		pucb[2] = ui->Sc3UnitsCB ;
+		pucb[3] = ui->Sc4UnitsCB ;
+
+		psgncb[0] = ui->Sc1SignCB ;
+		psgncb[1] = ui->Sc2SignCB ;
+		psgncb[2] = ui->Sc3SignCB ;
+		psgncb[3] = ui->Sc4SignCB ;
+
+		poffcb[0] = ui->Sc1OffAtCB ;
+		poffcb[1] = ui->Sc2OffAtCB ;
+		poffcb[2] = ui->Sc3OffAtCB ;
+		poffcb[3] = ui->Sc4OffAtCB ;
+		
+		psrccb[0] = ui->Sc1SrcCB ;
+		psrccb[1] = ui->Sc2SrcCB ;
+		psrccb[2] = ui->Sc3SrcCB ;
+		psrccb[3] = ui->Sc4SrcCB ;
+
+		psname[0] = ui->SC1Name ;
+		psname[1] = ui->SC2Name ;
+		psname[2] = ui->SC3Name ;
+		psname[3] = ui->SC4Name ;
+		 
+		int i ;
+		for ( i = 0 ; i < NUM_SCALERS ; i += 1 )
+		{
+      posb[i]->setValue(g_model.Scalers[i].offset ) ;
+			pmsb[i]->setValue(g_model.Scalers[i].mult+1 ) ;
+			pdivsb[i]->setValue(g_model.Scalers[i].div+1 ) ;
+			pdpsb[i]->setValue(g_model.Scalers[i].precision ) ;
+      pucb[i]->setCurrentIndex(g_model.Scalers[i].unit ) ;
+      psgncb[i]->setCurrentIndex(g_model.Scalers[i].neg ) ;
+			poffcb[i]->setCurrentIndex(g_model.Scalers[i].offsetLast ) ;
+      populateSourceCB(psrccb[i],g_eeGeneral.stickMode,1,g_model.Scalers[i].source,g_model.modelVersion ) ;
+      QString n = (char *)g_model.Scalers[i].name ;
+			while ( n.endsWith(" ") )
+			{
+				n = n.left(n.size()-1) ;			
+			}
+  		psname[i]->setText( n ) ;
+
+    	connect(posb[i],SIGNAL(editingFinished()),this,SLOT(GvarEdited()));
+    	connect(pmsb[i],SIGNAL(editingFinished()),this,SLOT(GvarEdited()));
+    	connect(pdivsb[i],SIGNAL(editingFinished()),this,SLOT(GvarEdited()));
+    	connect(pdpsb[i],SIGNAL(editingFinished()),this,SLOT(GvarEdited()));
+    	connect(pucb[i],SIGNAL(currentIndexChanged(int)),this,SLOT(GvarEdited()));
+    	connect(psgncb[i],SIGNAL(currentIndexChanged(int)),this,SLOT(GvarEdited()));
+    	connect(poffcb[i],SIGNAL(currentIndexChanged(int)),this,SLOT(GvarEdited()));
+    	connect(psrccb[i],SIGNAL(currentIndexChanged(int)),this,SLOT(GvarEdited()));
+			connect(psname[i], SIGNAL(editingFinished()),this,SLOT(GvarEdited()));
+		}
+	
 		populateGvarCB( ui->Gvar1CB, g_model.gvars[0].gvsource ) ;
     populateGvarCB( ui->Gvar2CB, g_model.gvars[1].gvsource ) ;
     populateGvarCB( ui->Gvar3CB, g_model.gvars[2].gvsource ) ;
@@ -2718,7 +2848,6 @@ void ModelEdit::tabGvar()
 
 void ModelEdit::GvarEdited()
 {
-	printf("GvarEdited\n");
 	  g_model.gvars[0].gvsource = ui->Gvar1CB->currentIndex() ;
 	  g_model.gvars[1].gvsource = ui->Gvar2CB->currentIndex() ;
 	  g_model.gvars[2].gvsource = ui->Gvar3CB->currentIndex() ;
@@ -2735,6 +2864,20 @@ void ModelEdit::GvarEdited()
     g_model.gvars[5].gvar = ui->Gv6SB->value();
     g_model.gvars[6].gvar = ui->Gv7SB->value();
 	
+		int i ;
+		for ( i = 0 ; i < NUM_SCALERS ; i += 1 )
+		{
+			g_model.Scalers[i].offset = posb[i]->value() ;
+			g_model.Scalers[i].mult = pmsb[i]->value()-1 ;
+			g_model.Scalers[i].div = pdivsb[i]->value()-1 ;
+			g_model.Scalers[i].precision = pdpsb[i]->value() ;
+      g_model.Scalers[i].unit = pucb[i]->currentIndex() ;
+			g_model.Scalers[i].neg = psgncb[i]->currentIndex() ;
+			g_model.Scalers[i].offsetLast = poffcb[i]->currentIndex() ;
+			g_model.Scalers[i].source = psrccb[i]->currentIndex() ;
+      textUpdate( psname[i], (char *)g_model.Scalers[i].name, 4 ) ;
+		}
+
 		updateSettings();
 }
 
@@ -3000,7 +3143,7 @@ void ModelEdit::on_DSM_Type_currentIndexChanged(int index)
 {
     if(protocolEditLock) return;
 
-    g_model.ppmNCH = index;
+    g_model.sub_protocol = index;
     updateSettings();
 }
 

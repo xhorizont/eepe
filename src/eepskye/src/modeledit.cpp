@@ -33,7 +33,7 @@ extern class simulatorDialog *SimPointer ;
 int GlobalModified = 0 ;
 EEGeneral Sim_g ;
 int GeneralDataValid = 0 ;
-ModelData Sim_m ;
+SKYModelData Sim_m ;
 int ModelDataValid = 0 ;
 
 ModelEdit::ModelEdit( struct t_radioData *radioData, uint8_t id, QWidget *parent) :
@@ -2635,6 +2635,116 @@ void ModelEdit::tabTrims()
 
 void ModelEdit::tabGvar()
 {
+		posb[0] = ui->Sc1OffsetSB ;
+		posb[1] = ui->Sc2OffsetSB ;
+		posb[2] = ui->Sc3OffsetSB ;
+		posb[3] = ui->Sc4OffsetSB ;
+		posb[4] = ui->Sc5OffsetSB ;
+		posb[5] = ui->Sc6OffsetSB ;
+		posb[6] = ui->Sc7OffsetSB ;
+		posb[7] = ui->Sc8OffsetSB ;
+
+		pmsb[0] = ui->Sc1MultSB ;
+		pmsb[1] = ui->Sc2MultSB ;
+		pmsb[2] = ui->Sc3MultSB ;
+		pmsb[3] = ui->Sc4MultSB ;
+		pmsb[4] = ui->Sc5MultSB ;
+		pmsb[5] = ui->Sc6MultSB ;
+		pmsb[6] = ui->Sc7MultSB ;
+		pmsb[7] = ui->Sc8MultSB ;
+
+		pdivsb[0] = ui->Sc1DivSB ;
+		pdivsb[1] = ui->Sc2DivSB ;
+		pdivsb[2] = ui->Sc3DivSB ;
+		pdivsb[3] = ui->Sc4DivSB ;
+		pdivsb[4] = ui->Sc5DivSB ;
+		pdivsb[5] = ui->Sc6DivSB ;
+		pdivsb[6] = ui->Sc7DivSB ;
+		pdivsb[7] = ui->Sc8DivSB ;
+		
+		pdpsb[0] = ui->Sc1DecimalsSB ;
+		pdpsb[1] = ui->Sc2DecimalsSB ;
+		pdpsb[2] = ui->Sc3DecimalsSB ;
+		pdpsb[3] = ui->Sc4DecimalsSB ;
+		pdpsb[4] = ui->Sc5DecimalsSB ;
+		pdpsb[5] = ui->Sc6DecimalsSB ;
+		pdpsb[6] = ui->Sc7DecimalsSB ;
+		pdpsb[7] = ui->Sc8DecimalsSB ;
+
+		pucb[0] = ui->Sc1UnitsCB ;
+		pucb[1] = ui->Sc2UnitsCB ;
+		pucb[2] = ui->Sc3UnitsCB ;
+		pucb[3] = ui->Sc4UnitsCB ;
+		pucb[4] = ui->Sc5UnitsCB ;
+		pucb[5] = ui->Sc6UnitsCB ;
+		pucb[6] = ui->Sc7UnitsCB ;
+		pucb[7] = ui->Sc8UnitsCB ;
+
+		psgncb[0] = ui->Sc1SignCB ;
+		psgncb[1] = ui->Sc2SignCB ;
+		psgncb[2] = ui->Sc3SignCB ;
+		psgncb[3] = ui->Sc4SignCB ;
+		psgncb[4] = ui->Sc5SignCB ;
+		psgncb[5] = ui->Sc6SignCB ;
+		psgncb[6] = ui->Sc7SignCB ;
+		psgncb[7] = ui->Sc8SignCB ;
+
+		poffcb[0] = ui->Sc1OffAtCB ;
+		poffcb[1] = ui->Sc2OffAtCB ;
+		poffcb[2] = ui->Sc3OffAtCB ;
+		poffcb[3] = ui->Sc4OffAtCB ;
+		poffcb[4] = ui->Sc5OffAtCB ;
+		poffcb[5] = ui->Sc6OffAtCB ;
+		poffcb[6] = ui->Sc7OffAtCB ;
+		poffcb[7] = ui->Sc8OffAtCB ;
+		
+		psrccb[0] = ui->Sc1SrcCB ;
+		psrccb[1] = ui->Sc2SrcCB ;
+		psrccb[2] = ui->Sc3SrcCB ;
+		psrccb[3] = ui->Sc4SrcCB ;
+		psrccb[4] = ui->Sc5SrcCB ;
+		psrccb[5] = ui->Sc6SrcCB ;
+		psrccb[6] = ui->Sc7SrcCB ;
+		psrccb[7] = ui->Sc8SrcCB ;
+
+		psname[0] = ui->SC1Name ;
+		psname[1] = ui->SC2Name ;
+		psname[2] = ui->SC3Name ;
+		psname[3] = ui->SC4Name ;
+		psname[4] = ui->SC5Name ;
+		psname[5] = ui->SC6Name ;
+		psname[6] = ui->SC7Name ;
+		psname[7] = ui->SC8Name ;
+		 
+		int i ;
+		for ( i = 0 ; i < NUM_SCALERS ; i += 1 )
+		{
+			posb[i]->setValue(g_model.Scalers[i].offset ) ;
+			pmsb[i]->setValue(g_model.Scalers[i].mult+1 ) ;
+			pdivsb[i]->setValue(g_model.Scalers[i].div+1 ) ;
+			pdpsb[i]->setValue(g_model.Scalers[i].precision ) ;
+      pucb[i]->setCurrentIndex(g_model.Scalers[i].unit ) ;
+      psgncb[i]->setCurrentIndex(g_model.Scalers[i].neg ) ;
+			poffcb[i]->setCurrentIndex(g_model.Scalers[i].offsetLast ) ;
+      populateSourceCB(psrccb[i],g_eeGeneral.stickMode,1,g_model.Scalers[i].source,g_model.modelVersion ) ;
+      QString n = (char *)g_model.Scalers[i].name ;
+			while ( n.endsWith(" ") )
+			{
+				n = n.left(n.size()-1) ;			
+			}
+  		psname[i]->setText( n ) ;
+
+    	connect(posb[i],SIGNAL(editingFinished()),this,SLOT(GvarEdited()));
+    	connect(pmsb[i],SIGNAL(editingFinished()),this,SLOT(GvarEdited()));
+    	connect(pdivsb[i],SIGNAL(editingFinished()),this,SLOT(GvarEdited()));
+    	connect(pdpsb[i],SIGNAL(editingFinished()),this,SLOT(GvarEdited()));
+    	connect(pucb[i],SIGNAL(currentIndexChanged(int)),this,SLOT(GvarEdited()));
+    	connect(psgncb[i],SIGNAL(currentIndexChanged(int)),this,SLOT(GvarEdited()));
+    	connect(poffcb[i],SIGNAL(currentIndexChanged(int)),this,SLOT(GvarEdited()));
+    	connect(psrccb[i],SIGNAL(currentIndexChanged(int)),this,SLOT(GvarEdited()));
+			connect(psname[i], SIGNAL(editingFinished()),this,SLOT(GvarEdited()));
+		}
+		 
 		populateGvarCB( ui->Gvar1CB, g_model.gvars[0].gvsource ) ;
     populateGvarCB( ui->Gvar2CB, g_model.gvars[1].gvsource ) ;
     populateGvarCB( ui->Gvar3CB, g_model.gvars[2].gvsource ) ;
@@ -2686,6 +2796,21 @@ void ModelEdit::GvarEdited()
     g_model.gvars[5].gvar = ui->Gv6SB->value();
     g_model.gvars[6].gvar = ui->Gv7SB->value();
 	
+
+		int i ;
+		for ( i = 0 ; i < NUM_SCALERS ; i += 1 )
+		{
+			g_model.Scalers[i].offset = posb[i]->value() ;
+			g_model.Scalers[i].mult = pmsb[i]->value()-1 ;
+			g_model.Scalers[i].div = pdivsb[i]->value()-1 ;
+			g_model.Scalers[i].precision = pdpsb[i]->value() ;
+      g_model.Scalers[i].unit = pucb[i]->currentIndex() ;
+			g_model.Scalers[i].neg = psgncb[i]->currentIndex() ;
+			g_model.Scalers[i].offsetLast = poffcb[i]->currentIndex() ;
+			g_model.Scalers[i].source = psrccb[i]->currentIndex() ;
+      textUpdate( psname[i], (char *)g_model.Scalers[i].name, 4 ) ;
+		}
+
 		updateSettings();
 }
 
@@ -2725,6 +2850,7 @@ void ModelEdit::tabFrsky()
     ui->COMportCB->setCurrentIndex(g_model.frskyComPort ) ;
     ui->BT_telemetry->setChecked(g_model.bt_telemetry) ;
     ui->FASoffsetSB->setValue( (double)g_model.FASoffset/10 + 0.049) ;
+		ui->currentSource->setCurrentIndex(g_model.currentSource) ;
 
     populateSwitchCB(ui->VarioSwitchCB, g_model.varioData.swtch ) ;
     ui->VarioSourceCB->setCurrentIndex( g_model.varioData.varioSource ) ;
@@ -2775,6 +2901,7 @@ void ModelEdit::tabFrsky()
 		connect( ui->Ct6,SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
 
 		connect( ui->FASoffsetSB,SIGNAL(editingFinished()),this,SLOT(FrSkyEdited()));
+		connect( ui->currentSource,SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
 		
 		connect( ui->VarioSensitivitySB,SIGNAL(editingFinished()),this,SLOT(FrSkyEdited()));
 		connect( ui->VarioSourceCB,SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
@@ -2826,6 +2953,7 @@ void ModelEdit::FrSkyEdited()
     g_model.customDisplayIndex[5] = ui->Ct6->currentIndex() ;
 
 		g_model.FASoffset = ui->FASoffsetSB->value() * 10 + 0.49 ;
+		g_model.currentSource = ui->currentSource->currentIndex() ;
     
 		g_model.varioData.swtch = ui->VarioSwitchCB->currentIndex() - MAX_DRSWITCH ;
 		g_model.varioData.varioSource = ui->VarioSourceCB->currentIndex() ;

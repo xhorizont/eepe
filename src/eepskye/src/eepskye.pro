@@ -10,6 +10,7 @@ HEADERS += mainwindow.h \
     modeledit.h \
     generaledit.h \
     mdichild.h \
+    helpers.h \
     mixerdialog.h \
     burnconfigdialog.h \
     avroutputdialog.h \ 
@@ -23,7 +24,6 @@ HEADERS += mainwindow.h \
     customizesplashdialog.h \
     ../../telemetry.h \
     ../../reviewOutput.h \
-    helpers.h \
     ../../node.h \
     ../../edge.h
 SOURCES += main.cpp \
@@ -48,6 +48,9 @@ SOURCES += main.cpp \
     helpers.cpp \
     ../../node.cpp \
     ../../edge.cpp
+unix {
+SOURCES += mountlist.cpp
+}
 TEMPLATE = app
 FORMS += modeledit.ui \
     generaledit.ui \
@@ -77,7 +80,7 @@ LANGS.path = /usr/bin/eepefiles
 LANGS.files = lang/*.qm
 
 ICON.path = /usr/bin/eepefiles
-ICON.files += icon.svg
+ICON.files += icone.svg
 
 SHORTCUT.path = /usr/share/applications/
 SHORTCUT.files += eepskye.desktop

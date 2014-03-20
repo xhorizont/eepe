@@ -130,6 +130,7 @@ private slots:
     void on_holdLeftY_clicked(bool checked);
     void on_holdLeftX_clicked(bool checked);
     void timerEvent();
+		void setCsVisibles( void ) ;
 
 
 };
