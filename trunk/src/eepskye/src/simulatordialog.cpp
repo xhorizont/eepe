@@ -28,6 +28,8 @@ extern int GeneralDataValid ;
 extern ModelData Sim_m ;
 extern int ModelDataValid ;
 
+uint8_t Last_switch[NUM_SKYCSW] ;
+
 simulatorDialog::simulatorDialog(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::simulatorDialog)
@@ -177,14 +179,14 @@ void simulatorDialog::timerEvent()
     if(beepShow) beepShow--;
 
 
-		if ( ++one_sec_precount >= 100 )
+		if ( ++one_sec_precount >= 10 )
 		{
-			one_sec_precount -= 100 ;
-			// One second has elapsed			
+			one_sec_precount -= 10 ;
+			// One tenth second has elapsed			
 			for ( i = 0 ; i < NUM_SKYCSW ; i += 1 )
 			{
         SKYCSwData &cs = g_model.customSw[i];
-    		uint8_t cstate = CS_STATE(cs.func);
+        uint8_t cstate = CS_STATE(cs.func, g_model.modelVersion);
 
     		if(cstate == CS_TIMER)
 				{
@@ -227,6 +229,45 @@ void simulatorDialog::timerEvent()
 					  {
 							CsTimer[i] = -1 ;
 						}	
+					}
+				}
+  			if ( g_model.modelVersion >= 3 )
+				{
+					if ( cs.func == CS_LATCH )
+					{
+		    	  if (getSwitch( cs.v1, 0, 0) )
+						{
+							Last_switch[i] = 1 ;
+						}
+						else
+						{
+			  	    if (getSwitch( cs.v2, 0, 0) )
+							{
+								Last_switch[i] = 0 ;
+							}
+						}
+					}
+					if ( cs.func == CS_FLIP )
+					{
+		    	  if (getSwitch( cs.v1, 0, 0) )
+						{
+							if ( ( Last_switch[i] & 2 ) == 0 )
+							{
+								// Clock it!
+			  	    	if (getSwitch( cs.v2, 0, 0) )
+								{
+									Last_switch[i] = 3 ;
+								}
+								else
+								{
+									Last_switch[i] = 2 ;
+								}
+							}
+						}
+						else
+						{
+							Last_switch[i] &= ~2 ;
+						}
 					}
 				}
 			}
@@ -857,20 +898,29 @@ qint16 simulatorDialog::getValue(qint8 i)
     return 0;
 }
 
-bool Last_switch[NUM_SKYCSW] ;
 
 bool simulatorDialog::getSwitch(int swtch, bool nc, qint8 level)
 {
     bool ret_value ;
     uint8_t cs_index ;
+    cs_index = abs(swtch)-(MAX_DRSWITCH-NUM_SKYCSW);
     
-		if(level>5) return false; //prevent recursive loop going too deep
+  	if ( level>4 )
+  	{
+  	  ret_value = Last_switch[cs_index] & 1 ;
+  	  return swtch>0 ? ret_value : !ret_value ;
+  	}
 
     switch(swtch){
     case  0:            return  nc;
     case  MAX_DRSWITCH: return  true;
     case -MAX_DRSWITCH: return  false;
     }
+
+    if ( swtch > MAX_DRSWITCH )
+		{
+			return false ;
+		}
 
     uint8_t dir = swtch>0;
     if(abs(swtch)<(MAX_DRSWITCH-NUM_SKYCSW)) {
@@ -883,24 +933,18 @@ bool simulatorDialog::getSwitch(int swtch, bool nc, qint8 level)
     //input -> 1..4 -> sticks,  5..8 pots
     //MAX,FULL - disregard
     //ppm
-    cs_index = abs(swtch)-(MAX_DRSWITCH-NUM_SKYCSW);
     SKYCSwData &cs = g_model.customSw[cs_index];
     if(!cs.func) return false;
 		
-    if ( level>4 )
-    {
-      ret_value = Last_switch[cs_index] ;
-      return swtch>0 ? ret_value : !ret_value ;
-    }
-
     int8_t a = cs.v1;
     int8_t b = cs.v2;
     int16_t x = 0;
     int16_t y = 0;
 
     // init values only if needed
-    uint8_t s = CS_STATE(cs.func);
-    if(s == CS_VOFS)
+    uint8_t s = CS_STATE(cs.func, g_model.modelVersion);
+    
+		if(s == CS_VOFS)
     {
         x = getValue(cs.v1-1);
         y = calc100toRESX(cs.v2);
@@ -947,12 +991,26 @@ bool simulatorDialog::getSwitch(int swtch, bool nc, qint8 level)
     case (CS_LESS):
         ret_value = (x<y);
         break;
-    case (CS_EGREATER):
-        ret_value = (x>=y);
-        break;
-    case (CS_ELESS):
-        ret_value = (x<=y);
-        break;
+    		case (CS_EGREATER):	// CS_LATCH
+    		    if ( g_model.modelVersion < 3 )
+						{
+							ret_value = (x>=y);
+						}
+						else
+						{
+							ret_value = Last_switch[cs_index] & 1 ;
+						}
+    		    break;
+    		case (CS_ELESS):		// CS_FLIP
+    		    if ( g_model.modelVersion < 3 )
+						{
+    		    	ret_value = (x<=y);
+						}
+						else
+						{
+							ret_value = Last_switch[cs_index] & 1 ;
+						}
+    		    break;
     case (CS_TIME):
         ret_value = CsTimer[cs_index] >= 0 ;
         break;
@@ -970,10 +1028,32 @@ bool simulatorDialog::getSwitch(int swtch, bool nc, qint8 level)
 				{
 					x += 1 ;
 				}
+				if ( x < -8 )
+				{
+					x -= 1 ;
+				}
+				if ( x > 9+NUM_SKYCSW )
+				{
+					x = 9 ;			// Tag TRN on the end, keep EEPROM values
+				}
+				if ( x < -(9+NUM_SKYCSW) )
+				{
+					x = -9 ;			// Tag TRN on the end, keep EEPROM values
+				}
         ret_value = getSwitch( x, 0, level+1) ;
 			}
 		}
-		Last_switch[cs_index] = ret_value ;
+    if ( g_model.modelVersion >= 3 )
+		{
+      if ( cs.func < CS_LATCH )
+			{
+				Last_switch[cs_index] = ret_value ;
+			}
+		}
+		else
+		{
+			Last_switch[cs_index] = ret_value ;
+		}
 		return swtch>0 ? ret_value : !ret_value ;
 }
 
@@ -1999,5 +2079,10 @@ void simulatorDialog::on_FixRightX_clicked(bool checked)
 void simulatorDialog::on_FixRightY_clicked(bool checked)
 {
     nodeRight->setFixedY(checked);
+}
+
+void simulatorDialog::on_sendDataButton_clicked()
+{
+	
 }
 

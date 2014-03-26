@@ -127,6 +127,19 @@ QString AnaVolumeItems[] = {
 	"GV7"
 } ;
 
+uint8_t CS_STATE( uint8_t x, uint8_t modelVersion )
+{
+	if ( modelVersion >= 3 )
+	{
+		return ((x)<CS_AND ? CS_VOFS : ((((x)<CS_EQUAL) || ((x)==CS_LATCH)|| ((x)==CS_FLIP)) ? CS_VBOOL : ((x)<CS_TIME ? CS_VCOMP : CS_TIMER))) ;
+	}
+	else
+	{
+		return ((x)<CS_AND ? CS_VOFS : ((x)<CS_EQUAL ? CS_VBOOL : ((x)<CS_TIME ? CS_VCOMP : CS_TIMER))) ;
+		
+	}
+}
+
 void populateAnaVolumeCB( QComboBox *b, int value )
 {
   b->clear();
@@ -1150,16 +1163,27 @@ void populateSourceCB(QComboBox *b, int stickMode, int telem, int value, int mod
 }
 
 
-QString getCSWFunc(int val)
+QString getCSWFunc(int val, uint8_t modelVersion )
 {
-    return QString(CSWITCH_STR).mid(val*CSW_LEN_FUNC,CSW_LEN_FUNC);
+	if ( modelVersion >= 3 )
+	{
+		if ( val == CS_LATCH )
+		{
+			return "Latch" ;
+		}
+		if ( val == CS_FLIP )
+		{
+			return "F-Flop" ;
+		}
+	}
+  return QString(CSWITCH_STR).mid(val*CSW_LEN_FUNC,CSW_LEN_FUNC);
 }
 
 
-void populateCSWCB(QComboBox *b, int value)
+void populateCSWCB(QComboBox *b, int value, uint8_t modelVersion)
 {
     b->clear();
-    for(int i=0; i<CSW_NUM_FUNC; i++) b->addItem(getCSWFunc(i));
+    for(int i=0; i<CSW_NUM_FUNC; i++) b->addItem(getCSWFunc(i, modelVersion));
     b->setCurrentIndex(value);
     b->setMaxVisibleItems(10);
 }
@@ -1727,7 +1751,7 @@ void modelConvert1to2( EEGeneral *g_eeGeneral, SKYModelData *g_model )
 		for (uint8_t i = 0 ; i < NUM_SKYCSW ; i += 1 )
 		{
       SKYCSwData *cs = &g_model->customSw[i];
-    	uint8_t cstate = CS_STATE(cs->func);
+      uint8_t cstate = CS_STATE(cs->func, g_model->modelVersion);
     	if(cstate == CS_VOFS)
 			{
       	if (cs->v1)

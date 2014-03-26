@@ -13,9 +13,11 @@ class reviewOutput : public QDialog
 public:
     explicit reviewOutput(QWidget *parent = 0);
     ~reviewOutput();
+		void showCheck( int *checked, QString title, QString text ) ;
 
 private:
     Ui::reviewOutput *ui;
+		int *xChecked ;
 
 //private slots:
 

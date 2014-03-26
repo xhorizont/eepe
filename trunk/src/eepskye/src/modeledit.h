@@ -47,6 +47,7 @@ private:
     bool heliEditLock;
     bool protocolEditLock;
     bool plot_curve[16];
+    bool switchesTabDone ;
     
     QSpinBox  * cswitchOffset[NUM_SKYCSW];
     QSpinBox  * cswitchOffset0[NUM_SKYCSW];
@@ -161,6 +162,7 @@ private slots:
     void pasteMIMEData(const QMimeData * mimeData, int destIdx=1000);
     void on_pushButton_clicked();
 		void on_updateButton_clicked() ;
+		void on_updateButton3_clicked() ;
     void mixersDelete(bool ask=true);
     void mixersCut();
     void mixersCopy();
@@ -272,6 +274,7 @@ private slots:
 		void on_countryCB_currentIndexChanged(int index) ;
 		void on_typeCB_currentIndexChanged(int index) ;
 		void updateToMV2( void ) ;
+		void updateToMV3( void ) ;
 
 		void on_switchwarnChkB_stateChanged(int ) ;
 		void getModelSwitchDefPos(int i, bool val) ;

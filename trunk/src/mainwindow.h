@@ -117,6 +117,7 @@ private slots:
     void resetFuses();
     void showEEPROMInfo();
     void doTelemetry();
+		void releaseNotes() ;
 
 
 private:
@@ -138,6 +139,7 @@ private:
     int currentER9Xrev;
     int currentER9Xrev_temp;
     int currentEEPErev;
+		int currentEEPErelease ;
     int processor;
     bool checkER9X;
     bool checkEEPE;
@@ -187,6 +189,7 @@ private:
     QAction *previousAct;
     QAction *separatorAct;
     QAction *aboutAct;
+    QAction *releaseAct;
     QAction *donatorsAct;
     QAction *printAct;
     QAction *switchLayoutDirectionAct;

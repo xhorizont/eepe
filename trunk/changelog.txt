@@ -10,6 +10,17 @@ description here
 ====================================================================================
 
 ******************************************
+CHANGELOG: 20-Mar-2014 MPB (r397)
+Support Scalers
+Bug fixes
+Icon updates
+Start to importing er9x model into ersky9x
+Use common .pro files for windows and linux, and MAC
+Support current source option
+eepe and eepskye for MAC included
+Sources are slightly more recent than the executables
+
+******************************************
 CHANGELOG: 16-Jan-2014 MPB (r393)
 eepskye - support 512K EEPROM file
 eepe - fix '128 and '2561 splash update

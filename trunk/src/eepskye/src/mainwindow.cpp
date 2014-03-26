@@ -119,6 +119,8 @@
 class simulatorDialog *SimPointer = 0 ;
 QString AvrdudeOutput ;
 
+int ReleaseChecked ;
+
 MainWindow::MainWindow()
 {
     mdiArea = new QMdiArea;
@@ -173,7 +175,56 @@ MainWindow::MainWindow()
  	  sd = new simulatorDialog(this) ;
 		SimPointer = sd ;
 
+		if ( currentEEPSKYErev > currentEEPSKYErelease )
+		{
+			releaseNotes() ;
+			if ( ReleaseChecked )
+			{
+				currentEEPSKYErelease = currentEEPSKYErev ;
+    		QSettings settings("er9x-eePskye", "eePskye");
+		    settings.setValue("currentEEPSKYErelease", currentEEPSKYErelease ) ;
+			}
+		}
+
 }
+
+void MainWindow::releaseNotes()
+{
+	int *ptr ;
+	
+	
+	QString rnotes =
+  "ersky9x rev 203 changes the Custom Switch options.\n"
+	"v1>=v2 and v1<=v2 are removed and replaced by Latch and F-Flop\n"
+	"Loading a model into er9x from before will change:\n"
+	"v1>=v2 into v1>v2 and change v1<=v2 into v1<v2\n"
+	"To preserve the original functionality exactly you will need\n"
+	"to change the new v1>v2 into v1<v2 and use the inverse of the switch,\n"
+	"and change the new v1<v2 into v1>v2 and use the inverse of the switch.\n\n"
+	"Latch takes two switches as inputs, when the first is ON, the Latch is set ON,\n"
+	"when the second is on the Latch is cleared OFF. Setting takes priority if both\n"
+	"switches are ON.\n"
+	"F-Flop also takes two switches as inputs, the first is a 'clock' and the\n"
+	"second is 'data'. When the first switch changes from OFF to ON, and stays\n"
+	"ON for at least 0.1 seconds, the F-Flop is set to the same state as the 'data'.\n\n"
+	"The model version is now 3, a button is available in the SETUP tab to convert\n"
+	"models within eepe."
+	"ADVANCE WARNING: The mixer function 'FlightMode Trim' will be REMOVED in a future revision.\n"
+	"Please now use a 'real' flight mode for this function."
+	 ;
+	
+	reviewOutput *rO = new reviewOutput(this);
+	ReleaseChecked = false ;
+	ptr = &ReleaseChecked ;
+	if ( currentEEPSKYErev == currentEEPSKYErelease )
+	{
+		ptr = 0 ;
+	}
+  rO->showCheck( ptr, "Release Notes", rnotes ) ;
+  rO->exec() ;
+  delete rO ;
+}
+
 
 
 void MainWindow::checkForUpdates(bool ignoreSettings)
@@ -1316,6 +1367,10 @@ void MainWindow::createActions()
     aboutAct->setStatusTip(tr("Show the application's About box"));
     connect(aboutAct, SIGNAL(triggered()), this, SLOT(about()));
 
+    releaseAct = new QAction(QIcon(":/eepskye.png"), tr("&Release Notes"), this);
+    releaseAct->setStatusTip(tr("Show release notes"));
+    connect( releaseAct, SIGNAL(triggered()), this, SLOT(releaseNotes()));
+
     donatorsAct = new QAction(QIcon(":/images/contributors.png"), tr("&Contributors"), this);
     donatorsAct->setStatusTip(tr("List er9x/eePe Contributors"));
     connect(donatorsAct, SIGNAL(triggered()), this, SLOT(donators()));
@@ -1416,6 +1471,7 @@ void MainWindow::createMenus()
     helpMenu->addAction(customizeSplashAct);
     helpMenu->addSeparator();
     helpMenu->addAction(aboutAct);
+    helpMenu->addAction(releaseAct);
     helpMenu->addAction(donatorsAct);
     helpMenu->addSeparator();
     helpMenu->addAction(checkForUpdatesAct);
@@ -1475,6 +1531,7 @@ void MainWindow::readSettings()
 
     currentERSKY9Xrev = settings.value("currentERSKY9Xrev", 1).toInt();
     currentERSKY9XRrev = settings.value("currentERSKY9XRrev", 1).toInt();
+    currentEEPSKYErelease = settings.value("currentEEPSKYErelease", 1).toInt();
     currentEEPSKYErev = SVN_VER_NUM;
 
     checkERSKY9X  = settings.value("startup_check_ersky9x", true).toBool();

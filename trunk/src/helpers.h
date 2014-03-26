@@ -66,7 +66,7 @@ void populateTmrBSwitchCB(QComboBox *b, int value, int extra ) ;
 #endif
 
 void populateSourceCB(QComboBox *b, int stickMode, int telem, int value, int modelVersion) ;
-void populateCSWCB(QComboBox *b, int value);
+void populateCSWCB(QComboBox *b, int value, uint8_t modelVersion );
 #ifdef SKY
 int16_t convertTelemConstant( int8_t index, int8_t value, SKYModelData *model ) ;
 #else
@@ -83,7 +83,7 @@ QString getSWName(int val);
 #else
 QString getSWName(int val, int extra ) ;
 #endif
-QString getCSWFunc(int val);
+QString getCSWFunc(int val, uint8_t modelVersion ) ;
 
 // Safety switch types
 #define VOICE_SWITCH		6
@@ -130,5 +130,7 @@ uint8_t CONVERT_MODE( uint8_t x, int modelVersion, int stickMode ) ;
 QString FindErskyPath( int type ) ;
 void modelConvert1to2( EEGeneral *g_eeGeneral, SKYModelData *g_model ) ;
 #endif
+
+extern uint8_t CS_STATE( uint8_t x, uint8_t modelVersion ) ;
 
 #endif // HELPERS_H
