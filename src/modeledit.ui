@@ -20,7 +20,7 @@
    <string>Dialog</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="eepe.qrc">
+   <iconset>
     <normaloff>:/icon.png</normaloff>:/icon.png</iconset>
   </property>
   <property name="sizeGripEnabled">
@@ -44,7 +44,7 @@
    <item row="0" column="1">
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
-      <number>10</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="tabModelSetup">
       <attribute name="title">
@@ -745,7 +745,7 @@
           <widget class="QPushButton" name="updateButton">
            <property name="minimumSize">
             <size>
-             <width>400</width>
+             <width>300</width>
              <height>0</height>
             </size>
            </property>
@@ -757,6 +757,25 @@
            </property>
            <property name="text">
             <string>Update to Version 2, only for er9x r804 and later</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="updateButton3">
+           <property name="minimumSize">
+            <size>
+             <width>300</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>400</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>Update to Version 3, only for er9x r811 and later</string>
            </property>
           </widget>
          </item>

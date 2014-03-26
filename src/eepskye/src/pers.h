@@ -139,7 +139,9 @@ enum EnumKeys {
 #define CS_GREATER   10
 #define CS_LESS      11
 #define CS_EGREATER  12
+#define CS_LATCH     12
 #define CS_ELESS     13
+#define CS_FLIP			 13
 #define CS_TIME	     14
 #define CS_MAXF      14  //max function
 
@@ -147,7 +149,7 @@ enum EnumKeys {
 #define CS_VBOOL      1
 #define CS_VCOMP      2
 #define CS_TIMER			3
-#define CS_STATE(x)   ((x)<CS_AND ? CS_VOFS : ((x)<CS_EQUAL ? CS_VBOOL : ((x)<CS_TIME ? CS_VCOMP : CS_TIMER)))
+//#define CS_STATE(x)   ((x)<CS_AND ? CS_VOFS : ((((x)<CS_EQUAL) || ((x)>=CS_LATCH)) ? CS_VBOOL : ((x)<CS_TIME ? CS_VCOMP : CS_TIMER)))
 
 #define CHAR_FOR_NAMES " ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_-."
 #define CHAR_FOR_NAMES_REGEX "[ A-Za-z0-9_.-]*"

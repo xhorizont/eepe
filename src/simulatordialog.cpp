@@ -28,6 +28,8 @@ extern int GeneralDataValid ;
 extern ModelData Sim_m ;
 extern int ModelDataValid ;
 
+uint8_t Last_switch[NUM_CSW+EXTRA_CSW] ;
+
 simulatorDialog::simulatorDialog( QWidget *parent) :
     QDialog(parent),
     ui(new Ui::simulatorDialog)
@@ -208,7 +210,7 @@ void simulatorDialog::timerEvent()
 			for ( i = 0 ; i < NUM_CSW ; i += 1 )
 			{
     		CSwData *cs = &g_model.customSw[i];
-        uint8_t cstate = CS_STATE(cs->func);
+        uint8_t cstate = CS_STATE(cs->func, g_model.modelVersion);
 
     		if(cstate == CS_TIMER)
 				{
@@ -264,6 +266,47 @@ void simulatorDialog::timerEvent()
 					}
 					CsTimer[i] = y ;
 				}
+			
+  			if ( g_model.modelVersion >= 3 )
+				{
+			
+					if ( cs->func == CS_LATCH )
+					{
+		  		  if (getSwitch( cs->v1, 0, 0) )
+						{
+							Last_switch[i] = 1 ;
+						}
+						else
+						{
+					    if (getSwitch( cs->v2, 0, 0) )
+							{
+								Last_switch[i] = 0 ;
+							}
+						}
+					}
+					if ( cs->func == CS_FLIP )
+					{
+		  		  if (getSwitch( cs->v1, 0, 0) )
+						{
+							if ( ( Last_switch[i] & 2 ) == 0 )
+							{
+								// Clock it!
+					      if (getSwitch( cs->v2, 0, 0) )
+								{
+									Last_switch[i] = 3 ;
+								}
+								else
+								{
+									Last_switch[i] = 2 ;
+								}
+							}
+						}
+						else
+						{
+							Last_switch[i] &= ~2 ;
+						}
+					}
+			  }
 			}
 
 			if ( ee_type )
@@ -273,7 +316,7 @@ void simulatorDialog::timerEvent()
 				{
     			CxSwData *cs = &g_model.xcustomSw[i-NUM_CSW];
     	
-					uint8_t cstate = CS_STATE(cs->func);
+          uint8_t cstate = CS_STATE(cs->func, g_model.modelVersion);
 
     			if(cstate == CS_TIMER)
 					{
@@ -341,6 +384,46 @@ void simulatorDialog::timerEvent()
 						}
 						CsTimer[i] = y ;
 					}
+  				if ( g_model.modelVersion >= 3 )
+					{
+			
+						if ( cs->func == CS_LATCH )
+						{
+		  			  if (getSwitch( cs->v1, 0, 0) )
+							{
+								Last_switch[i] = 1 ;
+							}
+							else
+							{
+						    if (getSwitch( cs->v2, 0, 0) )
+								{
+									Last_switch[i] = 0 ;
+								}
+							}
+						}
+						if ( cs->func == CS_FLIP )
+						{
+		  			  if (getSwitch( cs->v1, 0, 0) )
+							{
+								if ( ( Last_switch[i] & 2 ) == 0 )
+								{
+									// Clock it!
+						      if (getSwitch( cs->v2, 0, 0) )
+									{
+										Last_switch[i] = 3 ;
+									}
+									else
+									{
+										Last_switch[i] = 2 ;
+									}
+								}
+							}
+							else
+							{
+								Last_switch[i] &= ~2 ;
+							}
+						}
+			  	}
 				}
 			} 
 		}
@@ -955,7 +1038,6 @@ qint16 simulatorDialog::getValue(qint8 i)
     return 0;
 }
 
-bool Last_switch[NUM_CSW+EXTRA_CSW] ;
 
 bool simulatorDialog::getSwitch(int swtch, bool nc, qint8 level)
 {
@@ -1011,7 +1093,7 @@ bool simulatorDialog::getSwitch(int swtch, bool nc, qint8 level)
 		
     		if ( level>4 )
     		{
-    		  ret_value = Last_switch[cs_index] ;
+    		  ret_value = Last_switch[cs_index] & 1 ;
     		  return swtch>0 ? ret_value : !ret_value ;
     		}
 
@@ -1021,7 +1103,7 @@ bool simulatorDialog::getSwitch(int swtch, bool nc, qint8 level)
     		int16_t y = 0;
 
     		// init values only if needed
-    		uint8_t s = CS_STATE(cs.func);
+        uint8_t s = CS_STATE(cs.func, g_model.modelVersion);
     		if(s == CS_VOFS)
     		{
     		    x = getValue(cs.v1-1);
@@ -1069,11 +1151,25 @@ bool simulatorDialog::getSwitch(int swtch, bool nc, qint8 level)
     		case (CS_LESS):
     		    ret_value = (x<y);
     		    break;
-    		case (CS_EGREATER):
-    		    ret_value = (x>=y);
+    		case (CS_EGREATER):	// CS_LATCH
+    		    if ( g_model.modelVersion < 3 )
+						{
+							ret_value = (x>=y);
+						}
+						else
+						{
+							ret_value = Last_switch[cs_index] & 1 ;
+						}
     		    break;
-    		case (CS_ELESS):
-    		    ret_value = (x<=y);
+    		case (CS_ELESS):		// CS_FLIP
+    		    if ( g_model.modelVersion < 3 )
+						{
+    		    	ret_value = (x<=y);
+						}
+						else
+						{
+							ret_value = Last_switch[cs_index] & 1 ;
+						}
     		    break;
     		case (CS_TIME):
     		    ret_value = CsTimer[cs_index] >= 0 ;
@@ -1107,7 +1203,17 @@ bool simulatorDialog::getSwitch(int swtch, bool nc, qint8 level)
     		    ret_value = getSwitch( x, 0, level+1) ;
 					}
 				}
-				Last_switch[cs_index] = ret_value ;
+    		if ( g_model.modelVersion >= 3 )
+				{
+          if ( cs.func < CS_LATCH )
+					{
+						Last_switch[cs_index] = ret_value ;
+					}
+				}
+				else
+				{
+					Last_switch[cs_index] = ret_value ;
+				}
 				return swtch>0 ? ret_value : !ret_value ;
 			}
 		}
@@ -1117,7 +1223,7 @@ bool simulatorDialog::getSwitch(int swtch, bool nc, qint8 level)
 		
     if ( level>4 )
     {
-      ret_value = Last_switch[cs_index] ;
+      ret_value = Last_switch[cs_index] & 1 ;
       return swtch>0 ? ret_value : !ret_value ;
     }
 
@@ -1127,7 +1233,7 @@ bool simulatorDialog::getSwitch(int swtch, bool nc, qint8 level)
     int16_t y = 0;
 
     // init values only if needed
-    uint8_t s = CS_STATE(cs.func);
+    uint8_t s = CS_STATE(cs.func, g_model.modelVersion);
     if(s == CS_VOFS)
     {
         x = getValue(cs.v1-1);
@@ -1175,12 +1281,26 @@ bool simulatorDialog::getSwitch(int swtch, bool nc, qint8 level)
     case (CS_LESS):
         ret_value = (x<y);
         break;
-    case (CS_EGREATER):
-        ret_value = (x>=y);
-        break;
-    case (CS_ELESS):
-        ret_value = (x<=y);
-        break;
+    		case (CS_EGREATER):	// CS_LATCH
+    		    if ( g_model.modelVersion < 3 )
+						{
+							ret_value = (x>=y);
+						}
+						else	// CS_LATCH
+						{
+							ret_value = Last_switch[cs_index] & 1 ;
+						}
+    		    break;
+    		case (CS_ELESS):		// CS_FLIP
+    		    if ( g_model.modelVersion < 3 )
+						{
+    		    	ret_value = (x<=y);
+						}
+						else		// CS_FLIP
+						{
+							ret_value = Last_switch[cs_index] & 1 ;
+						}
+    		    break;
     case (CS_TIME):
         ret_value = CsTimer[cs_index] >= 0 ;
         break;
@@ -1201,7 +1321,17 @@ bool simulatorDialog::getSwitch(int swtch, bool nc, qint8 level)
         ret_value = getSwitch( x, 0, level+1) ;
 			}
 		}
-		Last_switch[cs_index] = ret_value ;
+    if ( g_model.modelVersion >= 3 )
+		{
+      if ( cs.func < CS_LATCH )
+			{
+				Last_switch[cs_index] = ret_value ;
+			}
+		}
+		else
+		{
+			Last_switch[cs_index] = ret_value ;
+		}
 		return swtch>0 ? ret_value : !ret_value ;
 }
 

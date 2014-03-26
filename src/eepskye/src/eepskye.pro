@@ -101,7 +101,7 @@ RC_FILE += icon.rc
 }
 
 mac {
-ICON = eepe.icns
+ICON = eepskye.icns
 }
 
 OTHER_FILES +=

@@ -81,6 +81,8 @@ ModelEdit::ModelEdit( struct t_radioData *radioData, uint8_t id, QWidget *parent
 
 //		ModelVersion = g_model.modelVersion ;
 
+		switchesTabDone = false ;
+
     tabModelEditSetup();
     tabExpo();
     tabMixes();
@@ -254,6 +256,7 @@ void ModelEdit::tabModelEditSetup()
 	  ui->typeCB->setCurrentIndex(g_model.sub_protocol) ;
 		ui->label_version->setText( tr("%1").arg( g_model.modelVersion ) ) ;
 		ui->updateButton->setVisible( g_model.modelVersion < 2 ) ;
+		ui->updateButton3->setVisible( g_model.modelVersion < 3 ) ;
 
     ui->switchwarnChkB->setChecked(!(g_model.modelswitchWarningStates&1)); //Default is zero=checked
 
@@ -302,10 +305,42 @@ void ModelEdit::updateToMV2()
 	if ( g_model.modelVersion < 2 )
 	{
 		modelConvert1to2( &g_eeGeneral, &g_model ) ;
+    tabSwitches();
+    tabMixes();
 		ui->label_version->setText( tr("%1").arg( g_model.modelVersion ) ) ;
     updateSettings();
 	}
 	ui->updateButton->setVisible( false ) ;
+}
+
+void ModelEdit::updateToMV3()
+{
+	updateToMV2() ;
+	if ( g_model.modelVersion < 3 )
+	{
+		for (uint8_t i = 0 ; i < NUM_SKYCSW ; i += 1 )
+		{
+      SKYCSwData *cs = &g_model.customSw[i];
+			if ( cs->func == CS_LATCH )
+			{
+				cs->func = CS_GREATER ;
+			}
+			if ( cs->func == CS_FLIP )
+			{
+				cs->func = CS_LESS ;
+			}
+		}
+		g_model.modelVersion = 3 ;
+	  updateSettings() ;
+    tabSwitches();
+
+//		for (uint8_t i = 0 ; i < NUM_CSW+EXTRA_CSW ; i += 1 )
+//		{
+//      setSwitchWidgetVisibility(i) ;
+//		}
+		ui->label_version->setText( tr("%1").arg( g_model.modelVersion ) ) ;
+	}
+	ui->updateButton3->setVisible( false ) ;
 }
 
 void ModelEdit::setProtocolBoxes()
@@ -1930,7 +1965,7 @@ void ModelEdit::setSwitchWidgetVisibility(int i)
 	char telText[20] ;
 	int16_t value ;
     
-		switch CS_STATE(g_model.customSw[i].func)
+    switch ( CS_STATE(g_model.customSw[i].func, g_model.modelVersion) )
     {
     case CS_VOFS:
         cswitchSource1[i]->setVisible(true);
@@ -2027,30 +2062,30 @@ void ModelEdit::updateSwitchesTab()
 {
     switchEditLock = true;
 
-    populateCSWCB(ui->cswitchFunc_1, g_model.customSw[0].func);
-    populateCSWCB(ui->cswitchFunc_2, g_model.customSw[1].func);
-    populateCSWCB(ui->cswitchFunc_3, g_model.customSw[2].func);
-    populateCSWCB(ui->cswitchFunc_4, g_model.customSw[3].func);
-    populateCSWCB(ui->cswitchFunc_5, g_model.customSw[4].func);
-    populateCSWCB(ui->cswitchFunc_6, g_model.customSw[5].func);
-    populateCSWCB(ui->cswitchFunc_7, g_model.customSw[6].func);
-    populateCSWCB(ui->cswitchFunc_8, g_model.customSw[7].func);
-    populateCSWCB(ui->cswitchFunc_9, g_model.customSw[8].func);
-    populateCSWCB(ui->cswitchFunc_10,g_model.customSw[9].func);
-    populateCSWCB(ui->cswitchFunc_11,g_model.customSw[10].func);
-    populateCSWCB(ui->cswitchFunc_12,g_model.customSw[11].func);
-    populateCSWCB(ui->cswitchFunc_13,g_model.customSw[12].func);
-    populateCSWCB(ui->cswitchFunc_14,g_model.customSw[13].func);
-    populateCSWCB(ui->cswitchFunc_15,g_model.customSw[14].func);
-    populateCSWCB(ui->cswitchFunc_16,g_model.customSw[15].func);
-    populateCSWCB(ui->cswitchFunc_17,g_model.customSw[16].func);
-    populateCSWCB(ui->cswitchFunc_18,g_model.customSw[17].func);
-    populateCSWCB(ui->cswitchFunc_19,g_model.customSw[18].func);
-    populateCSWCB(ui->cswitchFunc_20,g_model.customSw[19].func);
-    populateCSWCB(ui->cswitchFunc_21,g_model.customSw[20].func);
-    populateCSWCB(ui->cswitchFunc_22,g_model.customSw[21].func);
-    populateCSWCB(ui->cswitchFunc_23,g_model.customSw[22].func);
-    populateCSWCB(ui->cswitchFunc_24,g_model.customSw[23].func);
+    populateCSWCB(ui->cswitchFunc_1, g_model.customSw[0].func, g_model.modelVersion);
+    populateCSWCB(ui->cswitchFunc_2, g_model.customSw[1].func, g_model.modelVersion);
+    populateCSWCB(ui->cswitchFunc_3, g_model.customSw[2].func, g_model.modelVersion);
+    populateCSWCB(ui->cswitchFunc_4, g_model.customSw[3].func, g_model.modelVersion);
+    populateCSWCB(ui->cswitchFunc_5, g_model.customSw[4].func, g_model.modelVersion);
+    populateCSWCB(ui->cswitchFunc_6, g_model.customSw[5].func, g_model.modelVersion);
+    populateCSWCB(ui->cswitchFunc_7, g_model.customSw[6].func, g_model.modelVersion);
+    populateCSWCB(ui->cswitchFunc_8, g_model.customSw[7].func, g_model.modelVersion);
+    populateCSWCB(ui->cswitchFunc_9, g_model.customSw[8].func, g_model.modelVersion);
+    populateCSWCB(ui->cswitchFunc_10,g_model.customSw[9].func, g_model.modelVersion);
+    populateCSWCB(ui->cswitchFunc_11,g_model.customSw[10].func, g_model.modelVersion);
+    populateCSWCB(ui->cswitchFunc_12,g_model.customSw[11].func, g_model.modelVersion);
+    populateCSWCB(ui->cswitchFunc_13,g_model.customSw[12].func, g_model.modelVersion);
+    populateCSWCB(ui->cswitchFunc_14,g_model.customSw[13].func, g_model.modelVersion);
+    populateCSWCB(ui->cswitchFunc_15,g_model.customSw[14].func, g_model.modelVersion);
+    populateCSWCB(ui->cswitchFunc_16,g_model.customSw[15].func, g_model.modelVersion);
+    populateCSWCB(ui->cswitchFunc_17,g_model.customSw[16].func, g_model.modelVersion);
+    populateCSWCB(ui->cswitchFunc_18,g_model.customSw[17].func, g_model.modelVersion);
+    populateCSWCB(ui->cswitchFunc_19,g_model.customSw[18].func, g_model.modelVersion);
+    populateCSWCB(ui->cswitchFunc_20,g_model.customSw[19].func, g_model.modelVersion);
+    populateCSWCB(ui->cswitchFunc_21,g_model.customSw[20].func, g_model.modelVersion);
+    populateCSWCB(ui->cswitchFunc_22,g_model.customSw[21].func, g_model.modelVersion);
+    populateCSWCB(ui->cswitchFunc_23,g_model.customSw[22].func, g_model.modelVersion);
+    populateCSWCB(ui->cswitchFunc_24,g_model.customSw[23].func, g_model.modelVersion);
 
     for(int i=0; i<NUM_SKYCSW; i++)
         setSwitchWidgetVisibility(i);
@@ -2073,6 +2108,9 @@ void ModelEdit::tabSwitches()
 				j = i - 12 ;
 				k = 8 ;
 			}
+      if ( !switchesTabDone )
+			{
+				
         cswitchSource1[i] = new QComboBox(this);
         connect(cswitchSource1[i],SIGNAL(currentIndexChanged(int)),this,SLOT(switchesEdited()));
         ui->gridLayout_8->addWidget(cswitchSource1[i],j+1,k);
@@ -2087,8 +2125,11 @@ void ModelEdit::tabSwitches()
         connect(cswitchAndSwitch[i],SIGNAL(currentIndexChanged(int)),this,SLOT(switchesEdited()));
         ui->gridLayout_8->addWidget(cswitchAndSwitch[i],j+1,k+3);
         cswitchAndSwitch[i]->setVisible(true);
+			}
 				populateSwitchAndCB(cswitchAndSwitch[i], g_model.customSw[i].andsw+(9+NUM_SKYCSW)) ;
 
+      if ( !switchesTabDone )
+			{
 				cswitchTlabel[i] = new QLabel(this) ;
         ui->gridLayout_8->addWidget(cswitchTlabel[i],j+1,k+2);
         cswitchTlabel[i]->setVisible(false);
@@ -2131,11 +2172,14 @@ void ModelEdit::tabSwitches()
         cswitchText1[i]->setMaximumSize( width, 20 );
         cswitchText1[i]->resize( width, 20 );
 				cswitchText1[i]->setVerticalScrollBarPolicy ( Qt::ScrollBarAlwaysOff ) ;
+			}
     }
 
     updateSwitchesTab();
 
     //connects
+  if ( !switchesTabDone )
+	{
     connect(ui->cswitchFunc_1,SIGNAL(currentIndexChanged(int)),this,SLOT(switchesEdited()));
     connect(ui->cswitchFunc_2,SIGNAL(currentIndexChanged(int)),this,SLOT(switchesEdited()));
     connect(ui->cswitchFunc_3,SIGNAL(currentIndexChanged(int)),this,SLOT(switchesEdited()));
@@ -2160,7 +2204,9 @@ void ModelEdit::tabSwitches()
     connect(ui->cswitchFunc_22,SIGNAL(currentIndexChanged(int)),this,SLOT(switchesEdited()));
     connect(ui->cswitchFunc_23,SIGNAL(currentIndexChanged(int)),this,SLOT(switchesEdited()));
     connect(ui->cswitchFunc_24,SIGNAL(currentIndexChanged(int)),this,SLOT(switchesEdited()));
+	}
 
+		switchesTabDone = true ;
     switchEditLock = false;
 }
 
@@ -2272,7 +2318,7 @@ void ModelEdit::tabSafetySwitches()
 			if ( i > 11 )
 			{
 				j = i - 12 ;
-				k = 5 ;
+				k = 6 ;
 			}
         safetySwitchType[i] = new QComboBox(this);
         safetySwitchSwtch[i] = new QComboBox(this);
@@ -2489,30 +2535,30 @@ void ModelEdit::switchesEdited()
 
     bool chAr[NUM_SKYCSW];
 
-    chAr[0]  = (CS_STATE(g_model.customSw[0].func)) !=(CS_STATE(ui->cswitchFunc_1->currentIndex()));
-    chAr[1]  = (CS_STATE(g_model.customSw[1].func)) !=(CS_STATE(ui->cswitchFunc_2->currentIndex()));
-    chAr[2]  = (CS_STATE(g_model.customSw[2].func)) !=(CS_STATE(ui->cswitchFunc_3->currentIndex()));
-    chAr[3]  = (CS_STATE(g_model.customSw[3].func)) !=(CS_STATE(ui->cswitchFunc_4->currentIndex()));
-    chAr[4]  = (CS_STATE(g_model.customSw[4].func)) !=(CS_STATE(ui->cswitchFunc_5->currentIndex()));
-    chAr[5]  = (CS_STATE(g_model.customSw[5].func)) !=(CS_STATE(ui->cswitchFunc_6->currentIndex()));
-    chAr[6]  = (CS_STATE(g_model.customSw[6].func)) !=(CS_STATE(ui->cswitchFunc_7->currentIndex()));
-    chAr[7]  = (CS_STATE(g_model.customSw[7].func)) !=(CS_STATE(ui->cswitchFunc_8->currentIndex()));
-    chAr[8]  = (CS_STATE(g_model.customSw[8].func)) !=(CS_STATE(ui->cswitchFunc_9->currentIndex()));
-    chAr[9]  = (CS_STATE(g_model.customSw[9].func)) !=(CS_STATE(ui->cswitchFunc_10->currentIndex()));
-    chAr[10] = (CS_STATE(g_model.customSw[10].func))!=(CS_STATE(ui->cswitchFunc_11->currentIndex()));
-    chAr[11] = (CS_STATE(g_model.customSw[11].func))!=(CS_STATE(ui->cswitchFunc_12->currentIndex()));
-    chAr[12] = (CS_STATE(g_model.customSw[12].func))!=(CS_STATE(ui->cswitchFunc_13->currentIndex()));
-    chAr[13] = (CS_STATE(g_model.customSw[13].func))!=(CS_STATE(ui->cswitchFunc_14->currentIndex()));
-    chAr[14] = (CS_STATE(g_model.customSw[14].func))!=(CS_STATE(ui->cswitchFunc_15->currentIndex()));
-    chAr[15] = (CS_STATE(g_model.customSw[15].func))!=(CS_STATE(ui->cswitchFunc_16->currentIndex()));
-    chAr[16] = (CS_STATE(g_model.customSw[16].func))!=(CS_STATE(ui->cswitchFunc_17->currentIndex()));
-    chAr[17] = (CS_STATE(g_model.customSw[17].func))!=(CS_STATE(ui->cswitchFunc_18->currentIndex()));
-    chAr[18] = (CS_STATE(g_model.customSw[18].func))!=(CS_STATE(ui->cswitchFunc_19->currentIndex()));
-    chAr[19] = (CS_STATE(g_model.customSw[19].func))!=(CS_STATE(ui->cswitchFunc_20->currentIndex()));
-    chAr[20] = (CS_STATE(g_model.customSw[20].func))!=(CS_STATE(ui->cswitchFunc_21->currentIndex()));
-    chAr[21] = (CS_STATE(g_model.customSw[21].func))!=(CS_STATE(ui->cswitchFunc_22->currentIndex()));
-    chAr[22] = (CS_STATE(g_model.customSw[22].func))!=(CS_STATE(ui->cswitchFunc_23->currentIndex()));
-    chAr[23] = (CS_STATE(g_model.customSw[23].func))!=(CS_STATE(ui->cswitchFunc_24->currentIndex()));
+    chAr[0]  = (CS_STATE(g_model.customSw[0].func, g_model.modelVersion)) !=(CS_STATE(ui->cswitchFunc_1->currentIndex(), g_model.modelVersion));
+    chAr[1]  = (CS_STATE(g_model.customSw[1].func, g_model.modelVersion)) !=(CS_STATE(ui->cswitchFunc_2->currentIndex(), g_model.modelVersion));
+    chAr[2]  = (CS_STATE(g_model.customSw[2].func, g_model.modelVersion)) !=(CS_STATE(ui->cswitchFunc_3->currentIndex(), g_model.modelVersion));
+    chAr[3]  = (CS_STATE(g_model.customSw[3].func, g_model.modelVersion)) !=(CS_STATE(ui->cswitchFunc_4->currentIndex(), g_model.modelVersion));
+    chAr[4]  = (CS_STATE(g_model.customSw[4].func, g_model.modelVersion)) !=(CS_STATE(ui->cswitchFunc_5->currentIndex(), g_model.modelVersion));
+    chAr[5]  = (CS_STATE(g_model.customSw[5].func, g_model.modelVersion)) !=(CS_STATE(ui->cswitchFunc_6->currentIndex(), g_model.modelVersion));
+    chAr[6]  = (CS_STATE(g_model.customSw[6].func, g_model.modelVersion)) !=(CS_STATE(ui->cswitchFunc_7->currentIndex(), g_model.modelVersion));
+    chAr[7]  = (CS_STATE(g_model.customSw[7].func, g_model.modelVersion)) !=(CS_STATE(ui->cswitchFunc_8->currentIndex(), g_model.modelVersion));
+    chAr[8]  = (CS_STATE(g_model.customSw[8].func, g_model.modelVersion)) !=(CS_STATE(ui->cswitchFunc_9->currentIndex(), g_model.modelVersion));
+    chAr[9]  = (CS_STATE(g_model.customSw[9].func, g_model.modelVersion)) !=(CS_STATE(ui->cswitchFunc_10->currentIndex(), g_model.modelVersion));
+    chAr[10] = (CS_STATE(g_model.customSw[10].func, g_model.modelVersion))!=(CS_STATE(ui->cswitchFunc_11->currentIndex(), g_model.modelVersion));
+    chAr[11] = (CS_STATE(g_model.customSw[11].func, g_model.modelVersion))!=(CS_STATE(ui->cswitchFunc_12->currentIndex(), g_model.modelVersion));
+    chAr[12] = (CS_STATE(g_model.customSw[12].func, g_model.modelVersion))!=(CS_STATE(ui->cswitchFunc_13->currentIndex(), g_model.modelVersion));
+    chAr[13] = (CS_STATE(g_model.customSw[13].func, g_model.modelVersion))!=(CS_STATE(ui->cswitchFunc_14->currentIndex(), g_model.modelVersion));
+    chAr[14] = (CS_STATE(g_model.customSw[14].func, g_model.modelVersion))!=(CS_STATE(ui->cswitchFunc_15->currentIndex(), g_model.modelVersion));
+    chAr[15] = (CS_STATE(g_model.customSw[15].func, g_model.modelVersion))!=(CS_STATE(ui->cswitchFunc_16->currentIndex(), g_model.modelVersion));
+    chAr[16] = (CS_STATE(g_model.customSw[16].func, g_model.modelVersion))!=(CS_STATE(ui->cswitchFunc_17->currentIndex(), g_model.modelVersion));
+    chAr[17] = (CS_STATE(g_model.customSw[17].func, g_model.modelVersion))!=(CS_STATE(ui->cswitchFunc_18->currentIndex(), g_model.modelVersion));
+    chAr[18] = (CS_STATE(g_model.customSw[18].func, g_model.modelVersion))!=(CS_STATE(ui->cswitchFunc_19->currentIndex(), g_model.modelVersion));
+    chAr[19] = (CS_STATE(g_model.customSw[19].func, g_model.modelVersion))!=(CS_STATE(ui->cswitchFunc_20->currentIndex(), g_model.modelVersion));
+    chAr[20] = (CS_STATE(g_model.customSw[20].func, g_model.modelVersion))!=(CS_STATE(ui->cswitchFunc_21->currentIndex(), g_model.modelVersion));
+    chAr[21] = (CS_STATE(g_model.customSw[21].func, g_model.modelVersion))!=(CS_STATE(ui->cswitchFunc_22->currentIndex(), g_model.modelVersion));
+    chAr[22] = (CS_STATE(g_model.customSw[22].func, g_model.modelVersion))!=(CS_STATE(ui->cswitchFunc_23->currentIndex(), g_model.modelVersion));
+    chAr[23] = (CS_STATE(g_model.customSw[23].func, g_model.modelVersion))!=(CS_STATE(ui->cswitchFunc_24->currentIndex(), g_model.modelVersion));
 
     g_model.customSw[0].func  = ui->cswitchFunc_1->currentIndex();
     g_model.customSw[1].func  = ui->cswitchFunc_2->currentIndex();
@@ -2550,7 +2596,7 @@ void ModelEdit::switchesEdited()
             setSwitchWidgetVisibility(i);
         }
 
-        switch(CS_STATE(g_model.customSw[i].func))
+        switch(CS_STATE(g_model.customSw[i].func, g_model.modelVersion))
         {
         case (CS_VOFS):
             g_model.customSw[i].v1 = cswitchSource1[i]->currentIndex();
@@ -4108,6 +4154,11 @@ void ModelEdit::launchSimulation()
 void ModelEdit::on_updateButton_clicked()
 {
 	updateToMV2() ;	
+}
+
+void ModelEdit::on_updateButton3_clicked()
+{
+	updateToMV3() ;	
 }
 
 void ModelEdit::on_pushButton_clicked()

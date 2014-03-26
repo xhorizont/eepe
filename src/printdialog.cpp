@@ -342,7 +342,7 @@ void printDialog::printSwitches()
 
         if(g_model->customSw[i].func)
         {
-            switch CS_STATE(g_model->customSw[i].func)
+            switch (CS_STATE(g_model->customSw[i].func, g_model->modelVersion))
             {
             case CS_VOFS:
                 tstr = g_model->customSw[i].v1 ?

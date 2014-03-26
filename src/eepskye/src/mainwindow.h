@@ -115,6 +115,7 @@ private slots:
 //    void resetFuses();
     void showEEPROMInfo();
     void doTelemetry();
+		void releaseNotes() ;
 
 
 private:
@@ -140,6 +141,7 @@ private:
     int currentERSKY9XRrev;
     int currentERSKY9Xrev_temp;
     int currentEEPSKYErev;
+    int currentEEPSKYErelease ;
     bool checkERSKY9X;
     bool checkEEPSKYE;
     bool showcheckForUpdatesResult;
@@ -187,6 +189,7 @@ private:
     QAction *previousAct;
     QAction *separatorAct;
     QAction *aboutAct;
+    QAction *releaseAct;
     QAction *donatorsAct;
     QAction *printAct;
     QAction *switchLayoutDirectionAct;

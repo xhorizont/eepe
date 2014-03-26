@@ -131,6 +131,7 @@ private slots:
     void on_holdRightX_clicked(bool checked);
     void on_holdLeftY_clicked(bool checked);
     void on_holdLeftX_clicked(bool checked);
+		void on_sendDataButton_clicked( void ) ;
     void timerEvent();
 
 

@@ -20,7 +20,7 @@
    <string>Dialog</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="eepe.qrc">
+   <iconset>
     <normaloff>:/icon.png</normaloff>:/icon.png</iconset>
   </property>
   <property name="sizeGripEnabled">
@@ -33,7 +33,7 @@
       <string>Simulate</string>
      </property>
      <property name="icon">
-      <iconset resource="eepe.qrc">
+      <iconset resource="eepskye.qrc">
        <normaloff>:/images/simulate.png</normaloff>:/images/simulate.png</iconset>
      </property>
     </widget>
@@ -41,7 +41,7 @@
    <item row="0" column="0">
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
-      <number>10</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="tabModelSetup">
       <attribute name="title">
@@ -866,6 +866,19 @@
            </property>
            <property name="text">
             <string>Update to Version 2, for r181 of ersky9x onwards</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="updateButton3">
+           <property name="minimumSize">
+            <size>
+             <width>300</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>Update to Version 3, for r202 of ersky9x onwards</string>
            </property>
           </widget>
          </item>
@@ -7177,7 +7190,7 @@ Right</string>
           <string/>
          </property>
          <property name="icon">
-          <iconset resource="eepe.qrc">
+          <iconset resource="eepskye.qrc">
            <normaloff>:/images/clear.png</normaloff>:/images/clear.png</iconset>
          </property>
         </widget>
@@ -7200,7 +7213,7 @@ Right</string>
           <string/>
          </property>
          <property name="icon">
-          <iconset resource="eepe.qrc">
+          <iconset resource="eepskye.qrc">
            <normaloff>:/images/clear.png</normaloff>:/images/clear.png</iconset>
          </property>
         </widget>
@@ -7217,7 +7230,7 @@ Right</string>
           <string/>
          </property>
          <property name="icon">
-          <iconset resource="eepe.qrc">
+          <iconset resource="eepskye.qrc">
            <normaloff>:/images/clear.png</normaloff>:/images/clear.png</iconset>
          </property>
         </widget>
@@ -7234,7 +7247,7 @@ Right</string>
           <string/>
          </property>
          <property name="icon">
-          <iconset resource="eepe.qrc">
+          <iconset resource="eepskye.qrc">
            <normaloff>:/images/clear.png</normaloff>:/images/clear.png</iconset>
          </property>
         </widget>
@@ -7251,7 +7264,7 @@ Right</string>
           <string/>
          </property>
          <property name="icon">
-          <iconset resource="eepe.qrc">
+          <iconset resource="eepskye.qrc">
            <normaloff>:/images/clear.png</normaloff>:/images/clear.png</iconset>
          </property>
         </widget>
@@ -7268,7 +7281,7 @@ Right</string>
           <string/>
          </property>
          <property name="icon">
-          <iconset resource="eepe.qrc">
+          <iconset resource="eepskye.qrc">
            <normaloff>:/images/clear.png</normaloff>:/images/clear.png</iconset>
          </property>
         </widget>
@@ -7285,7 +7298,7 @@ Right</string>
           <string/>
          </property>
          <property name="icon">
-          <iconset resource="eepe.qrc">
+          <iconset resource="eepskye.qrc">
            <normaloff>:/images/clear.png</normaloff>:/images/clear.png</iconset>
          </property>
         </widget>
@@ -7302,7 +7315,7 @@ Right</string>
           <string/>
          </property>
          <property name="icon">
-          <iconset resource="eepe.qrc">
+          <iconset resource="eepskye.qrc">
            <normaloff>:/images/clear.png</normaloff>:/images/clear.png</iconset>
          </property>
         </widget>
@@ -7319,7 +7332,7 @@ Right</string>
           <string/>
          </property>
          <property name="icon">
-          <iconset resource="eepe.qrc">
+          <iconset resource="eepskye.qrc">
            <normaloff>:/images/clear.png</normaloff>:/images/clear.png</iconset>
          </property>
         </widget>
@@ -7336,7 +7349,7 @@ Right</string>
           <string/>
          </property>
          <property name="icon">
-          <iconset resource="eepe.qrc">
+          <iconset resource="eepskye.qrc">
            <normaloff>:/images/clear.png</normaloff>:/images/clear.png</iconset>
          </property>
         </widget>
@@ -7353,7 +7366,7 @@ Right</string>
           <string/>
          </property>
          <property name="icon">
-          <iconset resource="eepe.qrc">
+          <iconset resource="eepskye.qrc">
            <normaloff>:/images/clear.png</normaloff>:/images/clear.png</iconset>
          </property>
         </widget>
@@ -7370,7 +7383,7 @@ Right</string>
           <string/>
          </property>
          <property name="icon">
-          <iconset resource="eepe.qrc">
+          <iconset resource="eepskye.qrc">
            <normaloff>:/images/clear.png</normaloff>:/images/clear.png</iconset>
          </property>
         </widget>
@@ -7387,7 +7400,7 @@ Right</string>
           <string/>
          </property>
          <property name="icon">
-          <iconset resource="eepe.qrc">
+          <iconset resource="eepskye.qrc">
            <normaloff>:/images/clear.png</normaloff>:/images/clear.png</iconset>
          </property>
         </widget>
@@ -7404,7 +7417,7 @@ Right</string>
           <string/>
          </property>
          <property name="icon">
-          <iconset resource="eepe.qrc">
+          <iconset resource="eepskye.qrc">
            <normaloff>:/images/clear.png</normaloff>:/images/clear.png</iconset>
          </property>
         </widget>
@@ -7421,7 +7434,7 @@ Right</string>
           <string/>
          </property>
          <property name="icon">
-          <iconset resource="eepe.qrc">
+          <iconset resource="eepskye.qrc">
            <normaloff>:/images/clear.png</normaloff>:/images/clear.png</iconset>
          </property>
         </widget>
@@ -7438,7 +7451,7 @@ Right</string>
           <string/>
          </property>
          <property name="icon">
-          <iconset resource="eepe.qrc">
+          <iconset resource="eepskye.qrc">
            <normaloff>:/images/clear.png</normaloff>:/images/clear.png</iconset>
          </property>
         </widget>
@@ -7449,7 +7462,7 @@ Right</string>
           <string>Clear All Curves</string>
          </property>
          <property name="icon">
-          <iconset resource="eepe.qrc">
+          <iconset resource="eepskye.qrc">
            <normaloff>:/images/clear.png</normaloff>:/images/clear.png</iconset>
          </property>
         </widget>
@@ -15233,7 +15246,7 @@ Right</string>
   <tabstop>slider_S4</tabstop>
  </tabstops>
  <resources>
-  <include location="eepe.qrc"/>
+  <include location="eepskye.qrc"/>
  </resources>
  <connections>
   <connection>
