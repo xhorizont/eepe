@@ -26,7 +26,7 @@ public:
     void runAgain(QString prog, QStringList arg, int closeBehaviour=AVR_DIALOG_CLOSE_IF_SUCCESSFUL);
     void waitForFinish();
 //    void addReadFuses();
-    int doFileCopy( QString destFile, QString sourceFile, quint32 size ) ;
+    int doFileCopy( QString destFile, QString sourceFile, quint32 size, quint32 offset ) ;
 
 protected slots:
     void doAddTextStdOut();

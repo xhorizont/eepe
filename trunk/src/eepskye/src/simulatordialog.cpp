@@ -5,6 +5,7 @@
 #include <inttypes.h>
 #include "pers.h"
 #include "helpers.h"
+#include "qextserialport.h"
 
 #define GBALL_SIZE  20
 #define GVARS	1
@@ -43,6 +44,8 @@ simulatorDialog::simulatorDialog(QWidget *parent) :
     bpanaCenter = 0;
     g_tmr10ms = 0;
 		one_sec_precount = 0 ;
+		serialSending = 0 ;
+		port = NULL ;
 
     memset(&chanOut,0,sizeof(chanOut));
     memset(&calibratedStick,0,sizeof(calibratedStick));
@@ -59,6 +62,8 @@ simulatorDialog::simulatorDialog(QWidget *parent) :
 
     memset(&swOn,0,sizeof(swOn));
 
+		CalcScaleNest = 0 ;
+
     trimptr[0] = &trim[0] ;
     trimptr[1] = &trim[1] ;
     trimptr[2] = &trim[2] ;
@@ -74,11 +79,29 @@ simulatorDialog::simulatorDialog(QWidget *parent) :
 
     setupSticks();
 		timer = 0 ;
+		txType = 0 ;
+		ui->SAslider->setValue(0) ;
+		ui->SBslider->setValue(0) ;
+		ui->SEslider->setValue(0) ;
+		ui->SFslider->setValue(0) ;
+		ui->SCslider->setValue(0) ;
+		ui->SDslider->setValue(0) ;
+		ui->SGslider->setValue(0) ;
+		ui->SHslider->setValue(0) ;
 //    setupTimer();
 }
 
 simulatorDialog::~simulatorDialog()
 {
+		if ( port )
+		{
+			if (port->isOpen())
+			{
+		 	  port->close();
+			}
+		 	delete port ;
+			port = NULL ;
+		}
     delete ui;
 }
 
@@ -90,6 +113,15 @@ void simulatorDialog::closeEvent(QCloseEvent *event)
     delete timer ;
 	}
 	timer = 0 ;
+	if ( port )
+	{
+		if (port->isOpen())
+		{
+	 	  port->close();
+		}
+	 	delete port ;
+		port = NULL ;
+	}
 	event->accept() ;
 }
 
@@ -143,10 +175,10 @@ void simulatorDialog::timerEvent()
 
 //			CurrentPhase = getFlightPhase() ;
 
-    	ui->trimHLeft->setValue( g_model.trim[(g_eeGeneral.stickMode>2)   ? 3 : 0]);  // mode=(0 || 1) -> rud trim else -> ail trim
-    	ui->trimVLeft->setValue( g_model.trim[(g_eeGeneral.stickMode & 1) ? 1 : 2]);  // mode=(0 || 2) -> thr trim else -> ele trim
-    	ui->trimVRight->setValue(g_model.trim[(g_eeGeneral.stickMode & 1) ? 2 : 1]);  // mode=(0 || 2) -> ele trim else -> thr trim
-    	ui->trimHRight->setValue(g_model.trim[(g_eeGeneral.stickMode>2)   ? 0 : 3]);  // mode=(0 || 1) -> ail trim else -> rud trim
+    	ui->trimHLeft->setValue( g_model.trim[(g_eeGeneral.stickMode>1)   ? 3 : 0]);  // mode=(0 || 1) -> rud trim else -> ail trim
+    	ui->trimVLeft->setValue( g_model.trim[(g_eeGeneral.stickMode & 1) ? 2 : 1]);  // mode=(0 || 2) -> thr trim else -> ele trim
+    	ui->trimVRight->setValue(g_model.trim[(g_eeGeneral.stickMode & 1) ? 1 : 2]);  // mode=(0 || 2) -> ele trim else -> thr trim
+    	ui->trimHRight->setValue(g_model.trim[(g_eeGeneral.stickMode>1)   ? 0 : 3]);  // mode=(0 || 1) -> ail trim else -> rud trim
 			GlobalModified = 0 ;
 		}
     
@@ -209,21 +241,24 @@ void simulatorDialog::timerEvent()
 					{
 						int8_t x ;
 						x = cs.andsw ;
-						if ( x > 8 )
+						if ( txType == 0 )
 						{
-							x += 1 ;
-						}
-						if ( x < -8 )
-						{
-							x -= 1 ;
-						}
-						if ( x > 9+NUM_SKYCSW )
-						{
-							x = 9 ;			// Tag TRN on the end, keep EEPROM values
-						}
-						if ( x < -(9+NUM_SKYCSW) )
-						{
-							x = -9 ;			// Tag TRN on the end, keep EEPROM values
+							if ( x > 8 )
+							{
+								x += 1 ;
+							}
+							if ( x < -8 )
+							{
+								x -= 1 ;
+							}
+							if ( x > 9+NUM_SKYCSW )
+							{
+								x = 9 ;			// Tag TRN on the end, keep EEPROM values
+							}
+							if ( x < -(9+NUM_SKYCSW) )
+							{
+								x = -9 ;			// Tag TRN on the end, keep EEPROM values
+							}
 						}
 	      	  if (getSwitch( x, 0, 0) == 0 )
 					  {
@@ -272,7 +307,12 @@ void simulatorDialog::timerEvent()
 				}
 			}
 		}
-		
+
+		// Now send serail data
+		if ( serialSending )
+		{
+			port->write( QByteArray::fromRawData ( (char *)"xyz", 3 ), 3 ) ;
+		} 
 
 }
 
@@ -282,7 +322,7 @@ void simulatorDialog::centerSticks()
     if(ui->rightStick->scene()) nodeRight->stepToCenter();
 }
 
-void simulatorDialog::loadParams(const EEGeneral gg, const SKYModelData gm)
+void simulatorDialog::loadParams(const EEGeneral gg, const SKYModelData gm, int type)
 {
     memcpy(&g_eeGeneral,&gg,sizeof(EEGeneral));
     memcpy(&g_model,&gm,sizeof(SKYModelData));
@@ -332,6 +372,55 @@ void simulatorDialog::loadParams(const EEGeneral gg, const SKYModelData gm)
 
     setupTimer();
 		GlobalModified = 0 ;
+
+		txType = type ;
+		if ( txType )
+		{
+			ui->SAwidget->show() ;
+			ui->SBwidget->show() ;
+			ui->SEwidget->show() ;
+			ui->SFwidget->show() ;
+			ui->SCwidget->show() ;
+			ui->SDwidget->show() ;
+			ui->SGwidget->show() ;
+			ui->SHwidget->show() ;
+			ui->SliderL->show() ;
+			ui->SliderR->show() ;
+			ui->dialP_3->hide() ;
+			ui->switchTHR->setVisible( false ) ;
+			ui->switchRUD->setVisible( false ) ;
+			ui->switchELE->setVisible( false ) ;
+			ui->switchAIL->setVisible( false ) ;
+			ui->switchTRN->setVisible( false ) ;
+			ui->switchGEA->setVisible( false ) ;
+			ui->switchID0->setVisible( false ) ;
+			ui->switchID1->setVisible( false ) ;
+			ui->switchID2->setVisible( false ) ;
+		}
+		else
+		{
+			ui->SAwidget->hide() ;
+			ui->SBwidget->hide() ;
+			ui->SEwidget->hide() ;
+			ui->SFwidget->hide() ;
+			ui->SCwidget->hide() ;
+			ui->SDwidget->hide() ;
+			ui->SGwidget->hide() ;
+			ui->SHwidget->hide() ;
+			ui->SliderL->hide() ;
+			ui->SliderR->hide() ;
+			ui->dialP_3->show() ;
+			ui->switchTHR->setVisible( true ) ;
+			ui->switchRUD->setVisible( true ) ;
+			ui->switchELE->setVisible( true ) ;
+			ui->switchAIL->setVisible( true ) ;
+			ui->switchTRN->setVisible( true ) ;
+			ui->switchGEA->setVisible( true ) ;
+			ui->switchID0->setVisible( true ) ;
+			ui->switchID1->setVisible( true ) ;
+			ui->switchID2->setVisible( true ) ;
+		}
+
 }
 
 
@@ -514,7 +603,15 @@ void simulatorDialog::getValues()
     
     calibratedStick[4] = ui->dialP_1->value();
     calibratedStick[5] = ui->dialP_2->value();
-    calibratedStick[6] = ui->dialP_3->value();
+		if ( txType )
+		{
+	    calibratedStick[6] = ui->SliderL->value();
+    	calibratedStick[7] = ui->SliderR->value(); // For X9D
+		}
+		else
+		{
+    	calibratedStick[6] = ui->dialP_3->value();
+		}
 
     if(g_eeGeneral.throttleReversed)
     {
@@ -524,6 +621,8 @@ void simulatorDialog::getValues()
           *trimptr[THR_STICK] *= -1;
         }
     }
+
+
 	for( uint8_t i = 0 ; i < MAX_GVARS ; i += 1 )
 	{
 		int x ;
@@ -558,7 +657,7 @@ void simulatorDialog::getValues()
 				}
         g_model.gvars[i].gvar = x ;
 			}
-			else if ( g_model.gvars[i].gvsource <= 12 )	// Pot
+			else if ( g_model.gvars[i].gvsource <= ( txType ? 13 : 12 ) )	// Pot
 			{
 				uint32_t y ;
 				y = g_model.gvars[i].gvsource - 6 ;
@@ -576,9 +675,9 @@ void simulatorDialog::getValues()
 				}
         g_model.gvars[i].gvar = x ;
 			}
-			else if ( g_model.gvars[i].gvsource <= 36 )	// Chans
+			else if ( g_model.gvars[i].gvsource <= ( txType ? 37 : 36 ) )	// Chans
 			{
-				x = ex_chans[g_model.gvars[i].gvsource-13] / 10 ;
+				x = ex_chans[g_model.gvars[i].gvsource-( txType ? 14 : 13)] / 10 ;
 				if ( x < -125 )
 				{
 					x = -125 ;					
@@ -697,30 +796,36 @@ void simulatorDialog::setValues()
 #define CSWITCH_ON  "QLabel { background-color: #4CC417 }"
 #define CSWITCH_OFF "QLabel { }"
 
-    ui->labelCSW_1->setStyleSheet(getSwitch(DSW_SW1,0)   ? CSWITCH_ON : CSWITCH_OFF);
-    ui->labelCSW_2->setStyleSheet(getSwitch(DSW_SW2,0)   ? CSWITCH_ON : CSWITCH_OFF);
+		int i = 0 ;
+		if ( txType )
+		{
+			i = MAX_XDRSWITCH - MAX_DRSWITCH ;
+		}
+
+    ui->labelCSW_1->setStyleSheet(getSwitch(DSW_SW1+i,0)   ? CSWITCH_ON : CSWITCH_OFF);
+    ui->labelCSW_2->setStyleSheet(getSwitch(DSW_SW2+i,0)   ? CSWITCH_ON : CSWITCH_OFF);
     ui->labelCSW_3->setStyleSheet(getSwitch(DSW_SW3,0)   ? CSWITCH_ON : CSWITCH_OFF);
-    ui->labelCSW_4->setStyleSheet(getSwitch(DSW_SW4,0)   ? CSWITCH_ON : CSWITCH_OFF);
-    ui->labelCSW_5->setStyleSheet(getSwitch(DSW_SW5,0)   ? CSWITCH_ON : CSWITCH_OFF);
-    ui->labelCSW_6->setStyleSheet(getSwitch(DSW_SW6,0)   ? CSWITCH_ON : CSWITCH_OFF);
-    ui->labelCSW_7->setStyleSheet(getSwitch(DSW_SW7,0)   ? CSWITCH_ON : CSWITCH_OFF);
-    ui->labelCSW_8->setStyleSheet(getSwitch(DSW_SW8,0)   ? CSWITCH_ON : CSWITCH_OFF);
-    ui->labelCSW_9->setStyleSheet(getSwitch(DSW_SW9,0)   ? CSWITCH_ON : CSWITCH_OFF);
-    ui->labelCSW_10->setStyleSheet(getSwitch(DSW_SWA,0)  ? CSWITCH_ON : CSWITCH_OFF);
-    ui->labelCSW_11->setStyleSheet(getSwitch(DSW_SWB,0)  ? CSWITCH_ON : CSWITCH_OFF);
-    ui->labelCSW_12->setStyleSheet(getSwitch(DSW_SWC,0)  ? CSWITCH_ON : CSWITCH_OFF);
-    ui->labelCSW_13->setStyleSheet(getSwitch(DSW_SWD,0)  ? CSWITCH_ON : CSWITCH_OFF);
-    ui->labelCSW_14->setStyleSheet(getSwitch(DSW_SWE,0)  ? CSWITCH_ON : CSWITCH_OFF);
-    ui->labelCSW_15->setStyleSheet(getSwitch(DSW_SWF,0)  ? CSWITCH_ON : CSWITCH_OFF);
-    ui->labelCSW_16->setStyleSheet(getSwitch(DSW_SWG,0)  ? CSWITCH_ON : CSWITCH_OFF);
-    ui->labelCSW_17->setStyleSheet(getSwitch(DSW_SWH,0)  ? CSWITCH_ON : CSWITCH_OFF);
-    ui->labelCSW_18->setStyleSheet(getSwitch(DSW_SWI,0)  ? CSWITCH_ON : CSWITCH_OFF);
-    ui->labelCSW_19->setStyleSheet(getSwitch(DSW_SWJ,0)  ? CSWITCH_ON : CSWITCH_OFF);
-    ui->labelCSW_20->setStyleSheet(getSwitch(DSW_SWK,0)  ? CSWITCH_ON : CSWITCH_OFF);
-    ui->labelCSW_21->setStyleSheet(getSwitch(DSW_SWL,0)  ? CSWITCH_ON : CSWITCH_OFF);
-    ui->labelCSW_22->setStyleSheet(getSwitch(DSW_SWM,0)  ? CSWITCH_ON : CSWITCH_OFF);
-    ui->labelCSW_23->setStyleSheet(getSwitch(DSW_SWN,0)  ? CSWITCH_ON : CSWITCH_OFF);
-    ui->labelCSW_24->setStyleSheet(getSwitch(DSW_SWO,0)  ? CSWITCH_ON : CSWITCH_OFF);
+    ui->labelCSW_4->setStyleSheet(getSwitch(DSW_SW4+i,0)   ? CSWITCH_ON : CSWITCH_OFF);
+    ui->labelCSW_5->setStyleSheet(getSwitch(DSW_SW5+i,0)   ? CSWITCH_ON : CSWITCH_OFF);
+    ui->labelCSW_6->setStyleSheet(getSwitch(DSW_SW6+i,0)   ? CSWITCH_ON : CSWITCH_OFF);
+    ui->labelCSW_7->setStyleSheet(getSwitch(DSW_SW7+i,0)   ? CSWITCH_ON : CSWITCH_OFF);
+    ui->labelCSW_8->setStyleSheet(getSwitch(DSW_SW8+i,0)   ? CSWITCH_ON : CSWITCH_OFF);
+    ui->labelCSW_9->setStyleSheet(getSwitch(DSW_SW9+i,0)   ? CSWITCH_ON : CSWITCH_OFF);
+    ui->labelCSW_10->setStyleSheet(getSwitch(DSW_SWA+i,0)  ? CSWITCH_ON : CSWITCH_OFF);
+    ui->labelCSW_11->setStyleSheet(getSwitch(DSW_SWB+i,0)  ? CSWITCH_ON : CSWITCH_OFF);
+    ui->labelCSW_12->setStyleSheet(getSwitch(DSW_SWC+i,0)  ? CSWITCH_ON : CSWITCH_OFF);
+    ui->labelCSW_13->setStyleSheet(getSwitch(DSW_SWD+i,0)  ? CSWITCH_ON : CSWITCH_OFF);
+    ui->labelCSW_14->setStyleSheet(getSwitch(DSW_SWE+i,0)  ? CSWITCH_ON : CSWITCH_OFF);
+    ui->labelCSW_15->setStyleSheet(getSwitch(DSW_SWF+i,0)  ? CSWITCH_ON : CSWITCH_OFF);
+    ui->labelCSW_16->setStyleSheet(getSwitch(DSW_SWG+i,0)  ? CSWITCH_ON : CSWITCH_OFF);
+    ui->labelCSW_17->setStyleSheet(getSwitch(DSW_SWH+i,0)  ? CSWITCH_ON : CSWITCH_OFF);
+    ui->labelCSW_18->setStyleSheet(getSwitch(DSW_SWI+i,0)  ? CSWITCH_ON : CSWITCH_OFF);
+    ui->labelCSW_19->setStyleSheet(getSwitch(DSW_SWJ+i,0)  ? CSWITCH_ON : CSWITCH_OFF);
+    ui->labelCSW_20->setStyleSheet(getSwitch(DSW_SWK+i,0)  ? CSWITCH_ON : CSWITCH_OFF);
+    ui->labelCSW_21->setStyleSheet(getSwitch(DSW_SWL+i,0)  ? CSWITCH_ON : CSWITCH_OFF);
+    ui->labelCSW_22->setStyleSheet(getSwitch(DSW_SWM+i,0)  ? CSWITCH_ON : CSWITCH_OFF);
+    ui->labelCSW_23->setStyleSheet(getSwitch(DSW_SWN+i,0)  ? CSWITCH_ON : CSWITCH_OFF);
+    ui->labelCSW_24->setStyleSheet(getSwitch(DSW_SWO+i,0)  ? CSWITCH_ON : CSWITCH_OFF);
 
 #define CBLUE "QSlider::handle:horizontal:disabled { background: #0000CC;border: 1px solid #aaa;border-radius: 4px; }"
 #define CRED  "QSlider::handle:horizontal:disabled { background: #CC0000;border: 1px solid #aaa;border-radius: 4px; }"
@@ -730,7 +835,6 @@ void simulatorDialog::setValues()
   const char *color[4] = { CBLUE, CRED, CGREEN, CCYAN } ;
 
 	int onoff[16] ;
-	int i ;
 	int j ;
 	int k ;
 
@@ -873,6 +977,8 @@ inline qint16 calc1000toRESX(qint16 x)
 
 bool simulatorDialog::keyState(EnumKeys key)
 {
+  if ( txType == 0 )
+	{
     switch (key)
     {
     case (SW_ThrCt):   return ui->switchTHR->isChecked(); break;
@@ -888,13 +994,56 @@ bool simulatorDialog::keyState(EnumKeys key)
         return false;
         break;
     }
+	}
+	else
+	{
+    switch (key)
+		{
+			case SW_SA0 :	return ui->SAslider->value() == 0 ; break ;
+			case SW_SA1 : return ui->SAslider->value() == 1 ; break ;
+			case SW_SA2 : return ui->SAslider->value() == 2 ; break ;
+			case SW_SB0 : return ui->SBslider->value() == 0 ; break ;
+			case SW_SB1 : return ui->SBslider->value() == 1 ; break ;
+			case SW_SB2 : return ui->SBslider->value() == 2 ; break ;
+			case SW_SC0 : return ui->SCslider->value() == 0 ; break ;
+			case SW_SC1 : return ui->SCslider->value() == 1 ; break ;
+			case SW_SC2 : return ui->SCslider->value() == 2 ; break ;
+			case SW_SD0 : return ui->SDslider->value() == 0 ; break ;
+			case SW_SD1 : return ui->SDslider->value() == 1 ; break ;
+			case SW_SD2 : return ui->SDslider->value() == 2 ; break ;
+			case SW_SE0 : return ui->SEslider->value() == 0 ; break ;
+			case SW_SE1 : return ui->SEslider->value() == 1 ; break ;
+			case SW_SE2 : return ui->SEslider->value() == 2 ; break ;
+			case SW_SF0 : return ui->SFslider->value() == 0 ; break ;
+			case SW_SF2 : return ui->SFslider->value() == 1 ; break ;
+			case SW_SG0 : return ui->SGslider->value() == 0 ; break ;
+			case SW_SG1 : return ui->SGslider->value() == 1 ; break ;
+			case SW_SG2 : return ui->SGslider->value() == 2 ; break ;
+			case SW_SH0 : return ui->SHslider->value() == 0 ; break ;
+			case SW_SH2 : return ui->SHslider->value() == 1 ; break ;
+    	default:
+        return false;
+      break;
+		}
+	}
 }
 
 qint16 simulatorDialog::getValue(qint8 i)
 {
-    if(i<PPM_BASE) return calibratedStick[i];//-512..512
-    else if(i<CHOUT_BASE) return g_ppmIns[i-PPM_BASE];// - g_eeGeneral.ppmInCalib[i-PPM_BASE];
-    else return ex_chans[i-CHOUT_BASE];
+	uint8_t offset = txType ? 1 : 0 ;
+
+    if(i<(PPM_BASE+offset)) return calibratedStick[i];//-512..512
+    else if(i<(CHOUT_BASE+offset)) return g_ppmIns[i-PPM_BASE-offset];// - g_eeGeneral.ppmInCalib[i-PPM_BASE];
+    else if(i<(CHOUT_BASE+NUM_SKYCHNOUT+offset)) return ex_chans[i-CHOUT_BASE-offset];
+		else
+		{
+      int j ;
+			j = i-CHOUT_BASE-NUM_SKYCHNOUT-offset - 25 ;
+			if ( ( j >= 0 ) && ( j < 7 ) )
+			{
+        return g_model.gvars[j].gvar ;
+			}
+		}
     return 0;
 }
 
@@ -903,7 +1052,8 @@ bool simulatorDialog::getSwitch(int swtch, bool nc, qint8 level)
 {
     bool ret_value ;
     uint8_t cs_index ;
-    cs_index = abs(swtch)-(MAX_DRSWITCH-NUM_SKYCSW);
+		int limit = txType ? MAX_XDRSWITCH : MAX_DRSWITCH ;
+    cs_index = abs(swtch)-(limit-NUM_SKYCSW);
     
   	if ( level>4 )
   	{
@@ -911,19 +1061,26 @@ bool simulatorDialog::getSwitch(int swtch, bool nc, qint8 level)
   	  return swtch>0 ? ret_value : !ret_value ;
   	}
 
-    switch(swtch){
-    case  0:            return  nc;
-    case  MAX_DRSWITCH: return  true;
-    case -MAX_DRSWITCH: return  false;
-    }
+		if ( swtch == 0 )
+		{
+			return nc ;
+		}
+		if ( swtch == limit )
+		{
+			return true ;
+		}
+		if ( swtch == -limit )
+		{
+			return false ;
+		}
 
-    if ( swtch > MAX_DRSWITCH )
+    if ( swtch > limit )
 		{
 			return false ;
 		}
 
     uint8_t dir = swtch>0;
-    if(abs(swtch)<(MAX_DRSWITCH-NUM_SKYCSW)) {
+    if(abs(swtch)<(limit-NUM_SKYCSW)) {
         if(!dir) return ! keyState((EnumKeys)(SW_BASE-swtch-1));
         return            keyState((EnumKeys)(SW_BASE+swtch-1));
     }
@@ -1024,21 +1181,24 @@ bool simulatorDialog::getSwitch(int swtch, bool nc, qint8 level)
 			{
 				int8_t x ;
 				x = cs.andsw ;
-				if ( x > 8 )
+				if ( txType == 0 )
 				{
-					x += 1 ;
-				}
-				if ( x < -8 )
-				{
-					x -= 1 ;
-				}
-				if ( x > 9+NUM_SKYCSW )
-				{
-					x = 9 ;			// Tag TRN on the end, keep EEPROM values
-				}
-				if ( x < -(9+NUM_SKYCSW) )
-				{
-					x = -9 ;			// Tag TRN on the end, keep EEPROM values
+					if ( x > 8 )
+					{
+						x += 1 ;
+					}
+					if ( x < -8 )
+					{
+						x -= 1 ;
+					}
+					if ( x > 9+NUM_SKYCSW )
+					{
+						x = 9 ;			// Tag TRN on the end, keep EEPROM values
+					}
+					if ( x < -(9+NUM_SKYCSW) )
+					{
+						x = -9 ;			// Tag TRN on the end, keep EEPROM values
+					}
 				}
         ret_value = getSwitch( x, 0, level+1) ;
 			}
@@ -1375,7 +1535,12 @@ void simulatorDialog::perOut(bool init, uint8_t att)
     //===========Swash Ring================
 
 
-    for(uint8_t i=0;i<7;i++)
+		uint8_t num_analog = 7 ;
+		if ( txType )
+		{
+			num_analog = 8 ;
+		}
+    for(uint8_t i=0;i<num_analog;i++)
 		{        // calc Sticks
 
         //Normalization  [0..2048] ->   [-1024..1024]
@@ -1499,6 +1664,22 @@ void simulatorDialog::perOut(bool init, uint8_t att)
 			}
 		}
 
+  uint8_t Mix_3pos ;
+  uint8_t Mix_max ;
+  uint8_t Mix_full ;
+  if ( txType )
+  {
+    Mix_3pos = MIX_3POS+1 ;
+    Mix_max = MIX_MAX + 1 ;
+    Mix_full = MIX_FULL + 1 ;
+  }
+  else
+  {
+    Mix_3pos = MIX_3POS ;
+    Mix_max = MIX_MAX ;
+    Mix_full = MIX_FULL ;
+  }
+  
 	if ( att & FADE_FIRST )
 	{
     //===========BEEP CENTER================
@@ -1507,16 +1688,22 @@ void simulatorDialog::perOut(bool init, uint8_t att)
     bpanaCenter = anaCenter;
 
 
-    calibratedStick[MIX_MAX-1]=calibratedStick[MIX_FULL-1]=1024;
-    anas[MIX_MAX-1]  = RESX;     // MAX
-    anas[MIX_FULL-1] = RESX;     // FULL
-		anas[MIX_3POS-1] = keyState(SW_ID0) ? -1024 : (keyState(SW_ID1) ? 0 : 1024) ;
-    
+    calibratedStick[Mix_max-1]=calibratedStick[Mix_full-1]=1024;
+    anas[Mix_max-1]  = RESX;     // MAX
+    anas[Mix_full-1] = RESX;     // FULL
+	  if ( txType )
+		{
+			anas[Mix_3pos-1] = keyState(SW_SC0) ? -1024 : (keyState(SW_SC1) ? 0 : 1024) ;
+		}
+		else
+		{
+			anas[Mix_3pos-1] = keyState(SW_ID0) ? -1024 : (keyState(SW_ID1) ? 0 : 1024) ;
+    }
 		
 		for(uint8_t i=0;i<NUM_PPM;i++)    anas[i+PPM_BASE]   = g_ppmIns[i];// - g_eeGeneral.ppmInCalib[i]; //add ppm channels
     for(uint8_t i=0;i<NUM_SKYCHNOUT;i++) anas[i+CHOUT_BASE] = chans[i]; //other mixes previous outputs
 #if GVARS
-        for(uint8_t i=0;i<MAX_GVARS;i++) anas[i+MIX_3POS] = g_model.gvars[i].gvar * 8 ;
+        for(uint8_t i=0;i<MAX_GVARS;i++) anas[i+Mix_3pos] = g_model.gvars[i].gvar * 8 ;
 #endif
 
     //===========Swash Ring================
@@ -1663,6 +1850,7 @@ void simulatorDialog::perOut(bool init, uint8_t att)
         //Notice 0 = NC switch means not used -> always on line
         int16_t v  = 0;
         uint8_t swTog;
+        uint8_t swon = swOn[i] ;
 
 #define DEL_MULT 256
 
@@ -1682,20 +1870,21 @@ void simulatorDialog::perOut(bool init, uint8_t att)
         //swOn[i]=false;
         if(!t_switch)
 				{ // switch on?  if no switch selected => on
-            swTog = swOn[i];
-            swOn[i] = false;
-            if (k == MIX_3POS+MAX_GVARS+1) act[i] = chans[md.destCh-1] * DEL_MULT / 100 ;
-            if( k!=MIX_FULL && k!=MIX_MAX) continue;// if not MAX or FULL - next loop
+            swTog = swon ;
+            swon = false;
+            if (k == Mix_3pos+MAX_GVARS+1) act[i] = chans[md.destCh-1] * DEL_MULT / 100 ;
+            if( k!=Mix_full && k!=Mix_max) continue;// if not MAX or FULL - next loop
             if(md.mltpx==MLTPX_REP) continue; // if switch is off and REPLACE then off
-            v = md.srcRaw==MIX_FULL ? -RESX : 0; // switch is off => FULL=-RESX
+            v = md.srcRaw==Mix_full ? -RESX : 0; // switch is off => FULL=-RESX
         }
         else {
-            swTog = !swOn[i];
-            swOn[i] = true;
+            swTog = !swon ;
+            swon = true;
             k -= 1 ;
 						v = anas[k]; //Switch is on. MAX=FULL=512 or value.
             if(k>=CHOUT_BASE && (k<i)) v = chans[k];
-            if (k == MIX_3POS+MAX_GVARS) v = chans[md.destCh-1] / 100 ;
+            if (k == Mix_3pos+MAX_GVARS) v = chans[md.destCh-1] / 100 ;
+            if (k > Mix_3pos+MAX_GVARS) v = calc_scaler( k - (Mix_3pos+MAX_GVARS+1) ) ;
             if(md.mixWarn) mixWarning |= 1<<(md.mixWarn-1); // Mix warning
             if ( md.enableFmTrim )
             {
@@ -1717,6 +1906,8 @@ void simulatorDialog::perOut(bool init, uint8_t att)
                 }
             }
         }
+        swOn[i] = swon ;
+
         //========== INPUT OFFSET ===============
         if ( ( md.enableFmTrim == 0 ) && ( md.lateOffset == 0 ) )
         {
@@ -2068,6 +2259,7 @@ void simulatorDialog::on_FixLeftX_clicked(bool checked)
 
 void simulatorDialog::on_FixLeftY_clicked(bool checked)
 {
+
     nodeLeft->setFixedY(checked);
 }
 
@@ -2081,8 +2273,91 @@ void simulatorDialog::on_FixRightY_clicked(bool checked)
     nodeRight->setFixedY(checked);
 }
 
-void simulatorDialog::on_sendDataButton_clicked()
+int16_t simulatorDialog::calc_scaler( uint8_t index )
 {
+	int32_t value ;
+	ScaleData *pscaler ;
 	
+	if ( CalcScaleNest > 5 )
+	{
+		return 0 ;
+	}
+	CalcScaleNest += 1 ;
+	// process
+	pscaler = &g_model.Scalers[index] ;
+	if ( pscaler->source )
+	{
+		value = getValue( pscaler->source - 1 ) ;
+	}
+	else
+	{
+		value = 0 ;
+	}
+	if ( pscaler->offsetLast == 0 )
+	{
+		value += pscaler->offset ;
+	}
+	value *= pscaler->mult+1 ;
+	value /= pscaler->div+1 ;
+	if ( pscaler->offsetLast )
+	{
+		value += pscaler->offset ;
+	}
+	if ( pscaler->neg )
+	{
+		value = -value ;
+	}
+
+	CalcScaleNest -= 1 ;
+	return value ;
+}
+									 
+
+
+void simulatorDialog::on_SendDataButton_clicked()
+{
+//	QString portname ;
+	
+//	if ( serialSending )
+//	{
+//		if ( port )
+//		{
+//			if (port->isOpen())
+//			{
+//		 	  port->close();
+//			}
+//		 	delete port ;
+//			port = NULL ;
+//		}
+//		serialSending = 0 ;
+//	}
+//	else
+//	{
+//		portname = "COM13" ;
+//#ifdef Q_OS_UNIX
+//  	port = new QextSerialPort(portname, QextSerialPort::Polling) ;
+//#else
+//		port = new QextSerialPort(portname, QextSerialPort::Polling) ;
+//#endif /*Q_OS_UNIX*/
+//		port->setBaudRate(BAUD9600) ;
+//  	port->setFlowControl(FLOW_OFF) ;
+//		port->setParity(PAR_NONE) ;
+//  	port->setDataBits(DATA_8) ;
+//		port->setStopBits(STOP_1) ;
+//  	//set timeouts to 500 ms
+//  	port->setTimeout(-1) ;
+//  	if (!port->open(QIODevice::ReadWrite | QIODevice::Unbuffered) )
+//  	{
+//  		QMessageBox::critical(this, "eePe", tr("Com Port Unavailable"));
+//			if (port->isOpen())
+//			{
+//  		  port->close();
+//			}
+//  		delete port ;
+//			port = NULL ;
+//			return ;	// Failed
+//		}
+//		serialSending = 1 ;
+//	}
 }
 

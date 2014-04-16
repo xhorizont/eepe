@@ -3,15 +3,16 @@
 #include "pers.h"
 #include "helpers.h"
 
-MixerDialog::MixerDialog(QWidget *parent, SKYMixData *mixdata, int stickMode, QString * comment, int modelVersion) :
+MixerDialog::MixerDialog(QWidget *parent, SKYMixData *mixdata, int stickMode, QString * comment, int modelVersion, int eeType) :
     QDialog(parent),
     ui(new Ui::MixerDialog)
 {
     ui->setupUi(this);
     md = mixdata;
+		leeType = eeType ;
 
     this->setWindowTitle(tr("DEST -> CH%1%2").arg(md->destCh/10).arg(md->destCh%10));
-    populateSourceCB(ui->sourceCB, stickMode, 0, md->srcRaw, modelVersion);
+    populateSourceCB(ui->sourceCB, stickMode, 0, md->srcRaw, modelVersion, eeType);
     ui->sourceCB->addItem("3POS");
     ui->sourceCB->addItem("GV1 ");
     ui->sourceCB->addItem("GV2 ");
@@ -39,7 +40,7 @@ MixerDialog::MixerDialog(QWidget *parent, SKYMixData *mixdata, int stickMode, QS
 		ui->trimChkB->setChecked(md->carryTrim==0);
     ui->FMtrimChkB->setChecked(md->enableFmTrim);
     ui->lateOffsetChkB->setChecked(md->lateOffset);
-    populateSwitchCB(ui->switchesCB,md->swtch);
+    populateSwitchCB(ui->switchesCB,md->swtch, eeType );
     ui->warningCB->setCurrentIndex(md->mixWarn);
     ui->mltpxCB->setCurrentIndex(md->mltpx);
 		ui->diffcurveCB->setCurrentIndex(md->differential) ;
@@ -132,7 +133,12 @@ void MixerDialog::valuesChanged()
     md->weight       = numericSpinGvarValue( ui->weightSB, ui->weightCB, ui->weightGvChkB, md->weight, 100 ) ;
     md->sOffset      = numericSpinGvarValue( ui->offsetSB, ui->offsetCB, ui->offsetGvChkB, md->sOffset, 0 ) ;
     md->carryTrim    = ui->trimChkB->checkState() ? 0 : 1;
-    md->swtch        = ui->switchesCB->currentIndex()-MAX_DRSWITCH;
+		int limit = MAX_DRSWITCH ;
+		if ( leeType )
+		{
+			limit = MAX_XDRSWITCH ;
+		}
+    md->swtch        = ui->switchesCB->currentIndex()-limit ;
     md->mixWarn      = ui->warningCB->currentIndex();
     md->mltpx        = ui->mltpxCB->currentIndex();
     md->delayDown    = ui->delayDownSB->value()*10;

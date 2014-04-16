@@ -262,7 +262,10 @@ void MainWindow::releaseNotes()
 	"The model version is now 3, a button is available in the SETUP tab to convert\n"
 	"models within eepe.\n\n"
 	"ADVANCE WARNING: The mixer function 'FlightMode Trim' will be REMOVED in a future revision.\n"
-	"Please now use a 'real' flight mode for this function."
+	"Please now use a 'real' flight mode for this function.\n"
+	"The following specific items will also be removed: 'Alt Alarm', 'mAh Alarm' and 'Volt Thres'.\n"
+	"They can all be implemented using a custom switch, and a safety switch set either as an Audio\n"
+	"switch or as a Voice switch."
 	 ;
 	
 	reviewOutput *rO = new reviewOutput(this);
@@ -351,6 +354,7 @@ void MainWindow::reply1Finished(QNetworkReply * reply)
                 baseFileName = "er9x-jeti.hex";
                 break;
             case (DNLD_VER_ER9X_FRSKY):
+            case (DNLD_VER_ER9X_FRSKY_NOHT):
                 dnldURL = ER9X_FRSKY_URL;
                 baseFileName = "er9x-frsky.hex";
                 break;
@@ -359,7 +363,6 @@ void MainWindow::reply1Finished(QNetworkReply * reply)
                 baseFileName = "er9x-ardupilot.hex";
                 break;
             case (DNLD_VER_ER9X_NMEA):
-            case (DNLD_VER_ER9X_FRSKY_NOHT):
                 dnldURL = ER9X_NMEA_URL;
                 baseFileName = "er9x-nmea.hex";
                 break;

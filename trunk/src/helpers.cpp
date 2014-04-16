@@ -140,26 +140,73 @@ uint8_t CS_STATE( uint8_t x, uint8_t modelVersion )
 	}
 }
 
+#ifdef SKY
+void populateAnaVolumeCB( QComboBox *b, int value, int type )
+#else
 void populateAnaVolumeCB( QComboBox *b, int value )
+#endif
 {
   b->clear();
   for(int i=0; i<8; i++)
 	{
-    b->addItem(AnaVolumeItems[i]);
+#ifdef SKY
+    if ( type && (i == 3) )
+		{
+    	b->addItem( "SL " );
+		}
+		else if ( type && (i == 4) )
+		{
+    	b->addItem( "SR " );
+		}
+		else
+#endif
+    {
+    	b->addItem(AnaVolumeItems[i]);
+		}
 	}
   b->setCurrentIndex(value);
   b->setMaxVisibleItems(8);
 }
 
+#ifdef SKY
+void populateGvarCB(QComboBox *b, int value, int type)
+#else
 void populateGvarCB(QComboBox *b, int value)
+#endif
 {
     b->clear();
 #ifdef SKY
-    for(int i=0; i<=36; i++)
+		int limit = 36 ;
+		if ( type )
+		{
+			limit = 37 ;
+		}
+    for(int i=0; i<=limit; i++)
+		{
+			int idx = i ;
+				if ( type )	// Taranis
+				{
+					if ( idx == 12 )
+					{
+		        b->addItem("S1  ");
+						continue ;
+					}
+					if ( idx == 13 )
+					{
+		        b->addItem("S2  ");
+						continue ;
+					}
+					if ( idx > 13 )
+					{
+						idx -= 1 ;
+					}
+				}
+        b->addItem(GvarItems[idx]);
+		}
 #else
     for(int i=0; i<=28; i++)
-#endif
         b->addItem(GvarItems[i]);
+#endif
     b->setCurrentIndex(value);
     b->setMaxVisibleItems(13);
 }
@@ -618,33 +665,54 @@ void populateAlarmCB(QComboBox *b, int value=0)
 
 
 #ifdef SKY
-QString getSWName(int val)
+QString getSWName(int val, int eepromType)
 #else
 QString getSWName(int val, int extra )
 #endif
 {
 	int limit = MAX_DRSWITCH ;
+#ifdef SKY
+	if ( eepromType )
+	{
+		limit = MAX_XDRSWITCH ;
+	}
+#endif
 #ifndef SKY
 	if ( extra )
 	{
 		limit += EXTRA_CSW ;
 	}
 #endif
-    if(!val) return "---";
-    if(val==limit) return "ON";
-    if(val==-limit) return "OFF";
+  if(!val) return "---";
+  if(val==limit) return "ON";
+  if(val==-limit) return "OFF";
 
-    return QString(val<0 ? "!" : "") + QString(SWITCHES_STR).mid((abs(val)-1)*3,3);
+	QString switches ;
+	switches = SWITCHES_STR ;
+#ifdef SKY
+	if ( eepromType )
+	{
+		switches = XSWITCHES_STR ;
+	}
+#endif
+
+  return QString(val<0 ? "!" : "") + switches.mid((abs(val)-1)*3,3);
 }
 
 #ifdef SKY
-void populateSwitchCB(QComboBox *b, int value=0)
+void populateSwitchCB(QComboBox *b, int value, int eepromType)
 #else
 void populateSwitchCB(QComboBox *b, int value, int eepromType)
 #endif
 {
-    b->clear();
+  b->clear();
 	int limit = MAX_DRSWITCH ;
+#ifdef SKY
+	if ( eepromType )
+	{
+		limit = MAX_XDRSWITCH ;
+	}
+#endif
 #ifndef SKY
   if ( eepromType )
 	{
@@ -653,7 +721,7 @@ void populateSwitchCB(QComboBox *b, int value, int eepromType)
 #endif
     for(int i=-limit; i<=limit; i++)
 #ifdef SKY
-        b->addItem(getSWName(i));
+        b->addItem(getSWName(i,eepromType));
 #else
         b->addItem(getSWName(i,eepromType));
 #endif
@@ -666,7 +734,7 @@ void populateTrainerSwitchCB(QComboBox *b, int value=0)
     b->clear();
     for(int i=-15; i<=15; i++)
 #ifdef SKY
-        b->addItem(getSWName(i));
+        b->addItem(getSWName(i,0));
 #else
         b->addItem(getSWName(i,0));
 #endif
@@ -676,7 +744,7 @@ void populateTrainerSwitchCB(QComboBox *b, int value=0)
 
 
 #ifdef SKY
-void populateSwitchShortCB(QComboBox *b, int value)
+void populateSwitchShortCB(QComboBox *b, int value, int eepromType)
 #else
 void populateSwitchShortCB(QComboBox *b, int value, int eepromType)
 #endif
@@ -689,9 +757,15 @@ void populateSwitchShortCB(QComboBox *b, int value, int eepromType)
     limit += EXTRA_CSW ;
 	}
 #endif
+#ifdef SKY
+	if ( eepromType )
+	{
+		limit = MAX_XDRSWITCH-1 ;
+	}
+#endif
     for(int i = -limit; i<=limit; i++)
 #ifdef SKY
-        b->addItem(getSWName(i));
+        b->addItem(getSWName(i, eepromType));
 #else
         b->addItem(getSWName(i,eepromType));
 #endif
@@ -787,7 +861,7 @@ void populateSwitchxAndCB(QComboBox *b, int value=0)
 
  	for(int i=-8 ; i<=8; i += 1)
 #ifdef SKY
-    b->addItem(getSWName(i));
+    b->addItem(getSWName(i,0));
 #else
     b->addItem(getSWName(i,0));
 #endif
@@ -810,6 +884,18 @@ void populateSwitchxAndCB(QComboBox *b, int value=0)
   b->setMaxVisibleItems(10);
 }
 
+void x9dPopulateSwitchAndCB(QComboBox *b, int value=0)
+{
+#ifdef SKY
+  b->clear();
+ 	for(int i=-(MAX_XDRSWITCH-1) ; i<=(MAX_XDRSWITCH-1); i += 1)
+    b->addItem(getSWName(i,1));
+	
+  b->setCurrentIndex(value);
+  b->setMaxVisibleItems(10);
+#endif
+	 
+}
 
 
 void populateSwitchAndCB(QComboBox *b, int value=0)
@@ -848,7 +934,7 @@ void populateSwitchAndCB(QComboBox *b, int value=0)
 	for(int i=0 ; i<=8; i += 1)
 #endif
 #ifdef SKY
-    b->addItem(getSWName(i));
+    b->addItem(getSWName(i,0));
 #else
     b->addItem(getSWName(i,0));
 #endif
@@ -892,7 +978,7 @@ void populateSwitchAndCB(QComboBox *b, int value=0)
 //}
 
 #ifdef SKY
-void populateSafetySwitchCB(QComboBox *b, int type, int value )
+void populateSafetySwitchCB(QComboBox *b, int type, int value, int eepromType )
 #else
 void populateSafetySwitchCB(QComboBox *b, int type, int value, int extra )
 #endif
@@ -900,11 +986,25 @@ void populateSafetySwitchCB(QComboBox *b, int type, int value, int extra )
 	int offset = MAX_DRSWITCH ;
 	int start = -MAX_DRSWITCH ;
 	int last = MAX_DRSWITCH ;
+#ifdef SKY
+	if ( eepromType )
+	{
+		offset = MAX_XDRSWITCH ;
+		start = -MAX_XDRSWITCH ;
+		last = MAX_XDRSWITCH ;
+	}
+#endif
 	if ( type == VOICE_SWITCH )
 	{
 		offset = 0 ;
 		start = 0 ;		
 		last = MAX_DRSWITCH - 1 ;
+#ifdef SKY
+	if ( eepromType )
+	{
+		last = MAX_XDRSWITCH - 1 ;
+	}
+#endif
 #ifndef SKY
 		if ( extra )
 		{
@@ -915,7 +1015,7 @@ void populateSafetySwitchCB(QComboBox *b, int type, int value, int extra )
     b->clear();
     for(int i= start ; i<=last; i++)
 #ifdef SKY
-        b->addItem(getSWName(i),0);
+        b->addItem(getSWName(i,eepromType));
 #else
         b->addItem(getSWName(i,extra));
 #endif
@@ -953,7 +1053,7 @@ void populateSafetyVoiceTypeCB(QComboBox *b, int type, int value=0)
 }
 
 #ifdef SKY
-void populateTmrBSwitchCB(QComboBox *b, int value)
+void populateTmrBSwitchCB(QComboBox *b, int value, int eepromType)
 #else
 void populateTmrBSwitchCB(QComboBox *b, int value, int extra )
 #endif
@@ -961,6 +1061,12 @@ void populateTmrBSwitchCB(QComboBox *b, int value, int extra )
 	int i ;
     b->clear();
 	int limit = MAX_DRSWITCH-1 ;
+#ifdef SKY
+	if ( eepromType )
+	{
+		limit = MAX_XDRSWITCH - 1 ;
+	}
+#endif
 #ifndef SKY
 	if ( extra )
 	{
@@ -969,13 +1075,13 @@ void populateTmrBSwitchCB(QComboBox *b, int value, int extra )
 #endif
     for( i= -limit; i<= limit; i++)
 #ifdef SKY
-        b->addItem(getSWName(i));
+        b->addItem(getSWName(i,eepromType));
 #else
         b->addItem(getSWName(i,extra));
 #endif
 #ifdef SKY    
 		for( i=1 ; i<MAX_DRSWITCH; i++)
-        b->addItem('m'+getSWName(i),0);
+        b->addItem('m'+getSWName(i,eepromType));
 #endif    
 		b->setCurrentIndex(value+limit);
     b->setMaxVisibleItems(10);
@@ -1000,7 +1106,7 @@ void populateCurvesCB(QComboBox *b, int value)
 
 
 #ifdef SKY
-void populateTimerSwitchCB(QComboBox *b, int value=0 )
+void populateTimerSwitchCB(QComboBox *b, int value )
 #else
 void populateTimerSwitchCB(QComboBox *b, int value=0, int eepromType=0)
 #endif
@@ -1112,12 +1218,16 @@ QString getTimerMode(int tm, int eepromType )
 
 #define MODI_STR  "RUD ELE THR AIL RUD THR ELE AIL AIL ELE THR RUD AIL THR ELE RUD "
 #ifdef SKY    
-#define SRCP_STR  "P1  P2  P3  HALFFULLCYC1CYC2CYC3PPM1PPM2PPM3PPM4PPM5PPM6PPM7PPM8CH1 CH2 CH3 CH4 CH5 CH6 CH7 CH8 CH9 CH10CH11CH12CH13CH14CH15CH16CH17CH18CH19CH20CH21CH22CH23CH243POSGV1 GV2 GV3 GV4 GV5 GV6 GV7 THIS"
+#define SRCP_STR  "P1  P2  P3  HALFFULLCYC1CYC2CYC3PPM1PPM2PPM3PPM4PPM5PPM6PPM7PPM8CH1 CH2 CH3 CH4 CH5 CH6 CH7 CH8 CH9 CH10CH11CH12CH13CH14CH15CH16CH17CH18CH19CH20CH21CH22CH23CH243POSGV1 GV2 GV3 GV4 GV5 GV6 GV7 THISSC1 SC2 SC3 SC4 SC5 SC6 SC7 SC8 "
 #else
-#define SRCP_STR  "P1  P2  P3  HALFFULLCYC1CYC2CYC3PPM1PPM2PPM3PPM4PPM5PPM6PPM7PPM8CH1 CH2 CH3 CH4 CH5 CH6 CH7 CH8 CH9 CH10CH11CH12CH13CH14CH15CH163POSGV1 GV2 GV3 GV4 GV5 GV6 GV7 THIS"
+#define SRCP_STR  "P1  P2  P3  HALFFULLCYC1CYC2CYC3PPM1PPM2PPM3PPM4PPM5PPM6PPM7PPM8CH1 CH2 CH3 CH4 CH5 CH6 CH7 CH8 CH9 CH10CH11CH12CH13CH14CH15CH163POSGV1 GV2 GV3 GV4 GV5 GV6 GV7 THISSC1 SC2 SC3 SC4 SC5 SC6 SC7 SC8 "
 #endif
 
+#ifdef SKY    
+QString getSourceStr(int stickMode, int idx, int modelVersion, int type )
+#else
 QString getSourceStr(int stickMode, int idx, int modelVersion )
+#endif
 {
     if(!idx)
         return "----";
@@ -1133,13 +1243,34 @@ QString getSourceStr(int stickMode, int idx, int modelVersion )
     else
     {
         QString str = SRCP_STR;
+#ifdef SKY
+        if ( type )	// Taranis
+				{
+					if ( idx == 7 )
+					{
+						return "SL  " ;
+					}
+					if ( idx == 8 )
+					{
+						return "SR  " ;
+					}
+					if ( idx > 8 )
+					{
+						idx -= 1 ;
+					}
+				}
+#endif
         return str.mid((idx-5)*4,4);
     }
 
     return "";
 }
 
+#ifdef SKY    
+void populateSourceCB(QComboBox *b, int stickMode, int telem, int value, int modelVersion, int type)
+#else
 void populateSourceCB(QComboBox *b, int stickMode, int telem, int value, int modelVersion)
+#endif
 {
     b->clear();
 
@@ -1149,7 +1280,12 @@ void populateSourceCB(QComboBox *b, int stickMode, int telem, int value, int mod
 		}
 
 #ifdef SKY    
-    for(int i=0; i<45; i++) b->addItem(getSourceStr(stickMode,i));
+		int limit = 45 ;
+		if ( type )
+		{
+			limit = 46 ;
+		}
+    for(int i=0; i<limit; i++) b->addItem(getSourceStr(stickMode,i,modelVersion, type));
 #else
     for(int i=0; i<37; i++) b->addItem(getSourceStr(stickMode,i));
 #endif
@@ -1676,7 +1812,7 @@ QString FindErskyPath( int type )
 					{
 						eepromfile = eepromfile.left( eepromfile.size() - 1 ) ;
 					}
-          eepromfile.append( type ? "/FIRMWARE.BIN" : "/TARANIS.BIN");
+          eepromfile.append( type ? "/FIRMWARE.BIN" : "/EEPROM.BIN");
           if (QFile::exists(eepromfile))
 					{
             pathcount++;
@@ -1711,7 +1847,7 @@ QString FindErskyPath( int type )
 				else
 				{
 					eepromfile = saveeepromfile ;
-        	eepromfile.append( type ? "/FIRMWARE.BIN" : "/TARANIS.BIN");
+        	eepromfile.append( type ? "/FIRMWARE.BIN" : "/EEPROM.BIN");
 	        if (QFile::exists(eepromfile))
 					{
 	          pathcount++;

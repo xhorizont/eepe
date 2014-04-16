@@ -10,6 +10,15 @@ description here
 ====================================================================================
 
 ******************************************
+CHANGELOG: 20-Mar-2014 MPB (r400)
+Fix simulator trim bug
+Fix dual-rate GVAR bug
+Add scalers in simulator
+X9D (Taranis) updates
+'2561 fuse additions
+Fix simulator delay bug
+
+******************************************
 CHANGELOG: 20-Mar-2014 MPB (r397)
 Support Scalers
 Bug fixes

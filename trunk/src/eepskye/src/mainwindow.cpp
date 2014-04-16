@@ -84,6 +84,8 @@
 #define DONATE_MB_STR "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=YHX43JR3J7XGW"
 #define DNLD_VER_ERSKY9X         0
 #define DNLD_VER_ERSKY9XR	       1
+#define DNLD_VER_ERSKYX9D				 2
+
 //#define DNLD_VER_ER9X_FRSKY      2
 //#define DNLD_VER_ER9X_ARDUPILOT  3
 //#define DNLD_VER_ER9X_FRSKY_NOHT 4
@@ -115,6 +117,7 @@
 #define ERSKY9X_STAMP "http://ersky9x.googlecode.com/svn/trunk/src/stamp-ersky9x.h"
 #define ERSKY9X_URL "http://ersky9x.googlecode.com/svn/trunk/ersky9x_rom.bin"
 #define ERSKY9XR_URL "http://ersky9x.googlecode.com/svn/trunk/ersky9xr_rom.bin"
+#define ERSKYX9D_URL "http://ersky9x.googlecode.com/svn/trunk/x9d_rom.bin"
 
 class simulatorDialog *SimPointer = 0 ;
 QString AvrdudeOutput ;
@@ -297,6 +300,9 @@ void MainWindow::reply1Finished(QNetworkReply * reply)
 					case 1 :
 						currentRev = currentERSKY9XRrev ;
 					break ;
+					case 2 :
+						currentRev = currentERSKYX9Drev ;
+					break ;
 				}
 
         if(rev>currentRev)
@@ -308,6 +314,11 @@ void MainWindow::reply1Finished(QNetworkReply * reply)
             case (DNLD_VER_ERSKY9XR):
                 dnldURL = ERSKY9XR_URL;
                 baseFileName = "ersky9xr_rom.bin";
+                break;
+
+            case (DNLD_VER_ERSKYX9D):
+                dnldURL = ERSKYX9D_URL;
+                baseFileName = "x9d_rom.bin";
                 break;
 
             default:
@@ -348,6 +359,10 @@ void MainWindow::reply1Finished(QNetworkReply * reply)
 
 											case 1 :
                     		settings.setValue("currentERSKY9XRrev", rev);
+											break ;
+											
+											case 2 :
+                    		settings.setValue("currentERSKYX9Drev", rev);
 											break ;
 										}
                 }
@@ -441,6 +456,9 @@ void MainWindow::downloadLatester9x()
 			case 1 :
     		currentERSKY9Xrev_temp = currentERSKY9XRrev ;
 			break ;
+      case 2 :
+    		currentERSKY9Xrev_temp = currentERSKYX9Drev ;
+			break ;
 		}
     connect(dd,SIGNAL(accepted()),this,SLOT(reply1Accepted()));
     dd->show();
@@ -518,6 +536,10 @@ void MainWindow::reply1Accepted()
 
 			case 1 :
     		settings.setValue("currentERSKY9XRrev", currentERSKY9Xrev);
+			break ;
+		
+			case 2 :
+    		settings.setValue("currentERSKYX9Drev", currentERSKYX9Drev);
 			break ;
 		}	
 }
@@ -683,6 +705,7 @@ QStringList MainWindow::GetSambaArguments(const QString &tcl)
 }
 
 
+// Read the EEPROM from the Radio
 void MainWindow::burnFrom()
 {
     burnConfigDialog bcd;
@@ -715,8 +738,21 @@ void MainWindow::burnFrom()
 		}
 		else
 		{
+      qint32 fsize ;
+			fsize = (MAX_MODELS+1)*8192 ;
+			if ( QFileInfo(path).size() == 32768 )
+			{
+				fsize = 32768 ;			// Taranis EEPROM
+			}
+			if ( QFileInfo(tempFile).size() > fsize )
+			{
+				QFile file ;
+				file.setFileName(tempFile) ;
+				file.remove() ;
+			}
 			avrdudeLoc = "" ;
-      arguments << tempFile << path << tr("%1").arg((MAX_MODELS+1)*8192) ;
+      arguments << tempFile << path << tr("%1").arg(fsize) << "0" ;
+//   	  QMessageBox::critical(this, "eePskye", tr("Read File Size = %1\n%2" ).arg(fsize).arg(tempFile) ) ;
 	    avrOutputDialog *ad = new avrOutputDialog(this, avrdudeLoc, arguments,tr("Read EEPROM From Tx")); //, AVR_DIALOG_KEEP_OPEN);
 			res = ad->result() ;
 			delete ad ;
@@ -735,6 +771,7 @@ void MainWindow::burnFrom()
 
   if(QFileInfo(tempFile).exists() && res)
   {
+//   	  QMessageBox::critical(this, "eePskye", tr("Check tempfile Size = %1\n%2" ).arg(QFileInfo(tempFile).size()).arg(tempFile) ) ;
       MdiChild *child = createMdiChild();
       child->newFile();
       if(!child->loadFile(tempFile,false))
@@ -781,7 +818,7 @@ void MainWindow::burnExtenalToEEPROM()
 					else
 					{
 						avrdudeLoc = "" ;
-    			  arguments << path << fileName << tr("%1").arg((MAX_MODELS+1)*8192) ;
+    			  arguments << path << fileName << tr("%1").arg((MAX_MODELS+1)*8192) << "0" ;
 	  			  avrOutputDialog *ad = new avrOutputDialog(this, avrdudeLoc, arguments,tr("Read EEPROM From Tx")); //, AVR_DIALOG_KEEP_OPEN);
 //						res = ad->result() ;
 						delete ad ;
@@ -878,7 +915,7 @@ void MainWindow::burnToFlash(QString fileToFlash)
 					else
 					{
 						avrdudeLoc = "" ;
-    		    arguments << path << fileName << tr("%1").arg(QFileInfo(fileName).size()) ;
+    		    arguments << path << fileName << tr("%1").arg(QFileInfo(fileName).size()) << "0" ;
 	  			  avrOutputDialog *ad = new avrOutputDialog(this, avrdudeLoc, arguments,tr("Read EEPROM From Tx")); //, AVR_DIALOG_KEEP_OPEN);
 		//				res = ad->result() ;
 						delete ad ;
@@ -932,7 +969,7 @@ void MainWindow::burnExtenalFromEEPROM()
 					else
 					{
 						avrdudeLoc = "" ;
-  			    arguments << fileName << path << tr("%1").arg((MAX_MODELS+1)*8192) ;
+  			    arguments << fileName << path << tr("%1").arg((MAX_MODELS+1)*8192) << "0" ;
 				    avrOutputDialog *ad = new avrOutputDialog(this, avrdudeLoc, arguments,tr("Read EEPROM From Tx")); //, AVR_DIALOG_KEEP_OPEN);
 						res = ad->result() ;
 						delete ad ;
@@ -1008,7 +1045,7 @@ void MainWindow::burnFromFlash()
 			else
 			{
 				avrdudeLoc = "" ;
-        arguments << fileName << path << tr("%1").arg(QFileInfo(path).size()) ;
+        arguments << fileName << path << tr("%1").arg(QFileInfo(path).size()) << "0" ;
 	  	  avrOutputDialog *ad = new avrOutputDialog(this, avrdudeLoc, arguments,tr("Read EEPROM From Tx")); //, AVR_DIALOG_KEEP_OPEN);
 //				res = ad->result() ;
 				delete ad ;
@@ -1531,7 +1568,8 @@ void MainWindow::readSettings()
 
     currentERSKY9Xrev = settings.value("currentERSKY9Xrev", 1).toInt();
     currentERSKY9XRrev = settings.value("currentERSKY9XRrev", 1).toInt();
-    currentEEPSKYErelease = settings.value("currentEEPSKYErelease", 1).toInt();
+    currentERSKYX9Drev = settings.value("currentERSKYX9Drev", 1).toInt();
+		currentEEPSKYErelease = settings.value("currentEEPSKYErelease", 1).toInt();
     currentEEPSKYErev = SVN_VER_NUM;
 
     checkERSKY9X  = settings.value("startup_check_ersky9x", true).toBool();

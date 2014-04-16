@@ -38,7 +38,7 @@ GeneralEdit::GeneralEdit( struct t_radioData *radioData, QWidget *parent) :
     QRegExp rx(CHAR_FOR_NAMES_REGEX);
     ui->ownerNameLE->setValidator(new QRegExpValidator(rx, this));
 
-    populateSwitchCB(ui->backlightswCB,g_eeGeneral.lightSw);
+    populateSwitchCB(ui->backlightswCB,g_eeGeneral.lightSw, rData->type );
 
     ui->ownerNameLE->setText(g_eeGeneral.ownerName);
 
@@ -794,10 +794,10 @@ void GeneralEdit::on_soundModeCB_currentIndexChanged(int index)
 
 void GeneralEdit::on_tabWidget_selected(QString )
 {
-    ui->chnLabel_1->setText(getSourceStr(g_eeGeneral.stickMode,1));
-    ui->chnLabel_2->setText(getSourceStr(g_eeGeneral.stickMode,2));
-    ui->chnLabel_3->setText(getSourceStr(g_eeGeneral.stickMode,3));
-    ui->chnLabel_4->setText(getSourceStr(g_eeGeneral.stickMode,4));
+    ui->chnLabel_1->setText(getSourceStr(g_eeGeneral.stickMode,1,0,0));
+    ui->chnLabel_2->setText(getSourceStr(g_eeGeneral.stickMode,2,0,0));
+    ui->chnLabel_3->setText(getSourceStr(g_eeGeneral.stickMode,3,0,0));
+    ui->chnLabel_4->setText(getSourceStr(g_eeGeneral.stickMode,4,0,0));
 }
 
 

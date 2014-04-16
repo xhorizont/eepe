@@ -165,8 +165,8 @@ void simulatorDialog::timerEvent()
 //			CurrentPhase = getFlightPhase() ;
 
     	ui->trimHLeft->setValue( g_model.trim[(g_eeGeneral.stickMode>2)   ? 3 : 0]);  // mode=(0 || 1) -> rud trim else -> ail trim
-    	ui->trimVLeft->setValue( g_model.trim[(g_eeGeneral.stickMode & 1) ? 1 : 2]);  // mode=(0 || 2) -> thr trim else -> ele trim
-    	ui->trimVRight->setValue(g_model.trim[(g_eeGeneral.stickMode & 1) ? 2 : 1]);  // mode=(0 || 2) -> ele trim else -> thr trim
+    	ui->trimVLeft->setValue( g_model.trim[(g_eeGeneral.stickMode & 1) ? 2 : 1]);  // mode=(0 || 2) -> thr trim else -> ele trim
+    	ui->trimVRight->setValue(g_model.trim[(g_eeGeneral.stickMode & 1) ? 1 : 2]);  // mode=(0 || 2) -> ele trim else -> thr trim
     	ui->trimHRight->setValue(g_model.trim[(g_eeGeneral.stickMode>2)   ? 0 : 3]);  // mode=(0 || 1) -> ail trim else -> rud trim
 			GlobalModified = 0 ;
 
@@ -1032,10 +1032,19 @@ bool simulatorDialog::keyState(EnumKeys key)
 
 qint16 simulatorDialog::getValue(qint8 i)
 {
+	qint8 j ;
     if(i<PPM_BASE) return calibratedStick[i];//-512..512
     else if(i<CHOUT_BASE) return g_ppmIns[i-PPM_BASE];// - g_eeGeneral.ppmInCalib[i-PPM_BASE];
-    else return ex_chans[i-CHOUT_BASE];
-    return 0;
+    else if(i<CHOUT_BASE+NUM_CHNOUT) return ex_chans[i-CHOUT_BASE];
+		else
+		{
+			j = i-CHOUT_BASE-NUM_CHNOUT - 25 ;
+			if ( ( j >= 0 ) && ( j < 7 ) )
+			{
+        return g_model.gvars[j].gvar ;
+			}
+		}
+		return 0;
 }
 
 
@@ -2006,6 +2015,7 @@ void simulatorDialog::perOut(bool init, uint8_t att)
             v = anas[k]; //Switch is on. MAX=FULL=512 or value.
             if(k>=CHOUT_BASE && (k<i)) v = chans[k];
             if (k == MIX_3POS+MAX_GVARS) v = chans[md.destCh-1] / 100 ;
+            if (k > MIX_3POS+MAX_GVARS) v = calc_scaler( k - (MIX_3POS+MAX_GVARS+1) ) ;
             if(md.mixWarn) mixWarning |= 1<<(md.mixWarn-1); // Mix warning
             if ( md.enableFmTrim )
             {
@@ -2392,4 +2402,43 @@ void simulatorDialog::on_FixRightY_clicked(bool checked)
     nodeRight->setFixedY(checked);
 }
 
+int16_t simulatorDialog::calc_scaler( uint8_t index )
+{
+	int32_t value ;
+	ScaleData *pscaler ;
+	
+	if ( CalcScaleNest > 5 )
+	{
+		return 0 ;
+	}
+	CalcScaleNest += 1 ;
+	// process
+	pscaler = &g_model.Scalers[index] ;
+	if ( pscaler->source )
+	{
+		value = getValue( pscaler->source - 1 ) ;
+	}
+	else
+	{
+		value = 0 ;
+	}
+	if ( pscaler->offsetLast == 0 )
+	{
+		value += pscaler->offset ;
+	}
+	value *= pscaler->mult+1 ;
+	value /= pscaler->div+1 ;
+	if ( pscaler->offsetLast )
+	{
+		value += pscaler->offset ;
+	}
+	if ( pscaler->neg )
+	{
+		value = -value ;
+	}
+
+	CalcScaleNest -= 1 ;
+	return value ;
+}
+									 
 

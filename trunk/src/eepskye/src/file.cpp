@@ -21,7 +21,7 @@
 #include "pers.h"
 #include "myeeprom.h"
 #include "file.h"
-
+#include "eeprom_rlc.h"
 
 
 
@@ -863,7 +863,22 @@ uint32_t rawsaveFile( t_radioData *radioData, uint8_t *eeprom )
 	uint32_t i ;
 
 	memset( eeprom, 0xFF, EESIZE ) ;
-	
+	if ( radioData->type )
+	{
+		// Taranis type
+		EeFsFormat( eeprom ) ;
+    RlcFile *filePtr = new RlcFile ;
+    filePtr->writeRlc( FILE_GENERAL, FILE_TYP_GENERAL, (uint8_t *) &radioData->generalSettings, sizeof(EEGeneral), 1 ) ;
+		for ( i = 1 ; i <= MAX_MODELS ; i += 1 )
+		{
+			if ( radioData->File_system[i].size )
+			{		
+      	filePtr->writeRlc( i, FILE_TYP_GENERAL, (uint8_t*) &radioData->models[i-1], sizeof(SKYModelData), 1 ) ;
+			}
+		}
+		delete filePtr ;
+		return 1 ;
+	}
   memset( &Eeprom_buffer, 0xFF, sizeof( Eeprom_buffer ) ) ;
 
  	Eeprom_buffer.header.sequence_no = 1 ;

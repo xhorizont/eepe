@@ -91,10 +91,36 @@ enum EnumKeys {
   SW_ID2    ,
   SW_AileDR ,
   SW_Gear   ,
-  SW_Trainer
+  SW_Trainer,
+  SW_SA0 = SW_ThrCt,
+  SW_SA1 = SW_ThrCt+1,
+  SW_SA2 = SW_ThrCt+2,
+  SW_SB0 = SW_ThrCt+3,
+  SW_SB1 = SW_ThrCt+4,
+  SW_SB2 = SW_ThrCt+5,
+  SW_SC0 = SW_ThrCt+6,
+  SW_SC1 = SW_ThrCt+7,
+  SW_SC2 = SW_ThrCt+8,
+  SW_SD0 = SW_ThrCt+9,
+  SW_SD1 = SW_ThrCt+10,
+  SW_SD2 = SW_ThrCt+11,
+  SW_SE0 = SW_ThrCt+12,
+  SW_SE1 = SW_ThrCt+13,
+  SW_SE2 = SW_ThrCt+14,
+  SW_SF0 = SW_ThrCt+15,
+  SW_SF2 = SW_ThrCt+16,
+  SW_SG0 = SW_ThrCt+17,
+  SW_SG1 = SW_ThrCt+18,
+  SW_SG2 = SW_ThrCt+19,
+  SW_SH0 = SW_ThrCt+20,
+  SW_SH2 = SW_ThrCt+21
 };
 
+
+
+
 #define SWITCHES_STR "THRRUDELEID0ID1ID2AILGEATRNSW1SW2SW3SW4SW5SW6SW7SW8SW9SWASWBSWCSWDSWESWFSWGSWHSWISWJSWKSWLSWMSWNSWO"
+#define XSWITCHES_STR "SA^SA-SAvSB^SB-SBvSC^SC-SCvSD^SD-SDvSE^SE-SEvSF^SFvSG^SG-SGvSH^SHvSW1SW2SW3SW4SW5SW6SW7SW8SW9SWASWBSWCSWDSWESWFSWGSWHSWISWJSWKSWLSWMSWNSWO"
 #define NUM_CSW  12 //number of custom switches
 #define NUM_SKYCSW  24 //number of custom switches
 #define CSW_INDEX	9	// Index of first custom switch
@@ -105,6 +131,7 @@ enum EnumKeys {
 #define SW_BASE_DIAG SW_ThrCt
 //#define SWITCHES_STR "  NC  ON THR RUD ELE ID0 ID1 ID2 AILGEARTRNR"
 #define MAX_DRSWITCH (1+SW_Trainer-SW_ThrCt+1+NUM_SKYCSW)
+#define MAX_XDRSWITCH (1+SW_SH2-SW_SA0+1+NUM_SKYCSW)
 
 #define SWP_ID0 (SW_ID0-SW_BASE)
 #define SWP_ID1 (SW_ID1-SW_BASE)
@@ -237,7 +264,8 @@ enum EnumKeys {
 #define PROTO_PPM        0
 #define PROTO_PXX        1
 #define PROTO_DSM2       2
-#define PROTO_PPM16			 3
+#define PROTO_PPM16			 3		// No longer needed
+#define PROTO_OFF		     15		// For X9D
 #define PROT_MAX         2
 #define PROT_STR "PPM   PXX   DSM2  "
 #define PROT_STR_LEN     6

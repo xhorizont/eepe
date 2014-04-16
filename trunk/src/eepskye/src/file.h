@@ -22,8 +22,8 @@ extern uint32_t DefaultModelType ;
 /// fileId of general file
 #define FILE_GENERAL   0
 /// convert model number 0..MAX_MODELS-1  int fileId
-#define FILE_MODEL(n) (1+n)
-#define FILE_TMP      (1+16)
+//#define FILE_MODEL(n) (1+n)
+//#define FILE_TMP      (1+16)
 
 
 #define ERR_NONE 0
@@ -43,27 +43,27 @@ extern uint32_t DefaultModelType ;
 
 #  define EESIZE   ((MAX_MODELS+1)*8192L)
 #  define EEFULLSIZE   (64*8192L)
-#  define BS       16
-#  define RESV     64  //reserv for eeprom header with directory (eeFs)
-#define FIRSTBLK (RESV/BS)
-#define BLOCKS   (2048/BS)
-#define EEFS_VERS 4
+//#  define BS       16
+//#  define RESV     64  //reserv for eeprom header with directory (eeFs)
+//#define FIRSTBLK (RESV/BS)
+//#define BLOCKS   (2048/BS)
+//#define EEFS_VERS 4
 
 #define MAXFILES (1+MAX_MODELS+3)
 
-struct DirEnt{
-  uint8_t  startBlk;
-  uint16_t size:12;
-  uint16_t typ:4;
-}__attribute__((packed));
+//struct DirEnt{
+//  uint8_t  startBlk;
+//  uint16_t size:12;
+//  uint16_t typ:4;
+//}__attribute__((packed));
 
-struct EeFs{
-  uint8_t  version;
-  uint8_t  mySize;
-  uint8_t  freeList;
-  uint8_t  bs;
-  DirEnt   files[MAXFILES];
-}__attribute__((packed));
+//struct EeFs{
+//  uint8_t  version;
+//  uint8_t  mySize;
+//  uint8_t  freeList;
+//  uint8_t  bs;
+//  DirEnt   files[MAXFILES];
+//}__attribute__((packed));
 
 
 struct t_file_entry
@@ -99,6 +99,7 @@ struct t_radioData
     SKYModelData models[MAX_MODELS];
     unsigned char ModelNames[MAX_MODELS+1][MODEL_NAME_LEN+2] ;		// Allow for general
 		uint32_t valid ;
+		uint32_t type ;
 } ;
 
 uint32_t rawloadFile( t_radioData *radioData, uint8_t *eeprom ) ;

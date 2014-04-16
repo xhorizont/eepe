@@ -50,6 +50,7 @@
 #include "burnconfigdialog.h"
 #include "simulatordialog.h"
 #include "printdialog.h"
+#include "eeprom_rlc.h"
 
 namespace er9x
 {
@@ -66,6 +67,12 @@ extern class simulatorDialog *SimPointer ;
 
 MdiChild::MdiChild()
 {
+
+#ifdef SKY
+    QSettings settings("er9x-eePskye", "eePskye");
+		defaultModelVersion = settings.value("default-model-version", 0 ).toInt() + 1 ;
+#endif
+	
     setAttribute(Qt::WA_DeleteOnClose);
     //setWindowFlags(Qt::WindowTitleHint | Qt::WindowSystemMenuHint);
 
@@ -86,6 +93,7 @@ MdiChild::MdiChild()
 	{
     radioData.ModelNames[i][0] = '\0' ;
 	}
+	radioData.type = 0 ;
 	generalDefault() ;
 
     this->setFont(QFont("Courier New",12));
@@ -746,7 +754,8 @@ void MdiChild::OpenEditWindow()
         ModelEdit *t = new ModelEdit( &radioData,(i-1),this);
         
 				if(isNew) t->applyBaseTemplate();
-        t->setWindowTitle(tr("Editing model %1: ").arg(i) + mname ) ;
+    		QString type = radioData.type ? " (Taranis)" : " (Sky)" ;
+        t->setWindowTitle(tr("Editing model %1: ").arg(i) + mname + type ) ;
 
         for(int j=0; j<MAX_SKYMIXERS; j++)
             t->setNote(j,modelNotes[i-1][j]);
@@ -774,11 +783,18 @@ void MdiChild::OpenEditWindow()
 
 void MdiChild::newFile()
 {
-    static int sequenceNumber = 1;
+    static int sequenceNumber = 1 ;
+    QSettings settings("er9x-eePskye", "eePskye");
+		radioData.type = 0 ;
+		if (settings.value("download-version", 0).toInt() == 2 )
+		{
+			radioData.type = 1 ;
+		}
+    QString type = radioData.type ? " (Taranis)" : " (Sky)" ;
 
     isUntitled = true;
     curFile = tr("document%1.bin").arg(sequenceNumber++);
-    setWindowTitle(curFile + "[*]");
+    setWindowTitle(curFile + "[*]" + type );
 
 }
 
@@ -821,7 +837,7 @@ bool MdiChild::loadFile(const QString &fileName, bool resetCurrentFile)
 //    {
 //        //if file is XML read and exit saying true;
 //        //else process as iHex
-//        QDomDocument doc(ER9X_EEPROM_FILE_TYPE);
+//        QDomDocument doc(ERSKY9X_EEPROM_FILE_TYPE);
 //        QFile file(fileName);
 //        bool xmlOK = file.open(QIODevice::ReadOnly);
 //        if(xmlOK)
@@ -904,6 +920,44 @@ bool MdiChild::loadFile(const QString &fileName, bool resetCurrentFile)
     {
         QFile file(fileName);
 
+        if( file.size() == 32768 )
+				{
+					// Taranis RLC file
+	        if (!file.open(QFile::ReadOnly))
+					{  //reading binary file
+            QMessageBox::critical(this, tr("Error"),
+                                 tr("Error opening file %1:\n%2.")
+                                 .arg(fileName)
+                                 .arg(file.errorString()));
+            return false;
+	        }
+
+          /*long result = */ file.read((char*)&temp,32768);
+  	      file.close();
+
+					radioData.type = 1 ;
+	        if(!rawloadFileRlc( &radioData, temp) )
+  	      {
+            QMessageBox::critical(this, tr("Error"),
+                                 tr("Error loading file %1:\n"
+                                    "File may be corrupted, old or from a different system."
+                                    "You might need to update eePe to read this file.")
+                                 .arg(fileName));
+            return false;
+    	    }
+					defaultModelType = DefaultModelType ;
+					radioData.type = 1 ;
+        	refreshList();
+        	if(resetCurrentFile) setCurrentFile(fileName);
+          return true ;
+				
+//          QMessageBox::critical(this, tr("Error"),
+//                                 tr("Error opening file %1:\n%2.")
+//                                 .arg(fileName)
+//                                 .arg("File wrong type (Taranis)"));
+//          return false;
+				}
+
         if( (file.size()!=EESIZE) && (file.size()!=EE20MSIZE) && (file.size()!=EEFULLSIZE) )
         {
             QMessageBox::critical(this, tr("Error"),tr("Error reading file:\n"
@@ -950,6 +1004,7 @@ bool MdiChild::loadFile(const QString &fileName, bool resetCurrentFile)
             return false;
         }
 				defaultModelType = DefaultModelType ;
+				radioData.type = 0 ;
         refreshList();
         if(resetCurrentFile) setCurrentFile(fileName);
 
@@ -1126,9 +1181,14 @@ bool MdiChild::saveFile(const QString &fileName, bool setCurrent)
 //        uint8_t temp[EESIZE];		// Now a global
         
         rawsaveFile( &radioData, temp);
+				int fileSize = EESIZE ;
+        if ( radioData.type )
+				{
+					fileSize = 32768 ;
+				}
 
-        long result = file.write((char*)&temp,EESIZE);
-        if(result!=EESIZE)
+        long result = file.write((char*)&temp,fileSize);
+        if(result != fileSize)
         {
             QMessageBox::warning(this, tr("Error"),
                                  tr("Error writing file %1:\n%2.")
@@ -1189,13 +1249,15 @@ bool MdiChild::maybeSave()
 
 void MdiChild::setCurrentFile(const QString &fileName)
 {
-    curFile = QFileInfo(fileName).canonicalFilePath();
+    QString type = radioData.type ? " (Taranis)" : " (Sky)" ;
+    
+		curFile = QFileInfo(fileName).canonicalFilePath();
     isUntitled = false;
 		//XXXXXXXXXXXXX
 //    eeFile.setChanged(false);
 		changed = false ;
     setWindowModified(false);
-    setWindowTitle(userFriendlyCurrentFile() + "[*]");
+    setWindowTitle(userFriendlyCurrentFile() + "[*]" + type);
 }
 
 QString MdiChild::strippedName(const QString &fullFileName)
@@ -1315,9 +1377,15 @@ void MdiChild::burnTo()  // write to Tx
 					}
 					else
 					{
+      			qint32 fsize ;
+						fsize = (MAX_MODELS+1)*8192 ;
+						if ( radioData.type )
+						{
+							fsize = 32768 ;			// Taranis EEPROM
+						}
 						avrdudeLoc = "" ;
-    			  arguments << path << tempFile << tr("%1").arg((MAX_MODELS+1)*8192) ;
-	  			  avrOutputDialog *ad = new avrOutputDialog(this, avrdudeLoc, arguments,tr("Read EEPROM From Tx")); //, AVR_DIALOG_KEEP_OPEN);
+    			  arguments << path << tempFile << tr("%1").arg(fsize) << "0" ;
+	  			  avrOutputDialog *ad = new avrOutputDialog(this, avrdudeLoc, arguments,tr("Write EEPROM To Tx")); //, AVR_DIALOG_KEEP_OPEN);
 //						res = ad->result() ;
 						delete ad ;
 					}
@@ -1403,7 +1471,7 @@ void MdiChild::simulate()
 		simulatorDialog *sd ;
 
 		sd = SimPointer ;
-    sd->loadParams(gg,gm);
+    sd->loadParams(gg,gm, radioData.type);
     sd->show();
 }
 
@@ -1491,10 +1559,26 @@ void MdiChild::modelDefault(uint8_t id)
   }
 
   radioData.models[id].modelVersion = 1 ; //update mdvers
-	if ( defaultModelType > 1 )
+	if ( ( defaultModelType > 1 ) || (defaultModelVersion > 1 ) )
 	{
     modelConvert1to2( &radioData.generalSettings, &radioData.models[id] ) ;
 	}					 
+	if (defaultModelVersion > 2 )
+	{
+		for (uint8_t i = 0 ; i < NUM_SKYCSW ; i += 1 )
+		{
+      SKYCSwData *cs = &radioData.models[id].customSw[i];
+			if ( cs->func == CS_LATCH )
+			{
+				cs->func = CS_GREATER ;
+			}
+			if ( cs->func == CS_FLIP )
+			{
+				cs->func = CS_LESS ;
+			}
+		}
+		radioData.models[id].modelVersion = 3 ;
+	}
 
 	setModelFile( id ) ;
 

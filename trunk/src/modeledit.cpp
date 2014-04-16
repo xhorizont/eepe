@@ -554,7 +554,7 @@ void ModelEdit::tabExpo()
 					y = -100 ;
 					if ( j == 1 )
 					{
-    				/*if ( ( x >= -100 && x <= 100 ) )*/ x += 100 ;
+    				/*if ( ( x >= -100 && x <= 0 ) )*/ x += 100 ;
 						y = 0 ;
 					}
 					populateSpinGVarCB( sb, cb, chkb, x, y, 100 ) ;
@@ -658,14 +658,14 @@ void ModelEdit::tabExpo()
 
 void expoDrSet( int8_t *pval, int x )
 {
-//  if ( ( x >= -100 && x <= 100 ) ) x -= 100 ;
-  *pval = x - 100 ;
+//  if ( ( x >= 0 && x <= 100 ) ) 
+	x -= 100 ;
+  *pval = x ;
 }
 
 
 void ModelEdit::expoEdited()
 {
-//  int x ;
 		int i, j, k ;
 		QSpinBox *sb ;
 		QComboBox *cb ;
@@ -704,7 +704,9 @@ void ModelEdit::expoEdited()
 					}
 					else
 					{
-			    	expoDrSet( pval, numericSpinGvarValue( sb, cb, chkb, *pval, 100 ) ) ;
+            int temp = *pval + 100 ;
+            if ( temp > 127) temp -= 256 ;
+			    	expoDrSet( pval, numericSpinGvarValue( sb, cb, chkb, temp, 100 ) ) ;
 					}
 
 					sb = expoDrSpin[0][i][j][k] ;
@@ -717,7 +719,9 @@ void ModelEdit::expoEdited()
 					}
 					else
 					{
-			    	expoDrSet( pval, numericSpinGvarValue( sb, cb, chkb, *pval, 100 ) ) ;
+            int temp = *pval + 100 ;
+            if ( temp > 127) temp -= 256 ;
+			    	expoDrSet( pval, numericSpinGvarValue( sb, cb, chkb, temp, 100 ) ) ;
 					}
 
 					sb = expoDrSpin[2][i][j][k] ;
@@ -730,7 +734,9 @@ void ModelEdit::expoEdited()
 					}
 					else
 					{
-			    	expoDrSet( pval, numericSpinGvarValue( sb, cb, chkb, *pval, 100 ) ) ;
+            int temp = *pval + 100 ;
+            if ( temp > 127) temp -= 256 ;
+			    	expoDrSet( pval, numericSpinGvarValue( sb, cb, chkb, temp, 100 ) ) ;
 					}
 
 					sb = expoDrSpin[3][i][j][k] ;
@@ -743,13 +749,14 @@ void ModelEdit::expoEdited()
 					}
 					else
 					{
-			    	expoDrSet( pval, numericSpinGvarValue( sb, cb, chkb, *pval, 100 ) ) ;
+            int temp = *pval + 100 ;
+            if ( temp > 127) temp -= 256 ;
+			    	expoDrSet( pval, numericSpinGvarValue( sb, cb, chkb, temp, 100 ) ) ;
 					}
 
 				}
 			}
 		} 
-
     updateSettings();
 }
 
@@ -2749,7 +2756,13 @@ void ModelEdit::tabTrims()
     ui->spinBox_S3->setValue(g_model.trim[(g_eeGeneral.stickMode & 1) ? 1 : 2]);//CONVERT_MODE(THR)-1]);
     ui->spinBox_S4->setValue(g_model.trim[(g_eeGeneral.stickMode>1)   ? 0 : 3]);//CONVERT_MODE(AIL)-1]);
 
-    switch (g_eeGeneral.stickMode)
+		int i = g_eeGeneral.stickMode ;
+		if ( g_eeGeneral.crosstrim )
+		{
+			i = 3 - i ;
+		}
+
+    switch (i)
     {
         case (0):
             ui->Label_S1->setText("RUD");

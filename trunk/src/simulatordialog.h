@@ -77,6 +77,7 @@ private:
     quint16 s_sum;
     quint8  sw_toggled;
 		quint8	CurrentPhase ;
+		quint8  CalcScaleNest ;
 
 		quint8  current_limits ;
 
@@ -116,6 +117,7 @@ private:
 		uint32_t getTrimFlightPhase( uint8_t phase, uint8_t idx ) ;
 		int16_t getTrimValue( uint8_t phase, uint8_t idx ) ;
 		void setTrimValue(uint8_t phase, uint8_t idx, int16_t trim) ;
+		int16_t calc_scaler( uint8_t index ) ;
 
 protected:
 		void closeEvent(QCloseEvent *event) ;
