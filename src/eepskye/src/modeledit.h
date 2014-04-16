@@ -58,12 +58,12 @@ private:
 		QTextBrowser * cswitchText1[NUM_SKYCSW];
 		QTextBrowser * cswitchText2[NUM_SKYCSW];
 
-    QSpinBox  * safetySwitchValue[NUM_SKYCHNOUT];
-    QComboBox * safetySwitchSwtch[NUM_SKYCHNOUT];
-		QComboBox * safetySwitchType[NUM_SKYCHNOUT];
-    QComboBox * safetySwitchAlarm[NUM_SKYCHNOUT];
-		QCheckBox *safetySwitchGvar[NUM_SKYCHNOUT] ;
-		QComboBox *safetySwitchGindex[NUM_SKYCHNOUT] ;
+    QSpinBox  * safetySwitchValue[NUM_SKYCHNOUT+NUM_VOICE];
+    QComboBox * safetySwitchSwtch[NUM_SKYCHNOUT+NUM_VOICE];
+		QComboBox * safetySwitchType[NUM_SKYCHNOUT+NUM_VOICE];
+    QComboBox * safetySwitchAlarm[NUM_SKYCHNOUT+NUM_VOICE];
+		QCheckBox *safetySwitchGvar[NUM_SKYCHNOUT+NUM_VOICE] ;
+		QComboBox *safetySwitchGindex[NUM_SKYCHNOUT+NUM_VOICE] ;
 
     QSpinBox *expoDrSpin[4][3][2][2] ;
     QComboBox *expoDrVal[4][3][2][2] ;
@@ -246,13 +246,17 @@ private slots:
 		
     void on_ppmDelaySB_editingFinished();
     void on_numChannelsSB_editingFinished();
+    void on_xnumChannelsSB_editingFinished();
 		void on_numChannels2SB_editingFinished() ;
 		void on_startChannelsSB_editingFinished() ;
+		void on_xstartChannelsSB_editingFinished() ;
 		void on_startChannels2SB_editingFinished() ;
     void on_timerValTE_editingFinished();
     void on_timer2ValTE_editingFinished();
     void on_protocolCB_currentIndexChanged(int index);
+    void on_xprotocolCB_currentIndexChanged(int index);
     void on_pulsePolCB_currentIndexChanged(int index);
+    void on_xpulsePolCB_currentIndexChanged(int index);
     void on_trimSWCB_currentIndexChanged(int index);
     void on_trimIncCB_currentIndexChanged(int index);
     void on_volumeControlCB_currentIndexChanged(int index) ;
@@ -266,13 +270,16 @@ private slots:
     void on_tabWidget_currentChanged(int index);
     void on_templateList_doubleClicked(QModelIndex index);
     void on_ppmFrameLengthDSB_editingFinished();
+    void on_xppmFrameLengthDSB_editingFinished();
     void ControlCurveSignal(bool flag);
     void on_DSM_Type_currentIndexChanged(int index);
     void on_pxxRxNum_editingFinished();
 		void on_VoiceNumberSB_editingFinished() ;
 		void on_autoLimitsSB_editingFinished() ;
 		void on_countryCB_currentIndexChanged(int index) ;
+		void on_xcountryCB_currentIndexChanged(int index) ;
 		void on_typeCB_currentIndexChanged(int index) ;
+		void on_xtypeCB_currentIndexChanged(int index) ;
 		void updateToMV2( void ) ;
 		void updateToMV3( void ) ;
 
@@ -286,6 +293,13 @@ private slots:
     void on_switchDefPos_6_stateChanged(int );
     void on_switchDefPos_7_stateChanged(int );
     void on_switchDefPos_8_stateChanged(int );
+		void on_SwitchDefSA_valueChanged( int x ) ;
+		void on_SwitchDefSB_valueChanged( int x ) ;
+		void on_SwitchDefSC_valueChanged( int x ) ;
+		void on_SwitchDefSD_valueChanged( int x ) ;
+		void on_SwitchDefSE_valueChanged( int x ) ;
+		void on_SwitchDefSF_valueChanged( int x ) ;
+		void on_SwitchDefSG_valueChanged( int x ) ;
 
 };
 

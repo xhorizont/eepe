@@ -57,9 +57,9 @@
 #include "file.h"
 
 
-#define ER9X_EEPROM_FILE_TYPE        "ER9X_EEPROM_FILE"
-#define ER9X_MODEL_FILE_TYPE         "ER9X_MODEL_FILE"
-#define ER9X_GENERAL_FILE_TYPE       "ER9X_GENERAL_FILE"
+//#define ER9X_EEPROM_FILE_TYPE        "ER9X_EEPROM_FILE"
+//#define ER9X_MODEL_FILE_TYPE         "ER9X_MODEL_FILE"
+//#define ER9X_GENERAL_FILE_TYPE       "ER9X_GENERAL_FILE"
 
 #define ERSKY9X_EEPROM_FILE_TYPE        "ERSKY9X_EEPROM_FILE"
 #define ERSKY9X_MODEL_FILE_TYPE         "ERSKY9X_MODEL_FILE"
@@ -103,6 +103,7 @@ private:
     void doCopy(QByteArray *gmData);
     QString strippedName(const QString &fullFileName);
 		int defaultModelType ;
+		int defaultModelVersion ;
 
     QPoint dragStartPosition;
 

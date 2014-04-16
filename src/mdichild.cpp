@@ -783,7 +783,7 @@ bool MdiChild::loadFile(const QString &fileName, bool resetCurrentFile)
             if((QFileInfo(fileName).size()>(6*1024)) || (QFileInfo(fileName).size()<(4*1024)))  //if filesize> 6k or <4kb
             {
 							
-            	if((QFileInfo(fileName).size()>(11*1024)) || (QFileInfo(fileName).size()<(9*1024)))  //if filesize> 11k or <9kb
+              if((QFileInfo(fileName).size()>(12*1024)) || (QFileInfo(fileName).size()<(9*1024)))  //if filesize> 11k or <9kb
 							{
 							
                 QMessageBox::critical(this, tr("Error"),tr("Error reading file:\n"

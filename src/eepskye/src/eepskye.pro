@@ -25,7 +25,8 @@ HEADERS += mainwindow.h \
     ../../telemetry.h \
     ../../reviewOutput.h \
     ../../node.h \
-    ../../edge.h
+    ../../edge.h \
+    eeprom_rlc.h
 SOURCES += main.cpp \
     mainwindow.cpp \
     file.cpp \
@@ -47,7 +48,8 @@ SOURCES += main.cpp \
     ../../reviewOutput.cpp \
     helpers.cpp \
     ../../node.cpp \
-    ../../edge.cpp
+    ../../edge.cpp \
+    eeprom_rlc.cpp
 unix {
 SOURCES += mountlist.cpp
 }

@@ -22,9 +22,6 @@ avrOutputDialog::avrOutputDialog(QWidget *parent, QString prog, QStringList arg,
 {
   ui->setupUi(this);
 
-
-
-
   cmdLine = prog;
 
   if (cmdLine.isEmpty())
@@ -34,10 +31,12 @@ avrOutputDialog::avrOutputDialog(QWidget *parent, QString prog, QStringList arg,
 		QString sourceFile ;
 		QString destFile ;
 		quint32 size ;
+		quint32 offset ;
 		quint32 numBlocks ;
     destFile = arg.at(0) ;
     sourceFile = arg.at(1) ;
     size = arg.at(2).toInt() ;
+    offset = arg.at(3).toInt() ;
 		numBlocks = size / 4096 ;
 
     ui->progressBar->setMaximum(numBlocks) ;
@@ -45,7 +44,8 @@ avrOutputDialog::avrOutputDialog(QWidget *parent, QString prog, QStringList arg,
 //		thread()->wait( 400 ) ;
 
 		show() ;
-		if ( doFileCopy( destFile, sourceFile, size ) == 0 )
+		repaint() ;
+		if ( doFileCopy( destFile, sourceFile, size, offset ) == 0 )
 		{
       QMessageBox::critical(this, "eePskye", tr("Operation Failed"));
       reject();
@@ -55,6 +55,7 @@ avrOutputDialog::avrOutputDialog(QWidget *parent, QString prog, QStringList arg,
       QMessageBox::information(this, "eePskye", tr("Operation Successful"));
     	accept();
 		}
+		AvrdudeOutput = ui->plainTextEdit->toPlainText() ;
 	}
 	else
 	{
@@ -273,7 +274,7 @@ void avrOutputDialog::doProcessStarted()
 }
 
 
-int avrOutputDialog::doFileCopy( QString destFile, QString sourceFile, quint32 size )
+int avrOutputDialog::doFileCopy( QString destFile, QString sourceFile, quint32 size, quint32 offset )
 {
   char buf[4096];
   int hasErrors = 0 ;
@@ -283,6 +284,8 @@ int avrOutputDialog::doFileCopy( QString destFile, QString sourceFile, quint32 s
 
 	QFile source(sourceFile);
   QFile dest(destFile);
+  addText("Starting\n");
+	repaint() ;
   if (!source.open(QIODevice::ReadOnly))
 	{
     QMessageBox::warning(this, tr("Error"),tr("Cannot open source file"));
@@ -290,6 +293,8 @@ int avrOutputDialog::doFileCopy( QString destFile, QString sourceFile, quint32 s
   }
 	else
 	{
+    addText("Opened source file\n");
+		repaint() ;
     if (!dest.open(QIODevice::ReadWrite))
 		{
       QMessageBox::warning(this, tr("Error"),tr("Cannot write destination"));
@@ -297,6 +302,15 @@ int avrOutputDialog::doFileCopy( QString destFile, QString sourceFile, quint32 s
 	  }
 		else
 		{
+    	addText("Opened destination file\n");
+			repaint() ;
+			if ( offset )
+			{
+				size -= offset ;
+				blocks += offset / 4096 ;
+				source.seek(offset) ;
+				dest.seek(offset) ;
+			}
 			do
 			{
 				count = size - bytesCopied ;

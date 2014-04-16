@@ -5,6 +5,7 @@
 #include "../../node.h"
 #include <inttypes.h>
 #include "pers.h"
+#include "qextserialport.h"
 
 #define TMR_OFF     0
 #define TMR_RUNNING 1
@@ -28,7 +29,7 @@ public:
     explicit simulatorDialog(QWidget *parent = 0);
     ~simulatorDialog();
 
-    void loadParams(const EEGeneral gg, const SKYModelData gm);
+    void loadParams(const EEGeneral gg, const SKYModelData gm, int type);
 
 private:
     Ui::simulatorDialog *ui;
@@ -41,14 +42,14 @@ private:
     qint8   *trimptr[4];
     quint16 g_tmr10ms;
     qint16  chanOut[NUM_SKYCHNOUT];
-    qint16  calibratedStick[7+2+3];
+    qint16  calibratedStick[7+2+3+1];
     qint16  StickValues[4] ;
     qint16  g_ppmIns[8];
     qint16  ex_chans[NUM_SKYCHNOUT];
     qint8   trim[4];
     qint16  sDelay[MAX_SKYMIXERS];
     qint32  act[MAX_SKYMIXERS];
-    qint16  anas [NUM_SKYXCHNRAW+1+MAX_GVARS];
+    qint16  anas [NUM_SKYXCHNRAW+1+MAX_GVARS+1];	// Extra 1 for X9D
     qint32  chans[NUM_SKYCHNOUT];
     quint8  bpanaCenter;
     quint16 parametersLoaded ;
@@ -62,6 +63,8 @@ private:
 		quint16 fadeWeight ;
     
 		qint16 qdebug ;
+		qint16 serialSending ;
+    QextSerialPort *port ;
 
     quint16 s_timeCumTot;
     quint16 s_timeCumAbs;
@@ -77,6 +80,8 @@ private:
     quint16 s_sum;
     quint8  sw_toggled;
 		quint8	CurrentPhase ;
+		quint8	txType ;
+		quint8  CalcScaleNest ;
     
 		quint8  current_limits ;
 
@@ -115,8 +120,7 @@ private:
 		uint32_t getTrimFlightPhase( uint8_t phase, uint8_t idx ) ;
 		int16_t getTrimValue( uint8_t phase, uint8_t idx ) ;
 		void setTrimValue(uint8_t phase, uint8_t idx, int16_t trim) ;
-
-
+		int16_t calc_scaler( uint8_t index ) ;
 
 
 protected:
@@ -131,7 +135,7 @@ private slots:
     void on_holdRightX_clicked(bool checked);
     void on_holdLeftY_clicked(bool checked);
     void on_holdLeftX_clicked(bool checked);
-		void on_sendDataButton_clicked( void ) ;
+		void on_SendDataButton_clicked() ;
     void timerEvent();
 
 

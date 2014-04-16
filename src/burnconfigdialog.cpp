@@ -217,7 +217,8 @@ void burnConfigDialog::restFuses(bool eeProtect)
 				
 				if ( avrMCU == "m2561" )
 				{
-        	str << "-U" << "lfuse:w:0xDE:m" << "-U" << "hfuse:w:0xD1:m" << "-U" << "efuse:w:0xFC:m";
+        	QString erStr = eeProtect ? "hfuse:w:0xD1:m" : "hfuse:w:0xD9:m";
+        	str << "-U" << "lfuse:w:0xDE:m" << "-U" << erStr << "-U" << "efuse:w:0xFC:m";
 				}
 				else
 				{

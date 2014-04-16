@@ -42,6 +42,9 @@ void preferencesDialog::write_values()
     settings.setValue("default_mode", ui->stickmodeCB->currentIndex());
     settings.setValue("show_splash", ui->showSplash->isChecked());
     settings.setValue("download-version", ui->downloadVerCB->currentIndex());
+#ifdef SKY
+    settings.setValue("default-model-version", ui->defaultVersionCB->currentIndex());
+#endif
 }
 
 
@@ -75,12 +78,20 @@ void preferencesDialog::initSettings()
     	currentER9Xrev = settings.value("currentERSKY9Xrev", 1).toInt();
 			ui->label_CurrentVersion->setText( "Current Version - ersky9x" ) ;
 		}
-		else
+		else if ( dnloadVersion == 1 )
 		{
     	currentER9Xrev = settings.value("currentERSKY9XRrev", 1).toInt();
 			ui->label_CurrentVersion->setText( "Current Version - ersky9xr" ) ;
 		}
+		else
+		{
+    	currentER9Xrev = settings.value("currentERSKYX9Drev", 1).toInt();
+			ui->label_CurrentVersion->setText( "Current Version - erskyX9D" ) ;
+		}
     ui->er9x_ver_label->setText(QString("r%1").arg(currentER9Xrev));
+#ifdef SKY
+		ui->defaultVersionCB->setCurrentIndex( settings.value("default-model-version", 0 ).toInt() ) ;
+#endif
 }
 
 void preferencesDialog::populateLocale()
@@ -125,10 +136,15 @@ void preferencesDialog::on_downloadVerCB_currentIndexChanged(int index)
     currentER9Xrev = settings.value("currentERSKY9Xrev", 1).toInt();
 		ui->label_CurrentVersion->setText( "Current Version - ersky9x" ) ;
 	}
-	else
+  else if ( index == 1 )
 	{
     currentER9Xrev = settings.value("currentERSKY9XRrev", 1).toInt();
 		ui->label_CurrentVersion->setText( "Current Version - ersky9xr" ) ;
+	}
+	else
+	{
+    currentER9Xrev = settings.value("currentERSKYX9Drev", 1).toInt();
+		ui->label_CurrentVersion->setText( "Current Version - erskyX9D" ) ;
 	}
   ui->er9x_ver_label->setText(QString("r%1").arg(currentER9Xrev));
   settings.setValue("download-version", ui->downloadVerCB->currentIndex());
