@@ -245,6 +245,8 @@ void ModelEdit::tabModelEditSetup()
     ui->extendedLimitsChkB->setChecked(g_model.extendedLimits);
 
     ui->autoLimitsSB->setValue( (double)g_model.sub_trim_limit/10 + 0.049 ) ;
+    
+		protocolEditLock = true ;
 
 		ui->protocolCB->clear() ;
 		ui->xprotocolCB->clear() ;
@@ -260,6 +262,7 @@ void ModelEdit::tabModelEditSetup()
       ui->xprotocolCB->addItem("OFF");
 		}
     //protocol channels ppm delay (disable if needed)
+    protocolEditLock = false ;
     setProtocolBoxes();
 		
 		populateAnaVolumeCB( ui->volumeControlCB, g_model.anaVolume, rData->type ) ;
