@@ -1579,6 +1579,11 @@ void MdiChild::modelDefault(uint8_t id)
 		}
 		radioData.models[id].modelVersion = 3 ;
 	}
+	if ( radioData.type ) // Taranis
+	{
+		radioData.models[id].protocol = PROTO_OFF ;
+		radioData.models[id].xprotocol = PROTO_OFF ;
+	}
 
 	setModelFile( id ) ;
 
