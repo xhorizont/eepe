@@ -61,6 +61,7 @@ GeneralEdit::GeneralEdit(EEPFILE *eFile, QWidget *parent) :
     ui->StickScrollEnableChkB->setChecked(g_eeGeneral.stickScroll);//Default is zero=not checked
     ui->CrossTrimChkB->setChecked(g_eeGeneral.crosstrim);//Default is zero=not checked
     ui->FrskyPinsChkB->setChecked(g_eeGeneral.FrskyPins);//Default is zero=not checked
+    ui->TeZ_gt_90ChkB->setChecked(g_eeGeneral.TEZr90);//Default is zero=not checked
     ui->RotateScreenChkB->setChecked(g_eeGeneral.rotateScreen);//Default is zero=not checked
     ui->SerialLCDChkB->setChecked(g_eeGeneral.serialLCD);//Default is zero=not checked
     ui->SSD1306ChkB->setChecked(g_eeGeneral.SSD1306);//Default is zero=not checked
@@ -460,6 +461,13 @@ void GeneralEdit::on_FrskyPinsChkB_stateChanged(int )
     g_eeGeneral.FrskyPins = ui->FrskyPinsChkB->isChecked() ? 1 : 0 ;
     updateSettings();
 }
+
+void GeneralEdit::on_TeZ_gt_90ChkB_stateChanged(int )
+{
+    g_eeGeneral.TEZr90 = ui->TeZ_gt_90ChkB->isChecked() ? 1 : 0 ;
+    updateSettings();
+}
+
 
 void GeneralEdit::on_RotateScreenChkB_stateChanged(int )
 {

@@ -10,6 +10,12 @@ description here
 ====================================================================================
 
 ******************************************
+CHANGELOG: 21-Apr-2014 MPB (r402)
+Add TelemetrEZ option (not MAC)
+bug fixes
+X9D (Taranis) simulator fixes
+
+******************************************
 CHANGELOG: 20-Mar-2014 MPB (r400)
 Fix simulator trim bug
 Fix dual-rate GVAR bug
