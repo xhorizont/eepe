@@ -723,6 +723,10 @@ msgctxt "GeneralEdit|"
 msgid "MegaSound"
 msgstr ""
 
+msgctxt "GeneralEdit|"
+msgid "TelemetrEZ rev. 90+"
+msgstr ""
+
 msgctxt "MainWindow|"
 msgid "&New"
 msgstr "&Nouveau"
@@ -1358,6 +1362,14 @@ msgstr ""
 
 msgctxt "MainWindow|"
 msgid "display last AvrDude output"
+msgstr ""
+
+msgctxt "MainWindow|"
+msgid "&Release Notes"
+msgstr ""
+
+msgctxt "MainWindow|"
+msgid "Show release notes"
 msgstr ""
 
 msgctxt "MdiChild|"
@@ -3139,6 +3151,10 @@ msgctxt "ModelEdit|"
 msgid "Name"
 msgstr "Nom"
 
+msgctxt "ModelEdit|"
+msgid "Update to Version 3, only for er9x r811 and later"
+msgstr ""
+
 msgctxt "QObject|"
 msgid "Checking for updates..."
 msgstr ""
@@ -4422,6 +4438,10 @@ msgstr ""
 
 msgctxt "reviewOutput|"
 msgid "Reviewing Burn Output"
+msgstr ""
+
+msgctxt "reviewOutput|"
+msgid "Don't Show Again"
 msgstr ""
 
 msgctxt "serialDialog|"

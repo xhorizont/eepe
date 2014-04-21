@@ -615,6 +615,10 @@ p, li { white-space: pre-wrap; }
         <source>MegaSound</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>TelemetrEZ rev. 90+</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>MainWindow</name>
@@ -1214,6 +1218,14 @@ http://code.google.com/p/eepe/</source>
     </message>
     <message>
         <source>display last AvrDude output</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Release Notes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show release notes</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2861,6 +2873,10 @@ Droite</translation>
         <source>Name</source>
         <translation type="unfinished">Nom</translation>
     </message>
+    <message>
+        <source>Update to Version 3, only for er9x r811 and later</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>QObject</name>
@@ -3883,6 +3899,10 @@ Indique l&apos;affectation voie / numéro de canal par défaut utilisée lors de
     <name>reviewOutput</name>
     <message>
         <source>Reviewing Burn Output</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Don&apos;t Show Again</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

@@ -1,0 +1,35 @@
+#! /bin/bash
+
+echo "===== Updating from SVN ====="
+svn update
+echo
+
+
+svn info >rev.txt
+grep Revision: rev.txt > rev1.txt
+VER=$(egrep -o [[:digit:]]* rev1.txt)
+let "VER+=1"
+rm rev.txt
+rm rev1.txt
+
+echo "===== GENERATING VERSION STAMP ====="
+echo "//Automatically generated file - do not edit"
+echo "#define DATE_STR \"`date -u +%d.%m.%Y`\""
+echo "#define TIME_STR \"`date -u +%H:%M:%S`\""
+echo "#define SUB_VERS \"1-$USER\""
+echo "#define SVN_VERS \"trunk-r$VER\""
+echo "#define SVN_VER_NUM $VER"
+
+echo "===================================="
+echo
+
+
+
+echo "//Automatically generated file - do not edit" > src/stamp-eepskye.h
+echo "#define DATE_STR \"`date -u +%d.%m.%Y`\"" >> src/stamp-eepskye.h
+echo "#define TIME_STR \"`date -u +%H:%M:%S`\"" >> src/stamp-eepskye.h
+echo "#define SUB_VERS \"1-$USER\"" >> src/stamp-eepskye.h
+echo "#define SVN_VERS \"trunk-r$VER\"" >> src/stamp-eepskye.h
+echo "#define SVN_VER_NUM $VER" >> src/stamp-eepskye.h
+
+echo

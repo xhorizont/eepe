@@ -180,7 +180,8 @@ PACK(typedef struct t_EEGeneral {
     uint8_t   rotateScreen:1 ;
     uint8_t   serialLCD:1 ;
     uint8_t   SSD1306:1 ;
-    uint8_t   spare1:3 ;
+    uint8_t   TEZr90:1 ;
+    uint8_t   spare1:2 ;
 		uint8_t		stickReverse ;
 #endif
 }) EEGeneral;
