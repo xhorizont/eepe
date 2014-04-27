@@ -109,9 +109,9 @@
 //#define ER9X_ARDUPILOT_URL   "http://er9x.googlecode.com/svn/trunk/er9x-ardupilot.hex"
 //#define ER9X_NMEA_URL   "http://er9x.googlecode.com/svn/trunk/er9x-nmea.hex"
 //#define ER9X_STAMP "http://er9x.googlecode.com/svn/trunk/src/stamp-er9x.h"
-#define EEPE_URL   "http://eepe.googlecode.com/svn/trunk/eePeInstall.exe"
+#define EEPE_URL   "http://eepe.googlecode.com/svn/trunk/eePeInstall.zip"
 //#define EEPE_STAMP "http://eepe.googlecode.com/svn/trunk/src/stamp-eepe.h"
-#define EEPSKYE_URL   "http://eepe.googlecode.com/svn/trunk/eePeInstall.exe"
+#define EEPSKYE_URL   "http://eepe.googlecode.com/svn/trunk/eePeInstall.zip"
 #define EEPSKYE_STAMP "http://eepe.googlecode.com/svn/trunk/src/eepskye/src/stamp-eepskye.h"
 
 #define ERSKY9X_STAMP "http://ersky9x.googlecode.com/svn/trunk/src/stamp-ersky9x.h"

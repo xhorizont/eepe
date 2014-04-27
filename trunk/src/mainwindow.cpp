@@ -140,7 +140,7 @@
 #define ER9X_128_URL   "http://er9x.googlecode.com/svn/trunk/er9x-128.hex"
 #define ER9X_128_S_URL   "http://er9x.googlecode.com/svn/trunk/er9x-128.hex"
 #define ER9X_STAMP "http://er9x.googlecode.com/svn/trunk/src/stamp-er9x.h"
-#define EEPE_URL   "http://eepe.googlecode.com/svn/trunk/eePeInstall.exe"
+#define EEPE_URL   "http://eepe.googlecode.com/svn/trunk/eePeInstall.zip"
 #define EEPE_STAMP "http://eepe.googlecode.com/svn/trunk/src/stamp-eepe.h"
 #define ER9X_DE_URL   "http://er9x.googlecode.com/svn/trunk/er9x-de.hex"
 #define ER9X_FRSKY_DE_URL   "http://er9x.googlecode.com/svn/trunk/er9x-frsky-de.hex"
