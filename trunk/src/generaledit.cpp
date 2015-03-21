@@ -39,6 +39,20 @@ GeneralEdit::GeneralEdit(EEPFILE *eFile, QWidget *parent) :
 
     ui->ownerNameLE->setText(g_eeGeneral.ownerName);
 
+		for(quint8 i=0; i<16; i++)
+		{
+			if (g_eeGeneral.customStickNames[i] == 0 )
+			{
+				g_eeGeneral.customStickNames[i] = ' ' ;
+			}
+		}
+
+    QString Str = (char *)g_eeGeneral.customStickNames ;
+    ui->rudNameLE->setText( Str.mid(0,4)) ;
+    ui->eleNameLE->setText( Str.mid(4,4)) ;
+    ui->thrNameLE->setText( Str.mid(8,4)) ;
+    ui->ailNameLE->setText( Str.mid(12,4)) ;
+
     ui->contrastSB->setValue(g_eeGeneral.contrast);
     ui->battwarningDSB->setValue((double)g_eeGeneral.vBatWarn/10);
     ui->battcalibDSB->setValue((double)g_eeGeneral.vBatCalib/10);
@@ -688,9 +702,70 @@ void GeneralEdit::on_ownerNameLE_editingFinished()
         if(i>=sizeof(g_eeGeneral.ownerName)) break;
         g_eeGeneral.ownerName[i] = ui->ownerNameLE->text().toStdString()[i];
     }
-
     updateSettings();
 }
+
+void GeneralEdit::on_rudNameLE_editingFinished()
+{
+  memset(&g_eeGeneral.customStickNames[0],' ', 4);
+	
+	for(quint8 i=0; i<4; i++)
+  {
+		uint8_t x = ui->rudNameLE->text().toStdString()[i] ;
+		if ( x == 0 )
+		{
+			break ;
+		}
+		g_eeGeneral.customStickNames[i] = x ;
+  }
+  updateSettings();
+}
+
+void GeneralEdit::on_eleNameLE_editingFinished()
+{
+  memset(&g_eeGeneral.customStickNames[4],' ', 4);
+	for(quint8 i=0; i<4; i++)
+  {
+		uint8_t x = ui->eleNameLE->text().toStdString()[i] ;
+		if ( x == 0 )
+		{
+			break ;
+		}
+		g_eeGeneral.customStickNames[i+4] = x ;
+  }
+  updateSettings();
+}
+
+void GeneralEdit::on_thrNameLE_editingFinished()
+{
+  memset(&g_eeGeneral.customStickNames[8],' ', 4);
+	for(quint8 i=0; i<4; i++)
+  {
+		uint8_t x = ui->thrNameLE->text().toStdString()[i] ;
+		if ( x == 0 )
+		{
+			break ;
+		}
+		g_eeGeneral.customStickNames[i+8] = x ;
+  }
+  updateSettings();
+}
+
+void GeneralEdit::on_ailNameLE_editingFinished()
+{
+  memset(&g_eeGeneral.customStickNames[12],' ', 4);
+	for(quint8 i=0; i<4; i++)
+  {
+		uint8_t x = ui->ailNameLE->text().toStdString()[i] ;
+		if ( x == 0 )
+		{
+			break ;
+		}
+		g_eeGeneral.customStickNames[i+12] = x ;
+  }
+  updateSettings();
+}
+
 
 void GeneralEdit::on_speakerPitchSB_editingFinished()
 {
@@ -861,5 +936,6 @@ void GeneralEdit::on_StickRevRH_stateChanged(int )
 	}
   updateSettings();
 }
+
 
 

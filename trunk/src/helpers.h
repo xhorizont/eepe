@@ -8,7 +8,8 @@
 #ifdef SKY
 #define TMR_NUM_OPTION  (TMR_VAROFS+24)
 #else
-#define TMR_NUM_OPTION  (TMR_VAROFS+2*MAX_DRSWITCH-3)
+#define TMR_NUM_OPTION  (TMR_VAROFS+16)
+//#define TMR_NUM_OPTION  (TMR_VAROFS+2*MAX_DRSWITCH-3)
 #endif
 #define SPLASH_MARKER "Splash\0"
 #define SPLASH_WIDTH (128)
@@ -30,7 +31,7 @@ int numericSpinGvarValue( QSpinBox *sb, QComboBox *cb, QCheckBox *ck, int value,
 #ifdef SKY
 void populateGvarCB(QComboBox *b, int value, int type) ;
 #else
-void populateGvarCB(QComboBox *b, int value=0) ;
+void populateGvarCB(QComboBox *b, int value, int type) ;
 #endif
 
 void populateNumericGVarCB( QComboBox *b, int value, int min, int max) ;
@@ -87,6 +88,7 @@ int16_t convertTelemConstant( int8_t index, int8_t value, SKYModelData *model ) 
 #else
 int16_t convertTelemConstant( int8_t index, int8_t value, ModelData *model ) ;
 #endif
+QString getTelemString( int index ) ;
 #ifdef SKY    
 QString getSourceStr(int stickMode, int idx, int modelVersion, int type ) ;
 #else
@@ -103,6 +105,7 @@ QString getSWName(int val, int eepromType);
 QString getSWName(int val, int extra ) ;
 #endif
 QString getCSWFunc(int val, uint8_t modelVersion ) ;
+QString getAudioAlarmName(int val) ;
 
 // Safety switch types
 #define VOICE_SWITCH		6
@@ -117,7 +120,7 @@ void stringTelemetryChannel( char *string, int8_t index, int16_t val, ModelData 
 #endif
 
 int  loadiHEX(QWidget *parent, QString fileName, quint8 * data, int datalen, QString header);
-bool saveiHEX(QWidget *parent, QString fileName, quint8 * data, int datalen, QString header, int notesIndex=0);
+bool saveiHEX(QWidget *parent, QString fileName, quint8 * data, int datalen, QString header, int notesIndex=0, int useBlocks = 0);
 
 void appendTextElement(QDomDocument * qdoc, QDomElement * pe, QString name, QString value);
 void appendNumberElement(QDomDocument * qdoc, QDomElement * pe,QString name, int value, bool forceZeroWrite = false);
@@ -148,6 +151,23 @@ uint8_t CONVERT_MODE( uint8_t x, int modelVersion, int stickMode ) ;
 #ifdef SKY
 QString FindErskyPath( int type ) ;
 void modelConvert1to2( EEGeneral *g_eeGeneral, SKYModelData *g_model ) ;
+#endif
+
+#ifdef SKY
+void createSwitchMapping( EEGeneral *pgeneral, uint8_t max_switch, int type ) ;
+int8_t switchUnMap( int8_t x ) ;
+int8_t switchMap( int8_t x ) ;
+int getSwitchCbValue( QComboBox *b, int eepromType ) ;
+int getSwitchCbValueShort( QComboBox *b, int eepromType ) ;
+int getTimerSwitchCbValue( QComboBox *b, int eepromType ) ;
+uint8_t getSw3PosList( int index ) ;
+uint8_t getSw3PosCount( int index ) ;
+#endif
+
+#ifdef SKY
+uint8_t throttleReversed( EEGeneral *g_eeGeneral, SKYModelData *g_model ) ;
+#else
+uint8_t throttleReversed( EEGeneral *g_eeGeneral, ModelData *g_model ) ;
 #endif
 
 extern uint8_t CS_STATE( uint8_t x, uint8_t modelVersion ) ;

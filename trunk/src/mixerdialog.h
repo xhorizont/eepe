@@ -18,6 +18,7 @@ public:
 
 protected:
     void changeEvent(QEvent *e);
+		void updateChannels() ;
 
 private slots:
     void valuesChanged();
@@ -29,6 +30,7 @@ private:
     QString * mixCommennt;
 		int mType ;
 		int delaySlowSpeed ;
+    bool ValuesEditLock ;
 };
 
 #endif // MIXERDIALOG_H

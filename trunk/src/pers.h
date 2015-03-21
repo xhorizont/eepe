@@ -91,7 +91,7 @@ enum EnumKeys {
   SW_Trainer
 };
 
-#define SWITCHES_STR "THR""RUD""ELE""ID0""ID1""ID2""AIL""GEA""TRN""SW1""SW2""SW3""SW4""SW5""SW6""SW7""SW8""SW9""SWA""SWB""SWCSWDSWESWFSWGSWHSWI"
+#define SWITCHES_STR "THR""RUD""ELE""ID0""ID1""ID2""AIL""GEA""TRN""L1 ""L2 ""L3 ""L4 ""L5 ""L6 ""L7 ""L8 ""L9 ""LA ""LB ""LC LD LE LF LG LH LI "
 #define NUM_CSW  12 //number of custom switches
 #define EXTRA_CSW	6
 #define EXTRA_VOICE_SW	8
@@ -120,7 +120,7 @@ enum EnumKeys {
 
 #define CURV_STR     "---x>0x<0|x|f>0f<0|f|c1 c2 c3 c4 c5 c6 c7 c8 c9 c10c11c12c13c14c15c16"
 #define CURVE_BASE 7
-#define CSWITCH_STR  "----   v>ofs  v<ofs  |v|>ofs|v|<ofsAND    OR     XOR    ""v1==v2 ""v1!=v2 ""v1>v2  ""v1<v2  ""v1>=v2 ""v1<=v2 Timer  "
+#define CSWITCH_STR  "----   v>val  v<val  |v|>val|v|<valAND    OR     XOR    ""v1==v2 ""v1!=v2 ""v1>v2  ""v1<v2  ""v1>=v2 ""v1<=v2 Timer  v~=ofs "
 #define CSW_NUM_FUNC 15
 #define CSW_LEN_FUNC 7
 
@@ -272,7 +272,8 @@ bool eeLoadGeneral();
 #define MIX_3POS	(NUM_XCHNRAW+1)
 
 
-#define TMR_VAROFS  16
+#define TMR_VAROFS  4
+//#define TMR_VAROFS  16
 
 #define SUB_MODE_V     1
 #define SUB_MODE_H     2

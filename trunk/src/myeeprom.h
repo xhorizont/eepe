@@ -88,6 +88,8 @@
 #define MAX_PHASES		4
 #endif
 
+#define NUM_VOICE_ALARMS	8
+
 PACK(typedef struct t_TrainerMix {
   uint8_t srcChn:3; //0-7 = ch1-8
   int8_t  swtch:5;
@@ -184,6 +186,7 @@ PACK(typedef struct t_EEGeneral {
     uint8_t   spare1:2 ;
 		uint8_t		stickReverse ;
 #endif
+		uint8_t		customStickNames[16] ;
 }) EEGeneral;
 
 
@@ -225,11 +228,11 @@ PACK(typedef struct t_MixData {
   uint8_t mltpx:2;           // multiplex method 0=+ 1=* 2=replace
   uint8_t lateOffset:1;      // 
   uint8_t mixWarn:2;         // mixer warning
-  uint8_t enableFmTrim:1;
+  uint8_t disableExpoDr:1;
   uint8_t differential:1;
   int8_t  sOffset;
 	uint8_t modeControl:5 ;
-  uint8_t res:3 ;
+  uint8_t sw23pos:3 ;
 }) MixData;
 
 
@@ -332,6 +335,26 @@ PACK(typedef struct t_scale
 	uint8_t name[4] ;
 }) ScaleData ;
 
+PACK(typedef struct t_voiceAlarm
+{
+  uint8_t source ;
+	uint8_t func;
+  int8_t  swtch ;
+	uint8_t rate ;
+	uint8_t fnameType:3 ;
+	uint8_t haptic:2 ;
+	uint8_t vsource:2 ;
+	uint8_t mute:1 ;
+//	uint8_t res1 ;			// Spare for expansion
+  int16_t  offset ;		//offset
+//	union
+//	{
+		int16_t vfile ;
+//		uint8_t name[8] ;
+//	} file ;
+}) VoiceAlarmData ;
+
+
 typedef struct t_ModelData {
   char      name[MODEL_NAME_LEN];             // 10 must be first for eeLoadModelName
 //    uint8_t   reserved_spare;  //used to be MDVERS - now depreciated
@@ -339,7 +362,7 @@ typedef struct t_ModelData {
   int8_t    tmrMode;              // timer trigger source -> off, abs, stk, stk%, sw/!sw, !m_sw/!m_sw
   uint8_t   tmrDir:1;    //0=>Count Down, 1=>Count Up
   uint8_t   traineron:1;  // 0 disable trainer, 1 allow trainer
-  uint8_t   t2throttle:1 ;  // Start timer2 using throttle
+  uint8_t   xt2throttle:1 ;  // Start timer2 using throttle
   uint8_t   FrSkyUsrProto:1 ;  // Protocol in FrSky User Data, 0=FrSky Hub, 1=WS HowHigh
   uint8_t   FrSkyGpsAlt:1 ;  	// Use Gps Altitude as main altitude reading
   uint8_t   FrSkyImperial:1 ;  // Convert FrSky values to imperial units
@@ -382,8 +405,11 @@ typedef struct t_ModelData {
   FrSkyData frsky;
 	uint8_t numBlades ;
 	uint8_t frskyoffset[2] ;		// Offsets for A1 and A2
+  uint16_t  tmr2Val;
+  int8_t    tmr2Mode;              // timer2 trigger source -> off, abs, stk, stk%, sw/!sw, !m_sw/!m_sw
+  int8_t		tmr2ModeB;
+	uint8_t switchWarningStates ;
 	uint8_t sub_trim_limit ;
-	uint8_t unused1[5] ;
 	uint8_t CustomDisplayIndex[6] ;
 	GvarData gvars[MAX_GVARS] ;
 	PhaseData phaseData[MAX_PHASES] ;
@@ -396,6 +422,18 @@ typedef struct t_ModelData {
 	uint8_t   altSource ;
   uint8_t phaseNames[MAX_PHASES][6] ;
 	ScaleData Scalers[NUM_SCALERS] ;
+	int8_t timer1RstSw ;
+	int8_t timer2RstSw ;
+	uint8_t timer1Cdown:1 ;
+	uint8_t timer2Cdown:1 ;
+	uint8_t timer1Mbeep:1 ;
+	uint8_t timer2Mbeep:1 ;
+	uint8_t useCustomStickNames:1 ;
+	uint8_t throttleIdle:1 ;
+  uint8_t throttleReversed:1;
+  uint8_t tmr2Dir:1;    //0=>Count Down, 1=>Count Up
+	int8_t gvswitch[MAX_GVARS] ;
+  VoiceAlarmData vad[NUM_VOICE_ALARMS] ;
 } __attribute__((packed)) ModelData;
 
 

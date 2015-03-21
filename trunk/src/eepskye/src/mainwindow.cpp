@@ -85,6 +85,7 @@
 #define DNLD_VER_ERSKY9X         0
 #define DNLD_VER_ERSKY9XR	       1
 #define DNLD_VER_ERSKYX9D				 2
+#define DNLD_VER_ERSKYX9DP			 3
 
 //#define DNLD_VER_ER9X_FRSKY      2
 //#define DNLD_VER_ER9X_ARDUPILOT  3
@@ -118,6 +119,7 @@
 #define ERSKY9X_URL "http://ersky9x.googlecode.com/svn/trunk/ersky9x_rom.bin"
 #define ERSKY9XR_URL "http://ersky9x.googlecode.com/svn/trunk/ersky9xr_rom.bin"
 #define ERSKYX9D_URL "http://ersky9x.googlecode.com/svn/trunk/x9d_rom.bin"
+#define ERSKYX9DP_URL "http://ersky9x.googlecode.com/svn/trunk/x9dp_rom.bin"
 
 class simulatorDialog *SimPointer = 0 ;
 QString AvrdudeOutput ;
@@ -197,6 +199,8 @@ void MainWindow::releaseNotes()
 	
 	
 	QString rnotes =
+	"Googlecode has blocked downloads of .exe files\n"
+	"Windows users will now find eepskye updates are in a .zip file\n\n"
   "ersky9x rev 203 changes the Custom Switch options.\n"
 	"v1>=v2 and v1<=v2 are removed and replaced by Latch and F-Flop\n"
 	"Loading a model into er9x from before will change:\n"
@@ -303,6 +307,9 @@ void MainWindow::reply1Finished(QNetworkReply * reply)
 					case 2 :
 						currentRev = currentERSKYX9Drev ;
 					break ;
+					case 3 :
+						currentRev = currentERSKYX9DPrev ;
+					break ;
 				}
 
         if(rev>currentRev)
@@ -319,6 +326,11 @@ void MainWindow::reply1Finished(QNetworkReply * reply)
             case (DNLD_VER_ERSKYX9D):
                 dnldURL = ERSKYX9D_URL;
                 baseFileName = "x9d_rom.bin";
+                break;
+
+            case (DNLD_VER_ERSKYX9DP):
+                dnldURL = ERSKYX9DP_URL;
+                baseFileName = "x9dp_rom.bin";
                 break;
 
             default:
@@ -363,6 +375,10 @@ void MainWindow::reply1Finished(QNetworkReply * reply)
 											
 											case 2 :
                     		settings.setValue("currentERSKYX9Drev", rev);
+											break ;
+											
+											case 3 :
+                    		settings.setValue("currentERSKYX9DPrev", rev);
 											break ;
 										}
                 }
@@ -459,6 +475,9 @@ void MainWindow::downloadLatester9x()
       case 2 :
     		currentERSKY9Xrev_temp = currentERSKYX9Drev ;
 			break ;
+      case 3 :
+    		currentERSKY9Xrev_temp = currentERSKYX9DPrev ;
+			break ;
 		}
     connect(dd,SIGNAL(accepted()),this,SLOT(reply1Accepted()));
     dd->show();
@@ -540,6 +559,10 @@ void MainWindow::reply1Accepted()
 		
 			case 2 :
     		settings.setValue("currentERSKYX9Drev", currentERSKYX9Drev);
+			break ;
+		
+			case 3 :
+    		settings.setValue("currentERSKYX9DPrev", currentERSKYX9DPrev);
 			break ;
 		}	
 }
@@ -818,8 +841,14 @@ void MainWindow::burnExtenalToEEPROM()
 					else
 					{
 						avrdudeLoc = "" ;
-    			  arguments << path << fileName << tr("%1").arg((MAX_MODELS+1)*8192) << "0" ;
-	  			  avrOutputDialog *ad = new avrOutputDialog(this, avrdudeLoc, arguments,tr("Read EEPROM From Tx")); //, AVR_DIALOG_KEEP_OPEN);
+			      qint32 fsize ;
+						fsize = (MAX_MODELS+1)*8192 ;
+						if ( QFileInfo(path).size() == 32768 )
+						{
+							fsize = 32768 ;			// Taranis EEPROM
+						}
+    			  arguments << path << fileName << tr("%1").arg(fsize) << "0" ;
+	  			  avrOutputDialog *ad = new avrOutputDialog(this, avrdudeLoc, arguments,tr("Write EEPROM to Tx")); //, AVR_DIALOG_KEEP_OPEN);
 //						res = ad->result() ;
 						delete ad ;
 					}
@@ -1569,6 +1598,7 @@ void MainWindow::readSettings()
     currentERSKY9Xrev = settings.value("currentERSKY9Xrev", 1).toInt();
     currentERSKY9XRrev = settings.value("currentERSKY9XRrev", 1).toInt();
     currentERSKYX9Drev = settings.value("currentERSKYX9Drev", 1).toInt();
+    currentERSKYX9DPrev = settings.value("currentERSKYX9DPrev", 1).toInt();
 		currentEEPSKYErelease = settings.value("currentEEPSKYErelease", 1).toInt();
     currentEEPSKYErev = SVN_VER_NUM;
 

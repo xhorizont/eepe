@@ -28,12 +28,12 @@ GeneralEdit::GeneralEdit( struct t_radioData *radioData, QWidget *parent) :
 
     rData = radioData ;
 //    switchDefPosEditLock = false;
-
     QSettings settings("er9x-eePskye", "eePskye");
     ui->tabWidget->setCurrentIndex(settings.value("generalEditTab", 0).toInt());
 
 		memcpy(  &g_eeGeneral, &radioData->generalSettings, sizeof( g_eeGeneral) ) ;
 //    eeFile->getGeneralSettings(&g_eeGeneral);
+    createSwitchMapping( &g_eeGeneral, MAX_DRSWITCH, rData->type ) ;
 
     QRegExp rx(CHAR_FOR_NAMES_REGEX);
     ui->ownerNameLE->setValidator(new QRegExpValidator(rx, this));
@@ -49,6 +49,7 @@ GeneralEdit::GeneralEdit( struct t_radioData *radioData, QWidget *parent) :
     ui->backlightautoSB->setValue(g_eeGeneral.lightAutoOff*5);
     ui->backlightStickMove->setValue(g_eeGeneral.lightOnStickMove*5);
     ui->inactimerSB->setValue(g_eeGeneral.inactivityTimer+10);
+    ui->inactVolumeSB->setValue(g_eeGeneral.inactivityVolume+21) ;
 
     ui->soundModeCB->setCurrentIndex(g_eeGeneral.speakerMode);
     ui->speakerPitchSB->setValue(g_eeGeneral.speakerPitch);
@@ -84,6 +85,7 @@ GeneralEdit::GeneralEdit( struct t_radioData *radioData, QWidget *parent) :
 		ui->RotaryDivisorCB->setCurrentIndex(g_eeGeneral.rotaryDivisor) ;
 		ui->CurrentCalibSB->setValue(g_eeGeneral.current_calib ) ;
 		ui->MaHalarmSB->setValue(g_eeGeneral.mAh_alarm*50 ) ;
+    ui->BluetoothTypeCB->setCurrentIndex(g_eeGeneral.BtType);
     
     ui->ana1Neg->setValue(g_eeGeneral.calibSpanNeg[0]);
     ui->ana2Neg->setValue(g_eeGeneral.calibSpanNeg[1]);
@@ -129,7 +131,53 @@ GeneralEdit::GeneralEdit( struct t_radioData *radioData, QWidget *parent) :
 		ui->stickgainRVCB->setCurrentIndex(g_eeGeneral.stickGain & STICK_RV_GAIN ? 1 : 0 ) ;
 		ui->stickgainRHCB->setCurrentIndex(g_eeGeneral.stickGain & STICK_RH_GAIN ? 1 : 0 ) ;
 
-		updateTrianerTab();
+		updateTrainerTab();
+
+
+		if ( rData->type < 1 )
+		{
+			ui->label_AilSw->show() ;
+			ui->label_EleSw->show() ;
+			ui->label_ThrSw->show() ;
+			ui->label_GeaSw->show() ;
+			ui->label_RudSw->show() ;
+			ui->AilNumWaysCB->show() ;
+			ui->EleNumWaysCB->show() ;
+			ui->GeaNumWaysCB->show() ;
+			ui->RudNumWaysCB->show() ;
+			ui->ThrNumWaysCB->show() ;
+			ui->label_Encoder->hide() ;
+			ui->label_6Pos->hide() ;
+			ui->EncoderCB->hide() ;
+			ui->SixPosCB->hide() ;
+			ui->AilNumWaysCB->setCurrentIndex( g_eeGeneral.switchMapping & USE_AIL_3POS ? 1 : 0 ) ;
+    	ui->EleNumWaysCB->setCurrentIndex( g_eeGeneral.switchMapping & USE_ELE_3POS ? 1 : (g_eeGeneral.switchMapping & USE_ELE_6POS ? 2 : 0 ) ) ;
+			ui->GeaNumWaysCB->setCurrentIndex( g_eeGeneral.switchMapping & USE_GEA_3POS ? 1 : 0 ) ;
+			ui->RudNumWaysCB->setCurrentIndex( g_eeGeneral.switchMapping & USE_RUD_3POS ? 1 : 0 ) ;
+			ui->ThrNumWaysCB->setCurrentIndex( g_eeGeneral.switchMapping & USE_THR_3POS ? 1 : 0 ) ;
+		}
+		else
+		{
+			ui->label_AilSw->hide() ;
+			ui->label_EleSw->hide() ;
+			ui->label_ThrSw->hide() ;
+			ui->label_GeaSw->hide() ;
+			ui->label_RudSw->hide() ;
+			ui->AilNumWaysCB->hide() ;
+			ui->EleNumWaysCB->hide() ;
+			ui->GeaNumWaysCB->hide() ;
+			ui->RudNumWaysCB->hide() ;
+			ui->ThrNumWaysCB->hide() ;
+			ui->label_Encoder->show() ;
+			ui->label_6Pos->show() ;
+			ui->EncoderCB->show() ;
+			ui->SixPosCB->show() ;
+			ui->EncoderCB->setCurrentIndex(g_eeGeneral.analogMapping & 3) ;
+			ui->SixPosCB->setCurrentIndex((g_eeGeneral.analogMapping >> 2) & 3) ;
+			//g_eeGeneral.analogMapping
+		}
+		
+		setHwSwitchActive();
 
     connect(ui->modeCB_1, SIGNAL(currentIndexChanged(int)), this, SLOT(trainerTabValueChanged()));
     connect(ui->modeCB_2, SIGNAL(currentIndexChanged(int)), this, SLOT(trainerTabValueChanged()));
@@ -208,33 +256,81 @@ void GeneralEdit::updateSettings()
 }
 
 
-void GeneralEdit::updateTrianerTab()
+void GeneralEdit::updateTrainerTab()
 {
     on_tabWidget_selected(""); // updates channel name labels
 
     ui->modeCB_1->setCurrentIndex(g_eeGeneral.trainer.mix[0].mode);
-    ui->weightSB_1->setValue(g_eeGeneral.trainer.mix[0].studWeight*13/4);
     ui->sourceCB_1->setCurrentIndex(g_eeGeneral.trainer.mix[0].srcChn);
-    populateTrainerSwitchCB(ui->swtchCB_1,g_eeGeneral.trainer.mix[0].swtch);
-    StudWeight1=g_eeGeneral.trainer.mix[0].studWeight*13/4;
+    if ( g_eeGeneral.trainer.mix[0].swtch == -16)
+		{
+			populateSwitchCB(ui->swtchCB_1,g_eeGeneral.exTrainer[0].swtch, rData->type ) ;
+			ui->weightSB_1->setMaximum(100) ;
+			ui->weightSB_1->setMinimum(-100) ;
+			ui->weightSB_1->setSingleStep(1) ;
+			ui->weightSB_1->findChild<QLineEdit*>()->setReadOnly(false);
+  	  ui->weightSB_1->setValue(g_eeGeneral.exTrainer[0].studWeight);
+		}
+		else
+		{
+	    populateTrainerSwitchCB(ui->swtchCB_1,g_eeGeneral.trainer.mix[0].swtch);
+  	  ui->weightSB_1->setValue(g_eeGeneral.trainer.mix[0].studWeight*13/4);
+    	StudWeight1=g_eeGeneral.trainer.mix[0].studWeight*13/4;
+		}
 
     ui->modeCB_2->setCurrentIndex(g_eeGeneral.trainer.mix[1].mode);
-    ui->weightSB_2->setValue(g_eeGeneral.trainer.mix[1].studWeight*13/4);
     ui->sourceCB_2->setCurrentIndex(g_eeGeneral.trainer.mix[1].srcChn);
-    populateTrainerSwitchCB(ui->swtchCB_2,g_eeGeneral.trainer.mix[1].swtch);
-    StudWeight2=g_eeGeneral.trainer.mix[1].studWeight*13/4;
+    if ( g_eeGeneral.trainer.mix[1].swtch == -16)
+		{
+			populateSwitchCB(ui->swtchCB_2,g_eeGeneral.exTrainer[0].swtch, rData->type ) ;
+			ui->weightSB_2->setMaximum(100) ;
+			ui->weightSB_2->setMinimum(-100) ;
+			ui->weightSB_2->setSingleStep(1) ;
+			ui->weightSB_2->findChild<QLineEdit*>()->setReadOnly(false);
+  	  ui->weightSB_2->setValue(g_eeGeneral.exTrainer[1].studWeight);
+		}
+		else
+		{
+	    populateTrainerSwitchCB(ui->swtchCB_2,g_eeGeneral.trainer.mix[1].swtch);
+  	  ui->weightSB_2->setValue(g_eeGeneral.trainer.mix[1].studWeight*13/4);
+    	StudWeight2=g_eeGeneral.trainer.mix[1].studWeight*13/4;
+		}
 
     ui->modeCB_3->setCurrentIndex(g_eeGeneral.trainer.mix[2].mode);
-    ui->weightSB_3->setValue(g_eeGeneral.trainer.mix[2].studWeight*13/4);
     ui->sourceCB_3->setCurrentIndex(g_eeGeneral.trainer.mix[2].srcChn);
-    populateTrainerSwitchCB(ui->swtchCB_3,g_eeGeneral.trainer.mix[2].swtch);
-    StudWeight3=g_eeGeneral.trainer.mix[2].studWeight*13/4;
+    if ( g_eeGeneral.trainer.mix[2].swtch == -16)
+		{
+			populateSwitchCB(ui->swtchCB_3,g_eeGeneral.exTrainer[2].swtch, rData->type ) ;
+			ui->weightSB_3->setMaximum(100) ;
+			ui->weightSB_3->setMinimum(-100) ;
+			ui->weightSB_3->setSingleStep(1) ;
+			ui->weightSB_3->findChild<QLineEdit*>()->setReadOnly(false);
+  	  ui->weightSB_3->setValue(g_eeGeneral.exTrainer[2].studWeight);
+		}
+		else
+		{
+	    populateTrainerSwitchCB(ui->swtchCB_3,g_eeGeneral.trainer.mix[2].swtch);
+  	  ui->weightSB_3->setValue(g_eeGeneral.trainer.mix[2].studWeight*13/4);
+    	StudWeight3=g_eeGeneral.trainer.mix[2].studWeight*13/4;
+		}
 
     ui->modeCB_4->setCurrentIndex(g_eeGeneral.trainer.mix[0].mode);
-    ui->weightSB_4->setValue(g_eeGeneral.trainer.mix[3].studWeight*13/4);
     ui->sourceCB_4->setCurrentIndex(g_eeGeneral.trainer.mix[3].srcChn);
-    populateTrainerSwitchCB(ui->swtchCB_4,g_eeGeneral.trainer.mix[3].swtch);
-    StudWeight4=g_eeGeneral.trainer.mix[3].studWeight*13/4;
+    if ( g_eeGeneral.trainer.mix[3].swtch == -16)
+		{
+			populateSwitchCB(ui->swtchCB_4,g_eeGeneral.exTrainer[3].swtch, rData->type ) ;
+			ui->weightSB_4->setMaximum(100) ;
+			ui->weightSB_4->setMinimum(-100) ;
+			ui->weightSB_4->setSingleStep(1) ;
+			ui->weightSB_4->findChild<QLineEdit*>()->setReadOnly(false);
+  	  ui->weightSB_4->setValue(g_eeGeneral.exTrainer[3].studWeight);
+		}
+		else
+		{
+    	populateTrainerSwitchCB(ui->swtchCB_4,g_eeGeneral.trainer.mix[3].swtch);
+    	ui->weightSB_4->setValue(g_eeGeneral.trainer.mix[3].studWeight*13/4);
+    	StudWeight4=g_eeGeneral.trainer.mix[3].studWeight*13/4;
+		}
 
     ui->trainerCalib_1->setValue(g_eeGeneral.trainer.calib[0]);
     ui->trainerCalib_2->setValue(g_eeGeneral.trainer.calib[1]);
@@ -249,22 +345,50 @@ void GeneralEdit::trainerTabValueChanged()
     g_eeGeneral.trainer.mix[0].mode       = ui->modeCB_1->currentIndex();
 //    g_eeGeneral.trainer.mix[0].studWeight = ui->weightSB_1->value()*4/13;
     g_eeGeneral.trainer.mix[0].srcChn     = ui->sourceCB_1->currentIndex();
-    g_eeGeneral.trainer.mix[0].swtch      = ui->swtchCB_1->currentIndex()-15 ;
+    if ( g_eeGeneral.trainer.mix[0].swtch == -16)
+		{
+    	g_eeGeneral.exTrainer[0].swtch      = getSwitchCbValue( ui->swtchCB_1, rData->type ) ;
+		}
+		else
+		{
+    	g_eeGeneral.trainer.mix[0].swtch      = ui->swtchCB_1->currentIndex()-15 ;
+		}
 
     g_eeGeneral.trainer.mix[1].mode       = ui->modeCB_2->currentIndex();
 //    g_eeGeneral.trainer.mix[1].studWeight = ui->weightSB_2->value()*4/13;
     g_eeGeneral.trainer.mix[1].srcChn     = ui->sourceCB_2->currentIndex();
-    g_eeGeneral.trainer.mix[1].swtch      = ui->swtchCB_2->currentIndex()-15 ;
+    if ( g_eeGeneral.trainer.mix[1].swtch == -16)
+		{
+    	g_eeGeneral.exTrainer[1].swtch      = getSwitchCbValue( ui->swtchCB_2, rData->type ) ;
+		}
+		else
+		{
+	    g_eeGeneral.trainer.mix[1].swtch      = ui->swtchCB_2->currentIndex()-15 ;
+		}
 
     g_eeGeneral.trainer.mix[2].mode       = ui->modeCB_3->currentIndex();
 //    g_eeGeneral.trainer.mix[2].studWeight = ui->weightSB_3->value()*4/13;
     g_eeGeneral.trainer.mix[2].srcChn     = ui->sourceCB_3->currentIndex();
-    g_eeGeneral.trainer.mix[2].swtch      = ui->swtchCB_3->currentIndex()-15 ;
+    if ( g_eeGeneral.trainer.mix[2].swtch == -16)
+		{
+    	g_eeGeneral.exTrainer[2].swtch      = getSwitchCbValue( ui->swtchCB_3, rData->type ) ;
+		}
+		else
+		{
+    	g_eeGeneral.trainer.mix[2].swtch      = ui->swtchCB_3->currentIndex()-15 ;
+		}
 
     g_eeGeneral.trainer.mix[3].mode       = ui->modeCB_4->currentIndex();
 //    g_eeGeneral.trainer.mix[3].studWeight = ui->weightSB_4->value()*4/13;
     g_eeGeneral.trainer.mix[3].srcChn     = ui->sourceCB_4->currentIndex();
-    g_eeGeneral.trainer.mix[3].swtch      = ui->swtchCB_4->currentIndex()-15 ;
+    if ( g_eeGeneral.trainer.mix[3].swtch == -16)
+		{
+    	g_eeGeneral.exTrainer[3].swtch      = getSwitchCbValue( ui->swtchCB_4, rData->type ) ;
+		}
+		else
+		{
+    	g_eeGeneral.trainer.mix[3].swtch      = ui->swtchCB_4->currentIndex()-15 ;
+		}
 
     g_eeGeneral.trainer.calib[0] = ui->trainerCalib_1->value();
     g_eeGeneral.trainer.calib[1] = ui->trainerCalib_2->value();
@@ -283,49 +407,77 @@ void GeneralEdit::validateWeightSB()
     ui->weightSB_3->blockSignals(true);
     ui->weightSB_4->blockSignals(true);
 
-    if ((ui->weightSB_1->value()>StudWeight1) && (g_eeGeneral.trainer.mix[0].studWeight<31))
-    {
-      g_eeGeneral.trainer.mix[0].studWeight++;
-    }
-    else if ((ui->weightSB_1->value()<StudWeight1) && (g_eeGeneral.trainer.mix[0].studWeight>-31))
-    {
-      g_eeGeneral.trainer.mix[0].studWeight--;
-    }
-    ui->weightSB_1->setValue(g_eeGeneral.trainer.mix[0].studWeight*13/4);
-    StudWeight1=ui->weightSB_1->value();
-    
-    if ((ui->weightSB_2->value()>StudWeight2) && (g_eeGeneral.trainer.mix[1].studWeight<31))
+    if ( g_eeGeneral.trainer.mix[0].swtch != -16)
 		{
-      g_eeGeneral.trainer.mix[1].studWeight++;
+    	if ((ui->weightSB_1->value()>StudWeight1) && (g_eeGeneral.trainer.mix[0].studWeight<31))
+    	{
+    	  g_eeGeneral.trainer.mix[0].studWeight++;
+    	}
+    	else if ((ui->weightSB_1->value()<StudWeight1) && (g_eeGeneral.trainer.mix[0].studWeight>-31))
+    	{
+    	  g_eeGeneral.trainer.mix[0].studWeight--;
+    	}
+    	ui->weightSB_1->setValue(g_eeGeneral.trainer.mix[0].studWeight*13/4);
+    	StudWeight1=ui->weightSB_1->value();
     }
-		else if ((ui->weightSB_2->value()<StudWeight2) && (g_eeGeneral.trainer.mix[1].studWeight>-31))
+		else
 		{
-      g_eeGeneral.trainer.mix[1].studWeight--;
+   	  g_eeGeneral.exTrainer[0].studWeight = ui->weightSB_1->value() ;
+		}
+
+    if ( g_eeGeneral.trainer.mix[1].swtch != -16)
+		{
+    	if ((ui->weightSB_2->value()>StudWeight2) && (g_eeGeneral.trainer.mix[1].studWeight<31))
+			{
+    	  g_eeGeneral.trainer.mix[1].studWeight++;
+    	}
+			else if ((ui->weightSB_2->value()<StudWeight2) && (g_eeGeneral.trainer.mix[1].studWeight>-31))
+			{
+    	  g_eeGeneral.trainer.mix[1].studWeight--;
+    	}
+    	ui->weightSB_2->setValue(g_eeGeneral.trainer.mix[1].studWeight*13/4);
+    	StudWeight2=ui->weightSB_2->value();
     }
-    ui->weightSB_2->setValue(g_eeGeneral.trainer.mix[1].studWeight*13/4);
-    StudWeight2=ui->weightSB_2->value();
+		else
+		{
+   	  g_eeGeneral.exTrainer[1].studWeight = ui->weightSB_2->value() ;
+		}
  
-    if ((ui->weightSB_3->value()>StudWeight3) && (g_eeGeneral.trainer.mix[2].studWeight<31))
+    if ( g_eeGeneral.trainer.mix[2].swtch != -16)
 		{
-      g_eeGeneral.trainer.mix[2].studWeight++;
+    	if ((ui->weightSB_3->value()>StudWeight3) && (g_eeGeneral.trainer.mix[2].studWeight<31))
+			{
+    	  g_eeGeneral.trainer.mix[2].studWeight++;
+    	}
+			else if ((ui->weightSB_3->value()<StudWeight3) && (g_eeGeneral.trainer.mix[2].studWeight>-31))
+			{
+    	  g_eeGeneral.trainer.mix[2].studWeight--;
+    	}
+    	ui->weightSB_3->setValue(g_eeGeneral.trainer.mix[2].studWeight*13/4);
+    	StudWeight3=ui->weightSB_3->value();
     }
-		else if ((ui->weightSB_3->value()<StudWeight3) && (g_eeGeneral.trainer.mix[2].studWeight>-31))
+		else
 		{
-      g_eeGeneral.trainer.mix[2].studWeight--;
-    }
-    ui->weightSB_3->setValue(g_eeGeneral.trainer.mix[2].studWeight*13/4);
-    StudWeight3=ui->weightSB_3->value();
-    
-    if ((ui->weightSB_4->value()>StudWeight4) && (g_eeGeneral.trainer.mix[3].studWeight<31))
+   	  g_eeGeneral.exTrainer[2].studWeight = ui->weightSB_3->value() ;
+		}
+
+    if ( g_eeGeneral.trainer.mix[3].swtch != -16)
 		{
-      g_eeGeneral.trainer.mix[3].studWeight++;
+    	if ((ui->weightSB_4->value()>StudWeight4) && (g_eeGeneral.trainer.mix[3].studWeight<31))
+			{
+    	  g_eeGeneral.trainer.mix[3].studWeight++;
+    	}
+			else if ((ui->weightSB_4->value()<StudWeight4)  && (g_eeGeneral.trainer.mix[3].studWeight>-31))
+			{
+    	  g_eeGeneral.trainer.mix[3].studWeight--;
+    	}
+    	ui->weightSB_4->setValue(g_eeGeneral.trainer.mix[3].studWeight*13/4);
+    	StudWeight4=ui->weightSB_4->value();    
     }
-		else if ((ui->weightSB_4->value()<StudWeight4)  && (g_eeGeneral.trainer.mix[3].studWeight>-31))
+		else
 		{
-      g_eeGeneral.trainer.mix[3].studWeight--;
-    }
-    ui->weightSB_4->setValue(g_eeGeneral.trainer.mix[3].studWeight*13/4);
-    StudWeight4=ui->weightSB_4->value();    
+   	  g_eeGeneral.exTrainer[3].studWeight = ui->weightSB_4->value() ;
+		}
     
 		ui->weightSB_1->blockSignals(false);
     ui->weightSB_2->blockSignals(false);
@@ -424,7 +576,13 @@ void GeneralEdit::on_battcalibDSB_editingFinished()
 
 void GeneralEdit::on_backlightswCB_currentIndexChanged(int index)
 {
-    g_eeGeneral.lightSw = index-MAX_DRSWITCH;
+    g_eeGeneral.lightSw =  getSwitchCbValue( ui->backlightswCB, rData->type ) ;
+    updateSettings();
+}
+
+void GeneralEdit::on_BluetoothTypeCB_currentIndexChanged(int index)
+{
+    g_eeGeneral.BtType = index ;
     updateSettings();
 }
 
@@ -446,6 +604,13 @@ void GeneralEdit::on_backlightStickMove_editingFinished()
         ui->backlightStickMove->setValue(i*5);
 
     g_eeGeneral.lightOnStickMove = i;
+    updateSettings();
+}
+
+
+void GeneralEdit::on_inactVolumeSB_editingFinished()
+{
+    g_eeGeneral.inactivityVolume = ui->inactVolumeSB->value() - 21 ;
     updateSettings();
 }
 
@@ -940,4 +1105,118 @@ void GeneralEdit::on_StickRevRH_stateChanged(int )
   updateSettings();
 }
 
+
+void GeneralEdit::on_EncoderCB_currentIndexChanged(int x )
+{
+	g_eeGeneral.analogMapping &= ~3 ;
+	g_eeGeneral.analogMapping |= x & 3 ;
+  updateSettings();
+}
+
+void GeneralEdit::on_SixPosCB_currentIndexChanged(int x )
+{
+	g_eeGeneral.analogMapping &= ~0x0C ;
+	g_eeGeneral.analogMapping |= (x & 3 ) << 2 ;
+  updateSettings();
+}
+
+void GeneralEdit::on_AilNumWaysCB_currentIndexChanged(int x )
+{
+	uint8_t value = x ? USE_AIL_3POS : 0 ;
+	g_eeGeneral.switchMapping &= ~USE_AIL_3POS ;
+	g_eeGeneral.switchMapping |= value ;
+	if ( x )
+	{
+//		g_eeGeneral.switchMapping &= ~USE_GEA_3POS  ;
+		ui->GeaNumWaysCB->setCurrentIndex( 0 ) ;
+	}
+	setHwSwitchActive() ;
+  updateSettings();
+}
+
+void GeneralEdit::on_EleNumWaysCB_currentIndexChanged(int x )
+{
+	uint8_t value = x ? ( (x == 1) ? USE_ELE_3POS : USE_ELE_6POS ) : 0 ;
+	g_eeGeneral.switchMapping &= ~(USE_ELE_3POS | USE_ELE_6POS);
+	g_eeGeneral.switchMapping |= value ;
+	if ( x == 0 )
+	{
+//		g_eeGeneral.switchMapping &= ~(USE_RUD_3POS | USE_THR_3POS ) ;
+		ui->ThrNumWaysCB->setCurrentIndex( 0 ) ;
+		ui->RudNumWaysCB->setCurrentIndex( 0 ) ;
+	}
+	setHwSwitchActive() ;
+  updateSettings();
+}
+
+void GeneralEdit::on_GeaNumWaysCB_currentIndexChanged(int x )
+{
+	uint8_t value = x ? USE_GEA_3POS : 0 ;
+	g_eeGeneral.switchMapping &= ~USE_GEA_3POS ;
+	g_eeGeneral.switchMapping |= value ;
+	if ( x )
+	{
+//		g_eeGeneral.switchMapping &= ~USE_AIL_3POS  ;
+		ui->AilNumWaysCB->setCurrentIndex( 0 ) ;
+	}
+	setHwSwitchActive() ;
+  updateSettings();
+}
+
+void GeneralEdit::on_RudNumWaysCB_currentIndexChanged(int x )
+{
+	uint8_t value = x ? USE_RUD_3POS : 0 ;
+	g_eeGeneral.switchMapping &= ~USE_RUD_3POS ;
+	g_eeGeneral.switchMapping |= value ;
+	if ( x )
+	{
+//		g_eeGeneral.switchMapping &= ~USE_THR_3POS  ;
+		ui->ThrNumWaysCB->setCurrentIndex( 0 ) ;
+	}
+	setHwSwitchActive() ;
+  updateSettings();
+}
+
+void GeneralEdit::on_ThrNumWaysCB_currentIndexChanged(int x )
+{
+	uint8_t value = x ? USE_THR_3POS : 0 ;
+	g_eeGeneral.switchMapping &= ~USE_THR_3POS ;
+	g_eeGeneral.switchMapping |= value ;
+	if ( x )
+	{
+//		g_eeGeneral.switchMapping &= ~USE_RUD_3POS  ;
+		ui->RudNumWaysCB->setCurrentIndex( 0 ) ;
+	}
+	setHwSwitchActive() ;
+  updateSettings();
+}
+
+void GeneralEdit::setHwSwitchActive()
+{
+	if ( rData->type )
+	{
+		ui->EleNumWaysCB->setEnabled( false ) ;
+		ui->RudNumWaysCB->setEnabled( false ) ;
+		ui->ThrNumWaysCB->setEnabled( false ) ;
+		ui->GeaNumWaysCB->setEnabled( false ) ;
+		ui->AilNumWaysCB->setEnabled( false ) ;
+	}
+	else
+	{
+  	if ( (g_eeGeneral.switchMapping & (USE_ELE_3POS | USE_ELE_6POS)) == 0 )
+		{
+			ui->RudNumWaysCB->setEnabled( false ) ;
+			ui->ThrNumWaysCB->setEnabled( false ) ;
+		}
+		else
+		{
+			ui->RudNumWaysCB->setEnabled( (g_eeGeneral.switchMapping & USE_THR_3POS) ? false : true ) ;
+			ui->ThrNumWaysCB->setEnabled( (g_eeGeneral.switchMapping & USE_RUD_3POS) ? false : true ) ;
+		}
+
+		ui->GeaNumWaysCB->setEnabled( (g_eeGeneral.switchMapping & USE_AIL_3POS) ? false : true ) ;
+		ui->AilNumWaysCB->setEnabled( (g_eeGeneral.switchMapping & USE_GEA_3POS) ? false : true ) ;
+    createSwitchMapping( &g_eeGeneral, MAX_DRSWITCH, rData->type ) ;
+	}
+}
 

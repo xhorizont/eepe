@@ -298,6 +298,7 @@ void MdiChild::doPaste(QByteArray *gmData, int index)
 				else
 				{
           QMessageBox::critical(this, tr("Error"),tr("Data not Recognised"));
+					break ;
 				}
     }
     setModified();
@@ -633,7 +634,24 @@ void MdiChild::OpenEditWindow()
         char buf[sizeof(ModelData().name)+1];
         eeFile.getModelName((i-1),(char*)&buf);
         ModelEdit *t = new ModelEdit(&eeFile,(i-1),this);
-        if(isNew) t->applyBaseTemplate();
+        if(isNew)
+				{
+    			QSettings settings("er9x-eePe", "eePe");
+					t->applyBaseTemplate() ;
+					int version = settings.value("default_EE_version", 0).toInt() + 1 ;
+					if ( version > 1 )
+					{
+            t->updateToMV2() ;
+					}
+					if ( version > 2 )
+					{
+            t->updateToMV3() ;
+					}
+					if ( version > 3 )
+					{
+            t->updateToMV4() ;
+					}
+				}
         t->setWindowTitle(tr("Editing model %1: ").arg(i) + QString(buf));
 
         for(int j=0; j<MAX_MIXERS; j++)

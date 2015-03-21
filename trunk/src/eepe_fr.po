@@ -724,7 +724,7 @@ msgid "MegaSound"
 msgstr ""
 
 msgctxt "GeneralEdit|"
-msgid "TelemetrEZ rev. 90+"
+msgid "TelemetrEZ rev. >=90"
 msgstr ""
 
 msgctxt "MainWindow|"
@@ -1372,6 +1372,21 @@ msgctxt "MainWindow|"
 msgid "Show release notes"
 msgstr ""
 
+#, fuzzy
+msgctxt "MainWindow|"
+msgid "Error"
+msgstr "Erreur"
+
+#, qt-format
+msgctxt "MainWindow|"
+msgid "Adrdude not found at %1."
+msgstr ""
+
+#, fuzzy
+msgctxt "MainWindow|"
+msgid "Read Fuses"
+msgstr "Lire Fusibles"
+
 msgctxt "MdiChild|"
 msgid "&Cut"
 msgstr "&Couper"
@@ -1931,19 +1946,11 @@ msgid "Include Trim"
 msgstr "Inclure Trim"
 
 msgctxt "MixerDialog|"
-msgid "Flightmode Trim"
-msgstr ""
-
-msgctxt "MixerDialog|"
 msgid "Comment"
 msgstr ""
 
 msgctxt "MixerDialog|"
 msgid "Differential"
-msgstr ""
-
-msgctxt "MixerDialog|"
-msgid "Late Offset"
 msgstr ""
 
 msgctxt "MixerDialog|"
@@ -1972,6 +1979,22 @@ msgstr ""
 
 msgctxt "MixerDialog|"
 msgid "4"
+msgstr ""
+
+msgctxt "MixerDialog|"
+msgid "Expo"
+msgstr ""
+
+msgctxt "MixerDialog|"
+msgid "Enable Expo/Dr"
+msgstr ""
+
+msgctxt "MixerDialog|"
+msgid "Fix Offset"
+msgstr ""
+
+msgctxt "MixerDialog|"
+msgid "Src Switch"
 msgstr ""
 
 msgctxt "ModelEdit|"
@@ -2323,29 +2346,29 @@ msgctxt "ModelEdit|"
 msgid " Switch("
 msgstr " Inter("
 
-msgctxt "ModelEdit|"
-msgid "CSwitch1"
-msgstr "Interrupteur personnalisé SW1"
+#~ msgctxt "ModelEdit|"
+#~ msgid "CSwitch1"
+#~ msgstr "Interrupteur personnalisé SW1"
 
-msgctxt "ModelEdit|"
-msgid "CSwitch2"
-msgstr "Interrupteur personnalisé SW2"
+#~ msgctxt "ModelEdit|"
+#~ msgid "CSwitch2"
+#~ msgstr "Interrupteur personnalisé SW2"
 
-msgctxt "ModelEdit|"
-msgid "CSwitch3"
-msgstr "Interrupteur personnalisé SW3"
+#~ msgctxt "ModelEdit|"
+#~ msgid "CSwitch3"
+#~ msgstr "Interrupteur personnalisé SW3"
 
-msgctxt "ModelEdit|"
-msgid "CSwitch4"
-msgstr "Interrupteur personnalisé SW4"
+#~ msgctxt "ModelEdit|"
+#~ msgid "CSwitch4"
+#~ msgstr "Interrupteur personnalisé SW4"
 
-msgctxt "ModelEdit|"
-msgid "CSwitch5"
-msgstr "Interrupteur personnalisé SW5"
+#~ msgctxt "ModelEdit|"
+#~ msgid "CSwitch5"
+#~ msgstr "Interrupteur personnalisé SW5"
 
-msgctxt "ModelEdit|"
-msgid "CSwitch6"
-msgstr "Interrupteur personnalisé SW6"
+#~ msgctxt "ModelEdit|"
+#~ msgid "CSwitch6"
+#~ msgstr "Interrupteur personnalisé SW6"
 
 msgctxt "ModelEdit|"
 msgid "Delete Selected Mixes?"
@@ -2489,17 +2512,17 @@ msgctxt "ModelEdit|"
 msgid "Ctrl+Down"
 msgstr "Ctrl+Bas"
 
-msgctxt "ModelEdit|"
-msgid "CSwitch7"
-msgstr "Interrupteur personnalisé SW7"
+#~ msgctxt "ModelEdit|"
+#~ msgid "CSwitch7"
+#~ msgstr "Interrupteur personnalisé SW7"
 
-msgctxt "ModelEdit|"
-msgid "CSwitch8"
-msgstr "Interrupteur personnalisé SW8"
+#~ msgctxt "ModelEdit|"
+#~ msgid "CSwitch8"
+#~ msgstr "Interrupteur personnalisé SW8"
 
-msgctxt "ModelEdit|"
-msgid "CSwitch9"
-msgstr "Interrupteur personnalisé SW9"
+#~ msgctxt "ModelEdit|"
+#~ msgid "CSwitch9"
+#~ msgstr "Interrupteur personnalisé SW9"
 
 #~ msgctxt "ModelEdit|"
 #~ msgid "CSwitch10"
@@ -2595,18 +2618,6 @@ msgid "Clear All Curves"
 msgstr "Effacer toutes les courbes"
 
 msgctxt "ModelEdit|"
-msgid "CSwitchA"
-msgstr ""
-
-msgctxt "ModelEdit|"
-msgid "CSwitchB"
-msgstr ""
-
-msgctxt "ModelEdit|"
-msgid "CSwitchC"
-msgstr ""
-
-msgctxt "ModelEdit|"
 msgid "FrSky"
 msgstr ""
 
@@ -2664,10 +2675,6 @@ msgstr ""
 
 msgctxt "ModelEdit|"
 msgid "Trainer"
-msgstr ""
-
-msgctxt "ModelEdit|"
-msgid "T2throttleTrig"
 msgstr ""
 
 msgctxt "ModelEdit|"
@@ -2990,30 +2997,6 @@ msgid "Type(PXX)"
 msgstr ""
 
 msgctxt "ModelEdit|"
-msgid "CSwitchD"
-msgstr ""
-
-msgctxt "ModelEdit|"
-msgid "CSwitchE"
-msgstr ""
-
-msgctxt "ModelEdit|"
-msgid "CSwitchG"
-msgstr ""
-
-msgctxt "ModelEdit|"
-msgid "CSwitchH"
-msgstr ""
-
-msgctxt "ModelEdit|"
-msgid "CSwitchI"
-msgstr ""
-
-msgctxt "ModelEdit|"
-msgid "CSwitchF"
-msgstr ""
-
-msgctxt "ModelEdit|"
 msgid "Version"
 msgstr ""
 
@@ -3155,6 +3138,169 @@ msgctxt "ModelEdit|"
 msgid "Update to Version 3, only for er9x r811 and later"
 msgstr ""
 
+msgctxt "ModelEdit|"
+msgid "Timer 1"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "Reset Switch"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "Timer 2"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "LSwitch1"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "LSwitch2"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "LSwitch3"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "LSwitch4"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "LSwitch5"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "LSwitch6"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "LSwitch7"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "LSwitch8"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "LSwitch9"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "LSwitchA"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "LSwitchB"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "LSwitchC"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "LSwitchD"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "LSwitchE"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "LSwitchG"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "LSwitchH"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "LSwitchI"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "LSwitchF"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "Voice Alarms"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "Alarm Source Function Value"
+msgstr ""
+
+#, qt-format
+msgctxt "ModelEdit|"
+msgid "VA%1%2  "
+msgstr ""
+
+#, qt-format
+msgctxt "ModelEdit|"
+msgid "(%1) "
+msgstr ""
+
+#, qt-format
+msgctxt "ModelEdit|"
+msgid "%1 "
+msgstr ""
+
+#, qt-format
+msgctxt "ModelEdit|"
+msgid "Switch(%1) "
+msgstr ""
+
+#, qt-format
+msgctxt "ModelEdit|"
+msgid "Rate(%1) "
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "Mute "
+msgstr ""
+
+#, qt-format
+msgctxt "ModelEdit|"
+msgid "Haptic(%1) "
+msgstr ""
+
+#, qt-format
+msgctxt "ModelEdit|"
+msgid "PlaySrc(%1) "
+msgstr ""
+
+#, qt-format
+msgctxt "ModelEdit|"
+msgid "File(%1)"
+msgstr ""
+
+#, qt-format
+msgctxt "ModelEdit|"
+msgid "Alarm(%1)"
+msgstr ""
+
+#, qt-format
+msgctxt "ModelEdit|"
+msgid "Expo(%1)"
+msgstr ""
+
+#, qt-format
+msgctxt "ModelEdit|"
+msgid "Voice Alarm %1"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "-100%"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "0%"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "Use Custom Stick Names"
+msgstr ""
+
 msgctxt "QObject|"
 msgid "Checking for updates..."
 msgstr ""
@@ -3290,6 +3436,265 @@ msgstr ""
 #, qt-format
 msgctxt "QextSerialPort|"
 msgid "Unknown error: %1"
+msgstr ""
+
+#, fuzzy
+msgctxt "VoiceAlarmDialog|"
+msgid "Dialog"
+msgstr "Dialogue"
+
+#, fuzzy
+msgctxt "VoiceAlarmDialog|"
+msgid "Source"
+msgstr "Maître"
+
+msgctxt "VoiceAlarmDialog|"
+msgid "-------"
+msgstr ""
+
+msgctxt "VoiceAlarmDialog|"
+msgid "v>val"
+msgstr ""
+
+msgctxt "VoiceAlarmDialog|"
+msgid "v<val"
+msgstr ""
+
+msgctxt "VoiceAlarmDialog|"
+msgid "|v|>val"
+msgstr ""
+
+msgctxt "VoiceAlarmDialog|"
+msgid "|v|<val"
+msgstr ""
+
+msgctxt "VoiceAlarmDialog|"
+msgid "v~=val"
+msgstr ""
+
+msgctxt "VoiceAlarmDialog|"
+msgid "v=val"
+msgstr ""
+
+#, fuzzy
+msgctxt "VoiceAlarmDialog|"
+msgid "Function"
+msgstr "Fonction"
+
+#, fuzzy
+msgctxt "VoiceAlarmDialog|"
+msgid "Value"
+msgstr "Valeur"
+
+#, fuzzy
+msgctxt "VoiceAlarmDialog|"
+msgid "Switch"
+msgstr "Interrupteur"
+
+msgctxt "VoiceAlarmDialog|"
+msgid "ON"
+msgstr ""
+
+msgctxt "VoiceAlarmDialog|"
+msgid "OFF"
+msgstr ""
+
+msgctxt "VoiceAlarmDialog|"
+msgid "BOTH"
+msgstr ""
+
+msgctxt "VoiceAlarmDialog|"
+msgid "1"
+msgstr ""
+
+msgctxt "VoiceAlarmDialog|"
+msgid "2"
+msgstr ""
+
+msgctxt "VoiceAlarmDialog|"
+msgid "3"
+msgstr ""
+
+msgctxt "VoiceAlarmDialog|"
+msgid "4"
+msgstr ""
+
+msgctxt "VoiceAlarmDialog|"
+msgid "5"
+msgstr ""
+
+msgctxt "VoiceAlarmDialog|"
+msgid "6"
+msgstr ""
+
+msgctxt "VoiceAlarmDialog|"
+msgid "7"
+msgstr ""
+
+msgctxt "VoiceAlarmDialog|"
+msgid "8"
+msgstr ""
+
+msgctxt "VoiceAlarmDialog|"
+msgid "9"
+msgstr ""
+
+msgctxt "VoiceAlarmDialog|"
+msgid "10"
+msgstr ""
+
+msgctxt "VoiceAlarmDialog|"
+msgid "11"
+msgstr ""
+
+msgctxt "VoiceAlarmDialog|"
+msgid "12"
+msgstr ""
+
+msgctxt "VoiceAlarmDialog|"
+msgid "13"
+msgstr ""
+
+msgctxt "VoiceAlarmDialog|"
+msgid "14"
+msgstr ""
+
+msgctxt "VoiceAlarmDialog|"
+msgid "15"
+msgstr ""
+
+msgctxt "VoiceAlarmDialog|"
+msgid "16"
+msgstr ""
+
+msgctxt "VoiceAlarmDialog|"
+msgid "17"
+msgstr ""
+
+msgctxt "VoiceAlarmDialog|"
+msgid "18"
+msgstr ""
+
+msgctxt "VoiceAlarmDialog|"
+msgid "19"
+msgstr ""
+
+msgctxt "VoiceAlarmDialog|"
+msgid "20"
+msgstr ""
+
+msgctxt "VoiceAlarmDialog|"
+msgid "21"
+msgstr ""
+
+msgctxt "VoiceAlarmDialog|"
+msgid "22"
+msgstr ""
+
+msgctxt "VoiceAlarmDialog|"
+msgid "23"
+msgstr ""
+
+msgctxt "VoiceAlarmDialog|"
+msgid "24"
+msgstr ""
+
+msgctxt "VoiceAlarmDialog|"
+msgid "25"
+msgstr ""
+
+msgctxt "VoiceAlarmDialog|"
+msgid "26"
+msgstr ""
+
+msgctxt "VoiceAlarmDialog|"
+msgid "27"
+msgstr ""
+
+msgctxt "VoiceAlarmDialog|"
+msgid "28"
+msgstr ""
+
+msgctxt "VoiceAlarmDialog|"
+msgid "29"
+msgstr ""
+
+msgctxt "VoiceAlarmDialog|"
+msgid "30"
+msgstr ""
+
+msgctxt "VoiceAlarmDialog|"
+msgid "Rate"
+msgstr ""
+
+msgctxt "VoiceAlarmDialog|"
+msgid "Haptic"
+msgstr ""
+
+msgctxt "VoiceAlarmDialog|"
+msgid "Haptic1"
+msgstr ""
+
+msgctxt "VoiceAlarmDialog|"
+msgid "Haptic2"
+msgstr ""
+
+msgctxt "VoiceAlarmDialog|"
+msgid "Haptic3"
+msgstr ""
+
+msgctxt "VoiceAlarmDialog|"
+msgid "------"
+msgstr ""
+
+msgctxt "VoiceAlarmDialog|"
+msgid "Number"
+msgstr ""
+
+msgctxt "VoiceAlarmDialog|"
+msgid "Audio"
+msgstr ""
+
+msgctxt "VoiceAlarmDialog|"
+msgid "File Type"
+msgstr ""
+
+#, fuzzy
+msgctxt "VoiceAlarmDialog|"
+msgid "File"
+msgstr "Fichier"
+
+#, fuzzy
+msgctxt "VoiceAlarmDialog|"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "VoiceAlarmDialog|"
+msgid "Play Source"
+msgstr ""
+
+msgctxt "VoiceAlarmDialog|"
+msgid "No"
+msgstr ""
+
+msgctxt "VoiceAlarmDialog|"
+msgid "Before"
+msgstr ""
+
+msgctxt "VoiceAlarmDialog|"
+msgid "After"
+msgstr ""
+
+msgctxt "VoiceAlarmDialog|"
+msgid "Play"
+msgstr ""
+
+msgctxt "VoiceAlarmDialog|"
+msgid "Mute"
+msgstr ""
+
+msgctxt "VoiceAlarmDialog|"
+msgid "On No Telemetry"
 msgstr ""
 
 #, qt-format
@@ -4187,6 +4592,26 @@ msgctxt "preferencesDialog|"
 msgid "M2561"
 msgstr ""
 
+msgctxt "preferencesDialog|"
+msgid "1"
+msgstr ""
+
+msgctxt "preferencesDialog|"
+msgid "2"
+msgstr ""
+
+msgctxt "preferencesDialog|"
+msgid "3"
+msgstr ""
+
+msgctxt "preferencesDialog|"
+msgid "4"
+msgstr ""
+
+msgctxt "preferencesDialog|"
+msgid "Default EEPROM version"
+msgstr ""
+
 msgctxt "printDialog|"
 msgid "Low"
 msgstr "Bas"
@@ -4712,10 +5137,6 @@ msgid "SWC"
 msgstr ""
 
 msgctxt "simulatorDialog|"
-msgid "Send Data"
-msgstr ""
-
-msgctxt "simulatorDialog|"
 msgid "SWD"
 msgstr ""
 
@@ -4737,6 +5158,14 @@ msgstr ""
 
 msgctxt "simulatorDialog|"
 msgid "SWI"
+msgstr ""
+
+msgctxt "simulatorDialog|"
+msgid "Send (SBUS)"
+msgstr ""
+
+msgctxt "simulatorDialog|"
+msgid "Com Port Unavailable"
 msgstr ""
 
 #, fuzzy
@@ -4856,4 +5285,8 @@ msgstr ""
 
 msgctxt "telemetryDialog|"
 msgid "A2"
+msgstr ""
+
+msgctxt "telemetryDialog|"
+msgid "Log"
 msgstr ""

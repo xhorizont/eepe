@@ -616,7 +616,7 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>TelemetrEZ rev. 90+</source>
+        <source>TelemetrEZ rev. &gt;=90</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1228,6 +1228,18 @@ http://code.google.com/p/eepe/</source>
         <source>Show release notes</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Error</source>
+        <translation type="unfinished">Erreur</translation>
+    </message>
+    <message>
+        <source>Adrdude not found at %1.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Read Fuses</source>
+        <translation type="unfinished">Lire Fusibles</translation>
+    </message>
 </context>
 <context>
     <name>MdiChild</name>
@@ -1675,19 +1687,11 @@ p, li { white-space: pre-wrap; }
         <translation>Inclure Trim</translation>
     </message>
     <message>
-        <source>Flightmode Trim</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Comment</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Differential</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Late Offset</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1716,6 +1720,22 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>4</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Expo</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enable Expo/Dr</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fix Offset</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Src Switch</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2061,27 +2081,27 @@ Gauche</translation>
     </message>
     <message>
         <source>CSwitch1</source>
-        <translation>Interrupteur personnalisé SW1</translation>
+        <translation type="obsolete">Interrupteur personnalisé SW1</translation>
     </message>
     <message>
         <source>CSwitch2</source>
-        <translation>Interrupteur personnalisé SW2</translation>
+        <translation type="obsolete">Interrupteur personnalisé SW2</translation>
     </message>
     <message>
         <source>CSwitch3</source>
-        <translation>Interrupteur personnalisé SW3</translation>
+        <translation type="obsolete">Interrupteur personnalisé SW3</translation>
     </message>
     <message>
         <source>CSwitch4</source>
-        <translation>Interrupteur personnalisé SW4</translation>
+        <translation type="obsolete">Interrupteur personnalisé SW4</translation>
     </message>
     <message>
         <source>CSwitch5</source>
-        <translation>Interrupteur personnalisé SW5</translation>
+        <translation type="obsolete">Interrupteur personnalisé SW5</translation>
     </message>
     <message>
         <source>CSwitch6</source>
-        <translation>Interrupteur personnalisé SW6</translation>
+        <translation type="obsolete">Interrupteur personnalisé SW6</translation>
     </message>
     <message>
         <source>Delete Selected Mixes?</source>
@@ -2223,15 +2243,15 @@ Droite</translation>
     </message>
     <message>
         <source>CSwitch7</source>
-        <translation>Interrupteur personnalisé SW7</translation>
+        <translation type="obsolete">Interrupteur personnalisé SW7</translation>
     </message>
     <message>
         <source>CSwitch8</source>
-        <translation>Interrupteur personnalisé SW8</translation>
+        <translation type="obsolete">Interrupteur personnalisé SW8</translation>
     </message>
     <message>
         <source>CSwitch9</source>
-        <translation>Interrupteur personnalisé SW9</translation>
+        <translation type="obsolete">Interrupteur personnalisé SW9</translation>
     </message>
     <message>
         <source>CSwitch10</source>
@@ -2326,18 +2346,6 @@ Droite</translation>
         <translation>Effacer toutes les courbes</translation>
     </message>
     <message>
-        <source>CSwitchA</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>CSwitchB</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>CSwitchC</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>FrSky</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2395,10 +2403,6 @@ Droite</translation>
     </message>
     <message>
         <source>Trainer</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>T2throttleTrig</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2714,30 +2718,6 @@ Droite</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>CSwitchD</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>CSwitchE</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>CSwitchG</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>CSwitchH</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>CSwitchI</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>CSwitchF</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Version</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2877,6 +2857,158 @@ Droite</translation>
         <source>Update to Version 3, only for er9x r811 and later</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Timer 1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Reset Switch</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Timer 2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>LSwitch1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>LSwitch2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>LSwitch3</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>LSwitch4</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>LSwitch5</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>LSwitch6</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>LSwitch7</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>LSwitch8</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>LSwitch9</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>LSwitchA</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>LSwitchB</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>LSwitchC</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>LSwitchD</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>LSwitchE</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>LSwitchG</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>LSwitchH</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>LSwitchI</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>LSwitchF</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Voice Alarms</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Alarm Source Function Value</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>VA%1%2  </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>(%1) </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Switch(%1) </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Rate(%1) </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mute </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Haptic(%1) </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>PlaySrc(%1) </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>File(%1)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Alarm(%1)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Expo(%1)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Voice Alarm %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>-100%</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>0%</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Use Custom Stick Names</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>QObject</name>
@@ -3001,6 +3133,261 @@ Droite</translation>
     </message>
     <message>
         <source>Unknown error: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>VoiceAlarmDialog</name>
+    <message>
+        <source>Dialog</source>
+        <translation type="unfinished">Dialogue</translation>
+    </message>
+    <message>
+        <source>Source</source>
+        <translation type="unfinished">Maître</translation>
+    </message>
+    <message>
+        <source>-------</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>v&gt;val</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>v&lt;val</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>|v|&gt;val</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>|v|&lt;val</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>v~=val</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>v=val</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Function</source>
+        <translation type="unfinished">Fonction</translation>
+    </message>
+    <message>
+        <source>Value</source>
+        <translation type="unfinished">Valeur</translation>
+    </message>
+    <message>
+        <source>Switch</source>
+        <translation type="unfinished">Interrupteur</translation>
+    </message>
+    <message>
+        <source>ON</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>OFF</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>BOTH</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>3</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>4</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>5</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>6</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>7</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>8</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>9</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>10</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>11</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>12</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>13</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>14</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>15</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>16</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>17</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>18</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>19</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>20</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>21</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>22</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>23</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>24</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>25</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>26</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>27</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>28</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>29</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>30</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Rate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Haptic</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Haptic1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Haptic2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Haptic3</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>------</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Number</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Audio</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>File Type</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>File</source>
+        <translation type="unfinished">Fichier</translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation type="unfinished">Nom</translation>
+    </message>
+    <message>
+        <source>Play Source</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Before</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>After</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Play</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mute</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>On No Telemetry</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -3659,6 +4046,26 @@ Indique l&apos;affectation voie / numéro de canal par défaut utilisée lors de
         <source>M2561</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>3</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>4</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Default EEPROM version</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>printDialog</name>
@@ -4176,10 +4583,6 @@ Indique l&apos;affectation voie / numéro de canal par défaut utilisée lors de
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Send Data</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>SWD</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4201,6 +4604,14 @@ Indique l&apos;affectation voie / numéro de canal par défaut utilisée lors de
     </message>
     <message>
         <source>SWI</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Send (SBUS)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Com Port Unavailable</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -4320,6 +4731,10 @@ Indique l&apos;affectation voie / numéro de canal par défaut utilisée lors de
     </message>
     <message>
         <source>A2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Log</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

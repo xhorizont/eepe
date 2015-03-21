@@ -616,7 +616,7 @@ void convertModel( SKYModelData *dest, ModelData *source )
 		dst->carryTrim = src->carryTrim ;
 		dst->mltpx = src->mltpx ;
 		dst->mixWarn = src->mixWarn ;
-		dst->enableFmTrim = src->enableFmTrim ;
+    dst->disableExpoDr = src->disableExpoDr ;
 		dst->sOffset = src->sOffset ;
 	}
 	for ( i = 0 ; i < NUM_CHNOUT ; i += 1 )

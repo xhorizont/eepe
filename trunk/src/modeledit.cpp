@@ -6,6 +6,7 @@
 #include "node.h"
 #include "mixerdialog.h"
 #include "simulatordialog.h"
+#include "VoiceAlarmDialog.h"
 
 #include <QtGui>
 
@@ -48,6 +49,7 @@ ModelEdit::ModelEdit(EEPFILE *eFile, uint8_t id, QWidget *parent) :
     switchEditLock = false;
     heliEditLock = false;
     protocolEditLock = false;
+    switchDefPosEditLock = false;
 
     if(!eeFile->eeLoadGeneral())  eeFile->generalDefault();
     eeFile->getGeneralSettings(&g_eeGeneral);
@@ -91,6 +93,7 @@ ModelEdit::ModelEdit(EEPFILE *eFile, uint8_t id, QWidget *parent) :
     tabHeli();
     tabPhase();
 		tabGvar();
+		tabVoiceAlarms() ;
 
     ui->curvePreview->setMinimumWidth(260);
     ui->curvePreview->setMinimumHeight(260);
@@ -209,15 +212,28 @@ void ModelEdit::tabModelEditSetup()
     int min = g_model.tmrVal/60;
     int sec = g_model.tmrVal%60;
     ui->timerValTE->setTime(QTime(0,min,sec));
+    ui->timerDirCB->setCurrentIndex(g_model.tmrDir);
+    populateTmrBSwitchCB(ui->timerResetCB,g_model.timer1RstSw,eeFile->mee_type);
+
+    populateTimerSwitchCB(ui->timer2ModeCB,g_model.tmr2Mode,eeFile->mee_type);
+    populateTmrBSwitchCB(ui->timer2ModeBCB,g_model.tmr2ModeB,eeFile->mee_type);
+    min = g_model.tmr2Val/60;
+    sec = g_model.tmr2Val%60;
+    ui->timer2ValTE->setTime(QTime(0,min,sec));
+    ui->timer2DirCB->setCurrentIndex(g_model.tmr2Dir);
+    populateTmrBSwitchCB(ui->timer2ResetCB,g_model.timer2RstSw,eeFile->mee_type);
 
     //trim inc, thro trim, thro expo, instatrim
     ui->trimIncCB->setCurrentIndex(g_model.trimInc);
     populateSwitchCB(ui->trimSWCB,g_model.trimSw,eeFile->mee_type);
     ui->thrExpoChkB->setChecked(g_model.thrExpo);
     ui->thrTrimChkB->setChecked(g_model.thrTrim);
-    ui->timerDirCB->setCurrentIndex(g_model.tmrDir);
+	  ui->throttleOffCB->setCurrentIndex(g_model.throttleIdle) ;
+
     ui->TrainerChkB->setChecked(g_model.traineron);
-    ui->T2ThrTrgChkB->setChecked(g_model.t2throttle);
+//    ui->T2ThrTrgChkB->setChecked(g_model.t2throttle);
+
+    ui->throttleReversedChkB->setChecked(g_model.throttleReversed);
 
     //center beep
     ui->bcRUDChkB->setChecked(g_model.beepANACenter & BC_BIT_RUD);
@@ -244,6 +260,197 @@ void ModelEdit::tabModelEditSetup()
 		ui->label_version->setText( tr("%1").arg( g_model.modelVersion ) ) ;
 		ui->updateButton->setVisible( g_model.modelVersion < 2 ) ;
 		ui->updateButton3->setVisible( g_model.modelVersion < 3 ) ;
+    
+		ui->useCustomStickNamesChkb->setChecked(g_model.useCustomStickNames) ;
+
+//    ui->switchwarnChkB->setChecked(!(g_model.modelswitchWarningStates&1)); //Default is zero=checked
+
+    setSwitchDefPos() ;
+
+		ui->switchwarnChkB->hide() ;
+		ui->widgetDefSA->hide() ;
+		ui->widgetDefSB->hide() ;
+		ui->widgetDefSC->hide() ;
+		ui->widgetDefSD->hide() ;
+		ui->widgetDefSE->hide() ;
+		ui->widgetDefSF->hide() ;
+		ui->widgetDefSG->hide() ;
+		 
+
+}
+
+uint16_t ModelEdit::oneSwitchPos( uint8_t swtch, uint16_t states )
+{
+	uint8_t index = 0 ;
+//	uint8_t sm = g_eeGeneral.switchMapping ;
+
+	switch ( swtch )
+	{
+//		case HSW_ThrCt :
+//			if ( sm & USE_THR_3POS )
+//			{
+//				if ( states & 0x0001 ) index += 1 ;
+//				if ( states & 0x0100 ) index += 2 ;
+//			}
+//			else
+//			{
+//				if (states & 0x0101) index = 1 ;
+//			}
+//		break ;
+
+//		case HSW_RuddDR :
+//			if ( sm & USE_RUD_3POS )
+//			{
+//				if ( states & 0x0002 ) index += 1 ;
+//				if ( states & 0x0200 ) index += 2 ;
+//			}
+//			else
+//			{
+//				if (states & 0x0202) index = 1 ;
+//			}
+//		break ;
+	
+//		case HSW_ElevDR :
+//			if ( sm & USE_ELE_3POS )
+//			{
+//				if ( states & 0x0004 ) index += 1 ;
+//				if ( states & 0x0400 ) index += 2 ;
+//			}
+//			else
+//			{
+//				if (states & 0x0C04) index = 1 ;
+//			}
+//		break ;
+
+//		case HSW_ID0 :
+//			if ( states & 0x10 )
+//			{
+//				index += 1 ;
+//			}
+//			if ( states & 0x20 )
+//			{
+//				index += 2 ;
+//			}
+//		break ;
+
+//		case HSW_AileDR :
+//			if ( sm & USE_AIL_3POS )
+//			{
+//				if ( states & 0x0040 ) index += 1 ;
+//				if ( states & 0x1000 ) index += 2 ;
+//			}
+//			else
+//			{
+//				if (states & 0x1040) index = 1 ;
+//			}
+//		break ;
+	 
+//		case HSW_Gear :
+//			if ( sm & USE_GEA_3POS )
+//			{
+//				if ( states & 0x0080 ) index += 1 ;
+//				if ( states & 0x2000 ) index += 2 ;
+//			}
+//			else
+//			{
+//				if (states & 0x2080) index = 1 ;
+//			}
+//		break ;
+
+	}
+	return index ;
+}
+
+
+void ModelEdit::setSwitchDefPos()
+{
+//	if ( rData->type == 0 )
+  {
+		
+    quint16 y = (g_model.switchWarningStates >> 1 ) ;
+    quint16 x = y & SWP_IL5 ;
+    if(x==SWP_IL1 || x==SWP_IL2 || x==SWP_IL3 || x==SWP_IL4 || x==SWP_IL5) //illegal states for ID0/1/2
+    {
+      x &= ~SWP_IL5; // turn all off, make sure only one is on
+      x |=  SWP_ID0B;
+    }
+
+    y &= ~SWP_IL5 ;
+		x |= y ;
+		 
+//		g_model.modelswitchWarningStates = ( x << 1 ) | (g_model.switchWarningStates & 1 ) ;
+
+    switchDefPosEditLock = true;
+//		if ( g_eeGeneral.switchMapping & USE_THR_3POS )
+//		{
+//    	ui->SwitchDefSA->setValue( oneSwitchPos( HSW_ThrCt, x ) ) ;
+//		}
+//		else
+//		{
+    	ui->switchDefPos_1->setChecked(x & 0x01);
+//		}
+		
+//		if ( g_eeGeneral.switchMapping & USE_RUD_3POS )
+//		{
+//    	ui->SwitchDefSB->setValue( oneSwitchPos( HSW_RuddDR, x ) ) ;
+//		}
+//		else
+//		{
+	    ui->switchDefPos_2->setChecked(x & 0x02);
+//		}
+
+//		if ( g_eeGeneral.switchMapping & USE_ELE_3POS )
+//		{
+//    	ui->SwitchDefSC->setValue( oneSwitchPos( HSW_ElevDR, x ) ) ;
+//		}
+//		else
+//		{
+    	ui->switchDefPos_3->setChecked(x & 0x04);
+//		}
+    ui->switchDefPos_4->setChecked(x & 0x08);
+    ui->switchDefPos_5->setChecked(x & 0x10);
+    ui->switchDefPos_6->setChecked(x & 0x20);
+    
+//		if ( g_eeGeneral.switchMapping & USE_AIL_3POS )
+//		{
+//    	ui->SwitchDefSD->setValue( oneSwitchPos( HSW_AileDR, x ) ) ;
+//		}
+//		else
+//		{
+			ui->switchDefPos_7->setChecked(x & 0x40);
+//		}
+		
+//		if ( g_eeGeneral.switchMapping & USE_GEA_3POS )
+//		{
+//      ui->SwitchDefSE->setValue( oneSwitchPos( HSW_Gear, x ) ) ;
+//		}
+//		else
+//		{
+    	ui->switchDefPos_8->setChecked(x & 0x80);
+//		}
+
+		switchDefPosEditLock = false;
+	}
+//	else
+//	{
+//    quint16 y = (g_model.modelswitchWarningStates >> 1 ) ;
+//    switchDefPosEditLock = true;
+//    ui->SwitchDefSA->setValue(y & 0x03) ;
+//		y >>= 2 ;
+//    ui->SwitchDefSB->setValue(y & 0x03) ;
+//		y >>= 2 ;
+//    ui->SwitchDefSC->setValue(y & 0x03) ;
+//		y >>= 2 ;
+//    ui->SwitchDefSD->setValue(y & 0x03) ;
+//		y >>= 2 ;
+//    ui->SwitchDefSE->setValue(y & 0x03) ;
+//		y >>= 2 ;
+//    ui->SwitchDefSF->setValue( (y & 0x03) ? 1 : 0 ) ;
+//		y >>= 2 ;
+//    ui->SwitchDefSG->setValue(y & 0x03) ;
+//    switchDefPosEditLock = false;
+//	}
+
 }
 
 uint8_t stickScramble[]=
@@ -428,7 +635,14 @@ void ModelEdit::updateToMV3()
 	}
 	ui->updateButton3->setVisible( false ) ;
 }
-	
+
+void ModelEdit::updateToMV4()
+{
+	g_model.modelVersion = 4 ;
+	ui->label_version->setText( tr("%1").arg( g_model.modelVersion ) ) ;
+  updateSettings() ;
+}
+	 
 void ModelEdit::setProtocolBoxes()
 {
     protocolEditLock = true;
@@ -760,6 +974,88 @@ void ModelEdit::expoEdited()
     updateSettings();
 }
 
+void ModelEdit::tabVoiceAlarms()
+{
+	QByteArray qba ;
+  uint32_t i ;
+
+	ui->VoiceAlarmList->setFont(QFont("Courier New",12)) ;
+	ui->VoiceAlarmList->clear() ;
+	for(i=0 ; i<NUM_VOICE_ALARMS ; i += 1)
+	{
+		VoiceAlarmData *vad = &g_model.vad[i] ;
+		QString str = "";
+		str = tr("VA%1%2  ").arg((i+1)/10).arg((i+1)%10) ;
+		QString srcstr ;
+		int limit = 45-8 ;
+//		if ( rData->type )
+//		{
+//			limit = 46 ;
+//		}
+		if ( vad->source < limit )
+		{
+      str += tr("(%1) ").arg(getSourceStr(g_eeGeneral.stickMode,vad->source,g_model.modelVersion )) ;//, rData->type )) ;
+		}
+		else
+		{
+			str += tr("(%1) ").arg(getTelemString(vad->source-limit+1 )) ;
+		}
+    srcstr = "-------v>val  v<val  |v|>val|v|<valv~=val " ;
+		str += tr("%1 ").arg(srcstr.mid( vad->func * 7, 7 )) ;
+  	if ( vad->source > 44 )
+		{
+			char telText[20] ;
+  	  stringTelemetryChannel( telText, vad->source - 45, vad->offset, &g_model ) ;
+			str += tr("(%1) ").arg(telText) ;
+		}
+		else
+		{
+			str += tr("(%1) ").arg(vad->offset) ;
+		}
+    str += tr("Switch(%1) ").arg(getSWName(vad->swtch, eeFile->mee_type)) ;// rData->type)) ;
+		if ( vad->rate < 3 )
+		{
+			srcstr = vad->rate ? (vad->rate == 1 ? "OFF " : "BOTH ") : "ON " ;
+			str += srcstr ;
+		}
+		else
+		{
+			str += tr("Rate(%1) ").arg(vad->rate-2) ;
+		}
+		if ( vad->mute )
+		{
+			str += tr("Mute ") ;
+		}
+		if ( vad->haptic )
+		{
+			str += tr("Haptic(%1) ").arg(vad->haptic) ;
+		}
+		if ( vad->vsource )
+		{
+			srcstr = ( vad->vsource == 1 ) ? "Before" : "After " ;
+			str += tr("PlaySrc(%1) ").arg(srcstr) ;
+		}
+		switch ( vad->fnameType )
+		{
+			case 1 :
+      {
+//        QString xstr = (char *)vad->file.name ;
+//				xstr = xstr.left(8) ;
+//        str += tr("File(%1)").arg(xstr ) ;
+				str += tr("File(%1)").arg(vad->vfile ) ;
+      }
+			break ;
+			case 2 :
+//				str += tr("File(%1)").arg(vad->file.vfile ) ;
+				str += tr("Alarm(%1)").arg(getAudioAlarmName(vad->vfile) ) ;
+			break ;
+//			case 3 :
+//				str += tr("Alarm(%1)").arg(getAudioAlarmName(vad->file.vfile) ) ;
+//			break ;
+    }
+    ui->VoiceAlarmList->addItem(str) ;
+	}
+}
 
 void ModelEdit::tabMixes()
 {
@@ -825,7 +1121,19 @@ void ModelEdit::tabMixes()
 //				}
 //				else
 //				{
-        	str += getSourceStr(g_eeGeneral.stickMode,md->srcRaw, g_model.modelVersion ) ;
+					if ( md->srcRaw == MIX_3POS )
+					{
+						QString swstr = "sIDxsTHRsRUDsELEsAILsGEAsTRN" ;
+            str += swstr.mid(md->sw23pos*4,4) ;
+					}
+				  else if ( ( md->srcRaw >= 21 && md->srcRaw <= 36 ) && ( md->disableExpoDr ) )
+					{
+        		str += QString("OP%1").arg(md->srcRaw-20) ;
+					}
+					else
+					{
+        		str += getSourceStr(g_eeGeneral.stickMode,md->srcRaw, g_model.modelVersion ) ;
+					}
 //				}
 
         if(md->swtch) str += tr(" Switch(") + getSWName(md->swtch,eeFile->mee_type) + ")";
@@ -872,8 +1180,15 @@ void ModelEdit::tabMixes()
 						x = md->curve ;
 						if ( x < 0 )
 						{
-							x = -x + 6 ;
-            	str += tr("!Curve(%1)").arg(crvStr.mid(x*3,3).remove(' '));
+							if ( x <= -28 )
+							{
+            		str += tr("Expo(%1)").arg( x+128 ) ;
+							}
+							else
+							{
+								x = -x + 6 ;
+            		str += tr("!Curve(%1)").arg(crvStr.mid(x*3,3).remove(' '));
+							}
 						}
 						else
 						{
@@ -1967,6 +2282,7 @@ void ModelEdit::setSwitchWidgetVisibility(int i)
 					cswitchText2[i]->setVisible(true) ;
 					value = -value + 1 ;
           cswitchText2[i]->setText( tr("%1.%2").arg( value/10 ).arg( value%10 ) ) ;
+        	cswitchText2[i]->resize( ui->cswCol2->width(), 20 );
 					cswitchText2[i]->raise() ;
 				}
 				else
@@ -1981,6 +2297,7 @@ void ModelEdit::setSwitchWidgetVisibility(int i)
 					cswitchText1[i]->setVisible(true) ;
 					value = -value + 1 ;
           cswitchText1[i]->setText( tr("%1.%2").arg( value/10 ).arg( value%10 ) ) ;
+        	cswitchText1[i]->resize( ui->cswCol1->width(), 20 );
 					cswitchText1[i]->raise() ;
 				}
 				else
@@ -2009,12 +2326,12 @@ void ModelEdit::updateSwitchesTab()
     populateCSWCB(ui->cswitchFunc_10,g_model.customSw[9].func, g_model.modelVersion);
     populateCSWCB(ui->cswitchFunc_11,g_model.customSw[10].func, g_model.modelVersion);
     populateCSWCB(ui->cswitchFunc_12,g_model.customSw[11].func, g_model.modelVersion);
-    populateCSWCB(ui->cswitchFunc_13,g_model.xcustomSw[0].func, g_model.modelVersion);
-    populateCSWCB(ui->cswitchFunc_14,g_model.xcustomSw[1].func, g_model.modelVersion);
-    populateCSWCB(ui->cswitchFunc_15,g_model.xcustomSw[2].func, g_model.modelVersion);
-    populateCSWCB(ui->cswitchFunc_16,g_model.xcustomSw[3].func, g_model.modelVersion);
-    populateCSWCB(ui->cswitchFunc_17,g_model.xcustomSw[4].func, g_model.modelVersion);
-    populateCSWCB(ui->cswitchFunc_18,g_model.xcustomSw[5].func, g_model.modelVersion);
+    populateCSWCB(ui->cswitchFunc_13,g_model.xcustomSw[0].func, g_model.modelVersion|0x80);
+    populateCSWCB(ui->cswitchFunc_14,g_model.xcustomSw[1].func, g_model.modelVersion|0x80);
+    populateCSWCB(ui->cswitchFunc_15,g_model.xcustomSw[2].func, g_model.modelVersion|0x80);
+    populateCSWCB(ui->cswitchFunc_16,g_model.xcustomSw[3].func, g_model.modelVersion|0x80);
+    populateCSWCB(ui->cswitchFunc_17,g_model.xcustomSw[4].func, g_model.modelVersion|0x80);
+    populateCSWCB(ui->cswitchFunc_18,g_model.xcustomSw[5].func, g_model.modelVersion|0x80);
 
 	if ( eeFile->mee_type )
 	{
@@ -2207,17 +2524,17 @@ void ModelEdit::setSafetyLabels()
 
 void ModelEdit::setSafetyWidgetVisibility(int i)
 {
-	if ( i >= NUM_CHNOUT )
-	{
-		if ( eeFile->mee_type == 0 )
-		{
-			safetySwitchGvar[i]->setVisible(false) ;
-			safetySwitchGindex[i]->setVisible(false) ;
- 	    safetySwitchValue[i]->setVisible(false);
- 	    safetySwitchAlarm[i]->setVisible(false);
-			return ;
-		}
-	}		
+//	if ( i >= NUM_CHNOUT )
+//	{
+//		if ( eeFile->mee_type == 0 )
+//		{
+//			safetySwitchGvar[i]->setVisible(false) ;
+//			safetySwitchGindex[i]->setVisible(false) ;
+// 	    safetySwitchValue[i]->setVisible(false);
+// 	    safetySwitchAlarm[i]->setVisible(false);
+//			return ;
+//		}
+//	}		
 	
 	
 	if ( g_model.numVoice < 16-i )
@@ -2307,7 +2624,7 @@ void ModelEdit::tabSafetySwitches()
 			if ( i > 15 )
 			{
 				j = i - 16 ;
-				k = 5 ;
+				k = 6 ;
 			}
         safetySwitchType[i] = new QComboBox(this);
         safetySwitchSwtch[i] = new QComboBox(this);
@@ -2402,7 +2719,7 @@ void ModelEdit::tabSafetySwitches()
 			  connect( safetySwitchGvar[i],SIGNAL(stateChanged(int)),this,SLOT(safetySwitchesEdited()));
     }
     connect(ui->NumVoiceSwSB,SIGNAL(valueChanged(int)),this,SLOT(safetySwitchesEdited()));
-	if ( eeFile->mee_type )
+	if ( 1 )
 	{
 		ui->SS17->setVisible(true) ;
 		ui->SS18->setVisible(true) ;
@@ -2769,7 +3086,7 @@ void ModelEdit::tabTrims()
             ui->Label_S2->setText("ELE");
             ui->Label_S3->setText("THR");
             ui->Label_S4->setText("AIL");
-            if(g_eeGeneral.throttleReversed)
+						if ( throttleReversed( &g_eeGeneral, &g_model ) )
                 ui->slider_S3->setInvertedAppearance(true);
             break;
         case (1):
@@ -2777,7 +3094,7 @@ void ModelEdit::tabTrims()
             ui->Label_S2->setText("THR");
             ui->Label_S3->setText("ELE");
             ui->Label_S4->setText("AIL");
-            if(g_eeGeneral.throttleReversed)
+						if ( throttleReversed( &g_eeGeneral, &g_model ) )
                 ui->slider_S2->setInvertedAppearance(true);
             break;
         case (2):
@@ -2785,7 +3102,7 @@ void ModelEdit::tabTrims()
             ui->Label_S2->setText("ELE");
             ui->Label_S3->setText("THR");
             ui->Label_S4->setText("RUD");
-            if(g_eeGeneral.throttleReversed)
+						if ( throttleReversed( &g_eeGeneral, &g_model ) )
                 ui->slider_S3->setInvertedAppearance(true);
             break;
         case (3):
@@ -2793,7 +3110,7 @@ void ModelEdit::tabTrims()
             ui->Label_S2->setText("THR");
             ui->Label_S3->setText("ELE");
             ui->Label_S4->setText("RUD");
-            if(g_eeGeneral.throttleReversed)
+						if ( throttleReversed( &g_eeGeneral, &g_model ) )
                 ui->slider_S2->setInvertedAppearance(true);
             break;
     }
@@ -2876,20 +3193,29 @@ void ModelEdit::tabGvar()
 			connect(psname[i], SIGNAL(editingFinished()),this,SLOT(GvarEdited()));
 		}
 	
-		populateGvarCB( ui->Gvar1CB, g_model.gvars[0].gvsource ) ;
-    populateGvarCB( ui->Gvar2CB, g_model.gvars[1].gvsource ) ;
-    populateGvarCB( ui->Gvar3CB, g_model.gvars[2].gvsource ) ;
-    populateGvarCB( ui->Gvar4CB, g_model.gvars[3].gvsource ) ;
-    populateGvarCB( ui->Gvar5CB, g_model.gvars[4].gvsource ) ;
-    populateGvarCB( ui->Gvar6CB, g_model.gvars[5].gvsource ) ;
-    populateGvarCB( ui->Gvar7CB, g_model.gvars[6].gvsource ) ;
-    ui->Gv1SB->setValue(g_model.gvars[0].gvar);
+		populateGvarCB( ui->Gvar1CB, g_model.gvars[0].gvsource, eeFile->mee_type ) ;
+    populateGvarCB( ui->Gvar2CB, g_model.gvars[1].gvsource, eeFile->mee_type ) ;
+    populateGvarCB( ui->Gvar3CB, g_model.gvars[2].gvsource, eeFile->mee_type ) ;
+    populateGvarCB( ui->Gvar4CB, g_model.gvars[3].gvsource, eeFile->mee_type ) ;
+    populateGvarCB( ui->Gvar5CB, g_model.gvars[4].gvsource, eeFile->mee_type ) ;
+    populateGvarCB( ui->Gvar6CB, g_model.gvars[5].gvsource, eeFile->mee_type ) ;
+    populateGvarCB( ui->Gvar7CB, g_model.gvars[6].gvsource, eeFile->mee_type ) ;
+    
+		ui->Gv1SB->setValue(g_model.gvars[0].gvar);
     ui->Gv2SB->setValue(g_model.gvars[1].gvar);
     ui->Gv3SB->setValue(g_model.gvars[2].gvar);
     ui->Gv4SB->setValue(g_model.gvars[3].gvar);
     ui->Gv5SB->setValue(g_model.gvars[4].gvar);
     ui->Gv6SB->setValue(g_model.gvars[5].gvar);
     ui->Gv7SB->setValue(g_model.gvars[6].gvar);
+
+    populateSwitchCB(ui->GvSw1CB,g_model.gvswitch[0], eeFile->mee_type);
+    populateSwitchCB(ui->GvSw2CB,g_model.gvswitch[1], eeFile->mee_type);
+    populateSwitchCB(ui->GvSw3CB,g_model.gvswitch[2], eeFile->mee_type);
+    populateSwitchCB(ui->GvSw4CB,g_model.gvswitch[3], eeFile->mee_type);
+    populateSwitchCB(ui->GvSw5CB,g_model.gvswitch[4], eeFile->mee_type);
+    populateSwitchCB(ui->GvSw6CB,g_model.gvswitch[5], eeFile->mee_type);
+    populateSwitchCB(ui->GvSw7CB,g_model.gvswitch[6], eeFile->mee_type);
 
     connect(ui->Gvar1CB,SIGNAL(currentIndexChanged(int)),this,SLOT(GvarEdited()));
     connect(ui->Gvar2CB,SIGNAL(currentIndexChanged(int)),this,SLOT(GvarEdited()));
@@ -2906,6 +3232,14 @@ void ModelEdit::tabGvar()
     connect(ui->Gv5SB,SIGNAL(editingFinished()),this,SLOT(GvarEdited()));
     connect(ui->Gv6SB,SIGNAL(editingFinished()),this,SLOT(GvarEdited()));
     connect(ui->Gv7SB,SIGNAL(editingFinished()),this,SLOT(GvarEdited()));
+
+    connect(ui->GvSw1CB,SIGNAL(currentIndexChanged(int)),this,SLOT(GvarEdited()));
+    connect(ui->GvSw2CB,SIGNAL(currentIndexChanged(int)),this,SLOT(GvarEdited()));
+    connect(ui->GvSw3CB,SIGNAL(currentIndexChanged(int)),this,SLOT(GvarEdited()));
+    connect(ui->GvSw4CB,SIGNAL(currentIndexChanged(int)),this,SLOT(GvarEdited()));
+    connect(ui->GvSw5CB,SIGNAL(currentIndexChanged(int)),this,SLOT(GvarEdited()));
+    connect(ui->GvSw6CB,SIGNAL(currentIndexChanged(int)),this,SLOT(GvarEdited()));
+    connect(ui->GvSw7CB,SIGNAL(currentIndexChanged(int)),this,SLOT(GvarEdited()));
 
 }
 
@@ -2927,6 +3261,21 @@ void ModelEdit::GvarEdited()
     g_model.gvars[5].gvar = ui->Gv6SB->value();
     g_model.gvars[6].gvar = ui->Gv7SB->value();
 	
+		int limit = MAX_DRSWITCH ;
+#ifndef SKY
+	  if ( eeFile->mee_type )
+		{
+    	limit += EXTRA_CSW ;
+		}
+#endif
+		g_model.gvswitch[0] = ui->GvSw1CB->currentIndex()-limit ;
+		g_model.gvswitch[1] = ui->GvSw2CB->currentIndex()-limit ;
+		g_model.gvswitch[2] = ui->GvSw3CB->currentIndex()-limit ;
+		g_model.gvswitch[3] = ui->GvSw4CB->currentIndex()-limit ;
+		g_model.gvswitch[4] = ui->GvSw5CB->currentIndex()-limit ;
+		g_model.gvswitch[5] = ui->GvSw6CB->currentIndex()-limit ;
+		g_model.gvswitch[6] = ui->GvSw7CB->currentIndex()-limit ;
+		
 		int i ;
 		for ( i = 0 ; i < NUM_SCALERS ; i += 1 )
 		{
@@ -3101,16 +3450,29 @@ void ModelEdit::on_modelNameLE_editingFinished()
 
 }
 
+void ModelEdit::on_throttleReversedChkB_stateChanged( int )
+{
+  g_model.throttleReversed = ui->throttleReversedChkB->isChecked() ? 1 : 0 ;
+  updateSettings() ;
+}
+
 void ModelEdit::on_timerModeCB_currentIndexChanged(int index)
 {
-		int num_options = TMR_NUM_OPTION ;
-    if ( eeFile->mee_type )
-		{
-			num_options += EXTRA_CSW * 2 ;
-		}
+//		int num_options = TMR_NUM_OPTION ;
+//    if ( eeFile->mee_type )
+//		{
+//			num_options += EXTRA_CSW * 2 ;
+//		}
 	
-    g_model.tmrMode = index-num_options;
+//    g_model.tmrMode = index-num_options;
+    g_model.tmrMode = index ;
     updateSettings();
+}
+
+void ModelEdit::on_throttleOffCB_currentIndexChanged(int index)
+{
+	g_model.throttleIdle = index ;
+	updateSettings() ;
 }
 
 void ModelEdit::on_timerModeBCB_currentIndexChanged(int index)
@@ -3131,6 +3493,67 @@ void ModelEdit::on_timerDirCB_currentIndexChanged(int index)
 {
     g_model.tmrDir = index;
     updateSettings();
+}
+
+void ModelEdit::on_timerResetCB_currentIndexChanged(int index)
+{
+	int limit = MAX_DRSWITCH-1 ;
+#ifndef SKY
+  if ( eeFile->mee_type )
+	{
+   	limit += EXTRA_CSW ;
+	}
+#endif
+	
+  g_model.timer1RstSw = index-limit ;
+  updateSettings() ;
+}
+
+void ModelEdit::on_timer2ModeCB_currentIndexChanged(int index)
+{
+//		int num_options = TMR_NUM_OPTION ;
+//    if ( eeFile->mee_type )
+//		{
+//			num_options += EXTRA_CSW * 2 ;
+//		}
+	
+//    g_model.tmr2Mode = index-num_options;
+    g_model.tmr2Mode = index ;
+    updateSettings();
+}
+
+void ModelEdit::on_timer2ModeBCB_currentIndexChanged(int index)
+{
+	int limit = MAX_DRSWITCH-1 ;
+#ifndef SKY
+  if ( eeFile->mee_type )
+	{
+   	limit += EXTRA_CSW ;
+	}
+#endif
+	
+    g_model.tmr2ModeB = index-(limit);
+    updateSettings();
+}
+
+void ModelEdit::on_timer2DirCB_currentIndexChanged(int index)
+{
+    g_model.tmr2Dir = index;
+    updateSettings();
+}
+
+void ModelEdit::on_timer2ResetCB_currentIndexChanged(int index)
+{
+	int limit = MAX_DRSWITCH-1 ;
+#ifndef SKY
+  if ( eeFile->mee_type )
+	{
+   	limit += EXTRA_CSW ;
+	}
+#endif
+	
+  g_model.timer2RstSw = index-limit ;
+  updateSettings() ;
 }
 
 void ModelEdit::on_trimIncCB_currentIndexChanged(int index)
@@ -3190,6 +3613,12 @@ void ModelEdit::on_typeCB_currentIndexChanged(int index)
 void ModelEdit::on_timerValTE_editingFinished()
 {
     g_model.tmrVal = ui->timerValTE->time().minute()*60 + ui->timerValTE->time().second();
+    updateSettings();
+}
+
+void ModelEdit::on_timer2ValTE_editingFinished()
+{
+    g_model.tmr2Val = ui->timer2ValTE->time().minute()*60 + ui->timer2ValTE->time().second();
     updateSettings();
 }
 
@@ -3261,11 +3690,11 @@ void ModelEdit::on_TrainerChkB_toggled(bool checked)
     updateSettings();
 }
 
-void ModelEdit::on_T2ThrTrgChkB_toggled(bool checked)
-{
-    g_model.t2throttle = checked;
-    updateSettings();
-}
+//void ModelEdit::on_T2ThrTrgChkB_toggled(bool checked)
+//{
+//    g_model.t2throttle = checked;
+//    updateSettings();
+//}
 
 void ModelEdit::on_thrExpoChkB_toggled(bool checked)
 {
@@ -3287,6 +3716,13 @@ void ModelEdit::on_thrExpoChkB_toggled(bool checked)
 //	}		
   updateSettings();
 }
+
+void ModelEdit::on_useCustomStickNamesChkb_toggled(bool checked)
+{
+	g_model.useCustomStickNames = checked ;
+  updateSettings() ;
+}
+
 
 void ModelEdit::on_bcRUDChkB_toggled(bool checked)
 {
@@ -3351,6 +3787,98 @@ void ModelEdit::on_bcP3ChkB_toggled(bool checked)
     updateSettings();
 }
 
+
+void ModelEdit::getModelSwitchDefPos(int i, bool val)
+{
+    if(val)
+        g_model.switchWarningStates |= (1<<(i));
+    else
+        g_model.switchWarningStates &= ~(1<<(i));
+}
+
+void ModelEdit::on_switchDefPos_1_stateChanged(int )
+{
+    if(switchDefPosEditLock) return;
+    getModelSwitchDefPos(1,ui->switchDefPos_1->isChecked());
+    updateSettings();
+}
+void ModelEdit::on_switchDefPos_2_stateChanged(int )
+{
+    if(switchDefPosEditLock) return;
+    getModelSwitchDefPos(2,ui->switchDefPos_2->isChecked());
+    updateSettings();
+}
+void ModelEdit::on_switchDefPos_3_stateChanged(int )
+{
+    getModelSwitchDefPos(3,ui->switchDefPos_3->isChecked());
+    updateSettings();
+}
+void ModelEdit::on_switchDefPos_4_stateChanged(int )
+{
+    if(switchDefPosEditLock) return;
+
+    if(ui->switchDefPos_4->isChecked())
+    {
+        switchDefPosEditLock = true;
+        ui->switchDefPos_5->setChecked(false);
+        ui->switchDefPos_6->setChecked(false);
+        switchDefPosEditLock = false;
+    }
+    else
+        return;
+
+    g_model.switchWarningStates &= ~(0x30<<1); //turn off ID1/2
+    getModelSwitchDefPos(4,ui->switchDefPos_4->isChecked());
+    updateSettings();
+}
+void ModelEdit::on_switchDefPos_5_stateChanged(int )
+{
+    if(switchDefPosEditLock) return;
+
+    if(ui->switchDefPos_5->isChecked())
+    {
+        switchDefPosEditLock = true;
+        ui->switchDefPos_4->setChecked(false);
+        ui->switchDefPos_6->setChecked(false);
+        switchDefPosEditLock = false;
+    }
+    else
+        return;
+
+    g_model.switchWarningStates &= ~(0x28<<1); //turn off ID0/2
+    getModelSwitchDefPos(5,ui->switchDefPos_5->isChecked());
+    updateSettings();
+}
+void ModelEdit::on_switchDefPos_6_stateChanged(int )
+{
+    if(switchDefPosEditLock) return;
+
+    if(ui->switchDefPos_6->isChecked())
+    {
+        switchDefPosEditLock = true;
+        ui->switchDefPos_4->setChecked(false);
+        ui->switchDefPos_5->setChecked(false);
+        switchDefPosEditLock = false;
+    }
+    else
+        return;
+
+    g_model.switchWarningStates &= ~(0x18<<1); //turn off ID1/2
+    getModelSwitchDefPos(6,ui->switchDefPos_6->isChecked());
+    updateSettings();
+}
+void ModelEdit::on_switchDefPos_7_stateChanged(int )
+{
+    if(switchDefPosEditLock) return;
+    getModelSwitchDefPos(7,ui->switchDefPos_7->isChecked());
+    updateSettings();
+}
+void ModelEdit::on_switchDefPos_8_stateChanged(int )
+{
+    if(switchDefPosEditLock) return;
+    getModelSwitchDefPos(8,ui->switchDefPos_8->isChecked());
+    updateSettings();
+}
 
 void ModelEdit::on_spinBox_S1_valueChanged(int value)
 {
@@ -3707,6 +4235,7 @@ bool ModelEdit::gm_insertMix(int idx)
     memset(&g_model.mixData[idx],0,sizeof(MixData));
     g_model.mixData[idx].destCh = i;
     g_model.mixData[idx].weight = 100;
+		g_model.mixData[idx].lateOffset = 1 ;
 
     for(int j=(MAX_MIXERS-1); j>idx; j--)
     {
@@ -3762,6 +4291,17 @@ int ModelEdit::getMixerIndex(int dch)
     while ((g_model.mixData[i].destCh<=dch) && (g_model.mixData[i].destCh) && (i<MAX_MIXERS)) i++;
     if(i==MAX_MIXERS) return -1;
     return i;
+}
+
+void ModelEdit::on_VoiceAlarmList_doubleClicked( QModelIndex index )
+{
+  VoiceAlarmDialog *dlg = new VoiceAlarmDialog( this, &g_model.vad[index.row()], eeFile->mee_type, g_eeGeneral.stickMode, g_model.modelVersion, &g_model ) ;
+  dlg->setWindowTitle(tr("Voice Alarm %1").arg(index.row()+1)) ;
+  if(dlg->exec())
+  {
+    updateSettings() ;
+		tabVoiceAlarms() ;
+  }
 }
 
 void ModelEdit::mixerlistWidget_doubleClicked(QModelIndex index)
@@ -4005,10 +4545,19 @@ void ModelEdit::mixerlistWidget_KeyPress(QKeyEvent *event)
 
 int ModelEdit::gm_moveMix(int idx, bool dir) //true=inc=down false=dec=up
 {
-    if(idx>MAX_MIXERS || (idx==0 && !dir) || (idx==MAX_MIXERS && dir)) return idx;
+    MixData &src=g_model.mixData[idx];
+    if(idx==0 && !dir)
+		{
+      if (src.destCh>1)
+			{
+        src.destCh--;
+			}
+			return idx ;
+		}
+		
+    if(idx>MAX_MIXERS || (idx==MAX_MIXERS && dir)) return idx;
 
     int tdx = dir ? idx+1 : idx-1;
-    MixData &src=g_model.mixData[idx];
     MixData &tgt=g_model.mixData[tdx];
 
     if((src.destCh==0) || (src.destCh>NUM_CHNOUT) || (tgt.destCh>NUM_CHNOUT)) return idx;
@@ -4346,6 +4895,7 @@ MixData* ModelEdit::setDest(uint8_t dch)
             (MAX_MIXERS-(i+1))*sizeof(MixData) );
     memset(&g_model.mixData[i],0,sizeof(MixData));
     g_model.mixData[i].destCh = dch;
+		g_model.mixData[i].lateOffset = 1 ;
     return &g_model.mixData[i];
 }
 

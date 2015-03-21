@@ -341,9 +341,12 @@ QPushButton:checked {
       <item>
        <layout class="QVBoxLayout" name="verticalLayout_11">
         <item>
-         <widget class="QPushButton" name="SendData">
+         <widget class="QComboBox" name="serialPortCB"/>
+        </item>
+        <item>
+         <widget class="QPushButton" name="SendDataButton">
           <property name="text">
-           <string>Send Data</string>
+           <string>Send (SBUS)</string>
           </property>
          </widget>
         </item>

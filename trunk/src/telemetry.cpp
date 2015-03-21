@@ -1,3 +1,6 @@
+
+//#define TELEMETRY_LOGGING	1
+
 #include <inttypes.h>
 #include "pers.h"
 #include "telemetry.h"
@@ -84,12 +87,17 @@ telemetryDialog::telemetryDialog(QWidget *parent) :
 {
   QString temp ;
   ui->setupUi(this);
-
+#ifndef TELEMETRY_LOGGING
+  ui->startButtonLogging->hide() ;
+#endif
 	QList<QextPortInfo> ports = QextSerialEnumerator::getPorts() ;
 	ui->TelPortCB->clear() ;
   foreach (QextPortInfo info, ports)
 	{
-  	ui->TelPortCB->addItem(info.portName) ;
+		if ( info.portName.length() )
+		{
+	  	ui->TelPortCB->addItem(info.portName) ;
+		}
 	}
 	port = NULL ;
 	timer = NULL ;
@@ -203,7 +211,7 @@ void telemetryDialog::on_startButtonModule_clicked()
 #else
 		port = new QextSerialPort(portname, QextSerialPort::Polling) ;
 #endif /*Q_OS_UNIX*/
-		port->setBaudRate(BAUD9600) ;
+		port->setBaudRate(BAUD115200) ;
   	port->setFlowControl(FLOW_OFF) ;
 		port->setParity(PAR_NONE) ;
   	port->setDataBits(DATA_8) ;
@@ -273,6 +281,34 @@ void telemetryDialog::on_startButton_clicked()
 		ui->startButton->setText("Stop") ;
 	}
 }
+
+#ifdef TELEMETRY_LOGGING
+static uint8_t Logging = 0 ;
+static unsigned char LogBuffer[256] ;
+static uint32_t LogCount = 0 ;
+QFile LogFile("C:/data/Telemetry");
+
+void telemetryDialog::on_startButtonLogging_clicked()
+{
+	if ( telemetry )
+	{
+		if ( Logging )
+		{
+			Logging = 0 ;
+			ui->startButtonLogging->setText("Log") ;
+      LogFile.write((char*)LogBuffer,LogCount) ;
+      LogFile.close() ;
+		}
+		else
+		{
+			ui->startButtonLogging->setText("Stop Logging") ;
+			Logging = 1 ;
+			LogCount = 0 ;
+      LogFile.open(QFile::WriteOnly) ;
+		}
+	}
+}
+#endif
 
 void telemetryDialog::on_WSdial_valueChanged( int value )
 {
@@ -486,6 +522,19 @@ void telemetryDialog::frskyPushValue(quint8 &i, quint8 value)
 
 void telemetryDialog::processTelByte( unsigned char data )
 {
+#ifdef TELEMETRY_LOGGING
+	// Log data here
+	if ( Logging )
+	{
+		LogBuffer[LogCount++] = data ;
+		if ( LogCount >= 256 )
+		{
+       LogFile.write((char*)LogBuffer,256) ;
+			 LogCount = 0 ;
+		}
+	}
+#endif
+	
   quint8 numbytes = numPktBytes ;
   switch (dataState) 
   {

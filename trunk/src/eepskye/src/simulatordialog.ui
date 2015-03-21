@@ -6,9 +6,21 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>757</width>
-    <height>608</height>
+    <width>771</width>
+    <height>572</height>
    </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>16777215</width>
+    <height>572</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>ER9x Simulator</string>
@@ -18,11 +30,29 @@
     <normaloff>:/images/simulate.png</normaloff>:/images/simulate.png</iconset>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_9" stretch="0,0,0,0">
-   <property name="margin">
+   <property name="spacing">
+    <number>2</number>
+   </property>
+   <property name="leftMargin">
     <number>6</number>
+   </property>
+   <property name="topMargin">
+    <number>2</number>
+   </property>
+   <property name="rightMargin">
+    <number>6</number>
+   </property>
+   <property name="bottomMargin">
+    <number>4</number>
    </property>
    <item>
     <widget class="QFrame" name="controlFrame">
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>310</height>
+      </size>
+     </property>
      <property name="frameShape">
       <enum>QFrame::Panel</enum>
      </property>
@@ -188,6 +218,34 @@
            </widget>
           </item>
           <item>
+           <widget class="QPushButton" name="switchTHR">
+            <property name="autoFillBackground">
+             <bool>false</bool>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton {
+     background-color: #EEEEEE;
+     border-style: outset;
+     border-width: 1px;
+     border-radius: 4px;
+     border-color: black;
+     padding: 2px;
+ } 
+
+QPushButton:checked {
+     background-color: #4CC417;
+     border-style: inset;
+ }</string>
+            </property>
+            <property name="text">
+             <string>THR</string>
+            </property>
+            <property name="checkable">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
            <widget class="QWidget" name="SEwidget" native="true">
             <property name="maximumSize">
              <size>
@@ -256,6 +314,56 @@
             </widget>
             <zorder>labelSE</zorder>
             <zorder>SEslider</zorder>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="switchRUD">
+            <property name="styleSheet">
+             <string notr="true">QPushButton {
+     background-color: #EEEEEE;
+     border-style: outset;
+     border-width: 1px;
+     border-radius: 4px;
+     border-color: black;
+     padding: 2px;
+ } 
+
+QPushButton:checked {
+     background-color: #4CC417;
+     border-style: inset;
+ }</string>
+            </property>
+            <property name="text">
+             <string>RUD</string>
+            </property>
+            <property name="checkable">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="switchELE">
+            <property name="styleSheet">
+             <string notr="true">QPushButton {
+     background-color: #EEEEEE;
+     border-style: outset;
+     border-width: 1px;
+     border-radius: 4px;
+     border-color: black;
+     padding: 2px;
+ } 
+
+QPushButton:checked {
+     background-color: #4CC417;
+     border-style: inset;
+ }</string>
+            </property>
+            <property name="text">
+             <string>ELE</string>
+            </property>
+            <property name="checkable">
+             <bool>true</bool>
+            </property>
            </widget>
           </item>
           <item>
@@ -336,6 +444,31 @@
            </widget>
           </item>
           <item>
+           <widget class="QPushButton" name="switchAIL">
+            <property name="styleSheet">
+             <string notr="true">QPushButton {
+     background-color: #EEEEEE;
+     border-style: outset;
+     border-width: 1px;
+     border-radius: 4px;
+     border-color: black;
+     padding: 2px;
+ } 
+
+QPushButton:checked {
+     background-color: #4CC417;
+     border-style: inset;
+ }</string>
+            </property>
+            <property name="text">
+             <string>AIL</string>
+            </property>
+            <property name="checkable">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
            <widget class="QWidget" name="SBwidget" native="true">
             <property name="maximumSize">
              <size>
@@ -412,115 +545,18 @@
             <zorder>SBslider</zorder>
            </widget>
           </item>
-          <item>
-           <widget class="QPushButton" name="switchTHR">
-            <property name="autoFillBackground">
-             <bool>false</bool>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">QPushButton {
-     background-color: #EEEEEE;
-     border-style: outset;
-     border-width: 1px;
-     border-radius: 4px;
-     border-color: black;
-     padding: 2px;
- } 
-
-QPushButton:checked {
-     background-color: #4CC417;
-     border-style: inset;
- }</string>
-            </property>
-            <property name="text">
-             <string>THR</string>
-            </property>
-            <property name="checkable">
-             <bool>true</bool>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="switchRUD">
-            <property name="styleSheet">
-             <string notr="true">QPushButton {
-     background-color: #EEEEEE;
-     border-style: outset;
-     border-width: 1px;
-     border-radius: 4px;
-     border-color: black;
-     padding: 2px;
- } 
-
-QPushButton:checked {
-     background-color: #4CC417;
-     border-style: inset;
- }</string>
-            </property>
-            <property name="text">
-             <string>RUD</string>
-            </property>
-            <property name="checkable">
-             <bool>true</bool>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="switchELE">
-            <property name="styleSheet">
-             <string notr="true">QPushButton {
-     background-color: #EEEEEE;
-     border-style: outset;
-     border-width: 1px;
-     border-radius: 4px;
-     border-color: black;
-     padding: 2px;
- } 
-
-QPushButton:checked {
-     background-color: #4CC417;
-     border-style: inset;
- }</string>
-            </property>
-            <property name="text">
-             <string>ELE</string>
-            </property>
-            <property name="checkable">
-             <bool>true</bool>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="switchAIL">
-            <property name="styleSheet">
-             <string notr="true">QPushButton {
-     background-color: #EEEEEE;
-     border-style: outset;
-     border-width: 1px;
-     border-radius: 4px;
-     border-color: black;
-     padding: 2px;
- } 
-
-QPushButton:checked {
-     background-color: #4CC417;
-     border-style: inset;
- }</string>
-            </property>
-            <property name="text">
-             <string>AIL</string>
-            </property>
-            <property name="checkable">
-             <bool>true</bool>
-            </property>
-           </widget>
-          </item>
          </layout>
         </item>
         <item row="0" column="1">
          <layout class="QHBoxLayout" name="horizontalLayout_3">
           <item>
            <widget class="QPushButton" name="holdLeftX">
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>18</height>
+             </size>
+            </property>
             <property name="styleSheet">
              <string notr="true">QPushButton {
      background-color: #EEEEEE;
@@ -546,6 +582,12 @@ QPushButton:checked {
           </item>
           <item>
            <widget class="QPushButton" name="FixLeftX">
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>18</height>
+             </size>
+            </property>
             <property name="styleSheet">
              <string notr="true">QPushButton {
      background-color: #EEEEEE;
@@ -571,6 +613,12 @@ QPushButton:checked {
           </item>
           <item>
            <widget class="QPushButton" name="FixLeftY">
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>18</height>
+             </size>
+            </property>
             <property name="styleSheet">
              <string notr="true">QPushButton {
      background-color: #EEEEEE;
@@ -596,6 +644,12 @@ QPushButton:checked {
           </item>
           <item>
            <widget class="QPushButton" name="holdLeftY">
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>18</height>
+             </size>
+            </property>
             <property name="styleSheet">
              <string notr="true">QPushButton {
      background-color: #EEEEEE;
@@ -631,6 +685,12 @@ QPushButton:checked {
           </property>
           <item>
            <widget class="QLabel" name="leftXPerc">
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>21</height>
+             </size>
+            </property>
             <property name="text">
              <string>TextLabel</string>
             </property>
@@ -641,6 +701,12 @@ QPushButton:checked {
           </item>
           <item>
            <widget class="QLabel" name="leftYPerc">
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>21</height>
+             </size>
+            </property>
             <property name="text">
              <string>TextLabel</string>
             </property>
@@ -680,12 +746,15 @@ QPushButton:checked {
       </item>
       <item>
        <layout class="QVBoxLayout" name="verticalLayout_30">
+        <property name="spacing">
+         <number>5</number>
+        </property>
         <property name="sizeConstraint">
          <enum>QLayout::SetDefaultConstraint</enum>
         </property>
         <item>
          <layout class="QGridLayout" name="gridLayout_3">
-          <item row="1" column="1">
+          <item row="4" column="2">
            <widget class="QDial" name="dialP_1">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
@@ -696,13 +765,13 @@ QPushButton:checked {
             <property name="minimumSize">
              <size>
               <width>0</width>
-              <height>85</height>
+              <height>75</height>
              </size>
             </property>
             <property name="maximumSize">
              <size>
               <width>16777215</width>
-              <height>80</height>
+              <height>75</height>
              </size>
             </property>
             <property name="toolTip">
@@ -725,7 +794,7 @@ QPushButton:checked {
             </property>
            </widget>
           </item>
-          <item row="2" column="1">
+          <item row="5" column="2">
            <widget class="QDial" name="dialP_2">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
@@ -736,13 +805,13 @@ QPushButton:checked {
             <property name="minimumSize">
              <size>
               <width>0</width>
-              <height>85</height>
+              <height>75</height>
              </size>
             </property>
             <property name="maximumSize">
              <size>
               <width>16777215</width>
-              <height>82</height>
+              <height>75</height>
              </size>
             </property>
             <property name="toolTip">
@@ -768,18 +837,7 @@ QPushButton:checked {
             </property>
            </widget>
           </item>
-          <item row="0" column="1">
-           <layout class="QHBoxLayout" name="horizontalLayout_2">
-            <item>
-             <widget class="QPushButton" name="SendDataButton">
-              <property name="text">
-               <string>Send Data</string>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </item>
-          <item row="3" column="1">
+          <item row="7" column="2">
            <layout class="QHBoxLayout" name="horizontalLayout_9">
             <item>
              <widget class="QSlider" name="SliderL">
@@ -801,19 +859,6 @@ QPushButton:checked {
              </widget>
             </item>
             <item>
-             <spacer name="horizontalSpacer_2">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>40</width>
-                <height>20</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-            <item>
              <widget class="QDial" name="dialP_3">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
@@ -824,17 +869,20 @@ QPushButton:checked {
               <property name="minimumSize">
                <size>
                 <width>0</width>
-                <height>85</height>
+                <height>75</height>
                </size>
               </property>
               <property name="maximumSize">
                <size>
                 <width>16777215</width>
-                <height>80</height>
+                <height>75</height>
                </size>
               </property>
               <property name="toolTip">
                <string>P3</string>
+              </property>
+              <property name="layoutDirection">
+               <enum>Qt::LeftToRight</enum>
               </property>
               <property name="minimum">
                <number>-1024</number>
@@ -869,6 +917,26 @@ QPushButton:checked {
               </property>
               <property name="tickPosition">
                <enum>QSlider::TicksAbove</enum>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item row="0" column="2">
+           <widget class="QComboBox" name="serialPortCB"/>
+          </item>
+          <item row="2" column="2">
+           <layout class="QHBoxLayout" name="horizontalLayout_2">
+            <item>
+             <widget class="QPushButton" name="SendDataButton">
+              <property name="maximumSize">
+               <size>
+                <width>16777215</width>
+                <height>21</height>
+               </size>
+              </property>
+              <property name="text">
+               <string>Send (SBUS)</string>
               </property>
              </widget>
             </item>
@@ -1097,83 +1165,6 @@ QPushButton:checked {
            </widget>
           </item>
           <item>
-           <widget class="QWidget" name="SCwidget" native="true">
-            <property name="maximumSize">
-             <size>
-              <width>16777215</width>
-              <height>60</height>
-             </size>
-            </property>
-            <widget class="QSlider" name="SCslider">
-             <property name="enabled">
-              <bool>true</bool>
-             </property>
-             <property name="geometry">
-              <rect>
-               <x>0</x>
-               <y>14</y>
-               <width>26</width>
-               <height>40</height>
-              </rect>
-             </property>
-             <property name="minimumSize">
-              <size>
-               <width>26</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>16777215</width>
-               <height>40</height>
-              </size>
-             </property>
-             <property name="maximum">
-              <number>2</number>
-             </property>
-             <property name="pageStep">
-              <number>1</number>
-             </property>
-             <property name="tracking">
-              <bool>false</bool>
-             </property>
-             <property name="orientation">
-              <enum>Qt::Vertical</enum>
-             </property>
-             <property name="invertedAppearance">
-              <bool>true</bool>
-             </property>
-             <property name="tickPosition">
-              <enum>QSlider::TicksBothSides</enum>
-             </property>
-            </widget>
-            <widget class="QLabel" name="labelSC">
-             <property name="geometry">
-              <rect>
-               <x>0</x>
-               <y>0</y>
-               <width>27</width>
-               <height>20</height>
-              </rect>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>16777215</width>
-               <height>20</height>
-              </size>
-             </property>
-             <property name="text">
-              <string>SC</string>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignHCenter|Qt::AlignTop</set>
-             </property>
-            </widget>
-            <zorder>labelSC</zorder>
-            <zorder>SCslider</zorder>
-           </widget>
-          </item>
-          <item>
            <widget class="QWidget" name="SDwidget" native="true">
             <property name="maximumSize">
              <size>
@@ -1310,6 +1301,83 @@ QPushButton:checked {
            </widget>
           </item>
           <item>
+           <widget class="QWidget" name="SCwidget" native="true">
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>60</height>
+             </size>
+            </property>
+            <widget class="QSlider" name="SCslider">
+             <property name="enabled">
+              <bool>true</bool>
+             </property>
+             <property name="geometry">
+              <rect>
+               <x>0</x>
+               <y>14</y>
+               <width>26</width>
+               <height>40</height>
+              </rect>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>26</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>16777215</width>
+               <height>40</height>
+              </size>
+             </property>
+             <property name="maximum">
+              <number>2</number>
+             </property>
+             <property name="pageStep">
+              <number>1</number>
+             </property>
+             <property name="tracking">
+              <bool>false</bool>
+             </property>
+             <property name="orientation">
+              <enum>Qt::Vertical</enum>
+             </property>
+             <property name="invertedAppearance">
+              <bool>true</bool>
+             </property>
+             <property name="tickPosition">
+              <enum>QSlider::TicksBothSides</enum>
+             </property>
+            </widget>
+            <widget class="QLabel" name="labelSC">
+             <property name="geometry">
+              <rect>
+               <x>0</x>
+               <y>0</y>
+               <width>27</width>
+               <height>20</height>
+              </rect>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>16777215</width>
+               <height>20</height>
+              </size>
+             </property>
+             <property name="text">
+              <string>SC</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignHCenter|Qt::AlignTop</set>
+             </property>
+            </widget>
+            <zorder>labelSC</zorder>
+            <zorder>SCslider</zorder>
+           </widget>
+          </item>
+          <item>
            <widget class="QPushButton" name="switchID0">
             <property name="styleSheet">
              <string notr="true">QPushButton {
@@ -1402,6 +1470,12 @@ QPushButton:checked {
          <layout class="QHBoxLayout" name="horizontalLayout_4">
           <item>
            <widget class="QPushButton" name="holdRightX">
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>18</height>
+             </size>
+            </property>
             <property name="styleSheet">
              <string notr="true">QPushButton {
      background-color: #EEEEEE;
@@ -1427,6 +1501,12 @@ QPushButton:checked {
           </item>
           <item>
            <widget class="QPushButton" name="FixRightX">
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>18</height>
+             </size>
+            </property>
             <property name="styleSheet">
              <string notr="true">QPushButton {
      background-color: #EEEEEE;
@@ -1452,6 +1532,12 @@ QPushButton:checked {
           </item>
           <item>
            <widget class="QPushButton" name="FixRightY">
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>18</height>
+             </size>
+            </property>
             <property name="styleSheet">
              <string notr="true">QPushButton {
      background-color: #EEEEEE;
@@ -1477,6 +1563,12 @@ QPushButton:checked {
           </item>
           <item>
            <widget class="QPushButton" name="holdRightY">
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>18</height>
+             </size>
+            </property>
             <property name="styleSheet">
              <string notr="true">QPushButton {
      background-color: #EEEEEE;
@@ -1512,6 +1604,12 @@ QPushButton:checked {
           </property>
           <item>
            <widget class="QLabel" name="rightXPerc">
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>21</height>
+             </size>
+            </property>
             <property name="text">
              <string>TextLabel</string>
             </property>
@@ -1522,6 +1620,12 @@ QPushButton:checked {
           </item>
           <item>
            <widget class="QLabel" name="rightYPerc">
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>21</height>
+             </size>
+            </property>
             <property name="text">
              <string>TextLabel</string>
             </property>
@@ -1564,8 +1668,17 @@ QPushButton:checked {
    </item>
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout">
+     <property name="sizeConstraint">
+      <enum>QLayout::SetDefaultConstraint</enum>
+     </property>
      <item>
       <widget class="QFrame" name="cswitch_1">
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>21</height>
+        </size>
+       </property>
        <property name="autoFillBackground">
         <bool>true</bool>
        </property>
@@ -1597,6 +1710,12 @@ QPushButton:checked {
      </item>
      <item>
       <widget class="QFrame" name="cswitch_2">
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>21</height>
+        </size>
+       </property>
        <property name="autoFillBackground">
         <bool>true</bool>
        </property>
@@ -1628,6 +1747,12 @@ QPushButton:checked {
      </item>
      <item>
       <widget class="QFrame" name="cswitch_3">
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>21</height>
+        </size>
+       </property>
        <property name="autoFillBackground">
         <bool>true</bool>
        </property>
@@ -1659,6 +1784,12 @@ QPushButton:checked {
      </item>
      <item>
       <widget class="QFrame" name="cswitch_4">
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>21</height>
+        </size>
+       </property>
        <property name="autoFillBackground">
         <bool>true</bool>
        </property>
@@ -1690,6 +1821,12 @@ QPushButton:checked {
      </item>
      <item>
       <widget class="QFrame" name="cswitch_5">
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>21</height>
+        </size>
+       </property>
        <property name="autoFillBackground">
         <bool>true</bool>
        </property>
@@ -1721,6 +1858,12 @@ QPushButton:checked {
      </item>
      <item>
       <widget class="QFrame" name="cswitch_6">
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>21</height>
+        </size>
+       </property>
        <property name="autoFillBackground">
         <bool>true</bool>
        </property>
@@ -1752,6 +1895,12 @@ QPushButton:checked {
      </item>
      <item>
       <widget class="QFrame" name="beep_frame">
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>21</height>
+        </size>
+       </property>
        <property name="autoFillBackground">
         <bool>true</bool>
        </property>
@@ -1783,6 +1932,12 @@ QPushButton:checked {
      </item>
      <item>
       <widget class="QFrame" name="cswitch_7">
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>21</height>
+        </size>
+       </property>
        <property name="autoFillBackground">
         <bool>true</bool>
        </property>
@@ -1814,6 +1969,12 @@ QPushButton:checked {
      </item>
      <item>
       <widget class="QFrame" name="cswitch_8">
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>21</height>
+        </size>
+       </property>
        <property name="autoFillBackground">
         <bool>true</bool>
        </property>
@@ -1845,6 +2006,12 @@ QPushButton:checked {
      </item>
      <item>
       <widget class="QFrame" name="cswitch_9">
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>21</height>
+        </size>
+       </property>
        <property name="autoFillBackground">
         <bool>true</bool>
        </property>
@@ -1876,6 +2043,12 @@ QPushButton:checked {
      </item>
      <item>
       <widget class="QFrame" name="cswitch_10">
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>21</height>
+        </size>
+       </property>
        <property name="autoFillBackground">
         <bool>true</bool>
        </property>
@@ -1907,6 +2080,12 @@ QPushButton:checked {
      </item>
      <item>
       <widget class="QFrame" name="cswitch_11">
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>21</height>
+        </size>
+       </property>
        <property name="autoFillBackground">
         <bool>true</bool>
        </property>
@@ -1938,6 +2117,12 @@ QPushButton:checked {
      </item>
      <item>
       <widget class="QFrame" name="cswitch_12">
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>21</height>
+        </size>
+       </property>
        <property name="autoFillBackground">
         <bool>true</bool>
        </property>
@@ -1973,6 +2158,12 @@ QPushButton:checked {
     <layout class="QHBoxLayout" name="horizontalLayout_8">
      <item>
       <widget class="QFrame" name="cswitch_13">
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>21</height>
+        </size>
+       </property>
        <property name="autoFillBackground">
         <bool>true</bool>
        </property>
@@ -2004,6 +2195,12 @@ QPushButton:checked {
      </item>
      <item>
       <widget class="QFrame" name="cswitch_14">
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>21</height>
+        </size>
+       </property>
        <property name="autoFillBackground">
         <bool>true</bool>
        </property>
@@ -2035,6 +2232,12 @@ QPushButton:checked {
      </item>
      <item>
       <widget class="QFrame" name="cswitch_15">
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>21</height>
+        </size>
+       </property>
        <property name="autoFillBackground">
         <bool>true</bool>
        </property>
@@ -2066,6 +2269,12 @@ QPushButton:checked {
      </item>
      <item>
       <widget class="QFrame" name="cswitch_16">
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>21</height>
+        </size>
+       </property>
        <property name="autoFillBackground">
         <bool>true</bool>
        </property>
@@ -2097,6 +2306,12 @@ QPushButton:checked {
      </item>
      <item>
       <widget class="QFrame" name="cswitch_17">
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>21</height>
+        </size>
+       </property>
        <property name="autoFillBackground">
         <bool>true</bool>
        </property>
@@ -2128,6 +2343,12 @@ QPushButton:checked {
      </item>
      <item>
       <widget class="QFrame" name="cswitch_18">
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>21</height>
+        </size>
+       </property>
        <property name="autoFillBackground">
         <bool>true</bool>
        </property>
@@ -2175,6 +2396,12 @@ QPushButton:checked {
      </item>
      <item>
       <widget class="QFrame" name="cswitch_19">
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>21</height>
+        </size>
+       </property>
        <property name="autoFillBackground">
         <bool>true</bool>
        </property>
@@ -2206,6 +2433,12 @@ QPushButton:checked {
      </item>
      <item>
       <widget class="QFrame" name="cswitch_20">
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>21</height>
+        </size>
+       </property>
        <property name="autoFillBackground">
         <bool>true</bool>
        </property>
@@ -2237,6 +2470,12 @@ QPushButton:checked {
      </item>
      <item>
       <widget class="QFrame" name="cswitch_21">
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>21</height>
+        </size>
+       </property>
        <property name="autoFillBackground">
         <bool>true</bool>
        </property>
@@ -2286,6 +2525,12 @@ QPushButton:checked {
         </property>
         <item>
          <widget class="QLabel" name="labelCSW_22">
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>21</height>
+           </size>
+          </property>
           <property name="text">
            <string>SWM</string>
           </property>
@@ -2299,6 +2544,12 @@ QPushButton:checked {
      </item>
      <item>
       <widget class="QFrame" name="cswitch_23">
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>21</height>
+        </size>
+       </property>
        <property name="autoFillBackground">
         <bool>true</bool>
        </property>
@@ -2330,6 +2581,12 @@ QPushButton:checked {
      </item>
      <item>
       <widget class="QFrame" name="cswitch_24">
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>21</height>
+        </size>
+       </property>
        <property name="autoFillBackground">
         <bool>true</bool>
        </property>
@@ -2362,7 +2619,7 @@ QPushButton:checked {
     </layout>
    </item>
    <item>
-    <layout class="QGridLayout" name="gridLayout_4" columnstretch="0,0,0,0,0,0">
+    <layout class="QGridLayout" name="gridLayout_4" columnstretch="0,0,0,0,0,0,0">
      <item row="0" column="0">
       <widget class="QLabel" name="label_4">
        <property name="text">
@@ -2370,7 +2627,7 @@ QPushButton:checked {
        </property>
       </widget>
      </item>
-     <item row="0" column="5">
+     <item row="0" column="6">
       <widget class="QLabel" name="label_12">
        <property name="text">
         <string>CH9</string>
@@ -2384,7 +2641,7 @@ QPushButton:checked {
        </property>
       </widget>
      </item>
-     <item row="1" column="5">
+     <item row="1" column="6">
       <widget class="QLabel" name="label_13">
        <property name="text">
         <string>CH10</string>
@@ -2398,7 +2655,7 @@ QPushButton:checked {
        </property>
       </widget>
      </item>
-     <item row="2" column="5">
+     <item row="2" column="6">
       <widget class="QLabel" name="label_14">
        <property name="text">
         <string>CH11</string>
@@ -2412,7 +2669,7 @@ QPushButton:checked {
        </property>
       </widget>
      </item>
-     <item row="3" column="5">
+     <item row="3" column="6">
       <widget class="QLabel" name="label_15">
        <property name="text">
         <string>CH12</string>
@@ -2426,7 +2683,7 @@ QPushButton:checked {
        </property>
       </widget>
      </item>
-     <item row="4" column="5">
+     <item row="4" column="6">
       <widget class="QLabel" name="label_16">
        <property name="text">
         <string>CH13</string>
@@ -2440,7 +2697,7 @@ QPushButton:checked {
        </property>
       </widget>
      </item>
-     <item row="5" column="5">
+     <item row="5" column="6">
       <widget class="QLabel" name="label_17">
        <property name="text">
         <string>CH14</string>
@@ -2454,7 +2711,7 @@ QPushButton:checked {
        </property>
       </widget>
      </item>
-     <item row="6" column="5">
+     <item row="6" column="6">
       <widget class="QLabel" name="label_18">
        <property name="text">
         <string>CH15</string>
@@ -2468,7 +2725,7 @@ QPushButton:checked {
        </property>
       </widget>
      </item>
-     <item row="7" column="5">
+     <item row="7" column="6">
       <widget class="QLabel" name="label_19">
        <property name="text">
         <string>CH16</string>
@@ -2479,6 +2736,12 @@ QPushButton:checked {
       <widget class="QSlider" name="chnout_1">
        <property name="enabled">
         <bool>false</bool>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>20</height>
+        </size>
        </property>
        <property name="styleSheet">
         <string notr="true">QSlider::sub-page:horizontal:disabled {
@@ -2523,6 +2786,12 @@ border-radius: 4px;
        <property name="enabled">
         <bool>false</bool>
        </property>
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>20</height>
+        </size>
+       </property>
        <property name="styleSheet">
         <string notr="true">QSlider::sub-page:horizontal:disabled {
 border-color: #999;
@@ -2565,6 +2834,12 @@ border-radius: 4px;
       <widget class="QSlider" name="chnout_3">
        <property name="enabled">
         <bool>false</bool>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>20</height>
+        </size>
        </property>
        <property name="styleSheet">
         <string notr="true">QSlider::sub-page:horizontal:disabled {
@@ -2609,6 +2884,12 @@ border-radius: 4px;
        <property name="enabled">
         <bool>false</bool>
        </property>
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>20</height>
+        </size>
+       </property>
        <property name="styleSheet">
         <string notr="true">QSlider::sub-page:horizontal:disabled {
 border-color: #999;
@@ -2651,6 +2932,12 @@ border-radius: 4px;
       <widget class="QSlider" name="chnout_5">
        <property name="enabled">
         <bool>false</bool>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>20</height>
+        </size>
        </property>
        <property name="styleSheet">
         <string notr="true">QSlider::sub-page:horizontal:disabled {
@@ -2695,6 +2982,12 @@ border-radius: 4px;
        <property name="enabled">
         <bool>false</bool>
        </property>
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>20</height>
+        </size>
+       </property>
        <property name="styleSheet">
         <string notr="true">QSlider::sub-page:horizontal:disabled {
 border-color: #999;
@@ -2737,6 +3030,12 @@ border-radius: 4px;
       <widget class="QSlider" name="chnout_7">
        <property name="enabled">
         <bool>false</bool>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>20</height>
+        </size>
        </property>
        <property name="styleSheet">
         <string notr="true">QSlider::sub-page:horizontal:disabled {
@@ -2781,6 +3080,12 @@ border-radius: 4px;
        <property name="enabled">
         <bool>false</bool>
        </property>
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>20</height>
+        </size>
+       </property>
        <property name="styleSheet">
         <string notr="true">QSlider::sub-page:horizontal:disabled {
 border-color: #999;
@@ -2819,11 +3124,17 @@ border-radius: 4px;
        </property>
       </widget>
      </item>
-     <item row="0" column="4">
+     <item row="0" column="5">
       <widget class="QSlider" name="chnout_9">
        <property name="enabled">
         <bool>false</bool>
        </property>
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>20</height>
+        </size>
+       </property>
        <property name="styleSheet">
         <string notr="true">QSlider::sub-page:horizontal:disabled {
 border-color: #999;
@@ -2862,11 +3173,17 @@ border-radius: 4px;
        </property>
       </widget>
      </item>
-     <item row="1" column="4">
+     <item row="1" column="5">
       <widget class="QSlider" name="chnout_10">
        <property name="enabled">
         <bool>false</bool>
        </property>
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>20</height>
+        </size>
+       </property>
        <property name="styleSheet">
         <string notr="true">QSlider::sub-page:horizontal:disabled {
 border-color: #999;
@@ -2905,11 +3222,17 @@ border-radius: 4px;
        </property>
       </widget>
      </item>
-     <item row="2" column="4">
+     <item row="2" column="5">
       <widget class="QSlider" name="chnout_11">
        <property name="enabled">
         <bool>false</bool>
        </property>
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>20</height>
+        </size>
+       </property>
        <property name="styleSheet">
         <string notr="true">QSlider::sub-page:horizontal:disabled {
 border-color: #999;
@@ -2948,11 +3271,17 @@ border-radius: 4px;
        </property>
       </widget>
      </item>
-     <item row="3" column="4">
+     <item row="3" column="5">
       <widget class="QSlider" name="chnout_12">
        <property name="enabled">
         <bool>false</bool>
        </property>
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>20</height>
+        </size>
+       </property>
        <property name="styleSheet">
         <string notr="true">QSlider::sub-page:horizontal:disabled {
 border-color: #999;
@@ -2991,11 +3320,17 @@ border-radius: 4px;
        </property>
       </widget>
      </item>
-     <item row="4" column="4">
+     <item row="4" column="5">
       <widget class="QSlider" name="chnout_13">
        <property name="enabled">
         <bool>false</bool>
        </property>
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>20</height>
+        </size>
+       </property>
        <property name="styleSheet">
         <string notr="true">QSlider::sub-page:horizontal:disabled {
 border-color: #999;
@@ -3034,11 +3369,17 @@ border-radius: 4px;
        </property>
       </widget>
      </item>
-     <item row="5" column="4">
+     <item row="5" column="5">
       <widget class="QSlider" name="chnout_14">
        <property name="enabled">
         <bool>false</bool>
        </property>
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>20</height>
+        </size>
+       </property>
        <property name="styleSheet">
         <string notr="true">QSlider::sub-page:horizontal:disabled {
 border-color: #999;
@@ -3077,11 +3418,17 @@ border-radius: 4px;
        </property>
       </widget>
      </item>
-     <item row="6" column="4">
+     <item row="6" column="5">
       <widget class="QSlider" name="chnout_15">
        <property name="enabled">
         <bool>false</bool>
        </property>
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>20</height>
+        </size>
+       </property>
        <property name="styleSheet">
         <string notr="true">QSlider::sub-page:horizontal:disabled {
 border-color: #999;
@@ -3120,10 +3467,16 @@ border-radius: 4px;
        </property>
       </widget>
      </item>
-     <item row="7" column="4">
+     <item row="7" column="5">
       <widget class="QSlider" name="chnout_16">
        <property name="enabled">
         <bool>false</bool>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>20</height>
+        </size>
        </property>
        <property name="styleSheet">
         <string notr="true">QSlider::sub-page:horizontal:disabled {
@@ -3291,7 +3644,7 @@ border-radius: 4px;
        </property>
       </widget>
      </item>
-     <item row="0" column="3">
+     <item row="0" column="4">
       <widget class="QLabel" name="chnoutV_9">
        <property name="minimumSize">
         <size>
@@ -3307,7 +3660,7 @@ border-radius: 4px;
        </property>
       </widget>
      </item>
-     <item row="1" column="3">
+     <item row="1" column="4">
       <widget class="QLabel" name="chnoutV_10">
        <property name="minimumSize">
         <size>
@@ -3323,7 +3676,7 @@ border-radius: 4px;
        </property>
       </widget>
      </item>
-     <item row="2" column="3">
+     <item row="2" column="4">
       <widget class="QLabel" name="chnoutV_11">
        <property name="minimumSize">
         <size>
@@ -3339,7 +3692,7 @@ border-radius: 4px;
        </property>
       </widget>
      </item>
-     <item row="3" column="3">
+     <item row="3" column="4">
       <widget class="QLabel" name="chnoutV_12">
        <property name="minimumSize">
         <size>
@@ -3355,7 +3708,7 @@ border-radius: 4px;
        </property>
       </widget>
      </item>
-     <item row="4" column="3">
+     <item row="4" column="4">
       <widget class="QLabel" name="chnoutV_13">
        <property name="minimumSize">
         <size>
@@ -3371,7 +3724,7 @@ border-radius: 4px;
        </property>
       </widget>
      </item>
-     <item row="5" column="3">
+     <item row="5" column="4">
       <widget class="QLabel" name="chnoutV_14">
        <property name="minimumSize">
         <size>
@@ -3387,7 +3740,7 @@ border-radius: 4px;
        </property>
       </widget>
      </item>
-     <item row="6" column="3">
+     <item row="6" column="4">
       <widget class="QLabel" name="chnoutV_15">
        <property name="minimumSize">
         <size>
@@ -3403,7 +3756,7 @@ border-radius: 4px;
        </property>
       </widget>
      </item>
-     <item row="7" column="3">
+     <item row="7" column="4">
       <widget class="QLabel" name="chnoutV_16">
        <property name="minimumSize">
         <size>
@@ -3416,6 +3769,107 @@ border-radius: 4px;
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="3">
+      <widget class="QTextEdit" name="Gvar1">
+       <property name="maximumSize">
+        <size>
+         <width>45</width>
+         <height>20</height>
+        </size>
+       </property>
+       <property name="verticalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="3">
+      <widget class="QLabel" name="label">
+       <property name="text">
+        <string>GVARs</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="3">
+      <widget class="QTextEdit" name="Gvar2">
+       <property name="maximumSize">
+        <size>
+         <width>45</width>
+         <height>20</height>
+        </size>
+       </property>
+       <property name="verticalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="3">
+      <widget class="QTextEdit" name="Gvar3">
+       <property name="maximumSize">
+        <size>
+         <width>45</width>
+         <height>20</height>
+        </size>
+       </property>
+       <property name="verticalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="3">
+      <widget class="QTextEdit" name="Gvar4">
+       <property name="maximumSize">
+        <size>
+         <width>45</width>
+         <height>20</height>
+        </size>
+       </property>
+       <property name="verticalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="3">
+      <widget class="QTextEdit" name="Gvar5">
+       <property name="maximumSize">
+        <size>
+         <width>45</width>
+         <height>20</height>
+        </size>
+       </property>
+       <property name="verticalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="3">
+      <widget class="QTextEdit" name="Gvar6">
+       <property name="maximumSize">
+        <size>
+         <width>45</width>
+         <height>20</height>
+        </size>
+       </property>
+       <property name="verticalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+      </widget>
+     </item>
+     <item row="7" column="3">
+      <widget class="QTextEdit" name="Gvar7">
+       <property name="maximumSize">
+        <size>
+         <width>45</width>
+         <height>20</height>
+        </size>
+       </property>
+       <property name="verticalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
        </property>
       </widget>
      </item>

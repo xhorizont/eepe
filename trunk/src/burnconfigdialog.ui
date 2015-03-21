@@ -561,6 +561,56 @@ Please only use this if you know what you are doing.  There are no error checks 
          <string>com20</string>
         </property>
        </item>
+       <item>
+        <property name="text">
+         <string>com21</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>com22</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>com23</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>com24</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>com25</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>com26</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>com27</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>com28</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>com29</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>com30</string>
+        </property>
+       </item>
       </widget>
      </item>
      <item row="4" column="0">

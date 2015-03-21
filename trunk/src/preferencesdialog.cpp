@@ -42,6 +42,7 @@ void preferencesDialog::write_values()
     settings.setValue("default_mode", ui->stickmodeCB->currentIndex());
     settings.setValue("show_splash", ui->showSplash->isChecked());
     settings.setValue("download-version", ui->downloadVerCB->currentIndex());
+    settings.setValue("default_EE_version", ui->DefaultVersionCB->currentIndex());
 }
 
 
@@ -70,6 +71,7 @@ void preferencesDialog::initSettings()
     ui->showSplash->setChecked(settings.value("show_splash", true).toBool());
 
     currentER9Xrev = settings.value("currentER9Xrev", 1).toInt();
+    ui->DefaultVersionCB->setCurrentIndex(settings.value("default_EE_version", 0).toInt());
 
     ui->er9x_ver_label->setText(QString("r%1").arg(currentER9Xrev));
 }

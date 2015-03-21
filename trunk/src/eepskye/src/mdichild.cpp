@@ -383,7 +383,7 @@ void MdiChild::doPaste(QByteArray *gmData, int index)
           i     += sizeof(er9x::EmodelData);
           id++;
           QMessageBox::critical(this, tr("Error"),
-                        tr("Can't paste from er9x file"));
+                        tr("Only part pasted from er9x file\nPlease check model settings"));
 				}
 
     }
@@ -786,7 +786,7 @@ void MdiChild::newFile()
     static int sequenceNumber = 1 ;
     QSettings settings("er9x-eePskye", "eePskye");
 		radioData.type = 0 ;
-		if (settings.value("download-version", 0).toInt() == 2 )
+		if (settings.value("download-version", 0).toInt() >= 2 )
 		{
 			radioData.type = 1 ;
 		}
@@ -834,49 +834,49 @@ bool MdiChild::loadFile(const QString &fileName, bool resetCurrentFile)
 //    }
 
 //    if(fileType==FILE_TYPE_HEX || fileType==FILE_TYPE_EEPE) //read HEX file
-//    {
-//        //if file is XML read and exit saying true;
+    if(fileType==FILE_TYPE_EEPE) //read HEX file
+    {
+        //if file is XML read and exit saying true;
 //        //else process as iHex
-//        QDomDocument doc(ERSKY9X_EEPROM_FILE_TYPE);
-//        QFile file(fileName);
-//        bool xmlOK = file.open(QIODevice::ReadOnly);
-//        if(xmlOK)
-//        {
-//            xmlOK = doc.setContent(&file);
-//            if(xmlOK)
-//            {
-//                //format eefile
-//                eeFile.formatEFile();
-//                //read general data
-//                EEGeneral tgen;
-//                memset(&tgen,0,sizeof(tgen));
-//                if(!loadGeneralDataXML(&doc, &tgen))
-//                {
-//                    QMessageBox::critical(this, tr("Error"),tr("Error reading file:\n"
-//                                                               "Cannot read General Settings from file %1").arg(fileName));
-//                    return false;
-//                }
-//                if(!eeFile.putGeneralSettings(&tgen))
-//                {
-//                    QMessageBox::critical(this, tr("Error"),tr("Error reading file:\n"
-//                                                               "Cannot set General Settings"));
-//                    return false;
-//                }
+        QDomDocument doc(ERSKY9X_EEPROM_FILE_TYPE);
+        QFile file(fileName);
+        bool xmlOK = file.open(QIODevice::ReadOnly);
+        if(xmlOK)
+        {
+          xmlOK = doc.setContent(&file);
+          if(xmlOK)
+          {
+        		EEGeneral tgen;
+            
+						if(xmlOK)
+            {
+                xmlOK = loadGeneralDataXML(&doc, &tgen);
+            }
+            file.close();
+                
+            radioData.File_system[0].size = sizeof(tgen) ;
+			  		memcpy( &radioData.generalSettings, &tgen, sizeof(tgen) ) ;
+								
+          }
 
-//                //read model data
-//                for(int i=0; i<MAX_MODELS; i++)
-//                {
-//                    ModelData tmod;
-//                    memset(&tmod,0,sizeof(tmod));
-//                    if(loadModelDataXML(&doc, &tmod, i))
-//                    {
-//                        eeFile.putModel(&tmod,i);
-//                        getNotesFromXML(&doc, i);
-//                    }
-//                }
-//            }
-//            file.close();
-//        }
+          for(int i=0; i<MAX_MODELS; i++)
+          {
+            SKYModelData tmod;
+            memset(&tmod,0,sizeof(tmod));
+            if(loadModelDataXML(&doc, &tmod, i))
+            {
+              radioData.File_system[i+1].size = sizeof(tmod) ;
+              memcpy( &radioData.models[i], &tmod, sizeof( tmod ) ) ;
+              memcpy( &radioData.ModelNames[i+1], &radioData.models[i].name, sizeof( radioData.models[0].name) ) ;
+              radioData.ModelNames[i+1][sizeof( radioData.models[0].name)+1] = '\0' ;
+              getNotesFromXML(&doc, i);
+            }
+          }
+					radioData.valid = 1 ;
+//          ee32_read_model_names(&radioData) ;
+			  	refreshList() ;
+					return true ;
+        }
 
 //        if(!xmlOK)
 //        {
@@ -913,7 +913,7 @@ bool MdiChild::loadFile(const QString &fileName, bool resetCurrentFile)
 //        if(resetCurrentFile) setCurrentFile(fileName);
 
 //        return true;
-//    }
+    }
 
 
     if(fileType==FILE_TYPE_BIN) //read binary
@@ -1115,13 +1115,13 @@ bool MdiChild::saveFile(const QString &fileName, bool setCurrent)
     int fileType = getFileType(fileName);
 
 
-//    if(fileType==FILE_TYPE_EEPE) //write hex
-//    {
-//        QDomDocument doc(ER9X_EEPROM_FILE_TYPE);
-//        QDomElement root = doc.createElement(ER9X_EEPROM_FILE_TYPE);
-//        doc.appendChild(root);
+    if(fileType==FILE_TYPE_EEPE) //write hex
+    {
+        QDomDocument doc(ERSKY9X_EEPROM_FILE_TYPE);
+        QDomElement root = doc.createElement(ERSKY9X_EEPROM_FILE_TYPE);
+        doc.appendChild(root);
 
-//        //Save General Data
+        //Save General Data
 //        EEGeneral tgen;
 //        memset(&tgen,0,sizeof(tgen));
 //        if(!eeFile.getGeneralSettings(&tgen))
@@ -1131,29 +1131,30 @@ bool MdiChild::saveFile(const QString &fileName, bool setCurrent)
 //        }
 //        tgen.myVers = MDVERS; //make sure we're at the current rev
 //        QDomElement genData = getGeneralDataXML(&doc, &tgen);
-//        root.appendChild(genData);
+        QDomElement genData = getGeneralDataXML(&doc, &radioData.generalSettings ) ;
+        root.appendChild(genData);
 
-//        //Save model data one by one
-//        for(int i=0; i<MAX_MODELS; i++)
-//        {
-//            saveModelToXML(&doc, &root, i, MDVERS);
-//        }
+        //Save model data one by one
+        for(int i=0; i<MAX_MODELS; i++)
+        {
+            saveModelToXML(&doc, &root, i, MDVERS);
+        }
 
-//        if (!file.open(QFile::WriteOnly)) {
-//            QMessageBox::warning(this, tr("Error"),
-//                                 tr("Cannot write file %1:\n%2.")
-//                                 .arg(fileName)
-//                                 .arg(file.errorString()));
-//            return false;
-//        }
+        if (!file.open(QFile::WriteOnly)) {
+            QMessageBox::warning(this, tr("Error"),
+                                 tr("Cannot write file %1:\n%2.")
+                                 .arg(fileName)
+                                 .arg(file.errorString()));
+            return false;
+        }
 
-//        QTextStream ts( &file );
-//        ts << doc.toString();
-//        file.close();
+        QTextStream ts( &file );
+        ts << doc.toString();
+        file.close();
 
-//        if(setCurrent) setCurrentFile(fileName);
-//        return true;
-//    }
+        if(setCurrent) setCurrentFile(fileName);
+        return true;
+    }
 
 
 //    if(fileType==FILE_TYPE_HEX) //write hex
@@ -1501,7 +1502,7 @@ void MdiChild::viableModelSelected(int idx)
     else if(idx<1)
         emit copyAvailable(false);
     else
-        emit copyAvailable(radioData.File_system[currentRow()-1].size);
+        emit copyAvailable(radioData.File_system[currentRow()].size);
 
     emit saveModelToFileAvailable(saveToFileEnabled());
 }
@@ -1664,7 +1665,7 @@ void MdiChild::convertFromEr9x( SKYModelData *dest, uint8_t type )
 		dst->carryTrim = er9x::srcMix->carryTrim ;
 		dst->mltpx = er9x::srcMix->mltpx ;
 		dst->mixWarn = er9x::srcMix->mixWarn ;
-		dst->enableFmTrim = er9x::srcMix->enableFmTrim ;
+    dst->disableExpoDr = er9x::srcMix->disableExpoDr ;
 		dst->sOffset = er9x::srcMix->sOffset ;
 	}
 	for ( i = 0 ; i < NUM_CHNOUT ; i += 1 )

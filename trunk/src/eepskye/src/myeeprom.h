@@ -48,6 +48,9 @@
 #define MDSKYVERS   1
 
 #define	NUM_VOICE		8
+#define NUM_SKY_VOICE_ALARMS	24
+
+#define NUM_GVAR_ADJUST	8
 
 //OBSOLETE - USE ONLY MDVERS NOW
 //#define GENERAL_MYVER_r261 3
@@ -78,6 +81,7 @@
 
 #define GENERAL_OWNER_NAME_LEN 10
 #define MODEL_NAME_LEN         10
+#define VOICE_NAME_SIZE					8
 
 #define MAX_GVARS 7
 #define NUM_SCALERS	8
@@ -99,6 +103,11 @@ PACK(typedef struct t_TrainerData {
   int16_t        calib[4];
   TrainerMix     mix[4];
 }) TrainerData;
+
+PACK(typedef struct t_exTrainerMix {
+  int8_t  swtch ;
+  int8_t  studWeight ;
+}) exTrainerMix; //
 
 PACK(typedef struct t_OldEEGeneral {
     uint8_t   myVers;
@@ -224,6 +233,23 @@ PACK(typedef struct t_EEGeneral {
   int16_t   x9dcalibSpanPos ;	// X9D
 	uint8_t		stickReverse ;
 	uint8_t		language ;
+	uint8_t 	bright_white ;			// backlight(white) for PLUS
+  int16_t   x9dPcalibMid ;			// X9D for PLUS
+  int16_t   x9dPcalibSpanNeg ;	// X9D for PLUS
+  int16_t   x9dPcalibSpanPos ;	// X9D for PLUS
+	uint8_t		switchMapping ;			// 'PRO / SKY
+	int8_t		spare10 ;						// was switchTest
+	exTrainerMix exTrainer[4] ;
+	uint16_t totalElapsedTime ;
+	uint16_t sparetotalElapsedTime ;	// In case we need 32 bits
+	uint8_t		BtType ;
+	uint8_t		trainerSource ;
+	uint8_t		customStickNames[16] ;
+  int16_t   xcalibMid[3];				// X9E
+  int16_t   xcalibSpanNeg[3]; 	// X9E
+  int16_t   xcalibSpanPos[3]; 	// X9E
+	uint8_t		analogMapping ;			// X9D / X9DP
+	int8_t		inactivityVolume ;
 }) EEGeneral;
 #endif
 
@@ -265,7 +291,7 @@ PACK(typedef struct t_MixData {
   uint8_t mltpx:2;           // multiplex method 0=+ 1=* 2=replace
   uint8_t lateOffset:1;      // 
   uint8_t mixWarn:2;         // mixer warning
-  uint8_t enableFmTrim:1;
+  uint8_t disableExpoDr:1;
   uint8_t mixres:1;
   int8_t  sOffset;
   int8_t  res;
@@ -423,11 +449,12 @@ PACK(typedef struct te_MixData {
   uint8_t mltpx:2;           // multiplex method 0=+ 1=* 2=replace
   uint8_t lateOffset:1;      // Add offset later
   uint8_t mixWarn:2;         // mixer warning
-  uint8_t enableFmTrim:1;
+  uint8_t disableExpoDr:1;
   uint8_t differential:1;
   int8_t  sOffset;
   uint8_t  modeControl;
-  uint8_t  res[3];
+	uint8_t switchSource ;
+  uint8_t  res[2];
 }) SKYMixData;
 
 PACK(typedef struct te_CSwData { // Custom Switches data
@@ -519,6 +546,41 @@ PACK(typedef struct t_scale
 	uint8_t name[4] ;
 }) ScaleData ;
 
+// DSM link monitoring
+PACK(typedef struct t_dsmLink
+{
+  uint8_t sourceWarn ;
+	uint8_t levelWarn ;
+  uint8_t sourceCritical;
+	uint8_t levelCritical ;
+}) DsmLinkData ;
+
+typedef struct t_voiceAlarm
+{
+  uint8_t source ;
+	uint8_t func;
+  int8_t  swtch ;
+	uint8_t rate ;
+	uint8_t fnameType:3 ;
+	uint8_t haptic:2 ;
+	uint8_t vsource:2 ;
+	uint8_t mute:1 ;
+	uint8_t res1 ;			// Spare for expansion
+  int16_t  offset ;		//offset
+	union
+	{
+		int16_t vfile ;
+		uint8_t name[8] ;
+	} file ;
+} VoiceAlarmData ;
+
+typedef struct t_gvarAdjust
+{
+	uint8_t function:4 ;
+	uint8_t gvarIndex:4 ;
+	int8_t swtch ;
+	int8_t switch_value ;
+} GvarAdjust ;
 
 PACK(typedef struct te_ModelData {
   char      name[MODEL_NAME_LEN];             // 10 must be first for eeLoadModelName
@@ -609,6 +671,35 @@ PACK(typedef struct te_ModelData {
 	uint8_t   currentSource ;
 	uint8_t   altSource ;
 	ScaleData Scalers[NUM_SCALERS] ;
+	DsmLinkData dsmLinkData ; 
+	int8_t timer1RstSw ;
+	int8_t timer2RstSw ;
+	uint8_t timer1Cdown:1 ;
+	uint8_t timer2Cdown:1 ;
+	uint8_t timer1Mbeep:1 ;
+	uint8_t timer2Mbeep:1 ;
+	uint8_t tspare:4 ;
+  int8_t mlightSw ;
+	uint8_t ppmOpenDrain ;
+	char modelVname[VOICE_NAME_SIZE] ;
+	VoiceAlarmData vad[NUM_SKY_VOICE_ALARMS] ;
+	int8_t gvswitch[MAX_GVARS] ;
+	uint8_t mview ;
+	uint8_t telemetryProtocol ;
+	uint8_t com2Function:4 ;
+	uint8_t com3Function:4 ;	// Bluetooth or telemetry
+	uint8_t telemetryBaudrate ;	// May be useful
+	uint8_t throttleSource:3 ;
+	uint8_t throttleIdle:1 ;
+  uint8_t throttleReversed:1;
+	uint8_t thrSpare:3 ;
+	uint8_t BTfunction ;
+	uint32_t totalTime ;
+  uint16_t xmodelswitchWarningStates ;	// Enough bits for Taranis X9E
+  uint8_t ymodelswitchWarningStates ;	// Enough bits for Taranis X9E
+	uint8_t customDisplay2Index[6] ;
+	GvarAdjust gvarAdjuster[NUM_GVAR_ADJUST] ;
+	uint8_t forExpansion[20] ;	// Allows for extra items not yet handled
 }) SKYModelData ;
 
 

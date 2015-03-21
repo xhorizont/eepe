@@ -25,7 +25,8 @@ HEADERS += mainwindow.h \
     customizesplashdialog.h \
     serialdialog.h \
     telemetry.h \
-    reviewOutput.h
+    reviewOutput.h \
+    VoiceAlarmDialog.h
 SOURCES += main.cpp \
     mainwindow.cpp \
     file.cpp \
@@ -48,7 +49,8 @@ SOURCES += main.cpp \
     customizesplashdialog.cpp \
     serialdialog.cpp \
     telemetry.cpp \
-    reviewOutput.cpp
+    reviewOutput.cpp \
+    VoiceAlarmDialog.cpp
 TEMPLATE = app
 FORMS += modeledit.ui \
     generaledit.ui \
@@ -64,7 +66,8 @@ FORMS += modeledit.ui \
     serialdialog.ui \
     telemetryDialog.ui \
     SimSerialDialog.ui \
-    reviewOutput.ui
+    reviewOutput.ui \
+    VoiceAlarmDialog.ui
 TRANSLATIONS = eepe_.ts    \
                eepe_he.ts  \
                eepe_pt.ts  \
