@@ -92,35 +92,125 @@ enum EnumKeys {
   SW_AileDR ,
   SW_Gear   ,
   SW_Trainer,
-  SW_SA0 = SW_ThrCt,
-  SW_SA1 = SW_ThrCt+1,
-  SW_SA2 = SW_ThrCt+2,
-  SW_SB0 = SW_ThrCt+3,
-  SW_SB1 = SW_ThrCt+4,
-  SW_SB2 = SW_ThrCt+5,
-  SW_SC0 = SW_ThrCt+6,
-  SW_SC1 = SW_ThrCt+7,
-  SW_SC2 = SW_ThrCt+8,
-  SW_SD0 = SW_ThrCt+9,
-  SW_SD1 = SW_ThrCt+10,
-  SW_SD2 = SW_ThrCt+11,
-  SW_SE0 = SW_ThrCt+12,
-  SW_SE1 = SW_ThrCt+13,
-  SW_SE2 = SW_ThrCt+14,
-  SW_SF0 = SW_ThrCt+15,
-  SW_SF2 = SW_ThrCt+16,
-  SW_SG0 = SW_ThrCt+17,
-  SW_SG1 = SW_ThrCt+18,
-  SW_SG2 = SW_ThrCt+19,
-  SW_SH0 = SW_ThrCt+20,
-  SW_SH2 = SW_ThrCt+21
+  SW_SF2 = SW_ThrCt,
+  SW_nu1 = SW_ThrCt+1,
+  SW_nu2 = SW_ThrCt+2,
+  SW_SC0 = SW_ThrCt+3,
+  SW_SC1 = SW_ThrCt+4,
+  SW_SC2 = SW_ThrCt+5,
+  SW_nu3 = SW_ThrCt+6,
+  SW_nu4 = SW_ThrCt+7,
+  SW_SH2 = SW_ThrCt+8,
+//  SW_SD0 = SW_ThrCt+9,
+//  SW_SD1 = SW_ThrCt+10,
+//  SW_SD2 = SW_ThrCt+11,
+//  SW_SE0 = SW_ThrCt+12,
+//  SW_SE1 = SW_ThrCt+13,
+//  SW_SE2 = SW_ThrCt+14,
+//  SW_SF0 = SW_ThrCt+15,
+//  SW_SF2 = SW_ThrCt+16,
+//  SW_SG0 = SW_ThrCt+17,
+//  SW_SG1 = SW_ThrCt+18,
+//  SW_SG2 = SW_ThrCt+19,
+//  SW_SH0 = SW_ThrCt+20,
+//  SW_SH2 = SW_ThrCt+21
 };
 
+// Hardware switch mappings:
+#define HSW_ThrCt			1
+#define HSW_RuddDR		2
+#define HSW_ElevDR		3
+#define HSW_ID0				4
+#define HSW_ID1				5
+#define HSW_ID2				6
+#define HSW_AileDR		7
+#define HSW_Gear			8
+#define HSW_Trainer		9
+
+//#define HSW_Thr3pos0	35
+//#define HSW_Thr3pos1	36
+//#define HSW_Thr3pos2	37
+//#define HSW_Rud3pos0	38
+//#define HSW_Rud3pos1	39
+//#define HSW_Rud3pos2	40
+//#define HSW_Ele3pos0	41
+//#define HSW_Ele3pos1	42
+//#define HSW_Ele3pos2	43
+//#define HSW_Ail3pos0	44
+//#define HSW_Ail3pos1	45
+//#define HSW_Ail3pos2	46
+//#define HSW_Gear3pos0	47
+//#define HSW_Gear3pos1	48
+//#define HSW_Gear3pos2	49
+//#define HSW_Ele6pos0	50
+//#define HSW_Ele6pos1	51
+//#define HSW_Ele6pos2	52
+//#define HSW_Ele6pos3	53
+//#define HSW_Ele6pos4	54
+//#define HSW_Ele6pos5	55
+//#define HSW_MAX				55
+
+#define HSW_Thr3pos0	45	// Skip some values because of safety switch values
+#define HSW_Thr3pos1	46
+#define HSW_Thr3pos2	47
+#define HSW_Rud3pos0	48
+#define HSW_Rud3pos1	49
+#define HSW_Rud3pos2	50
+#define HSW_Ele3pos0	51
+#define HSW_Ele3pos1	52
+#define HSW_Ele3pos2	53
+#define HSW_Ail3pos0	54
+#define HSW_Ail3pos1	55
+#define HSW_Ail3pos2	56
+#define HSW_Gear3pos0	57
+#define HSW_Gear3pos1	58
+#define HSW_Gear3pos2	59
+#define HSW_Ele6pos0	60
+#define HSW_Ele6pos1	61
+#define HSW_Ele6pos2	62
+#define HSW_Ele6pos3	63
+#define HSW_Ele6pos4	64
+#define HSW_Ele6pos5	65
+#define HSW_MAX				65
+
+#define HSW_SF2				1
+//#define HSW_SF2				2
+
+#define HSW_SC0				4
+#define HSW_SC1				5
+#define HSW_SC2				6
+
+//#define HSW_SH0				8
+#define HSW_SH2				9
+
+#define HSW_SB0				45	// Skip some values because of safety switch values
+#define HSW_SB1				46
+#define HSW_SB2				47
+#define HSW_SE0				48
+#define HSW_SE1				49
+#define HSW_SE2				50
+#define HSW_SA0				51
+#define HSW_SA1				52
+#define HSW_SA2				53
+#define HSW_SD0				54
+#define HSW_SD1				55
+#define HSW_SD2				56
+#define HSW_SG0				57
+#define HSW_SG1				58
+#define HSW_SG2				59
+
+//Bitfield for hardware switch mapping
+#define	USE_THR_3POS	0x01
+#define	USE_RUD_3POS	0x02
+#define	USE_ELE_3POS	0x04
+#define	USE_ELE_6POS	0x08
+#define	USE_AIL_3POS	0x10
+#define	USE_GEA_3POS	0x20
 
 
 
-#define SWITCHES_STR "THRRUDELEID0ID1ID2AILGEATRNSW1SW2SW3SW4SW5SW6SW7SW8SW9SWASWBSWCSWDSWESWFSWGSWHSWISWJSWKSWLSWMSWNSWO"
-#define XSWITCHES_STR "SA^SA-SAvSB^SB-SBvSC^SC-SCvSD^SD-SDvSE^SE-SEvSF^SFvSG^SG-SGvSH^SHvSW1SW2SW3SW4SW5SW6SW7SW8SW9SWASWBSWCSWDSWESWFSWGSWHSWISWJSWKSWLSWMSWNSWO"
+#define SWITCHES_STR "THRRUDELEID0ID1ID2AILGEATRNL1 L2 L3 L4 L5 L6 L7 L8 L9 LA LB LC LD LE LF LG LH LI LJ LK LL LM LN LO onfTH^TH-THvRU^RU-RUvEL^EL-ELvAI^AI-AIvGE^GE-GEv6P06P16P26P36P46P5"
+#define XSWITCHES_STR "SF       SC^SC-SCv      SH L1 L2 L3 L4 L5 L6 L7 L8 L9 LA LB LC LD LE LF LG LH LI LJ LK LL LM LN LO onfSB^SB-SBvSE^SE-SEvSA^SA-SAvSD^SD-SDvSG^SG-SGv6P06P16P26P36P46P5"
 #define NUM_CSW  12 //number of custom switches
 #define NUM_SKYCSW  24 //number of custom switches
 #define CSW_INDEX	9	// Index of first custom switch
@@ -131,7 +221,7 @@ enum EnumKeys {
 #define SW_BASE_DIAG SW_ThrCt
 //#define SWITCHES_STR "  NC  ON THR RUD ELE ID0 ID1 ID2 AILGEARTRNR"
 #define MAX_DRSWITCH (1+SW_Trainer-SW_ThrCt+1+NUM_SKYCSW)
-#define MAX_XDRSWITCH (1+SW_SH2-SW_SA0+1+NUM_SKYCSW)
+#define MAX_XDRSWITCH (1+SW_SH2-SW_SF2+1+NUM_SKYCSW)
 
 #define SWP_ID0 (SW_ID0-SW_BASE)
 #define SWP_ID1 (SW_ID1-SW_BASE)
@@ -149,8 +239,8 @@ enum EnumKeys {
 
 #define CURV_STR "---x>0x<0|x|f>0f<0|f|c1 c2 c3 c4 c5 c6 c7 c8 c9 c10c11c12c13c14c15c16c17c18c19c20c21c22c23c24"
 #define CURVE_BASE 7
-#define CSWITCH_STR  "----   v>ofs  v<ofs  |v|>ofs|v|<ofsAND    OR     XOR    ""v1==v2 ""v1!=v2 ""v1>v2  ""v1<v2  ""v1>=v2 ""v1<=v2 Timer  "
-#define CSW_NUM_FUNC 15
+#define CSWITCH_STR  "----   v>ofs  v<ofs  |v|>ofs|v|<ofsAND    OR     XOR    ""v1==v2 ""v1!=v2 ""v1>v2  ""v1<v2  ""v1>=v2 ""v1<=v2 Timer  Ntimer 1-shot 1-shotRv~=ofs "
+#define CSW_NUM_FUNC 19
 #define CSW_LEN_FUNC 7
 
 #define CS_OFF       0
@@ -170,12 +260,17 @@ enum EnumKeys {
 #define CS_ELESS     13
 #define CS_FLIP			 13
 #define CS_TIME	     14
-#define CS_MAXF      14  //max function
+#define CS_NTIME     15
+#define CS_MONO			 16
+#define CS_RMONO	   17	// Monostable with reset
+#define CS_EXEQUAL   18	// V~=offset
+#define CS_MAXF      18  //max function
 
 #define CS_VOFS       0
 #define CS_VBOOL      1
 #define CS_VCOMP      2
 #define CS_TIMER			3
+#define CS_TMONO			4
 //#define CS_STATE(x)   ((x)<CS_AND ? CS_VOFS : ((((x)<CS_EQUAL) || ((x)>=CS_LATCH)) ? CS_VBOOL : ((x)<CS_TIME ? CS_VCOMP : CS_TIMER)))
 
 #define CHAR_FOR_NAMES " ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_-."

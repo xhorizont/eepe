@@ -7,6 +7,7 @@
 #include "../../node.h"
 #include "mixerdialog.h"
 #include "simulatordialog.h"
+#include "VoiceAlarmDialog.h"
 
 #include <QtGui>
 
@@ -71,6 +72,7 @@ ModelEdit::ModelEdit( struct t_radioData *radioData, uint8_t id, QWidget *parent
 //		}
     id_model = id;
 
+		createSwitchMapping( &g_eeGeneral, rData->type ? MAX_XDRSWITCH : MAX_DRSWITCH, rData->type ) ;
     setupMixerListWidget();
 
     QSettings settings("er9x-eePskye", "eePskye");
@@ -96,6 +98,7 @@ ModelEdit::ModelEdit( struct t_radioData *radioData, uint8_t id, QWidget *parent
     tabHeli();
     tabPhase();
 		tabGvar();
+		tabVoiceAlarms() ;
 
     ui->curvePreview->setMinimumWidth(260);
     ui->curvePreview->setMinimumHeight(260);
@@ -214,14 +217,20 @@ void ModelEdit::tabModelEditSetup()
     //timer mode direction value
     populateTimerSwitchCB(ui->timerModeCB,g_model.timer[0].tmrModeA);
     populateTmrBSwitchCB(ui->timerModeBCB,g_model.timer[0].tmrModeB, rData->type);
+    populateTmrBSwitchCB(ui->timerResetCB,g_model.timer1RstSw, rData->type);
     populateTimerSwitchCB(ui->timer2ModeCB,g_model.timer[1].tmrModeA);
     populateTmrBSwitchCB(ui->timer2ModeBCB,g_model.timer[1].tmrModeB, rData->type);
+    populateTmrBSwitchCB(ui->timer2ResetCB,g_model.timer2RstSw, rData->type);
     int min = g_model.timer[0].tmrVal/60;
     int sec = g_model.timer[0].tmrVal%60;
     ui->timerValTE->setTime(QTime(0,min,sec));
     min = g_model.timer[1].tmrVal/60;
     sec = g_model.timer[1].tmrVal%60;
     ui->timer2ValTE->setTime(QTime(0,min,sec));
+    ui->timer1BeepCdownCB->setChecked(g_model.timer1Cdown);
+    ui->timer2BeepCdownCB->setChecked(g_model.timer2Cdown);
+    ui->timer1MinuteBeepCB->setChecked(g_model.timer1Mbeep);
+    ui->timer2MinuteBeepCB->setChecked(g_model.timer2Mbeep);
 
     //trim inc, thro trim, thro expo, instatrim
     ui->trimIncCB->setCurrentIndex(g_model.trimInc);
@@ -302,19 +311,69 @@ void ModelEdit::tabModelEditSetup()
 		}
 		else
 		{
-			ui->switchDefPos_1->show() ;
-			ui->switchDefPos_2->show() ;
-			ui->switchDefPos_3->show() ;
+			if ( g_eeGeneral.switchMapping & USE_THR_3POS )
+			{
+				ui->widgetDefSA->show() ;
+				ui->switchDefPos_1->hide() ;
+				ui->label_DSA->setText("THR") ;
+			}
+			else
+			{
+				ui->switchDefPos_1->show() ;
+				ui->widgetDefSA->hide() ;
+			}
+			
+			if ( g_eeGeneral.switchMapping & USE_RUD_3POS )
+			{
+				ui->widgetDefSB->show() ;
+				ui->switchDefPos_2->hide() ;
+				ui->label_DSB->setText("RUD") ;
+			}
+			else
+			{
+				ui->switchDefPos_2->show() ;
+				ui->widgetDefSB->hide() ;
+			}
+				 
+			if ( g_eeGeneral.switchMapping & USE_ELE_3POS )
+			{
+				ui->widgetDefSC->show() ;
+				ui->switchDefPos_3->hide() ;
+				ui->label_DSC->setText("ELE") ;
+			}
+			else
+			{
+				ui->switchDefPos_3->show() ;
+				ui->widgetDefSC->hide() ;
+			}
+
+			if ( g_eeGeneral.switchMapping & USE_AIL_3POS )
+			{
+				ui->widgetDefSD->show() ;
+				ui->switchDefPos_7->hide() ;
+				ui->label_DSD->setText("AIL") ;
+			}
+			else
+			{
+				ui->switchDefPos_7->show() ;
+				ui->widgetDefSD->hide() ;
+			}
+
+			if ( g_eeGeneral.switchMapping & USE_GEA_3POS )
+			{
+				ui->widgetDefSE->show() ;
+				ui->switchDefPos_8->hide() ;
+				ui->label_DSE->setText("GEA") ;
+			}
+			else
+			{
+				ui->switchDefPos_8->show() ;
+				ui->widgetDefSE->hide() ;
+			}
+			
 			ui->switchDefPos_4->show() ;
 			ui->switchDefPos_5->show() ;
 			ui->switchDefPos_6->show() ;
-			ui->switchDefPos_7->show() ;
-			ui->switchDefPos_8->show() ;
-			ui->widgetDefSA->hide() ;
-			ui->widgetDefSB->hide() ;
-			ui->widgetDefSC->hide() ;
-			ui->widgetDefSD->hide() ;
-			ui->widgetDefSE->hide() ;
 			ui->widgetDefSF->hide() ;
 			ui->widgetDefSG->hide() ;
 		}
@@ -322,13 +381,96 @@ void ModelEdit::tabModelEditSetup()
 
 }
 
+uint16_t ModelEdit::oneSwitchPos( uint8_t swtch, uint16_t states )
+{
+	uint8_t index = 0 ;
+	uint8_t sm = g_eeGeneral.switchMapping ;
+
+	switch ( swtch )
+	{
+		case HSW_ThrCt :
+			if ( sm & USE_THR_3POS )
+			{
+				if ( states & 0x0001 ) index += 1 ;
+				if ( states & 0x0100 ) index += 2 ;
+			}
+			else
+			{
+				if (states & 0x0101) index = 1 ;
+			}
+		break ;
+
+		case HSW_RuddDR :
+			if ( sm & USE_RUD_3POS )
+			{
+				if ( states & 0x0002 ) index += 1 ;
+				if ( states & 0x0200 ) index += 2 ;
+			}
+			else
+			{
+				if (states & 0x0202) index = 1 ;
+			}
+		break ;
+	
+		case HSW_ElevDR :
+			if ( sm & USE_ELE_3POS )
+			{
+				if ( states & 0x0004 ) index += 1 ;
+				if ( states & 0x0400 ) index += 2 ;
+			}
+			else
+			{
+				if (states & 0x0C04) index = 1 ;
+			}
+		break ;
+
+		case HSW_ID0 :
+			if ( states & 0x10 )
+			{
+				index += 1 ;
+			}
+			if ( states & 0x20 )
+			{
+				index += 2 ;
+			}
+		break ;
+
+		case HSW_AileDR :
+			if ( sm & USE_AIL_3POS )
+			{
+				if ( states & 0x0040 ) index += 1 ;
+				if ( states & 0x1000 ) index += 2 ;
+			}
+			else
+			{
+				if (states & 0x1040) index = 1 ;
+			}
+		break ;
+	 
+		case HSW_Gear :
+			if ( sm & USE_GEA_3POS )
+			{
+				if ( states & 0x0080 ) index += 1 ;
+				if ( states & 0x2000 ) index += 2 ;
+			}
+			else
+			{
+				if (states & 0x2080) index = 1 ;
+			}
+		break ;
+
+	}
+	return index ;
+}
+
+
 void ModelEdit::setSwitchDefPos()
 {
 	if ( rData->type == 0 )
 	{
 		
-    quint8 y = (g_model.modelswitchWarningStates >> 1 ) ;
-    quint8 x = y & SWP_IL5 ;
+    quint16 y = (g_model.modelswitchWarningStates >> 1 ) ;
+    quint16 x = y & SWP_IL5 ;
     if(x==SWP_IL1 || x==SWP_IL2 || x==SWP_IL3 || x==SWP_IL4 || x==SWP_IL5) //illegal states for ID0/1/2
     {
       x &= ~SWP_IL5; // turn all off, make sure only one is on
@@ -341,15 +483,55 @@ void ModelEdit::setSwitchDefPos()
 		g_model.modelswitchWarningStates = ( x << 1 ) | (g_model.modelswitchWarningStates & 1 ) ;
 
     switchDefPosEditLock = true;
-    ui->switchDefPos_1->setChecked(x & 0x01);
-    ui->switchDefPos_2->setChecked(x & 0x02);
-    ui->switchDefPos_3->setChecked(x & 0x04);
+		if ( g_eeGeneral.switchMapping & USE_THR_3POS )
+		{
+    	ui->SwitchDefSA->setValue( oneSwitchPos( HSW_ThrCt, x ) ) ;
+		}
+		else
+		{
+    	ui->switchDefPos_1->setChecked(x & 0x01);
+		}
+		
+		if ( g_eeGeneral.switchMapping & USE_RUD_3POS )
+		{
+    	ui->SwitchDefSB->setValue( oneSwitchPos( HSW_RuddDR, x ) ) ;
+		}
+		else
+		{
+	    ui->switchDefPos_2->setChecked(x & 0x02);
+		}
+
+		if ( g_eeGeneral.switchMapping & USE_ELE_3POS )
+		{
+    	ui->SwitchDefSC->setValue( oneSwitchPos( HSW_ElevDR, x ) ) ;
+		}
+		else
+		{
+    	ui->switchDefPos_3->setChecked(x & 0x04);
+		}
     ui->switchDefPos_4->setChecked(x & 0x08);
     ui->switchDefPos_5->setChecked(x & 0x10);
     ui->switchDefPos_6->setChecked(x & 0x20);
-    ui->switchDefPos_7->setChecked(x & 0x40);
-    ui->switchDefPos_8->setChecked(x & 0x80);
-    switchDefPosEditLock = false;
+    
+		if ( g_eeGeneral.switchMapping & USE_AIL_3POS )
+		{
+    	ui->SwitchDefSD->setValue( oneSwitchPos( HSW_AileDR, x ) ) ;
+		}
+		else
+		{
+			ui->switchDefPos_7->setChecked(x & 0x40);
+		}
+		
+		if ( g_eeGeneral.switchMapping & USE_GEA_3POS )
+		{
+      ui->SwitchDefSE->setValue( oneSwitchPos( HSW_Gear, x ) ) ;
+		}
+		else
+		{
+    	ui->switchDefPos_8->setChecked(x & 0x80);
+		}
+
+		switchDefPosEditLock = false;
 	}
 	else
 	{
@@ -820,23 +1002,23 @@ void ModelEdit::expoEdited()
 		QSpinBox *sb ;
 		QComboBox *cb ;
 		QCheckBox *chkb ;
-	int limit = MAX_DRSWITCH ;
-#ifdef SKY
-	if ( rData->type )
-	{
-		limit = MAX_XDRSWITCH ;
-	}
-#endif
+//	int limit = MAX_DRSWITCH ;
+//#ifdef SKY
+//	if ( rData->type )
+//	{
+//		limit = MAX_XDRSWITCH ;
+//	}
+//#endif
 
   int8_t *pval ;
-    g_model.expoData[CONVERT_MODE(RUD,g_model.modelVersion,g_eeGeneral.stickMode)-1].drSw1 = ui->RUD_edrSw1->currentIndex()-limit;
-    g_model.expoData[CONVERT_MODE(RUD,g_model.modelVersion,g_eeGeneral.stickMode)-1].drSw2 = ui->RUD_edrSw2->currentIndex()-limit;
-    g_model.expoData[CONVERT_MODE(ELE,g_model.modelVersion,g_eeGeneral.stickMode)-1].drSw1 = ui->ELE_edrSw1->currentIndex()-limit;
-    g_model.expoData[CONVERT_MODE(ELE,g_model.modelVersion,g_eeGeneral.stickMode)-1].drSw2 = ui->ELE_edrSw2->currentIndex()-limit;
-    g_model.expoData[CONVERT_MODE(THR,g_model.modelVersion,g_eeGeneral.stickMode)-1].drSw1 = ui->THR_edrSw1->currentIndex()-limit;
-    g_model.expoData[CONVERT_MODE(THR,g_model.modelVersion,g_eeGeneral.stickMode)-1].drSw2 = ui->THR_edrSw2->currentIndex()-limit;
-    g_model.expoData[CONVERT_MODE(AIL,g_model.modelVersion,g_eeGeneral.stickMode)-1].drSw1 = ui->AIL_edrSw1->currentIndex()-limit;
-    g_model.expoData[CONVERT_MODE(AIL,g_model.modelVersion,g_eeGeneral.stickMode)-1].drSw2 = ui->AIL_edrSw2->currentIndex()-limit;
+    g_model.expoData[CONVERT_MODE(RUD,g_model.modelVersion,g_eeGeneral.stickMode)-1].drSw1 = getSwitchCbValue( ui->RUD_edrSw1, rData->type ) ;
+    g_model.expoData[CONVERT_MODE(RUD,g_model.modelVersion,g_eeGeneral.stickMode)-1].drSw2 = getSwitchCbValue( ui->RUD_edrSw2, rData->type ) ;
+    g_model.expoData[CONVERT_MODE(ELE,g_model.modelVersion,g_eeGeneral.stickMode)-1].drSw1 = getSwitchCbValue( ui->ELE_edrSw1, rData->type ) ;
+    g_model.expoData[CONVERT_MODE(ELE,g_model.modelVersion,g_eeGeneral.stickMode)-1].drSw2 = getSwitchCbValue( ui->ELE_edrSw2, rData->type ) ;
+    g_model.expoData[CONVERT_MODE(THR,g_model.modelVersion,g_eeGeneral.stickMode)-1].drSw1 = getSwitchCbValue( ui->THR_edrSw1, rData->type ) ;
+    g_model.expoData[CONVERT_MODE(THR,g_model.modelVersion,g_eeGeneral.stickMode)-1].drSw2 = getSwitchCbValue( ui->THR_edrSw2, rData->type ) ;
+    g_model.expoData[CONVERT_MODE(AIL,g_model.modelVersion,g_eeGeneral.stickMode)-1].drSw1 = getSwitchCbValue( ui->AIL_edrSw1, rData->type ) ;
+    g_model.expoData[CONVERT_MODE(AIL,g_model.modelVersion,g_eeGeneral.stickMode)-1].drSw2 = getSwitchCbValue( ui->AIL_edrSw2, rData->type ) ;
 
 		for ( i = 0 ; i < 3 ; i += 1 )
 		{ // 0=High, 1=Mid, 2=Low
@@ -910,6 +1092,86 @@ void ModelEdit::expoEdited()
     updateSettings();
 }
 
+void ModelEdit::tabVoiceAlarms()
+{
+	QByteArray qba ;
+  uint32_t i ;
+
+	ui->VoiceAlarmList->setFont(QFont("Courier New",12)) ;
+	ui->VoiceAlarmList->clear() ;
+	for(i=0 ; i<NUM_SKY_VOICE_ALARMS ; i += 1)
+	{
+		VoiceAlarmData *vad = &g_model.vad[i] ;
+		QString str = "";
+		str = tr("VA%1%2  ").arg((i+1)/10).arg((i+1)%10) ;
+		QString srcstr ;
+		int limit = 45 ;
+		if ( rData->type )
+		{
+			limit = 46 ;
+		}
+		if ( vad->source < limit )
+		{
+			str += tr("(%1) ").arg(getSourceStr(g_eeGeneral.stickMode,vad->source,g_model.modelVersion, rData->type )) ;
+		}
+		else
+		{
+			str += tr("(%1) ").arg(getTelemString(vad->source-limit+1 )) ;
+		}
+    srcstr = "-------v>val  v<val  |v|>val|v|<valv~=val " ;
+		str += tr("%1 ").arg(srcstr.mid( vad->func * 7, 7 )) ;
+  	if ( vad->source > 44 )
+		{
+			char telText[20] ;
+  	  stringTelemetryChannel( telText, vad->source - 45, vad->offset, &g_model ) ;
+			str += tr("(%1) ").arg(telText) ;
+		}
+		else
+		{
+			str += tr("(%1) ").arg(vad->offset) ;
+		}
+		str += tr("Switch(%1) ").arg(getSWName(vad->swtch, rData->type)) ;
+		if ( vad->rate < 3 )
+		{
+			srcstr = vad->rate ? (vad->rate == 1 ? "OFF " : "BOTH ") : "ON " ;
+			str += srcstr ;
+		}
+		else
+		{
+			str += tr("Rate(%1) ").arg(vad->rate-2) ;
+		}
+		if ( vad->mute )
+		{
+			str += tr("Mute ") ;
+		}
+		if ( vad->haptic )
+		{
+			str += tr("Haptic(%1) ").arg(vad->haptic) ;
+		}
+		if ( vad->vsource )
+		{
+			srcstr = ( vad->vsource == 1 ) ? "Before" : "After " ;
+			str += tr("PlaySrc(%1) ").arg(srcstr) ;
+		}
+		switch ( vad->fnameType )
+		{
+			case 1 :
+      {
+        QString xstr = (char *)vad->file.name ;
+				xstr = xstr.left(8) ;
+        str += tr("File(%1)").arg(xstr ) ;
+      }
+			break ;
+			case 2 :
+				str += tr("File(%1)").arg(vad->file.vfile ) ;
+			break ;
+			case 3 :
+				str += tr("Alarm(%1)").arg(getAudioAlarmName(vad->file.vfile) ) ;
+			break ;
+		}
+    ui->VoiceAlarmList->addItem(str) ;
+	}
+}
 
 void ModelEdit::tabMixes()
 {
@@ -969,7 +1231,29 @@ void ModelEdit::tabMixes()
 
         //QString srcStr = SRC_STR;
         //str += " " + srcStr.mid(CONVERT_MODE(md->srcRaw+1)*4,4);
-        str += getSourceStr(g_eeGeneral.stickMode,md->srcRaw,g_model.modelVersion, rData->type );
+        QString srcstr ;
+			  if ( ( md->srcRaw >= 21 && md->srcRaw <= 44 ) && ( md->disableExpoDr ) )
+				{
+          srcstr = QString("OP%1").arg(md->srcRaw-20) ;
+				}
+				else
+				{
+          srcstr = getSourceStr(g_eeGeneral.stickMode,md->srcRaw,g_model.modelVersion, rData->type );
+				}
+
+        str += srcstr ;
+				if ( srcstr == "s" )
+				{
+					if (rData->type)
+					{
+						srcstr = "-SA-SB-SC-SD-SE-SF-SG-SH-6P" ;
+					}
+					else
+					{
+						srcstr = "IdxThrRudEleAilGeaTrn" ;
+					}
+					str += srcstr.mid( md->switchSource * 3, 3 ) ;
+				}
 
         if(md->swtch) str += tr(" Switch(") + getSWName(md->swtch, rData->type) + ")";
         if(md->carryTrim) str += tr(" noTrim");
@@ -1015,8 +1299,15 @@ void ModelEdit::tabMixes()
 						x = md->curve ;
 						if ( x < 0 )
 						{
-							x = -x + 6 ;
-            	str += tr("!Curve(%1)").arg(crvStr.mid(x*3,3).remove(' '));
+							if ( x <= -28 )
+							{
+            		str += tr("Expo(%1)").arg( x+128 ) ;
+							}
+							else
+							{
+								x = -x + 6 ;
+            		str += tr("!Curve(%1)").arg(crvStr.mid(x*3,3).remove(' '));
+							}
 						}
 						else
 						{
@@ -1140,6 +1431,33 @@ void ModelEdit::tabPhase()
 	connect(ui->FP6_EleCB,SIGNAL(currentIndexChanged(int)),this,SLOT(phaseEdited())); 
 	connect(ui->FP6_ThrCB,SIGNAL(currentIndexChanged(int)),this,SLOT(phaseEdited())); 
 	connect(ui->FP6_AilCB,SIGNAL(currentIndexChanged(int)),this,SLOT(phaseEdited())); 
+	
+  connect(ui->FP1rudTrimSB,SIGNAL(valueChanged(int)),this,SLOT(phaseEdited()));
+  connect(ui->FP1eleTrimSB,SIGNAL(valueChanged(int)),this,SLOT(phaseEdited()));
+  connect(ui->FP1thrTrimSB,SIGNAL(valueChanged(int)),this,SLOT(phaseEdited()));
+  connect(ui->FP1ailTrimSB,SIGNAL(valueChanged(int)),this,SLOT(phaseEdited()));
+  connect(ui->FP2rudTrimSB,SIGNAL(valueChanged(int)),this,SLOT(phaseEdited()));
+  connect(ui->FP2eleTrimSB,SIGNAL(valueChanged(int)),this,SLOT(phaseEdited()));
+  connect(ui->FP2thrTrimSB,SIGNAL(valueChanged(int)),this,SLOT(phaseEdited()));
+  connect(ui->FP2ailTrimSB,SIGNAL(valueChanged(int)),this,SLOT(phaseEdited()));
+  connect(ui->FP3rudTrimSB,SIGNAL(valueChanged(int)),this,SLOT(phaseEdited()));
+  connect(ui->FP3eleTrimSB,SIGNAL(valueChanged(int)),this,SLOT(phaseEdited()));
+  connect(ui->FP3thrTrimSB,SIGNAL(valueChanged(int)),this,SLOT(phaseEdited()));
+  connect(ui->FP3ailTrimSB,SIGNAL(valueChanged(int)),this,SLOT(phaseEdited()));
+  connect(ui->FP4rudTrimSB,SIGNAL(valueChanged(int)),this,SLOT(phaseEdited()));
+  connect(ui->FP4eleTrimSB,SIGNAL(valueChanged(int)),this,SLOT(phaseEdited()));
+  connect(ui->FP4thrTrimSB,SIGNAL(valueChanged(int)),this,SLOT(phaseEdited()));
+  connect(ui->FP4ailTrimSB,SIGNAL(valueChanged(int)),this,SLOT(phaseEdited()));
+  connect(ui->FP5rudTrimSB,SIGNAL(valueChanged(int)),this,SLOT(phaseEdited()));
+  connect(ui->FP5eleTrimSB,SIGNAL(valueChanged(int)),this,SLOT(phaseEdited()));
+  connect(ui->FP5thrTrimSB,SIGNAL(valueChanged(int)),this,SLOT(phaseEdited()));
+  connect(ui->FP5ailTrimSB,SIGNAL(valueChanged(int)),this,SLOT(phaseEdited()));
+  connect(ui->FP6rudTrimSB,SIGNAL(valueChanged(int)),this,SLOT(phaseEdited()));
+  connect(ui->FP6eleTrimSB,SIGNAL(valueChanged(int)),this,SLOT(phaseEdited()));
+  connect(ui->FP6thrTrimSB,SIGNAL(valueChanged(int)),this,SLOT(phaseEdited()));
+  connect(ui->FP6ailTrimSB,SIGNAL(valueChanged(int)),this,SLOT(phaseEdited()));
+	
+	
 	connect(ui->FM1FadeIn,SIGNAL(valueChanged(double)),this,SLOT(phaseEdited())); 
 	connect(ui->FM1FadeOut,SIGNAL(valueChanged(double)),this,SLOT(phaseEdited())); 
 	connect(ui->FM2FadeIn,SIGNAL(valueChanged(double)),this,SLOT(phaseEdited())); 
@@ -1199,12 +1517,9 @@ void ModelEdit::updatePhaseTab()
 	populateSwitchShortCB( ui->FP5_sw, g_model.phaseData[4].swtch, rData->type ) ;
 	populateSwitchShortCB( ui->FP6_sw, g_model.phaseData[5].swtch, rData->type ) ;
 
+	
 	ui->FP1rudTrimSB->setDisabled( populatePhasetrim( ui->FP1_RudCB, 1, g_model.phaseData[0].trim[0] ) ) ;
-	ui->FP1rudTrimSB->setValue( getTrimValue( 1, 0 ) ) ;
-	
 	ui->FP1eleTrimSB->setDisabled( populatePhasetrim( ui->FP1_EleCB, 1, g_model.phaseData[0].trim[1] ) ) ;
-	ui->FP1eleTrimSB->setValue( getTrimValue( 1, 1 ) ) ;
-	
 	ui->FP1thrTrimSB->setDisabled( populatePhasetrim( ui->FP1_ThrCB, 1,  g_model.phaseData[0].trim[2] ) ) ;
 	ui->FP1ailTrimSB->setDisabled( populatePhasetrim( ui->FP1_AilCB, 1,  g_model.phaseData[0].trim[3] ) ) ;
 	ui->FP2rudTrimSB->setDisabled( populatePhasetrim( ui->FP2_RudCB, 2,  g_model.phaseData[1].trim[0] ) ) ;
@@ -1228,6 +1543,11 @@ void ModelEdit::updatePhaseTab()
 	ui->FP6thrTrimSB->setDisabled( populatePhasetrim( ui->FP6_ThrCB, 6,  g_model.phaseData[5].trim[2] ) ) ;
 	ui->FP6ailTrimSB->setDisabled( populatePhasetrim( ui->FP6_AilCB, 6,  g_model.phaseData[5].trim[3] ) ) ;
 
+//	ui->FP1rudTrimSB->setValue( getTrimValue( 1, 0 ) ) ;
+//	ui->FP1eleTrimSB->setValue( getTrimValue( 1, 1 ) ) ;
+
+	ui->FP1rudTrimSB->setValue(g_model.phaseData[0].trim[0]) ;
+	ui->FP1eleTrimSB->setValue(g_model.phaseData[0].trim[1]) ;
 	ui->FP1thrTrimSB->setValue(g_model.phaseData[0].trim[2]) ;
 	ui->FP1ailTrimSB->setValue(g_model.phaseData[0].trim[3]) ;
 	ui->FP2rudTrimSB->setValue(g_model.phaseData[1].trim[0]) ;
@@ -1301,24 +1621,42 @@ void ModelEdit::updatePhaseTab()
 	}
   ui->FM6Name->setText( n ) ;
 
+	phaseEdited() ;
+
+}
+
+
+void ModelEdit::phaseSet(int phase, int trim, QComboBox *cb, QSpinBox *sb )
+{
+	int idx ;
+  if ( (idx = decodePhaseTrim( &g_model.phaseData[phase].trim[trim], cb->currentIndex() ) < 0 ) )
+	{
+		g_model.phaseData[phase].trim[trim] = sb->value() ;
+		sb->setEnabled( true ) ;
+	}
+	else
+	{
+    sb->setValue( idx ? g_model.phaseData[idx].trim[trim] : g_model.trim[trim] ) ;		// Needs recursion added
+		sb->setDisabled( true ) ;
+	}
 }
 
 void ModelEdit::phaseEdited()
 {
 //  int idx ;
-	int limit = MAX_DRSWITCH ;
-#ifdef SKY
-	if ( rData->type )
-	{
-		limit = MAX_XDRSWITCH ;
-	}
-#endif
-  g_model.phaseData[0].swtch = ui->FP1_sw->currentIndex() - limit+1 ;
-  g_model.phaseData[1].swtch = ui->FP2_sw->currentIndex() - limit+1 ;
-  g_model.phaseData[2].swtch = ui->FP3_sw->currentIndex() - limit+1 ;
-  g_model.phaseData[3].swtch = ui->FP4_sw->currentIndex() - limit+1 ;
-  g_model.phaseData[4].swtch = ui->FP5_sw->currentIndex() - limit+1 ;
-  g_model.phaseData[5].swtch = ui->FP6_sw->currentIndex() - limit+1 ;
+//	int limit = MAX_DRSWITCH ;
+//#ifdef SKY
+//	if ( rData->type )
+//	{
+//		limit = MAX_XDRSWITCH ;
+//	}
+//#endif
+  g_model.phaseData[0].swtch = getSwitchCbValueShort( ui->FP1_sw, rData->type ) ;
+  g_model.phaseData[1].swtch = getSwitchCbValueShort( ui->FP2_sw, rData->type ) ;
+  g_model.phaseData[2].swtch = getSwitchCbValueShort( ui->FP3_sw, rData->type ) ;
+  g_model.phaseData[3].swtch = getSwitchCbValueShort( ui->FP4_sw, rData->type ) ;
+  g_model.phaseData[4].swtch = getSwitchCbValueShort( ui->FP5_sw, rData->type ) ;
+  g_model.phaseData[5].swtch = getSwitchCbValueShort( ui->FP6_sw, rData->type ) ;
 
   textUpdate( ui->FM1Name, g_model.phaseData[0].name, 6 ) ;
   textUpdate( ui->FM2Name, g_model.phaseData[1].name, 6 ) ;
@@ -1327,45 +1665,30 @@ void ModelEdit::phaseEdited()
   textUpdate( ui->FM5Name, g_model.phaseData[4].name, 6 ) ;
   textUpdate( ui->FM6Name, g_model.phaseData[5].name, 6 ) ;
 
-//  if ( (idx = decodePhaseTrim( &g_model.phaseData[0].trim[0], 1, ui->FP1_RudCB->currentIndex() ) < 0 ) )
-//	{
-//		ui->FP1rudTrimSB->setValue(g_model.phaseData[0].trim[0]) ;
-//		ui->FP1rudTrimSB->setEnabled( true ) ;
-//	}
-//	else
-//	{
-//    ui->FP1rudTrimSB->setValue( idx ? g_model.phaseData[idx-1].trim[0] : g_model.trim[0] ) ;		// Needs recursion added
-//		ui->FP1rudTrimSB->setDisabled( true ) ;
-//	}
-//	decodePhaseTrim( &g_model.phaseData[0].trim[1], 1, ui->FP1_EleCB->currentIndex() ) ;
-	
-//	ui->FP1eleTrimSB->setValue(g_model.phaseData[0].trim[1]) ;
-//	ui->FP1eleTrimSB->setDisabled( true ) ;
-
-	decodePhaseTrim( &g_model.phaseData[0].trim[0], ui->FP1_RudCB->currentIndex() ) ;
-	decodePhaseTrim( &g_model.phaseData[0].trim[1], ui->FP1_EleCB->currentIndex() ) ;
-	decodePhaseTrim( &g_model.phaseData[0].trim[2], ui->FP1_ThrCB->currentIndex() ) ;
-	decodePhaseTrim( &g_model.phaseData[0].trim[3], ui->FP1_AilCB->currentIndex() ) ;
-	decodePhaseTrim( &g_model.phaseData[1].trim[0], ui->FP2_RudCB->currentIndex() ) ;
-	decodePhaseTrim( &g_model.phaseData[1].trim[1], ui->FP2_EleCB->currentIndex() ) ;
-	decodePhaseTrim( &g_model.phaseData[1].trim[2], ui->FP2_ThrCB->currentIndex() ) ;
-	decodePhaseTrim( &g_model.phaseData[1].trim[3], ui->FP2_AilCB->currentIndex() ) ;
-	decodePhaseTrim( &g_model.phaseData[2].trim[0], ui->FP3_RudCB->currentIndex() ) ;
-	decodePhaseTrim( &g_model.phaseData[2].trim[1], ui->FP3_EleCB->currentIndex() ) ;
-	decodePhaseTrim( &g_model.phaseData[2].trim[2], ui->FP3_ThrCB->currentIndex() ) ;
-	decodePhaseTrim( &g_model.phaseData[2].trim[3], ui->FP3_AilCB->currentIndex() ) ;
-	decodePhaseTrim( &g_model.phaseData[3].trim[0], ui->FP4_RudCB->currentIndex() ) ;
-	decodePhaseTrim( &g_model.phaseData[3].trim[1], ui->FP4_EleCB->currentIndex() ) ;
-	decodePhaseTrim( &g_model.phaseData[3].trim[2], ui->FP4_ThrCB->currentIndex() ) ;
-	decodePhaseTrim( &g_model.phaseData[3].trim[3], ui->FP4_AilCB->currentIndex() ) ;
-	decodePhaseTrim( &g_model.phaseData[4].trim[0], ui->FP5_RudCB->currentIndex() ) ;
-	decodePhaseTrim( &g_model.phaseData[4].trim[1], ui->FP5_EleCB->currentIndex() ) ;
-	decodePhaseTrim( &g_model.phaseData[4].trim[2], ui->FP5_ThrCB->currentIndex() ) ;
-	decodePhaseTrim( &g_model.phaseData[4].trim[3], ui->FP5_AilCB->currentIndex() ) ;
-	decodePhaseTrim( &g_model.phaseData[5].trim[0], ui->FP6_RudCB->currentIndex() ) ;
-	decodePhaseTrim( &g_model.phaseData[5].trim[1], ui->FP6_EleCB->currentIndex() ) ;
-	decodePhaseTrim( &g_model.phaseData[5].trim[2], ui->FP6_ThrCB->currentIndex() ) ;
-	decodePhaseTrim( &g_model.phaseData[5].trim[3], ui->FP6_AilCB->currentIndex() ) ;
+	phaseSet(0, 0, ui->FP1_RudCB, ui->FP1rudTrimSB ) ;
+	phaseSet(0, 1, ui->FP1_EleCB, ui->FP1eleTrimSB ) ;
+	phaseSet(0, 2, ui->FP1_ThrCB, ui->FP1thrTrimSB ) ;
+	phaseSet(0, 3, ui->FP1_AilCB, ui->FP1ailTrimSB ) ;
+	phaseSet(1, 0, ui->FP2_RudCB, ui->FP2rudTrimSB ) ;
+	phaseSet(1, 1, ui->FP2_EleCB, ui->FP2eleTrimSB ) ;
+	phaseSet(1, 2, ui->FP2_ThrCB, ui->FP2thrTrimSB ) ;
+	phaseSet(1, 3, ui->FP2_AilCB, ui->FP2ailTrimSB ) ;
+	phaseSet(2, 0, ui->FP3_RudCB, ui->FP3rudTrimSB ) ;
+	phaseSet(2, 1, ui->FP3_EleCB, ui->FP3eleTrimSB ) ;
+	phaseSet(2, 2, ui->FP3_ThrCB, ui->FP3thrTrimSB ) ;
+	phaseSet(2, 3, ui->FP3_AilCB, ui->FP3ailTrimSB ) ;
+	phaseSet(3, 0, ui->FP4_RudCB, ui->FP4rudTrimSB ) ;
+	phaseSet(3, 1, ui->FP4_EleCB, ui->FP4eleTrimSB ) ;
+	phaseSet(3, 2, ui->FP4_ThrCB, ui->FP4thrTrimSB ) ;
+	phaseSet(3, 3, ui->FP4_AilCB, ui->FP4ailTrimSB ) ;
+	phaseSet(4, 0, ui->FP5_RudCB, ui->FP5rudTrimSB ) ;
+	phaseSet(4, 1, ui->FP5_EleCB, ui->FP5eleTrimSB ) ;
+	phaseSet(4, 2, ui->FP5_ThrCB, ui->FP5thrTrimSB ) ;
+	phaseSet(4, 3, ui->FP5_AilCB, ui->FP5ailTrimSB ) ;
+	phaseSet(5, 0, ui->FP6_RudCB, ui->FP6rudTrimSB ) ;
+	phaseSet(5, 1, ui->FP6_EleCB, ui->FP6eleTrimSB ) ;
+	phaseSet(5, 2, ui->FP6_ThrCB, ui->FP6thrTrimSB ) ;
+	phaseSet(5, 3, ui->FP6_AilCB, ui->FP6ailTrimSB ) ;
 
 	g_model.phaseData[0].fadeIn = ( ui->FM1FadeIn->value() + 0.01 ) * 2 ;
 	g_model.phaseData[0].fadeOut = ( ui->FM1FadeOut->value() + 0.01 ) * 2 ;
@@ -1379,8 +1702,6 @@ void ModelEdit::phaseEdited()
 	g_model.phaseData[4].fadeOut = ( ui->FM5FadeOut->value() + 0.01 ) * 2 ;
 	g_model.phaseData[5].fadeIn = ( ui->FM6FadeIn->value() + 0.01 ) * 2 ;
 	g_model.phaseData[5].fadeOut = ( ui->FM6FadeOut->value() + 0.01 ) * 2 ;
-
-
 
   updateSettings();
 }
@@ -2264,8 +2585,8 @@ void ModelEdit::setSwitchWidgetVisibility(int i)
         cswitchSource2[i]->setVisible(true);
         cswitchOffset[i]->setVisible(false);
         cswitchOffset0[i]->setVisible(false);
-        populateSourceCB(cswitchSource1[i],g_eeGeneral.stickMode,0,g_model.customSw[i].v1,g_model.modelVersion, rData->type);
-        populateSourceCB(cswitchSource2[i],g_eeGeneral.stickMode,0,g_model.customSw[i].v2,g_model.modelVersion, rData->type);
+        populateSourceCB(cswitchSource1[i],g_eeGeneral.stickMode,1,g_model.customSw[i].v1,g_model.modelVersion, rData->type);
+        populateSourceCB(cswitchSource2[i],g_eeGeneral.stickMode,1,g_model.customSw[i].v2,g_model.modelVersion, rData->type);
 				cswitchText1[i]->setVisible(false) ;
 				cswitchText2[i]->setVisible(false) ;
         break;
@@ -2287,6 +2608,7 @@ void ModelEdit::setSwitchWidgetVisibility(int i)
 					cswitchText2[i]->setVisible(true) ;
 					value = -value + 1 ;
           cswitchText2[i]->setText( tr("%1.%2").arg( value/10 ).arg( value%10 ) ) ;
+        	cswitchText2[i]->resize( ui->cswCol2->minimumWidth(), 20 );
 					cswitchText2[i]->raise() ;
 				}
 				else
@@ -2300,6 +2622,7 @@ void ModelEdit::setSwitchWidgetVisibility(int i)
 					cswitchText1[i]->setVisible(true) ;
 					value = -value + 1 ;
           cswitchText1[i]->setText( tr("%1.%2").arg( value/10 ).arg( value%10 ) ) ;
+        	cswitchText1[i]->resize( ui->cswCol1->minimumWidth(), 20 );
 					cswitchText1[i]->raise() ;
 				}
 				else
@@ -2307,9 +2630,36 @@ void ModelEdit::setSwitchWidgetVisibility(int i)
 					cswitchText1[i]->setVisible(false) ;
 				}
         break;
+    case CS_TMONO :
+        cswitchSource1[i]->setVisible(true);
+        populateSwitchCB(cswitchSource1[i],g_model.customSw[i].v1, rData->type);
+        cswitchSource2[i]->setVisible(false);
+        cswitchOffset[i]->setVisible(true);
+        cswitchOffset0[i]->setVisible(false);
+        cswitchOffset[i]->setAccelerated(true);
+				value = g_model.customSw[i].v2+1 ;
+        cswitchOffset[i]->setValue(value);
+        if ( cswitchOffset[i]->minimum() != 0 )
+				{
+        	cswitchOffset[i]->setMaximum(125);
+        	cswitchOffset[i]->setMinimum(-125);
+				}
+				if ( value <= 0 )
+				{
+					cswitchText2[i]->setVisible(true) ;
+					value = -value + 1 ;
+          cswitchText2[i]->setText( tr("%1.%2").arg( value/10 ).arg( value%10 ) ) ;
+        	cswitchText2[i]->resize( ui->cswCol2->minimumWidth(), 20 );
+					cswitchText2[i]->raise() ;
+				}
+				else
+				{
+					cswitchText2[i]->setVisible(false) ;
+				}
+    break ;
     default:
-        break;
-    }
+    break;
+  }
 }
 
 void ModelEdit::updateSwitchesTab()
@@ -2382,11 +2732,11 @@ void ModelEdit::tabSwitches()
 			}
       if ( rData->type )
 			{
-				x9dPopulateSwitchAndCB(cswitchAndSwitch[i], g_model.customSw[i].andsw+(MAX_XDRSWITCH-1)) ;
+        x9dPopulateSwitchAndCB(cswitchAndSwitch[i], g_model.customSw[i].andsw) ;//+(MAX_XDRSWITCH-1)) ;
 			}
 			else
 			{
-				populateSwitchAndCB(cswitchAndSwitch[i], g_model.customSw[i].andsw+(9+NUM_SKYCSW)) ;
+				populateSwitchAndCB(cswitchAndSwitch[i], g_model.customSw[i].andsw) ;
 			}
       if ( !switchesTabDone )
 			{
@@ -2402,17 +2752,17 @@ void ModelEdit::tabSwitches()
         connect(cswitchOffset[i],SIGNAL(valueChanged(int)),this,SLOT(switchesEdited()));
         ui->gridLayout_8->addWidget(cswitchOffset[i],j+1,k+1);
         cswitchOffset[i]->setVisible(false);
-				width = ui->cswCol1->width() ;
+				width = ui->cswCol2->width() ;
 				cswitchOffset[i]->resize( width, 20 );
         
-				width -= 18 ;
+				width -= 14 ;
         cswitchText2[i] = new QTextBrowser(this);
         ui->gridLayout_8->addWidget(cswitchText2[i],j+1,k+1);
         cswitchText2[i]->setVisible(false);
+				cswitchText2[i]->setVerticalScrollBarPolicy ( Qt::ScrollBarAlwaysOff ) ;
         cswitchText2[i]->setMinimumSize( width, 20 );
         cswitchText2[i]->setMaximumSize( width, 20 );
         cswitchText2[i]->resize( width, 20 );
-				cswitchText2[i]->setVerticalScrollBarPolicy ( Qt::ScrollBarAlwaysOff ) ;
 
 				cswitchOffset0[i] = new QSpinBox(this);
         cswitchOffset0[i]->setMaximum(100);
@@ -2424,7 +2774,7 @@ void ModelEdit::tabSwitches()
 				width = ui->cswCol2->width() ;
         cswitchOffset0[i]->resize( width, 20 );
 
-				width -= 18 ;
+				width -= 14 ;
         cswitchText1[i] = new QTextBrowser(this);
         ui->gridLayout_8->addWidget(cswitchText1[i],j+1,k);
         cswitchText1[i]->setVisible(false);
@@ -2578,7 +2928,7 @@ void ModelEdit::setSafetyWidgetVisibility(int i)
 void ModelEdit::tabSafetySwitches()
 {
 //		g_model.numVoice
-		ui->NumVoiceSwSB->setValue(g_model.numVoice);
+		ui->NumVoiceSwSB->setValue(g_model.numVoice+8);
 		setSafetyLabels() ;
 
     for(int i=0; i<NUM_SKYCHNOUT+NUM_VOICE; i++)
@@ -2694,7 +3044,7 @@ void ModelEdit::safetySwitchesEdited()
 		EditedNesting = 1 ;
 		
 		numVoice = g_model.numVoice ;
-    g_model.numVoice = ui->NumVoiceSwSB->value() ;
+    g_model.numVoice = ui->NumVoiceSwSB->value()-8 ;
 
 		int limit = MAX_DRSWITCH ;
 		if ( rData->type )
@@ -2727,7 +3077,7 @@ void ModelEdit::safetySwitchesEdited()
         sd->opt.ss.val = val ;
 
         sd->opt.ss.mode  = safetySwitchType[i]->currentIndex() ;
-        sd->opt.ss.swtch = safetySwitchSwtch[i]->currentIndex()-limit;
+        sd->opt.ss.swtch = getSwitchCbValue( safetySwitchSwtch[i], rData->type ) ;
 			}
 			else // voice switch
 			{
@@ -2744,7 +3094,7 @@ void ModelEdit::safetySwitchesEdited()
 					}
 				}
         sd->opt.vs.vval = val ;
-        sd->opt.vs.vswtch = safetySwitchSwtch[i]->currentIndex() ;
+        sd->opt.vs.vswtch = getSwitchCbValueShort( safetySwitchSwtch[i], rData->type ) ;
 			}	
 		}
     updateSettings();
@@ -2830,11 +3180,11 @@ void ModelEdit::switchesEdited()
     switchEditLock = true;
 
     bool chAr[NUM_SKYCSW];
-		int limit = MAX_DRSWITCH ;
-		if ( rData->type )
-		{
-			limit = MAX_XDRSWITCH ;
-		}
+//		int limit = MAX_DRSWITCH ;
+//		if ( rData->type )
+//		{
+//			limit = MAX_XDRSWITCH ;
+//		}
 
     chAr[0]  = (CS_STATE(g_model.customSw[0].func, g_model.modelVersion)) !=(CS_STATE(ui->cswitchFunc_1->currentIndex(), g_model.modelVersion));
     chAr[1]  = (CS_STATE(g_model.customSw[1].func, g_model.modelVersion)) !=(CS_STATE(ui->cswitchFunc_2->currentIndex(), g_model.modelVersion));
@@ -2891,11 +3241,12 @@ void ModelEdit::switchesEdited()
     {
       if ( rData->type )
 			{
-        g_model.customSw[i].andsw = cswitchAndSwitch[i]->currentIndex()-(MAX_XDRSWITCH-1);
+//        g_model.customSw[i].andsw = cswitchAndSwitch[i]->currentIndex()-(MAX_XDRSWITCH-1);
+        g_model.customSw[i].andsw = getSwitchCbValueShort( cswitchAndSwitch[i], 1 ) ;
 			}
 			else
 			{
-				g_model.customSw[i].andsw = cswitchAndSwitch[i]->currentIndex()-(9+NUM_SKYCSW);
+        g_model.customSw[i].andsw = getSwitchCbValueShort( cswitchAndSwitch[i], 0 ) ;
       }  
 				if(chAr[i])
         {
@@ -2918,8 +3269,8 @@ void ModelEdit::switchesEdited()
 						}
             break;
         case (CS_VBOOL):
-            g_model.customSw[i].v1 = cswitchSource1[i]->currentIndex() - limit ;
-            g_model.customSw[i].v2 = cswitchSource2[i]->currentIndex() - limit ;
+            g_model.customSw[i].v1 =  getSwitchCbValue( cswitchSource1[i] , rData->type ) ;
+            g_model.customSw[i].v2 =  getSwitchCbValue( cswitchSource2[i] , rData->type ) ;
             break;
         case (CS_VCOMP):
             g_model.customSw[i].v1 = cswitchSource1[i]->currentIndex();
@@ -2929,6 +3280,10 @@ void ModelEdit::switchesEdited()
             g_model.customSw[i].v2 = cswitchOffset[i]->value()-1;
             g_model.customSw[i].v1 = cswitchOffset0[i]->value()-1;
             break;
+        case (CS_TMONO):
+            g_model.customSw[i].v2 = cswitchOffset[i]->value()-1;
+            g_model.customSw[i].v1 =  getSwitchCbValue( cswitchSource1[i] , rData->type ) ;
+        break ;
         default:
             break;
         }
@@ -2962,7 +3317,7 @@ void ModelEdit::tabTrims()
             ui->Label_S2->setText("ELE");
             ui->Label_S3->setText("THR");
             ui->Label_S4->setText("AIL");
-            if(g_eeGeneral.throttleReversed)
+            if(throttleReversed( &g_eeGeneral, &g_model ) )
                 ui->slider_S3->setInvertedAppearance(true);
             break;
         case (1):
@@ -2970,7 +3325,7 @@ void ModelEdit::tabTrims()
             ui->Label_S2->setText("THR");
             ui->Label_S3->setText("ELE");
             ui->Label_S4->setText("AIL");
-            if(g_eeGeneral.throttleReversed)
+            if(throttleReversed( &g_eeGeneral, &g_model ) )
                 ui->slider_S2->setInvertedAppearance(true);
             break;
         case (2):
@@ -2978,7 +3333,7 @@ void ModelEdit::tabTrims()
             ui->Label_S2->setText("ELE");
             ui->Label_S3->setText("THR");
             ui->Label_S4->setText("RUD");
-            if(g_eeGeneral.throttleReversed)
+            if(throttleReversed( &g_eeGeneral, &g_model ) )
                 ui->slider_S3->setInvertedAppearance(true);
             break;
         case (3):
@@ -2986,12 +3341,70 @@ void ModelEdit::tabTrims()
             ui->Label_S2->setText("THR");
             ui->Label_S3->setText("ELE");
             ui->Label_S4->setText("RUD");
-            if(g_eeGeneral.throttleReversed)
+            if(throttleReversed( &g_eeGeneral, &g_model ) )
                 ui->slider_S2->setInvertedAppearance(true);
             break;
     }
 
 }
+
+
+void ModelEdit::oneGvarVisibility(int index, QComboBox *b, QSpinBox *sb )
+{
+	int function = g_model.gvarAdjuster[index].function ;
+	int value = g_model.gvarAdjuster[index].switch_value ;
+	int oldFunction = oldAdjFunction[index] ;
+
+	if ( function == 3 )
+	{
+		if ( oldFunction != 3 )
+		{
+			value = 0 ;
+		}
+	}
+	if ( function > 3 )
+	{
+		if ( oldFunction <= 3 )
+		{
+			value = 0 ;
+		}
+	}
+	g_model.gvarAdjuster[index].switch_value = value ;
+
+	if ( function < 3 )
+	{
+		sb->show() ;
+		b->hide() ;
+	}
+	else
+	{
+		if ( function == 3 )	// Set V
+		{
+			populateGvarCB( b, value, rData->type  ) ;
+		}
+		else
+		{
+			populateSwitchCB( b, value, rData->type);
+		}
+		sb->hide() ;
+		b->show() ;
+	}
+	
+}
+
+
+void ModelEdit::gvarVisibility()
+{
+	oneGvarVisibility( 0, ui->Adj1Sw2CB, ui->Adj1ValueSB ) ;
+	oneGvarVisibility( 1, ui->Adj2Sw2CB, ui->Adj2ValueSB ) ;
+	oneGvarVisibility( 2, ui->Adj3Sw2CB, ui->Adj3ValueSB ) ;
+	oneGvarVisibility( 3, ui->Adj4Sw2CB, ui->Adj4ValueSB ) ;
+	oneGvarVisibility( 4, ui->Adj5Sw2CB, ui->Adj5ValueSB ) ;
+	oneGvarVisibility( 5, ui->Adj6Sw2CB, ui->Adj6ValueSB ) ;
+	oneGvarVisibility( 6, ui->Adj7Sw2CB, ui->Adj7ValueSB ) ;
+	oneGvarVisibility( 7, ui->Adj8Sw2CB, ui->Adj8ValueSB ) ;
+}
+
 
 void ModelEdit::tabGvar()
 {
@@ -3120,6 +3533,14 @@ void ModelEdit::tabGvar()
     ui->Gv6SB->setValue(g_model.gvars[5].gvar);
     ui->Gv7SB->setValue(g_model.gvars[6].gvar);
 
+    populateSwitchCB(ui->GvSw1CB,g_model.gvswitch[0], rData->type);
+    populateSwitchCB(ui->GvSw2CB,g_model.gvswitch[1], rData->type);
+    populateSwitchCB(ui->GvSw3CB,g_model.gvswitch[2], rData->type);
+    populateSwitchCB(ui->GvSw4CB,g_model.gvswitch[3], rData->type);
+    populateSwitchCB(ui->GvSw5CB,g_model.gvswitch[4], rData->type);
+    populateSwitchCB(ui->GvSw6CB,g_model.gvswitch[5], rData->type);
+    populateSwitchCB(ui->GvSw7CB,g_model.gvswitch[6], rData->type);
+
     connect(ui->Gvar1CB,SIGNAL(currentIndexChanged(int)),this,SLOT(GvarEdited()));
     connect(ui->Gvar2CB,SIGNAL(currentIndexChanged(int)),this,SLOT(GvarEdited()));
     connect(ui->Gvar3CB,SIGNAL(currentIndexChanged(int)),this,SLOT(GvarEdited()));
@@ -3136,10 +3557,139 @@ void ModelEdit::tabGvar()
     connect(ui->Gv6SB,SIGNAL(editingFinished()),this,SLOT(GvarEdited()));
     connect(ui->Gv7SB,SIGNAL(editingFinished()),this,SLOT(GvarEdited()));
 
+    connect(ui->GvSw1CB,SIGNAL(currentIndexChanged(int)),this,SLOT(GvarEdited()));
+    connect(ui->GvSw2CB,SIGNAL(currentIndexChanged(int)),this,SLOT(GvarEdited()));
+    connect(ui->GvSw3CB,SIGNAL(currentIndexChanged(int)),this,SLOT(GvarEdited()));
+    connect(ui->GvSw4CB,SIGNAL(currentIndexChanged(int)),this,SLOT(GvarEdited()));
+    connect(ui->GvSw5CB,SIGNAL(currentIndexChanged(int)),this,SLOT(GvarEdited()));
+    connect(ui->GvSw6CB,SIGNAL(currentIndexChanged(int)),this,SLOT(GvarEdited()));
+    connect(ui->GvSw7CB,SIGNAL(currentIndexChanged(int)),this,SLOT(GvarEdited()));
+
+		// Adjusters
+    populateSwitchCB( ui->Adj1Sw1CB, g_model.gvarAdjuster[0].swtch, rData->type);
+    populateSwitchCB( ui->Adj2Sw1CB, g_model.gvarAdjuster[1].swtch, rData->type);
+    populateSwitchCB( ui->Adj3Sw1CB, g_model.gvarAdjuster[2].swtch, rData->type);
+    populateSwitchCB( ui->Adj4Sw1CB, g_model.gvarAdjuster[3].swtch, rData->type);
+    populateSwitchCB( ui->Adj5Sw1CB, g_model.gvarAdjuster[4].swtch, rData->type);
+    populateSwitchCB( ui->Adj6Sw1CB, g_model.gvarAdjuster[5].swtch, rData->type);
+    populateSwitchCB( ui->Adj7Sw1CB, g_model.gvarAdjuster[6].swtch, rData->type);
+    populateSwitchCB( ui->Adj8Sw1CB, g_model.gvarAdjuster[7].swtch, rData->type);
+
+    connect(ui->Adj1Sw1CB,SIGNAL(currentIndexChanged(int)),this,SLOT(GvarEdited()));
+    connect(ui->Adj2Sw1CB,SIGNAL(currentIndexChanged(int)),this,SLOT(GvarEdited()));
+    connect(ui->Adj3Sw1CB,SIGNAL(currentIndexChanged(int)),this,SLOT(GvarEdited()));
+    connect(ui->Adj4Sw1CB,SIGNAL(currentIndexChanged(int)),this,SLOT(GvarEdited()));
+    connect(ui->Adj5Sw1CB,SIGNAL(currentIndexChanged(int)),this,SLOT(GvarEdited()));
+    connect(ui->Adj6Sw1CB,SIGNAL(currentIndexChanged(int)),this,SLOT(GvarEdited()));
+    connect(ui->Adj7Sw1CB,SIGNAL(currentIndexChanged(int)),this,SLOT(GvarEdited()));
+    connect(ui->Adj8Sw1CB,SIGNAL(currentIndexChanged(int)),this,SLOT(GvarEdited()));
+
+		populateSwitchCB( ui->Adj1Sw2CB, g_model.gvarAdjuster[0].switch_value, rData->type);
+    populateSwitchCB( ui->Adj2Sw2CB, g_model.gvarAdjuster[1].switch_value, rData->type);
+    populateSwitchCB( ui->Adj3Sw2CB, g_model.gvarAdjuster[2].switch_value, rData->type);
+    populateSwitchCB( ui->Adj4Sw2CB, g_model.gvarAdjuster[3].switch_value, rData->type);
+    populateSwitchCB( ui->Adj5Sw2CB, g_model.gvarAdjuster[4].switch_value, rData->type);
+    populateSwitchCB( ui->Adj6Sw2CB, g_model.gvarAdjuster[5].switch_value, rData->type);
+    populateSwitchCB( ui->Adj7Sw2CB, g_model.gvarAdjuster[6].switch_value, rData->type);
+    populateSwitchCB( ui->Adj8Sw2CB, g_model.gvarAdjuster[7].switch_value, rData->type);
+
+    connect(ui->Adj1Sw2CB,SIGNAL(currentIndexChanged(int)),this,SLOT(GvarEdited()));
+    connect(ui->Adj2Sw2CB,SIGNAL(currentIndexChanged(int)),this,SLOT(GvarEdited()));
+    connect(ui->Adj3Sw2CB,SIGNAL(currentIndexChanged(int)),this,SLOT(GvarEdited()));
+    connect(ui->Adj4Sw2CB,SIGNAL(currentIndexChanged(int)),this,SLOT(GvarEdited()));
+    connect(ui->Adj5Sw2CB,SIGNAL(currentIndexChanged(int)),this,SLOT(GvarEdited()));
+    connect(ui->Adj6Sw2CB,SIGNAL(currentIndexChanged(int)),this,SLOT(GvarEdited()));
+    connect(ui->Adj7Sw2CB,SIGNAL(currentIndexChanged(int)),this,SLOT(GvarEdited()));
+    connect(ui->Adj8Sw2CB,SIGNAL(currentIndexChanged(int)),this,SLOT(GvarEdited()));
+
+    ui->Adj1ValueSB->setValue(g_model.gvarAdjuster[0].switch_value);
+    ui->Adj2ValueSB->setValue(g_model.gvarAdjuster[1].switch_value);
+    ui->Adj3ValueSB->setValue(g_model.gvarAdjuster[2].switch_value);
+    ui->Adj4ValueSB->setValue(g_model.gvarAdjuster[3].switch_value);
+    ui->Adj5ValueSB->setValue(g_model.gvarAdjuster[4].switch_value);
+    ui->Adj6ValueSB->setValue(g_model.gvarAdjuster[5].switch_value);
+    ui->Adj7ValueSB->setValue(g_model.gvarAdjuster[6].switch_value);
+    ui->Adj8ValueSB->setValue(g_model.gvarAdjuster[7].switch_value);
+
+    connect(ui->Adj1ValueSB,SIGNAL(editingFinished()),this,SLOT(GvarEdited()));
+    connect(ui->Adj2ValueSB,SIGNAL(editingFinished()),this,SLOT(GvarEdited()));
+    connect(ui->Adj3ValueSB,SIGNAL(editingFinished()),this,SLOT(GvarEdited()));
+    connect(ui->Adj4ValueSB,SIGNAL(editingFinished()),this,SLOT(GvarEdited()));
+    connect(ui->Adj5ValueSB,SIGNAL(editingFinished()),this,SLOT(GvarEdited()));
+    connect(ui->Adj6ValueSB,SIGNAL(editingFinished()),this,SLOT(GvarEdited()));
+    connect(ui->Adj7ValueSB,SIGNAL(editingFinished()),this,SLOT(GvarEdited()));
+    connect(ui->Adj8ValueSB,SIGNAL(editingFinished()),this,SLOT(GvarEdited()));
+
+    ui->Adj1FunctionCB->setCurrentIndex(g_model.gvarAdjuster[0].function ) ;
+    ui->Adj2FunctionCB->setCurrentIndex(g_model.gvarAdjuster[1].function ) ;
+    ui->Adj3FunctionCB->setCurrentIndex(g_model.gvarAdjuster[2].function ) ;
+    ui->Adj4FunctionCB->setCurrentIndex(g_model.gvarAdjuster[3].function ) ;
+    ui->Adj5FunctionCB->setCurrentIndex(g_model.gvarAdjuster[4].function ) ;
+    ui->Adj6FunctionCB->setCurrentIndex(g_model.gvarAdjuster[5].function ) ;
+    ui->Adj7FunctionCB->setCurrentIndex(g_model.gvarAdjuster[6].function ) ;
+    ui->Adj8FunctionCB->setCurrentIndex(g_model.gvarAdjuster[7].function ) ;
+		
+    connect(ui->Adj1FunctionCB,SIGNAL(currentIndexChanged(int)),this,SLOT(GvarEdited()));
+    connect(ui->Adj2FunctionCB,SIGNAL(currentIndexChanged(int)),this,SLOT(GvarEdited()));
+    connect(ui->Adj3FunctionCB,SIGNAL(currentIndexChanged(int)),this,SLOT(GvarEdited()));
+    connect(ui->Adj4FunctionCB,SIGNAL(currentIndexChanged(int)),this,SLOT(GvarEdited()));
+    connect(ui->Adj5FunctionCB,SIGNAL(currentIndexChanged(int)),this,SLOT(GvarEdited()));
+    connect(ui->Adj6FunctionCB,SIGNAL(currentIndexChanged(int)),this,SLOT(GvarEdited()));
+    connect(ui->Adj7FunctionCB,SIGNAL(currentIndexChanged(int)),this,SLOT(GvarEdited()));
+    connect(ui->Adj8FunctionCB,SIGNAL(currentIndexChanged(int)),this,SLOT(GvarEdited()));
+
+    ui->Adj1GvarCB->setCurrentIndex(g_model.gvarAdjuster[0].gvarIndex ) ;
+    ui->Adj2GvarCB->setCurrentIndex(g_model.gvarAdjuster[1].gvarIndex ) ;
+    ui->Adj3GvarCB->setCurrentIndex(g_model.gvarAdjuster[2].gvarIndex ) ;
+    ui->Adj4GvarCB->setCurrentIndex(g_model.gvarAdjuster[3].gvarIndex ) ;
+    ui->Adj5GvarCB->setCurrentIndex(g_model.gvarAdjuster[4].gvarIndex ) ;
+    ui->Adj6GvarCB->setCurrentIndex(g_model.gvarAdjuster[5].gvarIndex ) ;
+    ui->Adj7GvarCB->setCurrentIndex(g_model.gvarAdjuster[6].gvarIndex ) ;
+    ui->Adj8GvarCB->setCurrentIndex(g_model.gvarAdjuster[7].gvarIndex ) ;
+
+    connect(ui->Adj1GvarCB,SIGNAL(currentIndexChanged(int)),this,SLOT(GvarEdited()));
+    connect(ui->Adj2GvarCB,SIGNAL(currentIndexChanged(int)),this,SLOT(GvarEdited()));
+    connect(ui->Adj3GvarCB,SIGNAL(currentIndexChanged(int)),this,SLOT(GvarEdited()));
+    connect(ui->Adj4GvarCB,SIGNAL(currentIndexChanged(int)),this,SLOT(GvarEdited()));
+    connect(ui->Adj5GvarCB,SIGNAL(currentIndexChanged(int)),this,SLOT(GvarEdited()));
+    connect(ui->Adj6GvarCB,SIGNAL(currentIndexChanged(int)),this,SLOT(GvarEdited()));
+    connect(ui->Adj7GvarCB,SIGNAL(currentIndexChanged(int)),this,SLOT(GvarEdited()));
+    connect(ui->Adj8GvarCB,SIGNAL(currentIndexChanged(int)),this,SLOT(GvarEdited()));
+		
+		for ( i = 0 ; i < NUM_GVAR_ADJUST ; i += 1 )
+		{
+			oldAdjFunction[i] = g_model.gvarAdjuster[0].function ;
+		}
+    switchEditLock = true;
+		gvarVisibility() ;
+    switchEditLock = false;
+
+}
+
+void ModelEdit::oneGvarGetValue(int index, QComboBox *b, QSpinBox *sb )
+{
+	if ( g_model.gvarAdjuster[index].function < 3 )
+	{
+	  g_model.gvarAdjuster[index].switch_value = sb->value() ;
+	}
+	else
+	{
+		if ( g_model.gvarAdjuster[index].function == 3 )	// Set V
+		{
+      g_model.gvarAdjuster[index].switch_value = b->currentIndex() ;
+		}
+		else
+		{
+	    g_model.gvarAdjuster[index].switch_value = getSwitchCbValue( b, rData->type ) ;
+		}
+	}
 }
 
 void ModelEdit::GvarEdited()
 {
+    if(switchEditLock) return ;
+    switchEditLock = true;
+	
 	  g_model.gvars[0].gvsource = ui->Gvar1CB->currentIndex() ;
 	  g_model.gvars[1].gvsource = ui->Gvar2CB->currentIndex() ;
 	  g_model.gvars[2].gvsource = ui->Gvar3CB->currentIndex() ;
@@ -3156,6 +3706,13 @@ void ModelEdit::GvarEdited()
     g_model.gvars[5].gvar = ui->Gv6SB->value();
     g_model.gvars[6].gvar = ui->Gv7SB->value();
 	
+		g_model.gvswitch[0] = getSwitchCbValue( ui->GvSw1CB, rData->type ) ;
+		g_model.gvswitch[1] = getSwitchCbValue( ui->GvSw2CB, rData->type ) ;
+		g_model.gvswitch[2] = getSwitchCbValue( ui->GvSw3CB, rData->type ) ;
+		g_model.gvswitch[3] = getSwitchCbValue( ui->GvSw4CB, rData->type ) ;
+		g_model.gvswitch[4] = getSwitchCbValue( ui->GvSw5CB, rData->type ) ;
+		g_model.gvswitch[5] = getSwitchCbValue( ui->GvSw6CB, rData->type ) ;
+		g_model.gvswitch[6] = getSwitchCbValue( ui->GvSw7CB, rData->type ) ;
 
 		int i ;
 		for ( i = 0 ; i < NUM_SCALERS ; i += 1 )
@@ -3171,7 +3728,51 @@ void ModelEdit::GvarEdited()
       textUpdate( psname[i], (char *)g_model.Scalers[i].name, 4 ) ;
 		}
 
+		for ( i = 0 ; i < NUM_GVAR_ADJUST ; i += 1 )
+		{
+			oldAdjFunction[i] = g_model.gvarAdjuster[0].function ;
+		}
+		g_model.gvarAdjuster[0].function = ui->Adj1FunctionCB->currentIndex() ;
+		g_model.gvarAdjuster[1].function = ui->Adj2FunctionCB->currentIndex() ;
+		g_model.gvarAdjuster[2].function = ui->Adj3FunctionCB->currentIndex() ;
+		g_model.gvarAdjuster[3].function = ui->Adj4FunctionCB->currentIndex() ;
+		g_model.gvarAdjuster[4].function = ui->Adj5FunctionCB->currentIndex() ;
+		g_model.gvarAdjuster[5].function = ui->Adj6FunctionCB->currentIndex() ;
+		g_model.gvarAdjuster[6].function = ui->Adj7FunctionCB->currentIndex() ;
+		g_model.gvarAdjuster[7].function = ui->Adj8FunctionCB->currentIndex() ;
+    
+		g_model.gvarAdjuster[0].gvarIndex = ui->Adj1GvarCB->currentIndex() ;
+    g_model.gvarAdjuster[1].gvarIndex = ui->Adj2GvarCB->currentIndex() ;
+    g_model.gvarAdjuster[2].gvarIndex = ui->Adj3GvarCB->currentIndex() ;
+    g_model.gvarAdjuster[3].gvarIndex = ui->Adj4GvarCB->currentIndex() ;
+    g_model.gvarAdjuster[4].gvarIndex = ui->Adj5GvarCB->currentIndex() ;
+    g_model.gvarAdjuster[5].gvarIndex = ui->Adj6GvarCB->currentIndex() ;
+    g_model.gvarAdjuster[6].gvarIndex = ui->Adj7GvarCB->currentIndex() ;
+    g_model.gvarAdjuster[7].gvarIndex = ui->Adj8GvarCB->currentIndex() ;
+
+		g_model.gvarAdjuster[0].swtch = getSwitchCbValue( ui->Adj1Sw1CB, rData->type ) ;
+		g_model.gvarAdjuster[1].swtch = getSwitchCbValue( ui->Adj2Sw1CB, rData->type ) ;
+		g_model.gvarAdjuster[2].swtch = getSwitchCbValue( ui->Adj3Sw1CB, rData->type ) ;
+		g_model.gvarAdjuster[3].swtch = getSwitchCbValue( ui->Adj4Sw1CB, rData->type ) ;
+		g_model.gvarAdjuster[4].swtch = getSwitchCbValue( ui->Adj5Sw1CB, rData->type ) ;
+		g_model.gvarAdjuster[5].swtch = getSwitchCbValue( ui->Adj6Sw1CB, rData->type ) ;
+		g_model.gvarAdjuster[6].swtch = getSwitchCbValue( ui->Adj7Sw1CB, rData->type ) ;
+		g_model.gvarAdjuster[7].swtch = getSwitchCbValue( ui->Adj8Sw1CB, rData->type ) ;
+
+		oneGvarGetValue( 0, ui->Adj1Sw2CB, ui->Adj1ValueSB ) ;
+		oneGvarGetValue( 1, ui->Adj2Sw2CB, ui->Adj2ValueSB ) ;
+		oneGvarGetValue( 2, ui->Adj3Sw2CB, ui->Adj3ValueSB ) ;
+		oneGvarGetValue( 3, ui->Adj4Sw2CB, ui->Adj4ValueSB ) ;
+		oneGvarGetValue( 4, ui->Adj5Sw2CB, ui->Adj5ValueSB ) ;
+		oneGvarGetValue( 5, ui->Adj6Sw2CB, ui->Adj6ValueSB ) ;
+		oneGvarGetValue( 6, ui->Adj7Sw2CB, ui->Adj7ValueSB ) ;
+		oneGvarGetValue( 7, ui->Adj8Sw2CB, ui->Adj8ValueSB ) ;
+
+		gvarVisibility() ;
+
 		updateSettings();
+    
+		switchEditLock = false;
 }
 
 void ModelEdit::tabFrsky()
@@ -3183,10 +3784,19 @@ void ModelEdit::tabFrsky()
     populateTelItemsCB( ui->Ct5, 0, g_model.customDisplayIndex[4] ) ;
     populateTelItemsCB( ui->Ct6, 0, g_model.customDisplayIndex[5] ) ;
 		
+    populateTelItemsCB( ui->Ct1_2, 0, g_model.customDisplay2Index[0] ) ;
+    populateTelItemsCB( ui->Ct2_2, 0, g_model.customDisplay2Index[1] ) ;
+    populateTelItemsCB( ui->Ct3_2, 0, g_model.customDisplay2Index[2] ) ;
+    populateTelItemsCB( ui->Ct4_2, 0, g_model.customDisplay2Index[3] ) ;
+    populateTelItemsCB( ui->Ct5_2, 0, g_model.customDisplay2Index[4] ) ;
+    populateTelItemsCB( ui->Ct6_2, 0, g_model.customDisplay2Index[5] ) ;
+
     ui->frsky_ratio_0->setValue(g_model.frsky.channels[0].ratio);
     ui->frsky_type_0->setCurrentIndex(g_model.frsky.channels[0].type);
     ui->frsky_ratio_1->setValue(g_model.frsky.channels[1].ratio);
     ui->frsky_type_1->setCurrentIndex(g_model.frsky.channels[1].type);
+		FrSkyA1changed(g_model.frsky.channels[0].ratio) ;
+		FrSkyA2changed(g_model.frsky.channels[1].ratio) ;
 
     ui->frsky_val_0_0->setValue(g_model.frsky.channels[0].alarms_value[0]);
     ui->frsky_val_0_1->setValue(g_model.frsky.channels[0].alarms_value[1]);
@@ -3259,6 +3869,12 @@ void ModelEdit::tabFrsky()
 		connect( ui->Ct4,SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
 		connect( ui->Ct5,SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
 		connect( ui->Ct6,SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
+		connect( ui->Ct1_2,SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
+		connect( ui->Ct2_2,SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
+		connect( ui->Ct3_2,SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
+		connect( ui->Ct4_2,SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
+		connect( ui->Ct5_2,SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
+		connect( ui->Ct6_2,SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
 
 		connect( ui->FASoffsetSB,SIGNAL(editingFinished()),this,SLOT(FrSkyEdited()));
 		connect( ui->currentSource,SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
@@ -3277,19 +3893,41 @@ void ModelEdit::tabFrsky()
 		connect(ui->RssiWarnEnabled,SIGNAL(stateChanged(int)),this,SLOT(FrSkyEdited()));
 		connect(ui->RssiCriticalEnabled,SIGNAL(stateChanged(int)),this,SLOT(FrSkyEdited()));
 
+    connect(ui->frsky_ratio_0,SIGNAL(valueChanged(int)),this,SLOT(FrSkyA1changed(int)));
+    connect(ui->frsky_ratio_1,SIGNAL(valueChanged(int)),this,SLOT(FrSkyA2changed(int)));
+
 }
+
+void ModelEdit::FrSkyA1changed(int value)
+{
+	char telText[20] ;
+  stringTelemetryChannel( telText, 0, value, &g_model ) ;
+  ui->CH1Value->setText(telText) ;
+}
+
+void ModelEdit::FrSkyA2changed(int value)
+{
+	char telText[20] ;
+  stringTelemetryChannel( telText, 1, value, &g_model ) ;
+  ui->CH2Value->setText(telText) ;
+}
+
 
 void ModelEdit::FrSkyEdited()
 {
-	int limit = MAX_DRSWITCH ;
-	if ( rData->type )
-	{
-		limit = MAX_XDRSWITCH ;
-	}
+//	int limit = MAX_DRSWITCH ;
+//	if ( rData->type )
+//	{
+//		limit = MAX_XDRSWITCH ;
+//	}
     g_model.frsky.channels[0].ratio = ui->frsky_ratio_0->value();
     g_model.frsky.channels[1].ratio = ui->frsky_ratio_1->value();
-    g_model.frsky.channels[0].type  = ui->frsky_type_0->currentIndex();
+		
+		g_model.frsky.channels[0].type  = ui->frsky_type_0->currentIndex();
     g_model.frsky.channels[1].type  = ui->frsky_type_1->currentIndex();
+
+		FrSkyA1changed(g_model.frsky.channels[0].ratio) ;
+		FrSkyA2changed(g_model.frsky.channels[1].ratio) ;
 
     g_model.frsky.channels[0].alarms_value[0] = ui->frsky_val_0_0->value();
     g_model.frsky.channels[0].alarms_value[1] = ui->frsky_val_0_1->value();
@@ -3317,15 +3955,22 @@ void ModelEdit::FrSkyEdited()
     g_model.customDisplayIndex[4] = ui->Ct5->currentIndex() ;
     g_model.customDisplayIndex[5] = ui->Ct6->currentIndex() ;
 
+    g_model.customDisplay2Index[0] = ui->Ct1_2->currentIndex() ;
+    g_model.customDisplay2Index[1] = ui->Ct2_2->currentIndex() ;
+    g_model.customDisplay2Index[2] = ui->Ct3_2->currentIndex() ;
+    g_model.customDisplay2Index[3] = ui->Ct4_2->currentIndex() ;
+    g_model.customDisplay2Index[4] = ui->Ct5_2->currentIndex() ;
+    g_model.customDisplay2Index[5] = ui->Ct6_2->currentIndex() ;
+
 		g_model.FASoffset = ui->FASoffsetSB->value() * 10 + 0.49 ;
 		g_model.currentSource = ui->currentSource->currentIndex() ;
     
-		g_model.varioData.swtch = ui->VarioSwitchCB->currentIndex() - limit ;
+		g_model.varioData.swtch = getSwitchCbValue( ui->VarioSwitchCB, rData->type ) ;
 		g_model.varioData.varioSource = ui->VarioSourceCB->currentIndex() ;
 		g_model.varioData.param = ui->VarioSensitivitySB->value() ;
     g_model.varioData.sinkTonesOff = ui->SinkTonesOff->isChecked();
 		
-		g_model.logSwitch = ui->LogSwitchCB->currentIndex() - limit ;
+		g_model.logSwitch = getSwitchCbValue( ui->LogSwitchCB, rData->type ) ;
     g_model.logRate = ui->LogRateCB->currentIndex() ;
 
 		g_model.rssiOrange = ui->frsky_RSSI_Warn->value() - 45 ;
@@ -3379,12 +4024,15 @@ void ModelEdit::on_timerModeCB_currentIndexChanged(int index)
 
 void ModelEdit::on_timerModeBCB_currentIndexChanged(int index)
 {
-		int limit = MAX_DRSWITCH ;
-		if ( rData->type )
-		{
-			limit = MAX_XDRSWITCH ;
-		}
-    g_model.timer[0].tmrModeB = index-(limit-1);
+	(void) index ;
+    g_model.timer[0].tmrModeB = getTimerSwitchCbValue( ui->timerModeBCB, rData->type ) ;
+    updateSettings();
+}
+
+void ModelEdit::on_timerResetCB_currentIndexChanged(int index)
+{
+	(void) index ;
+    g_model.timer1RstSw = getTimerSwitchCbValue( ui->timerResetCB, rData->type ) ;
     updateSettings();
 }
 
@@ -3402,12 +4050,15 @@ void ModelEdit::on_timer2ModeCB_currentIndexChanged(int index)
 
 void ModelEdit::on_timer2ModeBCB_currentIndexChanged(int index)
 {
-		int limit = MAX_DRSWITCH ;
-		if ( rData->type )
-		{
-			limit = MAX_XDRSWITCH ;
-		}
-    g_model.timer[1].tmrModeB = index-(limit-1);
+	(void) index ;
+    g_model.timer[1].tmrModeB = getTimerSwitchCbValue( ui->timer2ModeBCB, rData->type ) ;
+    updateSettings();
+}
+
+void ModelEdit::on_timer2ResetCB_currentIndexChanged(int index)
+{
+	(void) index ;
+    g_model.timer2RstSw = getTimerSwitchCbValue( ui->timer2ResetCB, rData->type ) ;
     updateSettings();
 }
 
@@ -3431,12 +4082,8 @@ void ModelEdit::on_volumeControlCB_currentIndexChanged(int index)
 
 void ModelEdit::on_trimSWCB_currentIndexChanged(int index)
 {
-		int limit = MAX_DRSWITCH ;
-		if ( rData->type )
-		{
-			limit = MAX_XDRSWITCH ;
-		}
-    g_model.trimSw = index-limit;
+	(void) index ;
+    g_model.trimSw =  getSwitchCbValue( ui->trimSWCB, rData->type ) ;
     updateSettings();
 }
 
@@ -3708,6 +4355,30 @@ void ModelEdit::on_bcP3ChkB_toggled(bool checked)
     updateSettings();
 }
 
+void ModelEdit::on_timer1BeepCdownCB_toggled(bool checked)
+{
+	g_model.timer1Cdown = checked ;
+  updateSettings();
+}
+
+void ModelEdit::on_timer2BeepCdownCB_toggled(bool checked)
+{
+	g_model.timer2Cdown = checked ;
+  updateSettings();
+}
+
+void ModelEdit::on_timer1MinuteBeepCB_toggled(bool checked)
+{
+	g_model.timer1Mbeep = checked ;
+  updateSettings();
+}
+
+void ModelEdit::on_timer2MinuteBeepCB_toggled(bool checked)
+{
+	g_model.timer2Mbeep = checked ;
+  updateSettings();
+}
+
 void ModelEdit::on_switchwarnChkB_stateChanged(int )
 {
     g_model.modelswitchWarningStates = (g_model.modelswitchWarningStates & ~1) | (ui->switchwarnChkB->isChecked() ? 0 : 1);
@@ -3809,38 +4480,138 @@ void ModelEdit::on_switchDefPos_8_stateChanged(int )
 void ModelEdit::on_SwitchDefSA_valueChanged( int x )
 {
     if(switchDefPosEditLock) return;
-    x <<= 1 ;
-    g_model.modelswitchWarningStates = ( g_model.modelswitchWarningStates & ~0x0006 ) | x ;
+		if ( rData->type )
+		{
+	    x <<= 1 ;
+	    g_model.modelswitchWarningStates = ( g_model.modelswitchWarningStates & ~0x0006 ) | x ;
+		}
+		else
+		{ // must be THR 3POS
+			uint16_t y = g_model.modelswitchWarningStates ;
+			y &= ~(0x0101 << 1) ;
+			if ( x )
+			{
+				if ( x == 1 )
+				{
+					y |= 0x0001 << 1 ;
+				}
+				else
+				{
+					y |= 0x0100 << 1 ;
+				}
+			}
+			g_model.modelswitchWarningStates = y ;
+		}
 		updateSettings();
 }
 
 void ModelEdit::on_SwitchDefSB_valueChanged( int x )
 {
     if(switchDefPosEditLock) return;
-    x <<= 3 ;
-    g_model.modelswitchWarningStates = ( g_model.modelswitchWarningStates & ~0x0018 ) | x ;
+		if ( rData->type )
+		{
+	    x <<= 3 ;
+  	  g_model.modelswitchWarningStates = ( g_model.modelswitchWarningStates & ~0x0018 ) | x ;
+		}
+		else
+		{ // must be RUD 3POS
+			uint16_t y = g_model.modelswitchWarningStates ;
+			y &= ~(0x0202 << 1) ;
+			if ( x )
+			{
+				if ( x == 1 )
+				{
+					y |= 0x0002 << 1 ;
+				}
+				else
+				{
+					y |= 0x0200 << 1 ;
+				}
+			}
+			g_model.modelswitchWarningStates = y ;
+		}
 		updateSettings();
 }
 
 void ModelEdit::on_SwitchDefSC_valueChanged( int x )
 {
     if(switchDefPosEditLock) return;
-    x <<= 5 ;
-    g_model.modelswitchWarningStates = ( g_model.modelswitchWarningStates & ~0x0060 ) | x ;
+		if ( rData->type )
+		{
+	    x <<= 5 ;
+  	  g_model.modelswitchWarningStates = ( g_model.modelswitchWarningStates & ~0x0060 ) | x ;
+		}
+		else
+		{ // must be ELE 3POS
+			uint16_t y = g_model.modelswitchWarningStates ;
+			y &= ~(0x0404 << 1) ;
+			if ( x )
+			{
+				if ( x == 1 )
+				{
+					y |= 0x0004 << 1 ;
+				}
+				else
+				{
+					y |= 0x0400 << 1 ;
+				}
+			}
+			g_model.modelswitchWarningStates = y ;
+		}
 		updateSettings();
 }
 void ModelEdit::on_SwitchDefSD_valueChanged( int x )
 {
     if(switchDefPosEditLock) return;
-    x <<= 7 ;
-    g_model.modelswitchWarningStates = ( g_model.modelswitchWarningStates & ~0x0180 ) | x ;
+		if ( rData->type )
+		{
+	    x <<= 7 ;
+  	  g_model.modelswitchWarningStates = ( g_model.modelswitchWarningStates & ~0x0180 ) | x ;
+		}
+		else
+		{ // must be AIL 3POS
+			uint16_t y = g_model.modelswitchWarningStates ;
+			y &= ~(0x1040 << 1) ;
+			if ( x )
+			{
+				if ( x == 1 )
+				{
+					y |= 0x0040 << 1 ;
+				}
+				else
+				{
+					y |= 0x1000 << 1 ;
+				}
+			}
+			g_model.modelswitchWarningStates = y ;
+		}
 		updateSettings();
 }
 void ModelEdit::on_SwitchDefSE_valueChanged( int x )
 {
     if(switchDefPosEditLock) return;
-    x <<= 9 ;
-    g_model.modelswitchWarningStates = ( g_model.modelswitchWarningStates & ~0x0600 ) | x ;
+		if ( rData->type )
+		{
+	    x <<= 9 ;
+  	  g_model.modelswitchWarningStates = ( g_model.modelswitchWarningStates & ~0x0600 ) | x ;
+		}
+		else
+		{ // must be GEA 3POS
+			uint16_t y = g_model.modelswitchWarningStates ;
+			y &= ~(0x2080 << 1) ;
+			if ( x )
+			{
+				if ( x == 1 )
+				{
+					y |= 0x0080 << 1 ;
+				}
+				else
+				{
+					y |= 0x2000 << 1 ;
+				}
+			}
+			g_model.modelswitchWarningStates = y ;
+		}
 		updateSettings();
 }
 void ModelEdit::on_SwitchDefSF_valueChanged( int x )
@@ -4217,6 +4988,7 @@ bool ModelEdit::gm_insertMix(int idx)
     memset(&g_model.mixData[idx],0,sizeof(SKYMixData));
     g_model.mixData[idx].destCh = i;
     g_model.mixData[idx].weight = 100;
+		g_model.mixData[idx].lateOffset = 1 ;
 
     for(int j=(MAX_SKYMIXERS-1); j>idx; j--)
     {
@@ -4254,7 +5026,7 @@ void ModelEdit::gm_openMix(int index)
 
     QString comment = mixNotes[index];
 
-    MixerDialog *g = new MixerDialog(this,&mixd,g_eeGeneral.stickMode, &comment, g_model.modelVersion, rData->type );
+    MixerDialog *g = new MixerDialog(this,&mixd, &g_eeGeneral, &comment, g_model.modelVersion, rData->type );
     if(g->exec())
     {
         memcpy(&g_model.mixData[index],&mixd,sizeof(SKYMixData));
@@ -4272,6 +5044,17 @@ int ModelEdit::getMixerIndex(int dch)
     while ((g_model.mixData[i].destCh<=dch) && (g_model.mixData[i].destCh) && (i<MAX_SKYMIXERS)) i++;
     if(i==MAX_SKYMIXERS) return -1;
     return i;
+}
+
+void ModelEdit::on_VoiceAlarmList_doubleClicked( QModelIndex index )
+{
+  VoiceAlarmDialog *dlg = new VoiceAlarmDialog( this, &g_model.vad[index.row()], rData->type, g_eeGeneral.stickMode, g_model.modelVersion, &g_model ) ;
+  dlg->setWindowTitle(tr("Voice Alarm %1").arg(index.row()+1)) ;
+  if(dlg->exec())
+  {
+    updateSettings() ;
+		tabVoiceAlarms() ;
+  }
 }
 
 void ModelEdit::mixerlistWidget_doubleClicked(QModelIndex index)
@@ -4515,10 +5298,19 @@ void ModelEdit::mixerlistWidget_KeyPress(QKeyEvent *event)
 
 int ModelEdit::gm_moveMix(int idx, bool dir) //true=inc=down false=dec=up
 {
-    if(idx>MAX_SKYMIXERS || (idx==0 && !dir) || (idx==MAX_SKYMIXERS && dir)) return idx;
+    SKYMixData &src=g_model.mixData[idx];
+    if(idx==0 && !dir)
+		{
+      if (src.destCh>1)
+			{
+        src.destCh--;
+			}
+			return idx ;
+		}
+	
+    if(idx>MAX_SKYMIXERS || (idx==MAX_SKYMIXERS && dir)) return idx;
 
     int tdx = dir ? idx+1 : idx-1;
-    SKYMixData &src=g_model.mixData[idx];
     SKYMixData &tgt=g_model.mixData[tdx];
 
     if((src.destCh==0) || (src.destCh>NUM_SKYCHNOUT) || (tgt.destCh>NUM_SKYCHNOUT)) return idx;
@@ -4847,6 +5639,7 @@ SKYMixData* ModelEdit::setDest(uint8_t dch)
             (MAX_SKYMIXERS-(i+1))*sizeof(SKYMixData) );
     memset(&g_model.mixData[i],0,sizeof(SKYMixData));
     g_model.mixData[i].destCh = dch;
+		g_model.mixData[i].lateOffset = 1 ;
     return &g_model.mixData[i];
 }
 

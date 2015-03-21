@@ -100,6 +100,11 @@
        <string>X9D (Taranis)</string>
       </property>
      </item>
+     <item>
+      <property name="text">
+       <string>X9DP (Taranis Plus)</string>
+      </property>
+     </item>
     </widget>
    </item>
    <item row="9" column="1">

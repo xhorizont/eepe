@@ -115,6 +115,7 @@ private slots:
     void customizeSplash();
     void setFuses();
     void resetFuses();
+		void readFuses() ;
     void showEEPROMInfo();
     void doTelemetry();
 		void releaseNotes() ;
@@ -199,6 +200,7 @@ private:
     QAction *customizeSplashAct;
     QAction *setFusesAct;
     QAction *resetFusesAct;
+    QAction *readFusesAct;
     QAction *eepromInfoAct;
     QAction *telemetryAct;
 

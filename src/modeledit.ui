@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>943</width>
-    <height>660</height>
+    <height>677</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -43,6 +43,9 @@
    </item>
    <item row="0" column="1">
     <widget class="QTabWidget" name="tabWidget">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
      <property name="currentIndex">
       <number>0</number>
      </property>
@@ -98,75 +101,182 @@
          </item>
         </layout>
        </item>
+       <item row="2" column="1">
+        <layout class="QGridLayout" name="gridLayout_14">
+         <item row="0" column="0">
+          <layout class="QGridLayout" name="gridLayout_28">
+           <item row="1" column="0">
+            <widget class="QLabel" name="label_2">
+             <property name="text">
+              <string>Timer Mode</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="QComboBox" name="timerModeCB"/>
+           </item>
+           <item row="2" column="0">
+            <widget class="QLabel" name="label_118">
+             <property name="text">
+              <string>Timer ModeB</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="1">
+            <widget class="QComboBox" name="timerModeBCB"/>
+           </item>
+           <item row="3" column="0">
+            <widget class="QLabel" name="label_3">
+             <property name="text">
+              <string>Timer Direction</string>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="0">
+            <widget class="QLabel" name="label_4">
+             <property name="text">
+              <string>Timer Value</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="1">
+            <widget class="QComboBox" name="timerDirCB">
+             <item>
+              <property name="text">
+               <string>Count Down</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Count Up</string>
+              </property>
+             </item>
+            </widget>
+           </item>
+           <item row="4" column="1">
+            <widget class="QTimeEdit" name="timerValTE">
+             <property name="accelerated">
+              <bool>true</bool>
+             </property>
+             <property name="currentSection">
+              <enum>QDateTimeEdit::MinuteSection</enum>
+             </property>
+             <property name="displayFormat">
+              <string>mm:ss</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QLabel" name="label_181">
+             <property name="text">
+              <string>Timer 1</string>
+             </property>
+            </widget>
+           </item>
+           <item row="5" column="0">
+            <widget class="QLabel" name="label_183">
+             <property name="text">
+              <string>Reset Switch</string>
+             </property>
+            </widget>
+           </item>
+           <item row="5" column="1">
+            <widget class="QComboBox" name="timerResetCB"/>
+           </item>
+          </layout>
+         </item>
+         <item row="0" column="1">
+          <layout class="QGridLayout" name="gridLayout_29">
+           <item row="1" column="0">
+            <widget class="QLabel" name="label_42">
+             <property name="text">
+              <string>Timer Mode</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="0">
+            <widget class="QLabel" name="label_179">
+             <property name="text">
+              <string>Timer ModeB</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="QComboBox" name="timer2ModeCB"/>
+           </item>
+           <item row="2" column="1">
+            <widget class="QComboBox" name="timer2ModeBCB"/>
+           </item>
+           <item row="3" column="0">
+            <widget class="QLabel" name="label_43">
+             <property name="text">
+              <string>Timer Direction</string>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="0">
+            <widget class="QLabel" name="label_180">
+             <property name="text">
+              <string>Timer Value</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="1">
+            <widget class="QComboBox" name="timer2DirCB">
+             <item>
+              <property name="text">
+               <string>Count Down</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Count Up</string>
+              </property>
+             </item>
+            </widget>
+           </item>
+           <item row="4" column="1">
+            <widget class="QTimeEdit" name="timer2ValTE">
+             <property name="accelerated">
+              <bool>true</bool>
+             </property>
+             <property name="currentSection">
+              <enum>QDateTimeEdit::MinuteSection</enum>
+             </property>
+             <property name="displayFormat">
+              <string>mm:ss</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QLabel" name="label_182">
+             <property name="text">
+              <string>Timer 2</string>
+             </property>
+            </widget>
+           </item>
+           <item row="5" column="0">
+            <widget class="QLabel" name="label_184">
+             <property name="text">
+              <string>Reset Switch</string>
+             </property>
+            </widget>
+           </item>
+           <item row="5" column="1">
+            <widget class="QComboBox" name="timer2ResetCB"/>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </item>
        <item row="3" column="0">
-        <widget class="QLabel" name="label_2">
-         <property name="text">
-          <string>Timer Mode</string>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="1">
-        <widget class="QComboBox" name="timerModeCB"/>
-       </item>
-       <item row="4" column="0">
-        <widget class="QLabel" name="label_118">
-         <property name="text">
-          <string>Timer ModeB</string>
-         </property>
-        </widget>
-       </item>
-       <item row="4" column="1">
-        <widget class="QComboBox" name="timerModeBCB"/>
-       </item>
-       <item row="6" column="0">
-        <widget class="QLabel" name="label_3">
-         <property name="text">
-          <string>Timer Direction</string>
-         </property>
-        </widget>
-       </item>
-       <item row="6" column="1">
-        <widget class="QComboBox" name="timerDirCB">
-         <item>
-          <property name="text">
-           <string>Count Down</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Count Up</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="7" column="0">
-        <widget class="QLabel" name="label_4">
-         <property name="text">
-          <string>Timer Value</string>
-         </property>
-        </widget>
-       </item>
-       <item row="7" column="1">
-        <widget class="QTimeEdit" name="timerValTE">
-         <property name="accelerated">
-          <bool>true</bool>
-         </property>
-         <property name="currentSection">
-          <enum>QDateTimeEdit::MinuteSection</enum>
-         </property>
-         <property name="displayFormat">
-          <string>mm:ss</string>
-         </property>
-        </widget>
-       </item>
-       <item row="8" column="0">
         <widget class="QLabel" name="label_10">
          <property name="text">
           <string>Trim Increment</string>
          </property>
         </widget>
        </item>
-       <item row="8" column="1">
+       <item row="3" column="1">
         <widget class="QComboBox" name="trimIncCB">
          <item>
           <property name="text">
@@ -195,14 +305,14 @@
          </item>
         </widget>
        </item>
-       <item row="9" column="0">
+       <item row="4" column="0">
         <widget class="QLabel" name="label_7">
          <property name="text">
           <string>Throttle Trim</string>
          </property>
         </widget>
        </item>
-       <item row="9" column="1">
+       <item row="4" column="1">
         <layout class="QHBoxLayout" name="horizontalLayout_2">
          <item>
           <widget class="QCheckBox" name="thrTrimChkB">
@@ -226,9 +336,36 @@
          </item>
          <item>
           <widget class="QCheckBox" name="thrExpoChkB">
+           <property name="minimumSize">
+            <size>
+             <width>50</width>
+             <height>0</height>
+            </size>
+           </property>
            <property name="text">
             <string/>
            </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_186">
+           <property name="text">
+            <string>Throttle Default</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="throttleOffCB">
+           <item>
+            <property name="text">
+             <string>End</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Centre</string>
+            </property>
+           </item>
           </widget>
          </item>
          <item>
@@ -246,24 +383,24 @@
          </item>
         </layout>
        </item>
-       <item row="10" column="0">
+       <item row="5" column="0">
         <widget class="QLabel" name="label_11">
          <property name="text">
           <string>instaTrim Switch</string>
          </property>
         </widget>
        </item>
-       <item row="10" column="1">
+       <item row="5" column="1">
         <widget class="QComboBox" name="trimSWCB"/>
        </item>
-       <item row="11" column="0">
+       <item row="6" column="0">
         <widget class="QLabel" name="label_12">
          <property name="text">
           <string>Center beep</string>
          </property>
         </widget>
        </item>
-       <item row="11" column="1">
+       <item row="6" column="1">
         <layout class="QGridLayout" name="gridLayout_2">
          <item row="0" column="0">
           <widget class="QCheckBox" name="bcRUDChkB">
@@ -316,14 +453,14 @@
          </item>
         </layout>
        </item>
-       <item row="12" column="0">
+       <item row="7" column="0">
         <widget class="QLabel" name="label_13">
          <property name="text">
           <string>Pulse Shift (polarity)</string>
          </property>
         </widget>
        </item>
-       <item row="12" column="1">
+       <item row="7" column="1">
         <widget class="QComboBox" name="pulsePolCB">
          <item>
           <property name="text">
@@ -337,21 +474,134 @@
          </item>
         </widget>
        </item>
-       <item row="13" column="0">
+       <item row="8" column="0">
         <widget class="QLabel" name="label_55">
          <property name="text">
           <string>Extended Limits</string>
          </property>
         </widget>
        </item>
-       <item row="15" column="0">
+       <item row="8" column="1">
+        <layout class="QGridLayout" name="gridLayout_12">
+         <item row="0" column="0">
+          <widget class="QCheckBox" name="extendedLimitsChkB">
+           <property name="minimumSize">
+            <size>
+             <width>60</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="2">
+          <widget class="QCheckBox" name="fastMixDelayCB">
+           <property name="minimumSize">
+            <size>
+             <width>60</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QLabel" name="label_145">
+           <property name="text">
+            <string>Fast Mix Delay</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="9">
+          <spacer name="horizontalSpacer_13">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item row="0" column="3">
+          <widget class="QLabel" name="label_114">
+           <property name="text">
+            <string>Trainer</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="4">
+          <widget class="QCheckBox" name="TrainerChkB">
+           <property name="minimumSize">
+            <size>
+             <width>60</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="6">
+          <widget class="QCheckBox" name="useCustomStickNamesChkb">
+           <property name="minimumSize">
+            <size>
+             <width>60</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="5">
+          <widget class="QLabel" name="label_185">
+           <property name="text">
+            <string>Use Custom Stick Names</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="8">
+          <widget class="QCheckBox" name="throttleReversedChkB">
+           <property name="minimumSize">
+            <size>
+             <width>60</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="7">
+          <widget class="QLabel" name="label_187">
+           <property name="text">
+            <string>Reverse Throttle Operation</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item row="10" column="0">
         <widget class="QLabel" name="label_5">
          <property name="text">
           <string>Protocol</string>
          </property>
         </widget>
        </item>
-       <item row="15" column="1">
+       <item row="10" column="1">
         <layout class="QGridLayout" name="gridLayout_10">
          <item row="0" column="4">
           <widget class="QComboBox" name="countryCB">
@@ -442,14 +692,14 @@
          </item>
         </layout>
        </item>
-       <item row="16" column="0">
+       <item row="11" column="0">
         <widget class="QLabel" name="label_113">
          <property name="text">
           <string>PPM Frame Length</string>
          </property>
         </widget>
        </item>
-       <item row="16" column="1">
+       <item row="11" column="1">
         <layout class="QHBoxLayout" name="horizontalLayout_3">
          <item>
           <widget class="QDoubleSpinBox" name="ppmFrameLengthDSB">
@@ -514,14 +764,14 @@
          </item>
         </layout>
        </item>
-       <item row="17" column="0">
+       <item row="12" column="0">
         <widget class="QLabel" name="label_6">
          <property name="text">
           <string>Channels</string>
          </property>
         </widget>
        </item>
-       <item row="17" column="1">
+       <item row="12" column="1">
         <layout class="QHBoxLayout" name="horizontalLayout_4">
          <item>
           <widget class="QSpinBox" name="numChannelsSB">
@@ -583,14 +833,14 @@
          </item>
         </layout>
        </item>
-       <item row="18" column="0">
+       <item row="13" column="0">
         <widget class="QLabel" name="label_116">
          <property name="text">
           <string>DSM Type</string>
          </property>
         </widget>
        </item>
-       <item row="18" column="1">
+       <item row="13" column="1">
         <widget class="QComboBox" name="DSM_Type">
          <item>
           <property name="text">
@@ -609,91 +859,24 @@
          </item>
         </widget>
        </item>
-       <item row="19" column="0">
+       <item row="14" column="0">
         <widget class="QLabel" name="label_117">
          <property name="text">
           <string>RxNum</string>
          </property>
         </widget>
        </item>
-       <item row="19" column="1">
-        <widget class="QSpinBox" name="pxxRxNum">
-         <property name="suffix">
-          <string/>
-         </property>
-         <property name="minimum">
-          <number>0</number>
-         </property>
-         <property name="maximum">
-          <number>124</number>
-         </property>
-         <property name="singleStep">
-          <number>1</number>
-         </property>
-         <property name="value">
-          <number>1</number>
-         </property>
-        </widget>
+       <item row="15" column="1">
+        <layout class="QHBoxLayout" name="horizontalLayout_5"/>
        </item>
-       <item row="20" column="0">
-        <widget class="QLabel" name="label_114">
-         <property name="text">
-          <string>Trainer</string>
-         </property>
-        </widget>
-       </item>
-       <item row="20" column="1">
-        <layout class="QHBoxLayout" name="horizontalLayout_5">
-         <item>
-          <widget class="QCheckBox" name="TrainerChkB">
-           <property name="minimumSize">
-            <size>
-             <width>60</width>
-             <height>0</height>
-            </size>
-           </property>
-           <property name="text">
-            <string/>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLabel" name="label_115">
-           <property name="text">
-            <string>T2throttleTrig</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QCheckBox" name="T2ThrTrgChkB">
-           <property name="text">
-            <string/>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <spacer name="horizontalSpacer_12">
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>40</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-        </layout>
-       </item>
-       <item row="21" column="0">
+       <item row="16" column="0">
         <widget class="QLabel" name="label_151">
          <property name="text">
           <string>Auto Limits</string>
          </property>
         </widget>
        </item>
-       <item row="21" column="1">
+       <item row="16" column="1">
         <widget class="QDoubleSpinBox" name="autoLimitsSB">
          <property name="decimals">
           <number>1</number>
@@ -703,24 +886,24 @@
          </property>
         </widget>
        </item>
-       <item row="22" column="0">
+       <item row="17" column="0">
         <widget class="QLabel" name="label_155">
          <property name="text">
           <string>Volume Control</string>
          </property>
         </widget>
        </item>
-       <item row="22" column="1">
+       <item row="17" column="1">
         <widget class="QComboBox" name="volumeControlCB"/>
        </item>
-       <item row="23" column="0">
+       <item row="18" column="0">
         <widget class="QLabel" name="label_171">
          <property name="text">
           <string>Version</string>
          </property>
         </widget>
        </item>
-       <item row="23" column="1">
+       <item row="18" column="1">
         <layout class="QHBoxLayout" name="horizontalLayout">
          <item>
           <widget class="QLabel" name="label_version">
@@ -794,7 +977,594 @@
          </item>
         </layout>
        </item>
-       <item row="24" column="1">
+       <item row="19" column="0">
+        <widget class="QLabel" name="label_192">
+         <property name="text">
+          <string>Switch Warning</string>
+         </property>
+        </widget>
+       </item>
+       <item row="19" column="1">
+        <layout class="QGridLayout" name="gridLayout_Swarn" columnstretch="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0">
+         <item row="0" column="0">
+          <widget class="QCheckBox" name="switchwarnChkB">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>80</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="whatsThis">
+            <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; text-decoration: underline;&quot;&gt;Warnings&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;These will define startup warnings.&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Throttle warning - will alert if the throttle is not at idle during startup&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Switch warning - will alert if switches are not in their defaul position&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Memory warning - will alert if there's not a lot of memory left&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Silent mode warning - will alert you if the beeper is set to quiet (0)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+           <property name="text">
+            <string>Enable</string>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="15">
+          <widget class="QCheckBox" name="switchDefPos_7">
+           <property name="text">
+            <string>AIL</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="17">
+          <widget class="QCheckBox" name="switchDefPos_4">
+           <property name="text">
+            <string>ID0</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="19">
+          <widget class="QCheckBox" name="switchDefPos_5">
+           <property name="text">
+            <string>ID1</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="21">
+          <widget class="QCheckBox" name="switchDefPos_6">
+           <property name="text">
+            <string>ID2</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="22">
+          <widget class="QCheckBox" name="switchDefPos_8">
+           <property name="text">
+            <string>GEA</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="13">
+          <widget class="QCheckBox" name="switchDefPos_3">
+           <property name="text">
+            <string>ELE</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="11">
+          <widget class="QCheckBox" name="switchDefPos_2">
+           <property name="text">
+            <string>RUD</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="9">
+          <widget class="QCheckBox" name="switchDefPos_1">
+           <property name="text">
+            <string>THR</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="10">
+          <widget class="QWidget" name="widgetDefSA" native="true">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>35</height>
+            </size>
+           </property>
+           <widget class="QSlider" name="SwitchDefSA">
+            <property name="geometry">
+             <rect>
+              <x>20</x>
+              <y>0</y>
+              <width>26</width>
+              <height>35</height>
+             </rect>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>35</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>35</height>
+             </size>
+            </property>
+            <property name="maximum">
+             <number>2</number>
+            </property>
+            <property name="pageStep">
+             <number>1</number>
+            </property>
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="invertedAppearance">
+             <bool>true</bool>
+            </property>
+            <property name="invertedControls">
+             <bool>false</bool>
+            </property>
+            <property name="tickPosition">
+             <enum>QSlider::TicksBothSides</enum>
+            </property>
+           </widget>
+           <widget class="QLabel" name="label_DSA">
+            <property name="geometry">
+             <rect>
+              <x>4</x>
+              <y>0</y>
+              <width>20</width>
+              <height>13</height>
+             </rect>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>20</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>SA</string>
+            </property>
+           </widget>
+           <zorder>label_DSA</zorder>
+           <zorder>SwitchDefSA</zorder>
+          </widget>
+         </item>
+         <item row="0" column="12">
+          <widget class="QWidget" name="widgetDefSB" native="true">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>35</height>
+            </size>
+           </property>
+           <widget class="QSlider" name="SwitchDefSB">
+            <property name="geometry">
+             <rect>
+              <x>20</x>
+              <y>0</y>
+              <width>26</width>
+              <height>35</height>
+             </rect>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>35</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>35</height>
+             </size>
+            </property>
+            <property name="maximum">
+             <number>2</number>
+            </property>
+            <property name="pageStep">
+             <number>1</number>
+            </property>
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="invertedAppearance">
+             <bool>true</bool>
+            </property>
+            <property name="invertedControls">
+             <bool>false</bool>
+            </property>
+            <property name="tickPosition">
+             <enum>QSlider::TicksBothSides</enum>
+            </property>
+           </widget>
+           <widget class="QLabel" name="label_DSB">
+            <property name="geometry">
+             <rect>
+              <x>4</x>
+              <y>0</y>
+              <width>20</width>
+              <height>13</height>
+             </rect>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>20</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>SB</string>
+            </property>
+           </widget>
+          </widget>
+         </item>
+         <item row="0" column="14">
+          <widget class="QWidget" name="widgetDefSC" native="true">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>35</height>
+            </size>
+           </property>
+           <widget class="QSlider" name="SwitchDefSC">
+            <property name="geometry">
+             <rect>
+              <x>20</x>
+              <y>0</y>
+              <width>26</width>
+              <height>35</height>
+             </rect>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>35</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>35</height>
+             </size>
+            </property>
+            <property name="maximum">
+             <number>2</number>
+            </property>
+            <property name="pageStep">
+             <number>1</number>
+            </property>
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="invertedAppearance">
+             <bool>true</bool>
+            </property>
+            <property name="invertedControls">
+             <bool>false</bool>
+            </property>
+            <property name="tickPosition">
+             <enum>QSlider::TicksBothSides</enum>
+            </property>
+           </widget>
+           <widget class="QLabel" name="label_DSC">
+            <property name="geometry">
+             <rect>
+              <x>4</x>
+              <y>0</y>
+              <width>20</width>
+              <height>13</height>
+             </rect>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>20</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>SC</string>
+            </property>
+           </widget>
+          </widget>
+         </item>
+         <item row="0" column="23">
+          <widget class="QWidget" name="widgetDefSE" native="true">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>35</height>
+            </size>
+           </property>
+           <widget class="QSlider" name="SwitchDefSE">
+            <property name="geometry">
+             <rect>
+              <x>20</x>
+              <y>0</y>
+              <width>26</width>
+              <height>35</height>
+             </rect>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>35</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>35</height>
+             </size>
+            </property>
+            <property name="maximum">
+             <number>2</number>
+            </property>
+            <property name="pageStep">
+             <number>1</number>
+            </property>
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="invertedAppearance">
+             <bool>true</bool>
+            </property>
+            <property name="invertedControls">
+             <bool>false</bool>
+            </property>
+            <property name="tickPosition">
+             <enum>QSlider::TicksBothSides</enum>
+            </property>
+           </widget>
+           <widget class="QLabel" name="label_DSE">
+            <property name="geometry">
+             <rect>
+              <x>4</x>
+              <y>0</y>
+              <width>20</width>
+              <height>13</height>
+             </rect>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>20</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>SE</string>
+            </property>
+           </widget>
+          </widget>
+         </item>
+         <item row="0" column="25">
+          <widget class="QWidget" name="widgetDefSG" native="true">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>35</height>
+            </size>
+           </property>
+           <widget class="QSlider" name="SwitchDefSG">
+            <property name="geometry">
+             <rect>
+              <x>20</x>
+              <y>0</y>
+              <width>26</width>
+              <height>35</height>
+             </rect>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>35</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>35</height>
+             </size>
+            </property>
+            <property name="maximum">
+             <number>2</number>
+            </property>
+            <property name="pageStep">
+             <number>1</number>
+            </property>
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="invertedAppearance">
+             <bool>true</bool>
+            </property>
+            <property name="invertedControls">
+             <bool>false</bool>
+            </property>
+            <property name="tickPosition">
+             <enum>QSlider::TicksBothSides</enum>
+            </property>
+           </widget>
+           <widget class="QLabel" name="label_233">
+            <property name="geometry">
+             <rect>
+              <x>4</x>
+              <y>0</y>
+              <width>20</width>
+              <height>13</height>
+             </rect>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>20</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>SG</string>
+            </property>
+           </widget>
+          </widget>
+         </item>
+         <item row="0" column="16">
+          <widget class="QWidget" name="widgetDefSD" native="true">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>35</height>
+            </size>
+           </property>
+           <widget class="QSlider" name="SwitchDefSD">
+            <property name="geometry">
+             <rect>
+              <x>20</x>
+              <y>0</y>
+              <width>26</width>
+              <height>35</height>
+             </rect>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>35</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>35</height>
+             </size>
+            </property>
+            <property name="maximum">
+             <number>2</number>
+            </property>
+            <property name="pageStep">
+             <number>1</number>
+            </property>
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="invertedAppearance">
+             <bool>true</bool>
+            </property>
+            <property name="invertedControls">
+             <bool>false</bool>
+            </property>
+            <property name="tickPosition">
+             <enum>QSlider::TicksBothSides</enum>
+            </property>
+           </widget>
+           <widget class="QLabel" name="label_DSD">
+            <property name="geometry">
+             <rect>
+              <x>4</x>
+              <y>0</y>
+              <width>20</width>
+              <height>13</height>
+             </rect>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>20</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>SD</string>
+            </property>
+           </widget>
+          </widget>
+         </item>
+         <item row="0" column="24">
+          <widget class="QWidget" name="widgetDefSF" native="true">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>35</height>
+            </size>
+           </property>
+           <widget class="QSlider" name="SwitchDefSF">
+            <property name="geometry">
+             <rect>
+              <x>20</x>
+              <y>0</y>
+              <width>26</width>
+              <height>35</height>
+             </rect>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>35</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>35</height>
+             </size>
+            </property>
+            <property name="maximum">
+             <number>1</number>
+            </property>
+            <property name="pageStep">
+             <number>1</number>
+            </property>
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="invertedAppearance">
+             <bool>true</bool>
+            </property>
+            <property name="invertedControls">
+             <bool>false</bool>
+            </property>
+            <property name="tickPosition">
+             <enum>QSlider::TicksBothSides</enum>
+            </property>
+           </widget>
+           <widget class="QLabel" name="label_232">
+            <property name="geometry">
+             <rect>
+              <x>4</x>
+              <y>0</y>
+              <width>20</width>
+              <height>13</height>
+             </rect>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>20</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>SF</string>
+            </property>
+           </widget>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item row="20" column="1">
         <spacer name="verticalSpacer_6">
          <property name="orientation">
           <enum>Qt::Vertical</enum>
@@ -807,52 +1577,24 @@
          </property>
         </spacer>
        </item>
-       <item row="13" column="1">
-        <layout class="QGridLayout" name="gridLayout_12">
-         <item row="0" column="0">
-          <widget class="QCheckBox" name="extendedLimitsChkB">
-           <property name="minimumSize">
-            <size>
-             <width>60</width>
-             <height>0</height>
-            </size>
-           </property>
-           <property name="text">
-            <string/>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="2">
-          <widget class="QCheckBox" name="fastMixDelayCB">
-           <property name="text">
-            <string/>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="1">
-          <widget class="QLabel" name="label_145">
-           <property name="text">
-            <string>Fast Mix Delay</string>
-           </property>
-           <property name="alignment">
-            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="3">
-          <spacer name="horizontalSpacer_13">
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>40</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-        </layout>
+       <item row="14" column="1">
+        <widget class="QSpinBox" name="pxxRxNum">
+         <property name="suffix">
+          <string/>
+         </property>
+         <property name="minimum">
+          <number>0</number>
+         </property>
+         <property name="maximum">
+          <number>124</number>
+         </property>
+         <property name="singleStep">
+          <number>1</number>
+         </property>
+         <property name="value">
+          <number>1</number>
+         </property>
+        </widget>
        </item>
       </layout>
      </widget>
@@ -8818,7 +9560,7 @@ Right</string>
           <enum>QFrame::Raised</enum>
          </property>
          <property name="text">
-          <string>CSwitch1</string>
+          <string>LSwitch1</string>
          </property>
         </widget>
        </item>
@@ -8834,7 +9576,7 @@ Right</string>
           <enum>QFrame::Raised</enum>
          </property>
          <property name="text">
-          <string>CSwitch2</string>
+          <string>LSwitch2</string>
          </property>
         </widget>
        </item>
@@ -8850,7 +9592,7 @@ Right</string>
           <enum>QFrame::Raised</enum>
          </property>
          <property name="text">
-          <string>CSwitch3</string>
+          <string>LSwitch3</string>
          </property>
         </widget>
        </item>
@@ -8866,7 +9608,7 @@ Right</string>
           <enum>QFrame::Raised</enum>
          </property>
          <property name="text">
-          <string>CSwitch4</string>
+          <string>LSwitch4</string>
          </property>
         </widget>
        </item>
@@ -8882,7 +9624,7 @@ Right</string>
           <enum>QFrame::Raised</enum>
          </property>
          <property name="text">
-          <string>CSwitch5</string>
+          <string>LSwitch5</string>
          </property>
         </widget>
        </item>
@@ -8958,7 +9700,7 @@ Right</string>
           <enum>QFrame::Raised</enum>
          </property>
          <property name="text">
-          <string>CSwitch6</string>
+          <string>LSwitch6</string>
          </property>
         </widget>
        </item>
@@ -8971,7 +9713,7 @@ Right</string>
           <enum>QFrame::Raised</enum>
          </property>
          <property name="text">
-          <string>CSwitch7</string>
+          <string>LSwitch7</string>
          </property>
         </widget>
        </item>
@@ -8984,7 +9726,7 @@ Right</string>
           <enum>QFrame::Raised</enum>
          </property>
          <property name="text">
-          <string>CSwitch8</string>
+          <string>LSwitch8</string>
          </property>
         </widget>
        </item>
@@ -8997,7 +9739,7 @@ Right</string>
           <enum>QFrame::Raised</enum>
          </property>
          <property name="text">
-          <string>CSwitch9</string>
+          <string>LSwitch9</string>
          </property>
         </widget>
        </item>
@@ -9010,7 +9752,7 @@ Right</string>
           <enum>QFrame::Raised</enum>
          </property>
          <property name="text">
-          <string>CSwitchA</string>
+          <string>LSwitchA</string>
          </property>
         </widget>
        </item>
@@ -9023,7 +9765,7 @@ Right</string>
           <enum>QFrame::Raised</enum>
          </property>
          <property name="text">
-          <string>CSwitchB</string>
+          <string>LSwitchB</string>
          </property>
         </widget>
        </item>
@@ -9036,7 +9778,7 @@ Right</string>
           <enum>QFrame::Raised</enum>
          </property>
          <property name="text">
-          <string>CSwitchC</string>
+          <string>LSwitchC</string>
          </property>
         </widget>
        </item>
@@ -9136,7 +9878,7 @@ Right</string>
           <enum>QFrame::Raised</enum>
          </property>
          <property name="text">
-          <string>CSwitchD</string>
+          <string>LSwitchD</string>
          </property>
         </widget>
        </item>
@@ -9149,7 +9891,7 @@ Right</string>
           <enum>QFrame::Raised</enum>
          </property>
          <property name="text">
-          <string>CSwitchE</string>
+          <string>LSwitchE</string>
          </property>
         </widget>
        </item>
@@ -9162,7 +9904,7 @@ Right</string>
           <enum>QFrame::Raised</enum>
          </property>
          <property name="text">
-          <string>CSwitchG</string>
+          <string>LSwitchG</string>
          </property>
         </widget>
        </item>
@@ -9175,7 +9917,7 @@ Right</string>
           <enum>QFrame::Raised</enum>
          </property>
          <property name="text">
-          <string>CSwitchH</string>
+          <string>LSwitchH</string>
          </property>
         </widget>
        </item>
@@ -9188,7 +9930,7 @@ Right</string>
           <enum>QFrame::Raised</enum>
          </property>
          <property name="text">
-          <string>CSwitchI</string>
+          <string>LSwitchI</string>
          </property>
         </widget>
        </item>
@@ -9201,7 +9943,7 @@ Right</string>
           <enum>QFrame::Raised</enum>
          </property>
          <property name="text">
-          <string>CSwitchF</string>
+          <string>LSwitchF</string>
          </property>
         </widget>
        </item>
@@ -9214,7 +9956,7 @@ Right</string>
       <attribute name="title">
        <string>Safety Switches</string>
       </attribute>
-      <layout class="QGridLayout" name="grid_tabSafetySwitches" rowstretch="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" columnstretch="0,0,0,0,0,0,0,0,0">
+      <layout class="QGridLayout" name="grid_tabSafetySwitches" rowstretch="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" columnstretch="0,0,0,0,0,0,0,0,0,0">
        <property name="topMargin">
         <number>7</number>
        </property>
@@ -9427,7 +10169,7 @@ Right</string>
          </property>
         </widget>
        </item>
-       <item row="1" column="8">
+       <item row="1" column="9">
         <widget class="QLabel" name="label_164">
          <property name="minimumSize">
           <size>
@@ -9466,7 +10208,7 @@ Right</string>
          </property>
         </widget>
        </item>
-       <item row="1" column="4">
+       <item row="1" column="5">
         <widget class="QLabel" name="label_173">
          <property name="frameShape">
           <enum>QFrame::Panel</enum>
@@ -9488,7 +10230,7 @@ Right</string>
          </property>
         </widget>
        </item>
-       <item row="1" column="5">
+       <item row="1" column="6">
         <widget class="QLabel" name="label_174">
          <property name="frameShape">
           <enum>QFrame::Panel</enum>
@@ -9501,7 +10243,7 @@ Right</string>
          </property>
         </widget>
        </item>
-       <item row="1" column="6">
+       <item row="1" column="7">
         <widget class="QLabel" name="label_175">
          <property name="frameShape">
           <enum>QFrame::Panel</enum>
@@ -9523,7 +10265,7 @@ Right</string>
          </property>
         </widget>
        </item>
-       <item row="1" column="7">
+       <item row="1" column="8">
         <widget class="QLabel" name="label_176">
          <property name="frameShape">
           <enum>QFrame::Panel</enum>
@@ -9545,59 +10287,84 @@ Right</string>
          </property>
         </widget>
        </item>
-       <item row="2" column="4">
+       <item row="2" column="5">
         <widget class="QLabel" name="SS17">
          <property name="text">
           <string notr="true">CH17</string>
          </property>
         </widget>
        </item>
-       <item row="3" column="4">
+       <item row="3" column="5">
         <widget class="QLabel" name="SS18">
          <property name="text">
           <string notr="true">CH18</string>
          </property>
         </widget>
        </item>
-       <item row="4" column="4">
+       <item row="4" column="5">
         <widget class="QLabel" name="SS19">
          <property name="text">
           <string notr="true">CH19</string>
          </property>
         </widget>
        </item>
-       <item row="5" column="4">
+       <item row="5" column="5">
         <widget class="QLabel" name="SS20">
          <property name="text">
           <string notr="true">CH20</string>
          </property>
         </widget>
        </item>
-       <item row="6" column="4">
+       <item row="6" column="5">
         <widget class="QLabel" name="SS21">
          <property name="text">
           <string notr="true">CH21</string>
          </property>
         </widget>
        </item>
-       <item row="7" column="4">
+       <item row="7" column="5">
         <widget class="QLabel" name="SS22">
          <property name="text">
           <string notr="true">CH22</string>
          </property>
         </widget>
        </item>
-       <item row="8" column="4">
+       <item row="8" column="5">
         <widget class="QLabel" name="SS23">
          <property name="text">
           <string notr="true">CH23</string>
          </property>
         </widget>
        </item>
-       <item row="9" column="4">
+       <item row="9" column="5">
         <widget class="QLabel" name="SS24">
          <property name="text">
           <string notr="true">CH24</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="4">
+        <widget class="QLabel" name="label_178">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::NoFrame</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Plain</enum>
+         </property>
+         <property name="midLineWidth">
+          <number>0</number>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+         <property name="margin">
+          <number>3</number>
          </property>
         </widget>
        </item>
@@ -12415,6 +13182,138 @@ Right</string>
         <number>1024</number>
        </property>
       </widget>
+      <widget class="QLabel" name="label_115">
+       <property name="geometry">
+        <rect>
+         <x>240</x>
+         <y>20</y>
+         <width>61</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::Panel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+       <property name="midLineWidth">
+        <number>0</number>
+       </property>
+       <property name="text">
+        <string>Switch</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+       <property name="margin">
+        <number>3</number>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="GvSw1CB">
+       <property name="geometry">
+        <rect>
+         <x>230</x>
+         <y>50</y>
+         <width>71</width>
+         <height>20</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="GvSw2CB">
+       <property name="geometry">
+        <rect>
+         <x>230</x>
+         <y>80</y>
+         <width>71</width>
+         <height>20</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="GvSw3CB">
+       <property name="geometry">
+        <rect>
+         <x>230</x>
+         <y>110</y>
+         <width>71</width>
+         <height>20</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="GvSw4CB">
+       <property name="geometry">
+        <rect>
+         <x>230</x>
+         <y>140</y>
+         <width>71</width>
+         <height>20</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="GvSw5CB">
+       <property name="geometry">
+        <rect>
+         <x>230</x>
+         <y>170</y>
+         <width>71</width>
+         <height>20</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="GvSw6CB">
+       <property name="geometry">
+        <rect>
+         <x>230</x>
+         <y>200</y>
+         <width>71</width>
+         <height>20</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="GvSw7CB">
+       <property name="geometry">
+        <rect>
+         <x>230</x>
+         <y>230</y>
+         <width>71</width>
+         <height>20</height>
+        </rect>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="tab_3">
+      <attribute name="title">
+       <string>Voice Alarms</string>
+      </attribute>
+      <widget class="QLabel" name="label_39">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>0</y>
+         <width>901</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Courier New</family>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Alarm Source Function Value</string>
+       </property>
+      </widget>
+      <widget class="QListWidget" name="VoiceAlarmList">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>20</y>
+         <width>891</width>
+         <height>551</height>
+        </rect>
+       </property>
+      </widget>
      </widget>
     </widget>
    </item>
@@ -12565,9 +13464,6 @@ Right</string>
   <tabstop>curvePt3_10</tabstop>
   <tabstop>curvePt4_10</tabstop>
   <tabstop>curvePt5_10</tabstop>
-  <tabstop>timerModeCB</tabstop>
-  <tabstop>timerDirCB</tabstop>
-  <tabstop>timerValTE</tabstop>
   <tabstop>trimIncCB</tabstop>
   <tabstop>bcRUDChkB</tabstop>
   <tabstop>bcELEChkB</tabstop>

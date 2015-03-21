@@ -46,6 +46,9 @@ private slots:
     void on_exitButtonModule_clicked();
     void on_ReadAlarmsButton_clicked();
     void on_SetAlarmsButton_clicked();
+#ifdef TELEMETRY_LOGGING
+		void on_startButtonLogging_clicked() ;
+#endif		
 		void on_WSdial_valueChanged( int value ) ;
     void timerEvent() ;
 		void setupTimer(int time) ;

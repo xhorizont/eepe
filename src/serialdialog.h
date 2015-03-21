@@ -3,6 +3,10 @@
 #include "qextserialport.h"
 #include <QDialog>
 
+#define NO_LIST			0
+#define LIST_FILES	1
+#define LIST_MODELS	2
+
 namespace Ui {
     class serialDialog;
 }
@@ -17,9 +21,16 @@ public:
 
 private:
     Ui::serialDialog *ui;
+		int fileListContents ;
 		int waitForAckNak( int mS ) ;
     int waitForCan( int mS ) ;
 		int sendOneFile( QString fname ) ;
+		int Receive_Byte( uint8_t *c, int mS ) ;
+		int Receive_Packet (uint8_t *data, int *length, int timeout) ;
+		int receiveOneFile( QString fname ) ;
+		int startSerialPort() ;
+		QString ComPort ;
+		int comPortLoading ;
 
 //    QString fileToSend ;
     
@@ -30,6 +41,11 @@ private slots:
 		void on_FileEdit_editingFinished() ;
 		void on_browseButton_clicked() ;
 		void on_sendButton_clicked() ;
+    void on_listButton_clicked() ;
+    void on_receiveButton_clicked() ;
+		void on_deleteButton_clicked() ;
+		void on_setDirButton_clicked() ;
+		void on_portCB_currentIndexChanged( int index ) ;
 };
 
 #endif // SERIAL1DIALOG_H

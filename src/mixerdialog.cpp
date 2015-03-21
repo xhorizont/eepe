@@ -11,11 +11,22 @@ MixerDialog::MixerDialog(QWidget *parent, MixData *mixdata, int stickMode, QStri
     md = mixdata;
 		mType = eepromType ;
 		delaySlowSpeed = delaySpeed ;
+		ValuesEditLock = false ;
 
     this->setWindowTitle(tr("DEST -> CH%1%2").arg(md->destCh/10).arg(md->destCh%10));
     populateSourceCB(ui->sourceCB, stickMode, 0, md->srcRaw, modelVersion);
-    ui->sourceCB->addItem("3POS");
-    ui->sourceCB->addItem("GV1 ");
+    
+//		ui->sourceCB->addItem("Switch");
+    
+    ui->sourceCB->addItem("sIDx");
+    ui->sourceCB->addItem("sTHR");
+    ui->sourceCB->addItem("sRUD");
+    ui->sourceCB->addItem("sELE");
+    ui->sourceCB->addItem("sAIL");
+    ui->sourceCB->addItem("sGEA");
+    ui->sourceCB->addItem("sTRN");
+		
+		ui->sourceCB->addItem("GV1 ");
     ui->sourceCB->addItem("GV2 ");
     ui->sourceCB->addItem("GV3 ");
     ui->sourceCB->addItem("GV4 ");
@@ -23,20 +34,67 @@ MixerDialog::MixerDialog(QWidget *parent, MixData *mixdata, int stickMode, QStri
     ui->sourceCB->addItem("GV6 ");
     ui->sourceCB->addItem("GV7 ");
     ui->sourceCB->addItem("THIS");
-    ui->sourceCB->setCurrentIndex(md->srcRaw);
+    ui->sourceCB->addItem("SC1 ");
+    ui->sourceCB->addItem("SC2 ");
+    ui->sourceCB->addItem("SC3 ");
+    ui->sourceCB->addItem("SC4 ");
+    
+		int x = md->srcRaw ;
+		if ( x >= MIX_3POS )
+		{
+			if ( x == MIX_3POS )
+			{
+				x += md->sw23pos ;
+			}
+			else
+			{
+				x += 6 ;
+			}
+		}
+		ui->sourceCB->setCurrentIndex(x);
+		
+		ui->sourceCB->removeItem(0);
 
-    ui->sourceCB->removeItem(0);
+		ValuesEditLock = true ;
+	  if ( md->srcRaw >= 21 && md->srcRaw <= 36 )
+		{
+	  	ui->FMtrimChkB->setChecked(md->disableExpoDr) ;
+		}
+		else
+		{
+	  	ui->FMtrimChkB->setChecked(!md->disableExpoDr) ;
+		}
+		updateChannels() ;
+		ValuesEditLock = false ;
+
+//    ui->sw23posCB->addItem("sIDx");
+//    ui->sw23posCB->addItem("sTHR");
+//    ui->sw23posCB->addItem("sRUD");
+//    ui->sw23posCB->addItem("sELE");
+//    ui->sw23posCB->addItem("sAIL");
+//    ui->sw23posCB->addItem("sGEA");
+//    ui->sw23posCB->addItem("sTRN");
+//    ui->sw23posCB->setCurrentIndex(md->sw23pos);
+    
 
     populateSpinGVarCB( ui->weightSB, ui->weightCB, ui->weightGvChkB, md->weight, -125, 125 ) ;
     populateSpinGVarCB( ui->offsetSB, ui->offsetCB, ui->offsetGvChkB, md->sOffset, -125, 125 ) ;
 
     ui->trimChkB->setChecked(md->carryTrim==0);
-    ui->FMtrimChkB->setChecked(md->enableFmTrim);
     ui->lateOffsetChkB->setChecked(md->lateOffset);
     populateSwitchCB(ui->switchesCB,md->swtch, eepromType ) ;
     ui->warningCB->setCurrentIndex(md->mixWarn);
     ui->mltpxCB->setCurrentIndex(md->mltpx);
-		ui->diffcurveCB->setCurrentIndex(md->differential) ;
+		
+		int index = md->differential ;
+		if ( index == 0 )
+		{
+			if ( md->curve <= -28 )
+			{
+				index = 2 ;
+			}
+		}
+		ui->diffcurveCB->setCurrentIndex(index) ;
 		
 		if (md->differential)
 		{
@@ -45,11 +103,20 @@ MixerDialog::MixerDialog(QWidget *parent, MixData *mixdata, int stickMode, QStri
 		}
 		else
 		{
-			populateCurvesCB(ui->curvesCB, md->curve ) ;
-			ui->curvesCB->setVisible( true ) ;
-			ui->curvesSB->setVisible( false ) ;
-			ui->curveGvChkB->setVisible( false ) ;
-      ui->curveGvChkB->setChecked( false ) ;
+			if ( md->curve <= -28 )
+			{
+				ui->curvesCB->setVisible( false ) ;
+				ui->curvesSB->setVisible( true ) ;
+				ui->curvesSB->setValue( md->curve + 128 ) ;
+			}
+			else
+			{
+				populateCurvesCB(ui->curvesCB, md->curve ) ;
+				ui->curvesCB->setVisible( true ) ;
+				ui->curvesSB->setVisible( false ) ;
+				ui->curveGvChkB->setVisible( false ) ;
+      	ui->curveGvChkB->setChecked( false ) ;
+			}
 		}
 
 
@@ -102,6 +169,7 @@ MixerDialog::MixerDialog(QWidget *parent, MixData *mixdata, int stickMode, QStri
     valuesChanged();
 
     connect(ui->sourceCB,SIGNAL(currentIndexChanged(int)),this,SLOT(valuesChanged()));
+//    connect(ui->sw23posCB,SIGNAL(currentIndexChanged(int)),this,SLOT(valuesChanged()));
     connect(ui->weightSB,SIGNAL(valueChanged(int)),this,SLOT(valuesChanged()));
     connect(ui->weightCB,SIGNAL(currentIndexChanged(int)),this,SLOT(valuesChanged()));
     connect(ui->weightGvChkB,SIGNAL(stateChanged(int)),this,SLOT(valuesChanged()));
@@ -147,11 +215,50 @@ void MixerDialog::changeEvent(QEvent *e)
     }
 }
 
+void MixerDialog::updateChannels()
+{
+  if ( md->srcRaw >= 21 && md->srcRaw <= 36 )
+	{
+		ui->label_expo_output->setText( "Use Output" ) ;
+	  ui->FMtrimChkB->setChecked(md->disableExpoDr) ;
+		if ( md->disableExpoDr )
+		{
+			uint32_t i ;
+			for ( i = 20 ; i < 36 ; i += 1 )
+			{
+				ui->sourceCB->setItemText( i, QString("OP%1").arg(i-19) ) ;
+			}
+		}
+		else
+		{
+			uint32_t i ;
+			for ( i = 20 ; i < 36 ; i += 1 )
+			{
+				ui->sourceCB->setItemText( i, QString("CH%1").arg(i-19) ) ;
+			}
+		}
+	}
+	else
+	{
+		ui->label_expo_output->setText( "Enable Expo/Dr" ) ;
+	  ui->FMtrimChkB->setChecked(!md->disableExpoDr) ;
+	}
+//  ui->FMtrimChkB->setChecked(!md->disableExpoDr) ;
+}
 
 void MixerDialog::valuesChanged()
 {
 	int oldcurvemode ;
 	int limit = MAX_DRSWITCH ;
+	int oldSrcRaw ;
+
+	if ( ValuesEditLock )
+	{
+		return ;
+	}
+	ValuesEditLock = true ;
+
+
 #ifndef SKY
   if ( mType )
 	{
@@ -159,7 +266,24 @@ void MixerDialog::valuesChanged()
 	}
 #endif
 
-    md->srcRaw       = ui->sourceCB->currentIndex()+1;
+		int x = ui->sourceCB->currentIndex()+1 ;
+		if ( x >= MIX_3POS )
+		{
+			if ( x >= MIX_3POS+7 )
+			{
+				x -= 6 ;
+			}
+			else
+			{
+		    md->sw23pos = x - (MIX_3POS) ;
+				x = MIX_3POS ;
+			}
+		}
+		 
+		oldSrcRaw = md->srcRaw ;
+
+    md->srcRaw       = x ;
+//    md->sw23pos      = ui->sw23posCB->currentIndex() ;
     md->weight       = numericSpinGvarValue( ui->weightSB, ui->weightCB, ui->weightGvChkB, md->weight, 100 ) ;
     md->sOffset      = numericSpinGvarValue( ui->offsetSB, ui->offsetCB, ui->offsetGvChkB, md->sOffset, 0 ) ;
     md->carryTrim    = ui->trimChkB->checkState() ? 0 : 1;
@@ -181,13 +305,47 @@ void MixerDialog::valuesChanged()
     	md->speedUp      = ui->slowUpSB->value()+0.1 ;
 		}
 
-    md->enableFmTrim = ui->FMtrimChkB->checkState() ? 1 : 0;
-    md->lateOffset   = ui->lateOffsetChkB->checkState() ? 1 : 0;
+    if ( md->srcRaw >= 21 && md->srcRaw <= 36 )
+		{
+			if ( oldSrcRaw >= 21 && oldSrcRaw <= 36 )
+			{
+	    	md->disableExpoDr = ui->FMtrimChkB->checkState() ? 1 : 0 ;
+				updateChannels() ;
+			}
+			else
+			{
+				updateChannels() ;
+//	    	md->disableExpoDr = ui->FMtrimChkB->checkState() ? 0 : 1 ;
+			}
+		}
+		else
+		{
+			if ( oldSrcRaw >= 21 && oldSrcRaw <= 36 )
+			{
+				updateChannels() ;
+			}
+			else
+			{
+	    	md->disableExpoDr = ui->FMtrimChkB->checkState() ? 0 : 1 ;
+				updateChannels() ;
+			}
+		}
+		
+		md->lateOffset   = ui->lateOffsetChkB->checkState() ? 1 : 0 ;
 		
 		oldcurvemode = md->differential ;
-		md->differential = ui->diffcurveCB->currentIndex() ;
+		if ( oldcurvemode == 0 )
+		{
+			if ( md->curve <= -28 )
+			{
+				oldcurvemode = 2 ;
+			}
+		}
 
-		if ( md->differential != oldcurvemode )
+		int newcurvemode = ui->diffcurveCB->currentIndex() ;
+		md->differential = ( newcurvemode == 1 ) ? 1 : 0 ;
+
+		if ( newcurvemode != oldcurvemode )
 		{
 			if (md->differential)
 			{
@@ -196,13 +354,31 @@ void MixerDialog::valuesChanged()
 			}
 			else
 			{
-	      ui->curveGvChkB->setChecked( false ) ;
-				populateCurvesCB(ui->curvesCB, 0 ) ;
+				if ( newcurvemode == 2 )
+				{
+					ui->curvesCB->setVisible( false ) ;
+					ui->curvesSB->setVisible( true ) ;
+					ui->curvesSB->setValue( 0 ) ;
+          ui->curvesSB->setMinimum( 0 ) ;
+          ui->curvesSB->setMaximum( 100 ) ;
+				}
+				else
+				{
+	      	ui->curveGvChkB->setChecked( false ) ;
+					populateCurvesCB(ui->curvesCB, 0 ) ;
+					ui->curvesSB->setVisible( false ) ;
+					ui->curvesCB->setVisible( true ) ;
+				}
 				ui->curveGvChkB->setVisible( false ) ;
-				ui->curvesSB->setVisible( false ) ;
-				ui->curvesCB->setVisible( true ) ;
 			}
-	    md->curve = numericSpinGvarValue( ui->curvesSB, ui->curvesCB, ui->curveGvChkB, 0, 0 ) ;
+			if ( newcurvemode == 2 )
+			{
+	    	md->curve = -128 ;
+			}
+			else
+			{
+	    	md->curve = numericSpinGvarValue( ui->curvesSB, ui->curvesCB, ui->curveGvChkB, 0, 0 ) ;
+			}
 		}
 		else
 		{
@@ -212,7 +388,14 @@ void MixerDialog::valuesChanged()
 			}
 			else
 			{
-    		md->curve = ui->curvesCB->currentIndex()-16;
+				if ( ui->diffcurveCB->currentIndex() == 2 )
+				{
+          md->curve = ui->curvesSB->value() - 128 ;
+				}
+				else
+				{
+    			md->curve = ui->curvesCB->currentIndex()-16;
+				}	 
 			}
 		}
 
@@ -224,11 +407,14 @@ void MixerDialog::valuesChanged()
 		j &= ~( ui->Fm4CB->checkState() ? 16 : 0 ) ;
 		md->modeControl = j ;
 
-    if(ui->FMtrimChkB->checkState())
-        ui->offset_label->setText("FmTrimVal");
-    else
-        ui->offset_label->setText("Offset");
+    ui->offset_label->setText("Offset");
+
+//		ui->sw23posCB->setVisible( md->srcRaw == MIX_3POS ) ;
+//		ui->label_sw23pos->setVisible( md->srcRaw == MIX_3POS ) ;
 
     mixCommennt->clear();
     mixCommennt->append(ui->mixerComment->toPlainText());
+	
+		 	 
+		ValuesEditLock = false ;
 }

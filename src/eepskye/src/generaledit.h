@@ -28,12 +28,13 @@ private:
 //    bool switchDefPosEditLock;
 //    void getGeneralSwitchDefPos(int i, bool val);
 //    void setSwitchDefPos();
+		void setHwSwitchActive( void ) ;
 
 signals:
     void modelValuesChanged();
 
 private slots:
-    void updateTrianerTab();
+    void updateTrainerTab();
     void trainerTabValueChanged();
     void validateWeightSB();
 
@@ -83,6 +84,7 @@ private slots:
     void on_inputfilterCB_currentIndexChanged(int index);
     void on_thrrevChkB_stateChanged(int );
     void on_inactimerSB_editingFinished();
+		void on_inactVolumeSB_editingFinished() ;
     void on_backlightautoSB_editingFinished();
     void on_backlightswCB_currentIndexChanged(int index);
     void on_battcalibDSB_editingFinished();
@@ -114,6 +116,7 @@ private slots:
 		void on_stickgainLHCB_currentIndexChanged(int ) ;
 		void on_stickgainRVCB_currentIndexChanged(int ) ;
 		void on_stickgainRHCB_currentIndexChanged(int ) ;
+		void on_BluetoothTypeCB_currentIndexChanged(int) ;
 
 //    void on_switchDefPos_1_stateChanged(int );
 //    void on_switchDefPos_2_stateChanged(int );
@@ -128,6 +131,14 @@ private slots:
 		void on_StickRevLV_stateChanged(int ) ;
 		void on_StickRevRV_stateChanged(int ) ;
 		void on_StickRevRH_stateChanged(int ) ;
+
+		void on_AilNumWaysCB_currentIndexChanged(int ) ;
+		void on_EleNumWaysCB_currentIndexChanged(int ) ;
+		void on_GeaNumWaysCB_currentIndexChanged(int ) ;
+		void on_RudNumWaysCB_currentIndexChanged(int ) ;
+		void on_ThrNumWaysCB_currentIndexChanged(int ) ;
+		void on_EncoderCB_currentIndexChanged(int ) ;
+		void on_SixPosCB_currentIndexChanged(int ) ;
 
 };
 

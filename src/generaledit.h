@@ -37,6 +37,11 @@ private slots:
     void validateWeightSB();
 
     void on_ownerNameLE_editingFinished();
+		void on_rudNameLE_editingFinished() ;
+		void on_eleNameLE_editingFinished() ;
+		void on_thrNameLE_editingFinished() ;
+		void on_ailNameLE_editingFinished() ;
+
     void on_splashScreenChkB_stateChanged(int );
     void on_beepCountDownChkB_stateChanged(int );
     void on_beepMinuteChkB_stateChanged(int );

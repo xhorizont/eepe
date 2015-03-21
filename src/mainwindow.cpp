@@ -244,8 +244,11 @@ void MainWindow::releaseNotes()
 {
 	int *ptr ;
 	
-	
 	QString rnotes =
+	"The model version is now 4. The timer triggers have been changed, but Timer 2 now\n"
+	"also has the same trigger options as Timer 1. Both also have a RESET switch field that may be set.\n"
+	"Googlecode has blocked downloads of .exe files\n"
+	"Windows users will now find eepe updates are in a .zip file\n\n"
   "er9x rev 811 changes the Custom Switch options.\n"
 	"v1>=v2 and v1<=v2 are removed and replaced by Latch and F-Flop\n"
 	"Loading a model into er9x from before will change:\n"
@@ -763,6 +766,13 @@ void MainWindow::burnFrom()
     QStringList args   = bcd.getAVRArgs();
     if(!bcd.getPort().isEmpty()) args << "-P" << bcd.getPort();
 
+    if(!QFileInfo(avrdudeLoc).exists())
+		{
+      QMessageBox::critical(this, tr("Error"),
+                   tr("Adrdude not found at %1.")
+                   .arg(avrdudeLoc));
+			return ;
+		}
 
     QString tempFile = tempDir + "/temp.hex";
     QString str = "eeprom:r:" + tempFile + ":i"; // writing eeprom -> MEM:OPR:FILE:FTYPE"
@@ -810,6 +820,13 @@ int MainWindow::backupEeprom()
     QStringList args   = bcd.getAVRArgs();
     if(!bcd.getPort().isEmpty()) args << "-P" << bcd.getPort();
 
+    if(!QFileInfo(avrdudeLoc).exists())
+		{
+      QMessageBox::critical(this, tr("Error"),
+                   tr("Adrdude not found at %1.")
+                   .arg(avrdudeLoc));
+			return 1 ;
+		}
 
     QString tempFile = tempDir + "/eebackup.hex";
     QString str = "eeprom:r:" + tempFile + ":i"; // writing eeprom -> MEM:OPR:FILE:FTYPE"
@@ -848,6 +865,14 @@ void MainWindow::burnExtenalToEEPROM()
         QStringList args   = bcd.getAVRArgs();
         if(!bcd.getPort().isEmpty()) args << "-P" << bcd.getPort();
 
+    		if(!QFileInfo(avrdudeLoc).exists())
+				{
+    		  QMessageBox::critical(this, tr("Error"),
+    		               tr("Adrdude not found at %1.")
+    		               .arg(avrdudeLoc));
+					return ;
+				}
+
         QString str = "eeprom:w:" + fileName; // writing eeprom -> MEM:OPR:FILE:FTYPE"
         if(QFileInfo(fileName).suffix().toUpper()=="HEX") str += ":i";
         else if(QFileInfo(fileName).suffix().toUpper()=="BIN") str += ":r";
@@ -883,6 +908,14 @@ void MainWindow::burnToFlash(QString fileToFlash)
         QString programmer = bcd.getProgrammer();
         QString mcu        = bcd.getMCU();
         QStringList args   = bcd.getAVRArgs();
+
+    		if(!QFileInfo(avrdudeLoc).exists())
+				{
+    		  QMessageBox::critical(this, tr("Error"),
+    		               tr("Adrdude not found at %1.")
+    		               .arg(avrdudeLoc));
+					return ;
+				}
 
 				if ( mcu != "m328p" )
 				{
@@ -974,6 +1007,13 @@ void MainWindow::burnExtenalFromEEPROM()
         QStringList args   = bcd.getAVRArgs();
         if(!bcd.getPort().isEmpty()) args << "-P" << bcd.getPort();
 
+    		if(!QFileInfo(avrdudeLoc).exists())
+				{
+    		  QMessageBox::critical(this, tr("Error"),
+    		               tr("Adrdude not found at %1.")
+    		               .arg(avrdudeLoc));
+					return ;
+				}
 
         QString str = "eeprom:r:" + fileName;
         if(QFileInfo(fileName).suffix().toUpper()=="HEX") str += ":i";
@@ -1008,6 +1048,13 @@ void MainWindow::burnFromFlash()
         QStringList args   = bcd.getAVRArgs();
         if(!bcd.getPort().isEmpty()) args << "-P" << bcd.getPort();
 
+    		if(!QFileInfo(avrdudeLoc).exists())
+				{
+    		  QMessageBox::critical(this, tr("Error"),
+    		               tr("Adrdude not found at %1.")
+    		               .arg(avrdudeLoc));
+					return ;
+				}
 
         QString str = "flash:r:" + fileName; // writing eeprom -> MEM:OPR:FILE:FTYPE"
         if(QFileInfo(fileName).suffix().toUpper()=="HEX") str += ":i";
@@ -1046,6 +1093,12 @@ void MainWindow::resetFuses()
 {
     burnConfigDialog *bcd = new burnConfigDialog(this);
     bcd->restFuses(false);
+}
+
+void MainWindow::readFuses()
+{
+    burnConfigDialog *bcd = new burnConfigDialog(this);
+    bcd->readFuses();
 }
 
 void MainWindow::showEEPROMInfo()
@@ -1421,6 +1474,9 @@ void MainWindow::createActions()
     resetFusesAct->setStatusTip(tr("Resets the fuses to factory default - EEPROM erase."));
     connect(resetFusesAct, SIGNAL(triggered()), this, SLOT(resetFuses()));
 
+    readFusesAct = new QAction( tr("Read Fuses"), this);
+    connect(readFusesAct, SIGNAL(triggered()), this, SLOT(readFuses()));
+
     eepromInfoAct = new QAction(QIcon(":/images/info.png"), tr("EEPROM Info"), this);
     eepromInfoAct->setStatusTip(tr("Show information about current EEPROM."));
     connect(eepromInfoAct, SIGNAL(triggered()), this, SLOT(showEEPROMInfo()));
@@ -1470,6 +1526,7 @@ void MainWindow::createMenus()
     burnMenu->addSeparator();
     burnMenu->addAction(setFusesAct);
     burnMenu->addAction(resetFusesAct);
+    burnMenu->addAction(readFusesAct);
     burnMenu->addSeparator();
     burnMenu->addAction(reviewBurnOutput);
     burnMenu->addSeparator();

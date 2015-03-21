@@ -26,11 +26,15 @@ public:
     void setNote(int i, QString s);
     int getModelID() { return id_model; }
     void refreshMixerList() { tabMixes(); }
+    void updateToMV2( void ) ;
+    void updateToMV3( void ) ;
+    void updateToMV4( void ) ;
 
 private:
     Ui::ModelEdit *ui;
     EEPFILE *eeFile;
     class simulatorDialog *sdptr ;
+    bool switchDefPosEditLock;
 
     MixersList *MixerlistWidget;
 
@@ -91,6 +95,7 @@ private:
     void tabTemplates();
 		void tabPhase();
 		void tabGvar();
+		void tabVoiceAlarms() ;
     void updateCurvesTab();
     void setSwitchWidgetVisibility(int i);
 		void setSafetyWidgetVisibility(int i);
@@ -171,7 +176,7 @@ private slots:
     void mixerlistWidget_doubleClicked(QModelIndex index);
     void mixerlistWidget_KeyPress(QKeyEvent *event);
 
-
+    void on_VoiceAlarmList_doubleClicked(QModelIndex index) ;
 
     void on_curveEdit_1_clicked();
     void on_curveEdit_2_clicked();
@@ -218,6 +223,8 @@ private slots:
     void FrSkyEdited();
 		void GvarEdited() ;
 		void phaseEdited() ;
+    void setSwitchDefPos();
+		uint16_t oneSwitchPos( uint8_t swtch, uint16_t states ) ;
 
     void on_spinBox_S1_valueChanged(int value);
     void on_spinBox_S2_valueChanged(int value);
@@ -235,21 +242,30 @@ private slots:
     void on_thrExpoChkB_toggled(bool checked);
     void on_thrTrimChkB_toggled(bool checked);
     void on_TrainerChkB_toggled(bool checked);
-    void on_T2ThrTrgChkB_toggled(bool checked);
+//    void on_T2ThrTrgChkB_toggled(bool checked);
 		
 		void on_PPM1stChan_editingFinished() ;
     void on_ppmDelaySB_editingFinished();
     void on_numChannelsSB_editingFinished();
-    void on_timerValTE_editingFinished();
     void on_protocolCB_currentIndexChanged(int index);
     void on_pulsePolCB_currentIndexChanged(int index);
     void on_trimSWCB_currentIndexChanged(int index);
     void on_trimIncCB_currentIndexChanged(int index);
 		void on_volumeControlCB_currentIndexChanged(int index) ;
+    
+		void on_timerValTE_editingFinished();
     void on_timerDirCB_currentIndexChanged(int index);
     void on_timerModeCB_currentIndexChanged(int index);
     void on_timerModeBCB_currentIndexChanged(int index);
-    void on_modelNameLE_editingFinished();
+    void on_timerResetCB_currentIndexChanged(int index);
+    
+		void on_timer2ValTE_editingFinished();
+    void on_timer2DirCB_currentIndexChanged(int index);
+    void on_timer2ModeCB_currentIndexChanged(int index);
+    void on_timer2ModeBCB_currentIndexChanged(int index);
+    void on_timer2ResetCB_currentIndexChanged(int index);
+		
+		void on_modelNameLE_editingFinished();
     void on_tabWidget_currentChanged(int index);
     void on_templateList_doubleClicked(QModelIndex index);
     void on_ppmFrameLengthDSB_editingFinished();
@@ -260,8 +276,20 @@ private slots:
 		void on_autoLimitsSB_editingFinished() ;
 		void on_countryCB_currentIndexChanged(int index) ;
 		void on_typeCB_currentIndexChanged(int index) ;
-		void updateToMV2( void ) ;
-		void updateToMV3( void ) ;
+
+    void on_throttleReversedChkB_stateChanged( int ) ;
+		void on_throttleOffCB_currentIndexChanged(int index) ;
+		void on_useCustomStickNamesChkb_toggled(bool checked) ;
+
+		void getModelSwitchDefPos(int i, bool val) ;
+    void on_switchDefPos_1_stateChanged(int );
+    void on_switchDefPos_2_stateChanged(int );
+    void on_switchDefPos_3_stateChanged(int );
+    void on_switchDefPos_4_stateChanged(int );
+    void on_switchDefPos_5_stateChanged(int );
+    void on_switchDefPos_6_stateChanged(int );
+    void on_switchDefPos_7_stateChanged(int );
+    void on_switchDefPos_8_stateChanged(int );
 
 };
 

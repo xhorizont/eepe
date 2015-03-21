@@ -5,6 +5,7 @@
 #include "node.h"
 #include <inttypes.h>
 #include "pers.h"
+#include "qextserialport.h"
 #include "modeledit.h"
 
 #define TMR_OFF     0
@@ -50,8 +51,10 @@ private:
     qint8   trim[4];
     qint16  sDelay[MAX_MIXERS];
     qint32  act[MAX_MIXERS];
-    qint16  anas [NUM_XCHNRAW+1+MAX_GVARS];
+    qint16  anas [NUM_XCHNRAW+1+MAX_GVARS-NUM_CHNOUT];
+//    qint16  internalChans[NUM_CHNOUT];
     qint32  chans[NUM_CHNOUT];
+		int16_t rawSticks[4] ;
     quint8  bpanaCenter;
     quint16 parametersLoaded ;
     bool    swOn[MAX_MIXERS];
@@ -62,6 +65,11 @@ private:
 		quint16	fadeScale[MAX_PHASES+1] ;
 		quint16	fadeRate ;
 		quint16 fadeWeight ;
+
+		qint16 qdebug ;
+		qint16 serialSending ;
+		qint16 serialTimer ;
+    QextSerialPort *port ;
 
     quint16 s_timeCumTot;
     quint16 s_timeCumAbs;
@@ -118,6 +126,7 @@ private:
 		int16_t getTrimValue( uint8_t phase, uint8_t idx ) ;
 		void setTrimValue(uint8_t phase, uint8_t idx, int16_t trim) ;
 		int16_t calc_scaler( uint8_t index ) ;
+		uint8_t IS_THROTTLE( uint8_t x) ;
 
 protected:
 		void closeEvent(QCloseEvent *event) ;
@@ -131,6 +140,7 @@ private slots:
     void on_holdRightX_clicked(bool checked);
     void on_holdLeftY_clicked(bool checked);
     void on_holdLeftX_clicked(bool checked);
+		void on_SendDataButton_clicked() ;
     void timerEvent();
 		void setCsVisibles( void ) ;
 

@@ -49,6 +49,7 @@ private:
     bool plot_curve[16];
     bool switchesTabDone ;
     
+		int oldAdjFunction[NUM_GVAR_ADJUST] ;
     QSpinBox  * cswitchOffset[NUM_SKYCSW];
     QSpinBox  * cswitchOffset0[NUM_SKYCSW];
     QComboBox * cswitchSource1[NUM_SKYCSW];
@@ -94,9 +95,13 @@ private:
     void tabTemplates();
 		void tabPhase();
 		void tabGvar();
+		void tabVoiceAlarms() ;
     void updateCurvesTab();
     void setSwitchWidgetVisibility(int i);
 		void setSafetyWidgetVisibility(int i);
+		void oneGvarVisibility(int index, QComboBox *b, QSpinBox *sb ) ;
+		void gvarVisibility() ;
+		void oneGvarGetValue(int index, QComboBox *b, QSpinBox *sb ) ;
     void setLimitMinMax();
     void updateSwitchesTab();
     void updateHeliTab();
@@ -106,6 +111,7 @@ private:
 		int16_t getRawTrimValue( uint8_t phase, uint8_t idx ) ;
 		uint32_t getTrimFlightPhase( uint8_t phase, uint8_t idx ) ;
 		int16_t getTrimValue( uint8_t phase, uint8_t idx ) ;
+		void phaseSet(int phase, int trim, QComboBox *cb, QSpinBox *sb );
 
     void launchSimulation();
     void resizeEvent(QResizeEvent *event  = 0);
@@ -177,7 +183,7 @@ private slots:
     void mixerlistWidget_doubleClicked(QModelIndex index);
     void mixerlistWidget_KeyPress(QKeyEvent *event);
 
-
+    void on_VoiceAlarmList_doubleClicked(QModelIndex index) ;
 
     void on_curveEdit_1_clicked();
     void on_curveEdit_2_clicked();
@@ -222,9 +228,12 @@ private slots:
     void mixesEdited();
     void heliEdited();
     void FrSkyEdited();
+		void FrSkyA1changed(int value) ;
+		void FrSkyA2changed(int value) ;
 		void GvarEdited() ;
 		void phaseEdited() ;
     void setSwitchDefPos();
+		uint16_t oneSwitchPos( uint8_t swtch, uint16_t states ) ;
 
     void on_spinBox_S1_valueChanged(int value);
     void on_spinBox_S2_valueChanged(int value);
@@ -238,6 +247,10 @@ private slots:
     void on_bcP1ChkB_toggled(bool checked);
     void on_bcP2ChkB_toggled(bool checked);
     void on_bcP3ChkB_toggled(bool checked);
+    void on_timer1BeepCdownCB_toggled(bool checked);
+    void on_timer2BeepCdownCB_toggled(bool checked);
+    void on_timer1MinuteBeepCB_toggled(bool checked);
+    void on_timer2MinuteBeepCB_toggled(bool checked);
 
     void on_thrExpoChkB_toggled(bool checked);
     void on_thrTrimChkB_toggled(bool checked);
@@ -263,9 +276,11 @@ private slots:
     void on_timerDirCB_currentIndexChanged(int index);
     void on_timerModeCB_currentIndexChanged(int index);
     void on_timerModeBCB_currentIndexChanged(int index);
+		void on_timerResetCB_currentIndexChanged(int index);
     void on_timer2DirCB_currentIndexChanged(int index);
     void on_timer2ModeCB_currentIndexChanged(int index);
     void on_timer2ModeBCB_currentIndexChanged(int index);
+		void on_timer2ResetCB_currentIndexChanged(int index);
     void on_modelNameLE_editingFinished();
     void on_tabWidget_currentChanged(int index);
     void on_templateList_doubleClicked(QModelIndex index);

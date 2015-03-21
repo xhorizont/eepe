@@ -51,11 +51,12 @@ private:
     qint32  act[MAX_SKYMIXERS];
     qint16  anas [NUM_SKYXCHNRAW+1+MAX_GVARS+1];	// Extra 1 for X9D
     qint32  chans[NUM_SKYCHNOUT];
+		int16_t rawSticks[4] ;
     quint8  bpanaCenter;
     quint16 parametersLoaded ;
     bool    swOn[MAX_SKYMIXERS];
     quint16 one_sec_precount;
-		qint8		CsTimer[NUM_SKYCSW] ;
+		int16_t	CsTimer[NUM_SKYCSW] ;
     quint8  fadePhases ;
     qint32  fade[NUM_SKYCHNOUT];
 		quint16	fadeScale[MAX_PHASES+1] ;
@@ -64,6 +65,7 @@ private:
     
 		qint16 qdebug ;
 		qint16 serialSending ;
+		qint16 serialTimer ;
     QextSerialPort *port ;
 
     quint16 s_timeCumTot;
@@ -100,8 +102,10 @@ private:
 		void perOutPhase( bool init, uint8_t att ) ;
     void centerSticks();
     void timerTick();
+		void processAdjusters() ;
 
     bool keyState(EnumKeys key);
+		bool hwKeyState(int key) ;
     qint16 getValue(qint8 i);
     bool getSwitch(int swtch, bool nc, qint8 level=0);
     void beepWarn();
@@ -121,7 +125,9 @@ private:
 		int16_t getTrimValue( uint8_t phase, uint8_t idx ) ;
 		void setTrimValue(uint8_t phase, uint8_t idx, int16_t trim) ;
 		int16_t calc_scaler( uint8_t index ) ;
-
+		void configSwitches( void ) ;
+		uint8_t IS_THROTTLE( uint8_t x) ;
+		int8_t getGvarSourceValue( uint8_t src ) ;
 
 protected:
 		void closeEvent(QCloseEvent *event) ;

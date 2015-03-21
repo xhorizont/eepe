@@ -14,7 +14,7 @@
    <string>Dialog</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="eepe.qrc">
+   <iconset>
     <normaloff>:/icon.png</normaloff>:/icon.png</iconset>
   </property>
   <widget class="QDialogButtonBox" name="buttonBox">
@@ -267,6 +267,11 @@ p, li { white-space: pre-wrap; }
      <string>Differential</string>
     </property>
    </item>
+   <item>
+    <property name="text">
+     <string>Expo</string>
+    </property>
+   </item>
   </widget>
   <widget class="QLabel" name="label_7">
    <property name="geometry">
@@ -405,17 +410,17 @@ This determines how mixer values are added.
     <string/>
    </property>
   </widget>
-  <widget class="QLabel" name="label_10">
+  <widget class="QLabel" name="label_expo_output">
    <property name="geometry">
     <rect>
      <x>10</x>
      <y>140</y>
-     <width>74</width>
+     <width>81</width>
      <height>16</height>
     </rect>
    </property>
    <property name="text">
-    <string>Flightmode Trim</string>
+    <string>Enable Expo/Dr</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_5">
@@ -496,7 +501,7 @@ This determines how mixer values are added.
     </rect>
    </property>
    <property name="text">
-    <string>Late Offset</string>
+    <string>Fix Offset</string>
    </property>
   </widget>
   <widget class="QCheckBox" name="lateOffsetChkB">
@@ -642,6 +647,9 @@ This determines how mixer values are added.
      <width>81</width>
      <height>20</height>
     </rect>
+   </property>
+   <property name="maximum">
+    <number>100</number>
    </property>
   </widget>
   <widget class="QLabel" name="label_15">
@@ -803,9 +811,7 @@ This determines how mixer values are added.
    </property>
   </widget>
  </widget>
- <resources>
-  <include location="eepe.qrc"/>
- </resources>
+ <resources/>
  <connections>
   <connection>
    <sender>buttonBox</sender>
