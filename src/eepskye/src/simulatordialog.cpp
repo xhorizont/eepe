@@ -1643,7 +1643,15 @@ bool simulatorDialog::getSwitch(int swtch, bool nc, qint8 level)
 		{
     	if ( swtch > limit )
 			{
-				return false ;
+				uint8_t value = hwKeyState( abs(swtch) ) ;
+				if ( swtch > 0 )
+				{
+					return value ;
+				}
+				else
+				{
+					return ! value ;
+				}
 			}
 		}
 

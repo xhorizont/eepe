@@ -25,8 +25,8 @@ private:
 		int waitForAckNak( int mS ) ;
     int waitForCan( int mS ) ;
 		int sendOneFile( QString fname ) ;
-		int Receive_Byte( uint8_t *c, int mS ) ;
-		int Receive_Packet (uint8_t *data, int *length, int timeout) ;
+        int Receive_Byte( unsigned char *c, int mS ) ;
+        int Receive_Packet (unsigned char *data, int *length, int timeout) ;
 		int receiveOneFile( QString fname ) ;
 		int startSerialPort() ;
 		QString ComPort ;
