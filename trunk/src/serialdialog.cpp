@@ -536,9 +536,9 @@ void serialDialog::on_listButton_clicked()
 void serialDialog::on_deleteButton_clicked()
 {
 	int numFiles ;
-  uint8_t c;
+  unsigned char c;
   int numBytes ;
-  uint8_t dataBlock[BLOCK_AREA] ;
+  unsigned char dataBlock[BLOCK_AREA] ;
 	char acknak ;
   int i ;
   char buff[150] ;
