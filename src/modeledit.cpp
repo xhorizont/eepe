@@ -70,6 +70,7 @@ ModelEdit::ModelEdit(EEPFILE *eFile, uint8_t id, QWidget *parent) :
 			g_model.numBlades = g_model.xnumBlades + 2 ;				
 		}
 
+		createSwitchMapping( &g_eeGeneral, eeFile->mee_type ) ;
     setupMixerListWidget();
 
     QSettings settings("er9x-eePe", "eePe");
@@ -884,23 +885,15 @@ void ModelEdit::expoEdited()
 		QSpinBox *sb ;
 		QComboBox *cb ;
 		QCheckBox *chkb ;
-		int limit = MAX_DRSWITCH ;
-#ifndef SKY
-	  if ( eeFile->mee_type )
-		{
-    	limit += EXTRA_CSW ;
-		}
-#endif
-
   int8_t *pval ;
-    g_model.expoData[CONVERT_MODE(RUD,g_model.modelVersion,g_eeGeneral.stickMode)-1].drSw1 = ui->RUD_edrSw1->currentIndex()-limit ;
-    g_model.expoData[CONVERT_MODE(RUD,g_model.modelVersion,g_eeGeneral.stickMode)-1].drSw2 = ui->RUD_edrSw2->currentIndex()-limit ;
-    g_model.expoData[CONVERT_MODE(ELE,g_model.modelVersion,g_eeGeneral.stickMode)-1].drSw1 = ui->ELE_edrSw1->currentIndex()-limit ;
-    g_model.expoData[CONVERT_MODE(ELE,g_model.modelVersion,g_eeGeneral.stickMode)-1].drSw2 = ui->ELE_edrSw2->currentIndex()-limit ;
-    g_model.expoData[CONVERT_MODE(THR,g_model.modelVersion,g_eeGeneral.stickMode)-1].drSw1 = ui->THR_edrSw1->currentIndex()-limit ;
-    g_model.expoData[CONVERT_MODE(THR,g_model.modelVersion,g_eeGeneral.stickMode)-1].drSw2 = ui->THR_edrSw2->currentIndex()-limit ;
-    g_model.expoData[CONVERT_MODE(AIL,g_model.modelVersion,g_eeGeneral.stickMode)-1].drSw1 = ui->AIL_edrSw1->currentIndex()-limit ;
-    g_model.expoData[CONVERT_MODE(AIL,g_model.modelVersion,g_eeGeneral.stickMode)-1].drSw2 = ui->AIL_edrSw2->currentIndex()-limit ;
+    g_model.expoData[CONVERT_MODE(RUD,g_model.modelVersion,g_eeGeneral.stickMode)-1].drSw1 = getSwitchCbValue( ui->RUD_edrSw1, eeFile->mee_type ) ;
+    g_model.expoData[CONVERT_MODE(RUD,g_model.modelVersion,g_eeGeneral.stickMode)-1].drSw2 = getSwitchCbValue( ui->RUD_edrSw2, eeFile->mee_type ) ;
+    g_model.expoData[CONVERT_MODE(ELE,g_model.modelVersion,g_eeGeneral.stickMode)-1].drSw1 = getSwitchCbValue( ui->ELE_edrSw1, eeFile->mee_type ) ;
+    g_model.expoData[CONVERT_MODE(ELE,g_model.modelVersion,g_eeGeneral.stickMode)-1].drSw2 = getSwitchCbValue( ui->ELE_edrSw2, eeFile->mee_type ) ;
+    g_model.expoData[CONVERT_MODE(THR,g_model.modelVersion,g_eeGeneral.stickMode)-1].drSw1 = getSwitchCbValue( ui->THR_edrSw1, eeFile->mee_type ) ;
+    g_model.expoData[CONVERT_MODE(THR,g_model.modelVersion,g_eeGeneral.stickMode)-1].drSw2 = getSwitchCbValue( ui->THR_edrSw2, eeFile->mee_type ) ;
+    g_model.expoData[CONVERT_MODE(AIL,g_model.modelVersion,g_eeGeneral.stickMode)-1].drSw1 = getSwitchCbValue( ui->AIL_edrSw1, eeFile->mee_type ) ;
+    g_model.expoData[CONVERT_MODE(AIL,g_model.modelVersion,g_eeGeneral.stickMode)-1].drSw2 = getSwitchCbValue( ui->AIL_edrSw2, eeFile->mee_type ) ;
 		
 		for ( i = 0 ; i < 3 ; i += 1 )
 		{ // 0=High, 1=Mid, 2=Low
@@ -2416,7 +2409,7 @@ void ModelEdit::tabSwitches()
 				}
 				else
 				{
-					populateSwitchxAndCB(cswitchAndSwitch[i], g_model.xcustomSw[i-NUM_CSW].andsw) ;
+          populateSwitchxAndCB(cswitchAndSwitch[i], g_model.xcustomSw[i-NUM_CSW].andsw, eeFile->mee_type ) ;
 				}
       if ( !switchesTabDone )
 			{
@@ -2980,7 +2973,7 @@ void ModelEdit::switchesEdited()
     {
 			if ( ( eeFile->mee_type ) && ( i >= NUM_CSW ) )
 			{
-				g_model.xcustomSw[i-NUM_CSW].andsw = cswitchAndSwitch[i]->currentIndex() - 27 ;
+				g_model.xcustomSw[i-NUM_CSW].andsw = getxAndSwitchCbValue( cswitchAndSwitch[i], eeFile->mee_type ) ;
         if(chAr[i])
         {
             g_model.xcustomSw[i-NUM_CSW].v1 = 0;
@@ -3002,8 +2995,8 @@ void ModelEdit::switchesEdited()
 						}
             break;
 	        case (CS_VBOOL):
-            g_model.xcustomSw[j].v1 = cswitchSource1[i]->currentIndex() - limit;
-            g_model.xcustomSw[j].v2 = cswitchSource2[i]->currentIndex() - limit;
+            g_model.xcustomSw[j].v1 = getSwitchCbValue( cswitchSource1[i], eeFile->mee_type ) ;
+            g_model.xcustomSw[j].v2 = getSwitchCbValue( cswitchSource2[i], eeFile->mee_type ) ;
             break;
   	      case (CS_VCOMP):
             g_model.xcustomSw[j].v1 = cswitchSource1[i]->currentIndex();
@@ -3040,8 +3033,8 @@ void ModelEdit::switchesEdited()
 						}
             break;
 	        case (CS_VBOOL):
-            g_model.customSw[i].v1 = cswitchSource1[i]->currentIndex() - limit;
-            g_model.customSw[i].v2 = cswitchSource2[i]->currentIndex() - limit;
+            g_model.customSw[i].v1 = getSwitchCbValue( cswitchSource1[i], eeFile->mee_type ) ;
+            g_model.customSw[i].v2 = getSwitchCbValue( cswitchSource2[i], eeFile->mee_type ) ;
             break;
   	      case (CS_VCOMP):
             g_model.customSw[i].v1 = cswitchSource1[i]->currentIndex();
@@ -3261,20 +3254,20 @@ void ModelEdit::GvarEdited()
     g_model.gvars[5].gvar = ui->Gv6SB->value();
     g_model.gvars[6].gvar = ui->Gv7SB->value();
 	
-		int limit = MAX_DRSWITCH ;
-#ifndef SKY
-	  if ( eeFile->mee_type )
-		{
-    	limit += EXTRA_CSW ;
-		}
-#endif
-		g_model.gvswitch[0] = ui->GvSw1CB->currentIndex()-limit ;
-		g_model.gvswitch[1] = ui->GvSw2CB->currentIndex()-limit ;
-		g_model.gvswitch[2] = ui->GvSw3CB->currentIndex()-limit ;
-		g_model.gvswitch[3] = ui->GvSw4CB->currentIndex()-limit ;
-		g_model.gvswitch[4] = ui->GvSw5CB->currentIndex()-limit ;
-		g_model.gvswitch[5] = ui->GvSw6CB->currentIndex()-limit ;
-		g_model.gvswitch[6] = ui->GvSw7CB->currentIndex()-limit ;
+//		int limit = MAX_DRSWITCH ;
+//#ifndef SKY
+//	  if ( eeFile->mee_type )
+//		{
+//    	limit += EXTRA_CSW ;
+//		}
+//#endif
+		g_model.gvswitch[0] = getSwitchCbValue( ui->GvSw1CB, eeFile->mee_type ) ;
+		g_model.gvswitch[1] = getSwitchCbValue( ui->GvSw2CB, eeFile->mee_type ) ;
+		g_model.gvswitch[2] = getSwitchCbValue( ui->GvSw3CB, eeFile->mee_type ) ;
+		g_model.gvswitch[3] = getSwitchCbValue( ui->GvSw4CB, eeFile->mee_type ) ;
+		g_model.gvswitch[4] = getSwitchCbValue( ui->GvSw5CB, eeFile->mee_type ) ;
+		g_model.gvswitch[5] = getSwitchCbValue( ui->GvSw6CB, eeFile->mee_type ) ;
+		g_model.gvswitch[6] = getSwitchCbValue( ui->GvSw7CB, eeFile->mee_type ) ;
 		
 		int i ;
 		for ( i = 0 ; i < NUM_SCALERS ; i += 1 )
@@ -3413,7 +3406,7 @@ void ModelEdit::FrSkyEdited()
    	limit += EXTRA_CSW ;
 	}
 #endif
-		g_model.varioData.swtch = ui->VarioSwitchCB->currentIndex() - limit ;
+		g_model.varioData.swtch = getSwitchCbValue( ui->VarioSwitchCB, eeFile->mee_type ) ;
 		g_model.varioData.varioSource = ui->VarioSourceCB->currentIndex() ;
 		g_model.varioData.param = ui->VarioSensitivitySB->value() ;
     g_model.varioData.sinkTonesOff = ui->SinkTonesOff->isChecked();
@@ -3570,14 +3563,7 @@ void ModelEdit::on_volumeControlCB_currentIndexChanged(int index)
 
 void ModelEdit::on_trimSWCB_currentIndexChanged(int index)
 {
-	int limit = MAX_DRSWITCH ;
-#ifndef SKY
-  if ( eeFile->mee_type )
-	{
-   	limit += EXTRA_CSW ;
-	}
-#endif
-    g_model.trimSw = index-limit ;
+    g_model.trimSw = getSwitchCbValue( ui->trimSWCB, eeFile->mee_type ) ;
     updateSettings();
 }
 

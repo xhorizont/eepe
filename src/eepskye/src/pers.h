@@ -290,6 +290,10 @@ enum EnumKeys {
 #define MIX_CYC2  11
 #define MIX_CYC3  12
 
+#define EXTRA_POTS_POSITION	8
+#define EXTRA_POTS_START	120
+#define NUM_EXTRA_POTS		1
+
 #define PPM_BASE   (MIX_CYC3)
 #define CHOUT_BASE (PPM_BASE+NUM_PPM)
 
@@ -394,6 +398,7 @@ bool eeDuplicateModel(uint8_t id);
 bool eeLoadGeneral();
 
 #define NUM_PPM     8
+#define NUM_EXTRA_PPM     8
 //number of real outputchannels CH1-CH8
 #define NUM_CHNOUT   16
 #define NUM_SKYCHNOUT  24

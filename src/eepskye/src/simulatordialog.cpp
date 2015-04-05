@@ -20,6 +20,8 @@
 
 //#define IS_THROTTLE(x)  (((2-(g_eeGeneral.stickMode&1)) == x) && (x<4))
 
+const uint8_t switchIndex[8] = { HSW_SA0, HSW_SB0, HSW_SC0, HSW_SD0, HSW_SE0, HSW_SF2, HSW_SG0, HSW_SH2 } ;
+
 uint8_t simulatorDialog::IS_THROTTLE( uint8_t x)
 {
 	if ( g_model.modelVersion >= 2 )
@@ -574,7 +576,14 @@ void simulatorDialog::configSwitches()
 			ui->SHwidget->show() ;
 			ui->SliderL->show() ;
 			ui->SliderR->show() ;
-			ui->dialP_3->hide() ;
+			if ( txType == 2 )
+			{
+				ui->dialP_3->show() ;
+			}
+			else
+			{
+				ui->dialP_3->hide() ;
+			}
 			ui->switchTHR->setVisible( false ) ;
 			ui->switchRUD->setVisible( false ) ;
 			ui->switchELE->setVisible( false ) ;
@@ -975,8 +984,7 @@ int8_t simulatorDialog::getGvarSourceValue( uint8_t src )
 		uint32_t y ;
 		y = src - 1 ;
 
-		y = adjustMode( y ) ;
-				
+//		y = adjustMode( y ) ;
 		value = getTrimValue( CurrentPhase, y ) ;
 				 
 	}
@@ -1082,6 +1090,10 @@ void simulatorDialog::getValues()
 		{
 	    calibratedStick[6] = ui->SliderL->value();
     	calibratedStick[7] = ui->SliderR->value(); // For X9D
+			if ( txType == 2 )
+			{
+    		calibratedStick[8] = ui->dialP_3->value();
+			}
 		}
 		else
 		{
@@ -1100,7 +1112,7 @@ void simulatorDialog::getValues()
 
 	for( uint8_t i = 0 ; i < MAX_GVARS ; i += 1 )
 	{
-		int x ;
+//		int x ;
 		// ToDo, test for trim inputs here
 		if ( g_model.gvars[i].gvsource )
 		{
@@ -1558,13 +1570,14 @@ qint16 simulatorDialog::getValue(qint8 i)
 {
 	uint8_t offset = txType ? 1 : 0 ;
 
-    if(i<(PPM_BASE+offset)) return calibratedStick[i];//-512..512
-    else if(i<(CHOUT_BASE+offset)) return g_ppmIns[i-PPM_BASE-offset];// - g_eeGeneral.ppmInCalib[i-PPM_BASE];
-    else if(i<(CHOUT_BASE+NUM_SKYCHNOUT+offset)) return ex_chans[i-CHOUT_BASE-offset];
+    if(i<(PPM_BASE)) return calibratedStick[i];//-512..512
+		else if(i >= EXTRA_POTS_START-1) return calibratedStick[i-EXTRA_POTS_START+8] ;
+    else if(i<(CHOUT_BASE+offset)) return g_ppmIns[i-PPM_BASE];// - g_eeGeneral.ppmInCalib[i-PPM_BASE];
+    else if(i<(CHOUT_BASE+NUM_SKYCHNOUT+offset)) return ex_chans[i-CHOUT_BASE];
 		else
 		{
       int j ;
-			j = i-CHOUT_BASE-NUM_SKYCHNOUT-offset - 25 ;
+			j = i-CHOUT_BASE-NUM_SKYCHNOUT - 25 ;
 			if ( ( j >= 0 ) && ( j < 7 ) )
 			{
         return g_model.gvars[j].gvar ;
@@ -2154,6 +2167,10 @@ void simulatorDialog::perOut(bool init, uint8_t att)
 		if ( txType )
 		{
 			num_analog = 8 ;
+			if ( txType == 2 )
+			{
+				num_analog = 9 ;
+			}
 		}
     for(uint8_t i=0;i<num_analog;i++)
 		{        // calc Sticks
@@ -2284,20 +2301,20 @@ void simulatorDialog::perOut(bool init, uint8_t att)
   uint8_t Mix_max ;
   uint8_t Mix_full ;
   uint8_t Chout_base ;
-  if ( txType )
-  {
-    Mix_3pos = MIX_3POS+1 ;
-    Mix_max = MIX_MAX + 1 ;
-    Mix_full = MIX_FULL + 1 ;
-		Chout_base = CHOUT_BASE + 1 ;
-  }
-  else
-  {
+//  if ( txType )
+//  {
+//    Mix_3pos = MIX_3POS+1 ;
+//    Mix_max = MIX_MAX + 1 ;
+//    Mix_full = MIX_FULL + 1 ;
+//		Chout_base = CHOUT_BASE + 1 ;
+//  }
+//  else
+//  {
     Mix_3pos = MIX_3POS ;
     Mix_max = MIX_MAX ;
     Mix_full = MIX_FULL ;
 		Chout_base = CHOUT_BASE ;
-  }
+//  }
   
 	if ( att & FADE_FIRST )
 	{
@@ -2307,7 +2324,7 @@ void simulatorDialog::perOut(bool init, uint8_t att)
     bpanaCenter = anaCenter;
 
 
-    calibratedStick[Mix_max-1]=calibratedStick[Mix_full-1]=1024;
+//    calibratedStick[Mix_max-1]=calibratedStick[Mix_full-1]=1024;
     anas[Mix_max-1]  = RESX;     // MAX
     anas[Mix_full-1] = RESX;     // FULL
 	  if ( txType )
@@ -2350,7 +2367,23 @@ void simulatorDialog::perOut(bool init, uint8_t att)
         int16_t vr = anas[ail_stick]+trimA[ail_stick];
         int16_t vc = 0;
         if(g_model.swashCollectiveSource)
-            vc = anas[g_model.swashCollectiveSource-1];
+				{
+					if ( txType )
+					{
+						if ( g_model.swashCollectiveSource >= EXTRA_POTS_START )
+						{
+							vc = calibratedStick[g_model.swashCollectiveSource-EXTRA_POTS_START+7] ;
+						}
+						else
+						{
+          	  vc = anas[g_model.swashCollectiveSource-1];
+						}
+					}
+					else
+					{
+         	  vc = anas[g_model.swashCollectiveSource-1];
+					}
+				}
 
         if(g_model.swashInvertELE) vp = -vp;
         if(g_model.swashInvertAIL) vr = -vr;
@@ -2522,10 +2555,11 @@ void simulatorDialog::perOut(bool init, uint8_t att)
 						{
 							if ( k == MIX_3POS-1 )
 							{
-                EnumKeys sw = (EnumKeys)md.switchSource ;
+                uint32_t sw = switchIndex[md.switchSource] ;
+//                EnumKeys sw = (EnumKeys)md.switchSource ;
                 if ( ( md.switchSource == 5) || ( md.switchSource == 7) )
 								{ // 2-POS switch
-        					v = keyState(sw) ? -1024 : 1024 ;
+                  v = hwKeyState(sw) ? 1024 : -1024 ;
 								}
                 else if( md.switchSource == 8)
 								{
@@ -2554,7 +2588,7 @@ void simulatorDialog::perOut(bool init, uint8_t att)
 								}
 								else
 								{ // 3-POS switch
-        					v = keyState(sw) ? -1024 : (keyState((EnumKeys)(sw+1)) ? 0 : 1024) ;
+                  v = hwKeyState(sw) ? -1024 : (hwKeyState((sw+1)) ? 0 : 1024) ;
 								}
 							}
 						}
@@ -2600,8 +2634,22 @@ void simulatorDialog::perOut(bool init, uint8_t att)
 						}
             if(k>Chout_base && (k<i)) v = chans[k];
             if (k == Mix_3pos+MAX_GVARS) v = chans[md.destCh-1] / 100 ;
-            if (k > Mix_3pos+MAX_GVARS)
-						 v = calc_scaler( k - (Mix_3pos+MAX_GVARS+1) ) ;
+            if ( (k > MIX_3POS+MAX_GVARS) && ( k <= MIX_3POS+MAX_GVARS + NUM_SCALERS ) )
+						{
+							v = calc_scaler( k - (Mix_3pos+MAX_GVARS+1) ) ;
+						}
+            if (k > MIX_3POS+MAX_GVARS + NUM_SCALERS)
+						{
+							if ( k <= MIX_3POS+MAX_GVARS + NUM_SCALERS + NUM_EXTRA_PPM )
+							{
+								
+							}
+							else
+							{
+								v = calibratedStick[k-EXTRA_POTS_START+8] ;
+							}
+						}
+
             if(md.mixWarn) mixWarning |= 1<<(md.mixWarn-1); // Mix warning
 //            if ( md.enableFmTrim )
 //            {

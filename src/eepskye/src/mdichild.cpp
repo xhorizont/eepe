@@ -755,6 +755,10 @@ void MdiChild::OpenEditWindow()
         
 				if(isNew) t->applyBaseTemplate();
     		QString type = radioData.type ? " (Taranis)" : " (Sky)" ;
+				if ( radioData.type == 2 )
+				{
+    		  type = " (Taranis Plus)" ;
+				}
         t->setWindowTitle(tr("Editing model %1: ").arg(i) + mname + type ) ;
 
         for(int j=0; j<MAX_SKYMIXERS; j++)
@@ -786,11 +790,17 @@ void MdiChild::newFile()
     static int sequenceNumber = 1 ;
     QSettings settings("er9x-eePskye", "eePskye");
 		radioData.type = 0 ;
-		if (settings.value("download-version", 0).toInt() >= 2 )
+		int x ;
+		x = settings.value("download-version", 0).toInt() ;
+		if ( x >= 2 )
 		{
-			radioData.type = 1 ;
+			radioData.type = x-1 ;
 		}
     QString type = radioData.type ? " (Taranis)" : " (Sky)" ;
+		if ( x == 3 )
+		{
+    	type = " (Taranis Plus)" ;
+		}
 
     isUntitled = true;
     curFile = tr("document%1.bin").arg(sequenceNumber++);
@@ -936,6 +946,13 @@ bool MdiChild::loadFile(const QString &fileName, bool resetCurrentFile)
   	      file.close();
 
 					radioData.type = 1 ;
+					int x ;
+			    QSettings settings("er9x-eePskye", "eePskye");
+					x = settings.value("download-version", 0).toInt() ;
+					if ( x >= 2 )
+					{
+						radioData.type = x-1 ;
+					}
 	        if(!rawloadFileRlc( &radioData, temp) )
   	      {
             QMessageBox::critical(this, tr("Error"),
@@ -946,7 +963,6 @@ bool MdiChild::loadFile(const QString &fileName, bool resetCurrentFile)
             return false;
     	    }
 					defaultModelType = DefaultModelType ;
-					radioData.type = 1 ;
         	refreshList();
         	if(resetCurrentFile) setCurrentFile(fileName);
           return true ;

@@ -31,7 +31,7 @@ GeneralEdit::GeneralEdit(EEPFILE *eFile, QWidget *parent) :
     ui->tabWidget->setCurrentIndex(settings.value("generalEditTab", 0).toInt());
 
     eeFile->getGeneralSettings(&g_eeGeneral);
-
+		createSwitchMapping( &g_eeGeneral, eeFile->mee_type ) ;
     QRegExp rx(CHAR_FOR_NAMES_REGEX);
     ui->ownerNameLE->setValidator(new QRegExpValidator(rx, this));
 
@@ -164,6 +164,14 @@ GeneralEdit::GeneralEdit(EEPFILE *eFile, QWidget *parent) :
     connect(ui->weightSB_2, SIGNAL(valueChanged(int)), this, SLOT(validateWeightSB()));
     connect(ui->weightSB_3, SIGNAL(valueChanged(int)), this, SLOT(validateWeightSB()));
     connect(ui->weightSB_4, SIGNAL(valueChanged(int)), this, SLOT(validateWeightSB()));
+
+	populateHardwareSwitch(ui->EleSwitchSource, g_eeGeneral.ele2source ) ;
+	populateHardwareSwitch(ui->AilSwitchSource, g_eeGeneral.ail2source ) ;
+	populateHardwareSwitch(ui->Pb1SwitchSource, g_eeGeneral.pb1source ) ;
+	populateHardwareSwitch(ui->Pb2SwitchSource, g_eeGeneral.pb2source ) ;
+	ui->L_wrInputCB->setChecked( g_eeGeneral.lcd_wrInput ) ;
+	ui->Pb7InputCB->setChecked( g_eeGeneral.pb7Input ) ;
+  ui->Pg2InputCB->setChecked( g_eeGeneral.pg2Input ) ;
 }
 
 GeneralEdit::~GeneralEdit()
@@ -360,14 +368,14 @@ void GeneralEdit::on_battcalibDSB_editingFinished()
 
 void GeneralEdit::on_backlightswCB_currentIndexChanged(int index)
 {
-	int limit = MAX_DRSWITCH ;
-#ifndef SKY
-  if ( eeFile->mee_type )
-	{
-   	limit += EXTRA_CSW ;
-	}
-#endif
-    g_eeGeneral.lightSw = index - limit ;
+//	int limit = MAX_DRSWITCH ;
+//#ifndef SKY
+//  if ( eeFile->mee_type )
+//	{
+//   	limit += EXTRA_CSW ;
+//	}
+//#endif
+    g_eeGeneral.lightSw = getSwitchCbValue( ui->backlightswCB, eeFile->mee_type ) ;
     updateSettings();
 }
 
@@ -936,6 +944,79 @@ void GeneralEdit::on_StickRevRH_stateChanged(int )
 	}
   updateSettings();
 }
+
+void GeneralEdit::on_EleSwitchSource_currentIndexChanged(int index)
+{
+	g_eeGeneral.ele2source = index ;
+	g_eeGeneral.switchMapping &= ~USE_ELE_3POS ;
+	if ( index )
+	{
+		g_eeGeneral.switchMapping |= USE_ELE_3POS ;
+	}
+	createSwitchMapping( &g_eeGeneral, eeFile->mee_type ) ;
+  updateSettings();
+}
+
+void GeneralEdit::on_AilSwitchSource_currentIndexChanged(int index)
+{
+	g_eeGeneral.ail2source = index ;
+	g_eeGeneral.switchMapping &= ~USE_AIL_3POS ;
+	if ( index )
+	{
+		g_eeGeneral.switchMapping |= USE_AIL_3POS ;
+	}
+	createSwitchMapping( &g_eeGeneral, eeFile->mee_type ) ;
+  updateSettings();
+}
+
+void GeneralEdit::on_Pb1SwitchSource_currentIndexChanged(int index)
+{
+	g_eeGeneral.pb1source = index ;
+	g_eeGeneral.switchMapping &= ~USE_PB1 ;
+	if ( index )
+	{
+		g_eeGeneral.switchMapping |= USE_PB1 ;
+	}
+	createSwitchMapping( &g_eeGeneral, eeFile->mee_type ) ;
+  updateSettings();
+}
+
+void GeneralEdit::on_Pb2SwitchSource_currentIndexChanged(int index)
+{
+	g_eeGeneral.pb2source = index ;
+	g_eeGeneral.switchMapping &= ~USE_PB2 ;
+	if ( index )
+	{
+		g_eeGeneral.switchMapping |= USE_PB2 ;
+	}
+	createSwitchMapping( &g_eeGeneral, eeFile->mee_type ) ;
+  updateSettings();
+}
+
+void GeneralEdit::on_Pb7InputCB_stateChanged(int x )
+{
+	g_eeGeneral.pb7Input = x ;
+  updateSettings();
+}
+
+void GeneralEdit::on_Pg2InputCB_stateChanged(int x )
+{
+	g_eeGeneral.pg2Input = x ;
+  updateSettings();
+}
+
+void GeneralEdit::on_L_wrInputCB_stateChanged(int x )
+{
+	g_eeGeneral.lcd_wrInput = x ;
+  updateSettings();
+}
+
+
+
+
+
+
+
 
 
 

@@ -13,7 +13,6 @@ MixerDialog::MixerDialog(QWidget *parent, SKYMixData *mixdata, EEGeneral *g_eeGe
 
     this->setWindowTitle(tr("DEST -> CH%1%2").arg(md->destCh/10).arg(md->destCh%10));
     populateSourceCB(ui->sourceCB, g_eeGeneral->stickMode, 0, md->srcRaw, modelVersion, eeType);
-		sw3posIndex = ui->sourceCB->count() ;
     ui->sourceCB->addItem("SWCH");
     ui->sourceCB->addItem("GV1 ");
     ui->sourceCB->addItem("GV2 ");
@@ -31,7 +30,23 @@ MixerDialog::MixerDialog(QWidget *parent, SKYMixData *mixdata, EEGeneral *g_eeGe
     ui->sourceCB->addItem("SC6 ");
     ui->sourceCB->addItem("SC7 ");
     ui->sourceCB->addItem("SC8 ");
-    ui->sourceCB->setCurrentIndex(md->srcRaw);
+//		uint32_t value ;
+//		value = md->srcRaw ;
+//		if ( eeType )
+//		{
+//			if ( value >= EXTRA_POTS_POSITION )
+//			{
+//				if ( value >= EXTRA_POTS_START )
+//				{
+//					value -= ( EXTRA_POTS_START - EXTRA_POTS_POSITION ) ;
+//				}
+//				else
+//				{
+//					value += eeType == 2 ? 2 : NUM_EXTRA_POTS ;
+//				}
+//			}
+//		}
+//    ui->sourceCB->setCurrentIndex(value) ;
     
 		ui->sourceCB->removeItem(0);
 
@@ -189,24 +204,29 @@ void MixerDialog::changeEvent(QEvent *e)
 
 void MixerDialog::updateChannels()
 {
-  if ( md->srcRaw >= 21 && md->srcRaw <= 44 )
+  uint32_t lowBound = leeType ? 22 : 21 ;
+	if ( leeType == 2 )
+	{
+		lowBound = 23 ;
+	}
+  if ( md->srcRaw >= lowBound && md->srcRaw <= lowBound+23 )
 	{
 		ui->label_expo_output->setText( "Use Output" ) ;
 	  ui->FMtrimChkB->setChecked(md->disableExpoDr) ;
 		if ( md->disableExpoDr )
 		{
 			uint32_t i ;
-			for ( i = 20 ; i < 44 ; i += 1 )
+      for ( i = lowBound-1 ; i < lowBound+23 ; i += 1 )
 			{
-				ui->sourceCB->setItemText( i, QString("OP%1").arg(i-19) ) ;
+				ui->sourceCB->setItemText( i, QString("OP%1").arg(i-(lowBound-2)) ) ;
 			}
 		}
 		else
 		{
 			uint32_t i ;
-			for ( i = 20 ; i < 44 ; i += 1 )
+      for ( i = lowBound-1 ; i < lowBound+23 ; i += 1 )
 			{
-				ui->sourceCB->setItemText( i, QString("CH%1").arg(i-19) ) ;
+				ui->sourceCB->setItemText( i, QString("CH%1").arg(i-(lowBound-2)) ) ;
 			}
 		}
 	}
@@ -230,10 +250,13 @@ void MixerDialog::valuesChanged()
 	ValuesEditLock = true ;
 		
 		oldSrcRaw = md->srcRaw ;
+    uint32_t value ;
+		value = ui->sourceCB->currentIndex()+1 ;
+  	value = decodePots( value, leeType ) ;
+		md->srcRaw       = value ;
 		
-		md->srcRaw       = ui->sourceCB->currentIndex()+1;
 		md->switchSource = ui->sourceSwitchCB->currentIndex() ;
-		ui->sourceSwitchCB->setVisible( md->srcRaw == sw3posIndex ) ;
+		ui->sourceSwitchCB->setVisible( md->srcRaw == MIX_3POS ) ;
     md->weight       = numericSpinGvarValue( ui->weightSB, ui->weightCB, ui->weightGvChkB, md->weight, 100 ) ;
     md->sOffset      = numericSpinGvarValue( ui->offsetSB, ui->offsetCB, ui->offsetGvChkB, md->sOffset, 0 ) ;
     md->carryTrim    = ui->trimChkB->checkState() ? 0 : 1;
@@ -251,9 +274,10 @@ void MixerDialog::valuesChanged()
     md->speedUp      = ui->slowUpSB->value()*10+0.4;
     md->lateOffset   = ui->lateOffsetChkB->checkState() ? 1 : 0;
 
-    if ( md->srcRaw >= 21 && md->srcRaw <= 44 )
+		int lowBound = leeType ? 21 : 21 ;
+    if ( md->srcRaw >= lowBound && md->srcRaw <= lowBound+23 )
 		{
-			if ( oldSrcRaw >= 21 && oldSrcRaw <= 44 )
+			if ( oldSrcRaw >= lowBound && oldSrcRaw <= lowBound+23 )
 			{
 	    	md->disableExpoDr = ui->FMtrimChkB->checkState() ? 1 : 0 ;
 				updateChannels() ;

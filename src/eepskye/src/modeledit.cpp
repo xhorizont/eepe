@@ -1105,18 +1105,45 @@ void ModelEdit::tabVoiceAlarms()
 		QString str = "";
 		str = tr("VA%1%2  ").arg((i+1)/10).arg((i+1)%10) ;
 		QString srcstr ;
-		int limit = 45 ;
+    uint32_t limit = 45 ;
+		uint32_t value = vad->source ;
 		if ( rData->type )
 		{
 			limit = 46 ;
+			if ( rData->type == 2 )
+			{
+				limit = 47 ;
+			}
+			if ( value == EXTRA_POTS_START )
+			{
+        value = 8 ;
+			}
+			else
+			{
+				if ( rData->type == 2 )
+				{
+					if ( value == EXTRA_POTS_START + 1 )
+					{
+        		value = 9 ;
+					}
+					else if ( value >= EXTRA_POTS_POSITION )
+					{
+						value += 2 ;
+					}
+				}
+				else if ( value >= EXTRA_POTS_POSITION )
+				{
+					value += 1 ;
+				}
+			}
 		}
-		if ( vad->source < limit )
+		if ( value < limit )
 		{
-			str += tr("(%1) ").arg(getSourceStr(g_eeGeneral.stickMode,vad->source,g_model.modelVersion, rData->type )) ;
+			str += tr("(%1) ").arg(getSourceStr(g_eeGeneral.stickMode,value,g_model.modelVersion, rData->type )) ;
 		}
 		else
 		{
-			str += tr("(%1) ").arg(getTelemString(vad->source-limit+1 )) ;
+      str += tr("(%1) ").arg(getTelemString(value-limit+1 )) ;
 		}
     srcstr = "-------v>val  v<val  |v|>val|v|<valv~=val " ;
 		str += tr("%1 ").arg(srcstr.mid( vad->func * 7, 7 )) ;
@@ -1232,13 +1259,45 @@ void ModelEdit::tabMixes()
         //QString srcStr = SRC_STR;
         //str += " " + srcStr.mid(CONVERT_MODE(md->srcRaw+1)*4,4);
         QString srcstr ;
-			  if ( ( md->srcRaw >= 21 && md->srcRaw <= 44 ) && ( md->disableExpoDr ) )
+			  uint32_t lowBound = rData->type ? 21 : 21 ;
+//				if ( rData->type == 2 )
+//				{
+//					lowBound = 23 ;
+//				}
+			  if ( ( md->srcRaw >= lowBound && md->srcRaw <= lowBound+23 ) && ( md->disableExpoDr ) )
 				{
-          srcstr = QString("OP%1").arg(md->srcRaw-20) ;
+          srcstr = QString("OP%1").arg(md->srcRaw-(lowBound-1)) ;
 				}
 				else
 				{
-          srcstr = getSourceStr(g_eeGeneral.stickMode,md->srcRaw,g_model.modelVersion, rData->type );
+					uint32_t value ;
+					value = md->srcRaw ;
+					if ( rData->type )
+					{
+						if ( value == EXTRA_POTS_START )
+						{
+              value = 8 ;
+						}
+						else
+						{
+							if ( rData->type == 2 )
+							{
+								if ( value == EXTRA_POTS_START + 1 )
+								{
+        		      value = 9 ;
+								}
+								else if ( value >= EXTRA_POTS_POSITION )
+								{
+									value += 2 ;
+								}
+							}
+							else if ( value >= EXTRA_POTS_POSITION )
+							{
+								value += 1 ;
+							}
+						}
+					}
+          srcstr = getSourceStr(g_eeGeneral.stickMode, value,g_model.modelVersion, rData->type );
 				}
 
         str += srcstr ;
@@ -1736,8 +1795,10 @@ void ModelEdit::heliEdited()
 {
     if(heliEditLock) return;
     g_model.swashType  = ui->swashTypeCB->currentIndex();
-    g_model.swashCollectiveSource = ui->swashCollectiveCB->currentIndex();
-    g_model.swashRingValue = ui->swashRingValSB->value();
+    uint32_t value ;
+  	value = decodePots( ui->swashCollectiveCB->currentIndex(), rData->type ) ;
+		g_model.swashCollectiveSource = value ;
+		g_model.swashRingValue = ui->swashRingValSB->value();
     g_model.swashInvertELE = ui->swashInvertELE->isChecked();
     g_model.swashInvertAIL = ui->swashInvertAIL->isChecked();
     g_model.swashInvertCOL = ui->swashInvertCOL->isChecked();
@@ -3246,7 +3307,8 @@ void ModelEdit::switchesEdited()
 			}
 			else
 			{
-        g_model.customSw[i].andsw = getSwitchCbValueShort( cswitchAndSwitch[i], 0 ) ;
+        g_model.customSw[i].andsw = getAndSwitchCbValue( cswitchAndSwitch[i] ) ;
+										//				getSwitchCbValueShort( cswitchAndSwitch[i], 0 ) ;
       }  
 				if(chAr[i])
         {
@@ -3258,7 +3320,7 @@ void ModelEdit::switchesEdited()
         switch(CS_STATE(g_model.customSw[i].func, g_model.modelVersion))
         {
         case (CS_VOFS):
-            g_model.customSw[i].v1 = cswitchSource1[i]->currentIndex();
+            g_model.customSw[i].v1 = decodePots( cswitchSource1[i]->currentIndex(), rData->type ) ;
             g_model.customSw[i].v2 = cswitchOffset[i]->value();
 						if ( g_model.customSw[i].v1 > 36 )
 						{
@@ -3273,8 +3335,8 @@ void ModelEdit::switchesEdited()
             g_model.customSw[i].v2 =  getSwitchCbValue( cswitchSource2[i] , rData->type ) ;
             break;
         case (CS_VCOMP):
-            g_model.customSw[i].v1 = cswitchSource1[i]->currentIndex();
-            g_model.customSw[i].v2 = cswitchSource2[i]->currentIndex();
+            g_model.customSw[i].v1 = decodePots( cswitchSource1[i]->currentIndex(), rData->type ) ;
+            g_model.customSw[i].v2 = decodePots( cswitchSource2[i]->currentIndex(), rData->type ) ;
             break;
         case (CS_TIMER):
             g_model.customSw[i].v2 = cswitchOffset[i]->value()-1;
@@ -3724,7 +3786,7 @@ void ModelEdit::GvarEdited()
       g_model.Scalers[i].unit = pucb[i]->currentIndex() ;
 			g_model.Scalers[i].neg = psgncb[i]->currentIndex() ;
 			g_model.Scalers[i].offsetLast = poffcb[i]->currentIndex() ;
-			g_model.Scalers[i].source = psrccb[i]->currentIndex() ;
+			g_model.Scalers[i].source = decodePots( psrccb[i]->currentIndex(), rData->type ) ;
       textUpdate( psname[i], (char *)g_model.Scalers[i].name, 4 ) ;
 		}
 

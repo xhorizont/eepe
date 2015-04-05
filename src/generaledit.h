@@ -121,6 +121,15 @@ private slots:
 		void on_StickRevLV_stateChanged(int ) ;
 		void on_StickRevRV_stateChanged(int ) ;
 		void on_StickRevRH_stateChanged(int ) ;
+
+		void on_EleSwitchSource_currentIndexChanged(int index) ;
+		void on_AilSwitchSource_currentIndexChanged(int index) ;
+		void on_Pb1SwitchSource_currentIndexChanged(int index) ;
+		void on_Pb2SwitchSource_currentIndexChanged(int index) ;
+		void on_Pb7InputCB_stateChanged(int x ) ;
+		void on_Pg2InputCB_stateChanged(int x ) ;
+		void on_L_wrInputCB_stateChanged(int x ) ;
+
 };
 
 #endif // GENERALEDIT_H

@@ -106,6 +106,7 @@ private:
     void timerTick();
 
     bool keyState(EnumKeys key);
+		bool hwKeyState(int key) ;
     qint16 getValue(qint8 i);
     bool getSwitch(int swtch, bool nc, qint8 level=0);
     void beepWarn();
@@ -127,6 +128,7 @@ private:
 		void setTrimValue(uint8_t phase, uint8_t idx, int16_t trim) ;
 		int16_t calc_scaler( uint8_t index ) ;
 		uint8_t IS_THROTTLE( uint8_t x) ;
+		void configSwitches( void ) ;
 
 protected:
 		void closeEvent(QCloseEvent *event) ;

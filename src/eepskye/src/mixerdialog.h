@@ -29,7 +29,6 @@ private:
     Ui::MixerDialog *ui;
     QString * mixCommennt;
 		int leeType ;
-		int sw3posIndex ;
     bool ValuesEditLock ;
 };
 
