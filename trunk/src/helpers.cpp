@@ -26,7 +26,7 @@ QString TelemItems[] = {
 	"A1= ",
 	"A2= ",
 	"RSSI",
-	"TSSI",
+	"TSSI/SWR",
 	"Tim1",	// 4
 	"Tim2",
 	"Alt ",
@@ -167,6 +167,16 @@ QString ExtraGvarItems[] = {
 	"LNLO"
 } ;
 
+QString HardwareItems[] = {
+	"NONE",
+	"EXT1",
+	"EXT2",
+	"PC0 ",
+	"PG2 ",
+	"PB7 ",
+	"PG5 ",
+	"L-WR"
+} ;
 
 
 QString AnaVolumeItems[] = {
@@ -451,6 +461,124 @@ uint8_t getSw3PosCount( int index )
 	return Sw3PosCount[index] ;
 }
 
+#else // SKY
+
+uint8_t switchMapTable[80] ;
+uint8_t switchUnMapTable[80] ;
+uint8_t MaxSwitchIndex ;		// For ON and OFF
+
+void createSwitchMapping( EEGeneral *pgeneral, int type )
+{
+  uint8_t map = pgeneral->switchMapping ;
+	uint8_t *p = switchMapTable ;
+	*p++ = 0 ;
+	*p++ = HSW_ThrCt ;
+	
+	if ( map & USE_RUD_3POS )
+	{
+		*p++ = HSW_Rud3pos0 ;
+		*p++ = HSW_Rud3pos1 ;
+		*p++ = HSW_Rud3pos2 ;
+	}
+	else
+	{
+		*p++ = HSW_RuddDR ;
+	}
+
+	if ( map & USE_ELE_3POS )
+	{
+		*p++ = HSW_Ele3pos0 ;
+		*p++ = HSW_Ele3pos1 ;
+		*p++ = HSW_Ele3pos2 ;
+	}
+	else
+	{
+		*p++ = HSW_ElevDR ;
+	}
+	*p++ = HSW_ID0 ;
+	*p++ = HSW_ID1 ;
+	*p++ = HSW_ID2 ;
+	
+	if ( map & USE_AIL_3POS )
+	{
+		*p++ = HSW_Ail3pos0 ;
+		*p++ = HSW_Ail3pos1 ;
+		*p++ = HSW_Ail3pos2 ;
+	}
+	else
+	{
+		*p++ = HSW_AileDR ;
+	}
+
+	if ( map & USE_GEA_3POS )
+	{
+		*p++ = HSW_Gear3pos0 ;
+		*p++ = HSW_Gear3pos1 ;
+		*p++ = HSW_Gear3pos2 ;
+	}
+	else
+	{
+		*p++ = HSW_Gear ;
+	}
+	*p++ = HSW_Trainer ;
+	if ( map & USE_PB1 )
+	{
+		*p++ = HSW_Pb1 ;
+	}
+	if ( map & USE_PB2 )
+	{
+		*p++ = HSW_Pb2 ;
+	}
+
+	uint8_t limit = type ? 27 : 21 ;
+	 
+	for ( uint32_t i = 10 ; i <=limit ; i += 1  )
+	{
+		*p++ = i ;	// Custom switches
+	}
+  *p = limit+1 ;
+  MaxSwitchIndex = p - switchMapTable ;
+  *++p = limit+2 ;
+
+  for ( uint8_t i = 0 ; i <= (uint8_t)MaxSwitchIndex+1 ; i += 1  )
+	{
+		switchUnMapTable[switchMapTable[i]] = i ;
+	}
+}
+
+int8_t switchUnMap( int8_t x )
+{
+	uint8_t sign = 0 ;
+	if ( x < 0 )
+	{
+		sign = 1 ;
+		x = -x ;
+	}
+	x = switchUnMapTable[x] ;
+	if ( sign )
+	{
+		x = -x ;
+	}
+	return x ;
+}
+
+int8_t switchMap( int8_t x )
+{
+	uint8_t sign = 0 ;
+	if ( x < 0 )
+	{
+		sign = 1 ;
+		x = -x ;
+	}
+	x = switchMapTable[x] ;
+	if ( sign )
+	{
+		x = -x ;
+	}
+	return x ;
+}
+
+
 #endif // SKY
 
 
@@ -481,6 +609,16 @@ void populateAnaVolumeCB( QComboBox *b, int value )
   b->setCurrentIndex(value);
   b->setMaxVisibleItems(8);
 }
+
+void populateHardwareSwitch(QComboBox *b, int value )
+{
+  for(int i=0; i<=7; i++)
+	{
+		b->addItem(HardwareItems[i]) ;
+	}
+   b->setCurrentIndex(value) ;
+}
+
 
 #ifdef SKY
 void populateGvarCB(QComboBox *b, int value, int type)
@@ -1026,6 +1164,18 @@ QString getMappedSWName(int val, int eepromType)
   val = switchMap( val, eepromType) ;
   return getSWName( val, -1-eepromType ) ;
 }
+#else
+QString getMappedSWName(int val, int eepromType )
+{
+  int limit = MaxSwitchIndex ;
+
+  if(!val) return "---";
+  if(val == limit) return "ON";
+	if(val == -limit) return "OFF";
+
+  val = switchMap( val) ;
+  return getSWName( val, eepromType ) ;
+}
 #endif
 
 #ifdef SKY
@@ -1093,15 +1243,21 @@ QString getSWName(int val, int extra )
 	{
 		sw -= 10 ;
 	}
+#else
+	int sw = val ;
+	if ( sw < 0 )
+	{
+		sw = -val ;
+	}
+  if ( sw >= limit )
+	{
+		sw -= 3 ;
+	}
 #endif
 
-#ifdef SKY
   QString temp ;
   temp = switches.mid((sw-1)*3,3) ;
   return QString(val<0 ? "!" : "") + temp ;
-#else
-  return QString(val<0 ? "!" : "") + switches.mid((abs(val)-1)*3,3);
-#endif
 }
 
 #ifdef SKY
@@ -1117,9 +1273,43 @@ int getSwitchCbValue( QComboBox *b, int eepromType )
 	value = b->currentIndex()-limit ;
 	return switchMap( value, eepromType ) ;
 }
+#else
+int getSwitchCbValue( QComboBox *b, int eepromType )
+{
+	int value ;
+  int limit = MaxSwitchIndex ;
+	value = b->currentIndex()-limit ;
+  return switchMap( value ) ;
+}
 #endif
 
 #ifdef SKY
+
+int getAndSwitchCbValue( QComboBox *b )
+{
+  int limit = MaxSwitchIndex[0] - 1 ;
+	int value = b->currentIndex() - limit ;
+	value = switchMap( value, 0 ) ;
+	if ( value == 9 )
+	{
+		value = 9+NUM_SKYCSW+1 ;
+	}
+	if ( value == -9 )
+	{
+		value = -(9+NUM_SKYCSW+1) ;
+	}
+	if ( ( value > 9 ) && ( value <= 9+NUM_SKYCSW+1 ) )
+	{
+		value -= 1 ;
+	}
+	if ( ( value < -9 ) && ( value >= -(9+NUM_SKYCSW+1) ) )
+	{
+		value += 1 ;
+	}
+
+	return value ;
+}
+
 int getSwitchCbValueShort( QComboBox *b, int eepromType )
 {
 	int value ;
@@ -1177,29 +1367,19 @@ void populateSwitchCB(QComboBox *b, int value, int eepromType)
 //	}
 #endif
 #ifndef SKY
-	int limit = MAX_DRSWITCH ;
-  if ( eepromType )
-	{
-    limit += EXTRA_CSW ;
-	}
+  int limit = MaxSwitchIndex ;
 #endif
     for(int i=-limit; i<=limit; i++)
-#ifdef SKY
 		{
-//			int j ;
-//			j = eepromType ? i : switchMap(i, eepromType) ;
       b->addItem(getMappedSWName(i,eepromType));
 		}
-#else
-      b->addItem(getSWName(i,eepromType));
-#endif
-#ifdef SKY
 		int j ;
-		j = switchUnMap(value, eepromType) ;
-    b->setCurrentIndex(j+limit);
+#ifdef SKY
+    j = switchUnMap(value, eepromType) ;
 #else
-    b->setCurrentIndex(value+limit);
+    j = switchUnMap(value) ;
 #endif
+    b->setCurrentIndex(j+limit);
     b->setMaxVisibleItems(10);
 }
 
@@ -1323,52 +1503,80 @@ int decodePhaseTrim( int16_t *existing, int index )
 	return index ;
 }
 
-void populateSwitchxAndCB(QComboBox *b, int value=0)
+#ifndef SKY
+void populateSwitchxAndCB(QComboBox *b, int value, int eepromType)
 {
-	char name[6] ;
-	name[0] = '!' ;
-	name[1] = 'L' ;
-//	name[2] = 'W' ;
-	name[3] = 0 ;
-	
 	b->clear();
-  
-  b->addItem("!TRN");
-	for(int i='I' ; i>= 'A' ; i -= 1 )
+  int limit = MaxSwitchIndex-1 ;
+//  b->addItem("!TRN");
+  for(int j=-limit; j<=limit; j++)
 	{
-		name[2] = i ;
-     b->addItem(name);
-	}
-  for(int i= '9' ; i>='1'; i -= 1 )
-	{
-		name[2] = i ;
-    b->addItem(name);
-	}
+		int i ;
+  	i = switchMap(j) ;
 
- 	for(int i=-8 ; i<=8; i += 1)
-#ifdef SKY
-    b->addItem(getSWName(i,0));
-#else
-    b->addItem(getSWName(i,0));
-#endif
+//		if ( ( i > 8 ) && ( i <= 9+NUM_CSW+EXTRA_CSW ) )
+//		{
+//			i = i + 1 ;
+//		}
+//		else if ( ( i < -8 ) && ( i >= -(9+NUM_CSW+EXTRA_CSW) ) )
+//		{
+//			i= i - 1 ;
+//		}
+		b->addItem(getSWName(i,eepromType));
+	}
+//  b->addItem("TRN");
+	int x = value ;
+	if ( ( x > 8 ) && ( x <= 9+NUM_CSW+EXTRA_CSW ) )
+	{
+		x += 1 ;
+	}
+	if ( ( x < -8 ) && ( x >= -(9+NUM_CSW+EXTRA_CSW) ) )
+	{
+		x -= 1 ;
+	}
+	if ( x == 9+NUM_CSW+EXTRA_CSW+1 )
+	{
+		x = 9 ;
+	}
+	if ( x == -(9+NUM_CSW+EXTRA_CSW+1) )
+	{
+		x = -9 ;
+	}
+  x = switchUnMap(x) ;
 
-	name[0] = 'L' ;
-//	name[1] = 'W' ;
-	name[2] = 0 ;
-  for(int i='1'; i<= '9'; i++)
-	{
-		name[1] = i ;
-    b->addItem(name);
-	}
-  for(int i='A' ; i<= 'I' ; i++)
-	{
-		name[1] = i ;
-    b->addItem(name);
-	}
-  b->addItem("TRN");
-  b->setCurrentIndex(value+27);
-  b->setMaxVisibleItems(10);
+  b->setCurrentIndex(x+limit);
+	b->setMaxVisibleItems(10);
 }
+
+int getxAndSwitchCbValue( QComboBox *b, int eepromType )
+{
+  int limit = MaxSwitchIndex - 1 ;
+	int value = b->currentIndex() - limit ;
+//	if ( abs(value) == limit )
+//	{
+//		return (value > 0) ? 9 : -9 ;	// "TRN"
+//	}
+	value = switchMap( value ) ;
+	if ( value == 9 )
+	{
+		value = 9+NUM_CSW+EXTRA_CSW+1 ;
+	}
+	if ( value == -9 )
+	{
+		value = -(9+NUM_CSW+EXTRA_CSW+1) ;
+	}
+	if ( ( value > 9 ) && ( value <= 9+NUM_CSW+EXTRA_CSW+1 ) )
+	{
+		value -= 1 ;
+	}
+	if ( ( value < -9 ) && ( value >= -(9+NUM_CSW+EXTRA_CSW+1) ) )
+	{
+		value += 1 ;
+	}
+
+	return value ;
+}
+#endif
 
 void x9dPopulateSwitchAndCB(QComboBox *b, int value=0)
 {
@@ -1444,7 +1652,6 @@ void populateSwitchAndCB(QComboBox *b, int value=0)
 	b->clear();
   
 #ifdef SKY
-  b->addItem("!TRN");
 	for(int i='O' ; i>= 'A' ; i -= 1 )
 	{
 		name[2] = i ;
@@ -1457,6 +1664,7 @@ void populateSwitchAndCB(QComboBox *b, int value=0)
 	}
 #endif
 #ifdef SKY
+  b->addItem("!TRN");
   for(int i=-(MaxSwitchIndex[0]-2-NUM_SKYCSW) ; i<=(MaxSwitchIndex[0]-2-NUM_SKYCSW); i += 1)
 #else 	
 	for(int i=0 ; i<=8; i += 1)
@@ -1471,6 +1679,7 @@ void populateSwitchAndCB(QComboBox *b, int value=0)
     b->addItem(getSWName(i,0));
 #endif
 
+  b->addItem("TRN");
 	name[0] = 'L' ;
 //	name[1] = 'W' ;
 	name[2] = 0 ;
@@ -1485,12 +1694,28 @@ void populateSwitchAndCB(QComboBox *b, int value=0)
 		name[1] = i ;
     b->addItem(name);
 	}
-  b->addItem("TRN");
 #endif
 #ifdef SKY
-		int j ;
-    j = switchUnMap(value, 0) ;
-    b->setCurrentIndex(j+MaxSwitchIndex[0]-1) ;
+	int x = value ;
+	if ( ( x > 8 ) && ( x <= 9+NUM_SKYCSW ) )
+	{
+		x += 1 ;
+	}
+	if ( ( x < -8 ) && ( x >= -(9+NUM_SKYCSW) ) )
+	{
+		x -= 1 ;
+	}
+	if ( x == 9+NUM_SKYCSW+1 )
+	{
+		x = 9 ;
+	}
+	if ( x == -(9+NUM_SKYCSW+1) )
+	{
+		x = -9 ;
+	}
+  x = switchUnMap(x, 0 ) ;
+
+    b->setCurrentIndex(x+MaxSwitchIndex[0]-1) ;
 #else
     b->setCurrentIndex(value);//+MAX_DRSWITCH-1);
 #endif
@@ -1849,9 +2074,24 @@ QString getSourceStr(int stickMode, int idx, int modelVersion )
 					{
 						return "SR  " ;
 					}
-					if ( idx > 8 )
+					int offset = 1 ;
+					if ( type == 2 )	// Plus
 					{
-						idx -= 1 ;
+						if ( idx == 9 )
+						{
+							return "P3  " ;
+						}
+						if ( idx > 9 )
+						{
+							idx -= 2 ;
+						}
+					}
+					else
+					{
+						if ( idx > 8 )
+						{
+							idx -= 1 ;
+						}
 					}
 				}
 #endif
@@ -1888,6 +2128,10 @@ void populateSourceCB(QComboBox *b, int stickMode, int telem, int value, int mod
 		if ( type )
 		{
 			limit = 46 ;
+			if ( type == 2 )
+			{
+				limit = 47 ;
+			}
 		}
     for(int i=0; i<limit; i++) b->addItem(getSourceStr(stickMode,i,modelVersion, type));
 #else
@@ -1898,9 +2142,46 @@ void populateSourceCB(QComboBox *b, int stickMode, int telem, int value, int mod
     	for(int i=1; i<=NUM_TELEM_ITEMS; i++)
     	    b->addItem(TelemItems[i]);
 		}
+#ifdef SKY    
+		if ( type )
+		{
+			if ( value >= EXTRA_POTS_POSITION )
+			{
+				if ( value >= EXTRA_POTS_START )
+				{
+					value -= ( EXTRA_POTS_START - EXTRA_POTS_POSITION ) ;
+				}
+				else
+				{
+					value += type == 2 ? 2 : NUM_EXTRA_POTS ;
+				}
+			}
+		}
+#endif
     b->setCurrentIndex(value);
     b->setMaxVisibleItems(10);
 }
+
+#ifdef SKY    
+uint32_t decodePots( uint32_t value, int type )
+{
+	if ( type )
+	{
+		if ( value >= EXTRA_POTS_POSITION )
+		{
+      if ( value < EXTRA_POTS_POSITION + ( type == 2 ? 2 : NUM_EXTRA_POTS) )
+			{
+				value += EXTRA_POTS_START - EXTRA_POTS_POSITION ;
+			}
+			else
+			{
+        value -= type == 2 ? 2 : NUM_EXTRA_POTS ;
+			}
+		}
+	}
+  return value ;
+}
+#endif
 
 
 QString getCSWFunc(int val, uint8_t modelVersion )

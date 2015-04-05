@@ -727,6 +727,38 @@ msgctxt "GeneralEdit|"
 msgid "TelemetrEZ rev. >=90"
 msgstr ""
 
+msgctxt "GeneralEdit|"
+msgid "Hardware"
+msgstr ""
+
+msgctxt "GeneralEdit|"
+msgid "Ele Switch"
+msgstr ""
+
+msgctxt "GeneralEdit|"
+msgid "Ail Switch"
+msgstr ""
+
+msgctxt "GeneralEdit|"
+msgid "PB1 Switch"
+msgstr ""
+
+msgctxt "GeneralEdit|"
+msgid "PB2 Switch"
+msgstr ""
+
+msgctxt "GeneralEdit|"
+msgid "PG2 Input"
+msgstr ""
+
+msgctxt "GeneralEdit|"
+msgid "PB7 Input"
+msgstr ""
+
+msgctxt "GeneralEdit|"
+msgid "L-WR Input"
+msgstr ""
+
 msgctxt "MainWindow|"
 msgid "&New"
 msgstr "&Nouveau"
@@ -1991,10 +2023,6 @@ msgstr ""
 
 msgctxt "MixerDialog|"
 msgid "Fix Offset"
-msgstr ""
-
-msgctxt "MixerDialog|"
-msgid "Src Switch"
 msgstr ""
 
 msgctxt "ModelEdit|"
@@ -3290,15 +3318,138 @@ msgid "Voice Alarm %1"
 msgstr ""
 
 msgctxt "ModelEdit|"
-msgid "-100%"
-msgstr ""
-
-msgctxt "ModelEdit|"
-msgid "0%"
-msgstr ""
-
-msgctxt "ModelEdit|"
 msgid "Use Custom Stick Names"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "Throttle Default"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "End"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "Centre"
+msgstr ""
+
+#, fuzzy
+msgctxt "ModelEdit|"
+msgid "Reverse Throttle Operation"
+msgstr "Inversion des gaz"
+
+msgctxt "ModelEdit|"
+msgid "Switch Warning"
+msgstr ""
+
+#, fuzzy
+msgctxt "ModelEdit|"
+msgid ""
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" "
+"\"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style "
+"type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:'MS Shell Dlg 2'; "
+"font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; "
+"margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" "
+"text-decoration: underline;\">Warnings</span></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; "
+"margin-left:0px; margin-right:0px; -qt-block-indent:0; "
+"text-indent:0px;\"></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; "
+"margin-right:0px; -qt-block-indent:0; text-indent:0px;\">These will define "
+"startup warnings.</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; "
+"margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Throttle warning - "
+"will alert if the throttle is not at idle during startup</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; "
+"margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Switch warning - "
+"will alert if switches are not in their defaul position</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; "
+"margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Memory warning - "
+"will alert if there's not a lot of memory left</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; "
+"margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Silent mode warning "
+"- will alert you if the beeper is set to quiet (0)</p></body></html>"
+msgstr ""
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" "
+"\"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style "
+"type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:'MS Shell Dlg 2'; "
+"font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; "
+"margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" "
+"text-decoration: underline;\">Alertes</span></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; "
+"margin-left:0px; margin-right:0px; -qt-block-indent:0; "
+"text-indent:0px;\"></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; "
+"margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Définit les alertes "
+"au démarrage.</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; "
+"margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Alerte gaz - "
+"Avertissement si les gaz ne sont pas à 0 au démarrage</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; "
+"margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Alerte "
+"interrupteurs - Avertissement si un ou plusieurs interrupteurs ne sont pas "
+"au repos</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; "
+"margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Alerte mémoire - "
+"Avertissement si la mémoire disponible est insuffisante</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; "
+"margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Alerte mode "
+"silencieux - Avertissement si les bips sont désactivés</p></body></html>"
+
+msgctxt "ModelEdit|"
+msgid "Enable"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "ID0"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "ID1"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "ID2"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "GEA"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "SA"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "SB"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "SC"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "SE"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "SG"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "SD"
+msgstr ""
+
+msgctxt "ModelEdit|"
+msgid "SF"
 msgstr ""
 
 msgctxt "QObject|"
@@ -3988,6 +4139,46 @@ msgctxt "burnConfigDialog|"
 msgid "m2561"
 msgstr ""
 
+msgctxt "burnConfigDialog|"
+msgid "com21"
+msgstr ""
+
+msgctxt "burnConfigDialog|"
+msgid "com22"
+msgstr ""
+
+msgctxt "burnConfigDialog|"
+msgid "com23"
+msgstr ""
+
+msgctxt "burnConfigDialog|"
+msgid "com24"
+msgstr ""
+
+msgctxt "burnConfigDialog|"
+msgid "com25"
+msgstr ""
+
+msgctxt "burnConfigDialog|"
+msgid "com26"
+msgstr ""
+
+msgctxt "burnConfigDialog|"
+msgid "com27"
+msgstr ""
+
+msgctxt "burnConfigDialog|"
+msgid "com28"
+msgstr ""
+
+msgctxt "burnConfigDialog|"
+msgid "com29"
+msgstr ""
+
+msgctxt "burnConfigDialog|"
+msgid "com30"
+msgstr ""
+
 msgctxt "customizeSplashDialog|"
 msgid "Customize Splash"
 msgstr ""
@@ -4612,6 +4803,10 @@ msgctxt "preferencesDialog|"
 msgid "Default EEPROM version"
 msgstr ""
 
+msgctxt "preferencesDialog|"
+msgid "er9x - Frsky - Serial voice"
+msgstr ""
+
 msgctxt "printDialog|"
 msgid "Low"
 msgstr "Bas"
@@ -4940,6 +5135,47 @@ msgctxt "serialDialog|"
 msgid "Communication Failure(2)"
 msgstr ""
 
+msgctxt "serialDialog|"
+msgid "Receive"
+msgstr ""
+
+msgctxt "serialDialog|"
+msgid "Receive Dir."
+msgstr ""
+
+msgctxt "serialDialog|"
+msgid "Set Dir."
+msgstr ""
+
+msgctxt "serialDialog|"
+msgid "List  Models"
+msgstr ""
+
+#, fuzzy
+msgctxt "serialDialog|"
+msgid "Delete"
+msgstr "Supprimer"
+
+msgctxt "serialDialog|"
+msgid "Select Save Directory"
+msgstr ""
+
+msgctxt "serialDialog|"
+msgid "Comms Failure(1)"
+msgstr ""
+
+msgctxt "serialDialog|"
+msgid "Comms Failure(2)"
+msgstr ""
+
+msgctxt "serialDialog|"
+msgid "No Receive Directory Specified"
+msgstr ""
+
+msgctxt "serialDialog|"
+msgid "Comms Failure(3)"
+msgstr ""
+
 msgctxt "simulatorDialog|"
 msgid "P1"
 msgstr ""
@@ -5166,6 +5402,14 @@ msgstr ""
 
 msgctxt "simulatorDialog|"
 msgid "Com Port Unavailable"
+msgstr ""
+
+msgctxt "simulatorDialog|"
+msgid "PB1"
+msgstr ""
+
+msgctxt "simulatorDialog|"
+msgid "PB2"
 msgstr ""
 
 #, fuzzy

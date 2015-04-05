@@ -125,6 +125,7 @@
 #define DNLD_VER_ER9X_128_DE		 11
 #define DNLD_VER_ER9X_NO         12
 #define DNLD_VER_ER9X_2561       13
+#define DNLD_VER_ER9X_FRSKY_SV   14
 
 #define ER9X_URL   "http://er9x.googlecode.com/svn/trunk/er9x.hex"
 #define ER9X_NOHT_URL   "http://er9x.googlecode.com/svn/trunk/er9x-noht.hex"
@@ -132,6 +133,7 @@
 //#define ER9X_NOHT_SPKR_URL   "http://er9x.googlecode.com/svn/trunk/er9x-noht-spkr.hex"
 #define ER9X_JETI_URL   "http://er9x.googlecode.com/svn/trunk/er9x-jeti.hex"
 #define ER9X_FRSKY_URL   "http://er9x.googlecode.com/svn/trunk/er9x-frsky.hex"
+#define ER9X_FRSKY_SV_URL   "http://er9x.googlecode.com/svn/trunk/er9x-frsky-sv.hex"
 #define ER9X_FRSKY_NOHT_URL   "http://er9x.googlecode.com/svn/trunk/er9x-frsky.hex"
 //#define ER9X_FRSKY_SPKR_URL   "http://er9x.googlecode.com/svn/trunk/er9x-frsky-spkr.hex"
 //#define ER9X_FRSKY_NOHT_SPKR_URL   "http://er9x.googlecode.com/svn/trunk/er9x-frsky-noht-spkr.hex"
@@ -171,6 +173,7 @@ void populateDownloads( QComboBox *b )
   b->addItem( "er9x - 128 - German" ) ;
   b->addItem( "er9x - Norwegian" ) ;
   b->addItem( "er9x - 2561" ) ;
+  b->addItem( "er9x - FrSky - Serial Voice" ) ;
 }	
 
 MainWindow::MainWindow()
@@ -245,6 +248,10 @@ void MainWindow::releaseNotes()
 	int *ptr ;
 	
 	QString rnotes =
+	"Googlecode is closing down. This project will move to Github.\n"
+	"It may be found at: https://github.com/MikeBland/mbtx in due course.\n"
+	"The voice module may now have a serial connection. This allows for model\n"
+	"BACKUP to and RESTORE from the SD card on the voice module.\n"
 	"The model version is now 4. The timer triggers have been changed, but Timer 2 now\n"
 	"also has the same trigger options as Timer 1. Both also have a RESET switch field that may be set.\n"
 	"Googlecode has blocked downloads of .exe files\n"
@@ -264,9 +271,9 @@ void MainWindow::releaseNotes()
 	"ON for at least 0.1 seconds, the F-Flop is set to the same state as the 'data'.\n\n"
 	"The model version is now 3, a button is available in the SETUP tab to convert\n"
 	"models within eepe.\n\n"
-	"ADVANCE WARNING: The mixer function 'FlightMode Trim' will be REMOVED in a future revision.\n"
+	"The mixer function 'FlightMode Trim' has been REMOVED.\n"
 	"Please now use a 'real' flight mode for this function.\n"
-	"The following specific items will also be removed: 'Alt Alarm', 'mAh Alarm' and 'Volt Thres'.\n"
+	"The following specific items have also been removed: 'Alt Alarm', 'mAh Alarm' and 'Volt Thres'.\n"
 	"They can all be implemented using a custom switch, and a safety switch set either as an Audio\n"
 	"switch or as a Voice switch."
 	 ;
@@ -360,6 +367,10 @@ void MainWindow::reply1Finished(QNetworkReply * reply)
             case (DNLD_VER_ER9X_FRSKY_NOHT):
                 dnldURL = ER9X_FRSKY_URL;
                 baseFileName = "er9x-frsky.hex";
+                break;
+            case (DNLD_VER_ER9X_FRSKY_SV):
+                dnldURL = ER9X_FRSKY_SV_URL;
+                baseFileName = "er9x-frsky-sv.hex";
                 break;
             case (DNLD_VER_ER9X_ARDUPILOT):
                 dnldURL = ER9X_ARDUPILOT_URL;

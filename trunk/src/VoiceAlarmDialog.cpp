@@ -109,13 +109,13 @@ void VoiceAlarmDialog::updateDisplay()
 
 void VoiceAlarmDialog::valuesChanged()
 {
-//	vad->swtch = getSwitchCbValue( ui->SwitchCB, leeType ) ;
-	int limit = MAX_DRSWITCH ;
-  if ( leeType )
-	{
-   	limit += EXTRA_CSW ;
-	}
-  vad->swtch = ui->SwitchCB->currentIndex() - limit ;
+	vad->swtch = getSwitchCbValue( ui->SwitchCB, leeType ) ;
+//	int limit = MAX_DRSWITCH ;
+//  if ( leeType )
+//	{
+//   	limit += EXTRA_CSW ;
+//	}
+//  vad->swtch = ui->SwitchCB->currentIndex() - limit ;
 	vad->source = ui->SourceCB->currentIndex() ;
 	vad->func = ui->FunctionCB->currentIndex() ;
 	vad->rate = ui->RateCB->currentIndex() ;

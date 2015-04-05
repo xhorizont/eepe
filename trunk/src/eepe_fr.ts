@@ -619,6 +619,38 @@ p, li { white-space: pre-wrap; }
         <source>TelemetrEZ rev. &gt;=90</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Hardware</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ele Switch</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ail Switch</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>PB1 Switch</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>PB2 Switch</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>PG2 Input</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>PB7 Input</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>L-WR Input</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>MainWindow</name>
@@ -1732,10 +1764,6 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Fix Offset</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Src Switch</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2998,15 +3026,99 @@ Droite</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>-100%</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>0%</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Use Custom Stick Names</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Throttle Default</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>End</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Centre</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Reverse Throttle Operation</source>
+        <translation type="unfinished">Inversion des gaz</translation>
+    </message>
+    <message>
+        <source>Switch Warning</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; text-decoration: underline;&quot;&gt;Warnings&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;These will define startup warnings.&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Throttle warning - will alert if the throttle is not at idle during startup&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Switch warning - will alert if switches are not in their defaul position&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Memory warning - will alert if there&apos;s not a lot of memory left&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Silent mode warning - will alert you if the beeper is set to quiet (0)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;MS Shell Dlg 2&apos;; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; text-decoration: underline;&quot;&gt;Alertes&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Définit les alertes au démarrage.&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Alerte gaz - Avertissement si les gaz ne sont pas à 0 au démarrage&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Alerte interrupteurs - Avertissement si un ou plusieurs interrupteurs ne sont pas au repos&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Alerte mémoire - Avertissement si la mémoire disponible est insuffisante&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Alerte mode silencieux - Avertissement si les bips sont désactivés&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <source>Enable</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>ID0</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>ID1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>ID2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>GEA</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SA</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SB</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SC</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SE</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SG</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SD</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>SF</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -3657,6 +3769,46 @@ Assurez-vous de posséder les droits en écriture sur ce dossier.</translation>
         <source>m2561</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>com21</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>com22</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>com23</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>com24</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>com25</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>com26</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>com27</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>com28</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>com29</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>com30</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>customizeSplashDialog</name>
@@ -4066,6 +4218,10 @@ Indique l&apos;affectation voie / numéro de canal par défaut utilisée lors de
         <source>Default EEPROM version</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>er9x - Frsky - Serial voice</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>printDialog</name>
@@ -4383,6 +4539,46 @@ Indique l&apos;affectation voie / numéro de canal par défaut utilisée lors de
         <source>Communication Failure(2)</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Receive</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Receive Dir.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Set Dir.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>List  Models</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation type="unfinished">Supprimer</translation>
+    </message>
+    <message>
+        <source>Select Save Directory</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Comms Failure(1)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Comms Failure(2)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No Receive Directory Specified</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Comms Failure(3)</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>simulatorDialog</name>
@@ -4612,6 +4808,14 @@ Indique l&apos;affectation voie / numéro de canal par défaut utilisée lors de
     </message>
     <message>
         <source>Com Port Unavailable</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>PB1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>PB2</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

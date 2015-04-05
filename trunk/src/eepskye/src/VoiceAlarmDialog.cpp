@@ -13,6 +13,25 @@ VoiceAlarmDialog::VoiceAlarmDialog(QWidget *parent, VoiceAlarmData *invad, int e
   lpModel = pModel ;
 	vad = invad ;
   populateSourceCB( ui->SourceCB, stickmode, 1, vad->source, modelVersion, eeType ) ;
+	
+//	uint32_t value ;
+//	value = vad->source ;
+//	if ( eeType )
+//	{
+//		if ( value >= EXTRA_POTS_POSITION )
+//		{
+//			if ( value >= EXTRA_POTS_START )
+//			{
+//				value -= ( EXTRA_POTS_START - EXTRA_POTS_POSITION ) ;
+//			}
+//			else
+//			{
+//				value += eeType == 2 ? 2 : NUM_EXTRA_POTS ;
+//			}
+//		}
+//	}
+//  ui->SourceCB->setCurrentIndex(value) ;
+
 	populateSwitchCB( ui->SwitchCB, vad->swtch, eeType ) ;
 	ui->FunctionCB->setCurrentIndex( vad->func ) ;
 	ui->RateCB->setCurrentIndex( vad->rate ) ;
@@ -106,7 +125,11 @@ void VoiceAlarmDialog::updateDisplay()
 void VoiceAlarmDialog::valuesChanged()
 {
 	vad->swtch = getSwitchCbValue( ui->SwitchCB, leeType ) ;
-	vad->source = ui->SourceCB->currentIndex() ;
+	
+  uint32_t value ;
+	value = ui->SourceCB->currentIndex() ;
+  value = decodePots( value, leeType ) ;
+	vad->source = value ;
 	vad->func = ui->FunctionCB->currentIndex() ;
 	vad->rate = ui->RateCB->currentIndex() ;
 	vad->haptic = ui->HapticCB->currentIndex() ;

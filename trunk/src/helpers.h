@@ -64,12 +64,16 @@ void populateAlarmCB(QComboBox *b, int value);
 void populateCurvesCB(QComboBox *b, int value);
 #ifdef SKY
 void populateTimerSwitchCB(QComboBox *b, int value ) ;
+int getAndSwitchCbValue( QComboBox *b ) ;
 #else
 void populateTimerSwitchCB(QComboBox *b, int value, int eepromType) ;
 #endif
-void populateSwitchxAndCB(QComboBox *b, int value) ;
+void populateSwitchxAndCB(QComboBox *b, int value, int eepromType) ;
+int getxAndSwitchCbValue( QComboBox *b, int eepromType ) ;
 void populateSwitchAndCB(QComboBox *b, int value) ;
 void x9dPopulateSwitchAndCB(QComboBox *b, int value) ;
+
+void populateHardwareSwitch(QComboBox *b, int value ) ;
 
 #ifdef SKY
 void populateTmrBSwitchCB(QComboBox *b, int value, int eepromType) ;
@@ -81,6 +85,9 @@ void populateTmrBSwitchCB(QComboBox *b, int value, int extra ) ;
 void populateSourceCB(QComboBox *b, int stickMode, int telem, int value, int modelVersion, int type) ;
 #else
 void populateSourceCB(QComboBox *b, int stickMode, int telem, int value, int modelVersion) ;
+#endif
+#ifdef SKY    
+uint32_t decodePots( uint32_t value, int type ) ;
 #endif
 void populateCSWCB(QComboBox *b, int value, uint8_t modelVersion );
 #ifdef SKY
@@ -162,6 +169,13 @@ int getSwitchCbValueShort( QComboBox *b, int eepromType ) ;
 int getTimerSwitchCbValue( QComboBox *b, int eepromType ) ;
 uint8_t getSw3PosList( int index ) ;
 uint8_t getSw3PosCount( int index ) ;
+#else
+void createSwitchMapping( EEGeneral *pgeneral, int type ) ;
+int8_t switchUnMap( int8_t x ) ;
+int8_t switchMap( int8_t x ) ;
+int getSwitchCbValue( QComboBox *b, int type ) ;
+int getSwitchCbValueShort( QComboBox *b, int type ) ;
+int getTimerSwitchCbValue( QComboBox *b, int type ) ;
 #endif
 
 #ifdef SKY

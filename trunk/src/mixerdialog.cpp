@@ -287,7 +287,7 @@ void MixerDialog::valuesChanged()
     md->weight       = numericSpinGvarValue( ui->weightSB, ui->weightCB, ui->weightGvChkB, md->weight, 100 ) ;
     md->sOffset      = numericSpinGvarValue( ui->offsetSB, ui->offsetCB, ui->offsetGvChkB, md->sOffset, 0 ) ;
     md->carryTrim    = ui->trimChkB->checkState() ? 0 : 1;
-    md->swtch        = ui->switchesCB->currentIndex()-limit ;
+    md->swtch        = getSwitchCbValue( ui->switchesCB, mType ) ;
     md->mixWarn      = ui->warningCB->currentIndex();
     md->mltpx        = ui->mltpxCB->currentIndex();
 		if ( delaySlowSpeed )

@@ -94,6 +94,8 @@ simulatorDialog::simulatorDialog( QWidget *parent) :
 		timer = 0 ;
     CalcScaleNest = 0 ;
 
+		ui->SEleSlider->setValue(0) ;
+
 		QList<QextPortInfo> ports = QextSerialEnumerator::getPorts() ;
     ui->serialPortCB->clear() ;
 	  foreach (QextPortInfo info, ports)
@@ -182,6 +184,7 @@ void simulatorDialog::timerEvent()
 			{
 	    	memcpy(&g_eeGeneral,&Sim_g,sizeof(EEGeneral));
 				GeneralDataValid = 0 ;
+				configSwitches() ;
 			}
 			if ( ModelDataValid )
 			{
@@ -550,6 +553,53 @@ void simulatorDialog::setType( uint8_t type )
 	setCsVisibles() ;
 }
 
+void simulatorDialog::configSwitches()
+{
+	if ( g_eeGeneral.switchMapping & USE_ELE_3POS )
+	{
+		ui->SAwidget->show() ;
+		ui->switchELE->hide() ;
+	}
+	else
+	{
+//		ui->SEleSlider->setMaximum( 2 ) ;
+//		ui->labelSA->setText("ELE") ;
+		ui->switchELE->show() ;
+		ui->SAwidget->hide() ;
+	}
+	if ( g_eeGeneral.switchMapping & USE_AIL_3POS )
+	{
+		ui->SBwidget->show() ;
+		ui->switchAIL->hide() ;
+	}
+	else
+	{
+//		ui->SAilSlider->setMaximum( 2 ) ;
+//		ui->labelSB->setText("AIL") ;
+		ui->switchAIL->show() ;
+		ui->SBwidget->hide() ;
+	}
+	if ( g_eeGeneral.switchMapping & USE_PB1 )
+	{
+		ui->switchPB1->show() ;
+	}
+	else
+	{
+		ui->switchPB1->hide() ;
+	}
+	if ( g_eeGeneral.switchMapping & USE_PB2 )
+	{
+		ui->switchPB2->show() ;
+	}
+	else
+	{
+		ui->switchPB2->hide() ;
+	}
+
+}
+
+
+
 void simulatorDialog::loadParams(const EEGeneral gg, const ModelData gm)
 {
     memcpy(&g_eeGeneral,&gg,sizeof(EEGeneral));
@@ -598,6 +648,7 @@ void simulatorDialog::loadParams(const EEGeneral gg, const ModelData gm)
     s_sum = 0;
     sw_toggled = 0;
 
+		configSwitches() ;
     setupTimer();
 		GlobalModified = 0 ;
 }
@@ -806,8 +857,6 @@ void simulatorDialog::getValues()
 				uint32_t y ;
 				y = g_model.gvars[i].gvsource - 1 ;
 
-				y = adjustMode( y ) ;
-				
 //				uint32_t phaseNo = getTrimFlightPhase( CurrentPhase, y ) ;
 				value = getTrimValue( CurrentPhase, y ) ;
 				 
@@ -1120,6 +1169,48 @@ inline qint16 calc1000toRESX(qint16 x)
     return x + x/32 - x/128 + x/512;
 }
 
+bool simulatorDialog::hwKeyState(int key)
+{
+  switch (key)
+  {
+    case (HSW_ThrCt):   return ui->switchTHR->isChecked(); break;
+    case (HSW_RuddDR):  return ui->switchRUD->isChecked(); break;
+    case (HSW_ElevDR):  return ui->switchELE->isChecked(); break;
+    case (HSW_ID0):     return ui->switchID0->isChecked(); break;
+    case (HSW_ID1):     return ui->switchID1->isChecked(); break;
+    case (HSW_ID2):     return ui->switchID2->isChecked(); break;
+    case (HSW_AileDR):  return ui->switchAIL->isChecked(); break;
+    case (HSW_Gear):    return ui->switchGEA->isChecked(); break;
+    case (HSW_Trainer): return ui->switchTRN->isDown(); break;
+			
+//		case HSW_Thr3pos0	:	return ui->SEslider->value() == 0 ; break ;
+//		case HSW_Thr3pos1	:	return ui->SEslider->value() == 1 ; break ;
+//		case HSW_Thr3pos2	:	return ui->SEslider->value() == 2 ; break ;
+//		case HSW_Rud3pos0	:	return ui->SEslider->value() == 0 ; break ;
+//		case HSW_Rud3pos1	:	return ui->SEslider->value() == 1 ; break ;
+//		case HSW_Rud3pos2	:	return ui->SEslider->value() == 2 ; break ;
+    case HSW_Ele3pos0	:	return ui->SEleSlider->value() == 0 ; break ;
+    case HSW_Ele3pos1	:	return ui->SEleSlider->value() == 1 ; break ;
+    case HSW_Ele3pos2	:	return ui->SEleSlider->value() == 2 ; break ;
+    case HSW_Ail3pos0	:	return ui->SAilSlider->value() == 0 ; break ;
+    case HSW_Ail3pos1	:	return ui->SAilSlider->value() == 1 ; break ;
+    case HSW_Ail3pos2	:	return ui->SAilSlider->value() == 2 ; break ;
+//		case HSW_Gear3pos0 :	return ui->SCslider->value() == 0 ; break ;
+//		case HSW_Gear3pos1 :	return ui->SCslider->value() == 1 ; break ;
+//		case HSW_Gear3pos2 :	return ui->SCslider->value() == 2 ; break ;
+//		case HSW_Ele6pos0 :	return ui->SAslider->value() == 0 ; break ;
+//		case HSW_Ele6pos1 :	return ui->SAslider->value() == 1 ; break ;
+//		case HSW_Ele6pos2 :	return ui->SAslider->value() == 2 ; break ;
+//		case HSW_Ele6pos3 :	return ui->SAslider->value() == 3 ; break ;
+//		case HSW_Ele6pos4 :	return ui->SAslider->value() == 4 ; break ;
+//		case HSW_Ele6pos5 :	return ui->SAslider->value() == 5 ; break ;
+    case HSW_Pb1	:	return ui->switchPB1->isDown() ; break ;
+    case HSW_Pb2	:	return ui->switchPB2->isDown() ; break ;
+    default:
+      return keyState( (EnumKeys) key ) ;
+    break;
+	}
+}
 
 bool simulatorDialog::keyState(EnumKeys key)
 {
@@ -1167,6 +1258,7 @@ bool simulatorDialog::getSwitch(int swtch, bool nc, qint8 level)
 {
     bool ret_value ;
     uint8_t cs_index ;
+		int limit = ee_type ? MAX_DRSWITCH+EXTRA_CSW : MAX_DRSWITCH ;
     
 		if(level>5) return false; //prevent recursive loop going too deep
 
@@ -1192,6 +1284,19 @@ bool simulatorDialog::getSwitch(int swtch, bool nc, qint8 level)
     	}
 		}
 
+		if ( abs(swtch) > limit )
+		{
+			uint8_t value = hwKeyState( abs(swtch) ) ;
+			if ( swtch > 0 )
+			{
+				return value ;
+			}
+			else
+			{
+				return !value ;
+			}
+		}
+
     uint8_t dir = swtch>0;
 		
 		if(abs(swtch)<(PHY_SWITCH))
@@ -1199,7 +1304,7 @@ bool simulatorDialog::getSwitch(int swtch, bool nc, qint8 level)
         if(!dir) return ! keyState((EnumKeys)(SW_BASE-swtch-1));
         return            keyState((EnumKeys)(SW_BASE+swtch-1));
     }
-
+		
     //custom switch, Issue 78
     //use putsChnRaw
     //input -> 1..4 -> sticks,  5..8 pots
@@ -1261,7 +1366,9 @@ bool simulatorDialog::getSwitch(int swtch, bool nc, qint8 level)
     		    break;
 
     		case (CS_AND):
-    		    ret_value = (getSwitch(a,0,level+1) && getSwitch(b,0,level+1));
+					x = getSwitch(a,0,level+1) ;
+					y = getSwitch(b,0,level+1) ;
+    		    ret_value = x && y ;
     		    break;
     		case (CS_OR):
     		    ret_value = (getSwitch(a,0,level+1) || getSwitch(b,0,level+1));
@@ -1315,19 +1422,19 @@ bool simulatorDialog::getSwitch(int swtch, bool nc, qint8 level)
 					{
 						int8_t x ;
 						x = cs.andsw ;
-						if ( x > 8 )
+						if ( ( x > 8 ) && ( x <= 9+NUM_CSW+EXTRA_CSW ) )
 						{
 							x += 1 ;
 						}
-						if ( x < -8 )
+						if ( ( x < -8 ) && ( x >= -(9+NUM_CSW+EXTRA_CSW) ) )
 						{
 							x -= 1 ;
 						}
-						if ( x > 9+NUM_CSW )
+						if ( x == 9+NUM_CSW+EXTRA_CSW+1 )
 						{
 							x = 9 ;			// Tag TRN on the end, keep EEPROM values
 						}
-						if ( x < -(9+NUM_CSW) )
+						if ( x == -(9+NUM_CSW+EXTRA_CSW+1) )
 						{
 							x = -9 ;			// Tag TRN on the end, keep EEPROM values
 						}

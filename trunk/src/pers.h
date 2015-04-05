@@ -91,7 +91,35 @@ enum EnumKeys {
   SW_Trainer
 };
 
-#define SWITCHES_STR "THR""RUD""ELE""ID0""ID1""ID2""AIL""GEA""TRN""L1 ""L2 ""L3 ""L4 ""L5 ""L6 ""L7 ""L8 ""L9 ""LA ""LB ""LC LD LE LF LG LH LI "
+// Hardware switch mappings:
+#define HSW_ThrCt			1
+#define HSW_RuddDR		2
+#define HSW_ElevDR		3
+#define HSW_ID0				4
+#define HSW_ID1				5
+#define HSW_ID2				6
+#define HSW_AileDR		7
+#define HSW_Gear			8
+#define HSW_Trainer		9
+
+#define HSW_Ele3pos0	31
+#define HSW_Ele3pos1	32
+#define HSW_Ele3pos2	33
+#define HSW_Rud3pos0	34
+#define HSW_Rud3pos1	35
+#define HSW_Rud3pos2	36
+#define HSW_Ail3pos0	37
+#define HSW_Ail3pos1	38
+#define HSW_Ail3pos2	39
+#define HSW_Gear3pos0	40
+#define HSW_Gear3pos1	41
+#define HSW_Gear3pos2	42
+#define HSW_Pb1				43
+#define HSW_Pb2				44
+#define HSW_MAX				44
+
+
+#define SWITCHES_STR "THRRUDELEID0ID1ID2AILGEATRNL1 L2 L3 L4 L5 L6 L7 L8 L9 LA LB LC LD LE LF LG LH LI EL^EL-ELvRU^RU-RUvAI^AI-AIvGE^GE-GEvPB1PB2"
 #define NUM_CSW  12 //number of custom switches
 #define EXTRA_CSW	6
 #define EXTRA_VOICE_SW	8
@@ -214,6 +242,15 @@ enum EnumKeys {
 #define DSW_SWH   26
 #define DSW_SWI   27
 
+
+#define	USE_THR_3POS	0x01
+#define	USE_RUD_3POS	0x02
+#define	USE_ELE_3POS	0x04
+#define	USE_ELE_6POS	0x08
+#define	USE_AIL_3POS	0x10
+#define	USE_GEA_3POS	0x20
+#define	USE_PB1				0x40
+#define	USE_PB2				0x80
 
 #define NUM_KEYS TRM_RH_UP+1
 #define TRM_BASE TRM_LH_DWN

@@ -120,6 +120,7 @@ Section "eePe" SecDummy
     ;Create shortcuts
     CreateDirectory "$SMPROGRAMS\$StartMenuFolder"
 	CreateShortCut "$SMPROGRAMS\$StartMenuFolder\eePe.lnk" "$INSTDIR\eePe.exe"
+	CreateShortCut "$SMPROGRAMS\$StartMenuFolder\eePskye.lnk" "$INSTDIR\eePskye.exe"
 	CreateShortCut "$SMPROGRAMS\$StartMenuFolder\er9x Users Manual.lnk" "$INSTDIR\ER9x Users Manual.pdf"
     CreateShortCut "$SMPROGRAMS\$StartMenuFolder\Uninstall.lnk" "$INSTDIR\Uninstall.exe"
   
@@ -174,6 +175,7 @@ Section "Uninstall"
   !insertmacro MUI_STARTMENU_GETFOLDER Application $StartMenuFolder
     
   Delete "$SMPROGRAMS\$StartMenuFolder\eePe.lnk"
+  Delete "$SMPROGRAMS\$StartMenuFolder\eePskye.lnk"
   Delete "$SMPROGRAMS\$StartMenuFolder\Uninstall.lnk"
   RMDir "$SMPROGRAMS\$StartMenuFolder"
   

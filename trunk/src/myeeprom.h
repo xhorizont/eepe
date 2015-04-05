@@ -187,6 +187,18 @@ PACK(typedef struct t_EEGeneral {
 		uint8_t		stickReverse ;
 #endif
 		uint8_t		customStickNames[16] ;
+    uint8_t   switchMapping ;
+		uint8_t	ele2source:4 ;
+		uint8_t	ail2source:4 ;
+		uint8_t	rud2source:4 ;
+		uint8_t	gea2source:4 ;
+		uint8_t pb1source:4 ;
+		uint8_t pb2source:4 ;
+    uint8_t pg2Input:1 ;
+    uint8_t pb7Input:1 ;
+    uint8_t lcd_wrInput:1 ;
+    uint8_t  spare5:5 ;
+    uint8_t  exSwitchWarningStates ;
 }) EEGeneral;
 
 
