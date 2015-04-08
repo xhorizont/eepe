@@ -1131,9 +1131,9 @@ msgstr "Enregister Sous"
 #~ msgid "EEPROM hex files (*.hex);;EEPROM bin files (*.bin)"
 #~ msgstr "Fichiers EEPROM hexa (*.hex);;Fichiers EEPROM binaires (*.bin)"
 
-msgctxt "MainWindow|"
-msgid "Executable (*.exe)"
-msgstr "Exécutable (*.exe)"
+#~ msgctxt "MainWindow|"
+#~ msgid "Executable (*.exe)"
+#~ msgstr "Exécutable (*.exe)"
 
 msgctxt "MainWindow|"
 msgid "No updates available at this time."
@@ -1418,6 +1418,10 @@ msgstr ""
 msgctxt "MainWindow|"
 msgid "Read Fuses"
 msgstr "Lire Fusibles"
+
+msgctxt "MainWindow|"
+msgid "Zip File (*.zip)"
+msgstr ""
 
 msgctxt "MdiChild|"
 msgid "&Cut"

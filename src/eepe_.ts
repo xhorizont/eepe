@@ -764,11 +764,6 @@ Mode 4:
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="598"/>
-        <source>Executable (*.exe)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="mainwindow.cpp" line="607"/>
         <source>A new version of eePe is available (r%1)
 To update please visit the eepe code page
@@ -1300,6 +1295,11 @@ http://code.google.com/p/eepe/</source>
     <message>
         <location filename="mainwindow.cpp" line="590"/>
         <source>A new version of eePe is available (r%1)&lt;br&gt;Would you like to download it?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="598"/>
+        <source>Zip File (*.zip)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

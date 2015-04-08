@@ -595,7 +595,7 @@ void MainWindow::reply2Finished(QNetworkReply * reply)
 
             if (ret == QMessageBox::Yes)
             {
-                QString fileName = QFileDialog::getSaveFileName(this, tr("Save As"),settings.value("lastDir").toString() + "/eePeInstall.exe",tr("Executable (*.exe)"));
+                QString fileName = QFileDialog::getSaveFileName(this, tr("Save As"),settings.value("lastDir").toString() + "/eePeInstall.zip",tr("Zip File (*.zip)"));
                 if (fileName.isEmpty()) return;
 
                 downloadDialog * dd = new downloadDialog(this,EEPE_URL,fileName);

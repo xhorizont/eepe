@@ -772,11 +772,6 @@ msgid ""
 "it?"
 msgstr ""
 
-#: mainwindow.cpp:598
-msgctxt "MainWindow|"
-msgid "Executable (*.exe)"
-msgstr ""
-
 #: mainwindow.cpp:607
 #, qt-format
 msgctxt "MainWindow|"
@@ -1316,6 +1311,11 @@ msgstr ""
 msgctxt "MainWindow|"
 msgid ""
 "A new version of eePe is available (r%1)<br>Would you like to download it?"
+msgstr ""
+
+#: mainwindow.cpp:598
+msgctxt "MainWindow|"
+msgid "Zip File (*.zip)"
 msgstr ""
 
 #: mainwindow.cpp:1216
