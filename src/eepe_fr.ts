@@ -4818,6 +4818,14 @@ Indique l&apos;affectation voie / numéro de canal par défaut utilisée lors de
         <source>PB2</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Timer 1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Timer 2</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>telemetryDialog</name>

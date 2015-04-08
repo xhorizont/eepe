@@ -5412,6 +5412,14 @@ msgctxt "simulatorDialog|"
 msgid "PB2"
 msgstr ""
 
+msgctxt "simulatorDialog|"
+msgid "Timer 1"
+msgstr ""
+
+msgctxt "simulatorDialog|"
+msgid "Timer 2"
+msgstr ""
+
 #, fuzzy
 msgctxt "telemetryDialog|"
 msgid "Dialog"

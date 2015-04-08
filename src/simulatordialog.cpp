@@ -236,6 +236,8 @@ void simulatorDialog::timerEvent()
                    .arg(getTimerMode(g_model.tmrMode, g_model.modelVersion))
                    .arg(g_model.tmrDir ? "Count Up" : "Count Down"));
 
+		ui->Timer1->setText(QString("%1:%2").arg(abs(-s_timerVal)/60, 2, 10, QChar('0'))
+                   .arg(abs(-s_timerVal)%60, 2, 10, QChar('0'))) ;
     if(beepVal)
     {
         beepVal = 0;
@@ -1663,7 +1665,61 @@ void simulatorDialog::timerTick()
 		uint8_t switch_b ;
 		uint8_t max_drswitch ;
 		max_drswitch = ( ee_type ) ? MAX_DRSWITCH+EXTRA_CSW : MAX_DRSWITCH ;
-    tmb = g_model.tmrModeB ;
+    
+  for( int itimer = 0 ; itimer < 2 ; itimer += 1 )
+	{
+		uint8_t resetting = 0 ;
+    if ( itimer == 0 )
+		{
+			tmb = g_model.timer1RstSw ;
+		}
+		else
+		{
+			tmb = g_model.timer2RstSw ;
+		}
+		if ( tmb )
+		{
+    	if(tmb>(TOGGLE_INDEX))	 // toggeled switch
+			{
+        uint8_t swPos = getSwitch( tmb-(TOGGLE_INDEX), 0 ) ;
+        if ( swPos != lastResetSwPos[itimer] )
+				{
+          lastResetSwPos[itimer] = swPos ;
+					if ( swPos )	// Now on
+					{
+						resetting = 1 ;
+					}
+				}
+			}
+			else
+			{
+        if ( getSwitch( tmb, 0) )
+				{
+					resetting = 1 ;
+				}
+			}
+		}
+		if ( resetting )
+		{
+			if ( itimer == 0 )
+			{
+//				resetTimer1() 
+				s_timeCumAbs=0 ;
+				s_timerVal = ( g_model.tmrDir ) ? 0 : g_model.tmrVal ;
+  			s_timeCumThr=0;
+  			s_timeCumSw=0;
+  			s_timeCum16ThrP=0;
+				s_sum = 0 ;
+				
+			}
+			else
+			{
+//				resetTimer2() ;
+			}
+		}
+	}
+		
+		tmb = g_model.tmrModeB ;
 
     if(abs(tm)>=(TMR_VAROFS+max_drswitch-1)){ //toggeled switch//abs(g_model.tmrMode)<(10+MAX_DRSWITCH-1)
         static uint8_t lastSwPos;

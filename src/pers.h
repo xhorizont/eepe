@@ -118,6 +118,7 @@ enum EnumKeys {
 #define HSW_Pb2				44
 #define HSW_MAX				44
 
+#define TOGGLE_INDEX	HSW_MAX
 
 #define SWITCHES_STR "THRRUDELEID0ID1ID2AILGEATRNL1 L2 L3 L4 L5 L6 L7 L8 L9 LA LB LC LD LE LF LG LH LI EL^EL-ELvRU^RU-RUvAI^AI-AIvGE^GE-GEvPB1PB2"
 #define NUM_CSW  12 //number of custom switches

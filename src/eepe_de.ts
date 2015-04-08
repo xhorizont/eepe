@@ -4039,56 +4039,56 @@ Right</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="helpers.cpp" line="2258"/>
-        <location filename="helpers.cpp" line="2263"/>
-        <location filename="helpers.cpp" line="2281"/>
-        <location filename="helpers.cpp" line="2305"/>
-        <location filename="helpers.cpp" line="2328"/>
-        <location filename="helpers.cpp" line="2366"/>
-        <location filename="helpers.cpp" line="2438"/>
-        <location filename="helpers.cpp" line="2443"/>
-        <location filename="helpers.cpp" line="2460"/>
+        <location filename="helpers.cpp" line="2259"/>
+        <location filename="helpers.cpp" line="2264"/>
+        <location filename="helpers.cpp" line="2282"/>
+        <location filename="helpers.cpp" line="2306"/>
+        <location filename="helpers.cpp" line="2329"/>
+        <location filename="helpers.cpp" line="2367"/>
+        <location filename="helpers.cpp" line="2439"/>
+        <location filename="helpers.cpp" line="2444"/>
+        <location filename="helpers.cpp" line="2461"/>
         <source>Error</source>
         <translation type="unfinished">Fehler</translation>
     </message>
     <message>
-        <location filename="helpers.cpp" line="2258"/>
-        <location filename="helpers.cpp" line="2438"/>
+        <location filename="helpers.cpp" line="2259"/>
+        <location filename="helpers.cpp" line="2439"/>
         <source>Unable to find file %1!</source>
         <translation type="unfinished">Kann die Datei %1 nicht finden !</translation>
     </message>
     <message>
-        <location filename="helpers.cpp" line="2264"/>
-        <location filename="helpers.cpp" line="2444"/>
+        <location filename="helpers.cpp" line="2265"/>
+        <location filename="helpers.cpp" line="2445"/>
         <source>Error opening file %1:
 %2.</source>
         <translation type="unfinished">Fehler beim Öffnen der Datei %1:
 %2.</translation>
     </message>
     <message>
-        <location filename="helpers.cpp" line="2282"/>
+        <location filename="helpers.cpp" line="2283"/>
         <source>Invalid EEPE File Format %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="helpers.cpp" line="2305"/>
+        <location filename="helpers.cpp" line="2306"/>
         <source>Error reading file %1!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="helpers.cpp" line="2328"/>
+        <location filename="helpers.cpp" line="2329"/>
         <source>Checksum Error reading file %1!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="helpers.cpp" line="2367"/>
+        <location filename="helpers.cpp" line="2368"/>
         <source>Cannot write file %1:
 %2.</source>
         <translation type="unfinished">Kann Datei %1:
 %2 nicht schreiben.</translation>
     </message>
     <message>
-        <location filename="helpers.cpp" line="2461"/>
+        <location filename="helpers.cpp" line="2462"/>
         <source>Error reading file %1:%2. %3 %4</source>
         <translation type="unfinished"></translation>
     </message>
@@ -5977,128 +5977,138 @@ Mode 4:
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="1546"/>
+        <location filename="simulatordialog.ui" line="1522"/>
+        <source>Timer 1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="simulatordialog.ui" line="1555"/>
+        <source>Timer 2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="simulatordialog.ui" line="1599"/>
         <source>SWG</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="1583"/>
+        <location filename="simulatordialog.ui" line="1636"/>
         <source>SWH</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="1620"/>
+        <location filename="simulatordialog.ui" line="1673"/>
         <source>SWI</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="1637"/>
+        <location filename="simulatordialog.ui" line="1690"/>
         <source>CH1</source>
         <translation>CH1</translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="1644"/>
+        <location filename="simulatordialog.ui" line="1697"/>
         <source>CH9</source>
         <translation>CH9</translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="1651"/>
+        <location filename="simulatordialog.ui" line="1704"/>
         <source>CH2</source>
         <translation>CH2</translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="1658"/>
+        <location filename="simulatordialog.ui" line="1711"/>
         <source>CH10</source>
         <translation>CH10</translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="1665"/>
+        <location filename="simulatordialog.ui" line="1718"/>
         <source>CH3</source>
         <translation>CH3</translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="1672"/>
+        <location filename="simulatordialog.ui" line="1725"/>
         <source>CH11</source>
         <translation>CH11</translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="1679"/>
+        <location filename="simulatordialog.ui" line="1732"/>
         <source>CH4</source>
         <translation>CH4</translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="1686"/>
+        <location filename="simulatordialog.ui" line="1739"/>
         <source>CH12</source>
         <translation>CH12</translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="1693"/>
+        <location filename="simulatordialog.ui" line="1746"/>
         <source>CH5</source>
         <translation>CH5</translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="1700"/>
+        <location filename="simulatordialog.ui" line="1753"/>
         <source>CH13</source>
         <translation>CH13</translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="1707"/>
+        <location filename="simulatordialog.ui" line="1760"/>
         <source>CH6</source>
         <translation>CH6</translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="1714"/>
+        <location filename="simulatordialog.ui" line="1767"/>
         <source>CH14</source>
         <translation>CH14</translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="1721"/>
+        <location filename="simulatordialog.ui" line="1774"/>
         <source>CH7</source>
         <translation>CH7</translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="1728"/>
+        <location filename="simulatordialog.ui" line="1781"/>
         <source>CH15</source>
         <translation>CH15</translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="1735"/>
+        <location filename="simulatordialog.ui" line="1788"/>
         <source>CH8</source>
         <translation>CH8</translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="1742"/>
+        <location filename="simulatordialog.ui" line="1795"/>
         <source>CH16</source>
         <translation>CH16</translation>
     </message>
     <message>
-        <location filename="simulatordialog.ui" line="2539"/>
-        <location filename="simulatordialog.ui" line="2555"/>
-        <location filename="simulatordialog.ui" line="2571"/>
-        <location filename="simulatordialog.ui" line="2587"/>
-        <location filename="simulatordialog.ui" line="2603"/>
-        <location filename="simulatordialog.ui" line="2619"/>
-        <location filename="simulatordialog.ui" line="2635"/>
-        <location filename="simulatordialog.ui" line="2651"/>
-        <location filename="simulatordialog.ui" line="2667"/>
-        <location filename="simulatordialog.ui" line="2683"/>
-        <location filename="simulatordialog.ui" line="2699"/>
-        <location filename="simulatordialog.ui" line="2715"/>
-        <location filename="simulatordialog.ui" line="2731"/>
-        <location filename="simulatordialog.ui" line="2747"/>
-        <location filename="simulatordialog.ui" line="2763"/>
-        <location filename="simulatordialog.ui" line="2779"/>
+        <location filename="simulatordialog.ui" line="2592"/>
+        <location filename="simulatordialog.ui" line="2608"/>
+        <location filename="simulatordialog.ui" line="2624"/>
+        <location filename="simulatordialog.ui" line="2640"/>
+        <location filename="simulatordialog.ui" line="2656"/>
+        <location filename="simulatordialog.ui" line="2672"/>
+        <location filename="simulatordialog.ui" line="2688"/>
+        <location filename="simulatordialog.ui" line="2704"/>
+        <location filename="simulatordialog.ui" line="2720"/>
+        <location filename="simulatordialog.ui" line="2736"/>
+        <location filename="simulatordialog.ui" line="2752"/>
+        <location filename="simulatordialog.ui" line="2768"/>
+        <location filename="simulatordialog.ui" line="2784"/>
+        <location filename="simulatordialog.ui" line="2800"/>
+        <location filename="simulatordialog.ui" line="2816"/>
+        <location filename="simulatordialog.ui" line="2832"/>
         <source>-100.1</source>
         <translation>-100.1</translation>
     </message>
     <message>
         <location filename="simulatordialog.cpp" line="198"/>
-        <location filename="simulatordialog.cpp" line="611"/>
+        <location filename="simulatordialog.cpp" line="613"/>
         <source>Simulating </source>
         <translation>Simuliere</translation>
     </message>
     <message>
-        <location filename="simulatordialog.cpp" line="2798"/>
+        <location filename="simulatordialog.cpp" line="2854"/>
         <source>Com Port Unavailable</source>
         <translation type="unfinished"></translation>
     </message>

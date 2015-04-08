@@ -3673,20 +3673,20 @@ msgctxt "QObject|"
 msgid "GV%1"
 msgstr ""
 
-#: helpers.cpp:2258 helpers.cpp:2263 helpers.cpp:2281 helpers.cpp:2305
-#: helpers.cpp:2328 helpers.cpp:2366 helpers.cpp:2438 helpers.cpp:2443
-#: helpers.cpp:2460
+#: helpers.cpp:2259 helpers.cpp:2264 helpers.cpp:2282 helpers.cpp:2306
+#: helpers.cpp:2329 helpers.cpp:2367 helpers.cpp:2439 helpers.cpp:2444
+#: helpers.cpp:2461
 msgctxt "QObject|"
 msgid "Error"
 msgstr ""
 
-#: helpers.cpp:2258 helpers.cpp:2438
+#: helpers.cpp:2259 helpers.cpp:2439
 #, qt-format
 msgctxt "QObject|"
 msgid "Unable to find file %1!"
 msgstr ""
 
-#: helpers.cpp:2264 helpers.cpp:2444
+#: helpers.cpp:2265 helpers.cpp:2445
 #, qt-format
 msgctxt "QObject|"
 msgid ""
@@ -3694,25 +3694,25 @@ msgid ""
 "%2."
 msgstr ""
 
-#: helpers.cpp:2282
+#: helpers.cpp:2283
 #, qt-format
 msgctxt "QObject|"
 msgid "Invalid EEPE File Format %1"
 msgstr ""
 
-#: helpers.cpp:2305
+#: helpers.cpp:2306
 #, qt-format
 msgctxt "QObject|"
 msgid "Error reading file %1!"
 msgstr ""
 
-#: helpers.cpp:2328
+#: helpers.cpp:2329
 #, qt-format
 msgctxt "QObject|"
 msgid "Checksum Error reading file %1!"
 msgstr ""
 
-#: helpers.cpp:2367
+#: helpers.cpp:2368
 #, qt-format
 msgctxt "QObject|"
 msgid ""
@@ -3720,7 +3720,7 @@ msgid ""
 "%2."
 msgstr ""
 
-#: helpers.cpp:2461
+#: helpers.cpp:2462
 #, qt-format
 msgctxt "QObject|"
 msgid "Error reading file %1:%2. %3 %4"
@@ -5451,117 +5451,127 @@ msgctxt "simulatorDialog|"
 msgid "SWF"
 msgstr ""
 
-#: simulatordialog.ui:1546
+#: simulatordialog.ui:1522
+msgctxt "simulatorDialog|"
+msgid "Timer 1"
+msgstr ""
+
+#: simulatordialog.ui:1555
+msgctxt "simulatorDialog|"
+msgid "Timer 2"
+msgstr ""
+
+#: simulatordialog.ui:1599
 msgctxt "simulatorDialog|"
 msgid "SWG"
 msgstr ""
 
-#: simulatordialog.ui:1583
+#: simulatordialog.ui:1636
 msgctxt "simulatorDialog|"
 msgid "SWH"
 msgstr ""
 
-#: simulatordialog.ui:1620
+#: simulatordialog.ui:1673
 msgctxt "simulatorDialog|"
 msgid "SWI"
 msgstr ""
 
-#: simulatordialog.ui:1637
+#: simulatordialog.ui:1690
 msgctxt "simulatorDialog|"
 msgid "CH1"
 msgstr ""
 
-#: simulatordialog.ui:1644
+#: simulatordialog.ui:1697
 msgctxt "simulatorDialog|"
 msgid "CH9"
 msgstr ""
 
-#: simulatordialog.ui:1651
+#: simulatordialog.ui:1704
 msgctxt "simulatorDialog|"
 msgid "CH2"
 msgstr ""
 
-#: simulatordialog.ui:1658
+#: simulatordialog.ui:1711
 msgctxt "simulatorDialog|"
 msgid "CH10"
 msgstr ""
 
-#: simulatordialog.ui:1665
+#: simulatordialog.ui:1718
 msgctxt "simulatorDialog|"
 msgid "CH3"
 msgstr ""
 
-#: simulatordialog.ui:1672
+#: simulatordialog.ui:1725
 msgctxt "simulatorDialog|"
 msgid "CH11"
 msgstr ""
 
-#: simulatordialog.ui:1679
+#: simulatordialog.ui:1732
 msgctxt "simulatorDialog|"
 msgid "CH4"
 msgstr ""
 
-#: simulatordialog.ui:1686
+#: simulatordialog.ui:1739
 msgctxt "simulatorDialog|"
 msgid "CH12"
 msgstr ""
 
-#: simulatordialog.ui:1693
+#: simulatordialog.ui:1746
 msgctxt "simulatorDialog|"
 msgid "CH5"
 msgstr ""
 
-#: simulatordialog.ui:1700
+#: simulatordialog.ui:1753
 msgctxt "simulatorDialog|"
 msgid "CH13"
 msgstr ""
 
-#: simulatordialog.ui:1707
+#: simulatordialog.ui:1760
 msgctxt "simulatorDialog|"
 msgid "CH6"
 msgstr ""
 
-#: simulatordialog.ui:1714
+#: simulatordialog.ui:1767
 msgctxt "simulatorDialog|"
 msgid "CH14"
 msgstr ""
 
-#: simulatordialog.ui:1721
+#: simulatordialog.ui:1774
 msgctxt "simulatorDialog|"
 msgid "CH7"
 msgstr ""
 
-#: simulatordialog.ui:1728
+#: simulatordialog.ui:1781
 msgctxt "simulatorDialog|"
 msgid "CH15"
 msgstr ""
 
-#: simulatordialog.ui:1735
+#: simulatordialog.ui:1788
 msgctxt "simulatorDialog|"
 msgid "CH8"
 msgstr ""
 
-#: simulatordialog.ui:1742
+#: simulatordialog.ui:1795
 msgctxt "simulatorDialog|"
 msgid "CH16"
 msgstr ""
 
-#: simulatordialog.ui:2539 simulatordialog.ui:2555 simulatordialog.ui:2571
-#: simulatordialog.ui:2587 simulatordialog.ui:2603 simulatordialog.ui:2619
-#: simulatordialog.ui:2635 simulatordialog.ui:2651 simulatordialog.ui:2667
-#: simulatordialog.ui:2683 simulatordialog.ui:2699 simulatordialog.ui:2715
-#: simulatordialog.ui:2731 simulatordialog.ui:2747 simulatordialog.ui:2763
-#: simulatordialog.ui:2779
+#: simulatordialog.ui:2592 simulatordialog.ui:2608 simulatordialog.ui:2624
+#: simulatordialog.ui:2640 simulatordialog.ui:2656 simulatordialog.ui:2672
+#: simulatordialog.ui:2688 simulatordialog.ui:2704 simulatordialog.ui:2720
+#: simulatordialog.ui:2736 simulatordialog.ui:2752 simulatordialog.ui:2768
+#: simulatordialog.ui:2784 simulatordialog.ui:2800 simulatordialog.ui:2816
+#: simulatordialog.ui:2832
 msgctxt "simulatorDialog|"
 msgid "-100.1"
 msgstr ""
 
-#: simulatordialog.cpp:198 simulatordialog.cpp:611
+#: simulatordialog.cpp:198 simulatordialog.cpp:613
 msgctxt "simulatorDialog|"
 msgid "Simulating "
 msgstr ""
 
-#: simulatordialog.cpp:2798
+#: simulatordialog.cpp:2854
 msgctxt "simulatorDialog|"
 msgid "Com Port Unavailable"
 msgstr ""

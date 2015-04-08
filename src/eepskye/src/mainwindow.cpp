@@ -199,6 +199,8 @@ void MainWindow::releaseNotes()
 	
 	
 	QString rnotes =
+	"Googlecode is closing down. This project will move to Github.\n"
+	"It may be found at: https://github.com/MikeBland/mbtx in due course.\n"
 	"Googlecode has blocked downloads of .exe files\n"
 	"Windows users will now find eepskye updates are in a .zip file\n\n"
   "ersky9x rev 203 changes the Custom Switch options.\n"
