@@ -848,9 +848,8 @@ Stick Der Elevador y Timón
         <translation>La nueva versión ER9x (%2) está disponible (r%1)&lt;br&gt;¿Quieres descargarla?</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="598"/>
         <source>Executable (*.exe)</source>
-        <translation>Ejecutable (*.exe)</translation>
+        <translation type="obsolete">Ejecutable (*.exe)</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="607"/>
@@ -1464,6 +1463,11 @@ http://code.google.com/p/eepe/</source>
     <message>
         <location filename="mainwindow.cpp" line="1381"/>
         <source>Read Firmware from Tx</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="598"/>
+        <source>Zip File (*.zip)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

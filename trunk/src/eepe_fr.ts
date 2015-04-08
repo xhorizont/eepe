@@ -1020,7 +1020,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Executable (*.exe)</source>
-        <translation>Exécutable (*.exe)</translation>
+        <translation type="obsolete">Exécutable (*.exe)</translation>
     </message>
     <message>
         <source>No updates available at this time.</source>
@@ -1271,6 +1271,10 @@ http://code.google.com/p/eepe/</source>
     <message>
         <source>Read Fuses</source>
         <translation type="unfinished">Lire Fusibles</translation>
+    </message>
+    <message>
+        <source>Zip File (*.zip)</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
