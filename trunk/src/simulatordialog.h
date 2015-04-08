@@ -86,6 +86,7 @@ private:
     quint8  sw_toggled;
 		quint8	CurrentPhase ;
 		quint8  CalcScaleNest ;
+		quint8  lastResetSwPos[2] ;
 
 		quint8  current_limits ;
 

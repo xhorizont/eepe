@@ -123,6 +123,7 @@ void EEPFILE::modelDefault(uint8_t id)
 		g_model.mixData[i].srcRaw = i+1 ;
 		g_model.mixData[i].weight = 100;
   }
+	g_model.trimInc = 2 ;
 
   putModel(&g_model,id);
 }

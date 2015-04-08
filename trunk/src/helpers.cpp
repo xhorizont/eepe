@@ -1848,6 +1848,7 @@ void populateTmrBSwitchCB(QComboBox *b, int value, int extra )
 //	}
 #endif
 #ifndef SKY
+//  int limit = MaxSwitchIndex - 1 ;
 	int limit = MAX_DRSWITCH-1 ;
 	if ( extra )
 	{
