@@ -3470,16 +3470,9 @@ void ModelEdit::on_throttleOffCB_currentIndexChanged(int index)
 
 void ModelEdit::on_timerModeBCB_currentIndexChanged(int index)
 {
-	int limit = MAX_DRSWITCH-1 ;
-#ifndef SKY
-  if ( eeFile->mee_type )
-	{
-   	limit += EXTRA_CSW ;
-	}
-#endif
-	
-    g_model.tmrModeB = index-(limit);
-    updateSettings();
+	(void) index ;
+  g_model.tmrModeB = getTimerSwitchCbValue( ui->timerModeBCB, eeFile->mee_type ) ;
+  updateSettings();
 }
 
 void ModelEdit::on_timerDirCB_currentIndexChanged(int index)
@@ -3517,16 +3510,9 @@ void ModelEdit::on_timer2ModeCB_currentIndexChanged(int index)
 
 void ModelEdit::on_timer2ModeBCB_currentIndexChanged(int index)
 {
-	int limit = MAX_DRSWITCH-1 ;
-#ifndef SKY
-  if ( eeFile->mee_type )
-	{
-   	limit += EXTRA_CSW ;
-	}
-#endif
-	
-    g_model.tmr2ModeB = index-(limit);
-    updateSettings();
+	(void) index ;
+  g_model.tmr2ModeB = getTimerSwitchCbValue( ui->timer2ModeBCB, eeFile->mee_type ) ;
+  updateSettings();
 }
 
 void ModelEdit::on_timer2DirCB_currentIndexChanged(int index)

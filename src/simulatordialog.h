@@ -73,17 +73,17 @@ private:
 
     quint16 s_timeCumTot;
     quint16 s_timeCumAbs;
-    quint16 s_timeCumSw;
-    quint16 s_timeCumThr;
-    quint16 s_timeCum16ThrP;
-    quint8  s_timerState;
+    quint16 s_timeCumSw[2];
+    quint16 s_timeCumThr[2];
+    quint16 s_timeCum16ThrP[2];
+    quint8  s_timerState[2];
     quint8  beepAgain;
     quint16 g_LightOffCounter;
-    qint16  s_timerVal;
-    quint16 s_time;
+    qint16  s_timerVal[2];
+    quint16 s_time[2];
     quint16 s_cnt;
     quint16 s_sum;
-    quint8  sw_toggled;
+    quint8  sw_toggled[2];
 		quint8	CurrentPhase ;
 		quint8  CalcScaleNest ;
 		quint8  lastResetSwPos[2] ;
