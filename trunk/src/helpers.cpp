@@ -87,10 +87,10 @@ QString GvarItems[] = {
 	"Ttm",
 	"Atm",
 	"REN",	// 5
-	"RUD",
-	"ELE",
-	"THR",
-	"AIL", // 9
+	"Rud",
+	"Ele",
+	"Thr",
+	"Ail", // 9
 	"P1 ",
 	"P2 ",
 	"P3 ", //12
@@ -1348,6 +1348,26 @@ int getTimerSwitchCbValue( QComboBox *b, int eepromType )
 //	}
 	return value ;
 }
+
+#else
+int getTimerSwitchCbValue( QComboBox *b, int eepromType )
+{
+	int value ;
+  int x = eepromType ? 1 : 0 ;
+  int limit = MaxSwitchIndex ;
+	value = b->currentIndex()-(limit-1) ;
+	if ( value > limit-1 )
+	{
+    value = switchMap( value - limit + 1 ) + HSW_MAX ;
+	}
+	else
+	{
+    value = switchMap( value ) ;
+	}
+	return value ;
+}
+
+
 #endif
 
 
@@ -1834,7 +1854,7 @@ void populateSafetyVoiceTypeCB(QComboBox *b, int type, int value=0)
 #ifdef SKY
 void populateTmrBSwitchCB(QComboBox *b, int value, int eepromType)
 #else
-void populateTmrBSwitchCB(QComboBox *b, int value, int extra )
+void populateTmrBSwitchCB(QComboBox *b, int value, int eepromType )
 #endif
 {
 	int i ;
@@ -1849,11 +1869,11 @@ void populateTmrBSwitchCB(QComboBox *b, int value, int extra )
 #endif
 #ifndef SKY
 //  int limit = MaxSwitchIndex - 1 ;
-	int limit = MAX_DRSWITCH-1 ;
-	if ( extra )
-	{
-		limit += EXTRA_CSW ;
-	}
+	int limit = MaxSwitchIndex-1 ;
+//	if ( extra )
+//	{
+//		limit += EXTRA_CSW ;
+//	}
 #endif
     for( i= -limit; i<= limit; i++)
 #ifdef SKY
@@ -1861,7 +1881,8 @@ void populateTmrBSwitchCB(QComboBox *b, int value, int extra )
       b->addItem(getMappedSWName(i,eepromType));
 		}
 #else
-        b->addItem(getSWName(i,extra));
+      b->addItem(getMappedSWName(i,eepromType));
+//        b->addItem(getSWName(i,extra));
 #endif
 #ifdef SKY    
 		for( i=1 ; i<=limit; i++)
@@ -1872,7 +1893,8 @@ void populateTmrBSwitchCB(QComboBox *b, int value, int extra )
 #ifndef SKY
 		for( i=1 ; i<=limit; i++)
 		{
-      b->addItem('m'+getSWName(i,extra));
+      b->addItem('m'+getMappedSWName(i,eepromType));
+//      b->addItem('m'+getSWName(i,extra));
 		}
 #endif    
 #ifdef SKY
@@ -1894,7 +1916,17 @@ void populateTmrBSwitchCB(QComboBox *b, int value, int extra )
 	    b->setCurrentIndex(j+limit) ;
 //		}
 #else
-		b->setCurrentIndex(value+limit);
+			int j ;
+			if ( value > HSW_MAX )
+			{
+        j = switchUnMap( value - HSW_MAX ) + MaxSwitchIndex - 1 ;
+			}
+			else
+			{
+				j = switchUnMap( value ) ;
+			}
+	    b->setCurrentIndex(j+limit) ;
+//		b->setCurrentIndex(value+limit);
 #endif
     b->setMaxVisibleItems(10);
 }
@@ -1960,7 +1992,7 @@ QString getTimerMode(int tm, int eepromType )
 
 //#ifdef SKY    
     QString str = CURV_STR;
-    QString stt = "OFFABSTHsTH%";
+    QString stt = "OFFON THsTH%";
 //#else
 //    QString str = SWITCHES_STR;
 //    QString stt = "OFFABSRUsRU%ELsEL%THsTH%ALsAL%P1 P1%P2 P2%P3 P3%";
@@ -2037,7 +2069,7 @@ QString getTimerMode(int tm, int eepromType )
 
 
 
-#define MODI_STR  "RUD ELE THR AIL RUD THR ELE AIL AIL ELE THR RUD AIL THR ELE RUD "
+#define MODI_STR  "Rud Ele Thr Ail Rud Thr Ele Ail Ail Ele Thr Rud Ail Thr Ele Rud "
 #ifdef SKY    
 #define SRCP_STR  "P1  P2  P3  HALFFULLCYC1CYC2CYC3PPM1PPM2PPM3PPM4PPM5PPM6PPM7PPM8CH1 CH2 CH3 CH4 CH5 CH6 CH7 CH8 CH9 CH10CH11CH12CH13CH14CH15CH16CH17CH18CH19CH20CH21CH22CH23CH24SWCHGV1 GV2 GV3 GV4 GV5 GV6 GV7 THISSC1 SC2 SC3 SC4 SC5 SC6 SC7 SC8 "
 #else

@@ -1534,6 +1534,9 @@ QPushButton:pressed {
          <height>16777215</height>
         </size>
        </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
       </widget>
      </item>
      <item>
@@ -1546,6 +1549,9 @@ QPushButton:pressed {
          <width>60</width>
          <height>16777215</height>
         </size>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
        </property>
       </widget>
      </item>

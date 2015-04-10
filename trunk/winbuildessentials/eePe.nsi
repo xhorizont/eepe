@@ -93,7 +93,7 @@ Section "eePe" SecDummy
   File "avrdude.exe"
   File "avrdude.conf"
   File "libusb0.dll"
-  File "ER9x Users Manual.pdf"
+  File "ER9x_Manual_2015-v01.pdf"
   
   CreateDirectory "$INSTDIR\lang"
   SetOutPath "$INSTDIR\lang"
@@ -121,7 +121,7 @@ Section "eePe" SecDummy
     CreateDirectory "$SMPROGRAMS\$StartMenuFolder"
 	CreateShortCut "$SMPROGRAMS\$StartMenuFolder\eePe.lnk" "$INSTDIR\eePe.exe"
 	CreateShortCut "$SMPROGRAMS\$StartMenuFolder\eePskye.lnk" "$INSTDIR\eePskye.exe"
-	CreateShortCut "$SMPROGRAMS\$StartMenuFolder\er9x Users Manual.lnk" "$INSTDIR\ER9x Users Manual.pdf"
+	CreateShortCut "$SMPROGRAMS\$StartMenuFolder\er9x Users Manual.lnk" "$INSTDIR\ER9x_Manual_2015-v01.pdf"
     CreateShortCut "$SMPROGRAMS\$StartMenuFolder\Uninstall.lnk" "$INSTDIR\Uninstall.exe"
   
   !insertmacro MUI_STARTMENU_WRITE_END
