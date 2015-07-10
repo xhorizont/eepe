@@ -16,7 +16,7 @@
 
 
 #include "stdio.h"
-#include "inttypes.h"
+#include <stdint.h>
 #include "string.h"
 #include "pers.h"
 #include "myeeprom.h"
@@ -152,7 +152,7 @@ uint32_t get_current_block_number( uint32_t block_no, uint16_t *p_size, uint32_t
 void fill_file_index( struct t_radioData *radioData )
 {
 	uint32_t i ;
-	for ( i = 0 ; i < MAX_MODELS + 1 ; i += 1 )
+	for ( i = 0 ; i < MAX_IMODELS + 1 ; i += 1 )
 	{
     radioData->File_system[i].block_no = get_current_block_number( i * 2, &radioData->File_system[i].size, &radioData->File_system[i].sequence_no ) ;
 	}
@@ -160,7 +160,7 @@ void fill_file_index( struct t_radioData *radioData )
 
 void ee32LoadModelName( struct t_radioData *radioData, uint8_t id, unsigned char*buf, uint8_t len )
 {
-	if(id<=MAX_MODELS)
+	if(id<=MAX_IMODELS)
   {
 		memset(buf,' ',len);
 		buf[len] = '\0' ;
@@ -175,7 +175,7 @@ void ee32_read_model_names(struct t_radioData *radioData)
 {
 	uint32_t i ;
 
-	for ( i = 1 ; i <= MAX_MODELS ; i += 1 )
+	for ( i = 1 ; i <= MAX_IMODELS ; i += 1 )
 	{
     ee32LoadModelName( radioData, i, radioData->ModelNames[i], sizeof( radioData->models[0].name) ) ;
 	}
@@ -773,7 +773,7 @@ void ee32LoadModel(struct t_radioData *radioData, uint8_t id)
 	uint16_t size ;
 	uint8_t version = 255 ;
 
-    if(id<MAX_MODELS)
+    if(id<MAX_IMODELS)
     {
 			size =  radioData->File_system[id+1].size ;
 			if ( sizeof(SKYModelData) < 720 )
@@ -846,7 +846,7 @@ uint32_t rawloadFile( struct t_radioData *radioData, uint8_t *eeprom )
 	ee32_read_model_names(radioData) ;
 	DefaultModelType = 1 ;
 	ee32LoadGeneral(radioData) ;
-	for ( i = 0 ; i < MAX_MODELS ; i += 1 )
+	for ( i = 0 ; i < MAX_IMODELS ; i += 1 )
 	{
 		ee32LoadModel( radioData, i ) ;
 	}
@@ -862,14 +862,14 @@ uint32_t rawsaveFile( t_radioData *radioData, uint8_t *eeprom )
 	uint8_t csum ;
 	uint32_t i ;
 
-	memset( eeprom, 0xFF, EESIZE ) ;
+	memset( eeprom, 0xFF, EEFULLSIZE ) ;
 	if ( radioData->type )
 	{
 		// Taranis type
 		EeFsFormat( eeprom ) ;
     RlcFile *filePtr = new RlcFile ;
     filePtr->writeRlc( FILE_GENERAL, FILE_TYP_GENERAL, (uint8_t *) &radioData->generalSettings, sizeof(EEGeneral), 1 ) ;
-		for ( i = 1 ; i <= MAX_MODELS ; i += 1 )
+		for ( i = 1 ; i <= MAX_IMODELS ; i += 1 )
 		{
 			if ( radioData->File_system[i].size )
 			{		
@@ -890,7 +890,7 @@ uint32_t rawsaveFile( t_radioData *radioData, uint8_t *eeprom )
 	memcpy( &Eeprom_buffer.data.general_data, &radioData->generalSettings, sizeof(EEGeneral) ) ;
 	memcpy( eeprom, &Eeprom_buffer, 4096 ) ;		// Write block 0
 
-	for ( i = 1 ; i <= MAX_MODELS ; i += 1 )
+	for ( i = 1 ; i <= MAX_IMODELS ; i += 1 )
 	{
 		if ( radioData->File_system[i].size )
 		{

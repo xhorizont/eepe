@@ -19,7 +19,7 @@
 
 #define VERS 1
 
-#include <inttypes.h>
+#include <stdint.h>
 #include <string.h>
 
 const uint8_t modn12x3[4][4]= {
@@ -286,6 +286,13 @@ enum EnumKeys {
 /// liefert Dimension eines Arrays
 #define DIM(arr) (sizeof((arr))/sizeof((arr)[0]))
 
+// RadioData types
+#define	TYPE_AVR2K					0
+#define TYPE_AVR4K					1
+#define TYPE_SKY						2
+#define TYPE_SKYR				 		3
+#define TYPE_TARANIS				4
+#define TYPE_TARANIS_PLUS		5
 
 #define EE_GENERAL 1
 #define EE_MODEL   2

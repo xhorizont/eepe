@@ -28,7 +28,7 @@
 These will be relevant for all models in the same EEPROM.</string>
      </property>
      <property name="currentIndex">
-      <number>0</number>
+      <number>3</number>
      </property>
      <widget class="QWidget" name="tabSetup">
       <attribute name="title">
@@ -2514,20 +2514,6 @@ This is used by the templated to determine which channel goes to what number out
       <layout class="QGridLayout" name="gridLayout_10">
        <item row="0" column="0">
         <layout class="QGridLayout" name="gridLayout_7">
-         <item row="3" column="1">
-          <widget class="QComboBox" name="RudNumWaysCB">
-           <item>
-            <property name="text">
-             <string>2-POS</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>3-POS</string>
-            </property>
-           </item>
-          </widget>
-         </item>
          <item row="2" column="0">
           <widget class="QLabel" name="label_GeaSw">
            <property name="text">
@@ -2540,20 +2526,6 @@ This is used by the templated to determine which channel goes to what number out
            <property name="text">
             <string>RUD switch</string>
            </property>
-          </widget>
-         </item>
-         <item row="2" column="1">
-          <widget class="QComboBox" name="GeaNumWaysCB">
-           <item>
-            <property name="text">
-             <string>2-POS</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>3-POS</string>
-            </property>
-           </item>
           </widget>
          </item>
          <item row="1" column="0">
@@ -2583,55 +2555,369 @@ This is used by the templated to determine which channel goes to what number out
            </property>
           </widget>
          </item>
-         <item row="0" column="1">
-          <widget class="QComboBox" name="EleNumWaysCB">
-           <property name="minimumSize">
-            <size>
-             <width>70</width>
-             <height>0</height>
-            </size>
+         <item row="6" column="0">
+          <widget class="QLabel" name="label_ThrSw_2">
+           <property name="text">
+            <string>PB1 switch</string>
            </property>
+          </widget>
+         </item>
+         <item row="6" column="2">
+          <widget class="QComboBox" name="PB1CB">
            <item>
             <property name="text">
-             <string>2-POS</string>
+             <string>None</string>
             </property>
            </item>
            <item>
             <property name="text">
-             <string>3-POS</string>
+             <string>EXT1</string>
             </property>
            </item>
            <item>
             <property name="text">
-             <string>6-POS</string>
+             <string>EXT2</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>EXT3</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>DAC1</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>ELE</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>EXT4</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>EXT5</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>EXT6</string>
             </property>
            </item>
           </widget>
          </item>
-         <item row="1" column="1">
-          <widget class="QComboBox" name="AilNumWaysCB">
+         <item row="7" column="2">
+          <widget class="QComboBox" name="PB2CB">
            <item>
             <property name="text">
-             <string>2-POS</string>
+             <string>None</string>
             </property>
            </item>
            <item>
             <property name="text">
-             <string>3-POS</string>
+             <string>EXT1</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>EXT2</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>EXT3</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>DAC1</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>ELE</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>EXT4</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>EXT5</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>EXT6</string>
             </property>
            </item>
           </widget>
          </item>
-         <item row="4" column="1">
-          <widget class="QComboBox" name="ThrNumWaysCB">
+         <item row="7" column="0">
+          <widget class="QLabel" name="label_ThrSw_3">
+           <property name="text">
+            <string>PB2 switch</string>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="2">
+          <widget class="QComboBox" name="ThrCB">
            <item>
             <property name="text">
-             <string>2-POS</string>
+             <string>None</string>
             </property>
            </item>
            <item>
             <property name="text">
-             <string>3-POS</string>
+             <string>EXT1</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>EXT2</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>EXT3</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>DAC1</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>ELE</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>EXT4</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>EXT5</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>EXT6</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item row="3" column="2">
+          <widget class="QComboBox" name="RudCB">
+           <item>
+            <property name="text">
+             <string>None</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>EXT1</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>EXT2</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>EXT3</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>DAC1</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>ELE</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>EXT4</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>EXT5</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>EXT6</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item row="2" column="2">
+          <widget class="QComboBox" name="GeaCB">
+           <item>
+            <property name="text">
+             <string>None</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>EXT1</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>EXT2</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>EXT3</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>DAC1</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>ELE</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>EXT4</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>EXT5</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>EXT6</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item row="1" column="2">
+          <widget class="QComboBox" name="AilCB">
+           <item>
+            <property name="text">
+             <string>None</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>EXT1</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>EXT2</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>EXT3</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>DAC1</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>ELE</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>EXT4</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>EXT5</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>EXT6</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item row="0" column="2">
+          <widget class="QComboBox" name="EleCB">
+           <item>
+            <property name="text">
+             <string>None</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>EXT1</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>EXT2</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>EXT3</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>DAC1</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>ANA</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>6POS</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>6PSB</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>EXT4</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>EXT5</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>EXT6</string>
             </property>
            </item>
           </widget>
@@ -2738,6 +3024,66 @@ This is used by the templated to determine which channel goes to what number out
              <string>P3</string>
             </property>
            </item>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item row="1" column="0">
+        <layout class="QGridLayout" name="gridLayout_15">
+         <item row="0" column="0">
+          <widget class="QLabel" name="label_StickLHdb">
+           <property name="text">
+            <string>Stick LH deadband</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QSpinBox" name="StickLHdeadbandSB">
+           <property name="maximum">
+            <number>15</number>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLabel" name="label_StickLVdb">
+           <property name="text">
+            <string>Stick LV deadband</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLabel" name="label_StickRVdb">
+           <property name="text">
+            <string>Stick RV deadband</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="0">
+          <widget class="QLabel" name="label_StickRHdb">
+           <property name="text">
+            <string>Stick RH deadband</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QSpinBox" name="StickLVdeadbandSB">
+           <property name="maximum">
+            <number>15</number>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="QSpinBox" name="StickRVdeadbandSB">
+           <property name="maximum">
+            <number>15</number>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="1">
+          <widget class="QSpinBox" name="StickRHdeadbandSB">
+           <property name="maximum">
+            <number>15</number>
+           </property>
           </widget>
          </item>
         </layout>

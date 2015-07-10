@@ -131,6 +131,11 @@ GeneralEdit::GeneralEdit( struct t_radioData *radioData, QWidget *parent) :
 		ui->stickgainRVCB->setCurrentIndex(g_eeGeneral.stickGain & STICK_RV_GAIN ? 1 : 0 ) ;
 		ui->stickgainRHCB->setCurrentIndex(g_eeGeneral.stickGain & STICK_RH_GAIN ? 1 : 0 ) ;
 
+    ui->StickLHdeadbandSB->setValue( g_eeGeneral.stickDeadband[0] ) ;
+    ui->StickLVdeadbandSB->setValue( g_eeGeneral.stickDeadband[1] ) ;
+    ui->StickRVdeadbandSB->setValue( g_eeGeneral.stickDeadband[2] ) ;
+    ui->StickRHdeadbandSB->setValue( g_eeGeneral.stickDeadband[3] ) ;
+
 		updateTrainerTab();
 
 
@@ -141,20 +146,33 @@ GeneralEdit::GeneralEdit( struct t_radioData *radioData, QWidget *parent) :
 			ui->label_ThrSw->show() ;
 			ui->label_GeaSw->show() ;
 			ui->label_RudSw->show() ;
-			ui->AilNumWaysCB->show() ;
-			ui->EleNumWaysCB->show() ;
-			ui->GeaNumWaysCB->show() ;
-			ui->RudNumWaysCB->show() ;
-			ui->ThrNumWaysCB->show() ;
+      ui->AilCB->show() ;
+      ui->EleCB->show() ;
+      ui->GeaCB->show() ;
+      ui->RudCB->show() ;
+			ui->ThrCB->show() ;
+			ui->PB1CB->show() ;
+			ui->PB2CB->show() ;
 			ui->label_Encoder->hide() ;
 			ui->label_6Pos->hide() ;
 			ui->EncoderCB->hide() ;
 			ui->SixPosCB->hide() ;
-			ui->AilNumWaysCB->setCurrentIndex( g_eeGeneral.switchMapping & USE_AIL_3POS ? 1 : 0 ) ;
-    	ui->EleNumWaysCB->setCurrentIndex( g_eeGeneral.switchMapping & USE_ELE_3POS ? 1 : (g_eeGeneral.switchMapping & USE_ELE_6POS ? 2 : 0 ) ) ;
-			ui->GeaNumWaysCB->setCurrentIndex( g_eeGeneral.switchMapping & USE_GEA_3POS ? 1 : 0 ) ;
-			ui->RudNumWaysCB->setCurrentIndex( g_eeGeneral.switchMapping & USE_RUD_3POS ? 1 : 0 ) ;
-			ui->ThrNumWaysCB->setCurrentIndex( g_eeGeneral.switchMapping & USE_THR_3POS ? 1 : 0 ) ;
+			ui->AilCB->setCurrentIndex( g_eeGeneral.ailsource ) ;
+			uint8_t value = g_eeGeneral.elesource ;
+			if ( value > 5 )
+			{
+				value += 2 ;
+			}
+			if ( value >101 )
+			{
+				value -= 102-6 ;
+			}
+    	ui->EleCB->setCurrentIndex( value ) ;
+			ui->GeaCB->setCurrentIndex( g_eeGeneral.geasource ) ;
+			ui->RudCB->setCurrentIndex( g_eeGeneral.rudsource ) ;
+			ui->ThrCB->setCurrentIndex( g_eeGeneral.thrsource ) ;
+			ui->PB1CB->setCurrentIndex( g_eeGeneral.pb1source ) ;
+			ui->PB2CB->setCurrentIndex( g_eeGeneral.pb2source ) ;
 		}
 		else
 		{
@@ -163,11 +181,13 @@ GeneralEdit::GeneralEdit( struct t_radioData *radioData, QWidget *parent) :
 			ui->label_ThrSw->hide() ;
 			ui->label_GeaSw->hide() ;
 			ui->label_RudSw->hide() ;
-			ui->AilNumWaysCB->hide() ;
-			ui->EleNumWaysCB->hide() ;
-			ui->GeaNumWaysCB->hide() ;
-			ui->RudNumWaysCB->hide() ;
-			ui->ThrNumWaysCB->hide() ;
+      ui->AilCB->hide() ;
+      ui->EleCB->hide() ;
+      ui->GeaCB->hide() ;
+      ui->RudCB->hide() ;
+			ui->ThrCB->hide() ;
+			ui->PB1CB->hide() ;
+			ui->PB2CB->hide() ;
 			ui->label_Encoder->show() ;
 			ui->label_6Pos->show() ;
 			ui->EncoderCB->show() ;
@@ -1105,6 +1125,31 @@ void GeneralEdit::on_StickRevRH_stateChanged(int )
   updateSettings();
 }
 
+void GeneralEdit::on_StickLHdeadbandSB_editingFinished()
+{
+  g_eeGeneral.stickDeadband[0] = ui->StickLHdeadbandSB->value() ;
+  updateSettings() ;
+}
+
+void GeneralEdit::on_StickLVdeadbandSB_editingFinished()
+{
+  g_eeGeneral.stickDeadband[1] = ui->StickLVdeadbandSB->value() ;
+  updateSettings() ;
+}
+
+void GeneralEdit::on_StickRVdeadbandSB_editingFinished()
+{
+  g_eeGeneral.stickDeadband[2] = ui->StickRVdeadbandSB->value() ;
+  updateSettings() ;
+}
+
+void GeneralEdit::on_StickRHdeadbandSB_editingFinished()
+{
+  g_eeGeneral.stickDeadband[3] = ui->StickRHdeadbandSB->value() ;
+  updateSettings() ;
+}
+
+
 
 void GeneralEdit::on_EncoderCB_currentIndexChanged(int x )
 {
@@ -1120,103 +1165,147 @@ void GeneralEdit::on_SixPosCB_currentIndexChanged(int x )
   updateSettings();
 }
 
-void GeneralEdit::on_AilNumWaysCB_currentIndexChanged(int x )
+void GeneralEdit::on_AilCB_currentIndexChanged(int x )
 {
-	uint8_t value = x ? USE_AIL_3POS : 0 ;
+	uint16_t value = x ? USE_AIL_3POS : 0 ;
 	g_eeGeneral.switchMapping &= ~USE_AIL_3POS ;
 	g_eeGeneral.switchMapping |= value ;
 	if ( x )
 	{
 //		g_eeGeneral.switchMapping &= ~USE_GEA_3POS  ;
-		ui->GeaNumWaysCB->setCurrentIndex( 0 ) ;
+//		ui->GeaNumWaysCB->setCurrentIndex( 0 ) ;
 	}
 	setHwSwitchActive() ;
   updateSettings();
 }
 
-void GeneralEdit::on_EleNumWaysCB_currentIndexChanged(int x )
+void GeneralEdit::on_EleCB_currentIndexChanged(int x )
 {
-	uint8_t value = x ? ( (x == 1) ? USE_ELE_3POS : USE_ELE_6POS ) : 0 ;
-	g_eeGeneral.switchMapping &= ~(USE_ELE_3POS | USE_ELE_6POS);
-	g_eeGeneral.switchMapping |= value ;
-	if ( x == 0 )
+  g_eeGeneral.switchMapping &= ~(USE_ELE_3POS | USE_ELE_6POS | USE_ELE_6PSB ) ;
+	uint16_t value = x ;
+	if ( value > 5 )
 	{
-//		g_eeGeneral.switchMapping &= ~(USE_RUD_3POS | USE_THR_3POS ) ;
-		ui->ThrNumWaysCB->setCurrentIndex( 0 ) ;
-		ui->RudNumWaysCB->setCurrentIndex( 0 ) ;
+		value -= 2 ;
+		if ( value < 6 )
+		{
+			value += 102-6 ;
+		}
 	}
+	if ( value )
+	{
+		uint16_t mask = USE_ELE_3POS ;
+		if ( value == 100 )
+		{
+			mask = USE_ELE_6POS ;
+		}
+		else if ( value == 101 )
+		{
+			mask = USE_ELE_6PSB ;
+		}
+		g_eeGeneral.switchMapping |= mask ;
+	} 
+	g_eeGeneral.elesource = value ;
+//	if ( x == 0 )
+//	{
+//		g_eeGeneral.switchMapping &= ~(USE_RUD_3POS | USE_THR_3POS ) ;
+//		ui->ThrNumWaysCB->setCurrentIndex( 0 ) ;
+//		ui->RudNumWaysCB->setCurrentIndex( 0 ) ;
+//	}
 	setHwSwitchActive() ;
   updateSettings();
 }
 
-void GeneralEdit::on_GeaNumWaysCB_currentIndexChanged(int x )
+void GeneralEdit::on_GeaCB_currentIndexChanged(int x )
 {
-	uint8_t value = x ? USE_GEA_3POS : 0 ;
+	uint16_t value = x ? USE_GEA_3POS : 0 ;
 	g_eeGeneral.switchMapping &= ~USE_GEA_3POS ;
 	g_eeGeneral.switchMapping |= value ;
-	if ( x )
-	{
+	g_eeGeneral.geasource = x ;
+//	if ( x )
+//	{
 //		g_eeGeneral.switchMapping &= ~USE_AIL_3POS  ;
-		ui->AilNumWaysCB->setCurrentIndex( 0 ) ;
-	}
+//		ui->AilNumWaysCB->setCurrentIndex( 0 ) ;
+//	}
 	setHwSwitchActive() ;
   updateSettings();
 }
 
-void GeneralEdit::on_RudNumWaysCB_currentIndexChanged(int x )
+void GeneralEdit::on_RudCB_currentIndexChanged(int x )
 {
-	uint8_t value = x ? USE_RUD_3POS : 0 ;
+	uint16_t value = x ? USE_RUD_3POS : 0 ;
 	g_eeGeneral.switchMapping &= ~USE_RUD_3POS ;
 	g_eeGeneral.switchMapping |= value ;
-	if ( x )
-	{
+	g_eeGeneral.rudsource = x ;
+//	if ( x )
+//	{
 //		g_eeGeneral.switchMapping &= ~USE_THR_3POS  ;
-		ui->ThrNumWaysCB->setCurrentIndex( 0 ) ;
-	}
+//		ui->ThrNumWaysCB->setCurrentIndex( 0 ) ;
+//	}
 	setHwSwitchActive() ;
   updateSettings();
 }
 
-void GeneralEdit::on_ThrNumWaysCB_currentIndexChanged(int x )
+void GeneralEdit::on_ThrCB_currentIndexChanged(int x )
 {
-	uint8_t value = x ? USE_THR_3POS : 0 ;
+	uint16_t value = x ? USE_THR_3POS : 0 ;
 	g_eeGeneral.switchMapping &= ~USE_THR_3POS ;
 	g_eeGeneral.switchMapping |= value ;
-	if ( x )
-	{
+	g_eeGeneral.thrsource = x ;
+//	if ( x )
+//	{
 //		g_eeGeneral.switchMapping &= ~USE_RUD_3POS  ;
-		ui->RudNumWaysCB->setCurrentIndex( 0 ) ;
-	}
+//		ui->RudNumWaysCB->setCurrentIndex( 0 ) ;
+//	}
+	setHwSwitchActive() ;
+  updateSettings();
+}
+
+void GeneralEdit::on_PB1CB_currentIndexChanged(int x )
+{
+	uint16_t value = x ? USE_PB1 : 0 ;
+	g_eeGeneral.switchMapping &= ~USE_PB1 ;
+	g_eeGeneral.switchMapping |= value ;
+	g_eeGeneral.pb1source = x ;
+	setHwSwitchActive() ;
+  updateSettings();
+}
+
+void GeneralEdit::on_PB2CB_currentIndexChanged(int x )
+{
+	uint16_t value = x ? USE_PB2 : 0 ;
+	g_eeGeneral.switchMapping &= ~USE_PB2 ;
+	g_eeGeneral.switchMapping |= value ;
+	g_eeGeneral.pb2source = x ;
 	setHwSwitchActive() ;
   updateSettings();
 }
 
 void GeneralEdit::setHwSwitchActive()
 {
-	if ( rData->type )
-	{
-		ui->EleNumWaysCB->setEnabled( false ) ;
-		ui->RudNumWaysCB->setEnabled( false ) ;
-		ui->ThrNumWaysCB->setEnabled( false ) ;
-		ui->GeaNumWaysCB->setEnabled( false ) ;
-		ui->AilNumWaysCB->setEnabled( false ) ;
-	}
-	else
-	{
-  	if ( (g_eeGeneral.switchMapping & (USE_ELE_3POS | USE_ELE_6POS)) == 0 )
-		{
-			ui->RudNumWaysCB->setEnabled( false ) ;
-			ui->ThrNumWaysCB->setEnabled( false ) ;
-		}
-		else
-		{
-			ui->RudNumWaysCB->setEnabled( (g_eeGeneral.switchMapping & USE_THR_3POS) ? false : true ) ;
-			ui->ThrNumWaysCB->setEnabled( (g_eeGeneral.switchMapping & USE_RUD_3POS) ? false : true ) ;
-		}
+//	if ( rData->type )
+//	{
+//		ui->EleNumWaysCB->setEnabled( false ) ;
+//		ui->RudNumWaysCB->setEnabled( false ) ;
+////		ui->ThrNumWaysCB->setEnabled( false ) ;
+//		ui->GeaNumWaysCB->setEnabled( false ) ;
+//		ui->AilNumWaysCB->setEnabled( false ) ;
+//	}
+//	else
+//	{
+//  	if ( (g_eeGeneral.switchMapping & (USE_ELE_3POS | USE_ELE_6POS)) == 0 )
+//		{
+//			ui->RudNumWaysCB->setEnabled( false ) ;
+////			ui->ThrNumWaysCB->setEnabled( false ) ;
+//		}
+//		else
+//		{
+//			ui->RudNumWaysCB->setEnabled( (g_eeGeneral.switchMapping & USE_THR_3POS) ? false : true ) ;
+////			ui->ThrNumWaysCB->setEnabled( (g_eeGeneral.switchMapping & USE_RUD_3POS) ? false : true ) ;
+//		}
 
-		ui->GeaNumWaysCB->setEnabled( (g_eeGeneral.switchMapping & USE_AIL_3POS) ? false : true ) ;
-		ui->AilNumWaysCB->setEnabled( (g_eeGeneral.switchMapping & USE_GEA_3POS) ? false : true ) ;
+//		ui->GeaNumWaysCB->setEnabled( (g_eeGeneral.switchMapping & USE_AIL_3POS) ? false : true ) ;
+//		ui->AilNumWaysCB->setEnabled( (g_eeGeneral.switchMapping & USE_GEA_3POS) ? false : true ) ;
     createSwitchMapping( &g_eeGeneral, MAX_DRSWITCH, rData->type ) ;
-	}
+//	}
 }
 

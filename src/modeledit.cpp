@@ -7,6 +7,7 @@
 #include "mixerdialog.h"
 #include "simulatordialog.h"
 #include "VoiceAlarmDialog.h"
+#include "TemplateDialog.h"
 
 #include <QtGui>
 
@@ -1544,6 +1545,16 @@ void ModelEdit::tabLimits()
 		limitAuto() ;
 
     setLimitMinMax();
+
+//    limitOffset[0] = new QSpinBox(this);
+//		limitOffset[0]->setMaximum(100);
+//		limitOffset[0]->setMinimum(-100);
+//    limitOffset[1] = new QSpinBox(this);
+//		limitOffset[1]->setMaximum(100);
+//		limitOffset[1]->setMinimum(-100);
+//    ui->grid_tabLimits->addWidget(limitOffset[0],17,1) ;
+//    ui->grid_tabLimits->addWidget(limitOffset[1],18,1) ;
+
 }
 
 void ModelEdit::updateCurvesTab()
@@ -3425,6 +3436,7 @@ void ModelEdit::tabTemplates()
     ui->templateList->addItem("Heli Gyro Setup");
     ui->templateList->addItem("Servo Test");
     ui->templateList->addItem("Range Test");
+    ui->templateList->addItem("Progressive");
 
 
 }
@@ -4759,6 +4771,14 @@ void ModelEdit::on_extendedLimitsChkB_toggled(bool checked)
 {
     g_model.extendedLimits = checked;
     setLimitMinMax();
+		if ( !checked )
+		{
+      for( LimitData *ld = &g_model.limitData[0] ; ld < &g_model.limitData[NUM_CHNOUT] ; ld += 1 )
+      {
+        if (ld->min < 0) ld->min = 0;
+        if (ld->max > 0) ld->max = 0;
+      }
+		}
     updateSettings();
 }
 
@@ -4847,8 +4867,28 @@ void ModelEdit::on_templateList_doubleClicked(QModelIndex index)
 {
     QString text = ui->templateList->item(index.row())->text();
 
-    int res = QMessageBox::question(this,tr("Apply Template?"),tr("Apply template \"%1\"?").arg(text),QMessageBox::Yes | QMessageBox::No);
-    if(res!=QMessageBox::Yes) return;
+		if ( index.row() == 9 )
+		{
+			templateValues.stick = STK_RUD ;
+			templateValues.outputChannel = 8 ;
+			templateValues.helperChannel = 16 ;
+			templateValues.switch1 = 1 ;
+			templateValues.switch2 = 2 ;
+			templateValues.switch3 = 3 ;
+      TemplateDialog *tem = new TemplateDialog(this, &g_model, &templateValues, eeFile->mee_type );
+			if(tem->exec())
+    	{
+    		applyTemplate(index.row());
+    		updateSettings();
+		    tabMixes();
+    	}
+			return ;
+		}
+		else
+		{
+	    int res = QMessageBox::question(this,tr("Apply Template?"),tr("Apply template \"%1\"?").arg(text),QMessageBox::Yes | QMessageBox::No);
+  	  if(res!=QMessageBox::Yes) return;
+		}
 
     applyTemplate(index.row());
     updateSettings();
@@ -4957,15 +4997,26 @@ void ModelEdit::applyTemplate(uint8_t idx)
     //sticky t-cut
     if(idx==j++)
     {
-        md=setDest(ICC(STK_THR));  md->srcRaw=MIX_MAX;  md->weight=-100;  md->swtch=DSW_SWC;  md->mltpx=MLTPX_REP;
-        md=setDest(14);            md->srcRaw=CH(14);   md->weight= 100;
-        md=setDest(14);            md->srcRaw=MIX_MAX;  md->weight=-100;  md->swtch=DSW_SWB;  md->mltpx=MLTPX_REP;
-        md=setDest(14);            md->srcRaw=MIX_MAX;  md->weight= 100;  md->swtch=DSW_THR;  md->mltpx=MLTPX_REP;
+//        md=setDest(ICC(STK_THR));  md->srcRaw=MIX_MAX;  md->weight=-100;  md->swtch=DSW_SWC;  md->mltpx=MLTPX_REP;
+//        md=setDest(14);            md->srcRaw=CH(14);   md->weight= 100;
+//        md=setDest(14);            md->srcRaw=MIX_MAX;  md->weight=-100;  md->swtch=DSW_SWB;  md->mltpx=MLTPX_REP;
+//        md=setDest(14);            md->srcRaw=MIX_MAX;  md->weight= 100;  md->swtch=DSW_THR;  md->mltpx=MLTPX_REP;
 
-        setSwitch(0xB,CS_VNEG, CM(STK_THR,g_model.modelVersion,g_eeGeneral.stickMode), -99);
-        setSwitch(0xC,CS_VPOS, CH(14), 0);
+//        setSwitch(0xB,CS_VNEG, CM(STK_THR,g_model.modelVersion,g_eeGeneral.stickMode), -99);
+//        setSwitch(0xC,CS_VPOS, CH(14), 0);
 
-        updateSwitchesTab();
+    	SafetySwData *sd = &g_model.safetySw[ICC(STK_THR)-1] ;
+			sd->opt.ss.mode = 3 ;
+			sd->opt.ss.swtch = DSW_THR ;
+			sd->opt.ss.val = g_model.throttleIdle ? 0 : -100 ;
+			
+			EditedNesting = 1  ;
+      populateSafetySwitchCB(safetySwitchSwtch[ICC(STK_THR)-1],sd->opt.ss.mode,sd->opt.ss.swtch, eeFile->mee_type);
+			safetySwitchType[ICC(STK_THR)-1]->setCurrentIndex( sd->opt.ss.mode ) ;
+			safetySwitchValue[ICC(STK_THR)-1]->setValue( sd->opt.ss.val ) ;
+			setSafetyWidgetVisibility(ICC(STK_THR)-1) ;
+			EditedNesting = 0  ;
+//      updateSwitchesTab();
     }
 
     //V-Tail
@@ -5067,6 +5118,20 @@ void ModelEdit::applyTemplate(uint8_t idx)
 
         // redraw switches tab
         updateSwitchesTab();
+    }
+    // Progressive
+    if(idx==j++)
+    {
+			md=setDest(templateValues.helperChannel); md->srcRaw=CM(templateValues.stick,g_model.modelVersion,g_eeGeneral.stickMode); md->weight= 20;
+			md=setDest(templateValues.outputChannel); md->srcRaw=CH(templateValues.outputChannel); md->weight= 100;
+			md=setDest(templateValues.outputChannel); md->srcRaw=CH(templateValues.helperChannel); md->weight= 2;
+			md=setDest(templateValues.outputChannel); md->srcRaw=MIX_FULL; md->weight= 100; md->swtch=DSW_SW1-1+templateValues.switch2; md->mltpx=MLTPX_REP;
+			md=setDest(templateValues.outputChannel); md->srcRaw=MIX_FULL; md->weight= -100; md->swtch=DSW_SW1-1+templateValues.switch3; md->mltpx=MLTPX_REP;
+
+      setSwitch(templateValues.switch1,CS_APOS, CM(templateValues.stick,g_model.modelVersion,g_eeGeneral.stickMode), 1);
+      setSwitch(templateValues.switch2,CS_VPOS, CH(templateValues.outputChannel), 100);
+      setSwitch(templateValues.switch3,CS_VNEG, CH(templateValues.outputChannel), -100);
+      updateSwitchesTab();
     }
 }
 

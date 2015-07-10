@@ -8,6 +8,7 @@
 #include "mixerdialog.h"
 #include "simulatordialog.h"
 #include "VoiceAlarmDialog.h"
+#include "TemplateDialog.h"
 
 #include <QtGui>
 
@@ -80,6 +81,7 @@ ModelEdit::ModelEdit( struct t_radioData *radioData, uint8_t id, QWidget *parent
 
     QRegExp rx(CHAR_FOR_NAMES_REGEX);
     ui->modelNameLE->setValidator(new QRegExpValidator(rx, this));
+    ui->modelImageLE->setValidator(new QRegExpValidator(rx, this));
 
 //		ModelVersion = g_model.modelVersion ;
 
@@ -213,6 +215,14 @@ void ModelEdit::tabModelEditSetup()
 		}
     ui->modelNameLE->setText( n ) ;
 
+		n = g_model.modelImageName ;
+
+		while ( n.endsWith(" ") )
+		{
+			n = n.left(n.size()-1) ;			
+		}
+    ui->modelImageLE->setText( n ) ;
+
 		ui->VoiceNumberSB->setValue(g_model.modelVoice+260) ;
     //timer mode direction value
     populateTimerSwitchCB(ui->timerModeCB,g_model.timer[0].tmrModeA);
@@ -308,6 +318,19 @@ void ModelEdit::tabModelEditSetup()
 			ui->widgetDefSE->show() ;
 			ui->widgetDefSF->show() ;
 			ui->widgetDefSG->show() ;
+			ui->EnThr->hide() ;
+			ui->EnEle->hide() ;
+			ui->EnRud->hide() ;
+			ui->EnIdx->hide() ;
+			ui->EnAil->hide() ;
+			ui->EnGea->hide() ;
+			ui->EnA->show() ;
+			ui->EnB->show() ;
+			ui->EnC->show() ;
+			ui->EnD->show() ;
+			ui->EnE->show() ;
+			ui->EnF->show() ;
+			ui->EnG->show() ;
 		}
 		else
 		{
@@ -376,6 +399,20 @@ void ModelEdit::tabModelEditSetup()
 			ui->switchDefPos_6->show() ;
 			ui->widgetDefSF->hide() ;
 			ui->widgetDefSG->hide() ;
+		
+			ui->EnThr->show() ;
+			ui->EnEle->show() ;
+			ui->EnRud->show() ;
+			ui->EnIdx->show() ;
+			ui->EnAil->show() ;
+			ui->EnGea->show() ;
+			ui->EnA->hide() ;
+			ui->EnB->hide() ;
+			ui->EnC->hide() ;
+			ui->EnD->hide() ;
+			ui->EnE->hide() ;
+			ui->EnF->hide() ;
+			ui->EnG->hide() ;
 		}
 
 
@@ -531,6 +568,21 @@ void ModelEdit::setSwitchDefPos()
     	ui->switchDefPos_8->setChecked(x & 0x80);
 		}
 
+#define THR_WARN_MASK	0x0101
+#define RUD_WARN_MASK	0x0202
+#define ELE_WARN_MASK	0x0C04
+#define IDX_WARN_MASK	0x0038
+#define AIL_WARN_MASK	0x1040
+#define GEA_WARN_MASK	0x2080
+		uint16_t temp = g_model.modelswitchWarningDisables ;
+
+		ui->EnThr->setChecked( !( temp & THR_WARN_MASK ) ) ;
+		ui->EnRud->setChecked( !( temp & RUD_WARN_MASK ) ) ;
+		ui->EnEle->setChecked( !( temp & ELE_WARN_MASK ) ) ;
+		ui->EnIdx->setChecked( !( temp & IDX_WARN_MASK ) ) ;
+		ui->EnAil->setChecked( !( temp & AIL_WARN_MASK ) ) ;
+		ui->EnGea->setChecked( !( temp & GEA_WARN_MASK ) ) ;
+
 		switchDefPosEditLock = false;
 	}
 	else
@@ -550,6 +602,16 @@ void ModelEdit::setSwitchDefPos()
     ui->SwitchDefSF->setValue( (y & 0x03) ? 1 : 0 ) ;
 		y >>= 2 ;
     ui->SwitchDefSG->setValue(y & 0x03) ;
+		
+		uint16_t temp = g_model.modelswitchWarningDisables ;
+		ui->EnA->setChecked( !( temp & 0x0003 ) ) ;
+		ui->EnB->setChecked( !( temp & 0x000C ) ) ;
+		ui->EnC->setChecked( !( temp & 0x0030 ) ) ;
+		ui->EnD->setChecked( !( temp & 0x00C0 ) ) ;
+		ui->EnE->setChecked( !( temp & 0x0300 ) ) ;
+		ui->EnF->setChecked( !( temp & 0x0C00 ) ) ;
+		ui->EnG->setChecked( !( temp & 0x3000 ) ) ;
+
     switchDefPosEditLock = false;
 	}
 
@@ -1099,9 +1161,9 @@ void ModelEdit::tabVoiceAlarms()
 
 	ui->VoiceAlarmList->setFont(QFont("Courier New",12)) ;
 	ui->VoiceAlarmList->clear() ;
-	for(i=0 ; i<NUM_SKY_VOICE_ALARMS ; i += 1)
+	for(i=0 ; i<NUM_SKY_VOICE_ALARMS+NUM_EXTRA_VOICE_ALARMS ; i += 1)
 	{
-		VoiceAlarmData *vad = &g_model.vad[i] ;
+		VoiceAlarmData *vad = ( i >= NUM_SKY_VOICE_ALARMS) ? &g_model.vadx[i-NUM_SKY_VOICE_ALARMS] : &g_model.vad[i] ;
 		QString str = "";
 		str = tr("VA%1%2  ").arg((i+1)/10).arg((i+1)%10) ;
 		QString srcstr ;
@@ -1158,10 +1220,14 @@ void ModelEdit::tabVoiceAlarms()
 			str += tr("(%1) ").arg(vad->offset) ;
 		}
 		str += tr("Switch(%1) ").arg(getSWName(vad->swtch, rData->type)) ;
-		if ( vad->rate < 3 )
+		if ( vad->rate < 4 )
 		{
-			srcstr = vad->rate ? (vad->rate == 1 ? "OFF " : "BOTH ") : "ON " ;
+			srcstr = (vad->rate > 1 ) ? (vad->rate == 2 ? "BOTH " : "ALL ") : (vad->rate == 0 ? "ON " : "OFF" ) ;
 			str += srcstr ;
+		}
+		else if ( vad->rate > 32 )
+		{
+			str += "ONCE" ;
 		}
 		else
 		{
@@ -1305,7 +1371,7 @@ void ModelEdit::tabMixes()
 				{
 					if (rData->type)
 					{
-						srcstr = "-SA-SB-SC-SD-SE-SF-SG-SH-6P" ;
+						srcstr = "_SA_SB_SC_SD_SE_SF_SG_SH_6P" ;
 					}
 					else
 					{
@@ -3433,7 +3499,7 @@ void ModelEdit::oneGvarVisibility(int index, QComboBox *b, QSpinBox *sb )
 	}
 	g_model.gvarAdjuster[index].switch_value = value ;
 
-	if ( function < 3 )
+	if ( ( function < 3 ) || ( function > 6 ) )
 	{
 		sb->show() ;
 		b->hide() ;
@@ -3730,13 +3796,14 @@ void ModelEdit::tabGvar()
 
 void ModelEdit::oneGvarGetValue(int index, QComboBox *b, QSpinBox *sb )
 {
-	if ( g_model.gvarAdjuster[index].function < 3 )
+	int func = g_model.gvarAdjuster[index].function ;
+	if ( ( func < 3 ) || ( func > 6 ) )
 	{
 	  g_model.gvarAdjuster[index].switch_value = sb->value() ;
 	}
 	else
 	{
-		if ( g_model.gvarAdjuster[index].function == 3 )	// Set V
+		if ( func == 3 )	// Set V
 		{
       g_model.gvarAdjuster[index].switch_value = b->currentIndex() ;
 		}
@@ -3876,6 +3943,7 @@ void ModelEdit::tabFrsky()
     ui->frsky_gr_1_1->setCurrentIndex(ALARM_GREATER(1,1));
 
     ui->GpsAltMain->setChecked(g_model.FrSkyGpsAlt);
+    ui->InvertCom1CB->setChecked(g_model.telemetryRxInvert);
     ui->HubComboBox->setCurrentIndex(g_model.FrSkyUsrProto);
     ui->UnitsComboBox->setCurrentIndex(g_model.FrSkyImperial);
     ui->BladesSpinBox->setValue(g_model.numBlades ) ;
@@ -3919,6 +3987,7 @@ void ModelEdit::tabFrsky()
     connect(ui->frsky_gr_1_1,SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
     
 		connect(ui->GpsAltMain,SIGNAL(stateChanged(int)),this,SLOT(FrSkyEdited()));
+    connect(ui->InvertCom1CB,SIGNAL(stateChanged(int)),this,SLOT(FrSkyEdited()));
 		connect(ui->HubComboBox,SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
 		connect(ui->UnitsComboBox,SIGNAL(currentIndexChanged(int)),this,SLOT(FrSkyEdited()));
 		connect(ui->BladesSpinBox,SIGNAL(editingFinished()),this,SLOT(FrSkyEdited()));
@@ -4003,7 +4072,8 @@ void ModelEdit::FrSkyEdited()
     g_model.frsky.channels[1].alarms_greater = (ui->frsky_gr_1_1->currentIndex() & 1) + ((ui->frsky_gr_1_1->currentIndex() & 1) << 1);
 
     g_model.FrSkyGpsAlt = ui->GpsAltMain->isChecked();
-    g_model.FrSkyUsrProto = ui->HubComboBox->currentIndex();
+    g_model.telemetryRxInvert = ui->InvertCom1CB->isChecked() ;
+		g_model.FrSkyUsrProto = ui->HubComboBox->currentIndex();
     g_model.FrSkyImperial = ui->UnitsComboBox->currentIndex();
     g_model.numBlades = ui->BladesSpinBox->value() ;
 
@@ -4055,6 +4125,8 @@ void ModelEdit::tabTemplates()
     ui->templateList->addItem("Heli Setup");
     ui->templateList->addItem("Heli Gyro Setup");
     ui->templateList->addItem("Servo Test");
+    ui->templateList->addItem("Range Test");
+    ui->templateList->addItem("Progressive");
 
 
 }
@@ -4074,6 +4146,23 @@ void ModelEdit::on_modelNameLE_editingFinished()
 	  memcpy( &rData->ModelNames[id_model+1], &g_model.name, sizeof(g_model.name) ) ;
     rData->ModelNames[id_model+1][sizeof( rData->models[0].name)+1] = '\0' ;
     for(int i=0; i<10; i++) if(!g_model.name[i]) g_model.name[i] = ' ';
+    updateSettings();
+
+}
+
+void ModelEdit::on_modelImageLE_editingFinished()
+{
+//    uint8_t temp = g_model.mdVers;
+    memset(&g_model.modelImageName,' ',sizeof(g_model.modelImageName));
+    QString str = ui->modelImageLE->text().left(10).toLatin1() ;
+
+    for(quint8 i=0; i<(str.length()); i++)
+    {
+      if(i>=sizeof(g_model.modelImageName)) break ;
+      g_model.modelImageName[i] = (char)str.data()[i].toLatin1() ;
+    }
+//    g_model.mdVers = temp;  //in case strcpy overruns
+//    for(int i=0; i<10; i++) if(!g_model.modelImageName[i]) g_model.modelImageName[i] = ' ';
     updateSettings();
 
 }
@@ -4224,7 +4313,7 @@ void ModelEdit::on_timerValTE_editingFinished()
 
 void ModelEdit::on_timer2ValTE_editingFinished()
 {
-    g_model.timer[1].tmrVal = ui->timerValTE->time().minute()*60 + ui->timerValTE->time().second();
+    g_model.timer[1].tmrVal = ui->timer2ValTE->time().minute()*60 + ui->timer2ValTE->time().second();
     updateSettings();
 }
 
@@ -4454,6 +4543,176 @@ void ModelEdit::getModelSwitchDefPos(int i, bool val)
     else
         g_model.modelswitchWarningStates &= ~(1<<(i));
 }
+
+void ModelEdit::on_EnA_stateChanged(int )
+{
+	if ( ui->EnA->isChecked() )
+	{
+		g_model.modelswitchWarningDisables &= ~0x0003 ;
+	}
+	else
+	{
+		g_model.modelswitchWarningDisables |= 0x0003 ;
+	}
+	updateSettings();
+}
+
+void ModelEdit::on_EnB_stateChanged(int )
+{
+	if ( ui->EnB->isChecked() )
+	{
+		g_model.modelswitchWarningDisables &= ~0x000C ;
+	}
+	else
+	{
+		g_model.modelswitchWarningDisables |= 0x000C ;
+	}
+	updateSettings();
+}
+
+void ModelEdit::on_EnC_stateChanged(int )
+{
+	if ( ui->EnC->isChecked() )
+	{
+		g_model.modelswitchWarningDisables &= ~0x0030 ;
+	}
+	else
+	{
+		g_model.modelswitchWarningDisables |= 0x0030 ;
+	}
+	updateSettings();
+}
+
+void ModelEdit::on_EnD_stateChanged(int )
+{
+	if ( ui->EnD->isChecked() )
+	{
+		g_model.modelswitchWarningDisables &= ~0x00C0 ;
+	}
+	else
+	{
+		g_model.modelswitchWarningDisables |= 0x00C0 ;
+	}
+	updateSettings();
+}
+
+void ModelEdit::on_EnE_stateChanged(int )
+{
+	if ( ui->EnE->isChecked() )
+	{
+		g_model.modelswitchWarningDisables &= ~0x0300 ;
+	}
+	else
+	{
+		g_model.modelswitchWarningDisables |= 0x0300 ;
+	}
+	updateSettings();
+}
+
+void ModelEdit::on_EnF_stateChanged(int )
+{
+	if ( ui->EnF->isChecked() )
+	{
+		g_model.modelswitchWarningDisables &= ~0x0C00 ;
+	}
+	else
+	{
+		g_model.modelswitchWarningDisables |= 0x0C00 ;
+	}
+	updateSettings();
+}
+
+void ModelEdit::on_EnG_stateChanged(int )
+{
+	if ( ui->EnG->isChecked() )
+	{
+		g_model.modelswitchWarningDisables &= ~0x3000 ;
+	}
+	else
+	{
+		g_model.modelswitchWarningDisables |= 0x3000 ;
+	}
+	updateSettings();
+}
+
+void ModelEdit::on_EnThr_stateChanged(int )
+{
+	if ( ui->EnThr->isChecked() )
+	{
+		g_model.modelswitchWarningDisables &= ~THR_WARN_MASK ;
+	}
+	else
+	{
+		g_model.modelswitchWarningDisables |= THR_WARN_MASK ;
+	}
+	updateSettings();
+}
+
+void ModelEdit::on_EnRud_stateChanged(int )
+{
+	if ( ui->EnRud->isChecked() )
+	{
+		g_model.modelswitchWarningDisables &= ~RUD_WARN_MASK ;
+	}
+	else
+	{
+		g_model.modelswitchWarningDisables |= RUD_WARN_MASK ;
+	}
+	updateSettings();
+}
+
+void ModelEdit::on_EnEle_stateChanged(int )
+{
+	if ( ui->EnEle->isChecked() )
+	{
+		g_model.modelswitchWarningDisables &= ~ELE_WARN_MASK ;
+	}
+	else
+	{
+		g_model.modelswitchWarningDisables |= ELE_WARN_MASK ;
+	}
+	updateSettings();
+}
+
+void ModelEdit::on_EnIdx_stateChanged(int )
+{
+	if ( ui->EnIdx->isChecked() )
+	{
+		g_model.modelswitchWarningDisables &= ~IDX_WARN_MASK ;
+	}
+	else
+	{
+		g_model.modelswitchWarningDisables |= IDX_WARN_MASK ;
+	}
+	updateSettings();
+}
+
+void ModelEdit::on_EnAil_stateChanged(int )
+{
+	if ( ui->EnAil->isChecked() )
+	{
+		g_model.modelswitchWarningDisables &= ~AIL_WARN_MASK ;
+	}
+	else
+	{
+		g_model.modelswitchWarningDisables |= AIL_WARN_MASK ;
+	}
+	updateSettings();
+}
+
+void ModelEdit::on_EnGea_stateChanged(int )
+{
+	if ( ui->EnGea->isChecked() )
+	{
+		g_model.modelswitchWarningDisables &= ~GEA_WARN_MASK ;
+	}
+	else
+	{
+		g_model.modelswitchWarningDisables |= GEA_WARN_MASK ;
+	}
+	updateSettings();
+}
+
 
 void ModelEdit::on_switchDefPos_1_stateChanged(int )
 {
@@ -5110,7 +5369,9 @@ int ModelEdit::getMixerIndex(int dch)
 
 void ModelEdit::on_VoiceAlarmList_doubleClicked( QModelIndex index )
 {
-  VoiceAlarmDialog *dlg = new VoiceAlarmDialog( this, &g_model.vad[index.row()], rData->type, g_eeGeneral.stickMode, g_model.modelVersion, &g_model ) ;
+	int i = index.row() ;
+	VoiceAlarmData *vad = ( i >= NUM_SKY_VOICE_ALARMS) ? &g_model.vadx[i-NUM_SKY_VOICE_ALARMS] : &g_model.vad[i] ;
+  VoiceAlarmDialog *dlg = new VoiceAlarmDialog( this, vad, rData->type, g_eeGeneral.stickMode, g_model.modelVersion, &g_model ) ;
   dlg->setWindowTitle(tr("Voice Alarm %1").arg(index.row()+1)) ;
   if(dlg->exec())
   {
@@ -5600,6 +5861,14 @@ void ModelEdit::on_extendedLimitsChkB_toggled(bool checked)
 {
     g_model.extendedLimits = checked;
     setLimitMinMax();
+		if ( !checked )
+		{
+      for( LimitData *ld = &g_model.limitData[0] ; ld < &g_model.limitData[NUM_SKYCHNOUT] ; ld += 1 )
+      {
+        if (ld->min < 0) ld->min = 0;
+        if (ld->max > 0) ld->max = 0;
+      }
+		}
     updateSettings();
 }
 
@@ -5681,8 +5950,28 @@ void ModelEdit::on_templateList_doubleClicked(QModelIndex index)
 {
     QString text = ui->templateList->item(index.row())->text();
 
-    int res = QMessageBox::question(this,tr("Apply Template?"),tr("Apply template \"%1\"?").arg(text),QMessageBox::Yes | QMessageBox::No);
-    if(res!=QMessageBox::Yes) return;
+		if ( index.row() == 9 )
+		{
+			templateValues.stick = STK_RUD ;
+			templateValues.outputChannel = 8 ;
+			templateValues.helperChannel = 16 ;
+			templateValues.switch1 = 1 ;
+			templateValues.switch2 = 2 ;
+			templateValues.switch3 = 3 ;
+      TemplateDialog *tem = new TemplateDialog(this, &g_model, &templateValues, rData->type );
+			if(tem->exec())
+    	{
+    		applyTemplate(index.row());
+    		updateSettings();
+		    tabMixes();
+    	}
+			return ;
+		}
+		else
+		{
+	    int res = QMessageBox::question(this,tr("Apply Template?"),tr("Apply template \"%1\"?").arg(text),QMessageBox::Yes | QMessageBox::No);
+  	  if(res!=QMessageBox::Yes) return;
+		}
 
     applyTemplate(index.row());
     updateSettings();
@@ -5790,15 +6079,25 @@ void ModelEdit::applyTemplate(uint8_t idx)
     //sticky t-cut
     if(idx==j++)
     {
-        md=setDest(ICC(STK_THR));  md->srcRaw=MIX_MAX;  md->weight=-100;  md->swtch=DSW_SWC;  md->mltpx=MLTPX_REP;
-        md=setDest(14);            md->srcRaw=CH(14);   md->weight= 100;
-        md=setDest(14);            md->srcRaw=MIX_MAX;  md->weight=-100;  md->swtch=DSW_SWB;  md->mltpx=MLTPX_REP;
-        md=setDest(14);            md->srcRaw=MIX_MAX;  md->weight= 100;  md->swtch=DSW_THR;  md->mltpx=MLTPX_REP;
+//        md=setDest(ICC(STK_THR));  md->srcRaw=MIX_MAX;  md->weight=-100;  md->swtch=DSW_SWC;  md->mltpx=MLTPX_REP;
+//        md=setDest(14);            md->srcRaw=CH(14);   md->weight= 100;
+//        md=setDest(14);            md->srcRaw=MIX_MAX;  md->weight=-100;  md->swtch=DSW_SWB;  md->mltpx=MLTPX_REP;
+//        md=setDest(14);            md->srcRaw=MIX_MAX;  md->weight= 100;  md->swtch=DSW_THR;  md->mltpx=MLTPX_REP;
 
-        setSwitch(0xB,CS_VNEG, CM(STK_THR,g_model.modelVersion,g_eeGeneral.stickMode), -99);
-        setSwitch(0xC,CS_VPOS, CH(14), 0);
+//        setSwitch(0xB,CS_VNEG, CM(STK_THR,g_model.modelVersion,g_eeGeneral.stickMode), -99);
+//        setSwitch(0xC,CS_VPOS, CH(14), 0);
 
-        updateSwitchesTab();
+      SKYSafetySwData *sd = &g_model.safetySw[ICC(STK_THR)-1] ;
+			sd->opt.ss.mode = 3 ;
+			sd->opt.ss.swtch = DSW_THR ;
+			sd->opt.ss.val = g_model.throttleIdle ? 0 : -100 ;
+			
+			EditedNesting = 1  ;
+      populateSafetySwitchCB(safetySwitchSwtch[ICC(STK_THR)-1],sd->opt.ss.mode,sd->opt.ss.swtch, rData->type);
+			safetySwitchType[ICC(STK_THR)-1]->setCurrentIndex( sd->opt.ss.mode ) ;
+			safetySwitchValue[ICC(STK_THR)-1]->setValue( sd->opt.ss.val ) ;
+			setSafetyWidgetVisibility(ICC(STK_THR)-1) ;
+			EditedNesting = 0  ;
     }
 
     //V-Tail
@@ -5891,7 +6190,31 @@ void ModelEdit::applyTemplate(uint8_t idx)
         updateSwitchesTab();
     }
 
+    // Range Test
+    if(idx==j++)
+    {
+        md=setDest(16); md->srcRaw=MIX_FULL; md->weight= 100; md->swtch=DSW_SW1; md->speedUp = 4; md->speedDown = 4;
 
+        setSwitch(1,CS_TIME, 4, 4 ) ;
+
+        // redraw switches tab
+        updateSwitchesTab();
+    }
+    
+		// Progressive
+    if(idx==j++)
+    {
+			md=setDest(templateValues.helperChannel); md->srcRaw=CM(templateValues.stick,g_model.modelVersion,g_eeGeneral.stickMode); md->weight= 20;
+			md=setDest(templateValues.outputChannel); md->srcRaw=CH(templateValues.outputChannel); md->weight= 100;
+			md=setDest(templateValues.outputChannel); md->srcRaw=CH(templateValues.helperChannel); md->weight= 2;
+			md=setDest(templateValues.outputChannel); md->srcRaw=MIX_FULL; md->weight= 100; md->swtch=DSW_SW1-1+templateValues.switch2; md->mltpx=MLTPX_REP;
+			md=setDest(templateValues.outputChannel); md->srcRaw=MIX_FULL; md->weight= -100; md->swtch=DSW_SW1-1+templateValues.switch3; md->mltpx=MLTPX_REP;
+
+      setSwitch(templateValues.switch1,CS_APOS, CM(templateValues.stick,g_model.modelVersion,g_eeGeneral.stickMode), 1);
+      setSwitch(templateValues.switch2,CS_VPOS, CH(templateValues.outputChannel), 100);
+      setSwitch(templateValues.switch3,CS_VNEG, CH(templateValues.outputChannel), -100);
+      updateSwitchesTab();
+    }
 
 }
 

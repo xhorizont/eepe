@@ -21,7 +21,7 @@
 
 #define VERS 1
 
-#include <inttypes.h>
+#include <stdint.h>
 #include <string.h>
 
 const uint8_t modn12x3[4][4]= {
@@ -171,7 +171,10 @@ enum EnumKeys {
 #define HSW_Ele6pos3	63
 #define HSW_Ele6pos4	64
 #define HSW_Ele6pos5	65
-#define HSW_MAX				65
+#define HSW_Pb1				66
+#define HSW_Pb2				67
+#define HSW_MAX				67
+#define HSW_MAX_X9D		65
 
 #define HSW_SF2				1
 //#define HSW_SF2				2
@@ -206,11 +209,14 @@ enum EnumKeys {
 #define	USE_ELE_6POS	0x08
 #define	USE_AIL_3POS	0x10
 #define	USE_GEA_3POS	0x20
+#define	USE_ELE_6PSB	0x40
+#define	USE_PB1				0x80
+#define	USE_PB2				0x100
 
 
 
-#define SWITCHES_STR "THRRUDELEID0ID1ID2AILGEATRNL1 L2 L3 L4 L5 L6 L7 L8 L9 LA LB LC LD LE LF LG LH LI LJ LK LL LM LN LO onfTH^TH-THvRU^RU-RUvEL^EL-ELvAI^AI-AIvGE^GE-GEv6P06P16P26P36P46P5"
-#define XSWITCHES_STR "SF       SC^SC-SCv      SH L1 L2 L3 L4 L5 L6 L7 L8 L9 LA LB LC LD LE LF LG LH LI LJ LK LL LM LN LO onfSB^SB-SBvSE^SE-SEvSA^SA-SAvSD^SD-SDvSG^SG-SGv6P06P16P26P36P46P5"
+#define SWITCHES_STR "THRRUDELEID0ID1ID2AILGEATRNL1 L2 L3 L4 L5 L6 L7 L8 L9 LA LB LC LD LE LF LG LH LI LJ LK LL LM LN LO onfTH^TH-THvRU^RU-RUvEL^EL-ELvAI^AI-AIvGE^GE-GEv6P06P16P26P36P46P5PB1PB2"
+#define XSWITCHES_STR "SF       SC^SC-SCv      SH L1 L2 L3 L4 L5 L6 L7 L8 L9 LA LB LC LD LE LF LG LH LI LJ LK LL LM LN LO onfSB^SB-SBvSE^SE-SEvSA^SA-SAvSD^SD-SDvSG^SG-SGv6P06P16P26P36P46P5PB1PB2"
 #define NUM_CSW  12 //number of custom switches
 #define NUM_SKYCSW  24 //number of custom switches
 #define CSW_INDEX	9	// Index of first custom switch

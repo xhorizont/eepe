@@ -99,6 +99,7 @@ private slots:
 		void on_CrossTrimChkB_stateChanged(int ) ;
 		void on_FrskyPinsChkB_stateChanged(int ) ;
 		void on_TeZ_gt_90ChkB_stateChanged(int ) ;
+		void on_MsoundSerialChkB_stateChanged(int ) ;
 		void on_RotateScreenChkB_stateChanged(int ) ;
 		void on_SerialLCDChkB_stateChanged(int ) ;
 		void on_SSD1306ChkB_stateChanged(int ) ;

@@ -51,6 +51,7 @@
 #include "simulatordialog.h"
 #include "printdialog.h"
 #include "eeprom_rlc.h"
+#include "wizarddialog.h"
 
 namespace er9x
 {
@@ -82,18 +83,23 @@ MdiChild::MdiChild()
 
 	// fill file system
 	uint32_t i ;
-	for ( i = 0 ; i < MAX_MODELS + 1 ; i += 1 )
+	uint32_t max_models = MAX_IMODELS ;
+
+	for ( i = 0 ; i < max_models + 1 ; i += 1 )
 	{
     radioData.File_system[i].block_no = i * 2 ;
 		radioData.File_system[i].size = 0 ;
 		radioData.File_system[i].sequence_no = 1 ;
 		radioData.File_system[i].flags = 0 ;
 	}
-	for ( i = 1 ; i <= MAX_MODELS ; i += 1 )
+	for ( i = 1 ; i <= max_models ; i += 1 )
 	{
     radioData.ModelNames[i][0] = '\0' ;
 	}
 	radioData.type = 0 ;
+
+
+
 	generalDefault() ;
 
     this->setFont(QFont("Courier New",12));
@@ -195,8 +201,13 @@ void MdiChild::refreshList()
     if(!str.isEmpty())
         str.prepend(" - ");
     addItem(tr("General Settings") + str);
+		uint32_t max_models = MAX_MODELS ;
+		if ( radioData.type == 0 )
+		{
+			max_models = MAX_IMODELS ;
+		}
 
-    for(uint8_t i=0; i<MAX_MODELS; i++)
+    for(uint8_t i=0; i< max_models ; i++)
     {
       buf[0]='0'+(i+1)/10;
       buf[1]='0'+(i+1)%10;
@@ -340,8 +351,13 @@ void MdiChild::doPaste(QByteArray *gmData, int index)
     int i = 0;
     int id = index;
     if(!id) id++;
+		uint32_t max_models = MAX_MODELS ;
+		if ( radioData.type == 0 )
+		{
+			max_models = MAX_IMODELS ;
+		}
 
-    while((i<gmData->size()) && (id<=MAX_MODELS))
+    while((i<gmData->size()) && (id<=max_models))
     {
         char c = *gData;
         i++;
@@ -376,7 +392,8 @@ void MdiChild::doPaste(QByteArray *gmData, int index)
         }
         else if( (c& 0x7F)=='M') // er9x model data
 				{
-          memcpy( &er9x::EmodelData, gData, sizeof(er9x::EmodelData ) ) ;
+          int size = sizeof(er9x::EmodelData ) ;
+          memcpy( &er9x::EmodelData, gData, size ) ;//of(er9x::EmodelData ) ) ;
 					convertFromEr9x( &radioData.models[id-1], (c & 0x80) ) ;
           setModelFile( id-1 ) ;
           gData += sizeof(er9x::EmodelData);
@@ -576,7 +593,7 @@ void MdiChild::saveModelToFile()
     bool genfile = currentRow()==0;
 
 //    ModelData tmod;
-    EEGeneral tgen;
+//    EEGeneral tgen;
     QString fileName;
     QSettings settings("er9x-eePskye", "eePskye");
 
@@ -591,7 +608,7 @@ void MdiChild::saveModelToFile()
             return;
         }
 
-        QString ownerName = QString::fromLatin1(tgen.ownerName,sizeof(tgen.ownerName)).trimmed() + ".eepg";
+        QString ownerName = QString::fromLatin1(radioData.generalSettings.ownerName,sizeof(radioData.generalSettings.ownerName)).trimmed() + ".eepg";
 
         fileName = QFileDialog::getSaveFileName(this, tr("Save Settings As"),settings.value("lastDir").toString() + "/" +ownerName,tr(EEPG_FILES_FILTER));
     }
@@ -667,7 +684,12 @@ void MdiChild::saveModelToFile()
 void MdiChild::duplicate()
 {
     int i = this->currentRow();
-    if(i && i<MAX_MODELS)
+		uint32_t max_models = MAX_MODELS ;
+		if ( radioData.type == 0 )
+		{
+			max_models = MAX_IMODELS ;
+		}
+    if(i && i<max_models)
     {
 //      ModelData gmodel;
 //      SKYModelData gmodel1;
@@ -676,9 +698,9 @@ void MdiChild::duplicate()
 //        {
             int j = i+1;
 		//XXXXXXXXXXXXX
-            while(j<MAX_MODELS && radioData.File_system[j+1].size) j++;
+            while(j<max_models && radioData.File_system[j+1].size) j++;
 		//XXXXXXXXXXXXX
-            if(j<MAX_MODELS)
+            if(j<max_models)
 						{
 //							 eeFile.putModel(&gmodel,j);
       	      memcpy( &radioData.models[j], &radioData.models[i], sizeof( radioData.models[0] ) ) ;
@@ -805,10 +827,11 @@ void MdiChild::newFile()
     isUntitled = true;
     curFile = tr("document%1.bin").arg(sequenceNumber++);
     setWindowTitle(curFile + "[*]" + type );
+		refreshList() ;
 
 }
 
-uint8_t temp[EESIZE];
+uint8_t temp[EEFULLSIZE];
 
 bool MdiChild::loadFile(const QString &fileName, bool resetCurrentFile)
 {
@@ -868,8 +891,13 @@ bool MdiChild::loadFile(const QString &fileName, bool resetCurrentFile)
 			  		memcpy( &radioData.generalSettings, &tgen, sizeof(tgen) ) ;
 								
           }
+					uint32_t max_models = MAX_MODELS ;
+					if ( radioData.type == 0 )
+					{
+						max_models = MAX_IMODELS ;
+					}
 
-          for(int i=0; i<MAX_MODELS; i++)
+          for(int i=0; i<max_models; i++)
           {
             SKYModelData tmod;
             memset(&tmod,0,sizeof(tmod));
@@ -991,16 +1019,16 @@ bool MdiChild::loadFile(const QString &fileName, bool resetCurrentFile)
             return false;
         }
 
-        long result = file.read((char*)&temp,EESIZE);
+        long result = file.read((char*)&temp,EEFULLSIZE);
         file.close();
 
         if (result==EE20MSIZE)
 				{
-					result = EESIZE ;
+					result = EEFULLSIZE ;
 				}
 
 
-        if (result!=EESIZE)
+        if (result!=EEFULLSIZE)
         {
             QMessageBox::critical(this, tr("Error"),
                                  tr("Error reading file %1:\n%2.")
@@ -1151,7 +1179,13 @@ bool MdiChild::saveFile(const QString &fileName, bool setCurrent)
         root.appendChild(genData);
 
         //Save model data one by one
-        for(int i=0; i<MAX_MODELS; i++)
+				uint32_t max_models = MAX_MODELS ;
+				if ( radioData.type == 0 )
+				{
+					max_models = MAX_IMODELS ;
+				}
+        
+				for(int i=0; i<max_models; i++)
         {
             saveModelToXML(&doc, &root, i, MDVERS);
         }
@@ -1198,7 +1232,7 @@ bool MdiChild::saveFile(const QString &fileName, bool setCurrent)
 //        uint8_t temp[EESIZE];		// Now a global
         
         rawsaveFile( &radioData, temp);
-				int fileSize = EESIZE ;
+				int fileSize = EEFULLSIZE ;
         if ( radioData.type )
 				{
 					fileSize = 32768 ;
@@ -1395,7 +1429,7 @@ void MdiChild::burnTo()  // write to Tx
 					else
 					{
       			qint32 fsize ;
-						fsize = (MAX_MODELS+1)*8192 ;
+						fsize = (MAX_IMODELS+1)*8192 ;
 						if ( radioData.type )
 						{
 							fsize = 32768 ;			// Taranis EEPROM
@@ -1437,6 +1471,8 @@ void MdiChild::ShowContextMenu(const QPoint& pos)
 
     QMenu contextMenu;
     contextMenu.addAction(QIcon(":/images/edit.png"), tr("&Edit"),this,SLOT(OpenEditWindow()));
+    contextMenu.addSeparator();
+    contextMenu.addAction(QIcon(":/images/edit.png"), tr("&Wizard"),this,SLOT(wizardEdit()));
     contextMenu.addSeparator();
     contextMenu.addAction(QIcon(":/images/clear.png"), tr("&Delete"),this,SLOT(deleteSelected(bool)),tr("Delete"));
     contextMenu.addAction(QIcon(":/images/copy.png"), tr("&Copy"),this,SLOT(copy()),tr("Ctrl+C"));
@@ -1637,7 +1673,11 @@ void MdiChild::convertFromEr9x( SKYModelData *dest, uint8_t type )
 	dest->FrSkyGpsAlt = er9x::EmodelData.FrSkyGpsAlt ;
 	dest->FrSkyImperial = er9x::EmodelData.FrSkyImperial ;
 	dest->FrSkyAltAlarm = er9x::EmodelData.FrSkyAltAlarm ;
-//	dest->modelVersion = er9x::EmodelData.version ;
+  dest->modelVersion = er9x::EmodelData.modelVersion ;
+	if ( dest->modelVersion > 3 )
+	{
+		dest->modelVersion = 3 ;
+	}
 	dest->protocol = er9x::EmodelData.protocol ;
 	dest->ppmNCH = er9x::EmodelData.ppmNCH ;
 	dest->thrTrim = er9x::EmodelData.thrTrim ;
@@ -1657,6 +1697,7 @@ void MdiChild::convertFromEr9x( SKYModelData *dest, uint8_t type )
 	dest->swashRingValue = er9x::EmodelData.swashRingValue ;
 	dest->ppmFrameLength = er9x::EmodelData.ppmFrameLength ;
 	dest->startChannel = er9x::EmodelData.ppmStart ;
+  dest->sub_trim_limit = er9x::EmodelData.sub_trim_limit ;
 
 	for ( i = 0 ; i < MAX_MIXERS ; i += 1 )
 	{
@@ -1792,11 +1833,45 @@ void MdiChild::convertFromEr9x( SKYModelData *dest, uint8_t type )
 		}
 	}
 
+	for ( i = 0 ; i < MAX_GVARS ; i += 1 )
+	{
+		dest->gvars[i] = (GvarData&)er9x::EmodelData.gvars[i] ;
+	}
+
 //	dest->frskyAlarms = er9x::EmodelData.frskyAlarms ;
 
   memcpy( &dest->customDisplayIndex[0], &er9x::EmodelData.CustomDisplayIndex[0], 6 ) ;
-
 }
+
+
+void MdiChild::wizardEdit()
+{
+   EEGeneral gg;
+   memcpy( &gg, &radioData.generalSettings, sizeof(EEGeneral) ) ;
+	
+//  int row = ui->modelsList->currentRow();
+  int row = this->currentRow();
+  if (row > 0)
+	{
+    modelDefault(row-1);
+//    checkAndInitModel(row);
+    WizardDialog * wizard = new WizardDialog( gg, row, this);
+    wizard->exec();
+    if (wizard->mix.complete /*TODO rather test the exec() result?*/)
+		{
+    	SKYModelData gm ;
+//	    eeFile.getModel(&gm,currentRow()-1) ;
+      gm = wizard->mix ;
+			
+    	memcpy( &radioData.models[row-1], &gm, sizeof(SKYModelData) ) ;
+//      radioData.models[row - 1] = wizard->mix;
+			setModelFile( row-1 ) ;
+      setModified();
+    }
+  }
+}
+
+
 
 
 

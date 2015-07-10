@@ -37,7 +37,7 @@
 #ifndef eeprom_rlc_h
 #define eeprom_rlc_h
 
-#include <inttypes.h>
+#include <stdint.h>
 
 #define blkid_t    uint8_t
 #define blkidL_t    uint16_t

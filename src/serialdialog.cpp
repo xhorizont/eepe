@@ -6,7 +6,7 @@
 #include "qextserialenumerator.h"
 #include <QtCore/QList>
 #include <QString>
-#include <inttypes.h>
+#include <stdint.h>
 #include <QFileDialog>
 #include <QSettings>
 

@@ -75,8 +75,10 @@ protected:
 
 private slots:
 
+    void replyGFinished(QNetworkReply * reply);
     void reply1Finished(QNetworkReply * reply);
     void reply2Finished(QNetworkReply * reply);
+    void replyGssl( QNetworkReply * reply, const QList<QSslError> & list) ;
 
     void reply1Accepted();
     void reply2Accepted();
@@ -116,6 +118,7 @@ private slots:
     void showEEPROMInfo();
     void doTelemetry();
 		void releaseNotes() ;
+    void title();
 
 
 private:
@@ -147,9 +150,11 @@ private:
     bool checkERSKY9X;
     bool checkEEPSKYE;
     bool showcheckForUpdatesResult;
+    bool checkGdone;
     bool check1done;
     bool check2done;
 
+    QNetworkAccessManager *managerG ;
     QNetworkAccessManager *manager1;
     QNetworkAccessManager *manager2;
 

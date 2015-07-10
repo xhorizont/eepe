@@ -2,7 +2,7 @@
 #include "ui_simulatordialog.h"
 #include "node.h"
 #include <QtGui>
-#include <inttypes.h>
+#include <stdint.h>
 #include "pers.h"
 #include "helpers.h"
 #include "qextserialenumerator.h"
@@ -70,7 +70,7 @@ simulatorDialog::simulatorDialog( QWidget *parent) :
     memset(&act,0,sizeof(act));
 
     memset(&anas,0,sizeof(anas));
-    memset(&chans,0,sizeof(chans));
+//    memset(&chans,0,sizeof(chans));
 
     memset(&swOn,0,sizeof(swOn));
 
@@ -2060,7 +2060,7 @@ void simulatorDialog::perOut(bool init, uint8_t att)
 {
     int16_t trimA[4];
     uint8_t  anaCenter = 0;
-    uint16_t d = 0;
+//    uint16_t d = 0;
 
 //		CurrentPhase = getFlightPhase() ;
 
@@ -2076,15 +2076,15 @@ void simulatorDialog::perOut(bool init, uint8_t att)
   	  ail_stick = AIL_STICK ;
 		}
     //===========Swash Ring================
-    if(g_model.swashRingValue)
-    {
-        uint32_t v = (calibratedStick[ele_stick]*calibratedStick[ele_stick] +
-                      calibratedStick[ail_stick]*calibratedStick[ail_stick]);
-        uint32_t q = RESX*g_model.swashRingValue/100;
-        q *= q;
-        if(v>q)
-            d = isqrt32(v);
-    }
+//    if(g_model.swashRingValue)
+//    {
+//        uint32_t v = (calibratedStick[ele_stick]*calibratedStick[ele_stick] +
+//                      calibratedStick[ail_stick]*calibratedStick[ail_stick]);
+//        uint32_t q = RESX*g_model.swashRingValue/100;
+//        q *= q;
+//        if(v>q)
+//            d = isqrt32(v);
+//    }
     //===========Swash Ring================
 
 
@@ -2120,8 +2120,8 @@ void simulatorDialog::perOut(bool init, uint8_t att)
         if(!(v/16)) anaCenter |= 1<<index ;//(CONVERT_MODE((i+1),g_model.modelVersion,g_eeGeneral.stickMode)-1);
 
         //===========Swash Ring================
-        if(d && (index==ele_stick || index==ail_stick))
-            v = (int32_t)v*g_model.swashRingValue*RESX/(d*100);
+//        if(d && (index==ele_stick || index==ail_stick))
+//            v = (int32_t)v*g_model.swashRingValue*RESX/(d*100);
         //===========Swash Ring================
 
 
@@ -2203,7 +2203,7 @@ void simulatorDialog::perOut(bool init, uint8_t att)
 
 
     for(uint8_t i=0;i<NUM_PPM;i++)    anas[i+PPM_BASE]   = g_ppmIns[i];// - g_eeGeneral.ppmInCalib[i]; //add ppm channels
-    for(uint8_t i=0;i<NUM_CHNOUT;i++) anas[i+CHOUT_BASE] = chans[i]; //other mixes previous outputs
+//    for(uint8_t i=0;i<NUM_CHNOUT;i++) anas[i+CHOUT_BASE] = chans[i]; //other mixes previous outputs
 //#if GVARS
 //        for(uint8_t i=0;i<MAX_GVARS;i++) anas[i+MIX_3POS] = g_model.gvars[i].gvar * 8 ;
 //#endif
@@ -2211,6 +2211,23 @@ void simulatorDialog::perOut(bool init, uint8_t att)
     //===========Swash Ring================
     if(g_model.swashRingValue)
     {
+//			int8_t x ;
+//			uint16_t y ;
+
+//			x = anas[ele_stick] / 10 ;
+//			y = x * x ;
+//			x = anas[ail_stick] / 10 ;
+//			y += x * x ;
+
+//			uint8_t t1 = calc100toRESX(g_model.swashRingValue) / 10 ;
+//			if ( y > (t1 * t1) )
+//			{
+//        uint16_t d = isqrt32((uint32_t) y);
+//        anas[ele_stick] = (int32_t)anas[ele_stick]*t1/((int32_t)d) ;
+//        anas[ail_stick] = (int32_t)anas[ail_stick]*t1/((int32_t)d) ;
+				
+//			}
+
       uint32_t v = ((int32_t)anas[ele_stick]*anas[ele_stick] + (int32_t)anas[ail_stick]*anas[ail_stick]);
 		  int16_t tmp = calc100toRESX(g_model.swashRingValue) ;
       uint32_t q ;
@@ -2278,7 +2295,7 @@ void simulatorDialog::perOut(bool init, uint8_t att)
 //        calibratedStick[MIX_CYC3-1]=anas[MIX_CYC3-1];
     }
 	}
-    memset(chans,0,sizeof(chans));        // All outputs to 0
+//    memset(chans,0,sizeof(chans));        // All outputs to 0
 
     uint8_t mixWarning = 0;
     //========== MIXER LOOP ===============
@@ -2351,13 +2368,21 @@ void simulatorDialog::perOut(bool init, uint8_t att)
         *trimptr[stick] *= -1;
     }
 
-    for(uint8_t i=0;i<MAX_MIXERS;i++){
-        MixData &md = g_model.mixData[i];
+  uint8_t mixIndex = 0 ;
+  MixData *md = &g_model.mixData[0];
+	for(uint8_t chanIndex=0;chanIndex<NUM_CHNOUT;chanIndex++)
+	{
+    qint32 thisChan = 0 ;
+
+//    for(uint8_t mixIndex=0;mixIndex<MAX_MIXERS;mixIndex++)
+		for( ; md->destCh-1 == chanIndex ; md += 1,	mixIndex += 1 ) // So continue increments
+		{
+//        MixData &md = g_model.mixData[mixIndex];
 #if GVARS
-        int8_t mixweight = REG100_100( md.weight) ;
+        int8_t mixweight = REG100_100( md->weight) ;
 #endif
 
-        if((md.destCh==0) || (md.destCh>NUM_CHNOUT)) break;
+//        if((md->destCh==0) || (md->destCh>NUM_CHNOUT)) break;
 
         //Notice 0 = NC switch means not used -> always on line
         int16_t v  = 0;
@@ -2365,30 +2390,30 @@ void simulatorDialog::perOut(bool init, uint8_t att)
 
 #define DEL_MULT 256
 
-        bool t_switch = getSwitch(md.swtch,1) ;
+        bool t_switch = getSwitch(md->swtch,1) ;
         if ( t_switch )
 				{
-					if ( md.modeControl & ( 1 << CurrentPhase ) )
+					if ( md->modeControl & ( 1 << CurrentPhase ) )
 					{
 						t_switch = 0 ;
 					}
 				}
         
-				uint8_t k = md.srcRaw ;
+				uint8_t k = md->srcRaw ;
 				
-				//swOn[i]=false;
+				//swOn[mixIndex]=false;
         if(!t_switch)
 				{ // switch on?  if no switch selected => on
-            swTog = swOn[i];
-            swOn[i] = false;
-            if (k == MIX_3POS+MAX_GVARS+1) act[i] = chans[md.destCh-1] * DEL_MULT / 100 ;
+            swTog = swOn[mixIndex];
+            swOn[mixIndex] = false;
+            if (k == MIX_3POS+MAX_GVARS+1) act[mixIndex] = thisChan * DEL_MULT / 100 ;
             if( k!=MIX_FULL && k!=MIX_MAX) continue;// if not MAX or FULL - next loop
-            if(md.mltpx==MLTPX_REP) continue; // if switch is off and REPLACE then off
-            v = md.srcRaw==MIX_FULL ? -RESX : 0; // switch is off => FULL=-RESX
+            if(md->mltpx==MLTPX_REP) continue; // if switch is off and REPLACE then off
+            v = md->srcRaw==MIX_FULL ? -RESX : 0; // switch is off => FULL=-RESX
         }
         else {
-            swTog = !swOn[i];
-            swOn[i] = true;
+            swTog = !swOn[mixIndex];
+            swOn[mixIndex] = true;
             k -= 1 ;
 
 //            v = anas[k]; //Switch is on. MAX=FULL=512 or value.
@@ -2397,7 +2422,7 @@ void simulatorDialog::perOut(bool init, uint8_t att)
               v = anas[k]; //Switch is on. MAX=FULL=512 or value.
 							if ( k < 4 )
 							{
-								if ( md.disableExpoDr )
+								if ( md->disableExpoDr )
 								{
       		      	v = rawSticks[k]; //Switch is on. MAX=FULL=512 or value.
 								}
@@ -2405,17 +2430,17 @@ void simulatorDialog::perOut(bool init, uint8_t att)
 						}
 						else if(k<CHOUT_BASE+NUM_CHNOUT)
 						{
-              if ( md.disableExpoDr )
+              if ( md->disableExpoDr )
 							{
 								v = chanOut[k-CHOUT_BASE] ;
 							}
 							else
 							{
-              	if(k<CHOUT_BASE+md.destCh-1)
-								{
-									v = chans[k-CHOUT_BASE] / 100 ; // if we've already calculated the value - take it instead // anas[i+CHOUT_BASE] = chans[i]
-								}
-								else
+//              	if(k<CHOUT_BASE+chanIndex)
+//								{
+//									v = chans[k-CHOUT_BASE] / 100 ; // if we've already calculated the value - take it instead // anas[i+CHOUT_BASE] = chans[i]
+//								}
+//								else
 								{
 									v = ex_chans[k-CHOUT_BASE] ;
 								}
@@ -2423,7 +2448,7 @@ void simulatorDialog::perOut(bool init, uint8_t att)
 						}
 						else if( k == MIX_3POS-1 )
 						{
-              uint8_t sw = md.sw23pos ;
+              uint8_t sw = md->sw23pos ;
 							if ( sw )
 							{
 								sw += SW_ThrCt - KEY_MENU - 1 ;
@@ -2444,18 +2469,18 @@ void simulatorDialog::perOut(bool init, uint8_t att)
 						}
             else if (k == MIX_3POS+MAX_GVARS)
 						{
-							v = chans[md.destCh-1] / 100 ;
+							v = thisChan / 100 ;
 						}
 						else
 						{
 							v = calc_scaler( k - (MIX_3POS+MAX_GVARS+1) ) ;
 						}
-            if(md.mixWarn) mixWarning |= 1<<(md.mixWarn-1); // Mix warning
-//            if ( md.enableFmTrim )
+            if(md->mixWarn) mixWarning |= 1<<(md->mixWarn-1); // Mix warning
+//            if ( md->enableFmTrim )
 //            {
-//                if ( md.srcRaw <= 4 )
+//                if ( md->srcRaw <= 4 )
 //                {
-//                    trimptr[md.srcRaw-1] = &md.sOffset ;		// Use the value stored here for the trim
+//                    trimptr[md->srcRaw-1] = &md->sOffset ;		// Use the value stored here for the trim
 //                    if( (g_eeGeneral.throttleReversed) && (!g_model.thrTrim))
 //                    {
 //                      *trimptr[THR_STICK] *= -1;
@@ -2472,35 +2497,35 @@ void simulatorDialog::perOut(bool init, uint8_t att)
 //            }
         }
         //========== INPUT OFFSET ===============
-//        if ( ( md.enableFmTrim == 0 ) && ( md.lateOffset == 0 ) )
-        if ( md.lateOffset == 0 )
+//        if ( ( md->enableFmTrim == 0 ) && ( md->lateOffset == 0 ) )
+        if ( md->lateOffset == 0 )
         {
 #if GVARS
-            if(md.sOffset) v += calc100toRESX( REG( md.sOffset, -125, 125 )	) ;
+            if(md->sOffset) v += calc100toRESX( REG( md->sOffset, -125, 125 )	) ;
 #else
-            if(md.sOffset) v += calc100toRESX(md.sOffset);
+            if(md->sOffset) v += calc100toRESX(md->sOffset);
 #endif
         }
 
 
         //========== DELAY and PAUSE ===============
-        if (md.speedUp || md.speedDown || md.delayUp || md.delayDown)  // there are delay values
+        if (md->speedUp || md->speedDown || md->delayUp || md->delayDown)  // there are delay values
         {
 					uint8_t timing = g_model.mixTime ? 20 : 100 ;
             if(init)
             {
-                act[i]=(int32_t)v*DEL_MULT;
+                act[mixIndex]=(int32_t)v*DEL_MULT;
                 swTog = false;
             }
-						int16_t my_delay = sDelay[i] ;
-            int32_t tact = act[i] ;
+						int16_t my_delay = sDelay[mixIndex] ;
+            int32_t tact = act[mixIndex] ;
             int16_t diff = v-tact/DEL_MULT;
 
 						if ( ( diff > 10 ) || ( diff < -10 ) )
 						{
 							if ( my_delay == 0 )
 							{
-      				  if (md.delayUp || md.delayDown)  // there are delay values
+      				  if (md->delayUp || md->delayDown)  // there are delay values
 								{
 									swTog = 1 ;
 								}
@@ -2515,18 +2540,18 @@ void simulatorDialog::perOut(bool init, uint8_t att)
                 //need to know which "v" will give "anas".
                 //curves(v)*weight/100 -> anas
                 // v * weight / 100 = anas => anas*100/weight = v
-                if(md.mltpx==MLTPX_REP)
+                if(md->mltpx==MLTPX_REP)
                 {
-//                    tact = (int32_t)anas[md.destCh-1+CHOUT_BASE]*DEL_MULT * 100 ;
-                    tact = (int32_t)ex_chans[md.destCh-1]*DEL_MULT * 100 ;
+//                    tact = (int32_t)anas[chanIndex+CHOUT_BASE]*DEL_MULT * 100 ;
+                    tact = (int32_t)ex_chans[chanIndex]*DEL_MULT * 100 ;
 #if GVARS
                     if(mixweight) tact /= mixweight ;
 #else
-//                    if(md.weight) tact /= md.weight;
+//                    if(md->weight) tact /= md->weight;
 #endif
                 }
                 diff = v-tact/DEL_MULT;
-                if(diff) my_delay = (diff<0 ? md.delayUp :  md.delayDown) * timing ;
+                if(diff) my_delay = (diff<0 ? md->delayUp :  md->delayDown) * timing ;
             }
 
             if(my_delay > 0)
@@ -2541,38 +2566,38 @@ void simulatorDialog::perOut(bool init, uint8_t att)
 								my_delay = -1 ;
 							}
             }
-						sDelay[i] = my_delay ;
+						sDelay[mixIndex] = my_delay ;
 
-            if(diff && (md.speedUp || md.speedDown)){
-                //rate = steps/sec => 32*1024/100*md.speedUp/Down
-                //act[i] += diff>0 ? (32768)/((int16_t)100*md.speedUp) : -(32768)/((int16_t)100*md.speedDown);
+            if(diff && (md->speedUp || md->speedDown)){
+                //rate = steps/sec => 32*1024/100*md->speedUp/Down
+                //act[mixIndex] += diff>0 ? (32768)/((int16_t)100*md->speedUp) : -(32768)/((int16_t)100*md->speedDown);
                 //-100..100 => 32768 ->  100*83886/256 = 32768,   For MAX we divide by 2 since it's asymmetrical
 
                 int32_t rate = (int32_t)DEL_MULT*2048*100;
 #if GVARS
                 if(mixweight) rate /= abs(mixweight);
 #else
-                if(md.weight) rate /= abs(md.weight);
+                if(md->weight) rate /= abs(md->weight);
 #endif
-                tact = (diff>0) ? ((md.speedUp>0)   ? tact+(rate)/((int16_t)timing*md.speedUp)   :  (int32_t)v*DEL_MULT) :
-                                    ((md.speedDown>0) ? tact-(rate)/((int16_t)timing*md.speedDown) :  (int32_t)v*DEL_MULT) ;
+                tact = (diff>0) ? ((md->speedUp>0)   ? tact+(rate)/((int16_t)timing*md->speedUp)   :  (int32_t)v*DEL_MULT) :
+                                    ((md->speedDown>0) ? tact-(rate)/((int16_t)timing*md->speedDown) :  (int32_t)v*DEL_MULT) ;
 
 
-                if(((diff>0) && (v<(tact/DEL_MULT))) || ((diff<0) && (v>(act[i]/DEL_MULT)))) tact=(int32_t)v*DEL_MULT; //deal with overflow
+                if(((diff>0) && (v<(tact/DEL_MULT))) || ((diff<0) && (v>(act[mixIndex]/DEL_MULT)))) tact=(int32_t)v*DEL_MULT; //deal with overflow
                 v = tact/DEL_MULT;
             }
             else if (diff)
             {
               tact=(int32_t)v*DEL_MULT;
             }
-					act[i] = tact ;
+					act[mixIndex] = tact ;
         }
 
         //========== CURVES ===============
-        if ( md.differential )
+        if ( md->differential )
 				{
       		//========== DIFFERENTIAL =========
-          int16_t curveParam = REG( md.curve, -100, 100 ) ;
+          int16_t curveParam = REG( md->curve, -100, 100 ) ;
       		if (curveParam > 0 && v < 0)
       		  v = ((int32_t)v * (100 - curveParam)) / 100;
       		else if (curveParam < 0 && v > 0)
@@ -2580,33 +2605,33 @@ void simulatorDialog::perOut(bool init, uint8_t att)
 				}
 				else
 				{
-          if ( md.curve <= -28 )
+          if ( md->curve <= -28 )
 					{
 						// do expo using md->curve + 128
-            v = expo( v, md.curve + 128 ) ;
+            v = expo( v, md->curve + 128 ) ;
 					}
 					else
 					{
-        		switch(md.curve){
+        		switch(md->curve){
         		case 0:
         		    break;
         		case 1:
-        		    if(md.srcRaw == MIX_FULL) //FUL
-        		    {
-        		        if( v<0 ) v=-RESX;   //x|x>0
-        		        else      v=-RESX+2*v;
-        		    }else{
+//        		    if(md->srcRaw == MIX_FULL) //FUL
+//        		    {
+//        		        if( v<0 ) v=-RESX;   //x|x>0
+//        		        else      v=-RESX+2*v;
+//        		    }else{
         		        if( v<0 ) v=0;   //x|x>0
-        		    }
+//        		    }
         		    break;
         		case 2:
-        		    if(md.srcRaw == MIX_FULL) //FUL
-        		    {
-        		        if( v>0 ) v=RESX;   //x|x<0
-        		        else      v=RESX+2*v;
-        		    }else{
+//        		    if(md->srcRaw == MIX_FULL) //FUL
+//        		    {
+//        		        if( v>0 ) v=RESX;   //x|x<0
+//        		        else      v=RESX+2*v;
+//        		    }else{
         		        if( v>0 ) v=0;   //x|x<0
-        		    }
+//        		    }
         		    break;
         		case 3:       // x|abs(x)
         		    v = abs(v);
@@ -2622,7 +2647,7 @@ void simulatorDialog::perOut(bool init, uint8_t att)
         		    break;
         		default: //c1..c16
 							{
-        		    int8_t idx = md.curve ;
+        		    int8_t idx = md->curve ;
 								if ( idx < 0 )
 								{
 									v = -v ;
@@ -2637,70 +2662,57 @@ void simulatorDialog::perOut(bool init, uint8_t att)
 
 
         //========== TRIM ===============
-        if((md.carryTrim==0) && (md.srcRaw>0) && (md.srcRaw<=4)) v += trimA[md.srcRaw-1];  //  0 = Trim ON  =  Default
+        if((md->carryTrim==0) && (md->srcRaw>0) && (md->srcRaw<=4)) v += trimA[md->srcRaw-1];  //  0 = Trim ON  =  Default
 
         //========== MULTIPLEX ===============
 #if GVARS
         int32_t dv = (int32_t)v*mixweight ;
 #else
-        int32_t dv = (int32_t)v*md.weight;
+        int32_t dv = (int32_t)v*md->weight;
 #endif
         
         //========== lateOffset ===============
-//        if ( ( md.enableFmTrim == 0 ) && ( md.lateOffset ) )
-        if ( md.lateOffset )
+//        if ( ( md->enableFmTrim == 0 ) && ( md->lateOffset ) )
+        if ( md->lateOffset )
         {
 #if GVARS
-            if(md.sOffset) dv += calc100toRESX( REG( md.sOffset, -125, 125 )	) * 100  ;
+            if(md->sOffset) dv += calc100toRESX( REG( md->sOffset, -125, 125 )	) * 100  ;
 #else
-            if(md.sOffset) dv += calc100toRESX(md.sOffset) * 100 ;
+            if(md->sOffset) dv += calc100toRESX(md->sOffset) * 100 ;
 #endif
         }
-				switch(md.mltpx){
+				switch(md->mltpx){
         case MLTPX_REP:
-            chans[md.destCh-1] = dv;
+            thisChan = dv;
             break;
         case MLTPX_MUL:
-            chans[md.destCh-1] *= dv/100l;
-            chans[md.destCh-1] /= RESXl;
+            thisChan *= dv/100l;
+            thisChan /= RESXl;
             break;
         default:  // MLTPX_ADD
-            chans[md.destCh-1] += dv; //Mixer output add up to the line (dv + (dv>0 ? 100/2 : -100/2))/(100);
+            thisChan += dv; //Mixer output add up to the line (dv + (dv>0 ? 100/2 : -100/2))/(100);
             break;
         }
     }
 
-
-    //========== MIXER WARNING ===============
-    //1= 00,08
-    //2= 24,32,40
-    //3= 56,64,72,80
-    if(mixWarning & 1) if(((g_tmr10ms&0xFF)==  0)) beepWarn1();
-    if(mixWarning & 2) if(((g_tmr10ms&0xFF)== 64) || ((g_tmr10ms&0xFF)== 72)) beepWarn1();
-    if(mixWarning & 4) if(((g_tmr10ms&0xFF)==128) || ((g_tmr10ms&0xFF)==136) || ((g_tmr10ms&0xFF)==144)) beepWarn1();
-
-
-    //========== LIMITS ===============
-    for(uint8_t i=0;i<NUM_CHNOUT;i++)
-		{
         // chans[i] holds data from mixer.   chans[i] = v*weight => 1024*100
         // later we multiply by the limit (up to 100) and then we need to normalize
         // at the end chans[i] = chans[i]/100 =>  -1024..1024
         // interpolate value with min/max so we get smooth motion from center to stop
         // this limits based on v original values and min=-1024, max=1024  RESX=1024
 
-        int32_t q = chans[i];// + (int32_t)g_model.limitData[i].offset*100; // offset before limit
+        int32_t q = thisChan;// + (int32_t)g_model.limitData[i].offset*100; // offset before limit
 			
 				if ( fadePhases )
 				{
 
-					int32_t l_fade = fade[i] ;
+					int32_t l_fade = fade[chanIndex] ;
 					if ( att & FADE_FIRST )
 					{
 						l_fade = 0 ;
 					}
 					l_fade += ( q / 100 ) * fadeScale[CurrentPhase] ;
-					fade[i] = l_fade ;
+					fade[chanIndex] = l_fade ;
 			
 					if ( ( att & FADE_LAST ) == 0 )
 					{
@@ -2712,11 +2724,11 @@ void simulatorDialog::perOut(bool init, uint8_t att)
           }
 					q = l_fade * 100 ;
 				}
-        chans[i] = q / 100; // chans back to -1024..1024
+        thisChan = q / 100; // chans back to -1024..1024
         
-				ex_chans[i] = chans[i]; //for getswitch
+				ex_chans[chanIndex] = thisChan; //for getswitch
 
-        int16_t ofs = g_model.limitData[i].offset;
+        int16_t ofs = g_model.limitData[chanIndex].offset;
 				int16_t xofs = ofs ;
 				if ( xofs > g_model.sub_trim_limit )
 				{
@@ -2726,8 +2738,8 @@ void simulatorDialog::perOut(bool init, uint8_t att)
 				{
 					xofs = -g_model.sub_trim_limit ;
 				}
-        int16_t lim_p = 10*(g_model.limitData[i].max+100) + xofs ;
-        int16_t lim_n = 10*(g_model.limitData[i].min-100) + xofs ; //multiply by 10 to get same range as ofs (-1000..1000)
+        int16_t lim_p = 10*(g_model.limitData[chanIndex].max+100) + xofs ;
+        int16_t lim_n = 10*(g_model.limitData[chanIndex].min-100) + xofs ; //multiply by 10 to get same range as ofs (-1000..1000)
 				if ( lim_p > 1250 )
 				{
 					lim_p = 1250 ;
@@ -2755,26 +2767,26 @@ void simulatorDialog::perOut(bool init, uint8_t att)
 
         if(result<lim_n) result = lim_n;
 
-        if(g_model.limitData[i].revert) result = -result ;// finally do the reverse.
+        if(g_model.limitData[chanIndex].revert) result = -result ;// finally do the reverse.
 
 				{
 					uint8_t numSafety = 16 - g_model.numVoice ;
-					if ( i < numSafety )
+          if ( chanIndex < numSafety )
 					{
-        		if(g_model.safetySw[i].opt.ss.swtch)  //if safety sw available for channel check and replace val if needed
+        		if(g_model.safetySw[chanIndex].opt.ss.swtch)  //if safety sw available for channel check and replace val if needed
 						{
-							if ( ( g_model.safetySw[i].opt.ss.mode != 1 ) && ( g_model.safetySw[i].opt.ss.mode != 2 ) )	// And not used as an alarm
+							if ( ( g_model.safetySw[chanIndex].opt.ss.mode != 1 ) && ( g_model.safetySw[chanIndex].opt.ss.mode != 2 ) )	// And not used as an alarm
 							{
 								static uint8_t sticky = 0 ;
 								uint8_t applySafety = 0 ;
-								int8_t sSwitch = g_model.safetySw[i].opt.ss.swtch ;
+                int8_t sSwitch = g_model.safetySw[chanIndex].opt.ss.swtch ;
 								
 								if(getSwitch( sSwitch,0))
 								{
 									applySafety = 1 ;
 								}
 
-								if ( g_model.safetySw[i].opt.ss.mode == 3 )
+								if ( g_model.safetySw[chanIndex].opt.ss.mode == 3 )
 								{
 									// Special case, sticky throttle
 									if( applySafety )
@@ -2799,15 +2811,157 @@ void simulatorDialog::perOut(bool init, uint8_t att)
 										applySafety = 1 ;
 									}
 								}
-								if ( applySafety ) result = calc100toRESX(g_model.safetySw[i].opt.ss.val) ;
+                if ( applySafety ) result = calc100toRESX(g_model.safetySw[chanIndex].opt.ss.val) ;
 							}
 						}
 					}
 				}
         //cli();
-        chanOut[i] = result ; //copy consistent word to int-level
+        chanOut[chanIndex] = result ; //copy consistent word to int-level
         //sei();
-    }
+
+
+
+
+	}
+
+    //========== MIXER WARNING ===============
+    //1= 00,08
+    //2= 24,32,40
+    //3= 56,64,72,80
+    if(mixWarning & 1) if(((g_tmr10ms&0xFF)==  0)) beepWarn1();
+    if(mixWarning & 2) if(((g_tmr10ms&0xFF)== 64) || ((g_tmr10ms&0xFF)== 72)) beepWarn1();
+    if(mixWarning & 4) if(((g_tmr10ms&0xFF)==128) || ((g_tmr10ms&0xFF)==136) || ((g_tmr10ms&0xFF)==144)) beepWarn1();
+
+
+//    //========== LIMITS ===============
+//    for(uint8_t chanIndex=0;chanIndex<NUM_CHNOUT;chanIndex++)
+//		{
+//        // chans[i] holds data from mixer.   chans[i] = v*weight => 1024*100
+//        // later we multiply by the limit (up to 100) and then we need to normalize
+//        // at the end chans[i] = chans[i]/100 =>  -1024..1024
+//        // interpolate value with min/max so we get smooth motion from center to stop
+//        // this limits based on v original values and min=-1024, max=1024  RESX=1024
+
+//        int32_t q = chans[chanIndex];// + (int32_t)g_model.limitData[i].offset*100; // offset before limit
+			
+//				if ( fadePhases )
+//				{
+
+//					int32_t l_fade = fade[chanIndex] ;
+//					if ( att & FADE_FIRST )
+//					{
+//						l_fade = 0 ;
+//					}
+//					l_fade += ( q / 100 ) * fadeScale[CurrentPhase] ;
+//					fade[chanIndex] = l_fade ;
+			
+//					if ( ( att & FADE_LAST ) == 0 )
+//					{
+//						continue ;
+//					}
+//          if ( fadeWeight != 0)
+//          {
+//            l_fade /= fadeWeight ;
+//          }
+//					q = l_fade * 100 ;
+//				}
+//        chans[chanIndex] = q / 100; // chans back to -1024..1024
+        
+//				ex_chans[chanIndex] = chans[chanIndex]; //for getswitch
+
+//        int16_t ofs = g_model.limitData[chanIndex].offset;
+//				int16_t xofs = ofs ;
+//				if ( xofs > g_model.sub_trim_limit )
+//				{
+//					xofs = g_model.sub_trim_limit ;
+//				}
+//				else if ( xofs < -g_model.sub_trim_limit )
+//				{
+//					xofs = -g_model.sub_trim_limit ;
+//				}
+//        int16_t lim_p = 10*(g_model.limitData[chanIndex].max+100) + xofs ;
+//        int16_t lim_n = 10*(g_model.limitData[chanIndex].min-100) + xofs ; //multiply by 10 to get same range as ofs (-1000..1000)
+//				if ( lim_p > 1250 )
+//				{
+//					lim_p = 1250 ;
+//				}
+//				if ( lim_n < -1250 )
+//				{
+//					lim_n = -1250 ;
+//				}
+//        if(ofs>lim_p) ofs = lim_p;
+//        if(ofs<lim_n) ofs = lim_n;
+
+//        if(q)
+//				{
+//					int16_t temp = (q<0) ? ((int16_t)ofs-lim_n) : ((int16_t)lim_p-ofs) ;
+//          q = ( q * temp ) / 100000 ; //div by 100000 -> output = -1024..1024
+//				}
+				
+//				int16_t result ;
+//				result = calc1000toRESX(ofs);
+//  			result += q ; // we convert value to a 16bit value
+        
+//				lim_p = calc1000toRESX(lim_p);
+//        lim_n = calc1000toRESX(lim_n);
+//        if(result>lim_p) result = lim_p;
+
+//        if(result<lim_n) result = lim_n;
+
+//        if(g_model.limitData[chanIndex].revert) result = -result ;// finally do the reverse.
+
+//				{
+//					uint8_t numSafety = 16 - g_model.numVoice ;
+//          if ( chanIndex < numSafety )
+//					{
+//        		if(g_model.safetySw[chanIndex].opt.ss.swtch)  //if safety sw available for channel check and replace val if needed
+//						{
+//							if ( ( g_model.safetySw[chanIndex].opt.ss.mode != 1 ) && ( g_model.safetySw[chanIndex].opt.ss.mode != 2 ) )	// And not used as an alarm
+//							{
+//								static uint8_t sticky = 0 ;
+//								uint8_t applySafety = 0 ;
+//                int8_t sSwitch = g_model.safetySw[chanIndex].opt.ss.swtch ;
+								
+//								if(getSwitch( sSwitch,0))
+//								{
+//									applySafety = 1 ;
+//								}
+
+//								if ( g_model.safetySw[chanIndex].opt.ss.mode == 3 )
+//								{
+//									// Special case, sticky throttle
+//									if( applySafety )
+//									{
+//										sticky = 0 ;
+//									}
+//									else
+//									{
+//										uint8_t stick = THR_STICK ;
+//										if ( g_model.modelVersion >= 2 )
+//										{
+//											stick = 2 ;
+//										}
+										
+//										if ( calibratedStick[stick] < -1010 )
+//										{
+//											sticky = 1 ;
+//										}
+//									}
+//									if ( sticky == 0 )
+//									{
+//										applySafety = 1 ;
+//									}
+//								}
+//                if ( applySafety ) result = calc100toRESX(g_model.safetySw[chanIndex].opt.ss.val) ;
+//							}
+//						}
+//					}
+//				}
+//        //cli();
+//        chanOut[chanIndex] = result ; //copy consistent word to int-level
+//        //sei();
+//    }
 }
 
 

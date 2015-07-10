@@ -42,7 +42,7 @@
 #include "pers.h"
 #include "eeprom_rlc.h"
 #include "stdio.h"
-#include "inttypes.h"
+#include <stdint.h>
 //#include "string.h"
 #include "myeeprom.h"
 #include "file.h"

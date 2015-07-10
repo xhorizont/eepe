@@ -27,7 +27,10 @@ HEADERS += mainwindow.h \
     ../../node.h \
     ../../edge.h \
     eeprom_rlc.h \
-    VoiceAlarmDialog.h
+    VoiceAlarmDialog.h \
+    TemplateDialog.h \
+    wizarddialog.h \
+    wizarddata.h
 SOURCES += main.cpp \
     mainwindow.cpp \
     file.cpp \
@@ -51,7 +54,10 @@ SOURCES += main.cpp \
     ../../node.cpp \
     ../../edge.cpp \
     eeprom_rlc.cpp \
-    VoiceAlarmDialog.cpp
+    VoiceAlarmDialog.cpp \
+    TemplateDialog.cpp \
+    wizarddata.cpp \
+    wizarddialog.cpp
 unix {
 SOURCES += mountlist.cpp
 }
@@ -69,7 +75,8 @@ FORMS += modeledit.ui \
     customizesplashdialog.ui \
     ../../telemetryDialog.ui \
     ../../reviewOutput.ui \
-    VoiceAlarmDialog.ui
+    VoiceAlarmDialog.ui \
+    TemplateDialog.ui
 TRANSLATIONS = eepe_.ts    \
                eepe_he.ts  \
                eepe_pt.ts  \

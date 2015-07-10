@@ -2,7 +2,7 @@
 #include "ui_simulatordialog.h"
 #include "../../node.h"
 #include <QtGui>
-#include <inttypes.h>
+#include <stdint.h>
 #include "pers.h"
 #include "helpers.h"
 #include "qextserialenumerator.h"
@@ -93,7 +93,7 @@ simulatorDialog::simulatorDialog(QWidget *parent) :
     fadeScale[0] = 25600 ;
 
     setupSticks();
-		timer = 0 ;
+		ticktimer = 0 ;
 		txType = 0 ;
 		ui->SAslider->setValue(0) ;
 		ui->SBslider->setValue(0) ;
@@ -131,12 +131,12 @@ simulatorDialog::~simulatorDialog()
 
 void simulatorDialog::closeEvent(QCloseEvent *event)
 {
-	if ( timer )
+	if ( ticktimer )
 	{
-    timer->stop() ;
-    delete timer ;
+    ticktimer->stop() ;
+    delete ticktimer ;
 	}
-	timer = 0 ;
+	ticktimer = 0 ;
 	if ( port )
 	{
 		if (port->isOpen())
@@ -151,15 +151,15 @@ void simulatorDialog::closeEvent(QCloseEvent *event)
 
 void simulatorDialog::setupTimer()
 {
-  if (timer == 0)
+  if (ticktimer == 0)
   {
-    timer = new QTimer(this);
-    connect(timer,SIGNAL(timeout()),this,SLOT(timerEvent()));
+    ticktimer = new QTimer(this);
+    connect(ticktimer,SIGNAL(timeout()),this,SLOT(timerEvent()));
 	}
   getValues();
 	CurrentPhase = getFlightPhase() ;
   perOut(true,0);
-  timer->start(10);
+  ticktimer->start(10);
 }
 
 int8_t getAndSwitch( SKYCSwData &cs )
@@ -251,12 +251,17 @@ void simulatorDialog::timerEvent()
     timerTick();
     //    if(s_timerState != TMR_OFF)
     setWindowTitle(modelName + QString(" - Timer: (%3, %4) %1:%2")
-                   .arg(abs(-s_timerVal)/60, 2, 10, QChar('0'))
-                   .arg(abs(-s_timerVal)%60, 2, 10, QChar('0'))
+                   .arg(abs(-s_timer[0].s_timerVal)/60, 2, 10, QChar('0'))
+                   .arg(abs(-s_timer[0].s_timerVal)%60, 2, 10, QChar('0'))
                    .arg(getTimerMode(g_model.timer[0].tmrModeA))
                    .arg(g_model.timer[0].tmrDir ? "Count Up" : "Count Down"));
 
-    if(beepVal)
+		ui->Timer1->setText(QString("%1:%2").arg(abs(-s_timer[0].s_timerVal)/60, 2, 10, QChar('0'))
+                   .arg(abs(-s_timer[0].s_timerVal)%60, 2, 10, QChar('0'))) ;
+		ui->Timer2->setText(QString("%1:%2").arg(abs(-s_timer[1].s_timerVal)/60, 2, 10, QChar('0'))
+                   .arg(abs(-s_timer[1].s_timerVal)%60, 2, 10, QChar('0'))) ;
+
+		if(beepVal)
     {
         beepVal = 0;
         QApplication::beep();
@@ -593,6 +598,8 @@ void simulatorDialog::configSwitches()
 			ui->switchID0->setVisible( false ) ;
 			ui->switchID1->setVisible( false ) ;
 			ui->switchID2->setVisible( false ) ;
+			ui->switchPB1->hide() ;
+			ui->switchPB2->hide() ;
 		}
 		else
 		{
@@ -665,6 +672,22 @@ void simulatorDialog::configSwitches()
 			{
 				ui->switchGEA->show() ;
 			}
+			if ( g_eeGeneral.switchMapping & USE_PB1 )
+			{
+				ui->switchPB1->show() ;
+			}
+			else
+			{
+				ui->switchPB1->hide() ;
+			}
+			if ( g_eeGeneral.switchMapping & USE_PB2 )
+			{
+				ui->switchPB2->show() ;
+			}
+			else
+			{
+				ui->switchPB2->hide() ;
+			}
 			ui->switchTRN->setVisible( true ) ;
 			ui->switchID0->setVisible( true ) ;
 			ui->switchID1->setVisible( true ) ;
@@ -676,9 +699,9 @@ void simulatorDialog::configSwitches()
 
 void simulatorDialog::loadParams(const EEGeneral gg, const SKYModelData gm, int type)
 {
-		if ( timer )
+		if ( ticktimer )
 		{
-    	timer->stop() ;
+    	ticktimer->stop() ;
 		}
 	
     memcpy(&g_eeGeneral,&gg,sizeof(EEGeneral));
@@ -716,7 +739,22 @@ void simulatorDialog::loadParams(const EEGeneral gg, const SKYModelData gm, int 
     beepVal = 0;
     beepShow = 0;
     bpanaCenter = 0;
-    g_tmr10ms = 0;
+    g_tmr10ms = 0 ;
+
+		int i ;
+    for ( i = 0 ; i < 2 ; i += 1 )
+		{
+			s_timer[i].s_sum = 0 ;
+			s_timer[i].lastSwPos = 0 ;
+			s_timer[i].sw_toggled = 0 ;
+			s_timer[i].s_timeCumSw = 0 ;
+			s_timer[i].s_timerState = 0 ;
+			s_timer[i].lastResetSwPos= 0 ;
+			s_timer[i].s_timeCumThr = 0 ;
+			s_timer[i].s_timeCum16ThrP = 0 ;
+			s_timer[i].s_timerVal = 0 ;
+			s_timer[i].last_tmr = 0 ;
+		}
 
     s_timeCumTot = 0;
     s_timeCumAbs = 0;
@@ -726,7 +764,8 @@ void simulatorDialog::loadParams(const EEGeneral gg, const SKYModelData gm, int 
     s_timerState = 0;
     beepAgain = 0;
     g_LightOffCounter = 0;
-    s_timerVal = 0;
+    s_timerVal[0] = 0;
+    s_timerVal[1] = 0;
     s_time = 0;
     s_cnt = 0;
     s_sum = 0;
@@ -960,6 +999,28 @@ static uint8_t GvAdjLastSw[NUM_GVAR_ADJUST][2] ;
 				if ( switchedON & 2 )
 				{
      			value = 0 ;
+				}
+			break ;
+			
+			case 7 :
+				if ( switchedON & 1 )
+				{
+     			value += 1 ;
+					if ( value > pgvaradj->switch_value )
+					{
+						value = pgvaradj->switch_value ;
+					}
+				}
+			break ;
+			
+			case 8 :
+				if ( switchedON & 1 )
+				{
+     			value -= 1 ;
+					if ( value < pgvaradj->switch_value )
+					{
+						value = pgvaradj->switch_value ;
+					}
 				}
 			break ;
 		}
@@ -1474,6 +1535,8 @@ bool simulatorDialog::hwKeyState(int key)
 			case HSW_Ele6pos3 :	return ui->SAslider->value() == 3 ; break ;
 			case HSW_Ele6pos4 :	return ui->SAslider->value() == 4 ; break ;
 			case HSW_Ele6pos5 :	return ui->SAslider->value() == 5 ; break ;
+	    case HSW_Pb1	:	return ui->switchPB1->isDown() ; break ;
+  	  case HSW_Pb2	:	return ui->switchPB2->isDown() ; break ;
     	default:
         return keyState( (EnumKeys) key ) ;
       break;
@@ -1915,94 +1978,287 @@ int16_t simulatorDialog::intpol(int16_t x, uint8_t idx) // -100, -75, -50, -25, 
     return erg / 25; // 100*D5/RESX;
 }
 
+void simulatorDialog::resetTimern( uint32_t timer )
+{
+  struct t_timer *tptr = &s_timer[timer] ;
+	tptr->s_timerState = TMR_OFF; //is changed to RUNNING dep from mode
+  tptr->s_timeCumThr=0;
+  tptr->s_timeCumSw=0;
+  tptr->s_timeCum16ThrP=0;
+	tptr->s_sum = 0 ;
+	tptr->last_tmr = g_model.timer[timer].tmrVal ;
+	tptr->s_timerVal = ( g_model.timer[timer].tmrDir ) ? 0 : tptr->last_tmr ;
+}
+
+void simulatorDialog::resetTimer1()
+{
+  s_timeCumAbs=0;
+	resetTimern( 0 ) ;
+}
+
+void simulatorDialog::resetTimer2()
+{
+	resetTimern( 1 ) ;
+}
+
+void simulatorDialog::resetTimer()
+{
+	resetTimer1() ;
+	resetTimer2() ;
+}
+
+
 void simulatorDialog::timerTick()
 {
-    int16_t val = 0;
-    if((abs(g_model.timer[0].tmrModeA)>1) && (abs(g_model.timer[0].tmrModeA)<TMR_VAROFS)) {
-        val = calibratedStick[CONVERT_MODE(abs(g_model.timer[0].tmrModeA)/2,g_model.modelVersion,g_eeGeneral.stickMode)-1];
-        val = (g_model.timer[0].tmrModeA<0 ? RESX-val : val+RESX ) / (RESX/16);  // only used for %
-    }
+	uint8_t timer ;
+	int8_t tma ;
+  int16_t tmb ;
+  uint16_t tv ;
+    
+		int16_t val = 0;
+//    if((abs(g_model.timer[0].tmrModeA)>1) && (abs(g_model.timer[0].tmrModeA)<TMR_VAROFS)) {
+//        val = calibratedStick[CONVERT_MODE(abs(g_model.timer[0].tmrModeA)/2,g_model.modelVersion,g_eeGeneral.stickMode)-1];
+//        val = (g_model.timer[0].tmrModeA<0 ? RESX-val : val+RESX ) / (RESX/16);  // only used for %
+//    }
 
-    int8_t tm = g_model.timer[0].tmrModeA;
+  s_cnt++;			// Number of times val added in
 
-    if(abs(tm)>=(TMR_VAROFS+MAX_DRSWITCH-1)){ //toggeled switch//abs(g_model.tmrMode)<(10+MAX_DRSWITCH-1)
-        static uint8_t lastSwPos;
-        if(!(sw_toggled | s_sum | s_cnt | s_time | lastSwPos)) lastSwPos = tm < 0;  // if initializing then init the lastSwPos
-        uint8_t swPos = getSwitch(tm>0 ? tm-(TMR_VAROFS+MAX_DRSWITCH-1-1) : tm+(TMR_VAROFS+MAX_DRSWITCH-1-1) ,0);
-        if(swPos && !lastSwPos)  sw_toggled = !sw_toggled;  //if switcdh is flipped first time -> change counter state
-        lastSwPos = swPos;
-    }
+	int hsw_max = txType ? HSW_MAX_X9D : HSW_MAX ;
+	for( timer = 0 ; timer < 2 ; timer += 1 )
+	{
+		struct t_timer *ptimer = &s_timer[timer] ;
+		uint8_t resetting = 0 ;
+		if ( timer == 0 )
+		{
+			tmb = g_model.timer1RstSw ;
+		}
+		else
+		{
+			tmb = g_model.timer2RstSw ;
+		}
+		if ( tmb )
+		{
+			if ( tmb < -hsw_max )
+			{
+				tmb += 256 ;
+			}
 
-    s_time++;
-    if(s_time<100) return; //1 sec
-    s_time = 0;
+    	if(tmb>=(hsw_max))	 // toggeled switch
+			{
+    	  uint8_t swPos = getSwitch( tmb-(hsw_max), 0 ) ;
+				if ( swPos != ptimer->lastResetSwPos )
+				{
+					ptimer->lastResetSwPos = swPos ;
+					if ( swPos )	// Now on
+					{
+						resetting = 1 ;
+					}
+				}
+			}
+			else
+			{
+				if ( getSwitch( tmb, 0 ) )
+				{
+					resetting = 1 ;
+				}
+			}
+		}
+		if ( resetting )
+		{
+			if ( timer == 0 )
+			{
+				resetTimer1() ;
+			}
+			else
+			{
+				resetTimer2() ;
+			}
+		}
+	
+		tma = g_model.timer[timer].tmrModeA ;
+    tmb = g_model.timer[timer].tmrModeB ;
+		if ( tmb < -hsw_max )
+		{
+			tmb += 256 ;
+		}
 
-    if(abs(tm)<TMR_VAROFS) sw_toggled = false; // not switch - sw timer off
-    else if(abs(tm)<(TMR_VAROFS+MAX_DRSWITCH-1)) sw_toggled = getSwitch((tm>0 ? tm-(TMR_VAROFS-1) : tm+(TMR_VAROFS-1)) ,0); //normal switch
+// code for cx%
+//		val = throttle_val ;
+    val = calibratedStick[CONVERT_MODE(abs(g_model.timer[0].tmrModeA)/2,g_model.modelVersion,g_eeGeneral.stickMode)-1];
+   	if(tma>=TMR_VAROFS) // Cxx%
+		{
+ 	    val = chanOut[tma-TMR_VAROFS] ;
+		}		
 
-    s_timeCumTot               += 1;
-    s_timeCumAbs               += 1;
-    if(val) s_timeCumThr       += 1;
-    if(sw_toggled) s_timeCumSw += 1;
-    s_timeCum16ThrP            += val/2;
+		val = ( val + RESX ) / (RESX/16) ;
 
-    s_timerVal = g_model.timer[0].tmrVal;
-    uint8_t tmrM = abs(g_model.timer[0].tmrModeA);
-    if(tmrM==TMRMODE_NONE) s_timerState = TMR_OFF;
-    else if(tmrM==TMRMODE_ABS) s_timerVal -= s_timeCumAbs;
-    else if(tmrM<TMR_VAROFS) s_timerVal -= (tmrM&1) ? s_timeCum16ThrP/16 : s_timeCumThr;// stick% : stick
-    else s_timerVal -= s_timeCumSw; //switch
+		if ( tma != TMRMODE_NONE )		// Timer is not off
+		{ // We have a triggerA so timer is running 
+    	if(tmb>=(hsw_max))	 // toggeled switch
+			{
+    	  if(!(ptimer->sw_toggled | ptimer->s_sum | s_cnt | s_time | ptimer->lastSwPos)) ptimer->lastSwPos = 0 ;  // if initializing then init the lastSwPos
+        uint8_t swPos = getSwitch( tmb-(hsw_max), 0 ) ;
+    	  if(swPos && !ptimer->lastSwPos)  ptimer->sw_toggled = !ptimer->sw_toggled;  //if switch is flipped first time -> change counter state
+    	  ptimer->lastSwPos = swPos;
+    	}
+    	else
+			{
+				if ( tmb )
+				{
+          ptimer->sw_toggled = getSwitch( tmb, 0 ); //normal switch
+				}
+				else
+				{
+					ptimer->sw_toggled = 1 ;	// No trigger B so use as active
+				}
+			}
+		}
 
-    switch(s_timerState)
+		if ( ( ptimer->sw_toggled == 0 ) || resetting )
+		{
+			val = 0 ;
+		}
+
+    ptimer->s_sum += val ;   // Add val in
+    if( ( (uint16_t)( g_tmr10ms-s_time) ) < 100 )		// BEWARE of 32 bit processor extending 16 bit values
+		{
+			if ( timer == 0 )
+			{
+				continue ; //1 sec
+			}
+			else
+			{
+				return ;
+			}
+		}
+    val     = ptimer->s_sum/s_cnt;   // Average of val over last 100mS
+    ptimer->s_sum  -= val*s_cnt;     //rest (remainder not added in)
+
+		if ( timer == 0 )
+		{
+    	s_timeCumTot += 1;
+	    s_timeCumAbs += 1;
+			g_eeGeneral.totalElapsedTime += 1 ;
+		}
+		else
+		{
+	    s_cnt   = 0;    // ready for next 100mS
+			s_time += 100;  // 100*10mS passed
+		}
+    if(val) ptimer->s_timeCumThr       += 1;
+		if ( !resetting )
+		{
+    	if(ptimer->sw_toggled) ptimer->s_timeCumSw += 1;
+		}
+    ptimer->s_timeCum16ThrP            += val>>1;	// val/2
+
+    tv = ptimer->s_timerVal = g_model.timer[timer].tmrVal ;
+    if(tma == TMRMODE_NONE)
+		{
+			ptimer->s_timerState = TMR_OFF;
+		}
+    else
+		{
+			if ( tma==TMRMODE_ABS )
+			{
+				if ( tmb == 0 ) ptimer->s_timerVal -= s_timeCumAbs ;
+	    	else ptimer->s_timerVal -= ptimer->s_timeCumSw ; //switch
+			}
+	    else if(tma<TMR_VAROFS-1) ptimer->s_timerVal -= ptimer->s_timeCumThr;	// stick
+		  else ptimer->s_timerVal -= ptimer->s_timeCum16ThrP/16 ; // stick% or Cx%
+		}   
+    
+		switch(ptimer->s_timerState)
     {
     case TMR_OFF:
-        if(g_model.timer[0].tmrModeA != TMRMODE_NONE) s_timerState=TMR_RUNNING;
+        if(tma != TMRMODE_NONE) ptimer->s_timerState=TMR_RUNNING;
         break;
     case TMR_RUNNING:
-        if(s_timerVal<=0 && g_model.timer[0].tmrVal) s_timerState=TMR_BEEPING;
+        if(ptimer->s_timerVal<0 && tv) ptimer->s_timerState=TMR_BEEPING;
         break;
     case TMR_BEEPING:
-        if(s_timerVal <= -MAX_ALERT_TIME)   s_timerState=TMR_STOPPED;
-        if(g_model.timer[0].tmrVal == 0)             s_timerState=TMR_RUNNING;
+        if(ptimer->s_timerVal <= -MAX_ALERT_TIME)   ptimer->s_timerState=TMR_STOPPED;
+        if(tv == 0)       ptimer->s_timerState=TMR_RUNNING;
         break;
     case TMR_STOPPED:
         break;
     }
 
-    static int16_t last_tmr;
-
-    if(last_tmr != s_timerVal)  //beep only if seconds advance
-    {
-        if(s_timerState==TMR_RUNNING)
+  	  if(ptimer->last_tmr != ptimer->s_timerVal)  //beep only if seconds advance
+    	{
+    		ptimer->last_tmr = ptimer->s_timerVal;
+        if(ptimer->s_timerState==TMR_RUNNING)
         {
-            if(g_eeGeneral.preBeep && g_model.timer[0].tmrVal) // beep when 30, 15, 10, 5,4,3,2,1 seconds remaining
+					uint8_t audioControl ;
+					if ( timer == 0 )
+					{
+						audioControl = g_eeGeneral.preBeep | g_model.timer1Cdown ;
+					}
+					else
+					{
+						audioControl = g_model.timer2Cdown ;
+					}
+            if(audioControl && g_model.timer[timer].tmrVal) // beep when 30, 15, 10, 5,4,3,2,1 seconds remaining
             {
-                if(s_timerVal==30) {beepAgain=2; beepWarn2();} //beep three times
-                if(s_timerVal==20) {beepAgain=1; beepWarn2();} //beep two times
-                if(s_timerVal==10)  beepWarn2();
-                if(s_timerVal<= 3)  beepWarn2();
-
-                if(g_eeGeneral.flashBeep && (s_timerVal==30 || s_timerVal==20 || s_timerVal==10 || s_timerVal<=3))
+              	if(ptimer->s_timerVal==30) {beepAgain=2; beepWarn2();} //beep three times
+              	if(ptimer->s_timerVal==20) {beepAgain=1; beepWarn2();} //beep two times
+                if(ptimer->s_timerVal==10)  beepWarn2();
+                if(ptimer->s_timerVal<= 5)
+								{
+									if(ptimer->s_timerVal>= 0)
+									{
+										beepWarn2();
+//										audioVoiceDefevent(AU_TIMER_LT3, ptimer->s_timerVal) ;
+									}
+									else
+									{
+										if ( ( timer == 0 ) && g_eeGeneral.preBeep )
+										{
+											beepWarn2();
+//											audioDefevent(AU_TIMER_LT3);
+										}
+									}
+								}
+								if(g_eeGeneral.flashBeep && (ptimer->s_timerVal==30 || ptimer->s_timerVal==20 || ptimer->s_timerVal==10 || ptimer->s_timerVal<=3))
                     g_LightOffCounter = FLASH_DURATION;
             }
-
-            if(g_eeGeneral.minuteBeep && (((g_model.timer[0].tmrDir ? g_model.timer[0].tmrVal-s_timerVal : s_timerVal)%60)==0)) //short beep every minute
+						div_t mins ;
+						mins = div( g_model.timer[timer].tmrDir ? g_model.timer[timer].tmrVal- ptimer->s_timerVal : ptimer->s_timerVal, 60 ) ;
+					if ( timer == 0 )
+					{
+						audioControl = g_eeGeneral.minuteBeep | g_model.timer1Mbeep ;
+					}
+					else
+					{
+						audioControl = g_model.timer2Mbeep ;
+					}
+            if( audioControl && ((mins.rem)==0)) //short beep every minute
             {
+//								if ( g_eeGeneral.speakerMode & 2 )
+//								{
                 beepWarn2();
+//									if ( mins.quot ) {voice_numeric( mins.quot, 0, V_MINUTES ) ;}
+//								}
+//								else
+//								{
+//                	audioDefevent(AU_WARNING1);
+//								}
                 if(g_eeGeneral.flashBeep) g_LightOffCounter = FLASH_DURATION;
             }
         }
-        else if(s_timerState==TMR_BEEPING)
+        else if(ptimer->s_timerState==TMR_BEEPING)
         {
+					if ( ( timer == 0 ) && g_eeGeneral.preBeep )
+					{
             beepWarn();
+//            audioDefevent(AU_TIMER_LT3);
             if(g_eeGeneral.flashBeep) g_LightOffCounter = FLASH_DURATION;
+					}
         }
-    }
-    last_tmr = s_timerVal;
-    if(g_model.timer[0].tmrDir) s_timerVal = g_model.timer[0].tmrVal-s_timerVal; //if counting backwards - display backwards
-
-
-
+    	}
+    
+		if( g_model.timer[timer].tmrDir) ptimer->s_timerVal = tv-ptimer->s_timerVal; //if counting backwards - display backwards
+	}
 }
 
 // GVARS helpers

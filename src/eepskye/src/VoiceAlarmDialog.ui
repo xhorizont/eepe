@@ -188,7 +188,7 @@
    </item>
    <item>
     <property name="text">
-     <string>1</string>
+     <string>ALL</string>
     </property>
    </item>
    <item>
@@ -334,6 +334,11 @@
    <item>
     <property name="text">
      <string>30</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>ONCE</string>
     </property>
    </item>
   </widget>

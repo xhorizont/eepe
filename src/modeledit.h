@@ -11,6 +11,17 @@ namespace Ui {
     class ModelEdit;
 }
 
+struct t_templateValues
+{
+	uint8_t stick ;
+	uint8_t outputChannel ;
+	uint8_t helperChannel ;
+	uint8_t switch1 ;
+	uint8_t switch2 ;
+	uint8_t switch3 ;
+} ;
+
+
 class ModelEdit : public QDialog
 {
     Q_OBJECT
@@ -80,6 +91,9 @@ private:
 		QComboBox *psrccb[NUM_SCALERS] ;
 		QLineEdit *psname[NUM_SCALERS] ;
 
+    // Testing only
+		QSpinBox  *limitOffset[NUM_CHNOUT] ;
+
     void setupMixerListWidget();
     void updateSettings();
     void tabModelEditSetup();
@@ -130,6 +144,8 @@ private:
     MixData* setDest(uint8_t dch);
     void setCurve(uint8_t c, int8_t ar[]);
     void setSwitch(uint8_t idx, uint8_t func, int8_t v1, int8_t v2);
+
+		struct t_templateValues templateValues ;
 
 signals:
     void modelValuesChanged(ModelEdit * = 0);

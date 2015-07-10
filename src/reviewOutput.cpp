@@ -4,7 +4,7 @@
 //#include "mainwindow.h"
 #include <QtGui>
 #include <QString>
-#include <inttypes.h>
+#include <stdint.h>
 
 extern QString AvrdudeOutput ;
 

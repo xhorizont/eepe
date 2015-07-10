@@ -1,7 +1,7 @@
 
 //#define TELEMETRY_LOGGING	1
 
-#include <inttypes.h>
+#include <stdint.h>
 #include "pers.h"
 #include "telemetry.h"
 #include "ui_telemetryDialog.h"
