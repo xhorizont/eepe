@@ -11,6 +11,17 @@ namespace Ui {
     class ModelEdit;
 }
 
+struct t_templateValues
+{
+	uint8_t stick ;
+	uint8_t outputChannel ;
+	uint8_t helperChannel ;
+	uint8_t switch1 ;
+	uint8_t switch2 ;
+	uint8_t switch3 ;
+} ;
+
+
 class ModelEdit : public QDialog
 {
     Q_OBJECT
@@ -137,6 +148,9 @@ private:
     SKYMixData* setDest(uint8_t dch);
     void setCurve(uint8_t c, int8_t ar[]);
     void setSwitch(uint8_t idx, uint8_t func, int8_t v1, int8_t v2);
+
+		struct t_templateValues templateValues ;
+
 
 
 signals:
@@ -282,6 +296,7 @@ private slots:
     void on_timer2ModeBCB_currentIndexChanged(int index);
 		void on_timer2ResetCB_currentIndexChanged(int index);
     void on_modelNameLE_editingFinished();
+		void on_modelImageLE_editingFinished() ;
     void on_tabWidget_currentChanged(int index);
     void on_templateList_doubleClicked(QModelIndex index);
     void on_ppmFrameLengthDSB_editingFinished();
@@ -315,6 +330,19 @@ private slots:
 		void on_SwitchDefSE_valueChanged( int x ) ;
 		void on_SwitchDefSF_valueChanged( int x ) ;
 		void on_SwitchDefSG_valueChanged( int x ) ;
+		void on_EnA_stateChanged(int ) ;
+		void on_EnB_stateChanged(int ) ;
+		void on_EnC_stateChanged(int ) ;
+    void on_EnD_stateChanged(int ) ;
+		void on_EnE_stateChanged(int ) ;
+		void on_EnF_stateChanged(int ) ;
+		void on_EnG_stateChanged(int ) ;
+		void on_EnThr_stateChanged(int ) ;
+		void on_EnRud_stateChanged(int ) ;
+		void on_EnEle_stateChanged(int ) ;
+		void on_EnIdx_stateChanged(int ) ;
+		void on_EnAil_stateChanged(int ) ;
+		void on_EnGea_stateChanged(int ) ;
 
 };
 

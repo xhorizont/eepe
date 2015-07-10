@@ -104,6 +104,7 @@ private:
 
     void saveModelToXML(QDomDocument * qdoc, QDomElement * pe, int model_id, int mdver);
     void getNotesFromXML(QDomDocument * qdoc, int model_id);
+    struct t_radioData radioData ;
 
 //    ModelData g_model;
 //    EEGeneral g_eeGeneral;
@@ -134,7 +135,7 @@ public:
 
     void optimizeEEPROM();
 
-    QString modelNotes[MAX_MODELS][MAX_MIXERS];
+    QString modelNotes[MAX_IMODELS][MAX_MIXERS];
 
 signals:
     void copyAvailable(bool val);
@@ -172,6 +173,7 @@ public slots:
     void deleteSelected(bool ask);
     void setModified(ModelEdit * me = 0);
     void viableModelSelected(int idx);
+		void wizardEdit() ;
 
 
 

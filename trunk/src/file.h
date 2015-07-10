@@ -42,6 +42,8 @@
 #define EEFS_VERS 		4
 #define EEFS_VERS128	6
 
+#define MAX_IMODELS 60
+
 //#define EESIZE	EESIZE64
 //#define BLOCKS	BLOCKS64
 
@@ -60,6 +62,28 @@ struct EeFs{
   uint8_t  bs;
   DirEnt   files[MAXFILES];
 }__attribute__((packed));
+
+struct t_file_entry
+{
+	uint32_t block_no ;
+	uint32_t sequence_no ;
+	uint16_t size ;
+	uint8_t flags ;
+} ;
+
+
+struct t_radioData
+{
+		struct t_file_entry File_system[MAX_MODELS+1] ;
+    EEGeneral generalSettings ;
+    ModelData models[MAX_MODELS];
+    unsigned char ModelNames[MAX_MODELS+1][MODEL_NAME_LEN+2] ;		// Allow for general
+		uint8_t valid ;
+		uint8_t type ;
+		uint8_t channels ;
+		uint8_t number_voice_alarms ;
+} ;
+
 
 
 class EFile

@@ -237,7 +237,7 @@ uint8_t Sw3PosCount[8] ;
 
 void createSwitchMapping( EEGeneral *pgeneral, uint8_t max_switch, int type )
 {
-  uint8_t map = pgeneral->switchMapping ;
+  uint16_t map = pgeneral->switchMapping ;
 	int x = type ? 1 : 0 ;
 	uint8_t *p = switchMapTable[x] ;
 	*p++ = 0 ;
@@ -352,6 +352,14 @@ void createSwitchMapping( EEGeneral *pgeneral, uint8_t max_switch, int type )
 			*p++ = HSW_Gear ;
 		}
 		*p++ = HSW_Trainer ;
+		if ( map & USE_PB1 )
+		{
+			*p++ = HSW_Pb1 ;
+		}
+		if ( map & USE_PB2 )
+		{
+			*p++ = HSW_Pb2 ;
+		}
 	}
 	for ( uint32_t i = 10 ; i <=33 ; i += 1  )
 	{
@@ -469,7 +477,7 @@ uint8_t MaxSwitchIndex ;		// For ON and OFF
 
 void createSwitchMapping( EEGeneral *pgeneral, int type )
 {
-  uint8_t map = pgeneral->switchMapping ;
+  uint16_t map = pgeneral->switchMapping ;
 	uint8_t *p = switchMapTable ;
 	*p++ = 0 ;
 	*p++ = HSW_ThrCt ;
@@ -1219,9 +1227,12 @@ QString getSWName(int val, int extra )
 //	{
 	if ( eepromType >= 0 )
 	{
+		int mval = switchUnMap( val, eepromType ) ;
+#else
+  int mval = switchUnMap( val ) ;
 #endif
-    if(val == limit) return "ON";
-  	if(val == -limit) return "OFF";
+    if(mval == limit) return "ON";
+  	if(mval == -limit) return "OFF";
 #ifdef SKY
   }
 //  }
@@ -1330,6 +1341,8 @@ int getTimerSwitchCbValue( QComboBox *b, int eepromType )
 	int value ;
   int x = eepromType ? 1 : 0 ;
   int limit = MaxSwitchIndex[x] ;
+  int hsw_max = eepromType ? HSW_MAX_X9D : HSW_MAX ;
+
 //	if ( eepromType )
 //	{
 //		limit = MAX_XDRSWITCH ;
@@ -1339,7 +1352,7 @@ int getTimerSwitchCbValue( QComboBox *b, int eepromType )
 //  {
 		if ( value > limit-1 )
 		{
-			value = switchMap( value - limit + 1, eepromType ) + HSW_MAX ;
+			value = switchMap( value - limit + 1, eepromType ) + hsw_max ;
 		}
 		else
 		{
@@ -1699,7 +1712,6 @@ void populateSwitchAndCB(QComboBox *b, int value=0)
     b->addItem(getSWName(i,0));
 #endif
 
-  b->addItem("TRN");
 	name[0] = 'L' ;
 //	name[1] = 'W' ;
 	name[2] = 0 ;
@@ -1714,6 +1726,7 @@ void populateSwitchAndCB(QComboBox *b, int value=0)
 		name[1] = i ;
     b->addItem(name);
 	}
+  b->addItem("TRN");
 #endif
 #ifdef SKY
 	int x = value ;
@@ -1862,6 +1875,7 @@ void populateTmrBSwitchCB(QComboBox *b, int value, int eepromType )
 #ifdef SKY
   int x = eepromType ? 1 : 0 ;
   int limit = MaxSwitchIndex[x]-1 ;
+  int hsw_max = eepromType ? HSW_MAX_X9D : HSW_MAX ;
 //	if ( eepromType )
 //	{
 //		limit = MAX_XDRSWITCH - 1 ;
@@ -1905,9 +1919,9 @@ void populateTmrBSwitchCB(QComboBox *b, int value, int eepromType )
 //		else
 //		{
 			int j ;
-			if ( value > HSW_MAX )
+			if ( value > hsw_max )
 			{
-        j = switchUnMap( value - HSW_MAX, eepromType ) + MaxSwitchIndex[x] - 1 ;
+        j = switchUnMap( value - hsw_max, eepromType ) + MaxSwitchIndex[x] - 1 ;
 			}
 			else
 			{
@@ -2107,7 +2121,7 @@ QString getSourceStr(int stickMode, int idx, int modelVersion )
 					{
 						return "SR  " ;
 					}
-					int offset = 1 ;
+//					int offset = 1 ;
 					if ( type == 2 )	// Plus
 					{
 						if ( idx == 9 )
@@ -2914,7 +2928,7 @@ void modelConvert1to2( EEGeneral *g_eeGeneral, SKYModelData *g_model )
 		    }
 			}
 		}
-		for ( i = 1 ; i < 4 ; i += 1 )
+    for ( i = 1 ; i <= 4 ; i += 1 )
 		{
  			dest = CONVERT_MODE(i, 2, g_eeGeneral->stickMode)-1 ;
  			src = CONVERT_MODE(i, 1, g_eeGeneral->stickMode)-1 ;

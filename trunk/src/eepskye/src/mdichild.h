@@ -145,7 +145,7 @@ public:
 
 //    void optimizeEEPROM();
 
-    QString modelNotes[MAX_MODELS][MAX_SKYMIXERS];
+    QString modelNotes[MAX_IMODELS][MAX_SKYMIXERS];
 
 signals:
     void copyAvailable(bool val);
@@ -184,6 +184,7 @@ public slots:
     void deleteSelected(bool ask);
     void setModified(ModelEdit * me = 0);
     void viableModelSelected(int idx);
+		void wizardEdit() ;
 
 
 

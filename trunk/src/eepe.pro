@@ -26,7 +26,10 @@ HEADERS += mainwindow.h \
     serialdialog.h \
     telemetry.h \
     reviewOutput.h \
-    VoiceAlarmDialog.h
+    VoiceAlarmDialog.h \
+    TemplateDialog.h \
+    wizarddialog.h \
+    wizarddata.h
 SOURCES += main.cpp \
     mainwindow.cpp \
     file.cpp \
@@ -50,7 +53,10 @@ SOURCES += main.cpp \
     serialdialog.cpp \
     telemetry.cpp \
     reviewOutput.cpp \
-    VoiceAlarmDialog.cpp
+    VoiceAlarmDialog.cpp \
+    TemplateDialog.cpp \
+    wizarddialog.cpp \
+    wizarddata.cpp
 TEMPLATE = app
 FORMS += modeledit.ui \
     generaledit.ui \
@@ -67,7 +73,8 @@ FORMS += modeledit.ui \
     telemetryDialog.ui \
     SimSerialDialog.ui \
     reviewOutput.ui \
-    VoiceAlarmDialog.ui
+    VoiceAlarmDialog.ui \
+    TemplateDialog.ui
 TRANSLATIONS = eepe_.ts    \
                eepe_he.ts  \
                eepe_pt.ts  \

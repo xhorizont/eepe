@@ -36,6 +36,7 @@ extern uint32_t DefaultModelType ;
 //
 
 #define MAX_MODELS 32
+#define MAX_IMODELS 60
 
 #define EETARANISSIZE	(32*1024)
 
@@ -94,10 +95,10 @@ struct t_eeprom_block
 
 struct t_radioData
 {
-		struct t_file_entry File_system[MAX_MODELS+1] ;
+		struct t_file_entry File_system[MAX_IMODELS+1] ;
     EEGeneral generalSettings ;
-    SKYModelData models[MAX_MODELS];
-    unsigned char ModelNames[MAX_MODELS+1][MODEL_NAME_LEN+2] ;		// Allow for general
+    SKYModelData models[MAX_IMODELS];
+    unsigned char ModelNames[MAX_IMODELS+1][MODEL_NAME_LEN+2] ;		// Allow for general
 		uint32_t valid ;
 		uint32_t type ;
 } ;

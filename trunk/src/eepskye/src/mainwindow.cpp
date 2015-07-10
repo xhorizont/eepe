@@ -46,6 +46,7 @@
 #include <QNetworkProxy>
 #include <QNetworkProxyFactory>
 #include <QFileInfo>
+#include <QSslConfiguration>
 
 #include "mainwindow.h"
 #include "pers.h"
@@ -110,9 +111,9 @@
 //#define ER9X_ARDUPILOT_URL   "http://er9x.googlecode.com/svn/trunk/er9x-ardupilot.hex"
 //#define ER9X_NMEA_URL   "http://er9x.googlecode.com/svn/trunk/er9x-nmea.hex"
 //#define ER9X_STAMP "http://er9x.googlecode.com/svn/trunk/src/stamp-er9x.h"
-#define EEPE_URL   "http://eepe.googlecode.com/svn/trunk/eePeInstall.zip"
+#define EEPE_URL   "http://eepe.googlecode.com/svn/trunk/eePeInstall.exe"
 //#define EEPE_STAMP "http://eepe.googlecode.com/svn/trunk/src/stamp-eepe.h"
-#define EEPSKYE_URL   "http://eepe.googlecode.com/svn/trunk/eePeInstall.zip"
+#define EEPSKYE_URL   "http://eepe.googlecode.com/svn/trunk/eePeInstall.exe"
 #define EEPSKYE_STAMP "http://eepe.googlecode.com/svn/trunk/src/eepskye/src/stamp-eepskye.h"
 
 #define ERSKY9X_STAMP "http://ersky9x.googlecode.com/svn/trunk/src/stamp-ersky9x.h"
@@ -120,6 +121,8 @@
 #define ERSKY9XR_URL "http://ersky9x.googlecode.com/svn/trunk/ersky9xr_rom.bin"
 #define ERSKYX9D_URL "http://ersky9x.googlecode.com/svn/trunk/x9d_rom.bin"
 #define ERSKYX9DP_URL "http://ersky9x.googlecode.com/svn/trunk/x9dp_rom.bin"
+
+#define GITHUB_REVS_URL	"http://www.er9x.com/Revisions.txt"
 
 class simulatorDialog *SimPointer = 0 ;
 QString AvrdudeOutput ;
@@ -145,9 +148,9 @@ MainWindow::MainWindow()
     updateMenus();
 
     readSettings();
-
-    setWindowTitle(tr("eePskye - EEPROM Editor"));
-    setUnifiedTitleAndToolBarOnMac(true);
+		title() ;
+		
+		setUnifiedTitleAndToolBarOnMac(true);
     this->setWindowIcon(QIcon(":/icon.png"));
 
     checkForUpdates(false);
@@ -193,12 +196,37 @@ MainWindow::MainWindow()
 
 }
 
+void MainWindow::title()
+{
+  QSettings settings("er9x-eePskye", "eePskye");
+	int dnloadVersion = settings.value("download-version", 0).toInt() ;
+	QString type ;
+	switch ( dnloadVersion )
+	{
+		default :
+			type = "Sky" ;
+    break ;
+		case 1 :
+			type = "9XR-PRO" ;
+    break ;
+		case 2 :
+			type = "Taranis" ;
+    break ;
+		case 3 :
+			type = "Taranis Plus" ;
+    break ;
+	}
+  setWindowTitle(tr("eePskye - EEPROM Editor - %1").arg(type));
+}
+
+
 void MainWindow::releaseNotes()
 {
 	int *ptr ;
 	
 	
 	QString rnotes =
+	"Release files will now be found at: http://er9x.com.\n"
 	"Googlecode is closing down. This project will move to Github.\n"
 	"It may be found at: https://github.com/MikeBland/mbtx in due course.\n"
 	"Googlecode has blocked downloads of .exe files\n"
@@ -235,22 +263,37 @@ void MainWindow::releaseNotes()
 }
 
 
+//QSslConfiguration QSSLconfig ;
 
 void MainWindow::checkForUpdates(bool ignoreSettings)
 {
     showcheckForUpdatesResult = ignoreSettings;
     check1done = true;
     check2done = true;
+		checkGdone = true ;
     readSettings() ;
 
-    QNetworkProxyFactory::setUseSystemConfiguration(true);
+//    QNetworkProxyFactory::setUseSystemConfiguration(true);
+
+//		{
+//      QSSLconfig.defaultConfiguration() ;
+//			QSSLconfig.setPeerVerifyMode(QSslSocket::VerifyNone);
+//      managerG = new QNetworkAccessManager(this);
+//      connect(managerG, SIGNAL(finished(QNetworkReply*)),this, SLOT(replyGFinished(QNetworkReply*)));
+//      connect(managerG, SIGNAL(sslErrors(QNetworkReply *, const QList<QSslError> &)),this, SLOT(replyGssl(QNetworkReply *, const QList<QSslError> &)));
+//      QNetworkRequest request(QUrl(GITHUB_REVS_URL));
+//      request.setAttribute(QNetworkRequest::CacheLoadControlAttribute, QNetworkRequest::AlwaysNetwork);
+//      request.setSslConfiguration( QSSLconfig ) ;
+//      managerG->get(request);
+//      checkGdone = false;
+//		}	
 
     if(checkERSKY9X || ignoreSettings)
     {
         manager1 = new QNetworkAccessManager(this);
         connect(manager1, SIGNAL(finished(QNetworkReply*)),this, SLOT(reply1Finished(QNetworkReply*)));
 //        manager1->get(QNetworkRequest(QUrl(ERSKY9X_STAMP)));
-        QNetworkRequest request(QUrl(ERSKY9X_STAMP));
+        QNetworkRequest request(QUrl(GITHUB_REVS_URL));
         request.setAttribute(QNetworkRequest::CacheLoadControlAttribute, QNetworkRequest::AlwaysNetwork);
         manager1->get(request);
         check1done = false;
@@ -261,7 +304,7 @@ void MainWindow::checkForUpdates(bool ignoreSettings)
         manager2 = new QNetworkAccessManager(this);
         connect(manager2, SIGNAL(finished(QNetworkReply*)),this, SLOT(reply2Finished(QNetworkReply*)));
         //manager2->get(QNetworkRequest(QUrl(EEPSKYE_STAMP)));
-    QNetworkRequest request(QUrl(EEPSKYE_STAMP));
+    QNetworkRequest request(QUrl(GITHUB_REVS_URL));
         request.setAttribute(QNetworkRequest::CacheLoadControlAttribute, QNetworkRequest::AlwaysNetwork);
         manager2->get(request);
         check2done = false;
@@ -277,29 +320,60 @@ void MainWindow::checkForUpdates(bool ignoreSettings)
     }
 }
 
+void MainWindow::replyGssl( QNetworkReply * reply, const QList<QSslError> & list)
+{
+  reply->ignoreSslErrors() ;
+}
+
+void MainWindow::replyGFinished(QNetworkReply * reply)
+{
+    checkGdone = true;
+    if(check1done && check2done && checkGdone && downloadDialog_forWait)
+        downloadDialog_forWait->close();
+
+    QByteArray qba = reply->readAll();
+    QString text = QString::fromLatin1(qba.data()) ;
+	
+    int i = text.length() ;
+    
+		if(i>0)
+    {
+      QMessageBox::warning(this, "Github", tr("%1").arg(text)) ;
+      return ;
+    }
+    else
+    {
+        if(check1done && check2done && checkGdone)
+            QMessageBox::warning(this, "eePskye", tr("Unable to check Github (%1).").arg(reply->error()));
+    }
+}
+
 
 void MainWindow::reply1Finished(QNetworkReply * reply)
 {
     check1done = true;
-    if(check1done && check2done && downloadDialog_forWait)
+    if(check1done && check2done && checkGdone && downloadDialog_forWait)
         downloadDialog_forWait->close();
 
     QByteArray qba = reply->readAll();
-    int i = qba.indexOf("SVN_VERS");
+    int i = qba.indexOf("ersky9x");
 
     if(i>0)
     {
     		QSettings settings("er9x-eePskye", "eePskye");
-        QByteArray qbb = qba.mid(i+8,20) ;
+        QByteArray qbb = qba.mid(i+6,20) ;
         int j = qbb.indexOf("-r");
         bool cres;
-        int rev = QString::fromLatin1(qbb.mid(j+2,4)).replace(QChar('"'), "").toInt(&cres);
+        int rev = QString::fromLatin1(qba.mid(j+2,4)).replace(QChar('"'), "").toInt(&cres);
 
         if(!cres)
         {
             QMessageBox::warning(this, "ersky9x", tr("Unable to check for updates."));
             return;
         }
+        
+				QMessageBox::warning(this, "ersky9x", tr("Read revision = %1.").arg(cres));
+
 				int currentRev = currentERSKY9Xrev ;
         switch (settings.value("download-version", 0).toInt())
 				{
@@ -388,13 +462,13 @@ void MainWindow::reply1Finished(QNetworkReply * reply)
         }
         else
         {
-            if(showcheckForUpdatesResult && check1done && check2done)
+            if(showcheckForUpdatesResult && check1done && check2done && checkGdone)
                 QMessageBox::information(this, "eePe", tr("No updates available at this time."));
         }
     }
     else
     {
-        if(check1done && check2done)
+        if(check1done && check2done && checkGdone)
             QMessageBox::warning(this, "eePe", tr("Unable to check for updates."));
     }
 }
@@ -488,22 +562,27 @@ void MainWindow::downloadLatester9x()
 void MainWindow::reply2Finished(QNetworkReply * reply)
 {
     check2done = true;
-    if(check1done && check2done && downloadDialog_forWait)
+    if(check1done && check2done && checkGdone && downloadDialog_forWait)
         downloadDialog_forWait->close();
 
     QByteArray qba = reply->readAll();
-    int i = qba.indexOf("SVN_VERS");
+    int i = qba.indexOf("eepskye");
 
     if(i>0)
     {
+        QByteArray qbb = qba.mid(i+6,20) ;
+        int j = qbb.indexOf("-r");
         bool cres;
-        int rev = QString::fromLatin1(qba.mid(i+17,4)).replace(QChar('"'), "").toInt(&cres);
+        int rev = QString::fromLatin1(qba.mid(j+2,4)).replace(QChar('"'), "").toInt(&cres);
 
         if(!cres)
         {
             QMessageBox::warning(this, "eePskye", tr("Unable to check for updates(1)."));
             return;
         }
+
+				QMessageBox::warning(this, "eePskye", tr("Read revision = %1.").arg(cres));
+
 
         if(rev>currentEEPSKYErev)
         {
@@ -534,13 +613,13 @@ void MainWindow::reply2Finished(QNetworkReply * reply)
         }
         else
         {
-            if(showcheckForUpdatesResult && check1done && check2done)
+            if(showcheckForUpdatesResult && check1done && check2done && checkGdone)
                 QMessageBox::information(this, "eePskye", tr("No updates available at this time."));
         }
     }
     else
     {
-        if(check1done && check2done)
+        if(check1done && check2done && checkGdone)
             QMessageBox::warning(this, "eePskye", tr("Unable to check for updates(2)."));
     }
 }
@@ -560,11 +639,11 @@ void MainWindow::reply1Accepted()
 			break ;
 		
 			case 2 :
-    		settings.setValue("currentERSKYX9Drev", currentERSKYX9Drev);
+    		settings.setValue("currentERSKYX9Drev", currentERSKY9Xrev);
 			break ;
 		
 			case 3 :
-    		settings.setValue("currentERSKYX9DPrev", currentERSKYX9DPrev);
+    		settings.setValue("currentERSKYX9DPrev", currentERSKY9Xrev);
 			break ;
 		}	
 }
@@ -641,6 +720,7 @@ void MainWindow::preferences()
 {
     preferencesDialog *pd = new preferencesDialog(this);
     pd->exec();
+		title() ;
 }
 
 void MainWindow::reviewOut()
@@ -746,7 +826,7 @@ void MainWindow::burnFrom()
     QString tempFile = tempDir + "/temp.bin";
 //    QString str = "eeprom:r:" + tempFile + ":i"; // writing eeprom -> MEM:OPR:FILE:FTYPE"
 
-	QString size = QString("0x%1").arg( (MAX_MODELS+1)*8192,5,16,QChar('0')) ;
+	QString size = QString("0x%1").arg( (MAX_IMODELS+1)*8192,5,16,QChar('0')) ;
 //    QStringList arguments = GetSambaArguments(QString("SERIALFLASH::Init 0\n") + "receive_file {SerialFlash AT25} \"\" 0x0 0x1000 0\n" + "receive_file {SerialFlash AT25} \"" + tempFile + "\" 0x0 0x22000 0\n");
 	
 	QStringList arguments = GetSambaArguments(QString("SERIALFLASH::Init 0\n") + "receive_file {SerialFlash AT25} \"" + tempFile + "\" 0x0 " + size + " 0\n");
@@ -764,7 +844,8 @@ void MainWindow::burnFrom()
 		else
 		{
       qint32 fsize ;
-			fsize = (MAX_MODELS+1)*8192 ;
+//			fsize = (MAX_IMODELS+1)*8192 ;
+			fsize = 64*8192 ;
 			if ( QFileInfo(path).size() == 32768 )
 			{
 				fsize = 32768 ;			// Taranis EEPROM
@@ -844,7 +925,7 @@ void MainWindow::burnExtenalToEEPROM()
 					{
 						avrdudeLoc = "" ;
 			      qint32 fsize ;
-						fsize = (MAX_MODELS+1)*8192 ;
+						fsize = (MAX_IMODELS+1)*8192 ;
 						if ( QFileInfo(path).size() == 32768 )
 						{
 							fsize = 32768 ;			// Taranis EEPROM
@@ -999,8 +1080,20 @@ void MainWindow::burnExtenalFromEEPROM()
 					}
 					else
 					{
+      			qint32 fsize ;
+						fsize = (MAX_IMODELS+1)*8192 ;
+						if ( QFileInfo(path).size() == 32768 )
+						{
+							fsize = 32768 ;			// Taranis EEPROM
+						}
+						if ( QFileInfo(fileName).size() > fsize )
+						{
+							QFile file ;
+							file.setFileName(fileName) ;
+							file.remove() ;
+						}
 						avrdudeLoc = "" ;
-  			    arguments << fileName << path << tr("%1").arg((MAX_MODELS+1)*8192) << "0" ;
+  			    arguments << fileName << path << tr("%1").arg(fsize) << "0" ;
 				    avrOutputDialog *ad = new avrOutputDialog(this, avrdudeLoc, arguments,tr("Read EEPROM From Tx")); //, AVR_DIALOG_KEEP_OPEN);
 						res = ad->result() ;
 						delete ad ;
@@ -1019,7 +1112,7 @@ void MainWindow::burnExtenalFromEEPROM()
 					if( QFileInfo(fileName).exists() )
 					{
         		QFile file(fileName);
-	      	  if(file.size()!=EESIZE)
+	      	  if ( (file.size()!=EEFULLSIZE) && (file.size()!=32768) )
 						{
     	  	  	QMessageBox::critical(this, tr("Error"),tr("Error reading file:\n"
         		                                             "File wrong size - %1").arg(fileName));
@@ -1132,8 +1225,9 @@ void MainWindow::showEEPROMInfo()
     msg.append(QString("%1").arg(QFileInfo(activeMdiChild()->currentFile()).fileName()));
     msg.append("</b></u></td></tr>");
 
-    int modelSizes[MAX_MODELS+1] = {0};
+    int modelSizes[MAX_IMODELS+1] = {0};
     int totalSize = 0;
+
 
     for(int i=0; i<=MAX_MODELS; i++)
     {
@@ -1212,7 +1306,10 @@ void MainWindow::about()
     aboutStr.append(QString("<a href='http://code.google.com/p/eepe/'>http://code.google.com/p/eepe/</a><br>Revision: %1, %2<br><br>").arg(currentEEPSKYErev).arg(__DATE__));
     aboutStr.append(tr("If you've found this program and/or the ersky9x firmware useful please support by"));
     aboutStr.append(" <a href='" DONATE_MB_STR "'>");
-    aboutStr.append(tr("donating") + "</a></center>");
+//    aboutStr.append(tr("donating") + "</a></center><br>");
+    aboutStr.append(tr("donating") + "</a><br>");
+		aboutStr.append(QString("Click for latest <a href='https://raw.githubusercontent.com/MikeBland/mbtx/master/README.md'>Revisions</a></center><br><br>"));
+
 //    aboutStr.append(tr("geegeneral size = %1").arg(sizeof(EEGeneral)));
 
     QMessageBox::about(this, tr("About eePskye"),aboutStr);
@@ -1554,6 +1651,8 @@ void MainWindow::createToolBars()
     fileToolBar->addSeparator();
     fileToolBar->addAction(simulateAct);
     fileToolBar->addAction(printAct);
+    fileToolBar->addSeparator();
+    fileToolBar->addAction(preferencesAct);
     fileToolBar->addSeparator();
     fileToolBar->addAction(loadModelFromFileAct);
     fileToolBar->addAction(saveModelToFileAct);

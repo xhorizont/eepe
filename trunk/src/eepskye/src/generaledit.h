@@ -132,11 +132,18 @@ private slots:
 		void on_StickRevRV_stateChanged(int ) ;
 		void on_StickRevRH_stateChanged(int ) ;
 
-		void on_AilNumWaysCB_currentIndexChanged(int ) ;
-		void on_EleNumWaysCB_currentIndexChanged(int ) ;
-		void on_GeaNumWaysCB_currentIndexChanged(int ) ;
-		void on_RudNumWaysCB_currentIndexChanged(int ) ;
-		void on_ThrNumWaysCB_currentIndexChanged(int ) ;
+    void on_StickLHdeadbandSB_editingFinished() ;
+    void on_StickLVdeadbandSB_editingFinished() ;
+    void on_StickRVdeadbandSB_editingFinished() ;
+    void on_StickRHdeadbandSB_editingFinished() ;
+
+		void on_AilCB_currentIndexChanged(int ) ;
+		void on_EleCB_currentIndexChanged(int ) ;
+		void on_GeaCB_currentIndexChanged(int ) ;
+		void on_RudCB_currentIndexChanged(int ) ;
+		void on_ThrCB_currentIndexChanged(int ) ;
+		void on_PB1CB_currentIndexChanged(int ) ;
+		void on_PB2CB_currentIndexChanged(int ) ;
 		void on_EncoderCB_currentIndexChanged(int ) ;
 		void on_SixPosCB_currentIndexChanged(int ) ;
 

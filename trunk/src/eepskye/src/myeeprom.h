@@ -16,7 +16,7 @@
 #ifndef eeprom_h
 #define eeprom_h
 
-#include <inttypes.h>
+#include <stdint.h>
 
 #ifndef PACK
 #define PACK( __Declaration__ ) __Declaration__ __attribute__((__packed__))
@@ -26,6 +26,7 @@
 //#define EE_VERSION 2
 #ifdef SKY
 #define MAX_MODELS  32
+#define MAX_IMODELS 60
 #else
 #define MAX_MODELS  16
 #endif
@@ -49,6 +50,7 @@
 
 #define	NUM_VOICE		8
 #define NUM_SKY_VOICE_ALARMS	24
+#define NUM_EXTRA_VOICE_ALARMS	12
 
 #define NUM_GVAR_ADJUST	8
 
@@ -237,8 +239,8 @@ PACK(typedef struct t_EEGeneral {
   int16_t   x9dPcalibMid ;			// X9D for PLUS
   int16_t   x9dPcalibSpanNeg ;	// X9D for PLUS
   int16_t   x9dPcalibSpanPos ;	// X9D for PLUS
-	uint8_t		switchMapping ;			// 'PRO / SKY
-	int8_t		spare10 ;						// was switchTest
+	uint16_t		switchMapping ;			// 'PRO / SKY
+//	int8_t		spare10 ;						// was switchTest
 	exTrainerMix exTrainer[4] ;
 	uint16_t totalElapsedTime ;
 	uint16_t sparetotalElapsedTime ;	// In case we need 32 bits
@@ -250,6 +252,15 @@ PACK(typedef struct t_EEGeneral {
   int16_t   xcalibSpanPos[3]; 	// X9E
 	uint8_t		analogMapping ;			// X9D / X9DP
 	int8_t		inactivityVolume ;
+	uint8_t		pb1source ;
+	uint8_t		pb2source ;
+	uint8_t		ailsource ;
+	uint8_t		rudsource ;
+	uint8_t		geasource ;
+	uint8_t		thrsource ;
+	uint8_t		elesource ;
+	uint8_t 	stickDeadband[4] ;
+	uint8_t		forExpansion[20] ;	// Allows for extra items not yet handled
 }) EEGeneral;
 #endif
 
@@ -586,7 +597,7 @@ PACK(typedef struct te_ModelData {
   char      name[MODEL_NAME_LEN];             // 10 must be first for eeLoadModelName
   uint8_t   modelVoice ;		// Index to model name voice (261+value)
   uint8_t   RxNum ;						// was timer trigger source, now RxNum for model match
-  uint8_t   sparex:1;				// was tmrDir, now use tmrVal>0 => count down
+  uint8_t   telemetryRxInvert:1 ;	// was tmrDir, now use tmrVal>0 => count down
   uint8_t   traineron:1;  		// 0 disable trainer, 1 allow trainer
   uint8_t   spare22:1 ;  			// Start timer2 using throttle
   uint8_t   FrSkyUsrProto:1 ; // Protocol in FrSky User Data, 0=FrSky Hub, 1=WS HowHigh
@@ -699,6 +710,11 @@ PACK(typedef struct te_ModelData {
   uint8_t ymodelswitchWarningStates ;	// Enough bits for Taranis X9E
 	uint8_t customDisplay2Index[6] ;
 	GvarAdjust gvarAdjuster[NUM_GVAR_ADJUST] ;
+	uint16_t modelswitchWarningDisables ;
+	uint16_t xmodelswitchWarningDisables ;
+	uint8_t ymodelswitchWarningDisables ;
+	char modelImageName[VOICE_NAME_SIZE+2] ;
+	VoiceAlarmData vadx[NUM_EXTRA_VOICE_ALARMS] ;
 	uint8_t forExpansion[20] ;	// Allows for extra items not yet handled
 }) SKYModelData ;
 

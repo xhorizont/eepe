@@ -48,6 +48,7 @@
 #include "burnconfigdialog.h"
 #include "simulatordialog.h"
 #include "printdialog.h"
+#include "wizarddialog.h"
 
 extern class simulatorDialog *SimPointer ;
 
@@ -61,7 +62,18 @@ MdiChild::MdiChild()
     if(!(this->isMaximized() || this->isMinimized())) this->adjustSize();
     isUntitled = true;
 
+	radioData.valid = 0 ;
+	uint32_t i ;
+	for ( i = 1 ; i <= MAX_MODELS ; i += 1 )
+	{
+    radioData.ModelNames[i][0] = '\0' ;
+	}
+	radioData.type = 0 ;
+//	generalDefault() ;
+
+
     connect(this, SIGNAL(itemActivated(QListWidgetItem*)), this, SLOT(OpenEditWindow()));
+//    connect(this, SIGNAL(itemActivated(QListWidgetItem*)), this, SLOT(wizardEdit()));
     connect(this, SIGNAL(customContextMenuRequested(const QPoint&)),this, SLOT(ShowContextMenu(const QPoint&)));
     connect(this,SIGNAL(currentRowChanged(int)), this,SLOT(viableModelSelected(int)));
 
@@ -779,6 +791,8 @@ bool MdiChild::loadFile(const QString &fileName, bool resetCurrentFile)
                                                                "Cannot set General Settings"));
                     return false;
                 }
+		            radioData.File_system[0].size = sizeof(tgen) ;
+					  		memcpy( &radioData.generalSettings, &tgen, sizeof(tgen) ) ;
 
                 //read model data
                 for(int i=0; i<MAX_MODELS; i++)
@@ -787,6 +801,10 @@ bool MdiChild::loadFile(const QString &fileName, bool resetCurrentFile)
                     memset(&tmod,0,sizeof(tmod));
                     if(loadModelDataXML(&doc, &tmod, i))
                     {
+              				radioData.File_system[i+1].size = sizeof(tmod) ;
+              				memcpy( &radioData.models[i], &tmod, sizeof( tmod ) ) ;
+              				memcpy( &radioData.ModelNames[i+1], &radioData.models[i].name, sizeof( radioData.models[0].name) ) ;
+              				radioData.ModelNames[i+1][sizeof( radioData.models[0].name)+1] = '\0' ;
                         eeFile.putModel(&tmod,i);
                         getNotesFromXML(&doc, i);
                     }
@@ -1239,6 +1257,8 @@ void MdiChild::ShowContextMenu(const QPoint& pos)
     QMenu contextMenu;
     contextMenu.addAction(QIcon(":/images/edit.png"), tr("&Edit"),this,SLOT(OpenEditWindow()));
     contextMenu.addSeparator();
+    contextMenu.addAction(QIcon(":/images/edit.png"), tr("&Wizard"),this,SLOT(wizardEdit()));
+    contextMenu.addSeparator();
     contextMenu.addAction(QIcon(":/images/clear.png"), tr("&Delete"),this,SLOT(deleteSelected(bool)),tr("Delete"));
     contextMenu.addAction(QIcon(":/images/copy.png"), tr("&Copy"),this,SLOT(copy()),tr("Ctrl+C"));
     contextMenu.addAction(QIcon(":/images/cut.png"), tr("&Cut"),this,SLOT(cut()),tr("Ctrl+X"));
@@ -1323,6 +1343,32 @@ void MdiChild::viableModelSelected(int idx)
         emit copyAvailable(eeFile.eeModelExists(currentRow()-1));
 
     emit saveModelToFileAvailable(saveToFileEnabled());
+}
+
+void MdiChild::wizardEdit()
+{
+   EEGeneral gg;
+   if(!eeFile.getGeneralSettings(&gg)) return;
+	
+//  int row = ui->modelsList->currentRow();
+  int row = this->currentRow();
+  if (row > 0)
+	{
+    eeFile.modelDefault(row-1) ;
+//    checkAndInitModel(row);
+    WizardDialog * wizard = new WizardDialog( gg, row, this);
+    wizard->exec();
+    if (wizard->mix.complete /*TODO rather test the exec() result?*/)
+		{
+    	ModelData gm ;
+//	    eeFile.getModel(&gm,currentRow()-1) ;
+      gm = wizard->mix ;
+			
+      eeFile.putModel( &gm,row-1) ;
+//      radioData.models[row - 1] = wizard->mix;
+      setModified();
+    }
+  }
 }
 
 

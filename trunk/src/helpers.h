@@ -111,6 +111,7 @@ QString getSWName(int val, int eepromType);
 #else
 QString getSWName(int val, int extra ) ;
 #endif
+QString getMappedSWName(int val, int eepromType) ;
 QString getCSWFunc(int val, uint8_t modelVersion ) ;
 QString getAudioAlarmName(int val) ;
 

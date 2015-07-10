@@ -7,6 +7,122 @@ msgstr ""
 "X-Language: fr_FR\n"
 "X-Qt-Contexts: true\n"
 
+msgctxt "AileronsPage|"
+msgid "No"
+msgstr ""
+
+msgctxt "AileronsPage|"
+msgid "Yes, controlled by a single channel"
+msgstr ""
+
+msgctxt "AileronsPage|"
+msgid "Yes, controlled by two channels"
+msgstr ""
+
+msgctxt "AileronsPage|"
+msgid "<br>First Aileron Channel:"
+msgstr ""
+
+msgctxt "AileronsPage|"
+msgid "Second Aileron Channel:"
+msgstr ""
+
+msgctxt "AirbrakesPage|"
+msgid "No"
+msgstr ""
+
+msgctxt "AirbrakesPage|"
+msgid "Yes, controlled by a single channel"
+msgstr ""
+
+msgctxt "AirbrakesPage|"
+msgid "Yes, controlled by two channels"
+msgstr ""
+
+msgctxt "AirbrakesPage|"
+msgid "<br>First Airbrake Channel:"
+msgstr ""
+
+msgctxt "AirbrakesPage|"
+msgid "Second Airbrake Channel:"
+msgstr ""
+
+msgctxt "ConclusionPage|"
+msgid "OK, I understand."
+msgstr ""
+
+msgctxt "CyclicPage|"
+msgid "90"
+msgstr ""
+
+msgctxt "CyclicPage|"
+msgid "120"
+msgstr ""
+
+msgctxt "CyclicPage|"
+msgid "120x"
+msgstr ""
+
+msgctxt "CyclicPage|"
+msgid "140"
+msgstr ""
+
+msgctxt "ElevonsPage|"
+msgid "<br>First Elevon Channel:"
+msgstr ""
+
+msgctxt "ElevonsPage|"
+msgid "Second Elevon Channel:"
+msgstr ""
+
+msgctxt "FblPage|"
+msgid "Throttle Channel:"
+msgstr ""
+
+msgctxt "FblPage|"
+msgid "Yaw Channel:"
+msgstr ""
+
+msgctxt "FblPage|"
+msgid "Pitch Channel:"
+msgstr ""
+
+msgctxt "FblPage|"
+msgid "Roll Channel:"
+msgstr ""
+
+msgctxt "FlapsPage|"
+msgid "No"
+msgstr ""
+
+msgctxt "FlapsPage|"
+msgid "Yes, controlled by a single channel"
+msgstr ""
+
+msgctxt "FlapsPage|"
+msgid "Yes, controlled by two channels"
+msgstr ""
+
+msgctxt "FlapsPage|"
+msgid "<br>First Flap Channel:"
+msgstr ""
+
+msgctxt "FlapsPage|"
+msgid "Second Flap Channel:"
+msgstr ""
+
+msgctxt "FlybarSelectionPage|"
+msgid "Has Flybar"
+msgstr ""
+
+msgctxt "FlybarSelectionPage|"
+msgid "Flybarless"
+msgstr ""
+
+msgctxt "FlybarSelectionPage|"
+msgid "Flybar:"
+msgstr ""
+
 msgctxt "GeneralEdit|"
 msgid "v"
 msgstr ""
@@ -757,6 +873,38 @@ msgstr ""
 
 msgctxt "GeneralEdit|"
 msgid "L-WR Input"
+msgstr ""
+
+msgctxt "GeneralEdit|"
+msgid "MegaSound Serial"
+msgstr ""
+
+msgctxt "GyroPage|"
+msgid "No"
+msgstr ""
+
+msgctxt "GyroPage|"
+msgid "Yes, controled by a switch"
+msgstr ""
+
+msgctxt "GyroPage|"
+msgid "Yes, controlled by a pot"
+msgstr ""
+
+msgctxt "HeliPage|"
+msgid "Throttle Channel:"
+msgstr ""
+
+msgctxt "HeliPage|"
+msgid "Yaw Channel:"
+msgstr ""
+
+msgctxt "HeliPage|"
+msgid "Pitch Channel:"
+msgstr ""
+
+msgctxt "HeliPage|"
+msgid "Roll Channel:"
 msgstr ""
 
 msgctxt "MainWindow|"
@@ -1744,6 +1892,10 @@ msgstr ""
 
 msgctxt "MdiChild|"
 msgid "Data not Recognised"
+msgstr ""
+
+msgctxt "MdiChild|"
+msgid "&Wizard"
 msgstr ""
 
 msgctxt "MixerDialog|"
@@ -3456,6 +3608,54 @@ msgctxt "ModelEdit|"
 msgid "SF"
 msgstr ""
 
+msgctxt "ModelSelectionPage|"
+msgid "Plane"
+msgstr ""
+
+msgctxt "ModelSelectionPage|"
+msgid "Multirotor"
+msgstr ""
+
+msgctxt "ModelSelectionPage|"
+msgid "Helicopter"
+msgstr ""
+
+msgctxt "ModelSelectionPage|"
+msgid "Model Name:"
+msgstr ""
+
+msgctxt "ModelSelectionPage|"
+msgid "Model Type:"
+msgstr ""
+
+msgctxt "MultirotorPage|"
+msgid "Throttle Channel:"
+msgstr ""
+
+msgctxt "MultirotorPage|"
+msgid "Yaw Channel:"
+msgstr ""
+
+msgctxt "MultirotorPage|"
+msgid "Pitch Channel:"
+msgstr ""
+
+msgctxt "MultirotorPage|"
+msgid "Roll Channel:"
+msgstr ""
+
+msgctxt "OptionsPage|"
+msgid "Throttle Cut"
+msgstr ""
+
+msgctxt "OptionsPage|"
+msgid "Throttle Timer"
+msgstr ""
+
+msgctxt "OptionsPage|"
+msgid "Flight Timer"
+msgstr ""
+
 msgctxt "QObject|"
 msgid "Checking for updates..."
 msgstr ""
@@ -3591,6 +3791,171 @@ msgstr ""
 #, qt-format
 msgctxt "QextSerialPort|"
 msgid "Unknown error: %1"
+msgstr ""
+
+msgctxt "RudderPage|"
+msgid "No"
+msgstr ""
+
+msgctxt "RudderPage|"
+msgid "Yes"
+msgstr ""
+
+msgctxt "RudderPage|"
+msgid "<br>Rudder Channel:"
+msgstr ""
+
+msgctxt "SimpleTailPage|"
+msgid "Elevator Channel:"
+msgstr ""
+
+#, qt-format
+msgctxt "StandardPage|"
+msgid "Channel %1"
+msgstr ""
+
+msgctxt "TailPage|"
+msgid "Rudder Channel:"
+msgstr ""
+
+msgctxt "TailPage|"
+msgid "Elevator Channel:"
+msgstr ""
+
+msgctxt "TailSelectionPage|"
+msgid "Elevator and Rudder"
+msgstr ""
+
+msgctxt "TailSelectionPage|"
+msgid "Only Elevator"
+msgstr ""
+
+msgctxt "TailSelectionPage|"
+msgid "V-tail"
+msgstr ""
+
+msgctxt "TailSelectionPage|"
+msgid "Tail Type:"
+msgstr ""
+
+#, fuzzy
+msgctxt "TemplateDialog|"
+msgid "Dialog"
+msgstr "Dialogue"
+
+msgctxt "TemplateDialog|"
+msgid "Output Channel"
+msgstr ""
+
+msgctxt "TemplateDialog|"
+msgid "Helper Channel"
+msgstr ""
+
+msgctxt "TemplateDialog|"
+msgid "Control Source"
+msgstr ""
+
+#, fuzzy
+msgctxt "TemplateDialog|"
+msgid "Switch 1"
+msgstr "Inter 2: {1?}"
+
+#, fuzzy
+msgctxt "TemplateDialog|"
+msgid "Switch 2"
+msgstr "Inter 2: {2?}"
+
+#, fuzzy
+msgctxt "TemplateDialog|"
+msgid "Switch 3"
+msgstr "Inter 2: {3?}"
+
+msgctxt "TemplateDialog|"
+msgid "Rud"
+msgstr ""
+
+msgctxt "TemplateDialog|"
+msgid "Ele"
+msgstr ""
+
+msgctxt "TemplateDialog|"
+msgid "Thr"
+msgstr ""
+
+msgctxt "TemplateDialog|"
+msgid "Ail"
+msgstr ""
+
+msgctxt "TemplateDialog|"
+msgid "1"
+msgstr ""
+
+msgctxt "TemplateDialog|"
+msgid "2"
+msgstr ""
+
+msgctxt "TemplateDialog|"
+msgid "3"
+msgstr ""
+
+msgctxt "TemplateDialog|"
+msgid "4"
+msgstr ""
+
+msgctxt "TemplateDialog|"
+msgid "5"
+msgstr ""
+
+msgctxt "TemplateDialog|"
+msgid "6"
+msgstr ""
+
+msgctxt "TemplateDialog|"
+msgid "7"
+msgstr ""
+
+msgctxt "TemplateDialog|"
+msgid "8"
+msgstr ""
+
+msgctxt "TemplateDialog|"
+msgid "9"
+msgstr ""
+
+msgctxt "TemplateDialog|"
+msgid "A"
+msgstr ""
+
+msgctxt "TemplateDialog|"
+msgid "B"
+msgstr ""
+
+msgctxt "TemplateDialog|"
+msgid "C"
+msgstr ""
+
+msgctxt "TemplateDialog|"
+msgid "D"
+msgstr ""
+
+msgctxt "ThrottlePage|"
+msgid "Yes"
+msgstr ""
+
+msgctxt "ThrottlePage|"
+msgid "No"
+msgstr ""
+
+msgctxt "ThrottlePage|"
+msgid "<br>Throttle Channel:"
+msgstr ""
+
+msgctxt "VTailPage|"
+msgid "First Tail Channel:"
+msgstr ""
+
+msgctxt "VTailPage|"
+msgid "Second Tail Channel:"
 msgstr ""
 
 #, fuzzy
@@ -3850,6 +4215,283 @@ msgstr ""
 
 msgctxt "VoiceAlarmDialog|"
 msgid "On No Telemetry"
+msgstr ""
+
+msgctxt "WingtypeSelectionPage|"
+msgid "Standard Wing"
+msgstr ""
+
+msgctxt "WingtypeSelectionPage|"
+msgid "Flying Wing / Deltawing"
+msgstr ""
+
+msgctxt "WizardDialog|"
+msgid "Model Wizard"
+msgstr ""
+
+msgctxt "WizardDialog|"
+msgid "Model Type"
+msgstr ""
+
+msgctxt "WizardDialog|"
+msgid "Enter model name and model type."
+msgstr ""
+
+#, fuzzy
+msgctxt "WizardDialog|"
+msgid "Throttle"
+msgstr "Gaz"
+
+msgctxt "WizardDialog|"
+msgid "Has your model got a motor or an engine?"
+msgstr ""
+
+msgctxt "WizardDialog|"
+msgid "Wing Type"
+msgstr ""
+
+msgctxt "WizardDialog|"
+msgid ""
+"Is your model a flying wing/deltawing or has it a standard wing "
+"configuration?"
+msgstr ""
+
+msgctxt "WizardDialog|"
+msgid "Ailerons"
+msgstr ""
+
+msgctxt "WizardDialog|"
+msgid "Has your model got ailerons?"
+msgstr ""
+
+msgctxt "WizardDialog|"
+msgid "Flaps"
+msgstr ""
+
+msgctxt "WizardDialog|"
+msgid "Has your model got flaps?"
+msgstr ""
+
+msgctxt "WizardDialog|"
+msgid "Airbrakes"
+msgstr ""
+
+msgctxt "WizardDialog|"
+msgid "Has your model got airbrakes?"
+msgstr ""
+
+msgctxt "WizardDialog|"
+msgid "Flying-wing / Delta-wing"
+msgstr ""
+
+msgctxt "WizardDialog|"
+msgid "Select the elevons channels"
+msgstr ""
+
+#, fuzzy
+msgctxt "WizardDialog|"
+msgid "Rudder"
+msgstr "Direction"
+
+msgctxt "WizardDialog|"
+msgid "Does your model have a rudder?"
+msgstr ""
+
+msgctxt "WizardDialog|"
+msgid "Tail Type"
+msgstr ""
+
+msgctxt "WizardDialog|"
+msgid "Select which type of tail your model is equiped with."
+msgstr ""
+
+msgctxt "WizardDialog|"
+msgid "Tail"
+msgstr ""
+
+msgctxt "WizardDialog|"
+msgid "Select channels for tail control."
+msgstr ""
+
+msgctxt "WizardDialog|"
+msgid "V-Tail"
+msgstr ""
+
+msgctxt "WizardDialog|"
+msgid "Select elevator channel."
+msgstr ""
+
+msgctxt "WizardDialog|"
+msgid "Cyclic"
+msgstr ""
+
+msgctxt "WizardDialog|"
+msgid "Which type of swash control is installed in your helicopter?"
+msgstr ""
+
+msgctxt "WizardDialog|"
+msgid "Tail Gyro"
+msgstr ""
+
+msgctxt "WizardDialog|"
+msgid "Has your helicopter got an adjustable gyro for the tail?"
+msgstr ""
+
+msgctxt "WizardDialog|"
+msgid "Rotor Type"
+msgstr ""
+
+msgctxt "WizardDialog|"
+msgid "Has your helicopter got a flybar?"
+msgstr ""
+
+msgctxt "WizardDialog|"
+msgid "Helicopter"
+msgstr ""
+
+msgctxt "WizardDialog|"
+msgid "Select the controls for your helicopter"
+msgstr ""
+
+msgctxt "WizardDialog|"
+msgid "Multirotor"
+msgstr ""
+
+msgctxt "WizardDialog|"
+msgid "Select the control channels for your multirotor"
+msgstr ""
+
+msgctxt "WizardDialog|"
+msgid "Model Options"
+msgstr ""
+
+msgctxt "WizardDialog|"
+msgid "Select additional options"
+msgstr ""
+
+msgctxt "WizardDialog|"
+msgid "Save Changes"
+msgstr ""
+
+msgctxt "WizardDialog|"
+msgid ""
+"Manually check the direction of each control surface and reverse any "
+"channels that make controls move in the wrong direction. Remove the "
+"propeller/propellers before you try to control your model for the first "
+"time.<br>Please note that continuing removes all old model settings!"
+msgstr ""
+
+msgctxt "WizardDialog|"
+msgid "Enter a name for your model and select model type."
+msgstr ""
+
+msgctxt "WizardDialog|"
+msgid ""
+"Select the receiver channel that is connected to your ESC or throttle "
+"servo.<br><br>Throttle - Spektrum: CH1, Futaba: CH3"
+msgstr ""
+
+msgctxt "WizardDialog|"
+msgid ""
+"Most aircraft have a main wing and a tail with control surfaces. Flying "
+"wings and delta winged aircraft only have a single wing. The main control "
+"surface on a standard wing controls the roll of the aircraft. This surface "
+"is called an aileron.<br>The control surface of a delta wing controls both "
+"roll and pitch. This surface is called an elevon. "
+msgstr ""
+
+msgctxt "WizardDialog|"
+msgid ""
+"Models use one or two channels to control the ailerons.<br>A so called "
+"Y-cable can be used to connect a single receiver channel to two separate "
+"aileron servos. If your servos are connected by a Y-cable you should select "
+"the single-servo option.<br><br>Aileron - Spektrum: CH2, Futaba: CH1"
+msgstr ""
+
+msgctxt "WizardDialog|"
+msgid ""
+"This wizard assumes that your flaps are controlled by a switch. If your "
+"flaps are controlled by a potentiometer you can change that manually later."
+msgstr ""
+
+msgctxt "WizardDialog|"
+msgid ""
+"Air brakes are used to reduce the speed of advanced sail planes.<br>They are "
+"very uncommon on other types of planes."
+msgstr ""
+
+msgctxt "WizardDialog|"
+msgid ""
+"Models use two channels to control the elevons.<br>Select these two channels"
+msgstr ""
+
+msgctxt "WizardDialog|"
+msgid ""
+"Select the receiver channel that is connected to your rudder.<br><br>Rudder "
+"- Spektrum: CH4, Futaba: CH4"
+msgstr ""
+
+msgctxt "WizardDialog|"
+msgid "Select the tail type of your plane."
+msgstr ""
+
+msgctxt "WizardDialog|"
+msgid ""
+"Select the Rudder and Elevator channels.<br><br>Rudder - Spektrum: CH4, "
+"Futaba: CH4<br>Elevator - Spektrum: CH3, Futaba: CH2"
+msgstr ""
+
+msgctxt "WizardDialog|"
+msgid ""
+"Select the Elevator channel.<br><br>Elevator - Spektrum: CH3, Futaba: CH2"
+msgstr ""
+
+msgctxt "WizardDialog|"
+msgid "TBD."
+msgstr ""
+
+msgctxt "WizardDialog|"
+msgid ""
+"Select the control channels for your multirotor.<br><br>Throttle - Spektrum: "
+"CH1, Futaba: CH3<br>Yaw - Spektrum: CH4, Futaba: CH4<br>Pitch - Spektrum: "
+"CH3, Futaba: CH2<br>Roll - Spektrum: CH2, Futaba: CH1"
+msgstr ""
+
+msgctxt "WizardDialog|"
+msgid "There is no help available for the current page."
+msgstr ""
+
+msgctxt "WizardDialog|"
+msgid "Model Wizard Help"
+msgstr ""
+
+msgctxt "WizardPrinter|"
+msgid "Plane"
+msgstr ""
+
+msgctxt "WizardPrinter|"
+msgid "Multicopter"
+msgstr ""
+
+msgctxt "WizardPrinter|"
+msgid "Helicopter"
+msgstr ""
+
+msgctxt "WizardPrinter|"
+msgid "Model Name: "
+msgstr ""
+
+msgctxt "WizardPrinter|"
+msgid "Model Type: "
+msgstr ""
+
+msgctxt "WizardPrinter|"
+msgid "Options: "
+msgstr ""
+
+#, qt-format
+msgctxt "WizardPrinter|"
+msgid "Channel %1: "
 msgstr ""
 
 #, qt-format
@@ -4667,16 +5309,16 @@ msgctxt "preferencesDialog|"
 msgid "Mode 3 (AIL ELE THR RUD)"
 msgstr "Mode 3 (AIL PROF GAZ DIR)"
 
-msgctxt "preferencesDialog|"
-msgid ""
-"Channel order\n"
-"\n"
-"This is used by the templated to determine which channel goes to what number "
-"output."
-msgstr ""
-"Ordre des voies\n"
-"Indique l'affectation voie / numéro de canal par défaut utilisée lors de la "
-"création  d'un modèle."
+#~ msgctxt "preferencesDialog|"
+#~ msgid ""
+#~ "Channel order\n"
+#~ "\n"
+#~ "This is used by the templated to determine which channel goes to what "
+#~ "number output."
+#~ msgstr ""
+#~ "Ordre des voies\n"
+#~ "Indique l'affectation voie / numéro de canal par défaut utilisée lors de "
+#~ "la création  d'un modèle."
 
 # Version française par Pascal Dugué / Octobre 2010.
 msgctxt "preferencesDialog|"
@@ -4810,6 +5452,261 @@ msgstr ""
 msgctxt "preferencesDialog|"
 msgid "er9x - Frsky - Serial voice"
 msgstr ""
+
+msgctxt "preferencesDialog|"
+msgid ""
+"Channel order\n"
+"\n"
+"This is used by the templates to determine which channel goes to what number "
+"output."
+msgstr ""
+
+#, fuzzy
+msgctxt "preferencesDialog|"
+msgid "Location of AVRDUDE executable"
+msgstr "Chemin d'accès de l'exécutable AVRDUDE"
+
+#, fuzzy
+msgctxt "preferencesDialog|"
+msgid "The location of the AVRDUDE.EXE executable."
+msgstr "Chemin d'accès de l'exécutable AVRDUDE."
+
+#, fuzzy
+msgctxt "preferencesDialog|"
+msgid "Use this button to browse and look for the AVRDUDE.EXE executable file."
+msgstr ""
+"Utiliser ce bouton pour parcourir à la recherche du fichier exécutable "
+"AVRDUDE.EXE."
+
+#, fuzzy
+msgctxt "preferencesDialog|"
+msgid "Browse..."
+msgstr "Parcourir..."
+
+#, fuzzy
+msgctxt "preferencesDialog|"
+msgid "Programmer"
+msgstr "Programmateur"
+
+#, fuzzy
+msgctxt "preferencesDialog|"
+msgid ""
+"Programmer used for communicating with the controller.\n"
+"Please consult the programmer's documentation and the AVRDUDE documentation "
+"to select the appropriate programmer."
+msgstr ""
+"Programmateur utilisé pour la communication avec le contrôleur.\n"
+"Consulter la documentation du programmateur utilisé et celle d'AVRDUDE pour "
+"effectuer le choix approprié."
+
+#, fuzzy
+msgctxt "preferencesDialog|"
+msgid "List all available programmers."
+msgstr "Liste tous les programmateurs supportés."
+
+#, fuzzy
+msgctxt "preferencesDialog|"
+msgid "List Available"
+msgstr "Affiche Liste"
+
+#, fuzzy
+msgctxt "preferencesDialog|"
+msgid "Extra arguments that will be passed to AVRDUDE on every call"
+msgstr "Paramètres complémentaires passés à chaque appel du programme"
+
+#, fuzzy
+msgctxt "preferencesDialog|"
+msgid ""
+"Extra arguments used in AVRDUDE.\n"
+"This can be used for providing extra information to AVRDUDE.\n"
+"\n"
+"Please only use this if you know what you are doing.  There are no error "
+"checks and you could cripple your controller."
+msgstr ""
+"Paramètres complémentaires.\n"
+"Permet de fournir des informations supplémentaires à AVRDUDE.\n"
+"\n"
+"A n'utiliser qu'en connaissance de cause: il n'y a pas de contrôle d'erreur "
+"et votre programmateur pourrait être endommagé."
+
+#, fuzzy
+msgctxt "preferencesDialog|"
+msgid "Extra Arguments"
+msgstr "Paramètres supplémentaires"
+
+#, fuzzy
+msgctxt "preferencesDialog|"
+msgid "Show AVRDUDE help"
+msgstr "Affiche l'aide d'AVRDUDE"
+
+#, fuzzy
+msgctxt "preferencesDialog|"
+msgid "Show Help"
+msgstr "Aide"
+
+#, fuzzy
+msgctxt "preferencesDialog|"
+msgid "Communication port to the programmer.\n"
+msgstr "Port de communication pour le programmateur."
+
+msgctxt "preferencesDialog|"
+msgid "avrdoper"
+msgstr ""
+
+msgctxt "preferencesDialog|"
+msgid "com5"
+msgstr ""
+
+msgctxt "preferencesDialog|"
+msgid "com6"
+msgstr ""
+
+msgctxt "preferencesDialog|"
+msgid "com7"
+msgstr ""
+
+msgctxt "preferencesDialog|"
+msgid "com8"
+msgstr ""
+
+msgctxt "preferencesDialog|"
+msgid "com9"
+msgstr ""
+
+msgctxt "preferencesDialog|"
+msgid "com10"
+msgstr ""
+
+msgctxt "preferencesDialog|"
+msgid "com11"
+msgstr ""
+
+msgctxt "preferencesDialog|"
+msgid "com12"
+msgstr ""
+
+msgctxt "preferencesDialog|"
+msgid "com13"
+msgstr ""
+
+msgctxt "preferencesDialog|"
+msgid "com14"
+msgstr ""
+
+msgctxt "preferencesDialog|"
+msgid "com15"
+msgstr ""
+
+msgctxt "preferencesDialog|"
+msgid "com16"
+msgstr ""
+
+msgctxt "preferencesDialog|"
+msgid "com17"
+msgstr ""
+
+msgctxt "preferencesDialog|"
+msgid "com18"
+msgstr ""
+
+msgctxt "preferencesDialog|"
+msgid "com19"
+msgstr ""
+
+msgctxt "preferencesDialog|"
+msgid "com20"
+msgstr ""
+
+msgctxt "preferencesDialog|"
+msgid "com21"
+msgstr ""
+
+msgctxt "preferencesDialog|"
+msgid "com22"
+msgstr ""
+
+msgctxt "preferencesDialog|"
+msgid "com23"
+msgstr ""
+
+msgctxt "preferencesDialog|"
+msgid "com24"
+msgstr ""
+
+msgctxt "preferencesDialog|"
+msgid "com25"
+msgstr ""
+
+msgctxt "preferencesDialog|"
+msgid "com26"
+msgstr ""
+
+msgctxt "preferencesDialog|"
+msgid "com27"
+msgstr ""
+
+msgctxt "preferencesDialog|"
+msgid "com28"
+msgstr ""
+
+msgctxt "preferencesDialog|"
+msgid "com29"
+msgstr ""
+
+msgctxt "preferencesDialog|"
+msgid "com30"
+msgstr ""
+
+#, fuzzy
+msgctxt "preferencesDialog|"
+msgid "Port"
+msgstr "Port"
+
+#, fuzzy
+msgctxt "preferencesDialog|"
+msgid "AVRDUDE Location"
+msgstr "Emplacement d'AVRDUDE"
+
+msgctxt "preferencesDialog|"
+msgid "mcu"
+msgstr ""
+
+msgctxt "preferencesDialog|"
+msgid "m64"
+msgstr ""
+
+msgctxt "preferencesDialog|"
+msgid "m128"
+msgstr ""
+
+msgctxt "preferencesDialog|"
+msgid "m328p"
+msgstr ""
+
+msgctxt "preferencesDialog|"
+msgid "M88"
+msgstr ""
+
+msgctxt "preferencesDialog|"
+msgid "m1281"
+msgstr ""
+
+msgctxt "preferencesDialog|"
+msgid "m2561"
+msgstr ""
+
+msgctxt "preferencesDialog|"
+msgid "Burn Configuration"
+msgstr ""
+
+msgctxt "preferencesDialog|"
+msgid "Profile"
+msgstr ""
+
+#, fuzzy
+msgctxt "preferencesDialog|"
+msgid "Select Location"
+msgstr "Choisir l'emplacement"
 
 msgctxt "printDialog|"
 msgid "Low"

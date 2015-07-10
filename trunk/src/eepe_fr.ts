@@ -2,6 +2,146 @@
 <!DOCTYPE TS>
 <TS version="2.0" language="fr_FR">
 <context>
+    <name>AileronsPage</name>
+    <message>
+        <source>No</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Yes, controlled by a single channel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Yes, controlled by two channels</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&lt;br&gt;First Aileron Channel:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Second Aileron Channel:</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>AirbrakesPage</name>
+    <message>
+        <source>No</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Yes, controlled by a single channel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Yes, controlled by two channels</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&lt;br&gt;First Airbrake Channel:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Second Airbrake Channel:</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ConclusionPage</name>
+    <message>
+        <source>OK, I understand.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>CyclicPage</name>
+    <message>
+        <source>90</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>120</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>120x</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>140</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ElevonsPage</name>
+    <message>
+        <source>&lt;br&gt;First Elevon Channel:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Second Elevon Channel:</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>FblPage</name>
+    <message>
+        <source>Throttle Channel:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Yaw Channel:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Pitch Channel:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Roll Channel:</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>FlapsPage</name>
+    <message>
+        <source>No</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Yes, controlled by a single channel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Yes, controlled by two channels</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&lt;br&gt;First Flap Channel:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Second Flap Channel:</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>FlybarSelectionPage</name>
+    <message>
+        <source>Has Flybar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Flybarless</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Flybar:</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>GeneralEdit</name>
     <message>
         <source>v</source>
@@ -649,6 +789,44 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>L-WR Input</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>MegaSound Serial</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>GyroPage</name>
+    <message>
+        <source>No</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Yes, controled by a switch</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Yes, controlled by a pot</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>HeliPage</name>
+    <message>
+        <source>Throttle Channel:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Yaw Channel:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Pitch Channel:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Roll Channel:</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1553,6 +1731,10 @@ Cannot set General Settings</source>
     </message>
     <message>
         <source>Data not Recognised</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Wizard</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -3127,6 +3309,63 @@ p, li { white-space: pre-wrap; }
     </message>
 </context>
 <context>
+    <name>ModelSelectionPage</name>
+    <message>
+        <source>Plane</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Multirotor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Helicopter</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Model Name:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Model Type:</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>MultirotorPage</name>
+    <message>
+        <source>Throttle Channel:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Yaw Channel:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Pitch Channel:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Roll Channel:</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>OptionsPage</name>
+    <message>
+        <source>Throttle Cut</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Throttle Timer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Flight Timer</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>QObject</name>
     <message>
         <source>Checking for updates...</source>
@@ -3249,6 +3488,190 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>Unknown error: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>RudderPage</name>
+    <message>
+        <source>No</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Yes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&lt;br&gt;Rudder Channel:</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SimpleTailPage</name>
+    <message>
+        <source>Elevator Channel:</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>StandardPage</name>
+    <message>
+        <source>Channel %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>TailPage</name>
+    <message>
+        <source>Rudder Channel:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Elevator Channel:</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>TailSelectionPage</name>
+    <message>
+        <source>Elevator and Rudder</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Only Elevator</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>V-tail</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Tail Type:</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>TemplateDialog</name>
+    <message>
+        <source>Dialog</source>
+        <translation type="unfinished">Dialogue</translation>
+    </message>
+    <message>
+        <source>Output Channel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Helper Channel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Control Source</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Switch 1</source>
+        <translation type="unfinished">Inter 2: {1?}</translation>
+    </message>
+    <message>
+        <source>Switch 2</source>
+        <translation type="unfinished">Inter 2: {2?}</translation>
+    </message>
+    <message>
+        <source>Switch 3</source>
+        <translation type="unfinished">Inter 2: {3?}</translation>
+    </message>
+    <message>
+        <source>Rud</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ele</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Thr</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ail</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>3</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>4</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>5</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>6</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>7</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>8</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>9</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>A</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>B</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>C</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>D</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ThrottlePage</name>
+    <message>
+        <source>Yes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&lt;br&gt;Throttle Channel:</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>VTailPage</name>
+    <message>
+        <source>First Tail Channel:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Second Tail Channel:</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -3504,6 +3927,259 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <source>On No Telemetry</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>WingtypeSelectionPage</name>
+    <message>
+        <source>Standard Wing</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Flying Wing / Deltawing</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>WizardDialog</name>
+    <message>
+        <source>Model Wizard</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Model Type</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enter model name and model type.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Throttle</source>
+        <translation type="unfinished">Gaz</translation>
+    </message>
+    <message>
+        <source>Has your model got a motor or an engine?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Wing Type</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Is your model a flying wing/deltawing or has it a standard wing configuration?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ailerons</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Has your model got ailerons?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Flaps</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Has your model got flaps?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Airbrakes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Has your model got airbrakes?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Flying-wing / Delta-wing</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select the elevons channels</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Rudder</source>
+        <translation type="unfinished">Direction</translation>
+    </message>
+    <message>
+        <source>Does your model have a rudder?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Tail Type</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select which type of tail your model is equiped with.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Tail</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select channels for tail control.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>V-Tail</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select elevator channel.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cyclic</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Which type of swash control is installed in your helicopter?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Tail Gyro</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Has your helicopter got an adjustable gyro for the tail?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Rotor Type</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Has your helicopter got a flybar?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Helicopter</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select the controls for your helicopter</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Multirotor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select the control channels for your multirotor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Model Options</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select additional options</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Save Changes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Manually check the direction of each control surface and reverse any channels that make controls move in the wrong direction. Remove the propeller/propellers before you try to control your model for the first time.&lt;br&gt;Please note that continuing removes all old model settings!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enter a name for your model and select model type.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select the receiver channel that is connected to your ESC or throttle servo.&lt;br&gt;&lt;br&gt;Throttle - Spektrum: CH1, Futaba: CH3</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Most aircraft have a main wing and a tail with control surfaces. Flying wings and delta winged aircraft only have a single wing. The main control surface on a standard wing controls the roll of the aircraft. This surface is called an aileron.&lt;br&gt;The control surface of a delta wing controls both roll and pitch. This surface is called an elevon. </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Models use one or two channels to control the ailerons.&lt;br&gt;A so called Y-cable can be used to connect a single receiver channel to two separate aileron servos. If your servos are connected by a Y-cable you should select the single-servo option.&lt;br&gt;&lt;br&gt;Aileron - Spektrum: CH2, Futaba: CH1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>This wizard assumes that your flaps are controlled by a switch. If your flaps are controlled by a potentiometer you can change that manually later.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Air brakes are used to reduce the speed of advanced sail planes.&lt;br&gt;They are very uncommon on other types of planes.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Models use two channels to control the elevons.&lt;br&gt;Select these two channels</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select the receiver channel that is connected to your rudder.&lt;br&gt;&lt;br&gt;Rudder - Spektrum: CH4, Futaba: CH4</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select the tail type of your plane.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select the Rudder and Elevator channels.&lt;br&gt;&lt;br&gt;Rudder - Spektrum: CH4, Futaba: CH4&lt;br&gt;Elevator - Spektrum: CH3, Futaba: CH2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select the Elevator channel.&lt;br&gt;&lt;br&gt;Elevator - Spektrum: CH3, Futaba: CH2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>TBD.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select the control channels for your multirotor.&lt;br&gt;&lt;br&gt;Throttle - Spektrum: CH1, Futaba: CH3&lt;br&gt;Yaw - Spektrum: CH4, Futaba: CH4&lt;br&gt;Pitch - Spektrum: CH3, Futaba: CH2&lt;br&gt;Roll - Spektrum: CH2, Futaba: CH1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>There is no help available for the current page.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Model Wizard Help</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>WizardPrinter</name>
+    <message>
+        <source>Plane</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Multicopter</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Helicopter</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Model Name: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Model Type: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Options: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Channel %1: </source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -4090,7 +4766,7 @@ Manche Droit:  Profondeur, Direction
         <source>Channel order
 
 This is used by the templated to determine which channel goes to what number output.</source>
-        <translation>Ordre des voies
+        <translation type="obsolete">Ordre des voies
 Indique l&apos;affectation voie / numéro de canal par défaut utilisée lors de la création  d&apos;un modèle.</translation>
     </message>
     <message>
@@ -4225,6 +4901,233 @@ Indique l&apos;affectation voie / numéro de canal par défaut utilisée lors de
     <message>
         <source>er9x - Frsky - Serial voice</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Channel order
+
+This is used by the templates to determine which channel goes to what number output.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Location of AVRDUDE executable</source>
+        <translation type="unfinished">Chemin d&apos;accès de l&apos;exécutable AVRDUDE</translation>
+    </message>
+    <message>
+        <source>The location of the AVRDUDE.EXE executable.</source>
+        <translation type="unfinished">Chemin d&apos;accès de l&apos;exécutable AVRDUDE.</translation>
+    </message>
+    <message>
+        <source>Use this button to browse and look for the AVRDUDE.EXE executable file.</source>
+        <translation type="unfinished">Utiliser ce bouton pour parcourir à la recherche du fichier exécutable AVRDUDE.EXE.</translation>
+    </message>
+    <message>
+        <source>Browse...</source>
+        <translation type="unfinished">Parcourir...</translation>
+    </message>
+    <message>
+        <source>Programmer</source>
+        <translation type="unfinished">Programmateur</translation>
+    </message>
+    <message>
+        <source>Programmer used for communicating with the controller.
+Please consult the programmer&apos;s documentation and the AVRDUDE documentation to select the appropriate programmer.</source>
+        <translation type="unfinished">Programmateur utilisé pour la communication avec le contrôleur.
+Consulter la documentation du programmateur utilisé et celle d&apos;AVRDUDE pour effectuer le choix approprié.</translation>
+    </message>
+    <message>
+        <source>List all available programmers.</source>
+        <translation type="unfinished">Liste tous les programmateurs supportés.</translation>
+    </message>
+    <message>
+        <source>List Available</source>
+        <translation type="unfinished">Affiche Liste</translation>
+    </message>
+    <message>
+        <source>Extra arguments that will be passed to AVRDUDE on every call</source>
+        <translation type="unfinished">Paramètres complémentaires passés à chaque appel du programme</translation>
+    </message>
+    <message>
+        <source>Extra arguments used in AVRDUDE.
+This can be used for providing extra information to AVRDUDE.
+
+Please only use this if you know what you are doing.  There are no error checks and you could cripple your controller.</source>
+        <translation type="unfinished">Paramètres complémentaires.
+Permet de fournir des informations supplémentaires à AVRDUDE.
+
+A n&apos;utiliser qu&apos;en connaissance de cause: il n&apos;y a pas de contrôle d&apos;erreur et votre programmateur pourrait être endommagé.</translation>
+    </message>
+    <message>
+        <source>Extra Arguments</source>
+        <translation type="unfinished">Paramètres supplémentaires</translation>
+    </message>
+    <message>
+        <source>Show AVRDUDE help</source>
+        <translation type="unfinished">Affiche l&apos;aide d&apos;AVRDUDE</translation>
+    </message>
+    <message>
+        <source>Show Help</source>
+        <translation type="unfinished">Aide</translation>
+    </message>
+    <message>
+        <source>Communication port to the programmer.
+</source>
+        <translation type="unfinished">Port de communication pour le programmateur.</translation>
+    </message>
+    <message>
+        <source>avrdoper</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>com5</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>com6</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>com7</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>com8</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>com9</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>com10</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>com11</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>com12</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>com13</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>com14</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>com15</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>com16</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>com17</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>com18</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>com19</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>com20</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>com21</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>com22</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>com23</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>com24</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>com25</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>com26</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>com27</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>com28</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>com29</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>com30</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Port</source>
+        <translation type="unfinished">Port</translation>
+    </message>
+    <message>
+        <source>AVRDUDE Location</source>
+        <translation type="unfinished">Emplacement d&apos;AVRDUDE</translation>
+    </message>
+    <message>
+        <source>mcu</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>m64</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>m128</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>m328p</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>M88</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>m1281</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>m2561</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Burn Configuration</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Profile</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select Location</source>
+        <translation type="unfinished">Choisir l&apos;emplacement</translation>
     </message>
 </context>
 <context>

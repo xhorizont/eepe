@@ -3,7 +3,7 @@
 
 #include <QDialog>
 #include "../../node.h"
-#include <inttypes.h>
+#include <stdint.h>
 #include "pers.h"
 #include "qextserialport.h"
 
@@ -21,6 +21,21 @@ namespace Ui {
     class simulatorDialog;
 }
 
+struct t_timer
+{
+	uint16_t s_sum ;
+	uint8_t lastSwPos ;
+	uint8_t sw_toggled ;
+	uint16_t s_timeCumSw ;  //laufzeit in 1/16 sec
+	uint8_t  s_timerState ;
+	uint8_t lastResetSwPos;
+	uint16_t s_timeCumThr ;  //gewichtete laufzeit in 1/16 sec
+	uint16_t s_timeCum16ThrP ; //gewichtete laufzeit in 1/16 sec
+	int16_t  s_timerVal ;
+	int16_t last_tmr ;
+} ;
+
+
 class simulatorDialog : public QDialog
 {
     Q_OBJECT
@@ -35,7 +50,7 @@ private:
     Ui::simulatorDialog *ui;
     Node *nodeLeft;
     Node *nodeRight;
-    QTimer *timer;
+    QTimer *ticktimer;
     QString modelName;
 
 
@@ -68,6 +83,8 @@ private:
 		qint16 serialTimer ;
     QextSerialPort *port ;
 
+		struct t_timer s_timer[2] ;
+
     quint16 s_timeCumTot;
     quint16 s_timeCumAbs;
     quint16 s_timeCumSw;
@@ -76,7 +93,7 @@ private:
     quint8  s_timerState;
     quint8  beepAgain;
     quint16 g_LightOffCounter;
-    qint16  s_timerVal;
+    qint16  s_timerVal[2];
     quint16 s_time;
     quint16 s_cnt;
     quint16 s_sum;
@@ -128,6 +145,10 @@ private:
 		void configSwitches( void ) ;
 		uint8_t IS_THROTTLE( uint8_t x) ;
 		int8_t getGvarSourceValue( uint8_t src ) ;
+		void resetTimern( uint32_t timer ) ;
+		void resetTimer1() ;
+		void resetTimer2() ;
+		void resetTimer() ;
 
 protected:
 		void closeEvent(QCloseEvent *event) ;
