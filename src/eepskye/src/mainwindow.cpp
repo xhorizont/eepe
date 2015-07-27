@@ -1303,7 +1303,7 @@ void MainWindow::about()
 {
     QString aboutStr = "<center><img src=\":/images/eepskye-title.png\"><br>";
     aboutStr.append(tr("Copyright") +" Michael Blandford &copy;2013<br>");
-    aboutStr.append(QString("<a href='http://code.google.com/p/eepe/'>http://code.google.com/p/eepe/</a><br>Revision: %1, %2<br><br>").arg(currentEEPSKYErev).arg(__DATE__));
+    aboutStr.append(QString("<a href='https://github.com/MikeBland/mbtx'>https://github.com/MikeBland/mbtx</a><br>Revision: %1, %2<br><br>").arg(currentEEPSKYErev).arg(__DATE__));
     aboutStr.append(tr("If you've found this program and/or the ersky9x firmware useful please support by"));
     aboutStr.append(" <a href='" DONATE_MB_STR "'>");
 //    aboutStr.append(tr("donating") + "</a></center><br>");
