@@ -364,7 +364,7 @@ void MainWindow::reply1Finished(QNetworkReply * reply)
         QByteArray qbb = qba.mid(i+6,20) ;
         int j = qbb.indexOf("-r");
         bool cres;
-        int rev = QString::fromLatin1(qba.mid(j+2,4)).replace(QChar('"'), "").toInt(&cres);
+        int rev = QString::fromLatin1(qbb.mid(j+2,4)).replace(QChar('"'), "").toInt(&cres);
 
         if(!cres)
         {
@@ -372,8 +372,6 @@ void MainWindow::reply1Finished(QNetworkReply * reply)
             return;
         }
         
-				QMessageBox::warning(this, "ersky9x", tr("Read revision = %1.").arg(cres));
-
 				int currentRev = currentERSKY9Xrev ;
         switch (settings.value("download-version", 0).toInt())
 				{
@@ -573,15 +571,13 @@ void MainWindow::reply2Finished(QNetworkReply * reply)
         QByteArray qbb = qba.mid(i+6,20) ;
         int j = qbb.indexOf("-r");
         bool cres;
-        int rev = QString::fromLatin1(qba.mid(j+2,4)).replace(QChar('"'), "").toInt(&cres);
+        int rev = QString::fromLatin1(qbb.mid(j+2,4)).replace(QChar('"'), "").toInt(&cres);
 
         if(!cres)
         {
             QMessageBox::warning(this, "eePskye", tr("Unable to check for updates(1)."));
             return;
         }
-
-				QMessageBox::warning(this, "eePskye", tr("Read revision = %1.").arg(cres));
 
 
         if(rev>currentEEPSKYErev)
